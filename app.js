@@ -1,37 +1,19 @@
 (function () {
   "use strict";
-
   const data = window.CODECRAFT_DATA;
   const main = document.getElementById("main-content");
-
   if (!data || !main) return;
-
+  document.querySelector('.skip-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    main.focus();
+  });
+  const checks = new Set();
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
   };
-
-  const storageKey = (routeId, itemId) =>
-    `codecraft:${data.sessionId}:${routeId}:${itemId}`;
-
-  const readProgress = (key) => {
-    try {
-      return localStorage.getItem(key) === "true";
-    } catch (_error) {
-      return false;
-    }
-  };
-
-  const writeProgress = (key, checked) => {
-    try {
-      localStorage.setItem(key, String(checked));
-    } catch (_error) {
-      // Le parcours reste utilisable si le stockage local est indisponible.
-    }
-  };
-
   function createCode(code) {
     const pre = element("pre", "code-block");
     const codeNode = element("code", "", code);
@@ -64,9 +46,9 @@
       const label = element("label", "task-label");
       const checkbox = element("input");
       checkbox.type = "checkbox";
-      const key = storageKey(routeId, item.id);
-      checkbox.checked = readProgress(key);
-      checkbox.addEventListener("change", () => writeProgress(key, checkbox.checked));
+      const key = `${routeId}:${item.id}`;
+      checkbox.checked = checks.has(key);
+      checkbox.addEventListener("change", () => checkbox.checked ? checks.add(key) : checks.delete(key));
 
       const text = element(item.code ? "code" : "span", "task-text", item.text);
       label.append(checkbox, text);
@@ -87,9 +69,9 @@
       const label = element("label", "task-label");
       const checkbox = element("input");
       checkbox.type = "checkbox";
-      const key = storageKey(routeId, item.id);
-      checkbox.checked = readProgress(key);
-      checkbox.addEventListener("change", () => writeProgress(key, checkbox.checked));
+      const key = `${routeId}:${item.id}`;
+      checkbox.checked = checks.has(key);
+      checkbox.addEventListener("change", () => checkbox.checked ? checks.add(key) : checks.delete(key));
       label.append(checkbox, element("span", "task-text", item.text));
       row.append(label);
       list.append(row);
@@ -101,7 +83,19 @@
   function createCallout(block) {
     const section = element("section", `callout callout--${block.tone || "neutral"}`);
     section.append(element("h2", "section-title", block.title));
-    section.append(element("p", "", block.text));
+    const paragraph = element("p");
+    const moduleLink = block.moduleLink;
+    const position = moduleLink ? block.text.indexOf(moduleLink.text) : -1;
+    if (position >= 0) {
+      paragraph.append(
+        block.text.slice(0, position),
+        link(moduleLink.text, moduleUrl(moduleLink.moduleId), ''),
+        block.text.slice(position + moduleLink.text.length)
+      );
+    } else {
+      paragraph.textContent = block.text;
+    }
+    section.append(paragraph);
     return section;
   }
 
@@ -129,6 +123,10 @@
   }
 
   function createBlock(block, routeId) {
+    if (block.type === "reference") {
+      const source = data.modules[block.moduleId];
+      return createBlock(source.blocks.find(item => item.id === block.blockId), block.moduleId);
+    }
     if (block.type === "tasks") return createTasks(block, routeId);
     if (block.type === "checklist") return createChecklist(block, routeId);
     if (block.type === "callout") return createCallout(block);
@@ -137,135 +135,180 @@
     return element("div");
   }
 
-  function renderHeader(compact) {
-    const header = element("header", compact ? "page-header page-header--compact" : "page-header");
-    const brand = element("a", "brand", data.site.name);
-    brand.href = "#";
-    header.append(brand);
-    if (!compact) header.append(element("p", "site-subtitle", data.site.subtitle));
-    return header;
+  const link = (label, href, className = 'button button--secondary') => {
+    const node = element('a', className, label);
+    node.href = href;
+    return node;
+  };
+  const moduleUrl = (id, pathwayId) => '#module/' + encodeURIComponent(id) +
+    (pathwayId ? '?parcours=' + encodeURIComponent(pathwayId) : '');
+  const domainUrl = id => Object.keys(data.domains).length === 1 ? '#' : '#domaine/' + id;
+  const own = (collection, id) => Object.prototype.hasOwnProperty.call(collection, id) ? collection[id] : null;
+
+  function start(title, theme, compact = true) {
+    document.title = title + ' — ' + data.site.name;
+    if (theme) document.body.dataset.route = theme;
+    else delete document.body.dataset.route;
+    main.replaceChildren();
+    const header = element('header', compact ? 'page-header page-header--compact' : 'page-header');
+    const brand = link(data.site.name, '#', 'brand');
+    if (compact) header.append(brand);
+    else {
+      const heading = element('h1', 'home-title');
+      heading.append(brand);
+      header.append(heading);
+    }
+    if (!compact) header.append(element('p', 'site-subtitle', data.site.subtitle));
+    main.append(header);
+  }
+
+  function card(title, description, href, theme) {
+    const node = link('', href, 'route-card route-card--' + (theme || 'fondations'));
+    node.append(element('span', 'route-card-title', title));
+    node.append(element('span', 'route-card-description', description));
+    return node;
+  }
+
+  function renderDomain(id, home = false) {
+    const domain = data.domains[id];
+    start(home ? data.site.subtitle : domain.title, null, home ? false : true);
+    if (!home) main.append(element('h1', 'library-heading', domain.title));
+    const navigation = element('nav', 'route-grid');
+    navigation.setAttribute('aria-label', 'Choisir un parcours ou un diagnostic');
+    domain.pathwayIds.forEach(pathwayId => {
+      const pathway = data.pathways[pathwayId];
+      navigation.append(card(pathway.title, pathway.objective, '#parcours/' + pathwayId, pathway.theme));
+    });
+    (domain.diagnosticModuleIds || []).forEach(moduleId => {
+      const item = data.modules[moduleId];
+      navigation.append(card(item.title, item.objective, moduleUrl(moduleId), item.theme));
+    });
+    main.append(navigation);
+    if (!home) main.append(link('← Accueil', '#', 'button button--secondary back-button'));
   }
 
   function renderHome() {
-    document.title = `${data.site.name} — ${data.site.subtitle}`;
-    delete document.body.dataset.route;
-    main.replaceChildren();
-    main.append(renderHeader(false));
-
-    const navigation = element("nav", "route-grid");
-    navigation.setAttribute("aria-label", "Choisir un parcours");
-    data.routes.forEach((route) => {
-      const card = element("a", `route-card route-card--${route.id}`);
-      card.href = `#${route.id}`;
-      card.append(element("span", "route-card-title", route.title));
-      card.append(element("span", "route-card-description", route.shortDescription));
-      navigation.append(card);
-    });
+    const domains = Object.keys(data.domains);
+    if (domains.length === 1) return renderDomain(domains[0], true);
+    start(data.site.subtitle, null, false);
+    const navigation = element('nav', 'route-grid');
+    navigation.setAttribute('aria-label', 'Choisir un domaine');
+    domains.forEach(id => navigation.append(card(data.domains[id].title, 'Découvrir les parcours', '#domaine/' + id)));
     main.append(navigation);
   }
 
-  function renderSharedBlocks(route) {
-    const stuckContent = route.stuck || {
-      title: data.shared.stuckTitle,
-      steps: data.shared.stuckSteps
-    };
-    const stuck = element("section", "support-grid");
-    const stuckCard = element("div", "support-card support-card--stuck");
-    stuckCard.append(element("h2", "section-title", stuckContent.title));
-    const routine = element("ol", "routine-list");
-    stuckContent.steps.forEach((step) => routine.append(element("li", "", step)));
-    stuckCard.append(routine);
-
-    const doneCard = element("div", "support-card support-card--done");
-    doneCard.append(element("h2", "section-title", data.shared.finishedTitle));
-    doneCard.append(element("p", "", route.bonus));
-    stuck.append(stuckCard, doneCard);
-    return stuck;
+  function intro(title, objective, codepen = false) {
+    const header = element('header', 'lesson-intro');
+    header.append(element('p', 'eyebrow', data.site.subtitle));
+    header.append(element('h1', 'lesson-title', title));
+    header.append(element('h2', 'objective-label', 'Objectif'));
+    header.append(element('p', 'objective', objective));
+    if (codepen) {
+      const button = link(data.site.codepenLabel, data.site.codepenUrl, 'button button--primary');
+      button.target = '_blank';
+      button.rel = 'noopener noreferrer';
+      header.append(button);
+    }
+    return header;
   }
 
-  function renderRoute(route) {
-    document.title = `${route.title} — ${data.site.name}`;
-    document.body.dataset.route = route.id;
-    main.replaceChildren();
-    main.append(renderHeader(true));
-
-    const article = element("article", "lesson-page");
-    const intro = element("header", "lesson-intro");
-    intro.append(element("p", "eyebrow", data.site.subtitle));
-    intro.append(element("h1", "lesson-title", route.title));
-    intro.append(element("h2", "objective-label", "Objectif du jour"));
-    intro.append(element("p", "objective", route.objective));
-
-    const codepen = element("a", "button button--primary", data.site.codepenLabel);
-    codepen.href = data.site.codepenUrl;
-    codepen.target = "_blank";
-    codepen.rel = "noopener noreferrer";
-    intro.append(codepen);
-    article.append(intro);
-
-    route.blocks.forEach((block) => article.append(createBlock(block, route.id)));
-    article.append(renderSharedBlocks(route));
-
-    const back = element("a", "button button--secondary back-button", `← ${data.site.homeLabel}`);
-    back.href = "#";
-    article.append(back);
-    main.append(article);
-    main.focus({ preventScroll: true });
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }
-
-  function renderStudentPage() {
-    const banner = document.getElementById("course-banner");
-    banner.textContent = data.site.banner;
-
-    const handleRoute = () => {
-      const routeId = decodeURIComponent(location.hash.slice(1)).toLowerCase();
-      const route = data.routes.find((item) => item.id === routeId);
-      if (route) renderRoute(route);
-      else renderHome();
-    };
-
-    window.addEventListener("hashchange", handleRoute);
-    handleRoute();
-  }
-
-  function renderTeacherPage() {
-    const teacher = data.teacher;
-    document.title = `${teacher.title} — ${data.site.name}`;
-    delete document.body.dataset.route;
-    main.replaceChildren();
-    main.append(renderHeader(true));
-
-    const article = element("article", "teacher-page");
-    const intro = element("header", "lesson-intro");
-    intro.append(element("p", "eyebrow", data.site.name));
-    intro.append(element("h1", "lesson-title", teacher.title));
-    intro.append(element("p", "objective", teacher.subtitle));
-    article.append(intro);
-
-    const schedule = element("section", "content-card");
-    schedule.append(element("h2", "section-title", "Déroulé"));
-    const list = element("ol", "schedule-list");
-    teacher.schedule.forEach((slot) => {
-      const item = element("li", "schedule-item");
-      item.append(element("time", "schedule-time", slot.time));
-      item.append(element("span", "schedule-activity", slot.activity));
-      list.append(item);
+  function renderPathway(id) {
+    const pathway = data.pathways[id];
+    start(pathway.title, pathway.theme);
+    const article = element('article', 'lesson-page');
+    article.append(intro(pathway.title, pathway.objective));
+    const list = element('ol', 'module-list');
+    pathway.moduleIds.forEach(moduleId => {
+      const item = data.modules[moduleId];
+      const row = element('li');
+      row.append(card(item.title, data.moduleTypes[item.type] + ' · ' + item.objective, moduleUrl(moduleId, id), pathway.theme));
+      list.append(row);
     });
-    schedule.append(list);
-
-    const principles = element("section", "content-card");
-    principles.append(element("h2", "section-title", teacher.principlesTitle));
-    const principleList = element("ul", "principle-list");
-    teacher.principles.forEach((principle) => principleList.append(element("li", "", principle)));
-    principles.append(principleList);
-
-    const studentLink = element("a", "button button--primary", teacher.studentLinkLabel);
-    studentLink.href = "index.html";
-    article.append(schedule, principles, studentLink);
+    article.append(list, link('← Retour aux parcours', domainUrl(pathway.domainId), 'button button--secondary back-button'));
     main.append(article);
   }
 
-  if (document.body.dataset.page === "teacher") renderTeacherPage();
-  else renderStudentPage();
+  function support(item) {
+    const content = item.stuck || {title:data.shared.stuckTitle,steps:data.shared.stuckSteps};
+    const grid = element('section', 'support-grid');
+    const stuck = element('div', 'support-card support-card--stuck');
+    stuck.append(element('h2', 'section-title', content.title));
+    const routine = element('ol', 'routine-list');
+    content.steps.forEach(step => routine.append(element('li', '', step)));
+    stuck.append(routine);
+    const done = element('div', 'support-card support-card--done');
+    done.append(element('h2', 'section-title', data.shared.finishedTitle));
+    done.append(element('p', '', item.bonus || data.shared.finishedText));
+    grid.append(stuck, done);
+    return grid;
+  }
+
+  function renderModule(id, requestedPathway) {
+    const item = data.modules[id];
+    const candidate = own(data.pathways, requestedPathway);
+    const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
+    start(item.title, pathway ? pathway.theme : item.theme);
+    const article = element('article', 'lesson-page');
+    const back = element('nav', 'library-links');
+    back.setAttribute('aria-label', 'Retour à la bibliothèque');
+    back.append(link(pathway ? '← ' + pathway.title : '← Retour aux parcours', pathway ? '#parcours/' + requestedPathway : domainUrl(item.domainId)));
+    article.append(back, intro(item.title, item.objective, true));
+    item.blocks.forEach(block => article.append(createBlock(block, id)));
+    article.append(support(item));
+    const navigation = element('nav', 'module-navigation');
+    navigation.setAttribute('aria-label', 'Navigation entre modules');
+    if (pathway) {
+      const position = pathway.moduleIds.indexOf(id);
+      const previous = pathway.moduleIds[position-1];
+      const next = pathway.moduleIds[position+1];
+      if (previous) navigation.append(link('← ' + data.modules[previous].title, moduleUrl(previous, requestedPathway)));
+      if (next) navigation.append(link(data.modules[next].title + ' →', moduleUrl(next, requestedPathway), 'button button--primary'));
+      if (!next) navigation.append(link('Retour au parcours ' + pathway.title, '#parcours/' + requestedPathway));
+    } else {
+      Object.entries(data.pathways).filter(([,value]) => value.moduleIds.includes(id)).forEach(([pathwayId,value]) => {
+        navigation.append(link('Dans le parcours ' + value.title, moduleUrl(id,pathwayId)));
+      });
+    }
+    article.append(navigation, link('← ' + data.site.homeLabel, '#', 'button button--secondary back-button'));
+    main.append(article);
+  }
+
+  function notFound() {
+    start('Page introuvable');
+    main.append(element('h1', 'library-heading', 'Ce contenu est introuvable.'));
+    main.append(link('Retour à l’accueil', '#'));
+  }
+
+  function navigate() {
+    try {
+      let hash = location.hash.slice(1);
+      if (own(data.aliases, hash)) {
+        hash = data.aliases[hash];
+        history.replaceState(null, '', '#' + hash);
+      }
+      const separator = hash.indexOf('?');
+      const route = separator < 0 ? hash : hash.slice(0,separator);
+      const query = new URLSearchParams(separator < 0 ? '' : hash.slice(separator+1));
+      const segments = route.split('/').map(decodeURIComponent);
+      const [kind,id] = segments;
+      if (!route) renderHome();
+      else if (segments.length !== 2) notFound();
+      else if (kind === 'domaine' && own(data.domains,id)) renderDomain(id);
+      else if (kind === 'parcours' && own(data.pathways,id)) renderPathway(id);
+      else if (kind === 'module' && own(data.modules,id)) renderModule(id,query.get('parcours'));
+      else notFound();
+    } catch (error) {
+      console.error('Impossible d’afficher ce contenu.',error);
+      notFound();
+    }
+    main.focus({preventScroll:true});
+    window.scrollTo({top:0,behavior:'auto'});
+  }
+  // Nettoyer les anciennes URL du lien d’évitement avant de démarrer le routeur.
+  if (location.hash === '#main-content') {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  window.addEventListener('hashchange',navigate);
+  navigate();
+
 })();
