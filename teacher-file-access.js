@@ -4,15 +4,20 @@
   function createFileAccess(env = globalThis) {
     const types = [{ description: 'Espace CodeCraft JSON', accept: { 'application/json': ['.json'] } }];
     const supported = () => !!(env.isSecureContext && env.showOpenFilePicker && env.showSaveFilePicker);
-    async function authorize(handle) {
-      if (await handle.queryPermission({ mode: 'readwrite' }) !== 'granted' &&
-          await handle.requestPermission({ mode: 'readwrite' }) !== 'granted') {
+    async function authorize(handle, requestPermission = true) {
+      if (await handle.queryPermission({ mode: 'readwrite' }) === 'granted') return;
+      if (!requestPermission) {
+        const error = new Error('Une autorisation utilisateur est nécessaire pour accéder au dernier fichier.');
+        error.code = 'permission-required';
+        throw error;
+      }
+      if (await handle.requestPermission({ mode: 'readwrite' }) !== 'granted') {
         throw new Error('Permission de lecture/écriture refusée. Autorise le fichier ou ouvre-le à nouveau.');
       }
     }
-    async function connect(handle) {
+    async function connect(handle, requestPermission = true) {
       if (!handle || handle.kind !== 'file') throw new Error('Le fichier mémorisé n’est plus disponible. Sélectionne-le à nouveau.');
-      await authorize(handle);
+      await authorize(handle, requestPermission);
       let baseline = await (await handle.getFile()).text();
       let tail = Promise.resolve();
       return {
@@ -85,7 +90,9 @@
       env.setTimeout(() => env.URL.revokeObjectURL(url), 60000);
     }
     return {
-      supported, create, open, reconnect: connect, download,
+      supported, create, open, reconnect: connect,
+      resume: handle => connect(handle, false),
+      download,
       recall: () => handleStore('readonly', store => store.get('last')),
       // Le seul contenu IndexedDB est ce handle, jamais le document JSON.
       remember: handle => handleStore('readwrite', store => store.put(handle, 'last'))

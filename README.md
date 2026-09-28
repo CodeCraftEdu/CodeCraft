@@ -46,7 +46,19 @@ Les cases servent uniquement de repères pendant que la page reste ouverte. Leur
 
 ## Professeur
 
-`prof.html` est une page publique, accessible directement sans lien depuis la navigation élève. Cette première étape propose uniquement les fondations de l’espace privé : créer/ouvrir un fichier, le valider, modifier un libellé technique et sauvegarder. Aucun écran de classes, élèves, progression, référentiels ou séances n’est implémenté.
+`prof.html` est une page publique, accessible directement sans lien depuis la navigation élève. Elle permet de gérer les classes, les élèves et leur progression manuelle dans le fichier privé. Aucun écran de référentiels, séances, présence ou nouveau conducteur n’est implémenté. Le conducteur historique reste intact.
+
+### Classes, élèves et compétences
+
+- Créer une classe avec son nom et, facultativement, un contexte/organisme en texte libre. La liste « Classe sélectionnée » permet de changer de classe. Son nom et son contexte peuvent être modifiés dans « Renommer / modifier le contexte » ; ces changements sont enregistrés à la sortie du champ.
+- Ajouter un élève avec son seul prénom ou nom d’affichage. Il est rattaché à la classe sélectionnée, mais sa fiche reste indépendante dans `students` ; `memberships` décrit le rattachement. Aucun écran de rattachement multiple n’est nécessaire à cette étape, mais les fichiers qui en contiennent sont correctement lus et la progression reste commune à l’élève.
+- Cliquer sur un élève ouvre sa fiche. « Nom et remarque générale » permet de modifier son nom (en quittant le champ) et sa remarque facultative.
+- Les compétences du catalogue apparaissent avec leurs libellés humains, regroupées en HTML et CSS. Les boutons « À voir », « En cours », « Acquis » appliquent uniquement la décision du professeur. La sauvegarde démarre immédiatement après le clic, ou prend la suite d’une écriture déjà en cours.
+- Sans entrée de progression, la compétence est « À voir ». Passer à « Acquis » renseigne la date locale du jour. Recliquer « Acquis » ne change pas la date. Revenir à un autre statut l’efface. Les remarques sont conservées ; les modifier ne change ni statut ni date.
+- Les remarques générales et par compétence sont enregistrées après 600 ms sans saisie. On peut changer d’élève pendant cette attente : la remarque reste attachée à la bonne fiche.
+- Aucune progression n’est dérivée des cases du site élève. Aucune suppression de classe, d’élève ou de progression n’est proposée.
+
+Le statut de sauvegarde et le bouton de réessai restent visibles pendant le défilement. Après ouverture, le panneau du fichier se replie pour laisser la place aux classes. Les outils de relecture et de copie sont dans « Fichier, copie de secours et test technique ». L’ancien libellé technique reste facultatif dans un sous-panneau replié ; sa valeur existante est conservée.
 
 ### Fichier privé et navigateur
 
@@ -54,10 +66,10 @@ Utiliser Chrome ou Edge sur ordinateur, via GitHub Pages en HTTPS ou `http://loc
 
 1. Cliquer sur **Créer un Espace CodeCraft**, puis choisir `espace-codecraft.json` dans un dossier Google Drive synchronisé disponible sur l’ordinateur, **en dehors de ce dépôt**. Un fichier non vide ne sera pas écrasé par cette action.
 2. Pour un fichier existant, utiliser **Ouvrir un Espace CodeCraft** et accorder la permission de lecture/écriture. Le JSON est validé avant de remplacer l’espace en mémoire. Une ouverture seule ne réécrit pas le fichier.
-3. Modifier le **Libellé de test de l’espace** : l’état devient « Modifications non enregistrées ». Après 600 ms sans saisie, l’écriture démarre. Le bouton **Enregistrer / réessayer** permet de la demander immédiatement ou de redemander une permission.
+3. Créer une classe, ajouter un élève et renseigner une compétence. Les actions pédagogiques déclenchent directement la sauvegarde ; les remarques attendent une pause de 600 ms. Le bouton **Enregistrer / réessayer** permet de demander l’écriture immédiatement ou de redemander une permission.
 4. Attendre **Enregistré dans le fichier local** : cet état exige la fermeture réussie du flux d’écriture, sa relecture et l’absence d’une modification plus récente en attente. Il ne confirme pas la synchronisation Google Drive ; vérifier celle-ci dans l’application Drive avant de changer de poste.
 
-Seul le handle du fichier est éventuellement mémorisé dans IndexedDB. Aucune donnée pédagogique n’est stockée dans localStorage, IndexedDB ou un cache applicatif. Au retour, **Rouvrir le dernier fichier** relit le fichier après vérification des permissions. La suppression des données du navigateur fait seulement perdre cet accès mémorisé : sélectionner de nouveau le JSON avec **Ouvrir**. Un autre navigateur, profil ou port localhost ne partage pas forcément le handle.
+Seul le handle du fichier est éventuellement mémorisé dans IndexedDB. Aucune donnée pédagogique n’est stockée dans localStorage, IndexedDB ou un cache applicatif. Au chargement, CodeCraft tente automatiquement de relire ce fichier sans déclencher de demande de permission. Si l’autorisation est encore valide, l’espace s’ouvre directement. Si Chrome exige une nouvelle interaction, le bouton devient **Autoriser l’accès à l’Espace CodeCraft** ; le handle reste mémorisé. **Rouvrir le dernier fichier** reste disponible comme solution manuelle. La suppression des données du navigateur fait seulement perdre cet accès mémorisé : sélectionner de nouveau le JSON avec **Ouvrir**. Un autre navigateur, profil ou port localhost ne partage pas forcément le handle.
 
 Les modifications non sauvegardées restent uniquement dans la mémoire de l’onglet et peuvent être perdues si celui-ci est fermé ou si le navigateur s’arrête. Un avertissement de fermeture est demandé, sans garantie qu’il soit affiché dans toutes les situations.
 
@@ -77,6 +89,7 @@ Les référentiels externes, leurs versions, objectifs et mappings sont privés 
 - `teacher-model.js` : schéma V1 déclaratif, validation, création et sérialisation ; indépendant du navigateur.
 - `teacher-file-access.js` : adaptateur Chromium, permission, flux de fichier, handle IndexedDB et téléchargement.
 - `teacher-app.js` : interface, copie de travail en mémoire et sauvegardes séquencées.
+- `teacher-classroom.js` : classes, fiches élèves et compétences ; aucun accès direct au fichier ou au stockage navigateur.
 - `teacher.css` : styles professeur isolés ; aucune modification du style élève.
 - `teacher-workspace-format.md` : contrat du fichier privé et structures réservées aux étapes suivantes.
 - `prof-conducteur-historique.html` : conducteur initial intégral, avec ses données et styles embarqués ; indépendant du catalogue actuel.

@@ -82,16 +82,89 @@ test('révision préparée sur copie, sans modifier le document en mémoire', ()
   assert.equal(next.revision, 1); assert.equal(doc.revision, 0);
   assert.equal(next.updatedAt, '2026-09-28T12:01:00.000Z');
 });
+test('classes : création, renommage, contexte facultatif sans modifier les autres classes', () => {
+  const doc = fresh();
+  model.addClass(doc, { id: 'c1', name: ' Dimanche ', contextName: 'Association fictive', contextId: 'ctx1' });
+  model.addClass(doc, { id: 'c2', name: 'Lundi', contextName: 'Association fictive', contextId: 'ctx2' });
+  assert.equal(doc.contexts.length, 1);
+  assert.equal(doc.classes[0].name, 'Dimanche');
+  model.updateClass(doc, 'c1', { name: 'Dimanche matin', contextName: 'Indépendant fictif', contextId: 'ctx3' });
+  assert.equal(doc.classes[1].contextId, 'ctx1');
+  assert.equal(doc.contexts[0].name, 'Association fictive');
+  model.updateClass(doc, 'c1', { name: 'Dimanche matin', contextName: '' });
+  assert.equal(doc.classes[0].contextId, undefined);
+  model.validate(doc);
+});
+test('élève indépendant, rattachements multiples sans duplication de fiche ou progression', () => {
+  const doc = fresh();
+  model.addClass(doc, { id: 'c1', name: 'Classe fictive 1' });
+  model.addClass(doc, { id: 'c2', name: 'Classe fictive 2' });
+  model.addStudent(doc, { id: 's', name: ' Élève fictif ', classId: 'c1' });
+  assert.equal(model.attachStudent(doc, 'c2', 's'), true);
+  assert.equal(model.attachStudent(doc, 'c2', 's'), false);
+  model.updateStudent(doc, 's', { name: 'Nom modifié', note: 'Note fictive' });
+  assert.equal(doc.students.length, 1); assert.equal(doc.memberships.length, 2);
+  assert.equal(doc.students[0].note, 'Note fictive');
+  assert.equal(doc.progress.length, 0);
+  model.validate(doc);
+});
+test('mutations invalides ne créent pas de données partielles', () => {
+  const doc = fresh();
+  const before = model.serialize(doc);
+  assert.throws(() => model.addClass(doc, { id: 'c', name: ' ', contextName: 'x', contextId: 'ctx' }));
+  assert.throws(() => model.addStudent(doc, { id: 's', name: 'Fictif', classId: 'absent' }));
+  assert.equal(model.serialize(doc), before);
+});
+test('progression : À voir implicite, transition manuelle, date locale et note sans changement de date', () => {
+  const doc = futureDocument(); doc.progress = [];
+  const first = new Date(2026, 8, 28, 23, 30);
+  const later = new Date(2026, 8, 29, 1, 30);
+  assert.equal(model.getProgress(doc, 's', 'html.lists').status, 'not-started');
+  assert.equal(doc.progress.length, 0);
+  assert.equal(model.updateProgress(doc, 's', 'html.lists', { status: 'not-started' }, first), false);
+  model.updateProgress(doc, 's', 'html.lists', { status: 'in-progress' }, first);
+  assert.equal(doc.progress[0].acquiredOn, null);
+  model.updateProgress(doc, 's', 'html.lists', { status: 'acquired' }, first);
+  assert.equal(doc.progress[0].acquiredOn, '2026-09-28');
+  assert.equal(model.updateProgress(doc, 's', 'html.lists', { status: 'acquired' }, later), false);
+  model.updateProgress(doc, 's', 'html.lists', { note: 'Observation fictive' }, later);
+  assert.equal(doc.progress[0].acquiredOn, '2026-09-28');
+  assert.equal(doc.progress[0].status, 'acquired');
+  assert.equal(doc.progress.length, 1);
+  model.validate(doc);
+});
+test('retours à En cours et À voir effacent la date sans perdre les remarques', () => {
+  const doc = futureDocument();
+  for (const status of ['in-progress', 'not-started']) {
+    model.updateProgress(doc, 's', 'html.lists', { status: 'acquired', note: 'À garder' });
+    model.updateProgress(doc, 's', 'html.lists', { status });
+    assert.equal(doc.progress[0].acquiredOn, null); assert.equal(doc.progress[0].note, 'À garder');
+  }
+  model.validate(doc);
+});
+test('remarque sur une compétence non commencée ne valide rien ; élèves isolés', () => {
+  const doc = futureDocument(); doc.progress = [];
+  model.addStudent(doc, { id: 's2', name: 'Deuxième fictif', classId: 'c' });
+  model.updateProgress(doc, 's', 'html.lists', { note: 'À observer' });
+  assert.equal(doc.progress[0].status, 'not-started'); assert.equal(doc.progress[0].acquiredOn, null);
+  assert.equal(model.getProgress(doc, 's2', 'html.lists').note, '');
+  assert.throws(() => model.updateProgress(doc, 's', 'html.lists', { status: 'invalid' }));
+  assert.equal(doc.progress.length, 1);
+  model.validate(doc);
+});
 
 function fakeHandle(initial = '') {
   let content = initial;
   const stats = { opens: 0, closes: 0, aborts: 0, requests: 0 };
-  const config = { permission: 'granted', request: 'granted', failWrite: false, failClose: false, gate: null };
+  const config = { permission: 'granted', request: 'granted', failRead: false, failWrite: false, failClose: false, gate: null };
   const handle = {
     kind: 'file', name: 'espace-codecraft.json',
     queryPermission: async () => config.permission,
     requestPermission: async () => { stats.requests++; return config.request; },
-    getFile: async () => ({ text: async () => content }),
+    getFile: async () => {
+      if (config.failRead) throw Object.assign(new Error('file unavailable'), { name: 'NotFoundError' });
+      return { text: async () => content };
+    },
     createWritable: async () => {
       stats.opens++;
       let pending;
@@ -122,6 +195,21 @@ test('permission refusée et annulation : aucun flux ouvert', async () => {
   await assert.rejects(createFileAccess(f.env).open(), /Permission/); assert.equal(f.stats.opens, 0);
   f.env.showOpenFilePicker = async () => { throw Object.assign(new Error('cancel'), { name: 'AbortError' }); };
   await assert.rejects(createFileAccess(f.env).open(), { name: 'AbortError' });
+});
+test('réouverture automatique : permission valide sans demande utilisateur', async () => {
+  const f = fakeHandle('saved');
+  const connection = await createFileAccess(f.env).resume(f.handle);
+  assert.equal(connection.text, 'saved'); assert.equal(f.stats.requests, 0);
+});
+test('réouverture automatique : permission requise signalée sans la demander', async () => {
+  const f = fakeHandle('saved'); f.config.permission = 'prompt';
+  await assert.rejects(createFileAccess(f.env).resume(f.handle), error => error.code === 'permission-required');
+  assert.equal(f.stats.requests, 0);
+});
+test('réouverture automatique : fichier inaccessible signalé sans faux accès', async () => {
+  const f = fakeHandle('saved'); f.config.failRead = true;
+  await assert.rejects(createFileAccess(f.env).resume(f.handle), { name: 'NotFoundError' });
+  assert.equal(f.stats.requests, 0); assert.equal(f.stats.opens, 0);
 });
 test('le résultat de sauvegarde attend close et la relecture', async () => {
   const f = fakeHandle(); const connection = await createFileAccess(f.env).open();
@@ -244,12 +332,33 @@ test('interface : invalidité ou version inconnue préserve le document courant'
   }
   assert.equal(h.f.stats.opens, 0);
 });
-test('interface : handle rouvert explicitement et échec IndexedDB sans faux échec de sauvegarde', async () => {
+test('interface : handle rouvert automatiquement si la permission reste valide', async () => {
   const h = appHarness({ remembered: true, idbFailure: true }); await tick();
-  assert.equal(h.el('reopen-space').disabled, false); await h.click('reopen-space');
+  await tick();
+  assert.equal(h.el('save-state').textContent, 'Enregistré dans le fichier local');
+  assert.equal(h.f.stats.requests, 0);
   h.input('saved'); await h.flush();
   assert.equal(h.el('save-state').textContent, 'Enregistré dans le fichier local');
   assert.equal(h.el('storage-notice').hidden, false);
+});
+test('interface : permission requise affiche une action explicite puis ouvre sur clic', async () => {
+  const h = appHarness({ remembered: true }); h.f.config.permission = 'prompt';
+  await tick(); await tick();
+  assert.equal(h.el('save-state').textContent, 'Aucun Espace CodeCraft ouvert');
+  assert.equal(h.el('reopen-space').textContent, 'Autoriser l’accès à l’Espace CodeCraft');
+  assert.equal(h.f.stats.requests, 0);
+  h.f.config.request = 'granted';
+  await h.click('reopen-space');
+  assert.equal(h.el('save-state').textContent, 'Enregistré dans le fichier local');
+  assert.equal(h.f.stats.requests, 1);
+});
+test('interface : fichier mémorisé inaccessible laisse choisir un autre fichier', async () => {
+  const h = appHarness({ remembered: true }); h.f.config.failRead = true;
+  await tick(); await tick();
+  assert.equal(h.el('save-state').textContent, 'Aucun Espace CodeCraft ouvert');
+  assert.match(h.el('operation-error').textContent, /Réouverture automatique impossible/);
+  assert.equal(h.el('open-space').disabled, false);
+  assert.equal(h.el('reopen-space').disabled, false);
 });
 test('interface : conflit conserve les modifications et ne remplace pas le fichier externe', async () => {
   const h = appHarness(); await h.click('open-space'); h.input('mine');

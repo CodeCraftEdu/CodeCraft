@@ -16,10 +16,10 @@
       </header>
       <section class="lesson-intro">
         <h1 class="lesson-title">Espace professeur</h1>
-        <p>Ouvre ton fichier privé pour travailler. Les classes, élèves et séances seront ajoutés dans une prochaine étape.</p>
+        <p>Choisis une classe, ouvre la fiche d’un élève et renseigne ses compétences.</p>
       </section>
-      <section class="content-card" aria-labelledby="file-title">
-        <h2 id="file-title" class="section-title">Ton Espace CodeCraft</h2>
+      <details id="file-panel" class="content-card teacher-file-tools" open>
+        <summary id="file-title" class="section-title">Ton Espace CodeCraft</summary>
         <p>Choisis un fichier <code>espace-codecraft.json</code> dans ton dossier Google Drive synchronisé, en dehors du dépôt du site.</p>
         <p>CodeCraft écrit dans le fichier local. Vérifie la synchronisation dans l’application Google Drive avant de changer d’ordinateur. Utilise un seul onglet et un seul poste à la fois.</p>
         <p id="compatibility" role="alert" hidden></p>
@@ -28,25 +28,32 @@
           <button id="open-space" type="button" class="button button--secondary" disabled>Ouvrir un Espace CodeCraft</button>
           <button id="reopen-space" type="button" class="button button--secondary" disabled>Rouvrir le dernier fichier</button>
         </div>
-        <p id="save-state" class="teacher-save-state" role="status" aria-live="polite" aria-atomic="true">Aucun Espace CodeCraft ouvert</p>
         <p id="file-details">Aucun fichier sélectionné.</p>
-        <p id="operation-error" class="teacher-error" role="alert" hidden></p>
         <p id="storage-notice" hidden></p>
         <ul id="validation-warnings" hidden></ul>
-      </section>
-      <section class="content-card" aria-labelledby="test-title">
-        <h2 id="test-title" class="section-title">Vérifier l’écriture réelle</h2>
-        <p>Ce libellé technique est une métadonnée, pas une note pédagogique. Il est enregistré automatiquement après une courte pause de saisie.</p>
-        <label for="workspace-label">Libellé de test de l’espace</label>
-        <input id="workspace-label" type="text" autocomplete="off" placeholder="Exemple : test de sauvegarde" disabled>
-        <div class="teacher-actions">
+      </details>
+      <div class="teacher-save-bar">
+        <div class="teacher-save-toolbar">
+          <p id="save-state" class="teacher-save-state" role="status" aria-live="polite" aria-atomic="true">Aucun Espace CodeCraft ouvert</p>
           <button id="save-space" type="button" class="button button--primary" disabled>Enregistrer / réessayer</button>
+        </div>
+        <p id="operation-error" class="teacher-error" role="alert" hidden></p>
+      </div>
+      <div id="classroom"></div>
+      <details class="content-card teacher-file-tools">
+        <summary class="section-title">Fichier, copie de secours et test technique</summary>
+        <div class="teacher-actions">
           <button id="reload-space" type="button" class="button button--secondary" disabled>Relire le fichier</button>
           <button id="download-space" type="button" class="button button--secondary" disabled>Télécharger une copie de secours</button>
         </div>
         <p>La copie de secours contient aussi les changements encore en mémoire. La télécharger ne signifie pas que le fichier principal est enregistré. Range-la dans un dossier privé.</p>
         <p>Ne ferme pas cette page tant qu’une modification reste non enregistrée. En cas d’erreur, télécharge d’abord une copie de secours.</p>
-      </section>
+        <details>
+          <summary>Test technique facultatif</summary>
+          <label for="workspace-label">Libellé de test de l’espace</label>
+          <input id="workspace-label" type="text" autocomplete="off" placeholder="Exemple : test de sauvegarde" disabled>
+        </details>
+      </details>
       <section class="content-card">
         <h2 class="section-title">Conducteur historique</h2>
         <p>Le conducteur initial a été conservé intégralement dans une archive autonome. Il n’est pas une séance du nouvel espace.</p>
@@ -57,6 +64,7 @@
     <script src="lesson-data.js"></script>
     <script src="teacher-model.js"></script>
     <script src="teacher-file-access.js"></script>
+    <script src="teacher-classroom.js"></script>
     <script src="teacher-app.js"></script>
   </body>
 </html>

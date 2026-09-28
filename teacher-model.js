@@ -169,7 +169,97 @@
     validate(document);
     return JSON.stringify(document, null, 2) + '\n';
   }
-  const api = { schema, validate, parse, create, prepareSave, serialize };
+  function requiredName(value) {
+    check(value, id, 'nom');
+    return value.trim();
+  }
+  function find(items, itemId, label) {
+    const item = items.find(item => item.id === itemId);
+    if (!item) throw new Error(label + ' introuvable.');
+    return item;
+  }
+  function newId(items, value) {
+    check(value, id, 'id');
+    if (items.some(item => item.id === value)) throw new Error('Identifiant déjà utilisé.');
+  }
+  function contextFor(doc, name, contextId) {
+    check(name, str, 'contexte');
+    const trimmed = name.trim();
+    if (!trimmed) return undefined;
+    const existing = doc.contexts.find(item => item.name === trimmed);
+    if (existing) return existing.id;
+    newId(doc.contexts, contextId);
+    doc.contexts.push({ id: contextId, name: trimmed });
+    return contextId;
+  }
+  function addClass(doc, { id: classId, name, contextName = '', contextId }) {
+    const cleanName = requiredName(name);
+    newId(doc.classes, classId);
+    const linkedContext = contextFor(doc, contextName, contextId);
+    const item = { id: classId, name: cleanName };
+    if (linkedContext) item.contextId = linkedContext;
+    doc.classes.push(item);
+    return item;
+  }
+  function updateClass(doc, classId, { name, contextName, contextId }) {
+    const item = find(doc.classes, classId, 'Classe');
+    const cleanName = requiredName(name);
+    const linkedContext = contextFor(doc, contextName, contextId);
+    if (item.name === cleanName && item.contextId === linkedContext) return false;
+    item.name = cleanName;
+    if (linkedContext) item.contextId = linkedContext;
+    else delete item.contextId;
+    return true;
+  }
+  function attachStudent(doc, classId, studentId) {
+    find(doc.classes, classId, 'Classe'); find(doc.students, studentId, 'Élève');
+    if (doc.memberships.some(m => m.classId === classId && m.studentId === studentId)) return false;
+    doc.memberships.push({ classId, studentId });
+    return true;
+  }
+  function addStudent(doc, { id: studentId, name, classId }) {
+    const cleanName = requiredName(name);
+    find(doc.classes, classId, 'Classe'); newId(doc.students, studentId);
+    const item = { id: studentId, name: cleanName };
+    doc.students.push(item);
+    attachStudent(doc, classId, studentId);
+    return item;
+  }
+  function updateStudent(doc, studentId, patch) {
+    const item = find(doc.students, studentId, 'Élève');
+    const name = patch.name === undefined ? item.name : requiredName(patch.name);
+    const note = patch.note === undefined ? (item.note || '') : patch.note;
+    check(note, str, 'remarque');
+    if (name === item.name && note === (item.note || '')) return false;
+    item.name = name; item.note = note;
+    return true;
+  }
+  function localDate(now) {
+    return [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
+  }
+  function getProgress(doc, studentId, skillId) {
+    return doc.progress.find(p => p.studentId === studentId && p.skillId === skillId) ||
+      { studentId, skillId, status: 'not-started', acquiredOn: null, note: '' };
+  }
+  function updateProgress(doc, studentId, skillId, patch, now = new Date()) {
+    find(doc.students, studentId, 'Élève'); check(skillId, id, 'compétence');
+    const existing = doc.progress.find(p => p.studentId === studentId && p.skillId === skillId);
+    const before = getProgress(doc, studentId, skillId);
+    const status = patch.status === undefined ? before.status : patch.status;
+    const note = patch.note === undefined ? (before.note || '') : patch.note;
+    check(status, choice('not-started', 'in-progress', 'acquired'), 'statut');
+    check(note, str, 'remarque');
+    if (status === before.status && note === (before.note || '')) return false;
+    const entry = {
+      ...before, status, note, updatedAt: now.toISOString(),
+      acquiredOn: status === 'acquired' ? (before.status === 'acquired' ? before.acquiredOn : localDate(now)) : null
+    };
+    if (existing) Object.assign(existing, entry);
+    else doc.progress.push(entry);
+    return true;
+  }
+  const api = { schema, validate, parse, create, prepareSave, serialize,
+    addClass, updateClass, addStudent, attachStudent, updateStudent, getProgress, updateProgress };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.CodeCraftTeacherModel = api;
 })(globalThis);

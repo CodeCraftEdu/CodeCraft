@@ -8,7 +8,9 @@ body[data-page="teacher"] .teacher-actions {
 body[data-page="teacher"] button { font: inherit; cursor: pointer; }
 body[data-page="teacher"] button:disabled { opacity: .55; cursor: not-allowed; }
 body[data-page="teacher"] label { display: block; font-weight: 700; }
-body[data-page="teacher"] input[type="text"] {
+body[data-page="teacher"] input[type="text"],
+body[data-page="teacher"] textarea,
+body[data-page="teacher"] select {
   width: 100%;
   margin-top: 8px;
   padding: 14px;
@@ -26,6 +28,41 @@ body[data-page="teacher"] input[type="text"] {
 .teacher-save-state[data-state="pending"] { border-color: var(--wood); background: var(--stop-bg); }
 .teacher-save-state[data-state="error"], .teacher-error { color: #71301f; background: var(--stop-bg); }
 .teacher-error { padding: 14px; border: 3px solid var(--stop-line); }
+body[data-page="teacher"] textarea { resize: vertical; }
+.classroom-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+.teacher-save-bar { position: sticky; top: 0; z-index: 10; background: var(--canvas); padding: 8px 0; margin-bottom: 20px; }
+.teacher-save-toolbar { display: flex; gap: 14px; align-items: center; }
+.teacher-save-toolbar .teacher-save-state { flex: 1; margin: 0; }
+.teacher-save-bar .teacher-error { margin: 8px 0 0; max-height: 25vh; overflow: auto; }
+.teacher-field { margin: 12px 0; }
+.teacher-class-details, .teacher-student-details { margin-top: 18px; }
+.teacher-inline-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: end; }
+.teacher-inline-form .button { justify-self: start; }
+.teacher-classroom-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 24px; align-items: start; }
+.teacher-roster { padding: 20px; }
+.teacher-profile { min-width: 0; }
+.teacher-profile h3 { scroll-margin-top: 110px; }
+.teacher-student-list { display: grid; gap: 12px; }
+.teacher-student-list .button { width: 100%; text-align: left; overflow-wrap: anywhere; }
+.teacher-student-list [aria-pressed="true"] { border-color: var(--route-dark); background: var(--route-soft); }
+.teacher-add-student { margin-top: 24px; }
+.teacher-caption { font-size: .94rem; color: var(--muted); }
+.teacher-skills h4 { font-size: 1.35rem; margin: 30px 0 12px; }
+.teacher-skill { padding: 20px 0; border-top: 2px solid var(--line); }
+.teacher-skill h5 { font-size: 1.1rem; margin: 0 0 12px; }
+.teacher-status-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.teacher-status-buttons .button { padding: 10px 14px; min-height: 44px; }
+.teacher-status-buttons [aria-pressed="true"] { border-color: var(--route-dark); background: var(--route-soft); font-weight: 800; }
+.teacher-status-buttons [data-status="acquired"][aria-pressed="true"] { background: var(--success-bg); border-color: var(--success-line); }
+.teacher-acquired-date { margin: 12px 0; color: #274f2b; font-weight: 700; }
+.teacher-skill-note { margin-top: 14px; }
+.teacher-file-tools > summary { cursor: pointer; }
+@media (max-width: 900px) {
+  .teacher-classroom-layout, .teacher-inline-form { grid-template-columns: 1fr; }
+}
 @media (max-width: 700px) {
   .teacher-actions .button { width: 100%; }
+  .teacher-save-toolbar { flex-wrap: wrap; gap: 8px; }
+  .teacher-save-toolbar .teacher-save-state { flex-basis: 100%; padding: 8px; }
+  .teacher-save-toolbar .button { padding: 8px 12px; min-height: 44px; }
 }

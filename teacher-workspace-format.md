@@ -1,6 +1,6 @@
 # Format privé Espace CodeCraft — schemaVersion 1
 
-Le contrat exécutable est `schema` dans `teacher-model.js`. Les structures ci-dessous sont réservées ; cette étape ne fournit aucune interface de gestion pédagogique. Le fichier est créé par le navigateur dans un dossier privé, jamais publié avec le site.
+Le contrat exécutable est `schema` dans `teacher-model.js`. Les classes, élèves, rattachements et progressions sont maintenant utilisés par l’interface professeur. Les référentiels et séances restent réservés aux étapes suivantes. Le fichier est créé par le navigateur dans un dossier privé, jamais publié avec le site. Le schéma reste en version 1, compatible avec les fichiers du socle initial.
 
 ## Racine
 
@@ -10,12 +10,12 @@ Le contrat exécutable est `schema` dans `teacher-model.js`. Les structures ci-d
 | workspaceId | identifiant stable non vide, UUID lors de la création |
 | revision | entier positif ou nul, incrémenté à chaque écriture préparée |
 | createdAt, updatedAt | horodatage ISO UTC avec millisecondes ; updatedAt ≥ createdAt |
-| metadata | objet `{ label: string }` ; seul champ éditable pour le test technique |
+| metadata | objet `{ label: string }` ; libellé technique facultatif dans l’interface, conservé dans le document |
 | contexts, frameworks, classes, students, memberships, progress, sessions | tableaux, présents et vides à la création |
 
 Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus sont refusés pour éviter une réécriture qui les perdrait. Aucune migration automatique n’est effectuée. Les identifiants sont uniques dans leur collection et ne dépendent pas des noms. Les textes libres restent des textes, jamais du HTML à exécuter.
 
-## Structures réservées
+## Structures du document
 
 - **contexts** : `id`, `name`. Un organisme, une association ou un contexte indépendant.
 - **frameworks** : `id`, `name`, `version`, `source` (texte facultatif), `objectives`.
@@ -28,7 +28,7 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - Un seul enregistrement par couple élève/compétence.
   - `not-started` = À voir ; `in-progress` = En cours ; `acquired` = Acquis.
   - L’absence d’entrée signifie À voir. Pas de statut `to-review`.
-  - `acquiredOn` : date valide `YYYY-MM-DD` pour Acquis, `null` sinon. La future interface prendra la date locale lors de la décision manuelle du professeur ; aucune validation issue des cases élève.
+  - `acquiredOn` : date valide `YYYY-MM-DD` pour Acquis, `null` sinon. L’interface prend la date locale lors du passage manuel à Acquis ; aucune validation issue des cases élève. Un second clic sur Acquis ou une modification de remarque conserve la date. Revenir à En cours ou À voir remet la date à null, sans supprimer la remarque.
 - **sessions** : `id`, `classId`, `date` (`YYYY-MM-DD`), `status` (`draft`, `completed`, `archived`), `skillIds`, `attendance` facultatif, `conductor`, `notes`.
   - `attendance` : tableau de `{ studentId, status }`, où status est `present`, `absent` ou `unknown` ; absence d’entrée = non renseigné. Un élève n’apparaît qu’une fois.
   - `conductor` : `{ title, slots, reminders }` ; reminders est un tableau de textes.

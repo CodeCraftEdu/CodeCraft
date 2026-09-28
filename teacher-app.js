@@ -19,6 +19,7 @@
   let failure = false;
   let timer;
   let selected = false;
+  let permissionRequired = false;
   const dirty = () => current && generation !== savedGeneration;
   function message(id, text) {
     ui[id].textContent = text;
@@ -37,8 +38,11 @@
       (dirty() ? ' · changements en mémoire non enregistrés' : ' · dernière écriture : ' + lastSaved.updatedAt) :
       'Aucun fichier sélectionné.';
     for (const id of ['create-space', 'open-space']) ui[id].disabled = !files.supported() || busy || writing;
+    ui['reopen-space'].textContent = permissionRequired ?
+      'Autoriser l’accès à l’Espace CodeCraft' : 'Rouvrir le dernier fichier';
     ui['reopen-space'].disabled = !files.supported() || !remembered || busy || writing;
     ui['workspace-label'].disabled = !current || busy;
+    if (classroom) classroom.setDisabled(!current || busy);
     ui['save-space'].disabled = !current || !dirty() || busy || writing;
     ui['reload-space'].disabled = !connection || busy || writing;
     ui['download-space'].disabled = !current || busy;
@@ -74,7 +78,7 @@
         const savingGeneration = generation;
         const snapshot = model.prepareSave(current);
         await connection.write(model.serialize(snapshot));
-        // Ne remplace pas le libellé : l’utilisateur peut avoir continué à saisir pendant l’écriture.
+        // Ne remplace pas les données métier : une saisie peut continuer pendant l’écriture.
         current.revision = snapshot.revision;
         current.updatedAt = snapshot.updatedAt;
         lastSaved = { revision: snapshot.revision, updatedAt: snapshot.updatedAt };
@@ -106,7 +110,8 @@
     try {
       // Les sélecteurs et demandes de permission sont lancés depuis l’action utilisateur.
       const next = kind === 'create' ? await files.create() : kind === 'open' ? await files.open() :
-        await files.reconnect(kind === 'reload' ? connection.handle : remembered);
+        kind === 'resume' ? await files.resume(remembered) :
+          await files.reconnect(kind === 'reload' ? connection.handle : remembered);
       const parsed = kind === 'create' ?
         { document: model.create(crypto.randomUUID()), warnings: [] } :
         model.parse(next.text, window.CODECRAFT_DATA);
@@ -117,18 +122,38 @@
       savedGeneration = 0;
       lastSaved = kind === 'create' ? null : { revision: current.revision, updatedAt: current.updatedAt };
       failure = false;
+      permissionRequired = false;
       ui['workspace-label'].value = current.metadata.label;
+      if (classroom) classroom.load(current);
+      byId('file-panel').open = false;
       warnings(parsed.warnings);
       if (kind === 'create') await save();
       else await remember();
     } catch (error) {
-      if (error.name !== 'AbortError') message('operation-error', 'Ouverture impossible. ' + error.message);
+      if (error.code === 'permission-required') {
+        permissionRequired = true;
+        message('storage-notice', 'Le dernier fichier est mémorisé. Autorise son accès pour l’ouvrir.');
+      } else if (error.name !== 'AbortError') {
+        const text = kind === 'resume' ?
+          'Réouverture automatique impossible. Le dernier fichier est introuvable ou inaccessible. Tu peux choisir un autre fichier.' :
+          'Ouverture impossible. ' + error.message;
+        message('operation-error', text);
+      }
     } finally {
       busy = false;
       render();
       schedule();
     }
   }
+  const classroom = window.CodeCraftTeacherClassroom ? window.CodeCraftTeacherClassroom.create({
+    root: byId('classroom'), model, catalog: window.CODECRAFT_DATA,
+    changed(immediate) {
+      generation += 1;
+      render();
+      if (immediate && !failure && !busy) save();
+      else schedule();
+    }
+  }) : null;
   ui['create-space'].addEventListener('click', () => select('create'));
   ui['open-space'].addEventListener('click', () => select('open'));
   ui['reopen-space'].addEventListener('click', () => select('reopen'));
@@ -157,9 +182,11 @@
   if (!files.supported()) {
     message('compatibility', 'L’accès direct au fichier nécessite Chrome ou Edge sur ordinateur et une page HTTPS ou localhost. Aucune donnée n’est enregistrée dans ce mode.');
   } else {
-    files.recall().then(handle => {
-      if (!selected) remembered = handle || null;
+    files.recall().then(async handle => {
+      if (selected) return;
+      remembered = handle || null;
       render();
+      if (remembered) await select('resume');
     }).catch(() => message('storage-notice', 'Réouverture mémorisée indisponible : utilise « Ouvrir un Espace CodeCraft ».'));
   }
   render();
