@@ -1,0 +1,31 @@
+/* Styles limités à l’espace professeur : aucun changement de la feuille élève. */
+body[data-page="teacher"] .teacher-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0;
+}
+body[data-page="teacher"] button { font: inherit; cursor: pointer; }
+body[data-page="teacher"] button:disabled { opacity: .55; cursor: not-allowed; }
+body[data-page="teacher"] label { display: block; font-weight: 700; }
+body[data-page="teacher"] input[type="text"] {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  border: 3px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+.teacher-save-state {
+  border: 3px solid var(--stone);
+  padding: 14px;
+  font-weight: 800;
+  background: var(--paper);
+}
+.teacher-save-state[data-state="pending"] { border-color: var(--wood); background: var(--stop-bg); }
+.teacher-save-state[data-state="error"], .teacher-error { color: #71301f; background: var(--stop-bg); }
+.teacher-error { padding: 14px; border: 3px solid var(--stop-line); }
+@media (max-width: 700px) {
+  .teacher-actions .button { width: 100%; }
+}

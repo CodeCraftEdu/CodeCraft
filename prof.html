@@ -3,178 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Conducteur de séance CodeCraft.">
-    <title>CodeCraft — Conducteur professeur</title>
+    <meta name="description" content="Espace professeur privé sur fichier local — CodeCraft.">
+    <title>CodeCraft — Espace professeur</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-      .teacher-page--wide { width: min(1060px, 100%); }
-      .teacher-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 310px;
-        gap: 26px;
-        align-items: start;
-      }
-      .teacher-main { min-width: 0; }
-      .teacher-sidebar {
-        position: sticky;
-        top: 20px;
-      }
-      .teacher-slot { border-left-color: var(--wood); }
-      .teacher-slot-heading {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        margin-bottom: 18px;
-      }
-      .teacher-slot-heading .section-title { margin: 0; }
-      .teacher-time {
-        flex: 0 0 auto;
-        padding: 7px 10px;
-        border: 3px solid var(--ink);
-        border-radius: var(--radius);
-        background: var(--wood);
-        box-shadow: 3px 3px 0 #383128;
-        color: #fff;
-        font-weight: 900;
-        font-variant-numeric: tabular-nums;
-      }
-      .teacher-list { margin: 0; padding-left: 23px; }
-      .teacher-list li + li { margin-top: 9px; }
-      .teacher-group {
-        margin-top: 20px;
-        padding-top: 18px;
-        border-top: 2px solid #d4cdbc;
-      }
-      .teacher-group:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
-      .teacher-group h3 { margin: 0 0 10px; }
-      .teacher-quote {
-        margin: 18px 0 0;
-        padding: 12px 15px;
-        border-left: 6px solid var(--grass);
-        background: #eef3df;
-        font-weight: 700;
-      }
-      .connection-card {
-        border-color: var(--stop-line);
-        background: var(--stop-bg);
-      }
-      .connection-card .teacher-quote { border-left-color: var(--stop-line); background: #fff8eb; }
-      .chat-example {
-        margin: 8px 0 0;
-        padding: 9px 11px;
-        border: 2px solid var(--line);
-        background: var(--paper);
-        font-family: Consolas, "Courier New", monospace;
-        font-size: .86rem;
-      }
-      .teacher-state-list {
-        display: grid;
-        gap: 9px;
-        margin: 16px 0 0;
-        padding: 0;
-        list-style: none;
-      }
-      .teacher-state-list li {
-        padding: 9px 11px;
-        border: 3px solid var(--line);
-        background: var(--paper);
-        font-weight: 800;
-      }
-      @media (max-width: 860px) {
-        .teacher-layout { grid-template-columns: 1fr; }
-        .teacher-sidebar { position: static; }
-      }
-      @media (max-width: 520px) {
-        .teacher-slot-heading { align-items: flex-start; flex-direction: column; }
-      }
-    </style>
+    <link rel="stylesheet" href="teacher.css">
   </head>
   <body data-page="teacher">
     <a class="skip-link" href="#main-content">Aller au contenu</a>
-    <main id="main-content" class="site-shell" tabindex="-1"></main>
+    <main id="main-content" class="site-shell" tabindex="-1">
+      <header class="page-header page-header--compact">
+        <a class="brand" href="index.html">CodeCraft</a>
+      </header>
+      <section class="lesson-intro">
+        <h1 class="lesson-title">Espace professeur</h1>
+        <p>Ouvre ton fichier privé pour travailler. Les classes, élèves et séances seront ajoutés dans une prochaine étape.</p>
+      </section>
+      <section class="content-card" aria-labelledby="file-title">
+        <h2 id="file-title" class="section-title">Ton Espace CodeCraft</h2>
+        <p>Choisis un fichier <code>espace-codecraft.json</code> dans ton dossier Google Drive synchronisé, en dehors du dépôt du site.</p>
+        <p>CodeCraft écrit dans le fichier local. Vérifie la synchronisation dans l’application Google Drive avant de changer d’ordinateur. Utilise un seul onglet et un seul poste à la fois.</p>
+        <p id="compatibility" role="alert" hidden></p>
+        <div class="teacher-actions">
+          <button id="create-space" type="button" class="button button--primary" disabled>Créer un Espace CodeCraft</button>
+          <button id="open-space" type="button" class="button button--secondary" disabled>Ouvrir un Espace CodeCraft</button>
+          <button id="reopen-space" type="button" class="button button--secondary" disabled>Rouvrir le dernier fichier</button>
+        </div>
+        <p id="save-state" class="teacher-save-state" role="status" aria-live="polite" aria-atomic="true">Aucun Espace CodeCraft ouvert</p>
+        <p id="file-details">Aucun fichier sélectionné.</p>
+        <p id="operation-error" class="teacher-error" role="alert" hidden></p>
+        <p id="storage-notice" hidden></p>
+        <ul id="validation-warnings" hidden></ul>
+      </section>
+      <section class="content-card" aria-labelledby="test-title">
+        <h2 id="test-title" class="section-title">Vérifier l’écriture réelle</h2>
+        <p>Ce libellé technique est une métadonnée, pas une note pédagogique. Il est enregistré automatiquement après une courte pause de saisie.</p>
+        <label for="workspace-label">Libellé de test de l’espace</label>
+        <input id="workspace-label" type="text" autocomplete="off" placeholder="Exemple : test de sauvegarde" disabled>
+        <div class="teacher-actions">
+          <button id="save-space" type="button" class="button button--primary" disabled>Enregistrer / réessayer</button>
+          <button id="reload-space" type="button" class="button button--secondary" disabled>Relire le fichier</button>
+          <button id="download-space" type="button" class="button button--secondary" disabled>Télécharger une copie de secours</button>
+        </div>
+        <p>La copie de secours contient aussi les changements encore en mémoire. La télécharger ne signifie pas que le fichier principal est enregistré. Range-la dans un dossier privé.</p>
+        <p>Ne ferme pas cette page tant qu’une modification reste non enregistrée. En cas d’erreur, télécharge d’abord une copie de secours.</p>
+      </section>
+      <section class="content-card">
+        <h2 class="section-title">Conducteur historique</h2>
+        <p>Le conducteur initial a été conservé intégralement dans une archive autonome. Il n’est pas une séance du nouvel espace.</p>
+        <a class="button button--secondary" href="prof-conducteur-historique.html" target="_blank" rel="noopener">Consulter le conducteur archivé (nouvel onglet)</a>
+      </section>
+    </main>
+    <noscript><p class="noscript">JavaScript est nécessaire pour ouvrir et sauvegarder un Espace CodeCraft.</p></noscript>
     <script src="lesson-data.js"></script>
-    <script>
-      (function () {
-        "use strict";
-
-        const data = window.CODECRAFT_DATA;
-        const teacher = data.teacher;
-        const main = document.getElementById("main-content");
-
-        const make = (tag, className, text) => {
-          const node = document.createElement(tag);
-          if (className) node.className = className;
-          if (text !== undefined) node.textContent = text;
-          return node;
-        };
-
-        const makeList = (items, className = "teacher-list") => {
-          const list = make("ul", className);
-          items.forEach((item) => list.append(make("li", "", item)));
-          return list;
-        };
-
-        const addQuotes = (container, quotes) => {
-          (quotes || []).forEach((quote) => container.append(make("blockquote", "teacher-quote", `« ${quote} »`)));
-        };
-
-        const pageHeader = make("header", "page-header page-header--compact");
-        const brand = make("a", "brand", data.site.name);
-        brand.href = "index.html";
-        pageHeader.append(brand);
-
-        const page = make("article", "teacher-page teacher-page--wide");
-        const intro = make("header", "lesson-intro");
-        intro.append(make("p", "eyebrow", data.site.name));
-        intro.append(make("h1", "lesson-title", teacher.title));
-        intro.append(make("p", "objective", teacher.subtitle));
-
-        const layout = make("div", "teacher-layout");
-        const timeline = make("div", "teacher-main");
-
-        teacher.schedule.forEach((slot) => {
-          const card = make("section", "content-card teacher-slot");
-          const heading = make("header", "teacher-slot-heading");
-          heading.append(make("time", "teacher-time", slot.time));
-          heading.append(make("h2", "section-title", slot.title));
-          card.append(heading);
-          if (slot.items) card.append(makeList(slot.items));
-
-          (slot.groups || []).forEach((group) => {
-            const groupBlock = make("section", "teacher-group");
-            groupBlock.append(make("h3", "", group.title));
-            groupBlock.append(makeList(group.items));
-            addQuotes(groupBlock, group.say);
-            card.append(groupBlock);
-          });
-
-          addQuotes(card, slot.say);
-          timeline.append(card);
-        });
-
-        const sidebar = make("aside", "teacher-sidebar");
-        const connection = make("section", "content-card connection-card");
-        connection.append(make("h2", "section-title", teacher.connection.title));
-        connection.append(makeList(teacher.connection.items));
-        connection.append(make("blockquote", "teacher-quote", `« ${teacher.connection.returnPrompt} »`));
-        teacher.connection.chatExamples.forEach((example) => connection.append(make("p", "chat-example", example)));
-
-        const notes = make("section", "content-card");
-        notes.append(make("h2", "section-title", teacher.notes.title));
-        notes.append(make("p", "", teacher.notes.description));
-        notes.append(makeList(teacher.notes.states, "teacher-state-list"));
-
-        const principles = make("section", "content-card");
-        principles.append(make("h2", "section-title", teacher.principlesTitle));
-        principles.append(makeList(teacher.principles));
-
-        const studentLink = make("a", "button button--primary", teacher.studentLinkLabel);
-        studentLink.href = "index.html";
-        sidebar.append(connection, notes, principles, studentLink);
-        layout.append(timeline, sidebar);
-        page.append(intro, layout);
-        main.append(pageHeader, page);
-      })();
-    </script>
+    <script src="teacher-model.js"></script>
+    <script src="teacher-file-access.js"></script>
+    <script src="teacher-app.js"></script>
   </body>
 </html>
