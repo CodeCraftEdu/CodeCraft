@@ -9,6 +9,9 @@ body[data-page="teacher"] button { font: inherit; cursor: pointer; }
 body[data-page="teacher"] button:disabled { opacity: .55; cursor: not-allowed; }
 body[data-page="teacher"] label { display: block; font-weight: 700; }
 body[data-page="teacher"] input[type="text"],
+body[data-page="teacher"] input[type="date"],
+body[data-page="teacher"] input[type="time"],
+body[data-page="teacher"] input[type="number"],
 body[data-page="teacher"] input[type="file"],
 body[data-page="teacher"] textarea,
 body[data-page="teacher"] select {
@@ -75,10 +78,42 @@ body[data-page="teacher"] textarea { resize: vertical; }
 .teacher-coverage--covered { color: #274f2b; }
 .teacher-coverage--partial { color: #71301f; }
 .teacher-mapped-skills { margin-bottom: 0; }
+.teacher-actions [aria-pressed="true"], .session-history [aria-pressed="true"] { border-color: var(--route-dark); background: var(--route-soft); }
+.session-history { display: grid; gap: 12px; margin-top: 20px; }
+.session-history .button { text-align: left; overflow-wrap: anywhere; }
+.session-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.session-section { margin: 16px 0; border: 2px solid var(--line); padding: 14px; }
+.session-section > summary { cursor: pointer; font-weight: 800; }
+.session-choices { max-height: 320px; overflow-y: auto; margin-top: 12px; }
+body[data-page="teacher"] .session-choice { display: flex; gap: 12px; align-items: start; padding: 10px; cursor: pointer; font-weight: 500; }
+.session-choice input { width: 22px; height: 22px; flex: 0 0 22px; }
+.session-slot { margin: 20px 0; padding: 20px; border: 3px solid var(--line); background: var(--paper); }
+.session-slot > summary { font-size: 1.1rem; margin: 0; scroll-margin-top: 140px; font-weight: 800; cursor: pointer; }
+.session-editor h3 { scroll-margin-top: 140px; }
+.session-conductor h4 { font-size: 1.4rem; }
+.conductor-print { color: #111; background: #fff; padding: 20px; overflow-wrap: anywhere; }
+.conductor-print h1, .conductor-print h2, .conductor-print h3 { color: #111; }
+.print-slot { border-top: 1px solid #777; margin-top: 16px; }
+.print-instructions { white-space: pre-wrap; }
+.print-label { font-weight: 700; margin-bottom: 0; }
+#session-print { display: none; }
+@media print {
+  @page { margin: 15mm; }
+  body[data-page="teacher"] { background: white !important; color: black; }
+  body[data-page="teacher"] > :not(#session-print) { display: none !important; }
+  body[data-page="teacher"] #session-print { display: block !important; font-size: 11pt; }
+  #session-print .conductor-print { padding: 0; }
+  #session-print h1 { font-size: 22pt; margin: 0 0 10pt; }
+  #session-print h2 { font-size: 16pt; }
+  #session-print h3 { font-size: 13pt; break-after: avoid; }
+  #session-print .print-slot { break-inside: avoid; }
+}
 @media (max-width: 900px) {
   .teacher-classroom-layout, .teacher-inline-form { grid-template-columns: 1fr; }
 }
 @media (max-width: 700px) {
+  .session-grid { grid-template-columns: 1fr; }
+  .session-slot, .session-section { padding: 12px; }
   .teacher-actions .button { width: 100%; }
   .teacher-save-toolbar { flex-wrap: wrap; gap: 8px; }
   .teacher-save-toolbar .teacher-save-state { flex-basis: 100%; padding: 8px; }

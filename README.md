@@ -46,13 +46,14 @@ Les cases servent uniquement de repères pendant que la page reste ouverte. Leur
 
 ## Professeur
 
-`prof.html` est une page publique, accessible directement sans lien depuis la navigation élève. Elle permet de gérer les classes, les élèves, leur progression CodeCraft et, facultativement, un référentiel externe importé depuis un fichier privé. Aucun écran de séances, présence ou nouveau conducteur n’est implémenté. Le conducteur historique reste intact.
+`prof.html` est une page publique, accessible directement sans lien depuis la navigation élève. Elle permet de gérer les classes, les élèves, leur progression CodeCraft, les référentiels externes privés et les séances avec leur conducteur. Le conducteur historique reste une archive indépendante.
 
 ### Classes, élèves et compétences
 
 - Créer une classe avec son nom et, facultativement, un contexte/organisme en texte libre. La liste « Classe sélectionnée » permet de changer de classe. Son nom et son contexte peuvent être modifiés dans « Renommer / modifier le contexte » ; ces changements sont enregistrés à la sortie du champ.
 - Ajouter un élève avec son seul prénom ou nom d’affichage. Il est rattaché à la classe sélectionnée, mais sa fiche reste indépendante dans `students` ; `memberships` décrit le rattachement. Aucun écran de rattachement multiple n’est nécessaire à cette étape, mais les fichiers qui en contiennent sont correctement lus et la progression reste commune à l’élève.
 - Cliquer sur un élève ouvre sa fiche. « Nom et remarque générale » permet de modifier son nom (en quittant le champ) et sa remarque facultative.
+- « Parcours actuel dans cette classe » permet de choisir un parcours CodeCraft ou « Non renseigné ». Le choix est sauvegardé immédiatement dans le rattachement `memberships`, jamais dans la fiche globale `students`. Un même élève peut ainsi avoir des parcours différents selon la classe.
 - Les compétences du catalogue apparaissent avec leurs libellés humains, regroupées en HTML et CSS. Les boutons « À voir », « En cours », « Acquis » appliquent uniquement la décision du professeur. La sauvegarde démarre immédiatement après le clic, ou prend la suite d’une écriture déjà en cours.
 - Sans entrée de progression, la compétence est « À voir ». Passer à « Acquis » renseigne la date locale du jour. Recliquer « Acquis » ne change pas la date. Revenir à un autre statut l’efface. Les remarques sont conservées ; les modifier ne change ni statut ni date.
 - Les remarques générales et par compétence sont enregistrées après 600 ms sans saisie. On peut changer d’élève pendant cette attente : la remarque reste attachée à la bonne fiche.
@@ -67,6 +68,21 @@ Les cases servent uniquement de repères pendant que la page reste ouverte. Leur
 - Les fichiers d’import privés doivent rester hors du dépôt, comme `espace-codecraft.json`.
 
 Le statut de sauvegarde et le bouton de réessai restent visibles pendant le défilement. Après ouverture, le panneau du fichier se replie pour laisser la place aux classes. Les outils de relecture et de copie sont dans « Fichier, copie de secours et test technique ». L’ancien libellé technique reste facultatif dans un sous-panneau replié ; sa valeur existante est conservée.
+
+### Séances et conducteurs
+
+Dans une classe, les boutons **Élèves / Séances** permettent de passer du suivi à la préparation. Une nouvelle séance demande une date et un titre facultatif. La liste actuelle des élèves est affichée avant création, puis conservée dans la séance avec leurs noms. Toutes les présences commencent à **Non renseigné** ; cela ne signifie pas absent.
+
+L’historique est limité à la classe sélectionnée, trié par date décroissante. Cliquer sur une séance permet de la modifier, y compris lorsqu’elle est Terminée ou Archivée. Le référentiel de la classe au moment de la création est conservé dans la séance, même si celui de la classe change ensuite.
+
+- Choisir facultativement des compétences, modules et objectifs externes dans les sections repliables. Aucun choix, statut ou présence ne modifie les progressions.
+- Consulter l’aide à la préparation : élèves, parcours actuel dans cette classe (issu du rattachement, ou « Non renseigné »), présences, compétences actuelles En cours / Acquises, liens vers les modules et objectifs officiels. Le parcours courant ne renseigne ni ne modifie automatiquement le parcours des créneaux, qui reste choisi par le professeur.
+- Ajouter des créneaux : minute de début, durée, titre, instructions, élèves ciblés, parcours et ressources facultatifs. Une heure de départ facultative permet d’afficher les horaires correspondants. Sans élève ciblé, le créneau s’adresse à toute la classe.
+- **Monter / Descendre** change l’ordre des créneaux, sans recalculer leurs horaires. **Supprimer** demande confirmation. Les créneaux sont repliables pour une lecture rapide pendant le cours.
+- Les notes générales restent privées et ne sont pas imprimées. Les rappels, saisis à raison d’un par ligne, figurent sur le conducteur imprimé.
+- Le bouton **Imprimer le conducteur / PDF**, ou **Ctrl+P** depuis une séance ouverte, imprime seulement son conducteur, ses objectifs et ressources utiles. Les remarques élèves, leur progression complète et les outils de gestion sont exclus. Choisir **Enregistrer au format PDF** dans Chrome/Edge ; désactiver les en-têtes/pieds de page du navigateur si nécessaire.
+
+Les séances restent dans le même `espace-codecraft.json`. Les clics déclenchent la sauvegarde immédiatement ; les textes sont sauvegardés après une pause de 600 ms. La préparation ne crée aucun autre fichier privé. Une impression ou un PDF est uniquement un export volontaire.
 
 ### Fichier privé et navigateur
 
@@ -98,6 +114,7 @@ Les référentiels externes, leurs versions, objectifs et mappings sont privés 
 - `teacher-file-access.js` : adaptateur Chromium, permission, flux de fichier, handle IndexedDB et téléchargement.
 - `teacher-app.js` : interface, copie de travail en mémoire et sauvegardes séquencées.
 - `teacher-classroom.js` : classes, fiches élèves, compétences et couche facultative de référentiel ; aucun accès direct au fichier ou au stockage navigateur.
+- `teacher-sessions.js` : historique, préparation des séances, conducteur et vue d’impression ; utilise le même signal de sauvegarde que le suivi élèves.
 - `teacher.css` : styles professeur isolés ; aucune modification du style élève.
 - `teacher-workspace-format.md` : contrat du fichier privé et structures réservées aux étapes suivantes.
 - `prof-conducteur-historique.html` : conducteur initial intégral, avec ses données et styles embarqués ; indépendant du catalogue actuel.
@@ -105,7 +122,7 @@ Les référentiels externes, leurs versions, objectifs et mappings sont privés 
 Tests sans dépendance supplémentaire (Node.js nécessaire pour les tests uniquement) :
 
 ```bash
-node --test tests/teacher.test.cjs
+node --test tests/teacher.test.cjs tests/teacher-sessions.test.cjs
 ```
 
 Les tests utilisent des documents fictifs et des fichiers simulés en mémoire, sans accéder au Google Drive de l’utilisateur.

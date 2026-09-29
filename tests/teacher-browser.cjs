@@ -10,7 +10,7 @@ const assert = require('node:assert/strict');
 const root = path.join(__dirname, '..');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 (async () => {
-  const allowed = new Set(['prof.html', 'prof-conducteur-historique.html', 'styles.css', 'teacher.css', 'lesson-data.js', 'teacher-model.js', 'teacher-file-access.js', 'teacher-classroom.js', 'teacher-app.js', 'index.html', 'app.js']);
+  const allowed = new Set(['prof.html', 'prof-conducteur-historique.html', 'styles.css', 'teacher.css', 'lesson-data.js', 'teacher-model.js', 'teacher-file-access.js', 'teacher-sessions.js', 'teacher-classroom.js', 'teacher-app.js', 'index.html', 'app.js']);
   const server = http.createServer((req, res) => {
     const name = new URL(req.url, 'http://localhost').pathname.slice(1);
     if (!allowed.has(name)) { res.writeHead(404); res.end(); return; }
@@ -163,12 +163,13 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
     fs.writeFileSync(path.join(directory, 'teacher-mobile.png'), Buffer.from((await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data, 'base64'));
     await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
     fs.writeFileSync(path.join(directory, 'teacher-desktop.png'), Buffer.from((await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data, 'base64'));
+    await require('./teacher-session-scenario.cjs')({ evaluate, wait, call, directory });
     await call('Page.navigate', { url: base + 'prof-conducteur-historique.html' });
     await wait('document.querySelectorAll(".teacher-slot").length === 9');
     await call('Page.navigate', { url: base + 'index.html' });
     await wait('document.querySelectorAll(".route-card").length === 4');
     assert.equal(errors.length, 0, JSON.stringify(errors));
-    console.log('PASS Chrome : classes, contexte, élève, noms, notes, progression manuelle, dates, rechargement ; flux OPFS, IndexedDB, secours, conflits, JSON invalides, responsive, archive et accueil élève.');
+    console.log('PASS Chrome : suivi, séances, présences, créneaux, snapshots, impression/PDF, rechargement ; flux OPFS, IndexedDB, secours, conflits, responsive, archive et accueil élève.');
     console.log('Sélecteurs natifs simulés : les permissions OS et Google Drive restent à tester manuellement.');
     console.log('Captures et profil isolé : ' + directory);
     await call('Browser.close');

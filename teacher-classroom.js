@@ -4,6 +4,7 @@
   window.CodeCraftTeacherClassroom = {
     create({ root, model, catalog, changed }) {
       let doc = null, classId = null, studentId = null, disabled = true;
+      let view = 'students';
       const levelByClass = new Map();
       const states = [['not-started', 'À voir'], ['in-progress', 'En cours'], ['acquired', 'Acquis']];
       const stateLabel = new Map(states);
@@ -35,6 +36,8 @@
           showError(e.message); return false;
         }
       }
+      const sessionsRoot = make('div');
+      const sessions = window.CodeCraftTeacherSessions.create({ root: sessionsRoot, model, catalog, edit });
       function input(parent, label, id, value = '', multiline = false) {
         const wrapper = make('div', 'teacher-field');
         const title = make('label', '', label); title.htmlFor = id;
@@ -173,6 +176,21 @@
         if (!student) { container.append(make('p', '', 'Sélectionne un élève pour ouvrir sa fiche.')); return; }
         const title = make('h3', 'section-title', student.name); title.tabIndex = -1;
         container.append(title);
+        const membership = doc.memberships.find(item => item.classId === classId && item.studentId === student.id);
+        const pathwayField = make('div', 'teacher-field');
+        const pathwayLabel = make('label', '', 'Parcours actuel dans cette classe'); pathwayLabel.htmlFor = 'student-pathway';
+        const pathwaySelect = make('select'); pathwaySelect.id = 'student-pathway';
+        const unset = make('option', '', 'Non renseigné'); unset.value = ''; pathwaySelect.append(unset);
+        for (const [id, pathway] of Object.entries(catalog.pathways)) {
+          const option = make('option', '', pathway.title); option.value = id; pathwaySelect.append(option);
+        }
+        pathwaySelect.value = membership?.pathwayId || '';
+        pathwaySelect.addEventListener('change', () => {
+          if (!edit(() => model.setMembershipPathway(doc, classId, student.id, pathwaySelect.value, catalog), true)) {
+            pathwaySelect.value = membership?.pathwayId || '';
+          }
+        });
+        pathwayField.append(pathwayLabel, pathwaySelect); container.append(pathwayField);
         const details = make('details', 'teacher-student-details');
         details.append(make('summary', '', 'Nom et remarque générale'));
         const name = input(details, 'Prénom ou nom d’affichage', 'student-name', student.name);
@@ -276,7 +294,7 @@
           e.preventDefault();
           if (edit(() => {
             const item = model.addClass(doc, { id: uid(), name: name.value, contextName: context.value, contextId: uid() });
-            classId = item.id; studentId = null;
+            classId = item.id; studentId = null; view = 'students';
           }, true)) { render(); fieldset.querySelector('#new-student-name').focus(); }
         });
         create.append(form); top.append(create);
@@ -313,6 +331,15 @@
         renderFrameworkTools(top);
         fieldset.append(top);
         if (!c) return;
+        const navigation = make('nav', 'teacher-actions'); navigation.setAttribute('aria-label', 'Vue de la classe');
+        for (const [key, label] of [['students', 'Élèves'], ['sessions', 'Séances']]) {
+          const node = button(label, () => { view = key; render(); fieldset.querySelector('#view-' + key).focus(); });
+          node.id = 'view-' + key; node.setAttribute('aria-pressed', String(view === key)); navigation.append(node);
+        }
+        fieldset.append(navigation);
+        if (view === 'sessions') {
+          fieldset.append(sessionsRoot); sessions.load(doc, classId); return;
+        }
         const layout = make('div', 'teacher-classroom-layout');
         const sidebar = make('section', 'content-card teacher-roster');
         const heading = make('h3', 'section-title'); sidebar.append(heading);
@@ -332,7 +359,7 @@
       }
       return {
         load(document) {
-          doc = document; classId = doc.classes[0]?.id || null; studentId = null;
+          doc = document; classId = doc.classes[0]?.id || null; studentId = null; view = 'students';
           error.hidden = true; render();
         },
         setDisabled(value) { disabled = value; fieldset.disabled = value; }

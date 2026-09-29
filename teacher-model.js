@@ -39,10 +39,10 @@
   });
   const slot = object({
     id, startMinute: integer, durationMinutes: integer, title: str,
-    instructions: str, moduleIds: ids, skillIds: ids,
+    instructions: str, moduleIds: optional(ids), skillIds: optional(ids),
     studentIds: optional(ids), pathwayId: optional(id)
   });
-  // Le schéma réserve les structures futures sans fournir leurs interfaces de gestion.
+  // Extensions facultatives : les fichiers du socle V1 restent lisibles sans réécriture.
   const schema = object({
     schemaVersion: choice(1), workspaceId: id, revision: integer,
     createdAt: timestamp, updatedAt: timestamp,
@@ -51,7 +51,7 @@
     frameworks: array(framework),
     classes: array(object({ id, name: id, contextId: optional(id), frameworkId: optional(id) })),
     students: array(object({ id, name: id, note: optional(str) })),
-    memberships: array(object({ classId: id, studentId: id })),
+    memberships: array(object({ classId: id, studentId: id, pathwayId: optional(id) })),
     progress: array(object({
       studentId: id, skillId: id,
       status,
@@ -63,7 +63,10 @@
     }))),
     sessions: array(object({
       id, classId: id, date, status: choice('draft', 'completed', 'archived'),
-      skillIds: ids,
+      title: optional(str), className: optional(str), startTime: optional(str),
+      roster: optional(array(object({ studentId: id, name: id }))),
+      skillIds: ids, moduleIds: optional(ids),
+      frameworkId: optional(id), objectiveIds: optional(ids),
       attendance: optional(array(object({ studentId: id, status: choice('present', 'absent', 'unknown') }))),
       conductor: object({ title: str, slots: array(slot), reminders: array(str) }),
       notes: str
@@ -183,6 +186,9 @@
     doc.memberships.forEach(m => {
       ref('classes', m.classId, 'memberships.classId');
       ref('students', m.studentId, 'memberships.studentId');
+      if (m.pathwayId && catalog && !Object.hasOwn(catalog.pathways || {}, m.pathwayId)) {
+        fail('memberships.pathwayId', 'parcours CodeCraft introuvable');
+      }
     });
     unique(doc.progress, p => JSON.stringify([p.studentId, p.skillId]), 'progress');
     doc.progress.forEach(p => {
@@ -200,7 +206,15 @@
     });
     doc.sessions.forEach(s => {
       ref('classes', s.classId, 'sessions.classId');
+      if (s.startTime && !/^([01]\d|2[0-3]):[0-5]\d$/.test(s.startTime)) fail('sessions.startTime', 'heure HH:mm attendue');
+      unique(s.roster || [], item => item.studentId, 'sessions.roster');
+      (s.roster || []).forEach(item => ref('students', item.studentId, 'sessions.roster.studentId'));
+      ref('frameworks', s.frameworkId, 'sessions.frameworkId');
+      (s.objectiveIds || []).forEach(objectiveId => {
+        if (!frameworkObjectives.get(s.frameworkId)?.has(objectiveId)) fail('sessions.objectiveIds', 'objectif du référentiel de séance introuvable');
+      });
       s.skillIds.forEach(skill => publicRef('skills', skill));
+      (s.moduleIds || []).forEach(item => publicRef('modules', item));
       unique(s.attendance || [], a => a.studentId, 'sessions.attendance');
       (s.attendance || []).forEach(a => ref('students', a.studentId, 'sessions.attendance.studentId'));
       unique(s.conductor.slots, slot => slot.id, 'conductor.slots');
@@ -209,8 +223,8 @@
         // Snapshot : pas de comparaison avec les rattachements ou parcours actuels.
         (slot.studentIds || []).forEach(id => ref('students', id, 'conductor.slots.studentIds'));
         if (slot.pathwayId) publicRef('pathways', slot.pathwayId);
-        slot.moduleIds.forEach(id => publicRef('modules', id));
-        slot.skillIds.forEach(id => publicRef('skills', id));
+        (slot.moduleIds || []).forEach(id => publicRef('modules', id));
+        (slot.skillIds || []).forEach(id => publicRef('skills', id));
       });
     });
     return [...warnings];
@@ -297,6 +311,18 @@
     doc.memberships.push({ classId, studentId });
     return true;
   }
+  function setMembershipPathway(doc, classId, studentId, pathwayId, catalog) {
+    const membership = doc.memberships.find(item => item.classId === classId && item.studentId === studentId);
+    if (!membership) throw new Error('Rattachement élève–classe introuvable.');
+    if (pathwayId !== '') {
+      check(pathwayId, id, 'parcours');
+      if (!catalog || !Object.hasOwn(catalog.pathways || {}, pathwayId)) throw new Error('Parcours CodeCraft introuvable.');
+    }
+    if ((membership.pathwayId || '') === pathwayId) return false;
+    if (pathwayId) membership.pathwayId = pathwayId;
+    else delete membership.pathwayId;
+    return true;
+  }
   function addStudent(doc, { id: studentId, name, classId }) {
     const cleanName = requiredName(name);
     find(doc.classes, classId, 'Classe'); newId(doc.students, studentId);
@@ -376,8 +402,92 @@
     doc.frameworks.push(copy);
     return copy;
   }
+  function sessionRoster(doc, session) {
+    if (session.roster) return session.roster;
+    // Ancien fichier : déduire les participants des références historiques disponibles.
+    const ids = new Set([...(session.attendance || []).map(item => item.studentId),
+      ...session.conductor.slots.flatMap(item => item.studentIds || [])]);
+    return [...ids].map(studentId => ({ studentId, name: find(doc.students, studentId, 'Élève').name }));
+  }
+  function addSession(doc, { id: sessionId, classId, date: day, title = '' }) {
+    const classroom = find(doc.classes, classId, 'Classe');
+    newId(doc.sessions, sessionId);
+    const roster = doc.memberships.filter(item => item.classId === classId).map(item => ({
+      studentId: item.studentId, name: find(doc.students, item.studentId, 'Élève').name
+    }));
+    const session = {
+      id: sessionId, classId, className: classroom.name, date: day, title,
+      status: 'draft', startTime: '', roster, skillIds: [], moduleIds: [], objectiveIds: [],
+      attendance: roster.map(item => ({ studentId: item.studentId, status: 'unknown' })),
+      conductor: { title: '', slots: [], reminders: [] }, notes: ''
+    };
+    if (classroom.frameworkId) session.frameworkId = classroom.frameworkId;
+    validate({ ...doc, sessions: [...doc.sessions, session] });
+    doc.sessions.push(session);
+    return session;
+  }
+  function changeSession(doc, sessionId, action) {
+    const session = find(doc.sessions, sessionId, 'Séance');
+    const copy = JSON.parse(JSON.stringify(session));
+    action(copy);
+    if (JSON.stringify(copy) === JSON.stringify(session)) return false;
+    validate({ ...doc, sessions: doc.sessions.map(item => item.id === sessionId ? copy : item) });
+    Object.assign(session, copy);
+    return true;
+  }
+  function updateSession(doc, sessionId, patch) {
+    const allowed = ['date', 'title', 'startTime', 'status', 'skillIds', 'moduleIds', 'objectiveIds', 'notes'];
+    if (Object.keys(patch).some(key => !allowed.includes(key))) throw new Error('Champ de séance non modifiable.');
+    return changeSession(doc, sessionId, copy => Object.assign(copy, JSON.parse(JSON.stringify(patch))));
+  }
+  function setAttendance(doc, sessionId, studentId, status) {
+    return changeSession(doc, sessionId, copy => {
+      if (!sessionRoster(doc, copy).some(item => item.studentId === studentId)) throw new Error('Élève absent de la composition de cette séance.');
+      copy.attendance ||= [];
+      const item = copy.attendance.find(item => item.studentId === studentId);
+      if (item) item.status = status;
+      else copy.attendance.push({ studentId, status });
+    });
+  }
+  function addSlot(doc, sessionId, slotId) {
+    return changeSession(doc, sessionId, copy => {
+      newId(copy.conductor.slots, slotId);
+      const last = copy.conductor.slots.at(-1);
+      copy.conductor.slots.push({ id: slotId, startMinute: last ? last.startMinute + last.durationMinutes : 0,
+        durationMinutes: 10, title: '', instructions: '', moduleIds: [], skillIds: [], studentIds: [] });
+    });
+  }
+  function updateSlot(doc, sessionId, slotId, patch) {
+    const allowed = ['startMinute', 'durationMinutes', 'title', 'instructions', 'moduleIds', 'skillIds', 'studentIds', 'pathwayId'];
+    if (Object.keys(patch).some(key => !allowed.includes(key))) throw new Error('Champ de créneau non modifiable.');
+    return changeSession(doc, sessionId, copy => {
+      const slot = find(copy.conductor.slots, slotId, 'Créneau');
+      const updates = JSON.parse(JSON.stringify(patch));
+      if (updates.pathwayId === '') { delete slot.pathwayId; delete updates.pathwayId; }
+      Object.assign(slot, updates);
+    });
+  }
+  function moveSlot(doc, sessionId, slotId, direction) {
+    if (direction !== -1 && direction !== 1) throw new Error('Déplacement invalide.');
+    return changeSession(doc, sessionId, copy => {
+      find(copy.conductor.slots, slotId, 'Créneau');
+      const index = copy.conductor.slots.findIndex(item => item.id === slotId), target = index + direction;
+      if (target < 0 || target >= copy.conductor.slots.length) return;
+      [copy.conductor.slots[index], copy.conductor.slots[target]] = [copy.conductor.slots[target], copy.conductor.slots[index]];
+    });
+  }
+  function removeSlot(doc, sessionId, slotId) {
+    return changeSession(doc, sessionId, copy => {
+      find(copy.conductor.slots, slotId, 'Créneau');
+      copy.conductor.slots = copy.conductor.slots.filter(item => item.id !== slotId);
+    });
+  }
+  function setReminders(doc, sessionId, reminders) {
+    return changeSession(doc, sessionId, copy => { copy.conductor.reminders = [...reminders]; });
+  }
   const api = { schema, validate, parse, create, prepareSave, serialize,
-    addClass, updateClass, setClassFramework, addStudent, attachStudent, updateStudent,
+    addSession, updateSession, sessionRoster, setAttendance, addSlot, updateSlot, moveSlot, removeSlot, setReminders,
+    addClass, updateClass, setClassFramework, addStudent, attachStudent, setMembershipPathway, updateStudent,
     getProgress, updateProgress, getFrameworkProgress, updateFrameworkProgress,
     parseFrameworkPackage, importFramework, objectivesOf };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
