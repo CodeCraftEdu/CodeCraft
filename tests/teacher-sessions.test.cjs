@@ -31,10 +31,15 @@ test('création : composition figée, présences inconnues, classe et référent
 });
 test('workflow rapide : séance vide, conducteur libre, présence globale puis un absent et relecture', () => {
   const doc = setup(), session = model.addSession(doc, { id: 'quick', classId: 'c', date: '2026-09-29' });
-  assert.equal(session.title, ''); assert.equal(session.quickConductor, '');
+  assert.equal(session.title, ''); assert.equal(session.quickConductor, ''); assert.equal(session.detailedPreparation, '');
   assert.deepEqual(session.skillIds, []); assert.deepEqual(session.moduleIds, []); assert.deepEqual(session.objectiveIds, []);
   assert.deepEqual(session.conductor.slots, []); assert.deepEqual(session.conductor.reminders, []);
-  model.updateSession(doc, 'quick', { quickConductor: '14:00–14:10 — Accueil\n14:10–14:30 — Mini-page' });
+  const detailedPreparation = Array.from({ length: 20 }, (_, index) => 'Étape détaillée ' + (index + 1)).join('\n');
+  model.updateSession(doc, 'quick', {
+    quickConductor: '14:00–14:10 — Accueil\n14:10–14:30 — Mini-page',
+    detailedPreparation
+  });
+  model.updateSession(doc, 'quick', { notes: 'Observation après le cours' });
   model.setAllAttendance(doc, 'quick', 'present');
   assert(session.attendance.every(item => item.status === 'present'));
   model.setAttendance(doc, 'quick', 'b', 'absent');
@@ -43,6 +48,10 @@ test('workflow rapide : séance vide, conducteur libre, présence globale puis u
   const reloaded = model.parse(model.serialize(model.prepareSave(doc, '2026-09-29T11:00:00.000Z'))).document;
   const restored = reloaded.sessions[0];
   assert.equal(restored.quickConductor, session.quickConductor);
+  assert.equal(restored.detailedPreparation, detailedPreparation);
+  assert.equal(restored.notes, 'Observation après le cours');
+  assert.notEqual(restored.detailedPreparation, restored.quickConductor);
+  assert.notEqual(restored.detailedPreparation, restored.notes);
   assert.equal(restored.attendance.find(item => item.studentId === 'b').status, 'absent');
   assert.deepEqual(restored.conductor.slots, []);
 });

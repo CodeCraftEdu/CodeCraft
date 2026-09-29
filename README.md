@@ -80,6 +80,7 @@ Dans une classe, les boutons **Élèves / Séances** permettent de passer du sui
 L’historique est limité à la classe sélectionnée, trié par date décroissante. Cliquer sur une séance permet de la modifier, y compris lorsqu’elle est Terminée ou Archivée. Le référentiel de la classe au moment de la création est conservé dans la séance, même si celui de la classe change ensuite.
 
 - **Conducteur rapide** accepte un déroulé libre sur plusieurs lignes, sauvegardé automatiquement et repris tel quel dans l’impression. Il est indépendant du conducteur structuré.
+- **Préparation détaillée** conserve, dans un panneau replié, le texte pédagogique long préparé avant le cours. Elle est indépendante du conducteur rapide et des notes de séance, et n’est pas imprimée dans le PDF conducteur.
 - **Tout le monde présent** marque tout le roster Présent en un clic ; il suffit ensuite de corriger les absents. **Non renseigné** reste disponible individuellement.
 - Les éléments quotidiens restent visibles : date, titre, conducteur rapide, présences, notes et bouton **Terminer la séance**. Ce bouton ne valide aucune compétence.
 - **Préparation avancée** conserve dans un panneau replié le statut complet, l’heure de départ, les compétences, modules, objectifs externes, l’aide à la préparation et le conducteur structuré. Aucun de ces champs n’est obligatoire.

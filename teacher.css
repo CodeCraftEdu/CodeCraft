@@ -94,6 +94,7 @@ body[data-page="teacher"] .button--danger:focus-visible { background: var(--stop
 .session-section { margin: 16px 0; border: 2px solid var(--line); padding: 14px; }
 .session-section > summary { cursor: pointer; font-weight: 800; }
 #session-quick-conductor { min-height: 190px; line-height: 1.55; }
+#session-detailed-preparation-text { min-height: 280px; line-height: 1.55; }
 .session-finish-actions { align-items: center; margin: 20px 0; padding: 16px; border: 3px solid var(--line); background: var(--route-soft); }
 .session-finish-actions .teacher-caption { margin: 0; }
 .session-choices { max-height: 320px; overflow-y: auto; margin-top: 12px; }

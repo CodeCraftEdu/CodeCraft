@@ -209,6 +209,10 @@
         finish.disabled = session.status !== 'draft'; finishActions.append(finish);
         finishActions.append(make('p', 'Terminer une séance ne valide aucune compétence. Elle restera modifiable.', 'teacher-caption'));
         editor.append(finishActions);
+        const detailed = disclosure(editor, 'Préparation détaillée'); detailed.id = 'session-detailed-preparation';
+        detailed.append(make('p', 'Préparation longue rédigée avant le cours. Elle reste distincte du conducteur rapide et des notes de séance, et n’est pas imprimée.', 'teacher-caption'));
+        const detailedText = field(detailed, 'Préparation détaillée', 'session-detailed-preparation-text', session.detailedPreparation || '', 'textarea', value => update({ detailedPreparation: value }));
+        detailedText.rows = 12;
         const advanced = disclosure(editor, 'Préparation avancée'); advanced.id = 'session-advanced';
         advanced.append(make('p', 'Ces réglages sont facultatifs. Une séance ordinaire peut rester sans objectif, ressource ou créneau structuré.', 'teacher-caption'));
         const advancedFields = make('div', undefined, 'session-grid'); advanced.append(advancedFields);

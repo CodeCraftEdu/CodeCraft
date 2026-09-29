@@ -42,8 +42,9 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - Un seul enregistrement par triplet élève/référentiel/objectif. L’absence d’entrée signifie À voir.
   - Les règles de statut, date et remarque sont les mêmes que pour `progress`, mais la décision reste entièrement indépendante des compétences CodeCraft correspondantes.
 - **sessions** : `id`, `classId`, `date` (`YYYY-MM-DD`), `status` (`draft`, `completed`, `archived`), `skillIds`, `attendance` facultatif, `conductor`, `notes`.
-  - Extensions facultatives : `title`, `className`, `startTime` (vide ou `HH:mm`), `quickConductor`, `roster`, `moduleIds`, `frameworkId`, `objectiveIds`.
+  - Extensions facultatives : `title`, `className`, `startTime` (vide ou `HH:mm`), `quickConductor`, `detailedPreparation`, `roster`, `moduleIds`, `frameworkId`, `objectiveIds`.
   - `quickConductor` est le conducteur libre multiligne. Il reste indépendant de `conductor` et son absence dans une ancienne séance équivaut à un texte vide.
+  - `detailedPreparation` conserve la préparation pédagogique longue rédigée avant le cours. Ce texte reste indépendant du conducteur rapide et des notes de séance ; il n’est pas inclus dans l’impression normale du conducteur. Son absence dans une ancienne séance équivaut à un texte vide.
   - `roster` contient `{ studentId, name }` pour chaque élève rattaché à la classe lors de la création. La liste des élèves, le nom de classe, le référentiel et les noms de secours restent des copies historiques que les modifications ultérieures ne réécrivent pas. À l’affichage uniquement, le nom actuel de `students` est préféré lorsque le `studentId` existe encore ; sinon `roster.name` reste le nom de secours.
   - Dans une ancienne séance sans `roster`, les participants sont lus à partir des présences et des cibles existantes, sans ajout automatique des membres actuels de la classe.
   - `objectiveIds` désigne uniquement les objectifs du `frameworkId` conservé dans la séance. Ces choix n’agissent jamais sur `frameworkProgress` ou `progress`.

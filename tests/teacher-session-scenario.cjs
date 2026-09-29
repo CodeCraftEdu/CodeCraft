@@ -49,7 +49,10 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   const historicalName = session.roster.find(item => item.studentId === a).name;
   assert.equal(await evaluate('document.getElementById("session-advanced").open'), false);
   const quickConductor = '14:00–14:10 — Accueil\n14:10–14:30 — Mini-page\n14:30–14:50 — Images';
+  const detailedPreparation = Array.from({length: 18}, (_, index) => 'PRÉPARATION DÉTAILLÉE LIGNE ' + (index + 1)).join('\n');
   await input('#session-quick-conductor', quickConductor);
+  assert.equal(await evaluate('document.getElementById("session-detailed-preparation").open'), false);
+  await input('#session-detailed-preparation-text', detailedPreparation);
   assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + a + '"]') + ').textContent')).includes('Parcours actuel dans cette classe : Débutants'));
   assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + b + '"]') + ').textContent')).includes('Non renseigné'));
   await click('#mark-all-present'); await saved();
@@ -100,7 +103,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   const printed = await evaluate('document.getElementById("session-print").textContent');
   assert(printed.includes('Conducteur rapide')); assert(printed.includes('14:10–14:30 — Mini-page'));
   assert(printed.includes('Conducteur structuré')); assert(printed.includes('14:00–14:10')); assert(printed.includes('Nom actuel modifié')); assert(printed.includes('Instruction fictive 3'));
-  for (const forbidden of ['REMARQUE PRIVÉE ÉLÈVE', 'NOTE PRIVÉE DE SÉANCE', 'Remarque fictive', 'workspaceId']) assert(!printed.includes(forbidden), forbidden);
+  for (const forbidden of ['PRÉPARATION DÉTAILLÉE LIGNE', 'REMARQUE PRIVÉE ÉLÈVE', 'NOTE PRIVÉE DE SÉANCE', 'Remarque fictive', 'workspaceId']) assert(!printed.includes(forbidden), forbidden);
   await call('Emulation.setEmulatedMedia', { media: 'print' });
   assert.equal(await evaluate('getComputedStyle(document.getElementById("main-content")).display'), 'none');
   assert.equal(await evaluate('getComputedStyle(document.getElementById("session-print")).display'), 'block');
@@ -115,6 +118,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await click('#view-sessions'); await click('[data-session-id]');
   assert.equal(await evaluate('document.querySelectorAll(".session-slot").length'), 3);
   assert.equal(await evaluate('document.getElementById("session-quick-conductor").value'), quickConductor);
+  assert.equal(await evaluate('document.getElementById("session-detailed-preparation-text").value'), detailedPreparation);
   assert.equal(await evaluate('document.getElementById("session-notes").value'), 'NOTE PRIVÉE DE SÉANCE');
   assert.deepEqual(JSON.parse(await evaluate('readTestFile()')).sessions[0], session);
   await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });

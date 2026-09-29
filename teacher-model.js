@@ -64,7 +64,7 @@
     sessions: array(object({
       id, classId: id, date, status: choice('draft', 'completed', 'archived'),
       title: optional(str), className: optional(str), startTime: optional(str),
-      quickConductor: optional(str),
+      quickConductor: optional(str), detailedPreparation: optional(str),
       roster: optional(array(object({ studentId: id, name: id }))),
       skillIds: ids, moduleIds: optional(ids),
       frameworkId: optional(id), objectiveIds: optional(ids),
@@ -462,7 +462,7 @@
     }));
     const session = {
       id: sessionId, classId, className: classroom.name, date: day, title,
-      status: 'draft', startTime: '', quickConductor: '', roster, skillIds: [], moduleIds: [], objectiveIds: [],
+      status: 'draft', startTime: '', quickConductor: '', detailedPreparation: '', roster, skillIds: [], moduleIds: [], objectiveIds: [],
       attendance: roster.map(item => ({ studentId: item.studentId, status: 'unknown' })),
       conductor: { title: '', slots: [], reminders: [] }, notes: ''
     };
@@ -481,7 +481,7 @@
     return true;
   }
   function updateSession(doc, sessionId, patch) {
-    const allowed = ['date', 'title', 'startTime', 'quickConductor', 'status', 'skillIds', 'moduleIds', 'objectiveIds', 'notes'];
+    const allowed = ['date', 'title', 'startTime', 'quickConductor', 'detailedPreparation', 'status', 'skillIds', 'moduleIds', 'objectiveIds', 'notes'];
     if (Object.keys(patch).some(key => !allowed.includes(key))) throw new Error('Champ de séance non modifiable.');
     return changeSession(doc, sessionId, copy => Object.assign(copy, JSON.parse(JSON.stringify(patch))));
   }
