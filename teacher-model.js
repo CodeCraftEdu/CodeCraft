@@ -12,6 +12,31 @@
   const object = fields => ({ type: 'object', fields });
   const choice = (...values) => ({ type: 'choice', values });
   const ids = array(id);
+  const status = choice('not-started', 'in-progress', 'acquired');
+  const frameworkMapping = object({
+    skillIds: ids,
+    coverage: choice('covered', 'partial', 'none'),
+    note: optional(str)
+  });
+  const frameworkObjective = object({
+    id, code: id, title: id,
+    kind: optional(choice('objective', 'project')),
+    // skillIds reste accepté pour les fichiers V1 expérimentaux créés avant l’interface.
+    skillIds: optional(ids),
+    mapping: optional(frameworkMapping)
+  });
+  const framework = object({
+    id, name: id, version: id, source: optional(str),
+    objectives: optional(array(frameworkObjective)),
+    commonObjectives: optional(array(frameworkObjective)),
+    levels: optional(array(object({
+      id, code: id, name: id, ageRange: optional(str), order: integer,
+      stages: array(object({
+        id, code: id, name: id, order: integer,
+        objectives: array(frameworkObjective)
+      }))
+    })))
+  });
   const slot = object({
     id, startMinute: integer, durationMinutes: integer, title: str,
     instructions: str, moduleIds: ids, skillIds: ids,
@@ -23,18 +48,19 @@
     createdAt: timestamp, updatedAt: timestamp,
     metadata: object({ label: str }),
     contexts: array(object({ id, name: id })),
-    frameworks: array(object({
-      id, name: id, version: id, source: optional(str),
-      objectives: array(object({ id, code: id, title: id, skillIds: ids }))
-    })),
+    frameworks: array(framework),
     classes: array(object({ id, name: id, contextId: optional(id), frameworkId: optional(id) })),
     students: array(object({ id, name: id, note: optional(str) })),
     memberships: array(object({ classId: id, studentId: id })),
     progress: array(object({
       studentId: id, skillId: id,
-      status: choice('not-started', 'in-progress', 'acquired'),
+      status,
       acquiredOn: nullable(date), note: optional(str), updatedAt: timestamp
     })),
+    frameworkProgress: optional(array(object({
+      studentId: id, frameworkId: id, objectiveId: id,
+      status, acquiredOn: nullable(date), note: optional(str), updatedAt: timestamp
+    }))),
     sessions: array(object({
       id, classId: id, date, status: choice('draft', 'completed', 'archived'),
       skillIds: ids,
@@ -42,6 +68,11 @@
       conductor: object({ title: str, slots: array(slot), reminders: array(str) }),
       notes: str
     }))
+  });
+  const frameworkPackage = object({
+    fileType: choice('codecraft-external-framework'),
+    formatVersion: choice(1),
+    framework
   });
 
   function fail(path, message) {
@@ -89,6 +120,42 @@
     }
     return seen;
   }
+  function objectivesOf(frameworkItem) {
+    if (frameworkItem.levels === undefined && frameworkItem.commonObjectives === undefined) return frameworkItem.objectives || [];
+    const result = [...(frameworkItem.commonObjectives || [])];
+    for (const level of frameworkItem.levels || []) {
+      for (const stage of level.stages) result.push(...stage.objectives);
+    }
+    return result;
+  }
+  function objectiveSkills(objective) {
+    return objective.mapping ? objective.mapping.skillIds : (objective.skillIds || []);
+  }
+  function validateFramework(frameworkItem, catalog, warnings = new Set()) {
+    const publicRef = value => {
+      if (catalog && !Object.hasOwn(catalog.skills || {}, value)) warnings.add('Référence pédagogique absente du catalogue actuel : ' + value + '. Conservée sans modification.');
+    };
+    const modern = frameworkItem.levels !== undefined || frameworkItem.commonObjectives !== undefined;
+    if (modern && !frameworkItem.levels) fail('frameworks.levels', 'liste des niveaux attendue');
+    if (!modern && !frameworkItem.objectives) fail('frameworks.objectives', 'objectifs ou niveaux attendus');
+    unique(frameworkItem.levels || [], level => level.id, 'frameworks.levels');
+    unique(frameworkItem.levels || [], level => level.order, 'frameworks.levels.order');
+    for (const level of frameworkItem.levels || []) {
+      unique(level.stages, stage => stage.id, 'frameworks.levels.stages');
+      unique(level.stages, stage => stage.order, 'frameworks.levels.stages.order');
+    }
+    const objectives = modern ? objectivesOf(frameworkItem) : frameworkItem.objectives;
+    unique(objectives, objective => objective.id, 'frameworks.objectives');
+    unique(objectives, objective => objective.code, 'frameworks.objectives.code');
+    for (const objective of objectives) {
+      if (modern && !objective.mapping) fail('frameworks.objectives.mapping', 'correspondance CodeCraft attendue');
+      if (objective.mapping && objective.skillIds) fail('frameworks.objectives', 'utiliser mapping ou skillIds, pas les deux');
+      if (objective.mapping?.coverage === 'none' && objective.mapping.skillIds.length) fail('frameworks.objectives.mapping', 'une couverture absente ne peut pas référencer de compétence');
+      if (objective.mapping?.coverage === 'covered' && !objective.mapping.skillIds.length) fail('frameworks.objectives.mapping', 'une couverture complète doit référencer une compétence');
+      objectiveSkills(objective).forEach(publicRef);
+    }
+    return objectives;
+  }
   function validate(doc, catalog) {
     if (doc && Object.hasOwn(doc, 'schemaVersion') && doc.schemaVersion !== 1) {
       throw new Error('Version de schéma non prise en charge. Le fichier reste intact.');
@@ -106,11 +173,8 @@
     const publicRef = (collection, value) => {
       if (catalog && !Object.hasOwn(catalog[collection] || {}, value)) warnings.add('Référence pédagogique absente du catalogue actuel : ' + value + '. Conservée sans modification.');
     };
-    doc.frameworks.forEach(f => {
-      unique(f.objectives, o => o.id, 'frameworks.objectives');
-      unique(f.objectives, o => o.code, 'frameworks.objectives.code');
-      f.objectives.forEach(o => o.skillIds.forEach(s => publicRef('skills', s)));
-    });
+    const frameworkObjectives = new Map();
+    doc.frameworks.forEach(f => frameworkObjectives.set(f.id, new Set(validateFramework(f, catalog, warnings).map(o => o.id))));
     doc.classes.forEach(c => {
       ref('contexts', c.contextId, 'classes.contextId');
       ref('frameworks', c.frameworkId, 'classes.frameworkId');
@@ -125,6 +189,14 @@
       ref('students', p.studentId, 'progress.studentId');
       publicRef('skills', p.skillId);
       if ((p.status === 'acquired') !== (p.acquiredOn !== null)) fail('progress.acquiredOn', 'date requise uniquement pour Acquis');
+    });
+    const frameworkProgress = doc.frameworkProgress || [];
+    unique(frameworkProgress, p => JSON.stringify([p.studentId, p.frameworkId, p.objectiveId]), 'frameworkProgress');
+    frameworkProgress.forEach(p => {
+      ref('students', p.studentId, 'frameworkProgress.studentId');
+      ref('frameworks', p.frameworkId, 'frameworkProgress.frameworkId');
+      if (!frameworkObjectives.get(p.frameworkId)?.has(p.objectiveId)) fail('frameworkProgress.objectiveId', 'objectif externe introuvable');
+      if ((p.status === 'acquired') !== (p.acquiredOn !== null)) fail('frameworkProgress.acquiredOn', 'date requise uniquement pour Acquis');
     });
     doc.sessions.forEach(s => {
       ref('classes', s.classId, 'sessions.classId');
@@ -153,7 +225,7 @@
     const doc = {
       schemaVersion: 1, workspaceId, revision: 0, createdAt: now, updatedAt: now,
       metadata: { label: '' }, contexts: [], frameworks: [], classes: [], students: [],
-      memberships: [], progress: [], sessions: []
+      memberships: [], progress: [], frameworkProgress: [], sessions: []
     };
     validate(doc);
     return doc;
@@ -211,6 +283,14 @@
     else delete item.contextId;
     return true;
   }
+  function setClassFramework(doc, classId, frameworkId) {
+    const item = find(doc.classes, classId, 'Classe');
+    if (frameworkId) find(doc.frameworks, frameworkId, 'Référentiel');
+    if ((item.frameworkId || '') === (frameworkId || '')) return false;
+    if (frameworkId) item.frameworkId = frameworkId;
+    else delete item.frameworkId;
+    return true;
+  }
   function attachStudent(doc, classId, studentId) {
     find(doc.classes, classId, 'Classe'); find(doc.students, studentId, 'Élève');
     if (doc.memberships.some(m => m.classId === classId && m.studentId === studentId)) return false;
@@ -258,8 +338,48 @@
     else doc.progress.push(entry);
     return true;
   }
+  function getFrameworkProgress(doc, studentId, frameworkId, objectiveId) {
+    return (doc.frameworkProgress || []).find(p => p.studentId === studentId && p.frameworkId === frameworkId && p.objectiveId === objectiveId) ||
+      { studentId, frameworkId, objectiveId, status: 'not-started', acquiredOn: null, note: '' };
+  }
+  function updateFrameworkProgress(doc, studentId, frameworkId, objectiveId, patch, now = new Date()) {
+    find(doc.students, studentId, 'Élève');
+    const frameworkItem = find(doc.frameworks, frameworkId, 'Référentiel');
+    if (!objectivesOf(frameworkItem).some(objective => objective.id === objectiveId)) throw new Error('Objectif externe introuvable.');
+    if (!doc.frameworkProgress) doc.frameworkProgress = [];
+    const existing = doc.frameworkProgress.find(p => p.studentId === studentId && p.frameworkId === frameworkId && p.objectiveId === objectiveId);
+    const before = getFrameworkProgress(doc, studentId, frameworkId, objectiveId);
+    const nextStatus = patch.status === undefined ? before.status : patch.status;
+    const note = patch.note === undefined ? (before.note || '') : patch.note;
+    check(nextStatus, status, 'statut'); check(note, str, 'remarque');
+    if (nextStatus === before.status && note === (before.note || '')) return false;
+    const entry = {
+      ...before, status: nextStatus, note, updatedAt: now.toISOString(),
+      acquiredOn: nextStatus === 'acquired' ? (before.status === 'acquired' ? before.acquiredOn : localDate(now)) : null
+    };
+    if (existing) Object.assign(existing, entry);
+    else doc.frameworkProgress.push(entry);
+    return true;
+  }
+  function parseFrameworkPackage(text, catalog) {
+    let data;
+    try { data = JSON.parse(text.replace(/^\uFEFF/, '')); }
+    catch { throw new Error('Fichier de référentiel JSON illisible.'); }
+    check(data, frameworkPackage, 'référentiel');
+    validateFramework(data.framework, catalog);
+    return data.framework;
+  }
+  function importFramework(doc, text, catalog) {
+    const item = parseFrameworkPackage(text, catalog);
+    newId(doc.frameworks, item.id);
+    const copy = JSON.parse(JSON.stringify(item));
+    doc.frameworks.push(copy);
+    return copy;
+  }
   const api = { schema, validate, parse, create, prepareSave, serialize,
-    addClass, updateClass, addStudent, attachStudent, updateStudent, getProgress, updateProgress };
+    addClass, updateClass, setClassFramework, addStudent, attachStudent, updateStudent,
+    getProgress, updateProgress, getFrameworkProgress, updateFrameworkProgress,
+    parseFrameworkPackage, importFramework, objectivesOf };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.CodeCraftTeacherModel = api;
 })(globalThis);

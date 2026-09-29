@@ -14,7 +14,7 @@ const deferred = () => { let resolve; const promise = new Promise(r => { resolve
 test('document vide V1 : collections privées, aller-retour JSON et aucune ancienne valeur de statut', () => {
   const doc = fresh();
   assert.deepEqual(model.parse(model.serialize(doc)).document, doc);
-  for (const key of ['contexts', 'frameworks', 'classes', 'students', 'memberships', 'progress', 'sessions']) assert.deepEqual(doc[key], []);
+  for (const key of ['contexts', 'frameworks', 'classes', 'students', 'memberships', 'progress', 'frameworkProgress', 'sessions']) assert.deepEqual(doc[key], []);
   assert.equal(doc.schemaVersion, 1);
 });
 test('JSON invalide / version inconnue / champs manquants ou inconnus refusés', () => {
@@ -131,6 +131,59 @@ test('progression : À voir implicite, transition manuelle, date locale et note 
   assert.equal(doc.progress[0].acquiredOn, '2026-09-28');
   assert.equal(doc.progress[0].status, 'acquired');
   assert.equal(doc.progress.length, 1);
+  model.validate(doc);
+});
+function frameworkPackage() {
+  return JSON.stringify({
+    fileType: 'codecraft-external-framework', formatVersion: 1,
+    framework: {
+      id: 'framework-demo', name: 'Référentiel privé fictif', version: 'Version test',
+      commonObjectives: [{ id: 'common-demo', code: 'COMMON.TEST', title: 'Objectif commun fictif', kind: 'objective', mapping: { skillIds: [], coverage: 'none' } }],
+      levels: [{ id: 'level-demo', code: 'Niveau test', name: 'Niveau fictif', order: 1, stages: [{
+        id: 'stage-demo', code: 'Étape test', name: 'Étape fictive', order: 1,
+        objectives: [{ id: 'objective-demo', code: 'D1.1', title: 'Objectif fictif', kind: 'objective', mapping: { skillIds: ['html.lists'], coverage: 'covered' } }]
+      }]}]
+    }
+  });
+}
+test('référentiel privé : import, rattachement facultatif et refus des doublons', () => {
+  const doc = fresh();
+  const framework = model.importFramework(doc, frameworkPackage(), { skills: { 'html.lists': {} } });
+  model.addClass(doc, { id: 'c', name: 'Classe fictive' });
+  assert.equal(model.setClassFramework(doc, 'c', framework.id), true);
+  assert.equal(model.setClassFramework(doc, 'c', framework.id), false);
+  assert.equal(doc.classes[0].frameworkId, framework.id);
+  assert.throws(() => model.importFramework(doc, frameworkPackage()), /déjà utilisé/);
+  assert.equal(model.setClassFramework(doc, 'c', ''), true);
+  assert.equal(doc.classes[0].frameworkId, undefined);
+  model.validate(doc, { skills: { 'html.lists': {} } });
+});
+test('référentiel privé : couverture cohérente et aucune fausse compétence', () => {
+  const doc = fresh();
+  model.importFramework(doc, frameworkPackage(), { skills: { 'html.lists': {} } });
+  const objective = doc.frameworks[0].levels[0].stages[0].objectives[0];
+  objective.mapping.coverage = 'none';
+  assert.throws(() => model.validate(doc), /couverture absente/);
+  objective.mapping.coverage = 'covered'; objective.mapping.skillIds = [];
+  assert.throws(() => model.validate(doc), /couverture complète/);
+  assert.throws(() => model.parseFrameworkPackage('{'), /JSON illisible/);
+});
+test('validation officielle : À voir implicite, date manuelle et indépendance des compétences CodeCraft', () => {
+  const doc = fresh(); model.importFramework(doc, frameworkPackage());
+  model.addClass(doc, { id: 'c', name: 'Classe fictive' });
+  model.addStudent(doc, { id: 's', name: 'Élève fictif', classId: 'c' });
+  const first = new Date(2026, 8, 28, 23, 30), later = new Date(2026, 8, 29, 1, 30);
+  assert.equal(model.getFrameworkProgress(doc, 's', 'framework-demo', 'objective-demo').status, 'not-started');
+  model.updateProgress(doc, 's', 'html.lists', { status: 'acquired' }, first);
+  assert.equal(doc.frameworkProgress.length, 0);
+  model.updateFrameworkProgress(doc, 's', 'framework-demo', 'objective-demo', { status: 'in-progress' }, first);
+  model.updateFrameworkProgress(doc, 's', 'framework-demo', 'objective-demo', { status: 'acquired' }, first);
+  assert.equal(doc.frameworkProgress[0].acquiredOn, '2026-09-28');
+  model.updateFrameworkProgress(doc, 's', 'framework-demo', 'objective-demo', { note: 'Décision fictive' }, later);
+  assert.equal(doc.frameworkProgress[0].acquiredOn, '2026-09-28');
+  model.updateFrameworkProgress(doc, 's', 'framework-demo', 'objective-demo', { status: 'in-progress' }, later);
+  assert.equal(doc.frameworkProgress[0].acquiredOn, null);
+  assert.equal(doc.frameworkProgress[0].note, 'Décision fictive');
   model.validate(doc);
 });
 test('retours à En cours et À voir effacent la date sans perdre les remarques', () => {

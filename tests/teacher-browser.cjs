@@ -53,7 +53,14 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
       return result.result.value;
     };
     const wait = async expression => {
-      for (let i = 0; i < 100; i++) { if (await evaluate(expression)) return; await pause(50); }
+      for (let i = 0; i < 100; i++) {
+        try { if (await evaluate(expression)) return; }
+        catch (error) {
+          const text = String(error);
+          if (!text.includes('NotFoundError') && !text.includes('NotReadableError')) throw error;
+        }
+        await pause(50);
+      }
       throw new Error('Timeout: ' + expression + '\n' + await evaluate('document.body.innerText'));
     };
     await call('Runtime.enable'); await call('Page.enable');
@@ -78,14 +85,30 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(JSON.parse(await evaluate('readTestFile()')).metadata.label, 'Test navigateur isolé');
     await evaluate('document.getElementById("new-class-name").value="Classe fictive dimanche";document.getElementById("new-class-context").value="Contexte fictif";document.querySelector(".teacher-inline-form").requestSubmit()');
     await wait('!!document.getElementById("new-student-name") && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
+    const frameworkPackage = { fileType: 'codecraft-external-framework', formatVersion: 1, framework: {
+      id: 'framework-browser-test', name: 'Référentiel privé fictif', version: 'Version test', commonObjectives: [],
+      levels: [{ id: 'level-browser-test', code: 'Niveau test', name: 'Niveau fictif', order: 1, stages: [{
+        id: 'stage-browser-test', code: 'Étape test', name: 'Étape fictive', order: 1,
+        objectives: [{ id: 'objective-browser-test', code: 'D1.1', title: 'Objectif fictif', kind: 'objective', mapping: { skillIds: ['html.lists'], coverage: 'covered' } }]
+      }]}]
+    } };
+    await evaluate(`(()=>{const input=document.getElementById('framework-import');const file=new File([${JSON.stringify(JSON.stringify(frameworkPackage))}],'referentiel-prive.json',{type:'application/json'});Object.defineProperty(input,'files',{value:[file],configurable:true});input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+    await wait('(async()=>{try{return JSON.parse(await readTestFile()).frameworks.length === 1}catch{return false}})()');
+    await evaluate('document.getElementById("class-framework").value="framework-browser-test";document.getElementById("class-framework").dispatchEvent(new Event("change",{bubbles:true}))');
+    await wait('(async()=>{try{return JSON.parse(await readTestFile()).classes[0]?.frameworkId === "framework-browser-test"}catch{return false}})()');
     await evaluate('document.getElementById("new-student-name").value="Élève fictif A";document.querySelector(".teacher-add-student").requestSubmit()');
     await wait('document.querySelectorAll(".teacher-skill").length === Object.keys(CODECRAFT_DATA.skills).length && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
+    assert.equal(await evaluate('document.querySelector(".teacher-framework-panel summary").textContent'), 'Référentiel externe — Référentiel privé fictif');
+    assert.equal(await evaluate('document.querySelector(' + JSON.stringify('[data-framework-objective-id] [data-mapped-skill-id="html.lists"]') + ').textContent'), 'À voir');
+    await evaluate('document.querySelector(' + JSON.stringify('[data-framework-objective-id] [data-status="in-progress"]') + ').click()');
+    await wait('(async()=>{try{return JSON.parse(await readTestFile()).frameworkProgress[0]?.status === "in-progress"}catch{return false}})()');
     assert.equal(JSON.parse(await evaluate('readTestFile()')).progress.length, 0);
     const lists = '.teacher-skill[data-skill-id="html.lists"]';
     await evaluate('document.querySelector(' + JSON.stringify(lists + ' [data-status="in-progress"]') + ').click()');
     await wait('(async()=>JSON.parse(await readTestFile()).progress[0]?.status === "in-progress")()');
     await evaluate('document.querySelector(' + JSON.stringify(lists + ' [data-status="acquired"]') + ').click()');
     await wait('(async()=>JSON.parse(await readTestFile()).progress[0]?.status === "acquired")()');
+    assert.equal(await evaluate('document.querySelector(' + JSON.stringify('[data-framework-objective-id] [data-mapped-skill-id="html.lists"]') + ').textContent'), 'Acquis');
     const acquiredOn = JSON.parse(await evaluate('readTestFile()')).progress[0].acquiredOn;
     const today = await evaluate('[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,"0"),String(new Date().getDate()).padStart(2,"0")].join("-")');
     assert.equal(acquiredOn, today);

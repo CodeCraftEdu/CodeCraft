@@ -1,6 +1,6 @@
 # Format privé Espace CodeCraft — schemaVersion 1
 
-Le contrat exécutable est `schema` dans `teacher-model.js`. Les classes, élèves, rattachements et progressions sont maintenant utilisés par l’interface professeur. Les référentiels et séances restent réservés aux étapes suivantes. Le fichier est créé par le navigateur dans un dossier privé, jamais publié avec le site. Le schéma reste en version 1, compatible avec les fichiers du socle initial.
+Le contrat exécutable est `schema` dans `teacher-model.js`. Les classes, élèves, rattachements, progressions CodeCraft et référentiels externes sont utilisés par l’interface professeur. Les séances restent réservées à une étape suivante. Le fichier est créé par le navigateur dans un dossier privé, jamais publié avec le site. Le schéma reste en version 1 : `frameworkProgress` est facultatif à la lecture pour conserver la compatibilité avec les fichiers du socle initial et est présent dans tout nouvel espace.
 
 ## Racine
 
@@ -11,16 +11,20 @@ Le contrat exécutable est `schema` dans `teacher-model.js`. Les classes, élèv
 | revision | entier positif ou nul, incrémenté à chaque écriture préparée |
 | createdAt, updatedAt | horodatage ISO UTC avec millisecondes ; updatedAt ≥ createdAt |
 | metadata | objet `{ label: string }` ; libellé technique facultatif dans l’interface, conservé dans le document |
-| contexts, frameworks, classes, students, memberships, progress, sessions | tableaux, présents et vides à la création |
+| contexts, frameworks, classes, students, memberships, progress, frameworkProgress, sessions | tableaux, présents et vides à la création |
 
 Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus sont refusés pour éviter une réécriture qui les perdrait. Aucune migration automatique n’est effectuée. Les identifiants sont uniques dans leur collection et ne dépendent pas des noms. Les textes libres restent des textes, jamais du HTML à exécuter.
 
 ## Structures du document
 
 - **contexts** : `id`, `name`. Un organisme, une association ou un contexte indépendant.
-- **frameworks** : `id`, `name`, `version`, `source` (texte facultatif), `objectives`.
-  - Chaque objectif : `id`, `code`, `title`, `skillIds` (tableau sans doublons).
-  - Identifiants et codes uniques à l’intérieur d’une version. Pour une autre version, créer une autre entrée avec un nouvel id ; les classes conservent ainsi leur référence. Les mappings ne valident jamais automatiquement les objectifs.
+- **frameworks** : `id`, `name`, `version`, `source` (texte facultatif), `levels`, `commonObjectives` facultatif.
+  - Chaque niveau : `id`, `code`, `name`, `ageRange` facultatif, `order`, `stages`.
+  - Chaque étape : `id`, `code`, `name`, `order`, `objectives`.
+  - Chaque objectif : `id`, `code`, `title`, `kind` facultatif (`objective` ou `project`) et `mapping`.
+  - Un mapping contient `skillIds`, `coverage` (`covered`, `partial` ou `none`) et une `note` facultative. Une couverture `none` ne peut pas référencer de compétence ; une couverture `covered` doit en référencer au moins une.
+  - Identifiants et codes des objectifs sont uniques à l’intérieur d’une version. Pour une autre version, créer une autre entrée avec un nouvel id ; les classes conservent ainsi leur référence. Les mappings ne valident jamais automatiquement les objectifs.
+  - L’ancienne forme expérimentale `objectives` avec `skillIds` reste lisible, mais les nouveaux imports utilisent obligatoirement niveaux, étapes et mappings explicites.
 - **classes** : `id`, `name`, `contextId` facultatif, `frameworkId` facultatif.
 - **students** : `id`, `name`, `note` facultative. Aucun autre champ personnel.
 - **memberships** : `classId`, `studentId`. Un seul rattachement par couple ; plusieurs classes possibles pour un même élève.
@@ -29,6 +33,9 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - `not-started` = À voir ; `in-progress` = En cours ; `acquired` = Acquis.
   - L’absence d’entrée signifie À voir. Pas de statut `to-review`.
   - `acquiredOn` : date valide `YYYY-MM-DD` pour Acquis, `null` sinon. L’interface prend la date locale lors du passage manuel à Acquis ; aucune validation issue des cases élève. Un second clic sur Acquis ou une modification de remarque conserve la date. Revenir à En cours ou À voir remet la date à null, sans supprimer la remarque.
+- **frameworkProgress** (facultatif dans les anciens fichiers V1) : `studentId`, `frameworkId`, `objectiveId`, `status`, `acquiredOn`, `updatedAt`, `note` facultative.
+  - Un seul enregistrement par triplet élève/référentiel/objectif. L’absence d’entrée signifie À voir.
+  - Les règles de statut, date et remarque sont les mêmes que pour `progress`, mais la décision reste entièrement indépendante des compétences CodeCraft correspondantes.
 - **sessions** : `id`, `classId`, `date` (`YYYY-MM-DD`), `status` (`draft`, `completed`, `archived`), `skillIds`, `attendance` facultatif, `conductor`, `notes`.
   - `attendance` : tableau de `{ studentId, status }`, où status est `present`, `absent` ou `unknown` ; absence d’entrée = non renseigné. Un élève n’apparaît qu’une fois.
   - `conductor` : `{ title, slots, reminders }` ; reminders est un tableau de textes.

@@ -9,6 +9,7 @@ body[data-page="teacher"] button { font: inherit; cursor: pointer; }
 body[data-page="teacher"] button:disabled { opacity: .55; cursor: not-allowed; }
 body[data-page="teacher"] label { display: block; font-weight: 700; }
 body[data-page="teacher"] input[type="text"],
+body[data-page="teacher"] input[type="file"],
 body[data-page="teacher"] textarea,
 body[data-page="teacher"] select {
   width: 100%;
@@ -57,6 +58,23 @@ body[data-page="teacher"] textarea { resize: vertical; }
 .teacher-acquired-date { margin: 12px 0; color: #274f2b; font-weight: 700; }
 .teacher-skill-note { margin-top: 14px; }
 .teacher-file-tools > summary { cursor: pointer; }
+.teacher-framework-import { margin-top: 22px; padding-top: 18px; border-top: 2px solid var(--line); }
+.teacher-framework-import > summary,
+.teacher-framework-panel > summary,
+.teacher-framework-stage > summary { cursor: pointer; font-weight: 800; }
+.teacher-framework-panel { margin-top: 36px; padding-top: 24px; border-top: 5px solid var(--route-dark); }
+.teacher-framework-panel > summary { margin-bottom: 18px; }
+.teacher-framework-warning { padding: 14px; border: 3px solid var(--wood); background: var(--stop-bg); font-weight: 700; }
+.teacher-framework-stage { margin-top: 20px; border: 3px solid var(--line); background: var(--paper); }
+.teacher-framework-stage > summary { padding: 16px; background: var(--route-soft); }
+.teacher-framework-objective { padding: 20px; border-top: 2px solid var(--line); }
+.teacher-framework-objective h6 { margin: 0 0 12px; font-size: 1.05rem; }
+.teacher-objective-code { display: inline-block; margin-right: 8px; padding: 4px 7px; border: 2px solid var(--stone); background: var(--canvas); font-weight: 900; }
+.teacher-framework-mapping { margin: 12px 0 16px; padding: 12px; border-left: 5px solid var(--stone); background: var(--canvas); }
+.teacher-coverage { margin: 0; font-weight: 800; }
+.teacher-coverage--covered { color: #274f2b; }
+.teacher-coverage--partial { color: #71301f; }
+.teacher-mapped-skills { margin-bottom: 0; }
 @media (max-width: 900px) {
   .teacher-classroom-layout, .teacher-inline-form { grid-template-columns: 1fr; }
 }
