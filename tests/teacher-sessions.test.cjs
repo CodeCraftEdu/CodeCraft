@@ -29,6 +29,23 @@ test('création : composition figée, présences inconnues, classe et référent
   assert.equal(JSON.stringify(session), before);
   assert.equal(model.sessionRoster(doc, session)[0].name, 'Nouveau nom');
 });
+test('workflow rapide : séance vide, conducteur libre, présence globale puis un absent et relecture', () => {
+  const doc = setup(), session = model.addSession(doc, { id: 'quick', classId: 'c', date: '2026-09-29' });
+  assert.equal(session.title, ''); assert.equal(session.quickConductor, '');
+  assert.deepEqual(session.skillIds, []); assert.deepEqual(session.moduleIds, []); assert.deepEqual(session.objectiveIds, []);
+  assert.deepEqual(session.conductor.slots, []); assert.deepEqual(session.conductor.reminders, []);
+  model.updateSession(doc, 'quick', { quickConductor: '14:00–14:10 — Accueil\n14:10–14:30 — Mini-page' });
+  model.setAllAttendance(doc, 'quick', 'present');
+  assert(session.attendance.every(item => item.status === 'present'));
+  model.setAttendance(doc, 'quick', 'b', 'absent');
+  assert.equal(session.attendance.find(item => item.studentId === 'b').status, 'absent');
+  assert(session.attendance.filter(item => item.studentId !== 'b').every(item => item.status === 'present'));
+  const reloaded = model.parse(model.serialize(model.prepareSave(doc, '2026-09-29T11:00:00.000Z'))).document;
+  const restored = reloaded.sessions[0];
+  assert.equal(restored.quickConductor, session.quickConductor);
+  assert.equal(restored.attendance.find(item => item.studentId === 'b').status, 'absent');
+  assert.deepEqual(restored.conductor.slots, []);
+});
 test('objectifs, absences, fin et archive ne valident aucune progression', () => {
   const doc = setup(); model.addSession(doc, { id: 's', classId: 'c', date: '2026-09-29' });
   model.updateProgress(doc, 'a', 'html.text', { status: 'in-progress' });
@@ -64,6 +81,7 @@ test('mutations refusées atomiquement : dates, durées, objectifs, identifiants
     () => model.updateSlot(doc, 's', 'slot', { durationMinutes: 0 }),
     () => model.updateSlot(doc, 's', 'slot', { studentIds: ['missing'] }),
     () => model.setAttendance(doc, 's', 'a', 'maybe'),
+    () => model.setAllAttendance(doc, 's', 'maybe'),
     () => model.setAttendance(doc, 's', 'missing', 'present'),
     () => model.updateSession(doc, 's', { classId: 'other' })
   ]) { assert.throws(action); assert.equal(model.serialize(doc), before); }

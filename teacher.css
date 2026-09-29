@@ -93,6 +93,9 @@ body[data-page="teacher"] .button--danger:focus-visible { background: var(--stop
 .session-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .session-section { margin: 16px 0; border: 2px solid var(--line); padding: 14px; }
 .session-section > summary { cursor: pointer; font-weight: 800; }
+#session-quick-conductor { min-height: 190px; line-height: 1.55; }
+.session-finish-actions { align-items: center; margin: 20px 0; padding: 16px; border: 3px solid var(--line); background: var(--route-soft); }
+.session-finish-actions .teacher-caption { margin: 0; }
 .session-choices { max-height: 320px; overflow-y: auto; margin-top: 12px; }
 body[data-page="teacher"] .session-choice { display: flex; gap: 12px; align-items: start; padding: 10px; cursor: pointer; font-weight: 500; }
 .session-choice input { width: 22px; height: 22px; flex: 0 0 22px; }
@@ -104,6 +107,7 @@ body[data-page="teacher"] .session-choice { display: flex; gap: 12px; align-item
 .conductor-print h1, .conductor-print h2, .conductor-print h3 { color: #111; }
 .print-slot { border-top: 1px solid #777; margin-top: 16px; }
 .print-instructions { white-space: pre-wrap; }
+.print-quick-conductor { white-space: pre-wrap; padding: 12px 0; line-height: 1.5; }
 .print-label { font-weight: 700; margin-bottom: 0; }
 #session-print { display: none; }
 @media print {

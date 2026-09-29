@@ -111,6 +111,13 @@
         list(page, 'Compétences de la séance', session.skillIds, skillChoices);
         list(page, 'Modules de la séance', session.moduleIds, moduleChoices);
         list(page, frameworkOf(session)?.name || 'Objectifs externes', session.objectiveIds, objectiveChoices(session));
+        if (session.quickConductor?.trim()) {
+          page.append(make('h3', 'Conducteur rapide'));
+          page.append(make('div', session.quickConductor, 'print-quick-conductor'));
+        }
+        if (session.conductor.slots.length || session.conductor.reminders.length) {
+          page.append(make('h3', 'Conducteur structuré'));
+        }
         for (const slot of session.conductor.slots) {
           const block = make('section', undefined, 'print-slot');
           block.append(make('h3', range(session, slot) + ' · ' + (slot.title || 'Créneau sans titre')));
@@ -121,7 +128,7 @@
           if (slot.instructions) block.append(make('p', slot.instructions, 'print-instructions'));
           page.append(block);
         }
-        if (!session.conductor.slots.length) page.append(make('p', 'Aucun créneau renseigné.'));
+        if (!session.quickConductor?.trim() && !session.conductor.slots.length) page.append(make('p', 'Aucun conducteur renseigné.'));
         if (session.conductor.reminders.length) {
           page.append(make('h3', 'Rappels'));
           const list = make('ul'); session.conductor.reminders.forEach(text => list.append(make('li', text))); page.append(list);
@@ -171,16 +178,17 @@
         field(fields, 'Titre (facultatif)', 'session-title', session.title ?? session.conductor.title, 'text', value => {
           const ok = update({ title: value }); if (ok) { heading.textContent = titleOf(session); renderHistory(); } return ok;
         });
-        select(fields, 'Statut', 'session-status', Object.entries(statusNames), session.status, value => {
-          const ok = update({ status: value }, true); if (ok) renderHistory(); return ok;
-        });
-        field(fields, 'Heure de départ (facultative)', 'session-start-time', session.startTime, 'time', value => {
-          const ok = update({ startTime: value }, true); if (ok) renderSlots(); return ok;
-        });
-        editor.append(make('p', 'Terminer ou archiver une séance ne valide aucune compétence. Les anciennes séances restent modifiables.', 'teacher-caption'));
+        const quick = field(editor, 'Conducteur rapide', 'session-quick-conductor', session.quickConductor || '', 'textarea', value => update({ quickConductor: value }));
+        quick.rows = 8;
+        editor.append(make('p', 'Écris ou colle ici le déroulé complet de la séance. Les retours à la ligne seront conservés dans l’impression.', 'teacher-caption'));
         const attendance = disclosure(editor, 'Présences — composition de cette séance', true);
         const members = model.sessionRoster(doc, session);
         if (!members.length) attendance.append(make('p', 'Aucun élève dans la composition de cette séance.'));
+        if (members.length) attendance.append(button('Tout le monde présent', () => {
+          if (edit(() => model.setAllAttendance(doc, session.id, 'present'), true)) {
+            render(); root.querySelector('#mark-all-present')?.focus();
+          }
+        }, 'mark-all-present'));
         for (const member of members) {
           select(attendance, member.name, 'attendance-' + member.studentId, Object.entries(presenceNames),
             session.attendance?.find(item => item.studentId === member.studentId)?.status || 'unknown',
@@ -190,11 +198,33 @@
               return ok;
             });
         }
-        const targets = disclosure(editor, 'Objectifs et modules de la séance');
+        field(editor, 'Notes générales de séance (non imprimées)', 'session-notes', session.notes, 'textarea', value => update({ notes: value }));
+        const finishActions = make('div', undefined, 'teacher-actions session-finish-actions');
+        const finish = button(session.status === 'completed' ? 'Séance terminée' : session.status === 'archived' ? 'Séance archivée' : 'Terminer la séance', () => {
+          if (update({ status: 'completed' }, true)) {
+            render(); root.querySelector('#finish-session')?.focus();
+          }
+        }, 'finish-session');
+        finish.classList.remove('button--secondary'); finish.classList.add('button--primary');
+        finish.disabled = session.status !== 'draft'; finishActions.append(finish);
+        finishActions.append(make('p', 'Terminer une séance ne valide aucune compétence. Elle restera modifiable.', 'teacher-caption'));
+        editor.append(finishActions);
+        const advanced = disclosure(editor, 'Préparation avancée'); advanced.id = 'session-advanced';
+        advanced.append(make('p', 'Ces réglages sont facultatifs. Une séance ordinaire peut rester sans objectif, ressource ou créneau structuré.', 'teacher-caption'));
+        const advancedFields = make('div', undefined, 'session-grid'); advanced.append(advancedFields);
+        select(advancedFields, 'Statut', 'session-status', Object.entries(statusNames), session.status, value => {
+          const ok = update({ status: value }, true);
+          if (ok) { render(); root.querySelector('#session-status')?.focus(); }
+          return ok;
+        });
+        field(advancedFields, 'Heure de départ du conducteur structuré (facultative)', 'session-start-time', session.startTime, 'time', value => {
+          const ok = update({ startTime: value }, true); if (ok) renderSlots(); return ok;
+        });
+        const targets = disclosure(advanced, 'Objectifs et modules de la séance');
         choices(targets, 'Compétences CodeCraft', skillChoices, session.skillIds, ids => update({ skillIds: ids }, true), 'session-skills');
         choices(targets, 'Modules CodeCraft', moduleChoices, session.moduleIds || [], ids => update({ moduleIds: ids }, true), 'session-modules');
         if (session.frameworkId) choices(targets, 'Objectifs — ' + (frameworkOf(session)?.name || 'référentiel conservé'), objectiveChoices(session), session.objectiveIds || [], ids => update({ objectiveIds: ids }, true), 'session-objectives');
-        const preparationHost = make('div'); editor.append(preparationHost); preparation(preparationHost, session);
+        const preparationHost = make('div'); advanced.append(preparationHost); preparation(preparationHost, session);
         const conductor = make('section', undefined, 'session-conductor');
         conductor.append(make('h4', 'Conducteur'));
         conductor.append(make('p', 'Les minutes sont comptées depuis le début de la séance. Monter / Descendre change l’ordre, sans déplacer les horaires. Sans élève sélectionné, le créneau concerne toute la classe.', 'teacher-caption'));
@@ -249,8 +279,7 @@
           const id = crypto.randomUUID(); if (edit(() => model.addSlot(doc, session.id, id), true)) renderSlots(id);
         }, 'add-slot'));
         field(conductor, 'Rappels à imprimer (un par ligne)', 'session-reminders', session.conductor.reminders.join('\n'), 'textarea', value => edit(() => model.setReminders(doc, session.id, value.split('\n').filter(text => text.trim()))));
-        editor.append(conductor);
-        field(editor, 'Notes générales de séance (non imprimées)', 'session-notes', session.notes, 'textarea', value => update({ notes: value }));
+        advanced.append(conductor);
         const preview = disclosure(editor, 'Aperçu du conducteur à imprimer');
         const previewContent = make('div'); preview.append(previewContent);
         preview.addEventListener('toggle', () => { if (preview.open) previewContent.replaceChildren(printDocument(session)); });

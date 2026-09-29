@@ -346,6 +346,27 @@
           }
           name.addEventListener('change', update); context.addEventListener('change', update);
           editClass.append(make('p', 'teacher-caption', 'Les changements sont enregistrés en quittant le champ.'));
+          const deleteClass = button('Supprimer cette classe', () => {
+            const sessionCount = doc.sessions.filter(item => item.classId === c.id).length;
+            if (sessionCount) {
+              showError('La classe « ' + c.name + ' » possède ' + sessionCount + ' séance' +
+                (sessionCount > 1 ? 's' : '') + ' historique' + (sessionCount > 1 ? 's' : '') +
+                '. Sa suppression est bloquée pour préserver cet historique.');
+              return;
+            }
+            const membershipCount = doc.memberships.filter(item => item.classId === c.id).length;
+            const membershipText = membershipCount === 0 ? 'Aucun rattachement élève ne sera supprimé.' :
+              membershipCount === 1 ? '1 rattachement élève sera retiré.' :
+                membershipCount + ' rattachements élèves seront retirés.';
+            if (!window.confirm('Supprimer la classe « ' + c.name + ' » ?\n\n' +
+              membershipText + ' Les fiches élèves et leurs progressions seront conservées. Cette action est irréversible.')) return;
+            const nextClassId = doc.classes.find(item => item.id !== c.id)?.id || null;
+            if (edit(() => model.deleteClass(doc, c.id), true)) {
+              classId = nextClassId; studentId = null; view = 'students'; render();
+              fieldset.querySelector('#class-select')?.focus();
+            }
+          });
+          deleteClass.id = 'delete-class'; deleteClass.classList.add('button--danger'); editClass.append(deleteClass);
           top.append(editClass);
           const frameworkLabel = make('label', '', 'Référentiel externe de la classe (facultatif)'); frameworkLabel.htmlFor = 'class-framework';
           const frameworkSelect = make('select'); frameworkSelect.id = 'class-framework';

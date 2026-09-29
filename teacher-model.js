@@ -64,6 +64,7 @@
     sessions: array(object({
       id, classId: id, date, status: choice('draft', 'completed', 'archived'),
       title: optional(str), className: optional(str), startTime: optional(str),
+      quickConductor: optional(str),
       roster: optional(array(object({ studentId: id, name: id }))),
       skillIds: ids, moduleIds: optional(ids),
       frameworkId: optional(id), objectiveIds: optional(ids),
@@ -296,6 +297,18 @@
     else delete item.contextId;
     return true;
   }
+  function deleteClass(doc, classId) {
+    const classroom = find(doc.classes, classId, 'Classe');
+    const sessions = doc.sessions.filter(item => item.classId === classId);
+    if (sessions.length) {
+      throw new Error('La classe « ' + classroom.name + ' » possède ' + sessions.length + ' séance' +
+        (sessions.length > 1 ? 's' : '') + ' historique' + (sessions.length > 1 ? 's' : '') +
+        '. Sa suppression est bloquée pour préserver cet historique.');
+    }
+    doc.classes = doc.classes.filter(item => item.id !== classId);
+    doc.memberships = doc.memberships.filter(item => item.classId !== classId);
+    return true;
+  }
   function setClassFramework(doc, classId, frameworkId) {
     const item = find(doc.classes, classId, 'Classe');
     if (frameworkId) find(doc.frameworks, frameworkId, 'Référentiel');
@@ -449,7 +462,7 @@
     }));
     const session = {
       id: sessionId, classId, className: classroom.name, date: day, title,
-      status: 'draft', startTime: '', roster, skillIds: [], moduleIds: [], objectiveIds: [],
+      status: 'draft', startTime: '', quickConductor: '', roster, skillIds: [], moduleIds: [], objectiveIds: [],
       attendance: roster.map(item => ({ studentId: item.studentId, status: 'unknown' })),
       conductor: { title: '', slots: [], reminders: [] }, notes: ''
     };
@@ -468,7 +481,7 @@
     return true;
   }
   function updateSession(doc, sessionId, patch) {
-    const allowed = ['date', 'title', 'startTime', 'status', 'skillIds', 'moduleIds', 'objectiveIds', 'notes'];
+    const allowed = ['date', 'title', 'startTime', 'quickConductor', 'status', 'skillIds', 'moduleIds', 'objectiveIds', 'notes'];
     if (Object.keys(patch).some(key => !allowed.includes(key))) throw new Error('Champ de séance non modifiable.');
     return changeSession(doc, sessionId, copy => Object.assign(copy, JSON.parse(JSON.stringify(patch))));
   }
@@ -479,6 +492,17 @@
       const item = copy.attendance.find(item => item.studentId === studentId);
       if (item) item.status = status;
       else copy.attendance.push({ studentId, status });
+    });
+  }
+  function setAllAttendance(doc, sessionId, status) {
+    if (!['present', 'absent', 'unknown'].includes(status)) throw new Error('Statut de présence invalide.');
+    return changeSession(doc, sessionId, copy => {
+      copy.attendance ||= [];
+      for (const member of sessionRoster(doc, copy)) {
+        const item = copy.attendance.find(entry => entry.studentId === member.studentId);
+        if (item) item.status = status;
+        else copy.attendance.push({ studentId: member.studentId, status });
+      }
     });
   }
   function addSlot(doc, sessionId, slotId) {
@@ -523,8 +547,8 @@
     return changeSession(doc, sessionId, copy => { copy.conductor.reminders = [...reminders]; });
   }
   const api = { schema, validate, parse, create, prepareSave, serialize,
-    addSession, updateSession, sessionRoster, setAttendance, addSlot, updateSlot, moveSlot, removeSlot, setReminders,
-    addClass, updateClass, setClassFramework, addStudent, attachStudent, studentsOutsideClass, setMembershipPathway,
+    addSession, updateSession, sessionRoster, setAttendance, setAllAttendance, addSlot, updateSlot, moveSlot, removeSlot, setReminders,
+    addClass, updateClass, deleteClass, setClassFramework, addStudent, attachStudent, studentsOutsideClass, setMembershipPathway,
     removeStudentFromClass, deleteStudent, updateStudent,
     getProgress, updateProgress, getFrameworkProgress, updateFrameworkProgress,
     parseFrameworkPackage, importFramework, objectivesOf };

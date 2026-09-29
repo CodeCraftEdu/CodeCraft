@@ -47,9 +47,13 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   const a = initialStudent.id;
   const [b, c] = session.roster.map(item => item.studentId).filter(id => id !== a);
   const historicalName = session.roster.find(item => item.studentId === a).name;
+  assert.equal(await evaluate('document.getElementById("session-advanced").open'), false);
+  const quickConductor = '14:00–14:10 — Accueil\n14:10–14:30 — Mini-page\n14:30–14:50 — Images';
+  await input('#session-quick-conductor', quickConductor);
   assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + a + '"]') + ').textContent')).includes('Parcours actuel dans cette classe : Débutants'));
   assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + b + '"]') + ').textContent')).includes('Non renseigné'));
-  await input('#attendance-' + a, 'present', 'change');
+  await click('#mark-all-present'); await saved();
+  assert((JSON.parse(await evaluate('readTestFile()')).sessions[0].attendance).every(item => item.status === 'present'));
   await input('#attendance-' + b, 'absent', 'change');
   await input('#session-start-time', '14:00', 'change');
   await click('[data-choice="session-skills"][data-value="html.images"]');
@@ -75,7 +79,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await click('#add-slot'); await saved();
   await evaluate('window.confirm=()=>true'); await click('.session-slot:last-child [data-remove-slot]'); await saved();
   assert.equal(JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots.length, 3);
-  await input('#session-status', 'completed', 'change'); await saved();
+  await click('#finish-session'); await saved();
   let document = JSON.parse(await evaluate('readTestFile()'));
   assert.deepEqual(document.progress, initial.progress); assert.deepEqual(document.frameworkProgress, initial.frameworkProgress);
   session = document.sessions[0];
@@ -94,7 +98,8 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   assert.equal(await evaluate('document.querySelector(".session-slot > summary").tabIndex'), 0);
   await evaluate('window.dispatchEvent(new Event("beforeprint"))');
   const printed = await evaluate('document.getElementById("session-print").textContent');
-  assert(printed.includes('14:00–14:10')); assert(printed.includes('Nom actuel modifié')); assert(printed.includes('Instruction fictive 3'));
+  assert(printed.includes('Conducteur rapide')); assert(printed.includes('14:10–14:30 — Mini-page'));
+  assert(printed.includes('Conducteur structuré')); assert(printed.includes('14:00–14:10')); assert(printed.includes('Nom actuel modifié')); assert(printed.includes('Instruction fictive 3'));
   for (const forbidden of ['REMARQUE PRIVÉE ÉLÈVE', 'NOTE PRIVÉE DE SÉANCE', 'Remarque fictive', 'workspaceId']) assert(!printed.includes(forbidden), forbidden);
   await call('Emulation.setEmulatedMedia', { media: 'print' });
   assert.equal(await evaluate('getComputedStyle(document.getElementById("main-content")).display'), 'none');
@@ -109,6 +114,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await wait('!window.sessionTestReloadMarker && document.readyState === "complete" && !!document.getElementById("view-sessions") && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
   await click('#view-sessions'); await click('[data-session-id]');
   assert.equal(await evaluate('document.querySelectorAll(".session-slot").length'), 3);
+  assert.equal(await evaluate('document.getElementById("session-quick-conductor").value'), quickConductor);
   assert.equal(await evaluate('document.getElementById("session-notes").value'), 'NOTE PRIVÉE DE SÉANCE');
   assert.deepEqual(JSON.parse(await evaluate('readTestFile()')).sessions[0], session);
   await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -162,4 +168,20 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await click('#view-students');
   await evaluate('window.dispatchEvent(new Event("beforeprint"))');
   assert(!(await evaluate('document.getElementById("session-print").textContent')).includes('Instruction fictive'));
+  // Une classe avec historique est protégée avant confirmation.
+  await evaluate('window.classDeleteConfirmCalls=0;window.confirm=()=>{window.classDeleteConfirmCalls++;return true}');
+  await click('#delete-class');
+  assert.equal(await evaluate('window.classDeleteConfirmCalls'), 0);
+  assert((await evaluate('document.querySelector("#classroom > .teacher-error").textContent')).includes('séance historique'));
+  // Une classe sans séance peut être supprimée ; les autres données restent disponibles.
+  await input('#class-select', secondClassId, 'change');
+  await evaluate('window.confirm=()=>true'); await click('#delete-class'); await saved();
+  let afterClassDeletion = JSON.parse(await evaluate('readTestFile()'));
+  assert(!afterClassDeletion.classes.some(item => item.id === secondClassId));
+  assert(afterClassDeletion.classes.some(item => item.id === initial.classes[0].id));
+  assert(!afterClassDeletion.memberships.some(item => item.classId === secondClassId));
+  await evaluate('window.classDeletionReloadMarker=true'); await call('Page.reload');
+  await wait('!window.classDeletionReloadMarker && document.readyState === "complete" && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
+  afterClassDeletion = JSON.parse(await evaluate('readTestFile()'));
+  assert(!afterClassDeletion.classes.some(item => item.id === secondClassId));
 };

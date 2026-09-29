@@ -95,6 +95,27 @@ test('classes : création, renommage, contexte facultatif sans modifier les autr
   assert.equal(doc.classes[0].contextId, undefined);
   model.validate(doc);
 });
+test('suppression de classe sans séance : rattachements retirés, fiches et progressions conservées', () => {
+  const doc = fresh();
+  model.addClass(doc, { id: 'c1', name: 'Classe à supprimer' });
+  model.addClass(doc, { id: 'c2', name: 'Classe conservée' });
+  model.addStudent(doc, { id: 's', name: 'Élève fictif', classId: 'c1' });
+  model.attachStudent(doc, 'c2', 's');
+  model.updateProgress(doc, 's', 'html.text', { status: 'in-progress' });
+  model.deleteClass(doc, 'c1');
+  assert.deepEqual(doc.classes.map(item => item.id), ['c2']);
+  assert.deepEqual(doc.memberships, [{ classId: 'c2', studentId: 's' }]);
+  assert.equal(doc.students[0].name, 'Élève fictif');
+  assert.equal(doc.progress[0].status, 'in-progress');
+  model.validate(doc);
+});
+test('suppression de classe avec séances bloquée sans mutation', () => {
+  const doc = fresh(); model.addClass(doc, { id: 'c', name: 'Classe historique' });
+  model.addSession(doc, { id: 'session', classId: 'c', date: '2026-09-29' });
+  const before = model.serialize(doc);
+  assert.throws(() => model.deleteClass(doc, 'c'), /possède 1 séance historique.*préserver cet historique/);
+  assert.equal(model.serialize(doc), before);
+});
 test('élève indépendant, rattachements multiples sans duplication de fiche ou progression', () => {
   const doc = fresh();
   model.addClass(doc, { id: 'c1', name: 'Classe fictive 1' });

@@ -26,6 +26,7 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - Identifiants et codes des objectifs sont uniques à l’intérieur d’une version. Pour une autre version, créer une autre entrée avec un nouvel id ; les classes conservent ainsi leur référence. Les mappings ne valident jamais automatiquement les objectifs.
   - L’ancienne forme expérimentale `objectives` avec `skillIds` reste lisible, mais les nouveaux imports utilisent obligatoirement niveaux, étapes et mappings explicites.
 - **classes** : `id`, `name`, `contextId` facultatif, `frameworkId` facultatif.
+  - Supprimer une classe sans séance retire ses `memberships` mais conserve les fiches `students`, leurs progressions et les référentiels. Une classe référencée par une séance ne peut pas être supprimée, afin de préserver l’accès et la validité de l’historique.
 - **students** : `id`, `name`, `note` facultative. Aucun autre champ personnel.
 - **memberships** : `classId`, `studentId`, `pathwayId` facultatif. Un seul rattachement par couple ; plusieurs classes possibles pour un même élève, chacune avec son propre parcours courant.
   - `pathwayId` référence un parcours CodeCraft existant ; sa validité est contrôlée avec le catalogue à l’ouverture et lors du choix. L’absence de champ signifie « Non renseigné » ; retirer le choix supprime ce champ facultatif.
@@ -41,7 +42,8 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - Un seul enregistrement par triplet élève/référentiel/objectif. L’absence d’entrée signifie À voir.
   - Les règles de statut, date et remarque sont les mêmes que pour `progress`, mais la décision reste entièrement indépendante des compétences CodeCraft correspondantes.
 - **sessions** : `id`, `classId`, `date` (`YYYY-MM-DD`), `status` (`draft`, `completed`, `archived`), `skillIds`, `attendance` facultatif, `conductor`, `notes`.
-  - Extensions facultatives : `title`, `className`, `startTime` (vide ou `HH:mm`), `roster`, `moduleIds`, `frameworkId`, `objectiveIds`.
+  - Extensions facultatives : `title`, `className`, `startTime` (vide ou `HH:mm`), `quickConductor`, `roster`, `moduleIds`, `frameworkId`, `objectiveIds`.
+  - `quickConductor` est le conducteur libre multiligne. Il reste indépendant de `conductor` et son absence dans une ancienne séance équivaut à un texte vide.
   - `roster` contient `{ studentId, name }` pour chaque élève rattaché à la classe lors de la création. La liste des élèves, le nom de classe, le référentiel et les noms de secours restent des copies historiques que les modifications ultérieures ne réécrivent pas. À l’affichage uniquement, le nom actuel de `students` est préféré lorsque le `studentId` existe encore ; sinon `roster.name` reste le nom de secours.
   - Dans une ancienne séance sans `roster`, les participants sont lus à partir des présences et des cibles existantes, sans ajout automatique des membres actuels de la classe.
   - `objectiveIds` désigne uniquement les objectifs du `frameworkId` conservé dans la séance. Ces choix n’agissent jamais sur `frameworkProgress` ou `progress`.

@@ -60,7 +60,8 @@ Les cases servent uniquement de repères pendant que la page reste ouverte. Leur
 - « Retirer de cette classe » supprime seulement le rattachement courant après confirmation. La fiche globale, les progressions et les séances historiques restent intactes.
 - « Supprimer définitivement l’élève » est une action secondaire signalée visuellement. Depuis sa dernière classe, elle supprime en une seule opération le rattachement courant, la fiche et ses progressions actuelles après confirmation. Si l’élève appartient aussi à d’autres classes, l’action est bloquée avant confirmation et indique lesquelles doivent d’abord le retirer. Les snapshots des séances sont toujours conservés.
 - Dans les vues historiques et l’impression, un `studentId` encore présent dans `students` affiche toujours le nom actuel de l’élève. Si la fiche globale a été supprimée, le nom conservé dans le snapshot de séance sert de secours. Le renommage ne réécrit donc jamais les anciennes séances.
-- Aucune progression n’est dérivée des cases du site élève. Aucune suppression de classe n’est proposée.
+- « Supprimer cette classe », dans le panneau de modification, retire la classe et ses rattachements après confirmation tout en conservant les fiches élèves et leurs progressions. Une classe possédant des séances historiques est protégée : la suppression est bloquée avec une explication afin de ne pas perdre cet historique.
+- Aucune progression n’est dérivée des cases du site élève.
 
 ### Référentiels externes privés
 
@@ -74,16 +75,20 @@ Le statut de sauvegarde et le bouton de réessai restent visibles pendant le dé
 
 ### Séances et conducteurs
 
-Dans une classe, les boutons **Élèves / Séances** permettent de passer du suivi à la préparation. Une nouvelle séance demande une date et un titre facultatif. La liste actuelle des élèves est affichée avant création, puis conservée dans la séance avec leurs noms. Toutes les présences commencent à **Non renseigné** ; cela ne signifie pas absent.
+Dans une classe, les boutons **Élèves / Séances** permettent de passer du suivi à la préparation. La date d’une nouvelle séance est préremplie, le titre est facultatif et la composition actuelle de la classe est automatiquement conservée avec les noms. La séance peut être créée immédiatement sans préparation avancée. Toutes les présences commencent à **Non renseigné** ; cela ne signifie pas absent.
 
 L’historique est limité à la classe sélectionnée, trié par date décroissante. Cliquer sur une séance permet de la modifier, y compris lorsqu’elle est Terminée ou Archivée. Le référentiel de la classe au moment de la création est conservé dans la séance, même si celui de la classe change ensuite.
 
-- Choisir facultativement des compétences, modules et objectifs externes dans les sections repliables. Aucun choix, statut ou présence ne modifie les progressions.
+- **Conducteur rapide** accepte un déroulé libre sur plusieurs lignes, sauvegardé automatiquement et repris tel quel dans l’impression. Il est indépendant du conducteur structuré.
+- **Tout le monde présent** marque tout le roster Présent en un clic ; il suffit ensuite de corriger les absents. **Non renseigné** reste disponible individuellement.
+- Les éléments quotidiens restent visibles : date, titre, conducteur rapide, présences, notes et bouton **Terminer la séance**. Ce bouton ne valide aucune compétence.
+- **Préparation avancée** conserve dans un panneau replié le statut complet, l’heure de départ, les compétences, modules, objectifs externes, l’aide à la préparation et le conducteur structuré. Aucun de ces champs n’est obligatoire.
+- Choisir facultativement des compétences, modules et objectifs externes. Aucun choix, statut ou présence ne modifie les progressions.
 - Consulter l’aide à la préparation : élèves, parcours actuel dans cette classe (issu du rattachement, ou « Non renseigné »), présences, compétences actuelles En cours / Acquises, liens vers les modules et objectifs officiels. Le parcours courant ne renseigne ni ne modifie automatiquement le parcours des créneaux, qui reste choisi par le professeur.
 - Ajouter des créneaux : minute de début, durée, titre, instructions, élèves ciblés, parcours et ressources facultatifs. Une heure de départ facultative permet d’afficher les horaires correspondants. Sans élève ciblé, le créneau s’adresse à toute la classe.
 - **Monter / Descendre** change l’ordre des créneaux, sans recalculer leurs horaires. **Supprimer** demande confirmation. Les créneaux sont repliables pour une lecture rapide pendant le cours.
 - Les notes générales restent privées et ne sont pas imprimées. Les rappels, saisis à raison d’un par ligne, figurent sur le conducteur imprimé.
-- Le bouton **Imprimer le conducteur / PDF**, ou **Ctrl+P** depuis une séance ouverte, imprime seulement son conducteur, ses objectifs et ressources utiles. Les remarques élèves, leur progression complète et les outils de gestion sont exclus. Choisir **Enregistrer au format PDF** dans Chrome/Edge ; désactiver les en-têtes/pieds de page du navigateur si nécessaire.
+- Le bouton **Imprimer le conducteur / PDF**, ou **Ctrl+P** depuis une séance ouverte, imprime le conducteur rapide lorsqu’il existe et le conducteur structuré sous un titre distinct lorsqu’il existe aussi, ainsi que les objectifs et ressources utiles. Les remarques élèves, leur progression complète et les outils de gestion sont exclus. Choisir **Enregistrer au format PDF** dans Chrome/Edge ; désactiver les en-têtes/pieds de page du navigateur si nécessaire.
 
 Les séances restent dans le même `espace-codecraft.json`. Les clics déclenchent la sauvegarde immédiatement ; les textes sont sauvegardés après une pause de 600 ms. La préparation ne crée aucun autre fichier privé. Une impression ou un PDF est uniquement un export volontaire.
 
