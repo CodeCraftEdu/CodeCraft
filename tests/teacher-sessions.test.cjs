@@ -27,7 +27,7 @@ test('création : composition figée, présences inconnues, classe et référent
   doc.memberships = []; doc.classes[0].name = 'Renommée';
   model.validate(doc);
   assert.equal(JSON.stringify(session), before);
-  assert.equal(model.sessionRoster(doc, session)[0].name, 'Fictif a');
+  assert.equal(model.sessionRoster(doc, session)[0].name, 'Nouveau nom');
 });
 test('objectifs, absences, fin et archive ne valident aucune progression', () => {
   const doc = setup(); model.addSession(doc, { id: 's', classId: 'c', date: '2026-09-29' });

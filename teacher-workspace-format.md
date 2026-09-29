@@ -30,6 +30,8 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
 - **memberships** : `classId`, `studentId`, `pathwayId` facultatif. Un seul rattachement par couple ; plusieurs classes possibles pour un même élève, chacune avec son propre parcours courant.
   - `pathwayId` référence un parcours CodeCraft existant ; sa validité est contrôlée avec le catalogue à l’ouverture et lors du choix. L’absence de champ signifie « Non renseigné » ; retirer le choix supprime ce champ facultatif.
   - Les anciens fichiers sans ce champ restent valides sans migration ni réécriture. Il n’est pas ajouté à `students` et n’a aucun effet sur les progressions ou les créneaux historiques.
+  - Retirer un élève d’une classe supprime uniquement le rattachement concerné. La suppression globale lancée depuis sa dernière classe supprime atomiquement ce rattachement, la fiche, ses entrées `progress` et `frameworkProgress`. Elle est refusée si des rattachements à d’autres classes subsistent et ne supprime jamais les données des séances.
+  - Rattacher une fiche existante ajoute seulement un nouvel objet `membership`, sans dupliquer `students` ni ses progressions. Le nouveau rattachement n’a pas de `pathwayId` tant que le professeur ne le choisit pas.
 - **progress** : `studentId`, `skillId`, `status`, `acquiredOn`, `updatedAt`, `note` facultative.
   - Un seul enregistrement par couple élève/compétence.
   - `not-started` = À voir ; `in-progress` = En cours ; `acquired` = Acquis.
@@ -40,7 +42,7 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - Les règles de statut, date et remarque sont les mêmes que pour `progress`, mais la décision reste entièrement indépendante des compétences CodeCraft correspondantes.
 - **sessions** : `id`, `classId`, `date` (`YYYY-MM-DD`), `status` (`draft`, `completed`, `archived`), `skillIds`, `attendance` facultatif, `conductor`, `notes`.
   - Extensions facultatives : `title`, `className`, `startTime` (vide ou `HH:mm`), `roster`, `moduleIds`, `frameworkId`, `objectiveIds`.
-  - `roster` contient `{ studentId, name }` pour chaque élève rattaché à la classe lors de la création. Noms, liste des élèves, nom de classe et référentiel sont des copies historiques. Les modifications ultérieures des fiches ou de la classe ne les réécrivent pas.
+  - `roster` contient `{ studentId, name }` pour chaque élève rattaché à la classe lors de la création. La liste des élèves, le nom de classe, le référentiel et les noms de secours restent des copies historiques que les modifications ultérieures ne réécrivent pas. À l’affichage uniquement, le nom actuel de `students` est préféré lorsque le `studentId` existe encore ; sinon `roster.name` reste le nom de secours.
   - Dans une ancienne séance sans `roster`, les participants sont lus à partir des présences et des cibles existantes, sans ajout automatique des membres actuels de la classe.
   - `objectiveIds` désigne uniquement les objectifs du `frameworkId` conservé dans la séance. Ces choix n’agissent jamais sur `frameworkProgress` ou `progress`.
   - `attendance` : tableau de `{ studentId, status }`, où status est `present`, `absent` ou `unknown` ; absence d’entrée = non renseigné. Un élève n’apparaît qu’une fois.
@@ -49,7 +51,7 @@ Les champs sont obligatoires sauf mention « facultatif ». Les champs inconnus 
   - Chaque créneau : `id`, `startMinute` (entier ≥ 0 depuis le début de la séance), `durationMinutes` (entier > 0), `title`, `instructions` (texte), `moduleIds`, `skillIds`, `studentIds` et `pathwayId` facultatifs.
   - L’ordre du tableau `slots` est l’ordre du conducteur. Un déplacement n’ajuste pas les minutes ; le professeur garde la maîtrise des horaires, y compris les chevauchements volontaires. Sans `startTime`, l’impression affiche les minutes ; sinon elle calcule les heures correspondantes.
   - Les listes d’identifiants n’ont pas de doublons. Les ids de créneaux sont uniques dans le conducteur.
-  - `studentIds` et `pathwayId` sont des snapshots : ils ne sont jamais recalculés à partir de la progression ou des rattachements courants. La validation ne les compare pas à la composition actuelle de la classe. Un élève historique référencé doit rester dans la collection students ; sa suppression physique rendrait le document invalide.
+  - `roster`, `attendance`, `studentIds` et `pathwayId` sont des snapshots : ils ne sont jamais recalculés à partir de la progression ou des rattachements courants. La validation ne les compare pas aux fiches ou à la composition actuelle de la classe. Une fiche globale peut donc être supprimée sans réécrire ni invalider une ancienne séance. Les nouvelles séances conservent le nom dans `roster` ; une ancienne séance sans roster conserve au minimum ses identifiants historiques.
 
 ## Références et validation
 

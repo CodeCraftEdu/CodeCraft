@@ -51,13 +51,16 @@ Les cases servent uniquement de repères pendant que la page reste ouverte. Leur
 ### Classes, élèves et compétences
 
 - Créer une classe avec son nom et, facultativement, un contexte/organisme en texte libre. La liste « Classe sélectionnée » permet de changer de classe. Son nom et son contexte peuvent être modifiés dans « Renommer / modifier le contexte » ; ces changements sont enregistrés à la sortie du champ.
-- Ajouter un élève avec son seul prénom ou nom d’affichage. Il est rattaché à la classe sélectionnée, mais sa fiche reste indépendante dans `students` ; `memberships` décrit le rattachement. Aucun écran de rattachement multiple n’est nécessaire à cette étape, mais les fichiers qui en contiennent sont correctement lus et la progression reste commune à l’élève.
-- Cliquer sur un élève ouvre sa fiche. « Nom et remarque générale » permet de modifier son nom (en quittant le champ) et sa remarque facultative.
+- « Ajouter un nouvel élève » crée une fiche avec son seul prénom ou nom d’affichage puis la rattache à la classe. « Ajouter un élève existant » propose les fiches qui ne sont pas encore membres de la classe et crée uniquement le `membership` : les progressions restent communes à l’élève. Si un nom strictement identique existe déjà, l’interface propose de rattacher ou d’ouvrir cette fiche tout en laissant possible la création d’un véritable homonyme.
+- Cliquer sur un élève ouvre sa fiche. « Modifier le nom, la remarque ou gérer l’élève » permet de modifier son nom (en quittant le champ), sa remarque facultative et son rattachement.
 - « Parcours actuel dans cette classe » permet de choisir un parcours CodeCraft ou « Non renseigné ». Le choix est sauvegardé immédiatement dans le rattachement `memberships`, jamais dans la fiche globale `students`. Un même élève peut ainsi avoir des parcours différents selon la classe.
 - Les compétences du catalogue apparaissent avec leurs libellés humains, regroupées en HTML et CSS. Les boutons « À voir », « En cours », « Acquis » appliquent uniquement la décision du professeur. La sauvegarde démarre immédiatement après le clic, ou prend la suite d’une écriture déjà en cours.
 - Sans entrée de progression, la compétence est « À voir ». Passer à « Acquis » renseigne la date locale du jour. Recliquer « Acquis » ne change pas la date. Revenir à un autre statut l’efface. Les remarques sont conservées ; les modifier ne change ni statut ni date.
 - Les remarques générales et par compétence sont enregistrées après 600 ms sans saisie. On peut changer d’élève pendant cette attente : la remarque reste attachée à la bonne fiche.
-- Aucune progression n’est dérivée des cases du site élève. Aucune suppression de classe, d’élève ou de progression n’est proposée.
+- « Retirer de cette classe » supprime seulement le rattachement courant après confirmation. La fiche globale, les progressions et les séances historiques restent intactes.
+- « Supprimer définitivement l’élève » est une action secondaire signalée visuellement. Depuis sa dernière classe, elle supprime en une seule opération le rattachement courant, la fiche et ses progressions actuelles après confirmation. Si l’élève appartient aussi à d’autres classes, l’action est bloquée avant confirmation et indique lesquelles doivent d’abord le retirer. Les snapshots des séances sont toujours conservés.
+- Dans les vues historiques et l’impression, un `studentId` encore présent dans `students` affiche toujours le nom actuel de l’élève. Si la fiche globale a été supprimée, le nom conservé dans le snapshot de séance sert de secours. Le renommage ne réécrit donc jamais les anciennes séances.
+- Aucune progression n’est dérivée des cases du site élève. Aucune suppression de classe n’est proposée.
 
 ### Référentiels externes privés
 
@@ -122,7 +125,7 @@ Les référentiels externes, leurs versions, objectifs et mappings sont privés 
 Tests sans dépendance supplémentaire (Node.js nécessaire pour les tests uniquement) :
 
 ```bash
-node --test tests/teacher.test.cjs tests/teacher-sessions.test.cjs
+node --test tests/teacher.test.cjs tests/teacher-sessions.test.cjs tests/teacher-student-removal.test.cjs
 ```
 
 Les tests utilisent des documents fictifs et des fichiers simulés en mémoire, sans accéder au Google Drive de l’utilisateur.

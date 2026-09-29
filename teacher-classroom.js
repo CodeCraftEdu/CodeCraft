@@ -177,22 +177,27 @@
         const title = make('h3', 'section-title', student.name); title.tabIndex = -1;
         container.append(title);
         const membership = doc.memberships.find(item => item.classId === classId && item.studentId === student.id);
-        const pathwayField = make('div', 'teacher-field');
-        const pathwayLabel = make('label', '', 'Parcours actuel dans cette classe'); pathwayLabel.htmlFor = 'student-pathway';
-        const pathwaySelect = make('select'); pathwaySelect.id = 'student-pathway';
-        const unset = make('option', '', 'Non renseigné'); unset.value = ''; pathwaySelect.append(unset);
-        for (const [id, pathway] of Object.entries(catalog.pathways)) {
-          const option = make('option', '', pathway.title); option.value = id; pathwaySelect.append(option);
-        }
-        pathwaySelect.value = membership?.pathwayId || '';
-        pathwaySelect.addEventListener('change', () => {
-          if (!edit(() => model.setMembershipPathway(doc, classId, student.id, pathwaySelect.value, catalog), true)) {
-            pathwaySelect.value = membership?.pathwayId || '';
+        if (membership) {
+          const pathwayField = make('div', 'teacher-field');
+          const pathwayLabel = make('label', '', 'Parcours actuel dans cette classe'); pathwayLabel.htmlFor = 'student-pathway';
+          const pathwaySelect = make('select'); pathwaySelect.id = 'student-pathway';
+          const unset = make('option', '', 'Non renseigné'); unset.value = ''; pathwaySelect.append(unset);
+          for (const [id, pathway] of Object.entries(catalog.pathways)) {
+            const option = make('option', '', pathway.title); option.value = id; pathwaySelect.append(option);
           }
-        });
-        pathwayField.append(pathwayLabel, pathwaySelect); container.append(pathwayField);
+          pathwaySelect.value = membership.pathwayId || '';
+          pathwaySelect.addEventListener('change', () => {
+            if (!edit(() => model.setMembershipPathway(doc, classId, student.id, pathwaySelect.value, catalog), true)) {
+              pathwaySelect.value = membership.pathwayId || '';
+            }
+          });
+          pathwayField.append(pathwayLabel, pathwaySelect); container.append(pathwayField);
+        } else {
+          container.append(make('p', 'teacher-caption', 'Cet élève a été retiré de cette classe. Sa fiche globale et ses progressions sont encore conservées.'));
+        }
         const details = make('details', 'teacher-student-details');
-        details.append(make('summary', '', 'Nom et remarque générale'));
+        details.append(make('summary', '', 'Modifier le nom, la remarque ou gérer l’élève'));
+        details.append(make('p', 'teacher-caption', 'Le nom est enregistré en quittant le champ. La remarque est enregistrée après une courte pause.'));
         const name = input(details, 'Prénom ou nom d’affichage', 'student-name', student.name);
         name.required = true;
         name.addEventListener('change', () => {
@@ -205,6 +210,35 @@
         });
         const note = input(details, 'Remarque générale (facultative)', 'student-note', student.note || '', true);
         note.addEventListener('input', () => edit(() => model.updateStudent(doc, student.id, { note: note.value })));
+        const actions = make('div', 'teacher-student-actions');
+        if (membership) {
+          const remove = button('Retirer de cette classe', () => {
+            const classroom = doc.classes.find(item => item.id === classId);
+            if (!window.confirm('Retirer ' + student.name + ' de « ' + classroom.name + ' » ?\n\nLa fiche, les progressions et les anciennes séances seront conservées.')) return;
+            if (edit(() => model.removeStudentFromClass(doc, classId, student.id), true)) {
+              render(); fieldset.querySelector('.teacher-profile h3')?.focus();
+            }
+          });
+          remove.id = 'remove-student-from-class'; actions.append(remove);
+        }
+        const danger = button('Supprimer définitivement l’élève', () => {
+          const otherClasses = doc.memberships
+            .filter(item => item.studentId === student.id && item.classId !== classId)
+            .map(item => doc.classes.find(entry => entry.id === item.classId)?.name || item.classId);
+          if (otherClasses.length) {
+            showError('Cet élève appartient encore à : ' + otherClasses.join(', ') +
+              '. Retirez-le d’abord de ces classes avant de le supprimer définitivement.');
+            return;
+          }
+          if (!window.confirm('Supprimer définitivement ' + student.name + ' ?\n\nSa fiche et ses progressions actuelles seront supprimées. Les anciennes séances resteront intactes. Cette action est irréversible.')) return;
+          const nextStudentId = doc.memberships.find(item => item.classId === classId && item.studentId !== student.id)?.studentId || null;
+          if (edit(() => model.deleteStudent(doc, student.id, classId), true)) {
+            studentId = nextStudentId; render();
+            (fieldset.querySelector('.teacher-profile h3') || fieldset.querySelector('.teacher-roster h3'))?.focus();
+          }
+        });
+        danger.id = 'delete-student-permanently'; danger.classList.add('button--danger'); actions.append(danger);
+        details.append(actions);
         container.append(details, make('p', 'teacher-caption', 'Décision manuelle du professeur. Une case cochée côté élève ne valide aucune compétence.'));
         renderFramework(container, frameworkForClass(), student);
         const groups = new Map();
@@ -344,17 +378,80 @@
         const sidebar = make('section', 'content-card teacher-roster');
         const heading = make('h3', 'section-title'); sidebar.append(heading);
         const list = make('div', 'teacher-student-list'); sidebar.append(list);
+        const newStudent = make('details', 'teacher-add-student-panel');
+        newStudent.append(make('summary', '', 'Ajouter un nouvel élève'));
         const add = make('form', 'teacher-add-student');
         const studentName = input(add, 'Prénom ou nom d’affichage', 'new-student-name'); studentName.required = true;
-        const addButton = make('button', 'button button--primary', 'Ajouter un élève'); addButton.type = 'submit'; add.append(addButton);
+        const duplicateWarning = make('div', 'teacher-duplicate-warning');
+        duplicateWarning.setAttribute('role', 'alert'); duplicateWarning.hidden = true;
+        const addButton = make('button', 'button button--primary', 'Créer le nouvel élève'); addButton.type = 'submit'; add.append(duplicateWarning, addButton);
+        newStudent.append(add);
+        const existingStudent = make('details', 'teacher-add-student-panel');
+        existingStudent.append(make('summary', '', 'Ajouter un élève existant'));
+        const existingForm = make('form', 'teacher-add-existing');
+        const existingField = make('div', 'teacher-field');
+        const existingLabel = make('label', '', 'Élève à rattacher'); existingLabel.htmlFor = 'existing-student-select';
+        const existingSelect = make('select'); existingSelect.id = 'existing-student-select';
+        const available = model.studentsOutsideClass(doc, classId);
+        if (available.length) {
+          const placeholder = make('option', '', 'Choisir un élève'); placeholder.value = ''; existingSelect.append(placeholder);
+          for (const student of available) {
+            const option = make('option', '', student.name); option.value = student.id; existingSelect.append(option);
+          }
+          existingSelect.required = true;
+        } else {
+          const none = make('option', '', 'Aucun élève disponible'); none.value = ''; existingSelect.append(none);
+          existingSelect.disabled = true;
+        }
+        existingField.append(existingLabel, existingSelect); existingForm.append(existingField);
+        const attachButton = make('button', 'button button--secondary', 'Rattacher à cette classe');
+        attachButton.type = 'submit'; attachButton.disabled = !available.length; existingForm.append(attachButton);
+        existingStudent.append(existingForm);
         const profile = make('section', 'content-card teacher-profile');
+        function attachAndOpen(selectedId) {
+          if (edit(() => model.attachStudent(doc, classId, selectedId), true)) {
+            studentId = selectedId; render();
+            fieldset.querySelector('.teacher-profile h3')?.focus();
+          }
+        }
+        existingForm.addEventListener('submit', e => {
+          e.preventDefault();
+          if (existingSelect.value) attachAndOpen(existingSelect.value);
+        });
+        let duplicateConfirmed = false;
         add.addEventListener('submit', e => {
           e.preventDefault();
+          const cleanName = studentName.value.trim();
+          const matches = doc.students.filter(student => student.name === cleanName);
+          if (matches.length && !duplicateConfirmed) {
+            duplicateWarning.replaceChildren(
+              make('strong', '', 'Un élève porte déjà exactement ce nom.'),
+              make('p', 'teacher-caption', 'Tu peux rattacher sa fiche existante et conserver ses progressions, ou créer quand même un homonyme distinct.')
+            );
+            for (const match of matches) {
+              const isMember = doc.memberships.some(item => item.classId === classId && item.studentId === match.id);
+              const action = button(isMember ? 'Ouvrir la fiche existante' : 'Rattacher la fiche existante', () => {
+                if (isMember) {
+                  studentId = match.id; renderStudents(profile, list, heading); renderProfile(profile);
+                  profile.querySelector('h3')?.focus();
+                } else attachAndOpen(match.id);
+              });
+              action.dataset.existingStudentId = match.id; duplicateWarning.append(action);
+            }
+            const createAnyway = button('Créer quand même un homonyme', () => {
+              duplicateConfirmed = true; add.requestSubmit();
+            });
+            createAnyway.id = 'create-homonym-anyway'; duplicateWarning.append(createAnyway);
+            duplicateWarning.hidden = false;
+            return;
+          }
           if (edit(() => { studentId = model.addStudent(doc, { id: uid(), classId, name: studentName.value }).id; }, true)) {
-            studentName.value = ''; renderStudents(profile, list, heading); renderProfile(profile); profile.querySelector('h3').focus();
+            duplicateConfirmed = false; studentName.value = ''; duplicateWarning.hidden = true;
+            render(); fieldset.querySelector('.teacher-profile h3')?.focus();
           }
         });
-        sidebar.append(add); layout.append(sidebar, profile); fieldset.append(layout);
+        studentName.addEventListener('input', () => { duplicateConfirmed = false; duplicateWarning.hidden = true; });
+        sidebar.append(newStudent, existingStudent); layout.append(sidebar, profile); fieldset.append(layout);
         renderStudents(profile, list, heading); renderProfile(profile);
       }
       return {

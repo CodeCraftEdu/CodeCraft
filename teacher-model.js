@@ -208,7 +208,8 @@
       ref('classes', s.classId, 'sessions.classId');
       if (s.startTime && !/^([01]\d|2[0-3]):[0-5]\d$/.test(s.startTime)) fail('sessions.startTime', 'heure HH:mm attendue');
       unique(s.roster || [], item => item.studentId, 'sessions.roster');
-      (s.roster || []).forEach(item => ref('students', item.studentId, 'sessions.roster.studentId'));
+      // Composition, présences et cibles sont historiques : elles restent valides
+      // même si la fiche globale d'un élève est supprimée plus tard.
       ref('frameworks', s.frameworkId, 'sessions.frameworkId');
       (s.objectiveIds || []).forEach(objectiveId => {
         if (!frameworkObjectives.get(s.frameworkId)?.has(objectiveId)) fail('sessions.objectiveIds', 'objectif du référentiel de séance introuvable');
@@ -216,12 +217,10 @@
       s.skillIds.forEach(skill => publicRef('skills', skill));
       (s.moduleIds || []).forEach(item => publicRef('modules', item));
       unique(s.attendance || [], a => a.studentId, 'sessions.attendance');
-      (s.attendance || []).forEach(a => ref('students', a.studentId, 'sessions.attendance.studentId'));
       unique(s.conductor.slots, slot => slot.id, 'conductor.slots');
       s.conductor.slots.forEach(slot => {
         if (!slot.durationMinutes) fail('conductor.slots.durationMinutes', 'durée supérieure à zéro attendue');
         // Snapshot : pas de comparaison avec les rattachements ou parcours actuels.
-        (slot.studentIds || []).forEach(id => ref('students', id, 'conductor.slots.studentIds'));
         if (slot.pathwayId) publicRef('pathways', slot.pathwayId);
         (slot.moduleIds || []).forEach(id => publicRef('modules', id));
         (slot.skillIds || []).forEach(id => publicRef('skills', id));
@@ -311,6 +310,11 @@
     doc.memberships.push({ classId, studentId });
     return true;
   }
+  function studentsOutsideClass(doc, classId) {
+    find(doc.classes, classId, 'Classe');
+    const memberIds = new Set(doc.memberships.filter(item => item.classId === classId).map(item => item.studentId));
+    return doc.students.filter(item => !memberIds.has(item.id));
+  }
   function setMembershipPathway(doc, classId, studentId, pathwayId, catalog) {
     const membership = doc.memberships.find(item => item.classId === classId && item.studentId === studentId);
     if (!membership) throw new Error('Rattachement élève–classe introuvable.');
@@ -321,6 +325,30 @@
     if ((membership.pathwayId || '') === pathwayId) return false;
     if (pathwayId) membership.pathwayId = pathwayId;
     else delete membership.pathwayId;
+    return true;
+  }
+  function removeStudentFromClass(doc, classId, studentId) {
+    find(doc.classes, classId, 'Classe'); find(doc.students, studentId, 'Élève');
+    const index = doc.memberships.findIndex(item => item.classId === classId && item.studentId === studentId);
+    if (index < 0) throw new Error('Rattachement élève–classe introuvable.');
+    doc.memberships.splice(index, 1);
+    return true;
+  }
+  function deleteStudent(doc, studentId, currentClassId = '') {
+    const student = find(doc.students, studentId, 'Élève');
+    if (currentClassId) find(doc.classes, currentClassId, 'Classe');
+    const blockingMemberships = doc.memberships.filter(item =>
+      item.studentId === studentId && item.classId !== currentClassId
+    );
+    if (blockingMemberships.length) {
+      const classes = blockingMemberships.map(item => doc.classes.find(entry => entry.id === item.classId)?.name || item.classId);
+      throw new Error('Cet élève appartient encore à : ' + classes.join(', ') +
+        '. Retirez-le d’abord de ces classes avant de le supprimer définitivement.');
+    }
+    doc.students = doc.students.filter(item => item.id !== studentId);
+    doc.memberships = doc.memberships.filter(item => item.studentId !== studentId);
+    doc.progress = doc.progress.filter(item => item.studentId !== studentId);
+    if (doc.frameworkProgress) doc.frameworkProgress = doc.frameworkProgress.filter(item => item.studentId !== studentId);
     return true;
   }
   function addStudent(doc, { id: studentId, name, classId }) {
@@ -403,11 +431,15 @@
     return copy;
   }
   function sessionRoster(doc, session) {
-    if (session.roster) return session.roster;
+    const displayName = (studentId, snapshotName) =>
+      doc.students.find(item => item.id === studentId)?.name || snapshotName || studentId;
+    if (session.roster) return session.roster.map(item => ({
+      ...item, name: displayName(item.studentId, item.name)
+    }));
     // Ancien fichier : déduire les participants des références historiques disponibles.
     const ids = new Set([...(session.attendance || []).map(item => item.studentId),
       ...session.conductor.slots.flatMap(item => item.studentIds || [])]);
-    return [...ids].map(studentId => ({ studentId, name: find(doc.students, studentId, 'Élève').name }));
+    return [...ids].map(studentId => ({ studentId, name: displayName(studentId) }));
   }
   function addSession(doc, { id: sessionId, classId, date: day, title = '' }) {
     const classroom = find(doc.classes, classId, 'Classe');
@@ -460,6 +492,11 @@
   function updateSlot(doc, sessionId, slotId, patch) {
     const allowed = ['startMinute', 'durationMinutes', 'title', 'instructions', 'moduleIds', 'skillIds', 'studentIds', 'pathwayId'];
     if (Object.keys(patch).some(key => !allowed.includes(key))) throw new Error('Champ de créneau non modifiable.');
+    const session = find(doc.sessions, sessionId, 'Séance');
+    if (patch.studentIds) {
+      const roster = new Set(sessionRoster(doc, session).map(item => item.studentId));
+      if (patch.studentIds.some(studentId => !roster.has(studentId))) throw new Error('Élève absent de la composition de cette séance.');
+    }
     return changeSession(doc, sessionId, copy => {
       const slot = find(copy.conductor.slots, slotId, 'Créneau');
       const updates = JSON.parse(JSON.stringify(patch));
@@ -487,7 +524,8 @@
   }
   const api = { schema, validate, parse, create, prepareSave, serialize,
     addSession, updateSession, sessionRoster, setAttendance, addSlot, updateSlot, moveSlot, removeSlot, setReminders,
-    addClass, updateClass, setClassFramework, addStudent, attachStudent, setMembershipPathway, updateStudent,
+    addClass, updateClass, setClassFramework, addStudent, attachStudent, studentsOutsideClass, setMembershipPathway,
+    removeStudentFromClass, deleteStudent, updateStudent,
     getProgress, updateProgress, getFrameworkProgress, updateFrameworkProgress,
     parseFrameworkPackage, importFramework, objectivesOf };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;

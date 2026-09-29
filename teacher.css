@@ -40,6 +40,10 @@ body[data-page="teacher"] textarea { resize: vertical; }
 .teacher-save-bar .teacher-error { margin: 8px 0 0; max-height: 25vh; overflow: auto; }
 .teacher-field { margin: 12px 0; }
 .teacher-class-details, .teacher-student-details { margin-top: 18px; }
+.teacher-student-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; padding-top: 18px; border-top: 2px solid var(--line); }
+body[data-page="teacher"] .button--danger { color: #71301f; border-color: #9c3f2c; background: var(--paper); box-shadow: 4px 4px 0 #9c3f2c; }
+body[data-page="teacher"] .button--danger:hover,
+body[data-page="teacher"] .button--danger:focus-visible { background: var(--stop-bg); }
 .teacher-inline-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: end; }
 .teacher-inline-form .button { justify-self: start; }
 .teacher-classroom-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 24px; align-items: start; }
@@ -49,7 +53,12 @@ body[data-page="teacher"] textarea { resize: vertical; }
 .teacher-student-list { display: grid; gap: 12px; }
 .teacher-student-list .button { width: 100%; text-align: left; overflow-wrap: anywhere; }
 .teacher-student-list [aria-pressed="true"] { border-color: var(--route-dark); background: var(--route-soft); }
-.teacher-add-student { margin-top: 24px; }
+.teacher-add-student-panel { margin-top: 18px; }
+.teacher-add-student, .teacher-add-existing { padding-top: 8px; }
+.teacher-duplicate-warning { display: grid; gap: 10px; margin: 14px 0; padding: 14px; border: 2px solid #9b6a2f; background: #fff4cf; }
+.teacher-duplicate-warning[hidden] { display: none; }
+.teacher-duplicate-warning .teacher-caption { margin: 0; }
+.teacher-duplicate-warning .button { justify-self: stretch; }
 .teacher-caption { font-size: .94rem; color: var(--muted); }
 .teacher-skills h4 { font-size: 1.35rem; margin: 30px 0 12px; }
 .teacher-skill { padding: 20px 0; border-top: 2px solid var(--line); }
