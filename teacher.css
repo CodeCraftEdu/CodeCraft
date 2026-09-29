@@ -95,6 +95,48 @@ body[data-page="teacher"] .button--danger:focus-visible { background: var(--stop
 .session-section > summary { cursor: pointer; font-weight: 800; }
 #session-quick-conductor { min-height: 190px; line-height: 1.55; }
 #session-detailed-preparation-text { min-height: 280px; line-height: 1.55; }
+.session-quick-panel { margin: 20px 0; padding: 18px; border: 3px solid var(--route-dark); background: var(--paper); box-shadow: 4px 4px 0 var(--line); }
+.session-quick-panel h4 { margin: 0 0 14px; font-size: 1.4rem; }
+.session-reading-view { margin: 12px 0; }
+.session-editing-view[hidden], .session-reading-view[hidden] { display: none; }
+.markdown-reader { max-width: 78ch; line-height: 1.65; overflow-wrap: anywhere; }
+.markdown-reader h3 { margin: 24px 0 10px; font-size: 1.55rem; }
+.markdown-reader h4 { margin: 20px 0 8px; font-size: 1.3rem; }
+.markdown-reader h5, .markdown-reader h6 { margin: 18px 0 8px; font-size: 1.1rem; }
+.markdown-reader p, .markdown-reader ul, .markdown-reader ol { margin: 10px 0; }
+.markdown-reader pre { overflow-x: auto; padding: 16px; border: 2px solid var(--line); background: #292a23; color: #fffdf5; white-space: pre; }
+.markdown-reader code { padding: 2px 5px; background: #eee7d6; font-family: Consolas, "Courier New", monospace; }
+.markdown-reader pre code { padding: 0; background: transparent; color: inherit; }
+.markdown-reader hr { margin: 24px 0; border: 0; border-top: 3px solid var(--line); }
+.quick-render { display: grid; gap: 14px; }
+.quick-slot { border: 2px solid var(--line); background: #fffdf7; overflow: hidden; }
+.quick-slot-header { display: grid; grid-template-columns: minmax(130px, auto) 1fr; align-items: stretch; border-bottom: 2px solid var(--line); }
+.quick-time { display: grid; place-items: center; margin: 0; padding: 14px; background: var(--stone); color: white; font-size: 1.25rem; font-weight: 900; white-space: nowrap; }
+.quick-slot-identity { padding: 12px 16px; }
+.quick-slot-identity h3 { margin: 2px 0 0; font-size: 1.15rem; }
+.quick-group { margin: 0; color: var(--route-dark); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+.quick-instructions { padding: 12px 16px; }
+.quick-instructions p, .quick-free-text p { margin: 6px 0; }
+.quick-spacer { height: 8px; }
+.quick-free-text { padding: 12px 16px; border-left: 5px solid var(--route); background: var(--route-soft); }
+body.teacher-conductor-mode { overflow-y: auto; }
+body.teacher-conductor-mode > :not(#conductor-mode):not(#session-print) { display: none !important; }
+.conductor-mode { min-height: 100vh; background: #e8e2d2; color: #292a23; }
+.conductor-mode-shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 20px 0 60px; }
+.conductor-mode-toolbar { position: sticky; top: 0; z-index: 2; display: flex; gap: 12px; align-items: center; padding: 12px; border: 3px solid #292a23; background: #fffdf5; box-shadow: 4px 4px 0 #5d4634; }
+.conductor-mode-toolbar-spacer { flex: 1; }
+.conductor-mode-brand { font-size: 1.2rem; }
+.conductor-mode-header { margin: 28px 0 22px; padding: 24px 28px; border-left: 10px solid var(--route); background: #464b47; color: white; box-shadow: 7px 7px 0 #383128; }
+.conductor-mode-header h1 { margin: 0; color: white; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.08; }
+.conductor-mode-meta { margin: 10px 0 0; font-size: 1.15rem; font-weight: 700; }
+.quick-render--mode { gap: 22px; }
+.quick-render--mode .quick-slot { border-width: 3px; box-shadow: 6px 6px 0 #8d8675; }
+.quick-render--mode .quick-slot-header { grid-template-columns: minmax(210px, auto) 1fr; border-bottom-width: 3px; }
+.quick-render--mode .quick-time { padding: 22px; font-size: clamp(1.6rem, 3vw, 2.25rem); }
+.quick-render--mode .quick-slot-identity { padding: 18px 24px; }
+.quick-render--mode .quick-slot-identity h3 { font-size: clamp(1.35rem, 2.5vw, 1.85rem); }
+.quick-render--mode .quick-group { font-size: 1.05rem; }
+.quick-render--mode .quick-instructions { padding: 18px 24px; font-size: clamp(1.1rem, 1.8vw, 1.3rem); line-height: 1.5; }
 .session-finish-actions { align-items: center; margin: 20px 0; padding: 16px; border: 3px solid var(--line); background: var(--route-soft); }
 .session-finish-actions .teacher-caption { margin: 0; }
 .session-choices { max-height: 320px; overflow-y: auto; margin-top: 12px; }
@@ -108,7 +150,12 @@ body[data-page="teacher"] .session-choice { display: flex; gap: 12px; align-item
 .conductor-print h1, .conductor-print h2, .conductor-print h3 { color: #111; }
 .print-slot { border-top: 1px solid #777; margin-top: 16px; }
 .print-instructions { white-space: pre-wrap; }
-.print-quick-conductor { white-space: pre-wrap; padding: 12px 0; line-height: 1.5; }
+.quick-render--print { gap: 10px; }
+.quick-render--print .quick-slot { break-inside: avoid; }
+.quick-render--print .quick-slot-header { grid-template-columns: 120px 1fr; }
+.quick-render--print .quick-time { padding: 8px; background: #eee; color: #111; font-size: 12pt; }
+.quick-render--print .quick-slot-identity, .quick-render--print .quick-instructions { padding: 8px 10px; }
+.quick-render--print .quick-slot-identity h3 { font-size: 12pt; }
 .print-label { font-weight: 700; margin-bottom: 0; }
 #session-print { display: none; }
 @media print {
@@ -132,4 +179,10 @@ body[data-page="teacher"] .session-choice { display: flex; gap: 12px; align-item
   .teacher-save-toolbar { flex-wrap: wrap; gap: 8px; }
   .teacher-save-toolbar .teacher-save-state { flex-basis: 100%; padding: 8px; }
   .teacher-save-toolbar .button { padding: 8px 12px; min-height: 44px; }
+  .conductor-mode-shell { width: min(100% - 20px, 1120px); padding-top: 10px; }
+  .conductor-mode-toolbar { flex-wrap: wrap; }
+  .conductor-mode-toolbar-spacer { display: none; }
+  .conductor-mode-toolbar .button { flex: 1; }
+  .quick-slot-header, .quick-render--mode .quick-slot-header { grid-template-columns: 1fr; }
+  .quick-time { justify-content: start; }
 }
