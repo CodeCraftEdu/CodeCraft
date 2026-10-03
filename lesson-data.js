@@ -502,6 +502,72 @@ window.CODECRAFT_DATA = {
       ],
       "theme": "debutants"
     },
+    "css-classes-couleurs": {
+      "domainId": "web",
+      "title": "Classes et couleurs CSS",
+      "type": "lesson",
+      "objective": "Relier une classe HTML à un sélecteur CSS pour changer la couleur du texte.",
+      "skillIds": ["css.selectors", "css.colors"],
+      "theme": "debutants",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "classe-html",
+          "title": "1 — Donner une classe en HTML",
+          "paragraphs": [
+            "Avant de commencer, tu dois savoir créer un titre et un paragraphe. Tu peux utiliser ta page ou ouvrir un nouveau CodePen.",
+            "Le HTML décrit le contenu. Le CSS permet de changer son apparence, par exemple la couleur du texte.",
+            "Dans le panneau HTML de CodePen, l’attribut class donne un nom de groupe à un élément. Ici, le titre appartient à la classe titre."
+          ],
+          "code": "<h1 class=\"titre\">Mon site</h1>"
+        },
+        {
+          "type": "lesson",
+          "id": "selecteur-css",
+          "title": "2 — Retrouver cette classe en CSS",
+          "paragraphs": [
+            "Dans le panneau CSS de CodePen, écris la règle ci-dessous. Ne la mets pas dans le panneau HTML.",
+            "Le sélecteur .titre choisit les éléments dont la classe est titre. Le point se met dans le CSS, pas dans la valeur de class en HTML. Les deux noms doivent correspondre exactement.",
+            "Les accolades { et } entourent les instructions. color change la couleur du texte ; blue signifie bleu. Les deux-points séparent la propriété de sa valeur, et le point-virgule termine l’instruction.",
+            "Plusieurs éléments peuvent partager la même classe : ils recevront tous la même couleur."
+          ],
+          "code": ".titre {\n  color: blue;\n}"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé — Un titre en couleur",
+          "items": [
+            {"id": "html", "text": "Dans HTML, crée le titre de l’exemple avec class=\"titre\"."},
+            {"id": "css", "text": "Dans CSS, ajoute la règle .titre de l’exemple. Vérifie que le titre devient bleu.", "hint": "Vérifie le point devant titre dans le CSS et l’absence de point dans class=\"titre\"."},
+            {"id": "rouge", "text": "Remplace blue par red dans le CSS. Vérifie que le texte devient rouge."}
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi de jouer — Relier HTML et CSS",
+          "intro": "Essaie d’abord seul. Les noms de couleurs CSS utilisés ici sont en anglais : green signifie vert, orange signifie orange.",
+          "items": [
+            {"id": "paragraphe", "text": "Ajoute un paragraphe avec la classe texte. Écris sa règle CSS pour le rendre vert.", "hint": "Utilise class=\"texte\" dans le paragraphe, puis le sélecteur .texte et color: green; dans le CSS."},
+            {"id": "partager", "text": "Ajoute un deuxième paragraphe avec la même classe texte. Vérifie que les deux paragraphes sont verts."},
+            {"id": "couleur", "text": "Change la couleur de la classe texte en orange. Vérifie que les deux paragraphes changent, mais pas le titre."},
+            {"id": "renommer", "text": "Renomme la classe titre en vedette dans le HTML et adapte le sélecteur CSS pour conserver sa couleur.", "hint": "Le nom doit changer des deux côtés : class=\"vedette\" et .vedette."}
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "defi",
+          "title": "Petit défi — Deux classes, deux couleurs",
+          "intro": "Crée une nouvelle petite page avec un titre et deux paragraphes. Essaie sans regarder les exemples.",
+          "items": [
+            {"id": "defi-classes", "text": "Choisis une classe pour le titre et une autre classe commune aux deux paragraphes."},
+            {"id": "defi-couleurs", "text": "Écris les deux règles CSS : le titre doit avoir une couleur différente des paragraphes.", "hint": "Chaque règle commence par un point suivi du nom de la classe. Utilise color entre accolades."},
+            {"id": "defi-verifier", "text": "Vérifie les couleurs, puis explique pourquoi modifier une seule règle change les deux paragraphes."}
+          ]
+        }
+      ]
+    },
     "html-mini-page": {
       "domainId": "web",
       "title": "Mini-page HTML complète",
@@ -1023,24 +1089,27 @@ window.CODECRAFT_DATA = {
       "domainId": "web",
       "title": "Fondations",
       "theme": "fondations",
-      "objective": "Apprendre les premières bases du HTML avec des titres, des paragraphes et des listes simples.",
+      "objective": "Apprendre les premières bases du HTML, puis enrichir sa page avec des liens et des images.",
       "moduleIds": [
         "html-titres-paragraphes",
         "html-listes",
-        "html-mini-page-fondations"
+        "html-mini-page-fondations",
+        "html-liens",
+        "html-images"
       ]
     },
     "web-debutants": {
       "domainId": "web",
       "title": "Débutants",
       "theme": "debutants",
-      "objective": "Construire une page HTML simple avec des titres, des textes, des listes, des liens et des images.",
+      "objective": "Construire une page HTML avec des titres, des textes, des listes, des liens et des images, puis découvrir les classes et les couleurs CSS.",
       "moduleIds": [
         "html-titres-paragraphes",
         "html-listes",
         "html-liens",
         "html-revision",
         "html-images",
+        "css-classes-couleurs",
         "html-mini-page"
       ]
     },

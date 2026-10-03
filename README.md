@@ -25,7 +25,7 @@ Le catalogue se trouve dans `lesson-data.js` :
 - `moduleTypes` déclare `lesson`, `practice`, `challenge`, `project` et `diagnostic`.
 - `teacher` conserve les anciennes données du conducteur ; l’archive professeur en contient une copie autonome figée.
 
-Les modules actuels sont : Titres et paragraphes, Listes HTML, Mini-page des fondations, Liens HTML, Révision HTML, Images HTML, Mini-page HTML complète, Préparer un projet de cartes, Parent et enfants, Flexbox et Diagnostic Web. Les cours CSS non rédigés ne sont pas créés automatiquement à partir des compétences.
+Les modules actuels sont : Titres et paragraphes, Listes HTML, Mini-page des fondations, Liens HTML, Révision HTML, Images HTML, Classes et couleurs CSS, Mini-page HTML complète, Préparer un projet de cartes, Parent et enfants, Flexbox et Diagnostic Web. Fondations et Débutants partagent les mêmes modules Liens HTML et Images HTML. Dans Débutants, Classes et couleurs CSS suit Images HTML. Les cours CSS non rédigés ne sont pas créés automatiquement à partir des compétences.
 
 Les blocs conservent leurs types `lesson`, `tasks`, `checklist`, `callout` et `details`. Révision HTML possède ses propres exercices de révision, indépendants des blocs des autres modules. Le rendu prend encore en charge le type `reference` (`moduleId`, `blockId`), mais aucun module actuel ne l’utilise. Conserver des identifiants de tâches uniques dans chaque module.
 
