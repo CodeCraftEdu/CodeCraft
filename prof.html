@@ -7,6 +7,7 @@
     <title>CodeCraft — Espace professeur</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="teacher.css">
+    <link rel="stylesheet" href="pedagogy.css">
   </head>
   <body data-page="teacher">
     <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -17,6 +18,7 @@
       <section class="lesson-intro">
         <h1 class="lesson-title">Espace professeur</h1>
         <p>Choisis une classe pour suivre ses élèves ou préparer une séance et son conducteur.</p>
+        <a class="button button--secondary" href="#guides">Consulter les guides des modules</a>
       </section>
       <details id="file-panel" class="content-card teacher-file-tools" open>
         <summary id="file-title" class="section-title">Ton Espace CodeCraft</summary>
@@ -40,6 +42,12 @@
         <p id="operation-error" class="teacher-error" role="alert" hidden></p>
       </div>
       <div id="classroom"></div>
+      <details id="teacher-guides" class="content-card">
+        <summary class="section-title">Guides professeur par module</summary>
+        <p>Guides pédagogiques génériques et publics, consultables sans ouvrir un Espace CodeCraft. Les critères aident à observer le travail ; le professeur décide des acquisitions.</p>
+        <nav class="teacher-actions" aria-label="Choisir un guide professeur"></nav>
+        <div data-guide-view><p>Choisis un module pour consulter son guide.</p></div>
+      </details>
       <details class="content-card teacher-file-tools">
         <summary class="section-title">Fichier, copie de secours et test technique</summary>
         <div class="teacher-actions">
@@ -63,6 +71,8 @@
     <section id="session-print" aria-label="Conducteur à imprimer"></section>
     <noscript><p class="noscript">JavaScript est nécessaire pour ouvrir et sauvegarder un Espace CodeCraft.</p></noscript>
     <script src="lesson-data.js"></script>
+    <script src="pedagogy.js"></script>
+    <script src="teacher-guides.js"></script>
     <script src="teacher-model.js"></script>
     <script src="teacher-file-access.js"></script>
     <script src="teacher-sessions.js"></script>

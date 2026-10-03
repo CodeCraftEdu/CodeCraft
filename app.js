@@ -1,6 +1,7 @@
 (function () {
   "use strict";
   const data = window.CODECRAFT_DATA;
+  const pedagogy = window.CodeCraftPedagogy;
   const main = document.getElementById("main-content");
   if (!data || !main) return;
   document.querySelector('.skip-link').addEventListener('click', (event) => {
@@ -24,7 +25,13 @@
   function createHint(item) {
     const details = element("details", "hint");
     details.append(element("summary", "", "Voir un indice"));
-    details.append(element("p", "", item.hint));
+    if (item.hint) details.append(element("p", "", item.hint));
+    (item.hints || []).forEach((text, index) => {
+      const step = element('details', 'syntax');
+      const labels = ['1 — Où regarder', '2 — Cibler la difficulté', '3 — Comparer', '4 — Corriger pas à pas'];
+      step.append(element('summary', '', labels[index] || 'Aide supplémentaire'), element('p', '', text));
+      details.append(step);
+    });
 
     if (item.syntax) {
       const syntax = element("details", "syntax");
@@ -43,6 +50,7 @@
     const list = element("ol", "task-list");
     block.items.forEach((item) => {
       const row = element("li", "task-item");
+      row.dataset.taskId = item.id;
       const label = element("label", "task-label");
       const checkbox = element("input");
       checkbox.type = "checkbox";
@@ -53,7 +61,7 @@
       const text = element(item.code ? "code" : "span", "task-text", item.text);
       label.append(checkbox, text);
       row.append(label);
-      if (item.hint) row.append(createHint(item));
+      if (item.hint || item.hints) row.append(createHint(item));
       list.append(row);
     });
     section.append(list);
@@ -66,6 +74,7 @@
     const list = element("ul", "check-list");
     block.items.forEach((item) => {
       const row = element("li", "check-item");
+      row.dataset.taskId = item.id;
       const label = element("label", "task-label");
       const checkbox = element("input");
       checkbox.type = "checkbox";
@@ -123,6 +132,12 @@
   }
 
   function createBlock(block, routeId) {
+    const result = renderBlock(block, routeId);
+    if (block.id) { result.dataset.activityId = block.id; result.tabIndex = -1; }
+    return result;
+  }
+
+  function renderBlock(block, routeId) {
     if (block.type === "reference") {
       const source = data.modules[block.moduleId];
       return createBlock(source.blocks.find(item => item.id === block.blockId), block.moduleId);
@@ -132,6 +147,7 @@
     if (block.type === "callout") return createCallout(block);
     if (block.type === "lesson") return createLesson(block);
     if (block.type === "details") return createDetails(block, routeId);
+    if (block.type === "resource") return pedagogy.resource(data.modules[routeId], block.resourceId);
     return element("div");
   }
 
@@ -253,7 +269,12 @@
     back.setAttribute('aria-label', 'Retour à la bibliothèque');
     back.append(link(pathway ? '← ' + pathway.title : '← Retour aux parcours', pathway ? '#parcours/' + requestedPathway : domainUrl(item.domainId)));
     article.append(back, intro(item.title, item.objective, true));
+    article.append(pedagogy.prerequisites(item));
     item.blocks.forEach(block => article.append(createBlock(block, id)));
+    const criteria = pedagogy.criteria(item);
+    const orientations = pedagogy.orientations(item, pathway ? requestedPathway : null);
+    if (criteria) article.append(criteria);
+    if (orientations) article.append(orientations);
     article.append(support(item));
     const navigation = element('nav', 'module-navigation');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
@@ -302,7 +323,13 @@
       notFound();
     }
     main.focus({preventScroll:true});
-    window.scrollTo({top:0,behavior:'auto'});
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    const activity = [...main.querySelectorAll('[data-activity-id]')].find(el => el.dataset.activityId === params.get('activite'));
+    const target = activity && ([...activity.querySelectorAll('[data-task-id]')].find(el => el.dataset.taskId === params.get('tache')) || activity);
+    if (target) {
+      for (let el = target; el && el !== main; el = el.parentElement) if (el.tagName === 'DETAILS') el.open = true;
+      target.tabIndex = -1; target.focus({ preventScroll: true }); target.scrollIntoView({ block: 'start' });
+    } else window.scrollTo({top:0,behavior:'auto'});
   }
   // Nettoyer les anciennes URL du lien d’évitement avant de démarrer le routeur.
   if (location.hash === '#main-content') {

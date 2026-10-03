@@ -1,0 +1,13 @@
+/* Relations pédagogiques, ressources d’exercice et guides publics. */
+.pedagogy-panel { overflow-wrap: anywhere; }
+.pedagogy-panel li { margin-block: .65rem; }
+.pedagogy-links a { display: inline-block; padding-block: .5rem; font-weight: 700; }
+.pedagogy-panel img { display: block; max-width: 100%; height: auto; margin-block: 1rem; }
+.image-source, .image-alternative { margin-block: 1rem; padding: 1rem; border: 2px solid var(--line); }
+.image-alternative { border-style: dashed; }
+.image-source details { margin-top: 1rem; }
+[data-activity-id], [data-task-id] { scroll-margin-top: 1rem; }
+.teacher-guide-section { margin-block: 1.5rem; padding-block: .5rem; border-top: 2px solid var(--line); }
+.teacher-guide-section li { margin-block: .6rem; }
+#teacher-guides h2, #teacher-guides h3 { scroll-margin-top: 140px; }
+#teacher-guides { scroll-margin-top: 140px; }

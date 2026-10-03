@@ -10,11 +10,12 @@ const assert = require('node:assert/strict');
 const root = path.join(__dirname, '..');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 (async () => {
-  const allowed = new Set(['prof.html', 'prof-conducteur-historique.html', 'styles.css', 'teacher.css', 'lesson-data.js', 'teacher-model.js', 'teacher-file-access.js', 'teacher-sessions.js', 'teacher-classroom.js', 'teacher-app.js', 'index.html', 'app.js']);
+  const allowed = new Set(['prof.html', 'prof-conducteur-historique.html', 'styles.css', 'teacher.css', 'lesson-data.js', 'pedagogy.js', 'teacher-guides.js', 'teacher-model.js', 'teacher-file-access.js', 'teacher-sessions.js', 'teacher-classroom.js', 'teacher-app.js', 'index.html', 'app.js', 'assets/exercices/carre-bleu.svg', 'assets/exercices/cercle-orange.svg']);
+  allowed.add('pedagogy.css');
   const server = http.createServer((req, res) => {
     const name = new URL(req.url, 'http://localhost').pathname.slice(1);
     if (!allowed.has(name)) { res.writeHead(404); res.end(); return; }
-    res.setHeader('Content-Type', name.endsWith('.js') ? 'text/javascript; charset=utf-8' : name.endsWith('.css') ? 'text/css; charset=utf-8' : 'text/html; charset=utf-8');
+    res.setHeader('Content-Type', name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.js') ? 'text/javascript; charset=utf-8' : name.endsWith('.css') ? 'text/css; charset=utf-8' : 'text/html; charset=utf-8');
     res.end(fs.readFileSync(path.join(root, name)));
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
