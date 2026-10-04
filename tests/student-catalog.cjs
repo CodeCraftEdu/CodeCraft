@@ -13,6 +13,7 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
 const data = JSON.parse(JSON.stringify(context.window.CODECRAFT_DATA));
 const orders = {
+  'scratch-debutants': ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu'],
   'web-fondations': ['html-titres-paragraphes', 'html-listes', 'html-mini-page-fondations', 'html-liens', 'html-images', 'html-mini-page', 'css-decouverte', 'css-classes-couleurs', 'web-affiche-numerique'],
   'web-debutants': ['html-titres-paragraphes', 'html-listes', 'html-liens', 'html-revision', 'html-images', 'css-classes-couleurs', 'html-mini-page', 'html-document', 'html-fichiers-chemins', 'css-feuille-style', 'html-parent-enfants', 'html-zones', 'css-textes-lisibles', 'css-boites-espacements', 'css-dimensions-images', 'web-carte-personnelle', 'html-multipage', 'web-mini-site'],
   'web-avances': ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox']
@@ -99,6 +100,7 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
     await call('Runtime.enable'); await call('Page.enable');
     for (const [pathway, order] of Object.entries(orders)) {
       await navigate('', 'CodeCraft');
+      await click('#domaine/' + data.pathways[pathway].domainId, data.domains[data.pathways[pathway].domainId].title);
       await click('#parcours/' + pathway, data.pathways[pathway].title);
       const links = await evaluate(`Array.from(document.querySelectorAll('main a[href^="#module/"]'), a => a.getAttribute('href'))`);
       assert.deepEqual(links, order.map(id => moduleRoute(id, pathway)));
@@ -113,7 +115,25 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
       for (let i = order.length - 2; i >= 0; i--) await click(moduleRoute(order[i], pathway), data.modules[order[i]].title);
       await click('#parcours/' + pathway, data.pathways[pathway].title);
     }
-    for (const [id, module] of Object.entries(data.modules)) await navigate(moduleRoute(id), module.title);
+    for (const [id, module] of Object.entries(data.modules)) {
+      await navigate(moduleRoute(id), module.title);
+      if (id.startsWith('scratch-')) {
+        assert.equal(await evaluate('document.querySelector(".lesson-intro a").textContent'), 'Ouvrir Scratch');
+        assert.equal(await evaluate('document.querySelector(".lesson-intro a").href'), 'https://scratch.mit.edu/projects/editor/');
+        assert.equal(await evaluate('document.querySelectorAll("main h1").length'), 1);
+        assert.equal(await evaluate('document.querySelectorAll("main a[href*=codepen]").length'), 0);
+        const box = await evaluate('document.querySelector(".task-list input").checked');
+        assert.equal(box, false);
+        await evaluate('document.querySelector(".task-list input").click()');
+        await call('Page.reload'); await readyTitle(module.title);
+        assert.equal(await evaluate('document.querySelector(".task-list input").checked'), false);
+        for (const width of [320, 390]) {
+          await call('Emulation.setDeviceMetricsOverride', { width, height: 844, deviceScaleFactor: 1, mobile: true });
+          assert(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), id + ': mobile');
+        }
+        await call('Emulation.clearDeviceMetricsOverride');
+      }
+    }
     for (const [alias, route] of Object.entries(data.aliases)) {
       const id = route.split('/')[1];
       await navigate('#' + alias, (data.pathways[id] || data.modules[id]).title);
@@ -522,6 +542,71 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
     assert.equal(await evaluate('document.querySelector(".image-source code").textContent'), data.modules['html-images'].resources[0].codepenSrc);
     await evaluate('document.querySelector("main img").dispatchEvent(new Event("error"))');
     assert((await evaluate('document.querySelector("[data-activity-id=ressource-carre]").textContent')).includes('pas une faute'));
+    // Prototype ciblé : le choix modifie uniquement display du parent et son code visible.
+    await navigate('#module/css-flexbox?parcours=web-avances&activite=cours', 'Flexbox');
+    const demoState=()=>evaluate(`(() => {
+      const demo=document.querySelector('.flex-display-demo'), parent=demo.querySelector('.cartes');
+      return {value:demo.querySelector('select').value,display:getComputedStyle(parent).display,
+        code:demo.querySelector('code').textContent,highlight:demo.querySelector('code strong').textContent,
+        children:Array.from(parent.children,c=>{const r=c.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,display:getComputedStyle(c).display,inline:c.getAttribute('style')};})};
+    })()`);
+    assert.equal(await evaluate('document.querySelectorAll(".flex-display-demo").length'),1);
+    assert.equal(await evaluate('document.querySelector(".flex-display-demo").closest("[data-activity-id]").dataset.activityId'),'cours');
+    assert.equal(await evaluate('document.querySelector(".flex-display-demo select").labels.length'),1);
+    assert.equal(await evaluate('document.querySelector(".flex-display-demo [role=status]").textContent'),data.modules['css-flexbox'].blocks.find(b=>b.id==='cours').demonstration.options[0].feedback);
+    const initialDemo=await demoState();
+    assert.equal(initialDemo.value,'block'); assert.equal(initialDemo.display,'block');
+    assert(initialDemo.children[1].y>initialDemo.children[0].y);
+    assert.equal(initialDemo.children[0].x,initialDemo.children[2].x);
+    // Vraies touches clavier sur le select natif, sans remplacement du DOM.
+    const demoKey=async(key,codeNumber)=>{
+      await call('Input.dispatchKeyEvent',{type:'keyDown',key,code:key,windowsVirtualKeyCode:codeNumber});
+      await call('Input.dispatchKeyEvent',{type:'keyUp',key,code:key,windowsVirtualKeyCode:codeNumber});
+    };
+    await evaluate('document.querySelector(".flex-display-demo select").focus()');
+    await demoKey('End',35); await demoKey('Enter',13);
+    await wait('document.querySelector(".flex-display-demo select").value==="flex"');
+    const flexDemo=await demoState();
+    assert.equal(flexDemo.display,'flex');
+    assert.equal(flexDemo.code,'.cartes {\n  display: flex;\n}');
+    assert.equal(flexDemo.highlight,'flex');
+    assert.equal(flexDemo.children[0].y,flexDemo.children[2].y);
+    assert(flexDemo.children[1].x>flexDemo.children[0].x);
+    assert.deepEqual(flexDemo.children.map(c=>[c.w,c.h,c.display,c.inline]),initialDemo.children.map(c=>[c.w,c.h,c.display,c.inline]));
+    assert.equal(await evaluate('document.activeElement.tagName'),'SELECT');
+    assert.equal(await evaluate('document.activeElement.matches(":focus-visible")'),true);
+    await demoKey('Home',36); await demoKey('Enter',13);
+    assert.equal((await demoState()).display,'block');
+    assert.equal((await demoState()).code,'.cartes {\n  display: block;\n}');
+    assert.equal(await evaluate('location.hash'),'#module/css-flexbox?parcours=web-avances&activite=cours');
+    const chooseDisplay=async value=>evaluate('(()=>{const s=document.querySelector(".flex-display-demo select");s.value='+JSON.stringify(value)+';s.dispatchEvent(new Event("change",{bubbles:true}));})()');
+    const captureDemo=async name=>{
+      await evaluate('document.querySelector(".flex-display-demo").scrollIntoView({block:"start",behavior:"instant"});new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
+      const shot=await call('Page.captureScreenshot',{format:'png'});
+      fs.writeFileSync(path.join(profile,name+'.png'),Buffer.from(shot.data,'base64'));
+    };
+    await captureDemo('flex-display-block-desktop');
+    await chooseDisplay('flex'); await captureDemo('flex-display-flex-desktop');
+    for(const width of [390,320]) {
+      await call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:true});
+      for(const value of ['block','flex']) {
+        await chooseDisplay(value);
+        const state=await demoState();
+        assert.equal(state.display,value);
+        if(value==='flex') assert.equal(state.children[0].y,state.children[2].y);
+        else assert(state.children[2].y>state.children[0].y);
+        assert(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Démo sans débordement à '+width);
+        assert(await evaluate('(()=>{const p=document.querySelector(".flex-display-demo .cartes");return p.scrollWidth<=p.clientWidth;})()'),'Cartes contenues');
+        await captureDemo('flex-display-'+value+'-'+width);
+      }
+    }
+    await call('Emulation.setDeviceMetricsOverride',{width:1280,height:900,deviceScaleFactor:1,mobile:false});
+    await call('Page.reload'); await readyTitle('Flexbox');
+    assert.equal((await demoState()).display,'block','Choix temporaire, pas de sauvegarde');
+    assert.equal(await evaluate('localStorage.length+sessionStorage.length'),0);
+    assert.equal(await evaluate('document.querySelectorAll("main input:checked").length'),0);
+    await navigate('#module/html-parent-enfants','Parent et enfants');
+    assert.equal(await evaluate('document.querySelectorAll(".flex-display-demo").length'),0);
     // Comportement réel des exemples Flexbox dans un iframe isolé.
     await navigate('#module/css-flexbox', 'Flexbox');
     assert(await evaluate('!!(document.querySelector("[data-activity-id=apparence]").compareDocumentPosition(document.querySelector("[data-activity-id=diagnostic]")) & Node.DOCUMENT_POSITION_FOLLOWING)'), 'Le code est fourni avant le diagnostic');
@@ -593,6 +678,43 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
       fs.writeFileSync(path.join(profile, name + '.png'), Buffer.from(shot.data, 'base64'));
     };
     await capture('decouverte-css', '[data-activity-id=regle]');
+    for (const id of orders['scratch-debutants']) {
+      await navigate(moduleRoute(id, 'scratch-debutants'), data.modules[id].title);
+      await capture(id, '.lesson-intro');
+      await navigate(moduleRoute(id, 'scratch-debutants') + '&activite=exemple', data.modules[id].title);
+      assert.equal(await evaluate('document.activeElement.dataset.activityId'), 'exemple');
+      await capture(id + '-exemple', '[data-activity-id=exemple]');
+      {
+        const countBlocks = blocks => blocks.reduce((sum, block) => sum + 1 + countBlocks(block.children || []), 0);
+        const expected = data.modules[id].blocks.filter(b => b.visualScript).reduce((sum, b) => sum + (b.visualScript.stacks ? b.visualScript.stacks.reduce((n, s) => n + countBlocks(s.blocks), 0) : countBlocks(b.visualScript.blocks)), 0);
+        assert.equal(await evaluate('document.querySelectorAll(".scratch-script__block").length'), expected);
+        assert.equal(await evaluate('document.querySelectorAll("[data-activity-id=exemple] .scratch-quick-steps li").length'), 3);
+        assert.equal(await evaluate('document.querySelector("[data-activity-id=exemple] .scratch-explanations").open'), false);
+        assert(await evaluate('document.querySelector("[data-activity-id=exemple] .scratch-quick-steps").compareDocumentPosition(document.querySelector("[data-activity-id=exemple] figure")) & Node.DOCUMENT_POSITION_FOLLOWING'));
+        await evaluate('document.querySelector("[data-activity-id=exemple] .scratch-explanations").open = true');
+        assert(await evaluate('document.querySelector("[data-activity-id=exemple] .scratch-explanations").textContent.length > 100'));
+        await evaluate('document.querySelector("[data-activity-id=exemple] .scratch-explanations").open = false');
+        for (const width of [320, 390]) {
+          await call('Emulation.setDeviceMetricsOverride', { width, height: 844, deviceScaleFactor: 1, mobile: true });
+          assert(await evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Modèle Scratch sans débordement');
+          await capture(id + '-visuel-' + width, '[data-activity-id=exemple] figure');
+        }
+        await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
+      }
+      if (id === 'scratch-pilotage') {
+        await navigate(moduleRoute(id, 'scratch-debutants') + '&activite=position', data.modules[id].title);
+        assert.equal(await evaluate('document.querySelectorAll(".scratch-coordinates").length'), 1);
+        assert((await evaluate('document.querySelector(".scratch-coordinates__center").textContent')).includes('x = 0'));
+        await capture('scratch-coordonnees', '.scratch-coordinates');
+        await call('Emulation.setDeviceMetricsOverride', { width: 320, height: 844, deviceScaleFactor: 1, mobile: true });
+        assert(await evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Coordonnées sans débordement');
+        await capture('scratch-coordonnees-mobile', '.scratch-coordinates');
+        await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
+      }
+      await call('Page.navigate', { url: base.replace('index.html', 'prof.html') + '#guide/' + id });
+      await wait('document.querySelector("[data-guide-view] h2")?.textContent === ' + JSON.stringify('Guide professeur — ' + data.modules[id].title));
+      await capture('guide-' + id, '[data-guide-view] h2');
+    }
     await navigate('#module/web-affiche-numerique?activite=cahier-charges', 'Mon affiche numérique');
     await capture('affiche', '[data-activity-id=cahier-charges]');
     await call('Page.navigate', { url: base.replace('index.html','prof.html') + '#guide/css-decouverte' });
@@ -621,7 +743,7 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
     await capture('carte-exemple-etroit','#pedagogy-test');
     await evaluate('document.getElementById("pedagogy-test").remove()');
     assert.deepEqual(errors, []);
-    console.log('OK : catalogue, parcours, alias, activités, 17 guides sans fichier privé, ressources partagées, dimensions/proportions/limites/bonus naturel, projet et transfert, zones, typographie, espacements, vrais fichiers locaux, Flexbox, cases temporaires, mobile et aucune exception JS.');
+    console.log('OK : domaines Web/Jeu vidéo, parcours, alias, activités, 23 guides sans fichier privé, Scratch (outil, blocs imbriqués, conditions, navigation, cases temporaires, mobile), ressources partagées, dimensions/proportions/limites/bonus naturel, projet et transfert, zones, typographie, espacements, vrais fichiers locaux, Flexbox et aucune exception JS.');
     console.log('Captures de contrôle : ' + profile);
   } finally {
     if (ws) ws.close();

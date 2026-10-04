@@ -100,5 +100,28 @@
     el.append(image, status, download, source, alternative);
     return el;
   }
-  window.CodeCraftPedagogy = { node, blocks, target, url, list, panel, prerequisites, criteria, relationList, orientations, resource };
+  function scratchProject(module, teacher = false) {
+    const project = data.scratchProjects?.[module.scratchProjectId];
+    if (!project) return null;
+    const valid = value => typeof value === 'string' && /^https:\/\/scratch\.mit\.edu\/projects\/[1-9]\d*\/?$/.test(value);
+    const starter = !module.scratchProjectContinuation && valid(project.starterUrl);
+    const demo = teacher && valid(project.demoUrl);
+    if (!teacher && !starter) return null;
+    const el = panel(teacher ? 'Projet Scratch — ressources de cours' : 'Projet de départ — ' + project.title);
+    el.classList.add(teacher ? 'teacher-guide-section' : 'content-card');
+    function button(label, href) {
+      const anchor = node('a', label, 'button button--secondary');
+      anchor.href = href; anchor.target = '_blank'; anchor.rel = 'noopener noreferrer';
+      el.append(anchor);
+    }
+    if (starter) button('Ouvrir le projet de départ', project.starterUrl);
+    if (demo) button('Voir la démonstration complète', project.demoUrl);
+    if (teacher) {
+      if (!valid(project.starterUrl)) el.append(node('p', 'Lien du projet de départ non renseigné : utiliser les consignes de création du module.'));
+      if (!valid(project.demoUrl)) el.append(node('p', 'Lien de démonstration non renseigné.'));
+      el.append(node('p', project.teacherInstructions));
+    } else el.append(node('p', project.studentInstructions));
+    return el;
+  }
+  window.CodeCraftPedagogy = { node, blocks, target, url, list, panel, prerequisites, criteria, relationList, orientations, resource, scratchProject };
 })();

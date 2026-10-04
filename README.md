@@ -27,7 +27,17 @@ Le catalogue se trouve dans `lesson-data.js` :
 - `moduleTypes` déclare `lesson`, `practice`, `challenge`, `project` et `diagnostic`.
 - `teacher` conserve les anciennes données du conducteur ; l’archive professeur en contient une copie autonome figée.
 
-Les vingt-quatre modules actuels sont : Titres et paragraphes, Listes HTML, Mini-page des fondations, Liens HTML, Révision HTML, Images HTML, Classes et couleurs CSS, Mini-page HTML complète, Découvrir le CSS, Mon affiche numérique, Structure d’un document HTML, Fichiers et chemins, Relier une feuille de style, Organiser une page en zones, Rendre les textes lisibles, Boîtes et espacements, Dimensions et images dans une carte, Ma carte personnelle, Relier plusieurs pages, Mon mini-site, Préparer un projet de cartes, Parent et enfants, Flexbox et Diagnostic Web. Les cours CSS non rédigés ne sont pas créés automatiquement à partir des compétences.
+Les vingt-quatre modules Web actuels sont : Titres et paragraphes, Listes HTML, Mini-page des fondations, Liens HTML, Révision HTML, Images HTML, Classes et couleurs CSS, Mini-page HTML complète, Découvrir le CSS, Mon affiche numérique, Structure d’un document HTML, Fichiers et chemins, Relier une feuille de style, Organiser une page en zones, Rendre les textes lisibles, Boîtes et espacements, Dimensions et images dans une carte, Ma carte personnelle, Relier plusieurs pages, Mon mini-site, Préparer un projet de cartes, Parent et enfants, Flexbox et Diagnostic Web. Les cours CSS non rédigés ne sont pas créés automatiquement à partir des compétences.
+
+Le domaine `jeux-video` propose le parcours `scratch-debutants` : Prendre en main Scratch (`scratch-decouverte`) → Déclencher et enchaîner des actions (`scratch-actions`) → Piloter un personnage (`scratch-pilotage`) → Répéter des actions (`scratch-boucles`) → Faire réagir le jeu (`scratch-reactions`) → Compter et mémoriser (`scratch-variables`). L’accueil propose Web ou Jeu vidéo, avec les routes Web et anciens alias conservés. Seuls ces six modules Scratch sont publiés : aucune page vide pour les étapes futures. Leurs guides sont accessibles sur `prof.html#guide/<id>`.
+
+Les modules peuvent définir un `tool` facultatif `{ label, url }` : Scratch ouvre son éditeur officiel ; les modules Web gardent CodePen par défaut. Les modèles de blocs sont à assembler, pas à coller comme du code texte. Aucun projet préfabriqué n’est nécessaire : ce premier lot utilise le chat fourni par Scratch. Les élèves téléchargent puis rechargent un `.sb3`, sans compte ni publication obligatoire. Aucun projet personnel ou contenu de programme privé n’est intégré au dépôt.
+
+Neuf compétences Scratch génériques sont disponibles : `scratch.workspace`, `scratch.events`, `scratch.sequence`, `scratch.coordinates`, `scratch.keyboard`, `scratch.loops`, `scratch.conditions`, `scratch.contacts`, `scratch.variables`. Le suivi professeur existant les propose automatiquement avec leurs libellés humains ; leur validation reste manuelle, sans mapping externe créé, modification du format privé ni report automatique des acquis. Les cases élèves restent temporaires. Les modules ne fixent pas un rythme : reprises, bonus et guides distinguent réussite autonome, avec modèle ou avec aide.
+
+Les exemples Scratch utilisent des modèles de blocs statiques HTML/CSS, sans dépendance ni assets externes. Un bloc de cours peut définir `visualScript` (une pile `blocks` ou plusieurs `stacks`) et `shortSteps` : trois consignes visibles, modèle visuel, modèle texte et explications supplémentaires repliés. Les blocs peuvent contenir des `children` pour représenter les creux des boucles et des conditions ; les `parts` peuvent contenir une `condition` de capteur. La mention « fin du bloc » est un repère de fermeture, pas un bloc supplémentaire à chercher dans Scratch. Les catégories, valeurs et menus factices sont des repères, pas des contrôles interactifs. Le pilotage ajoute `coordinateDiagram`, un schéma textuel X/Y responsive. Le code textuel reste disponible pour les guides.
+
+Le deuxième lot utilise les éléments déjà fournis par Scratch : le chat et le sprite Ball renommé Cible. Aucun .sb3 de départ n’est requis, ni aucun contenu privé intégré. Les programmes et la préparation complète sont visibles dans le catalogue. Les compétences du score restent indépendantes de l’aide apportée au calcul ou à la mise en place des sprites. Les projets personnels existants pourront servir ultérieurement, après inspection de leurs fichiers ; ils ne sont pas supposés vérifiés ici.
 
 Fondations suit : Titres et paragraphes → Listes → Mini-page des fondations → Liens → Images → Mini-page HTML complète → Découvrir le CSS → Classes et couleurs → Mon affiche numérique. Les modules partagés existent une seule fois. Débutants conserve son départ : Titres et paragraphes → Listes → Liens → Révision HTML → Images → Classes et couleurs → Mini-page HTML complète, puis poursuit avec Structure d’un document HTML → Fichiers et chemins → Relier une feuille de style → Parent et enfants → Organiser une page en zones → Rendre les textes lisibles → Boîtes et espacements → Dimensions et images dans une carte → Ma carte personnelle → Relier plusieurs pages → Mon mini-site. Découvrir le CSS est une reprise accessible avant les classes ou la feuille externe, avec retour possible par la navigation du navigateur ; l’affiche reste un prolongement facultatif proposé depuis la mini-page. Ces détours ne créent pas de faux précédent/suivant dans un parcours qui ne les contient pas. La liste Avancés et Diagnostic Web restent inchangés. Parent et enfants est partagé avec Débutants ; sa transition propose désormais les zones HTML ou Flexbox selon les prérequis.
 
@@ -36,6 +46,28 @@ Les blocs conservent leurs types `lesson`, `tasks`, `checklist`, `callout` et `d
 Pour ajouter un contenu, ajouter un module au catalogue et référencer son identifiant dans le parcours voulu. Pour un diagnostic, utiliser `diagnosticModuleIds` du domaine. Ne pas renommer les identifiants existants : ils servent aux liens partagés. Aucun changement de séance hebdomadaire n'est nécessaire. L'ajout de nouveaux contenus nécessite toujours une publication des fichiers statiques.
 
 ## Liens et navigation
+
+### Projets Scratch partagés
+
+Le parcours Scratch contient huit modules : découverte, actions, pilotage, boucles, contacts, variables, **Gagner, perdre et recommencer**, puis le projet jalon **Mon premier mini-jeu**. Les deux derniers prolongent le jeu horizontal à cible fixe : victoire à un score atteignable, défaite au-delà d’une limite gauche, arrêt et remise à zéro au drapeau. Le projet réutilise ces notions sans introduire de vies, chronomètre, aléatoire ou messages entre personnages. Ses critères et guides distinguent reproduction, compréhension et aides utilisées ; aucun acquis n’est automatique.
+
+Dans chaque module Scratch, « Scratch est en anglais ? » explique comment choisir Français via Settings → Language (ou l’icône globe selon la version). La langue du projet partagé n’impose pas celle de l’éditeur du visiteur.
+
+Les projets restent sur le compte Scratch du professeur : aucun `.sb3` n’est hébergé dans le site. `lesson-data.js`, dans `scratchProjects`, centralise deux URLs publiques par projet : `starterUrl` (base élève) et `demoUrl` (démonstration dans les guides professeur). Aucun bouton élève n’apparaît sans URL valide ; les consignes existantes restent utilisables.
+
+Projets complets partagés sur `CodeCraftEdu` :
+
+- [Le chat et la souris](https://scratch.mit.edu/projects/1388025424/) : démonstration disponible dans les guides Pilotage, Contact et Score.
+- [Labyrinthe](https://scratch.mit.edu/projects/1388025497/) : lien conservé dans le catalogue pour la suite, sans nouvelle activité associée.
+- [Carte animée](https://scratch.mit.edu/projects/1388025602/) : lien conservé dans le catalogue pour la suite, sans nouvelle activité associée.
+
+Ces projets complets ne sont pas des bases élève vides et ne remplacent pas les modèles guidés actuels.
+
+Bases partagées : [Chat et souris — Départ](https://scratch.mit.edu/projects/1388027652/), [Labyrinthe — Départ](https://scratch.mit.edu/projects/1388027832/), [Carte animée — Départ](https://scratch.mit.edu/projects/1388027889/). Les deux dernières restent réservées aux activités futures.
+
+La base Chat et souris contient Chat sans script en (-100, 0) et une souris nommée Cible sans script en (80, 0). Elle sert à Piloter un personnage (ignorer Cible) et Faire réagir le jeu (ne pas ajouter de deuxième cible). Depuis un projet vide, Ball renommé Cible reste une alternative. Compter et mémoriser poursuit le programme de contact déjà construit, sans proposer de recommencer avec une base vide. Le projet complet Le chat et la souris sert de démonstration facultative (`demoUrl`) ; ses déplacements par événements, sa cible aléatoire et son son diffèrent de l’exemple guidé et ne deviennent pas obligatoires.
+
+L’élève ouvre la base dans un nouvel onglet, utilise Voir à l’intérieur puis Remix avec son propre compte pour enregistrer sa copie ; sans compte, il sauvegarde sur son ordinateur depuis le menu Fichier. Les deux projets doivent rester partagés sur Scratch. Les originaux locaux ne sont pas modifiés. Aucun lien ne valide une compétence et aucun compte n’est ajouté à CodeCraft.
 
 ### Relations pédagogiques et guides
 

@@ -37,6 +37,8 @@
     view.append(title, section('Objectif pédagogique', guide.objective), ui.prerequisites(module),
       section('Diagnostic d’entrée', guide.entryDiagnosis), section('À préparer', guide.preparation),
       section('Pourquoi cette notion ?', guide.why), section('Speech de découverte', guide.discoverySpeech));
+    const scratchProject = ui.scratchProject(module, true);
+    if (scratchProject) view.append(scratchProject);
     const example = activity('Exemple commenté', guide.example.target);
     const source = ui.target(guide.example.target);
     if (source?.block?.code) {

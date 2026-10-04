@@ -1,4 +1,54 @@
 /* Relations pédagogiques, ressources d’exercice et guides publics. */
+/* Modèle statique de blocs : uniquement les activités ayant visualScript. */
+.scratch-script { margin: 1.25rem 0; padding: 1.2rem; border: 2px solid var(--line); background: #f4f5f7; border-radius: 8px; }
+.scratch-script__caption { margin-bottom: 1.25rem; font-weight: 800; }
+.scratch-script__layout { display: grid; gap: 1.5rem; align-items: start; }
+.scratch-script__stack { list-style: none; margin: 0; padding: 1rem 0 .6rem; }
+.scratch-script__block { position: relative; width: fit-content; max-width: 100%; min-height: 3rem; padding: .65rem .85rem; border: 2px solid; border-radius: 6px; font-weight: 700; line-height: 1.65; overflow-wrap: anywhere; }
+.scratch-script__block--events { background: #ffcf45; border-color: #a57308; color: #332600; border-top-left-radius: 24px 18px; border-top-right-radius: 24px 18px; padding-top: .9rem; }
+.scratch-script__block--motion { background: #285bc2; border-color: #193c84; color: white; margin-top: -2px; }
+.scratch-script__block--looks { background: #7542b8; border-color: #492a76; color: white; }
+.scratch-script__block--control { background: #ffae38; border-color: #9b5a00; color: #382200; }
+.scratch-script__block--variables { background: #ce5b00; border-color: #813900; color: white; }
+.scratch-script__block--sensing { background: #137987; border-color: #0b4b54; color: white; }
+.scratch-script__condition { display: inline-block; padding: .1rem .65rem; border: 2px solid #0b4b54; border-radius: 12px 3px; background: #c6eef2; color: #143b40; line-height: 1.5; }
+.scratch-script__condition--operator { background: #d4edc5; border-color: #3c7023; color: #254419; }
+.scratch-script__children { list-style: none; margin: .75rem -.85rem .35rem .15rem; padding: .5rem .4rem .7rem .6rem; background: #f4f5f7; border-radius: 5px 0 0 5px; }
+.scratch-script__closing { display: block; font-size: .75rem; font-weight: 400; }
+.scratch-script__block--variables .scratch-script__choice { color: #332600; }
+.scratch-script__block + .scratch-script__block { margin-top: -2px; }
+.scratch-script__choice { display: inline-block; padding: 0 .35rem; border: 1px solid #a57308; border-radius: 4px; background: #ffe397; }
+.scratch-quick-steps { padding-left: 1.5rem; }
+.scratch-quick-steps li { margin-bottom: .65rem; padding-left: .2rem; }
+.scratch-scripts { margin: 1.25rem 0; }
+.scratch-scripts__grid { display: grid; gap: 1rem; }
+.scratch-scripts .scratch-script { margin: 0; }
+.scratch-scripts .scratch-script__layout { display: block; }
+.scratch-scripts .scratch-script__explanations { margin-top: 1rem; font-size: .95rem; }
+.scratch-coordinates { margin: 1.25rem 0; padding: 1rem; border: 2px solid var(--line); background: #f4f5f7; border-radius: 8px; }
+.scratch-coordinates__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; align-items: center; text-align: center; }
+.scratch-coordinates__grid > div { padding: .8rem .25rem; font-weight: 700; overflow-wrap: anywhere; }
+.scratch-coordinates__up { grid-column: 1 / -1; background: #e5e0f6; color: #4c2a7e; }
+.scratch-coordinates__left { grid-column: 1; background: #e1ebfc; color: #193c84; }
+.scratch-coordinates__center { grid-column: 2; border: 2px solid #476850; background: #e6f3e9; color: #24452c; white-space: pre-line; }
+.scratch-coordinates__right { grid-column: 3; background: #e1ebfc; color: #193c84; }
+.scratch-coordinates__down { grid-column: 1 / -1; background: #e5e0f6; color: #4c2a7e; }
+@media (max-width: 480px) {
+  .scratch-coordinates { padding: .75rem; }
+  .scratch-coordinates__grid { gap: .25rem; font-size: .8rem; }
+  .scratch-coordinates__grid > div { padding: .65rem .15rem; overflow-wrap: normal; }
+}
+@media (min-width: 900px) { .scratch-scripts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.scratch-script__block::after { content: ''; position: absolute; z-index: 1; left: 1.3rem; bottom: -.5rem; width: 1.4rem; height: .5rem; border: 2px solid; border-top: 0; border-color: inherit; border-radius: 0 0 4px 4px; background: inherit; }
+.scratch-script__value { display: inline-block; min-width: 2rem; padding: 0 .5rem; border-radius: 999px; background: white; color: #233249; border: 1px solid #173565; text-align: center; }
+.scratch-script__flag { color: #22682e; font-size: 1.5em; line-height: 1; vertical-align: -.08em; }
+.scratch-script__explanations { list-style: none; margin: 0; padding: 0; }
+.scratch-script__explanations li + li { margin-top: 1rem; }
+.scratch-script__category { font-size: .9rem; font-weight: 800; }
+.scratch-script__explanations p { margin: .25rem 0 0; }
+.scratch-script__note { margin: 1rem 0 0; font-size: .9rem; color: var(--muted); }
+.scratch-script__sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (min-width: 720px) { .scratch-script__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .pedagogy-panel { overflow-wrap: anywhere; }
 .pedagogy-panel li { margin-block: .65rem; }
 .pedagogy-links a { display: inline-block; padding-block: .5rem; font-weight: 700; }
@@ -11,3 +61,55 @@
 .teacher-guide-section li { margin-block: .6rem; }
 #teacher-guides h2, #teacher-guides h3 { scroll-margin-top: 140px; }
 #teacher-guides { scroll-margin-top: 140px; }
+
+/* Démonstration élève limitée à display:block / flex ; aucun style sur les cours voisins. */
+.flex-display-demo {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 3px solid var(--route);
+  background: var(--paper);
+}
+.flex-display-demo h3 { margin-top: 0; }
+.flex-display-demo__control { display: block; font-weight: 700; }
+.flex-display-demo__control select {
+  display: block;
+  width: 100%;
+  max-width: 26rem;
+  min-height: 48px;
+  margin-top: .5rem;
+  padding: .65rem;
+  border: 2px solid var(--route-dark);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.flex-display-demo__layout { display: grid; gap: 1rem; margin-top: 1rem; }
+.flex-display-demo__layout > * { min-width: 0; }
+.flex-display-demo__caption { margin: 0 0 .5rem; font-size: .95rem; font-weight: 700; }
+.flex-display-demo .cartes {
+  min-height: 15rem;
+  padding: .5rem;
+  border: 2px dashed var(--route-dark);
+  background: var(--route-soft);
+}
+.flex-display-demo .carte {
+  width: 25%;
+  max-width: 5rem;
+  height: 3.5rem;
+  margin: .25rem;
+  padding-block: .6rem;
+  border: 2px solid var(--route-dark);
+  background: var(--paper);
+  color: var(--route-dark);
+  text-align: center;
+  font-weight: 800;
+}
+.flex-display-demo .code-block { margin: 0; }
+.flex-display-demo__value { padding-inline: .2em; background: var(--route-soft); color: var(--route-dark); }
+.flex-display-demo__feedback { font-weight: 700; }
+@media (min-width: 720px) {
+  .flex-display-demo__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}

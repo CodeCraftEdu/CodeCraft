@@ -6,7 +6,8 @@ window.CODECRAFT_DATA = {
     "subtitle": "Espace de cours",
     "codepenLabel": "Ouvrir CodePen",
     "codepenUrl": "https://codepen.io/pen",
-    "homeLabel": "Retour à l'accueil"
+    "homeLabel": "Retour à l'accueil",
+    "scratchLanguageHelp": "Scratch est en anglais ? Dans l’éditeur, ouvre Settings → Language et choisis Français (ou utilise l’icône globe selon la version). Sur la page du projet, le choix de langue est aussi disponible tout en bas. Les modèles CodeCraft utilisent les noms français des blocs."
   },
   "shared": {
     "stuckTitle": "Je suis bloqué",
@@ -20,6 +21,25 @@ window.CODECRAFT_DATA = {
     "finishedTitle": "J'ai fini",
     "finishedText": "Relis ton travail et vérifie chaque consigne. Si tu es en cours, montre ensuite ton résultat au professeur."
   },
+  "scratchProjects": {
+    "chat-cible": {
+      "title": "Un chat et une cible",
+      "starterUrl": "https://scratch.mit.edu/projects/1388027652/",
+      "demoUrl": "https://scratch.mit.edu/projects/1388025424/",
+      "studentInstructions": "Cette base prépare seulement les personnages : suis les étapes du module pour construire le programme. Clique sur Voir à l’intérieur. Si tu es connecté à ton compte Scratch, clique sur Remix pour conserver ta propre version. Sans compte, utilise Fichier → Sauvegarder sur votre ordinateur pour conserver ton travail. Ne travaille pas sur le compte du professeur.",
+      "teacherInstructions": "La base partagée contient Chat sans script en x = -100, y = 0, et une souris nommée Cible sans script en x = 80, y = 0. Ne pas ajouter une deuxième cible. Depuis un projet vide, Ball renommé Cible reste une alternative. Piloter un personnage utilise seulement le chat ; laisse la cible de côté. Pour Compter et mémoriser, conserve le programme réalisé dans Faire réagir le jeu : ne repars pas de la base vide. La démonstration complète Le chat et la souris utilise des événements clavier séparés, une cible aléatoire et un son ; ce sont des différences à expliquer, pas des prérequis cachés ni une solution exacte des modules. Montrer le résultat sans demander de recopier tout son code."
+    },
+    "labyrinthe": {
+      "title": "Labyrinthe",
+      "starterUrl": "https://scratch.mit.edu/projects/1388027832/",
+      "demoUrl": "https://scratch.mit.edu/projects/1388025497/"
+    },
+    "carte-animee": {
+      "title": "Carte animée",
+      "starterUrl": "https://scratch.mit.edu/projects/1388027889/",
+      "demoUrl": "https://scratch.mit.edu/projects/1388025602/"
+    }
+  },
   "moduleTypes": {
     "lesson": "Cours",
     "practice": "Entraînement",
@@ -28,6 +48,11 @@ window.CODECRAFT_DATA = {
     "diagnostic": "Diagnostic"
   },
   "domains": {
+    "jeux-video": {
+      "title": "Jeu vidéo",
+      "pathwayIds": ["scratch-debutants"],
+      "diagnosticModuleIds": []
+    },
     "web": {
       "title": "Web",
       "pathwayIds": [
@@ -41,6 +66,36 @@ window.CODECRAFT_DATA = {
     }
   },
   "skills": {
+    "scratch.game-rules": {
+      "title": "Définir une fin de partie et recommencer proprement"
+    },
+    "scratch.loops": {
+      "title": "Répéter des actions avec une boucle"
+    },
+    "scratch.conditions": {
+      "title": "Tester une condition et choisir une action"
+    },
+    "scratch.contacts": {
+      "title": "Détecter un contact et faire réagir le jeu"
+    },
+    "scratch.variables": {
+      "title": "Mémoriser et modifier une valeur avec une variable"
+    },
+    "scratch.workspace": {
+      "title": "Se repérer dans Scratch et conserver son projet"
+    },
+    "scratch.events": {
+      "title": "Déclencher un programme avec un événement"
+    },
+    "scratch.sequence": {
+      "title": "Ordonner des actions et observer leur résultat"
+    },
+    "scratch.coordinates": {
+      "title": "Repérer et modifier la position X/Y"
+    },
+    "scratch.keyboard": {
+      "title": "Piloter un personnage au clavier"
+    },
     "html.headings": {
       "title": "Créer et organiser des titres"
     },
@@ -100,6 +155,2654 @@ window.CODECRAFT_DATA = {
     }
   },
   "modules": {
+    "scratch-boucles": {
+      "domainId": "jeux-video",
+      "title": "Répéter des actions",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Choisir une répétition limitée ou continue et expliquer ce qui se répète.",
+      "tool": {
+        "label": "Ouvrir Scratch",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "skillIds": [
+        "scratch.loops"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.workspace",
+          "expectation": "Assembler des blocs et sauvegarder un .sb3 : reprendre Prendre en main Scratch si nécessaire."
+        },
+        {
+          "skillId": "scratch.sequence",
+          "expectation": "Lire une pile dans l’ordre et utiliser une pause : reprendre Déclencher et enchaîner des actions."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "notions",
+          "title": "1 — Au lieu de recopier",
+          "paragraphs": [
+            "Une boucle exécute plusieurs fois les blocs placés à l’intérieur. Dans Contrôle (orange), « répéter 10 fois » possède un nombre modifiable et un creux pour y accrocher les actions. Sur nos modèles, « fin du bloc » repère le bas du creux : ce n’est pas un bloc à ajouter dans Scratch.",
+            "« Répéter 4 fois » fait quatre tours puis continue après la boucle. Un bloc placé après la boucle se fait une seule fois, pas à chaque tour.",
+            "« Répéter indéfiniment » continue jusqu’à l’arrêt du projet. Le bouton rouge au-dessus de la scène arrête la boucle. Une action après cette boucle ne sera pas atteinte dans cette pile."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "2 — Quatre petits déplacements",
+          "paragraphs": [
+            "Le chat du projet neuf regarde à droite : avancer de 20 pas le déplace vers la droite. Nous ne changeons pas sa direction dans cet essai.",
+            "Les quatre déplacements de 20 pas donnent au total 80 pas. Tu peux compter quatre mouvements ; une difficulté de calcul ne t’empêche pas de comprendre les quatre tours.",
+            "Le message Fini est APRÈS la boucle. La pause de 0.3 secondes est DANS la boucle pour séparer les mouvements. Scratch utilise un point dans ce nombre décimal."
+          ],
+          "shortSteps": [
+            "Ouvre un nouveau projet avec le chat, pour isoler l’essai. Glisse le chat vers le centre de la scène avec la souris.",
+            "Dans Contrôle, prends « répéter 10 fois », change 10 en 4 et place les deux actions dans son creux, comme ci-dessous.",
+            "Prédis combien de déplacements tu verras. Lance au drapeau, observe, puis replace le chat au centre avant de recommencer."
+          ],
+          "visualScript": {
+            "caption": "2 — Quatre petits déplacements",
+            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le drapeau démarre la pile."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter ",
+                  {
+                    "value": "4"
+                  },
+                  " fois"
+                ],
+                "explanation": "Quatre tours : seules les actions dans le creux sont répétées.",
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "avancer de ",
+                      {
+                        "value": "20"
+                      },
+                      " pas"
+                    ],
+                    "explanation": "Un déplacement à chaque tour."
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.3"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Une pause ralentit les essais."
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Fini !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "1"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Le message est visible pendant la durée indiquée."
+              }
+            ]
+          },
+          "code": "quand le drapeau vert est cliqué\n  répéter 4 fois\n    avancer de 20 pas\n    attendre 0.3 secondes\n  dire Fini ! pendant 1 secondes"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "À toi — change la répétition",
+          "intro": "Change une seule chose et prédis avant de tester.",
+          "items": [
+            {
+              "id": "quatre",
+              "text": "Assemble l’exemple. Vérifie quatre déplacements puis un seul message Fini.",
+              "hint": "Avancer et attendre sont dans le creux orange ; dire Fini vient après."
+            },
+            {
+              "id": "deux",
+              "text": "Change 4 en 2. Replace le chat au centre, teste et explique ce qui change.",
+              "hint": "On fait deux tours. La distance par tour reste 20 pas."
+            },
+            {
+              "id": "ordre",
+              "text": "Place le message Fini à l’intérieur de la boucle. Teste, puis remets-le après.",
+              "hint": "À l’intérieur, il apparaît à chaque tour. Après, une seule fois."
+            },
+            {
+              "id": "sauvegarder",
+              "text": "Télécharge ton essai en .sb3.",
+              "hint": "Fichier → Sauvegarder sur votre ordinateur."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "continue",
+          "title": "3 — Répéter jusqu’à l’arrêt",
+          "paragraphs": [
+            "Un costume est une apparence du même sprite. Dans l’onglet Costumes, le chat de départ possède deux costumes : ce modèle passe de l’un à l’autre, puis recommence.",
+            "Sans pause, les changements sont trop rapides pour être bien observés. Attendre 0.5 secondes rend chaque apparence visible. La pause ne termine pas la boucle."
+          ],
+          "shortSteps": [
+            "Sauvegarde l’essai précédent. Dans un nouveau projet, garde le chat et retire les autres piles de cet essai.",
+            "Dans Apparence (violet), prends « costume suivant » ; place-le et une pause dans « répéter indéfiniment » (Contrôle).",
+            "Lance : les costumes alternent. Clique sur le bouton rouge pour arrêter."
+          ],
+          "visualScript": {
+            "caption": "3 — Répéter jusqu’à l’arrêt",
+            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le drapeau démarre la pile."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "explanation": "Cette boucle reste active jusqu’à l’arrêt.",
+                "children": [
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "costume suivant"
+                    ],
+                    "explanation": "Passer à l’apparence suivante du chat."
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.5"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Une pause ralentit les essais."
+                  }
+                ]
+              }
+            ]
+          },
+          "code": "quand le drapeau vert est cliqué\n  répéter indéfiniment\n    costume suivant\n    attendre 0.5 secondes"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Sans modèle — choisis la bonne boucle",
+          "intro": "Crée une petite animation avec les blocs connus.",
+          "items": [
+            {
+              "id": "trois",
+              "text": "Fais changer le chat de costume exactement trois fois, avec une pause entre chaque changement.",
+              "hint": "Utilise une répétition limitée à trois tours."
+            },
+            {
+              "id": "fin",
+              "text": "Ajoute un message qui apparaît seulement quand les trois changements sont terminés.",
+              "hint": "Il se place après la boucle, hors du creux."
+            },
+            {
+              "id": "continu",
+              "text": "Dans une copie, fais continuer les changements jusqu’au bouton rouge. Explique quelle boucle tu choisis.",
+              "hint": "Répéter indéfiniment ; garder une pause."
+            },
+            {
+              "id": "expliquer",
+              "text": "Montre ce qui se répète et ce qui ne se répète pas, puis sauvegarde.",
+              "hint": "La place à l’intérieur ou après la boucle change le résultat."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus — deux réglages, deux effets",
+          "intro": "Utilise seulement les notions déjà expliquées.",
+          "items": [
+            {
+              "id": "rythme",
+              "text": "Compare une pause de 0.2 puis 0.8 seconde avec la même répétition limitée.",
+              "hint": "Le rythme change, pas le nombre de tours."
+            },
+            {
+              "id": "compter",
+              "text": "Change ensuite le nombre de tours sans changer la pause. Explique la différence.",
+              "hint": "Le nombre de changements varie, pas la pause par tour."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Choisir une boucle limitée ou continue à partir du résultat demandé.",
+        "Montrer quels blocs sont à l’intérieur, puis prévoir le nombre d’actions.",
+        "Expliquer la différence entre une action dans la boucle et après elle.",
+        "Arrêter une boucle continue et expliquer le rôle de la pause."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-boucles",
+          "blockId": "guide",
+          "label": "Comparer deux et quatre tours"
+        },
+        {
+          "moduleId": "scratch-actions",
+          "blockId": "notions",
+          "label": "Revoir l’ordre et les pauses"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "scratch-boucles",
+          "blockId": "bonus",
+          "label": "Distinguer rythme et nombre de tours"
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "scratch-reactions",
+          "blockId": "preparer",
+          "label": "Faire réagir le jeu",
+          "prerequisiteSkills": [
+            {
+              "skillId": "scratch.coordinates",
+              "expectation": "Savoir changer X/Y et revenir à une position : sinon reprendre Piloter un personnage."
+            },
+            {
+              "skillId": "scratch.loops",
+              "expectation": "Savoir placer des actions dans une boucle continue."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Choisir une répétition limitée ou continue et expliquer ce qui se répète.",
+        "entryDiagnosis": [
+          "Assembler des blocs et sauvegarder un .sb3 : reprendre Prendre en main Scratch si nécessaire.",
+          "Lire une pile dans l’ordre et utiliser une pause : reprendre Déclencher et enchaîner des actions."
+        ],
+        "preparation": [
+          "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
+          "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
+          "Un projet neuf avec le chat suffit ; deux costumes déjà fournis."
+        ],
+        "why": "Une boucle exprime une répétition sans recopier les mêmes actions.",
+        "discoverySpeech": [
+          "« Qu’est-ce qui doit se refaire : toute la pile ou seulement les blocs dans le creux ? »",
+          "« Quatre tours : prédis ce que nous verrons. Où placer le message de fin pour le voir une seule fois ? »",
+          "« Indéfiniment veut dire jusqu’à l’arrêt, pas un très grand nombre écrit dans une case. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-boucles",
+            "blockId": "exemple",
+            "label": "Modèle commenté"
+          },
+          "comments": [
+            "Faire repérer les blocs et catégories avant d’assembler.",
+            "Les creux orange contiennent les actions imbriquées ; la fin visuelle ferme le bloc, ce n’est pas un bloc supplémentaire à chercher.",
+            "Prévoir un résultat avant chaque lancement et expliquer une situation où une action ne se produit pas."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Avec quatre tours et un mouvement par tour, combien de mouvements ?",
+            "answer": "Quatre ; le total est 80 pas si chaque mouvement fait 20 pas."
+          },
+          {
+            "question": "Pourquoi le message se répète-t-il lorsqu’il est dans la boucle ?",
+            "answer": "Il fait partie des actions refaites à chaque tour."
+          },
+          {
+            "question": "Une action après répéter indéfiniment sera-t-elle atteinte ?",
+            "answer": "Non, cette boucle ne termine pas normalement ; arrêter le projet n’exécute pas la suite."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-boucles",
+          "blockId": "guide",
+          "label": "Tests guidés"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-boucles",
+          "blockId": "autonomie",
+          "label": "Modifier sans modèle"
+        },
+        "differentiation": [
+          "Pour un CE2 : une manipulation à la fois, faire montrer la place avant de nommer les termes ; lire la consigne si nécessaire.",
+          "Pour un élève plus autonome : masquer le modèle, demander une prédiction et une modification justifiée avant le bonus.",
+          "Reprendre le prérequis fragile. Aucun nombre de séances imposé, aucune validation par consultation ou case cochée."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Une seule action semble se répéter.",
+            "helps": [
+              "Faire suivre le creux orange du doigt.",
+              "Repérer si avancer et attendre sont vraiment à l’intérieur.",
+              "Comparer un bloc dans et après la boucle.",
+              "Raccrocher uniquement le bloc mal placé puis retester."
+            ]
+          },
+          {
+            "symptom": "L’animation semble figée ou trop rapide.",
+            "helps": [
+              "Vérifier que le chat possède deux costumes.",
+              "Repérer la pause dans le creux.",
+              "Comparer sans pause et avec 0.5 seconde.",
+              "Ajouter la pause et faire compter les changements."
+            ]
+          }
+        ],
+        "notes": "Le calcul 4 × 20 est un appui, pas un prérequis mathématique à valider ici. Le déplacement relatif nécessite de replacer le chat avant chaque comparaison. Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes ; aucun nouveau dispositif de suivi.",
+        "quickConductor": [
+          "Vérifier les prérequis par une question et un petit essai.",
+          "Préparer la base minimale puis repérer les creux des blocs.",
+          "Assembler et prédire le résultat du modèle.",
+          "Faire les tests avec et sans la situation déclenchante.",
+          "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
+        ],
+        "references": [
+          {
+            "title": "Scratch — idées et tutoriels",
+            "url": "https://scratch.mit.edu/ideas"
+          },
+          {
+            "title": "Scratch — projets de départ officiels",
+            "url": "https://scratch.mit.edu/help/starter_projects/"
+          }
+        ]
+      }
+    },
+    "scratch-reactions": {
+      "scratchProjectId": "chat-cible",
+      "domainId": "jeux-video",
+      "title": "Faire réagir le jeu",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Tester une condition pour déplacer le chat et réagir à un contact.",
+      "tool": {
+        "label": "Ouvrir Scratch",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "skillIds": [
+        "scratch.conditions",
+        "scratch.contacts"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Utiliser une boucle continue et l’arrêter : reprendre Répéter des actions."
+        },
+        {
+          "skillId": "scratch.coordinates",
+          "expectation": "Modifier X et revenir à une position : reprendre Piloter un personnage."
+        },
+        {
+          "skillId": "scratch.keyboard",
+          "expectation": "Reconnaître les flèches du clavier."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "preparer",
+          "title": "1 — Un chat et une cible",
+          "paragraphs": [
+            "Ouvre le projet de départ proposé au-dessus : le chat et la souris nommée Cible sont déjà prêts, sans scripts. Tu peux aussi partir d’un nouveau projet pour ne pas mélanger les anciennes commandes. Le chat reste le joueur.",
+            "Avec le projet de départ, garde la souris Cible : n’ajoute pas de deuxième cible. Si tu pars d’un projet vide, clique en bas à droite sur Choisir un sprite et prends Ball dans la bibliothèque. Sélectionne sa miniature puis, dans le champ du nom sous la scène, renomme-le Cible.",
+            "Avec Cible sélectionnée, règle x à 80 et y à 0 dans ses champs sous la scène. La cible reste immobile : on ne lui ajoute pas de code.",
+            "Sélectionne à nouveau la miniature du chat : toute la programmation ci-dessous appartient au chat. Le chat démarre à x = -100, y = 0 ; la cible est assez éloignée pour qu’ils ne se touchent pas au départ."
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "reprise",
+          "title": "Besoin de revoir les déplacements ?",
+          "text": "Reprends Piloter un personnage si X/Y ou le retour au départ te semblent difficiles. Ne recopie pas ses anciennes piles de touches dans cet essai : nous les remplaçons par des tests dans une boucle.",
+          "moduleLink": {
+            "moduleId": "scratch-pilotage",
+            "text": "Piloter un personnage"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "condition",
+          "title": "2 — Une question qui peut être vraie ou fausse",
+          "paragraphs": [
+            "Dans Contrôle (orange), « si … alors » possède un emplacement de condition et un creux pour les actions. Si la condition est vraie, les actions à l’intérieur s’exécutent. Si elle est fausse, on les saute et on continue la pile.",
+            "Dans Capteurs (bleu clair), « touche espace pressée ? » pose une question. Son menu permet de choisir flèche droite ou gauche. Place ce bloc dans l’emplacement de condition du si.",
+            "Contrairement à l’événement « quand la touche … est pressée », ce capteur ne démarre pas de pile. Il vérifie si une touche est maintenue à cet instant. La boucle permet de reposer la question.",
+            "Le capteur « touche le … ? » se trouve aussi dans Capteurs. Choisis Cible dans son menu : la condition devient vraie quand le chat touche ce sprite.",
+            "Dans les modèles, les encadrés bleu clair sont les conditions à placer dans les si. Les actions indentées restent à l’intérieur. « Fin du bloc » repère seulement le bas du creux ; aucun bloc de ce nom n’est à chercher."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "3 — Maintenir une touche, toucher la cible",
+          "paragraphs": [
+            "Les tests droite et gauche sont deux si séparés, l’un après l’autre. Appuyer sur les deux touches ensemble peut annuler les déplacements ; teste d’abord une touche à la fois.",
+            "La pause de 0.03 seconde est dans la boucle, après les si ; elle ralentit la vérification. Les touches doivent rester accessibles au clavier : clique d’abord sur la scène.",
+            "Au contact, le message dure une seconde puis le chat retourne au départ. Ce retour le sépare de la cible : la réaction ne se répète pas simplement parce qu’il reste collé dessus.",
+            "Aucun mur n’est programmé : le chat peut aller trop loin à gauche. Reviens avec droite ou relance le drapeau ; on n’essaie pas encore de construire un labyrinthe complet."
+          ],
+          "shortSteps": [
+            "Sur le chat, assemble une seule pile au drapeau. Place les deux si de touches et le si de contact à l’intérieur de la boucle.",
+            "Pour les conditions, prends les blocs dans Capteurs puis choisis droite, gauche ou Cible. Pour chaque action, retrouve sa catégorie.",
+            "Clique sur la scène. Maintiens droite pour rejoindre la cible : le chat parle puis revient à gauche. Teste aussi gauche ; le bouton rouge arrête l’essai."
+          ],
+          "visualScript": {
+            "caption": "3 — Maintenir une touche, toucher la cible",
+            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le drapeau démarre la pile."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-100"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Au départ, le chat est à gauche de la cible."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "explanation": "La boucle vérifie à nouveau touches et contact.",
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche droite"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "explanation": "Si la touche est maintenue, on change X.",
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "3"
+                          },
+                          " à x"
+                        ],
+                        "explanation": "Le chat va à droite."
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche gauche"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "explanation": "Si la touche est maintenue, on change X.",
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-3"
+                          },
+                          " à x"
+                        ],
+                        "explanation": "Le chat va à gauche."
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche le ",
+                          {
+                            "choice": "Cible"
+                          },
+                          " ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "explanation": "Un contact déclenche seulement les blocs à l’intérieur.",
+                    "children": [
+                      {
+                        "category": "looks",
+                        "label": "Apparence",
+                        "parts": [
+                          "dire ",
+                          {
+                            "value": "Touché !"
+                          },
+                          " pendant ",
+                          {
+                            "value": "1"
+                          },
+                          " secondes"
+                        ],
+                        "explanation": "Le message est visible pendant la durée indiquée."
+                      },
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "aller à x: ",
+                          {
+                            "value": "-100"
+                          },
+                          " y: ",
+                          {
+                            "value": "0"
+                          }
+                        ],
+                        "explanation": "Au départ, le chat est à gauche de la cible."
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Une pause ralentit les essais."
+                  }
+                ]
+              }
+            ]
+          },
+          "code": "quand le drapeau vert est cliqué\n  aller à x: -100 y: 0\n  répéter indéfiniment\n    si <touche flèche droite pressée ?> alors\n      ajouter 3 à x\n    si <touche flèche gauche pressée ?> alors\n      ajouter -3 à x\n    si <touche le Cible ?> alors\n      dire Touché ! pendant 1 secondes\n      aller à x: -100 y: 0\n    attendre 0.03 secondes"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "À toi — observer vrai et faux",
+          "intro": "Avant le test, dis si la condition devrait être vraie.",
+          "items": [
+            {
+              "id": "immobile",
+              "text": "Lance sans toucher aux flèches. Vérifie que le chat reste au départ.",
+              "hint": "Les conditions de touches sont fausses ; les déplacements sont sautés."
+            },
+            {
+              "id": "maintenir",
+              "text": "Maintiens droite, puis relâche. Explique pourquoi le chat s’arrête.",
+              "hint": "La boucle continue, mais le capteur devient faux au relâchement."
+            },
+            {
+              "id": "contact",
+              "text": "Va jusqu’à la cible. Vérifie un message puis le retour à gauche.",
+              "hint": "Le si de contact contient les deux actions dans cet ordre."
+            },
+            {
+              "id": "absence",
+              "text": "Relance puis reste loin de la cible. Le chat doit-il dire Touché ? Explique et teste.",
+              "hint": "Non : le contact est faux."
+            },
+            {
+              "id": "sauver",
+              "text": "Télécharge le projet .sb3 pour pouvoir le reprendre dans le module du score.",
+              "hint": "Garde la version avec le chat, Cible et cette pile."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Sans modèle — change une règle",
+          "intro": "Tu peux garder ton programme ; fais les choix toi-même.",
+          "items": [
+            {
+              "id": "touche",
+              "text": "Remplace la commande droite par la touche d. Prédis et teste quelle touche fonctionne désormais.",
+              "hint": "Change seulement le menu du capteur, pas l’événement au drapeau."
+            },
+            {
+              "id": "message",
+              "text": "Choisis un autre message au contact, sans le déclencher quand le chat est loin.",
+              "hint": "Le message doit rester dans le si de contact."
+            },
+            {
+              "id": "cible",
+              "text": "Déplace Cible à x = 120, y = 0. Rejoins-la et explique si le code doit changer.",
+              "hint": "Le capteur teste le contact avec le sprite, pas une coordonnée écrite en dur."
+            },
+            {
+              "id": "comprendre",
+              "text": "Demande à quelqu’un de choisir une situation avec ou sans contact. Annonce les actions attendues, puis teste.",
+              "hint": "Réussir n’est pas seulement recopier : explique quelle condition est vraie."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus — ajouter haut et bas",
+          "intro": "Si X/Y et les si sont compris.",
+          "items": [
+            {
+              "id": "vertical",
+              "text": "Ajoute deux si pour les touches haut et bas, en changeant Y de 3 et -3.",
+              "hint": "Place-les dans la même boucle, avant la pause ; un si par touche."
+            },
+            {
+              "id": "nouvelle-cible",
+              "text": "Place Cible à x = 80, y = 60 puis rejoins-la. Explique pourquoi droite seule ne suffit plus.",
+              "hint": "Sa position verticale a changé ; il faut aussi monter."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer un événement qui démarre une pile et un capteur qui répond vrai/faux.",
+        "Prévoir quelles actions sont exécutées ou sautées dans un si.",
+        "Expliquer pourquoi une touche relâchée arrête le déplacement malgré la boucle active.",
+        "Tester une réaction au contact et une absence de réaction loin de la cible."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-reactions",
+          "blockId": "guide",
+          "label": "Tester une condition à la fois"
+        },
+        {
+          "moduleId": "scratch-pilotage",
+          "blockId": "position",
+          "label": "Revoir X/Y"
+        },
+        {
+          "moduleId": "scratch-boucles",
+          "blockId": "continue",
+          "label": "Revoir la boucle continue"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "scratch-reactions",
+          "blockId": "bonus",
+          "label": "Commander aussi le déplacement vertical",
+          "prerequisiteSkills": [
+            {
+              "skillId": "scratch.coordinates",
+              "expectation": "Choisir Y et son signe pour monter ou descendre."
+            }
+          ]
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "scratch-variables",
+          "blockId": "preparer",
+          "label": "Compter les contacts",
+          "prerequisiteSkills": [
+            {
+              "skillId": "scratch.contacts",
+              "expectation": "Reconstruire et expliquer la réaction à Cible ; reprendre les essais guidés si nécessaire."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Tester une condition pour déplacer le chat et réagir à un contact.",
+        "entryDiagnosis": [
+          "Utiliser une boucle continue et l’arrêter : reprendre Répéter des actions.",
+          "Modifier X et revenir à une position : reprendre Piloter un personnage.",
+          "Reconnaître les flèches du clavier."
+        ],
+        "preparation": [
+          "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
+          "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
+          "Utiliser la base partagée avec Chat et la souris Cible, sans ajouter de deuxième cible. Depuis un projet vide, Ball renommé Cible reste possible. Aucun fichier privé ni image à fournir."
+        ],
+        "why": "Les règles d’un jeu sont des tests : une action n’arrive que dans certaines situations.",
+        "discoverySpeech": [
+          "« Ce capteur répond à une question. Il ne démarre pas la pile : le drapeau le fait. »",
+          "« La boucle repose la question. Si la réponse est fausse, que fait-on des actions dans ce si ? »",
+          "« Nous renvoyons le chat à gauche après le contact : il ne reste pas collé à la cible. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-reactions",
+            "blockId": "exemple",
+            "label": "Modèle commenté"
+          },
+          "comments": [
+            "Faire repérer les blocs et catégories avant d’assembler.",
+            "Les creux orange contiennent les actions imbriquées ; la fin visuelle ferme le bloc, ce n’est pas un bloc supplémentaire à chercher.",
+            "Prévoir un résultat avant chaque lancement et expliquer une situation où une action ne se produit pas."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi le chat s’arrête-t-il quand on relâche droite ?",
+            "answer": "La boucle continue mais le capteur de touche devient faux."
+          },
+          {
+            "question": "Si le contact est faux, le message se produit-il ?",
+            "answer": "Non ; les blocs dans ce si sont sautés."
+          },
+          {
+            "question": "Faut-il modifier la condition quand la cible passe de x=80 à x=120 ?",
+            "answer": "Non : elle teste le sprite Cible, pas une coordonnée."
+          },
+          {
+            "question": "Pourquoi ne pas garder les anciennes piles flèche droite/gauche ?",
+            "answer": "Elles ajouteraient des déplacements à ceux de la boucle et rendraient l’essai confus."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-reactions",
+          "blockId": "guide",
+          "label": "Tests guidés"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-reactions",
+          "blockId": "autonomie",
+          "label": "Modifier sans modèle"
+        },
+        "differentiation": [
+          "Pour un CE2 : une manipulation à la fois, faire montrer la place avant de nommer les termes ; lire la consigne si nécessaire.",
+          "Pour un élève plus autonome : masquer le modèle, demander une prédiction et une modification justifiée avant le bonus.",
+          "Reprendre le prérequis fragile. Aucun nombre de séances imposé, aucune validation par consultation ou case cochée."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le chat ne réagit pas aux touches.",
+            "helps": [
+              "Cliquer sur la scène pour donner le focus.",
+              "Vérifier le capteur et sa touche choisie.",
+              "Comparer événement de touche et capteur dans le si.",
+              "Tester un seul si avec le chat sélectionné."
+            ]
+          },
+          {
+            "symptom": "Le contact ne déclenche pas le message.",
+            "helps": [
+              "Vérifier les positions et le rapprochement visuel.",
+              "Lire le nom du sprite dans le menu du capteur.",
+              "Comparer Cible et pointeur de souris ou bord.",
+              "Choisir Cible et vérifier que le message est dans le si."
+            ]
+          },
+          {
+            "symptom": "Le chat bouge trop vite ou réagit deux fois.",
+            "helps": [
+              "Repérer toutes les piles sur le chat.",
+              "Chercher les anciennes piles de touches.",
+              "Isoler la nouvelle pile et vérifier la pause.",
+              "Retirer les anciennes commandes de cet essai après sauvegarde puis retester."
+            ]
+          }
+        ],
+        "notes": "La mise en place de Cible peut être accompagnée ; évaluer séparément le raisonnement vrai/faux. Pas de score exigé dans ce module. Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes ; aucun nouveau dispositif de suivi.",
+        "quickConductor": [
+          "Vérifier les prérequis par une question et un petit essai.",
+          "Préparer la base minimale puis repérer les creux des blocs.",
+          "Assembler et prédire le résultat du modèle.",
+          "Faire les tests avec et sans la situation déclenchante.",
+          "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
+        ],
+        "references": [
+          {
+            "title": "Scratch — idées et tutoriels",
+            "url": "https://scratch.mit.edu/ideas"
+          },
+          {
+            "title": "Scratch — projets de départ officiels",
+            "url": "https://scratch.mit.edu/help/starter_projects/"
+          }
+        ]
+      }
+    },
+    "scratch-fin-partie": {
+      "domainId": "jeux-video",
+      "title": "Gagner, perdre et recommencer",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Choisir une condition de victoire et de défaite, arrêter la partie et la relancer proprement.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "scratchProjectId": "chat-cible",
+      "scratchProjectContinuation": true,
+      "skillIds": ["scratch.game-rules", "scratch.conditions", "scratch.variables"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.variables", "expectation": "Obtenir un point par contact et remettre score à 0 au drapeau : reprendre Compter et mémoriser." },
+        { "skillId": "scratch.conditions", "expectation": "Placer une action dans le bon si et expliquer quand elle s’exécute." },
+        { "skillId": "scratch.coordinates", "expectation": "Savoir que diminuer X déplace vers la gauche ; le départ est x = -100, y = 0." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "preparer", "title": "1 — Une partie avec des règles",
+          "paragraphs": [
+            "Reprends ton programme de Compter et mémoriser : Chat revient à (-100, 0) après un contact avec Cible et gagne 1 point. Cible reste à (80, 0). Teste deux contacts puis le drapeau : score doit faire 1, 2, puis 0.",
+            "Sans ce programme, ouvre Compter et mémoriser et reconstruis son modèle. La base Scratch sans scripts ne suffit pas ici. Ne repars pas du jeu complet avec la souris aléatoire : ses règles sont différentes.",
+            "Notre règle : à 3 points, tu gagnes. Si tu pars trop à gauche, avec X plus petit que -180, tu perds. Dans les deux cas, le jeu affiche un message et s’arrête. Le drapeau vert démarre une nouvelle partie."
+          ] },
+        { "type": "callout", "id": "reprise", "title": "Le compteur n’est pas prêt ?",
+          "text": "Reprends Compter et mémoriser : un point par contact, puis remise à zéro au drapeau.",
+          "moduleLink": { "moduleId": "scratch-variables", "text": "Compter et mémoriser" } },
+        { "type": "lesson", "id": "comparaisons", "title": "2 — Comparer avant de décider",
+          "paragraphs": [
+            "Dans Opérateurs (vert), prends le bloc avec =. Il compare deux valeurs. Glisse le petit bloc ovale score depuis Variables dans sa première case et écris 3 dans la seconde. La question « score = 3 » est vraie à 3 points, fausse à 0, 1 ou 2.",
+            "Pour la limite à gauche, prends le bloc < dans Opérateurs. Glisse position x depuis Mouvement (bleu) dans sa première case et écris -180 dans la seconde. « position x < -180 » est vraie à -181 ou -190, mais fausse à -180 ou -100. Plus petit ne veut pas dire plus proche de zéro.",
+            "Ces blocs verts posent des questions : ils ne modifient ni score ni X. Place chaque comparaison dans le trou du bloc si … alors. Dans les modèles, la question verte distingue la comparaison d’un capteur bleu clair.",
+            "Dans Contrôle (orange), le bloc stop possède un menu : choisis tout. Il arrête les scripts de tous les personnages. Un simple message ne suffit pas à terminer une partie. Le drapeau relancera les scripts : garde mettre score à 0 et aller à (-100, 0) avant la boucle."
+          ] },
+        { "type": "lesson", "id": "exemple", "title": "3 — Deux tests pour terminer",
+          "shortSteps": [
+            "Garde la pile du chat déjà construite. Dans sa boucle, après le si de contact et avant attendre 0.03 secondes, ajoute les deux si du modèle.",
+            "Dans chaque si, place le message dire … pendant 2 secondes puis stop tout. Les conditions vertes se construisent avec Opérateurs et les valeurs score / position x.",
+            "Teste 3 contacts pour gagner, puis relance et pars à gauche pour perdre. Après chaque fin, le drapeau doit remettre score à 0 et le chat au départ."
+          ],
+          "paragraphs": [
+            "Le modèle montre seulement les deux ajouts à placer dans la boucle existante. Ne crée pas une deuxième boucle ni une deuxième pile de drapeau. Les tests de touches, le contact et son retour au départ restent en place.",
+            "Teste la victoire après le contact : le troisième point est déjà ajouté. Le retour à (-100, 0) n’est pas une défaite puisque -100 est plus grand que -180. Choisis stop tout, pas stop ce script.",
+            "Avec un point par contact, score passe exactement par 3. Si tu avais essayé 2 points par contact, remets 1 avant ce modèle : 0, 2, 4 ne rencontre jamais 3. On adaptera les règles autonomes en gardant des valeurs atteignables."
+          ],
+          "visualScript": {
+            "caption": "Ajouts dans la boucle du chat — après le contact", "note": "Deux blocs si à insérer, pas une nouvelle pile. Les actions indentées appartiennent à leur si.",
+            "blocks": [
+              { "category": "control", "label": "Contrôle + Opérateurs", "parts": ["si ", { "condition": [{ "value": "score" }, " = ", { "value": "3" }], "operator": true }, " alors"], "explanation": "À trois points, on annonce la victoire puis on arrête tout.",
+                "children": [
+                  { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Gagné !" }, " pendant ", { "value": "2" }, " secondes"] },
+                  { "category": "control", "label": "Contrôle", "parts": ["stop ", { "choice": "tout" }] }
+                ] },
+              { "category": "control", "label": "Contrôle + Opérateurs", "parts": ["si ", { "condition": [{ "value": "position x" }, " < ", { "value": "-180" }], "operator": true }, " alors"], "explanation": "À gauche de la limite, on annonce la défaite puis on arrête tout.",
+                "children": [
+                  { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Perdu !" }, " pendant ", { "value": "2" }, " secondes"] },
+                  { "category": "control", "label": "Contrôle", "parts": ["stop ", { "choice": "tout" }] }
+                ] }
+            ]
+          },
+          "code": "À insérer dans la boucle existante, après le si de contact :\nsi <score = 3> alors\n  dire Gagné ! pendant 2 secondes\n  stop tout\nsi <position x < -180> alors\n  dire Perdu ! pendant 2 secondes\n  stop tout"
+        },
+        { "type": "tasks", "id": "guide", "title": "À toi — tester les deux fins", "intro": "Une règle est prête seulement si tu l’as testée.", "items": [
+          { "id": "victoire", "text": "Touche Cible trois fois. Vérifie le message Gagné et l’arrêt des déplacements après le message.", "hint": "Le test score = 3 est dans la boucle après le contact ; stop tout est dans le si." },
+          { "id": "defaite", "text": "Relance. Sans toucher Cible, maintiens gauche jusqu’à dépasser la limite. Vérifie Perdu et l’arrêt.", "hint": "À x = -180, le test est encore faux ; il devient vrai juste après, vers la gauche." },
+          { "id": "recommencer", "text": "Relance après chaque fin : vérifie score = 0 et Chat en (-100, 0). Sauvegarde ta version.", "hint": "La remise à zéro et la position de départ restent avant la boucle de drapeau." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — change une règle", "intro": "Essaie avant d’ouvrir l’indice. Une modification à la fois.", "items": [
+          { "id": "seuil", "text": "Demande cinq contacts pour gagner. Prédis quand la partie s’arrêtera puis vérifie.", "hint": "Garde 1 point par contact et compare score à 5." },
+          { "id": "limite", "text": "Fais perdre plus près du départ : choisis une limite entre -180 et -100. Explique pourquoi le départ reste autorisé.", "hint": "Par exemple -150 : au départ -100 < -150 est faux, mais -151 < -150 est vrai." },
+          { "id": "preuve", "text": "Sans nommer les blocs, explique ce qui fait gagner, perdre et recommencer. Teste deux nouvelles parties.", "hint": "Décris les événements du jeu et montre ensuite où ton programme applique chaque règle." }
+        ] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus — une règle impossible ?", "intro": "Seulement si les deux fins et le redémarrage sont compris. Travaille dans une copie.", "items": [
+          { "id": "saut", "text": "Avec victoire à 3, fais gagner 2 points par contact. Prédis le problème, teste puis corrige sans nouvelle propriété.", "hint": "Depuis 0, le score fait 2, 4, 6 : jamais 3. Remets un point par contact ou choisis une victoire à 4." }
+        ] }
+      ],
+      "masteryCriteria": [
+        "Expliquer la différence entre compter un contact et tester une fin de partie.",
+        "Prédire le résultat de score = 3 et de position x < -180, notamment à la limite.",
+        "Tester victoire, défaite et deux redémarrages avec score et position réinitialisés.",
+        "Modifier une règle atteignable et expliquer son effet, sans recopier seulement le modèle."
+      ],
+      "consolidation": [{ "moduleId": "scratch-fin-partie", "blockId": "guide", "label": "Retester les fins et le nouveau départ" }, { "moduleId": "scratch-variables", "blockId": "guide", "label": "Revoir les points et la remise à zéro" }],
+      "bonusActivities": [{ "moduleId": "scratch-fin-partie", "blockId": "bonus", "label": "Comprendre un seuil impossible" }],
+      "nextSteps": [{ "moduleId": "scratch-mini-jeu", "label": "Assembler ton premier mini-jeu", "prerequisiteSkills": [{ "skillId": "scratch.game-rules", "expectation": "Savoir tester les deux fins et recommencer ; sinon reprendre les tests guidés." }] }],
+      "teacherGuide": {
+        "objective": "Faire décider et tester une victoire, une défaite et un redémarrage, sans ajouter de vies ni de chronomètre.",
+        "entryDiagnosis": ["Demander deux contacts puis un redémarrage : score attendu 1, 2, 0.", "Faire montrer ce qui est au départ, dans la boucle et dans le si de contact.", "Demander vers où va le chat quand X diminue. Reprendre le prérequis fragile avant les comparaisons."],
+        "preparation": ["Ouvrir une copie du programme Score, avec Cible immobile à (80, 0), Chat au départ (-100, 0) et 1 point par contact.", "Afficher le compteur score. Préparer Opérateurs (= et <), le reporter position x et le bloc stop tout.", "Ne pas remplacer le modèle par le jeu complet partagé : il comporte des règles supplémentaires. Mettre Scratch en français via Settings → Language si nécessaire."],
+        "why": "Une fin de partie est une règle testée par le programme ; un message seul ne bloque pas les actions.",
+        "discoverySpeech": ["« Le compteur sait combien tu as touché de cibles. Maintenant, à quel nombre veux-tu gagner ? »", "« Le bloc vert pose une question. Il ne donne pas de point et ne déplace pas le chat. »", "« Annoncer Gagné, ce n’est pas encore arrêter. Que se passe-t-il si je continue à appuyer ? »", "« Le drapeau est une nouvelle partie : qu’est-ce qu’il faut remettre au départ ? »"],
+        "example": { "target": { "moduleId": "scratch-fin-partie", "blockId": "exemple", "label": "Deux tests de fin" }, "comments": ["Insérer les deux si dans la boucle existante, après le contact ; ne pas ajouter de boucle concurrente.", "Victoire : score = 3, dire Gagné 2 secondes, stop tout. Défaite : position x < -180, dire Perdu 2 secondes, stop tout.", "À -180, le test strict est faux. Avec un pas de -3 depuis -100, on passe de -178 à -181 : la défaite est réellement atteignable.", "Le contact remet Chat à -100 avant le test de victoire ; ce départ ne déclenche pas la défaite. Le drapeau remet score à 0 et la position au départ."] },
+        "questions": [
+          { "question": "À -180 exactement, a-t-on perdu ?", "answer": "Non : < veut dire strictement plus petit. À -181 oui ; à -100 non." },
+          { "question": "Pourquoi garder un point par contact pour gagner à 3 ?", "answer": "Le compteur doit atteindre 3. En ajoutant 2 depuis 0, il passe de 2 à 4 et ne sera jamais égal à 3." },
+          { "question": "Dire Gagné suffit-il à arrêter ?", "answer": "Non. Après le message, stop tout arrête les scripts. Sans lui, la boucle continue." },
+          { "question": "Comment savoir que recommencer fonctionne ?", "answer": "Après victoire et défaite, relancer puis vérifier position initiale, score zéro et déplacements possibles." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-fin-partie", "blockId": "guide", "label": "Tester les deux fins" },
+        "independentActivity": { "moduleId": "scratch-fin-partie", "blockId": "autonomie", "label": "Changer une règle et expliquer" },
+        "differentiation": ["CE2 : faire gagner à 3, puis traiter la limite gauche séparément ; lire les valeurs négatives avec une ligne de nombres si nécessaire.", "Ne pas exiger le bonus pour accéder au projet. Fournir le modèle de la base si sa reconstruction bloque, puis distinguer cette aide de la compréhension des règles de fin.", "Pour les plus autonomes : demander une prédiction à -180 et -181 puis masquer le modèle pour changer le seuil."],
+        "commonErrors": [
+          { "symptom": "Gagné s’affiche mais le jeu continue.", "helps": ["Attendre la fin du message puis appuyer à droite.", "Chercher stop dans le si de victoire.", "Comparer son menu : tout ou ce script.", "Ajouter stop tout après le message, dans le si, puis tester."] },
+          { "symptom": "Le jeu perd immédiatement.", "helps": ["Observer X au départ.", "Vérifier l’ordre des deux valeurs dans <.", "Comparer position x < -180 avec -180 < position x : ce n’est pas la même question.", "Mettre position x à gauche, -180 à droite et le départ à -100 avant la boucle."] },
+          { "symptom": "La nouvelle partie garde les points.", "helps": ["Relancer après une victoire et lire score.", "Repérer mettre score à 0.", "Comparer la remise à zéro avant la boucle avec l’ajout au contact.", "Replacer la remise à zéro sous le drapeau puis retester après les deux fins."] }
+        ],
+        "notes": "Distinguer réussite autonome, avec modèle et avec aide dans les remarques existantes. Une reproduction correcte ne prouve pas la compréhension : demander une prédiction et une modification. Aucun acquis automatique ni rythme imposé.",
+        "quickConductor": ["Vérifier score et retour au départ.", "Faire verbaliser gagner, perdre, recommencer.", "Construire une comparaison puis placer les tests.", "Tester victoire, défaite et nouvelle partie.", "Choisir consolidation, modification autonome ou projet selon les acquis."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
+    "scratch-mini-jeu": {
+      "domainId": "jeux-video", "title": "Mon premier mini-jeu", "type": "project", "theme": "fondations",
+      "objective": "Assembler et expliquer un petit jeu jouable avec déplacement, contact, score et fin de partie.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "scratchProjectId": "chat-cible", "scratchProjectContinuation": true,
+      "skillIds": ["scratch.keyboard", "scratch.coordinates", "scratch.loops", "scratch.contacts", "scratch.variables", "scratch.game-rules"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.keyboard", "expectation": "Déplacer le personnage à droite et à gauche." },
+        { "skillId": "scratch.contacts", "expectation": "Déclencher une action au contact et séparer les personnages ensuite." },
+        { "skillId": "scratch.variables", "expectation": "Compter les contacts et remettre score à 0 au départ." },
+        { "skillId": "scratch.game-rules", "expectation": "Tester victoire, défaite et redémarrage : reprendre Gagner, perdre et recommencer si nécessaire." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "exemple", "title": "1 — Choisis ton petit jeu", "paragraphs": [
+          "Reprends une copie de ton programme Gagner, perdre et recommencer. Tu peux garder le chat et la souris : aucun nouveau dessin n’est obligatoire. Si tu n’as plus ta copie, reconstruis les modèles des modules Score et Fin de partie ; ils restent accessibles.",
+          "Choisis une histoire en une phrase : par exemple, le chat rapporte trois objets sans aller trop loin à gauche. Ce n’est qu’une idée : tu peux inventer la tienne avec les mêmes règles.",
+          "Écris ou dis tes quatre règles avant de coder : quelles touches déplacent, ce qui donne un point, ce qui fait gagner, ce qui fait perdre. Le drapeau recommence la partie.",
+          "Pour ce premier projet, garde le déplacement horizontal, la cible fixe et un point par contact. Choisis un seuil positif de 3 à 5 et une limite gauche entre -180 et -120. Le départ reste (-100, 0) et la cible (80, 0) : les règles sont atteignables."
+        ] },
+        { "type": "callout", "id": "reprise", "title": "Une fin de partie reste difficile ?", "text": "Reprends Gagner, perdre et recommencer pour tester les règles avant de les personnaliser.", "moduleLink": { "moduleId": "scratch-fin-partie", "text": "Gagner, perdre et recommencer" } },
+        { "type": "checklist", "id": "guide", "title": "2 — Les éléments de ton jeu", "items": [
+          { "id": "joueur", "text": "Un personnage contrôlé avec droite et gauche." },
+          { "id": "contact", "text": "Une cible fixe : un contact donne un point et le personnage retourne au départ." },
+          { "id": "compteur", "text": "Un score visible, sans point gagné loin de la cible." },
+          { "id": "victoire", "text": "Une victoire atteignable qui affiche un message puis arrête tout." },
+          { "id": "defaite", "text": "Une défaite testable en allant trop à gauche, avec message puis arrêt." },
+          { "id": "reset", "text": "Le drapeau remet score à 0 et le personnage au départ pour rejouer." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "3 — Personnalise et fais jouer", "intro": "Essaie sans rouvrir les modèles ; une aide reste possible. Tu n’as pas besoin de nouvelles notions.", "items": [
+          { "id": "regles", "text": "Choisis ton seuil de victoire et ta limite gauche. Prédis les résultats puis modifie les deux règles.", "hint": "Un point par contact : tous les seuils entiers de 3 à 5 sont atteignables. Le départ -100 doit rester à droite de ta limite." },
+          { "id": "messages", "text": "Écris tes propres messages de victoire et de défaite, adaptés à ton histoire.", "hint": "Change seulement le texte de dire … pendant 2 secondes. Garde stop tout après chaque message." },
+          { "id": "consigne", "text": "Ajoute les commandes et les règles dans les instructions de la page Scratch, ou dans un petit texte conservé à côté du fichier.", "hint": "Écris comment bouger, gagner, perdre et recommencer. La publication n’est pas obligatoire." },
+          { "id": "testeur", "text": "Fais jouer quelqu’un avec tes instructions. Si tu es seul, teste le jeu en suivant ces instructions sans lire le code.", "hint": "Teste un joueur qui gagne et un joueur qui perd, pas seulement un chemin heureux." },
+          { "id": "sauver", "text": "Conserve ta version : sauvegarde sur ton propre compte ou télécharge un nouveau .sb3.", "hint": "Ne modifie pas le compte du professeur. Un ancien téléchargement ne se met pas à jour." }
+        ] },
+        { "type": "tasks", "id": "verification", "title": "Vérifie ton travail", "intro": "Les cases sont des repères, pas une validation de compétence.", "items": [
+          { "id": "sans-contact", "text": "Ne bouge pas : aucun point ne s’ajoute et la partie n’est pas perdue au départ.", "hint": "Le départ est hors du contact et du côté autorisé de la limite." },
+          { "id": "gagner", "text": "Gagne avec le nombre annoncé de contacts. Après le message, les touches ne déplacent plus le personnage." },
+          { "id": "perdre", "text": "Relance puis perds en passant la limite. Après le message, les touches ne déplacent plus le personnage." },
+          { "id": "rejouer", "text": "Relance après chaque fin. Vérifie deux parties avec score zéro et position initiale." },
+          { "id": "comprendre", "text": "Sans regarder le modèle, montre les règles dans ton code et explique ce qui changerait avec un autre seuil." }
+        ] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus facultatif — ton univers", "intro": "Seulement quand les règles fonctionnent. Sauvegarde d’abord une copie.", "items": [
+          { "id": "decor", "text": "Choisis un autre décor dans la bibliothèque Scratch et vérifie que les personnages restent visibles.", "hint": "Clique sur Choisir un arrière-plan en bas à droite. Un décor ne change pas les règles de contact." },
+          { "id": "costume", "text": "Si tu sais déjà changer de costume, personnalise le personnage puis reteste le départ et le contact.", "hint": "Reprends les essais de costumes dans Répéter des actions si nécessaire. La taille du dessin peut changer le moment du contact." }
+        ] },
+        { "type": "lesson", "id": "suite", "title": "Un premier jalon, pas une course", "paragraphs": [
+          "Un jeu court qui fonctionne et que tu sais expliquer vaut mieux qu’un grand jeu recopié. Si une règle reste fragile, reprends le module correspondant. Quand tu es à l’aise, la suite du parcours permettra de coordonner plusieurs personnages ; ce contenu n’est pas encore disponible."
+        ] }
+      ],
+      "masteryCriteria": ["Expliquer les commandes et les règles du jeu sans lire une solution.", "Montrer un point par contact, sans gain spontané ni répétition du même contact.", "Faire tester deux fins atteignables et le redémarrage après chacune.", "Modifier une règle et prédire son effet ; préciser les aides utilisées plutôt que confondre copie et compréhension."],
+      "consolidation": [
+        { "moduleId": "scratch-mini-jeu", "blockId": "verification", "label": "Retester une partie complète" },
+        { "moduleId": "scratch-fin-partie", "blockId": "guide", "label": "Revoir les deux fins et le redémarrage" },
+        { "moduleId": "scratch-variables", "blockId": "guide", "label": "Revoir le score" },
+        { "moduleId": "scratch-reactions", "blockId": "guide", "label": "Revoir le contact" }
+      ],
+      "bonusActivities": [{ "moduleId": "scratch-mini-jeu", "blockId": "bonus", "label": "Personnaliser sans changer les règles", "prerequisiteSkills": [{ "skillId": "scratch.game-rules", "expectation": "Avoir testé les deux fins et le nouveau départ." }] }],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Observer le transfert des notions dans un petit jeu personnel : aucune notion nouvelle obligatoire ni vitesse imposée.",
+        "entryDiagnosis": ["Demander une victoire, une défaite et un redémarrage sur le programme précédent.", "Faire expliquer un point par contact et la place de mettre score à 0.", "Si une règle est fragile, reprendre son module ; l’accès au projet n’atteste pas un acquis."],
+        "preparation": ["Garder une copie du programme précédent, pas une base sans code ni le jeu complet aléatoire.", "Prévoir les modèles Score et Fin de partie comme aides, sans les imposer à l’élève autonome.", "Mettre Scratch en français. Compte élève facultatif ; sauvegarde locale possible. Aucun nom d’élève ni fichier privé à publier."],
+        "why": "Un projet jalon montre si l’élève peut combiner des notions et expliquer une règle au-delà d’une reproduction bloc par bloc.",
+        "discoverySpeech": ["« Tu connais les pièces. Choisis maintenant les règles d’un jeu court que quelqu’un d’autre pourra comprendre. »", "« Tu peux garder les dessins. Ce qui compte ici, c’est un jeu qui fonctionne et que tu sais expliquer. »", "« Avant d’essayer, qu’attends-tu quand je touche trois fois la cible ? Et quand je pars trop à gauche ? »", "« Tu peux demander une aide. On distinguera ce que tu sais refaire seul et ce qui a encore besoin d’un modèle. »"],
+        "example": { "target": { "moduleId": "scratch-mini-jeu", "blockId": "exemple", "label": "Choisir des règles atteignables" }, "comments": ["L’histoire proposée n’est pas une solution à recopier ; garder un terrain horizontal simple.", "Le socle attendu vient des modules précédents : drapeau → score 0 et départ ; boucle → touches, contact avec point et séparation, tests de fin.", "Un seuil entre 3 et 5 reste atteignable avec un point par contact. Une limite entre -180 et -120 ne condamne pas le départ -100."] },
+        "questions": [
+          { "question": "Pourquoi ne pas faire un point à chaque tour de boucle ?", "answer": "Les points seraient gagnés sans action du joueur. L’ajout doit rester dans le si de contact." },
+          { "question": "Comment un autre joueur sait-il qu’il peut recommencer ?", "answer": "Les instructions disent d’utiliser le drapeau ; ce drapeau réinitialise score et position." },
+          { "question": "Changer le décor prouve-t-il que le jeu est compris ?", "answer": "Non. Demander une explication, une prédiction et une modification de règle, puis tester." },
+          { "question": "Quel changement peux-tu faire sans recopier tout le modèle ?", "answer": "Par exemple passer la victoire de 3 à 5, prévoir cinq contacts, modifier la comparaison puis vérifier." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-mini-jeu", "blockId": "guide", "label": "Vérifier le socle du jeu" },
+        "independentActivity": { "moduleId": "scratch-mini-jeu", "blockId": "autonomie", "label": "Choisir, modifier, faire jouer" },
+        "differentiation": ["CE2 : faire choisir une règle à la fois ; accepter une formulation orale et écrire les instructions avec l’élève si la lecture limite le travail.", "Pour les plus grands : masquer les modèles et demander au testeur de suivre les instructions, puis justifier une correction.", "Pas de nouvelle fonctionnalité pour aller vite : proposer le bonus visuel seulement après les tests. La publication n’est jamais obligatoire."],
+        "commonErrors": [
+          { "symptom": "L’élève personnalise mais ne peut expliquer ses règles.", "helps": ["Lui faire jouer une partie.", "Demander ce qui provoque un point puis une victoire.", "Faire retrouver seulement le si concerné, pas toute la pile.", "Faire changer un seuil et prédire avant de tester."] },
+          { "symptom": "La défaite arrive dès le départ.", "helps": ["Lire la position et la limite choisies.", "Repérer l’ordre dans la comparaison <.", "Vérifier que -100 est plus grand que la limite entre -180 et -120.", "Corriger une seule valeur ou l’ordre des entrées puis retester."] },
+          { "symptom": "Le jeu n’est pas rejouable.", "helps": ["Faire une deuxième partie après chacune des fins.", "Observer score et position au drapeau.", "Comparer avec les deux réinitialisations avant la boucle.", "Restaurer le départ et score zéro puis tester deux nouvelles parties."] }
+        ],
+        "notes": "Projet jalon : observer transfert et explication. Relever réussite autonome, avec modèle ou avec aide dans les remarques existantes ; ne pas créer de nouveau suivi ni valider automatiquement les skills. Les cases, le score et le partage du projet ne certifient rien.",
+        "quickConductor": ["Vérifier le jeu précédent.", "Faire choisir une histoire et quatre règles.", "Laisser personnaliser un seuil et les messages.", "Faire tester victoire, défaite et deux départs.", "Demander une prédiction et une explication, puis choisir reprise ou bonus."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
+    "scratch-variables": {
+      "scratchProjectId": "chat-cible",
+      "scratchProjectContinuation": true,
+      "domainId": "jeux-video",
+      "title": "Compter et mémoriser",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Créer un score, l’augmenter lors d’un contact et le remettre à zéro au départ.",
+      "tool": {
+        "label": "Ouvrir Scratch",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "skillIds": [
+        "scratch.variables"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.contacts",
+          "expectation": "Faire réagir le chat au contact de Cible : reprendre Faire réagir le jeu."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Comprendre les actions à l’intérieur d’un si."
+        },
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Repérer ce qui se répète et ce qui se fait une fois au départ."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "preparer",
+          "title": "1 — Retrouve ou reconstruis la base",
+          "paragraphs": [
+            "Ouvre une copie de ton .sb3 de Faire réagir le jeu. Si tu n’en as pas, ce module contient la préparation et la pile complètes : construis-les avant d’ajouter le score.",
+            "La base attendue : un chat à gauche, un sprite nommé exactement Cible à x = 80, y = 0, une boucle de déplacement droite/gauche et un retour à x = -100, y = 0 au contact.",
+            "Si tu avais remplacé une touche ou déplacé Cible, tu peux garder ces choix, à condition de savoir expliquer et tester les contacts. Le modèle ci-dessous repart de droite/gauche et de Cible à (80, 0)."
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "reprise",
+          "title": "La base n’est pas encore prête ?",
+          "text": "Ouvre Faire réagir le jeu pour créer les sprites et les commandes ; ce module reste accessible même sans projet précédent.",
+          "moduleLink": {
+            "moduleId": "scratch-reactions",
+            "text": "Faire réagir le jeu"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "notions",
+          "title": "2 — Une boîte qui garde un nombre",
+          "paragraphs": [
+            "Une variable est une valeur mémorisée qui peut changer. Ici, score garde le nombre de cibles touchées.",
+            "Dans Variables (orange foncé), clique sur Créer une variable. Nomme-la score et choisis Pour tous les sprites. Coche la case à côté de score pour afficher le compteur sur la scène.",
+            "« Mettre score à 0 » remplace la valeur : c’est notre remise à zéro. « Ajouter 1 à score » augmente la valeur actuelle : 0 devient 1, puis 2 au contact suivant.",
+            "Le menu de chaque bloc Variables doit sélectionner score. Créer la variable ne donne pas encore de points : il faut écrire quand elle change.",
+            "La remise à zéro va avant la boucle : une fois par nouveau départ. L’ajout de point va dans le si de contact : pas à chaque tour de boucle."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "3 — Un point par contact",
+          "paragraphs": [
+            "Le retour du chat à gauche sépare les sprites après chaque point. Sans ce retour, un contact qui dure peut donner plusieurs points au fil des tours de boucle.",
+            "Ne mets pas score à 0 dans la boucle : elle effacerait sans cesse les points. Ne mets pas ajouter 1 hors du si : tu gagnerais des points sans toucher la cible.",
+            "Les anciens blocs droite/gauche et la pause restent inchangés. Nous ajoutons seulement la mémoire du score ; pas encore de fin de partie, de vies ni de chronomètre."
+          ],
+          "shortSteps": [
+            "Crée score et affiche son compteur, puis ajoute les deux blocs orange foncé à la pile du chat.",
+            "Mets score à 0 juste après le drapeau, hors de la boucle. Mets « ajouter 1 à score » dans le si de contact, avant le message et le retour.",
+            "Lance, touche la cible deux fois : le score doit afficher 2. Relance le drapeau : il revient à 0."
+          ],
+          "visualScript": {
+            "caption": "3 — Un point par contact",
+            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le drapeau démarre la pile."
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Une remise à zéro, au départ et hors de la boucle."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-100"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Au départ, le chat est à gauche de la cible."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "explanation": "La boucle vérifie à nouveau touches et contact.",
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche droite"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "explanation": "Si la touche est maintenue, on change X.",
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "3"
+                          },
+                          " à x"
+                        ],
+                        "explanation": "Le chat va à droite."
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche gauche"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "explanation": "Si la touche est maintenue, on change X.",
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-3"
+                          },
+                          " à x"
+                        ],
+                        "explanation": "Le chat va à gauche."
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche le ",
+                          {
+                            "choice": "Cible"
+                          },
+                          " ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "explanation": "Un contact déclenche seulement les blocs à l’intérieur.",
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "1"
+                          },
+                          " à ",
+                          {
+                            "choice": "score"
+                          }
+                        ],
+                        "explanation": "Le compteur gagne un point."
+                      },
+                      {
+                        "category": "looks",
+                        "label": "Apparence",
+                        "parts": [
+                          "dire ",
+                          {
+                            "value": "Touché !"
+                          },
+                          " pendant ",
+                          {
+                            "value": "1"
+                          },
+                          " secondes"
+                        ],
+                        "explanation": "Le message est visible pendant la durée indiquée."
+                      },
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "aller à x: ",
+                          {
+                            "value": "-100"
+                          },
+                          " y: ",
+                          {
+                            "value": "0"
+                          }
+                        ],
+                        "explanation": "Au départ, le chat est à gauche de la cible."
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Une pause ralentit les essais."
+                  }
+                ]
+              }
+            ]
+          },
+          "code": "quand le drapeau vert est cliqué\n  mettre score à 0\n  aller à x: -100 y: 0\n  répéter indéfiniment\n    si <touche flèche droite pressée ?> alors\n      ajouter 3 à x\n    si <touche flèche gauche pressée ?> alors\n      ajouter -3 à x\n    si <touche le Cible ?> alors\n      ajouter 1 à score\n      dire Touché ! pendant 1 secondes\n      aller à x: -100 y: 0\n    attendre 0.03 secondes"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "À toi — vérifier le compteur",
+          "intro": "Teste les règles du score, pas seulement son affichage.",
+          "items": [
+            {
+              "id": "zero",
+              "text": "Au drapeau, vérifie score = 0. Attends sans bouger : il doit rester à 0.",
+              "hint": "La remise à zéro est hors de la boucle ; l’ajout est dans le si de contact."
+            },
+            {
+              "id": "deux",
+              "text": "Touche la cible deux fois. Vérifie 1 puis 2.",
+              "hint": "Le chat repart à gauche entre les contacts."
+            },
+            {
+              "id": "sans-contact",
+              "text": "Reste loin de Cible quelques secondes. Le score doit rester identique.",
+              "hint": "Aucun contact, aucun point."
+            },
+            {
+              "id": "reset",
+              "text": "Relance au drapeau et explique pourquoi le score revient à 0.",
+              "hint": "Le bloc mettre remplace l’ancienne valeur."
+            },
+            {
+              "id": "sauver",
+              "text": "Télécharge une nouvelle version .sb3, distincte si tu veux garder l’essai sans score.",
+              "hint": "Un fichier téléchargé précédemment ne se met pas à jour tout seul."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Sans modèle — choisis ta règle de points",
+          "intro": "Change seulement la règle de score, puis explique.",
+          "items": [
+            {
+              "id": "points",
+              "text": "Fais gagner 2 points par contact. Avant de tester, prédis le score après trois contacts.",
+              "hint": "Changer ajouter 1 en ajouter 2 ; après trois contacts depuis 0, on attend 6."
+            },
+            {
+              "id": "depart",
+              "text": "Choisis un score de départ de 5. Prédis la valeur après un contact avec ta règle actuelle.",
+              "hint": "Mettre remplace la valeur au départ ; ajouter part de cette valeur."
+            },
+            {
+              "id": "restaurer",
+              "text": "Remets le départ à 0 et un point par contact. Vérifie sans regarder le modèle.",
+              "hint": "Ne confonds pas mettre et ajouter."
+            },
+            {
+              "id": "expliquer",
+              "text": "Montre où tu placerais chaque bloc et explique pourquoi avant de le déplacer.",
+              "hint": "Au départ hors boucle : mettre. Au contact dans le si : ajouter."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus — diagnostiquer un score étrange",
+          "intro": "Travaille dans une copie et restaure le programme après chaque essai.",
+          "items": [
+            {
+              "id": "erreur-reset",
+              "text": "Déplace mettre score à 0 dans la boucle. Prédis, observe puis corrige.",
+              "hint": "La remise à zéro devient répétée. Ramène-la avant la boucle."
+            },
+            {
+              "id": "erreur-points",
+              "text": "Déplace ajouter 1 à score hors du si mais dans la boucle. Prédis, observe puis corrige.",
+              "hint": "Les points augmentent sans contact. Replace l’ajout dans le si."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "suite",
+          "title": "Et ensuite ?",
+          "paragraphs": [
+          "Tu sais maintenant compter une action du jeu. Continue avec Gagner, perdre et recommencer si tu sais expliquer le score et sa remise à zéro. Sinon, reprends les tests du compteur avant d’ajouter une fin de partie."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Créer et afficher une variable puis distinguer mettre et ajouter.",
+        "Prévoir une valeur après plusieurs contacts et expliquer le calcul, avec aide au calcul si nécessaire.",
+        "Montrer pourquoi la remise à zéro est hors de la boucle et l’ajout dans le si.",
+        "Tester qu’aucun point n’est attribué sans contact et qu’un nouveau départ remet à zéro."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-variables",
+          "blockId": "guide",
+          "label": "Vérifier zéro, contacts et nouveau départ"
+        },
+        {
+          "moduleId": "scratch-reactions",
+          "blockId": "guide",
+          "label": "Revoir la condition de contact"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "scratch-variables",
+          "blockId": "bonus",
+          "label": "Comprendre deux erreurs de placement"
+        }
+      ],
+    "nextSteps": [{ "moduleId": "scratch-fin-partie", "label": "Décider quand la partie se termine", "prerequisiteSkills": [{ "skillId": "scratch.variables", "expectation": "Savoir compter un point par contact et remettre à zéro ; sinon refaire les tests guidés du compteur." }] }],
+    "teacherGuide": {
+      "objective": "Créer un score, l’augmenter lors d’un contact et le remettre à zéro au départ.",
+        "entryDiagnosis": [
+          "Faire réagir le chat au contact de Cible : reprendre Faire réagir le jeu.",
+          "Comprendre les actions à l’intérieur d’un si.",
+          "Repérer ce qui se répète et ce qui se fait une fois au départ."
+        ],
+        "preparation": [
+          "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
+          "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
+          "Reprendre le programme de contact réalisé avec Chat et Cible. La base partagée sans scripts ne remplace pas ce prérequis. Aucun fichier privé ni image à fournir."
+        ],
+        "why": "Une variable permet de garder le résultat des actions de la partie.",
+        "discoverySpeech": [
+          "« Mettre remplace ce qui est dans la boîte ; ajouter part de ce qui y est déjà. »",
+          "« Où faut-il remettre à zéro : à chaque tour ou seulement quand on démarre ? »",
+          "« Les points doivent arriver parce qu’on touche la cible, pas simplement parce que la boucle tourne. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-variables",
+            "blockId": "exemple",
+            "label": "Modèle commenté"
+          },
+          "comments": [
+            "Faire repérer les blocs et catégories avant d’assembler.",
+            "Les creux orange contiennent les actions imbriquées ; la fin visuelle ferme le bloc, ce n’est pas un bloc supplémentaire à chercher.",
+            "Prévoir un résultat avant chaque lancement et expliquer une situation où une action ne se produit pas."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Depuis zéro, trois contacts à deux points donnent combien ?",
+            "answer": "6. Aider le calcul si nécessaire tout en évaluant le placement des blocs séparément."
+          },
+          {
+            "question": "Modifier une pause devrait-il modifier les points par contact ?",
+            "answer": "Non, si le chat est séparé de la cible après le contact."
+          },
+          {
+            "question": "Pourquoi ne pas créer un score qui se remet à zéro dans chaque tour ?",
+            "answer": "La mémoire serait effacée continuellement."
+          },
+          {
+            "question": "Mettre score à 1 signifie-t-il gagner un point ?",
+            "answer": "Non : cela remplace le score par 1 ; ajouter 1 l’augmente."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-variables",
+          "blockId": "guide",
+          "label": "Tests guidés"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-variables",
+          "blockId": "autonomie",
+          "label": "Modifier sans modèle"
+        },
+        "differentiation": [
+          "Pour un CE2 : une manipulation à la fois, faire montrer la place avant de nommer les termes ; lire la consigne si nécessaire.",
+          "Pour un élève plus autonome : masquer le modèle, demander une prédiction et une modification justifiée avant le bonus.",
+          "Reprendre le prérequis fragile. Aucun nombre de séances imposé, aucune validation par consultation ou case cochée."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le score reste ou revient toujours à zéro.",
+            "helps": [
+              "Observer un contact puis la valeur affichée.",
+              "Chercher où se trouve mettre score à 0.",
+              "Comparer un départ hors boucle et un bloc dans la boucle.",
+              "Déplacer seulement la remise à zéro avant la boucle."
+            ]
+          },
+          {
+            "symptom": "Le score augmente sans toucher la cible.",
+            "helps": [
+              "Lancer sans appuyer et observer.",
+              "Repérer ajouter dans ou hors du si.",
+              "Comparer avec la condition de contact.",
+              "Replacer l’ajout dans le si puis retester loin de la cible."
+            ]
+          },
+          {
+            "symptom": "Le score n’est pas affiché.",
+            "helps": [
+              "Regarder la catégorie Variables.",
+              "Vérifier que score existe et que sa case est cochée.",
+              "Comparer affichage de la variable et blocs qui la modifient.",
+              "Cocher score sans ajouter de nouveau compteur."
+            ]
+          }
+        ],
+        "notes": "Observer prédiction, test sans contact et nouveau départ. Ne pas transformer le score du jeu en validation de compétence CodeCraft. Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes ; aucun nouveau dispositif de suivi.",
+        "quickConductor": [
+          "Vérifier les prérequis par une question et un petit essai.",
+          "Préparer la base minimale puis repérer les creux des blocs.",
+          "Assembler et prédire le résultat du modèle.",
+          "Faire les tests avec et sans la situation déclenchante.",
+          "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
+        ],
+        "references": [
+          {
+            "title": "Scratch — idées et tutoriels",
+            "url": "https://scratch.mit.edu/ideas"
+          },
+          {
+            "title": "Scratch — projets de départ officiels",
+            "url": "https://scratch.mit.edu/help/starter_projects/"
+          }
+        ]
+      }
+    },
+    "scratch-decouverte": {
+      "domainId": "jeux-video",
+      "title": "Prendre en main Scratch",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Repérer les zones de Scratch, lancer une action et conserver son projet.",
+      "tool": {
+        "label": "Ouvrir Scratch",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "skillIds": [
+        "scratch.workspace"
+      ],
+      "prerequisiteSkills": [],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "reperes",
+          "title": "1 — Ton atelier de jeu",
+          "paragraphs": [
+            "Clique sur Ouvrir Scratch. L’éditeur s’ouvre dans un nouvel onglet : garde CodeCraft ouvert pour retrouver les consignes. Aucun compte n’est nécessaire pour cet essai ; nous téléchargerons le projet sur ton ordinateur.",
+            "Si Scratch est en anglais, clique sur le globe en haut et choisis Français. Ferme le tutoriel qui masque l’éditeur si nécessaire. Nous gardons le chat déjà présent.",
+            "La scène est la zone où tu vois le résultat. Un sprite est un personnage ou un objet du projet : le chat est notre premier sprite. Clique sur sa miniature sous la scène pour le sélectionner.",
+            "L’onglet Code affiche les catégories de blocs à gauche et la zone de programmation au centre. Fais glisser un bloc vers cette zone pour donner une instruction au sprite sélectionné. Un script est un ensemble de blocs accrochés."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "2 — Une première action",
+          "paragraphs": [
+            "Dans la catégorie bleue Mouvement, glisse « avancer de 10 pas » au centre. Clique directement sur ce bloc : le chat avance un peu. Clique une deuxième fois pour observer un nouveau déplacement.",
+            "Dans la catégorie jaune Événements, prends « quand le drapeau vert est cliqué ». Accroche le bloc bleu juste dessous : rapproche-le jusqu’à voir qu’ils s’emboîtent.",
+            "Clique maintenant sur le drapeau vert au-dessus de la scène : le script démarre. Le bouton rouge voisin sert à arrêter les scripts en cours. Ce petit script finit vite : si rien ne tourne encore, arrêter ne change rien.",
+            "Assemble les deux blocs comme sur le modèle ci-dessous. C’est un repère visuel : retrouve les vrais blocs dans Scratch, puis teste avec le drapeau."
+          ],
+          "visualScript": {
+            "caption": "Deux blocs accrochés — un seul script",
+            "note": "Modèle à reproduire dans Scratch, pas un éditeur interactif.",
+            "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Le départ : un clic sur le drapeau lance la pile." },
+              { "category": "motion", "label": "Mouvement", "parts": ["avancer de ", { "value": "10" }, " pas"], "explanation": "L’action : le chat avance de 10 pas." }
+            ]
+          },
+          "shortSteps": [
+            "Cherche le départ dans Événements (jaune) et « avancer de 10 pas » dans Mouvement (bleu).",
+            "Accroche le bloc bleu sous le bloc jaune, comme sur le modèle.",
+            "Clique sur le drapeau vert au-dessus de la scène : observe le chat. Le bouton rouge arrête les scripts en cours."
+          ],
+          "code": "Événements : quand le drapeau vert est cliqué\n  Mouvement : avancer de 10 pas"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "À toi — repérer et essayer",
+          "intro": "Avance une étape à la fois.",
+          "items": [
+            {
+              "id": "scene",
+              "text": "Montre la scène, puis sélectionne la miniature du chat.",
+              "hint": "La scène montre le résultat. La miniature choisit le sprite dont tu modifies le code."
+            },
+            {
+              "id": "bloc",
+              "text": "Assemble les deux blocs de l’exemple, puis clique sur le drapeau vert.",
+              "hint": "Le bloc jaune doit toucher le bloc bleu. Le drapeau est au-dessus de la scène."
+            },
+            {
+              "id": "changer",
+              "text": "Remplace 10 par 30 dans le bloc bleu. Prédis ce qui change, puis teste.",
+              "hint": "Le nombre indique la distance. Ce n’est pas la vitesse ni le nombre de clics."
+            },
+            {
+              "id": "expliquer",
+              "text": "Explique avec tes mots où tu écris les instructions et où tu vois leur résultat.",
+              "hint": "La zone Code contient les blocs ; la scène montre ce qu’ils font."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "3 — Sauvegarder sans compte",
+          "paragraphs": [
+            "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer premier-essai.sb3.",
+            "Le téléchargement garde l’état du projet à ce moment-là. Après de nouvelles modifications, télécharge une nouvelle version : ne suppose pas que l’ancien fichier a changé.",
+            "Pour rouvrir : dans Scratch, choisis Fichier → Charger depuis votre ordinateur et sélectionne ton .sb3. Attention : charger remplace le projet ouvert. Sauvegarde d’abord ton travail actuel si tu veux le garder.",
+            "N’utilise pas ton nom complet ou d’autres informations personnelles dans le titre. Il n’est pas nécessaire de partager le projet en ligne."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Sans modèle — retrouve ton atelier",
+          "intro": "Replie ou remonte moins souvent vers les exemples. Tu peux utiliser un indice si tu bloques.",
+          "items": [
+            {
+              "id": "reouvrir",
+              "text": "Télécharge ton projet, puis recharge ce fichier. Vérifie que tes deux blocs sont encore présents.",
+              "hint": "Sauvegarde avant de charger. Un fichier .sb3 contient le projet, pas seulement une image."
+            },
+            {
+              "id": "autonome",
+              "text": "Sans regarder le modèle, montre le sprite sélectionné, la zone de code, le drapeau et le bouton d’arrêt.",
+              "hint": "Essaie de les montrer avant de relire la partie 1."
+            },
+            {
+              "id": "preuve",
+              "text": "Relance ton script et explique pourquoi cliquer sur le drapeau le démarre.",
+              "hint": "Le bloc Événements indique ce qui déclenche le script."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus — un autre essai",
+          "intro": "Seulement si les repères sont clairs.",
+          "items": [
+            {
+              "id": "distance",
+              "text": "Teste 5 puis 40 pas. Explique quelle valeur déplace le chat le plus loin, puis sauvegarde.",
+              "hint": "Tu changes seulement le nombre du bloc Mouvement."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Retrouver la scène, le sprite sélectionné et sa zone de code sans modèle.",
+        "Modifier un nombre et prévoir l’effet, plutôt que seulement recopier.",
+        "Télécharger puis recharger un .sb3 et retrouver le script."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-decouverte",
+          "blockId": "guide",
+          "label": "Reprendre les repères et la première action"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "scratch-decouverte",
+          "blockId": "bonus",
+          "label": "Comparer deux distances"
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "scratch-actions",
+          "blockId": "exemple",
+          "label": "Enchaîner des actions — savoir retrouver les blocs et sauvegarder son projet"
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Repérer les zones de Scratch, lancer une action et conserver son projet.",
+        "entryDiagnosis": [
+          "Demander de montrer la scène et de déplacer un bloc, sans supposer une expérience antérieure.",
+          "Observer la lecture et la manipulation ; lire la consigne à voix haute si nécessaire sans donner la solution."
+        ],
+        "preparation": [
+          "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
+          "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
+          "Utiliser le chat fourni par Scratch : aucun projet privé ni asset à préparer pour ce lot."
+        ],
+        "why": "Se repérer et récupérer son travail permet de créer ensuite sans dépendre du compte ou de la démonstration du professeur.",
+        "discoverySpeech": [
+          "« La scène montre ce que ton jeu fait ; les blocs disent ce qu’il doit faire. »",
+          "« Clique sur le bloc bleu. Maintenant, comment le drapeau pourrait-il déclencher cette action ? »",
+          "« Nous gardons le projet dans un fichier : fermer l’onglet ne doit pas nous faire perdre notre travail. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-decouverte",
+            "blockId": "exemple",
+            "label": "Lire et assembler l’exemple"
+          },
+          "comments": [
+            "Les lignes sont un modèle textuel de blocs, pas un programme à coller.",
+            "Faire retrouver la catégorie puis le bloc ; laisser l’élève assembler.",
+            "Demander une prédiction, lancer, comparer et expliquer."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Le code de quel sprite modifies-tu ?",
+            "answer": "Celui dont la miniature est sélectionnée."
+          },
+          {
+            "question": "30 pas veut-il dire 30 secondes ?",
+            "answer": "Non, c’est une distance de déplacement."
+          },
+          {
+            "question": "Le fichier téléchargé change-t-il tout seul après une modification ?",
+            "answer": "Non : il faut enregistrer une nouvelle version."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-decouverte",
+          "blockId": "guide",
+          "label": "Essais guidés"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-decouverte",
+          "blockId": "autonomie",
+          "label": "Essai sans modèle"
+        },
+        "differentiation": [
+          "Pour un CE2 débutant : une consigne à la fois, lire les termes si nécessaire, faire montrer avant de demander d’écrire ou de calculer.",
+          "Pour un élève à l’aise : demander une prédiction et une modification sans modèle, puis le bonus. Ne pas imposer un nombre de séances.",
+          "Reprendre le prérequis manquant ; aucun accès au module ni case cochée ne constitue un acquis."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le chat ne bouge pas au drapeau.",
+            "helps": [
+              "Faire cliquer directement le bloc bleu.",
+              "Vérifier le sprite sélectionné.",
+              "Comparer une pile attachée et deux blocs isolés.",
+              "Raccrocher le bloc Mouvement sous l’événement puis retester."
+            ]
+          },
+          {
+            "symptom": "Le projet semble perdu.",
+            "helps": [
+              "Chercher le fichier .sb3 dans les téléchargements.",
+              "Distinguer télécharger un fichier et garder l’onglet ouvert.",
+              "Faire charger une copie connue après sauvegarde du projet actuel.",
+              "Accompagner le choix du fichier sans évaluer cela comme un problème de logique."
+            ]
+          }
+        ],
+        "notes": "Noter séparément le repérage, la manipulation de la souris et l’explication. Un téléchargement accompagné ne prouve pas la sauvegarde autonome.",
+        "quickConductor": [
+          "Vérifier les repères ou prérequis.",
+          "Faire assembler l’exemple et prédire son résultat.",
+          "Changer une chose, tester et expliquer.",
+          "Proposer la mission autonome ; distinguer réussite autonome, avec modèle ou avec aide.",
+          "Sauvegarder le .sb3 ; choisir reprise ou suite selon la compréhension."
+        ],
+        "references": [
+          {
+            "title": "Scratch — idées et tutoriels officiels",
+            "url": "https://scratch.mit.edu/ideas"
+          },
+          {
+            "title": "Scratch — projets de départ officiels",
+            "url": "https://scratch.mit.edu/help/starter_projects/"
+          }
+        ]
+      }
+    },
+    "scratch-actions": {
+      "domainId": "jeux-video",
+      "title": "Déclencher et enchaîner des actions",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Construire une courte séquence, prévoir son ordre et la déclencher.",
+      "tool": {
+        "label": "Ouvrir Scratch",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "skillIds": [
+        "scratch.events",
+        "scratch.sequence"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.workspace",
+          "expectation": "Sélectionner le sprite, assembler des blocs et conserver un .sb3. Sinon, reprendre Prendre en main Scratch."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "reprise",
+          "title": "Avant de commencer",
+          "text": "Utilise un nouveau projet avec le chat ou une copie de ton essai. Si tu hésites pour retrouver les zones ou conserver ton travail, reprends Prendre en main Scratch.",
+          "moduleLink": {
+            "moduleId": "scratch-decouverte",
+            "text": "Prendre en main Scratch"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "notions",
+          "title": "1 — Un départ et un ordre",
+          "paragraphs": [
+            "Un événement est ce qui déclenche le script. « quand le drapeau vert est cliqué » démarre les blocs attachés dessous lorsque tu cliques sur le drapeau.",
+            "Les blocs d’une même pile s’exécutent de haut en bas. Des blocs posés à côté, sans être accrochés, ne font pas partie de cette pile.",
+            "Dans Apparence, catégorie violette, « dire Bonjour ! pendant 2 secondes » affiche une bulle puis attend la durée indiquée. Tu peux modifier le message et la durée.",
+            "Dans Contrôle, catégorie orange, « attendre 1 secondes » fait une pause avant la suite. Dans Mouvement, « avancer de 10 pas » déplace le sprite selon sa direction.",
+            "Relancer ce script ne remet pas le chat à sa position initiale : il avancera encore. Le retour au départ sera expliqué dans Piloter un personnage."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "2 — Assemble cette petite scène",
+          "paragraphs": [
+            "Sélectionne le chat. Retire ton ancienne pile de cet essai en la glissant vers la colonne des blocs, pour éviter deux scripts déclenchés en même temps. Garde ton ancien projet dans son fichier si tu veux le conserver.",
+            "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous. Ce modèle se lit ; il ne se colle pas comme du code texte.",
+            "Avant de cliquer sur le drapeau, annonce ce que fera le chat en premier, puis en dernier. Observe ensuite les deux déplacements et la pause."
+          ],
+          "shortSteps": [
+            "Sélectionne le chat. Garde une seule pile au drapeau dans cet essai ; sauvegarde ton ancien projet avant de retirer une pile.",
+            "Assemble ces blocs, puis choisis les messages et nombres du modèle.",
+            "Annonce la première et la dernière action. Clique sur le drapeau, puis compare avec ta prédiction."
+          ],
+          "visualScript": {
+            "caption": "Une pile : les actions de haut en bas",
+            "note": "Assemble ces blocs dans Scratch. Le modèle n’est pas interactif.",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le drapeau démarre cette pile."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Bonjour !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Le chat parle pendant 2 secondes avant la suite."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "avancer de ",
+                  {
+                    "value": "30"
+                  },
+                  " pas"
+                ],
+                "explanation": "Premier déplacement de 30 pas."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "1"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Une pause d’une seconde."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "avancer de ",
+                  {
+                    "value": "30"
+                  },
+                  " pas"
+                ],
+                "explanation": "Deuxième déplacement de 30 pas."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "À bientôt !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Le dernier message termine la scène."
+              }
+            ]
+          },
+          "code": "Événements : quand le drapeau vert est cliqué\n  Apparence : dire Bonjour ! pendant 2 secondes\n  Mouvement : avancer de 30 pas\n  Contrôle : attendre 1 secondes\n  Mouvement : avancer de 30 pas\n  Apparence : dire À bientôt ! pendant 2 secondes"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé — change l’histoire",
+          "intro": "Un seul changement à la fois : prédis, teste, explique.",
+          "items": [
+            {
+              "id": "assembler",
+              "text": "Construis et lance la pile proposée.",
+              "hint": "Vérifie que chaque bloc s’accroche au précédent, sans espace."
+            },
+            {
+              "id": "texte",
+              "text": "Change les deux messages, sans déplacer les blocs.",
+              "hint": "Les cases blanches du bloc violet contiennent le texte."
+            },
+            {
+              "id": "ordre",
+              "text": "Place le premier message après le premier déplacement. Prédis puis teste la différence.",
+              "hint": "Déplace le bloc dans la même pile. Si une partie se détache, raccroche-la."
+            },
+            {
+              "id": "pause",
+              "text": "Change la pause de 1 à 3 secondes. Observe ce qui reste inchangé.",
+              "hint": "La pause change le temps entre les actions ; pas la distance."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi — une scène sans modèle",
+          "intro": "Crée une nouvelle pile avec les blocs déjà connus. Essaie avant l’indice.",
+          "items": [
+            {
+              "id": "scene-personnelle",
+              "text": "Au drapeau : affiche un message, déplace le chat, fais une pause, puis affiche un autre message.",
+              "hint": "Tu connais déjà les quatre types de blocs nécessaires. Choisis toi-même les valeurs."
+            },
+            {
+              "id": "prediction",
+              "text": "Explique l’ordre avant de lancer, puis déplace un bloc pour changer l’histoire.",
+              "hint": "Changer seulement un message ne change pas l’ordre des actions."
+            },
+            {
+              "id": "sauver",
+              "text": "Teste deux fois, explique pourquoi le chat ne revient pas au départ, puis télécharge ton .sb3.",
+              "hint": "Les déplacements s’ajoutent ; aucun bloc de ce script ne réinitialise la position."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus — déclencher autrement",
+          "intro": "Aucune boucle nécessaire.",
+          "items": [
+            {
+              "id": "espace",
+              "text": "Dans une copie de ta pile, remplace le départ par Événements → « quand la touche espace est pressée ». Clique sur la scène et appuie sur espace.",
+              "hint": "Choisis espace dans le menu du bloc jaune. Utilise une copie, sans supprimer ton essai sauvegardé."
+            },
+            {
+              "id": "comparer",
+              "text": "Explique ce qui déclenche chacune des deux piles.",
+              "hint": "Le départ change, mais l’ordre interne reste celui des blocs."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer l’événement de départ des actions.",
+        "Prédire l’ordre et expliquer un changement observé après avoir déplacé un bloc.",
+        "Créer une courte séquence personnelle sans recopier toute la pile."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-actions",
+          "blockId": "guide",
+          "label": "Reprendre un changement à la fois"
+        },
+        {
+          "moduleId": "scratch-decouverte",
+          "blockId": "conserver",
+          "label": "Retrouver la sauvegarde locale"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "scratch-actions",
+          "blockId": "bonus",
+          "label": "Déclencher avec une touche"
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "scratch-pilotage",
+          "blockId": "position",
+          "label": "Piloter un personnage — comprendre le départ et l’ordre des blocs"
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Construire une courte séquence, prévoir son ordre et la déclencher.",
+        "entryDiagnosis": [
+          "Sélectionner le sprite, assembler des blocs et conserver un .sb3. Sinon, reprendre Prendre en main Scratch."
+        ],
+        "preparation": [
+          "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
+          "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
+          "Utiliser le chat fourni par Scratch : aucun projet privé ni asset à préparer pour ce lot."
+        ],
+        "why": "Comprendre l’ordre d’une pile prépare aux règles de jeu et évite de traiter les blocs comme une recette à recopier.",
+        "discoverySpeech": [
+          "« Avant de lancer, raconte-moi la scène de haut en bas. »",
+          "« Si je déplace cette phrase après le mouvement, qu’est-ce qui changera ? »",
+          "« Attendre laisse passer du temps ; avancer change la position. Ce sont deux choses différentes. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-actions",
+            "blockId": "exemple",
+            "label": "Lire et assembler l’exemple"
+          },
+          "comments": [
+            "Les lignes sont un modèle textuel de blocs, pas un programme à coller.",
+            "Faire retrouver la catégorie puis le bloc ; laisser l’élève assembler.",
+            "Demander une prédiction, lancer, comparer et expliquer."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Un bloc posé à côté s’exécute-t-il avec la pile ?",
+            "answer": "Non, il doit être attaché ou avoir son propre événement."
+          },
+          {
+            "question": "Pourquoi le chat avance-t-il encore au deuxième départ ?",
+            "answer": "Le script ajoute un déplacement ; il n’a aucun retour au départ."
+          },
+          {
+            "question": "Pourquoi voit-on une pause après le message ?",
+            "answer": "Le bloc dire pendant attend déjà sa durée, puis le bloc attendre ajoute sa pause."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-actions",
+          "blockId": "guide",
+          "label": "Essais guidés"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-actions",
+          "blockId": "autonomie",
+          "label": "Essai sans modèle"
+        },
+        "differentiation": [
+          "Pour un CE2 débutant : une consigne à la fois, lire les termes si nécessaire, faire montrer avant de demander d’écrire ou de calculer.",
+          "Pour un élève à l’aise : demander une prédiction et une modification sans modèle, puis le bonus. Ne pas imposer un nombre de séances.",
+          "Reprendre le prérequis manquant ; aucun accès au module ni case cochée ne constitue un acquis."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Tout part deux fois ou dans un ordre inattendu.",
+            "helps": [
+              "Repérer combien de départs au drapeau existent.",
+              "Comparer les piles présentes au modèle de cet essai.",
+              "Détacher une ancienne pile pour isoler l’essai.",
+              "Relancer une seule pile et commenter son ordre."
+            ]
+          },
+          {
+            "symptom": "La pause n’a pas l’effet attendu.",
+            "helps": [
+              "Faire lire le nombre et l’emplacement du bloc attendre.",
+              "Comparer une durée de message et une pause entre mouvements.",
+              "Tester avec une pause de trois secondes.",
+              "Remettre la pause entre les deux déplacements et faire prédire."
+            ]
+          }
+        ],
+        "notes": "Distinguer copie correcte et ordre compris : déplacer un bloc puis demander une prédiction. Ne pas introduire de boucle ou de variable pour rallonger le programme.",
+        "quickConductor": [
+          "Vérifier les repères ou prérequis.",
+          "Faire assembler l’exemple et prédire son résultat.",
+          "Changer une chose, tester et expliquer.",
+          "Proposer la mission autonome ; distinguer réussite autonome, avec modèle ou avec aide.",
+          "Sauvegarder le .sb3 ; choisir reprise ou suite selon la compréhension."
+        ],
+        "references": [
+          {
+            "title": "Scratch — idées et tutoriels officiels",
+            "url": "https://scratch.mit.edu/ideas"
+          },
+          {
+            "title": "Scratch — projets de départ officiels",
+            "url": "https://scratch.mit.edu/help/starter_projects/"
+          }
+        ]
+      }
+    },
+    "scratch-pilotage": {
+      "scratchProjectId": "chat-cible",
+      "domainId": "jeux-video",
+      "title": "Piloter un personnage",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
+      "tool": {
+        "label": "Ouvrir Scratch",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "skillIds": [
+        "scratch.coordinates",
+        "scratch.keyboard",
+        "scratch.events"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.workspace",
+          "expectation": "Sélectionner le bon sprite et sauvegarder son projet."
+        },
+        {
+          "skillId": "scratch.events",
+          "expectation": "Expliquer ce qui déclenche une pile ; reprendre Déclencher et enchaîner des actions en cas d’hésitation."
+        },
+        {
+          "skillId": "scratch.sequence",
+          "expectation": "Lire une pile de haut en bas."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "reprise",
+          "title": "Avant de commencer",
+          "text": "Utilise un nouveau projet avec le chat ou une copie. Si les événements et l’ordre des blocs sont encore difficiles, reprends Déclencher et enchaîner des actions.",
+          "moduleLink": {
+            "moduleId": "scratch-actions",
+            "text": "Déclencher et enchaîner des actions"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "position",
+          "title": "1 — Où est le personnage ?",
+          "paragraphs": [
+            "Sous la scène, sélectionne le chat. Les valeurs x et y indiquent sa position : x repère gauche/droite, y repère bas/haut. Au centre, x = 0 et y = 0.",
+            "Quand x augmente, le chat va à droite ; quand x diminue, il va à gauche. Quand y augmente, il monte ; quand y diminue, il descend. Un nombre négatif comme -10 permet ici d’aller dans le sens opposé.",
+            "La scène va de -240 à 240 horizontalement et de -180 à 180 verticalement. Pour cet essai, reste près du centre : un sprite peut dépasser du cadre.",
+            "Dans Mouvement, « aller à x: 0 y: 0 » fixe une position précise. Place-le sous le départ au drapeau : chaque nouveau départ remettra le chat au centre."
+          ],
+          "shortSteps": [
+            "Sélectionne le chat : les valeurs x et y sont sous la scène.",
+            "X indique gauche/droite ; Y indique bas/haut. Observe les directions ci-dessous.",
+            "Dans Mouvement, prends « aller à x: 0 y: 0 ». Accroche-le sous le départ au drapeau et teste le retour au centre."
+          ],
+          "coordinateDiagram": {
+            "caption": "X et Y : quatre directions depuis le centre",
+            "up": "↑ Haut · Y augmente (+)",
+            "left": "← Gauche · X diminue (−)",
+            "center": "Centre\nx = 0 · y = 0",
+            "right": "Droite → · X augmente (+)",
+            "down": "↓ Bas · Y diminue (−)",
+            "note": "X change horizontalement. Y change verticalement. Par exemple : ajouter −10 à Y fait descendre."
+          },
+          "visualScript": {
+            "caption": "Le drapeau remet au centre",
+            "note": "Aller à fixe une position. Ajouter un déplacement est une autre action.",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le drapeau démarre cette pile."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "0"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Le chat revient au centre, quelle que soit sa position précédente."
+              }
+            ]
+          },
+          "code": "Événements : quand le drapeau vert est cliqué\n  Mouvement : aller à x: 0 y: 0"
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "2 — Quatre touches, quatre petites piles",
+          "paragraphs": [
+            "Dans Événements, « quand la touche espace est pressée » possède un menu : choisis flèche droite, gauche, haut ou bas. Chaque pile ci-dessous possède son propre départ.",
+            "Dans Mouvement, « ajouter 10 à x » change seulement x ; « ajouter 10 à y » change seulement y. Modifie le nombre pour écrire -10 lorsque nécessaire.",
+            "Garde aussi la pile au drapeau de la partie 1. Les quatre piles de touches sont séparées, pas accrochées sous le drapeau.",
+            "Clique sur la scène pour qu’elle reçoive le clavier, puis appuie brièvement sur une flèche. Le modèle montre des déplacements par touches ; on ne cherche pas encore un mouvement continu avec une touche maintenue. Aucune boucle ni collision nécessaire."
+          ],
+          "shortSteps": [
+            "Dans Événements, prends le bloc « quand la touche espace est pressée » : son menu permet de choisir chaque flèche.",
+            "Crée quatre piles séparées comme ci-dessous. Dans Mouvement, prends « ajouter 10 à x » ou « ajouter 10 à y », puis change le signe si nécessaire.",
+            "Garde le retour au centre au drapeau. Clique sur la scène et teste chaque flèche par une pression brève : pas encore de mouvement continu."
+          ],
+          "visualScript": {
+            "caption": "Quatre piles séparées, une par flèche",
+            "note": "Garde aussi la pile au drapeau. Clique sur la scène puis presse brièvement une flèche.",
+            "stacks": [
+              {
+                "caption": "Flèche droite",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand la touche ",
+                      {
+                        "choice": "flèche droite"
+                      },
+                      " est pressée"
+                    ],
+                    "explanation": "Le menu de ce bloc choisit la touche."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "10"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "X augmente : vers la droite."
+                  }
+                ]
+              },
+              {
+                "caption": "Flèche gauche",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand la touche ",
+                      {
+                        "choice": "flèche gauche"
+                      },
+                      " est pressée"
+                    ],
+                    "explanation": "Le menu de ce bloc choisit la touche."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-10"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "X diminue : vers la gauche."
+                  }
+                ]
+              },
+              {
+                "caption": "Flèche haut",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand la touche ",
+                      {
+                        "choice": "flèche haut"
+                      },
+                      " est pressée"
+                    ],
+                    "explanation": "Le menu de ce bloc choisit la touche."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "10"
+                      },
+                      " à y"
+                    ],
+                    "explanation": "Y augmente : vers le haut."
+                  }
+                ]
+              },
+              {
+                "caption": "Flèche bas",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand la touche ",
+                      {
+                        "choice": "flèche bas"
+                      },
+                      " est pressée"
+                    ],
+                    "explanation": "Le menu de ce bloc choisit la touche."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-10"
+                      },
+                      " à y"
+                    ],
+                    "explanation": "Y diminue : vers le bas."
+                  }
+                ]
+              }
+            ]
+          },
+          "code": "Événements : quand la touche flèche droite est pressée\n  Mouvement : ajouter 10 à x\n\nÉvénements : quand la touche flèche gauche est pressée\n  Mouvement : ajouter -10 à x\n\nÉvénements : quand la touche flèche haut est pressée\n  Mouvement : ajouter 10 à y\n\nÉvénements : quand la touche flèche bas est pressée\n  Mouvement : ajouter -10 à y"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé — essaie les commandes",
+          "intro": "Prédis la direction avant chaque essai.",
+          "items": [
+            {
+              "id": "depart",
+              "text": "Construis la pile de retour au centre et clique sur le drapeau.",
+              "hint": "Utilise aller à x/y, pas ajouter à x/y : fixer une position n’est pas ajouter un déplacement."
+            },
+            {
+              "id": "horizontal",
+              "text": "Construis les piles droite et gauche. Fais une pression brève à droite, puis à gauche.",
+              "hint": "Les deux piles changent x avec des nombres opposés."
+            },
+            {
+              "id": "vertical",
+              "text": "Construis les piles haut et bas. Teste séparément chaque direction.",
+              "hint": "Les deux piles changent y, pas x."
+            },
+            {
+              "id": "retour",
+              "text": "Éloigne le chat, puis clique sur le drapeau. Vérifie le retour à x = 0, y = 0.",
+              "hint": "Le drapeau déclenche le bloc aller à, quel que soit l’endroit atteint."
+            },
+            {
+              "id": "sauver",
+              "text": "Télécharge ton projet de commandes au format .sb3.",
+              "hint": "Fichier → Sauvegarder sur votre ordinateur."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Sans modèle — choisis et explique",
+          "intro": "Garde ton projet sauvegardé. Essaie avant de lire les indices.",
+          "items": [
+            {
+              "id": "nouveau-depart",
+              "text": "Choisis un nouveau départ proche du centre, différent de (0, 0), et modifie seulement la pile au drapeau.",
+              "hint": "Par exemple x = -60, y = 40. Le point exact t’appartient."
+            },
+            {
+              "id": "nouveau-pas",
+              "text": "Choisis une autre distance pour les touches. Garde la même distance à droite/gauche et à haut/bas.",
+              "hint": "Les nombres de chaque paire ont la même taille mais des signes opposés."
+            },
+            {
+              "id": "verifier",
+              "text": "Prédis ce qu’afficheront x et y après une touche droite depuis le départ ; teste et explique.",
+              "hint": "Seul x doit changer. Exemple : x = -60, ajouter 10 donne -50."
+            },
+            {
+              "id": "comprehension",
+              "text": "Sans regarder le modèle : choisis le bloc et le signe pour aller vers le bas. Puis explique pourquoi le drapeau ramène toujours au même point.",
+              "hint": "Descendre change y avec un nombre négatif ; aller à fixe x et y."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus — un retour par touche",
+          "intro": "Seulement si les quatre commandes sont comprises.",
+          "items": [
+            {
+              "id": "reset",
+              "text": "Ajoute une pile qui remet le chat au départ quand tu presses espace, puis teste depuis deux positions différentes.",
+              "hint": "Utilise l’événement espace et le même aller à x/y que dans la pile au drapeau."
+            },
+            {
+              "id": "expliquer",
+              "text": "Explique pourquoi cette commande fonctionne depuis plusieurs endroits.",
+              "hint": "Elle fixe une position ; elle ne fait pas un déplacement relatif."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "suite",
+          "title": "Pour continuer",
+          "paragraphs": [
+            "Tu as une base pour piloter un personnage. Continue avec Répéter des actions lorsque tu sais expliquer tes commandes, ou consolide-les si tu hésites. Une case cochée ne valide pas une compétence."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Choisir x ou y et le signe à partir d’une direction demandée sans modèle.",
+        "Distinguer ajouter un déplacement et fixer une position.",
+        "Expliquer et tester le retour au départ depuis deux positions.",
+        "Modifier ses commandes et prévoir les coordonnées, avec aide sur le calcul si nécessaire."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-pilotage",
+          "blockId": "guide",
+          "label": "Reprendre une direction à la fois"
+        },
+        {
+          "moduleId": "scratch-actions",
+          "blockId": "notions",
+          "label": "Revoir les événements"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "scratch-pilotage",
+          "blockId": "bonus",
+          "label": "Créer une touche de retour au départ"
+        }
+      ],
+        "nextSteps": [{ "moduleId": "scratch-boucles", "blockId": "notions", "label": "Répéter des actions — savoir lire une pile et utiliser une pause" }],
+        "teacherGuide": {
+          "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
+        "entryDiagnosis": [
+          "Sélectionner le bon sprite et sauvegarder son projet.",
+          "Expliquer ce qui déclenche une pile ; reprendre Déclencher et enchaîner des actions en cas d’hésitation.",
+          "Lire une pile de haut en bas."
+        ],
+        "preparation": [
+          "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
+          "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
+          "Utiliser le chat fourni par Scratch : aucun projet privé ni asset à préparer pour ce lot."
+        ],
+        "why": "Un déplacement contrôlé et un départ reproductible constituent une base de jeu ; la compréhension des directions précède les collisions.",
+        "discoverySpeech": [
+          "« X suit gauche et droite ; Y suit bas et haut. Montrons chaque direction sur la scène. »",
+          "« Ajouter change la position depuis où tu es ; aller à choisit une position précise. »",
+          "« Le drapeau démarre notre retour au départ. Les flèches ont chacune leur propre événement. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-pilotage",
+            "blockId": "exemple",
+            "label": "Lire et assembler l’exemple"
+          },
+          "comments": [
+            "Les lignes sont un modèle textuel de blocs, pas un programme à coller.",
+            "Faire retrouver la catégorie puis le bloc ; laisser l’élève assembler.",
+            "Demander une prédiction, lancer, comparer et expliquer."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pour aller à gauche, quelle coordonnée et quel signe ?",
+            "answer": "X, avec une valeur négative."
+          },
+          {
+            "question": "Après une touche droite, Y doit-il changer ?",
+            "answer": "Non : la commande change seulement X."
+          },
+          {
+            "question": "Pourquoi le drapeau fonctionne-t-il depuis deux endroits différents ?",
+            "answer": "Aller à fixe la même position plutôt que d’ajouter un déplacement."
+          },
+          {
+            "question": "X vaut -60 ; ajouter 10 donne quoi ?",
+            "answer": "-50. Autoriser une aide au calcul et observer séparément le choix de l’axe et du sens."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-pilotage",
+          "blockId": "guide",
+          "label": "Essais guidés"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-pilotage",
+          "blockId": "autonomie",
+          "label": "Essai sans modèle"
+        },
+        "differentiation": [
+          "Pour un CE2 débutant : une consigne à la fois, lire les termes si nécessaire, faire montrer avant de demander d’écrire ou de calculer.",
+          "Pour un élève à l’aise : demander une prédiction et une modification sans modèle, puis le bonus. Ne pas imposer un nombre de séances.",
+          "Reprendre le prérequis manquant ; aucun accès au module ni case cochée ne constitue un acquis."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Les flèches n’agissent pas.",
+            "helps": [
+              "Cliquer sur la scène pour donner le focus.",
+              "Vérifier le menu de touche du bloc jaune.",
+              "Comparer le sprite sélectionné et celui qui doit bouger.",
+              "Tester une seule pile avec une pression brève."
+            ]
+          },
+          {
+            "symptom": "Le chat descend avec la flèche haut.",
+            "helps": [
+              "Faire montrer l’axe vertical.",
+              "Repérer le signe du nombre dans ajouter à y.",
+              "Comparer +10 et -10 séparément.",
+              "Corriger la paire haut/bas puis demander une nouvelle prédiction."
+            ]
+          },
+          {
+            "symptom": "Le drapeau ajoute un déplacement au lieu de revenir.",
+            "helps": [
+              "Relancer depuis deux positions.",
+              "Repérer ajouter versus aller à.",
+              "Comparer les coordonnées après chaque essai.",
+              "Remplacer uniquement le bloc de départ par aller à x/y."
+            ]
+          }
+        ],
+        "notes": "La réussite avec modèle ne suffit pas : demander une direction sans nommer X/Y. Distinguer autonomie, modèle ou aide dans les remarques existantes, sans nouveau suivi. Une difficulté avec les nombres négatifs peut être accompagnée sans invalider toute compréhension des événements.",
+        "quickConductor": [
+          "Vérifier les repères ou prérequis.",
+          "Faire assembler l’exemple et prédire son résultat.",
+          "Changer une chose, tester et expliquer.",
+          "Proposer la mission autonome ; distinguer réussite autonome, avec modèle ou avec aide.",
+          "Sauvegarder le .sb3 ; choisir reprise ou suite selon la compréhension."
+        ],
+        "references": [
+          {
+            "title": "Scratch — idées et tutoriels officiels",
+            "url": "https://scratch.mit.edu/ideas"
+          },
+          {
+            "title": "Scratch — projets de départ officiels",
+            "url": "https://scratch.mit.edu/help/starter_projects/"
+          }
+        ]
+      }
+    },
     "html-multipage": {
       "domainId": "web",
       "title": "Relier plusieurs pages",
@@ -8580,7 +11283,29 @@ window.CODECRAFT_DATA = {
             "Le conteneur .cartes contient les éléments .carte. Ajoute display: flex dans sa règle CSS. Ses enfants directs deviennent les éléments organisés par Flexbox.",
             "Les h2 et p à l’intérieur d’une carte ne deviennent pas les enfants directs de .cartes. Mettre display: flex sur .carte organiserait le contenu de chaque carte, pas les cartes entre elles."
           ],
-          "code": ".cartes {\n  display: flex;\n}"
+          "code": ".cartes {\n  display: flex;\n}",
+          "demonstration": {
+            "type": "flex-display",
+            "title": "Observe — Active Flexbox",
+            "intro": "Choisis le mode d’affichage du parent. Observe les cartes et la valeur qui change dans le code, puis reviens au premier choix pour comparer.",
+            "controlLabel": "Affichage du parent",
+            "previewLabel": ".cartes — le parent des trois cartes",
+            "codeLabel": "Règle appliquée au parent",
+            "cards": ["A", "B", "C"],
+            "options": [
+              {
+                "value": "block",
+                "label": "block — Sans Flexbox",
+                "feedback": "Sans Flexbox : les trois cartes de cet exemple sont empilées."
+              },
+              {
+                "value": "flex",
+                "label": "flex — Avec Flexbox",
+                "feedback": "Avec Flexbox : les mêmes cartes se placent côte à côte, dans le même ordre A, B, C."
+              }
+            ],
+            "note": "Seule la propriété display du parent .cartes change, pas celle des enfants .carte. Les tailles, couleurs et marges de cette démonstration restent fixes ; le code affiche uniquement la règle que tu modifies."
+          }
         },
         {
           "type": "lesson",
@@ -9162,6 +11887,13 @@ window.CODECRAFT_DATA = {
     }
   },
   "pathways": {
+    "scratch-debutants": {
+      "domainId": "jeux-video",
+      "title": "Premiers pas avec Scratch",
+      "theme": "fondations",
+      "objective": "Découvrir les blocs, créer des actions et piloter un personnage avant de construire ses premiers jeux.",
+      "moduleIds": ["scratch-decouverte", "scratch-actions", "scratch-pilotage", "scratch-boucles", "scratch-reactions", "scratch-variables", "scratch-fin-partie", "scratch-mini-jeu"]
+    },
     "web-fondations": {
       "domainId": "web",
       "title": "Fondations",

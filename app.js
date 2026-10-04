@@ -108,16 +108,150 @@
     return section;
   }
 
+  function createFlexDisplayDemo(config) {
+    const demo = element('section', 'flex-display-demo');
+    demo.append(element('h3', '', config.title), element('p', '', config.intro));
+    const label = element('label', 'flex-display-demo__control', config.controlLabel);
+    const select = element('select');
+    config.options.forEach(option => {
+      if (!['block', 'flex'].includes(option.value)) return;
+      const choice = element('option', '', option.label);
+      choice.value = option.value;
+      select.append(choice);
+    });
+    label.append(select);
+    const layout = element('div', 'flex-display-demo__layout');
+    const preview = element('div', 'flex-display-demo__preview');
+    preview.append(element('p', 'flex-display-demo__caption', config.previewLabel));
+    const cards = element('div', 'cartes');
+    cards.setAttribute('role', 'group');
+    cards.setAttribute('aria-label', config.previewLabel);
+    config.cards.forEach(text => cards.append(element('div', 'carte', text)));
+    preview.append(cards);
+    const source = element('div');
+    source.append(element('p', 'flex-display-demo__caption', config.codeLabel));
+    const pre = element('pre', 'code-block');
+    const code = element('code');
+    const value = element('strong', 'flex-display-demo__value');
+    code.append('.cartes {\n  display: ', value, ';\n}');
+    pre.append(code);
+    source.append(pre);
+    layout.append(preview, source);
+    const feedback = element('p', 'flex-display-demo__feedback');
+    feedback.setAttribute('role', 'status');
+    const update = () => {
+      const display = select.value === 'flex' ? 'flex' : 'block';
+      select.value = display;
+      cards.style.display = display;
+      value.textContent = display;
+      feedback.textContent = config.options.find(option => option.value === display).feedback;
+    };
+    select.value = 'block';
+    select.addEventListener('change', update);
+    update();
+    demo.append(label, layout, feedback, element('p', 'section-intro', config.note));
+    return demo;
+  }
+
+  function createScratchScript(config) {
+    const figure = element('figure', 'scratch-script');
+    figure.append(element('figcaption', 'scratch-script__caption', config.caption));
+    const layout = element('div', 'scratch-script__layout');
+    const stack = element('ol', 'scratch-script__stack');
+    const explanations = element('ol', 'scratch-script__explanations');
+    const renderParts = (parent, parts) => parts.forEach(part => {
+      if (typeof part === 'string') parent.append(document.createTextNode(part));
+      else if (part.flag) {
+        const flag = element('span', 'scratch-script__flag', '⚑');
+        flag.setAttribute('aria-hidden', 'true');
+        parent.append(flag, element('span', 'scratch-script__sr', 'drapeau vert'));
+      } else if (part.condition) {
+        const condition = element('span', 'scratch-script__condition' + (part.operator ? ' scratch-script__condition--operator' : ''));
+        renderParts(condition, part.condition); parent.append(condition);
+      } else if (part.choice) {
+        const choice = element('span', 'scratch-script__choice', part.choice);
+        const caret = element('span', '', ' ▾'); caret.setAttribute('aria-hidden', 'true');
+        choice.append(caret); parent.append(choice);
+      } else parent.append(element('span', 'scratch-script__value', part.value));
+    });
+    const renderBlock = block => {
+      const category = ['events', 'motion', 'looks', 'control', 'sensing', 'variables'].includes(block.category) ? block.category : 'motion';
+      const row = element('li', 'scratch-script__block scratch-script__block--' + category);
+      row.append(element('span', 'scratch-script__sr', block.label + ' : '));
+      renderParts(row, block.parts);
+      if (block.children?.length) {
+        row.classList.add('scratch-script__block--container');
+        const children = element('ol', 'scratch-script__children');
+        block.children.forEach(child => children.append(renderBlock(child)));
+        row.append(children, element('span', 'scratch-script__closing', 'fin du bloc'));
+      }
+      return row;
+    };
+    config.blocks.forEach((block, index) => {
+      stack.append(renderBlock(block));
+      const explanation = element('li');
+      explanation.append(element('span', 'scratch-script__category', (index + 1) + ' · ' + block.label), element('p', '', block.explanation));
+      explanations.append(explanation);
+    });
+    layout.append(stack, explanations);
+    figure.append(layout);
+    if (config.note) figure.append(element('p', 'scratch-script__note', config.note));
+    return figure;
+  }
+
+  function createScratchVisual(config) {
+    if (!config.stacks) return createScratchScript(config);
+    const figure = element('figure', 'scratch-scripts');
+    figure.append(element('figcaption', 'scratch-script__caption', config.caption));
+    const grid = element('div', 'scratch-scripts__grid');
+    config.stacks.forEach(stack => grid.append(createScratchScript(stack)));
+    figure.append(grid, element('p', 'scratch-script__note', config.note));
+    return figure;
+  }
+
+  function createCoordinateDiagram(config) {
+    const figure = element('figure', 'scratch-coordinates');
+    figure.append(element('figcaption', 'scratch-script__caption', config.caption));
+    const grid = element('div', 'scratch-coordinates__grid');
+    ['up', 'left', 'center', 'right', 'down'].forEach(direction => {
+      grid.append(element('div', 'scratch-coordinates__' + direction, config[direction]));
+    });
+    figure.append(grid, element('p', 'scratch-script__note', config.note));
+    return figure;
+  }
+
   function createLesson(block) {
     const section = element("section", "content-card");
     section.append(element("h2", "section-title", block.title));
-    (block.paragraphs || []).forEach((paragraph) => section.append(element("p", "", paragraph)));
-    if (block.code) section.append(createCode(block.code));
+    const visual = block.visualScript || block.coordinateDiagram;
+    if (visual && block.shortSteps) {
+      const steps = element('ol', 'scratch-quick-steps');
+      block.shortSteps.forEach(text => steps.append(element('li', '', text)));
+      section.append(steps);
+    } else (block.paragraphs || []).forEach((paragraph) => section.append(element("p", "", paragraph)));
+    if (block.coordinateDiagram) section.append(createCoordinateDiagram(block.coordinateDiagram));
+    if (block.visualScript) {
+      section.append(createScratchVisual(block.visualScript));
+      if (block.code) {
+        const details = element('details', 'hint');
+        details.append(element('summary', '', 'Lire aussi le modèle en texte'), createCode(block.code));
+        section.append(details);
+      }
+    } else if (block.code) section.append(createCode(block.code));
+    if (visual && block.shortSteps && block.paragraphs?.length) {
+      const details = element('details', 'hint scratch-explanations');
+      details.append(element('summary', '', 'Explications et repères supplémentaires'));
+      block.paragraphs.forEach(text => details.append(element('p', '', text)));
+      section.append(details);
+    }
     if (block.values && block.values.length) {
       section.append(element("h3", "subheading", block.valuesTitle));
       const values = element("ul", "value-list");
       block.values.forEach((value) => values.append(element("li", "", value)));
       section.append(values);
+    }
+    if (block.demonstration?.type === 'flex-display') {
+      section.append(createFlexDisplayDemo(block.demonstration));
     }
     return section;
   }
@@ -213,17 +347,22 @@
     main.append(navigation);
   }
 
-  function intro(title, objective, codepen = false) {
+  function intro(title, objective, codepen = false, tool = null) {
     const header = element('header', 'lesson-intro');
     header.append(element('p', 'eyebrow', data.site.subtitle));
     header.append(element('h1', 'lesson-title', title));
     header.append(element('h2', 'objective-label', 'Objectif'));
     header.append(element('p', 'objective', objective));
     if (codepen) {
-      const button = link(data.site.codepenLabel, data.site.codepenUrl, 'button button--primary');
+      const button = link(tool ? tool.label : data.site.codepenLabel, tool ? tool.url : data.site.codepenUrl, 'button button--primary');
       button.target = '_blank';
       button.rel = 'noopener noreferrer';
       header.append(button);
+      if (tool?.url === 'https://scratch.mit.edu/projects/editor/') {
+        const help = element('details', 'hint');
+        help.append(element('summary', '', 'Scratch est en anglais ?'), element('p', '', data.site.scratchLanguageHelp));
+        header.append(help);
+      }
     }
     return header;
   }
@@ -268,8 +407,10 @@
     const back = element('nav', 'library-links');
     back.setAttribute('aria-label', 'Retour à la bibliothèque');
     back.append(link(pathway ? '← ' + pathway.title : '← Retour aux parcours', pathway ? '#parcours/' + requestedPathway : domainUrl(item.domainId)));
-    article.append(back, intro(item.title, item.objective, true));
+    article.append(back, intro(item.title, item.objective, true, item.tool));
     article.append(pedagogy.prerequisites(item));
+    const scratchProject = pedagogy.scratchProject(item);
+    if (scratchProject) article.append(scratchProject);
     item.blocks.forEach(block => article.append(createBlock(block, id)));
     const criteria = pedagogy.criteria(item);
     const orientations = pedagogy.orientations(item, pathway ? requestedPathway : null);
