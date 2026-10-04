@@ -13,7 +13,7 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
 const data = JSON.parse(JSON.stringify(context.window.CODECRAFT_DATA));
 const orders = {
-  'scratch-debutants': ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu'],
+  'scratch-debutants': ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu', 'scratch-coordination', 'scratch-blocs-personnalises'],
   'web-fondations': ['html-titres-paragraphes', 'html-listes', 'html-mini-page-fondations', 'html-liens', 'html-images', 'html-mini-page', 'css-decouverte', 'css-classes-couleurs', 'web-affiche-numerique'],
   'web-debutants': ['html-titres-paragraphes', 'html-listes', 'html-liens', 'html-revision', 'html-images', 'css-classes-couleurs', 'html-mini-page', 'html-document', 'html-fichiers-chemins', 'css-feuille-style', 'html-parent-enfants', 'html-zones', 'css-textes-lisibles', 'css-boites-espacements', 'css-dimensions-images', 'web-carte-personnelle', 'html-multipage', 'web-mini-site'],
   'web-avances': ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox']
@@ -39,10 +39,11 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
 (async () => {
   const allowed = new Set(['index.html', 'styles.css', 'app.js', 'lesson-data.js', 'pedagogy.js', 'teacher-guides.js', 'prof.html', 'teacher.css', 'teacher-model.js', 'teacher-file-access.js', 'teacher-sessions.js', 'teacher-classroom.js', 'teacher-app.js', 'assets/exercices/carre-bleu.svg', 'assets/exercices/cercle-orange.svg']);
   allowed.add('pedagogy.css');
+  allowed.add('images/logo-transparent.png');
   const server = http.createServer((req, res) => {
-    const name = new URL(req.url, 'http://localhost').pathname.slice(1);
+    const name = decodeURIComponent(new URL(req.url, 'http://localhost').pathname.slice(1));
     if (!allowed.has(name)) { res.writeHead(404); res.end(); return; }
-    res.setHeader('Content-Type', name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.js') ? 'text/javascript; charset=utf-8' : name.endsWith('.css') ? 'text/css; charset=utf-8' : 'text/html; charset=utf-8');
+    res.setHeader('Content-Type', name.endsWith('.png') ? 'image/png' : name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.js') ? 'text/javascript; charset=utf-8' : name.endsWith('.css') ? 'text/css; charset=utf-8' : 'text/html; charset=utf-8');
     res.end(fs.readFileSync(path.join(root, name)));
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));

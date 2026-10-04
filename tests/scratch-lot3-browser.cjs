@@ -23,11 +23,32 @@ const root = path.join(__dirname, '..');
     ['index.html#module/scratch-fin-partie?parcours=scratch-debutants', 'Gagner, perdre et recommencer', dom => {
       assert.equal((dom.match(/class="scratch-script__condition scratch-script__condition--operator"/g) || []).length, 2);
       assert(dom.includes('#module/scratch-mini-jeu?parcours=scratch-debutants'));
-      assert(dom.includes('Settings → Language'));
+      assert(!dom.includes('Scratch est en anglais ?'));
     }],
     ['index.html#module/scratch-mini-jeu?parcours=scratch-debutants', 'Mon premier mini-jeu', dom => {
       assert(dom.includes('Vérifie ton travail'));
       assert(dom.includes('#module/scratch-fin-partie?parcours=scratch-debutants'));
+    }],
+    ['index.html#module/scratch-coordination?parcours=scratch-debutants', 'Coordonner plusieurs personnages', dom => {
+      assert(dom.includes('https://scratch.mit.edu/projects/1388027889/'));
+      assert(dom.includes('Pico — lance le dialogue'));
+      assert(dom.includes('Tera — répond au signal'));
+      assert(dom.includes('#module/scratch-blocs-personnalises?parcours=scratch-debutants'));
+      assert(!dom.includes('Scratch est en anglais ?'));
+    }],
+    ['index.html#module/scratch-blocs-personnalises?parcours=scratch-debutants', 'Créer ses propres blocs', dom => {
+      assert(dom.includes('scratch-script__block--custom'));
+      assert(dom.includes('définir retour au départ'));
+      assert(dom.includes('#module/scratch-coordination?parcours=scratch-debutants'));
+      assert(!dom.includes('Scratch est en anglais ?'));
+    }],
+    ['prof.html#guide/scratch-coordination', 'Guide professeur — Coordonner plusieurs personnages', dom => {
+      assert(dom.includes('Questions et réponses attendues'));
+      assert(dom.includes('https://scratch.mit.edu/projects/1388025602/'));
+    }],
+    ['prof.html#guide/scratch-blocs-personnalises', 'Guide professeur — Créer ses propres blocs', dom => {
+      assert(dom.includes('Questions et réponses attendues'));
+      assert(dom.includes('Deux appels demandent-ils deux définitions'));
     }],
     ['prof.html#guide/scratch-fin-partie', 'Guide professeur — Gagner, perdre et recommencer', dom => {
       assert(dom.includes('Questions et réponses attendues'));

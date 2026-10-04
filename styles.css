@@ -681,3 +681,57 @@ code,
 .module-list { display: grid; gap: 20px; padding-left: 28px; }
 .module-list .route-card { min-height: 110px; border-top-color: var(--route); }
 .library-heading { margin: 22px 0; font-size: 1.7rem; }
+
+/* Accueil uniquement : mêmes blocs, deux univers immédiatement accessibles. */
+.home-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 4vw, 44px);
+  padding: 24px 36px;
+  margin: 8px 0 32px;
+  border: 3px solid var(--line);
+  border-bottom: 7px solid var(--grass);
+  background: var(--paper);
+  box-shadow: 6px 6px 0 #c6bfad;
+  text-align: left;
+}
+.home-header::after {
+  content: '';
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 8px; height: 8px;
+  background: var(--grass);
+  box-shadow: -12px 0 0 #b9c5a7, 0 12px 0 #b9c5a7;
+}
+.home-logo { display: block; width: 216px; height: auto; flex-shrink: 0; }
+.home-header__copy { min-width: 0; }
+.home-eyebrow { margin: 0 0 10px; color: var(--muted); font-size: .85rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.home-header .brand { font-size: clamp(2.3rem, 5vw, 3.5rem); }
+.home-intro { margin: 12px 0 0; color: var(--muted); font-size: 1.1rem; }
+.home-choice { margin: 0 0 18px; font-size: 1.15rem; }
+.home-domains { gap: 24px; }
+.home-domain { --card-accent: #4f8045; position: relative; justify-content: flex-start; padding: 24px 28px; }
+.home-domain--game { --card-accent: #a55d27; }
+.home-domain__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.home-domain__symbol { display: inline-flex; align-items: center; justify-content: center; width: 70px; height: 54px; background: #e4efdd; border: 3px solid #355d31; box-shadow: 4px 4px 0 #a6b69b; font-family: Consolas, monospace; font-size: 1.6rem; font-weight: 800; color: #355d31; }
+.home-domain--game .home-domain__symbol { position: relative; justify-content: flex-start; padding-left: 9px; background: #f7e6d6; border-color: #75421f; box-shadow: 4px 4px 0 #c9ab8c; color: #75421f; }
+.home-domain--game .home-domain__symbol::after { content: ''; position: absolute; right: 10px; top: 17px; width: 7px; height: 7px; background: #75421f; box-shadow: -8px 8px 0 #75421f; }
+.home-domain__tag { color: var(--muted); font-size: .8rem; font-weight: 800; letter-spacing: .08em; }
+.home-domain .route-card-description { flex: 1; max-width: 40ch; margin-top: 14px; }
+.home-domain__action { display: block; align-self: flex-start; margin-top: 24px; padding-top: 12px; width: 100%; border-top: 2px solid #ded8ca; font-size: .95rem; font-weight: 700; color: var(--card-accent); }
+@media (max-width: 700px) {
+  .home-header { padding: 18px; gap: 18px; margin-top: 0; margin-bottom: 26px; }
+  .home-logo { width: 150px; }
+  .home-header .brand { font-size: 2rem; }
+  .home-intro { font-size: 1rem; }
+  .home-domain { padding: 20px; }
+  .home-domain__top { margin-bottom: 16px; }
+}
+@media (max-width: 480px) {
+  .home-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .home-logo { align-self: center; }
+  .home-eyebrow { margin-bottom: 6px; }
+  .home-header .brand { font-size: 2.4rem; }
+  .home-intro { margin-top: 8px; }
+}

@@ -56,10 +56,10 @@ test('inventaire Scratch partagé : démonstrations distinctes des bases élève
   assert(preparation.paragraphs.some(text => text.includes('n’ajoute pas de deuxième cible')));
 });
 
-test('lots Scratch : huit contenus réels, prérequis explicites et aucun acquis automatique', () => {
-  assert.deepEqual(Array.from(data.pathways['scratch-debutants'].moduleIds), ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu']);
+test('lots Scratch : dix contenus réels, prérequis explicites et aucun acquis automatique', () => {
+  assert.deepEqual(Array.from(data.pathways['scratch-debutants'].moduleIds), ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu', 'scratch-coordination', 'scratch-blocs-personnalises']);
   assert.equal(data.pathways['scratch-debutants'].domainId, 'jeux-video');
-  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'jeux-video').length, 8);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'jeux-video').length, 10);
   assert.equal(data.modules['scratch-decouverte'].prerequisiteSkills.length, 0);
   for (const id of data.pathways['scratch-debutants'].moduleIds) {
     const m = data.modules[id];
@@ -114,7 +114,45 @@ test('lot 3 Scratch : conditions de fin atteignables, arrêt et reprise explicit
   assert.equal(ending(start()), -1); // redémarrage après défaite
   assert.equal(ending({ score: 4, 'position x': -100 }), -1); // seuil 3 sauté : bonus
   assert(project.blocks.find(b => b.id === 'verification').items.length >= 5);
-  assert(data.site.scratchLanguageHelp.includes('Settings → Language'));
+  assert.equal(data.site.scratchLanguageHelp, undefined);
+});
+
+test('lot 4 Scratch : signal attendu, recettes réutilisées et paramètre facultatif', () => {
+  const coordination = data.modules['scratch-coordination'];
+  const custom = data.modules['scratch-blocs-personnalises'];
+  assert.equal(coordination.scratchProjectId, 'carte-animee');
+  const stacks = coordination.blocks.find(b => b.id === 'exemple').visualScript.stacks;
+  assert.equal(stacks.length, 2);
+  assert.equal(stacks[0].blocks[2].parts[1].choice, stacks[1].blocks[0].parts[1].choice);
+  assert.equal(stacks[0].blocks[2].parts[2], ' et attendre');
+  assert(!stacks[1].blocks.some(b => b.parts.some(p => p.flag)));
+  // Simulation des durées de ces deux piles finies, pas du moteur Scratch.
+  const duration = block => Number(block.parts.findLast(p => p.value)?.value);
+  const first = duration(stacks[0].blocks[1]), response = duration(stacks[1].blocks[1]);
+  assert.equal(first, 2);
+  assert.equal(first + response, 4); // troisième réplique après la réception
+  assert.equal(4 + response, 6); // si la première réplique dure quatre secondes
+  assert(!stacks.flatMap(s => s.blocks).some(b => b.children)); // pas de réception infinie
+  const example = custom.blocks.find(b => b.id === 'exemple').visualScript.stacks;
+  assert.equal(example[0].blocks[0].category, 'custom');
+  assert.equal(example[0].blocks[0].parts[0], 'définir retour au départ');
+  assert.equal(example[1].blocks.filter(b => b.category === 'custom').length, 2);
+  const initial = Number(example[0].blocks[1].parts[1].value);
+  const delta = Number(example[1].blocks[2].parts[1].value);
+  assert.equal(initial + delta, -40);
+  assert.equal(-150 + delta, -90);
+  const parameter = ui.blocks(custom.blocks).find(b => b.id === 'parametre');
+  assert(parameter.paragraphs.some(p => p.includes('Une seule pile de drapeau')));
+  assert(parameter.paragraphs.some(p => p.includes('N’écris pas le mot distance')));
+  assert(custom.bonusActivities[0].prerequisiteSkills.some(p => p.skillId === 'scratch.custom-blocks'));
+  const calls = parameter.visualScript.stacks[1].blocks.filter(b => b.parts[0] === 'deplacer ');
+  assert.equal(initial + calls.reduce((x,b) => x + Number(b.parts[1].value), 0), -30);
+  assert(data.modules['scratch-mini-jeu'].nextSteps.some(r => r.moduleId === 'scratch-coordination'));
+  assert(coordination.nextSteps.some(r => r.moduleId === 'scratch-blocs-personnalises'));
+  const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  assert(!app.includes('scratchLanguageHelp'));
+  assert(!app.includes('Scratch est en anglais ?'));
+  assert(app.includes("'custom'"));
 });
 
 test('prototype Flexbox : une seule démonstration, sans nouveau module ni progression', () => {
@@ -227,9 +265,9 @@ test('ressources CodePen : dessins embarqués identiques aux SVG du dépôt', ()
 });
 
 test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions facultatives', () => {
-  assert.equal(Object.keys(data.modules).length, 32);
-  assert.equal(Object.keys(data.skills).length, 29);
-  assert.equal(Object.values(data.modules).filter(m => m.teacherGuide).length, 25);
+  assert.equal(Object.keys(data.modules).length, 34);
+  assert.equal(Object.keys(data.skills).length, 31);
+  assert.equal(Object.values(data.modules).filter(m => m.teacherGuide).length, 27);
   assert.equal(data.modules['html-mini-page'].type, 'challenge');
   assert.equal(data.modules['web-affiche-numerique'].type, 'project');
   assert.equal(JSON.stringify(data.modules['css-decouverte'].skillIds), '["css.colors"]');

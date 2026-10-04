@@ -7,7 +7,8 @@ window.CODECRAFT_DATA = {
     "codepenLabel": "Ouvrir CodePen",
     "codepenUrl": "https://codepen.io/pen",
     "homeLabel": "Retour à l'accueil",
-    "scratchLanguageHelp": "Scratch est en anglais ? Dans l’éditeur, ouvre Settings → Language et choisis Français (ou utilise l’icône globe selon la version). Sur la page du projet, le choix de langue est aussi disponible tout en bas. Les modèles CodeCraft utilisent les noms français des blocs."
+    "homeIntro": "Choisis ton univers. Construis à ton rythme.",
+    "homeChoiceLabel": "Quel univers veux-tu explorer ?"
   },
   "shared": {
     "stuckTitle": "Je suis bloqué",
@@ -37,7 +38,9 @@ window.CODECRAFT_DATA = {
     "carte-animee": {
       "title": "Carte animée",
       "starterUrl": "https://scratch.mit.edu/projects/1388027889/",
-      "demoUrl": "https://scratch.mit.edu/projects/1388025602/"
+      "demoUrl": "https://scratch.mit.edu/projects/1388025602/",
+      "studentInstructions": "Ouvre la base puis Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur. Pico et Tera sont déjà présents, sans scripts. Giga et les décors supplémentaires peuvent rester de côté pour le premier dialogue : ne recopie pas le projet terminé.",
+      "teacherInstructions": "La base Carte animée fournit les personnages et décors, sans scripts. Le module propose un nouveau dialogue minimal entre Pico et Tera, pas une reproduction de la démonstration complète. Celle-ci utilise des délais et des changements d’arrière-plan : elle illustre un résultat possible, pas une solution exacte aux messages. Giga sert seulement à une extension facultative."
     }
   },
   "moduleTypes": {
@@ -50,11 +53,15 @@ window.CODECRAFT_DATA = {
   "domains": {
     "jeux-video": {
       "title": "Jeu vidéo",
+      "homeDescription": "Donne vie à tes idées avec Scratch : personnages, mouvements et premiers jeux.",
+      "homeTag": "SCRATCH",
       "pathwayIds": ["scratch-debutants"],
       "diagnosticModuleIds": []
     },
     "web": {
       "title": "Web",
+      "homeDescription": "Construis tes premières pages et apprends à les mettre en forme avec HTML et CSS.",
+      "homeTag": "HTML · CSS",
       "pathwayIds": [
         "web-fondations",
         "web-debutants",
@@ -66,6 +73,8 @@ window.CODECRAFT_DATA = {
     }
   },
   "skills": {
+    "scratch.messages": { "title": "Coordonner des personnages avec des messages" },
+    "scratch.custom-blocks": { "title": "Créer et réutiliser un bloc personnalisé" },
     "scratch.game-rules": {
       "title": "Définir une fin de partie et recommencer proprement"
     },
@@ -1046,6 +1055,205 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
+    "scratch-coordination": {
+      "domainId": "jeux-video", "title": "Coordonner plusieurs personnages", "type": "lesson", "theme": "fondations",
+      "objective": "Faire communiquer des personnages avec des messages pour organiser une courte scène.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "scratchProjectId": "carte-animee",
+      "skillIds": ["scratch.messages", "scratch.events", "scratch.sequence"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.workspace", "expectation": "Sélectionner le bon personnage et conserver sa propre copie." },
+        { "skillId": "scratch.events", "expectation": "Déclencher une pile au drapeau." },
+        { "skillId": "scratch.sequence", "expectation": "Assembler dire pendant … secondes et comprendre l’ordre d’une pile : reprendre Déclencher et enchaîner des actions." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "preparer", "title": "1 — Deux personnages, deux programmes", "paragraphs": [
+          "Ouvre le projet de départ Carte animée proposé au-dessus et garde ta copie. Pico et Tera sont prêts, sans code. Pour ce premier essai, laisse Giga de côté : il n’a aucun rôle à programmer.",
+          "Sans la base partagée, pars d’un projet vide : supprime le chat avec la corbeille de sa miniature, ajoute Pico et Tera depuis Choisir un sprite. Place Pico en x = -150, y = -50 et Tera en x = 150, y = -50 avec leurs champs sous la scène.",
+          "Quand tu sélectionnes la miniature de Pico, tu écris pour Pico. Quand tu sélectionnes Tera, tu écris pour Tera. Une pile de Pico ne se déplace pas automatiquement dans Tera.",
+          "Nous voulons ce dialogue : Pico dit Bonjour, Tera répond Salut, puis Pico termine. Deux piles au drapeau démarreraient en même temps : un message permettra de choisir quand Tera parle."
+        ] },
+        { "type": "callout", "id": "reprise", "title": "L’ordre des actions reste difficile ?", "text": "Reprends Déclencher et enchaîner des actions pour comparer le drapeau et les actions qui se suivent.", "moduleLink": { "moduleId": "scratch-actions", "text": "Déclencher et enchaîner des actions" } },
+        { "type": "lesson", "id": "messages", "title": "2 — Envoyer un signal, pas une bulle", "paragraphs": [
+          "Dans Événements (jaune), prends envoyer à tous … et attendre. Ouvre son menu, choisis Nouveau message et nomme-le reponse. C’est le nom d’un signal dans le programme : ce texte ne s’affiche pas dans une bulle.",
+          "Dans Tera, prends quand je reçois … dans Événements et sélectionne le même message reponse. Les actions placées sous ce bloc se lancent quand le signal arrive, pas au drapeau.",
+          "Envoyer à tous … et attendre lance les piles qui reçoivent ce message et attend qu’elles soient terminées avant de poursuivre. Envoyer à tous … sans attendre les lance aussi, mais l’expéditeur poursuit immédiatement.",
+          "Un message est reçu par tous les personnages qui ont une pile correspondante. Ici, seul Tera reçoit reponse. Garde une réception courte, sans boucle infinie : sinon Pico attendrait sans fin."
+        ] },
+        { "type": "lesson", "id": "exemple", "title": "3 — Un dialogue dans le bon ordre",
+          "shortSteps": [
+            "Dans Pico, assemble le drapeau, Bonjour pendant 2 secondes, envoyer reponse et attendre, puis À bientôt pendant 2 secondes.",
+            "Dans Tera, assemble quand je reçois reponse puis Salut pendant 2 secondes. Ne mets pas de drapeau sur cette réponse.",
+            "Lance le drapeau : Bonjour → Salut → À bientôt. Relance : le même ordre doit recommencer."
+          ],
+          "paragraphs": ["Les deux piles du modèle appartiennent à deux personnages différents : sélectionne la bonne miniature avant de construire.", "Dans Apparence (violet), dire … pendant … secondes garde la bulle visible puis laisse passer à l’action suivante. Une attente fixe copiée sur Tera serait fragile si on changeait la durée du Bonjour ; le message part après sa fin.", "Modifie Bonjour pour durer 4 secondes : Tera doit toujours répondre après, sans changer de délai chez Tera."],
+          "visualScript": { "caption": "Deux personnages — un signal reponse", "note": "Modèles à construire sur les deux sprites. Aucun éditeur interactif ici.", "stacks": [
+            { "caption": "Pico — lance le dialogue", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Pico démarre au drapeau." },
+              { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Bonjour !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "Pico parle avant d’envoyer le signal." },
+              { "category": "events", "label": "Événements", "parts": ["envoyer à tous ", { "choice": "reponse" }, " et attendre"], "explanation": "Tera reçoit le signal ; Pico attend la fin de sa pile." },
+              { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "À bientôt !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "Pico reprend après la réponse." }
+            ] },
+            { "caption": "Tera — répond au signal", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand je reçois ", { "choice": "reponse" }], "explanation": "Cette pile démarre au message, pas au drapeau." },
+              { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Salut !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "La pile termine après les deux secondes." }
+            ] }
+          ] },
+          "code": "Pico :\nquand le drapeau vert est cliqué\n  dire Bonjour ! pendant 2 secondes\n  envoyer à tous reponse et attendre\n  dire À bientôt ! pendant 2 secondes\n\nTera :\nquand je reçois reponse\n  dire Salut ! pendant 2 secondes"
+        },
+        { "type": "tasks", "id": "guide", "title": "À toi — vérifier le passage de parole", "items": [
+          { "id": "ordre", "text": "Lance le dialogue puis relance-le : vérifie Bonjour, Salut, À bientôt dans cet ordre.", "hint": "Le signal part après Bonjour et Pico attend que la réception finisse." },
+          { "id": "duree", "text": "Fais durer Bonjour 4 secondes. Prédis quand Tera répond, puis teste.", "hint": "Tera attend le message, pas un délai fixé depuis le drapeau." },
+          { "id": "comparer", "text": "Dans une copie, remplace envoyer et attendre par envoyer sans attendre. Observe les deux dernières bulles, puis restaure.", "hint": "Salut et À bientôt peuvent apparaître en même temps. Sans attendre ne veut pas dire sans envoyer." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — un autre échange", "intro": "Change l’histoire sans inventer de nouveau mécanisme.", "items": [
+          { "id": "inverser", "text": "Fais commencer Tera, répondre Pico, puis terminer Tera. Essaie avant d’ouvrir l’indice.", "hint": "L’expéditeur porte la pile du drapeau ; l’autre porte quand je reçois. Garde le même message dans les deux menus et pas d’ancienne pile concurrente." },
+          { "id": "textes", "text": "Écris trois nouvelles répliques et change une durée. Explique pourquoi la réponse arrive toujours au bon moment.", "hint": "Le signal est envoyé à la fin de la première réplique et l’expéditeur attend la fin du receveur." },
+          { "id": "sauver", "text": "Teste deux lancements puis sauvegarde ta copie sur ton compte ou sur ton ordinateur." }
+        ] },
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif — une scène suivante", "blocks": [
+          { "type": "lesson", "id": "decors", "title": "Un décor appartient à la scène", "paragraphs": [
+            "Un costume change l’apparence d’un personnage ; un arrière-plan change le décor de toute la scène. Sélectionne la miniature Scène en bas à droite, puis l’onglet Arrière-plans. Choisis deux décors dans la bibliothèque si nécessaire et renomme-les Depart et Suite dans le champ de nom de cet onglet.",
+            "Sur la scène, ajoute une pile au drapeau avec basculer sur l’arrière-plan Depart, dans Apparence. Cette pile remet le décor au départ à chaque lancement.",
+            "À la fin de la pile du personnage qui lance le dialogue, après sa dernière réplique, ajoute basculer sur l’arrière-plan Suite depuis Apparence. Ce changement vient après la réponse grâce à envoyer et attendre. Il n’envoie pas de message à lui seul.",
+            "Teste le décor suivant puis relance : Depart doit revenir. Ce bonus n’est pas nécessaire pour poursuivre. Si tu ajoutes plus tard Giga à un message, toutes les réceptions de ce message démarrent ensemble : ce n’est pas un troisième tour de parole automatique."
+          ] }
+        ] }
+      ],
+      "masteryCriteria": ["Distinguer un message interne et une bulle de dialogue.", "Placer émission et réception sur les bons personnages avec le même signal.", "Prédire l’effet de envoyer avec ou sans attendre, puis tester.", "Inverser les rôles ou changer la durée sans bricoler un délai sur le receveur."],
+      "consolidation": [{ "moduleId": "scratch-coordination", "blockId": "guide", "label": "Revoir le passage de parole" }, { "moduleId": "scratch-actions", "blockId": "guide", "label": "Revoir l’ordre d’une pile" }],
+      "bonusActivities": [{ "moduleId": "scratch-coordination", "blockId": "bonus", "label": "Passer à un autre décor après le dialogue", "prerequisiteSkills": [{ "skillId": "scratch.messages", "expectation": "Comprendre quand la réception termine et savoir relancer le dialogue." }] }],
+      "nextSteps": [{ "moduleId": "scratch-blocs-personnalises", "label": "Organiser ton code avec Mes blocs", "prerequisiteSkills": [{ "skillId": "scratch.sequence", "expectation": "Identifier des actions à réutiliser dans plusieurs endroits." }] }],
+      "teacherGuide": {
+        "objective": "Coordonner deux sprites par un signal, sans confondre synchronisation et délais copiés.",
+        "entryDiagnosis": ["Faire sélectionner Pico puis Tera et vérifier à qui appartient une pile.", "Demander ce qui se passe avec deux drapeaux : les deux piles démarrent, elles ne s’attendent pas.", "Faire modifier la durée d’un dire pendant avant de présenter les messages."],
+        "preparation": ["Ouvrir la base Carte animée sans scripts : Pico et Tera suffisent, Giga reste sans code.", "Sans base : ajouter les deux sprites et placer leurs centres en (-150, -50) et (150, -50).", "La démonstration partagée montre un résultat plus riche, pas la solution du nouveau dialogue. Aucun compte ni publication obligatoire."],
+        "why": "Les personnages ont des programmes séparés. Un signal relie leurs actions sans supposer une durée fixe chez le receveur.",
+        "discoverySpeech": ["« Pico a fini de parler. Comment prévenir Tera maintenant, même si on allonge sa phrase ? »", "« Le message est un signal entre programmes, pas le texte de la bulle. »", "« Avec et attendre, Pico laisse Tera finir sa pile avant de continuer la sienne. »"],
+        "example": { "target": { "moduleId": "scratch-coordination", "blockId": "exemple", "label": "Deux piles, deux personnages" }, "comments": ["Solution : Pico drapeau → Bonjour 2 s → envoyer reponse et attendre → À bientôt 2 s ; Tera réception reponse → Salut 2 s.", "Ordre attendu : Bonjour entre 0 et 2 s, Salut entre 2 et 4 s, À bientôt entre 4 et 6 s. Si Bonjour dure 4 s, la réponse commence à 4 s sans toucher Tera.", "Sans attendre, Salut et À bientôt commencent après Bonjour et peuvent se chevaucher. Avec plusieurs receveurs, leurs piles commencent ensemble et l’expéditeur attend leur fin à toutes."] },
+        "questions": [
+          { "question": "Le mot reponse apparaît-il dans une bulle ?", "answer": "Non : c’est le signal choisi dans les menus. Le bloc dire affiche la bulle." },
+          { "question": "Si Bonjour dure plus longtemps, faut-il ajouter une attente dans Tera ?", "answer": "Non. Le signal est envoyé seulement après la première réplique." },
+          { "question": "Deux personnages reçoivent le même signal : parlent-ils l’un après l’autre ?", "answer": "Non, leurs réceptions commencent ensemble. Un autre signal ou un enchaînement distinct serait nécessaire pour les faire parler à tour de rôle." },
+          { "question": "Pourquoi une réception avec une boucle infinie bloquerait-elle Pico ?", "answer": "Envoyer et attendre attend sa fin ; cette pile ne se termine jamais." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-coordination", "blockId": "guide", "label": "Observer et comparer les envois" },
+        "independentActivity": { "moduleId": "scratch-coordination", "blockId": "autonomie", "label": "Inverser les rôles" },
+        "differentiation": ["CE2 : deux sprites seulement, lire les trois répliques ensemble et montrer les miniatures avant chaque assemblage.", "Plus autonome : masquer le modèle, inverser les rôles puis expliquer sans nommer les blocs.", "Le décor et Giga restent facultatifs. Reprendre événements/séquences si nécessaire, sans imposer un nombre de séances."],
+        "commonErrors": [
+          { "symptom": "Tera ne répond pas.", "helps": ["Observer la miniature sélectionnée.", "Comparer les menus du message dans Pico et Tera.", "Vérifier que Salut est sous quand je reçois, pas détaché.", "Choisir reponse dans les deux menus puis tester un envoi."] },
+          { "symptom": "Les dernières bulles se chevauchent.", "helps": ["Faire lire l’ordre attendu.", "Regarder le bloc d’envoi.", "Comparer envoyer à tous et envoyer à tous et attendre.", "Remplacer seulement l’envoi puis retester avec Bonjour à 4 secondes."] },
+          { "symptom": "Le dialogue se mélange après inversion.", "helps": ["Tester un seul drapeau.", "Compter les anciennes piles de drapeau et de réception.", "Comparer avec une émission et une réception seulement.", "Retirer les anciennes piles concurrentes dans une copie et garder les deux nouveaux rôles."] }
+        ],
+        "notes": "Distinguer reproduction et compréhension par le changement de durée et l’inversion. Noter autonomie, modèle ou aide dans les remarques existantes ; aucun acquis automatique. Les messages ne sont pas les communications réseau ni les données privées.",
+        "quickConductor": ["Vérifier sélection et ordre d’une pile.", "Construire émission et réception.", "Tester avec une durée différente.", "Comparer avec/sans attendre puis inverser les rôles.", "Proposer reprise ou décor facultatif et sauvegarder."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
+    "scratch-blocs-personnalises": {
+      "domainId": "jeux-video", "title": "Créer ses propres blocs", "type": "lesson", "theme": "fondations",
+      "objective": "Donner un nom à des actions réutilisables, puis les appeler sans recopier leur code.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "skillIds": ["scratch.custom-blocks", "scratch.sequence", "scratch.coordinates"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.sequence", "expectation": "Comprendre l’ordre des actions d’une pile." },
+        { "skillId": "scratch.coordinates", "expectation": "Placer un personnage avec aller à x/y et le déplacer horizontalement." },
+        { "skillId": "scratch.workspace", "expectation": "Sélectionner le sprite qui possède le code et conserver une copie." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "preparer", "title": "1 — Une action que tu répètes", "paragraphs": [
+          "Commence avec un nouveau projet et le chat. Ce petit essai ne demande ni score ni jeu précédent. Sélectionne le chat : tout le code de ce module lui appartient.",
+          "Nous allons nommer l’action qui remet le chat en x = -100, y = 0 : retour au départ. Ce nom décrit une action ; ce n’est pas une nouvelle variable ni un message.",
+          "Un bloc personnalisé contient une recette. Créer sa définition ne la lance pas automatiquement au drapeau. Pour l’utiliser dans ton programme, place le bloc portant son nom dans une pile : c’est l’appel. Dans Scratch, Mes blocs appartient au sprite sélectionné, pas automatiquement à tous les sprites."
+        ] },
+        { "type": "lesson", "id": "creer", "title": "2 — Définir la recette", "paragraphs": [
+          "Dans Mes blocs (rose), clique sur Créer un bloc. Écris retour au départ et valide avec OK. Ne coche pas Exécuter sans rafraîchissement d’écran : ce réglage n’est pas nécessaire ici.",
+          "Un bloc définir retour au départ apparaît dans la zone de code. Accroche sous lui aller à x: -100 y: 0, trouvé dans Mouvement. Ne lui ajoute pas un drapeau : définir est le début de cette recette.",
+          "Le bloc retour au départ est maintenant disponible dans Mes blocs. Chaque fois qu’il est appelé sur ce sprite, Scratch exécute les actions sous définir, puis reprend la pile qui l’a appelé."
+        ] },
+        { "type": "lesson", "id": "exemple", "title": "3 — Appeler la même recette deux fois",
+          "shortSteps": ["Construis définir retour au départ → aller à (-100, 0).", "À côté, construis drapeau → retour au départ → ajouter 60 à x → attendre 1 seconde → retour au départ.", "Lance : le chat part à gauche, avance vers -40, puis revient à -100. La définition n’est écrite qu’une seule fois."],
+          "paragraphs": ["Les deux piles sont dans le chat. Les blocs roses d’appel portent seulement retour au départ, pas définir.", "Ajouter 60 à x donne -40 depuis -100, sans dépendre de la direction du costume. La pause d’une seconde permet de voir le déplacement avant le second retour.", "Change seulement X dans la définition, de -100 à -150. Les deux appels utiliseront cette nouvelle valeur : le chat passera par -90 avant de revenir à -150. Remets ensuite -100."],
+          "visualScript": { "caption": "Une définition, deux appels — dans le même sprite", "note": "La recette n’est pas une pile de drapeau. Les appels réutilisent sa définition.", "stacks": [
+            { "caption": "La recette", "blocks": [
+              { "category": "custom", "label": "Mes blocs", "parts": ["définir retour au départ"], "explanation": "Donner un nom aux actions, sans les lancer au drapeau." },
+              { "category": "motion", "label": "Mouvement", "parts": ["aller à x: ", { "value": "-100" }, " y: ", { "value": "0" }], "explanation": "L’action de la recette." }
+            ] },
+            { "caption": "Les appels", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Cette pile démarre réellement au drapeau." },
+              { "category": "custom", "label": "Mes blocs", "parts": ["retour au départ"], "explanation": "Premier appel : placer au départ." },
+              { "category": "motion", "label": "Mouvement", "parts": ["ajouter ", { "value": "60" }, " à x"], "explanation": "Modifier X après le premier appel." },
+              { "category": "control", "label": "Contrôle", "parts": ["attendre ", { "value": "1" }, " secondes"], "explanation": "Voir la position intermédiaire." },
+              { "category": "custom", "label": "Mes blocs", "parts": ["retour au départ"], "explanation": "Second appel, sans recopier aller à x/y." }
+            ] }
+          ] },
+          "code": "Dans le chat — définition :\ndéfinir retour au départ\n  aller à x: -100 y: 0\n\nDans le chat — utilisation :\nquand le drapeau vert est cliqué\n  retour au départ\n  ajouter 60 à x\n  attendre 1 secondes\n  retour au départ"
+        },
+        { "type": "tasks", "id": "guide", "title": "À toi — une modification, deux effets", "items": [
+          { "id": "tester", "text": "Teste les deux appels. Compte une seule définition et deux blocs retour au départ.", "hint": "Définir n’est pas un appel : il indique où la recette commence." },
+          { "id": "changer", "text": "Dans la définition, change le départ à -150. Prédis la position intermédiaire puis teste. Remets -100.", "hint": "Le déplacement de +60 donne -90 depuis -150. Les deux appels reviennent à -150." },
+          { "id": "expliquer", "text": "Explique pourquoi tu n’as changé qu’un seul bloc aller à x/y, alors que le retour est utilisé deux fois." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — ta propre recette", "intro": "Réutilise uniquement des actions déjà connues.", "items": [
+          { "id": "recette", "text": "Crée un bloc saluer qui dit ton message pendant 1 seconde puis ajoute 20 à x.", "hint": "Créer un bloc saluer, puis accrocher les deux actions sous définir saluer." },
+          { "id": "appels", "text": "Dans une nouvelle pile, au clic sur la touche espace, appelle saluer deux fois. Teste depuis une position connue.", "hint": "Quand la touche espace est pressée se trouve dans Événements. Les deux appels se suivent : +20 puis +20." },
+          { "id": "predire", "text": "Avant de changer la recette, prédis l’effet de +30 à la place de +20. Modifie une seule définition puis teste les deux appels.", "hint": "Depuis -100, deux déplacements de 30 mènent à -40. Les deux appels utilisent la recette modifiée." },
+          { "id": "sauver", "text": "Sauvegarde. Si ton mini-jeu fonctionne déjà, tu peux remplacer ses deux retours au départ par des appels, sans changer ses règles.", "hint": "Cette reprise du jeu est facultative. Crée la définition dans Chat et garde score = 0 séparé au drapeau : un contact ne doit pas effacer les points." }
+        ] },
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif — une distance au choix", "blocks": [
+          { "type": "lesson", "id": "parametre", "title": "Un paramètre donne une valeur à chaque appel", "paragraphs": [
+            "Quand les définitions et appels sont compris, crée un autre bloc nommé deplacer. Dans la fenêtre Créer un bloc, ajoute une entrée nombre ou texte, nomme-la distance, puis valide. Garde le réglage sans rafraîchissement décoché.",
+            "Sous définir deplacer (distance), ajoute le bloc Mouvement ajouter … à x. Glisse le petit ovale distance du bloc définir dans sa case numérique. N’écris pas le mot distance au clavier : il faut utiliser le reporter du paramètre.",
+            "Travaille dans une copie. Retire l’ancienne pile de drapeau de l’essai simple, mais garde définir retour au départ. Une seule pile de drapeau doit piloter ce test : deux piles qui déplacent le même chat en même temps mélangeraient les résultats.",
+            "Dans une nouvelle pile de drapeau, appelle retour au départ puis deplacer (20), attendre 1 seconde, deplacer (50). Chaque appel fournit sa propre distance : depuis -100, tu passes à -80 puis -30.",
+            "Distance n’est pas une variable globale à créer : c’est une entrée disponible dans cette définition. Ne mets pas retour au départ dans deplacer, sinon chaque appel effacerait le déplacement précédent. Essaie ensuite 10 et 30 et prédis la position finale."
+          ],
+          "visualScript": { "caption": "Dans le chat — une distance différente à chaque appel", "note": "Bonus : la case distance reçoit la valeur donnée à chaque appel. Les ovales du modèle représentent les valeurs, pas des menus.", "stacks": [
+            { "caption": "La définition avec entrée", "blocks": [
+              { "category": "custom", "label": "Mes blocs", "parts": ["définir deplacer ", { "value": "distance" }], "explanation": "Distance est l’entrée de cette recette." },
+              { "category": "motion", "label": "Mouvement", "parts": ["ajouter ", { "value": "distance" }, " à x"], "explanation": "Glisser l’ovale distance de la définition dans cette case." }
+            ] },
+            { "caption": "Deux valeurs fournies", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Départ de l’essai bonus." },
+              { "category": "custom", "label": "Mes blocs", "parts": ["retour au départ"], "explanation": "Partir de -100 avant les deux déplacements." },
+              { "category": "custom", "label": "Mes blocs", "parts": ["deplacer ", { "value": "20" }], "explanation": "Premier appel : +20." },
+              { "category": "control", "label": "Contrôle", "parts": ["attendre ", { "value": "1" }, " secondes"], "explanation": "Observer -80." },
+              { "category": "custom", "label": "Mes blocs", "parts": ["deplacer ", { "value": "50" }], "explanation": "Second appel : +50 depuis la position actuelle, donc -30." }
+            ] }
+          ] }, "code": "définir deplacer (distance)\n  ajouter (distance) à x\n\nquand le drapeau vert est cliqué\n  retour au départ\n  deplacer (20)\n  attendre 1 secondes\n  deplacer (50)" }
+        ] },
+        { "type": "lesson", "id": "suite", "title": "Et ensuite ?", "paragraphs": ["Garde une recette simple que tu sais expliquer. Les paramètres sont un bonus, pas une obligation pour poursuivre. La prochaine notion prévue est de créer plusieurs exemplaires d’un personnage avec des clones ; ce module n’est pas encore disponible. Tu peux consolider tes appels en attendant."] }
+      ],
+      "masteryCriteria": ["Distinguer définir une recette et appeler son bloc.", "Utiliser deux appels de la même définition sans recopier ses actions.", "Prédire l’effet d’une modification unique sur les deux appels.", "Expliquer à quel sprite appartient la définition et, si le bonus est travaillé, d’où vient la valeur du paramètre."],
+      "consolidation": [{ "moduleId": "scratch-blocs-personnalises", "blockId": "guide", "label": "Comparer définition et appels" }, { "moduleId": "scratch-actions", "blockId": "exemple", "label": "Revoir l’ordre d’une pile" }],
+      "bonusActivities": [{ "moduleId": "scratch-blocs-personnalises", "blockId": "bonus", "label": "Donner une distance différente à chaque appel", "prerequisiteSkills": [{ "skillId": "scratch.custom-blocks", "expectation": "Savoir créer une définition et utiliser ses appels avant d’ajouter une entrée." }] }],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Factoriser une action dans un bloc propre au sprite ; travailler définition et appels avant un paramètre facultatif.",
+        "entryDiagnosis": ["Demander un placement en (-100, 0) puis ajouter 60 à x et prédire -40.", "Faire repérer une suite d’actions qu’on pourrait nommer.", "Vérifier le sprite sélectionné ; aucun score ni message n’est requis pour l’essai minimal."],
+        "preparation": ["Nouveau projet avec le chat, ou copie dédiée sans scripts concurrents.", "Préparer Mes blocs → Créer un bloc. Laisser le réglage sans rafraîchissement décoché.", "Pour le bonus, désactiver l’ancienne pile de drapeau de démonstration dans la copie : une seule pile de test doit repositionner le chat."],
+        "why": "Une recette nommée évite de recopier et permet de changer une action une fois pour tous ses appels.",
+        "discoverySpeech": ["« Écrire une recette ne fait pas le plat. L’appel demande d’exécuter la recette. »", "« Si je change le départ dans la définition, combien d’appels seront affectés ? »", "« Ce bloc appartient à ce personnage ; ce n’est pas un signal envoyé aux autres. »"],
+        "example": { "target": { "moduleId": "scratch-blocs-personnalises", "blockId": "exemple", "label": "Définition et deux appels" }, "comments": ["Définition : retour au départ → aller à (-100, 0). Utilisation : drapeau → retour → ajouter 60 à x → attendre 1 s → retour.", "Positions attendues : -100, -40 pendant une seconde, puis -100. Si la définition passe à -150, on observe -150, -90, -150.", "Dans le mini-jeu, remplacer seulement les retours de position par un appel. Ne pas mettre score à 0 dans cette recette : le retour au contact ne doit pas supprimer les points."] },
+        "questions": [
+          { "question": "Définir lance-t-il la recette au drapeau ?", "answer": "Non. Il faut un appel sous un événement ou dans une pile exécutée." },
+          { "question": "Deux appels demandent-ils deux définitions ?", "answer": "Non : une définition est réutilisée par les deux appels." },
+          { "question": "Pourquoi Tera ne trouve-t-il pas automatiquement le bloc créé dans Pico ?", "answer": "Les blocs personnalisés appartiennent au sprite où ils sont définis. Un message est le mécanisme vu pour coordonner des sprites." },
+          { "question": "Bonus : deplacer 20 puis deplacer 50 depuis -100 donne quoi ?", "answer": "-80 puis -30. Chaque appel fournit la valeur de distance ; on ne revient pas au départ entre eux." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-blocs-personnalises", "blockId": "guide", "label": "Une modification, deux effets" },
+        "independentActivity": { "moduleId": "scratch-blocs-personnalises", "blockId": "autonomie", "label": "Créer et réutiliser saluer" },
+        "differentiation": ["CE2 : garder une recette avec une action et deux appels ; faire compter les appels et pointer la seule définition.", "Élève autonome : créer saluer sans modèle puis justifier les positions après deux appels.", "Paramètre facultatif seulement après distinction définition/appel. Aucun rythme imposé ni obligation de refactoriser tout le jeu."],
+        "commonErrors": [
+          { "symptom": "Le bloc est défini mais rien ne se passe.", "helps": ["Lancer le drapeau et observer.", "Chercher un appel sous un événement.", "Comparer le bloc définir et le petit bloc portant seulement le nom.", "Ajouter un appel dans la pile de drapeau, pas un autre définir."] },
+          { "symptom": "Le déplacement bonus ne cumule pas.", "helps": ["Tester +20 puis +50 depuis -100.", "Regarder si deplacer contient un retour au départ.", "Comparer ajouter à x et aller à x/y.", "Garder seulement ajouter distance à x dans deplacer, et un retour avant les appels."] },
+          { "symptom": "Le paramètre agit comme zéro.", "helps": ["Regarder la case du bloc ajouter à x.", "Vérifier si distance a été tapé comme texte.", "Comparer avec l’ovale distance disponible sur définir.", "Glisser cet ovale dans la case, donner 20 à l’appel et retester."] }
+        ],
+        "notes": "Observer une modification de définition et la prédiction des deux appels pour distinguer compréhension et copie. Consigner autonomie, modèle ou aide dans les remarques existantes sans nouveau dispositif. Ne pas déduire que le paramètre est acquis quand seuls les appels simples le sont.",
+        "quickConductor": ["Vérifier position et ordre.", "Nommer une recette et distinguer l’appel.", "Tester deux appels et une modification unique.", "Créer saluer sans modèle.", "Choisir reprise, transfert au jeu ou paramètre facultatif puis sauvegarder."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
     "scratch-fin-partie": {
       "domainId": "jeux-video",
       "title": "Gagner, perdre et recommencer",
@@ -1202,7 +1410,7 @@ window.CODECRAFT_DATA = {
           { "id": "costume", "text": "Si tu sais déjà changer de costume, personnalise le personnage puis reteste le départ et le contact.", "hint": "Reprends les essais de costumes dans Répéter des actions si nécessaire. La taille du dessin peut changer le moment du contact." }
         ] },
         { "type": "lesson", "id": "suite", "title": "Un premier jalon, pas une course", "paragraphs": [
-          "Un jeu court qui fonctionne et que tu sais expliquer vaut mieux qu’un grand jeu recopié. Si une règle reste fragile, reprends le module correspondant. Quand tu es à l’aise, la suite du parcours permettra de coordonner plusieurs personnages ; ce contenu n’est pas encore disponible."
+          "Un jeu court qui fonctionne et que tu sais expliquer vaut mieux qu’un grand jeu recopié. Si une règle reste fragile, reprends le module correspondant. Pour explorer une autre façon d’organiser des actions, ouvre Coordonner plusieurs personnages : ses prérequis sont les événements et l’ordre d’une pile, pas un jeu validé automatiquement."
         ] }
       ],
       "masteryCriteria": ["Expliquer les commandes et les règles du jeu sans lire une solution.", "Montrer un point par contact, sans gain spontané ni répétition du même contact.", "Faire tester deux fins atteignables et le redémarrage après chacune.", "Modifier une règle et prédire son effet ; préciser les aides utilisées plutôt que confondre copie et compréhension."],
@@ -1213,7 +1421,7 @@ window.CODECRAFT_DATA = {
         { "moduleId": "scratch-reactions", "blockId": "guide", "label": "Revoir le contact" }
       ],
       "bonusActivities": [{ "moduleId": "scratch-mini-jeu", "blockId": "bonus", "label": "Personnaliser sans changer les règles", "prerequisiteSkills": [{ "skillId": "scratch.game-rules", "expectation": "Avoir testé les deux fins et le nouveau départ." }] }],
-      "nextSteps": [],
+      "nextSteps": [{ "moduleId": "scratch-coordination", "label": "Explorer les messages entre personnages", "prerequisiteSkills": [{ "skillId": "scratch.events", "expectation": "Savoir déclencher une pile : reprendre Déclencher et enchaîner des actions si nécessaire." }, { "skillId": "scratch.sequence", "expectation": "Comprendre l’ordre des actions et leur durée." }] }],
       "teacherGuide": {
         "objective": "Observer le transfert des notions dans un petit jeu personnel : aucune notion nouvelle obligatoire ni vitesse imposée.",
         "entryDiagnosis": ["Demander une victoire, une défaite et un redémarrage sur le programme précédent.", "Faire expliquer un point par contact et la place de mettre score à 0.", "Si une règle est fragile, reprendre son module ; l’accès au projet n’atteste pas un acquis."],
@@ -11892,7 +12100,7 @@ window.CODECRAFT_DATA = {
       "title": "Premiers pas avec Scratch",
       "theme": "fondations",
       "objective": "Découvrir les blocs, créer des actions et piloter un personnage avant de construire ses premiers jeux.",
-      "moduleIds": ["scratch-decouverte", "scratch-actions", "scratch-pilotage", "scratch-boucles", "scratch-reactions", "scratch-variables", "scratch-fin-partie", "scratch-mini-jeu"]
+      "moduleIds": ["scratch-decouverte", "scratch-actions", "scratch-pilotage", "scratch-boucles", "scratch-reactions", "scratch-variables", "scratch-fin-partie", "scratch-mini-jeu", "scratch-coordination", "scratch-blocs-personnalises"]
     },
     "web-fondations": {
       "domainId": "web",

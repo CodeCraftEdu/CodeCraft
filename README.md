@@ -49,9 +49,11 @@ Pour ajouter un contenu, ajouter un module au catalogue et référencer son iden
 
 ### Projets Scratch partagés
 
-Le parcours Scratch contient huit modules : découverte, actions, pilotage, boucles, contacts, variables, **Gagner, perdre et recommencer**, puis le projet jalon **Mon premier mini-jeu**. Les deux derniers prolongent le jeu horizontal à cible fixe : victoire à un score atteignable, défaite au-delà d’une limite gauche, arrêt et remise à zéro au drapeau. Le projet réutilise ces notions sans introduire de vies, chronomètre, aléatoire ou messages entre personnages. Ses critères et guides distinguent reproduction, compréhension et aides utilisées ; aucun acquis n’est automatique.
+Le parcours Scratch contient dix modules : découverte, actions, pilotage, boucles, contacts, variables, **Gagner, perdre et recommencer**, le projet jalon **Mon premier mini-jeu**, **Coordonner plusieurs personnages**, puis **Créer ses propres blocs**. Le projet réutilise les notions du jeu horizontal sans introduire de vies, chronomètre ou aléatoire. La coordination enseigne ensuite émission/réception et envoi avec ou sans attente, avec une scène suivante facultative. Mes blocs distingue définition et appels ; une entrée numérique est un bonus. Les critères et guides distinguent reproduction, compréhension et aides utilisées ; aucun acquis n’est automatique.
 
-Dans chaque module Scratch, « Scratch est en anglais ? » explique comment choisir Français via Settings → Language (ou l’icône globe selon la version). La langue du projet partagé n’impose pas celle de l’éditeur du visiteur.
+Les consignes utilisent les noms français des blocs. Les repères de langue restent dans la préparation professeur, sans encart supplémentaire sur les pages élèves.
+
+La roadmap Scratch comporte quatorze modules prévus : les dix premiers sont implémentés ; restent les clones, le temps et la difficulté, le débogage, puis un projet personnel. Ces contenus futurs ne sont pas des pages vides du catalogue. Les messages et Mes blocs sont accessibles directement avec leurs prérequis propres, sans imposer la réussite automatique du mini-jeu précédent.
 
 Les projets restent sur le compte Scratch du professeur : aucun `.sb3` n’est hébergé dans le site. `lesson-data.js`, dans `scratchProjects`, centralise deux URLs publiques par projet : `starterUrl` (base élève) et `demoUrl` (démonstration dans les guides professeur). Aucun bouton élève n’apparaît sans URL valide ; les consignes existantes restent utilisables.
 
@@ -59,11 +61,11 @@ Projets complets partagés sur `CodeCraftEdu` :
 
 - [Le chat et la souris](https://scratch.mit.edu/projects/1388025424/) : démonstration disponible dans les guides Pilotage, Contact et Score.
 - [Labyrinthe](https://scratch.mit.edu/projects/1388025497/) : lien conservé dans le catalogue pour la suite, sans nouvelle activité associée.
-- [Carte animée](https://scratch.mit.edu/projects/1388025602/) : lien conservé dans le catalogue pour la suite, sans nouvelle activité associée.
+- [Carte animée](https://scratch.mit.edu/projects/1388025602/) : démonstration facultative dans le guide Coordination, distincte du dialogue à messages enseigné.
 
 Ces projets complets ne sont pas des bases élève vides et ne remplacent pas les modèles guidés actuels.
 
-Bases partagées : [Chat et souris — Départ](https://scratch.mit.edu/projects/1388027652/), [Labyrinthe — Départ](https://scratch.mit.edu/projects/1388027832/), [Carte animée — Départ](https://scratch.mit.edu/projects/1388027889/). Les deux dernières restent réservées aux activités futures.
+Bases partagées : [Chat et souris — Départ](https://scratch.mit.edu/projects/1388027652/), [Labyrinthe — Départ](https://scratch.mit.edu/projects/1388027832/), [Carte animée — Départ](https://scratch.mit.edu/projects/1388027889/). Carte animée sert désormais au module Coordination ; Labyrinthe reste réservé aux activités futures. Mes blocs commence avec un chat dans un projet neuf et propose seulement en option un transfert au mini-jeu.
 
 La base Chat et souris contient Chat sans script en (-100, 0) et une souris nommée Cible sans script en (80, 0). Elle sert à Piloter un personnage (ignorer Cible) et Faire réagir le jeu (ne pas ajouter de deuxième cible). Depuis un projet vide, Ball renommé Cible reste une alternative. Compter et mémoriser poursuit le programme de contact déjà construit, sans proposer de recommencer avec une base vide. Le projet complet Le chat et la souris sert de démonstration facultative (`demoUrl`) ; ses déplacements par événements, sa cible aléatoire et son son diffèrent de l’exemple guidé et ne deviennent pas obligatoires.
 

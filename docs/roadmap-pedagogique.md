@@ -15,7 +15,7 @@ Le périmètre décidé est :
 
 CodeCraft est générique et indépendant de Startup Académie. Le référentiel Startup Académie reste une couche externe facultative de correspondance et de suivi professeur. Il ne dicte ni les intitulés publics ni l’ordre pédagogique.
 
-Ne mélange pas ce projet avec mes cours Python, Scratch ou français pour d’autres organismes.
+Ne pas importer les programmes internes de mes cours pour d’autres organismes. Le domaine Jeu vidéo / Scratch de CodeCraft reste générique et indépendant ; les ressources externes ne doivent pas structurer sa progression.
 
 ## 2. Progression adaptative
 

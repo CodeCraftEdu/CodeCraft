@@ -10,6 +10,7 @@
 .scratch-script__block--looks { background: #7542b8; border-color: #492a76; color: white; }
 .scratch-script__block--control { background: #ffae38; border-color: #9b5a00; color: #382200; }
 .scratch-script__block--variables { background: #ce5b00; border-color: #813900; color: white; }
+.scratch-script__block--custom { background: #b53550; border-color: #742236; color: white; }
 .scratch-script__block--sensing { background: #137987; border-color: #0b4b54; color: white; }
 .scratch-script__condition { display: inline-block; padding: .1rem .65rem; border: 2px solid #0b4b54; border-radius: 12px 3px; background: #c6eef2; color: #143b40; line-height: 1.5; }
 .scratch-script__condition--operator { background: #d4edc5; border-color: #3c7023; color: #254419; }

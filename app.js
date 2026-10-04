@@ -175,7 +175,7 @@
       } else parent.append(element('span', 'scratch-script__value', part.value));
     });
     const renderBlock = block => {
-      const category = ['events', 'motion', 'looks', 'control', 'sensing', 'variables'].includes(block.category) ? block.category : 'motion';
+      const category = ['events', 'motion', 'looks', 'control', 'sensing', 'variables', 'custom'].includes(block.category) ? block.category : 'motion';
       const row = element('li', 'scratch-script__block scratch-script__block--' + category);
       row.append(element('span', 'scratch-script__sr', block.label + ' : '));
       renderParts(row, block.parts);
@@ -300,15 +300,23 @@
     if (theme) document.body.dataset.route = theme;
     else delete document.body.dataset.route;
     main.replaceChildren();
+    main.classList.toggle('home-page', !compact);
     const header = element('header', compact ? 'page-header page-header--compact' : 'page-header');
     const brand = link(data.site.name, '#', 'brand');
     if (compact) header.append(brand);
     else {
+      header.classList.add('home-header');
+      const logo = element('img', 'home-logo');
+      logo.src = 'images/logo-transparent.png';
+      logo.width = 1516; logo.height = 1038;
+      logo.alt = ''; // Décoratif : le nom est déjà annoncé dans le h1.
+      const copy = element('div', 'home-header__copy');
       const heading = element('h1', 'home-title');
       heading.append(brand);
-      header.append(heading);
+      copy.append(element('p', 'home-eyebrow', data.site.subtitle), heading,
+        element('p', 'home-intro', data.site.homeIntro));
+      header.append(logo, copy);
     }
-    if (!compact) header.append(element('p', 'site-subtitle', data.site.subtitle));
     main.append(header);
   }
 
@@ -341,9 +349,21 @@
     const domains = Object.keys(data.domains);
     if (domains.length === 1) return renderDomain(domains[0], true);
     start(data.site.subtitle, null, false);
-    const navigation = element('nav', 'route-grid');
+    main.append(element('h2', 'home-choice', data.site.homeChoiceLabel));
+    const navigation = element('nav', 'route-grid home-domains');
     navigation.setAttribute('aria-label', 'Choisir un domaine');
-    domains.forEach(id => navigation.append(card(data.domains[id].title, 'Découvrir les parcours', '#domaine/' + id)));
+    domains.forEach(id => {
+      const domain = data.domains[id];
+      const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', '#domaine/' + id);
+      entry.classList.add('home-domain', id === 'jeux-video' ? 'home-domain--game' : 'home-domain--web');
+      const top = element('span', 'home-domain__top');
+      const symbol = element('span', 'home-domain__symbol', id === 'jeux-video' ? '+' : '</>');
+      symbol.setAttribute('aria-hidden', 'true');
+      top.append(symbol, element('span', 'home-domain__tag', domain.homeTag || domain.title));
+      entry.prepend(top);
+      entry.append(element('span', 'home-domain__action', 'Découvrir les parcours →'));
+      navigation.append(entry);
+    });
     main.append(navigation);
   }
 
@@ -358,11 +378,6 @@
       button.target = '_blank';
       button.rel = 'noopener noreferrer';
       header.append(button);
-      if (tool?.url === 'https://scratch.mit.edu/projects/editor/') {
-        const help = element('details', 'hint');
-        help.append(element('summary', '', 'Scratch est en anglais ?'), element('p', '', data.site.scratchLanguageHelp));
-        header.append(help);
-      }
     }
     return header;
   }
