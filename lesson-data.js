@@ -73,6 +73,9 @@ window.CODECRAFT_DATA = {
     }
   },
   "skills": {
+    "scratch.clones": { "title": "Créer et gérer des copies temporaires d’un personnage" },
+    "scratch.time": { "title": "Mesurer et limiter le temps d’une partie" },
+    "scratch.debugging": { "title": "Observer, expliquer et corriger une erreur dans un programme" },
     "scratch.messages": { "title": "Coordonner des personnages avec des messages" },
     "scratch.custom-blocks": { "title": "Créer et réutiliser un bloc personnalisé" },
     "scratch.game-rules": {
@@ -208,7 +211,7 @@ window.CODECRAFT_DATA = {
             "Le message Fini est APRÈS la boucle. La pause de 0.3 secondes est DANS la boucle pour séparer les mouvements. Scratch utilise un point dans ce nombre décimal."
           ],
           "shortSteps": [
-            "Ouvre un nouveau projet avec le chat, pour isoler l’essai. Glisse le chat vers le centre de la scène avec la souris.",
+            "Sauvegarde ton projet actuel, puis choisis Fichier → Nouveau. Garde le chat et glisse-le vers le centre : ton précédent essai reste dans sa sauvegarde.",
             "Dans Contrôle, prends « répéter 10 fois », change 10 en 4 et place les deux actions dans son creux, comme ci-dessous.",
             "Prédis combien de déplacements tu verras. Lance au drapeau, observe, puis replace le chat au centre avant de recommencer."
           ],
@@ -323,7 +326,7 @@ window.CODECRAFT_DATA = {
             "Sans pause, les changements sont trop rapides pour être bien observés. Attendre 0.5 secondes rend chaque apparence visible. La pause ne termine pas la boucle."
           ],
           "shortSteps": [
-            "Sauvegarde l’essai précédent. Dans un nouveau projet, garde le chat et retire les autres piles de cet essai.",
+            "Sauvegarde l’essai précédent, puis choisis Fichier → Nouveau. Garde le chat : tu crées cette animation sans supprimer les blocs du premier essai.",
             "Dans Apparence (violet), prends « costume suivant » ; place-le et une pause dans « répéter indéfiniment » (Contrôle).",
             "Lance : les costumes alternent. Clique sur le bouton rouge pour arrêter."
           ],
@@ -381,7 +384,7 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "Sans modèle — choisis la bonne boucle",
-          "intro": "Crée une petite animation avec les blocs connus.",
+          "intro": "Sauvegarde ton animation actuelle, puis choisis Fichier → Nouveau. Dans ce projet neuf avec le chat, crée une petite animation avec les blocs connus : aucune ancienne boucle ne tournera en même temps.",
           "items": [
             {
               "id": "trois",
@@ -475,7 +478,7 @@ window.CODECRAFT_DATA = {
         "preparation": [
           "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
           "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
-          "Un projet neuf avec le chat suffit ; deux costumes déjà fournis."
+          "Sauvegarder puis choisir Fichier → Nouveau au début, avant l’animation continue et avant la mission autonome. Ne pas supprimer les essais précédents. Garder le même projet pour les petites modifications du même exercice ; le chat possède deux costumes déjà fournis."
         ],
         "why": "Une boucle exprime une répétition sans recopier les mêmes actions.",
         "discoverySpeech": [
@@ -490,9 +493,9 @@ window.CODECRAFT_DATA = {
             "label": "Modèle commenté"
           },
           "comments": [
-            "Faire repérer les blocs et catégories avant d’assembler.",
-            "Les creux orange contiennent les actions imbriquées ; la fin visuelle ferme le bloc, ce n’est pas un bloc supplémentaire à chercher.",
-            "Prévoir un résultat avant chaque lancement et expliquer une situation où une action ne se produit pas."
+            "Quatre tours : quatre déplacements de 20 pas et quatre pauses de 0.3 seconde, puis un seul message Fini !. Le total est 80 pas ; replacer le chat au centre avant de comparer.",
+            "Deux tours : deux déplacements et deux pauses, soit 40 pas. Le nombre de tours change, pas la distance ni la pause par tour.",
+            "Le message dans la boucle revient à chaque tour ; après la boucle limitée, il apparaît une fois. Après une boucle infinie, il n’est pas atteint. La mention visuelle fin du bloc repère le creux, pas un bloc Scratch supplémentaire."
           ]
         },
         "questions": [
@@ -549,7 +552,7 @@ window.CODECRAFT_DATA = {
           "Vérifier les prérequis par une question et un petit essai.",
           "Préparer la base minimale puis repérer les creux des blocs.",
           "Assembler et prédire le résultat du modèle.",
-          "Faire les tests avec et sans la situation déclenchante.",
+          "Comparer quatre puis deux tours ; déplacer le message dans puis après la boucle et expliquer le résultat.",
           "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
         ],
         "references": [
@@ -599,7 +602,7 @@ window.CODECRAFT_DATA = {
           "id": "preparer",
           "title": "1 — Un chat et une cible",
           "paragraphs": [
-            "Ouvre le projet de départ proposé au-dessus : le chat et la souris nommée Cible sont déjà prêts, sans scripts. Tu peux aussi partir d’un nouveau projet pour ne pas mélanger les anciennes commandes. Le chat reste le joueur.",
+        "Sauvegarde ton projet actuel avant de commencer. Ouvre ensuite le projet de départ proposé au-dessus : le chat et la souris nommée Cible sont prêts, sans scripts. Tu peux aussi choisir Fichier → Nouveau pour ne pas mélanger les anciennes commandes, sans supprimer ton travail précédent. Le chat reste le joueur.",
             "Avec le projet de départ, garde la souris Cible : n’ajoute pas de deuxième cible. Si tu pars d’un projet vide, clique en bas à droite sur Choisir un sprite et prends Ball dans la bibliothèque. Sélectionne sa miniature puis, dans le champ du nom sous la scène, renomme-le Cible.",
             "Avec Cible sélectionnée, règle x à 80 et y à 0 dans ses champs sous la scène. La cible reste immobile : on ne lui ajoute pas de code.",
             "Sélectionne à nouveau la miniature du chat : toute la programmation ci-dessous appartient au chat. Le chat démarre à x = -100, y = 0 ; la cible est assez éloignée pour qu’ils ne se touchent pas au départ."
@@ -888,8 +891,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "nouvelle-cible",
-              "text": "Place Cible à x = 80, y = 60 puis rejoins-la. Explique pourquoi droite seule ne suffit plus.",
-              "hint": "Sa position verticale a changé ; il faut aussi monter."
+              "text": "Pour ce bonus, sélectionne successivement le chat et Cible et mets leur champ Taille sous la scène à 100. Place Cible à x = 80, y = 120. Relance pour que le chat soit à y = 0, puis avance vers elle sans monter : vérifie l’absence de contact. Monte ensuite pour la rejoindre et explique la différence.",
+              "hint": "À ces tailles, la cible est assez haut pour ne pas toucher le chat resté à y = 0. Droite change seulement X ; haut change Y. Le contact dépend des dessins, pas seulement de leurs centres."
             }
           ]
         }
@@ -953,7 +956,7 @@ window.CODECRAFT_DATA = {
         "preparation": [
           "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
           "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
-          "Utiliser la base partagée avec Chat et la souris Cible, sans ajouter de deuxième cible. Depuis un projet vide, Ball renommé Cible reste possible. Aucun fichier privé ni image à fournir."
+          "Sauvegarder le projet précédent, puis ouvrir la base sans scripts ou choisir Fichier → Nouveau. Garder Chat et la souris Cible sans ajouter de deuxième cible ; depuis un projet vide, Ball renommé Cible convient aussi. Conserver ensuite une copie de ce programme pour les modules Score, Fin de partie et Mini-jeu : ne pas repartir d’une base vide à chaque suite."
         ],
         "why": "Les règles d’un jeu sont des tests : une action n’arrive que dans certaines situations.",
         "discoverySpeech": [
@@ -968,9 +971,9 @@ window.CODECRAFT_DATA = {
             "label": "Modèle commenté"
           },
           "comments": [
-            "Faire repérer les blocs et catégories avant d’assembler.",
-            "Les creux orange contiennent les actions imbriquées ; la fin visuelle ferme le bloc, ce n’est pas un bloc supplémentaire à chercher.",
-            "Prévoir un résultat avant chaque lancement et expliquer une situation où une action ne se produit pas."
+            "Sans touche, le chat reste à (-100, 0). Une touche maintenue déplace le chat ; relâchée, elle ne déclenche plus le déplacement, même si la boucle continue.",
+            "Au contact : dire Touché ! pendant 1 seconde puis revenir à (-100, 0). Le message suspend cette pile pendant sa durée : elle ne vérifie pas les touches en parallèle durant cette pause. Le retour sépare les sprites et évite de répéter le même contact.",
+            "Les creux contiennent les actions du si ; fin du bloc n’est pas un bloc Scratch. Bonus vertical : Taille 100 pour Chat et Cible, cible (80, 120). Tester d’abord le trajet horizontal à Y = 0 sans contact, puis la montée. Les dimensions des costumes comptent pour le contact."
           ]
         },
         "questions": [
@@ -1030,8 +1033,8 @@ window.CODECRAFT_DATA = {
             "helps": [
               "Repérer toutes les piles sur le chat.",
               "Chercher les anciennes piles de touches.",
-              "Isoler la nouvelle pile et vérifier la pause.",
-              "Retirer les anciennes commandes de cet essai après sauvegarde puis retester."
+              "Sauvegarder le projet avec ses anciens scripts avant de changer d’essai.",
+              "Ouvrir la base sans scripts ou Fichier → Nouveau, reconstruire uniquement la pile de Réactions et vérifier la pause. Ne pas supprimer le travail précédent."
             ]
           }
         ],
@@ -1055,6 +1058,395 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
+    "scratch-clones": {
+      "domainId": "jeux-video", "title": "Créer plusieurs personnages avec des clones", "type": "lesson", "theme": "fondations",
+      "objective": "Créer des copies temporaires d’un sprite, les placer et comprendre leur disparition.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "skillIds": ["scratch.clones", "scratch.loops", "scratch.coordinates"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.workspace", "expectation": "Choisir un sprite et conserver une copie de son projet." },
+        { "skillId": "scratch.coordinates", "expectation": "Placer un sprite avec aller à x/y et comprendre ajouter à x." },
+        { "skillId": "scratch.loops", "expectation": "Utiliser répéter un nombre de fois ; sinon reprendre Répéter des actions." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "preparer", "title": "1 — Un modèle, plusieurs copies", "paragraphs": [
+          "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau. Dans ce projet neuf, supprime le chat, puis choisis le sprite Star dans la bibliothèque. Dans le champ Taille sous la scène, mets 40 pour que plusieurs étoiles tiennent côte à côte. Tout le code suivant appartient à Star.",
+          "Dupliquer un sprite crée un autre personnage dans la liste. Un clone est différent : c’est une copie temporaire créée pendant l’exécution. Il n’ajoute pas une nouvelle vignette dans la liste des sprites et utilise le code du modèle.",
+          "Dans Apparence (violet), cacher rend le modèle invisible, sans arrêter son code ; montrer rend une copie visible. Dans Contrôle (orange), créer un clone de moi-même copie le sprite à sa position actuelle. Le clone hérite aussi de sa visibilité : comme notre modèle sera caché, il faudra montrer chaque clone.",
+          "Quand je commence comme un clone lance une pile uniquement pour la nouvelle copie. Supprimer ce clone la détruit, contrairement à cacher. Le modèle original reste disponible pour fabriquer d’autres copies."
+        ] },
+        { "type": "lesson", "id": "exemple", "title": "2 — Trois étoiles temporaires",
+          "shortSteps": ["Sur Star, construis la pile de drapeau : cacher, aller à (-120, 0), puis répéter 3 fois la création et le déplacement de 80.", "À côté, construis quand je commence comme un clone → montrer → attendre 2 secondes → supprimer ce clone.", "Lance le drapeau : trois étoiles apparaissent à -120, -40 et 40, puis disparaissent après environ deux secondes."],
+          "paragraphs": ["Dans la boucle du modèle, crée d’abord la copie, puis déplace le modèle. Inverser ces deux actions change les positions obtenues.", "Les copies ne suivent pas les déplacements suivants du modèle : chacune garde sa propre position. À la fin de la boucle, le modèle est à 120 mais reste invisible.", "Les deux piles appartiennent au même sprite Star. Ne mets pas créer un clone dans la pile qui démarre les clones : chacun fabriquerait de nouvelles copies.", "Relancer le drapeau supprime les anciens clones avant de recommencer. Sauvegarde ton essai depuis Fichier ou avec ton compte personnel."],
+          "visualScript": { "caption": "Dans Star — une fabrique et une vie de copie", "note": "Le modèle caché crée trois copies. Chaque copie lance sa propre pile orange.", "stacks": [
+            { "caption": "Le modèle original", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Démarrer une nouvelle série." },
+              { "category": "looks", "label": "Apparence", "parts": ["cacher"], "explanation": "Le modèle travaille sans être affiché." },
+              { "category": "motion", "label": "Mouvement", "parts": ["aller à x: ", { "value": "-120" }, " y: ", { "value": "0" }], "explanation": "Position de la première copie." },
+              { "category": "control", "label": "Contrôle", "parts": ["répéter ", { "value": "3" }, " fois"], "explanation": "Trois créations, pas une boucle infinie.", "children": [
+                { "category": "control", "label": "Contrôle", "parts": ["créer un clone de ", { "choice": "moi-même" }], "explanation": "Copier à la position actuelle." },
+                { "category": "motion", "label": "Mouvement", "parts": ["ajouter ", { "value": "80" }, " à x"], "explanation": "Déplacer le modèle pour la prochaine copie." }
+              ] }
+            ] },
+            { "caption": "Chaque clone", "blocks": [
+              { "category": "control", "label": "Contrôle", "parts": ["quand je commence comme un clone"], "explanation": "Cette pile appartient aux copies." },
+              { "category": "looks", "label": "Apparence", "parts": ["montrer"], "explanation": "La copie était cachée comme son modèle." },
+              { "category": "control", "label": "Contrôle", "parts": ["attendre ", { "value": "2" }, " secondes"], "explanation": "Laisser le temps de la voir." },
+              { "category": "control", "label": "Contrôle", "parts": ["supprimer ce clone"], "explanation": "Retirer cette copie, pas le modèle." }
+            ] }
+          ] },
+          "code": "Dans Star — modèle :\nquand le drapeau vert est cliqué\n  cacher\n  aller à x: -120 y: 0\n  répéter 3 fois\n    créer un clone de moi-même\n    ajouter 80 à x\n\nDans Star — copies :\nquand je commence comme un clone\n  montrer\n  attendre 2 secondes\n  supprimer ce clone"
+        },
+        { "type": "tasks", "id": "guide", "title": "Observer avant de modifier", "items": [
+          { "id": "compter", "text": "Lance : compte trois étoiles visibles, mais une seule vignette de sprite sous la scène.", "hint": "Le modèle est caché ; les trois étoiles visibles sont ses clones." },
+          { "id": "position", "text": "Explique pourquoi la deuxième étoile est en x = -40. Montre le bloc qui prépare sa position.", "hint": "Le modèle passe de -120 à -40 avec ajouter 80 à x, après la première création." },
+          { "id": "disparition", "text": "Dans la pile des clones, change la pause à 4 secondes. Prédis ce qui change, puis relance.", "hint": "La quantité et les positions ne changent pas. Seule la durée de vie change." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — quatre copies bien espacées", "items": [
+          { "id": "quatre", "text": "Pars de ton essai : fais quatre copies, depuis -120, avec un déplacement de 60 entre les créations. Essaie avant de rouvrir le modèle.", "hint": "Change la répétition à 4 et le déplacement à 60 dans le modèle, pas dans la pile des clones." },
+          { "id": "predire", "text": "Annonce les quatre positions avant de lancer. Teste et vérifie que toutes les copies sont visibles.", "hint": "Les positions sont -120, -60, 0 et 60. Le modèle finit à 120, caché." },
+          { "id": "distinguer", "text": "Explique ce qui lance le modèle et ce qui lance chaque copie. Relance avant leur disparition : aucune ancienne copie ne doit s’accumuler." },
+          { "id": "conserver", "text": "Sauvegarde ta version. Savoir reproduire la pile n’est pas la même chose que savoir expliquer les positions et la disparition." }
+        ] },
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif — ramasser les étoiles", "blocks": [
+          { "type": "lesson", "id": "ramasser", "title": "Une étoile, un point", "paragraphs": [
+            "Prérequis : savoir créer une variable globale et ajouter un point ; sinon laisse ce bonus de côté et reprends Compter et mémoriser.",
+            "Travaille dans une copie. Crée score pour tous les sprites. Au tout début de la pile de drapeau, mets score à 0. Garde le modèle caché et les créations.",
+            "Dans la pile quand je commence comme un clone, garde montrer mais retire attendre et supprimer ce clone : les étoiles doivent rester jusqu’au clic.",
+            "Ajoute dans Star une nouvelle pile Événements : quand ce sprite est cliqué → ajouter 1 à score → supprimer ce clone. Le clic lance le code de la copie touchée. Le modèle caché ne peut pas être cliqué.",
+            "Teste : chaque étoile disparaît au clic et vaut exactement un point. La suppression empêche de recliquer la même étoile. Le drapeau remet le score à zéro et recrée les copies."
+          ], "code": "Au début de la pile du drapeau : mettre score à 0\n\nquand je commence comme un clone\n  montrer\n\nquand ce sprite est cliqué\n  ajouter 1 à score\n  supprimer ce clone" }
+        ] }
+      ],
+      "masteryCriteria": ["Distinguer une copie temporaire d’un sprite dupliqué dans la liste.", "Expliquer pourquoi le modèle est caché et les clones montrés.", "Prédire les positions de plusieurs copies et adapter la boucle.", "Faire disparaître les clones sans supprimer le modèle ; distinguer copie du modèle et explication autonome."],
+      "consolidation": [{ "moduleId": "scratch-clones", "blockId": "guide", "label": "Observer trois copies et leur disparition" }, { "moduleId": "scratch-boucles", "blockId": "exemple", "label": "Reprendre la répétition" }, { "moduleId": "scratch-pilotage", "blockId": "exemple", "label": "Revoir X et Y" }],
+      "bonusActivities": [{ "moduleId": "scratch-clones", "blockId": "bonus", "label": "Ramasser les copies avec un score", "prerequisiteSkills": [{ "skillId": "scratch.variables", "expectation": "Créer score, le remettre à zéro et ajouter un point." }] }],
+      "nextSteps": [{ "moduleId": "scratch-temps-difficulte", "label": "Limiter une partie dans le temps", "prerequisiteSkills": [{ "skillId": "scratch.variables", "expectation": "Comprendre la remise à zéro et le changement d’une variable ; reprise dans Compter et mémoriser." }, { "skillId": "scratch.conditions", "expectation": "Comprendre une condition ; reprise dans Faire réagir le jeu." }, { "skillId": "scratch.game-rules", "expectation": "Comprendre stop tout et le redémarrage au drapeau ; sinon reprendre Gagner, perdre et recommencer." }] }],
+      "teacherGuide": {
+        "objective": "Distinguer original, copie temporaire et script de démarrage d’un clone avant un bonus à points.",
+        "entryDiagnosis": ["Faire placer le sprite en (-120, 0) et prédire -40 après +80.", "Faire expliquer répéter 3 fois. Reprendre les coordonnées ou boucles si nécessaire ; Mes blocs n’est pas requis."],
+        "preparation": ["Faire sauvegarder le travail précédent avant Fichier → Nouveau. Projet neuf, sprite Star seul, taille 40 dans le champ sous la scène.", "Deux piles dans Star : fabrique au drapeau et comportement des copies. Aucun projet partagé ni fichier de départ nécessaire."],
+        "why": "Un modèle peut fabriquer plusieurs éléments qui vivent séparément sans créer à la main un sprite pour chacun.",
+        "discoverySpeech": ["« Notre original est une fabrique cachée. Chaque étoile visible est une copie temporaire. »", "« Je copie d’abord à cette position, puis je prépare la place suivante. »", "« La copie hérite du modèle caché : elle doit se montrer elle-même. »"],
+        "example": { "target": { "moduleId": "scratch-clones", "blockId": "exemple", "label": "Trois créations et trois vies" }, "comments": ["Fabrique : cacher, départ -120, répéter 3 fois créer puis +80. Positions : -120, -40, 40 ; original final 120 caché.", "Copies : montrer, attendre 2 s, supprimer. Les pauses commencent à la création de chaque clone ; elles sont presque simultanées, pas trois pauses consécutives du modèle.", "Quatre copies avec un pas de 60 : -120, -60, 0, 60. Demander une prédiction avant de montrer la correction."] },
+        "questions": [
+          { "question": "Pourquoi une seule vignette alors que trois étoiles sont visibles ?", "answer": "La vignette représente le sprite modèle. Les clones sont temporaires, pas des sprites dupliqués dans la liste." },
+          { "question": "Pourquoi montrer est-il nécessaire ?", "answer": "Les clones héritent de la visibilité du modèle caché." },
+          { "question": "Que change créer après le déplacement ?", "answer": "Les positions deviennent -40, 40 et 120 au lieu de -120, -40 et 40." },
+          { "question": "Cacher et supprimer ce clone sont-ils équivalents ?", "answer": "Non : cacher laisse la copie exister ; supprimer la détruit. Le modèle reste intact." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-clones", "blockId": "guide", "label": "Compter, prédire et prolonger la durée" },
+        "independentActivity": { "moduleId": "scratch-clones", "blockId": "autonomie", "label": "Quatre copies sans modèle" },
+        "differentiation": ["CE2 : construire les deux piles ensemble, puis changer un seul nombre et raconter l’effet.", "Plus autonome : prédire les positions avant les essais ; expliquer la différence avec une duplication.", "Bonus à points seulement si les variables sont comprises. Aucun rythme imposé."],
+        "commonErrors": [
+          { "symptom": "Aucune copie visible.", "helps": ["Lancer le drapeau puis regarder avant deux secondes.", "Vérifier que Star est sélectionné.", "Chercher montrer sous quand je commence comme un clone.", "Ajouter montrer dans cette pile, puisque le modèle est caché."] },
+          { "symptom": "Toutes les copies se superposent.", "helps": ["Observer une étoile puis compter les créations dans le code.", "Repérer le déplacement du modèle.", "Vérifier qu’ajouter 80 à x est dans la boucle après créer.", "Mettre créer puis ajouter à x dans répéter, pas dans la pile des clones."] },
+          { "symptom": "Les copies se multiplient sans contrôle.", "helps": ["Arrêter avec le bouton rouge.", "Chercher toutes les créations.", "Repérer une création dans quand je commence comme un clone.", "Retirer cette création : seul le modèle au drapeau doit fabriquer les trois clones."] }
+        ],
+        "notes": "Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes. Un score du bonus ne valide pas la compétence ; demander une explication et une modification prédite.",
+        "quickConductor": ["Vérifier boucle et coordonnées.", "Montrer modèle caché et copie visible.", "Assembler et tester trois copies.", "Prédire quatre positions puis essayer.", "Choisir reprise ou bonus variables et sauvegarder."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
+    "scratch-temps-difficulte": {
+      "domainId": "jeux-video", "title": "Gérer le temps et la difficulté", "type": "lesson", "theme": "fondations",
+      "objective": "Limiter la durée d’une partie et comparer une difficulté en changeant un réglage à la fois.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "skillIds": ["scratch.time", "scratch.variables", "scratch.conditions", "scratch.game-rules"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.variables", "expectation": "Créer une variable pour tous les sprites, remettre à zéro et ajouter un point ; sinon reprendre Compter et mémoriser." },
+        { "skillId": "scratch.conditions", "expectation": "Utiliser si … alors ; sinon reprendre Faire réagir le jeu." },
+        { "skillId": "scratch.game-rules", "expectation": "Comprendre stop tout et le redémarrage au drapeau ; sinon reprendre Gagner, perdre et recommencer." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "preparer", "title": "1 — Dix secondes pour cliquer", "paragraphs": [
+          "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau, puis garde le chat. Cet essai est un petit défi de clics, pas encore un jeu complet. Il ne nécessite ni clones ni ancien projet. Tout le code est placé dans le chat.",
+          "Dans Variables, crée score et duree pour tous les sprites. Score compte les clics, duree contient la durée autorisée en secondes. Garde score affiché.",
+          "Dans Capteurs (bleu clair), le bloc ovale chronomètre donne le temps écoulé. Glisse cet ovale dans une case : ne tape pas le mot chronomètre au clavier. Réinitialiser le chronomètre repart de zéro pour tout le projet. On le fait une seule fois au début de la partie, pas à chaque clic.",
+          "Dans Opérateurs (vert), < compare deux nombres : chronomètre < duree signifie qu’il reste du temps. > signifie strictement supérieur : chronomètre > duree devient vrai juste après la limite. Glisse les ovales chronomètre et duree dans les deux cases de ces comparaisons.",
+          "Dans Contrôle, attendre jusqu’à ce que attend que sa condition soit vraie. Dans Apparence, mettre la taille à 100 % de la taille initiale retrouve la taille de départ ; 50 % donnera un chat plus petit."
+        ] },
+        { "type": "lesson", "id": "exemple", "title": "2 — Démarrer, compter et terminer",
+          "shortSteps": ["Construis la pile de drapeau : score = 0, duree = 10, position (0, 0), taille 100 %, puis réinitialiser le chronomètre.", "Ajoute attendre jusqu’à ce que chronomètre > duree, dire Terminé ! pendant 2 secondes, puis stop tout.", "À côté, construis quand ce sprite est cliqué → si chronomètre < duree alors ajouter 1 à score. Lance et clique sur le chat."],
+          "paragraphs": ["Quand ce sprite est cliqué est un événement jaune : il démarre une pile pour chaque clic sur le chat. Ajouter 1 doit rester à l’intérieur du si.", "Pendant les dix premières secondes, les clics donnent des points. À dix secondes exactement, chronomètre < duree est faux : les clics ne comptent plus, même pendant le message final de deux secondes.", "Le message apparaît dès que le temps dépasse dix secondes, puis stop tout arrête les scripts. Le chronomètre de Scratch peut continuer à avancer : c’est le score qui reste bloqué. Au drapeau suivant, score et chronomètre repartent de zéro.", "Si tu coches chronomètre dans Capteurs, sa valeur s’affiche sur la scène pour observer les essais. Le temps concerne tout le projet, pas un chronomètre différent par sprite."],
+          "visualScript": { "caption": "Dans le chat — une partie et des clics autorisés", "note": "Les comparaisons sont des blocs verts ; chronomètre et duree sont des valeurs glissées dans leurs cases.", "stacks": [
+            { "caption": "Démarrer puis terminer", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Une nouvelle partie." },
+              { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "score" }, " à ", { "value": "0" }], "explanation": "Effacer les anciens points." },
+              { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "duree" }, " à ", { "value": "10" }], "explanation": "La limite choisie pour cet essai." },
+              { "category": "motion", "label": "Mouvement", "parts": ["aller à x: ", { "value": "0" }, " y: ", { "value": "0" }], "explanation": "Retrouver le centre." },
+              { "category": "looks", "label": "Apparence", "parts": ["mettre la taille à ", { "value": "100" }, " % de la taille initiale"], "explanation": "Retrouver une taille connue." },
+              { "category": "sensing", "label": "Capteurs", "parts": ["réinitialiser le chronomètre"], "explanation": "Le départ du temps, une seule fois." },
+              { "category": "control", "label": "Contrôle", "parts": ["attendre jusqu’à ce que ", { "condition": [{ "value": "chronomètre" }, " > ", { "value": "duree" }], "operator": true }], "explanation": "Attendre la fin du temps." },
+              { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Terminé !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "Les points sont déjà bloqués par la condition de clic." },
+              { "category": "control", "label": "Contrôle", "parts": ["stop ", { "choice": "tout" }], "explanation": "Arrêter les scripts de la partie." }
+            ] },
+            { "caption": "Un clic pendant le temps autorisé", "blocks": [
+              { "category": "events", "label": "Événements", "parts": ["quand ce sprite est cliqué"], "explanation": "Le clic sur le chat déclenche cette pile." },
+              { "category": "control", "label": "Contrôle", "parts": ["si ", { "condition": [{ "value": "chronomètre" }, " < ", { "value": "duree" }], "operator": true }, " alors"], "explanation": "Ne compter que les clics avant la limite.", "children": [
+                { "category": "variables", "label": "Variables", "parts": ["ajouter ", { "value": "1" }, " à ", { "choice": "score" }], "explanation": "Un clic autorisé vaut un point." }
+              ] }
+            ] }
+          ] },
+          "code": "quand le drapeau vert est cliqué\n  mettre score à 0\n  mettre duree à 10\n  aller à x: 0 y: 0\n  mettre la taille à 100 % de la taille initiale\n  réinitialiser le chronomètre\n  attendre jusqu’à ce que <chronomètre > duree>\n  dire Terminé ! pendant 2 secondes\n  stop tout\n\nquand ce sprite est cliqué\n  si <chronomètre < duree> alors\n    ajouter 1 à score"
+        },
+        { "type": "tasks", "id": "guide", "title": "Vérifier la limite", "items": [
+          { "id": "cliquer", "text": "Lance, clique plusieurs fois sur le chat, puis continue pendant Terminé ! : les points ne doivent plus augmenter.", "hint": "La condition du clic bloque le score avant que stop tout soit exécuté." },
+          { "id": "relancer", "text": "Relance le drapeau. Vérifie score = 0, le chat au centre et une nouvelle durée complète.", "hint": "Cherche les remises à zéro au début de la pile, pas dans celle du clic." },
+          { "id": "expliquer", "text": "Montre ce qui mesure le temps, ce qui fixe la limite et ce qui autorise un point. Explique sans simplement relire les blocs." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "Comparer deux difficultés", "intro": "Change un seul réglage par essai pour comprendre son effet, sans imposer un score à atteindre.", "items": [
+          { "id": "temps", "text": "Dans la pile de départ, passe duree de 10 à 15, teste, puis à 5 et teste. Prédis ce qui change sans toucher la taille.", "hint": "Il y a plus ou moins de temps pour cliquer ; un clic vaut toujours un point." },
+          { "id": "taille", "text": "Remets duree à 10. Dans la même pile, passe la taille de 100 à 50 %. Compare en relançant entre les essais.", "hint": "Le chat est plus petit, mais le temps reste identique. Le réglage de la pile remplace la taille au lancement." },
+          { "id": "choisir", "text": "Choisis une version facile et une version plus difficile. Explique les réglages choisis et vérifie pour chacune que le score s’arrête à la limite." },
+          { "id": "sauver", "text": "Sauvegarde ton essai. Un bon score ne prouve pas à lui seul que tu comprends le chronomètre ou les conditions." }
+        ] },
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif — plus difficile en cours de partie", "blocks": [
+          { "type": "lesson", "id": "progressif", "title": "Une cible qui rétrécit", "paragraphs": [
+            "Seulement si le temps, les conditions et les piles parallèles sont compris : travaille dans une copie avec duree = 10 et taille = 100 au départ.",
+            "Ajoute une troisième pile dans le chat : drapeau → attendre 5 secondes → si chronomètre < duree alors mettre la taille à 50 % de la taille initiale. Ne remets ni score ni chronomètre à zéro dans cette pile.",
+            "Pendant les cinq premières secondes, la cible est grande ; ensuite elle rétrécit si la partie continue. La limite reste dix secondes. Relancer doit retrouver la grande taille grâce à la première pile.",
+            "Essaie duree = 4 : la condition empêche le rétrécissement après la fin du temps. Explique pourquoi avant de tester."
+          ], "code": "quand le drapeau vert est cliqué\n  attendre 5 secondes\n  si <chronomètre < duree> alors\n    mettre la taille à 50 % de la taille initiale" }
+        ] },
+        { "type": "lesson", "id": "suite", "title": "Consolider avant de poursuivre", "paragraphs": ["Tu peux réutiliser une limite de temps dans un jeu que tu comprends déjà, mais ce transfert est facultatif. Déboguer son jeu propose ensuite une méthode pour chercher les erreurs. Reprends les essais ci-dessus si le score continue après la limite ou si le redémarrage ne fonctionne pas."] }
+      ],
+      "masteryCriteria": ["Distinguer temps mesuré et durée autorisée.", "Réinitialiser au départ sans prolonger la partie à chaque clic.", "Bloquer les points à la limite et expliquer la condition, au-delà de la reproduction du modèle.", "Comparer deux réglages de difficulté en changeant une seule valeur, puis vérifier le redémarrage."],
+      "consolidation": [{ "moduleId": "scratch-temps-difficulte", "blockId": "guide", "label": "Revoir la limite et la remise à zéro" }, { "moduleId": "scratch-variables", "blockId": "exemple", "label": "Reprendre le score" }, { "moduleId": "scratch-reactions", "blockId": "exemple", "label": "Reprendre une condition" }, { "moduleId": "scratch-fin-partie", "blockId": "exemple", "label": "Revoir arrêt et reprise" }],
+      "bonusActivities": [{ "moduleId": "scratch-temps-difficulte", "blockId": "bonus", "label": "Changer la difficulté pendant la partie", "prerequisiteSkills": [{ "skillId": "scratch.time", "expectation": "Expliquer la limite et le redémarrage." }, { "skillId": "scratch.events", "expectation": "Comprendre que deux piles de drapeau peuvent avancer en parallèle." }] }],
+      "nextSteps": [{ "moduleId": "scratch-debogage", "label": "Chercher et corriger une erreur", "prerequisiteSkills": [{ "skillId": "scratch.sequence", "expectation": "Lire une pile dans l’ordre." }, { "skillId": "scratch.variables", "expectation": "Comprendre le score et la remise à zéro ; reprendre Compter et mémoriser si nécessaire." }, { "skillId": "scratch.conditions", "expectation": "Comprendre une comparaison ; reprendre Faire réagir le jeu si nécessaire." }] }],
+      "teacherGuide": {
+        "objective": "Mesurer une partie, bloquer les actions à la limite et comparer un seul paramètre de difficulté à la fois.",
+        "entryDiagnosis": ["Demander de remettre score à zéro et d’ajouter un point.", "Faire expliquer une condition si et stop tout. Reprendre variables, réactions ou fin de partie si nécessaire ; les clones ne sont pas requis."],
+        "preparation": ["Faire sauvegarder le travail précédent avant Fichier → Nouveau. Projet neuf avec le chat, variables score et duree pour tous les sprites.", "Prévoir une cible fixe au centre. Afficher le chronomètre pour observer la limite si utile ; aucune base partagée nécessaire."],
+        "why": "Une durée et une taille sont des règles testables : changer une valeur à la fois permet d’expliquer ce qui rend l’essai plus difficile.",
+        "discoverySpeech": ["« Le chronomètre mesure. Duree indique notre limite. Ce ne sont pas la même chose. »", "« Un clic n’a pas le droit de remettre le temps à zéro, sinon on ne finirait jamais. »", "« Même pendant le message final, la condition refuse les points. »"],
+        "example": { "target": { "moduleId": "scratch-temps-difficulte", "blockId": "exemple", "label": "Un temps limité et un score protégé" }, "comments": ["Départ : score 0, duree 10, position 0/0, taille 100, reset du chronomètre. Fin : attendre chrono > duree, message 2 s, stop tout.", "Clic : si chrono < duree, ajouter 1. À 10 exactement, cette condition est fausse ; le message attend le premier instant supérieur à 10. Pas de point pendant sa pause.", "Stop tout arrête les scripts, pas nécessairement la valeur du chronomètre. Évaluer le score figé et le nouveau départ, pas un affichage de temps figé.", "Bonus : troisième pile drapeau, attente 5 s, condition chrono < duree puis taille 50. Avec duree 4, le test est faux ; le message de fin n’autorise pas de rétrécissement."] },
+        "questions": [
+          { "question": "Quel bloc mesure, quelle valeur fixe la limite ?", "answer": "Chronomètre mesure ; la variable duree contient la limite choisie." },
+          { "question": "Pourquoi ne pas réinitialiser à chaque clic ?", "answer": "Cela repousserait sans cesse la fin et ne mesurerait plus la durée de la partie." },
+          { "question": "Le clic à dix secondes exactement compte-t-il ?", "answer": "Non : 10 < 10 est faux. La fin affichée arrive juste après, lorsque 10 est dépassé." },
+          { "question": "Pourquoi ne pas changer taille et durée ensemble pour comparer ?", "answer": "On ne saurait pas quelle modification explique la différence. On teste une valeur à la fois." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-temps-difficulte", "blockId": "guide", "label": "Observer le score pendant la fin" },
+        "independentActivity": { "moduleId": "scratch-temps-difficulte", "blockId": "autonomie", "label": "Comparer durée puis taille" },
+        "differentiation": ["CE2 : assembler avec le modèle puis changer seulement duree ; faire raconter avant/après.", "Élève autonome : justifier les deux comparaisons et tester les clics pendant le message final.", "Le score obtenu n’est pas un niveau de compréhension. Bonus parallèle seulement après maîtrise du test simple."],
+        "commonErrors": [
+          { "symptom": "La partie ne se termine jamais.", "helps": ["Afficher et observer le chronomètre.", "Chercher ses réinitialisations.", "Vérifier que les cases de la comparaison contiennent des ovales et non des mots tapés.", "Garder un seul reset au départ et glisser chronomètre et duree dans chrono > duree."] },
+          { "symptom": "Les points continuent pendant Terminé !.", "helps": ["Cliquer pendant le message pour confirmer.", "Observer la pile du clic.", "Vérifier que ajouter 1 est dans le si, pas dessous.", "Encadrer l’ajout avec si chronomètre < duree alors."] },
+          { "symptom": "La difficulté choisie disparaît au drapeau.", "helps": ["Relancer et observer la taille et la durée.", "Repérer les réglages dans la pile de départ.", "Comparer le champ Taille sous la scène et le bloc du programme.", "Modifier les valeurs de cette pile, qui réinitialise chaque partie, puis relancer."] }
+        ],
+        "notes": "Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes. Demander une prédiction, l’explication de la limite et un test de reprise ; ni le score ni les cases ne valident automatiquement une compétence.",
+        "quickConductor": ["Vérifier variables et condition.", "Présenter mesure et limite.", "Construire les deux piles et tester pendant le message.", "Comparer durée puis taille.", "Choisir reprise ou difficulté progressive et sauvegarder."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
+    "scratch-debogage": {
+      "domainId": "jeux-video", "title": "Déboguer son jeu", "type": "lesson", "theme": "fondations",
+      "objective": "Comparer le résultat attendu au résultat observé, puis corriger une erreur et vérifier la reprise.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "skillIds": ["scratch.debugging", "scratch.events", "scratch.sequence", "scratch.variables", "scratch.conditions"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.events", "expectation": "Lancer une pile avec un événement ; sinon reprendre Déclencher et enchaîner des actions." },
+        { "skillId": "scratch.sequence", "expectation": "Lire les actions de haut en bas." },
+        { "skillId": "scratch.coordinates", "expectation": "Comprendre aller à x/y et ajouter à x ; sinon reprendre Piloter un personnage." },
+        { "skillId": "scratch.variables", "expectation": "Créer score et ajouter un point ; sinon reprendre Compter et mémoriser avant les défis de score." },
+        { "skillId": "scratch.conditions", "expectation": "Comprendre si et une comparaison ; sinon reprendre Faire réagir le jeu avant le défi de seuil." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "methode", "title": "1 — Une erreur, une enquête", "paragraphs": [
+          "Un bug est une différence entre ce que tu veux obtenir et ce que fait ton programme. Il ne signifie pas que tout est raté. Sauvegarde ton travail actuel avant de choisir Fichier → Nouveau, puis garde le chat. Nous allons réparer de petits scripts dans ce projet neuf : aucun jeu partagé n’est nécessaire.",
+          "Dis d’abord : Je veux que… Puis décris : Quand je fais…, j’observe… Lance toujours de la même façon pour comparer. Choisis une piste, change une seule chose et reteste. Si elle ne résout pas le problème, remets la version précédente avant d’essayer autre chose.",
+          "Vérifie le sprite sélectionné, l’événement qui lance la pile, les blocs accrochés, leur ordre, puis les conditions et les valeurs. Un bloc détaché ne fait pas partie de la pile. Cliquer directement sur une pile teste ses actions, mais ne prouve pas que le drapeau la lance.",
+          "Après une correction, refais le test qui échouait, puis recommence la partie. La solution doit fonctionner aussi au redémarrage. Garde une copie avant d’enquêter dans un grand jeu."
+        ] },
+        { "type": "lesson", "id": "exemple", "title": "2 — Le chat revient au mauvais endroit",
+          "shortSteps": ["Dans un projet neuf, construis exactement la pile volontairement incorrecte ci-dessous, sur le chat.", "Résultat voulu : au drapeau, partir de (0, 0) puis finir en (40, 0). Lance et observe les champs X/Y sous la scène.", "Explique quel bloc efface le déplacement. Change uniquement l’ordre des deux actions, puis lance deux fois pour vérifier."],
+          "paragraphs": ["Ajouter 40 à x déplace depuis la position actuelle. Aller à x: 0 y: 0 fixe une position et remplace le déplacement précédent. Les actions sont exécutées de haut en bas.", "Dans ce modèle incorrect, la dernière action remet toujours le chat au centre. La position finale est (0, 0), même s’il a bougé brièvement. Lis X/Y : le mouvement peut être trop rapide pour le voir.", "Essaie avant d’ouvrir l’indice. Il n’est pas nécessaire d’ajouter un nouveau bloc ou une pause."],
+          "visualScript": { "caption": "À réparer — ordre volontairement incorrect", "note": "C’est un problème à résoudre, pas la solution. Lis X/Y après le lancement.", "blocks": [
+            { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Le test démarre au drapeau." },
+            { "category": "motion", "label": "Mouvement", "parts": ["ajouter ", { "value": "40" }, " à x"], "explanation": "Déplacement avant le placement dans cette version incorrecte." },
+            { "category": "motion", "label": "Mouvement", "parts": ["aller à x: ", { "value": "0" }, " y: ", { "value": "0" }], "explanation": "Cette action remplace la position obtenue juste avant." }
+          ] },
+          "code": "Version volontairement incorrecte :\nquand le drapeau vert est cliqué\n  ajouter 40 à x\n  aller à x: 0 y: 0"
+        },
+        { "type": "tasks", "id": "guide", "title": "Réparer et expliquer", "items": [
+          { "id": "observation", "text": "Annonce la position voulue et celle observée. Indique le dernier bloc exécuté." },
+          { "id": "ordre", "text": "Répare uniquement l’ordre. Vérifie la position (40, 0) après deux lancements.", "hint": "Il faut d’abord aller à (0, 0), puis ajouter 40 à x. Sinon le placement efface le déplacement." },
+          { "id": "evenement", "text": "Dans une copie de l’essai réparé, remplace le drapeau par quand la touche espace est pressée (Événements). Teste le drapeau puis espace. Est-ce un bug si le drapeau ne lance plus cette pile ?", "hint": "Non : elle attend maintenant espace. Un événement différent explique un lancement différent, sans erreur dans les actions." }
+        ] },
+        { "type": "lesson", "id": "score", "title": "3 — Un score qui reste à un", "paragraphs": [
+          "Enregistre le premier essai, puis crée un autre projet neuf avec le chat pour ne pas mélanger les scripts. Crée score pour tous les sprites dans Variables et garde son affichage coché.",
+          "Construis les deux piles ci-dessous. Quand ce sprite est cliqué, dans Événements, lance une pile à chaque clic sur le chat. La pile du clic est volontairement incorrecte : après trois clics, score devrait compter 1, 2, 3, mais reste à 1.",
+          "Mettre score à 0 remplace la valeur ; ajouter 1 à score augmente la valeur actuelle. Compare quand ces actions doivent être exécutées : au départ ou à chaque clic ?",
+          "Répare maintenant ce premier problème, avant de passer au seuil. Lance le drapeau, vérifie score = 0, puis clique trois fois : le score doit afficher 1, 2, 3. Essaie avant d’ouvrir l’indice de l’enquête sur le score plus bas. Garde ce même projet pour l’exercice suivant."
+        ], "visualScript": { "caption": "À réparer — la remise à zéro est répétée", "note": "Deux piles dans le même chat. Cherche celle qui efface les points à chaque clic.", "stacks": [
+          { "caption": "Le départ", "blocks": [
+            { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Le début de la partie." },
+            { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "score" }, " à ", { "value": "0" }], "explanation": "La remise à zéro est utile au départ." }
+          ] },
+          { "caption": "Le clic — version incorrecte", "blocks": [
+            { "category": "events", "label": "Événements", "parts": ["quand ce sprite est cliqué"], "explanation": "Cette pile repart à chaque clic." },
+            { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "score" }, " à ", { "value": "0" }], "explanation": "Cette action efface les points précédents." },
+            { "category": "variables", "label": "Variables", "parts": ["ajouter ", { "value": "1" }, " à ", { "choice": "score" }], "explanation": "Ajouter un point après les avoir effacés." }
+          ] }
+        ] }, "code": "Pile de départ :\nquand le drapeau vert est cliqué\n  mettre score à 0\n\nPile volontairement incorrecte :\nquand ce sprite est cliqué\n  mettre score à 0\n  ajouter 1 à score" },
+        { "type": "lesson", "id": "seuil", "title": "4 — Un message qui arrive trop tard", "paragraphs": [
+          "Après avoir réparé le score, ajoute si … alors sous ajouter 1 dans la pile du clic. Place la comparaison verte score > 3 dans la condition et dire Gagné ! pendant 1 seconde à l’intérieur du si.",
+          "Prends > dans Opérateurs. Glisse l’ovale score de Variables dans sa première case et écris 3 dans l’autre. Ne tape pas le mot score comme du texte. > signifie strictement plus grand : 3 > 3 est faux, 4 > 3 est vrai.",
+          "Résultat voulu : afficher Gagné ! dès le troisième clic, pas seulement au quatrième. Avant chaque test, lance le drapeau et vérifie score = 0. Clique ensuite une fois à la fois et observe le score et le message. Ce test vérifie uniquement le seuil du message : il ne termine pas une partie. Corrige le nombre comparé sans changer la valeur d’un point."
+        ], "visualScript": { "caption": "À réparer — le seuil arrive un point trop tard", "note": "Sous ajouter 1 dans le clic réparé. Le nombre comparé est volontairement incorrect.", "blocks": [
+          { "category": "control", "label": "Contrôle", "parts": ["si ", { "condition": [{ "value": "score" }, " > ", { "value": "3" }], "operator": true }, " alors"], "explanation": "Est-ce vrai lorsque score vaut exactement trois ?", "children": [
+            { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Gagné !" }, " pendant ", { "value": "1" }, " seconde"], "explanation": "Le message dépend du test, sans arrêter le jeu." }
+          ] }
+        ] }, "code": "À ajouter sous ajouter 1 à score :\nsi <score > 3> alors\n  dire Gagné ! pendant 1 seconde\n\nSeuil volontairement incorrect pour gagner dès 3 points." },
+        { "type": "tasks", "id": "autonomie", "title": "Sans solution — deux enquêtes", "intro": "Essaie avant les indices : attendu, observé, une piste, une modification, nouveau test.", "items": [
+          { "id": "score-fixe", "text": "Répare le score qui reste à 1 avant de passer au seuil. Lance le drapeau, vérifie score = 0, puis teste trois clics : 1, 2, 3. Relance le drapeau : 0, puis le premier clic doit donner 1.", "hint": "Garde mettre score à 0 uniquement au drapeau. Retire cette remise à zéro du clic, mais garde ajouter 1." },
+          { "id": "seuil-trois", "text": "Répare le seuil. Avant chaque test, lance le drapeau et vérifie score = 0. Clique une fois à la fois : aucun Gagné ! aux clics 1 et 2, puis Gagné ! au clic 3. Change seulement le nombre de la comparaison.", "hint": "Score > 2 est vrai à partir de 3. Il reste vrai aux clics suivants : nous n’avons pas demandé un arrêt ou un message unique." },
+          { "id": "preuve", "text": "Explique pourquoi chaque ancienne version échouait. Cite un test qui prouve ta correction, puis sauvegarde." }
+        ] },
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif — enquêter dans ton jeu", "blocks": [
+          { "type": "lesson", "id": "transfert", "title": "Une panne à la fois", "paragraphs": [
+            "Prérequis : avoir un jeu dont tu comprends les événements et les règles. Sinon, les petits essais suffisent.",
+            "Dans une copie, choisis un comportement à vérifier : démarrage, commande, score ou fin. Décris le résultat attendu, puis teste. S’il y a un problème, change une seule chose à la fois.",
+            "Si tout fonctionne, déplace volontairement une remise à zéro dans le mauvais événement ou change un seuil déjà compris. Prédis la panne, constate-la puis restaure la version correcte. N’utilise pas une notion inconnue.",
+            "Explique la cause, pas seulement le jeu réparé. Vérifie un lancement complet et un redémarrage."
+          ] }
+        ] },
+        { "type": "lesson", "id": "suite", "title": "Garder la méthode", "paragraphs": ["Une erreur ne demande pas forcément de recommencer tout le projet. Garde la méthode : attendu, observé, une piste, un test. Mon projet personnel te permet ensuite de choisir un petit jeu avec les notions que tu comprends. Tu peux aussi consolider ton mini-jeu existant avant ce jalon."] }
+      ],
+      "masteryCriteria": ["Décrire précisément attendu et observé.", "Expliquer une erreur d’ordre, d’événement, de remise à zéro ou de seuil.", "Changer une seule chose puis vérifier le test initial et un redémarrage.", "Résoudre une panne sans recopier sa correction ; distinguer réussite autonome, avec indice ou avec aide."],
+      "consolidation": [{ "moduleId": "scratch-debogage", "blockId": "guide", "label": "Reprendre l’enquête sur l’ordre" }, { "moduleId": "scratch-actions", "blockId": "exemple", "label": "Revoir événements et ordre" }, { "moduleId": "scratch-variables", "blockId": "exemple", "label": "Revoir la remise à zéro" }, { "moduleId": "scratch-reactions", "blockId": "exemple", "label": "Revoir les conditions" }],
+      "bonusActivities": [{ "moduleId": "scratch-debogage", "blockId": "bonus", "label": "Appliquer la méthode à ton jeu", "prerequisiteSkills": [{ "skillId": "scratch.game-rules", "expectation": "Comprendre les règles du jeu testé et son redémarrage." }] }],
+      "nextSteps": [{ "moduleId": "scratch-projet-personnel", "label": "Concevoir ton petit jeu", "prerequisiteSkills": [{ "skillId": "scratch.variables", "expectation": "Comprendre score et remise à zéro ; reprendre Compter et mémoriser si nécessaire." }, { "skillId": "scratch.conditions", "expectation": "Comprendre les conditions choisies pour les règles." }, { "skillId": "scratch.game-rules", "expectation": "Comprendre fin et reprise ; reprendre Gagner, perdre et recommencer si nécessaire." }] }, { "moduleId": "scratch-mini-jeu", "label": "Consolider ton premier mini-jeu", "prerequisiteSkills": [{ "skillId": "scratch.variables", "expectation": "Comprendre score et remise à zéro." }, { "skillId": "scratch.conditions", "expectation": "Comprendre contacts et conditions." }, { "skillId": "scratch.game-rules", "expectation": "Comprendre victoire, défaite et reprise ; utiliser les reprises du projet si nécessaire." }] }],
+      "teacherGuide": {
+        "objective": "Faire expliquer une panne et sa cause, puis vérifier une correction au lieu de changer des blocs au hasard.",
+        "entryDiagnosis": ["Faire expliquer aller à x/y et ajouter à x, puis lire une pile de haut en bas.", "Vérifier score et si avant les défis correspondants. Ni clones ni chronomètre nécessaires."],
+        "preparation": ["Faire sauvegarder le travail actuel avant Fichier → Nouveau : garder le chat pour l’ordre. Sauvegarder cet essai avant un second projet neuf pour le score, puis garder ce second projet pour le seuil. Aucun fichier partagé requis.", "Préparer les versions incorrectes sans les corriger avant l’observation. Afficher X/Y et score."],
+        "why": "Trouver une cause précise et refaire un test rend la correction réutilisable.",
+        "discoverySpeech": ["« Avant de toucher aux blocs, dis ce que tu voulais et ce que tu as observé. »", "« Quel est le dernier bloc qui change cette valeur ? »", "« Une seule modification : sinon on ne saura pas ce qui a réparé le problème. »"],
+        "example": { "target": { "moduleId": "scratch-debogage", "blockId": "exemple", "label": "Une position effacée" }, "comments": ["Incorrect : +40 puis aller à 0/0, résultat final 0/0. Correct : aller à 0/0 puis +40, résultat 40/0 après chaque drapeau. Une pause rend le mouvement visible mais ne répare pas la position finale.", "Score : remise à zéro uniquement au drapeau ; clic → ajouter 1. Faire résoudre cette enquête et vérifier 0, 1, 2, 3 avant d’ajouter le seuil dans le même projet.", "Seuil : sous ajouter, si score > 2 alors dire Gagné ! 1 s. Avant chaque comparaison, lancer le drapeau et vérifier score = 0, puis cliquer une fois à la fois. Le test est faux à 1 et 2, vrai à 3 et ensuite ; aucun arrêt ni message unique demandé.", "Le modèle visuel contient volontairement les erreurs. Ne pas le présenter comme une solution à recopier définitivement."] },
+        "questions": [
+          { "question": "Pourquoi finir à zéro ?", "answer": "Le dernier aller à 0/0 remplace le déplacement précédent." },
+          { "question": "Une pile avec événement espace doit-elle démarrer au drapeau ?", "answer": "Non. Elle attend espace ; cela ne rend pas ses actions incorrectes." },
+          { "question": "Pourquoi le score reste-t-il à un ?", "answer": "Chaque clic efface les points avant d’en ajouter un. Remettre à zéro appartient au départ." },
+          { "question": "Pourquoi score > 3 ne gagne-t-il pas dès trois points ?", "answer": "3 > 3 est faux. Score > 2 devient vrai à 3 sans changer le gain d’un point." },
+          { "question": "Que vérifier après la réparation ?", "answer": "Le test qui échouait, puis le redémarrage. Demander aussi l’explication de la cause." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-debogage", "blockId": "guide", "label": "Observer et réparer l’ordre" },
+        "independentActivity": { "moduleId": "scratch-debogage", "blockId": "autonomie", "label": "Réparer score et seuil" },
+        "differentiation": ["CE2 : une panne à la fois ; pointer le bloc responsable et raconter avant/après. Consolider l’ordre avant le score si nécessaire.", "Plus autonome : annoncer piste et test avant de modifier ; transférer ensuite à une copie de son jeu.", "Aucun bonus obligatoire ni rythme imposé : reprendre seulement la notion qui bloque."],
+        "commonErrors": [
+          { "symptom": "Plusieurs modifications au hasard.", "helps": ["Demander attendu et observé.", "Pointer la dernière action qui change la valeur.", "Choisir une seule piste et prédire son effet.", "Restaurer la version initiale puis déplacer seulement les deux actions."] },
+          { "symptom": "Le score échoue au redémarrage.", "helps": ["Faire un nouveau drapeau puis un clic.", "Chercher toutes les remises à zéro.", "Distinguer le départ et le clic.", "Garder la remise à zéro uniquement au drapeau, puis tester 0, 1, 2, 3 et un nouveau départ."] },
+          { "symptom": "Le message arrive encore au quatrième point.", "helps": ["Lire le score lors du message.", "Lire le signe et le nombre comparé.", "Demander si 3 est strictement supérieur à 3.", "Comparer à 2 puis vérifier les clics 1, 2 et 3 depuis zéro."] }
+        ],
+        "notes": "Noter autonomie, modèle/indice ou aide dans les remarques existantes. Un jeu réparé sans explication, une visite ou des cases cochées ne valent pas acquisition automatique.",
+        "quickConductor": ["Vérifier les bases utiles.", "Faire dire attendu et observé.", "Réparer l’ordre et tester deux départs.", "Résoudre score puis seuil selon les acquis.", "Expliquer la cause et choisir reprise ou transfert."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
+    "scratch-projet-personnel": {
+      "domainId": "jeux-video", "title": "Mon projet personnel", "type": "project", "theme": "fondations",
+      "objective": "Concevoir un petit jeu avec des notions comprises, le tester et expliquer ses choix.",
+      "tool": { "label": "Ouvrir Scratch", "url": "https://scratch.mit.edu/projects/editor/" },
+      "scratchProjectId": "chat-cible",
+      "skillIds": ["scratch.workspace", "scratch.events", "scratch.conditions", "scratch.variables", "scratch.game-rules", "scratch.debugging"],
+      "prerequisiteSkills": [
+        { "skillId": "scratch.workspace", "expectation": "Sélectionner le bon sprite et conserver une copie de son travail." },
+        { "skillId": "scratch.events", "expectation": "Démarrer et piloter ses actions avec les événements choisis." },
+        { "skillId": "scratch.conditions", "expectation": "Expliquer les conditions utilisées pour les règles ; reprendre Faire réagir le jeu si nécessaire." },
+        { "skillId": "scratch.variables", "expectation": "Comprendre son score et sa remise à zéro ; reprendre Compter et mémoriser si nécessaire." },
+        { "skillId": "scratch.game-rules", "expectation": "Construire une fin et un redémarrage ; reprendre Gagner, perdre et recommencer si nécessaire." },
+        { "skillId": "scratch.debugging", "expectation": "Comparer attendu et observé, puis tester une modification à la fois ; reprendre Déboguer son jeu si nécessaire." }
+      ],
+      "blocks": [
+        { "type": "lesson", "id": "exemple", "title": "1 — Un petit jeu à toi", "paragraphs": [
+          "Choisis une idée que tu peux expliquer en une phrase. Ce projet ne demande pas d’utiliser tout Scratch : choisis seulement des notions que tu comprends. Tu peux demander une aide, puis reprendre une étape seul.",
+          "Sauvegarde ton travail actuel avant de changer de projet. Tu peux ensuite choisir Fichier → Nouveau, créer une copie personnelle de ton mini-jeu ou ouvrir la base chat/cible proposée en haut. Cette base est facultative : elle fournit des personnages sans scripts, pas un jeu terminé. Avec ton compte, utilise Remix pour la base partagée ; sans compte, conserve un fichier depuis Fichier → Sauvegarder sur votre ordinateur. Si tu reprends ton mini-jeu, garde son original et travaille dans une copie sous un autre nom.",
+          "Un plan possible, pas une solution à recopier : un personnage se déplace à droite et à gauche, touche une cible fixe pour gagner un point et retourne au départ. Trois points font gagner ; le drapeau remet tout au départ. Personnalise l’histoire et les règles, pas seulement le titre.",
+          "Ne cherche pas tout de suite un grand monde, plusieurs niveaux ou de beaux dessins. Ta première version doit simplement se lancer, se jouer, se terminer et recommencer. Aucun compte ni partage public n’est obligatoire."
+        ] },
+        { "type": "callout", "id": "choix-poursuite", "title": "Option — une poursuite simple", "text": "Déplace un personnage vers une cible fixe, compte les contacts et choisis une victoire atteignable. Prérequis : touches, positions et contacts. Reprends Mon premier mini-jeu si ces règles sont encore difficiles. La cible aléatoire de certaines démonstrations n’est pas demandée.", "moduleLink": { "moduleId": "scratch-mini-jeu", "text": "Mon premier mini-jeu" } },
+        { "type": "callout", "id": "choix-clics", "title": "Option — des clics chronométrés", "text": "Clique sur une cible pendant un temps limité, compte les points et termine la partie quand le temps est écoulé. Prérequis supplémentaire : chronomètre et condition qui bloque les points. Reprends Gérer le temps et la difficulté avant de choisir cette option si nécessaire.", "moduleLink": { "moduleId": "scratch-temps-difficulte", "text": "Gérer le temps et la difficulté" } },
+        { "type": "callout", "id": "choix-labyrinthe", "title": "Option — un labyrinthe que tu connais déjà", "text": "Choisis cette option seulement si tu possèdes déjà un labyrinthe et sais expliquer ses déplacements, ses murs et le retour au départ. Travaille dans une copie. Ce projet n’enseigne pas de nouvelles règles de murs. Sinon, commence par la poursuite avec Mon premier mini-jeu ; un labyrinthe n’est pas nécessaire pour réussir ce projet.", "moduleLink": { "moduleId": "scratch-mini-jeu", "text": "Mon premier mini-jeu" } },
+        { "type": "tasks", "id": "plan", "title": "2 — Prépare ton plan avant de coder", "intro": "Tu peux l’écrire dans un petit document ou le dire à quelqu’un. Quelques phrases suffisent.", "items": [
+          { "id": "idee", "text": "Décris le but en une phrase et choisis un nom pour ton jeu.", "hint": "Par exemple : ramasser trois objets, ou obtenir des points en cliquant avant la fin du temps." },
+          { "id": "commandes", "text": "Choisis les commandes : quelles touches ou quels clics ? Dis quelle action produit chacune." },
+          { "id": "regles", "text": "Décris ce qui donne un point, ce qui termine la partie et ce que le drapeau remet à zéro. Une victoire OU une fin au temps suffit ; une défaite supplémentaire n’est pas obligatoire." },
+          { "id": "limite", "text": "Choisis seulement une mécanique principale. Pour chaque notion encore inconnue, enlève-la du premier plan ou ouvre sa reprise avant de l’utiliser." }
+        ] },
+        { "type": "checklist", "id": "guide", "title": "3 — Construis une version minimale", "items": [
+          { "id": "demarrer", "text": "Un drapeau qui remet le score, les positions et les autres valeurs utilisées au départ." },
+          { "id": "jouer", "text": "Une commande qui permet vraiment d’agir, avec une cible ou un but accessible." },
+          { "id": "compter", "text": "Un score lisible qui compte uniquement les actions prévues, sans points gratuits ni doublons." },
+          { "id": "finir", "text": "Une fin atteignable et annoncée clairement. Après la fin, aucune action ne change encore le résultat." },
+          { "id": "reprendre", "text": "Un nouveau drapeau permet de rejouer depuis l’état initial." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "4 — Construis, teste, explique", "intro": "Construis une étape puis teste-la, plutôt que tout programmer avant le premier essai. Il n’y a pas de solution complète à recopier ici ; les cours restent accessibles plus bas.", "items": [
+          { "id": "copie", "text": "Crée ta version de travail et conserve un premier fichier ou remix sous un nom reconnaissable. Ne modifie pas l’original d’un autre projet." },
+          { "id": "premier-test", "text": "Teste le départ et les commandes avant d’ajouter le score. Corrige ce qui bloque, une modification à la fois.", "hint": "Si rien ne démarre, vérifie le sprite sélectionné, le bon événement et les blocs accrochés." },
+          { "id": "points-fin", "text": "Ajoute le score puis la fin prévue. Teste les points sans atteindre la fin, puis atteins-la. Vérifie que les actions ne modifient plus le résultat après la fin.", "hint": "Pour les clics au temps, protège l’ajout du point par une condition de temps : stop tout seul n’empêche pas un nouvel événement de clic." },
+          { "id": "notice", "text": "Écris une petite notice : but, commandes, fin et redémarrage. Mets-la dans les instructions Scratch si tu utilises ton compte, ou dans un texte à côté du fichier." },
+          { "id": "faire-jouer", "text": "Fais jouer quelqu’un avec cette notice. Si tu es seul, suis-la sans lire le code. Note un problème concret ou une amélioration utile." },
+          { "id": "justifier", "text": "Montre une règle dans ton code, explique pourquoi elle fonctionne puis prédis l’effet d’un petit changement. Teste ce changement dans une copie.", "hint": "Change un seuil ou une durée déjà compris, pas plusieurs réglages à la fois. Une réussite avec modèle et une explication autonome sont deux observations différentes." },
+          { "id": "sauver", "text": "Sauvegarde la version finale et rouvre le fichier ou le remix pour vérifier que tu retrouves ton travail. Un ancien téléchargement ne se met pas à jour tout seul." }
+        ] },
+        { "type": "checklist", "id": "verification", "title": "5 — Vérifie ton jeu", "items": [
+          { "id": "notice-test", "text": "Les commandes et le but correspondent à la notice ; le jeu est jouable sans explication orale indispensable." },
+          { "id": "sans-action", "text": "Sans action du joueur, pas de points injustifiés. Si le temps fait partie des règles, la partie peut se terminer sans clic." },
+          { "id": "un-point", "text": "Une action prévue donne le bon nombre de points : un contact prolongé ne donne pas une victoire instantanée." },
+          { "id": "fin-test", "text": "La fin annoncée est atteignable et le score reste inchangé après elle." },
+          { "id": "deux-parties", "text": "Deux parties complètes fonctionnent, avec remise à zéro et retour au départ entre elles." },
+          { "id": "preuve-test", "text": "Tu peux expliquer une règle, une difficulté rencontrée et le test qui a confirmé une correction." }
+        ] },
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif — une seule extension", "blocks": [
+          { "type": "lesson", "id": "extension", "title": "Améliorer sans casser la base", "paragraphs": [
+            "Sauvegarde une copie de la version jouable. Choisis une seule extension dont tu maîtrises déjà les prérequis ; tu peux aussi simplement améliorer la notice ou choisir un décor de la bibliothèque Scratch.",
+            "Si tu comprends les messages : ajoute un court échange entre deux personnages avec Coordonner plusieurs personnages. Si tu comprends les clones et les variables : ajoute des objets à ramasser avec Créer plusieurs personnages avec des clones.",
+            "Si tu comprends définition et appels : organise une action répétée avec Créer ses propres blocs. Si tu comprends le chronomètre : compare deux difficultés avec Gérer le temps et la difficulté.",
+            "Ces options ne sont pas une liste à compléter. Laisse de côté celles que tu ne comprends pas encore. Après l’extension, refais les tests de points, fin et redémarrage. Si elle casse la base, reviens à ta copie et cherche une seule cause."
+          ] }
+        ] },
+        { "type": "lesson", "id": "suite", "title": "Et après ce projet ?", "paragraphs": ["Tu as un jeu que tu peux présenter, expliquer et améliorer. Ce n’est pas une validation automatique de toutes les compétences Scratch. Reprends les notions qui demandent encore de l’aide, ou choisis une nouvelle idée de même taille. Passer à un autre outil n’est pas obligatoire et aucun rythme n’est imposé."] }
+      ],
+      "masteryCriteria": ["Choisir des règles réalisables avec les notions comprises et expliquer son plan.", "Construire une version jouable avec score, fin et redémarrage, sans solution intégrale fournie.", "Tester les limites et deux parties, identifier une panne et justifier sa correction.", "Expliquer une règle et prédire un changement, en distinguant autonomie, modèle ou aide ; une décoration ou un score élevé ne prouve pas la compréhension."],
+      "consolidation": [{ "moduleId": "scratch-mini-jeu", "blockId": "guide", "label": "Reprendre un jeu horizontal simple" }, { "moduleId": "scratch-pilotage", "blockId": "exemple", "label": "Revoir les déplacements au clavier" }, { "moduleId": "scratch-variables", "blockId": "exemple", "label": "Revoir le score et sa remise à zéro" }, { "moduleId": "scratch-fin-partie", "blockId": "exemple", "label": "Revoir fin et reprise" }, { "moduleId": "scratch-debogage", "blockId": "autonomie", "label": "Chercher une panne avec méthode" }],
+      "bonusActivities": [
+        { "moduleId": "scratch-projet-personnel", "blockId": "bonus", "label": "Choisir une seule extension dans une copie" },
+        { "moduleId": "scratch-coordination", "blockId": "exemple", "label": "Revoir un échange par messages", "prerequisiteSkills": [{ "skillId": "scratch.messages", "expectation": "Expliquer émission, réception et ordre de l’échange." }] },
+        { "moduleId": "scratch-clones", "blockId": "bonus", "label": "Revoir des copies à ramasser", "prerequisiteSkills": [{ "skillId": "scratch.clones", "expectation": "Distinguer modèle et copies et supprimer une copie." }, { "skillId": "scratch.variables", "expectation": "Ajouter un point et remettre score à zéro." }] },
+        { "moduleId": "scratch-blocs-personnalises", "blockId": "guide", "label": "Revoir définition et appels", "prerequisiteSkills": [{ "skillId": "scratch.custom-blocks", "expectation": "Comprendre la définition réutilisée par chaque appel." }] },
+        { "moduleId": "scratch-temps-difficulte", "blockId": "autonomie", "label": "Comparer deux difficultés", "prerequisiteSkills": [{ "skillId": "scratch.time", "expectation": "Comprendre le chronomètre, la limite et le nouveau départ." }] }
+      ],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Accompagner un projet personnel limité, observer les choix et la compréhension sans imposer toutes les notions du parcours.",
+        "entryDiagnosis": ["Demander une idée en une phrase et faire nommer les notions déjà comprises. Choisir une mécanique principale.", "Vérifier score, condition de fin et remise à zéro. Une réussite au mini-jeu avec aide ne prouve pas leur maîtrise autonome.", "Pour les clics, vérifier le chronomètre ; pour un labyrinthe, vérifier les murs déjà enseignés dans son projet. Sinon proposer la poursuite connue. Ni clones, messages ni Mes blocs obligatoires."],
+        "preparation": ["Faire sauvegarder le travail actuel avant de choisir Fichier → Nouveau, une copie personnelle du mini-jeu ou la base chat/cible facultative. Conserver l’original du mini-jeu et travailler sous un autre nom ; la base fournit des sprites sans scripts. La démonstration complète n’est pas une solution à recopier.", "Préparer un endroit où noter le plan et la notice, plus une sauvegarde locale ou un remix personnel. Pas de compte élève obligatoire.", "Ne pas demander la base Labyrinthe à un débutant sans cours sur les murs. Utiliser un labyrinthe existant seulement si l’élève en explique déjà les règles."],
+        "why": "Un projet limité permet de choisir, relier et expliquer des règles plutôt que reproduire toutes les fonctionnalités d’un modèle.",
+        "discoverySpeech": ["« Ton idée doit tenir en une phrase. Quelle est la plus petite version qu’on peut vraiment jouer ? »", "« D’abord les règles qui fonctionnent, ensuite un bonus. »", "« Tu n’as pas besoin de montrer tous les blocs appris. Choisis ceux qui servent ton jeu. »", "« Montre-moi pourquoi cette règle fonctionne, pas seulement un jeu qui marche. »"],
+        "example": { "target": { "moduleId": "scratch-projet-personnel", "blockId": "exemple", "label": "Un plan, pas une solution complète" }, "comments": ["Exemple de plan : déplacement horizontal, cible fixe, un point par contact avec séparation, victoire à trois et reset au drapeau. Réutiliser les cours si nécessaire ; ne pas livrer un programme final complet.", "Variante clics : score zéro, durée connue, réinitialisation du chrono, points protégés par chrono < duree, message de fin et reprise. Un nouvel événement clic peut repartir après stop tout : la condition reste nécessaire.", "Labyrinthe : seulement un projet déjà compris ; les murs et leur comportement ne doivent pas devenir un prérequis caché. Une fin atteignable suffit, pas obligation de victoire et défaite ni d’extension."] },
+        "questions": [
+          { "question": "Quelle est la première version jouable ?", "answer": "Une commande, un but, des points, une fin et une reprise. Les niveaux, décor travaillé et extensions attendent." },
+          { "question": "Comment prouver qu’un point n’est pas donné plusieurs fois ?", "answer": "Tester une action isolée puis un contact prolongé. Le score doit correspondre à la règle annoncée, sans incréments gratuits." },
+          { "question": "Que vérifier après la fin ?", "answer": "Que les actions ne changent plus le résultat, puis qu’un nouveau drapeau rétablit toutes les valeurs utiles." },
+          { "question": "Faut-il utiliser des clones et des messages ?", "answer": "Non. Ils sont facultatifs, utiles seulement si l’élève en comprend le rôle et si son projet en a besoin." },
+          { "question": "Comment distinguer copie et compréhension ?", "answer": "Demander d’expliquer une règle, prédire une modification puis la tester, en notant l’aide utilisée." }
+        ],
+        "accompaniedActivity": { "moduleId": "scratch-projet-personnel", "blockId": "guide", "label": "Réduire le plan à une version minimale" },
+        "independentActivity": { "moduleId": "scratch-projet-personnel", "blockId": "autonomie", "label": "Construire, faire jouer et justifier" },
+        "differentiation": ["CE2 : plan oral, une commande simple, un score et une fin ; base chat/cible ou reprise du mini-jeu si utile. Faire une étape puis tester.", "Élève autonome : choix des règles, notice compréhensible, tests de limites et explication sans modèle.", "Les reprises ne demandent pas de refaire tout le parcours. La réalisation peut prendre plusieurs moments, sans séance datée ni vitesse de groupe imposée."],
+        "commonErrors": [
+          { "symptom": "Le projet est trop grand pour démarrer.", "helps": ["Demander le but en une phrase.", "Choisir la seule action centrale du joueur.", "Séparer indispensable et bonus.", "Revenir à une commande, un score et une fin connus ; différer niveaux, clones ou autres extensions."] },
+          { "symptom": "Le score change encore après la fin.", "helps": ["Faire agir le joueur après le message final.", "Repérer tous les endroits qui ajoutent un point.", "Comparer la règle de fin et la condition qui autorise ces ajouts.", "Pour les clics au temps, protéger chaque ajout avec chrono < duree puis tester pendant et après le message."] },
+          { "symptom": "Une seule partie fonctionne.", "helps": ["Relancer et comparer au premier départ.", "Lister score, positions et valeurs utilisées.", "Repérer celles qui ne sont pas réinitialisées.", "Rétablir leurs valeurs au drapeau ; pour le temps remettre aussi le chronomètre à zéro, puis faire deux parties."] }
+        ],
+        "notes": "Observer séparément les compétences utilisées. Ne pas déclarer tous les acquis du parcours à partir d’un projet terminé. Utiliser les remarques existantes pour autonomie, modèle ou aide ; aucun nouveau dispositif de suivi. Décoration et performance du joueur ne remplacent pas l’explication.",
+        "quickConductor": ["Choisir une idée limitée et vérifier ses prérequis.", "Énoncer commandes, score, fin et reprise.", "Construire puis tester chaque étape.", "Faire jouer et demander une prédiction justifiée.", "Vérifier deux parties, sauvegarder puis choisir reprise ou une extension."],
+        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+      }
+    },
     "scratch-coordination": {
       "domainId": "jeux-video", "title": "Coordonner plusieurs personnages", "type": "lesson", "theme": "fondations",
       "objective": "Faire communiquer des personnages avec des messages pour organiser une courte scène.",
@@ -1068,8 +1460,8 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         { "type": "lesson", "id": "preparer", "title": "1 — Deux personnages, deux programmes", "paragraphs": [
-          "Ouvre le projet de départ Carte animée proposé au-dessus et garde ta copie. Pico et Tera sont prêts, sans code. Pour ce premier essai, laisse Giga de côté : il n’a aucun rôle à programmer.",
-          "Sans la base partagée, pars d’un projet vide : supprime le chat avec la corbeille de sa miniature, ajoute Pico et Tera depuis Choisir un sprite. Place Pico en x = -150, y = -50 et Tera en x = 150, y = -50 avec leurs champs sous la scène.",
+          "Sauvegarde ton travail précédent avant d’ouvrir le projet de départ Carte animée proposé au-dessus, puis garde ta copie de cette base. Pico et Tera sont prêts, sans code. Pour ce premier essai, laisse Giga de côté : il n’a aucun rôle à programmer.",
+          "Sans la base partagée, après la sauvegarde, choisis Fichier → Nouveau : supprime le chat avec la corbeille de sa miniature, ajoute Pico et Tera depuis Choisir un sprite. Place Pico en x = -150, y = -50 et Tera en x = 150, y = -50 avec leurs champs sous la scène.",
           "Quand tu sélectionnes la miniature de Pico, tu écris pour Pico. Quand tu sélectionnes Tera, tu écris pour Tera. Une pile de Pico ne se déplace pas automatiquement dans Tera.",
           "Nous voulons ce dialogue : Pico dit Bonjour, Tera répond Salut, puis Pico termine. Deux piles au drapeau démarreraient en même temps : un message permettra de choisir quand Tera parle."
         ] },
@@ -1106,7 +1498,7 @@ window.CODECRAFT_DATA = {
           { "id": "duree", "text": "Fais durer Bonjour 4 secondes. Prédis quand Tera répond, puis teste.", "hint": "Tera attend le message, pas un délai fixé depuis le drapeau." },
           { "id": "comparer", "text": "Dans une copie, remplace envoyer et attendre par envoyer sans attendre. Observe les deux dernières bulles, puis restaure.", "hint": "Salut et À bientôt peuvent apparaître en même temps. Sans attendre ne veut pas dire sans envoyer." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — un autre échange", "intro": "Change l’histoire sans inventer de nouveau mécanisme.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — un autre échange", "intro": "Sauvegarde ton premier dialogue pour le conserver. Ouvre ensuite une nouvelle copie de la base Carte animée sans code, ou choisis Fichier → Nouveau et ajoute Pico et Tera comme au début. Construis ce nouvel échange dans un projet distinct : ne supprime pas les piles de ton premier dialogue. Change l’histoire sans inventer de nouveau mécanisme.", "items": [
           { "id": "inverser", "text": "Fais commencer Tera, répondre Pico, puis terminer Tera. Essaie avant d’ouvrir l’indice.", "hint": "L’expéditeur porte la pile du drapeau ; l’autre porte quand je reçois. Garde le même message dans les deux menus et pas d’ancienne pile concurrente." },
           { "id": "textes", "text": "Écris trois nouvelles répliques et change une durée. Explique pourquoi la réponse arrive toujours au bon moment.", "hint": "Le signal est envoyé à la fin de la première réplique et l’expéditeur attend la fin du receveur." },
           { "id": "sauver", "text": "Teste deux lancements puis sauvegarde ta copie sur ton compte ou sur ton ordinateur." }
@@ -1123,11 +1515,11 @@ window.CODECRAFT_DATA = {
       "masteryCriteria": ["Distinguer un message interne et une bulle de dialogue.", "Placer émission et réception sur les bons personnages avec le même signal.", "Prédire l’effet de envoyer avec ou sans attendre, puis tester.", "Inverser les rôles ou changer la durée sans bricoler un délai sur le receveur."],
       "consolidation": [{ "moduleId": "scratch-coordination", "blockId": "guide", "label": "Revoir le passage de parole" }, { "moduleId": "scratch-actions", "blockId": "guide", "label": "Revoir l’ordre d’une pile" }],
       "bonusActivities": [{ "moduleId": "scratch-coordination", "blockId": "bonus", "label": "Passer à un autre décor après le dialogue", "prerequisiteSkills": [{ "skillId": "scratch.messages", "expectation": "Comprendre quand la réception termine et savoir relancer le dialogue." }] }],
-      "nextSteps": [{ "moduleId": "scratch-blocs-personnalises", "label": "Organiser ton code avec Mes blocs", "prerequisiteSkills": [{ "skillId": "scratch.sequence", "expectation": "Identifier des actions à réutiliser dans plusieurs endroits." }] }],
+      "nextSteps": [{ "moduleId": "scratch-blocs-personnalises", "label": "Organiser ton code avec Mes blocs", "prerequisiteSkills": [{ "skillId": "scratch.sequence", "expectation": "Identifier des actions à réutiliser dans plusieurs endroits." }, { "skillId": "scratch.coordinates", "expectation": "Placer un sprite avec aller à x/y et comprendre ajouter à x ; sinon reprendre Piloter un personnage." }] }],
       "teacherGuide": {
         "objective": "Coordonner deux sprites par un signal, sans confondre synchronisation et délais copiés.",
         "entryDiagnosis": ["Faire sélectionner Pico puis Tera et vérifier à qui appartient une pile.", "Demander ce qui se passe avec deux drapeaux : les deux piles démarrent, elles ne s’attendent pas.", "Faire modifier la durée d’un dire pendant avant de présenter les messages."],
-        "preparation": ["Ouvrir la base Carte animée sans scripts : Pico et Tera suffisent, Giga reste sans code.", "Sans base : ajouter les deux sprites et placer leurs centres en (-150, -50) et (150, -50).", "La démonstration partagée montre un résultat plus riche, pas la solution du nouveau dialogue. Aucun compte ni publication obligatoire."],
+        "preparation": ["Faire sauvegarder le travail précédent avant d’ouvrir une copie de la base Carte animée sans scripts : Pico et Tera suffisent, Giga reste sans code.", "Sans base : après sauvegarde, choisir Fichier → Nouveau, ajouter les deux sprites et placer leurs centres en (-150, -50) et (150, -50).", "Pour l’inversion autonome, conserver le premier dialogue sauvegardé et construire la nouvelle version dans une nouvelle copie de la base sans code, ou un projet neuf avec Pico et Tera.", "La démonstration partagée montre un résultat plus riche, pas la solution du nouveau dialogue. Aucun compte ni publication obligatoire."],
         "why": "Les personnages ont des programmes séparés. Un signal relie leurs actions sans supposer une durée fixe chez le receveur.",
         "discoverySpeech": ["« Pico a fini de parler. Comment prévenir Tera maintenant, même si on allonge sa phrase ? »", "« Le message est un signal entre programmes, pas le texte de la bulle. »", "« Avec et attendre, Pico laisse Tera finir sa pile avant de continuer la sienne. »"],
         "example": { "target": { "moduleId": "scratch-coordination", "blockId": "exemple", "label": "Deux piles, deux personnages" }, "comments": ["Solution : Pico drapeau → Bonjour 2 s → envoyer reponse et attendre → À bientôt 2 s ; Tera réception reponse → Salut 2 s.", "Ordre attendu : Bonjour entre 0 et 2 s, Salut entre 2 et 4 s, À bientôt entre 4 et 6 s. Si Bonjour dure 4 s, la réponse commence à 4 s sans toucher Tera.", "Sans attendre, Salut et À bientôt commencent après Bonjour et peuvent se chevaucher. Avec plusieurs receveurs, leurs piles commencent ensemble et l’expéditeur attend leur fin à toutes."] },
@@ -1143,7 +1535,7 @@ window.CODECRAFT_DATA = {
         "commonErrors": [
           { "symptom": "Tera ne répond pas.", "helps": ["Observer la miniature sélectionnée.", "Comparer les menus du message dans Pico et Tera.", "Vérifier que Salut est sous quand je reçois, pas détaché.", "Choisir reponse dans les deux menus puis tester un envoi."] },
           { "symptom": "Les dernières bulles se chevauchent.", "helps": ["Faire lire l’ordre attendu.", "Regarder le bloc d’envoi.", "Comparer envoyer à tous et envoyer à tous et attendre.", "Remplacer seulement l’envoi puis retester avec Bonjour à 4 secondes."] },
-          { "symptom": "Le dialogue se mélange après inversion.", "helps": ["Tester un seul drapeau.", "Compter les anciennes piles de drapeau et de réception.", "Comparer avec une émission et une réception seulement.", "Retirer les anciennes piles concurrentes dans une copie et garder les deux nouveaux rôles."] }
+          { "symptom": "Le dialogue se mélange après inversion.", "helps": ["Tester un seul drapeau.", "Compter les anciennes piles de drapeau et de réception.", "Comparer avec une émission et une réception seulement.", "Sauvegarder le premier dialogue sans supprimer ses piles, puis construire les deux rôles inversés dans une nouvelle copie de la base sans code, ou un projet neuf avec Pico et Tera."] }
         ],
         "notes": "Distinguer reproduction et compréhension par le changement de durée et l’inversion. Noter autonomie, modèle ou aide dans les remarques existantes ; aucun acquis automatique. Les messages ne sont pas les communications réseau ni les données privées.",
         "quickConductor": ["Vérifier sélection et ordre d’une pile.", "Construire émission et réception.", "Tester avec une durée différente.", "Comparer avec/sans attendre puis inverser les rôles.", "Proposer reprise ou décor facultatif et sauvegarder."],
@@ -1162,7 +1554,7 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         { "type": "lesson", "id": "preparer", "title": "1 — Une action que tu répètes", "paragraphs": [
-          "Commence avec un nouveau projet et le chat. Ce petit essai ne demande ni score ni jeu précédent. Sélectionne le chat : tout le code de ce module lui appartient.",
+          "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau, puis garde le chat. Ce petit essai ne demande ni score ni jeu précédent. Sélectionne le chat : tout le code de ce module lui appartient.",
           "Nous allons nommer l’action qui remet le chat en x = -100, y = 0 : retour au départ. Ce nom décrit une action ; ce n’est pas une nouvelle variable ni un message.",
           "Un bloc personnalisé contient une recette. Créer sa définition ne la lance pas automatiquement au drapeau. Pour l’utiliser dans ton programme, place le bloc portant son nom dans une pile : c’est l’appel. Dans Scratch, Mes blocs appartient au sprite sélectionné, pas automatiquement à tous les sprites."
         ] },
@@ -1196,8 +1588,8 @@ window.CODECRAFT_DATA = {
         ] },
         { "type": "tasks", "id": "autonomie", "title": "Sans modèle — ta propre recette", "intro": "Réutilise uniquement des actions déjà connues.", "items": [
           { "id": "recette", "text": "Crée un bloc saluer qui dit ton message pendant 1 seconde puis ajoute 20 à x.", "hint": "Créer un bloc saluer, puis accrocher les deux actions sous définir saluer." },
-          { "id": "appels", "text": "Dans une nouvelle pile, au clic sur la touche espace, appelle saluer deux fois. Teste depuis une position connue.", "hint": "Quand la touche espace est pressée se trouve dans Événements. Les deux appels se suivent : +20 puis +20." },
-          { "id": "predire", "text": "Avant de changer la recette, prédis l’effet de +30 à la place de +20. Modifie une seule définition puis teste les deux appels.", "hint": "Depuis -100, deux déplacements de 30 mènent à -40. Les deux appels utilisent la recette modifiée." },
+          { "id": "appels", "text": "Dans une nouvelle pile, au clic sur la touche espace, appelle d’abord retour au départ, puis saluer deux fois. Chaque essai commence ainsi en (-100, 0). Laisse la pile du drapeau terminer avant de tester avec espace.", "hint": "Quand la touche espace est pressée se trouve dans Événements. Accroche retour au départ avant les deux appels saluer : depuis -100, +20 puis +20 mènent à -60." },
+          { "id": "predire", "text": "Avant de changer la recette, prédis l’effet de +30 à la place de +20. Modifie une seule définition puis appuie sur espace : retour au départ remet le chat à -100 avant les deux appels.", "hint": "Depuis -100, deux déplacements de 30 mènent à -40. Les deux appels utilisent la recette modifiée." },
           { "id": "sauver", "text": "Sauvegarde. Si ton mini-jeu fonctionne déjà, tu peux remplacer ses deux retours au départ par des appels, sans changer ses règles.", "hint": "Cette reprise du jeu est facultative. Crée la définition dans Chat et garde score = 0 séparé au drapeau : un contact ne doit pas effacer les points." }
         ] },
         { "type": "details", "id": "bonus", "title": "Bonus facultatif — une distance au choix", "blocks": [
@@ -1222,19 +1614,19 @@ window.CODECRAFT_DATA = {
             ] }
           ] }, "code": "définir deplacer (distance)\n  ajouter (distance) à x\n\nquand le drapeau vert est cliqué\n  retour au départ\n  deplacer (20)\n  attendre 1 secondes\n  deplacer (50)" }
         ] },
-        { "type": "lesson", "id": "suite", "title": "Et ensuite ?", "paragraphs": ["Garde une recette simple que tu sais expliquer. Les paramètres sont un bonus, pas une obligation pour poursuivre. La prochaine notion prévue est de créer plusieurs exemplaires d’un personnage avec des clones ; ce module n’est pas encore disponible. Tu peux consolider tes appels en attendant."] }
+        { "type": "lesson", "id": "suite", "title": "Et ensuite ?", "paragraphs": ["Garde une recette simple que tu sais expliquer. Les paramètres sont un bonus, pas une obligation pour poursuivre. Tu peux ensuite découvrir les clones si tu sais placer un sprite et répéter des actions. Sinon, reprends ces bases avant de continuer."] }
       ],
       "masteryCriteria": ["Distinguer définir une recette et appeler son bloc.", "Utiliser deux appels de la même définition sans recopier ses actions.", "Prédire l’effet d’une modification unique sur les deux appels.", "Expliquer à quel sprite appartient la définition et, si le bonus est travaillé, d’où vient la valeur du paramètre."],
       "consolidation": [{ "moduleId": "scratch-blocs-personnalises", "blockId": "guide", "label": "Comparer définition et appels" }, { "moduleId": "scratch-actions", "blockId": "exemple", "label": "Revoir l’ordre d’une pile" }],
       "bonusActivities": [{ "moduleId": "scratch-blocs-personnalises", "blockId": "bonus", "label": "Donner une distance différente à chaque appel", "prerequisiteSkills": [{ "skillId": "scratch.custom-blocks", "expectation": "Savoir créer une définition et utiliser ses appels avant d’ajouter une entrée." }] }],
-      "nextSteps": [],
+      "nextSteps": [{ "moduleId": "scratch-clones", "label": "Créer des copies temporaires", "prerequisiteSkills": [{ "skillId": "scratch.loops", "expectation": "Comprendre une répétition finie ; sinon reprendre Répéter des actions." }, { "skillId": "scratch.coordinates", "expectation": "Placer un sprite puis ajouter à x ; sinon reprendre Piloter un personnage." }] }],
       "teacherGuide": {
         "objective": "Factoriser une action dans un bloc propre au sprite ; travailler définition et appels avant un paramètre facultatif.",
         "entryDiagnosis": ["Demander un placement en (-100, 0) puis ajouter 60 à x et prédire -40.", "Faire repérer une suite d’actions qu’on pourrait nommer.", "Vérifier le sprite sélectionné ; aucun score ni message n’est requis pour l’essai minimal."],
-        "preparation": ["Nouveau projet avec le chat, ou copie dédiée sans scripts concurrents.", "Préparer Mes blocs → Créer un bloc. Laisser le réglage sans rafraîchissement décoché.", "Pour le bonus, désactiver l’ancienne pile de drapeau de démonstration dans la copie : une seule pile de test doit repositionner le chat."],
+        "preparation": ["Faire sauvegarder le travail précédent avant Fichier → Nouveau, puis garder le chat pour cet essai indépendant.", "Préparer Mes blocs → Créer un bloc. Laisser le réglage sans rafraîchissement décoché.", "Pour le bonus, désactiver l’ancienne pile de drapeau de démonstration dans la copie : une seule pile de test doit repositionner le chat."],
         "why": "Une recette nommée évite de recopier et permet de changer une action une fois pour tous ses appels.",
         "discoverySpeech": ["« Écrire une recette ne fait pas le plat. L’appel demande d’exécuter la recette. »", "« Si je change le départ dans la définition, combien d’appels seront affectés ? »", "« Ce bloc appartient à ce personnage ; ce n’est pas un signal envoyé aux autres. »"],
-        "example": { "target": { "moduleId": "scratch-blocs-personnalises", "blockId": "exemple", "label": "Définition et deux appels" }, "comments": ["Définition : retour au départ → aller à (-100, 0). Utilisation : drapeau → retour → ajouter 60 à x → attendre 1 s → retour.", "Positions attendues : -100, -40 pendant une seconde, puis -100. Si la définition passe à -150, on observe -150, -90, -150.", "Dans le mini-jeu, remplacer seulement les retours de position par un appel. Ne pas mettre score à 0 dans cette recette : le retour au contact ne doit pas supprimer les points."] },
+        "example": { "target": { "moduleId": "scratch-blocs-personnalises", "blockId": "exemple", "label": "Définition et deux appels" }, "comments": ["Définition : retour au départ → aller à (-100, 0). Utilisation : drapeau → retour → ajouter 60 à x → attendre 1 s → retour.", "Positions attendues : -100, -40 pendant une seconde, puis -100. Si la définition passe à -150, on observe -150, -90, -150.", "Activité autonome : espace → retour au départ → saluer → saluer, avec le retour remis à (-100, 0). Deux déplacements de 20 terminent à -60 ; deux déplacements de 30 terminent à -40. Chaque pression repart de -100. Attendre la fin de la pile du drapeau avant espace pour éviter deux déplacements concurrents.", "Dans le mini-jeu, remplacer seulement les retours de position par un appel. Ne pas mettre score à 0 dans cette recette : le retour au contact ne doit pas supprimer les points."] },
         "questions": [
           { "question": "Définir lance-t-il la recette au drapeau ?", "answer": "Non. Il faut un appel sous un événement ou dans une pile exécutée." },
           { "question": "Deux appels demandent-ils deux définitions ?", "answer": "Non : une définition est réutilisée par les deux appels." },
@@ -1282,14 +1674,14 @@ window.CODECRAFT_DATA = {
         { "type": "lesson", "id": "comparaisons", "title": "2 — Comparer avant de décider",
           "paragraphs": [
             "Dans Opérateurs (vert), prends le bloc avec =. Il compare deux valeurs. Glisse le petit bloc ovale score depuis Variables dans sa première case et écris 3 dans la seconde. La question « score = 3 » est vraie à 3 points, fausse à 0, 1 ou 2.",
-            "Pour la limite à gauche, prends le bloc < dans Opérateurs. Glisse position x depuis Mouvement (bleu) dans sa première case et écris -180 dans la seconde. « position x < -180 » est vraie à -181 ou -190, mais fausse à -180 ou -100. Plus petit ne veut pas dire plus proche de zéro.",
+            "Pour la limite à gauche, prends le bloc < dans Opérateurs. Dans Mouvement (bleu), prends le bloc ovale abscisse x : il donne la position horizontale du personnage. Glisse-le dans la première case et écris -180 dans la seconde. « abscisse x < -180 » est vraie à -181 ou -190, mais fausse à -180 ou -100. Plus petit ne veut pas dire plus proche de zéro.",
             "Ces blocs verts posent des questions : ils ne modifient ni score ni X. Place chaque comparaison dans le trou du bloc si … alors. Dans les modèles, la question verte distingue la comparaison d’un capteur bleu clair.",
             "Dans Contrôle (orange), le bloc stop possède un menu : choisis tout. Il arrête les scripts de tous les personnages. Un simple message ne suffit pas à terminer une partie. Le drapeau relancera les scripts : garde mettre score à 0 et aller à (-100, 0) avant la boucle."
           ] },
         { "type": "lesson", "id": "exemple", "title": "3 — Deux tests pour terminer",
           "shortSteps": [
             "Garde la pile du chat déjà construite. Dans sa boucle, après le si de contact et avant attendre 0.03 secondes, ajoute les deux si du modèle.",
-            "Dans chaque si, place le message dire … pendant 2 secondes puis stop tout. Les conditions vertes se construisent avec Opérateurs et les valeurs score / position x.",
+        "Dans chaque si, place le message dire … pendant 2 secondes puis stop tout. Les conditions vertes se construisent avec Opérateurs et les blocs ovales score / abscisse x.",
             "Teste 3 contacts pour gagner, puis relance et pars à gauche pour perdre. Après chaque fin, le drapeau doit remettre score à 0 et le chat au départ."
           ],
           "paragraphs": [
@@ -1305,14 +1697,14 @@ window.CODECRAFT_DATA = {
                   { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Gagné !" }, " pendant ", { "value": "2" }, " secondes"] },
                   { "category": "control", "label": "Contrôle", "parts": ["stop ", { "choice": "tout" }] }
                 ] },
-              { "category": "control", "label": "Contrôle + Opérateurs", "parts": ["si ", { "condition": [{ "value": "position x" }, " < ", { "value": "-180" }], "operator": true }, " alors"], "explanation": "À gauche de la limite, on annonce la défaite puis on arrête tout.",
+              { "category": "control", "label": "Contrôle + Opérateurs", "parts": ["si ", { "condition": [{ "value": "abscisse x" }, " < ", { "value": "-180" }], "operator": true }, " alors"], "explanation": "À gauche de la limite, on annonce la défaite puis on arrête tout.",
                 "children": [
                   { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Perdu !" }, " pendant ", { "value": "2" }, " secondes"] },
                   { "category": "control", "label": "Contrôle", "parts": ["stop ", { "choice": "tout" }] }
                 ] }
             ]
           },
-          "code": "À insérer dans la boucle existante, après le si de contact :\nsi <score = 3> alors\n  dire Gagné ! pendant 2 secondes\n  stop tout\nsi <position x < -180> alors\n  dire Perdu ! pendant 2 secondes\n  stop tout"
+          "code": "À insérer dans la boucle existante, après le si de contact :\nsi <score = 3> alors\n  dire Gagné ! pendant 2 secondes\n  stop tout\nsi <abscisse x < -180> alors\n  dire Perdu ! pendant 2 secondes\n  stop tout"
         },
         { "type": "tasks", "id": "guide", "title": "À toi — tester les deux fins", "intro": "Une règle est prête seulement si tu l’as testée.", "items": [
           { "id": "victoire", "text": "Touche Cible trois fois. Vérifie le message Gagné et l’arrêt des déplacements après le message.", "hint": "Le test score = 3 est dans la boucle après le contact ; stop tout est dans le si." },
@@ -1330,7 +1722,7 @@ window.CODECRAFT_DATA = {
       ],
       "masteryCriteria": [
         "Expliquer la différence entre compter un contact et tester une fin de partie.",
-        "Prédire le résultat de score = 3 et de position x < -180, notamment à la limite.",
+        "Prédire le résultat de score = 3 et de abscisse x < -180, notamment à la limite.",
         "Tester victoire, défaite et deux redémarrages avec score et position réinitialisés.",
         "Modifier une règle atteignable et expliquer son effet, sans recopier seulement le modèle."
       ],
@@ -1340,10 +1732,10 @@ window.CODECRAFT_DATA = {
       "teacherGuide": {
         "objective": "Faire décider et tester une victoire, une défaite et un redémarrage, sans ajouter de vies ni de chronomètre.",
         "entryDiagnosis": ["Demander deux contacts puis un redémarrage : score attendu 1, 2, 0.", "Faire montrer ce qui est au départ, dans la boucle et dans le si de contact.", "Demander vers où va le chat quand X diminue. Reprendre le prérequis fragile avant les comparaisons."],
-        "preparation": ["Ouvrir une copie du programme Score, avec Cible immobile à (80, 0), Chat au départ (-100, 0) et 1 point par contact.", "Afficher le compteur score. Préparer Opérateurs (= et <), le reporter position x et le bloc stop tout.", "Ne pas remplacer le modèle par le jeu complet partagé : il comporte des règles supplémentaires. Mettre Scratch en français via Settings → Language si nécessaire."],
+        "preparation": ["Ouvrir une copie du programme Score, avec Cible immobile à (80, 0), Chat au départ (-100, 0) et 1 point par contact.", "Afficher le compteur score. Préparer Opérateurs (= et <), le bloc ovale abscisse x (position horizontale du personnage) et stop tout.", "Ne pas remplacer le modèle par le jeu complet partagé : il comporte des règles supplémentaires. Mettre Scratch en français via Settings → Language si nécessaire."],
         "why": "Une fin de partie est une règle testée par le programme ; un message seul ne bloque pas les actions.",
         "discoverySpeech": ["« Le compteur sait combien tu as touché de cibles. Maintenant, à quel nombre veux-tu gagner ? »", "« Le bloc vert pose une question. Il ne donne pas de point et ne déplace pas le chat. »", "« Annoncer Gagné, ce n’est pas encore arrêter. Que se passe-t-il si je continue à appuyer ? »", "« Le drapeau est une nouvelle partie : qu’est-ce qu’il faut remettre au départ ? »"],
-        "example": { "target": { "moduleId": "scratch-fin-partie", "blockId": "exemple", "label": "Deux tests de fin" }, "comments": ["Insérer les deux si dans la boucle existante, après le contact ; ne pas ajouter de boucle concurrente.", "Victoire : score = 3, dire Gagné 2 secondes, stop tout. Défaite : position x < -180, dire Perdu 2 secondes, stop tout.", "À -180, le test strict est faux. Avec un pas de -3 depuis -100, on passe de -178 à -181 : la défaite est réellement atteignable.", "Le contact remet Chat à -100 avant le test de victoire ; ce départ ne déclenche pas la défaite. Le drapeau remet score à 0 et la position au départ."] },
+        "example": { "target": { "moduleId": "scratch-fin-partie", "blockId": "exemple", "label": "Deux tests de fin" }, "comments": ["Insérer les deux si dans la boucle existante, après le contact ; ne pas ajouter de boucle concurrente.", "Victoire : score = 3, dire Gagné 2 secondes, stop tout. Défaite : abscisse x < -180, dire Perdu 2 secondes, stop tout. Abscisse x est le nom du bloc Scratch qui donne la position horizontale.", "À -180, le test strict est faux. Avec un pas de -3 depuis -100, on passe de -178 à -181 : la défaite est réellement atteignable.", "Le contact remet Chat à -100 avant le test de victoire ; ce départ ne déclenche pas la défaite. Le drapeau remet score à 0 et la position au départ."] },
         "questions": [
           { "question": "À -180 exactement, a-t-on perdu ?", "answer": "Non : < veut dire strictement plus petit. À -181 oui ; à -100 non." },
           { "question": "Pourquoi garder un point par contact pour gagner à 3 ?", "answer": "Le compteur doit atteindre 3. En ajoutant 2 depuis 0, il passe de 2 à 4 et ne sera jamais égal à 3." },
@@ -1355,7 +1747,7 @@ window.CODECRAFT_DATA = {
         "differentiation": ["CE2 : faire gagner à 3, puis traiter la limite gauche séparément ; lire les valeurs négatives avec une ligne de nombres si nécessaire.", "Ne pas exiger le bonus pour accéder au projet. Fournir le modèle de la base si sa reconstruction bloque, puis distinguer cette aide de la compréhension des règles de fin.", "Pour les plus autonomes : demander une prédiction à -180 et -181 puis masquer le modèle pour changer le seuil."],
         "commonErrors": [
           { "symptom": "Gagné s’affiche mais le jeu continue.", "helps": ["Attendre la fin du message puis appuyer à droite.", "Chercher stop dans le si de victoire.", "Comparer son menu : tout ou ce script.", "Ajouter stop tout après le message, dans le si, puis tester."] },
-          { "symptom": "Le jeu perd immédiatement.", "helps": ["Observer X au départ.", "Vérifier l’ordre des deux valeurs dans <.", "Comparer position x < -180 avec -180 < position x : ce n’est pas la même question.", "Mettre position x à gauche, -180 à droite et le départ à -100 avant la boucle."] },
+          { "symptom": "Le jeu perd immédiatement.", "helps": ["Observer X au départ.", "Vérifier l’ordre des deux valeurs dans <.", "Comparer abscisse x < -180 avec -180 < abscisse x : ce n’est pas la même question.", "Glisser l’ovale abscisse x à gauche, écrire -180 à droite et garder le départ à -100 avant la boucle."] },
           { "symptom": "La nouvelle partie garde les points.", "helps": ["Relancer après une victoire et lire score.", "Repérer mettre score à 0.", "Comparer la remise à zéro avant la boucle avec l’ajout au contact.", "Replacer la remise à zéro sous le drapeau puis retester après les deux fins."] }
         ],
         "notes": "Distinguer réussite autonome, avec modèle et avec aide dans les remarques existantes. Une reproduction correcte ne prouve pas la compréhension : demander une prédiction et une modification. Aucun acquis automatique ni rythme imposé.",
@@ -1380,7 +1772,7 @@ window.CODECRAFT_DATA = {
           "Reprends une copie de ton programme Gagner, perdre et recommencer. Tu peux garder le chat et la souris : aucun nouveau dessin n’est obligatoire. Si tu n’as plus ta copie, reconstruis les modèles des modules Score et Fin de partie ; ils restent accessibles.",
           "Choisis une histoire en une phrase : par exemple, le chat rapporte trois objets sans aller trop loin à gauche. Ce n’est qu’une idée : tu peux inventer la tienne avec les mêmes règles.",
           "Écris ou dis tes quatre règles avant de coder : quelles touches déplacent, ce qui donne un point, ce qui fait gagner, ce qui fait perdre. Le drapeau recommence la partie.",
-          "Pour ce premier projet, garde le déplacement horizontal, la cible fixe et un point par contact. Choisis un seuil positif de 3 à 5 et une limite gauche entre -180 et -120. Le départ reste (-100, 0) et la cible (80, 0) : les règles sont atteignables."
+            "Pour ce premier projet, garde le déplacement horizontal, la cible fixe et un point par contact. Choisis un seuil entier de 3 à 5 (3, 4 ou 5) et une limite gauche entre -180 et -120. Le départ reste (-100, 0) et la cible (80, 0) : les règles sont atteignables."
         ] },
         { "type": "callout", "id": "reprise", "title": "Une fin de partie reste difficile ?", "text": "Reprends Gagner, perdre et recommencer pour tester les règles avant de les personnaliser.", "moduleLink": { "moduleId": "scratch-fin-partie", "text": "Gagner, perdre et recommencer" } },
         { "type": "checklist", "id": "guide", "title": "2 — Les éléments de ton jeu", "items": [
@@ -1392,7 +1784,7 @@ window.CODECRAFT_DATA = {
           { "id": "reset", "text": "Le drapeau remet score à 0 et le personnage au départ pour rejouer." }
         ] },
         { "type": "tasks", "id": "autonomie", "title": "3 — Personnalise et fais jouer", "intro": "Essaie sans rouvrir les modèles ; une aide reste possible. Tu n’as pas besoin de nouvelles notions.", "items": [
-          { "id": "regles", "text": "Choisis ton seuil de victoire et ta limite gauche. Prédis les résultats puis modifie les deux règles.", "hint": "Un point par contact : tous les seuils entiers de 3 à 5 sont atteignables. Le départ -100 doit rester à droite de ta limite." },
+          { "id": "regles", "text": "Choisis d’abord un seuil entier de victoire : 3, 4 ou 5 contacts. Prédis, change seulement ce seuil et teste une victoire. Ensuite choisis une limite gauche entre -180 et -120, prédis, modifie seulement la limite et teste une défaite après un nouveau drapeau.", "hint": "Garde un point par contact. Teste chaque changement séparément : le départ -100 doit rester à droite de la limite." },
           { "id": "messages", "text": "Écris tes propres messages de victoire et de défaite, adaptés à ton histoire.", "hint": "Change seulement le texte de dire … pendant 2 secondes. Garde stop tout après chaque message." },
           { "id": "consigne", "text": "Ajoute les commandes et les règles dans les instructions de la page Scratch, ou dans un petit texte conservé à côté du fichier.", "hint": "Écris comment bouger, gagner, perdre et recommencer. La publication n’est pas obligatoire." },
           { "id": "testeur", "text": "Fais jouer quelqu’un avec tes instructions. Si tu es seul, teste le jeu en suivant ces instructions sans lire le code.", "hint": "Teste un joueur qui gagne et un joueur qui perd, pas seulement un chemin heureux." },
@@ -1428,7 +1820,7 @@ window.CODECRAFT_DATA = {
         "preparation": ["Garder une copie du programme précédent, pas une base sans code ni le jeu complet aléatoire.", "Prévoir les modèles Score et Fin de partie comme aides, sans les imposer à l’élève autonome.", "Mettre Scratch en français. Compte élève facultatif ; sauvegarde locale possible. Aucun nom d’élève ni fichier privé à publier."],
         "why": "Un projet jalon montre si l’élève peut combiner des notions et expliquer une règle au-delà d’une reproduction bloc par bloc.",
         "discoverySpeech": ["« Tu connais les pièces. Choisis maintenant les règles d’un jeu court que quelqu’un d’autre pourra comprendre. »", "« Tu peux garder les dessins. Ce qui compte ici, c’est un jeu qui fonctionne et que tu sais expliquer. »", "« Avant d’essayer, qu’attends-tu quand je touche trois fois la cible ? Et quand je pars trop à gauche ? »", "« Tu peux demander une aide. On distinguera ce que tu sais refaire seul et ce qui a encore besoin d’un modèle. »"],
-        "example": { "target": { "moduleId": "scratch-mini-jeu", "blockId": "exemple", "label": "Choisir des règles atteignables" }, "comments": ["L’histoire proposée n’est pas une solution à recopier ; garder un terrain horizontal simple.", "Le socle attendu vient des modules précédents : drapeau → score 0 et départ ; boucle → touches, contact avec point et séparation, tests de fin.", "Un seuil entre 3 et 5 reste atteignable avec un point par contact. Une limite entre -180 et -120 ne condamne pas le départ -100."] },
+        "example": { "target": { "moduleId": "scratch-mini-jeu", "blockId": "exemple", "label": "Choisir des règles atteignables" }, "comments": ["L’histoire proposée n’est pas une solution à recopier ; garder un terrain horizontal simple.", "Le socle attendu vient des modules précédents : drapeau → score 0 et départ ; boucle → touches, contact avec point et séparation, tests de fin.", "Un seuil entier 3, 4 ou 5 est atteignable avec un point par contact. Changer et tester d’abord ce seuil, puis la limite de défaite. Une limite entre -180 et -120 ne condamne pas le départ -100."] },
         "questions": [
           { "question": "Pourquoi ne pas faire un point à chaque tour de boucle ?", "answer": "Les points seraient gagnés sans action du joueur. L’ajout doit rester dans le si de contact." },
           { "question": "Comment un autre joueur sait-il qu’il peut recommencer ?", "answer": "Les instructions disent d’utiliser le drapeau ; ce drapeau réinitialise score et position." },
@@ -1444,7 +1836,7 @@ window.CODECRAFT_DATA = {
           { "symptom": "Le jeu n’est pas rejouable.", "helps": ["Faire une deuxième partie après chacune des fins.", "Observer score et position au drapeau.", "Comparer avec les deux réinitialisations avant la boucle.", "Restaurer le départ et score zéro puis tester deux nouvelles parties."] }
         ],
         "notes": "Projet jalon : observer transfert et explication. Relever réussite autonome, avec modèle ou avec aide dans les remarques existantes ; ne pas créer de nouveau suivi ni valider automatiquement les skills. Les cases, le score et le partage du projet ne certifient rien.",
-        "quickConductor": ["Vérifier le jeu précédent.", "Faire choisir une histoire et quatre règles.", "Laisser personnaliser un seuil et les messages.", "Faire tester victoire, défaite et deux départs.", "Demander une prédiction et une explication, puis choisir reprise ou bonus."],
+        "quickConductor": ["Vérifier le jeu précédent.", "Faire choisir une histoire et quatre règles.", "Personnaliser et tester un seuil entier, puis modifier et tester séparément la limite ; personnaliser les messages.", "Faire tester victoire, défaite et deux départs.", "Demander une prédiction et une explication, puis choisir reprise ou bonus."],
         "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
@@ -1483,7 +1875,7 @@ window.CODECRAFT_DATA = {
           "id": "preparer",
           "title": "1 — Retrouve ou reconstruis la base",
           "paragraphs": [
-            "Ouvre une copie de ton .sb3 de Faire réagir le jeu. Si tu n’en as pas, ce module contient la préparation et la pile complètes : construis-les avant d’ajouter le score.",
+        "Ouvre une copie de ton .sb3 de Faire réagir le jeu, sans créer un projet vide : nous prolongeons le programme. Si tu n’as pas ce fichier, ouvre Faire réagir le jeu avec le lien ci-dessous pour construire les sprites et la pile, tester les contacts et sauvegarder. Reviens ensuite dans Compter et mémoriser avec cette base prête avant d’ajouter le score.",
             "La base attendue : un chat à gauche, un sprite nommé exactement Cible à x = 80, y = 0, une boucle de déplacement droite/gauche et un retour à x = -100, y = 0 au contact.",
             "Si tu avais remplacé une touche ou déplacé Cible, tu peux garder ces choix, à condition de savoir expliquer et tester les contacts. Le modèle ci-dessous repart de droite/gauche et de Cible à (80, 0)."
           ]
@@ -1865,9 +2257,9 @@ window.CODECRAFT_DATA = {
             "label": "Modèle commenté"
           },
           "comments": [
-            "Faire repérer les blocs et catégories avant d’assembler.",
-            "Les creux orange contiennent les actions imbriquées ; la fin visuelle ferme le bloc, ce n’est pas un bloc supplémentaire à chercher.",
-            "Prévoir un résultat avant chaque lancement et expliquer une situation où une action ne se produit pas."
+            "Conserver la pile de contact : mettre score à 0 avant la boucle et ajouter 1 dans le si, avant le message et le retour. Ne pas recopier une deuxième pile de drapeau.",
+            "Résultats attendus : drapeau → 0 ; premier contact → 1 ; deuxième contact → 2. Sans contact, la valeur reste inchangée. Le retour au départ sépare les sprites et évite plusieurs points pour un contact prolongé.",
+            "Un nouveau drapeau remet score à 0. Avec 2 points par contact, trois contacts depuis zéro donnent 6 ; depuis 5, un contact donne 7. Rétablir ensuite zéro et un point. Aider le calcul séparément de l’explication des blocs."
           ]
         },
         "questions": [
@@ -2228,7 +2620,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "reprise",
           "title": "Avant de commencer",
-          "text": "Utilise un nouveau projet avec le chat ou une copie de ton essai. Si tu hésites pour retrouver les zones ou conserver ton travail, reprends Prendre en main Scratch.",
+          "text": "Sauvegarde ton projet actuel, puis choisis Fichier → Nouveau pour cet essai avec le chat. Ton travail précédent reste dans sa sauvegarde. Si tu hésites pour retrouver les zones ou conserver ton travail, reprends Prendre en main Scratch.",
           "moduleLink": {
             "moduleId": "scratch-decouverte",
             "text": "Prendre en main Scratch"
@@ -2251,12 +2643,12 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "2 — Assemble cette petite scène",
           "paragraphs": [
-            "Sélectionne le chat. Retire ton ancienne pile de cet essai en la glissant vers la colonne des blocs, pour éviter deux scripts déclenchés en même temps. Garde ton ancien projet dans son fichier si tu veux le conserver.",
+            "Sélectionne le chat du projet neuf préparé au début. Il n’a pas d’ancienne pile : tu peux construire cet essai sans supprimer ton travail précédent. Reste dans ce projet pour modifier les messages, l’ordre et la pause.",
             "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous. Ce modèle se lit ; il ne se colle pas comme du code texte.",
             "Avant de cliquer sur le drapeau, annonce ce que fera le chat en premier, puis en dernier. Observe ensuite les deux déplacements et la pause."
           ],
           "shortSteps": [
-            "Sélectionne le chat. Garde une seule pile au drapeau dans cet essai ; sauvegarde ton ancien projet avant de retirer une pile.",
+            "Sélectionne le chat du projet neuf préparé au début. Construis une seule pile au drapeau ; garde ce projet pour les modifications guidées.",
             "Assemble ces blocs, puis choisis les messages et nombres du modèle.",
             "Annonce la première et la dernière action. Clique sur le drapeau, puis compare avec ta prédiction."
           ],
@@ -2367,7 +2759,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "ordre",
               "text": "Place le premier message après le premier déplacement. Prédis puis teste la différence.",
-              "hint": "Déplace le bloc dans la même pile. Si une partie se détache, raccroche-la."
+              "hint": "Détache d’abord la suite sous le premier message en prenant le premier déplacement : les blocs suivants viennent avec lui. Isole ensuite le message du drapeau. Raccroche la suite sous le drapeau, puis glisse le message entre le premier déplacement et la pause. Vérifie : drapeau → déplacement → premier message → pause → second déplacement → dernier message."
             },
             {
               "id": "pause",
@@ -2380,7 +2772,7 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi — une scène sans modèle",
-          "intro": "Crée une nouvelle pile avec les blocs déjà connus. Essaie avant l’indice.",
+          "intro": "Sauvegarde ton exercice guidé, puis choisis Fichier → Nouveau. Dans ce projet neuf avec le chat, crée ta scène avec les blocs connus. Ton premier essai reste conservé et ne se lance pas en même temps. Essaie avant l’indice.",
           "items": [
             {
               "id": "scene-personnelle",
@@ -2457,7 +2849,7 @@ window.CODECRAFT_DATA = {
         "preparation": [
           "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
           "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
-          "Utiliser le chat fourni par Scratch : aucun projet privé ni asset à préparer pour ce lot."
+          "Utiliser le chat fourni par Scratch. Sauvegarder puis choisir Fichier → Nouveau au début et avant la scène autonome ; conserver le même projet pour les modifications guidées et le bonus d’événement. Ne pas supprimer le travail précédent."
         ],
         "why": "Comprendre l’ordre d’une pile prépare aux règles de jeu et évite de traiter les blocs comme une recette à recopier.",
         "discoverySpeech": [
@@ -2472,9 +2864,9 @@ window.CODECRAFT_DATA = {
             "label": "Lire et assembler l’exemple"
           },
           "comments": [
-            "Les lignes sont un modèle textuel de blocs, pas un programme à coller.",
-            "Faire retrouver la catégorie puis le bloc ; laisser l’élève assembler.",
-            "Demander une prédiction, lancer, comparer et expliquer."
+            "Les lignes sont un modèle de blocs, pas du texte à coller. Construire l’exemple dans un projet neuf ; garder ce projet pour les modifications guidées.",
+            "Pour déplacer seulement le premier message : détacher la suite en prenant le premier déplacement, isoler le message, raccrocher la suite au drapeau puis insérer le message entre premier déplacement et pause. Ordre attendu : déplacement → premier message → pause → second déplacement → dernier message.",
+            "Faire prédire puis observer : le chat bouge maintenant avant de parler. Avant la scène autonome, sauvegarder puis Fichier → Nouveau pour éviter deux piles de drapeau concurrentes."
           ]
         },
         "questions": [
@@ -2487,8 +2879,8 @@ window.CODECRAFT_DATA = {
             "answer": "Le script ajoute un déplacement ; il n’a aucun retour au départ."
           },
           {
-            "question": "Pourquoi voit-on une pause après le message ?",
-            "answer": "Le bloc dire pendant attend déjà sa durée, puis le bloc attendre ajoute sa pause."
+            "question": "Quels blocs font attendre, et où est la pause entre les deux déplacements ?",
+            "answer": "Chaque dire … pendant attend la durée du message. Le bloc attendre ajoute une pause entre les deux déplacements ; dans le modèle initial, le premier déplacement sépare le premier message de cette pause."
           }
         ],
         "accompaniedActivity": {
@@ -2512,8 +2904,8 @@ window.CODECRAFT_DATA = {
             "helps": [
               "Repérer combien de départs au drapeau existent.",
               "Comparer les piles présentes au modèle de cet essai.",
-              "Détacher une ancienne pile pour isoler l’essai.",
-              "Relancer une seule pile et commenter son ordre."
+              "Sauvegarder ce projet pour conserver toutes les piles, puis choisir Fichier → Nouveau.",
+              "Reconstruire uniquement la pile de l’activité en cours et commenter son ordre ; ne pas supprimer les anciens essais."
             ]
           },
           {
@@ -2581,7 +2973,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "reprise",
           "title": "Avant de commencer",
-          "text": "Utilise un nouveau projet avec le chat ou une copie. Si les événements et l’ordre des blocs sont encore difficiles, reprends Déclencher et enchaîner des actions.",
+          "text": "Sauvegarde ton projet actuel, puis choisis Fichier → Nouveau et garde le chat. Tu conserves ton ancien travail et aucune ancienne commande ne perturbe cet essai. Tu peux aussi ouvrir la base facultative sans scripts proposée en haut. Si les événements et l’ordre des blocs sont encore difficiles, reprends Déclencher et enchaîner des actions.",
           "moduleLink": {
             "moduleId": "scratch-actions",
             "text": "Déclencher et enchaîner des actions"
@@ -2900,7 +3292,7 @@ window.CODECRAFT_DATA = {
       ],
         "nextSteps": [{ "moduleId": "scratch-boucles", "blockId": "notions", "label": "Répéter des actions — savoir lire une pile et utiliser une pause" }],
         "teacherGuide": {
-          "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
+        "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
         "entryDiagnosis": [
           "Sélectionner le bon sprite et sauvegarder son projet.",
           "Expliquer ce qui déclenche une pile ; reprendre Déclencher et enchaîner des actions en cas d’hésitation.",
@@ -2909,7 +3301,7 @@ window.CODECRAFT_DATA = {
         "preparation": [
           "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
           "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
-          "Utiliser le chat fourni par Scratch : aucun projet privé ni asset à préparer pour ce lot."
+          "Sauvegarder le travail actuel puis choisir Fichier → Nouveau, ou ouvrir la base chat/cible sans scripts. Ne pas reprendre une ancienne scène avec ses piles. Garder ensuite ce projet pour les quatre commandes, la mission autonome de modification et le bonus : cinq piles de base, puis éventuellement le retour par espace. La cible de la base peut rester de côté."
         ],
         "why": "Un déplacement contrôlé et un départ reproductible constituent une base de jeu ; la compréhension des directions précède les collisions.",
         "discoverySpeech": [
@@ -12100,7 +12492,7 @@ window.CODECRAFT_DATA = {
       "title": "Premiers pas avec Scratch",
       "theme": "fondations",
       "objective": "Découvrir les blocs, créer des actions et piloter un personnage avant de construire ses premiers jeux.",
-      "moduleIds": ["scratch-decouverte", "scratch-actions", "scratch-pilotage", "scratch-boucles", "scratch-reactions", "scratch-variables", "scratch-fin-partie", "scratch-mini-jeu", "scratch-coordination", "scratch-blocs-personnalises"]
+      "moduleIds": ["scratch-decouverte", "scratch-actions", "scratch-pilotage", "scratch-boucles", "scratch-reactions", "scratch-variables", "scratch-fin-partie", "scratch-mini-jeu", "scratch-coordination", "scratch-blocs-personnalises", "scratch-clones", "scratch-temps-difficulte", "scratch-debogage", "scratch-projet-personnel"]
     },
     "web-fondations": {
       "domainId": "web",

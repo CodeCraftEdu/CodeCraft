@@ -13,7 +13,7 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
 const data = JSON.parse(JSON.stringify(context.window.CODECRAFT_DATA));
 const orders = {
-  'scratch-debutants': ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu', 'scratch-coordination', 'scratch-blocs-personnalises'],
+  'scratch-debutants': ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu', 'scratch-coordination', 'scratch-blocs-personnalises', 'scratch-clones', 'scratch-temps-difficulte', 'scratch-debogage', 'scratch-projet-personnel'],
   'web-fondations': ['html-titres-paragraphes', 'html-listes', 'html-mini-page-fondations', 'html-liens', 'html-images', 'html-mini-page', 'css-decouverte', 'css-classes-couleurs', 'web-affiche-numerique'],
   'web-debutants': ['html-titres-paragraphes', 'html-listes', 'html-liens', 'html-revision', 'html-images', 'css-classes-couleurs', 'html-mini-page', 'html-document', 'html-fichiers-chemins', 'css-feuille-style', 'html-parent-enfants', 'html-zones', 'css-textes-lisibles', 'css-boites-espacements', 'css-dimensions-images', 'web-carte-personnelle', 'html-multipage', 'web-mini-site'],
   'web-avances': ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox']
