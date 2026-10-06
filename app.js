@@ -347,27 +347,26 @@
   const domainUrl = id => Object.keys(data.domains).length === 1 ? '#' : '#domaine/' + id;
   const own = (collection, id) => Object.prototype.hasOwnProperty.call(collection, id) ? collection[id] : null;
 
-  function start(title, theme, compact = true) {
+  function start(title, theme, compact = true, domainId = null) {
     document.title = title + ' — ' + data.site.name;
     if (theme) document.body.dataset.route = theme;
     else delete document.body.dataset.route;
+    if (domainId) document.body.dataset.domain = domainId;
+    else delete document.body.dataset.domain;
     main.replaceChildren();
     main.classList.toggle('home-page', !compact);
+    document.body.classList.toggle('student-home', !compact);
     const header = element('header', compact ? 'page-header page-header--compact' : 'page-header');
     const brand = link(data.site.name, '#', 'brand');
     if (compact) header.append(brand);
     else {
       header.classList.add('home-header');
-      const logo = element('img', 'home-logo');
-      logo.src = 'images/logo-transparent.png';
-      logo.width = 1516; logo.height = 1038;
-      logo.alt = ''; // Décoratif : le nom est déjà annoncé dans le h1.
       const copy = element('div', 'home-header__copy');
       const heading = element('h1', 'home-title');
       heading.append(brand);
-      copy.append(element('p', 'home-eyebrow', data.site.subtitle), heading,
+      copy.append(heading,
         element('p', 'home-intro', data.site.homeIntro));
-      header.append(logo, copy);
+      header.append(copy);
     }
     main.append(header);
   }
@@ -381,8 +380,8 @@
 
   function renderDomain(id, home = false) {
     const domain = data.domains[id];
-    start(home ? data.site.subtitle : domain.title, null, home ? false : true);
-    if (!home) main.append(element('h1', 'library-heading', domain.title));
+    start(home ? data.site.subtitle : domain.title, null, home ? false : true, home ? null : id);
+    if (!home) main.append(element('h1', 'library-heading domain-banner', domain.title));
     const navigation = element('nav', 'route-grid');
     navigation.setAttribute('aria-label', 'Choisir un parcours ou un diagnostic');
     domain.pathwayIds.forEach(pathwayId => {
@@ -394,7 +393,6 @@
       navigation.append(card(item.title, item.objective, moduleUrl(moduleId), item.theme));
     });
     main.append(navigation);
-    if (!home) main.append(link('← Accueil', '#', 'button button--secondary back-button'));
   }
 
   function renderHome() {
@@ -407,12 +405,21 @@
     domains.forEach(id => {
       const domain = data.domains[id];
       const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', '#domaine/' + id);
-      entry.classList.add('home-domain', id === 'jeux-video' ? 'home-domain--game' : 'home-domain--web');
+      entry.classList.add('home-domain', id === 'jeux-video' ? 'home-domain--game' : id === 'python' ? 'home-domain--python' : 'home-domain--web');
       const top = element('span', 'home-domain__top');
-      const symbol = element('span', 'home-domain__symbol', id === 'jeux-video' ? '+' : id === 'python' ? '>_' : '</>');
-      symbol.setAttribute('aria-hidden', 'true');
-      top.append(symbol, element('span', 'home-domain__tag', domain.homeTag || domain.title));
+      top.setAttribute('aria-hidden', 'true');
+      const scene = element('img', 'home-domain__scene');
+      scene.src = 'images/home-' + (id === 'jeux-video' ? 'game' : id === 'python' ? 'python' : 'web') + '.svg';
+      scene.alt = '';
+      scene.width = 400; scene.height = 108;
+      top.append(scene);
+      const pictogram = element('img', 'home-domain__pictogram');
+      pictogram.src = scene.src.replace('/home-', '/home-icon-');
+      pictogram.alt = '';
+      pictogram.width = 40; pictogram.height = 30;
+      top.append(pictogram);
       entry.prepend(top);
+      entry.querySelector('.route-card-title').after(element('span', 'home-domain__tag', id === 'python' ? 'Thonny' : id === 'jeux-video' ? 'Scratch' : 'HTML · CSS'));
       entry.append(element('span', 'home-domain__action', 'Découvrir les parcours →'));
       navigation.append(entry);
     });
@@ -421,7 +428,6 @@
 
   function intro(title, objective, codepen = false, tool = null) {
     const header = element('header', 'lesson-intro');
-    header.append(element('p', 'eyebrow', data.site.subtitle));
     header.append(element('h1', 'lesson-title', title));
     header.append(element('h2', 'objective-label', 'Objectif'));
     header.append(element('p', 'objective', objective));
@@ -436,7 +442,7 @@
 
   function renderPathway(id) {
     const pathway = data.pathways[id];
-    start(pathway.title, pathway.theme);
+    start(pathway.title, pathway.theme, true, pathway.domainId);
     const article = element('article', 'lesson-page');
     article.append(intro(pathway.title, pathway.objective));
     const list = element('ol', 'module-list');
@@ -475,7 +481,7 @@
     const item = data.modules[id];
     const candidate = own(data.pathways, requestedPathway);
     const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
-    start(item.title, pathway ? pathway.theme : item.theme);
+    start(item.title, pathway ? pathway.theme : item.theme, true, item.domainId);
     const article = element('article', 'lesson-page');
     if (item.presentation === 'workshop') article.classList.add('lesson-page--workshop');
     const back = element('nav', 'library-links');
@@ -486,64 +492,10 @@
     const scratchProject = pedagogy.scratchProject(item);
     if (scratchProject) article.append(scratchProject);
     item.blocks.forEach(block => article.append(createBlock(block, id)));
-    if (id === 'python-thonny') {
-      const diagram = article.querySelector('.code-diagram');
-      if (diagram) {
-        const controls = element('div', 'visual-trial-controls');
-        controls.setAttribute('role', 'group');
-        controls.setAttribute('aria-label', 'Comparer les styles visuels');
-        controls.append(element('span', 'visual-trial-controls__label', 'Essai visuel'));
-        const original = element('button', '', 'Blocs actuel');
-        const adventure = element('button', '', 'Aventure low-poly');
-        const blocks = element('button', '', 'Blocs renforcés');
-        original.type = adventure.type = blocks.type = 'button';
-        original.dataset.visualStyle = 'original';
-        adventure.dataset.visualStyle = 'adventure';
-        blocks.dataset.visualStyle = 'blocks';
-        function selectStyle(style) {
-          article.classList.toggle('visual-trial--adventure', style === 'adventure');
-          article.classList.toggle('visual-trial--blocks', style === 'blocks');
-          original.setAttribute('aria-pressed', String(style === 'original'));
-          adventure.setAttribute('aria-pressed', String(style === 'adventure'));
-          blocks.setAttribute('aria-pressed', String(style === 'blocks'));
-        }
-        original.addEventListener('click', () => selectStyle('original'));
-        adventure.addEventListener('click', () => selectStyle('adventure'));
-        blocks.addEventListener('click', () => selectStyle('blocks'));
-        selectStyle('adventure');
-        controls.append(original, adventure, blocks);
-        diagram.before(controls);
-        const nextModule = data.modules['python-affichage'];
-        const preview = element('section', 'visual-trial-card-preview');
-        preview.setAttribute('aria-label', 'Essai visuel d’une carte de module');
-        preview.append(element('p', 'visual-trial-card-preview__label', 'Essai - carte de module'));
-        const card = element('div', 'adventure-module-card');
-        const heading = element('div', 'adventure-module-card__heading');
-        const gem = element('span', 'adventure-gem');
-        gem.setAttribute('aria-hidden', 'true');
-        const titles = element('div');
-        titles.append(element('p', 'adventure-module-card__type', data.moduleTypes[nextModule.type]), element('h3', '', nextModule.title));
-        heading.append(titles);
-        card.append(gem, heading, element('p', 'adventure-module-card__description', nextModule.objective));
-        const access = link('Ouvrir le module', moduleUrl('python-affichage', pathway ? requestedPathway : null), 'adventure-module-card__access');
-        access.setAttribute('aria-label', 'Ouvrir le module Afficher des messages');
-        card.append(access);
-        preview.append(card);
-        diagram.after(preview);
-      }
-    }
     const criteria = pedagogy.criteria(item);
     const orientations = pedagogy.orientations(item, pathway ? requestedPathway : null);
     if (criteria) article.append(criteria);
     if (orientations) article.append(orientations);
-    if (id === 'python-thonny' && orientations) {
-      const nextCard = orientations.querySelector('.pedagogy-choice--nextSteps');
-      if (nextCard) {
-        const gem = element('span', 'adventure-gem adventure-gem--small');
-        gem.setAttribute('aria-hidden', 'true');
-        nextCard.append(gem);
-      }
-    }
     const specificSupport = support(item);
     if (specificSupport) article.append(specificSupport);
     const navigation = element('nav', 'module-navigation');
@@ -561,7 +513,7 @@
         navigation.append(link('Dans le parcours ' + value.title, moduleUrl(id,pathwayId)));
       });
     }
-    article.append(navigation, link('← ' + data.site.homeLabel, '#', 'button button--secondary back-button'));
+    article.append(navigation);
     main.append(article);
   }
 

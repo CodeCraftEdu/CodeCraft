@@ -14,33 +14,28 @@ const probe = `<script>addEventListener('load', () => {
   document.body.dataset.testViewport = innerWidth;
   document.body.dataset.testOverflow = document.documentElement.scrollWidth > innerWidth;
   document.body.dataset.testImages = Array.from(document.images).every(i => i.complete && i.naturalWidth > 0);
-  const original = document.querySelector('[data-visual-style="original"]');
-  const adventure = document.querySelector('[data-visual-style="adventure"]');
-  const blocks = document.querySelector('[data-visual-style="blocks"]');
-  if (original && adventure && blocks) {
-    const editor = document.querySelector('.code-diagram__editor');
-    adventure.click();
-    const trialColor = getComputedStyle(editor).backgroundColor;
-    original.click();
-    const originalColor = getComputedStyle(editor).backgroundColor;
-    const restored = original.getAttribute('aria-pressed') === 'true' && !document.querySelector('.visual-trial--adventure');
-    adventure.click();
-    document.body.dataset.testStyleSwitch = restored && trialColor !== originalColor && getComputedStyle(editor).backgroundColor === trialColor;
-    blocks.click();
-    const blockColor = getComputedStyle(editor).backgroundColor;
-    document.body.dataset.testBlockStyle = blocks.getAttribute('aria-pressed') === 'true' && !document.querySelector('.visual-trial--adventure') && blockColor !== trialColor && blockColor !== originalColor && document.documentElement.scrollWidth <= innerWidth;
-    original.click();
-    document.body.dataset.testBlockRestore = getComputedStyle(editor).backgroundColor === originalColor && !document.querySelector('.visual-trial--blocks');
-    const preview = document.querySelector('.visual-trial-card-preview');
-    const hidden = preview && getComputedStyle(preview).display === 'none';
-    adventure.click();
-    document.body.dataset.testCardPreview = hidden && getComputedStyle(preview).display !== 'none' && document.documentElement.scrollWidth <= innerWidth;
+  const objective = document.querySelector('.lesson-intro .objective');
+  const tool = document.querySelector('.lesson-intro > .button');
+  if (objective && tool) {
+    const a = objective.getBoundingClientRect(), b = tool.getBoundingClientRect();
+    document.body.dataset.testToolOverlap = a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  }
+  if (document.body.dataset.page === 'student') {
+    document.body.dataset.testLowpoly = document.body.classList.contains('student-lowpoly') && getComputedStyle(document.body).backgroundSize !== '32px 32px';
+    const routeBefore = location.href;
+    document.querySelector('.skip-link').click();
+    document.body.dataset.testSkip = location.href === routeBefore && document.activeElement.id === 'main-content';
+    document.body.dataset.testRouteColor = getComputedStyle(document.body).getPropertyValue('--route').trim();
+    const hint = document.querySelector('.hint');
+    if (hint) { hint.open = true; document.body.dataset.testHint = hint.open; hint.open = false; }
+    const checkbox = document.querySelector('.task-label input');
+    if (checkbox) { checkbox.click(); document.body.dataset.testCheckbox = checkbox.checked; checkbox.click(); }
   }
 });</script>`;
 (async () => {
   const server = http.createServer((req, res) => {
     const name = new URL(req.url, 'http://localhost').pathname.slice(1);
-    if (!/^(?:[a-z-]+\.(?:html|js|css)|assets\/python\/[a-z-]+\.svg|images\/[a-zA-Z0-9_.-]+)$/.test(name)) { res.writeHead(404); res.end(); return; }
+    if (!/^(?:[a-z-]+\.(?:html|js|css)|assets\/(?:python|exercices)\/[a-z-]+\.svg|images\/[a-zA-Z0-9_.-]+)$/.test(name)) { res.writeHead(404); res.end(); return; }
     const file = path.join(root, name);
     if (!fs.existsSync(file)) { res.writeHead(404); res.end(); return; }
     const ext = path.extname(name);
@@ -54,8 +49,12 @@ const probe = `<script>addEventListener('load', () => {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-python-browser-'));
   const chrome = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
   const cases = [
-    ['index.html', ['#domaine/python', 'PYTHON · THONNY'], 1200],
+    ['index.html', ['#domaine/python', '>Thonny<', 'images/home-python.svg', 'images/home-game.svg', 'images/home-web.svg'], 1200],
     ['index.html#domaine/python', ['#parcours/python-debutants', 'Premiers pas avec Python'], 1200],
+    ['index.html#domaine/python', ['domain-banner', '#parcours/python-debutants'], 540],
+    ['index.html#domaine/jeux-video', ['domain-banner', '#parcours/scratch-debutants', 'data-test-route-color="#a55d27"'], 1200],
+    ['index.html#domaine/jeux-video', ['domain-banner', '#parcours/scratch-debutants'], 540],
+    ['index.html#parcours/scratch-debutants', ['data-test-route-color="#a55d27"', '#module/scratch-reactions?parcours=scratch-debutants'], 1200],
     ['index.html#parcours/python-debutants', ids.map(id => '#module/' + id + '?parcours=python-debutants'), 1200],
     ...ids.map((id, i) => ['index.html#module/' + id + '?parcours=python-debutants', [
       '#parcours/python-debutants', 'https://thonny.org/',
@@ -64,7 +63,18 @@ const probe = `<script>addEventListener('load', () => {
     ], 1200]),
     ...ids.map(id => ['prof.html#guide/' + id, ['Guide professeur', 'Questions et réponses attendues', 'Erreurs fréquentes et aides graduées', 'index.html#module/' + id], 1200]),
     ['index.html#module/python-saisie', ['Poser une question', 'href="#domaine/python"', 'la virgule sépare'], 1200],
-    ['index.html#module/python-thonny?parcours=python-debutants&activite=reperes', ['code-diagram__editor', 'Après une modification du code'], 540]
+    ['index.html#module/python-thonny?parcours=python-debutants&activite=reperes', ['code-diagram__editor', 'Après une modification du code'], 540],
+    ['index.html', ['home-domain--python', '#domaine/web'], 540],
+    ['index.html#domaine/web', ['#parcours/web-fondations', '#parcours/web-debutants', '#parcours/web-avances'], 1200],
+    ['index.html#domaine/web', ['domain-banner', '#parcours/web-avances'], 540],
+    ['index.html#parcours/web-debutants', ['#module/html-images?parcours=web-debutants'], 540],
+    ['index.html#module/html-titres-paragraphes?parcours=web-fondations', ['data-test-route-color="#3f69c6"', 'data-test-checkbox="true"'], 1200],
+    ['index.html#module/html-images?parcours=web-debutants', ['data-test-route-color="#4f8045"', 'Images HTML'], 540],
+    ['index.html#module/css-flexbox?parcours=web-avances', ['data-test-route-color="#7653a5"', 'Flexbox'], 1200],
+    ['index.html#module/diagnostic-web', ['data-test-route-color="#b7652c"', 'Ne cherche pas la réponse.'], 540],
+    ['index.html#module/scratch-reactions', ['Faire réagir le jeu', 'data-test-route-color="#a55d27"'], 540],
+    ['index.html#fondations', ['#module/html-titres-paragraphes?parcours=web-fondations'], 1200],
+    ['index.html#main-content', ['#domaine/python'], 540]
   ];
   try {
     const filter = process.argv[2];
@@ -85,9 +95,6 @@ const probe = `<script>addEventListener('load', () => {
         assert(stdout.includes('lesson-page--workshop'));
         assert(stdout.includes('code-diagram__console'));
         assert(stdout.includes('code-diagram__tools'));
-        assert(stdout.includes('data-test-style-switch="true"'), 'Retour au style original et réactivation de l’essai');
-        assert(stdout.includes('data-test-block-style="true"'));
-        assert(stdout.includes('data-test-block-restore="true"'));
         assert(!stdout.includes('Du code au résultat'));
         assert(!stdout.includes('code-diagram__arrow'));
         assert(!stdout.includes('code-diagram__execution'));
@@ -97,18 +104,39 @@ const probe = `<script>addEventListener('load', () => {
         assert(stdout.includes('pedagogy-choices__grid'));
         assert(!stdout.includes('pedagogy-choice--bonusActivities'));
         assert(stdout.includes('Bonus - garder deux essais'));
-        assert.equal((stdout.match(/href="#module\/python-affichage\?parcours=python-debutants"/g) || []).length, 2, 'Une action Continuer et un lien dans l’aperçu exploratoire');
-        assert(stdout.includes('adventure-module-card__access'));
-        assert(stdout.includes('data-test-card-preview="true"'));
-        assert(stdout.includes('aria-label="Ouvrir le module Afficher des messages"'));
-        assert(stdout.includes('class="adventure-gem" aria-hidden="true"'));
+        assert.equal((stdout.match(/href="#module\/python-affichage\?parcours=python-debutants"/g) || []).length, 1, 'Une seule action Continuer');
+        assert(!stdout.includes('visual-trial-card-preview'));
       }
       assert(stdout.includes('data-test-overflow="false"'), `${route}: débordement horizontal`);
+      if (stdout.includes('data-test-tool-overlap=')) assert(stdout.includes('data-test-tool-overlap="false"'), `${route}: bouton outil superposé à l’objectif`);
+      if (stdout.includes('data-test-hint=')) assert(stdout.includes('data-test-hint="true"'));
+      if (stdout.includes('data-test-checkbox=')) assert(stdout.includes('data-test-checkbox="true"'));
       if (!route.startsWith('prof')) {
+        if (route.startsWith('index.html#domaine/')) {
+          assert(!stdout.includes('back-button'), 'Pas de bouton Accueil redondant sur les domaines');
+          assert(/<a\b(?=[^>]*\bclass="brand")(?=[^>]*\bhref="#")[^>]*>/.test(stdout), 'Le mot-symbole conserve le retour à l’accueil');
+        }
+        if (route.startsWith('index.html#module/')) {
+          assert(!stdout.includes('back-button'), 'Pas de retour Accueil redondant en bas du cours');
+          assert(/<a\b(?=[^>]*\bclass="brand")(?=[^>]*\bhref="#")[^>]*>/.test(stdout), 'Retour Accueil conservé dans le mot-symbole');
+        }
+        assert(!stdout.includes('class="eyebrow"'), 'Pas de libellé Espace de cours dans les en-têtes');
+        const home = route === 'index.html' || route === 'index.html#main-content';
+        assert.equal(/class="student-lowpoly student-home"/.test(stdout), home, `${route}: fond d’accueil limité à l’accueil`);
+        if (home) {
+          assert(!stdout.includes('class="home-logo"'), 'Pas de logo isolé dans la bannière');
+          assert(!stdout.includes('class="home-eyebrow"'), 'Pas de libellé superflu dans la bannière');
+        }
+        assert(stdout.includes('data-test-lowpoly="true"'));
+        assert(stdout.includes('data-test-skip="true"'));
+        assert(!stdout.includes('visual-trial-controls'));
         assert(stdout.includes('data-test-h1="1"'), `${route}: titre principal`);
         assert(stdout.includes('data-test-images="true"'), `${route}: image indisponible`);
+      } else {
+        assert(!stdout.includes('href="student-lowpoly.css"'));
+        assert(!stdout.includes('class="student-lowpoly"'));
       }
-      assert(!stdout.includes('href="https://codepen.io/pen"'), `${route}: mauvais outil`);
+      if (route.includes('python') || route === 'index.html') assert(!stdout.includes('href="https://codepen.io/pen"'), `${route}: mauvais outil`);
       console.log('OK : ' + route + ' (viewport ' + stdout.match(/data-test-viewport="(\d+)"/)[1] + 'px)');
     }
     console.log('Captures temporaires : ' + temp);

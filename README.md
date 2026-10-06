@@ -26,7 +26,11 @@ Les élèves écrivent dans l’application Thonny installée sur leur ordinateu
 
 Accès : `#domaine/python`, `#parcours/python-debutants`, `#module/python-thonny?parcours=python-debutants` et `prof.html#guide/python-thonny` (même forme pour les autres identifiants, documentés dans la roadmap). Tests ciblés : `node --test tests/python.test.cjs tests/pedagogy.test.cjs` ; rendu Chrome : `node tests/python-browser.cjs`.
 
-Un bloc `lesson` peut définir une `illustration` locale `{ src, alt, caption }`. Le schéma Thonny est un SVG original, statique et responsive ; les cours existants restent inchangés.
+Un bloc `lesson` peut définir une `illustration` locale `{ src, alt, caption }` ou un `codeDiagram` HTML/CSS statique et responsive. Le schéma éditeur/console du module Thonny utilise ce second format, sans exécution de code dans le site.
+
+### Identité visuelle élève
+
+La direction artistique low-poly est isolée dans `student-lowpoly.css`, chargée uniquement par `index.html` avec la classe `student-lowpoly`. Les couleurs des parcours et les formes pédagogiques Scratch sont conservées. Les styles historiques restent intacts et `visual-trial.css` est conservé comme référence des essais, sans être chargé. L’espace professeur ne reçoit pas la nouvelle feuille de style. Voir [les principes visuels](docs/direction-visuelle.md).
 
 Le catalogue se trouve dans `lesson-data.js` :
 

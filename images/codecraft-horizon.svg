@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420">
+  <title>Horizon crépusculaire original</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#403263"/>
+      <stop offset=".42" stop-color="#8870a3"/>
+      <stop offset=".78" stop-color="#cba4bc"/>
+      <stop offset="1" stop-color="#f1c79c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="65%" r="65%"><stop stop-color="#ffe0b1" stop-opacity=".5"/><stop offset="1" stop-color="#ffe0b1" stop-opacity="0"/></radialGradient>
+    <linearGradient id="mist" x2="0" y2="1"><stop stop-color="#e3bfd5" stop-opacity=".65"/><stop offset="1" stop-color="#9a7fbb" stop-opacity=".15"/></linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1600v420H0z"/>
+  <path fill="url(#glow)" d="M0 0h1600v420H0z"/>
+  <circle cx="1275" cy="185" r="35" fill="#ffe4b9" opacity=".8"/>
+  <g fill="#ead8e6" opacity=".28">
+    <path d="m770 111 52-10 24-13 40 5 27 15 62 8-105 8z"/>
+    <path d="m1050 70 65-12 31-16 47 7 36 17 82 13-116 9z"/>
+    <path d="m1390 128 46-9 29-17 40 8 26 15 69 8v9l-97 3z"/>
+  </g>
+  <path d="M620 420 780 302 863 312 968 194 1001 170 1090 287 1163 263 1240 289 1390 150 1440 197 1500 286 1600 242V420Z" fill="#b19fc5"/>
+  <path d="m863 312 105-118 33-24-27 117zm377-23 150-139-32 122 82-75z" fill="#d7bfd6"/>
+  <path d="M660 420 855 345 940 361 1090 287 1200 339 1360 272 1450 321 1600 292V420Z" fill="url(#mist)"/>
+  <path d="M745 420 920 344 1020 379 1145 236 1180 248 1254 350 1350 329 1457 259 1510 310 1600 300V420Z" fill="#756b98"/>
+  <path d="m1020 379 125-143-22 151zm330-50 107-70-17 80z" fill="#9d8bb5"/>
+  <path d="m1145 236 35 12 74 102-131 37zm312 23 53 51-70 29z" fill="#5d527f"/>
+  <path d="M1050 420 1220 387 1310 403 1420 352 1480 360 1600 326V420Z" fill="#3e5965"/>
+  <path d="m1310 403 110-51 31 47zm170-43 120-34-71 79z" fill="#607785"/>
+</svg>

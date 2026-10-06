@@ -1,0 +1,188 @@
+/* Identité élève uniquement. Les feuilles historiques et l'espace prof restent intacts.
+   Formes originales : aucune texture, police ou ressource de jeu externe. */
+body.student-lowpoly {
+  --ink: #302d35;
+  --muted: #68616d;
+  --paper: #fffdf7;
+  --canvas: #eee9df;
+  --line: #c2b9c7;
+  --radius: 2px;
+  --route: #72508d;
+  --route-dark: #49305e;
+  --route-soft: #eee6f5;
+  background: linear-gradient(150deg, #e7deec 0, #eee9df 32rem, #f3efe6 80rem);
+  background-attachment: fixed;
+}
+body.student-lowpoly[data-route="fondations"] { --route: #3f69c6; --route-dark: #29498f; --route-soft: #e4ebfb; }
+body.student-lowpoly[data-route="debutants"] { --route: #4f8045; --route-dark: #355d31; --route-soft: #e4efdd; }
+body.student-lowpoly[data-route="avances"] { --route: #7653a5; --route-dark: #543879; --route-soft: #eee5f7; }
+body.student-lowpoly[data-route="rattrapage"] { --route: #b7652c; --route-dark: #82451e; --route-soft: #f7e6d6; }
+body.student-lowpoly[data-domain="jeux-video"] { --route: #a55d27; --route-dark: #75421f; --route-soft: #f7e6d6; }
+body.student-lowpoly[data-domain="python"] { --route: #3f69c6; --route-dark: #29498f; --route-soft: #e4ebfb; }
+body.student-lowpoly[data-domain="web"]:not([data-route]) { --route: #4f8045; --route-dark: #355d31; --route-soft: #e4efdd; }
+body.student-lowpoly[data-domain="jeux-video"] .route-card { --card-accent: var(--route); }
+
+/* L'accueil a sa propre identité ; les univers restent distincts. */
+body.student-lowpoly.student-home {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 85% 0, #f1dacb 0, transparent 45rem), linear-gradient(155deg, #e1d9eb 0, #eee9df 32rem, #f3efe6 70rem);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body.student-lowpoly .home-header {
+  min-height: 220px; gap: 18px; padding: 26px 38px;
+  border: 0; border-bottom: 4px solid #756385; box-shadow: none;
+  background-image: linear-gradient(90deg, #36294dc4 0, #36294d70 42%, transparent 72%), url('images/codecraft-horizon.svg');
+  background-size: cover; background-position: center;
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+}
+body.student-lowpoly .home-header::after { display: none; }
+body.student-lowpoly .home-logo { width: 86px; height: 86px; align-self: center; }
+body.student-lowpoly .home-header__copy { max-width: 34rem; }
+body.student-lowpoly .home-header .brand { color: #fff7e6; font-size: clamp(2.5rem, 5vw, 3.5rem); letter-spacing: -.045em; text-shadow: 0 2px 0 #49375d; }
+body.student-lowpoly .home-header .brand:focus-visible { outline: 3px solid #f6d996; outline-offset: 5px; }
+body.student-lowpoly .home-header .home-eyebrow { color: #f2d5b3; }
+body.student-lowpoly .home-header .home-intro { color: #f3e7ef; }
+body.student-lowpoly .brand { color: #412b57; text-shadow: none; }
+body.student-lowpoly .home-eyebrow { color: #765b89; }
+body.student-lowpoly .home-choice { color: #51425e; }
+body.student-lowpoly .page-header--compact .brand { border: 0; background: none; box-shadow: none; padding: .25rem 0; color: #49375d; letter-spacing: -.045em; text-shadow: 0 1px 0 #c9bfcf; }
+body.student-lowpoly .page-header--compact .brand:focus-visible { outline: 2px solid var(--route); outline-offset: 5px; }
+body.student-lowpoly .domain-banner {
+  display: flex; align-items: center; min-height: 140px; padding: 24px 30px;
+  color: #fff7e6; font-size: clamp(1.9rem, 4vw, 2.5rem); text-shadow: 0 2px 0 #302d354d;
+  background-image: linear-gradient(90deg, #203453b3, #20345330 38%, transparent 72%), url('images/banner-python.svg');
+  background-size: cover; background-position: center; background-repeat: no-repeat; background-color: var(--route-dark);
+  border-bottom: 4px solid var(--route-dark);
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+}
+body.student-lowpoly[data-domain="jeux-video"] .domain-banner { background-image: linear-gradient(90deg, #613f55b3, #613f5530 38%, transparent 72%), url('images/banner-game.svg'); }
+body.student-lowpoly[data-domain="web"] .domain-banner { background-image: linear-gradient(90deg, #284e49b3, #284e4930 38%, transparent 72%), url('images/banner-web.svg'); }
+body.student-lowpoly .home-domain--game { --card-accent: #a55d27; }
+body.student-lowpoly .home-domain--web { --card-accent: #4f8045; }
+body.student-lowpoly .home-domain--python { --card-accent: #3f69c6; }
+
+/* Cartes de bibliothèque : facettes limitées aux bords, petites gemmes décoratives. */
+body.student-lowpoly .route-card {
+  position: relative; border: 0; border-bottom: 5px solid color-mix(in srgb, var(--card-accent) 45%, #d8d0dd);
+  padding: 25px 28px; border-radius: 0; box-shadow: none; transform: none; transition: none;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--card-accent) 25%, white) 0 22px, var(--paper) 22px calc(100% - 22px), color-mix(in srgb, var(--card-accent) 16%, white) calc(100% - 22px));
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+}
+body.student-lowpoly .route-card:hover { background-color: var(--route-soft); box-shadow: inset 0 0 0 2px var(--card-accent); transform: none; }
+body.student-lowpoly .route-card:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #78531e; }
+body.student-lowpoly .module-list .route-card { --card-accent: var(--route); }
+body.student-lowpoly .route-card-title { padding-right: 1.3rem; color: color-mix(in srgb, var(--card-accent) 65%, #25242c); }
+body.student-lowpoly .route-card::after {
+  content: ''; position: absolute; right: 17px; top: 16px; width: 18px; height: 17px;
+  background: conic-gradient(from 0deg at 50% 35%, color-mix(in srgb, var(--card-accent) 25%, white) 0deg 65deg, var(--card-accent) 65deg 140deg, color-mix(in srgb, var(--card-accent) 70%, black) 140deg 220deg, var(--card-accent) 220deg 295deg, color-mix(in srgb, var(--card-accent) 40%, white) 295deg);
+  clip-path: polygon(24% 0, 76% 0, 100% 35%, 50% 100%, 0 35%);
+}
+body.student-lowpoly .home-domain__top { padding-right: 1.3rem; }
+body.student-lowpoly .home-domain__symbol { border: 0; border-bottom: 4px solid color-mix(in srgb, var(--card-accent) 65%, black); background: color-mix(in srgb, var(--card-accent) 14%, white); color: var(--card-accent); box-shadow: none; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+body.student-lowpoly .home-domain--game .home-domain__symbol::after { background: var(--card-accent); box-shadow: -8px 8px 0 var(--card-accent); }
+body.student-lowpoly .home-domain__action { border-top: 1px solid var(--line); }
+/* Portes vers les univers : paysage compact, contenu sur fond clair. */
+body.student-lowpoly .home-domain { padding: 0 0 24px; background: var(--paper); --sky-top: #253b68; --sky-bottom: #9bb9d7; --ridge: #7893bb; --peak: #415d8c; --near: #31446c; }
+body.student-lowpoly .home-domain--game { --sky-top: #80506a; --sky-bottom: #edbd8b; --ridge: #d89b84; --peak: #ae735f; --near: #765269; }
+body.student-lowpoly .home-domain--web { --sky-top: #386967; --sky-bottom: #bdd7b2; --ridge: #8bb5a7; --peak: #5c9186; --near: #37695f; }
+body.student-lowpoly .home-domain::after { display: none; }
+body.student-lowpoly .home-domain:hover,
+body.student-lowpoly .home-domain:focus-visible {
+  background-color: color-mix(in srgb, var(--card-accent) 7%, var(--paper));
+  box-shadow: inset 0 0 0 2px var(--card-accent);
+}
+body.student-lowpoly .home-domain:focus-visible { box-shadow: inset 0 0 0 4px var(--card-accent); }
+body.student-lowpoly .home-domain__top { position: relative; display: block; height: 108px; width: 100%; margin: 0 0 22px; padding: 0; overflow: hidden; background: linear-gradient(160deg, var(--sky-top), var(--sky-bottom)); }
+body.student-lowpoly .home-domain__scene { display: block; width: 100%; height: 108px; object-fit: cover; }
+body.student-lowpoly .home-domain__pictogram { position: absolute; top: 12px; right: 14px; width: 40px; height: 30px; }
+body.student-lowpoly .home-domain__sun { position: absolute; width: 25px; height: 25px; left: 21%; top: 16px; border-radius: 50%; background: #fff0cc; opacity: .8; }
+body.student-lowpoly .home-domain__symbol { position: absolute; z-index: 1; top: 30px; right: 28px; width: auto; height: auto; padding: 0; border: 0; background: none; clip-path: none; color: #fff6dc; font-size: 2rem; text-shadow: 1px 2px 0 var(--sky-top); }
+body.student-lowpoly .home-domain--game .home-domain__symbol { width: 65px; height: 37px; top: 32px; padding-left: 10px; justify-content: flex-start; background: #fff0da; color: #80506a; text-shadow: none; clip-path: polygon(15% 0, 85% 0, 100% 100%, 78% 100%, 65% 72%, 35% 72%, 22% 100%, 0 100%); }
+body.student-lowpoly .home-domain--game .home-domain__symbol::after { top: 10px; right: 12px; background: #80506a; box-shadow: -8px 8px 0 #80506a; }
+body.student-lowpoly .home-domain .route-card-title, body.student-lowpoly .home-domain .route-card-description, body.student-lowpoly .home-domain__tag, body.student-lowpoly .home-domain__action { margin-left: 26px; margin-right: 26px; }
+body.student-lowpoly .home-domain__tag { margin-top: 6px; font-size: .8rem; font-weight: 600; letter-spacing: .03em; }
+body.student-lowpoly .home-domain__action { width: calc(100% - 52px); }
+@media (min-width: 1000px) {
+  body.student-lowpoly .home-domains { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+body.student-lowpoly .module-list { gap: 16px; }
+
+/* Hero compact et boutons taillés : couleurs du parcours, pas violet partout. */
+body.student-lowpoly .lesson-intro {
+  border: 0; border-bottom: 6px solid var(--route-dark); border-radius: 0; box-shadow: none;
+  background: linear-gradient(135deg, var(--route) 0 32px, color-mix(in srgb, var(--route-dark) 65%, #25262d) 32px calc(100% - 32px), var(--route-dark) calc(100% - 32px));
+  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
+}
+body.student-lowpoly .lesson-intro::after { display: none; }
+body.student-lowpoly .lesson-title { max-width: 100%; text-shadow: none; line-height: 1.12; }
+body.student-lowpoly[data-route] .lesson-intro .objective,
+body.student-lowpoly[data-route] .lesson-intro > .button { grid-row: 3; }
+body.student-lowpoly .button { border: 0; border-bottom: 4px solid var(--line); border-radius: 0; box-shadow: none; clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px); }
+body.student-lowpoly .button--primary {
+  border-bottom-color: var(--route-dark);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--route) 70%, white) 0 12px, var(--route) 12px calc(100% - 12px), var(--route-dark) calc(100% - 12px));
+}
+body.student-lowpoly .button--primary:hover { background: var(--route-dark); }
+body.student-lowpoly .button--secondary {
+  border-bottom-color: color-mix(in srgb, var(--route) 30%, #c2b9c7);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--route) 18%, white) 0 12px, #fffcf6 12px calc(100% - 12px), var(--route-soft) calc(100% - 12px));
+}
+body.student-lowpoly .button:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #f2c75c; }
+
+/* Lecture : pierre claire, encadrements légers, aucune texture derrière le texte. */
+body.student-lowpoly .content-card,
+body.student-lowpoly .callout,
+body.student-lowpoly .support-card {
+  border: 1px solid var(--line); border-left: 3px solid var(--route); border-radius: 2px;
+  background: linear-gradient(135deg, var(--route-soft) 0 12px, var(--paper) 12px);
+  box-shadow: 0 3px 0 #d7d0d7;
+}
+body.student-lowpoly .callout--neutral { background: #f2f1f6; }
+body.student-lowpoly .callout--stop { border-color: #b78c5b; border-left-color: #a66a28; background: #fff3df; }
+body.student-lowpoly .support-card--stuck { background: #fff2e1; }
+body.student-lowpoly .support-card--done { background: #eef4e7; }
+body.student-lowpoly .support-card .section-title::before { display: none; }
+body.student-lowpoly .task-item, body.student-lowpoly .check-item { border-top-width: 1px; border-top-color: #ded6de; }
+body.student-lowpoly .hint { border: 0; border-left: 2px solid var(--route); border-radius: 0; background: transparent; }
+body.student-lowpoly .hint > summary { min-height: 44px; padding: .65rem .8rem; font-size: .95rem; font-weight: 600; }
+body.student-lowpoly .hint[open], body.student-lowpoly .hint > summary:hover { background: var(--route-soft); }
+body.student-lowpoly .syntax { border-width: 1px; }
+body.student-lowpoly .code-block { border: 0; border-bottom: 4px solid var(--route-dark); border-radius: 2px; background: color-mix(in srgb, var(--route-dark) 25%, #25262d); }
+body.student-lowpoly .disclosure-body .content-card { background: var(--paper); border: 0; box-shadow: none; }
+body.student-lowpoly .scratch-script, body.student-lowpoly .scratch-scripts { border: 1px solid var(--line); background: color-mix(in srgb, var(--route) 4%, var(--paper)); border-radius: 2px; }
+/* Les couleurs et silhouettes pédagogiques des vrais blocs Scratch sont conservées. */
+
+/* Schéma code/console : même géométrie que l'essai, palette propre au parcours. */
+body.student-lowpoly .code-diagram__editor, body.student-lowpoly .code-diagram__console {
+  border: 0; border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2); border-radius: 0; box-shadow: none;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+}
+body.student-lowpoly .code-diagram__editor { background: color-mix(in srgb, var(--route-dark) 25%, #25212e); }
+body.student-lowpoly .code-diagram__editor .code-diagram__header { padding: .8rem 1.15rem; background: linear-gradient(135deg, var(--route) 0 24px, var(--route-dark) 24px calc(100% - 24px), color-mix(in srgb, var(--route-dark) 80%, black) calc(100% - 24px)); border-bottom: 1px solid color-mix(in srgb, var(--route) 65%, white); }
+body.student-lowpoly .code-diagram__file { border-color: color-mix(in srgb, var(--route) 50%, white); background: color-mix(in srgb, var(--route-dark) 60%, #25212e); }
+body.student-lowpoly .code-diagram__console { background: #fffcf7; }
+body.student-lowpoly .code-diagram__console .code-diagram__header { color: var(--route-dark); border-bottom: 1px solid var(--line); background: linear-gradient(135deg, color-mix(in srgb, var(--route) 22%, white) 0 24px, var(--route-soft) 24px calc(100% - 24px), color-mix(in srgb, var(--route) 28%, white) calc(100% - 24px)); }
+body.student-lowpoly .code-diagram__result { color: var(--ink); }
+body.student-lowpoly .pedagogy-choice { background: #fffcf6; border: 1px solid var(--line); }
+body.student-lowpoly .pedagogy-choice--nextSteps { background: var(--route-soft); border-top: 4px solid var(--route); }
+body.student-lowpoly .pedagogy-choice--nextSteps a { display: block; padding: .75rem 1rem; color: white; border: 0; border-bottom: 4px solid var(--route-dark); box-shadow: none; background: linear-gradient(135deg, color-mix(in srgb, var(--route) 70%, white) 0 12px, var(--route) 12px calc(100% - 12px), var(--route-dark) calc(100% - 12px)); clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px); }
+body.student-lowpoly .pedagogy-choice--nextSteps a:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #f2c75c; }
+@media (max-width: 700px) {
+  body.student-lowpoly[data-route] .lesson-intro .objective,
+  body.student-lowpoly[data-route] .lesson-intro > .button { grid-row: auto; }
+  body.student-lowpoly .home-header { padding: 26px 22px; min-height: 220px; gap: 16px; }
+  body.student-lowpoly .home-logo { width: 64px; height: 64px; }
+  body.student-lowpoly .route-card { padding: 22px; }
+  body.student-lowpoly .code-diagram__header { gap: .65rem; }
+}
+@media (max-width: 480px) {
+  body.student-lowpoly .home-header { flex-direction: row; align-items: center; }
+  body.student-lowpoly .home-logo { width: 44px; height: 44px; }
+  body.student-lowpoly .home-header .brand { font-size: clamp(1.9rem, 9vw, 2.5rem); }
+  body.student-lowpoly .home-header .home-eyebrow { font-size: .7rem; }
+}
+@media print {
+  body.student-lowpoly { background: white; }
+  body.student-lowpoly .content-card { box-shadow: none; }
+}

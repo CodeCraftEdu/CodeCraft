@@ -1,5 +1,7 @@
 # Python — roadmap adaptative et premier lot
 
+La DA low-poly est désormais appliquée à l’interface élève via `student-lowpoly.css` ; le sélecteur et l’aperçu exploratoires ont été retirés. Les notes d’essais ci-dessous restent l’historique des choix visuels. La référence actuelle est [la direction visuelle](direction-visuelle.md).
+
 ## Décisions
 
 Parcours générique pour un débutant complet, sans prérequis Scratch, Web ou mathématiques avancées. Thonny sur ordinateur est l’environnement principal ; installation accompagnée si nécessaire. CodeCraft reste un support statique, pas un interpréteur Python. Aucun compte ou package supplémentaire requis pour le premier lot.
