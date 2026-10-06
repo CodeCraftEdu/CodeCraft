@@ -28,6 +28,20 @@ Les fichiers `styles.css` et `pedagogy.css` de référence restent inchangés. P
 
 `visual-trial.css` reste disponible comme référence, mais n’est plus chargé. Le sélecteur d’essai et la carte illustrative en doublon ont été retirés de la page Thonny : seules les cartes réelles de la bibliothèque et les liens utiles restent affichés.
 
+## Modèle commun des leçons
+
+Le modèle validé sur « Poser une question » est généralisé aux 55 modules élèves avec `data-lesson-layout="standard"`. Le marqueur est retiré lors du retour à une bibliothèque. Les pages de domaine, l’accueil et les guides professeur conservent leur présentation.
+
+- Une ligne de navigation réunit CodeCraft et le fil d’Ariane complet, leçon actuelle comprise ; elle se répartit sur deux lignes sur petit écran.
+- Le bandeau compact utilise un fond clair et un fondu continu vers le paysage du domaine. Python garde ses montagnes bleues, Scratch ses îlots ambre ; Web utilise ses vallées, teintées selon le parcours choisi : bleu, vert, violet ou orange.
+- La préparation réunit les consignes existantes et les attentes des prérequis, sans deuxième encart ni note administrative répétée. Les liens d’outils restent secondaires : Thonny uniquement dans la première leçon, Scratch et CodePen conservés.
+- Les cartes de lecture ont une bordure basse discrète ; les activités gardent un cadre fin et une petite facette de titre. Exemples, indices, cases, ressources et couleurs des blocs Scratch restent inchangés.
+- « Les essentiels » est visible sans dépliage et reprend les critères propres au module. Aucun critère n’est ajouté aux anciens modules Web qui n’en possèdent pas : leur enrichissement relève d’une revue pédagogique séparée.
+- Les orientations restent dans le catalogue et les guides professeur ; les listes de liens redondants ne sont plus rendues en fin de leçon élève. Les aides et bonus spécifiques au contenu sont conservés.
+- La fin affiche uniquement les voisins réels du parcours, avec des boutons de même hauteur. En accès direct, les voisins ne sont déduits que si le module appartient à un seul parcours. Un contexte invalide est ignoré ; les modules partagés ne reçoivent pas une suite arbitraire. Aucun bouton Accueil ni lien intermédiaire « Voir le parcours » n’est ajouté.
+
 ## Vérifications
+
+Le harnais Chrome inclut tous les modules et leurs contextes de parcours, les accès directs et un contexte incompatible. Il vérifie les critères affichés, les liens précédent/suivant, le paysage, la palette, les indices/cases, les ressources et l’absence de débordement. Des vues mobiles complètent les vues desktop. Les contrôles des guides professeur restent distincts.
 
 `node tests/python-browser.cjs` contrôle les pages Python, des vues Web et Scratch, les couleurs des parcours, les anciens hash, le skip link, les cases et indices ainsi que le débordement desktop/mobile. `node --test tests/python.test.cjs tests/pedagogy.test.cjs` contrôle les contenus et références pédagogiques. Le test vérifie aussi que la feuille low-poly n’est pas chargée dans les guides professeur.

@@ -319,6 +319,8 @@
 
   function createBlock(block, routeId) {
     const result = renderBlock(block, routeId);
+    if (block.type === 'lesson') result.classList.add('lesson-card--reading');
+    if (block.type === 'tasks' || block.type === 'checklist') result.classList.add('lesson-card--practice');
     if (block.id) { result.dataset.activityId = block.id; result.tabIndex = -1; }
     return result;
   }
@@ -348,6 +350,7 @@
   const own = (collection, id) => Object.prototype.hasOwnProperty.call(collection, id) ? collection[id] : null;
 
   function start(title, theme, compact = true, domainId = null) {
+    delete document.body.dataset.lessonLayout;
     document.title = title + ' — ' + data.site.name;
     if (theme) document.body.dataset.route = theme;
     else delete document.body.dataset.route;
@@ -482,38 +485,103 @@
     const candidate = own(data.pathways, requestedPathway);
     const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
     start(item.title, pathway ? pathway.theme : item.theme, true, item.domainId);
+    document.body.dataset.lessonLayout = 'standard';
     const article = element('article', 'lesson-page');
     if (item.presentation === 'workshop') article.classList.add('lesson-page--workshop');
     const back = element('nav', 'library-links');
-    back.setAttribute('aria-label', 'Retour à la bibliothèque');
-    back.append(link(pathway ? '← ' + pathway.title : '← Retour aux parcours', pathway ? '#parcours/' + requestedPathway : domainUrl(item.domainId)));
-    article.append(back, intro(item.title, item.objective, true, item.tool));
-    if (!item.prerequisitesInContent) article.append(pedagogy.prerequisites(item));
+    back.setAttribute('aria-label', 'Fil d’Ariane');
+    {
+      back.classList.add('lesson-breadcrumbs');
+      const trail = element('ol', 'lesson-breadcrumbs__list');
+      const domain = element('li');
+      domain.append(link(data.domains[item.domainId].title, domainUrl(item.domainId), 'lesson-text-link'));
+      trail.append(domain);
+      if (pathway) {
+        const parent = element('li');
+        parent.append(link(pathway.title, '#parcours/' + requestedPathway, 'lesson-text-link'));
+        trail.append(parent);
+      }
+      const current = element('li', 'lesson-breadcrumbs__current', item.title);
+      current.setAttribute('aria-current', 'page');
+      trail.append(current);
+      back.append(trail);
+    }
+    main.querySelector('.page-header--compact').append(back);
+    article.append(intro(item.title, item.objective));
+    // Le téléchargement de Thonny n'est utile qu'à l'installation. Scratch et
+    // CodePen restent accessibles là où ils constituent l'environnement de travail.
+    const showTool = item.domainId === 'jeux-video' || id === 'python-thonny' ||
+      item.domainId === 'web';
+    const preparationBlock = item.blocks.find(block => block.type === 'callout' &&
+      (block.id === 'preparer' || block.title.startsWith('Avant de commencer')));
+    let preparation = null;
+    if (preparationBlock) {
+      preparation = createBlock(preparationBlock, id);
+      preparation.classList.add('lesson-preparation');
+      if (!item.prerequisitesInContent) {
+        const prerequisites = pedagogy.prerequisites(item);
+        const list = prerequisites.querySelector('ul');
+        if (list?.childElementCount) {
+          [...list.children].forEach((row, index) => { row.textContent = item.prerequisiteSkills[index].expectation; });
+          preparation.append(list);
+        }
+      }
+      article.append(preparation);
+    } else if (!item.prerequisitesInContent) {
+      preparation = pedagogy.prerequisites(item);
+      preparation.classList.add('lesson-preparation');
+      preparation.querySelector('.section-title').textContent = item.prerequisiteSkills?.length === 0 ? 'Pour travailler' : 'Avant de commencer';
+      preparation.querySelector('.section-intro').remove();
+      const list = preparation.querySelector('ul');
+      if (list) {
+        [...list.children].forEach((row, index) => { row.textContent = item.prerequisiteSkills[index].expectation; });
+        if (!list.childElementCount) list.remove();
+      }
+      article.append(preparation);
+    }
+    const toolLink = showTool ? link(item.tool?.label || data.site.codepenLabel,
+      item.tool?.url || data.site.codepenUrl, 'lesson-text-link lesson-tool-link') : null;
+    if (toolLink) { toolLink.append(' ↗'); toolLink.target = '_blank'; toolLink.rel = 'noopener noreferrer'; }
     const scratchProject = pedagogy.scratchProject(item);
     if (scratchProject) article.append(scratchProject);
-    item.blocks.forEach(block => article.append(createBlock(block, id)));
-    const criteria = pedagogy.criteria(item);
-    const orientations = pedagogy.orientations(item, pathway ? requestedPathway : null);
-    if (criteria) article.append(criteria);
-    if (orientations) article.append(orientations);
+    item.blocks.forEach(block => {
+      if (block === preparationBlock) return;
+      const rendered = createBlock(block, id);
+      article.append(rendered);
+    });
+    if (toolLink) {
+      if (preparation) preparation.append(toolLink);
+      else article.querySelector('.lesson-intro').after(toolLink);
+    }
+    let criteria;
+    if (item.masteryCriteria?.length) {
+      criteria = element('section', 'lesson-checkpoint');
+      criteria.setAttribute('aria-labelledby', 'lesson-checkpoint-title');
+      criteria.dataset.activityId = 'bilan';
+      criteria.tabIndex = -1;
+      const heading = element('h2', 'lesson-checkpoint__title', 'Les essentiels');
+      heading.id = 'lesson-checkpoint-title';
+      const points = element('ul', 'lesson-checkpoint__list');
+      item.masteryCriteria.forEach(text => points.append(element('li', '', text)));
+      criteria.append(heading, points);
+    }
+    // Les orientations restent dans les données et le guide professeur.
     const specificSupport = support(item);
     if (specificSupport) article.append(specificSupport);
-    const navigation = element('nav', 'module-navigation');
+    if (criteria) article.append(criteria);
+    const navigation = element('nav', 'module-navigation module-navigation--lesson');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
-    if (pathway) {
-      const position = pathway.moduleIds.indexOf(id);
-      const previous = pathway.moduleIds[position-1];
-      const next = pathway.moduleIds[position+1];
-      if (previous) navigation.append(link('← ' + data.modules[previous].title, moduleUrl(previous, requestedPathway)));
-      const nextAlreadyShown = item.presentation === 'workshop' && item.nextSteps?.some(ref => ref.moduleId === next && !ref.blockId && !ref.itemId);
-      if (next && !nextAlreadyShown) navigation.append(link(data.modules[next].title + ' →', moduleUrl(next, requestedPathway), 'button button--primary'));
-      if (!next) navigation.append(link('Retour au parcours ' + pathway.title, '#parcours/' + requestedPathway));
-    } else {
-      Object.entries(data.pathways).filter(([,value]) => value.moduleIds.includes(id)).forEach(([pathwayId,value]) => {
-        navigation.append(link('Dans le parcours ' + value.title, moduleUrl(id,pathwayId)));
-      });
+    const containing = Object.values(data.pathways).filter(value => value.domainId === item.domainId && value.moduleIds.includes(id));
+    const sequence = pathway || (containing.length === 1 ? containing[0] : null);
+    if (sequence) {
+      const position = sequence.moduleIds.indexOf(id);
+      const previous = sequence.moduleIds[position-1];
+      const next = sequence.moduleIds[position+1];
+      const context = pathway ? requestedPathway : null;
+      if (previous) navigation.append(link('←\u00a0' + data.modules[previous].title, moduleUrl(previous, context), 'button button--secondary module-navigation__previous'));
+      if (next) navigation.append(link(data.modules[next].title + '\u00a0→', moduleUrl(next, context), 'button button--primary module-navigation__next'));
     }
-    article.append(navigation);
+    if (navigation.childElementCount) article.append(navigation);
     main.append(article);
   }
 

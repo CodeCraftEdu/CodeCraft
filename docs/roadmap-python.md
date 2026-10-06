@@ -42,9 +42,39 @@ La revue a explicité l’enregistrement avant fermeture, les guillemets droits,
 
 Routes élèves : `index.html#module/<id>?parcours=python-debutants`. Accès direct sans contexte : `index.html#module/<id>`. Guides : `prof.html#guide/<id>`. Le lien Thonny ouvre le site officiel, pas l’application locale. Les quatre compétences sont proposées automatiquement au suivi manuel existant, sans modifier le format privé ni ajouter un mapping externe.
 
-## Suite proposée — non implémentée
+## Deuxième lot réalisé
 
-Socle commun, modules 6 à 20 : nombres et calculs → comprendre et corriger une erreur → faire un choix → plusieurs possibilités → projet aventure à choix → for/range → while → compteurs et scores → hasard/import → projet nombre mystère → listes → texte → fonctions et paramètres → return et variables locales → projet quiz personnalisable.
+La [spécification du lot 2](specification-python-lot-2.md) a été revue avant réalisation. Trois modules originaux et leurs guides prolongent le parcours existant, sans changement de schéma ni validation automatique :
+
+| Module | Compétences travaillées |
+| --- | --- |
+| Nombres et calculs (`python-calculs`) | `python.numbers`, `python.conversion` |
+| Comprendre et corriger une erreur (`python-erreurs`) | `python.debugging` |
+| Faire un choix (`python-conditions`) | `python.conditions` |
+
+Les calculs fixes précèdent la conversion de la réponse. Les entrées numériques attendent un entier ; le modèle ne protège pas des mauvaises saisies. Le diagnostic distingue exception et résultat faux. Le choix reste limité à if/else avec tests en dessous, au seuil et au-dessus. Aucun elif, boucle, fonction ni gestion d'exception cachée. Chaque activité conserve les fichiers précédents et propose un transfert avec explication et modification.
+
+Le parcours compte désormais huit modules publiés et huit compétences évaluables manuellement. L'essai réel dans Thonny reste nécessaire.
+
+## Troisième lot réalisé
+
+La [spécification du lot 3](specification-python-lot-3.md) couvre les modules 9 et 10 : Plusieurs possibilités (`python-elif`, compétence `python.branches`) et Une aventure à choix (`python-aventure`, projet de réinvestissement). Les guides, reprises et bonus sont intégrés au parcours existant. Une chaîne exclusive est comparée aux if indépendants ; le projet utilise une égalité textuelle exacte, sans boucle ni condition imbriquée. Le parcours compte désormais dix modules et neuf compétences évaluables manuellement.
+
+## Quatrième lot réalisé
+
+La [spécification du lot 4](specification-python-lot-4.md) est ajustée après revue et réalisée : Répéter un nombre de fois (`python-for`), Répéter tant que (`python-while`), Compter et calculer un score (`python-compteurs`). Les trois guides, reprises et compétences distinctes sont intégrés. Le parcours compte treize modules et douze compétences évaluables manuellement. Le score central n'exige ni while ni conversion ; sa variante avec continuation reste facultative.
+
+## Cinquième lot réalisé
+
+La [spécification du lot 5](specification-python-lot-5.md) est revue, ajustée et réalisée : Tirer un nombre au hasard (`python-hasard`), puis Trouver le nombre mystère (`python-nombre-mystere`). Secret fixe pour les tests, tirage unique par partie, != expliqué localement et compteur incluant la première proposition. Les deux guides, reprises et transitions sont intégrés ; le catalogue compte quinze modules et treize compétences Python évaluables manuellement. Aucun nouveau style ni changement du suivi privé.
+
+## Sixième lot réalisé
+
+La [spécification du lot 6](specification-python-lot-6.md) est revue, ajustée et réalisée : Regrouper des valeurs dans une liste (`python-listes`), puis Explorer et préparer du texte (`python-texte`). Les activités réutilisent les fichiers de découverte ; les variantes importantes sont conservées dans des copies. Le transfert sans lower conserve explicitement la variable comparée et strip. Les deux guides et compétences sont intégrés : dix-sept modules et quinze compétences Python évaluables manuellement. 43 tests Python/pédagogie et 9 vues navigateur ciblées réussis.
+
+## Suite proposée - non implémentée
+
+Socle commun restant, modules 18 à 20 : fonctions et paramètres → return et variables locales → projet quiz personnalisable. Revue du lot 6 réalisé avant de préparer cette suite. Le lot 5 réalisé a déjà été relu sans correction nécessaire identifiée.
 
 Le débogage commence dès les premiers modules ; son approfondissement n’est pas un prérequis caché. Avant de travailler les conversions, préciser les entrées attendues. Enseigner la gestion complète des mauvaises saisies ensuite, sans cacher try/except dans les premiers modèles.
 
@@ -60,8 +90,10 @@ Références techniques : [Thonny](https://thonny.org/), [print](https://docs.py
 
 ## Vérifications reproductibles
 
+La [revue pédagogique](revue-pedagogique-python.md) couvre les dix premiers modules : toutes les corrections validées sont appliquées. Le checkpoint transversal des transitions, critères et reprises est effectué : pas de rupture majeure identifiée et deux ajustements mineurs d'orientation appliqués. La spécification du lot 4 est revue, ajustée et implémentée ; la recette réelle dans Thonny reste à faire.
+
 `node --test tests/python.test.cjs tests/pedagogy.test.cjs` vérifie les références, prérequis, critères, sorties Python, erreurs intentionnelles et l’absence de progression automatique. Python doit être disponible, ou son exécutable indiqué dans `PYTHON_PATH`.
 
-`node tests/python-browser.cjs` contrôle Chrome headless : accueil, domaine, parcours, cinq modules, cinq guides, lien direct, précédent/suivant, illustration et débordement mobile. Les captures sont temporaires ; aucun fichier privé n’est ouvert. `CHROME_PATH` peut préciser l’exécutable.
+`node tests/python-browser.cjs` contrôle Chrome headless : accueil, domaines, parcours, dix-sept modules Python, dix-sept guides, lien direct, précédent/suivant, illustration et débordement mobile. Un argument filtre les vues par fragments séparés par `|` pour les contrôles ciblés. Les captures sont temporaires ; aucun fichier privé n’est ouvert. `CHROME_PATH` peut préciser l’exécutable.
 
 L’essai réel dans Thonny reste à effectuer : enregistrer/rouvrir un fichier, répondre dans la console et utiliser Stop/Restart. Les tests en ligne de commande ne valident pas les manipulations de l’application ni l’efficacité pédagogique en situation.

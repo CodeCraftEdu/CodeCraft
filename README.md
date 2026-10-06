@@ -20,9 +20,9 @@ L’espace professeur est disponible sur `prof.html`. Le conducteur initial rest
 
 ### Python — premier lot
 
-Le domaine **Python** propose **Premiers pas avec Python** (`python-debutants`) : Premiers pas avec Thonny → Afficher des messages → Variables et valeurs → Poser une question → Une conversation interactive. Ces cinq modules et leurs guides sont disponibles ; les modules suivants ne sont pas encore publiés. La [roadmap Python](docs/roadmap-python.md) distingue ce lot de la suite proposée.
+Le domaine **Python** propose **Premiers pas avec Python** (`python-debutants`) : Premiers pas avec Thonny → Afficher des messages → Variables et valeurs → Poser une question → Une conversation interactive → Nombres et calculs → Comprendre et corriger une erreur → Faire un choix → Plusieurs possibilités → Une aventure à choix → Répéter un nombre de fois → Répéter tant que → Compter et calculer un score → Tirer un nombre au hasard → Trouver le nombre mystère → Regrouper des valeurs dans une liste → Explorer et préparer du texte. Ces dix-sept modules et leurs guides sont disponibles ; les modules suivants ne sont pas encore publiés. La [roadmap Python](docs/roadmap-python.md) distingue les lots réalisés de la suite proposée.
 
-Les élèves écrivent dans l’application Thonny installée sur leur ordinateur. Le bouton vers Thonny ouvre son site officiel, pas l’application. Aucun compte, interpréteur intégré, dépendance du site ou package Python supplémentaire n’est requis pour ces activités. Les compétences `python.workspace`, `python.output`, `python.variables` et `python.input` rejoignent le catalogue public et le suivi manuel existant ; aucun référentiel externe n’est ajouté et aucune progression n’est déduite des cases.
+Les élèves écrivent dans l’application Thonny installée sur leur ordinateur. Le bouton vers Thonny ouvre son site officiel, pas l’application. Aucun compte, interpréteur intégré, dépendance du site ou package Python supplémentaire n’est requis pour ces activités. Les quinze compétences Python incluent désormais `python.for`, `python.while`, `python.accumulation`, `python.random`, `python.lists` et `python.text`, dans le catalogue public et le suivi manuel existant ; aucun référentiel externe n’est ajouté et aucune progression n’est déduite des cases.
 
 Accès : `#domaine/python`, `#parcours/python-debutants`, `#module/python-thonny?parcours=python-debutants` et `prof.html#guide/python-thonny` (même forme pour les autres identifiants, documentés dans la roadmap). Tests ciblés : `node --test tests/python.test.cjs tests/pedagogy.test.cjs` ; rendu Chrome : `node tests/python-browser.cjs`.
 
@@ -31,6 +31,8 @@ Un bloc `lesson` peut définir une `illustration` locale `{ src, alt, caption }`
 ### Identité visuelle élève
 
 La direction artistique low-poly est isolée dans `student-lowpoly.css`, chargée uniquement par `index.html` avec la classe `student-lowpoly`. Les couleurs des parcours et les formes pédagogiques Scratch sont conservées. Les styles historiques restent intacts et `visual-trial.css` est conservé comme référence des essais, sans être chargé. L’espace professeur ne reçoit pas la nouvelle feuille de style. Voir [les principes visuels](docs/direction-visuelle.md).
+
+Les 55 modules élèves partagent le modèle de leçon validé : navigation CodeCraft + fil d’Ariane complet, bandeau clair fondu vers le paysage du domaine, préparation regroupée, lecture allégée, activités distinguées et critères visibles dans « Les essentiels » lorsqu’ils existent. Les couleurs suivent le domaine et le parcours réellement choisi. La fin conserve seulement les voisins du parcours ; les orientations pédagogiques restent dans les guides professeur. Le lien Thonny est limité à l’installation, dans la première leçon.
 
 Le catalogue se trouve dans `lesson-data.js` :
 

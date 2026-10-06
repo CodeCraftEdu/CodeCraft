@@ -72,6 +72,17 @@ window.CODECRAFT_DATA = {
     "python.output": { "title": "Afficher des messages et expliquer leur ordre" },
     "python.variables": { "title": "Conserver et réutiliser des valeurs dans des variables" },
     "python.input": { "title": "Demander et utiliser une réponse textuelle" },
+    "python.numbers": { "title": "Calculer et conserver des valeurs numériques" },
+    "python.conversion": { "title": "Convertir une réponse attendue en entier" },
+    "python.debugging": { "title": "Diagnostiquer une erreur et vérifier sa correction" },
+    "python.conditions": { "title": "Construire et tester un choix à deux issues" },
+    "python.branches": { "title": "Ordonner et tester plusieurs issues avec elif" },
+    "python.for": { "title": "Prévoir et modifier une répétition avec for/range" },
+    "python.while": { "title": "Expliquer et actualiser une répétition conditionnelle" },
+    "python.accumulation": { "title": "Initialiser et actualiser un compteur ou un total" },
+    "python.random": { "title": "Importer random et distinguer tirage conservé et nouveaux appels" },
+    "python.lists": { "title": "Créer, consulter, parcourir et compléter une liste" },
+    "python.text": { "title": "Observer et transformer du texte selon une règle explicite" },
     "scratch.clones": { "title": "Créer et gérer des copies temporaires d’un personnage" },
     "scratch.time": { "title": "Mesurer et limiter le temps d’une partie" },
     "scratch.debugging": { "title": "Observer, expliquer et corriger une erreur dans un programme" },
@@ -198,18 +209,18 @@ window.CODECRAFT_DATA = {
           { "id": "modifier-message", "text": "Remplace Bonjour ! par un autre message. Enregistre avec Ctrl+S (Cmd+S sur Mac), puis exécute à nouveau.", "hint": "Modifie seulement le texte entre guillemets. Modifier le fichier n’exécute pas automatiquement le nouveau code." },
           { "id": "rouvrir-fichier", "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver bonjour.py et le relancer.", "hint": "Note le dossier choisi. Un onglet fermé n’efface pas un fichier enregistré. Ne ferme pas sans enregistrer tes modifications." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "À toi - retrouver ton programme", "intro": "Essaie d’abord sans modèle. Garde le fichier précédent.", "items": [
-          { "id": "retrouver-seul", "text": "Retrouve bonjour.py, change son message et relance-le.", "hint": "Ouvrir retrouve un fichier ; Exécuter lance ses instructions." },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - créer et retrouver un fichier", "intro": "Essaie sans démonstration. Garde bonjour.py : tu vas créer un autre fichier, pas le remplacer.", "items": [
+          { "id": "retrouver-seul", "text": "Crée accueil.py avec un message de ton choix, enregistre-le dans ton dossier et exécute-le. Ferme ensuite son onglet, rouvre le fichier et relance-le.", "hint": "Fichier → Nouveau, puis Enregistrer sous avec un autre nom. Après sauvegarde, Ouvrir retrouve le fichier ; Exécuter lance ses instructions." },
           { "id": "distinguer-zones", "text": "Montre où se trouve ton code et où apparaît son résultat. Explique ce qu’il faut faire après une modification.", "hint": "Éditeur → instructions ; console → résultat ; enregistrer puis exécuter." }
         ] },
         { "type": "tasks", "id": "bonus", "title": "Bonus - garder deux essais", "items": [
-          { "id": "deuxieme-fichier", "text": "Crée un deuxième fichier accueil.py avec un autre message. Ouvre ensuite chacun des deux fichiers pour vérifier que le premier existe encore.", "hint": "Utilise Fichier → Nouveau, puis Enregistrer sous avec un autre nom. Ne remplace pas bonjour.py." }
+          { "id": "deuxieme-fichier", "text": "Ouvre bonjour.py et accueil.py. Avant de lancer chacun, repère son nom dans l’onglet et prédis le message affiché. Modifie seulement accueil.py et vérifie que bonjour.py garde son message.", "hint": "Le fichier actif est celui dont l’onglet est sélectionné. Enregistre ta modification ; deux fichiers différents conservent deux programmes distincts." }
         ] }
       ],
-      "masteryCriteria": ["Distinguer le code dans l’éditeur du résultat dans la console.", "Modifier un message, enregistrer et relancer sans recopier toute la ligne.", "Retrouver un fichier enregistré ; distinguer l’aide à la manipulation de la compréhension."],
+      "masteryCriteria": ["Distinguer le code dans l’éditeur du résultat dans la console.", "Modifier un message, enregistrer et relancer sans recopier toute la ligne.", "Créer et nommer un nouveau fichier sans remplacer le précédent, puis l’enregistrer, le retrouver et le relancer ; distinguer les aides reçues de l’autonomie."],
       "consolidation": [{ "moduleId": "python-thonny", "blockId": "guide", "label": "Reprendre l’enregistrement et la réouverture" }],
       "bonusActivities": [{ "moduleId": "python-thonny", "blockId": "bonus", "label": "Conserver deux fichiers" }],
-      "nextSteps": [{ "moduleId": "python-affichage", "label": "Afficher des messages", "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Savoir lancer le fichier ouvert ; sinon reprendre l’exercice guidé Thonny." }] }],
+      "nextSteps": [{ "moduleId": "python-affichage", "label": "Afficher des messages", "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer, enregistrer et relancer un fichier sans remplacer le précédent ; sinon reprendre l’activité autonome Thonny." }] }],
       "teacherGuide": {
         "objective": "Installer des repères fiables avant d’évaluer du code. Aucun acquis en programmation n’est supposé.",
         "entryDiagnosis": ["Faire montrer où écrire et où lire, sans supposer que l’élève connaît ces zones.", "Observer les besoins d’aide au clavier, à la lecture et à l’enregistrement, séparément du raisonnement."],
@@ -219,33 +230,34 @@ window.CODECRAFT_DATA = {
         "example": { "target": { "moduleId": "python-thonny", "blockId": "exemple" }, "comments": ["Lire la ligne sans détailler toutes les notions : print affiche le texte. Ne pas faire saisir >>>.", "Faire choisir puis retrouver le dossier et le fichier ; fermer seulement après enregistrement.", "Montrer Arrêter / redémarrer sans imposer une boucle pour l’illustrer. Le schéma est générique ; pointer les contrôles réels de la version installée."] },
         "questions": [{ "question": "Où modifies-tu le programme ?", "answer": "Dans l’éditeur, pas dans le résultat affiché dans la console." }, { "question": "Le résultat change-t-il dès que tu modifies le code ?", "answer": "Non : il faut exécuter à nouveau. Enregistrer conserve la modification dans le fichier." }, { "question": "Comment retrouver le programme après fermeture ?", "answer": "Ouvrir le fichier .py dans le dossier où il a été enregistré." }],
         "accompaniedActivity": { "moduleId": "python-thonny", "blockId": "guide" }, "independentActivity": { "moduleId": "python-thonny", "blockId": "autonomie" },
-        "differentiation": ["Lire une consigne à la fois et accompagner le choix du dossier sans conclure que la notion Python est incomprise.", "Pour un élève à l’aise, demander de retrouver puis modifier le fichier sans démonstration ; proposer le deuxième fichier.", "Pas de temps imposé ; consolider la manipulation nécessaire avant d’ajouter plusieurs instructions."],
+        "differentiation": ["Lire une consigne à la fois et accompagner le choix du dossier sans conclure que la notion Python est incomprise.", "Demander de créer, nommer puis retrouver accueil.py sans démonstration ; relever séparément les aides au clavier et aux fichiers.", "Pour un élève à l’aise, comparer les deux onglets dans le bonus ; pas de temps imposé."],
         "commonErrors": [{ "symptom": "Le message n’apparaît pas ou seul >>> est visible.", "helps": ["Faire montrer les deux zones.", "Vérifier le fichier actif et le clic Exécuter.", "Comparer la ligne au modèle : guillemets droits et parenthèses.", "Accompagner une correction, relancer puis laisser l’élève modifier le message."] }, { "symptom": "Le fichier semble perdu.", "helps": ["Demander où il a été enregistré.", "Regarder Fichier → Ouvrir et le dossier choisi.", "Distinguer fermer un onglet, enregistrer et supprimer un fichier.", "Accompagner la réouverture puis faire refaire seul avec le deuxième fichier."] }],
         "notes": "Distinguer réussite autonome, avec modèle ou avec aide. Une installation ou un enregistrement accompagné ne prouve pas l’autonomie ; aucune case ne valide une compétence.",
-        "quickConductor": ["Repérer éditeur, console et commandes.", "Écrire, enregistrer, exécuter le premier message.", "Modifier puis relancer.", "Fermer après sauvegarde et retrouver le fichier.", "Choisir consolidation ou Afficher des messages selon les repères observés."],
-        "references": [{ "title": "Thonny — site officiel et fonctionnalités", "url": "https://thonny.org/" }]
+        "quickConductor": ["Repérer éditeur, console et commandes.", "Écrire, enregistrer, exécuter le premier message.", "Modifier puis retrouver le fichier sauvegardé.", "Faire créer, nommer et retrouver accueil.py sans démonstration ; comparer les onglets en bonus.", "Choisir consolidation ou Afficher des messages selon les repères observés."],
+        "references": [{ "title": "Thonny - site officiel et fonctionnalités", "url": "https://thonny.org/" }]
       }
     },
     "python-affichage": {
       "domainId": "python", "title": "Afficher des messages", "type": "lesson", "theme": "fondations",
       "objective": "Afficher plusieurs messages et prévoir leur ordre.",
+      "prerequisitesInContent": true,
       "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.output"],
       "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Ouvrir, enregistrer et exécuter un fichier dans Thonny. Sinon, reprendre Premiers pas avec Thonny." }],
       "blocks": [
-        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Ouvre l’application Thonny. Enregistre ton travail précédent, puis crée un nouveau fichier messages.py. Le bouton Site officiel de Thonny est une ressource, pas le lancement de l’application. Si tu hésites sur les zones ou les fichiers, reprends Premiers pas avec Thonny.", "moduleLink": { "moduleId": "python-thonny", "text": "Premiers pas avec Thonny" } },
-        { "type": "lesson", "id": "exemple", "title": "1 — Du texte, une instruction par ligne", "paragraphs": ["print affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.", "Python exécute ces instructions de haut en bas. Chaque print de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.", "Avant d’exécuter, annonce quelle phrase apparaîtra en premier."], "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")" },
-        { "type": "tasks", "id": "guide", "title": "Exercice guidé — trois messages", "items": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir créer, enregistrer et exécuter un fichier dans Thonny. Sinon, reprends Premiers pas avec Thonny. Enregistre ton travail précédent, puis crée messages.py sans remplacer les autres fichiers.", "moduleLink": { "moduleId": "python-thonny", "text": "Revoir les fichiers dans Thonny" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Du texte, une instruction par ligne", "paragraphs": ["print affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.", "Python exécute ces instructions de haut en bas. Chaque print de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.", "Avant d’exécuter, annonce quelle phrase apparaîtra en premier."], "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - trois messages", "items": [
           { "id": "afficher-modele", "text": "Écris et exécute les deux instructions du modèle dans messages.py.", "hint": "N’écris pas le résultat ni >>> dans l’éditeur. Utilise les guillemets droits du clavier, pas les guillemets courbes d’un traitement de texte." },
           { "id": "personnaliser-textes", "text": "Modifie les deux messages sans retirer leurs guillemets.", "hint": "Change seulement le texte à l’intérieur des guillemets." },
           { "id": "troisieme-instruction", "text": "Ajoute une troisième instruction pour afficher une phrase de fin.", "hint": "Une nouvelle ligne avec print, des parenthèses et du texte entre guillemets." },
           { "id": "inverser-ordre", "text": "Inverse les deux premières instructions. Prédis le résultat, puis exécute et explique la différence.", "hint": "Déplace les lignes entières ; changer les phrases n’est pas la même chose que changer l’ordre." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "À toi — une présentation sans modèle", "intro": "Enregistre messages.py. Crée presentation.py ; essaie sans ouvrir l’indice.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "À toi - une présentation sans modèle", "intro": "Enregistre messages.py. Crée presentation.py ; essaie sans ouvrir l’indice.", "items": [
           { "id": "presentation-personnelle", "text": "Affiche une présentation de trois lignes sur un personnage ou un sujet de ton choix, avec tes propres phrases.", "hint": "Chaque phrase peut avoir son propre print. Tu n’as pas besoin de variable ni de question pour ce module." },
           { "id": "prediction-personnelle", "text": "Explique l’ordre avant d’exécuter, puis déplace une instruction pour vérifier ta prédiction.", "hint": "Python suit ici les lignes de haut en bas." }
         ] },
-        { "type": "lesson", "id": "erreur", "title": "Pour consolider — une faute à repérer", "paragraphs": ["Cette ligne est volontairement incorrecte : il manque un guillemet droit. Une erreur indique que Python ne peut pas exécuter cette instruction telle quelle, pas que ton idée est mauvaise. Compare les paires de guillemets et de parenthèses, corrige puis relance.", "Une phrase différente de celle attendue n’est pas forcément une erreur Python : le programme peut fonctionner mais ne pas réaliser ta consigne."], "code": "print(\"Bonjour !)" },
-        { "type": "tasks", "id": "bonus", "title": "Bonus — un dessin en texte", "items": [{ "id": "dessin-texte", "text": "Avec plusieurs print, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.", "hint": "Chaque ligne du dessin est un texte entre guillemets. Évite les antislashs pour cet essai : aucune nouvelle notation n’est nécessaire." }] }
+        { "type": "lesson", "id": "erreur", "title": "Pour consolider - une faute à repérer", "paragraphs": ["Cette ligne est volontairement incorrecte : il manque un guillemet droit. Une erreur indique que Python ne peut pas exécuter cette instruction telle quelle, pas que ton idée est mauvaise. Compare les paires de guillemets et de parenthèses, corrige puis relance.", "Une phrase différente de celle attendue n’est pas forcément une erreur Python : le programme peut fonctionner mais ne pas réaliser ta consigne."], "code": "print(\"Bonjour !)" },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - un dessin en texte", "items": [{ "id": "dessin-texte", "text": "Avec plusieurs print, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.", "hint": "Chaque ligne du dessin est un texte entre guillemets. Évite les antislashs pour cet essai : aucune nouvelle notation n’est nécessaire." }] }
       ],
       "masteryCriteria": ["Produire plusieurs lignes personnelles sans recopier les phrases du modèle.", "Prédire et expliquer l’effet d’une inversion des instructions.", "Repérer un guillemet manquant et expliquer le rôle des guillemets et parenthèses."],
       "consolidation": [{ "moduleId": "python-affichage", "blockId": "erreur", "label": "Repérer une faute simple" }, { "moduleId": "python-thonny", "blockId": "guide", "label": "Reprendre les manipulations de Thonny" }],
@@ -264,30 +276,31 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{ "symptom": "SyntaxError après la saisie.", "helps": ["Faire lire la ligne signalée.", "Cibler guillemets droits et parenthèses.", "Comparer au modèle ou à la faute volontaire.", "Corriger un signe puis exécuter avant d’ajouter d’autres lignes."] }, { "symptom": "La présentation fonctionne mais l’ordre est inexpliqué.", "helps": ["Faire lire les résultats.", "Pointer la première instruction.", "Faire prédire un échange de deux lignes.", "Déplacer puis tester et demander une nouvelle prédiction sans aide."] }],
         "notes": "Noter séparément reproduction avec modèle, prédiction et création autonome. Une faute de clavier ne suffit pas à conclure à une incompréhension.",
         "quickConductor": ["Vérifier l’exécution dans l’éditeur.", "Expliquer print, guillemets et ordre.", "Personnaliser puis inverser les messages.", "Faire créer trois phrases sans modèle.", "Réparer une faute ; proposer reprise ou variables."],
-        "references": [{ "title": "Python — print", "url": "https://docs.python.org/fr/3/library/functions.html#print" }]
+        "references": [{ "title": "Python - print", "url": "https://docs.python.org/fr/3/library/functions.html#print" }]
       }
     },
     "python-variables": {
       "domainId": "python", "title": "Variables et valeurs", "type": "lesson", "theme": "fondations",
       "objective": "Conserver une information sous un nom et réutiliser sa valeur.",
+      "prerequisitesInContent": true,
       "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.variables"],
       "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Lancer un fichier enregistré." }, { "skillId": "python.output", "expectation": "Afficher du texte et prévoir l’ordre de plusieurs instructions. Sinon, reprendre Afficher des messages." }],
       "blocks": [
-        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Enregistre tes essais, puis crée variables.py dans Thonny. Pour chaque test, utilise Arrêter / redémarrer (Stop/Restart), puis Exécuter le fichier entier : cela évite qu’une ancienne variable de la console masque un oubli. Si print ou les guillemets te posent problème, reprends Afficher des messages.", "moduleLink": { "moduleId": "python-affichage", "text": "Afficher des messages" } },
-        { "type": "lesson", "id": "exemple", "title": "1 — Un nom et une valeur", "paragraphs": ["personnage est le nom de la variable ; \"Luna\" est sa valeur textuelle. Le signe = affecte la valeur de droite au nom de gauche. Ce n’est pas une question ni une égalité mathématique.", "Sans guillemets, personnage demande la valeur associée à ce nom. Avec guillemets, \"personnage\" est simplement le texte personnage.", "Prédis les deux messages, puis exécute le fichier entier."], "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")" },
-        { "type": "lesson", "id": "changer", "title": "2 — La valeur peut changer", "paragraphs": ["Chaque instruction utilise la valeur disponible à cet instant. Le deuxième = remplace la valeur associée au nom personnage. Il ne modifie pas un message déjà affiché.", "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas print comme nom de variable."], "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)" },
-        { "type": "tasks", "id": "guide", "title": "Exercice guidé — changer la valeur", "items": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir afficher du texte et prévoir l’ordre des instructions. Sinon, reprends Afficher des messages. Enregistre tes essais, puis crée variables.py sans remplacer tes autres fichiers. Écris les instructions dans l’éditeur et exécute le fichier entier.", "moduleLink": { "moduleId": "python-affichage", "text": "Revoir l’affichage et l’ordre" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Un nom et une valeur", "paragraphs": ["personnage est le nom de la variable ; \"Luna\" est sa valeur textuelle. Le signe = affecte la valeur de droite au nom de gauche. Ce n’est pas une question ni une égalité mathématique.", "Sans guillemets, personnage demande la valeur associée à ce nom. Avec guillemets, \"personnage\" est simplement le texte personnage.", "Prédis les deux messages, puis exécute le fichier entier."], "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")" },
+        { "type": "lesson", "id": "changer", "title": "2 - La valeur peut changer", "paragraphs": ["Chaque instruction utilise la valeur disponible à cet instant. Le deuxième = remplace la valeur associée au nom personnage. Il ne modifie pas un message déjà affiché.", "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas print comme nom de variable."], "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - changer la valeur", "items": [
           { "id": "comparer-nom-texte", "text": "Exécute le premier exemple. Explique pourquoi les deux messages sont différents.", "hint": "La valeur est Luna ; le nom écrit entre guillemets reste le texte personnage." },
           { "id": "remplacer-valeur", "text": "Change Luna par un autre prénom fictif, sans changer le nom de la variable. Prédis puis teste.", "hint": "Le premier résultat change ; le texte \"personnage\" ne change pas." },
-          { "id": "predire-remplacement", "text": "Remplace ton code par le deuxième exemple et annonce les deux résultats avant d’exécuter.", "hint": "Lis de haut en bas : la valeur est d’abord Luna, puis Milo." }
+          { "id": "predire-remplacement", "text": "Enregistre variables.py, puis crée remplacement.py pour le deuxième exemple. Garde le premier fichier, annonce les deux résultats et exécute le nouveau fichier.", "hint": "Lis de haut en bas : la valeur est d’abord Luna, puis Milo. Tes deux fichiers permettent de comparer les exemples." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "À toi — deux informations", "intro": "Enregistre variables.py puis crée personnage.py. Essaie sans recopier le modèle.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "À toi - deux informations", "intro": "Enregistre ton essai actuel, puis crée personnage.py. Garde variables.py et remplacement.py ; essaie sans recopier le modèle.", "items": [
           { "id": "deux-variables", "text": "Crée deux variables textuelles avec des noms de ton choix et affiche leurs valeurs.", "hint": "Une instruction d’affectation pour chaque information ; puis un print pour chaque variable, sans guillemets autour de son nom." },
           { "id": "modifier-une-valeur", "text": "Après les premiers affichages, change une seule valeur et affiche-la à nouveau. Prédis ce qui changera.", "hint": "Garde le même nom et affecte-lui un nouveau texte. Le premier affichage reste présent ; seul le suivant utilise la nouvelle valeur." },
-          { "id": "test-propre", "text": "Arrête / redémarre la console puis exécute le fichier entier. Il doit fonctionner sans instruction saisie auparavant.", "hint": "Toute variable utilisée doit avoir reçu sa valeur dans le fichier avant son utilisation." }
+          { "id": "test-propre", "text": "Enregistre personnage.py. Clique sur Arrêter / redémarrer puis exécute le fichier entier : vérifie qu’il fonctionne sans les essais précédents.", "hint": "Le fichier doit définir lui-même chaque variable avant de l’utiliser. Le redémarrage permet de vérifier qu’un ancien essai ne cachait pas un oubli." }
         ] },
-        { "type": "lesson", "id": "erreur", "title": "Pour consolider — un nom incohérent", "paragraphs": ["Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque NameError parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."], "code": "compagnon = \"chat\"\nprint(animal)" },
-        { "type": "tasks", "id": "bonus", "title": "Bonus — une valeur réutilisée", "items": [{ "id": "reutiliser-valeur", "text": "Affiche la même variable à trois endroits dans ton fichier. Change sa valeur de départ et prédis les trois résultats avant de relancer.", "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs print." }] }
+        { "type": "lesson", "id": "erreur", "title": "Pour consolider - un nom incohérent", "paragraphs": ["Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque NameError parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."], "code": "compagnon = \"chat\"\nprint(animal)" },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - une valeur réutilisée", "items": [{ "id": "reutiliser-valeur", "text": "Affiche la même variable à trois endroits dans ton fichier. Change sa valeur de départ et prédis les trois résultats avant de relancer.", "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs print." }] }
       ],
       "masteryCriteria": ["Distinguer un nom de variable et ce même nom entre guillemets.", "Prédire les affichages avant et après un remplacement de valeur.", "Créer et réutiliser deux variables personnelles dans un fichier qui fonctionne après redémarrage."],
       "consolidation": [{ "moduleId": "python-variables", "blockId": "erreur", "label": "Repérer une variable inconnue" }, { "moduleId": "python-affichage", "blockId": "guide", "label": "Revoir print et les guillemets" }],
@@ -295,8 +308,8 @@ window.CODECRAFT_DATA = {
       "nextSteps": [{ "moduleId": "python-saisie", "label": "Poser une question", "prerequisiteSkills": [{ "skillId": "python.variables", "expectation": "Créer une variable et expliquer la valeur utilisée ; sinon reprendre les deux informations." }] }],
       "teacherGuide": {
         "objective": "Comprendre l’affectation et la valeur au moment de l’exécution ; ne pas confondre nom, texte et égalité.",
-        "entryDiagnosis": ["Faire expliquer print et l’ordre de deux lignes ; reprendre Afficher des messages si nécessaire.", "Faire lancer un fichier entier après Stop/Restart pour ne pas dépendre de variables anciennes."],
-        "preparation": ["Créer variables.py, vérifier le modèle et ouvrir éventuellement Affichage → Variables (View → Variables).", "Redémarrer avant chaque test de variable inconnue ; ne pas nommer les fichiers comme des bibliothèques Python."],
+        "entryDiagnosis": ["Faire expliquer print et l’ordre de deux lignes ; reprendre Afficher des messages si nécessaire.", "Vérifier que les instructions sont écrites dans le fichier, pas uniquement dans la console."],
+        "preparation": ["Prévoir variables.py et remplacement.py pour conserver les deux exemples ; ouvrir éventuellement Affichage → Variables.", "Redémarrer avant le test de variable inconnue et le test autonome propre ; ne pas nommer les fichiers comme des bibliothèques Python."],
         "why": "Une valeur nommée peut être remplacée et réutilisée ; cela prépare la réponse fournie par l’utilisateur.",
         "discoverySpeech": ["« Sans guillemets, Python cherche la valeur liée au nom. Entre guillemets, il garde le texte tel quel. »", "« = veut dire : associe cette valeur à ce nom. Ce n’est pas une égalité à résoudre. »", "« Suivons les lignes : quelle valeur est disponible au moment de chaque print ? »"],
         "example": { "target": { "moduleId": "python-variables", "blockId": "exemple" }, "comments": ["Résultats attendus : Luna, puis personnage. Faire expliquer les deux, pas seulement constater la différence.", "Dans le deuxième modèle : Luna puis Milo. Le remplacement ne change pas rétroactivement les sorties.", "La vue Variables illustre la valeur courante ; elle ne montre pas automatiquement toutes les anciennes valeurs."] },
@@ -306,28 +319,29 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{ "symptom": "Le nom est affiché au lieu de la valeur.", "helps": ["Faire lire le résultat souhaité.", "Regarder les guillemets autour du nom.", "Comparer print(personnage) et print(\"personnage\").", "Retirer les guillemets autour du nom uniquement, puis faire un autre exemple sans aide."] }, { "symptom": "NameError ou résultat dépendant d’un ancien essai.", "helps": ["Lire le nom indiqué dans l’erreur.", "Chercher son affectation avant l’affichage.", "Comparer orthographe et majuscules puis redémarrer la console.", "Corriger le fichier et relancer entièrement ; ne pas masquer la faute en définissant la variable dans la console."] }],
         "notes": "Observer prédiction, explication et création séparément. Une affectation copiée n’est pas une validation automatique de python.variables.",
         "quickConductor": ["Vérifier affichage et ordre.", "Comparer nom sans guillemets et texte entre guillemets.", "Suivre le remplacement d’une valeur.", "Créer deux informations sans modèle puis tester après redémarrage.", "Choisir reprise ou saisie textuelle selon la compréhension."],
-        "references": [{ "title": "Python — variables et premières valeurs", "url": "https://docs.python.org/fr/3/tutorial/introduction.html" }]
+        "references": [{ "title": "Python - variables et premières valeurs", "url": "https://docs.python.org/fr/3/tutorial/introduction.html" }]
       }
     },
     "python-saisie": {
       "domainId": "python", "title": "Poser une question", "type": "lesson", "theme": "fondations",
       "objective": "Demander une réponse textuelle, la conserver et l’utiliser.",
+      "prerequisitesInContent": true,
       "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.input"],
       "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Exécuter et arrêter un fichier dans Thonny." }, { "skillId": "python.output", "expectation": "Afficher du texte avec print." }, { "skillId": "python.variables", "expectation": "Créer une variable et réutiliser sa valeur. Sinon, reprendre Variables et valeurs." }],
       "blocks": [
-        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Enregistre ton travail précédent et crée questions.py dans l’application Thonny. Si tu hésites entre le nom d’une variable et sa valeur, reprends Variables et valeurs. Le lien vers le site de Thonny ne lance pas ton application.", "moduleLink": { "moduleId": "python-variables", "text": "Variables et valeurs" } },
-        { "type": "lesson", "id": "exemple", "title": "1 — Demander, attendre, utiliser", "paragraphs": ["input affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.", "Le texte répondu devient la valeur de pseudo. La question reste dans le code ; la réponse vient de la personne qui utilise le programme.", "Dans print(\"Bienvenue\", pseudo), la virgule sépare deux éléments à afficher : un texte et une valeur. print ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.", "input fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."], "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)" },
-        { "type": "lesson", "id": "attente", "title": "2 — Une attente n’est pas une panne", "paragraphs": ["Tant que tu n’as pas validé avec Entrée, la ligne suivante attend. Pour recommencer sans répondre, clique sur Arrêter / redémarrer (Stop/Restart), puis Exécuter.", "Ne modifie pas le code pour écrire ta réponse : réponds dans la console. Si tu modifies le programme pendant qu’il attend, arrête-le puis relance pour tester la nouvelle version." ] },
-        { "type": "tasks", "id": "guide", "title": "Exercice guidé — deux essais différents", "items": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir exécuter un fichier, afficher un message et réutiliser une variable. Sinon, reprends Variables et valeurs. Enregistre ton travail précédent et crée questions.py sans effacer les autres fichiers.", "moduleLink": { "moduleId": "python-variables", "text": "Revoir les variables" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Demander, attendre, utiliser", "paragraphs": ["input affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.", "Le texte répondu devient la valeur de pseudo. La question reste dans le code ; la réponse vient de la personne qui utilise le programme.", "Dans print(\"Bienvenue\", pseudo), la virgule sépare deux éléments à afficher : un texte et une valeur. print ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.", "input fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."], "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)" },
+        { "type": "lesson", "id": "attente", "title": "2 - Une attente n’est pas une panne", "paragraphs": ["Tant que tu n’as pas validé avec Entrée, la ligne suivante attend. Pour recommencer sans répondre, clique sur Arrêter / redémarrer, puis Exécuter.", "Ne modifie pas le code pour écrire ta réponse : réponds dans la console. Si tu modifies le programme pendant qu’il attend, arrête-le puis relance pour tester la nouvelle version." ] },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - deux essais différents", "items": [
           { "id": "repondre-console", "text": "Exécute le modèle, réponds avec un pseudo fictif dans la console et valide avec Entrée.", "hint": "Le curseur doit être dans la console après la question. Le résultat attendu est Bienvenue suivi du pseudo fourni." },
           { "id": "nouvelle-reponse", "text": "Relance et réponds autrement. Explique ce qui change sans modifier le fichier.", "hint": "La question reste identique ; la valeur de pseudo vient de la nouvelle réponse." },
           { "id": "changer-question", "text": "Change seulement le texte de la question dans input. Relance pour tester.", "hint": "Garde le même nom de variable ; modifie le texte entre guillemets dans input, pas la réponse dans le code." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "À toi — une préférence", "intro": "Enregistre questions.py, puis crée preference.py. Essaie avant l’indice.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "À toi - une préférence", "intro": "Enregistre questions.py, puis crée preference.py. Essaie avant l’indice.", "items": [
           { "id": "question-personnelle", "text": "Demande une activité préférée, conserve la réponse dans une variable de ton choix et affiche une phrase qui l’utilise.", "hint": "Une affectation avec input, puis un print contenant un texte et le nom de ta variable, séparés par une virgule. Pas de guillemets autour du nom." },
           { "id": "tester-preference", "text": "Teste avec deux réponses différentes. Montre où se trouvent la question, la variable et la réponse saisie.", "hint": "Exécute à nouveau pour chaque réponse ; la question est dans le fichier, la saisie dans la console." }
         ] },
-        { "type": "tasks", "id": "bonus", "title": "Bonus — deux questions", "items": [{ "id": "deux-questions", "text": "Pose deux questions, avec deux noms de variables différents. Réutilise les deux réponses dans les messages finaux.", "hint": "Python attend la première réponse avant de poser la deuxième question. Garde les deux réponses sous des noms différents." }] }
+        { "type": "tasks", "id": "bonus", "title": "Bonus - deux questions", "items": [{ "id": "deux-questions", "text": "Pose deux questions, avec deux noms de variables différents. Réutilise les deux réponses dans les messages finaux.", "hint": "Python attend la première réponse avant de poser la deuxième question. Garde les deux réponses sous des noms différents." }] }
       ],
       "masteryCriteria": ["Saisir et valider une réponse dans la console sans la remplacer dans le code.", "Expliquer la pause provoquée par input et la valeur enregistrée dans la variable.", "Créer une autre question puis utiliser sa réponse, sans recopier tout le modèle."],
       "consolidation": [{ "moduleId": "python-saisie", "blockId": "guide", "label": "Reprendre question, réponse et relance" }, { "moduleId": "python-variables", "blockId": "guide", "label": "Revoir nom et valeur" }],
@@ -335,7 +349,7 @@ window.CODECRAFT_DATA = {
       "nextSteps": [{ "moduleId": "python-conversation", "label": "Une conversation interactive", "prerequisiteSkills": [{ "skillId": "python.input", "expectation": "Poser une question et réutiliser la réponse ; sinon reprendre l’activité Une préférence." }] }],
       "teacherGuide": {
         "objective": "Comprendre que la saisie fournit une valeur au programme ; distinguer question, réponse et attente.",
-        "entryDiagnosis": ["Faire créer une variable et afficher sa valeur ; reprendre Variables et valeurs si nécessaire.", "Faire repérer Exécuter, console et Stop/Restart avant de lancer un programme interactif."],
+        "entryDiagnosis": ["Faire créer une variable et afficher sa valeur ; reprendre Variables et valeurs si nécessaire.", "Faire repérer Exécuter, la console et Arrêter / redémarrer avant de lancer un programme interactif."],
         "preparation": ["Créer questions.py et tester le modèle avec deux réponses fictives.", "Prévoir le temps de saisie ; ne pas lancer deux essais en concurrence.", "Aucune conversion, concaténation, condition ni saisie de donnée personnelle réelle n’est nécessaire."],
         "why": "Un programme peut utiliser une information inconnue au moment où il est écrit.",
         "discoverySpeech": ["« La question est dans le fichier ; la réponse vient de la personne qui utilise le programme. »", "« Il attend Entrée : ce n’est pas une panne. La ligne suivante ne peut pas encore utiliser la réponse. »", "« La virgule sépare le texte et la valeur à afficher ; print place un espace entre eux. »"],
@@ -343,43 +357,44 @@ window.CODECRAFT_DATA = {
         "questions": [{ "question": "Pourquoi le programme n’affiche-t-il pas encore Bienvenue ?", "answer": "Il attend la réponse à input et sa validation avec Entrée." }, { "question": "Que se passe-t-il si une autre personne exécute le même fichier ?", "answer": "Elle peut fournir une autre réponse ; le message final utilisera cette nouvelle valeur." }, { "question": "Quel est le rôle de la virgule dans print ?", "answer": "Elle sépare les éléments à afficher ; print ajoute ici un espace entre le texte et la valeur." }],
         "accompaniedActivity": { "moduleId": "python-saisie", "blockId": "guide" }, "independentActivity": { "moduleId": "python-saisie", "blockId": "autonomie" },
         "differentiation": ["Accompagner une saisie dans la console avant de demander une question personnelle.", "Faire créer une nouvelle question avec un autre nom de variable et tester deux réponses sans modèle.", "Lire les consignes si nécessaire ; ne pas confondre vitesse de frappe et compréhension."],
-        "commonErrors": [{ "symptom": "L’élève pense que le programme est bloqué.", "helps": ["Faire lire la dernière question affichée.", "Montrer la console et son curseur.", "Comparer avant et après validation avec Entrée.", "Faire répondre ; si l’essai doit être interrompu, Stop/Restart puis relancer."] }, { "symptom": "La réponse n’est pas réutilisée.", "helps": ["Faire comparer la réponse saisie au résultat.", "Vérifier le nom passé à print et ses guillemets.", "Comparer texte fixe et variable, puis les deux éléments séparés par une virgule.", "Corriger le print et tester deux nouvelles réponses pour vérifier le transfert."] }],
+        "commonErrors": [{ "symptom": "L’élève pense que le programme est bloqué.", "helps": ["Faire lire la dernière question affichée.", "Montrer la console et son curseur.", "Comparer avant et après validation avec Entrée.", "Faire répondre ; si l’essai doit être interrompu, Arrêter / redémarrer puis relancer."] }, { "symptom": "La réponse n’est pas réutilisée.", "helps": ["Faire comparer la réponse saisie au résultat.", "Vérifier le nom passé à print et ses guillemets.", "Comparer texte fixe et variable, puis les deux éléments séparés par une virgule.", "Corriger le print et tester deux nouvelles réponses pour vérifier le transfert."] }],
         "notes": "Distinguer saisie accompagnée, exemple reproduit et nouvelle question autonome. Ne pas ajouter de conversion ou de validation numérique dans ce lot.",
         "quickConductor": ["Vérifier les variables et les zones de Thonny.", "Expliquer input et la virgule de print.", "Répondre dans la console puis relancer autrement.", "Créer une préférence sans modèle.", "Choisir consolidation, deux questions ou conversation."],
-        "references": [{ "title": "Python — input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }, { "title": "Python — print et séparateurs", "url": "https://docs.python.org/fr/3/library/functions.html#print" }]
+        "references": [{ "title": "Python - input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }, { "title": "Python - print et séparateurs", "url": "https://docs.python.org/fr/3/library/functions.html#print" }]
       }
     },
     "python-conversation": {
       "domainId": "python", "title": "Une conversation interactive", "type": "project", "theme": "fondations",
       "objective": "Assembler affichage, variables et questions dans un programme personnel.",
+      "prerequisitesInContent": true,
       "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" },
       "skillIds": ["python.workspace", "python.output", "python.variables", "python.input"],
       "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer, conserver et relancer un fichier .py." }, { "skillId": "python.output", "expectation": "Afficher des messages dans l’ordre choisi." }, { "skillId": "python.variables", "expectation": "Conserver plusieurs informations sous des noms différents." }, { "skillId": "python.input", "expectation": "Poser une question et afficher sa réponse. Sinon, reprendre Poser une question." }],
       "blocks": [
-        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Enregistre les exercices précédents puis crée conversation.py dans Thonny : ne les efface pas. Choisis un thème fictif, comme une rencontre avec un personnage ou un animal. Aucun nom réel, âge ou autre renseignement personnel n’est nécessaire. Si tu hésites pour utiliser une réponse, reprends Poser une question.", "moduleLink": { "moduleId": "python-saisie", "text": "Poser une question" } },
-        { "type": "lesson", "id": "plan", "title": "1 — Prépare ton petit dialogue", "paragraphs": ["Imagine un message d’accueil, trois questions et les phrases finales qui utiliseront les réponses. Par exemple : choisir un pseudo fictif, un lieu imaginaire et une activité. Tu peux inventer un autre thème.", "Tout le monde suit le même ordre de questions : pas de choix conditionnel, calcul ni boucle dans ce projet. Le programme est interactif parce que ses messages utilisent les réponses saisies.", "Écris d’abord une version avec une question. Teste-la, puis ajoute une question à la fois. Une version courte qui fonctionne est un bon point de départ." ] },
-        { "type": "tasks", "id": "guide", "title": "Préparation accompagnée — une première réponse", "intro": "Si nécessaire, commence ici avant d’assembler le projet. Les indices sont des rappels séparés, pas une solution complète.", "items": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir créer un fichier, afficher un message et conserver puis réutiliser une réponse dans une variable. Sinon, reprends Poser une question. Enregistre les exercices précédents puis crée conversation.py : ne les efface pas. Choisis un thème et des réponses fictifs, sans renseignement personnel.", "moduleLink": { "moduleId": "python-saisie", "text": "Revoir la saisie" } },
+        { "type": "lesson", "id": "plan", "title": "1 - Prépare ton petit dialogue", "paragraphs": ["Imagine un message d’accueil, trois questions et les phrases finales qui utiliseront les réponses. Par exemple : choisir un pseudo fictif, un lieu imaginaire et une activité. Tu peux inventer un autre thème.", "Tout le monde suit le même ordre de questions : pas de choix conditionnel, calcul ni boucle dans ce projet. Le programme est interactif parce que ses messages utilisent les réponses saisies.", "Écris d’abord une version avec une question. Teste-la, puis ajoute une question à la fois. Une version courte qui fonctionne est un bon point de départ." ] },
+        { "type": "tasks", "id": "guide", "title": "Préparation accompagnée - une première réponse", "intro": "Si nécessaire, commence ici avant d’assembler le projet. Les indices sont des rappels séparés, pas une solution complète.", "items": [
           { "id": "accueil-minimal", "text": "Affiche ton message d’accueil.", "hint": "Utilise print avec ton texte entre guillemets et entre parenthèses." },
           { "id": "question-minimale", "text": "Pose une première question et conserve sa réponse.", "hint": "Choisis un nom de variable, puis = et input avec ta question entre guillemets et parenthèses." },
           { "id": "reponse-minimale", "text": "Affiche un message qui utilise cette réponse, puis teste avec deux réponses différentes.", "hint": "Dans print, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "2 — Construis ta conversation", "intro": "Continue dans conversation.py. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "2 - Construis ta conversation", "intro": "Continue dans conversation.py. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.", "items": [
           { "id": "accueil-projet", "text": "Affiche un message d’accueil adapté à ton thème.", "hint": "Ce message peut être du texte fixe ; les réponses ne sont pas encore connues." },
           { "id": "trois-questions", "text": "Pose au moins trois questions et garde leurs réponses dans trois variables différentes.", "hint": "Une ligne avec input pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente." },
           { "id": "trois-reponses", "text": "Après les questions, réutilise chacune des trois réponses dans tes messages finaux.", "hint": "Tu peux faire plusieurs print. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets." },
           { "id": "sauvegarder-projet", "text": "Enregistre conversation.py dans ton dossier de programmes.", "hint": "Conserve les fichiers des modules précédents. Une modification doit être enregistrée pour rester après fermeture." }
         ] },
-        { "type": "tasks", "id": "verification", "title": "3 — Vérifie ton travail", "items": [
+        { "type": "tasks", "id": "verification", "title": "3 - Vérifie ton travail", "items": [
           { "id": "tester-deux-dialogues", "text": "Arrête / redémarre, puis exécute deux fois avec trois réponses différentes. Les messages finaux doivent utiliser les réponses du nouvel essai.", "hint": "Ne remplace pas les réponses par du texte fixé dans le code. Le fichier doit définir toutes ses variables sans ancien essai en console." },
           { "id": "retrouver-dialogue", "text": "Après enregistrement, ferme puis rouvre le fichier et teste-le à nouveau.", "hint": "Retrouve conversation.py dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme." },
-          { "id": "expliquer-dialogue", "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Modifie une question sans casser son utilisation.", "hint": "Le texte de la question est dans input ; son résultat est affecté à la variable. Garde ce nom dans les messages qui utilisent la réponse." }
+          { "id": "expliquer-dialogue", "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Enregistre, puis utilise Enregistrer sous pour créer conversation_modifiee.py. Dans cette copie, renomme une variable et tous ses usages ; teste avec de nouvelles réponses.", "hint": "Choisis un nom distinct des deux autres. Change le nom à gauche de = et dans chaque print qui l’utilise. La question peut rester identique ; conserve conversation.py." }
         ] },
-        { "type": "tasks", "id": "bonus", "title": "Bonus — enrichir sans nouvelle notion", "items": [{ "id": "quatrieme-question", "text": "Ajoute une quatrième question et utilise sa réponse dans un nouveau message final.", "hint": "Une nouvelle variable, un input et un print : aucune condition ou boucle n’est nécessaire." }] },
-        { "type": "callout", "id": "suite", "title": "Et après ?", "text": "Si tu sais expliquer et modifier ta conversation avec peu ou pas d’aide, tu disposes d’une première base. Tu peux consolider les points difficiles ou enrichir ce projet. Les nombres et calculs viendront dans un prochain lot : aucune page vide ni notion supplémentaire n’est nécessaire pour finir celui-ci. Si tu es en cours, le professeur décide avec toi de la suite adaptée." }
+        { "type": "tasks", "id": "bonus", "title": "Bonus - enrichir sans nouvelle notion", "items": [{ "id": "quatrieme-question", "text": "Ajoute une quatrième question et utilise sa réponse dans un nouveau message final.", "hint": "Une nouvelle variable, un input et un print : aucune condition ou boucle n’est nécessaire." }] },
+        { "type": "callout", "id": "suite", "title": "Et après ?", "text": "Si tu sais expliquer et modifier ta conversation avec peu ou pas d’aide, tu peux passer aux nombres et calculs. Sinon, reprends une question ou une variable. Terminer le projet ne valide pas automatiquement tes compétences ; en cours, choisis la suite avec le professeur." }
       ],
-      "masteryCriteria": ["Créer un dialogue personnel avec trois réponses réellement conservées et réutilisées.", "Expliquer l’ordre, les attentes et la différence entre texte fixe et valeur saisie.", "Modifier une question sans casser l’utilisation de sa réponse et tester un nouvel essai après redémarrage.", "Retrouver le fichier sauvegardé ; distinguer réussite autonome, avec modèle ou avec aide pour chaque compétence."],
+      "masteryCriteria": ["Créer un dialogue personnel avec trois réponses réellement conservées et réutilisées.", "Expliquer l’ordre, les attentes et la différence entre texte fixe et valeur saisie.", "Renommer une variable et ses usages dans une copie conservée, puis tester de nouvelles réponses après redémarrage.", "Retrouver le fichier sauvegardé ; distinguer réussite autonome, avec modèle ou avec aide pour chaque compétence."],
       "consolidation": [{ "moduleId": "python-conversation", "blockId": "guide", "label": "Repartir d’une seule question" }, { "moduleId": "python-saisie", "blockId": "guide", "label": "Revoir la saisie dans la console" }, { "moduleId": "python-variables", "blockId": "changer", "label": "Revoir les valeurs et leur remplacement" }, { "moduleId": "python-affichage", "blockId": "guide", "label": "Revoir affichage et ordre" }, { "moduleId": "python-thonny", "blockId": "guide", "label": "Retrouver les fichiers" }],
-      "bonusActivities": [{ "moduleId": "python-conversation", "blockId": "bonus", "label": "Ajouter une quatrième question" }], "nextSteps": [],
+      "bonusActivities": [{ "moduleId": "python-conversation", "blockId": "bonus", "label": "Ajouter une quatrième question" }], "nextSteps": [{ "moduleId": "python-calculs", "label": "Nombres et calculs", "prerequisiteSkills": [{ "skillId": "python.input", "expectation": "Conserver et afficher une réponse dans une variable ; sinon reprendre Poser une question." }] }],
       "teacherGuide": {
         "objective": "Vérifier l’assemblage des premières notions dans un projet personnel, sans supposer une acquisition parce qu’un dialogue a été exécuté.",
         "entryDiagnosis": ["Demander une question et un affichage de sa réponse sans modèle ; choisir une reprise ciblée si nécessaire.", "Vérifier les noms distincts de variables et l’enregistrement, séparément de l’aide au clavier."],
@@ -390,10 +405,1825 @@ window.CODECRAFT_DATA = {
         "questions": [{ "question": "Quelle ligne changer pour modifier une question sans changer l’utilisation de sa réponse ?", "answer": "Modifier le texte entre guillemets dans input, en conservant le nom de variable utilisé ensuite." }, { "question": "Pourquoi conserver les trois réponses sous des noms différents ?", "answer": "Réaffecter le même nom remplacerait sa valeur ; on perdrait l’accès aux premières réponses sous ce nom." }, { "question": "Le dialogue qui fonctionne suffit-il à prouver que tu comprends ?", "answer": "Non : il faut expliquer les attentes et valeurs, puis réussir une modification ou une nouvelle question sans recopier toute la solution." }],
         "accompaniedActivity": { "moduleId": "python-conversation", "blockId": "guide" }, "independentActivity": { "moduleId": "python-conversation", "blockId": "autonomie" },
         "differentiation": ["Consolider une question puis deux avant d’en viser trois ; ne pas imposer une durée ni retirer l’accès au projet.", "Pour un élève à l’aise, demander une quatrième question avec nouvelle variable et sortie, sans modèle.", "Évaluer workspace, output, variables et input séparément ; accompagner la saisie ou l’enregistrement sans annuler une compréhension démontrée."],
-        "commonErrors": [{ "symptom": "Les trois messages affichent seulement la dernière réponse.", "helps": ["Faire comparer les réponses saisies aux sorties.", "Repérer les noms à gauche des trois affectations.", "Montrer que le même nom est remplacé ; comparer à trois noms distincts.", "Renommer les variables et leurs usages ensemble, puis retester deux dialogues."] }, { "symptom": "Le dialogue ne varie pas ou échoue après redémarrage.", "helps": ["Faire un test avec des réponses très différentes.", "Chercher du texte fixe à la place d’une variable ou une affectation manquante.", "Comparer à l’exercice à une question ; vérifier l’ordre des définitions.", "Corriger une utilisation puis exécuter le fichier entier après Stop/Restart ; demander une modification autonome."] }],
+        "commonErrors": [{ "symptom": "Les trois messages affichent seulement la dernière réponse.", "helps": ["Faire comparer les réponses saisies aux sorties.", "Repérer les noms à gauche des trois affectations.", "Montrer que le même nom est remplacé ; comparer à trois noms distincts.", "Renommer les variables et leurs usages ensemble, puis retester deux dialogues."] }, { "symptom": "Le dialogue ne varie pas ou échoue après redémarrage.", "helps": ["Faire un test avec des réponses très différentes.", "Chercher du texte fixe à la place d’une variable ou une affectation manquante.", "Comparer à l’exercice à une question ; vérifier l’ordre des définitions.", "Corriger une utilisation puis exécuter le fichier entier après Arrêter / redémarrer ; demander une modification autonome."] }],
         "notes": "Observer reproduction, compréhension, transfert et aides nécessaires, sans nouveau dispositif de suivi. Seul le professeur attribue manuellement un statut ; le projet ne valide jamais automatiquement ses quatre compétences.",
-        "quickConductor": ["Vérifier les premières notions et proposer une reprise ciblée.", "Faire choisir un thème fictif et un plan.", "Tester une question puis ajouter les autres.", "Tester deux dialogues après redémarrage.", "Demander explication et modification ; choisir consolidation ou bonus sans rythme imposé."],
-        "references": [{ "title": "Python — input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }, { "title": "Thonny — variables et exécution pas à pas", "url": "https://thonny.org/" }]
+        "quickConductor": ["Vérifier les premières notions et proposer une reprise ciblée.", "Faire choisir un thème fictif et un plan.", "Tester une question puis ajouter les autres.", "Tester deux dialogues après redémarrage.", "Faire renommer une variable et ses usages dans conversation_modifiee.py ; vérifier le transfert avant de choisir la suite."],
+        "references": [{ "title": "Python - input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }, { "title": "Thonny - variables et exécution pas à pas", "url": "https://thonny.org/" }]
+      }
+    },
+    "python-calculs": {
+      "domainId": "python", "title": "Nombres et calculs", "type": "lesson", "theme": "fondations",
+      "objective": "Calculer avec des nombres, puis convertir une réponse en entier.",
+      "prerequisitesInContent": true,
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.numbers", "python.conversion"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer et exécuter un fichier .py." }, { "skillId": "python.output", "expectation": "Afficher une valeur avec print." }, { "skillId": "python.variables", "expectation": "Définir et réutiliser une variable." }, { "skillId": "python.input", "expectation": "Poser une question et conserver sa réponse ; sinon reprendre Poser une question." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir exécuter un fichier, afficher une variable et réutiliser une réponse de input. Si tu hésites sur un point, reprends le module correspondant. Enregistre tes anciens programmes et crée calculs.py sans les effacer. Commence par des nombres fixes : la question viendra ensuite.", "moduleLink": { "moduleId": "python-variables", "text": "Revoir les variables" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Nombre ou texte ?", "paragraphs": ["12 est un nombre. \"12\" est du texte : les guillemets changent la façon dont Python utilise la valeur, même si print les affiche de manière semblable.", "Avec deux nombres, + additionne. Avec deux textes, + les colle : \"12\" + \"3\" donne le texte 123, pas le nombre 15. Prédis les trois lignes avant d’exécuter le modèle."], "code": "print(12 + 3)\nprint(\"12\" + \"3\")\nprint(\"12 + 3\")" },
+        { "type": "lesson", "id": "operations", "title": "2 - Calculer et conserver", "paragraphs": ["Avec des nombres, + additionne. Le calcul à droite de = est effectué, puis son résultat devient la valeur de total.", "Dans print, le nom sans guillemets utilise cette valeur. Prédis le total avant d’exécuter : changer points suffit pour calculer un autre résultat."], "code": "points = 4\nbonus = 3\ntotal = points + bonus\nprint(\"Total :\", total)" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - prévoir les résultats", "items": [{ "id": "texte-nombre", "text": "Prédis puis exécute les trois lignes du premier modèle. Explique pourquoi elles ne donnent pas le même résultat.", "hint": "Tu dois lire 15, 123 et 12 + 3. Les deux dernières lignes travaillent avec du texte." }, { "id": "modifier-total", "text": "Exécute le deuxième modèle, puis change points à 10. Prédis le nouveau total avant de relancer.", "hint": "La ligne total utilise la valeur de points ; le nouveau total est 13." }] },
+        { "type": "lesson", "id": "conversion", "title": "3 - Une réponse utilisable dans un calcul", "paragraphs": ["Un entier est un nombre sans partie décimale, comme 0, 5 ou -2. input fournit du texte : int transforme le texte \"12\" en entier 12. On conserve d’abord la réponse, puis on la convertit ; les deux étapes sont visibles.", "Réponds avec un entier écrit en chiffres, sans unité, virgule ni point. Le programme n’accepte pas cinq, 5 pièces ou 2.5 : int provoque une ValueError et arrête cet essai. Ce modèle n’est pas une saisie protégée ; le module suivant apprend à lire cette erreur."], "code": "reponse = input(\"Combien de pièces ? Entier uniquement : \")\npieces = int(reponse)\ntotal = pieces + 2\nprint(\"Avec le bonus :\", total)" },
+        { "type": "tasks", "id": "saisie", "title": "Teste la conversion", "items": [{ "id": "deux-entiers", "text": "Teste le modèle avec 5 puis avec 0. Prédis chaque total et montre où le texte devient un entier.", "hint": "Les totaux sont 7 et 2. int(reponse) effectue la conversion ; input seul ne le fait pas." }] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - un total de points", "intro": "Enregistre calculs.py puis crée points.py. Essaie sans recopier le modèle complet.", "items": [{ "id": "total-personnel", "text": "Demande un nombre entier de points, ajoute un bonus fixe de 4 et affiche le total. La question doit annoncer le format attendu.", "hint": "Conserve le texte de input, transforme-le avec int, puis additionne 4 à la valeur numérique. Utilise des noms adaptés aux points." }, { "id": "preuve-calcul", "text": "Teste avec 3 puis 10, et modifie le bonus à 1. Explique la différence entre la réponse textuelle et le nombre utilisé.", "hint": "Avec le bonus 4, attends 7 et 14. Avec le bonus 1, attends 4 et 11. Relance pour chaque test." }] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - deux valeurs numériques", "items": [{ "id": "deux-valeurs", "text": "Dans un nouveau fichier, demande deux entiers et affiche leur somme. Teste 2 et 7, puis 0 et 4.", "hint": "Deux noms distincts, deux input et deux conversions int. Additionne les nombres, pas les textes." }] },
+        { "type": "details", "id": "exploration", "title": "Pour explorer - autres opérations et écritures", "blocks": [
+          { "type": "lesson", "id": "autres-operations", "title": "Soustraire, multiplier, diviser", "paragraphs": ["Cette exploration est facultative : l’addition et la conversion suffisent pour continuer le parcours. Crée operations.py sans remplacer calculs.py.", "- soustrait, * multiplie et / divise. Prédis puis teste ces trois lignes : tu dois lire 6, 16 et 4.0. La division donne ici une écriture décimale ; ne divise pas par zéro."], "code": "print(8 - 2)\nprint(8 * 2)\nprint(8 / 2)" },
+          { "type": "lesson", "id": "priorites", "title": "Grouper un calcul", "paragraphs": ["La multiplication et la division passent avant l’addition et la soustraction. Des parenthèses donnent la priorité à un groupe. Prédis puis compare les deux résultats : 20 et 14."], "code": "print((2 + 3) * 4)\nprint(2 + 3 * 4)" },
+          { "type": "lesson", "id": "ecriture-courte", "title": "Réunir saisie et conversion", "paragraphs": ["Après avoir compris les deux étapes séparées, int(input(...)) peut les réunir. Il convertit le résultat de input, pas le texte de la question. Cette écriture ne protège toujours pas des entrées invalides.", "Dans un fichier distinct, teste 5 : la valeur numérique affichée doit être 5. La forme en deux lignes reste tout aussi correcte."], "code": "pieces = int(input(\"Pièces, entier uniquement : \"))\nprint(pieces)" }
+        ] }
+      ],
+      "masteryCriteria": ["Distinguer 12 et le texte \"12\" et prévoir une addition numérique.", "Conserver et modifier un résultat dans une variable numérique.", "Convertir une réponse attendue en entier et expliquer la limite de ce format.", "Créer un calcul personnel et le vérifier avec plusieurs entrées sans recopier tout le modèle."],
+      "consolidation": [{ "moduleId": "python-calculs", "blockId": "guide", "label": "Revoir nombre, texte et addition" }, { "moduleId": "python-calculs", "blockId": "saisie", "label": "Reprendre la conversion" }],
+      "bonusActivities": [{ "moduleId": "python-calculs", "blockId": "bonus", "label": "Additionner deux réponses" }, { "moduleId": "python-calculs", "blockId": "exploration", "label": "Explorer d’autres opérations et écritures" }],
+      "nextSteps": [{ "moduleId": "python-erreurs", "label": "Comprendre et corriger une erreur", "prerequisiteSkills": [{ "skillId": "python.conversion", "expectation": "Expliquer pourquoi int attend un entier écrit en chiffres ; sinon reprendre la conversion." }] }],
+      "teacherGuide": {
+        "objective": "Passer du texte aux valeurs numériques sans faire de la conversion un prérequis caché.",
+        "entryDiagnosis": ["Faire créer une variable et afficher sa valeur sans guillemets autour du nom.", "Faire poser une question et réutiliser la réponse. Reprendre la saisie si cette étape demande encore un modèle complet."],
+        "preparation": ["Créer calculs.py et conserver les fichiers précédents.", "Tester les modèles avec 5 et 0 ; réserver la saisie aux entiers.", "Noyau : nombre/texte, addition, variable numérique et conversion séparée. Les autres opérations, priorités et écritures sont dans l’exploration facultative ; aucune boucle ou exception capturée nécessaire."],
+        "why": "Une réponse affichable n’est pas forcément une valeur calculable.",
+        "discoverySpeech": ["« Que vont afficher 12 + 3 et deux textes collés ? »", "« Le résultat du calcul devient une valeur que la variable conserve. »", "« input fournit du texte ; int le convertit si ce texte représente un entier. »"],
+        "example": { "target": { "moduleId": "python-calculs", "blockId": "conversion" }, "comments": ["Avec 5, attendre un total de 7 ; avec 0, attendre 2.", "Faire repérer les deux variables et la conversion séparée ; ne pas imposer la forme imbriquée pour valider le socle.", "Ne pas masquer une réponse invalide : annoncer ValueError, puis réserver sa lecture au module suivant."] },
+        "questions": [{ "question": "Pourquoi deux textes 12 et 3 donnent-ils 123 avec + ?", "answer": "Les guillemets en font des textes ; + les colle au lieu de les additionner." }, { "question": "À quelle ligne la réponse devient-elle numérique ?", "answer": "pieces = int(reponse) transforme le texte attendu en entier." }, { "question": "Peut-on répondre 2.5 à ce modèle ?", "answer": "Non : le texte 2.5 n’est pas accepté par int. On demande un entier, pas un décimal." }],
+        "accompaniedActivity": { "moduleId": "python-calculs", "blockId": "guide" }, "independentActivity": { "moduleId": "python-calculs", "blockId": "autonomie" },
+        "differentiation": ["Séparer les calculs fixes et la conversion en deux temps si nécessaire.", "Accompagner la frappe mais demander une prédiction avant chaque essai.", "Pour le transfert, changer le contexte et le bonus ; proposer ensuite deux valeurs saisies."],
+        "commonErrors": [{ "symptom": "Le total colle des chiffres ou la conversion échoue.", "helps": ["Comparer la réponse au total attendu.", "Repérer input puis int dans le fichier.", "Vérifier que la saisie représente un entier sans unité.", "Corriger une conversion ou la réponse de test, relancer et demander une explication."] }],
+        "notes": "Évaluer séparément calcul numérique et conversion. Une réponse invalide ne doit pas conduire à introduire try/except avant son module. Les cases ne valident rien automatiquement.",
+        "quickConductor": ["Diagnostiquer variables et saisie.", "Comparer texte et nombres.", "Calculer avec des valeurs fixes.", "Convertir deux réponses entières.", "Créer un total personnel, tester et expliquer."],
+        "references": [{ "title": "Python - nombres", "url": "https://docs.python.org/fr/3/tutorial/introduction.html#numbers" }, { "title": "Python - int", "url": "https://docs.python.org/fr/3/library/functions.html#int" }]
+      }
+    },
+    "python-erreurs": {
+      "domainId": "python", "title": "Comprendre et corriger une erreur", "type": "lesson", "theme": "fondations",
+      "objective": "Lire un message d’erreur et vérifier une correction ciblée.",
+      "prerequisitesInContent": true,
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.debugging"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Enregistrer et relancer le fichier entier." }, { "skillId": "python.output", "expectation": "Lire les sorties de print." }, { "skillId": "python.variables", "expectation": "Distinguer un nom de variable et sa valeur." }, { "skillId": "python.input", "expectation": "Répondre dans la console." }, { "skillId": "python.numbers", "expectation": "Prévoir un calcul simple." }, { "skillId": "python.conversion", "expectation": "Convertir une réponse entière ; sinon reprendre Nombres et calculs." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir relancer un fichier, utiliser une variable, prévoir une addition et convertir une réponse entière. Sinon, reprends Nombres et calculs. Les exemples incorrects sont volontaires : utilise un fichier distinct pour chacun, sans effacer tes programmes précédents.", "moduleLink": { "moduleId": "python-calculs", "text": "Revoir nombres et calculs" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Lire avant de modifier", "paragraphs": ["Crée diagnostic_nom.py pour ce premier exemple. Ce modèle est volontairement incorrect : la dernière ligne devrait afficher 7, mais le nom utilisé ne correspond pas au nom défini. Exécute-le pour observer le message.", "Dans la console, lis la dernière ligne du message : NameError indique qu’un nom n’est pas défini. Repère ensuite le numéro de ligne et le nom du fichier signalés, puis regarde cette ligne dans l’éditeur. Le numéro dépend de ton propre fichier.", "La ligne signalée indique où Python a rencontré le problème ; sa cause peut être plus haut. Compare les noms, corrige seulement celui qui est incohérent, puis relance le fichier entier. Ne recopie pas le message d’erreur dans l’éditeur."], "code": "points = 5\nbonus = 2\nprint(point + bonus)" },
+        { "type": "lesson", "id": "syntaxe", "title": "2 - Une instruction impossible à lire", "paragraphs": ["Enregistre ton premier essai, puis crée diagnostic_syntaxe.py. Ce modèle incorrect produit une SyntaxError : il manque un guillemet fermant. Python ne peut pas lire l’instruction et n’exécute pas le fichier.", "Regarde les guillemets et les parenthèses par paires. L’indicateur dans le message aide à chercher, mais ne promet pas de pointer exactement le caractère manquant. Corrige une cause et reteste."], "code": "print(\"Bonjour !)" },
+        { "type": "lesson", "id": "conversion", "title": "3 - Une valeur non convertible", "paragraphs": ["Enregistre tes essais et crée diagnostic_conversion.py. Ce modèle est correct pour une réponse entière. Essaie 5, puis relance avec cinq : la conversion produit une ValueError. Le texte fourni ne représente pas l’entier attendu.", "Avec cette entrée invalide, la ligne après int n’est pas exécutée. Pour vérifier le diagnostic, relance avec 5 : le résultat doit être 7. Les mots exacts du message peuvent varier selon la version de Python.", "Lire l’erreur n’est pas la gérer : ce programme s’arrête toujours pour une mauvaise entrée. Nous n’ajoutons pas encore de nouvelle tentative ni de try/except."], "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)\nprint(points + 2)" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - une cause à la fois", "items": [{ "id": "nom-incoherent", "text": "Dans diagnostic_nom.py, teste le modèle NameError, repère la ligne et corrige le nom. Vérifie que le résultat devient 7.", "hint": "points est défini, point ne l’est pas. La correction ne demande pas de nouvelle variable." }, { "id": "guillemet-manquant", "text": "Dans diagnostic_syntaxe.py, corrige le modèle SyntaxError. Explique ce qui manquait et vérifie le message Bonjour !.", "hint": "Le texte doit se terminer par un guillemet avant la parenthèse fermante." }] },
+        { "type": "lesson", "id": "resultat", "title": "4 - Sans message d’erreur, mais faux", "paragraphs": ["Crée diagnostic_resultat.py et garde tes essais précédents. L’objectif est d’ajouter un bonus de 2 aux 5 points, donc d’afficher 7. Le signe - soustrait : ce modèle fait une soustraction au lieu de l’addition demandée. Prévois le résultat puis corrige le signe.", "Une exécution sans erreur n’est pas une preuve de réussite. Compare toujours la sortie au résultat attendu, puis teste une autre valeur après la correction."], "code": "points = 5\nbonus = 2\nprint(points - bonus)" },
+        { "type": "lesson", "id": "mission", "title": "Un programme à diagnostiquer", "paragraphs": ["Dans correction.py, l’objectif est d’ajouter 3 à 10, puis d’afficher la valeur de message. Ce modèle contient volontairement deux défauts. Prédis ce qui devrait s’afficher selon l’objectif avant de le tester."], "code": "print(10 - 3)\nmessage = \"Bonjour\"\nprint(mesage)" },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - retrouver l’intention", "intro": "Crée correction.py pour le modèle à diagnostiquer. Conserve les fichiers des exemples guidés ; essaie avant les indices.", "items": [{ "id": "deux-defauts", "text": "Saisis les trois lignes du modèle à diagnostiquer. Annonce les résultats attendus selon l’objectif, puis exécute le fichier.", "hint": "Selon la consigne, tu attends 13 puis Bonjour. Compare ces attentes à la sortie et au message d’erreur." }, { "id": "diagnostic-correction", "text": "Repère le message d’erreur et corrige sa cause. Compare ensuite la première sortie à l’objectif et corrige l’autre défaut. Relance après chaque changement.", "hint": "Compare le nom défini au nom utilisé, puis vérifie si le calcul ajoute réellement 3." }, { "id": "retour-test", "text": "Remplace 10 par 4, prédis le nouveau résultat et vérifie-le. Explique pourquoi le premier calcul faux n’a pas produit de message d’erreur.", "hint": "Une soustraction est une instruction valide même lorsqu’elle ne correspond pas à l’objectif." }, { "id": "diagnostic-saisie", "text": "Rouvre diagnostic_conversion.py. Choisis une réponse qui fait échouer ce programme et une autre qui le fait réussir. Avant les essais, prédis ce qui se passera ; puis explique la ligne concernée, la cause et le résultat de l’essai réussi.", "hint": "Observe le format demandé par la question et le rôle de chaque ligne. Relance pour chaque réponse ; lire une erreur ne signifie pas l’intercepter." }] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - expliquer une correction", "items": [{ "id": "journal", "text": "Sur un exemple déjà testé, note le résultat attendu, le symptôme, la cause, la correction et un test qui la vérifie. Explique-les sans ouvrir l’indice.", "hint": "Distingue le nom de l’erreur et sa cause précise dans ce programme. Une correction doit être suivie d’un nouvel essai." }] }
+      ],
+      "masteryCriteria": ["Repérer le fichier, la ligne et la catégorie d’une erreur sans recopier le message.", "Relier NameError, SyntaxError et ValueError à une cause précise sur les exemples enseignés.", "Corriger une cause à la fois puis relancer un test pertinent.", "Détecter un résultat faux même sans exception et expliquer la correction."],
+      "consolidation": [{ "moduleId": "python-erreurs", "blockId": "guide", "label": "Revoir noms et syntaxe" }, { "moduleId": "python-erreurs", "blockId": "conversion", "label": "Revoir une saisie non convertible" }, { "moduleId": "python-calculs", "blockId": "conversion", "label": "Revoir le format entier" }],
+      "bonusActivities": [{ "moduleId": "python-erreurs", "blockId": "bonus", "label": "Expliquer une correction" }],
+      "nextSteps": [{ "moduleId": "python-conditions", "label": "Faire un choix", "prerequisiteSkills": [{ "skillId": "python.debugging", "expectation": "Lire une erreur et vérifier la correction ; sinon reprendre les diagnostics." }] }],
+      "teacherGuide": {
+        "objective": "Installer une méthode de diagnostic, sans confondre correction du code et gestion d’une entrée invalide.",
+        "entryDiagnosis": ["Faire prévoir 5 + 2 et expliquer int sur la réponse 5.", "Vérifier que l’élève relance le bon fichier après modification."],
+        "preparation": ["Prévoir diagnostic_nom.py, diagnostic_syntaxe.py, diagnostic_conversion.py et diagnostic_resultat.py pour conserver les exemples séparément, puis correction.py pour l’autonomie.", "Tester les trois catégories d’erreur ; le numéro de ligne dépend du fichier réel.", "Prévoir un calcul valide mais contraire à l’objectif ; ne pas introduire try/except."],
+        "why": "Une erreur est une information à relier à une intention, pas un signal pour réécrire tout le programme.",
+        "discoverySpeech": ["« Qu’espérais-tu lire ? Qu’as-tu réellement obtenu ? »", "« Lis la dernière ligne puis retrouve la ligne du fichier signalée. »", "« Change une cause, relance et vérifie : un résultat sans exception peut rester faux. »"],
+        "example": { "target": { "moduleId": "python-erreurs", "blockId": "exemple" }, "comments": ["Le modèle échoue volontairement sur point ; la variable définie est points.", "Après correction, le résultat attendu est 7.", "Faire décrire la cause avant de fournir une correction ; la ligne signalée est un point de départ."] },
+        "questions": [{ "question": "Une SyntaxError et une NameError arrivent-elles au même moment ?", "answer": "Une erreur de syntaxe empêche la lecture du fichier ; une NameError apparaît lorsque l’exécution utilise un nom non défini." }, { "question": "Faut-il modifier int si cinq provoque ValueError ?", "answer": "Pas pour ce modèle qui demande un entier en chiffres. Tester 5 vérifie le diagnostic ; accepter les mots demanderait un autre traitement." }, { "question": "L’absence d’erreur prouve-t-elle que le résultat est bon ?", "answer": "Non : il faut comparer la sortie à l’objectif et à une prédiction." }],
+        "accompaniedActivity": { "moduleId": "python-erreurs", "blockId": "guide" }, "independentActivity": { "moduleId": "python-erreurs", "blockId": "autonomie" },
+        "differentiation": ["Commencer par un nom incohérent avant de comparer les catégories.", "Aider à lire le message sans dicter la correction.", "Demander une nouvelle valeur de test et une explication sans indice."],
+        "commonErrors": [{ "symptom": "L’élève change plusieurs lignes au hasard.", "helps": ["Demander le résultat attendu.", "Faire lire la dernière ligne et retrouver le fichier signalé.", "Isoler une cause et formuler une correction avant de la saisir.", "Tester cette seule correction puis comparer la sortie à l’objectif."] }],
+        "notes": "Évaluer la démarche et le transfert, pas la mémorisation de messages exacts. Une erreur d’exécution peut survenir après des sorties déjà produites. La robustesse des entrées reste pour plus tard.",
+        "quickConductor": ["Faire prévoir la sortie.", "Lire et corriger un nom.", "Comparer syntaxe et conversion dans des fichiers distincts.", "Chercher un résultat faux sans exception.", "Corriger deux défauts successifs puis faire choisir et expliquer un essai de saisie invalide et un essai valide sans dicter la cause."],
+        "references": [{ "title": "Python - erreurs et exceptions", "url": "https://docs.python.org/fr/3/tutorial/errors.html" }]
+      }
+    },
+    "python-conditions": {
+      "domainId": "python", "title": "Faire un choix", "type": "lesson", "theme": "fondations",
+      "objective": "Construire un choix à deux issues et tester chaque branche.",
+      "prerequisitesInContent": true,
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.conditions"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer et relancer le fichier entier." }, { "skillId": "python.output", "expectation": "Afficher un message." }, { "skillId": "python.variables", "expectation": "Définir une variable avant son utilisation." }, { "skillId": "python.input", "expectation": "Conserver une réponse de input." }, { "skillId": "python.numbers", "expectation": "Utiliser une valeur numérique." }, { "skillId": "python.conversion", "expectation": "Convertir une réponse entière." }, { "skillId": "python.debugging", "expectation": "Lire la ligne signalée et retester une correction ; sinon reprendre Comprendre et corriger une erreur." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir afficher une variable numérique, convertir une réponse entière et relire une erreur après un essai. Sinon, reprends le point concerné. Enregistre tes essais précédents et crée choix.py sans les effacer. Commence avec une valeur fixe : la question viendra ensuite.", "moduleLink": { "moduleId": "python-erreurs", "text": "Revoir le diagnostic des erreurs" } },
+        { "type": "lesson", "id": "comparer", "title": "1 - Une comparaison, deux réponses", "paragraphs": [">= signifie supérieur ou égal. points >= 10 est vrai pour 10 et 12, faux pour 9. Python affiche True pour vrai et False pour faux.", "> signifie strictement supérieur et < strictement inférieur. == compare deux valeurs : points == 10 demande si elles sont égales. Un seul = affecte une valeur à une variable ; il ne fait pas une comparaison."], "code": "points = 10\nprint(points >= 10)\nprint(points > 10)\nprint(points == 10)" },
+        { "type": "lesson", "id": "exemple", "title": "2 - Choisir une seule branche", "paragraphs": ["if signifie si : le premier message s’affiche si la comparaison est vraie. else signifie sinon : son message s’affiche si elle est fausse. Une seule des deux branches s’exécute.", "Chaque ligne if ou else se termine par deux-points. Les instructions de sa branche commencent quatre espaces plus loin : c’est l’indentation. else est aligné avec if. Thonny peut ajouter les espaces après les deux-points ; vérifie leur alignement.", "La dernière ligne revient au même alignement que if : elle est hors des branches et s’exécute dans les deux cas. Avec points = 10, attends Passage ouvert puis Fin du test."], "code": "points = 10\nif points >= 10:\n    print(\"Passage ouvert\")\nelse:\n    print(\"Encore quelques points\")\nprint(\"Fin du test\")" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - vérifier la frontière", "items": [{ "id": "trois-cas", "text": "Prédis puis teste le modèle avec 9, 10 et 11. Pour chaque essai, indique la branche choisie et le message qui s’affiche toujours.", "hint": "9 choisit else ; 10 et 11 choisissent if. Fin du test s’affiche dans les trois cas." }, { "id": "strict", "text": "Remplace >= par > et reteste 10. Explique ce qui change, puis restaure >=.", "hint": "10 n’est pas strictement supérieur à 10 : avec >, il choisit else." }, { "id": "alignement", "text": "Montre les deux-points, les lignes indentées et la ligne hors des branches. Explique le rôle de chacun.", "hint": "Les espaces ne sont pas une décoration : ils indiquent les instructions appartenant à chaque branche." }] },
+        { "type": "lesson", "id": "saisie", "title": "3 - Le choix dépend d’une réponse", "paragraphs": ["Enregistre choix.py, puis utilise Enregistrer sous pour créer choix_saisie.py et conserver le modèle à valeur fixe. Dans cette copie, remplace seulement points = 10 par les deux lignes ci-dessous, au début du fichier, sans indentation. Garde ensuite le même if/else et le print final : on modifie seulement l’origine des points.", "Réponds avec un entier écrit en chiffres, sans unité ni décimale. La conversion a lieu avant la comparaison. Une entrée comme dix provoque toujours ValueError : if/else ne protège pas cette conversion.", "Teste 9, 10 et 11 en relançant pour chaque réponse. Une seule exécution ne prouve pas que les deux branches fonctionnent."], "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)" },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - ouvrir un coffre", "intro": "Enregistre choix_saisie.py puis crée coffre.py. Conserve tes deux modèles. Le coffre s’ouvre à partir de 5 clés ; essaie sans recopier la décision complète.", "items": [{ "id": "coffre-question", "text": "Demande un nombre entier de clés, conserve-le comme nombre et affiche Coffre ouvert s’il y en a au moins 5, sinon Pas assez de clés.", "hint": "Après input et int, compare avec >= 5. Chaque branche contient son propre print indenté." }, { "id": "coffre-tests", "text": "Prédis puis teste 4, 5 et 6. Ajoute un message Fin qui s’affiche toujours après le choix.", "hint": "4 ne suffit pas ; 5 et 6 ouvrent le coffre. Le dernier print doit être aligné avec if, pas avec le print d’une branche." }, { "id": "coffre-modifier", "text": "Change le seuil à 8 et choisis trois nouveaux tests : en dessous, exactement au seuil, au-dessus. Explique le rôle de la comparaison et des espaces.", "hint": "Teste 7, 8 et 9. Le cas exactement au seuil vérifie la différence entre > et >=." }] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - comparer du texte", "items": [{ "id": "mot-cle", "text": "Dans un nouveau fichier, demande un mot. Affiche Bienvenue si la réponse est exactement étoile, sinon Mot différent. Teste étoile, Etoile et lune.", "hint": "input suffit pour du texte, sans int. Compare la variable à \"étoile\" avec ==. Les majuscules et les accents comptent." }] },
+        { "type": "callout", "id": "suite", "title": "Pour la suite", "text": "Si tu sais construire les deux branches et tester la frontière sans recopier tout le modèle, tu peux ajouter plusieurs possibilités. Sinon, consolide les tests et l’indentation. Finir cette page ne valide pas automatiquement tes compétences." }
+      ],
+      "masteryCriteria": ["Distinguer = et ==, et expliquer la frontière de >=.", "Construire un if/else avec deux-points et indentation cohérente.", "Tester les deux branches et la valeur exactement au seuil.", "Modifier le seuil et distinguer une instruction de branche d’une instruction exécutée toujours."],
+      "consolidation": [{ "moduleId": "python-conditions", "blockId": "guide", "label": "Reprendre les branches et la frontière" }, { "moduleId": "python-erreurs", "blockId": "guide", "label": "Relire une erreur" }],
+      "bonusActivities": [{ "moduleId": "python-conditions", "blockId": "bonus", "label": "Comparer un mot exact" }], "nextSteps": [{ "moduleId": "python-elif", "label": "Plusieurs possibilités", "prerequisiteSkills": [{ "skillId": "python.conditions", "expectation": "Construire if/else et tester les deux branches ; sinon reprendre le coffre." }] }],
+      "teacherGuide": {
+        "objective": "Comprendre le choix exclusif entre deux branches, leur structure et la nécessité de tester la frontière.",
+        "entryDiagnosis": ["Faire utiliser une variable numérique et expliquer int sur une réponse entière.", "Faire relancer après modification et lire un message d’erreur ; proposer une reprise ciblée si nécessaire."],
+        "preparation": ["Prévoir choix.py à valeur fixe, choix_saisie.py pour sa copie interactive, puis coffre.py pour l’autonomie ; conserver les trois fichiers.", "Tester 9, 10 et 11 ; prévoir les deux sorties et le message commun.", "Pas de elif, condition composée, boucle ni exception capturée dans ce module."],
+        "why": "Une même suite d’instructions peut choisir une action en fonction d’une information.",
+        "discoverySpeech": ["« Est-ce que 10 suffit si la règle dit au moins 10 ? »", "« if et else proposent deux issues ; un essai n’en choisit qu’une. »", "« Les espaces indiquent à quelle branche appartient une instruction. »"],
+        "example": { "target": { "moduleId": "python-conditions", "blockId": "exemple" }, "comments": ["Avec 10, attendre Passage ouvert et Fin du test.", "Faire prévoir 9 puis 11 ; tester le seuil lui-même, pas seulement les extrêmes.", "Distinguer les print indentés du message commun avant d’ajouter une saisie."] },
+        "questions": [{ "question": "Les deux messages des branches s’affichent-ils pour 10 ?", "answer": "Non : seule la branche if s’exécute, puis le message commun hors des branches." }, { "question": "Pourquoi tester exactement 10 ?", "answer": "Pour vérifier que le seuil est inclus par >= et comprendre la différence avec >." }, { "question": "Le choix protège-t-il une réponse dix ?", "answer": "Non : int échoue avant que la comparaison soit exécutée." }, { "question": "Quelle différence entre = et == ?", "answer": "= affecte une valeur ; == compare deux valeurs." }],
+        "accompaniedActivity": { "moduleId": "python-conditions", "blockId": "guide" }, "independentActivity": { "moduleId": "python-conditions", "blockId": "autonomie" },
+        "differentiation": ["Rester sur une valeur fixe avant d’ajouter input.", "Aider à l’indentation mais faire expliquer l’appartenance des lignes.", "Demander un nouveau seuil sans modèle ; proposer ensuite une égalité textuelle."],
+        "commonErrors": [{ "symptom": "L’alignement ou le seuil ne correspond pas à l’intention.", "helps": ["Demander la branche attendue pour la valeur testée.", "Vérifier la comparaison et les deux-points.", "Repérer les quatre espaces des branches et l’alignement de else.", "Corriger une cause puis retester en dessous, au seuil et au-dessus."] }],
+        "notes": "Une branche jamais testée peut contenir une erreur d’exécution. Une erreur de syntaxe peut empêcher tout le fichier de démarrer. Évaluer explication et transfert séparément des aides à la frappe ; aucun statut automatique.",
+        "quickConductor": ["Vérifier les acquis numériques.", "Lire des comparaisons.", "Construire deux branches et un message commun.", "Tester les trois valeurs puis une saisie.", "Créer le coffre et modifier son seuil."],
+        "references": [{ "title": "Python - if", "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#if-statements" }]
+      }
+    },
+    "python-elif": {
+      "domainId": "python", "title": "Plusieurs possibilités", "type": "lesson", "theme": "fondations",
+      "objective": "Ordonner plusieurs conditions et vérifier quelle issue est choisie.", "prerequisitesInContent": true,
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.branches"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer et relancer un fichier .py." }, { "skillId": "python.output", "expectation": "Afficher et lire les résultats." }, { "skillId": "python.variables", "expectation": "Définir une valeur avant de la comparer." }, { "skillId": "python.input", "expectation": "Conserver une réponse de input." }, { "skillId": "python.numbers", "expectation": "Comparer des nombres." }, { "skillId": "python.conversion", "expectation": "Convertir une réponse entière." }, { "skillId": "python.debugging", "expectation": "Lire une erreur et retester sa correction." }, { "skillId": "python.conditions", "expectation": "Construire if/else et tester le seuil ; sinon reprendre Faire un choix." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir construire un if/else, comparer des nombres et tester les deux branches. Pour la saisie, il faut aussi savoir convertir un entier. Enregistre choix.py et crée possibilites.py sans effacer tes anciens fichiers.", "moduleLink": { "moduleId": "python-conditions", "text": "Revoir le choix à deux issues" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Ajouter une autre condition", "paragraphs": ["elif signifie sinon si. Si la condition du if est fausse, Python teste celle du elif. Si aucune condition n’est vraie, il exécute else. Les mots if, elif et else sont alignés ; chaque branche commence quatre espaces plus loin et chaque en-tête se termine par deux-points.", "Python choisit seulement la première condition vraie de cette chaîne. Avec 10 points, les deux comparaisons seraient vraies, mais seule la première branche est exécutée : on lit Grand passage, puis Fin du choix.", "Ici, 10 ou plus ouvre le grand passage ; de 5 à 9 ouvre le petit passage ; moins de 5 fait patienter. La dernière ligne non indentée s’exécute dans tous les cas."], "code": "points = 10\nif points >= 10:\n    print(\"Grand passage\")\nelif points >= 5:\n    print(\"Petit passage\")\nelse:\n    print(\"Patienter\")\nprint(\"Fin du choix\")" },
+        { "type": "lesson", "id": "ordre", "title": "2 - L’ordre change la décision", "paragraphs": ["Crée ordre_conditions.py pour ce modèle volontairement mal ordonné. Prédis ce qu’il affiche avec 12, puis exécute-le. Compare le résultat au grand passage attendu pour cette valeur et cherche ce qui empêche de le choisir.", "Après ton essai, vérifie si un premier test couvre déjà tous les cas du suivant. L’ordre des seuils n’est pas une règle universelle : il doit correspondre aux issues attendues."], "code": "points = 12\nif points >= 5:\n    print(\"Petit passage\")\nelif points >= 10:\n    print(\"Grand passage\")\nelse:\n    print(\"Patienter\")" },
+        { "type": "lesson", "id": "independants", "title": "3 - Deux if ne font pas une chaîne", "paragraphs": ["Crée conditions_independantes.py pour conserver ce troisième modèle. Les deux if sont indépendants. Python teste chacun, même si le premier est vrai. Avec 12, les deux messages s’affichent.", "Choisis une chaîne if/elif/else quand les issues doivent être exclusives. Des if indépendants conviennent lorsque plusieurs actions peuvent se produire ensemble. Le mot else se rattache au if ou à la chaîne qui le précède, pas à tous les if du fichier."], "code": "points = 12\nif points >= 10:\n    print(\"Grand passage\")\nif points >= 5:\n    print(\"Petit passage\")" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - deux frontières", "items": [{ "id": "frontieres", "text": "Sur le premier modèle, prédis puis teste 4, 5, 9 et 10. Une seule issue doit s’afficher à chaque essai, suivie de Fin du choix.", "hint": "4 : Patienter ; 5 et 9 : Petit passage ; 10 : Grand passage. Relance après chaque modification." }, { "id": "corriger-ordre", "text": "Teste le modèle mal ordonné avec 12, puis corrige l’ordre des conditions en gardant chaque message associé à son seuil. Reteste 4, 5 et 10.", "hint": "Avec 12, le premier test >= 5 est déjà vrai : la branche >= 10 n’est donc pas choisie. Déplace la condition et sa branche ensemble ; >= 10 doit précéder >= 5 pour cette règle." }, { "id": "comparer-if", "text": "Compare le modèle à deux if et la chaîne avec 12. Explique pourquoi l’un affiche deux issues et l’autre une seule.", "hint": "Deux if font deux décisions indépendantes. Dans la chaîne, Python ne choisit que la première condition vraie." }] },
+        { "type": "lesson", "id": "saisie", "title": "4 - Choisir avec une réponse", "paragraphs": ["Rouvre possibilites.py et utilise Fichier → Enregistrer sous pour créer possibilites_saisie.py. Dans cette copie, remplace points = 10 par ces deux lignes au début du fichier, sans indentation, puis garde la chaîne et le message final. Demande un entier écrit en chiffres, sans unité ni décimale.", "Teste 4, 5, 9 et 10 en répondant dans la console. elif ne protège pas la conversion : une réponse comme dix provoque ValueError avant le choix. Arrête puis relance pour un nouvel essai."], "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)" },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - trois coffres", "intro": "Enregistre possibilites_saisie.py puis crée coffres.py sans remplacer les autres essais. Écris ta propre décision avant d’ouvrir l’indice.", "items": [{ "id": "coffres-regle", "text": "Demande un nombre entier de clés. Affiche Coffre doré à partir de 8, Coffre argenté de 3 à 7, sinon Aucun coffre. Une seule issue doit s’afficher.", "hint": "Convertis la réponse, puis teste >= 8 avant >= 3. else couvre les valeurs restantes ; aucun deuxième test de borne n’est nécessaire ici." }, { "id": "coffres-tests", "text": "Prédis puis teste 2, 3, 7 et 8. Change ensuite le seuil doré à 10 et choisis de nouveaux tests autour de cette frontière.", "hint": "Aux seuils initiaux : aucun, argenté, argenté, doré. Après modification, 9 doit rester argenté et 10 devenir doré." }, { "id": "expliquer-chaine", "text": "Explique pourquoi 8 ne déclenche pas deux coffres et pourquoi inverser les tests changerait le résultat.", "hint": "Le premier test vrai sélectionne la branche et écarte les autres branches de la chaîne." }] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - une quatrième issue", "items": [{ "id": "quatre-issues", "text": "Dans un nouveau fichier, ajoute un coffre de bronze de 1 à 2 clés. Garde argenté à partir de 3, doré à partir de 8 et aucun coffre pour moins de 1. Teste 0, 1, 2, 3, 7 et 8.", "hint": "Une chaîne peut contenir plusieurs elif : ajoute le test >= 1 après >= 3, avant else." }] }
+      ],
+      "masteryCriteria": ["Expliquer le rôle de elif et la sélection de la première condition vraie.", "Ordonner des seuils qui se recouvrent et tester les deux frontières.", "Distinguer une chaîne exclusive de plusieurs if indépendants.", "Construire une décision personnelle, modifier un seuil et choisir les tests correspondants."],
+      "consolidation": [{ "moduleId": "python-elif", "blockId": "guide", "label": "Revoir ordre et frontières" }, { "moduleId": "python-conditions", "blockId": "guide", "label": "Reprendre if/else" }],
+      "bonusActivities": [{ "moduleId": "python-elif", "blockId": "bonus", "label": "Ajouter une quatrième issue" }],
+      "nextSteps": [{ "moduleId": "python-aventure", "label": "Une aventure à choix", "prerequisiteSkills": [{ "skillId": "python.branches", "expectation": "Construire et tester trois issues exclusives ; sinon reprendre les coffres." }] }],
+      "teacherGuide": {
+        "objective": "Enseigner la sélection exclusive et l’ordre des tests sans introduire de conditions composées.",
+        "entryDiagnosis": ["Faire écrire un if/else et prévoir la branche au seuil.", "Faire convertir une réponse entière avant de passer à la variante interactive."],
+        "preparation": ["Conserver choix.py et créer possibilites.py, ordre_conditions.py et conditions_independantes.py. Pour la saisie, enregistrer une copie du premier modèle sous possibilites_saisie.py.", "Préparer 4, 5, 9 et 10, puis comparer la chaîne au modèle mal ordonné et aux if indépendants.", "Aucune boucle, imbrication ou bibliothèque nécessaire ; la saisie numérique reste limitée aux entiers."],
+        "why": "Plusieurs conditions vraies ne doivent pas toujours déclencher plusieurs actions.",
+        "discoverySpeech": ["« Pour 10, les deux seuils sont atteints : quelle issue doit gagner ? »", "« Dans une chaîne, la première condition vraie choisit une seule branche. »", "« Deux if indépendants peuvent exécuter deux actions : comparons les sorties. »"],
+        "example": { "target": { "moduleId": "python-elif", "blockId": "exemple" }, "comments": ["10 donne Grand passage puis Fin du choix, pas Petit passage.", "Faire prédire les quatre essais avant de changer la valeur.", "Expliquer l’exclusion par la chaîne, pas par une prétendue fausseté du test >= 5 pour 10."] },
+        "questions": [{ "question": "Pourquoi ne lit-on pas Petit passage pour 10 ?", "answer": "Le premier test vrai a déjà sélectionné Grand passage ; Python ne choisit pas une seconde branche." }, { "question": "Pourquoi >= 5 avant >= 10 empêche-t-il le grand passage ?", "answer": "Tous les nombres au moins égaux à 10 satisfont déjà le premier test >= 5." }, { "question": "Quelle différence avec deux if ?", "answer": "Ils sont testés indépendamment ; les deux actions peuvent s’exécuter." }],
+        "accompaniedActivity": { "moduleId": "python-elif", "blockId": "guide" }, "independentActivity": { "moduleId": "python-elif", "blockId": "autonomie" },
+        "differentiation": ["Garder une valeur fixe jusqu’à compréhension des trois issues.", "Faire tracer oralement un essai en repérant la première condition vraie.", "Demander de nouveaux seuils ou une quatrième issue, sans imposer le bonus."],
+        "commonErrors": [{ "symptom": "Une branche est inaccessible ou deux coffres s’affichent.", "helps": ["Demander le résultat attendu pour la valeur saisie.", "Faire suivre les tests dans leur ordre réel.", "Comparer les seuils et repérer if indépendant ou elif.", "Corriger une cause puis retester chaque frontière en expliquant l’issue choisie."] }],
+        "notes": "Ne pas transformer cette activité en bornes doubles avec and. Évaluer le transfert, pas seulement le modèle recopié ; aucune acquisition automatique.",
+        "quickConductor": ["Diagnostiquer if/else.", "Lire une chaîne à trois issues.", "Faire prédire puis tester l’ordre incorrect avant d’en expliquer la cause ; comparer ensuite les if indépendants.", "Tester les frontières puis une saisie.", "Construire les coffres et modifier un seuil."],
+        "references": [{ "title": "Python - if et elif", "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#if-statements" }]
+      }
+    },
+    "python-aventure": {
+      "domainId": "python", "title": "Une aventure à choix", "type": "project", "theme": "fondations",
+      "objective": "Créer une scène interactive avec trois destinations et une issue pour un choix inconnu.", "prerequisitesInContent": true,
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.workspace", "python.output", "python.variables", "python.input", "python.conditions", "python.branches", "python.debugging"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer, conserver et relancer un fichier." }, { "skillId": "python.output", "expectation": "Afficher des messages dans l’ordre voulu." }, { "skillId": "python.variables", "expectation": "Conserver plusieurs réponses sous des noms distincts." }, { "skillId": "python.input", "expectation": "Poser une question et réutiliser sa réponse textuelle." }, { "skillId": "python.conditions", "expectation": "Comparer une valeur avec == et indenter les branches." }, { "skillId": "python.branches", "expectation": "Construire une chaîne exclusive ; sinon reprendre Plusieurs possibilités." }, { "skillId": "python.debugging", "expectation": "Comparer la sortie attendue à la sortie réelle et corriger une cause." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir conserver une réponse textuelle, comparer avec == et construire if/elif/else. Sinon, reprends Plusieurs possibilités. Enregistre tes essais et crée aventure.py sans effacer les autres fichiers. Choisis un univers fictif : aucun renseignement personnel n’est nécessaire.", "moduleLink": { "moduleId": "python-elif", "text": "Revoir plusieurs issues" } },
+        { "type": "lesson", "id": "plan", "title": "1 - Une scène, trois destinations", "paragraphs": ["Imagine un accueil, un pseudo fictif et trois lieux accessibles depuis la même scène. Choisis des mots simples à saisir, par exemple tour, jardin et grotte. Prévois un message différent pour chaque destination.", "Le programme pose une seule question de destination, puis raconte une issue. Ce n’est pas encore une aventure à plusieurs décisions successives : pas de boucle ou de conditions imbriquées nécessaires.", "Prévois aussi ce qui s’affiche si le mot ne correspond à aucun lieu. Le programme doit expliquer les choix possibles et se terminer ; il ne repose pas automatiquement la question." ] },
+        { "type": "lesson", "id": "texte", "title": "2 - Un choix textuel exact", "paragraphs": ["Pour du texte, compare la réponse à un mot entre guillemets avec ==. Ne convertis pas le lieu avec int : ce n’est pas un nombre.", "La comparaison est exacte : tour, Tour et tour suivi d’un espace sont trois textes différents. Écris les mots acceptés dans la question pour guider la saisie. Ce projet ne corrige pas automatiquement les majuscules ou les espaces.", "Tu peux ajouter deux elif après le premier if, puis un else pour le mot inconnu. Comme dans le module précédent, les en-têtes sont alignés et les messages de branche sont indentés." ] },
+        { "type": "tasks", "id": "guide", "title": "Préparation accompagnée - une destination", "items": [{ "id": "une-question", "text": "Affiche un accueil et demande un lieu en annonçant tour comme choix accepté. Conserve la réponse dans une variable.", "hint": "Utilise print pour l’accueil, puis une variable affectée au résultat de input. Ne mets pas la réponse dans le fichier." }, { "id": "une-issue", "text": "Avec if/else, affiche un événement si la réponse est exactement tour, sinon un message indiquant que le lieu est inconnu.", "hint": "Compare ta variable à \"tour\" avec ==. Le else ne doit pas faire entrer dans un lieu non choisi." }, { "id": "deux-essais", "text": "Prédis puis teste tour et lune. Explique quelle branche a été choisie.", "hint": "Un essai reconnaît le lieu ; l’autre utilise else. Relance pour chaque réponse." }] },
+        { "type": "tasks", "id": "autonomie", "title": "3 - Construis ton aventure", "intro": "Enregistre le premier essai, puis crée mon_aventure.py pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.", "items": [{ "id": "accueil-pseudo", "text": "Affiche un accueil, demande un pseudo fictif et réutilise-le dans un message. Garde cette réponse distincte du choix de destination.", "hint": "Deux informations nécessitent deux noms de variables différents. print peut afficher un texte et une variable séparés par une virgule." }, { "id": "trois-lieux", "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne if/elif/elif/else : un événement propre à chaque lieu, puis un message utile pour tout autre mot.", "hint": "Trois comparaisons exactes avec == ; else conseille les mots acceptés. Une seule issue doit s’afficher par essai." }, { "id": "fin-commune", "text": "Ajoute un message de fin qui s’affiche après le choix, quelle que soit la destination.", "hint": "Aligne ce print avec if, pas avec les messages des branches." }] },
+        { "type": "tasks", "id": "verification", "title": "4 - Vérifie chaque route", "items": [{ "id": "quatre-routes", "text": "Prédis puis teste les trois mots acceptés et un mot inconnu. Note pour chaque essai le mot saisi et l’unique événement attendu. Vérifie aussi le message de fin.", "hint": "Ne teste pas seulement ton lieu préféré. Utilise un nouveau pseudo pour vérifier qu’il vient réellement de la saisie." }, { "id": "casse-espace", "text": "Teste un mot accepté avec une majuscule, puis avec un espace ajouté. Vérifie que le message pour lieu inconnu s’affiche et explique pourquoi.", "hint": "L’égalité textuelle est exacte : on n’utilise ici aucun traitement automatique des réponses." }, { "id": "modifier-route", "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par else. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.", "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de else doit annoncer les choix à jour, sans l’ancien mot." }, { "id": "retrouver-projet", "text": "Enregistre, ferme et rouvre le fichier. Relance-le et explique l’origine de chaque réponse et le choix des branches.", "hint": "Le fichier conserve les instructions, pas les réponses de la précédente exécution. Toutes les variables nécessaires doivent être définies dans le fichier." }] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - une destination supplémentaire", "items": [{ "id": "quatrieme-lieu", "text": "Ajoute une quatrième destination annoncée dans la question et une branche elif avant else. Teste les quatre destinations et un mot inconnu.", "hint": "Garde else en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire." }] },
+        { "type": "callout", "id": "suite", "title": "Pour la suite", "text": "Si tu peux expliquer et modifier les routes avec peu ou pas d’aide, tu as réinvesti les premières décisions. Sinon, reprends une route ou la chaîne. La prochaine étape prévue est de répéter des actions avec des boucles ; elle n’est pas nécessaire pour terminer cette scène." }
+      ],
+      "masteryCriteria": ["Créer une scène personnelle avec trois destinations réellement choisies par la saisie.", "Conserver le pseudo et le lieu dans des variables distinctes, sans conversion numérique du lieu.", "Tester les trois routes et une entrée inconnue ; expliquer l’égalité exacte et l’issue exclusive.", "Modifier une destination sans casser les autres et retrouver le programme enregistré.", "Distinguer reproduction, compréhension et transfert pour chaque compétence réinvestie."],
+      "consolidation": [{ "moduleId": "python-aventure", "blockId": "guide", "label": "Repartir d’une destination" }, { "moduleId": "python-elif", "blockId": "guide", "label": "Revoir les issues exclusives" }, { "moduleId": "python-saisie", "blockId": "guide", "label": "Revoir la réponse textuelle" }],
+      "bonusActivities": [{ "moduleId": "python-aventure", "blockId": "bonus", "label": "Ajouter une destination" }], "nextSteps": [{ "moduleId": "python-for", "label": "Répéter un nombre de fois", "prerequisiteSkills": [{ "skillId": "python.conditions", "expectation": "Repérer le bloc indenté et les instructions après ; sinon reprendre Faire un choix." }] }],
+      "teacherGuide": {
+        "objective": "Observer le transfert des premières notions dans une scène interactive originale, sans fournir un jeu complet à recopier.",
+        "entryDiagnosis": ["Faire comparer une réponse textuelle à un mot avec ==.", "Faire expliquer une chaîne à trois issues et son else ; consolider ce point avant de multiplier les routes."],
+        "preparation": ["Conserver les fichiers précédents et créer aventure.py, puis mon_aventure.py.", "Préparer trois mots de test et une entrée inconnue ; annoncer des mots simples, sans données personnelles.", "Pas de solution complète publiée, int, normalisation de texte, boucle ou condition imbriquée dans ce projet."],
+        "why": "Une histoire interactive permet de vérifier si une réponse déclenche réellement l’issue prévue.",
+        "discoverySpeech": ["« Quels mots peut-on saisir et que se passe-t-il pour chacun ? »", "« Quelle réponse donner si le lieu n’existe pas ? »", "« Testons toutes les routes, puis changeons une destination sans casser les autres. »"],
+        "example": { "target": { "moduleId": "python-aventure", "blockId": "plan" }, "comments": ["Le plan décrit une scène à trois issues, pas un arbre de décisions imbriquées.", "Accompagner un lieu si nécessaire, puis laisser construire les autres sans modèle complet.", "Chaque test affiche une seule issue, puis le message de fin, y compris pour un choix inconnu."] },
+        "questions": [{ "question": "Pourquoi ne pas utiliser int sur le lieu ?", "answer": "La réponse attendue est textuelle ; on compare le mot avec == sans conversion." }, { "question": "Que doit produire un mot inconnu ?", "answer": "Le message de else, puis la fin commune ; aucune destination valide ni nouvelle question automatique." }, { "question": "Renommer uniquement le mot dans la question suffit-il ?", "answer": "Non : il faut aussi modifier la comparaison et tout rappel des choix dans else. Tester le nouveau mot, l’ancien, les autres routes et un mot inconnu ; le rappel ne doit plus annoncer l’ancien mot." }, { "question": "La scène qui fonctionne prouve-t-elle tous les acquis ?", "answer": "Non : demander explication, tests de toutes les routes et modification autonome ; noter séparément les aides reçues." }],
+        "accompaniedActivity": { "moduleId": "python-aventure", "blockId": "guide" }, "independentActivity": { "moduleId": "python-aventure", "blockId": "autonomie" },
+        "differentiation": ["Construire une route avec aide puis passer à trois routes progressivement.", "Aider au clavier sans donner le choix de comparaison ni la structure complète.", "Proposer un quatrième lieu seulement après les tests et le transfert."],
+        "commonErrors": [{ "symptom": "Une route n’est pas reconnue ou plusieurs événements s’affichent.", "helps": ["Comparer le mot réellement saisi au mot annoncé.", "Vérifier les mots entre guillemets, leur casse et les espaces.", "Repérer les elif, l’alignement et l’indentation des messages.", "Corriger une cause, tester cette route et les autres, puis demander une modification autonome."] }, { "symptom": "Le pseudo remplace la destination ou le projet dépend d’un ancien essai.", "helps": ["Relancer avec un pseudo et un lieu très différents.", "Repérer les noms à gauche des deux saisies.", "Vérifier les noms distincts et leurs usages dans les affichages et comparaisons.", "Corriger puis relancer le fichier entier après redémarrage ; vérifier la sauvegarde et la réouverture."] }],
+        "notes": "Évaluer les compétences séparément. Ce projet n’exige ni calcul ni conversion ; il ne valide pas ces compétences. Les cases et routes consultées ne constituent pas une preuve d’acquisition.",
+        "quickConductor": ["Diagnostiquer comparaison textuelle et elif.", "Préparer les trois lieux et l’issue inconnue.", "Accompagner une route si nécessaire.", "Construire et tester la scène personnelle.", "Modifier une route et le rappel de else, tester aussi un mot inconnu, puis rouvrir le fichier et choisir une reprise ou un bonus."],
+        "references": [{ "title": "Python - décisions", "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#if-statements" }, { "title": "Python - input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }]
+      }
+    },
+    "python-for": {
+      "domainId": "python",
+      "title": "Répéter un nombre de fois",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Construire une répétition avec for/range et prévoir ses passages.",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "skillIds": [
+        "python.for"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, conserver et relancer un fichier."
+        },
+        {
+          "skillId": "python.output",
+          "expectation": "Afficher et prévoir l’ordre des résultats."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Définir et réutiliser une valeur."
+        },
+        {
+          "skillId": "python.conditions",
+          "expectation": "Repérer un bloc indenté et une ligne hors du bloc ; sinon reprendre Faire un choix."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Il faut savoir afficher, réutiliser une variable et repérer un bloc indenté. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée repetitions.py sans les effacer. Commence avec un nombre de tours fixe.",
+          "moduleLink": {
+            "moduleId": "python-conditions",
+            "text": "Revoir les blocs indentés"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "1 - Une action répétée",
+          "paragraphs": [
+            "Au lieu d’écrire trois print identiques, for répète un bloc. for tour in range(3) signifie ici : pour chaque valeur fournie par range(3), exécuter les instructions indentées.",
+            "tour est un nom de variable : for lui affecte successivement les valeurs fournies. in relie ce nom à la suite parcourue. Garde les deux-points et quatre espaces devant les instructions du bloc.",
+            "Prédis combien de Bonjour ! et de Fin s’afficheront. Le print de Fin, non indenté, vient après la boucle."
+          ],
+          "code": "for tour in range(3):\n    print(\"Bonjour !\")\nprint(\"Fin\")"
+        },
+        {
+          "type": "lesson",
+          "id": "valeurs",
+          "title": "2 - Les valeurs de tour",
+          "paragraphs": [
+            "Enregistre repetitions.py puis crée tours.py pour ce modèle. range(3) fournit 0, 1, 2 : trois valeurs, en commençant par 0. La borne 3 est exclue.",
+            "Exécute, puis remplace range(3) par range(1, 4). Prédis les valeurs : elles vont de 1 à 3, pas jusqu’à 4. La première borne est le début ; la seconde est la fin exclue.",
+            "range n’est pas une liste. Ici, for parcourt une suite de nombres ; plus tard, il pourra parcourir d’autres éléments. Pas besoin d’une liste pour ces essais."
+          ],
+          "code": "for tour in range(3):\n    print(\"Tour\", tour)\nprint(\"Fin\")"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé - prévoir les passages",
+          "items": [
+            {
+              "id": "passages",
+              "text": "Dans repetitions.py, prédis puis teste range(1), range(3) et range(0). Vérifie aussi le message après la boucle.",
+              "hint": "Un, trois puis zéro Bonjour ! ; Fin s’affiche une seule fois dans les trois essais."
+            },
+            {
+              "id": "bornes",
+              "text": "Dans tours.py, compare range(1, 4), range(1, 5) et range(1, 1). Prédis les valeurs et le nombre de passages avant chaque essai.",
+              "hint": "1 à 3, puis 1 à 4, puis aucun tour : la borne de fin est exclue. Fin reste affiché."
+            },
+            {
+              "id": "bloc",
+              "text": "Rouvre repetitions.py et rétablis range(3). Place provisoirement le print de Fin dans le bloc. Prédis la différence avec trois tours, teste, puis remets-le après la boucle.",
+              "hint": "Dans le bloc, Fin se répète à chaque tour ; hors du bloc, il s’affiche une seule fois."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - ton parcours de tours",
+          "intro": "Enregistre repetitions.py et tours.py, puis crée parcours_tours.py. Conserve les exemples ; essaie avant les indices.",
+          "items": [
+            {
+              "id": "tours-personnels",
+              "text": "Affiche les tours de 1 à 4 avec un message de ton choix à chaque tour, puis un seul message de fin. Essaie sans recopier le modèle complet.",
+              "hint": "Avec range à deux bornes, la première valeur est incluse et la dernière borne est exclue. Affiche la variable sans guillemets autour de son nom."
+            },
+            {
+              "id": "changer-tours",
+              "text": "Passe à six tours en changeant la borne. Explique le début, la dernière valeur et le nombre de passages avant de tester.",
+              "hint": "Pour commencer à 1 et finir à 6, la borne exclue doit être 7."
+            },
+            {
+              "id": "aucun-tour",
+              "text": "Enregistre ton programme, puis crée parcours_vide.py avec Enregistrer sous. Modifie les bornes pour n’avoir aucun tour. Prédis puis teste le message final ; rouvre ensuite le premier fichier.",
+              "hint": "Deux bornes égales ne donnent aucun passage. Un print hors du bloc doit encore s’exécuter."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - choisir le nombre de tours",
+          "items": [
+            {
+              "id": "nombre-saisi",
+              "text": "Dans repetitions_saisie.py, demande un entier de 0 à 6, conserve la réponse puis convertis-la avec int en deux lignes. Utilise le nombre pour répéter ton message. Teste 0, 1 et 4.",
+              "hint": "range peut recevoir la variable numérique. Ce programme ne contrôle pas le domaine 0 à 6 ; une saisie non convertible provoque toujours ValueError. Pas de gestion d’erreur à ajouter."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Prévoir les valeurs de range à une ou deux bornes et distinguer fin exclue et dernière valeur.",
+        "Construire une répétition personnelle puis modifier son nombre de tours.",
+        "Expliquer les instructions dans le bloc et après, même sans passage.",
+        "Conserver les variantes et distinguer reproduction, explication et modification autonome."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-for",
+          "blockId": "guide",
+          "label": "Revoir valeurs, bornes et bloc"
+        },
+        {
+          "moduleId": "python-affichage",
+          "blockId": "guide",
+          "label": "Revoir affichage et ordre"
+        },
+        {
+          "moduleId": "python-conditions",
+          "blockId": "guide",
+          "label": "Revoir l’indentation"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-for",
+          "blockId": "bonus",
+          "label": "Choisir le nombre de répétitions"
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "python-while",
+          "label": "Répéter tant que",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.for",
+              "expectation": "Prévoir les passages et expliquer le bloc répété ; sinon reprendre les tours."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Enseigner une répétition connue et sa borne exclue, sans liste ni compteur de score.",
+        "entryDiagnosis": [
+          "Faire prévoir trois print puis montrer un bloc indenté.",
+          "Distinguer l’aide au clavier de la compréhension de l’ordre."
+        ],
+        "preparation": [
+          "Créer repetitions.py, tours.py puis parcours_tours.py ; garder les variantes.",
+          "Préparer zéro, un et plusieurs passages ; aucune conversion nécessaire au socle."
+        ],
+        "why": "Une seule structure répète un bloc sans recopier ses instructions.",
+        "discoverySpeech": [
+          "« Combien de fois ce message doit-il apparaître ? »",
+          "« Quelles valeurs tour reçoit-il ? »",
+          "« Quelles lignes ne se répètent pas ? »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-for",
+            "blockId": "exemple"
+          },
+          "comments": [
+            "Trois Bonjour ! puis Fin.",
+            "Afficher ensuite tour pour rendre visibles 0, 1, 2.",
+            "range(1, 1) ne passe jamais dans le bloc."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi 3 n’est-il pas affiché par range(3) ?",
+            "answer": "La borne de fin est exclue ; les valeurs sont 0, 1, 2."
+          },
+          {
+            "question": "Quelle différence avec range(1, 4) ?",
+            "answer": "Trois passages aussi, mais les valeurs sont 1, 2, 3."
+          },
+          {
+            "question": "Que devient Fin avec zéro passage ?",
+            "answer": "Il s’affiche si son instruction est après le bloc, non indentée."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-for",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "python-for",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Rester d’abord sur un message identique, puis afficher tour.",
+          "Faire suivre les valeurs oralement plutôt que demander un tableau logiciel.",
+          "Proposer la saisie numérique seulement en bonus."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le nombre de tours ou de Fin est incorrect.",
+            "helps": [
+              "Faire annoncer la sortie attendue.",
+              "Repérer les bornes et les espaces du print.",
+              "Suivre les valeurs sans inclure la borne de fin.",
+              "Corriger une borne ou un alignement puis retester zéro, un et plusieurs passages."
+            ]
+          }
+        ],
+        "notes": "for peut parcourir autre chose que des nombres ; ne pas ajouter listes ou pas négatif ici. Aucune validation automatique.",
+        "quickConductor": [
+          "Diagnostiquer affichage et bloc.",
+          "Lire puis exécuter la répétition.",
+          "Afficher les valeurs et comparer les bornes.",
+          "Créer, modifier et expliquer les tours personnels.",
+          "Conserver la variante vide et choisir une reprise."
+        ],
+        "references": [
+          {
+            "title": "Python - for et range",
+            "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#the-range-function"
+          }
+        ]
+      }
+    },
+    "python-while": {
+      "domainId": "python",
+      "title": "Répéter tant que",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Actualiser une condition de répétition et vérifier comment la boucle s’arrête.",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "skillIds": [
+        "python.while"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, conserver et relancer un fichier."
+        },
+        {
+          "skillId": "python.output",
+          "expectation": "Afficher et prévoir l’ordre des résultats."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Définir et réutiliser une valeur."
+        },
+        {
+          "skillId": "python.input",
+          "expectation": "Poser une question et répondre dans la console."
+        },
+        {
+          "skillId": "python.conditions",
+          "expectation": "Comparer avec == ou < et indenter un bloc."
+        },
+        {
+          "skillId": "python.numbers",
+          "expectation": "Additionner 1 à une valeur numérique pour la variante à borne fixe."
+        },
+        {
+          "skillId": "python.for",
+          "expectation": "Prévoir les passages d’une répétition connue."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Il faut savoir comparer, répondre à input et repérer un bloc répété. Pour le modèle numérique, il faut aussi savoir additionner 1. Enregistre tes essais puis crée encore.py. Avant de lancer, repère Arrêter / redémarrer : interromps un programme qui ne finit pas avant de le modifier.",
+          "moduleLink": {
+            "moduleId": "python-for",
+            "text": "Revoir une répétition connue"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "1 - Tester avant chaque passage",
+          "paragraphs": [
+            "while signifie tant que. Avant chaque passage, Python teste la condition : si elle est vraie, il exécute le bloc ; sinon, il continue après la boucle. Contrairement à if, il revient tester après le bloc.",
+            "La première question donne une valeur à reponse avant le premier test. Dans le bloc, une nouvelle question actualise cette valeur : le test suivant peut alors devenir faux.",
+            "Ici, seul oui permet un tour. Tout autre texte arrête, même Oui ou oui suivi d’un espace. Ce n’est pas une correction automatique des réponses ; un premier non donne zéro passage."
+          ],
+          "code": "reponse = input(\"Continuer ? oui pour continuer : \")\nwhile reponse == \"oui\":\n    print(\"Un nouveau tour\")\n    reponse = input(\"Continuer ? oui pour continuer : \")\nprint(\"Fin\")"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé - suivre les essais",
+          "items": [
+            {
+              "id": "arret-immediat",
+              "text": "Prédis puis teste non dès la première question. Explique pourquoi Fin apparaît sans nouveau tour.",
+              "hint": "La condition est fausse dès le premier test ; le bloc ne s’exécute pas."
+            },
+            {
+              "id": "plusieurs-tours",
+              "text": "Relance avec oui puis non, puis avec oui, oui, non. Annonce le nombre de tours avant chaque essai et repère la nouvelle saisie.",
+              "hint": "Un puis deux tours. La question du bloc actualise reponse avant le prochain test."
+            },
+            {
+              "id": "sans-mise-a-jour",
+              "text": "Sans exécuter une version incorrecte, imagine que la nouvelle saisie du bloc est supprimée. Avec un premier oui, explique pourquoi la condition resterait vraie.",
+              "hint": "reponse garderait oui. Arrêter / redémarrer interrompt une répétition involontaire ; l’absence de nouvelle saisie n’est pas à tester en lançant cette panne."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "numerique",
+          "title": "2 - Faire évoluer une valeur",
+          "paragraphs": [
+            "Enregistre encore.py puis crée while_tours.py. tour commence à 1 ; tant que tour < 4, on l’affiche puis on l’augmente.",
+            "Dans tour = tour + 1, Python lit l’ancienne valeur à droite, ajoute 1, puis conserve le résultat sous le même nom. Ce n’est pas une égalité mathématique. La mise à jour dans le bloc permet d’atteindre l’arrêt.",
+            "Prédis puis teste : 1, 2, 3 puis Fin. Avec tour initialisé à 4 ou 5, il n’y a aucun passage. Restaure ensuite tour = 1."
+          ],
+          "code": "tour = 1\nwhile tour < 4:\n    print(\"Tour\", tour)\n    tour = tour + 1\nprint(\"Fin\")"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - choisir la continuation",
+          "intro": "Enregistre encore.py et while_tours.py puis crée repetition_personnelle.py. Essaie avant les indices ; garde les modèles.",
+          "items": [
+            {
+              "id": "mot-personnel",
+              "text": "Choisis ton mot de continuation et un message personnel. Pose une première question, répète le message tant que la réponse correspond au mot, puis redemande à chaque passage.",
+              "hint": "Initialise la réponse avant while ; actualise-la dans le bloc. Le print final reste hors de la boucle."
+            },
+            {
+              "id": "tests-personnels",
+              "text": "Prédis puis teste un arrêt immédiat et deux accords suivis d’un arrêt. Explique la ligne qui permet à la condition de changer.",
+              "hint": "Le premier essai ne produit aucun tour ; le second en produit deux. Chaque saisie remplace la réponse précédente."
+            },
+            {
+              "id": "renommer-mot",
+              "text": "Enregistre puis renomme le mot accepté dans les deux questions et dans la comparaison. Teste le nouveau mot puis l’ancien ; l’ancien doit maintenant arrêter.",
+              "hint": "La question initiale et celle répétée doivent annoncer le même mot que celui comparé."
+            },
+            {
+              "id": "borne-personnelle",
+              "text": "Enregistre ton fichier. Rouvre while_tours.py puis crée borne_personnelle.py avec Enregistrer sous. Garde tour = 1, choisis une autre borne pour produire cinq tours et prédis la dernière valeur. Teste aussi un départ exactement à ta borne puis au-dessus.",
+              "hint": "La borne doit être 6 pour afficher 1 à 5. Avec un départ à 6 ou à 7, aucun tour ; Fin s’affiche. Vérifie que l’addition de 1 reste dans le bloc."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - une autre progression",
+          "items": [
+            {
+              "id": "autre-depart",
+              "text": "Dans un nouveau fichier, pars de 2 et augmente de 2 tant que la valeur est inférieure à 8. Prédis puis vérifie les valeurs et explique pourquoi la boucle finit.",
+              "hint": "Les valeurs affichées sont 2, 4, 6 ; la mise à jour atteint 8 et le test devient faux. Aucun compte à rebours nécessaire."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Expliquer le test préalable et répété, y compris zéro passage.",
+        "Construire une répétition textuelle avec saisie actualisée et arrêt vérifié.",
+        "Modifier une borne numérique et tester départ inférieur, égal et supérieur.",
+        "Expliquer le rôle de la mise à jour et distinguer attente de input et répétition sans fin."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-while",
+          "blockId": "guide",
+          "label": "Revoir test, nouvelle saisie et arrêt"
+        },
+        {
+          "moduleId": "python-saisie",
+          "blockId": "guide",
+          "label": "Revoir la réponse dans la console"
+        },
+        {
+          "moduleId": "python-conditions",
+          "blockId": "guide",
+          "label": "Revoir comparaison et bloc"
+        },
+        {
+          "moduleId": "python-for",
+          "blockId": "guide",
+          "label": "Revoir une répétition connue"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-while",
+          "blockId": "bonus",
+          "label": "Changer le départ et la progression"
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "python-compteurs",
+          "label": "Compter et calculer un score",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.variables",
+              "expectation": "Lire l’ancienne valeur et réaffecter le résultat d’une addition ; sinon reprendre le modèle numérique."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Faire expliquer l’arrêt par actualisation, pas par mémorisation d’un modèle.",
+        "entryDiagnosis": [
+          "Faire prévoir une comparaison textuelle et montrer où répondre.",
+          "Faire lire une boucle for et prévoir une addition de 1 avant le modèle numérique."
+        ],
+        "preparation": [
+          "Préparer encore.py, while_tours.py, repetition_personnelle.py et borne_personnelle.py.",
+          "Repérer l’arrêt dans Thonny. Aucune boucle intentionnellement infinie à lancer."
+        ],
+        "why": "Le nombre de tours peut dépendre de réponses inconnues avant le lancement.",
+        "discoverySpeech": [
+          "« Que se passe-t-il si le premier test est faux ? »",
+          "« Quelle ligne permet au prochain test de changer ? »",
+          "« Une attente de réponse est-elle une panne ? »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-while",
+            "blockId": "exemple"
+          },
+          "comments": [
+            "La première question précède while.",
+            "Une question dans le bloc actualise la réponse.",
+            "Toute réponse autre que oui termine ; pas de normalisation ni de saisie protégée."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi faut-il une réponse avant while ?",
+            "answer": "La comparaison doit utiliser une variable déjà définie."
+          },
+          {
+            "question": "Pourquoi redemander dans le bloc ?",
+            "answer": "Pour actualiser la réponse ; sans cela, un premier oui resterait vrai."
+          },
+          {
+            "question": "Avec tour = 4 et tour < 4, combien de passages ?",
+            "answer": "Zéro : la condition est fausse avant le premier passage."
+          },
+          {
+            "question": "Pourquoi tour = tour + 1 fait-il évoluer la valeur ?",
+            "answer": "La droite utilise l’ancienne valeur, puis l’affectation conserve le résultat augmenté."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-while",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "python-while",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Suivre zéro puis un passage avant plusieurs.",
+          "Aider à la frappe sans choisir le test ni l’emplacement de la nouvelle saisie.",
+          "Ne pas imposer le bonus ; faire modifier la borne du transfert numérique."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le programme attend ou répète sans fin.",
+            "helps": [
+              "Demander ce qui est attendu : réponse ou nouveau tour.",
+              "Si la répétition ne finit pas, interrompre avant de modifier.",
+              "Repérer la première valeur, le test et la nouvelle saisie ou addition dans le bloc.",
+              "Corriger l’actualisation puis tester une sortie immédiate et plusieurs passages."
+            ]
+          },
+          {
+            "symptom": "La variante numérique a un tour de trop.",
+            "helps": [
+              "Faire annoncer les valeurs attendues.",
+              "Repérer la comparaison et l’ordre affichage/mise à jour.",
+              "Suivre la dernière valeur affichée puis celle qui rend le test faux.",
+              "Changer une borne et retester départ inférieur, égal et supérieur."
+            ]
+          }
+        ],
+        "notes": "Ne pas faire exécuter un modèle sans mise à jour. Évaluer prédiction et modification autonome, pas les seules cases.",
+        "quickConductor": [
+          "Repérer interruption et console.",
+          "Prédire les séquences textuelles.",
+          "Comparer if et while.",
+          "Lire puis modifier une boucle numérique.",
+          "Construire la continuation personnelle et vérifier ses deux questions."
+        ],
+        "references": [
+          {
+            "title": "Python - while",
+            "url": "https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement"
+          }
+        ]
+      }
+    },
+    "python-compteurs": {
+      "domainId": "python",
+      "title": "Compter et calculer un score",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Initialiser et actualiser un compteur ou un score au bon endroit.",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "skillIds": [
+        "python.accumulation"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, conserver et relancer un fichier."
+        },
+        {
+          "skillId": "python.output",
+          "expectation": "Afficher et prévoir l’ordre des résultats."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Définir et réutiliser une valeur."
+        },
+        {
+          "skillId": "python.numbers",
+          "expectation": "Additionner des valeurs numériques ; sinon reprendre Nombres et calculs."
+        },
+        {
+          "skillId": "python.input",
+          "expectation": "Conserver une réponse textuelle."
+        },
+        {
+          "skillId": "python.conditions",
+          "expectation": "Comparer une réponse et indenter une branche."
+        },
+        {
+          "skillId": "python.for",
+          "expectation": "Construire une répétition à nombre connu."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Il faut savoir additionner, utiliser for/range et comparer une réponse textuelle. Prédis points = 2 puis points = points + 3 : on obtient 5. Sinon, reprends l’addition. Enregistre tes essais et crée total.py. while et la conversion ne sont pas nécessaires au socle de ce module.",
+          "moduleLink": {
+            "moduleId": "python-calculs",
+            "text": "Revoir nombre et addition"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "1 - Garder le total entre les tours",
+          "paragraphs": [
+            "score = 0 initialise la valeur avant la boucle, une seule fois. À chaque passage, score = score + 2 lit l’ancienne valeur, ajoute 2 et conserve le nouveau résultat.",
+            "Les valeurs après les passages sont 2, 4, 6, 8. Prédis le bilan. Le print après la boucle affiche le résultat final une seule fois.",
+            "Pour observer les valeurs, ajoute provisoirement print(score) après la mise à jour dans le bloc ; teste puis retire cet affichage. score = 2 remplacerait toujours la valeur par 2, sans accumuler."
+          ],
+          "code": "score = 0\nfor tour in range(4):\n    score = score + 2\nprint(\"Score :\", score)"
+        },
+        {
+          "type": "lesson",
+          "id": "compteur",
+          "title": "2 - Compter des événements",
+          "paragraphs": [
+            "Enregistre total.py puis crée compteur.py. Ici, une augmentation de 1 compte les passages. Dans le modèle précédent, une augmentation de 2 additionnait les gains.",
+            "Compteur et score sont ici deux usages de variables numériques, pas deux types différents de Python. L’initialisation reste avant la boucle ; le bilan vient après."
+          ],
+          "code": "passages = 0\nfor tour in range(3):\n    passages = passages + 1\nprint(\"Passages :\", passages)"
+        },
+        {
+          "type": "lesson",
+          "id": "branche",
+          "title": "3 - Une décision dans chaque tour",
+          "paragraphs": [
+            "Enregistre compteur.py puis crée decisions.py. Un if peut se trouver dans un for : à chaque tour, la question est posée puis sa réponse est comparée.",
+            "Les instructions du tour ont quatre espaces. L’instruction de la branche en a huit : elle appartient au if, lui-même dans le for. Fin n’a pas d’espace au début et vient après tous les tours. Ce n’est pas une boucle à l’intérieur d’une boucle.",
+            "Teste oui, non, oui. On lit deux Trouvé puis une seule Fin ; un tour sans oui a bien lieu mais ne produit pas Trouvé. La comparaison textuelle reste exacte."
+          ],
+          "code": "for tour in range(3):\n    reponse = input(\"Objet trouvé ? oui pour confirmer : \")\n    if reponse == \"oui\":\n        print(\"Trouvé\")\nprint(\"Fin\")"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé - réussites puis score",
+          "items": [
+            {
+              "id": "total-valeurs",
+              "text": "Dans total.py, prédis puis teste le total après quatre gains de 2. Remplace provisoirement score = score + 2 par score = 2, compare les résultats puis restaure l’accumulation.",
+              "hint": "Le total devient 8 avec l’accumulation, mais reste 2 avec l’affectation constante."
+            },
+            {
+              "id": "compter-reussites",
+              "text": "Enregistre decisions.py puis crée collecte.py avec Enregistrer sous. Ajoute une variable reussites initialisée à 0 avant for. Augmente-la de 1 seulement pour oui, puis affiche son bilan après les trois tours.",
+              "hint": "Place la mise à jour dans la branche à huit espaces. L’initialisation et le bilan ne sont pas dans le bloc."
+            },
+            {
+              "id": "tester-reussites",
+              "text": "Prédis puis teste non, non, non ; oui, oui, oui ; oui, non, oui. Explique pourquoi les trois tours ne donnent pas forcément trois réussites.",
+              "hint": "Les nombres de réussites sont 0, 3, 2. La comparaison décide si le compteur augmente."
+            },
+            {
+              "id": "ajouter-score",
+              "text": "Enregistre collecte.py puis crée collecte_score.py avec Enregistrer sous. Garde le compteur de réussites et ajoute un score initialisé à 0, augmenté de 2 seulement lors d’une réussite. Reteste la séquence mixte.",
+              "hint": "Deux variables suffisent : réussites et score. Pour oui, non, oui, attends 2 réussites et 4 points ; pas besoin d’un compteur de tous les tours."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - ton score",
+          "intro": "Enregistre collecte.py et collecte_score.py, puis crée mon_score.py. Choisis tes messages et ton mot accepté ; essaie sans recopier la solution complète.",
+          "items": [
+            {
+              "id": "score-personnel",
+              "text": "Prévois quatre tours avec une question personnelle annonçant un mot accepté. Compte les réponses qui correspondent et donne 3 points à chacune ; tout autre texte rapporte zéro. Affiche réussites et score après la boucle.",
+              "hint": "Initialise les deux valeurs avant for ; actualise-les dans la branche concernée. input donne du texte : aucune conversion nécessaire."
+            },
+            {
+              "id": "tests-score",
+              "text": "Prédis puis teste quatre refus, quatre accords et deux accords/deux refus. Note réussites et score attendus, puis explique les valeurs obtenues.",
+              "hint": "Les couples attendus sont 0 et 0, 4 et 12, 2 et 6. Ne compte pas seulement la dernière réponse."
+            },
+            {
+              "id": "modifier-gain",
+              "text": "Enregistre, passe le gain de 3 à 2 et choisis un nouveau test mixte. Prédis les deux bilans. Explique pourquoi l’initialisation n’est pas répétée à chaque tour.",
+              "hint": "Changer le gain modifie le score, pas le nombre de réussites. Réinitialiser dans la boucle ferait perdre le total précédent."
+            },
+            {
+              "id": "retrouver-score",
+              "text": "Enregistre, ferme puis rouvre mon_score.py. Relance dans un état propre et explique les lignes à zéro, quatre et huit espaces.",
+              "hint": "Le fichier doit définir lui-même ses variables. Arrêter / redémarrer avant la relance permet de vérifier qu’un ancien essai ne cachait pas un oubli."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - un score avec continuation",
+          "items": [
+            {
+              "id": "score-while",
+              "text": "Dans score_while.py, réutilise la continuation textuelle du module Répéter tant que. Compte les tours acceptés et ajoute 2 points par accord. Prédis puis teste un arrêt immédiat et deux accords suivis d’un arrêt.",
+              "hint": "Reprends python-while si nécessaire. Initialise les valeurs avant la boucle, actualise-les dans le bloc et redemande la réponse. Attends 0 tour/0 point puis 2 tours/4 points."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Expliquer l’ancienne valeur à droite de = et le résultat conservé.",
+        "Initialiser avant la boucle, actualiser dans la branche concernée et afficher après.",
+        "Distinguer passages, réussites et score sur une séquence mixte.",
+        "Créer un score personnel, modifier le gain et retester dans un fichier autonome."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-compteurs",
+          "blockId": "guide",
+          "label": "Revoir accumulation et réussites"
+        },
+        {
+          "moduleId": "python-calculs",
+          "blockId": "operations",
+          "label": "Revoir addition et variable numérique"
+        },
+        {
+          "moduleId": "python-for",
+          "blockId": "guide",
+          "label": "Revoir les tours"
+        },
+        {
+          "moduleId": "python-conditions",
+          "blockId": "guide",
+          "label": "Revoir une branche"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-compteurs",
+          "blockId": "bonus",
+          "label": "Compter avec une continuation",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.while",
+              "expectation": "Actualiser une réponse et vérifier l’arrêt ; sinon reprendre Répéter tant que."
+            }
+          ]
+        }
+      ],
+      "nextSteps": [{ "moduleId": "python-hasard", "label": "Tirer un nombre au hasard", "prerequisiteSkills": [{ "skillId": "python.variables", "expectation": "Conserver une valeur et expliquer ses usages ; sinon reprendre les variables." }] }],
+      "teacherGuide": {
+        "objective": "Enseigner l’accumulation et l’emplacement des mises à jour avec deux valeurs finales seulement.",
+        "entryDiagnosis": [
+          "Faire prévoir 2 puis une addition de 3 réaffectée au même nom.",
+          "Faire montrer un bloc for et une comparaison textuelle ; while n’est pas un prérequis du socle."
+        ],
+        "preparation": [
+          "Créer total.py, compteur.py, decisions.py puis collecte.py et collecte_score.py ; mon_score.py est personnel.",
+          "Commencer par un seul compteur de réussites ; ajouter ensuite le score. Pas de conversion, hasard ou liste."
+        ],
+        "why": "Une valeur conservée entre les tours permet un bilan de plusieurs événements.",
+        "discoverySpeech": [
+          "« Quelle valeur reste après chaque passage ? »",
+          "« Ce tour a-t-il eu lieu sans réussite ? »",
+          "« Où faut-il ajouter les points et où lire le bilan ? »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-compteurs",
+            "blockId": "exemple"
+          },
+          "comments": [
+            "La valeur est initialisée une fois.",
+            "Suivre 2, 4, 6, 8 puis comparer avec une affectation constante.",
+            "Enseigner les deux niveaux d’indentation dans decisions.py avant collecte.py."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi ne pas mettre score = 0 dans la boucle ?",
+            "answer": "Chaque tour effacerait le score des tours précédents."
+          },
+          {
+            "question": "Pourquoi un refus ne rapporte-t-il pas de point ?",
+            "answer": "La mise à jour appartient à la branche réservée au mot accepté."
+          },
+          {
+            "question": "Après deux réussites à 3 points, que valent le compteur et le score ?",
+            "answer": "On conserve 2 réussites et un total de 6 points : deux usages numériques distincts."
+          },
+          {
+            "question": "Pourquoi changer le gain ne change-t-il pas les réussites ?",
+            "answer": "Le compteur augmente de 1 par accord ; seul le score utilise le gain."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-compteurs",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "python-compteurs",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Faire compter les réussites avant d’ajouter le score.",
+          "Suivre oralement une réussite, un refus, une réussite.",
+          "Réserver la variante while au bonus après diagnostic de son arrêt."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le total ne conserve que le dernier tour.",
+            "helps": [
+              "Faire annoncer le bilan attendu sur une séquence mixte.",
+              "Repérer l’initialisation et les affectations dans le bloc.",
+              "Comparer réinitialisation, affectation constante et ancienne valeur plus gain.",
+              "Déplacer l’initialisation ou corriger l’accumulation puis retester plusieurs séquences."
+            ]
+          },
+          {
+            "symptom": "Un refus rapporte des points ou le bilan se répète.",
+            "helps": [
+              "Comparer le test réel au mot annoncé.",
+              "Repérer les niveaux zéro, quatre et huit espaces.",
+              "Vérifier que les mises à jour sont dans if et le bilan hors de for.",
+              "Corriger un alignement puis tester tous les refus, tous les accords et une séquence mixte."
+            ]
+          }
+        ],
+        "notes": "Ne pas déduire l’acquisition de while ou de conversion de ce score textuel. Distinguer aides, explication et transfert ; aucun statut automatique.",
+        "quickConductor": [
+          "Diagnostiquer addition et bloc.",
+          "Lire l’accumulation et le compteur.",
+          "Enseigner if dans for.",
+          "Compter les réussites puis ajouter le score.",
+          "Construire, tester et modifier le score personnel."
+        ],
+        "references": [
+          {
+            "title": "Python - affectation",
+            "url": "https://docs.python.org/fr/3/reference/simple_stmts.html#assignment-statements"
+          },
+          {
+            "title": "Python - contrôle de flux",
+            "url": "https://docs.python.org/fr/3/tutorial/controlflow.html"
+          }
+        ]
+      }
+    },
+    "python-listes": {
+      "domainId": "python", "title": "Regrouper des valeurs dans une liste", "type": "lesson", "theme": "fondations",
+      "objective": "Conserver plusieurs valeurs, consulter une position, parcourir et compléter une liste.",
+      "prerequisitesInContent": true,
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" },
+      "skillIds": ["python.lists"],
+      "prerequisiteSkills": [
+        { "skillId": "python.workspace", "expectation": "Créer, enregistrer et relancer un fichier." },
+        { "skillId": "python.output", "expectation": "Afficher et lire une valeur." },
+        { "skillId": "python.variables", "expectation": "Conserver une valeur dans une variable." },
+        { "skillId": "python.for", "expectation": "Suivre les passages et le bloc d'un for." }
+      ],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir afficher une variable et suivre un for. Crée inventaire.py et fais-le évoluer pendant les étapes ; enregistre avant chaque copie. Ni hasard ni while n'est nécessaire ici. Le bonus seul utilise input.", "moduleLink": { "moduleId": "python-for", "text": "Revoir les répétitions" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Plusieurs valeurs, une liste", "paragraphs": [
+          "Les crochets entourent la liste ; les virgules séparent ses éléments. Ici, chaque élément est du texte entre guillemets. La variable objets conserve cette liste ordonnée. Deux éléments peuvent avoir la même valeur.",
+          "print(objets) affiche la liste complète, avec ses crochets et guillemets. objets[0] consulte un seul élément : l'indice 0 désigne la première position. Son affichage donne carte, sans les crochets de la liste."
+        ], "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nprint(objets)\nprint(objets[0])" },
+        { "type": "lesson", "id": "indices", "title": "2 - Position et nombre d'éléments", "paragraphs": [
+          "Dans inventaire.py, ajoute print(objets[1]) puis print(objets[2]). Prévois corde puis lampe. Pour trois éléments, les indices sont 0, 1 et 2 : on commence à zéro.",
+          "Ajoute print(len(objets)). len donne le nombre d'éléments : 3, pas le dernier indice. Les parenthèses appellent len sur la liste ; les crochets consultent une position. Un indice 3 n'existe pas dans cette liste."
+        ] },
+        { "type": "lesson", "id": "parcours", "title": "3 - Parcourir les valeurs", "paragraphs": [
+          "Enregistre inventaire.py puis crée parcours_liste.py. for peut parcourir directement une liste : objet reçoit successivement carte, corde et lampe, pas les indices 0, 1 et 2. Le nom de cette variable est libre ; il est ici distinct de objets.",
+          "Le print indenté s'exécute pour chaque élément. Fin, sans indentation, s'affiche une fois après la boucle. Prévois l'ordre avant de lancer."
+        ], "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nfor objet in objets:\n    print(\"Objet :\", objet)\nprint(\"Fin\")" },
+        { "type": "lesson", "id": "ajout", "title": "4 - Ajouter à la fin", "paragraphs": [
+          "Continue dans parcours_liste.py. Après Fin, ajoute les lignes ci-dessous, puis un second parcours. objets.append(\"boussole\") ajoute une valeur à la fin de la liste existante. Le point appelle une méthode de cette liste ; les parenthèses contiennent la valeur à ajouter.",
+          "Prévois quatre éléments, dans l'ordre carte, corde, lampe, boussole. L'appel append occupe sa propre ligne : n'écris ni objets = objets.append(...) ni print(objets.append(...)). C'est la liste modifiée que tu affiches ensuite. Chaque relance recrée la liste initiale avant cet ajout."
+        ], "code": "objets.append(\"boussole\")\nprint(objets)\nprint(len(objets))" },
+        { "type": "tasks", "id": "guide", "title": "Vérifier tes essais", "items": [
+          { "id": "positions-liste", "text": "Dans inventaire.py, montre la liste complète, ses trois positions et sa longueur. Explique pourquoi 3 est la longueur mais pas un indice utilisable ici.", "hint": "Trois positions : 0, 1 et 2. len compte les éléments, il ne donne pas la dernière position." },
+          { "id": "parcours-ajout", "text": "Dans parcours_liste.py, compare les deux parcours autour de l'ajout. Repère le moment où la liste change et explique la valeur reçue par objet à chaque passage.", "hint": "Le premier parcours a trois passages ; le second en a quatre. append est entre eux et ajoute à la fin." },
+          { "id": "vide-liste", "text": "Enregistre puis crée collection_vide.py avec Enregistrer sous. Garde seulement une liste objets = [], son affichage, len et un for suivi de Fin ; retire les consultations d'indice et l'ajout. Prévois puis vérifie le résultat.", "hint": "[] contient zéro élément : len vaut 0, for ne fait aucun passage, mais Fin s'affiche. Aucun élément à l'indice 0." },
+          { "id": "diagnostic-indice", "text": "Dans diagnostic_indice.py, définis trois éléments puis affiche objets[3]. Lis l'erreur, choisis une position existante et reteste. Garde les autres fichiers.", "hint": "IndexError signale ici une position inexistante. Corrige l'indice en 0, 1 ou 2 ; il ne s'agit pas d'un nom de variable inconnu." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - ta collection", "intro": "Crée ma_collection.py avec tes propres valeurs et messages. Fais évoluer ce fichier ; essaie avant les indices et conserve les exemples.", "items": [
+          { "id": "collection-personnelle", "text": "Choisis trois éléments textuels. Affiche leur nombre, puis chaque élément avec un for. Consulte aussi le premier et le troisième. Prévois longueur, positions et ordre avant d'exécuter.", "hint": "Une liste entre crochets, len pour le nombre, indices 0 et 2 pour ces positions ; for reçoit directement les valeurs." },
+          { "id": "collection-complete", "text": "Ajoute un quatrième élément avec append après le premier parcours, puis affiche le nouveau nombre et refais le parcours. Explique ce qui change, sans réécrire la liste de départ.", "hint": "Place l'ajout avant le second bilan, hors du premier for. La nouvelle valeur arrive à la fin." },
+          { "id": "collection-modifiee", "text": "Enregistre puis crée ma_collection_modifiee.py avec Enregistrer sous. Change une valeur dans la définition initiale. Prévois et vérifie son effet sur les positions, le nombre et les deux parcours. Explique aussi pourquoi collection_vide.py fait zéro passage.", "hint": "Remplacer une valeur ne change pas le nombre d'éléments. Garde la première version pour comparer ; une liste vide ne fournit aucune valeur à for." }
+        ] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - compléter par une réponse", "items": [
+          { "id": "collection-reponse", "text": "Dans collection_saisie.py, demande un élément avec input, ajoute la réponse à une liste fixe et affiche le bilan. Relance avec une autre réponse : retrouve-t-on la précédente ?", "hint": "Conserve la réponse dans une variable, puis appelle append avec cette variable. Chaque lancement recrée la liste fixe ; ce programme ne sauvegarde pas de données sur disque." }
+        ] }
+      ],
+      "masteryCriteria": ["Créer une liste personnelle et distinguer élément, liste complète et longueur.", "Expliquer l'indice zéro, consulter une position existante et reconnaître un IndexError.", "Parcourir les valeurs dans l'ordre et expliquer zéro passage pour une liste vide.", "Ajouter à la fin avec append, prédire le nouveau bilan et tester une modification personnelle."],
+      "consolidation": [
+        { "moduleId": "python-listes", "blockId": "guide", "label": "Revoir positions, parcours et ajout" },
+        { "moduleId": "python-variables", "blockId": "guide", "label": "Revoir les variables" },
+        { "moduleId": "python-for", "blockId": "guide", "label": "Revoir le bloc répété" },
+        { "moduleId": "python-erreurs", "blockId": "guide", "label": "Revoir la lecture d'une erreur" }
+      ],
+      "bonusActivities": [{ "moduleId": "python-listes", "blockId": "bonus", "label": "Ajouter une réponse", "prerequisiteSkills": [{ "skillId": "python.input", "expectation": "Conserver la réponse d'input ; sinon reprendre Poser une question." }] }],
+      "nextSteps": [{ "moduleId": "python-texte", "label": "Explorer et préparer du texte", "prerequisiteSkills": [{ "skillId": "python.lists", "expectation": "Distinguer longueur, position et parcours ; sinon reprendre les essais de liste." }] }],
+      "teacherGuide": {
+        "objective": "Passer d'une valeur à une collection ordonnée sans confondre position, longueur et valeur parcourue.",
+        "entryDiagnosis": ["Faire afficher une variable et suivre un for existant.", "Ne pas exiger que le nombre mystère ou ses bonus soient terminés."],
+        "preparation": ["Faire évoluer inventaire.py puis parcours_liste.py ; vérifier les essais dans ces fichiers sans les recopier.", "Réserver les copies aux cas vide, au diagnostic et au transfert personnel. Le bonus seul utilise input."],
+        "why": "Une liste rassemble plusieurs valeurs qu'un programme peut consulter et parcourir.",
+        "discoverySpeech": ["« Qu'affiche la liste entière ? Et une seule position ? »", "« Pourquoi la première position porte-t-elle zéro ? »", "« for reçoit-il une position ou une valeur ? »"],
+        "example": { "target": { "moduleId": "python-listes", "blockId": "exemple" }, "comments": ["Expliquer crochets de définition et de consultation avant la pratique.", "Le texte seul n'a pas les crochets de la représentation de liste.", "Montrer longueur et positions avec trois éléments, sans range(len)."] },
+        "questions": [
+          { "question": "Quels indices existent pour trois éléments ?", "answer": "0, 1 et 2 ; len vaut 3, ce n'est pas un indice disponible." },
+          { "question": "Que reçoit objet dans for objet in objets ?", "answer": "Chaque valeur de la liste, successivement et dans l'ordre." },
+          { "question": "Que fait for sur [] ?", "answer": "Zéro passage ; le code après le bloc s'exécute quand même." },
+          { "question": "Faut-il affecter le résultat d'append à objets ?", "answer": "Non : append modifie la liste existante ; appeler la méthode seule puis afficher la liste." }
+        ],
+        "accompaniedActivity": { "moduleId": "python-listes", "blockId": "guide" }, "independentActivity": { "moduleId": "python-listes", "blockId": "autonomie" },
+        "differentiation": ["Séparer liste complète, position et longueur si nécessaire.", "Reprendre le parcours avant l'ajout ; ne pas imposer plusieurs nouveautés dans le même essai.", "Réserver input au bonus et distinguer aide clavier et compréhension."],
+        "commonErrors": [
+          { "symptom": "IndexError ou confusion entre indice et longueur.", "helps": ["Lire la dernière ligne de l'erreur.", "Compter les éléments de la liste active.", "Écrire leurs positions à partir de zéro.", "Choisir une position existante puis retester ; ne pas consulter une liste vide."] },
+          { "symptom": "La liste disparaît après append ou l'ajout se répète dans for.", "helps": ["Repérer la ligne qui change la liste.", "Vérifier l'indentation et le nombre d'appels.", "Chercher une affectation objets = objets.append(...).", "Appeler append seul une fois hors du parcours, puis afficher objets et len(objets)."] }
+        ],
+        "notes": "Pas de gestion d'exception, alias, copie de liste ou compréhension. Enregistrer sous copie le fichier, pas une liste à l'exécution. Validation manuelle sur explication et transfert.",
+        "quickConductor": ["Diagnostiquer variables et for.", "Observer liste et positions.", "Distinguer len et indice.", "Parcourir puis ajouter.", "Vérifier vide et diagnostic.", "Créer et modifier une collection personnelle."],
+        "references": [{ "title": "Python - listes", "url": "https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists" }]
+      }
+    },
+    "python-texte": {
+      "domainId": "python", "title": "Explorer et préparer du texte", "type": "lesson", "theme": "fondations",
+      "objective": "Observer les caractères et préparer une réponse selon une règle explicite.",
+      "prerequisitesInContent": true, "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" },
+      "skillIds": ["python.text"],
+      "prerequisiteSkills": [
+        { "skillId": "python.workspace", "expectation": "Conserver et relancer les fichiers." },
+        { "skillId": "python.output", "expectation": "Lire les affichages." },
+        { "skillId": "python.variables", "expectation": "Conserver des valeurs textuelles." },
+        { "skillId": "python.input", "expectation": "Poser une question et garder sa réponse." },
+        { "skillId": "python.conditions", "expectation": "Construire deux issues avec if/else." },
+        { "skillId": "python.for", "expectation": "Suivre un parcours et son indentation." },
+        { "skillId": "python.lists", "expectation": "Distinguer longueur, indice zéro et valeurs parcourues." }
+      ],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Il faut savoir conserver une réponse et construire un if/else. Reprends longueur, indices et for si nécessaire. Crée texte.py ; fais évoluer tes fichiers pendant chaque activité et conserve les variantes importantes. Ni conversion numérique, hasard ni while n'est requis.", "moduleLink": { "moduleId": "python-listes", "text": "Revoir positions et parcours" } },
+        { "type": "lesson", "id": "exemple", "title": "1 - Un texte, des caractères", "paragraphs": [
+          "Une chaîne de caractères est du texte ordonné. len compte ici les caractères, pas les mots. for parcourt successivement chaque caractère : prévois 4, puis C, o, d et e.",
+          "Dans texte.py, ajoute ensuite un espace dans le texte et prévois la nouvelle longueur. L'espace compte aussi et apparaît comme une ligne vide au cours du parcours. Ces essais simples ne décrivent pas toutes les écritures complexes ou les emojis."
+        ], "code": "mot = \"Code\"\nprint(len(mot))\nfor caractere in mot:\n    print(caractere)" },
+        { "type": "lesson", "id": "indices", "title": "2 - Lire une position", "paragraphs": [
+          "Dans texte.py, rétablis mot = \"Code\" puis ajoute print(mot[0]) et print(mot[3]). Prévois C et e : l'indice commence à zéro comme pour les listes. Une position inexistante produit IndexError.",
+          "Enregistre puis crée texte_vide.py avec Enregistrer sous. Garde mot = \"\", len et for seulement : longueur 0 et aucun passage. Retire les consultations d'indice. Ne consulte pas le premier caractère d'une réponse qui peut être vide.",
+          "Un texte n'est pas une liste que l'on modifie par position : mot[0] = \"c\" n'est pas une modification possible. Pour transformer le texte, on va produire un nouveau résultat."
+        ] },
+        { "type": "lesson", "id": "transformation", "title": "3 - Conserver le texte transformé", "paragraphs": [
+          "Crée transformation_texte.py. reponse.strip() retire les espaces aux bords dans cet exemple ; sans_bords.lower() met les lettres en minuscules. Le point appelle une méthode du texte, les parenthèses l'exécutent. Chaque résultat est conservé dans une variable.",
+          "L'original reste inchangé, contrairement à append qui modifie une liste. Ajoute ensuite reponse.lower() sur une ligne seule, puis affiche reponse : sans conserver le résultat, sa valeur ne change pas. Prédis puis vérifie.",
+          "strip ne retire pas les espaces au milieu ; lower ne corrige ni les fautes ni les accents. Les deux opérations sont séparées pour suivre chaque résultat."
+        ], "code": "reponse = \"  TOUR  \"\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nprint(\"Original :\", reponse)\nprint(\"Préparé :\", normalisee)" },
+        { "type": "lesson", "id": "comparaison", "title": "4 - Choisir une règle de réponse", "paragraphs": [
+          "Enregistre transformation_texte.py puis crée comparaison_texte.py. Le modèle accepte tour, même avec des majuscules ou des espaces aux bords. Il ne tolère pas une faute ou un espace au milieu. == compare ici le texte préparé au mot accepté.",
+          "Prévois les deux issues, puis teste tour et lune. Une réponse vide ou composée d'espaces peut être comparée sans erreur : on ne consulte aucun indice. Le message Refusé indique simplement que la réponse ne correspond pas à la règle."
+        ], "code": "reponse = input(\"Écris tour : \")\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nif normalisee == \"tour\":\n    print(\"Accepté\")\nelse:\n    print(\"Refusé\")" },
+        { "type": "tasks", "id": "guide", "title": "Vérifier les transformations", "items": [
+          { "id": "caracteres-texte", "text": "Dans texte.py, explique longueur, positions et parcours. Compare avec texte_vide.py : pourquoi aucun indice n'y est-il consulté ?", "hint": "Un texte vide a zéro caractère ; aucun indice n'existe. Le code après for reste exécuté." },
+          { "id": "original-resultat", "text": "Dans transformation_texte.py, montre les valeurs de reponse, sans_bords et normalisee. Explique l'effet de l'appel lower dont tu n'as pas conservé le résultat.", "hint": "Les résultats sont de nouveaux textes. reponse garde les majuscules et espaces d'origine." },
+          { "id": "regle-tests", "text": "Dans comparaison_texte.py, prévois puis teste tour, Tour, tour entouré d'espaces, TO UR, lune, une réponse vide et une réponse composée d'espaces. Explique chaque issue.", "hint": "Les trois premiers correspondent. Les autres non : ni correction des espaces internes, ni faute corrigée. Vide et espaces donnent un texte préparé vide, sans IndexError." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - ton mot accepté", "intro": "Crée mon_mot.py avec ton propre mot et tes messages. Choisis un mot simple en minuscules, sans accent ni espace ; essaie avant de consulter les indices.", "items": [
+          { "id": "mot-personnel", "text": "Annonce ta règle : majuscules et espaces aux bords tolérés. Pose la question, garde la réponse originale, prépare-la en deux étapes et affiche un message personnel pour chaque issue.", "hint": "input conserve le texte d'origine ; strip puis lower produisent les résultats. Compare le texte préparé au mot choisi avec if/else." },
+          { "id": "mot-tests", "text": "Choisis des tests avec majuscules, espaces aux bords, un mot différent et une réponse vide. Prévois chaque issue puis exécute. Explique les limites de ta règle et montre que l'original reste disponible.", "hint": "Les deux transformations ne retirent pas les espaces internes et ne corrigent pas une faute. N'utilise pas d'indice sur la réponse." },
+          { "id": "mot-modifie", "text": "Enregistre puis crée mon_mot_modifie.py avec Enregistrer sous. Change le mot accepté dans la question et la comparaison. Teste le nouveau et l'ancien mot : explique ce qui a changé.", "hint": "La question annonce la règle mais seule la comparaison décide. Conserve mon_mot.py pour retrouver le premier essai." }
+        ] },
+        { "type": "tasks", "id": "transfert", "title": "Changer la règle sans tout refaire", "items": [
+          { "id": "mot-casse", "text": "Enregistre mon_mot.py puis crée mon_mot_casse.py avec Enregistrer sous. Remplace normalisee = sans_bords.lower() par normalisee = sans_bords ; garde strip. Actualise la question pour annoncer que les majuscules comptent. Prévois puis teste une majuscule et un espace au bord.", "hint": "La variable comparée reste définie, mais n'est plus mise en minuscules. Une majuscule est refusée si le mot accepté est en minuscules ; les espaces aux bords restent tolérés. Ce n'est donc pas une comparaison entièrement exacte." }
+        ] },
+        { "type": "lesson", "id": "remplacement", "title": "Bonus - remplacer une partie du texte", "paragraphs": [
+          "Dans remplacement_texte.py, replace cherche le premier texte donné et remplace ses occurrences par le second. Conserve le résultat ; l'original reste intact. Prévois puis vérifie les deux affichages, puis change les textes du remplacement. Ce bonus n'est pas requis pour continuer."
+        ], "code": "message = \"Bonjour, voyageur !\"\nnouveau = message.replace(\"voyageur\", \"pilote\")\nprint(message)\nprint(nouveau)" }
+      ],
+      "masteryCriteria": ["Distinguer longueur, caractères et indices sur un texte simple, y compris un texte vide.", "Conserver le résultat d'une transformation et expliquer pourquoi l'original reste inchangé.", "Créer une comparaison personnelle avec tests de casse, bords, autre mot et vide.", "Expliquer les limites de strip/lower sans prétendre corriger les fautes ou accents.", "Modifier la règle dans une copie et vérifier l'effet précis sur casse et espaces aux bords."],
+      "consolidation": [
+        { "moduleId": "python-texte", "blockId": "guide", "label": "Revoir original, résultat et tests" },
+        { "moduleId": "python-listes", "blockId": "guide", "label": "Revoir longueur et positions" },
+        { "moduleId": "python-saisie", "blockId": "guide", "label": "Revoir la réponse conservée" },
+        { "moduleId": "python-conditions", "blockId": "guide", "label": "Revoir les deux issues" }
+      ],
+      "bonusActivities": [{ "moduleId": "python-texte", "blockId": "remplacement", "label": "Remplacer une partie d'un message" }], "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Observer une chaîne puis construire une règle de comparaison explicite, sans masquer les transformations.",
+        "entryDiagnosis": ["Faire expliquer longueur et indice d'une liste.", "Reprendre une réponse conservée et une comparaison textuelle exacte ; ne pas présupposer la normalisation."],
+        "preparation": ["Faire évoluer texte.py et transformation_texte.py ; les tâches guidées vérifient les essais existants.", "Conserver texte_vide.py et les copies personnelles ; aucune installation supplémentaire."],
+        "why": "Un programme doit annoncer ce qu'il considère comme une réponse équivalente.",
+        "discoverySpeech": ["« Combien de caractères, et non de mots ? »", "« Quelle variable garde l'original ? »", "« Quelles différences la règle accepte-t-elle ? »"],
+        "example": { "target": { "moduleId": "python-texte", "blockId": "transformation" }, "comments": ["Expliquer les appels de méthode et conserver chaque résultat séparément.", "Comparer à append : ici le texte initial ne change pas.", "Ne pas enseigner d'emblée input(...).strip().lower()."] },
+        "questions": [
+          { "question": "Que donne len sur Code ?", "answer": "4 caractères, pas un nombre de mots ; un espace ajouterait un caractère dans ces exemples." },
+          { "question": "reponse.lower() seul change-t-il reponse ?", "answer": "Non : il produit un résultat non conservé. La variable garde son texte initial." },
+          { "question": "TO UR correspond-il à tour après strip/lower ?", "answer": "Non : l'espace intérieur reste présent." },
+          { "question": "Que change normalisee = sans_bords dans la copie ?", "answer": "La casse n'est plus ignorée ; strip continue à retirer les espaces aux bords. La variable comparée reste définie." },
+          { "question": "Pourquoi une réponse vide ne provoque-t-elle pas IndexError ici ?", "answer": "On la transforme et compare sans consulter de position." }
+        ],
+        "accompaniedActivity": { "moduleId": "python-texte", "blockId": "guide" }, "independentActivity": { "moduleId": "python-texte", "blockId": "autonomie" },
+        "differentiation": ["Séparer observation des caractères et transformation de réponse.", "Commencer par le texte fixe, puis suivre les trois variables avant input.", "Le transfert de casse fait partie du socle ; replace reste facultatif."],
+        "commonErrors": [
+          { "symptom": "La comparaison utilise toujours les majuscules de l'original.", "helps": ["Montrer la variable réellement comparée.", "Afficher original et résultat préparé.", "Vérifier que les résultats de strip et lower sont affectés.", "Comparer normalisee au mot en minuscules, puis retester la casse et les bords séparément."] },
+          { "symptom": "La copie sans lower produit NameError ou ignore encore la casse.", "helps": ["Lire l'erreur ou comparer la règle annoncée au code.", "Repérer la définition de normalisee.", "Remplacer la ligne au lieu de la supprimer : normalisee = sans_bords.", "Garder strip, actualiser la question et tester majuscule puis espaces au bord."] },
+          { "symptom": "Une réponse vide provoque IndexError.", "helps": ["Repérer la ligne qui consulte un indice.", "Vérifier la longueur de la réponse.", "Distinguer comparaison de tout le texte et consultation d'un caractère.", "Retirer la consultation superflue du programme de comparaison, puis retester vide et espaces."] }
+        ],
+        "notes": "Exemples simples sans découpage en mots, slicing ni gestion d'exception. Les transformations n'effacent pas les accents. Pas de compétence automatique et pas de page de fonctions vide.",
+        "quickConductor": ["Diagnostiquer indices et comparaison.", "Observer caractères et cas vide.", "Conserver les résultats de strip/lower.", "Tester les deux issues et leurs limites.", "Créer un mot personnel, modifier puis changer la règle de casse."],
+        "references": [{ "title": "Python - chaînes de caractères", "url": "https://docs.python.org/fr/3/tutorial/introduction.html#text" }, { "title": "Python - méthodes des chaînes", "url": "https://docs.python.org/fr/3/library/stdtypes.html#string-methods" }]
+      }
+    },
+    "python-hasard": {
+      "domainId": "python",
+      "title": "Tirer un nombre au hasard",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Importer random, conserver un tirage et expliquer ses valeurs possibles.",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "skillIds": [
+        "python.random"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, conserver et relancer un fichier."
+        },
+        {
+          "skillId": "python.output",
+          "expectation": "Afficher et lire les résultats."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Conserver et réutiliser une valeur numérique."
+        },
+        {
+          "skillId": "python.numbers",
+          "expectation": "Lire une valeur entière."
+        },
+        {
+          "skillId": "python.for",
+          "expectation": "Prévoir les passages de for/range ; sinon reprendre les tours."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Il faut savoir afficher une variable numérique et suivre un for. Enregistre tes essais et crée tirage.py. Ne nomme pas ton fichier random.py ni une variable random : ces noms peuvent masquer le module utilisé. random fait partie de Python ; aucun package à installer.",
+          "moduleLink": {
+            "moduleId": "python-for",
+            "text": "Revoir les tours et leurs valeurs"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "1 - Importer et tirer",
+          "paragraphs": [
+            "import random rend accessible le module random de la bibliothèque standard. Dans random.randint, le point désigne une fonction de ce module ; les parenthèses appellent cette fonction. On utilise une fonction existante, sans apprendre encore à en définir une.",
+            "random.randint(1, 6) fournit un entier de 1 à 6, bornes comprises. La variable nombre conserve le résultat de cet appel ; print l’affiche.",
+            "Attention à la différence : range(1, 6) fournit les valeurs de 1 à 5, tandis que randint(1, 6) peut aussi donner 6. Avant le lancement, annonce les valeurs possibles, pas un résultat exact."
+          ],
+          "code": "import random\nnombre = random.randint(1, 6)\nprint(\"Nombre :\", nombre)"
+        },
+        {
+          "type": "lesson",
+          "id": "relance",
+          "title": "2 - Nouveau tirage ne veut pas dire résultat différent",
+          "paragraphs": [
+            "Relance tirage.py plusieurs fois. Chaque exécution fait un nouvel appel, mais deux résultats consécutifs peuvent être identiques.",
+            "Quelques essais ne garantissent pas de voir toutes les valeurs ou les deux bornes. Un résultat doit rester dans la plage annoncée ; ne corrige pas le code seulement parce qu’une valeur se répète."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "3 - Un tirage, plusieurs affichages",
+          "paragraphs": [
+            "Enregistre tirage.py puis crée valeur_conservee.py. Le tirage est avant for : il a lieu une fois, puis les trois passages utilisent la même valeur.",
+            "Annonce ce qui est garanti avant d’exécuter : les trois affichages sont identiques dans cette exécution, même si tu ne connais pas leur valeur."
+          ],
+          "code": "import random\nnombre = random.randint(1, 6)\nfor tour in range(3):\n    print(nombre)"
+        },
+        {
+          "type": "lesson",
+          "id": "renouveler",
+          "title": "4 - Un nouveau tirage à chaque tour",
+          "paragraphs": [
+            "Enregistre valeur_conservee.py puis crée nouveaux_tirages.py. Le tirage est maintenant dans le bloc : chaque passage appelle randint, puis affiche la valeur obtenue.",
+            "Les trois résultats peuvent différer, mais aussi se répéter. C’est le nombre d’appels et leur emplacement qui changent, pas une obligation d’obtenir trois valeurs différentes."
+          ],
+          "code": "import random\nfor tour in range(3):\n    nombre = random.randint(1, 6)\n    print(nombre)"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Exercice guidé - garanties et appels",
+          "items": [
+            {
+              "id": "bornes-hasard",
+              "text": "Dans tirage.py, montre l’import, les bornes et la variable résultat. Compare les valeurs possibles de randint(1, 6) à celles de range(1, 6).",
+              "hint": "randint inclut 6 ; range l’exclut. Un tirage est un entier, pas toute la suite."
+            },
+            {
+              "id": "valeur-unique",
+              "text": "Enregistre puis crée tirage_fixe.py avec Enregistrer sous. Remplace les bornes par randint(4, 4), prédis puis teste plusieurs fois.",
+              "hint": "La seule valeur possible est 4. Le programme appelle quand même randint."
+            },
+            {
+              "id": "appels",
+              "text": "Compare valeur_conservee.py et nouveaux_tirages.py. Montre combien de fois la ligne du tirage est exécutée et explique les répétitions possibles des résultats.",
+              "hint": "Un appel avant for contre trois appels dans for ; des appels différents peuvent produire la même valeur."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - ton intervalle",
+          "intro": "Enregistre les exemples puis crée mon_tirage.py. Choisis tes messages et essaie avant les indices ; garde tous les fichiers.",
+          "items": [
+            {
+              "id": "plage-personnelle",
+              "text": "Choisis une plage positive, par exemple 3 à 9. Tire une fois et réutilise le nombre dans deux messages personnels. Annonce les valeurs possibles et repère la ligne qui tire.",
+              "hint": "Un appel à randint conserve la valeur dans une variable. Les deux print réutilisent son nom sans refaire le tirage."
+            },
+            {
+              "id": "trois-appels",
+              "text": "Enregistre puis crée mon_tirage_repetition.py avec Enregistrer sous. Fais trois tirages successifs et explique ce que tu as déplacé. Trois nombres différents ne sont pas exigés.",
+              "hint": "Le tirage doit appartenir au bloc répété. Vérifie l’emplacement, pas seulement les sorties."
+            },
+            {
+              "id": "modifier-plage",
+              "text": "Change les bornes, annonce les nouvelles possibilités puis teste. Dans une copie nommée mon_tirage_fixe.py, réduis la plage à une seule valeur et vérifie ta prédiction.",
+              "hint": "Des bornes égales donnent toujours cette valeur. Garde mon_tirage.py et sa plage initiale."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - réagir au tirage",
+          "items": [
+            {
+              "id": "tirage-seuil",
+              "text": "Dans un nouveau fichier, fais cinq tirages de 1 à 6. À chaque tour, affiche un message si le nombre obtenu vaut au moins 4. Montre que la comparaison utilise le tirage conservé.",
+              "hint": "Un tirage dans for, puis un if sur la variable. Ne refais pas un tirage dans le test ; reprends les conditions si nécessaire."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Expliquer import, l’appel random.randint et la variable résultat.",
+        "Distinguer les bornes incluses de randint de la fin exclue de range.",
+        "Réutiliser un tirage conservé et distinguer affichages répétés et nouveaux appels.",
+        "Modifier une plage, vérifier une valeur unique et expliquer pourquoi deux tirages peuvent être identiques."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-hasard",
+          "blockId": "guide",
+          "label": "Revoir bornes et appels"
+        },
+        {
+          "moduleId": "python-variables",
+          "blockId": "guide",
+          "label": "Revoir la valeur conservée"
+        },
+        {
+          "moduleId": "python-for",
+          "blockId": "guide",
+          "label": "Revoir les bornes de range"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-hasard",
+          "blockId": "bonus",
+          "label": "Réagir à chaque tirage",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.conditions",
+              "expectation": "Construire un test et repérer son bloc ; sinon reprendre Faire un choix."
+            }
+          ]
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "python-nombre-mystere",
+          "label": "Trouver le nombre mystère",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.random",
+              "expectation": "Conserver un tirage et expliquer ses bornes ; sinon reprendre ton intervalle."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Introduire une bibliothèque standard et distinguer un tirage conservé de nouveaux appels.",
+        "entryDiagnosis": [
+          "Faire afficher une variable fixe et prévoir les valeurs d’un range.",
+          "Demander les possibilités plutôt que deviner une sortie aléatoire."
+        ],
+        "preparation": [
+          "Utiliser tirage.py, jamais random.py ; éviter une variable nommée random.",
+          "Conserver valeur_conservee.py, nouveaux_tirages.py et les copies à valeur unique. Aucun package supplémentaire."
+        ],
+        "why": "Un programme peut choisir une valeur sans qu’elle soit fixée dans son code.",
+        "discoverySpeech": [
+          "« Quelles valeurs sont possibles ? »",
+          "« Combien de fois cette ligne est-elle exécutée ? »",
+          "« Deux résultats identiques prouvent-ils qu’il n’y a pas eu de nouveau tirage ? »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-hasard",
+            "blockId": "exemple"
+          },
+          "comments": [
+            "Import avant usage ; fonction existante appelée avec deux bornes.",
+            "randint inclut les deux bornes, contrairement à la fin de range.",
+            "Ne pas exiger une sortie différente à chaque relance."
+          ]
+        },
+        "questions": [
+          {
+            "question": "randint(1, 6) peut-il donner 6 ?",
+            "answer": "Oui ; les deux bornes sont incluses."
+          },
+          {
+            "question": "Pourquoi trois print de la même variable donnent-ils la même valeur ?",
+            "answer": "Ils réutilisent un tirage conservé, sans nouvel appel."
+          },
+          {
+            "question": "Trois appels doivent-ils donner trois valeurs distinctes ?",
+            "answer": "Non : chaque appel peut retrouver une valeur déjà obtenue."
+          },
+          {
+            "question": "Faut-il installer random ?",
+            "answer": "Non, il appartient à la bibliothèque standard de Python."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-hasard",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "python-hasard",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Commencer par un seul tirage affiché.",
+          "Comparer ensuite les deux emplacements de la ligne dans des fichiers distincts.",
+          "Réserver la réaction conditionnelle au bonus."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "random n’est pas accessible ou n’a pas randint.",
+            "helps": [
+              "Repérer le fichier actif et lire le message.",
+              "Vérifier import random avant usage.",
+              "Chercher un fichier random.py ou une variable random qui masque le module.",
+              "Renommer le fichier ou la variable, enregistrer et redémarrer avant de retester ; ne pas installer un package au hasard."
+            ]
+          },
+          {
+            "symptom": "L’élève attend des résultats tous différents.",
+            "helps": [
+              "Demander la garantie réellement annoncée.",
+              "Compter les appels en suivant le bloc.",
+              "Distinguer nouvelle opération et résultat nécessairement nouveau.",
+              "Tester une plage à valeur unique puis expliquer un exemple personnel sans imposer de diversité."
+            ]
+          }
+        ],
+        "notes": "Le contrôle technique des appels ne demande pas d’enseigner seed. Aides, prédictions et modifications évaluées séparément ; aucun acquis automatique.",
+        "quickConductor": [
+          "Diagnostiquer variables et range.",
+          "Importer et tirer.",
+          "Comparer les bornes.",
+          "Comparer un appel et trois appels.",
+          "Créer, modifier et expliquer l’intervalle personnel."
+        ],
+        "references": [
+          {
+            "title": "Python - random.randint",
+            "url": "https://docs.python.org/fr/3/library/random.html#random.randint"
+          }
+        ]
+      }
+    },
+    "python-nombre-mystere": {
+      "domainId": "python",
+      "title": "Trouver le nombre mystère",
+      "type": "project",
+      "theme": "fondations",
+      "objective": "Construire un jeu à secret stable, indices et compteur d’essais.",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "skillIds": [
+        "python.workspace",
+        "python.output",
+        "python.variables",
+        "python.input",
+        "python.numbers",
+        "python.conversion",
+        "python.debugging",
+        "python.conditions",
+        "python.branches",
+        "python.while",
+        "python.accumulation",
+        "python.random"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, conserver et relancer un fichier."
+        },
+        {
+          "skillId": "python.output",
+          "expectation": "Afficher et lire les résultats."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Conserver et réutiliser une valeur numérique."
+        },
+        {
+          "skillId": "python.input",
+          "expectation": "Conserver une réponse de input."
+        },
+        {
+          "skillId": "python.numbers",
+          "expectation": "Lire un entier et ajouter 1."
+        },
+        {
+          "skillId": "python.conversion",
+          "expectation": "Convertir une réponse entière en deux étapes."
+        },
+        {
+          "skillId": "python.debugging",
+          "expectation": "Lire une erreur et retester une correction."
+        },
+        {
+          "skillId": "python.conditions",
+          "expectation": "Comparer avec <, > et ==."
+        },
+        {
+          "skillId": "python.branches",
+          "expectation": "Construire une chaîne à trois issues."
+        },
+        {
+          "skillId": "python.while",
+          "expectation": "Actualiser la valeur testée et expliquer l’arrêt."
+        },
+        {
+          "skillId": "python.accumulation",
+          "expectation": "Initialiser un compteur puis l’augmenter sans le remettre à zéro."
+        },
+        {
+          "skillId": "python.random",
+          "expectation": "Importer random et conserver un tirage."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Il faut savoir convertir une réponse entière, comparer, actualiser un while et compter les essais. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée comparaison_mystere.py. Commence avec un secret fixe pour vérifier la logique avant le hasard.",
+          "moduleLink": {
+            "moduleId": "python-while",
+            "text": "Revoir la mise à jour et l’arrêt"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "contrat",
+          "title": "1 - La règle du jeu",
+          "paragraphs": [
+            "Au lancement, le programme choisit une fois un entier de 1 à 10. À chaque proposition, il indique Trop petit ou Trop grand, jusqu’à la réussite. Il annonce alors le total d’essais, y compris la proposition gagnante.",
+            "Annonce un entier écrit en chiffres, sans unité ni décimale. Un entier hors de la plage est comparé et compte comme essai. Une entrée comme cinq provoque ValueError et termine cet essai : le jeu n’est pas protégé contre les mauvaises saisies.",
+            "Pas de limite d’essais ni de nouvelle partie automatique ici. Si une version répète sans fin, utilise Arrêter / redémarrer avant de la corriger."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Préparation accompagnée - un choix fixe",
+          "items": [
+            {
+              "id": "comparaison-fixe",
+              "text": "Dans comparaison_mystere.py, fixe secret à 6. Demande une proposition entière avec input, puis convertis la réponse avec int dans une autre ligne.",
+              "hint": "Le secret est une valeur numérique. Garde distincts le texte de la réponse et le nombre comparé."
+            },
+            {
+              "id": "trois-issues",
+              "text": "Affiche Trop petit si la proposition est inférieure au secret, Trop grand si elle est supérieure, sinon Trouvé. Prédis puis teste 4, 6 et 8 dans trois exécutions.",
+              "hint": "Une chaîne if/elif/else ; chaque message dépend de la comparaison. Ce premier fichier n’a pas encore de boucle."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "difference",
+          "title": "2 - Continuer quand les valeurs diffèrent",
+          "paragraphs": [
+            "Enregistre ton premier essai puis crée inegalite.py pour ce petit exemple. != signifie différent de : le résultat est vrai lorsque les valeurs diffèrent, faux lorsqu’elles sont égales.",
+            "Prédis puis vérifie True, puis False. Ce signe ne fait pas une affectation. Quand proposition devient égale à secret, proposition != secret devient faux : c’est ce qui permettra d’arrêter la répétition."
+          ],
+          "code": "secret = 6\nproposition = 4\nprint(proposition != secret)\nproposition = 6\nprint(proposition != secret)"
+        },
+        {
+          "type": "lesson",
+          "id": "structure",
+          "title": "3 - Passer du choix à la répétition",
+          "paragraphs": [
+            "Rouvre comparaison_mystere.py puis crée repetition_mystere.py avec Enregistrer sous. Garde le secret fixe et la première question suivie de sa conversion avant while. Répète tant que proposition != secret.",
+            "Dans while, garde seulement les indices Trop petit et Trop grand selon la comparaison. Retire la branche Trouvé de l’ancienne chaîne : lorsque le bloc est exécuté, la proposition diffère forcément du secret. Place le message de réussite après la boucle, non indenté.",
+            "Après l’indice, pose une nouvelle question puis convertis la réponse dans le bloc de while. Ces deux lignes actualisent la proposition avant le test suivant. Quatre espaces pour les instructions de while, huit pour les messages de ses branches, zéro pour la réussite finale."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "repetition",
+          "title": "Vérifie la répétition fixe",
+          "items": [
+            {
+              "id": "routes-fixes",
+              "text": "Avec le secret à 6, prédis puis teste 6 ; 4 puis 6 ; 8 puis 6 ; 4, 8 puis 6. Vérifie les indices et l’absence de nouvelle question après réussite.",
+              "hint": "La première séquence ne passe pas dans while. Les autres passent une, une puis deux fois. Trouvé apparaît seulement après l’arrêt."
+            },
+            {
+              "id": "compter-essais",
+              "text": "Enregistre ta version. Initialise essais à 1 après la première proposition convertie. Augmente-le de 1 après chaque nouvelle conversion dans while. Affiche le bilan après la réussite et reteste les quatre séquences.",
+              "hint": "Les totaux attendus sont 1, 2, 2, 3. Le compteur compte les propositions converties, pas seulement les tours de while."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "tirage",
+          "title": "4 - Remplacer la source du secret",
+          "paragraphs": [
+            "Enregistre repetition_mystere.py puis crée mystere_aleatoire.py avec Enregistrer sous. Ajoute import random au début et remplace seulement secret = 6 par secret = random.randint(1, 10), avant toute question et avant while.",
+            "Ne refais pas le tirage après un échec : le secret reste le même pendant toute la partie. Une relance en tire un nouveau, qui peut toutefois être identique au précédent.",
+            "Pour diagnostiquer, tu peux afficher provisoirement le secret juste après le tirage, en annonçant que c’est une aide de test. Retire cet affichage du jeu final. Ne nomme pas le fichier random.py."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - ton nombre mystère",
+          "intro": "Enregistre les fichiers guidés puis crée mon_nombre_mystere.py. Prépare une courte description de ta règle et de tes variables ; essaie avant les indices.",
+          "items": [
+            {
+              "id": "jeu-personnel",
+              "text": "Construis ta version avec une plage de 1 à 12 et tes propres messages. Tire une fois, demande et convertis chaque proposition, indique trop petit ou trop grand, puis affiche la réussite et le total d’essais.",
+              "hint": "Prépare le rôle des variables avant le code. La première saisie est avant while ; les suivantes sont dans le bloc. Le secret ne change pas pendant la partie."
+            },
+            {
+              "id": "tests-personnels",
+              "text": "Enregistre puis crée test_nombre_mystere.py avec Enregistrer sous. Remplace provisoirement le tirage par un secret fixe à 7. Choisis toi-même une proposition inférieure et une supérieure. Prédis puis teste : réussite immédiate, chaque échec suivi de réussite, puis les deux échecs avant réussite.",
+              "hint": "Par exemple 3 et 10 entourent 7. Attends 1, 2, 2 et 3 essais ; aucune question après la réussite. Les valeurs sont des aides, pas des choix imposés."
+            },
+            {
+              "id": "bornes-et-format",
+              "text": "Dans le fichier de test, utilise successivement un secret à 1 puis à 12 et vérifie la réussite immédiate. Essaie aussi un entier hors plage suivi du secret. Puis teste un texte non convertible, explique l’arrêt et relance avec un entier.",
+              "hint": "L’entier hors plage compte comme essai ; un texte non convertible provoque ValueError sur int et n’atteint pas la réussite. Pas de try/except à ajouter."
+            },
+            {
+              "id": "retrouver-aleatoire",
+              "text": "Enregistre le fichier de test. Rouvre mon_nombre_mystere.py et vérifie le tirage aléatoire unique, sans affichage du secret. Ferme, rouvre puis relance le jeu ; explique la place du tirage, des deux saisies et du compteur.",
+              "hint": "La copie fixe sert au diagnostic ; la version personnelle conserve randint. Le fichier doit définir toutes les valeurs nécessaires sans ancien essai."
+            },
+            {
+              "id": "modifier-plage",
+              "text": "Enregistre puis crée mystere_modifie.py avec Enregistrer sous. Change la plage, mets à jour son annonce dans les deux questions et teste les nouvelles bornes dans une copie à secret fixe.",
+              "hint": "Garde les versions précédentes. Les bornes de randint sont incluses ; modifier l’annonce seule ne change pas le tirage."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - commenter le bilan",
+          "items": [
+            {
+              "id": "appreciation",
+              "text": "Dans une copie du jeu, ajoute après réussite une appréciation selon le total d’essais, avec deux seuils de ton choix. Vérifie chaque issue avec un secret fixe et conserve le total exact.",
+              "hint": "Une chaîne if/elif/else après while suffit. Pas de plafond d’essais ni de nouvelle partie à ajouter."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Conserver un secret stable et expliquer le tirage unique.",
+        "Utiliser !=, actualiser la proposition et arrêter dès la réussite, même au premier essai.",
+        "Donner les bons indices et compter les propositions sans décalage de 1.",
+        "Choisir des tests fixes pour les routes et les bornes puis retrouver la version aléatoire sans révéler le secret.",
+        "Modifier la plage et expliquer les limites de saisie ; distinguer aides et autonomie pour chaque compétence."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-nombre-mystere",
+          "blockId": "guide",
+          "label": "Repartir d’une comparaison fixe"
+        },
+        {
+          "moduleId": "python-calculs",
+          "blockId": "conversion",
+          "label": "Revoir la conversion entière"
+        },
+        {
+          "moduleId": "python-elif",
+          "blockId": "guide",
+          "label": "Revoir les trois issues"
+        },
+        {
+          "moduleId": "python-while",
+          "blockId": "guide",
+          "label": "Revoir actualisation et arrêt"
+        },
+        {
+          "moduleId": "python-compteurs",
+          "blockId": "guide",
+          "label": "Revoir le compteur"
+        },
+        {
+          "moduleId": "python-hasard",
+          "blockId": "guide",
+          "label": "Revoir le tirage conservé"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-nombre-mystere",
+          "blockId": "bonus",
+          "label": "Personnaliser l’appréciation"
+        }
+      ],
+      "nextSteps": [{ "moduleId": "python-listes", "label": "Regrouper des valeurs dans une liste", "prerequisiteSkills": [{ "skillId": "python.variables", "expectation": "Conserver et afficher une valeur ; sinon reprendre les variables. Le jeu terminé n'est pas requis." }, { "skillId": "python.for", "expectation": "Suivre un for ; sinon reprendre Répéter un nombre de fois." }] }],
+      "teacherGuide": {
+        "objective": "Observer le transfert de saisie, décision, répétition, compteur et hasard sans solution complète à recopier.",
+        "entryDiagnosis": [
+          "Faire convertir une réponse entière puis expliquer une comparaison.",
+          "Faire repérer la mise à jour de while et l’initialisation d’un compteur ; reprendre ces notions si nécessaire."
+        ],
+        "preparation": [
+          "Commencer par secret = 6 ; conserver comparaison_mystere.py, inegalite.py, repetition_mystere.py et mystere_aleatoire.py.",
+          "Le fichier autonome utilise 1 à 12 ; garder une copie à secret fixe pour diagnostiquer.",
+          "Ne pas masquer ValueError : le projet compare des entiers mais ne gère pas les entrées non convertibles."
+        ],
+        "why": "Des tests déterministes permettent de comprendre un jeu avant d’ajouter le hasard.",
+        "discoverySpeech": [
+          "« Quelle valeur doit rester stable pendant la partie ? »",
+          "« Où la nouvelle proposition peut-elle rendre le test faux ? »",
+          "« Combien d’essais compte une réussite immédiate ? »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-nombre-mystere",
+            "blockId": "contrat"
+          },
+          "comments": [
+            "Comparer trois issues avant la répétition.",
+            "Enseigner != puis sortir Trouvé de la chaîne : la réussite est après while.",
+            "Ajouter le compteur avant de remplacer la source fixe du secret."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi ne pas tirer le secret dans while ?",
+            "answer": "Il changerait pendant la partie ; les indices ne concerneraient plus le même nombre."
+          },
+          {
+            "question": "Pourquoi Trouvé est-il après la boucle ?",
+            "answer": "Le bloc n’est exécuté que si les valeurs diffèrent ; la réussite correspond à l’arrêt."
+          },
+          {
+            "question": "Pourquoi essais commence-t-il à 1 ici ?",
+            "answer": "La première proposition a déjà été demandée et convertie avant while."
+          },
+          {
+            "question": "Un texte invalide est-il automatiquement redemandé ?",
+            "answer": "Non : int produit ValueError et termine l’essai. La boucle normale n’intercepte pas cette erreur."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-nombre-mystere",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "python-nombre-mystere",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Valider une comparaison fixe avant de répéter.",
+          "Accompagner un test et laisser choisir les autres propositions en autonomie.",
+          "Ajouter l’appréciation seulement après indices, compteur et copie de test."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le jeu n’atteint pas la réussite ou l’indice est incohérent.",
+            "helps": [
+              "Interrompre une répétition involontaire avant de modifier.",
+              "Lire les valeurs du secret et de la proposition dans une copie de diagnostic.",
+              "Vérifier tirage avant while, comparaison numérique et nouvelle conversion dans le bloc.",
+              "Corriger une cause puis tester bas, haut et réussite sans nouvelle question après égalité."
+            ]
+          },
+          {
+            "symptom": "Le total d’essais est décalé ou se remet à zéro.",
+            "helps": [
+              "Faire compter les propositions réellement saisies.",
+              "Tester une réussite immédiate puis deux échecs avant réussite.",
+              "Vérifier essais = 1 avant while et une augmentation après chaque nouvelle conversion.",
+              "Corriger l’emplacement puis vérifier 1, 2 et 3 essais dans une copie à secret fixe."
+            ]
+          },
+          {
+            "symptom": "Une mauvaise saisie provoque une erreur.",
+            "helps": [
+              "Lire le format annoncé et la valeur fournie.",
+              "Repérer la ligne int et la dernière ligne du message.",
+              "Distinguer entier hors plage et texte non convertible.",
+              "Relancer avec un entier valide et expliquer la limite sans ajouter une gestion d’exception cachée."
+            ]
+          }
+        ],
+        "notes": "Comparer aides, explications et modification autonome. Ce projet ne prouve pas for ; les cases n’attribuent aucun acquis.",
+        "quickConductor": [
+          "Diagnostiquer conversion, while et compteur.",
+          "Construire la comparaison fixe et enseigner !=.",
+          "Transformer le choix en répétition puis compter.",
+          "Ajouter le tirage unique.",
+          "Construire le jeu personnel, choisir les tests et vérifier la copie aléatoire."
+        ],
+        "references": [
+          {
+            "title": "Python - random",
+            "url": "https://docs.python.org/fr/3/library/random.html#random.randint"
+          },
+          {
+            "title": "Python - comparaisons",
+            "url": "https://docs.python.org/fr/3/reference/expressions.html#comparisons"
+          }
+        ]
       }
     },
     "scratch-boucles": {
@@ -12718,8 +14548,8 @@ window.CODECRAFT_DATA = {
   "pathways": {
     "python-debutants": {
       "domainId": "python", "title": "Premiers pas avec Python", "theme": "fondations",
-      "objective": "Partir de zéro, écrire ses premiers programmes et créer une conversation interactive avec Thonny.",
-      "moduleIds": ["python-thonny", "python-affichage", "python-variables", "python-saisie", "python-conversation"]
+      "objective": "Partir de zéro, créer des programmes interactifs, calculer, choisir et répéter des actions avec Thonny.",
+      "moduleIds": ["python-thonny", "python-affichage", "python-variables", "python-saisie", "python-conversation", "python-calculs", "python-erreurs", "python-conditions", "python-elif", "python-aventure", "python-for", "python-while", "python-compteurs", "python-hasard", "python-nombre-mystere", "python-listes", "python-texte"]
     },
     "scratch-debutants": {
       "domainId": "jeux-video",
