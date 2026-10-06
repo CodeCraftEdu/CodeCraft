@@ -9,6 +9,31 @@ const context = { window: {}, URLSearchParams };
 for (const file of ['lesson-data.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;
 
+test('fin de module : encarts génériques supprimés, consignes spécifiques conservées', () => {
+  const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  const start = source.indexOf('  function support(item) {');
+  const end = source.indexOf('  function renderModule(', start);
+  const fake = (tag, className, text) => ({ tag, className, text, children: [], append(...children) { this.children.push(...children); } });
+  const render = vm.runInNewContext('(' + source.slice(start, end).trim() + ')', { element: fake });
+  const texts = node => node ? [node.text, ...node.children.flatMap(texts)].filter(Boolean) : [];
+  for (const item of Object.values(data.modules)) {
+    const result = render(item);
+    if (!item.bonus && !item.stuck) assert.equal(result, null);
+    if (item.bonus) assert(texts(result).includes(item.bonus));
+    assert(!texts(result).includes('Je suis bloqué'));
+    if (item.stuck) {
+      for (const step of item.stuck.steps) assert(texts(result).includes(step));
+      assert(texts(result).includes('J’ai fini'));
+    } else if (item.bonus) {
+      assert(texts(result).includes('Vérification et suite'));
+    }
+  }
+  assert(data.modules['html-titres-paragraphes'].bonus.includes('sans regarder les exemples'));
+  assert(data.modules['diagnostic-web'].bonus.includes('Aucun bonus'));
+  assert(!source.includes('data.shared'));
+  assert.equal(data.shared, undefined);
+});
+
 test('projets Scratch : liens mutualisés, facultatifs et démonstration réservée au guide', () => {
   const project = data.scratchProjects['chat-cible'];
   const saved = { ...project };
@@ -432,9 +457,9 @@ test('ressources CodePen : dessins embarqués identiques aux SVG du dépôt', ()
 });
 
 test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions facultatives', () => {
-  assert.equal(Object.keys(data.modules).length, 38);
-  assert.equal(Object.keys(data.skills).length, 34);
-  assert.equal(Object.values(data.modules).filter(m => m.teacherGuide).length, 31);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python').length, 38);
+  assert.equal(Object.keys(data.skills).filter(id => !id.startsWith('python.')).length, 34);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python' && m.teacherGuide).length, 31);
   assert.equal(data.modules['html-mini-page'].type, 'challenge');
   assert.equal(data.modules['web-affiche-numerique'].type, 'project');
   assert.equal(JSON.stringify(data.modules['css-decouverte'].skillIds), '["css.colors"]');

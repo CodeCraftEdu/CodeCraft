@@ -114,3 +114,53 @@
 @media (min-width: 720px) {
   .flex-display-demo__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
+/* Schémas pédagogiques locaux : aucun éditeur ni asset externe. */
+.lesson-illustration { margin: 20px 0; }
+.lesson-illustration img { display: block; width: 100%; height: auto; }
+.lesson-illustration figcaption { margin-top: 8px; font-size: .95rem; }
+
+/* Schéma réutilisable code → exécution → résultat ; aucun faux contrôle interactif. */
+.code-diagram { margin: 1.5rem 0 0; }
+.code-diagram__editor, .code-diagram__console { overflow: hidden; border: 2px solid #333b37; border-radius: 3px; box-shadow: 4px 4px 0 #c7c1b1; }
+.code-diagram__editor { background: #252e2b; color: #f4f5ef; }
+.code-diagram__header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; padding: .65rem 1rem; font-size: .9rem; font-weight: 700; }
+.code-diagram__editor .code-diagram__header { background: #35423b; border-bottom: 1px solid #536058; }
+.code-diagram__file { padding: .2rem .55rem; border: 1px solid #66766b; background: #252e2b; font-family: Consolas, 'Courier New', monospace; font-weight: 400; }
+.code-diagram__source, .code-diagram__result { margin: 0; padding: 1.25rem 1rem; font: 1.1rem/1.6 Consolas, 'Courier New', monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code-diagram__token--function { color: #9bd7f3; }
+.code-diagram__token--string { color: #f2d399; }
+.code-diagram__tools { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.code-diagram__run { display: inline-flex; align-items: center; gap: .4rem; color: #c2e3ac; font-size: .9rem; font-weight: 700; }
+.code-diagram__play { font-size: .8rem; }
+.code-diagram__console { margin-top: 1rem; background: #fffdf6; }
+.code-diagram__console .code-diagram__header { border-bottom: 1px solid #c4cbbb; background: #edf0e7; color: #36462f; }
+.code-diagram__result { color: #283c29; }
+.code-diagram .code-diagram__note { margin: .85rem 0 0; color: var(--muted); font-size: .9rem; }
+
+/* Essai visuel du module Thonny uniquement ; styles des autres cours inchangés. */
+.lesson-page--workshop .lesson-actions { list-style: none; padding: 0; margin: 1.25rem 0 0; }
+.lesson-page--workshop .lesson-action { padding: 1.1rem; border: 2px solid var(--line); background: #f5f2e8; }
+.lesson-page--workshop .lesson-action + .lesson-action { margin-top: 1rem; }
+.lesson-page--workshop .lesson-action__title { display: flex; align-items: center; gap: .75rem; margin: 0 0 .8rem; font-size: 1.2rem; }
+.lesson-page--workshop .lesson-action__number { display: inline-grid; place-items: center; width: 2rem; height: 2rem; flex-shrink: 0; border: 2px solid var(--route-dark); background: var(--route-soft); color: var(--route-dark); box-shadow: 3px 3px 0 var(--route-dark); }
+.lesson-page--workshop .lesson-action p { margin: .65rem 0; }
+.lesson-page--workshop .lesson-action .lesson-action__label { margin-top: 1rem; font-weight: 700; font-size: .9rem; }
+.lesson-page--workshop .lesson-action .code-block { margin-top: .4rem; }
+.lesson-page--workshop .lesson-action__output { padding: 1rem; margin: .4rem 0 0; border: 2px solid var(--route); background: var(--route-soft); font: 1rem Consolas, 'Courier New', monospace; white-space: pre-wrap; }
+.lesson-page--workshop .hint { border: 0; border-left: 2px solid var(--route); border-radius: 0; background: transparent; }
+.lesson-page--workshop .hint > summary { min-height: 44px; padding: .65rem .8rem; font-size: .95rem; font-weight: 600; }
+.lesson-page--workshop .hint > summary:hover { background: var(--route-soft); }
+.lesson-page--workshop .hint[open] { background: var(--route-soft); }
+.lesson-page--workshop .pedagogy-choices__grid { display: grid; gap: .8rem; margin-top: 1rem; }
+.lesson-page--workshop .pedagogy-choice { min-width: 0; padding: 1rem; border: 2px solid var(--line); }
+.lesson-page--workshop .pedagogy-choice h3 { margin: 0; font-size: 1rem; }
+.lesson-page--workshop .pedagogy-links { list-style: none; margin: .5rem 0 0; padding: 0; }
+.lesson-page--workshop .pedagogy-links li { margin: 0; }
+.lesson-page--workshop .pedagogy-links p { margin: .5rem 0 0; font-size: .95rem; }
+.lesson-page--workshop .pedagogy-choice--nextSteps { border-color: var(--route); background: var(--route-soft); }
+.lesson-page--workshop .pedagogy-choice--nextSteps a { padding: .65rem .8rem; border: 2px solid var(--route-dark); background: var(--route); color: white; text-decoration: none; box-shadow: 3px 3px 0 var(--route-dark); }
+.lesson-page--workshop .pedagogy-choice--nextSteps a:hover { background: var(--route-dark); }
+.lesson-page--workshop .module-navigation:empty { display: none; }
+@media (min-width: 900px) {
+  .lesson-page--workshop .pedagogy-choices__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

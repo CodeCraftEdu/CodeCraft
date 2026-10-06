@@ -1,0 +1,161 @@
+/* Essai réversible : uniquement schéma et carte Continuer de python-thonny.
+   Les styles originaux restent intacts dans pedagogy.css.
+   Retirer visual-trial--adventure rétablit immédiatement leur apparence. */
+.visual-trial-controls { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; padding: .65rem 0; border-top: 1px solid var(--line); }
+.visual-trial-controls__label { margin-right: .25rem; font-size: .85rem; color: var(--muted); }
+.visual-trial-controls button { min-height: 44px; padding: .5rem .75rem; font: inherit; font-size: .85rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.visual-trial-controls button[aria-pressed="true"] { border-color: #57417a; background: #ede6f5; color: #39284f; font-weight: 700; }
+.visual-trial-controls button:focus-visible { outline: 3px solid var(--route); outline-offset: 3px; }
+.visual-trial-controls + .code-diagram { margin-top: .5rem; }
+
+.visual-trial--adventure .code-diagram__editor,
+.visual-trial--adventure .code-diagram__console {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+  box-shadow: none;
+  border-bottom: 6px solid #786493;
+}
+.visual-trial--adventure .code-diagram__editor { background: #282038; color: #f8f4ff; }
+.visual-trial--adventure .code-diagram__editor .code-diagram__header {
+  background: linear-gradient(135deg, #685187 0 24px, #49355f 24px calc(100% - 24px), #382748 calc(100% - 24px));
+  border-bottom: 2px solid #8d72a8;
+  padding: .8rem 1.15rem;
+}
+.visual-trial--adventure .code-diagram__file { border-color: #927ca8; background: #332640; color: #f4ecff; }
+.visual-trial--adventure .code-diagram__run { color: #bce7c5; }
+.visual-trial--adventure .code-diagram__play { color: #90dcb1; }
+.visual-trial--adventure .code-diagram__source { padding: 1.4rem 1.15rem; }
+.visual-trial--adventure .code-diagram__token--function { color: #c2bbff; }
+.visual-trial--adventure .code-diagram__token--string { color: #f5d78c; }
+.visual-trial--adventure .code-diagram__console { background: #faf6ee; border-bottom-color: #c1b2cc; }
+.visual-trial--adventure .code-diagram__console .code-diagram__header {
+  padding: .8rem 1.15rem;
+  color: #443052;
+  border-bottom: 2px solid #cbbbda;
+  background: linear-gradient(135deg, #e2d6ec 0 24px, #eee5f4 24px calc(100% - 24px), #d4c4e2 calc(100% - 24px));
+}
+.visual-trial--adventure .code-diagram__result { padding: 1.25rem 1.15rem; color: #392b49; }
+
+.lesson-page--workshop.visual-trial--adventure .pedagogy-choice--nextSteps {
+  position: relative;
+  border: 2px solid #a08caf;
+  border-top: 5px solid #705489;
+  background: linear-gradient(135deg, #e5dbee 0 16px, #f6f0fa 16px);
+  box-shadow: 4px 4px 0 #d1c5dc;
+}
+.lesson-page--workshop.visual-trial--adventure .pedagogy-choice--nextSteps h3 { padding-right: 1.5rem; color: #4b3265; }
+.lesson-page--workshop.visual-trial--adventure .pedagogy-choice--nextSteps a {
+  display: block;
+  position: relative;
+  padding: .85rem 2rem .85rem 1rem;
+  border: 0;
+  border-bottom: 5px solid #382047;
+  background: linear-gradient(135deg, #9170b0 0 14px, #644180 14px calc(100% - 14px), #4c3066 calc(100% - 14px));
+  color: #fff9eb;
+  box-shadow: none;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+}
+.lesson-page--workshop.visual-trial--adventure .pedagogy-choice--nextSteps a::after { content: '→'; position: absolute; right: .7rem; top: .85rem; color: #ffe29a; }
+.lesson-page--workshop.visual-trial--adventure .pedagogy-choice--nextSteps a:hover { background: #4f316a; }
+.lesson-page--workshop.visual-trial--adventure .pedagogy-choice--nextSteps a:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #ffe29a; }
+@media print { .visual-trial-controls { display: none; } }
+
+/* Aperçu de carte : gemmes originales en CSS, sans score ni progression. */
+.visual-trial-card-preview, .adventure-gem { display: none; }
+.visual-trial--adventure .visual-trial-card-preview { display: block; margin-top: 1.7rem; padding-top: 1rem; border-top: 1px solid #d2c4da; }
+.visual-trial-card-preview__label { color: #65516f; font-size: .85rem; }
+.visual-trial--adventure .adventure-module-card {
+  position: relative;
+  padding: 1.4rem;
+  border-bottom: 6px solid #a896bd;
+  background: linear-gradient(135deg, #d5c2e7 0 22px, #f2ecf8 22px calc(100% - 22px), #dfd0ed calc(100% - 22px));
+  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
+}
+.adventure-module-card__heading { padding-right: 1.8rem; }
+.adventure-module-card__heading > div { min-width: 0; }
+.adventure-module-card__heading h3 { margin: .2rem 0 0; color: #39234f; font-size: 1.3rem; line-height: 1.3; }
+.adventure-module-card .adventure-module-card__type { margin: 0; font-size: .8rem; color: #6e507f; font-weight: 700; }
+.adventure-module-card .adventure-module-card__description { margin: 1rem 0; color: #493e53; }
+.visual-trial--adventure .adventure-gem {
+  --gem-hue: 158;
+  display: block; position: absolute; top: 1rem; right: 1rem; width: 22px; height: 20px;
+  background: conic-gradient(from 0deg at 50% 35%, hsl(var(--gem-hue) 45% 83%) 0deg 45deg, hsl(var(--gem-hue) 49% 66%) 45deg 90deg, hsl(var(--gem-hue) 60% 38%) 90deg 160deg, hsl(var(--gem-hue) 60% 25%) 160deg 210deg, hsl(var(--gem-hue) 45% 48%) 210deg 280deg, hsl(var(--gem-hue) 60% 74%) 280deg 360deg);
+  clip-path: polygon(24% 0, 76% 0, 100% 35%, 50% 100%, 0 35%);
+}
+.visual-trial--adventure .adventure-gem::before {
+  content: ''; position: absolute; inset: 0 0 65%;
+  background: conic-gradient(from 0deg at 50% 55%, hsl(var(--gem-hue) 52% 88%) 0deg 65deg, hsl(var(--gem-hue) 45% 65%) 65deg 145deg, hsl(var(--gem-hue) 48% 74%) 145deg 225deg, hsl(var(--gem-hue) 55% 92%) 225deg 295deg, hsl(var(--gem-hue) 52% 88%) 295deg 360deg);
+  clip-path: polygon(24% 0, 76% 0, 100% 100%, 0 100%);
+}
+.visual-trial--adventure .adventure-gem--small { width: 18px; height: 16px; top: .85rem; right: .85rem; }
+.lesson-page--workshop.visual-trial--adventure .adventure-module-card__access {
+  position: relative; display: inline-block; min-height: 44px; padding: .75rem 2.5rem .75rem 1rem;
+  border-bottom: 5px solid #372146;
+  background: linear-gradient(135deg, #9571b7 0 12px, #63427e 12px calc(100% - 12px), #472e61 calc(100% - 12px));
+  color: #fff8e8; text-decoration: none; font-weight: 700;
+  clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
+}
+.adventure-module-card__access::after { content: '→'; position: absolute; right: .9rem; color: #ffe09c; }
+.lesson-page--workshop.visual-trial--adventure .adventure-module-card__access:hover { background: #4e3068; }
+.lesson-page--workshop.visual-trial--adventure .adventure-module-card__access:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #ffe09c; }
+@media (max-width: 480px) {
+  .visual-trial--adventure .adventure-module-card { padding: 1.1rem; }
+}
+@media print { .visual-trial-card-preview { display: none !important; } }
+
+/* Variante blocs : terre, bois, pierre et herbe, sans texture derrière le code. */
+.visual-trial--blocks .visual-trial-controls button[aria-pressed="true"] { border-color: #4a633a; background: #e7eddc; color: #344d29; }
+.visual-trial--blocks .code-diagram__editor,
+.visual-trial--blocks .code-diagram__console {
+  border: 4px solid #574733;
+  border-radius: 0;
+  box-shadow: 5px 5px 0 #392f25;
+}
+.visual-trial--blocks .code-diagram__editor { background: #242b23; color: #fff9e9; }
+.visual-trial--blocks .code-diagram__editor .code-diagram__header {
+  padding: .85rem 1rem;
+  border-top: 3px solid #b49868;
+  border-bottom: 4px solid #493721;
+  background: #725a3d;
+  box-shadow: inset 3px 0 0 #a18459, inset -3px 0 0 #58432d;
+}
+.visual-trial--blocks .code-diagram__zone::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: .6rem; background: #cdb582; box-shadow: 4px -4px 0 #927448; }
+.visual-trial--blocks .code-diagram__file { padding: .3rem .6rem; border: 2px solid #3c2f21; background: #493b2b; color: #fff0ca; box-shadow: inset 2px 2px 0 #816a48; }
+.visual-trial--blocks .code-diagram__run { color: #e3f4b7; }
+.visual-trial--blocks .code-diagram__play { color: #b6e46a; }
+.visual-trial--blocks .code-diagram__source { padding: 1.4rem 1rem; }
+.visual-trial--blocks .code-diagram__token--function { color: #b4d9b7; }
+.visual-trial--blocks .code-diagram__token--string { color: #f1d293; }
+.visual-trial--blocks .code-diagram__console { margin-top: 1.4rem; border-color: #696958; background: #f8f5e9; box-shadow: 5px 5px 0 #454639; }
+.visual-trial--blocks .code-diagram__console .code-diagram__header {
+  padding: .8rem 1rem;
+  border-top: 3px solid #e2e0c9;
+  border-bottom: 3px solid #969681;
+  background: #c4c4af;
+  color: #343d2c;
+  box-shadow: inset 3px 0 0 #dfdeca, inset -3px 0 0 #a5a58d;
+}
+.visual-trial--blocks .code-diagram__result { padding: 1.25rem 1rem; color: #293b27; }
+.lesson-page--workshop.visual-trial--blocks .pedagogy-choice--nextSteps {
+  position: relative;
+  border: 3px solid #67513b;
+  border-top: 8px solid #65914a;
+  background: #f3ecd8;
+  box-shadow: 4px 4px 0 #493c2c, inset 0 3px 0 #c0d591;
+}
+.lesson-page--workshop.visual-trial--blocks .pedagogy-choice--nextSteps h3 { color: #3a512e; }
+.lesson-page--workshop.visual-trial--blocks .pedagogy-choice--nextSteps a {
+  display: block;
+  position: relative;
+  padding: .85rem 2rem .85rem 1rem;
+  border: 3px solid #344a29;
+  border-radius: 0;
+  background: #4f713d;
+  color: #fffbe9;
+  box-shadow: inset 3px 3px 0 #88a965, inset -3px -3px 0 #3d572d, 3px 3px 0 #483b29;
+}
+.lesson-page--workshop.visual-trial--blocks .pedagogy-choice--nextSteps a::after { content: '→'; position: absolute; right: .65rem; top: .85rem; color: #f3dfa0; }
+.lesson-page--workshop.visual-trial--blocks .pedagogy-choice--nextSteps a:hover { background: #3f5c31; }
+.lesson-page--workshop.visual-trial--blocks .pedagogy-choice--nextSteps a:focus-visible { outline: 3px solid #624415; outline-offset: 4px; }

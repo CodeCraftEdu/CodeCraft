@@ -10,18 +10,6 @@ window.CODECRAFT_DATA = {
     "homeIntro": "Choisis ton univers. Construis à ton rythme.",
     "homeChoiceLabel": "Quel univers veux-tu explorer ?"
   },
-  "shared": {
-    "stuckTitle": "Je suis bloqué",
-    "stuckSteps": [
-      "Relire la consigne",
-      "Relire l’exemple ou le code",
-      "Chercher une faute",
-      "Essayer une autre fois",
-      "Si tu es en cours, demander de l’aide au professeur"
-    ],
-    "finishedTitle": "J'ai fini",
-    "finishedText": "Relis ton travail et vérifie chaque consigne. Si tu es en cours, montre ensuite ton résultat au professeur."
-  },
   "scratchProjects": {
     "chat-cible": {
       "title": "Un chat et une cible",
@@ -51,6 +39,13 @@ window.CODECRAFT_DATA = {
     "diagnostic": "Diagnostic"
   },
   "domains": {
+    "python": {
+      "title": "Python",
+      "homeDescription": "Écris tes premiers programmes, pose des questions et construis tes propres projets avec Thonny.",
+      "homeTag": "PYTHON · THONNY",
+      "pathwayIds": ["python-debutants"],
+      "diagnosticModuleIds": []
+    },
     "jeux-video": {
       "title": "Jeu vidéo",
       "homeDescription": "Donne vie à tes idées avec Scratch : personnages, mouvements et premiers jeux.",
@@ -73,6 +68,10 @@ window.CODECRAFT_DATA = {
     }
   },
   "skills": {
+    "python.workspace": { "title": "Créer, enregistrer et exécuter un programme Python" },
+    "python.output": { "title": "Afficher des messages et expliquer leur ordre" },
+    "python.variables": { "title": "Conserver et réutiliser des valeurs dans des variables" },
+    "python.input": { "title": "Demander et utiliser une réponse textuelle" },
     "scratch.clones": { "title": "Créer et gérer des copies temporaires d’un personnage" },
     "scratch.time": { "title": "Mesurer et limiter le temps d’une partie" },
     "scratch.debugging": { "title": "Observer, expliquer et corriger une erreur dans un programme" },
@@ -167,6 +166,236 @@ window.CODECRAFT_DATA = {
     }
   },
   "modules": {
+    "python-thonny": {
+      "domainId": "python", "title": "Premiers pas avec Thonny", "type": "lesson", "theme": "fondations",
+      "presentation": "workshop",
+      "objective": "Créer, enregistrer, exécuter et retrouver un programme Python.",
+      "tool": { "label": "Télécharger Thonny", "url": "https://thonny.org/" },
+      "skillIds": ["python.workspace"], "prerequisiteSkills": [], "prerequisitesInContent": true,
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Aucune expérience en programmation n’est nécessaire. Ouvre Thonny sur ton ordinateur et garde CodeCraft à côté. Si Thonny n’est pas installé, le bouton Télécharger Thonny mène au site officiel : installe la version adaptée à ton système, puis ouvre l’application. Aucun compte n’est requis." },
+        { "type": "lesson", "id": "reperes", "title": "1 - Où écrire et où lire ?", "paragraphs": [
+          "Dans l’éditeur, en haut, tu écris les instructions du programme. Dans la console, en bas, tu lis les résultats. Si elle est masquée, utilise Affichage → Console.",
+          "Exécuter (triangle vert) lance le fichier ouvert dans l’éditeur. Arrêter / redémarrer (carré rouge) interrompt un programme et remet la console à zéro. La disposition peut varier : le schéma sert de repère.",
+          "Si tu vois >>> dans la console, cela signifie que Python attend une instruction. Ce symbole est affiché automatiquement : ne le recopie pas dans ton fichier. Pour ces activités, écris le code dans l’éditeur."
+        ], "codeDiagram": {
+          "filename": "bonjour.py",
+          "codeParts": [{ "text": "print", "kind": "function" }, { "text": "(" }, { "text": "\"Bonjour !\"", "kind": "string" }, { "text": ")" }],
+          "output": "Bonjour !",
+          "note": "Après une modification du code, exécute à nouveau pour actualiser le résultat."
+        } },
+        { "type": "lesson", "id": "exemple", "title": "2 - Ton premier fichier", "paragraphs": [
+          "Choisis Fichier → Nouveau. Dans l’éditeur vide, écris la ligne ci-dessous avec des guillemets droits et les deux parenthèses. print affiche le message placé entre guillemets ; tu le découvriras plus en détail ensuite.",
+          "Choisis Fichier → Enregistrer sous, crée ou choisis un dossier pour tes programmes, puis nomme le fichier bonjour.py. .py indique un fichier Python. Si Thonny demande où enregistrer, choisis Cet ordinateur.",
+          "Clique sur Exécuter, ou utilise F5. Dans la console, tu dois lire Bonjour ! : le message affiché est le résultat, pas une nouvelle instruction à recopier."
+        ], "code": "print(\"Bonjour !\")", "actionSteps": [
+          { "title": "Écrire", "paragraphIndex": 0, "showCode": true },
+          { "title": "Enregistrer", "paragraphIndex": 1 },
+          { "title": "Exécuter", "paragraphIndex": 2, "output": "Bonjour !" }
+        ] },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé - écrire, lancer, retrouver", "items": [
+          { "id": "premier-fichier", "text": "Crée bonjour.py, écris le modèle et exécute-le.", "hint": "Écris dans l’éditeur du haut. Si la ligne échoue, compare les guillemets et parenthèses. Demande de l’aide pour l’installation ou le clavier si nécessaire." },
+          { "id": "modifier-message", "text": "Remplace Bonjour ! par un autre message. Enregistre avec Ctrl+S (Cmd+S sur Mac), puis exécute à nouveau.", "hint": "Modifie seulement le texte entre guillemets. Modifier le fichier n’exécute pas automatiquement le nouveau code." },
+          { "id": "rouvrir-fichier", "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver bonjour.py et le relancer.", "hint": "Note le dossier choisi. Un onglet fermé n’efface pas un fichier enregistré. Ne ferme pas sans enregistrer tes modifications." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi - retrouver ton programme", "intro": "Essaie d’abord sans modèle. Garde le fichier précédent.", "items": [
+          { "id": "retrouver-seul", "text": "Retrouve bonjour.py, change son message et relance-le.", "hint": "Ouvrir retrouve un fichier ; Exécuter lance ses instructions." },
+          { "id": "distinguer-zones", "text": "Montre où se trouve ton code et où apparaît son résultat. Explique ce qu’il faut faire après une modification.", "hint": "Éditeur → instructions ; console → résultat ; enregistrer puis exécuter." }
+        ] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus - garder deux essais", "items": [
+          { "id": "deuxieme-fichier", "text": "Crée un deuxième fichier accueil.py avec un autre message. Ouvre ensuite chacun des deux fichiers pour vérifier que le premier existe encore.", "hint": "Utilise Fichier → Nouveau, puis Enregistrer sous avec un autre nom. Ne remplace pas bonjour.py." }
+        ] }
+      ],
+      "masteryCriteria": ["Distinguer le code dans l’éditeur du résultat dans la console.", "Modifier un message, enregistrer et relancer sans recopier toute la ligne.", "Retrouver un fichier enregistré ; distinguer l’aide à la manipulation de la compréhension."],
+      "consolidation": [{ "moduleId": "python-thonny", "blockId": "guide", "label": "Reprendre l’enregistrement et la réouverture" }],
+      "bonusActivities": [{ "moduleId": "python-thonny", "blockId": "bonus", "label": "Conserver deux fichiers" }],
+      "nextSteps": [{ "moduleId": "python-affichage", "label": "Afficher des messages", "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Savoir lancer le fichier ouvert ; sinon reprendre l’exercice guidé Thonny." }] }],
+      "teacherGuide": {
+        "objective": "Installer des repères fiables avant d’évaluer du code. Aucun acquis en programmation n’est supposé.",
+        "entryDiagnosis": ["Faire montrer où écrire et où lire, sans supposer que l’élève connaît ces zones.", "Observer les besoins d’aide au clavier, à la lecture et à l’enregistrement, séparément du raisonnement."],
+        "preparation": ["Installer Thonny depuis le site officiel selon le système ; sélectionner l’interpréteur Python local, pas MicroPython.", "Vérifier que la console est visible, que Exécuter et Arrêter / redémarrer fonctionnent et que le dossier choisi est accessible.", "Tester le modèle dans un nouveau fichier. Aucun terminal, compte, extension ou package n’est requis ; accompagner l’installation si nécessaire."],
+        "why": "L’élève doit savoir retrouver et lancer son travail avant de pouvoir avancer sans démonstration permanente.",
+        "discoverySpeech": ["« L’éditeur contient tes instructions. La console montre ce qui se passe quand elles sont exécutées. »", "« Modifier une ligne ne la lance pas. Enregistre puis exécute pour voir la différence. »", "« Le fichier sauvegardé reste sur ton ordinateur même si tu fermes son onglet. »"],
+        "example": { "target": { "moduleId": "python-thonny", "blockId": "exemple" }, "comments": ["Lire la ligne sans détailler toutes les notions : print affiche le texte. Ne pas faire saisir >>>.", "Faire choisir puis retrouver le dossier et le fichier ; fermer seulement après enregistrement.", "Montrer Arrêter / redémarrer sans imposer une boucle pour l’illustrer. Le schéma est générique ; pointer les contrôles réels de la version installée."] },
+        "questions": [{ "question": "Où modifies-tu le programme ?", "answer": "Dans l’éditeur, pas dans le résultat affiché dans la console." }, { "question": "Le résultat change-t-il dès que tu modifies le code ?", "answer": "Non : il faut exécuter à nouveau. Enregistrer conserve la modification dans le fichier." }, { "question": "Comment retrouver le programme après fermeture ?", "answer": "Ouvrir le fichier .py dans le dossier où il a été enregistré." }],
+        "accompaniedActivity": { "moduleId": "python-thonny", "blockId": "guide" }, "independentActivity": { "moduleId": "python-thonny", "blockId": "autonomie" },
+        "differentiation": ["Lire une consigne à la fois et accompagner le choix du dossier sans conclure que la notion Python est incomprise.", "Pour un élève à l’aise, demander de retrouver puis modifier le fichier sans démonstration ; proposer le deuxième fichier.", "Pas de temps imposé ; consolider la manipulation nécessaire avant d’ajouter plusieurs instructions."],
+        "commonErrors": [{ "symptom": "Le message n’apparaît pas ou seul >>> est visible.", "helps": ["Faire montrer les deux zones.", "Vérifier le fichier actif et le clic Exécuter.", "Comparer la ligne au modèle : guillemets droits et parenthèses.", "Accompagner une correction, relancer puis laisser l’élève modifier le message."] }, { "symptom": "Le fichier semble perdu.", "helps": ["Demander où il a été enregistré.", "Regarder Fichier → Ouvrir et le dossier choisi.", "Distinguer fermer un onglet, enregistrer et supprimer un fichier.", "Accompagner la réouverture puis faire refaire seul avec le deuxième fichier."] }],
+        "notes": "Distinguer réussite autonome, avec modèle ou avec aide. Une installation ou un enregistrement accompagné ne prouve pas l’autonomie ; aucune case ne valide une compétence.",
+        "quickConductor": ["Repérer éditeur, console et commandes.", "Écrire, enregistrer, exécuter le premier message.", "Modifier puis relancer.", "Fermer après sauvegarde et retrouver le fichier.", "Choisir consolidation ou Afficher des messages selon les repères observés."],
+        "references": [{ "title": "Thonny — site officiel et fonctionnalités", "url": "https://thonny.org/" }]
+      }
+    },
+    "python-affichage": {
+      "domainId": "python", "title": "Afficher des messages", "type": "lesson", "theme": "fondations",
+      "objective": "Afficher plusieurs messages et prévoir leur ordre.",
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.output"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Ouvrir, enregistrer et exécuter un fichier dans Thonny. Sinon, reprendre Premiers pas avec Thonny." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Ouvre l’application Thonny. Enregistre ton travail précédent, puis crée un nouveau fichier messages.py. Le bouton Site officiel de Thonny est une ressource, pas le lancement de l’application. Si tu hésites sur les zones ou les fichiers, reprends Premiers pas avec Thonny.", "moduleLink": { "moduleId": "python-thonny", "text": "Premiers pas avec Thonny" } },
+        { "type": "lesson", "id": "exemple", "title": "1 — Du texte, une instruction par ligne", "paragraphs": ["print affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.", "Python exécute ces instructions de haut en bas. Chaque print de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.", "Avant d’exécuter, annonce quelle phrase apparaîtra en premier."], "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé — trois messages", "items": [
+          { "id": "afficher-modele", "text": "Écris et exécute les deux instructions du modèle dans messages.py.", "hint": "N’écris pas le résultat ni >>> dans l’éditeur. Utilise les guillemets droits du clavier, pas les guillemets courbes d’un traitement de texte." },
+          { "id": "personnaliser-textes", "text": "Modifie les deux messages sans retirer leurs guillemets.", "hint": "Change seulement le texte à l’intérieur des guillemets." },
+          { "id": "troisieme-instruction", "text": "Ajoute une troisième instruction pour afficher une phrase de fin.", "hint": "Une nouvelle ligne avec print, des parenthèses et du texte entre guillemets." },
+          { "id": "inverser-ordre", "text": "Inverse les deux premières instructions. Prédis le résultat, puis exécute et explique la différence.", "hint": "Déplace les lignes entières ; changer les phrases n’est pas la même chose que changer l’ordre." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi — une présentation sans modèle", "intro": "Enregistre messages.py. Crée presentation.py ; essaie sans ouvrir l’indice.", "items": [
+          { "id": "presentation-personnelle", "text": "Affiche une présentation de trois lignes sur un personnage ou un sujet de ton choix, avec tes propres phrases.", "hint": "Chaque phrase peut avoir son propre print. Tu n’as pas besoin de variable ni de question pour ce module." },
+          { "id": "prediction-personnelle", "text": "Explique l’ordre avant d’exécuter, puis déplace une instruction pour vérifier ta prédiction.", "hint": "Python suit ici les lignes de haut en bas." }
+        ] },
+        { "type": "lesson", "id": "erreur", "title": "Pour consolider — une faute à repérer", "paragraphs": ["Cette ligne est volontairement incorrecte : il manque un guillemet droit. Une erreur indique que Python ne peut pas exécuter cette instruction telle quelle, pas que ton idée est mauvaise. Compare les paires de guillemets et de parenthèses, corrige puis relance.", "Une phrase différente de celle attendue n’est pas forcément une erreur Python : le programme peut fonctionner mais ne pas réaliser ta consigne."], "code": "print(\"Bonjour !)" },
+        { "type": "tasks", "id": "bonus", "title": "Bonus — un dessin en texte", "items": [{ "id": "dessin-texte", "text": "Avec plusieurs print, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.", "hint": "Chaque ligne du dessin est un texte entre guillemets. Évite les antislashs pour cet essai : aucune nouvelle notation n’est nécessaire." }] }
+      ],
+      "masteryCriteria": ["Produire plusieurs lignes personnelles sans recopier les phrases du modèle.", "Prédire et expliquer l’effet d’une inversion des instructions.", "Repérer un guillemet manquant et expliquer le rôle des guillemets et parenthèses."],
+      "consolidation": [{ "moduleId": "python-affichage", "blockId": "erreur", "label": "Repérer une faute simple" }, { "moduleId": "python-thonny", "blockId": "guide", "label": "Reprendre les manipulations de Thonny" }],
+      "bonusActivities": [{ "moduleId": "python-affichage", "blockId": "bonus", "label": "Composer un dessin en texte" }],
+      "nextSteps": [{ "moduleId": "python-variables", "label": "Variables et valeurs", "prerequisiteSkills": [{ "skillId": "python.output", "expectation": "Savoir afficher du texte et expliquer son ordre ; sinon reprendre les trois messages." }] }],
+      "teacherGuide": {
+        "objective": "Faire comprendre l’affichage et la séquence, pas seulement obtenir trois lignes copiées.",
+        "entryDiagnosis": ["Faire ouvrir un fichier et exécuter une instruction ; reprendre Thonny si cela bloque.", "Demander où apparaîtra le message et distinguer aide à la saisie et compréhension."],
+        "preparation": ["Ouvrir messages.py neuf et conserver bonjour.py.", "Prévoir le modèle, sa version inversée et la faute volontaire ; aucun autre exemple n’est erroné.", "Faire vérifier guillemets droits et parenthèses sur le clavier utilisé."],
+        "why": "L’ordre d’exécution permettra ensuite de comprendre les changements de variables et les questions.",
+        "discoverySpeech": ["« Les guillemets entourent le message ; les parenthèses entourent ce qu’on demande d’afficher. »", "« Lis les lignes de haut en bas et prédis ce qui apparaîtra. »", "« Un programme qui tourne peut quand même ne pas afficher ce que tu voulais : comparons à la consigne. »"],
+        "example": { "target": { "moduleId": "python-affichage", "blockId": "exemple" }, "comments": ["Résultat attendu : Bienvenue ! puis Voici mon premier programme., sur deux lignes.", "Inverser les instructions doit inverser les résultats, sans autre changement.", "Une phrase écrite toute seule dans un fichier n’est pas un remplacement de print ; travailler dans l’éditeur, pas uniquement la console."] },
+        "questions": [{ "question": "Les guillemets sont-ils affichés ?", "answer": "Non, ils délimitent le texte dans le code." }, { "question": "Que change l’inversion des deux instructions ?", "answer": "L’ordre des messages, car ces instructions s’exécutent de haut en bas." }, { "question": "Un programme sans erreur affiche-t-il forcément le résultat souhaité ?", "answer": "Non. Il faut encore comparer le résultat à la consigne et à la prédiction." }],
+        "accompaniedActivity": { "moduleId": "python-affichage", "blockId": "guide" }, "independentActivity": { "moduleId": "python-affichage", "blockId": "autonomie" },
+        "differentiation": ["Faire réussir une ligne puis deux, sans imposer immédiatement trois lignes à saisir.", "Demander à l’élève à l’aise de prédire l’inversion avant le test et de réparer sans le modèle.", "Ne pas introduire variables, boucles ou caractères échappés dans le bonus."],
+        "commonErrors": [{ "symptom": "SyntaxError après la saisie.", "helps": ["Faire lire la ligne signalée.", "Cibler guillemets droits et parenthèses.", "Comparer au modèle ou à la faute volontaire.", "Corriger un signe puis exécuter avant d’ajouter d’autres lignes."] }, { "symptom": "La présentation fonctionne mais l’ordre est inexpliqué.", "helps": ["Faire lire les résultats.", "Pointer la première instruction.", "Faire prédire un échange de deux lignes.", "Déplacer puis tester et demander une nouvelle prédiction sans aide."] }],
+        "notes": "Noter séparément reproduction avec modèle, prédiction et création autonome. Une faute de clavier ne suffit pas à conclure à une incompréhension.",
+        "quickConductor": ["Vérifier l’exécution dans l’éditeur.", "Expliquer print, guillemets et ordre.", "Personnaliser puis inverser les messages.", "Faire créer trois phrases sans modèle.", "Réparer une faute ; proposer reprise ou variables."],
+        "references": [{ "title": "Python — print", "url": "https://docs.python.org/fr/3/library/functions.html#print" }]
+      }
+    },
+    "python-variables": {
+      "domainId": "python", "title": "Variables et valeurs", "type": "lesson", "theme": "fondations",
+      "objective": "Conserver une information sous un nom et réutiliser sa valeur.",
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.variables"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Lancer un fichier enregistré." }, { "skillId": "python.output", "expectation": "Afficher du texte et prévoir l’ordre de plusieurs instructions. Sinon, reprendre Afficher des messages." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Enregistre tes essais, puis crée variables.py dans Thonny. Pour chaque test, utilise Arrêter / redémarrer (Stop/Restart), puis Exécuter le fichier entier : cela évite qu’une ancienne variable de la console masque un oubli. Si print ou les guillemets te posent problème, reprends Afficher des messages.", "moduleLink": { "moduleId": "python-affichage", "text": "Afficher des messages" } },
+        { "type": "lesson", "id": "exemple", "title": "1 — Un nom et une valeur", "paragraphs": ["personnage est le nom de la variable ; \"Luna\" est sa valeur textuelle. Le signe = affecte la valeur de droite au nom de gauche. Ce n’est pas une question ni une égalité mathématique.", "Sans guillemets, personnage demande la valeur associée à ce nom. Avec guillemets, \"personnage\" est simplement le texte personnage.", "Prédis les deux messages, puis exécute le fichier entier."], "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")" },
+        { "type": "lesson", "id": "changer", "title": "2 — La valeur peut changer", "paragraphs": ["Chaque instruction utilise la valeur disponible à cet instant. Le deuxième = remplace la valeur associée au nom personnage. Il ne modifie pas un message déjà affiché.", "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas print comme nom de variable."], "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)" },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé — changer la valeur", "items": [
+          { "id": "comparer-nom-texte", "text": "Exécute le premier exemple. Explique pourquoi les deux messages sont différents.", "hint": "La valeur est Luna ; le nom écrit entre guillemets reste le texte personnage." },
+          { "id": "remplacer-valeur", "text": "Change Luna par un autre prénom fictif, sans changer le nom de la variable. Prédis puis teste.", "hint": "Le premier résultat change ; le texte \"personnage\" ne change pas." },
+          { "id": "predire-remplacement", "text": "Remplace ton code par le deuxième exemple et annonce les deux résultats avant d’exécuter.", "hint": "Lis de haut en bas : la valeur est d’abord Luna, puis Milo." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi — deux informations", "intro": "Enregistre variables.py puis crée personnage.py. Essaie sans recopier le modèle.", "items": [
+          { "id": "deux-variables", "text": "Crée deux variables textuelles avec des noms de ton choix et affiche leurs valeurs.", "hint": "Une instruction d’affectation pour chaque information ; puis un print pour chaque variable, sans guillemets autour de son nom." },
+          { "id": "modifier-une-valeur", "text": "Après les premiers affichages, change une seule valeur et affiche-la à nouveau. Prédis ce qui changera.", "hint": "Garde le même nom et affecte-lui un nouveau texte. Le premier affichage reste présent ; seul le suivant utilise la nouvelle valeur." },
+          { "id": "test-propre", "text": "Arrête / redémarre la console puis exécute le fichier entier. Il doit fonctionner sans instruction saisie auparavant.", "hint": "Toute variable utilisée doit avoir reçu sa valeur dans le fichier avant son utilisation." }
+        ] },
+        { "type": "lesson", "id": "erreur", "title": "Pour consolider — un nom incohérent", "paragraphs": ["Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque NameError parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."], "code": "compagnon = \"chat\"\nprint(animal)" },
+        { "type": "tasks", "id": "bonus", "title": "Bonus — une valeur réutilisée", "items": [{ "id": "reutiliser-valeur", "text": "Affiche la même variable à trois endroits dans ton fichier. Change sa valeur de départ et prédis les trois résultats avant de relancer.", "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs print." }] }
+      ],
+      "masteryCriteria": ["Distinguer un nom de variable et ce même nom entre guillemets.", "Prédire les affichages avant et après un remplacement de valeur.", "Créer et réutiliser deux variables personnelles dans un fichier qui fonctionne après redémarrage."],
+      "consolidation": [{ "moduleId": "python-variables", "blockId": "erreur", "label": "Repérer une variable inconnue" }, { "moduleId": "python-affichage", "blockId": "guide", "label": "Revoir print et les guillemets" }],
+      "bonusActivities": [{ "moduleId": "python-variables", "blockId": "bonus", "label": "Réutiliser une valeur" }],
+      "nextSteps": [{ "moduleId": "python-saisie", "label": "Poser une question", "prerequisiteSkills": [{ "skillId": "python.variables", "expectation": "Créer une variable et expliquer la valeur utilisée ; sinon reprendre les deux informations." }] }],
+      "teacherGuide": {
+        "objective": "Comprendre l’affectation et la valeur au moment de l’exécution ; ne pas confondre nom, texte et égalité.",
+        "entryDiagnosis": ["Faire expliquer print et l’ordre de deux lignes ; reprendre Afficher des messages si nécessaire.", "Faire lancer un fichier entier après Stop/Restart pour ne pas dépendre de variables anciennes."],
+        "preparation": ["Créer variables.py, vérifier le modèle et ouvrir éventuellement Affichage → Variables (View → Variables).", "Redémarrer avant chaque test de variable inconnue ; ne pas nommer les fichiers comme des bibliothèques Python."],
+        "why": "Une valeur nommée peut être remplacée et réutilisée ; cela prépare la réponse fournie par l’utilisateur.",
+        "discoverySpeech": ["« Sans guillemets, Python cherche la valeur liée au nom. Entre guillemets, il garde le texte tel quel. »", "« = veut dire : associe cette valeur à ce nom. Ce n’est pas une égalité à résoudre. »", "« Suivons les lignes : quelle valeur est disponible au moment de chaque print ? »"],
+        "example": { "target": { "moduleId": "python-variables", "blockId": "exemple" }, "comments": ["Résultats attendus : Luna, puis personnage. Faire expliquer les deux, pas seulement constater la différence.", "Dans le deuxième modèle : Luna puis Milo. Le remplacement ne change pas rétroactivement les sorties.", "La vue Variables illustre la valeur courante ; elle ne montre pas automatiquement toutes les anciennes valeurs."] },
+        "questions": [{ "question": "Faut-il renommer la variable pour changer sa valeur ?", "answer": "Non, une nouvelle affectation au même nom remplace sa valeur." }, { "question": "Pourquoi les deux print du deuxième exemple affichent-ils des prénoms différents ?", "answer": "La valeur est remplacée entre les deux instructions : Luna puis Milo." }, { "question": "Pourquoi le test propre est-il important ?", "answer": "Il vérifie que le fichier définit lui-même les variables nécessaires au lieu de dépendre d’un ancien essai en console." }],
+        "accompaniedActivity": { "moduleId": "python-variables", "blockId": "guide" }, "independentActivity": { "moduleId": "python-variables", "blockId": "autonomie" },
+        "differentiation": ["Commencer avec une variable et accompagner la lecture ligne par ligne.", "Faire prédire les changements et produire deux variables sans modèle pour distinguer copie et compréhension.", "La vue Variables est une aide, pas une obligation ni un nouveau système de suivi."],
+        "commonErrors": [{ "symptom": "Le nom est affiché au lieu de la valeur.", "helps": ["Faire lire le résultat souhaité.", "Regarder les guillemets autour du nom.", "Comparer print(personnage) et print(\"personnage\").", "Retirer les guillemets autour du nom uniquement, puis faire un autre exemple sans aide."] }, { "symptom": "NameError ou résultat dépendant d’un ancien essai.", "helps": ["Lire le nom indiqué dans l’erreur.", "Chercher son affectation avant l’affichage.", "Comparer orthographe et majuscules puis redémarrer la console.", "Corriger le fichier et relancer entièrement ; ne pas masquer la faute en définissant la variable dans la console."] }],
+        "notes": "Observer prédiction, explication et création séparément. Une affectation copiée n’est pas une validation automatique de python.variables.",
+        "quickConductor": ["Vérifier affichage et ordre.", "Comparer nom sans guillemets et texte entre guillemets.", "Suivre le remplacement d’une valeur.", "Créer deux informations sans modèle puis tester après redémarrage.", "Choisir reprise ou saisie textuelle selon la compréhension."],
+        "references": [{ "title": "Python — variables et premières valeurs", "url": "https://docs.python.org/fr/3/tutorial/introduction.html" }]
+      }
+    },
+    "python-saisie": {
+      "domainId": "python", "title": "Poser une question", "type": "lesson", "theme": "fondations",
+      "objective": "Demander une réponse textuelle, la conserver et l’utiliser.",
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" }, "skillIds": ["python.input"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Exécuter et arrêter un fichier dans Thonny." }, { "skillId": "python.output", "expectation": "Afficher du texte avec print." }, { "skillId": "python.variables", "expectation": "Créer une variable et réutiliser sa valeur. Sinon, reprendre Variables et valeurs." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Enregistre ton travail précédent et crée questions.py dans l’application Thonny. Si tu hésites entre le nom d’une variable et sa valeur, reprends Variables et valeurs. Le lien vers le site de Thonny ne lance pas ton application.", "moduleLink": { "moduleId": "python-variables", "text": "Variables et valeurs" } },
+        { "type": "lesson", "id": "exemple", "title": "1 — Demander, attendre, utiliser", "paragraphs": ["input affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.", "Le texte répondu devient la valeur de pseudo. La question reste dans le code ; la réponse vient de la personne qui utilise le programme.", "Dans print(\"Bienvenue\", pseudo), la virgule sépare deux éléments à afficher : un texte et une valeur. print ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.", "input fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."], "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)" },
+        { "type": "lesson", "id": "attente", "title": "2 — Une attente n’est pas une panne", "paragraphs": ["Tant que tu n’as pas validé avec Entrée, la ligne suivante attend. Pour recommencer sans répondre, clique sur Arrêter / redémarrer (Stop/Restart), puis Exécuter.", "Ne modifie pas le code pour écrire ta réponse : réponds dans la console. Si tu modifies le programme pendant qu’il attend, arrête-le puis relance pour tester la nouvelle version." ] },
+        { "type": "tasks", "id": "guide", "title": "Exercice guidé — deux essais différents", "items": [
+          { "id": "repondre-console", "text": "Exécute le modèle, réponds avec un pseudo fictif dans la console et valide avec Entrée.", "hint": "Le curseur doit être dans la console après la question. Le résultat attendu est Bienvenue suivi du pseudo fourni." },
+          { "id": "nouvelle-reponse", "text": "Relance et réponds autrement. Explique ce qui change sans modifier le fichier.", "hint": "La question reste identique ; la valeur de pseudo vient de la nouvelle réponse." },
+          { "id": "changer-question", "text": "Change seulement le texte de la question dans input. Relance pour tester.", "hint": "Garde le même nom de variable ; modifie le texte entre guillemets dans input, pas la réponse dans le code." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "À toi — une préférence", "intro": "Enregistre questions.py, puis crée preference.py. Essaie avant l’indice.", "items": [
+          { "id": "question-personnelle", "text": "Demande une activité préférée, conserve la réponse dans une variable de ton choix et affiche une phrase qui l’utilise.", "hint": "Une affectation avec input, puis un print contenant un texte et le nom de ta variable, séparés par une virgule. Pas de guillemets autour du nom." },
+          { "id": "tester-preference", "text": "Teste avec deux réponses différentes. Montre où se trouvent la question, la variable et la réponse saisie.", "hint": "Exécute à nouveau pour chaque réponse ; la question est dans le fichier, la saisie dans la console." }
+        ] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus — deux questions", "items": [{ "id": "deux-questions", "text": "Pose deux questions, avec deux noms de variables différents. Réutilise les deux réponses dans les messages finaux.", "hint": "Python attend la première réponse avant de poser la deuxième question. Garde les deux réponses sous des noms différents." }] }
+      ],
+      "masteryCriteria": ["Saisir et valider une réponse dans la console sans la remplacer dans le code.", "Expliquer la pause provoquée par input et la valeur enregistrée dans la variable.", "Créer une autre question puis utiliser sa réponse, sans recopier tout le modèle."],
+      "consolidation": [{ "moduleId": "python-saisie", "blockId": "guide", "label": "Reprendre question, réponse et relance" }, { "moduleId": "python-variables", "blockId": "guide", "label": "Revoir nom et valeur" }],
+      "bonusActivities": [{ "moduleId": "python-saisie", "blockId": "bonus", "label": "Conserver deux réponses" }],
+      "nextSteps": [{ "moduleId": "python-conversation", "label": "Une conversation interactive", "prerequisiteSkills": [{ "skillId": "python.input", "expectation": "Poser une question et réutiliser la réponse ; sinon reprendre l’activité Une préférence." }] }],
+      "teacherGuide": {
+        "objective": "Comprendre que la saisie fournit une valeur au programme ; distinguer question, réponse et attente.",
+        "entryDiagnosis": ["Faire créer une variable et afficher sa valeur ; reprendre Variables et valeurs si nécessaire.", "Faire repérer Exécuter, console et Stop/Restart avant de lancer un programme interactif."],
+        "preparation": ["Créer questions.py et tester le modèle avec deux réponses fictives.", "Prévoir le temps de saisie ; ne pas lancer deux essais en concurrence.", "Aucune conversion, concaténation, condition ni saisie de donnée personnelle réelle n’est nécessaire."],
+        "why": "Un programme peut utiliser une information inconnue au moment où il est écrit.",
+        "discoverySpeech": ["« La question est dans le fichier ; la réponse vient de la personne qui utilise le programme. »", "« Il attend Entrée : ce n’est pas une panne. La ligne suivante ne peut pas encore utiliser la réponse. »", "« La virgule sépare le texte et la valeur à afficher ; print place un espace entre eux. »"],
+        "example": { "target": { "moduleId": "python-saisie", "blockId": "exemple" }, "comments": ["Avec la réponse Nova, le message final est Bienvenue Nova.", "Faire exécuter, cliquer dans la console, saisir puis Entrée ; ne pas dicter une réponse à intégrer au fichier.", "La réponse 12 reste une chaîne de caractères. Réserver les conversions au futur module numérique ; ne pas laisser un calcul comme prérequis caché."] },
+        "questions": [{ "question": "Pourquoi le programme n’affiche-t-il pas encore Bienvenue ?", "answer": "Il attend la réponse à input et sa validation avec Entrée." }, { "question": "Que se passe-t-il si une autre personne exécute le même fichier ?", "answer": "Elle peut fournir une autre réponse ; le message final utilisera cette nouvelle valeur." }, { "question": "Quel est le rôle de la virgule dans print ?", "answer": "Elle sépare les éléments à afficher ; print ajoute ici un espace entre le texte et la valeur." }],
+        "accompaniedActivity": { "moduleId": "python-saisie", "blockId": "guide" }, "independentActivity": { "moduleId": "python-saisie", "blockId": "autonomie" },
+        "differentiation": ["Accompagner une saisie dans la console avant de demander une question personnelle.", "Faire créer une nouvelle question avec un autre nom de variable et tester deux réponses sans modèle.", "Lire les consignes si nécessaire ; ne pas confondre vitesse de frappe et compréhension."],
+        "commonErrors": [{ "symptom": "L’élève pense que le programme est bloqué.", "helps": ["Faire lire la dernière question affichée.", "Montrer la console et son curseur.", "Comparer avant et après validation avec Entrée.", "Faire répondre ; si l’essai doit être interrompu, Stop/Restart puis relancer."] }, { "symptom": "La réponse n’est pas réutilisée.", "helps": ["Faire comparer la réponse saisie au résultat.", "Vérifier le nom passé à print et ses guillemets.", "Comparer texte fixe et variable, puis les deux éléments séparés par une virgule.", "Corriger le print et tester deux nouvelles réponses pour vérifier le transfert."] }],
+        "notes": "Distinguer saisie accompagnée, exemple reproduit et nouvelle question autonome. Ne pas ajouter de conversion ou de validation numérique dans ce lot.",
+        "quickConductor": ["Vérifier les variables et les zones de Thonny.", "Expliquer input et la virgule de print.", "Répondre dans la console puis relancer autrement.", "Créer une préférence sans modèle.", "Choisir consolidation, deux questions ou conversation."],
+        "references": [{ "title": "Python — input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }, { "title": "Python — print et séparateurs", "url": "https://docs.python.org/fr/3/library/functions.html#print" }]
+      }
+    },
+    "python-conversation": {
+      "domainId": "python", "title": "Une conversation interactive", "type": "project", "theme": "fondations",
+      "objective": "Assembler affichage, variables et questions dans un programme personnel.",
+      "tool": { "label": "Site officiel de Thonny", "url": "https://thonny.org/" },
+      "skillIds": ["python.workspace", "python.output", "python.variables", "python.input"],
+      "prerequisiteSkills": [{ "skillId": "python.workspace", "expectation": "Créer, conserver et relancer un fichier .py." }, { "skillId": "python.output", "expectation": "Afficher des messages dans l’ordre choisi." }, { "skillId": "python.variables", "expectation": "Conserver plusieurs informations sous des noms différents." }, { "skillId": "python.input", "expectation": "Poser une question et afficher sa réponse. Sinon, reprendre Poser une question." }],
+      "blocks": [
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Enregistre les exercices précédents puis crée conversation.py dans Thonny : ne les efface pas. Choisis un thème fictif, comme une rencontre avec un personnage ou un animal. Aucun nom réel, âge ou autre renseignement personnel n’est nécessaire. Si tu hésites pour utiliser une réponse, reprends Poser une question.", "moduleLink": { "moduleId": "python-saisie", "text": "Poser une question" } },
+        { "type": "lesson", "id": "plan", "title": "1 — Prépare ton petit dialogue", "paragraphs": ["Imagine un message d’accueil, trois questions et les phrases finales qui utiliseront les réponses. Par exemple : choisir un pseudo fictif, un lieu imaginaire et une activité. Tu peux inventer un autre thème.", "Tout le monde suit le même ordre de questions : pas de choix conditionnel, calcul ni boucle dans ce projet. Le programme est interactif parce que ses messages utilisent les réponses saisies.", "Écris d’abord une version avec une question. Teste-la, puis ajoute une question à la fois. Une version courte qui fonctionne est un bon point de départ." ] },
+        { "type": "tasks", "id": "guide", "title": "Préparation accompagnée — une première réponse", "intro": "Si nécessaire, commence ici avant d’assembler le projet. Les indices sont des rappels séparés, pas une solution complète.", "items": [
+          { "id": "accueil-minimal", "text": "Affiche ton message d’accueil.", "hint": "Utilise print avec ton texte entre guillemets et entre parenthèses." },
+          { "id": "question-minimale", "text": "Pose une première question et conserve sa réponse.", "hint": "Choisis un nom de variable, puis = et input avec ta question entre guillemets et parenthèses." },
+          { "id": "reponse-minimale", "text": "Affiche un message qui utilise cette réponse, puis teste avec deux réponses différentes.", "hint": "Dans print, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets." }
+        ] },
+        { "type": "tasks", "id": "autonomie", "title": "2 — Construis ta conversation", "intro": "Continue dans conversation.py. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.", "items": [
+          { "id": "accueil-projet", "text": "Affiche un message d’accueil adapté à ton thème.", "hint": "Ce message peut être du texte fixe ; les réponses ne sont pas encore connues." },
+          { "id": "trois-questions", "text": "Pose au moins trois questions et garde leurs réponses dans trois variables différentes.", "hint": "Une ligne avec input pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente." },
+          { "id": "trois-reponses", "text": "Après les questions, réutilise chacune des trois réponses dans tes messages finaux.", "hint": "Tu peux faire plusieurs print. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets." },
+          { "id": "sauvegarder-projet", "text": "Enregistre conversation.py dans ton dossier de programmes.", "hint": "Conserve les fichiers des modules précédents. Une modification doit être enregistrée pour rester après fermeture." }
+        ] },
+        { "type": "tasks", "id": "verification", "title": "3 — Vérifie ton travail", "items": [
+          { "id": "tester-deux-dialogues", "text": "Arrête / redémarre, puis exécute deux fois avec trois réponses différentes. Les messages finaux doivent utiliser les réponses du nouvel essai.", "hint": "Ne remplace pas les réponses par du texte fixé dans le code. Le fichier doit définir toutes ses variables sans ancien essai en console." },
+          { "id": "retrouver-dialogue", "text": "Après enregistrement, ferme puis rouvre le fichier et teste-le à nouveau.", "hint": "Retrouve conversation.py dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme." },
+          { "id": "expliquer-dialogue", "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Modifie une question sans casser son utilisation.", "hint": "Le texte de la question est dans input ; son résultat est affecté à la variable. Garde ce nom dans les messages qui utilisent la réponse." }
+        ] },
+        { "type": "tasks", "id": "bonus", "title": "Bonus — enrichir sans nouvelle notion", "items": [{ "id": "quatrieme-question", "text": "Ajoute une quatrième question et utilise sa réponse dans un nouveau message final.", "hint": "Une nouvelle variable, un input et un print : aucune condition ou boucle n’est nécessaire." }] },
+        { "type": "callout", "id": "suite", "title": "Et après ?", "text": "Si tu sais expliquer et modifier ta conversation avec peu ou pas d’aide, tu disposes d’une première base. Tu peux consolider les points difficiles ou enrichir ce projet. Les nombres et calculs viendront dans un prochain lot : aucune page vide ni notion supplémentaire n’est nécessaire pour finir celui-ci. Si tu es en cours, le professeur décide avec toi de la suite adaptée." }
+      ],
+      "masteryCriteria": ["Créer un dialogue personnel avec trois réponses réellement conservées et réutilisées.", "Expliquer l’ordre, les attentes et la différence entre texte fixe et valeur saisie.", "Modifier une question sans casser l’utilisation de sa réponse et tester un nouvel essai après redémarrage.", "Retrouver le fichier sauvegardé ; distinguer réussite autonome, avec modèle ou avec aide pour chaque compétence."],
+      "consolidation": [{ "moduleId": "python-conversation", "blockId": "guide", "label": "Repartir d’une seule question" }, { "moduleId": "python-saisie", "blockId": "guide", "label": "Revoir la saisie dans la console" }, { "moduleId": "python-variables", "blockId": "changer", "label": "Revoir les valeurs et leur remplacement" }, { "moduleId": "python-affichage", "blockId": "guide", "label": "Revoir affichage et ordre" }, { "moduleId": "python-thonny", "blockId": "guide", "label": "Retrouver les fichiers" }],
+      "bonusActivities": [{ "moduleId": "python-conversation", "blockId": "bonus", "label": "Ajouter une quatrième question" }], "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Vérifier l’assemblage des premières notions dans un projet personnel, sans supposer une acquisition parce qu’un dialogue a été exécuté.",
+        "entryDiagnosis": ["Demander une question et un affichage de sa réponse sans modèle ; choisir une reprise ciblée si nécessaire.", "Vérifier les noms distincts de variables et l’enregistrement, séparément de l’aide au clavier."],
+        "preparation": ["Conserver les fichiers précédents et créer conversation.py ; aucun projet externe n’est requis.", "Préparer des thèmes fictifs et des réponses de test différentes ; ne pas demander de donnée personnelle.", "Le projet n’a volontairement pas de solution complète : s’appuyer sur les rappels des modules 2 à 4 et l’étape à une question."],
+        "why": "Assembler plusieurs notions révèle les écarts entre reproduire un exemple et construire un programme qui utilise réellement ses entrées.",
+        "discoverySpeech": ["« Choisis trois questions : que feras-tu de chacune des réponses ? »", "« Nous construisons une petite version qui fonctionne, puis nous ajoutons une question à la fois. »", "« Si je donne de nouvelles réponses, tes phrases finales doivent les utiliser sans modifier le programme. »"],
+        "example": { "target": { "moduleId": "python-conversation", "blockId": "plan" }, "comments": ["Commenter le plan, pas fournir un programme complet à recopier : accueil, trois saisies distinctes, sorties qui réutilisent chaque valeur.", "Si nécessaire, accompagner une seule question puis laisser ajouter les suivantes.", "Attendu : deux exécutions avec des réponses différentes donnent des messages finaux différents ; aucun if, calcul ou boucle requis."] },
+        "questions": [{ "question": "Quelle ligne changer pour modifier une question sans changer l’utilisation de sa réponse ?", "answer": "Modifier le texte entre guillemets dans input, en conservant le nom de variable utilisé ensuite." }, { "question": "Pourquoi conserver les trois réponses sous des noms différents ?", "answer": "Réaffecter le même nom remplacerait sa valeur ; on perdrait l’accès aux premières réponses sous ce nom." }, { "question": "Le dialogue qui fonctionne suffit-il à prouver que tu comprends ?", "answer": "Non : il faut expliquer les attentes et valeurs, puis réussir une modification ou une nouvelle question sans recopier toute la solution." }],
+        "accompaniedActivity": { "moduleId": "python-conversation", "blockId": "guide" }, "independentActivity": { "moduleId": "python-conversation", "blockId": "autonomie" },
+        "differentiation": ["Consolider une question puis deux avant d’en viser trois ; ne pas imposer une durée ni retirer l’accès au projet.", "Pour un élève à l’aise, demander une quatrième question avec nouvelle variable et sortie, sans modèle.", "Évaluer workspace, output, variables et input séparément ; accompagner la saisie ou l’enregistrement sans annuler une compréhension démontrée."],
+        "commonErrors": [{ "symptom": "Les trois messages affichent seulement la dernière réponse.", "helps": ["Faire comparer les réponses saisies aux sorties.", "Repérer les noms à gauche des trois affectations.", "Montrer que le même nom est remplacé ; comparer à trois noms distincts.", "Renommer les variables et leurs usages ensemble, puis retester deux dialogues."] }, { "symptom": "Le dialogue ne varie pas ou échoue après redémarrage.", "helps": ["Faire un test avec des réponses très différentes.", "Chercher du texte fixe à la place d’une variable ou une affectation manquante.", "Comparer à l’exercice à une question ; vérifier l’ordre des définitions.", "Corriger une utilisation puis exécuter le fichier entier après Stop/Restart ; demander une modification autonome."] }],
+        "notes": "Observer reproduction, compréhension, transfert et aides nécessaires, sans nouveau dispositif de suivi. Seul le professeur attribue manuellement un statut ; le projet ne valide jamais automatiquement ses quatre compétences.",
+        "quickConductor": ["Vérifier les premières notions et proposer une reprise ciblée.", "Faire choisir un thème fictif et un plan.", "Tester une question puis ajouter les autres.", "Tester deux dialogues après redémarrage.", "Demander explication et modification ; choisir consolidation ou bonus sans rythme imposé."],
+        "references": [{ "title": "Python — input", "url": "https://docs.python.org/fr/3/library/functions.html#input" }, { "title": "Thonny — variables et exécution pas à pas", "url": "https://thonny.org/" }]
+      }
+    },
     "scratch-boucles": {
       "domainId": "jeux-video",
       "title": "Répéter des actions",
@@ -12487,6 +12716,11 @@ window.CODECRAFT_DATA = {
     }
   },
   "pathways": {
+    "python-debutants": {
+      "domainId": "python", "title": "Premiers pas avec Python", "theme": "fondations",
+      "objective": "Partir de zéro, écrire ses premiers programmes et créer une conversation interactive avec Thonny.",
+      "moduleIds": ["python-thonny", "python-affichage", "python-variables", "python-saisie", "python-conversation"]
+    },
     "scratch-debutants": {
       "domainId": "jeux-video",
       "title": "Premiers pas avec Scratch",

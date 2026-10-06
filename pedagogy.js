@@ -67,6 +67,19 @@
     const entries = [['consolidation', 'Pour consolider'], ['bonusActivities', 'Bonus possibles'], ['nextSteps', 'Suites conseillées']];
     if (!entries.some(([key]) => module[key]?.length)) return null;
     const el = panel('Choisir la suite');
+    if (!teacher && module.presentation === 'workshop') {
+      el.classList.add('pedagogy-choices');
+      el.append(node('p', 'Reprends si tu hésites, ou choisis la suite quand tu sais expliquer ton travail.'));
+      const grid = node('div', undefined, 'pedagogy-choices__grid');
+      const labels = { consolidation: 'Consolider', nextSteps: 'Continuer' };
+      for (const [key] of entries) if (key !== 'bonusActivities' && module[key]?.length) {
+        const choice = node('section', undefined, 'pedagogy-choice pedagogy-choice--' + key);
+        choice.append(node('h3', labels[key]), relationList(module[key], pathwayId));
+        grid.append(choice);
+      }
+      el.append(grid);
+      return el;
+    }
     el.append(node('p', 'Reprends une activité si tu hésites ; choisis un bonus ou une suite lorsque tu sais expliquer ton travail. Ces propositions ne fixent ni durée ni rythme.'));
     for (const [key, title] of entries) if (module[key]?.length) {
       el.append(node('h3', title), relationList(module[key], pathwayId, teacher));

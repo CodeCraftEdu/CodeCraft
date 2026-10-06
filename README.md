@@ -18,6 +18,16 @@ L’espace professeur est disponible sur `prof.html`. Le conducteur initial rest
 
 ## Bibliothèque permanente
 
+### Python — premier lot
+
+Le domaine **Python** propose **Premiers pas avec Python** (`python-debutants`) : Premiers pas avec Thonny → Afficher des messages → Variables et valeurs → Poser une question → Une conversation interactive. Ces cinq modules et leurs guides sont disponibles ; les modules suivants ne sont pas encore publiés. La [roadmap Python](docs/roadmap-python.md) distingue ce lot de la suite proposée.
+
+Les élèves écrivent dans l’application Thonny installée sur leur ordinateur. Le bouton vers Thonny ouvre son site officiel, pas l’application. Aucun compte, interpréteur intégré, dépendance du site ou package Python supplémentaire n’est requis pour ces activités. Les compétences `python.workspace`, `python.output`, `python.variables` et `python.input` rejoignent le catalogue public et le suivi manuel existant ; aucun référentiel externe n’est ajouté et aucune progression n’est déduite des cases.
+
+Accès : `#domaine/python`, `#parcours/python-debutants`, `#module/python-thonny?parcours=python-debutants` et `prof.html#guide/python-thonny` (même forme pour les autres identifiants, documentés dans la roadmap). Tests ciblés : `node --test tests/python.test.cjs tests/pedagogy.test.cjs` ; rendu Chrome : `node tests/python-browser.cjs`.
+
+Un bloc `lesson` peut définir une `illustration` locale `{ src, alt, caption }`. Le schéma Thonny est un SVG original, statique et responsive ; les cours existants restent inchangés.
+
 Le catalogue se trouve dans `lesson-data.js` :
 
 - `domains` décrit les domaines et leurs parcours ; avec un seul domaine, l'accueil affiche directement ses parcours et diagnostics.

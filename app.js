@@ -220,6 +220,33 @@
     return figure;
   }
 
+  function createCodeDiagram(config) {
+    const figure = element('figure', 'code-diagram');
+    figure.setAttribute('aria-label', 'Code dans l’éditeur et résultat dans la console');
+    const editor = element('div', 'code-diagram__editor');
+    const header = element('div', 'code-diagram__header');
+    const tools = element('div', 'code-diagram__tools');
+    const icon = element('span', 'code-diagram__play', '▶');
+    icon.setAttribute('aria-hidden', 'true');
+    const label = element('span', 'code-diagram__run');
+    label.append(icon, document.createTextNode('Exécuter'));
+    tools.append(element('span', 'code-diagram__file', config.filename), label);
+    header.append(element('span', 'code-diagram__zone', 'Éditeur'), tools);
+    const pre = element('pre', 'code-diagram__source');
+    const code = element('code');
+    config.codeParts.forEach(part => {
+      const kind = ['function', 'string'].includes(part.kind) ? part.kind : 'plain';
+      code.append(element('span', 'code-diagram__token--' + kind, part.text));
+    });
+    pre.append(code);
+    editor.append(header, pre);
+    const consolePanel = element('div', 'code-diagram__console');
+    consolePanel.append(element('div', 'code-diagram__header', 'Console'), element('pre', 'code-diagram__result', config.output));
+    figure.append(editor, consolePanel);
+    if (config.note) figure.append(element('p', 'code-diagram__note', config.note));
+    return figure;
+  }
+
   function createLesson(block) {
     const section = element("section", "content-card");
     section.append(element("h2", "section-title", block.title));
@@ -228,7 +255,32 @@
       const steps = element('ol', 'scratch-quick-steps');
       block.shortSteps.forEach(text => steps.append(element('li', '', text)));
       section.append(steps);
+    } else if (block.actionSteps) {
+      const steps = element('ol', 'lesson-actions');
+      block.actionSteps.forEach((step, index) => {
+        const action = element('li', 'lesson-action');
+        const heading = element('h3', 'lesson-action__title');
+        heading.append(element('span', 'lesson-action__number', String(index + 1)), document.createTextNode(step.title));
+        action.append(heading, element('p', '', block.paragraphs[step.paragraphIndex]));
+        if (step.showCode) {
+          action.append(element('p', 'lesson-action__label', 'Dans l’éditeur'), createCode(block.code));
+        }
+        if (step.output !== undefined) {
+          action.append(element('p', 'lesson-action__label', 'Résultat dans la console'), element('pre', 'lesson-action__output', step.output));
+        }
+        steps.append(action);
+      });
+      section.append(steps);
     } else (block.paragraphs || []).forEach((paragraph) => section.append(element("p", "", paragraph)));
+    if (block.codeDiagram) section.append(createCodeDiagram(block.codeDiagram));
+    if (block.illustration) {
+      const figure = element('figure', 'lesson-illustration');
+      const image = element('img');
+      image.src = block.illustration.src;
+      image.alt = block.illustration.alt;
+      figure.append(image, element('figcaption', '', block.illustration.caption));
+      section.append(figure);
+    }
     if (block.coordinateDiagram) section.append(createCoordinateDiagram(block.coordinateDiagram));
     if (block.visualScript) {
       section.append(createScratchVisual(block.visualScript));
@@ -237,7 +289,7 @@
         details.append(element('summary', '', 'Lire aussi le modèle en texte'), createCode(block.code));
         section.append(details);
       }
-    } else if (block.code) section.append(createCode(block.code));
+    } else if (block.code && !block.actionSteps) section.append(createCode(block.code));
     if (visual && block.shortSteps && block.paragraphs?.length) {
       const details = element('details', 'hint scratch-explanations');
       details.append(element('summary', '', 'Explications et repères supplémentaires'));
@@ -357,7 +409,7 @@
       const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', '#domaine/' + id);
       entry.classList.add('home-domain', id === 'jeux-video' ? 'home-domain--game' : 'home-domain--web');
       const top = element('span', 'home-domain__top');
-      const symbol = element('span', 'home-domain__symbol', id === 'jeux-video' ? '+' : '</>');
+      const symbol = element('span', 'home-domain__symbol', id === 'jeux-video' ? '+' : id === 'python' ? '>_' : '</>');
       symbol.setAttribute('aria-hidden', 'true');
       top.append(symbol, element('span', 'home-domain__tag', domain.homeTag || domain.title));
       entry.prepend(top);
@@ -399,17 +451,23 @@
   }
 
   function support(item) {
-    const content = item.stuck || {title:data.shared.stuckTitle,steps:data.shared.stuckSteps};
+    // Aucun encart générique : conserver uniquement les consignes propres au module.
+    if (!item.stuck && !item.bonus) return null;
     const grid = element('section', 'support-grid');
-    const stuck = element('div', 'support-card support-card--stuck');
-    stuck.append(element('h2', 'section-title', content.title));
-    const routine = element('ol', 'routine-list');
-    content.steps.forEach(step => routine.append(element('li', '', step)));
-    stuck.append(routine);
-    const done = element('div', 'support-card support-card--done');
-    done.append(element('h2', 'section-title', data.shared.finishedTitle));
-    done.append(element('p', '', item.bonus || data.shared.finishedText));
-    grid.append(stuck, done);
+    if (item.stuck) {
+      const stuck = element('div', 'support-card support-card--stuck');
+      stuck.append(element('h2', 'section-title', item.stuck.title));
+      const routine = element('ol', 'routine-list');
+      item.stuck.steps.forEach(step => routine.append(element('li', '', step)));
+      stuck.append(routine);
+      grid.append(stuck);
+    }
+    if (item.bonus) {
+      const done = element('div', 'support-card support-card--done');
+      done.append(element('h2', 'section-title', item.stuck ? "J’ai fini" : 'Vérification et suite'));
+      done.append(element('p', '', item.bonus));
+      grid.append(done);
+    }
     return grid;
   }
 
@@ -419,19 +477,75 @@
     const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
     start(item.title, pathway ? pathway.theme : item.theme);
     const article = element('article', 'lesson-page');
+    if (item.presentation === 'workshop') article.classList.add('lesson-page--workshop');
     const back = element('nav', 'library-links');
     back.setAttribute('aria-label', 'Retour à la bibliothèque');
     back.append(link(pathway ? '← ' + pathway.title : '← Retour aux parcours', pathway ? '#parcours/' + requestedPathway : domainUrl(item.domainId)));
     article.append(back, intro(item.title, item.objective, true, item.tool));
-    article.append(pedagogy.prerequisites(item));
+    if (!item.prerequisitesInContent) article.append(pedagogy.prerequisites(item));
     const scratchProject = pedagogy.scratchProject(item);
     if (scratchProject) article.append(scratchProject);
     item.blocks.forEach(block => article.append(createBlock(block, id)));
+    if (id === 'python-thonny') {
+      const diagram = article.querySelector('.code-diagram');
+      if (diagram) {
+        const controls = element('div', 'visual-trial-controls');
+        controls.setAttribute('role', 'group');
+        controls.setAttribute('aria-label', 'Comparer les styles visuels');
+        controls.append(element('span', 'visual-trial-controls__label', 'Essai visuel'));
+        const original = element('button', '', 'Blocs actuel');
+        const adventure = element('button', '', 'Aventure low-poly');
+        const blocks = element('button', '', 'Blocs renforcés');
+        original.type = adventure.type = blocks.type = 'button';
+        original.dataset.visualStyle = 'original';
+        adventure.dataset.visualStyle = 'adventure';
+        blocks.dataset.visualStyle = 'blocks';
+        function selectStyle(style) {
+          article.classList.toggle('visual-trial--adventure', style === 'adventure');
+          article.classList.toggle('visual-trial--blocks', style === 'blocks');
+          original.setAttribute('aria-pressed', String(style === 'original'));
+          adventure.setAttribute('aria-pressed', String(style === 'adventure'));
+          blocks.setAttribute('aria-pressed', String(style === 'blocks'));
+        }
+        original.addEventListener('click', () => selectStyle('original'));
+        adventure.addEventListener('click', () => selectStyle('adventure'));
+        blocks.addEventListener('click', () => selectStyle('blocks'));
+        selectStyle('adventure');
+        controls.append(original, adventure, blocks);
+        diagram.before(controls);
+        const nextModule = data.modules['python-affichage'];
+        const preview = element('section', 'visual-trial-card-preview');
+        preview.setAttribute('aria-label', 'Essai visuel d’une carte de module');
+        preview.append(element('p', 'visual-trial-card-preview__label', 'Essai - carte de module'));
+        const card = element('div', 'adventure-module-card');
+        const heading = element('div', 'adventure-module-card__heading');
+        const gem = element('span', 'adventure-gem');
+        gem.setAttribute('aria-hidden', 'true');
+        const titles = element('div');
+        titles.append(element('p', 'adventure-module-card__type', data.moduleTypes[nextModule.type]), element('h3', '', nextModule.title));
+        heading.append(titles);
+        card.append(gem, heading, element('p', 'adventure-module-card__description', nextModule.objective));
+        const access = link('Ouvrir le module', moduleUrl('python-affichage', pathway ? requestedPathway : null), 'adventure-module-card__access');
+        access.setAttribute('aria-label', 'Ouvrir le module Afficher des messages');
+        card.append(access);
+        preview.append(card);
+        diagram.after(preview);
+      }
+    }
     const criteria = pedagogy.criteria(item);
     const orientations = pedagogy.orientations(item, pathway ? requestedPathway : null);
     if (criteria) article.append(criteria);
     if (orientations) article.append(orientations);
-    article.append(support(item));
+    if (id === 'python-thonny' && orientations) {
+      const nextCard = orientations.querySelector('.pedagogy-choice--nextSteps');
+      if (nextCard) {
+        const gem = element('span', 'adventure-gem adventure-gem--small');
+        gem.setAttribute('aria-hidden', 'true');
+        nextCard.append(gem);
+      }
+    }
+    const specificSupport = support(item);
+    if (specificSupport) article.append(specificSupport);
     const navigation = element('nav', 'module-navigation');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
     if (pathway) {
@@ -439,7 +553,8 @@
       const previous = pathway.moduleIds[position-1];
       const next = pathway.moduleIds[position+1];
       if (previous) navigation.append(link('← ' + data.modules[previous].title, moduleUrl(previous, requestedPathway)));
-      if (next) navigation.append(link(data.modules[next].title + ' →', moduleUrl(next, requestedPathway), 'button button--primary'));
+      const nextAlreadyShown = item.presentation === 'workshop' && item.nextSteps?.some(ref => ref.moduleId === next && !ref.blockId && !ref.itemId);
+      if (next && !nextAlreadyShown) navigation.append(link(data.modules[next].title + ' →', moduleUrl(next, requestedPathway), 'button button--primary'));
       if (!next) navigation.append(link('Retour au parcours ' + pathway.title, '#parcours/' + requestedPathway));
     } else {
       Object.entries(data.pathways).filter(([,value]) => value.moduleIds.includes(id)).forEach(([pathwayId,value]) => {
