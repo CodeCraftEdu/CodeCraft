@@ -29,7 +29,7 @@ test('fin de module : encarts génériques supprimés, consignes spécifiques co
     }
   }
   assert(data.modules['html-titres-paragraphes'].bonus.includes('sans regarder les exemples'));
-  assert(data.modules['diagnostic-web'].bonus.includes('Aucun bonus'));
+  assert.equal(data.modules['diagnostic-web'], undefined);
   assert(!source.includes('data.shared'));
   assert.equal(data.shared, undefined);
 });
@@ -457,9 +457,9 @@ test('ressources CodePen : dessins embarqués identiques aux SVG du dépôt', ()
 });
 
 test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions facultatives', () => {
-  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python').length, 38);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python').length, 37);
   assert.equal(Object.keys(data.skills).filter(id => !id.startsWith('python.')).length, 34);
-  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python' && m.teacherGuide).length, 31);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python' && m.teacherGuide).length, 37);
   assert.equal(data.modules['html-mini-page'].type, 'challenge');
   assert.equal(data.modules['web-affiche-numerique'].type, 'project');
   assert.equal(JSON.stringify(data.modules['css-decouverte'].skillIds), '["css.colors"]');
@@ -467,7 +467,7 @@ test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions f
   assert(data.pathways['web-fondations'].moduleIds.includes('html-mini-page'));
   assert(data.pathways['web-fondations'].moduleIds.includes('web-affiche-numerique'));
   const requirements = data.modules['html-mini-page'].blocks.find(b => b.id === 'exigences').items;
-  assert.equal(JSON.stringify(requirements.map(i => i.text)), JSON.stringify(['Un titre principal h1.', 'Plusieurs niveaux de titres.', 'Au moins 3 paragraphes.', 'Une liste.', '2 liens.', '2 images.']));
+  assert.equal(JSON.stringify(requirements.map(i => i.text)), JSON.stringify(['Un titre principal h1.', 'Deux sous-titres h2 pour deux parties de même importance.', 'Au moins 3 paragraphes.', 'Une liste.', '2 liens.', '2 images.']));
   const discoveryLink = data.modules['css-classes-couleurs'].blocks.find(b => b.id === 'reprise-css').moduleLink;
   assert.equal(discoveryLink.moduleId, 'css-decouverte');
   assert(data.modules['css-decouverte'].nextSteps.some(ref => ref.moduleId === 'css-classes-couleurs'));

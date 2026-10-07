@@ -75,7 +75,7 @@ Titres et paragraphes → Listes HTML → Liens HTML → Révision HTML → Imag
 Avancés :
 Préparer un projet de cartes → Parent et enfants → Flexbox.
 
-Diagnostic Web est accessible séparément.
+Diagnostic Web a été retiré sur décision utilisateur ; les anciennes adresses renvoient au choix des parcours Web.
 
 Selon tes comptes rendus, le premier lot a maintenant ajouté :
 - les métadonnées pédagogiques et leur rendu ;
@@ -368,13 +368,13 @@ C7–C9 restent un seul module, avec ses identifiants d’activités actuels. Ne
 - Ma collection de cartes : l’activité `css-flexbox/mission` s’intitule déjà « Mission jalon — Organiser une collection ». À réutiliser comme base ; le projet jalon complet n’est pas encore implémenté comme module autonome. Ne pas présenter `web-projet-cartes` comme ce projet final.
 - `web-projet-cartes` : « Préparer un projet de cartes », type `practice`, base de travail et checklist, pas un projet final.
 - `html-revision` : pratique autonome sur titres, paragraphes, listes et liens ; exercices propres au module, sans dépendance aux blocs des cours. Pas d’images exigées avant leur découverte.
-- `diagnostic-web` : diagnostic séparé des trois parcours ; ne pas le convertir en parcours ou en certification.
+- `diagnostic-web` : retiré le 7 octobre 2026 sur décision utilisateur ; anciennes adresses redirigées vers le domaine Web.
 - Les quatre jalons JavaScript de la section 9 : **à créer**.
 - Ombres, arrondis, transitions, Grid et extensions JavaScript : envisagés, contenus à préciser. La présence d’arrondis dans du code fourni ne signifie pas que leur cours existe.
 
 ### Compétences et infrastructure réellement disponibles
 
-Le domaine `web` et les parcours `web-fondations`, `web-debutants`, `web-avances` référencent désormais un catalogue de vingt-quatre modules (dont le diagnostic séparé). Les douze compétences initiales gardent leur définition :
+Le domaine `web` et les parcours `web-fondations`, `web-debutants`, `web-avances` référencent désormais un catalogue de vingt-trois modules après retrait de Diagnostic Web. Les douze compétences initiales gardent leur définition :
 
 `html.headings`, `html.text`, `html.lists`, `html.links`, `html.images`, `html.structure`, `css.selectors`, `css.colors`, `css.spacing`, `css.borders`, `css.hover`, `css.flexbox`.
 

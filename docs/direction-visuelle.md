@@ -10,7 +10,7 @@ La feuille `student-lowpoly.css` est chargée uniquement dans `index.html`. Tout
 
 - Fond sable/ivoire, panneaux de lecture pierre claire et texte anthracite.
 - Accueil violet profond, Web vert, jeu vidéo ambre et Python bleu.
-- Couleurs des parcours conservées : Fondations bleu, Débutants vert, Avancés violet et Diagnostic orange.
+- Couleurs des parcours conservées : Fondations bleu, Débutants vert et Avancés violet. Diagnostic Web a été retiré du catalogue.
 - Facettes et coins taillés sur les cartes, boutons, en-têtes et schémas ; cadres plus discrets pour la lecture.
 - Petites gemmes décoratives en coin des cartes de bibliothèque, accordées à leur couleur. Aucun libellé de niveau ni représentation de progression acquise.
 - Pas de texture derrière le code, de police externe, d’animation nouvelle ou d’asset de jeu.
@@ -30,10 +30,10 @@ Les fichiers `styles.css` et `pedagogy.css` de référence restent inchangés. P
 
 ## Modèle commun des leçons
 
-Le modèle validé sur « Poser une question » est généralisé aux 55 modules élèves avec `data-lesson-layout="standard"`. Le marqueur est retiré lors du retour à une bibliothèque. Les pages de domaine, l’accueil et les guides professeur conservent leur présentation.
+Le modèle validé sur « Poser une question » est généralisé aux 54 modules élèves restants avec `data-lesson-layout="standard"`. Le marqueur est retiré lors du retour à une bibliothèque. Les pages de domaine, l’accueil et les guides professeur conservent leur présentation.
 
 - Une ligne de navigation réunit CodeCraft et le fil d’Ariane complet, leçon actuelle comprise ; elle se répartit sur deux lignes sur petit écran.
-- Le bandeau compact utilise un fond clair et un fondu continu vers le paysage du domaine. Python garde ses montagnes bleues, Scratch ses îlots ambre ; Web utilise ses vallées, teintées selon le parcours choisi : bleu, vert, violet ou orange.
+- Le bandeau compact utilise un fond clair et un fondu continu vers le paysage du domaine. Python garde ses montagnes bleues, Scratch ses îlots ambre ; Web utilise ses vallées, teintées selon le parcours choisi : bleu, vert ou violet.
 - La préparation réunit les consignes existantes et les attentes des prérequis, sans deuxième encart ni note administrative répétée. Les liens d’outils restent secondaires : Thonny uniquement dans la première leçon, Scratch et CodePen conservés.
 - Les cartes de lecture ont une bordure basse discrète ; les activités gardent un cadre fin et une petite facette de titre. Exemples, indices, cases, ressources et couleurs des blocs Scratch restent inchangés.
 - « Les essentiels » est visible sans dépliage et reprend les critères propres au module. Aucun critère n’est ajouté aux anciens modules Web qui n’en possèdent pas : leur enrichissement relève d’une revue pédagogique séparée.

@@ -154,12 +154,23 @@ const probe = `<script>addEventListener('load', () => {
     ['index.html#module/html-titres-paragraphes?parcours=web-fondations', ['data-test-route-color="#3f69c6"', 'data-test-checkbox="true"'], 1200],
     ['index.html#module/html-images?parcours=web-debutants', ['data-test-route-color="#4f8045"', 'Images HTML'], 540],
     ['index.html#module/css-flexbox?parcours=web-avances', ['data-test-route-color="#7653a5"', 'Flexbox'], 1200],
-    ['index.html#module/diagnostic-web', ['data-test-route-color="#b7652c"', 'Ne cherche pas la réponse.'], 540],
+    ...['index.html#module/diagnostic-web', 'index.html#module/diagnostic-web?activite=diagnostic-1', 'index.html#rattrapage'].map(route =>
+      [route, ['domain-banner', '#parcours/web-fondations', '#parcours/web-debutants', '#parcours/web-avances'], 540]),
     ['index.html#module/scratch-reactions', ['Faire réagir le jeu', 'data-test-route-color="#a55d27"'], 540],
     ...Object.entries(catalog.pathways).flatMap(([pathwayId, pathway]) =>
       pathway.moduleIds.filter(id => !ids.includes(id)).map(id =>
         ['index.html#module/' + id + '?parcours=' + pathwayId, ['data-lesson-layout="standard"'], 1200])),
     ['index.html#module/scratch-decouverte?parcours=scratch-debutants', ['lesson-checkpoint', 'Ouvrir Scratch'], 390],
+    ...['html-titres-paragraphes', 'html-listes', 'html-liens'].flatMap(id => [
+      ['index.html#module/' + id + '?parcours=web-fondations', ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
+      ['index.html#module/' + id + '?parcours=web-debutants', ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
+      ['prof.html#guide/' + id, ['Guide professeur', 'Questions et réponses attendues', 'Erreurs fréquentes et aides graduées', 'index.html#module/' + id], 1200]
+    ]),
+    ...[['html-mini-page-fondations', 'web-fondations'], ['html-revision', 'web-debutants'], ['web-projet-cartes', 'web-avances']].flatMap(([id, pathway]) => [
+      ['index.html#module/' + id + '?parcours=' + pathway, ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
+      ['index.html#module/' + id, ['lesson-checkpoint', 'aria-current="page"'], 390],
+      ['prof.html#guide/' + id, ['Guide professeur', 'Questions et réponses attendues', 'Erreurs fréquentes et aides graduées', 'index.html#module/' + id], 1200]
+    ]),
     ['index.html#module/python-thonny?parcours=python-debutants', ['lesson-checkpoint', 'Télécharger Thonny'], 390],
     ['index.html#module/python-texte?parcours=python-debutants', ['lesson-checkpoint'], 390],
     ['index.html#module/scratch-pilotage?parcours=scratch-debutants', ['lesson-checkpoint'], 390],
@@ -293,7 +304,13 @@ const probe = `<script>addEventListener('load', () => {
           assert(!stdout.includes('back-button'), 'Pas de bouton Accueil redondant sur les domaines');
           assert(/<a\b(?=[^>]*\bclass="brand")(?=[^>]*\bhref="#")[^>]*>/.test(stdout), 'Le mot-symbole conserve le retour à l’accueil');
         }
-        if (route.startsWith('index.html#module/')) {
+        if (route.startsWith('index.html#module/diagnostic-web') || route === 'index.html#rattrapage' || route === 'index.html#domaine/web') {
+          assert(!stdout.includes('Diagnostic Web'), 'Module retiré du domaine Web');
+          assert(!stdout.includes('href="#module/diagnostic-web'), 'Aucun lien vers le module retiré');
+          assert.equal((stdout.match(/class="route-card /g) || []).length, 3, 'Trois parcours Web seulement');
+          assert(!stdout.includes('data-lesson-layout="standard"'), 'Ancienne adresse redirigée vers le domaine');
+        }
+        if (route.startsWith('index.html#module/') && !route.startsWith('index.html#module/diagnostic-web')) {
           const params = new URLSearchParams(route.split('?')[1] || '');
           const id = route.split('#module/')[1].split('?')[0], module = catalog.modules[id];
           const candidate = catalog.pathways[params.get('parcours')];

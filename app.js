@@ -386,7 +386,7 @@
     start(home ? data.site.subtitle : domain.title, null, home ? false : true, home ? null : id);
     if (!home) main.append(element('h1', 'library-heading domain-banner', domain.title));
     const navigation = element('nav', 'route-grid');
-    navigation.setAttribute('aria-label', 'Choisir un parcours ou un diagnostic');
+    navigation.setAttribute('aria-label', 'Choisir un parcours');
     domain.pathwayIds.forEach(pathwayId => {
       const pathway = data.pathways[pathwayId];
       navigation.append(card(pathway.title, pathway.objective, '#parcours/' + pathwayId, pathway.theme));
@@ -594,8 +594,9 @@
   function navigate() {
     try {
       let hash = location.hash.slice(1);
-      if (own(data.aliases, hash)) {
-        hash = data.aliases[hash];
+      const aliasRoute = hash.split('?')[0];
+      if (own(data.aliases, aliasRoute)) {
+        hash = data.aliases[aliasRoute];
         history.replaceState(null, '', '#' + hash);
       }
       const separator = hash.indexOf('?');

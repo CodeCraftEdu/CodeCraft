@@ -62,9 +62,7 @@ window.CODECRAFT_DATA = {
         "web-debutants",
         "web-avances"
       ],
-      "diagnosticModuleIds": [
-        "diagnostic-web"
-      ]
+      "diagnosticModuleIds": []
     }
   },
   "skills": {
@@ -6081,7 +6079,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "reprise",
           "title": "Avant le projet",
-          "text": "Ce projet se réalise avec de vrais fichiers locaux. Si les liens entre pages ne sont pas encore clairs, reprends Relier plusieurs pages puis reviens ici. Si seule une autre notion bloque, utilise sa reprise en bas sans recommencer tout le parcours. Ni Flexbox ni publication ne sont nécessaires.",
+          "text": "Ce projet se réalise avec de vrais fichiers locaux. Si les liens entre pages ne sont pas encore clairs, reprends Relier plusieurs pages puis reviens ici. Si seule une autre notion bloque, retrouve sa leçon depuis le parcours dans le fil d’Ariane sans tout recommencer. Ni Flexbox ni publication ne sont nécessaires.",
           "moduleLink": {
             "text": "Relier plusieurs pages",
             "moduleId": "html-multipage"
@@ -6811,7 +6809,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "reprise",
           "title": "Avant de commencer",
-          "text": "Si tu confonds l’espace intérieur et extérieur, reprends Boîtes et espacements, puis reviens ici avec Retour dans le navigateur. Les reprises Images et Classes restent accessibles en bas ; copier une source ne prouve pas que tu sais expliquer src et alt.",
+          "text": "Si tu confonds l’espace intérieur et extérieur, reprends Boîtes et espacements, puis reviens ici avec Retour dans le navigateur. Pour revoir Images ou Classes, retrouve ces leçons depuis le parcours dans le fil d’Ariane ; copier une source ne prouve pas que tu sais expliquer src et alt.",
           "moduleLink": {
             "text": "Boîtes et espacements",
             "moduleId": "css-boites-espacements"
@@ -6823,7 +6821,7 @@ window.CODECRAFT_DATA = {
           "title": "1 — Une carte qui laisse sa place à l’image",
           "paragraphs": [
             "Tu vas obtenir une carte de 320px de large dans un aperçu assez grand. Elle pourra devenir plus étroite si la place manque ; son image suivra sa largeur en gardant sa forme.",
-            "Ouvre un nouveau Pen : HTML et CSS vont dans leurs panneaux respectifs. En local, utilise une copie de ton projet avec feuille déjà reliée : contenu dans body, règles dans le fichier CSS, puis enregistre et actualise. La reprise Relier une feuille de style est accessible plus bas.",
+            "Ouvre un nouveau Pen : HTML et CSS vont dans leurs panneaux respectifs. En local, utilise une copie de ton projet avec feuille déjà reliée : contenu dans body, règles dans le fichier CSS, puis enregistre et actualise. Retrouve Relier une feuille de style depuis le parcours dans le fil d’Ariane.",
             "Travaille sans IA. Les dessins fournis suffisent : aucune recherche d’image, aucun téléversement ni compte supplémentaire ne sont nécessaires. Un thème personnel ne demande aucune information personnelle."
           ]
         },
@@ -7441,7 +7439,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "reprise",
           "title": "Avant le projet",
-          "text": "Le projet réutilise des notions déjà expliquées. Si tu ne sais pas encore adapter la carte et son image, reprends Dimensions et images dans une carte, puis reviens avec Retour dans le navigateur. Les autres reprises sont accessibles plus bas : tu n’as pas à refaire tout un parcours.",
+          "text": "Le projet réutilise des notions déjà expliquées. Si tu ne sais pas encore adapter la carte et son image, reprends Dimensions et images dans une carte, puis reviens avec Retour dans le navigateur. Retrouve les autres leçons depuis le parcours dans le fil d’Ariane : tu n’as pas à tout refaire.",
           "moduleLink": {
             "text": "Dimensions et images dans une carte",
             "moduleId": "css-dimensions-images"
@@ -8630,7 +8628,7 @@ window.CODECRAFT_DATA = {
           "title": "1 — Aider à lire, pas seulement décorer",
           "paragraphs": [
             "Résultat attendu : un titre bien repérable et deux paragraphes faciles à lire. Tu modifieras un réglage à la fois et expliqueras la différence.",
-            "Ouvre un nouveau Pen : le code HTML va dans HTML, les règles dans CSS. Ne copie pas les noms des panneaux dans le code. En local, utilise une copie de ton projet avec sa feuille CSS déjà reliée : extrait HTML dans body, règles dans le fichier CSS. Si cette liaison est nouvelle pour toi, le module Relier une feuille de style est accessible dans les reprises.",
+            "Ouvre un nouveau Pen : le code HTML va dans HTML, les règles dans CSS. Ne copie pas les noms des panneaux dans le code. En local, utilise une copie de ton projet avec sa feuille CSS déjà reliée : extrait HTML dans body, règles dans le fichier CSS. Si cette liaison est nouvelle pour toi, retrouve Relier une feuille de style depuis le parcours dans le fil d’Ariane.",
             "Travaille sans IA. Compare les effets et garde les mots identiques pendant les premiers essais ; une page reproduite ne suffit pas pour montrer que tu comprends chaque réglage."
           ]
         },
@@ -9072,7 +9070,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "reprise",
           "title": "Avant de commencer",
-          "text": "Il faut repérer le conteneur d’une carte et relier ses classes au CSS. Si le parent direct reste flou, reprends Parent et enfants. Les reprises de classes sont aussi disponibles en bas. Tu n’as besoin ni de Flexbox ni d’images pour cet exercice.",
+          "text": "Il faut repérer le conteneur d’une carte et relier ses classes au CSS. Si le parent direct reste flou, reprends Parent et enfants. Retrouve Classes et couleurs depuis le parcours dans le fil d’Ariane si nécessaire. Tu n’as besoin ni de Flexbox ni d’images pour cet exercice.",
           "moduleLink": {
             "text": "Parent et enfants",
             "moduleId": "html-parent-enfants"
@@ -9284,7 +9282,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "suite",
           "title": "Garder une base pour la suite",
-          "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Vérifie d’abord les prérequis des suites ci-dessous ; si l’espace intérieur/extérieur reste flou, reprends la consolidation. Le bonus n’est pas obligatoire."
+          "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Si l’espace intérieur/extérieur reste flou, refais un essai en ne changeant que padding ou margin. Le bonus n’est pas obligatoire."
         }
       ],
       "masteryCriteria": [
@@ -9575,6 +9573,23 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         {
+          "id": "preparer",
+          "type": "callout",
+          "title": "Avant de commencer",
+          "text": "Aucune notion HTML n’est supposée. Ouvre CodePen et repère la zone HTML et l’aperçu. Travaille dans HTML, pas dans CSS ou JavaScript. Avant de remplacer ton essai, copie son HTML dans un fichier texte sur ton ordinateur pour le conserver. Aucun compte n’est nécessaire pour ces essais ; ne suppose pas que ton travail sera conservé après fermeture de l’onglet."
+        },
+        {
+          "id": "cours",
+          "type": "lesson",
+          "title": "Du texte entre des balises",
+          "paragraphs": [
+            "Dans <p>Bonjour</p>, <p> ouvre un paragraphe, Bonjour est son texte et </p> le ferme. Le slash / marque ici la fermeture ; le nom p reste le même.",
+            "Les balises donnent un rôle au texte. Dans cet exercice, h1 annonce le titre principal et p un paragraphe. L’aperçu affiche le contenu, pas les balises.",
+            "Une nouvelle ligne dans le code ne crée pas un deuxième paragraphe : il faut un autre élément p. Même si l’aperçu paraît correct, vérifie les balises dans le code : le navigateur peut réparer certaines erreurs."
+          ],
+          "code": "<h1>Mon site</h1>\n<p>Bienvenue sur ma page.</p>"
+        },
+        {
           "type": "tasks",
           "title": "Exercice guidé — Titre et paragraphe",
           "items": [
@@ -9614,10 +9629,11 @@ window.CODECRAFT_DATA = {
           "type": "lesson",
           "title": "Les niveaux de titres",
           "paragraphs": [
-            "h1 est généralement le titre principal de la page.",
-            "h2 à h6 permettent de créer différents niveaux de sous-titres."
+            "Dans cette petite page, h1 est le titre principal. Les titres h2 annoncent ses grandes parties ; deux parties de même importance utilisent le même niveau.",
+            "Un h3 peut annoncer une sous-partie d’un h2. Les niveaux vont jusqu’à h6, mais tu n’as pas besoin de tous les utiliser ici.",
+            "Choisis le niveau pour l’organisation du contenu, pas pour obtenir un texte plus grand ou plus petit. La présentation sera travaillée avec CSS."
           ],
-          "code": "<h1>Mon site</h1>\n<h2>Mes jeux préférés</h2>\n<p>Voici quelques jeux que j’aime.</p>"
+          "code": "<h1>Mes loisirs</h1>\n<h2>Jeux</h2>\n<p>J’aime les jeux de réflexion.</p>\n<h2>Sport</h2>\n<p>Je pratique le vélo.</p>"
         },
         {
           "id": "autonome",
@@ -9633,7 +9649,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "sous-titres-autonomes",
-              "text": "Crée au moins deux sous-titres avec des balises h2 à h6.",
+              "text": "Crée deux titres h2 pour deux parties de même importance.",
               "hint": "Choisis les niveaux de titres qui correspondent à l’organisation de ta page. Deux parties de même importance peuvent utiliser h2.",
               "syntax": "<h2>Première partie</h2>\n<h2>Deuxième partie</h2>"
             },
@@ -9642,12 +9658,144 @@ window.CODECRAFT_DATA = {
               "text": "Crée deux paragraphes pour développer ton sujet.",
               "hint": "Chaque paragraphe possède sa propre balise p ouvrante et fermante.",
               "syntax": "<p>Mon premier paragraphe.</p>\n<p>Mon deuxième paragraphe.</p>"
+            },
+            {
+              "id": "verifier-structure",
+              "text": "Compare ton code et l’aperçu : montre les deux parties, les deux paragraphes et leurs balises. Explique pourquoi les deux parties utilisent h2.",
+              "hint": "Repère h1, les deux h2 puis chaque p et sa fermeture. Un résultat visible ne remplace pas la lecture du code."
             }
           ]
         }
       ],
       "theme": "fondations",
-      "bonus": "Efface ton HTML et essaie de refaire seulement un titre et un paragraphe sans regarder les exemples."
+      "bonus": "Conserve d’abord ton HTML dans un fichier texte. Dans un nouvel essai CodePen, refais seulement un titre et un paragraphe sans regarder les exemples, puis compare les deux codes. Ce bonus n’est pas nécessaire pour continuer.",
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [],
+      "masteryCriteria": [
+        "Repérer les balises ouvrante et fermante, puis modifier seulement le texte qu’elles entourent.",
+        "Organiser la page avec un titre principal h1 et des titres h2 pour deux parties de même importance, sans choisir le niveau pour sa taille.",
+        "Créer deux paragraphes distincts et vérifier leurs balises dans le code, pas seulement l’apparence de l’aperçu.",
+        "Créer une nouvelle petite page sur un autre sujet puis expliquer son organisation ; préciser les indices ou aides utilisés."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "html-titres-paragraphes",
+          "blockId": "guide",
+          "label": "Reprendre l’exercice guidé"
+        }
+      ],
+      "bonusActivities": [],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Créer et modifier des titres et des paragraphes en HTML.",
+        "entryDiagnosis": [
+          "Faire montrer la zone de saisie et l’aperçu ; accompagner le clavier et la lecture sans les confondre avec une notion HTML.",
+          "Ne supposer aucune connaissance des balises."
+        ],
+        "preparation": [
+          "Vérifier l’accès à CodePen et la présence de la zone HTML et de l’aperçu ; ne pas imposer de compte.",
+          "Prévoir la copie du HTML dans un fichier texte accessible pour préserver les essais.",
+          "Tester l’exemple et distinguer les contraintes du réseau ou de l’environnement de la compréhension du HTML."
+        ],
+        "why": "Distinguer la structure du contenu de son apparence avant les listes, liens et premières règles CSS.",
+        "discoverySpeech": [
+          "« Les balises indiquent le rôle du texte. Le texte est entre l’ouverture et la fermeture. »",
+          "« Ici h1 présente la page ; deux h2 annoncent deux parties de même importance. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "html-titres-paragraphes",
+            "blockId": "niveaux-titres"
+          },
+          "comments": [
+            "Faire identifier le texte, les ouvertures et les fermetures avant la saisie.",
+            "Lire h1 puis h2 comme une organisation ; ne pas présenter les six niveaux comme un catalogue de tailles.",
+            "Comparer le code et l’aperçu, puis conserver le premier essai avant le transfert."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Que contient <p>Bonjour</p> ?",
+            "answer": "Une balise ouvrante p, le texte Bonjour et une balise fermante /p."
+          },
+          {
+            "question": "Où changer le message sans changer son rôle ?",
+            "answer": "Dans le texte entre les balises ; on garde p et /p."
+          },
+          {
+            "question": "Deux parties de même importance demandent-elles h2 puis h3 ?",
+            "answer": "Non : ici elles ont chacune un h2. h3 annoncerait une sous-partie."
+          },
+          {
+            "question": "Pourquoi ne pas choisir h4 pour avoir un petit titre ?",
+            "answer": "Le niveau décrit l’organisation du contenu, pas une taille à sélectionner. La présentation sera traitée avec CSS."
+          },
+          {
+            "question": "Une nouvelle ligne dans le code crée-t-elle un deuxième paragraphe ?",
+            "answer": "Non : on crée un autre élément p avec ses balises."
+          },
+          {
+            "question": "Un aperçu qui semble correct prouve-t-il que les balises sont correctes ?",
+            "answer": "Non : le navigateur peut réparer certaines erreurs. Il faut aussi lire le code."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "html-titres-paragraphes",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "html-titres-paragraphes",
+          "blockId": "autonome"
+        },
+        "differentiation": [
+          "Lire une consigne à la fois et accompagner les gestes de clavier sans faire le raisonnement à la place de l’élève.",
+          "Demander une modification puis un exemple sur un autre sujet ; proposer l’indice seulement après un premier essai.",
+          "Noter réussite autonome, avec modèle ou avec aide. Un résultat visible ou une case cochée ne suffit pas à conclure à la maîtrise."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Les balises apparaissent comme du texte ou rien ne s’affiche.",
+            "helps": [
+              "Faire montrer la zone HTML et l’aperçu.",
+              "Vérifier que le HTML n’est pas saisi dans CSS ou dans le texte de l’aperçu.",
+              "Comparer un seul p ouvrant et fermant au modèle.",
+              "Accompagner une correction puis demander une nouvelle phrase sans modèle."
+            ]
+          },
+          {
+            "symptom": "Les titres utilisent h2, h4 et h6 pour changer leur taille.",
+            "helps": [
+              "Faire nommer les parties de la page.",
+              "Demander lesquelles ont la même importance.",
+              "Comparer les deux parties avec deux h2 ; distinguer une éventuelle sous-partie.",
+              "Faire réorganiser un autre sujet sans imposer de CSS."
+            ]
+          },
+          {
+            "symptom": "Le rendu paraît correct malgré une balise mal fermée.",
+            "helps": [
+              "Faire montrer la balise ouvrante et sa fermeture dans le code.",
+              "Repérer le slash de fermeture et le nom de balise.",
+              "Comparer h1 avec /h1 ou p avec /p, sans dépendre du rendu corrigé par le navigateur.",
+              "Laisser corriger puis créer un autre élément."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Distinguer reproduction, compréhension, transfert et aides réellement utilisées. Aucun délai, score ou validation automatique n’est ajouté.",
+        "quickConductor": [
+          "Repérer la zone HTML et préserver le travail précédent.",
+          "Lire et expliquer les parties de l’exemple.",
+          "Modifier une seule partie à la fois et comparer code et aperçu.",
+          "Créer un autre exemple sans recopier le modèle.",
+          "Faire expliquer les essentiels et décider de la reprise selon les observations, sans validation automatique."
+        ],
+        "references": [
+          {
+            "title": "WHATWG — Niveaux de titres",
+            "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
+          }
+        ]
+      }
     },
     "html-mini-page-fondations": {
       "domainId": "web",
@@ -9661,10 +9809,17 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         {
+          "id": "preparer",
+          "type": "callout",
+          "tone": "neutral",
+          "title": "Avant de commencer",
+          "text": "Réutilise les titres, paragraphes et listes déjà travaillés. Ouvre un nouvel essai dans la zone HTML de CodePen et garde l’ancien code dans un fichier texte. Aucun compte ni CSS n’est nécessaire. Si une notion te manque, reprends la leçon correspondante avant de réessayer."
+        },
+        {
           "id": "defi",
           "type": "tasks",
           "title": "Crée ta mini-page sans modèle",
-          "intro": "Choisis un sujet qui te plaît et crée une petite page dans la zone HTML de CodePen. Essaie d’abord sans modèle. En cas de blocage, ouvre seulement l’indice de l’étape concernée.",
+          "intro": "Choisis un nouveau sujet et construis ta page sans recopier une page complète. Les exigences ci-dessous sont ton cahier des charges, pas un modèle. Après un premier essai, ouvre seulement l’indice utile et garde une trace de l’aide reçue.",
           "items": [
             {
               "id": "titre-principal",
@@ -9673,7 +9828,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "sous-titre",
-              "text": "Ajoute un h2 pour présenter une partie de ta page.",
+              "text": "Ajoute un h2 pour annoncer une partie de ta page ; choisis-le pour son rôle, pas pour sa taille.",
               "hint": "Un sous-titre utilise ici h2. Pense à ouvrir puis à fermer cette balise."
             },
             {
@@ -9695,25 +9850,197 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "titres-visibles",
-              "text": "Les titres s’affichent."
+              "text": "Dans le code, je repère h1 pour le titre principal et h2 pour une partie ; leur texte annonce le contenu."
             },
             {
               "id": "paragraphes-presents",
-              "text": "Les deux paragraphes sont présents."
+              "text": "Je vois deux paragraphes dans l’aperçu et deux éléments p distincts dans le code."
             },
             {
               "id": "trois-elements",
-              "text": "La liste contient au moins trois éléments."
+              "text": "Je compte au moins trois éléments dans l’aperçu et autant de li à l’intérieur de ul."
             },
             {
               "id": "balises",
-              "text": "Les balises sont correctement ouvertes et fermées."
+              "text": "Je vérifie les ouvertures et fermetures dans le code, même si l’aperçu paraît correct."
+            },
+            {
+              "id": "modifier-expliquer",
+              "text": "Je change un paragraphe et ajoute un li avant /ul sans perdre les éléments précédents ; j’explique les changements."
+            }
+          ]
+        },
+        {
+          "id": "bonus",
+          "type": "details",
+          "title": "Pour réessayer — facultatif",
+          "blocks": [
+            {
+              "id": "nouveau-sujet",
+              "type": "lesson",
+              "title": "Un autre petit sujet",
+              "paragraphs": [
+                "Conserve ta page puis essaie un autre sujet sans recopier le premier. Compare les aides utilisées ; ce nouvel essai n’est pas nécessaire pour continuer."
+              ]
             }
           ]
         }
       ],
       "theme": "fondations",
-      "bonus": "Si tu arrives à refaire cette mini-page avec peu ou pas d’aide, tu es prêt à continuer avec le parcours Débutants. Ce repère n’est pas une validation automatique : si tu es en cours, le professeur reste libre de te proposer le parcours adapté."
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Choisir h1 pour le titre principal et h2 pour une partie."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Délimiter un paragraphe avec p et /p."
+        },
+        {
+          "skillId": "html.lists",
+          "expectation": "Placer chaque li à l’intérieur de ul."
+        }
+      ],
+      "masteryCriteria": [
+        "Construire une mini-page sur un nouveau sujet à partir d’un cahier des charges, sans recopier une page complète ; préciser les aides utilisées.",
+        "Justifier le rôle du h1 et du h2 et écrire deux paragraphes délimités séparément.",
+        "Créer une liste d’au moins trois li à l’intérieur de ul et comparer code et aperçu.",
+        "Modifier un paragraphe et ajouter un élément sans perdre le travail précédent, puis expliquer ce qui a changé."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "html-titres-paragraphes",
+          "blockId": "autonome",
+          "label": "Reprendre titres et paragraphes"
+        },
+        {
+          "moduleId": "html-listes",
+          "blockId": "defi",
+          "label": "Reprendre la construction d’une liste"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "html-mini-page-fondations",
+          "blockId": "bonus",
+          "label": "Réessayer sur un nouveau sujet"
+        }
+      ],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Réutiliser seul les premières bases du HTML.",
+        "entryDiagnosis": [
+          "Faire expliquer h1, h2, p et ul/li sur un essai antérieur sans considérer sa simple présence comme un acquis.",
+          "Vérifier que l’élève peut retrouver et conserver son HTML ; proposer la reprise ciblée en cas de difficulté."
+        ],
+        "preparation": [
+          "Prévoir la sauvegarde du travail précédent et vérifier les zones utiles de CodePen sans imposer de compte.",
+          "Tester l’accès et l’aperçu ; distinguer une difficulté de l’environnement d’une difficulté de compréhension."
+        ],
+        "why": "Observer le réinvestissement de trois notions sur un nouveau sujet sans transformer une checklist en verdict d’orientation.",
+        "discoverySpeech": [
+          "« Le cahier des charges donne un résultat à construire, pas du code à recopier. »",
+          "« On compare le code et l’aperçu, puis on explique une modification. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "html-mini-page-fondations",
+            "blockId": "defi"
+          },
+          "comments": [
+            "Ne pas fournir d’emblée un modèle complet : le défi sert à observer le transfert.",
+            "Une aide de syntaxe ou un geste de clavier peut être nécessaire ; noter précisément l’aide.",
+            "La vérification peut être accompagnée après le premier essai ; elle n’efface pas les difficultés observées."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi utiliser h1 ici ?",
+            "answer": "Il annonce le titre principal de cette petite page."
+          },
+          {
+            "question": "Pourquoi le h2 ?",
+            "answer": "Il annonce une partie du sujet, pas une taille de texte."
+          },
+          {
+            "question": "Qu’est-ce qui fait deux paragraphes ?",
+            "answer": "Deux éléments p distincts, pas seulement deux lignes de saisie."
+          },
+          {
+            "question": "Où sont les trois li ?",
+            "answer": "À l’intérieur du même ul, chacun délimité séparément."
+          },
+          {
+            "question": "Un aperçu correct prouve-t-il les fermetures ?",
+            "answer": "Non : on inspecte aussi le code, que le navigateur peut avoir réparé."
+          },
+          {
+            "question": "Que montre la modification finale ?",
+            "answer": "Que l’élève peut modifier un p et ajouter un li en conservant le reste ; relever les aides utilisées."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "html-mini-page-fondations",
+          "blockId": "verification"
+        },
+        "independentActivity": {
+          "moduleId": "html-mini-page-fondations",
+          "blockId": "defi"
+        },
+        "differentiation": [
+          "Observer un premier essai avant de fournir une aide ; accompagner les gestes sans faire les choix à la place de l’élève.",
+          "Demander une explication et une modification limitée plutôt qu’une copie de tout le modèle.",
+          "Distinguer réussite autonome, avec modèle ou avec aide ; conserver les indices de compréhension et les difficultés."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le défi est une copie de la page précédente.",
+            "helps": [
+              "Demander quelles décisions l’élève a prises.",
+              "Proposer un autre sujet sans montrer de code.",
+              "Faire construire un paragraphe puis un li avec un indice limité si nécessaire.",
+              "Retirer l’indice et demander un autre élément ; noter la différence entre copie et transfert."
+            ]
+          },
+          {
+            "symptom": "Les titres sont choisis pour leur taille.",
+            "helps": [
+              "Faire nommer le sujet et la partie.",
+              "Demander si les textes ont le même rôle.",
+              "Rappeler h1 principal et h2 partie sur cette page.",
+              "Faire réorganiser un titre puis justifier son rôle sans modèle."
+            ]
+          },
+          {
+            "symptom": "L’aperçu masque une erreur de liste.",
+            "helps": [
+              "Compter les éléments visibles.",
+              "Faire repérer ul et /ul dans le code.",
+              "Comparer chaque li à ces bornes.",
+              "Faire corriger un élément puis en ajouter un autre seul."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Aucun acquis n’est déduit de la checklist, de l’ouverture d’un module ou du code copié. Noter les aides utilisées et décider d’une reprise selon les observations, sans verdict automatique d’orientation.",
+        "quickConductor": [
+          "Préserver l’essai et repérer le cahier des charges.",
+          "Observer les choix lors de la construction ou de l’adaptation.",
+          "Comparer code, aperçu et résultat des tests.",
+          "Faire modifier un élément puis expliquer l’effet.",
+          "Conserver le résultat et les aides utilisées ; proposer une reprise ciblée si nécessaire."
+        ],
+        "references": [
+          {
+            "title": "WHATWG — Titres",
+            "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
+          },
+          {
+            "title": "WHATWG — Liste",
+            "url": "https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element"
+          }
+        ]
+      }
     },
     "html-listes": {
       "domainId": "web",
@@ -9725,13 +10052,24 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         {
+          "id": "preparer",
+          "type": "callout",
+          "title": "Avant de commencer",
+          "text": "Il faut repérer un texte entre une balise ouvrante et sa fermeture. Si nécessaire, reprends Titres et paragraphes. Ouvre CodePen et repère la zone HTML et l’aperçu. Travaille dans HTML, pas dans CSS ou JavaScript. Avant de remplacer ton essai, copie son HTML dans un fichier texte sur ton ordinateur pour le conserver. Aucun compte n’est nécessaire pour ces essais ; ne suppose pas que ton travail sera conservé après fermeture de l’onglet.",
+          "moduleLink": {
+            "moduleId": "html-titres-paragraphes",
+            "text": "Titres et paragraphes"
+          }
+        },
+        {
           "id": "cours",
           "type": "lesson",
           "title": "Comprendre une liste HTML",
           "paragraphs": [
             "Une liste non ordonnée utilise la balise <ul>. Elle permet de regrouper des éléments sans les numéroter.",
             "Chaque élément de la liste utilise une balise <li>.",
-            "Les éléments <li> sont placés à l’intérieur du <ul>, entre sa balise ouvrante et sa balise fermante."
+            "Les éléments <li> sont placés à l’intérieur du <ul>, entre sa balise ouvrante et sa balise fermante.",
+            "Les retours à la ligne et l’indentation aident à lire le code, mais ne créent pas les éléments. Vérifie chaque li dans ul, pas seulement les puces visibles dans l’aperçu."
           ],
           "code": "<ul>\n  <li>Jeux</li>\n  <li>Sport</li>\n  <li>Musique</li>\n</ul>"
         },
@@ -9751,11 +10089,12 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "quatrieme-li",
-              "text": "Ajoute seul un quatrième élément.",
+              "text": "Ajoute seul un quatrième li avant </ul>. Vérifie que l’aperçu contient quatre éléments et que les trois premiers sont conservés.",
               "hint": "Regarde comment sont écrits les trois autres éléments."
             }
           ],
-          "id": "guide"
+          "id": "guide",
+          "intro": "Garde tes titres et paragraphes. Ajoute la liste après leur dernière balise fermante, sans effacer le travail précédent."
         },
         {
           "id": "defi",
@@ -9765,11 +10104,149 @@ window.CODECRAFT_DATA = {
             {
               "id": "nouvelle-liste",
               "text": "Crée une nouvelle liste sur un autre sujet avec au moins quatre éléments, sans regarder l’exemple sauf si tu bloques."
+            },
+            {
+              "id": "expliquer-liste",
+              "text": "Montre où chaque liste commence et finit, puis compte ses li dans le code et ses éléments dans l’aperçu. Explique la différence entre ul et li.",
+              "hint": "Chaque ul possède sa fermeture ; chaque élément utilise son propre li à l’intérieur."
             }
-          ]
+          ],
+          "intro": "Conserve la première liste. Ajoute une seconde liste, sur un autre sujet, après sa fermeture."
         }
       ],
-      "theme": "fondations"
+      "theme": "fondations",
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.text",
+          "expectation": "Repérer un texte entre une balise ouvrante et sa fermeture ; sinon reprendre Titres et paragraphes."
+        }
+      ],
+      "masteryCriteria": [
+        "Expliquer le rôle de ul et de li : la liste regroupe des éléments, chacun écrit dans son propre li.",
+        "Placer les éléments li à l’intérieur de ul et vérifier les ouvertures et fermetures dans le code.",
+        "Modifier un élément et en ajouter un autre sans remplacer ni perdre les éléments précédents.",
+        "Créer une seconde liste sur un autre sujet sans recopier tout le modèle, puis expliquer sa structure et les aides utilisées."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "html-listes",
+          "blockId": "guide",
+          "label": "Reprendre l’exercice guidé"
+        }
+      ],
+      "bonusActivities": [],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Créer et modifier une liste HTML.",
+        "entryDiagnosis": [
+          "Faire repérer ouverture, texte et fermeture sur un paragraphe connu ; proposer une reprise si ces repères manquent.",
+          "Vérifier que le travail précédent est conservé avant d’ajouter ou de modifier des éléments."
+        ],
+        "preparation": [
+          "Vérifier l’accès à CodePen et la présence de la zone HTML et de l’aperçu ; ne pas imposer de compte.",
+          "Prévoir la copie du HTML dans un fichier texte accessible pour préserver les essais.",
+          "Tester l’exemple et distinguer les contraintes du réseau ou de l’environnement de la compréhension du HTML."
+        ],
+        "why": "Comprendre le regroupement d’éléments avant de réutiliser une liste dans une mini-page ; la hiérarchie des titres n’est pas un prérequis caché.",
+        "discoverySpeech": [
+          "« ul délimite la liste ; chaque li délimite un de ses éléments. »",
+          "« On ajoute le nouvel élément à l’intérieur de la liste, sans effacer les anciens. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "html-listes",
+            "blockId": "cours"
+          },
+          "comments": [
+            "Faire suivre les bornes ul et /ul puis repérer les trois li.",
+            "L’indentation aide à lire la structure ; elle ne crée pas les éléments.",
+            "Ne pas ajouter de listes imbriquées ou ordonnées au socle de cette séance."
+          ]
+        },
+        "questions": [
+          {
+            "question": "À quoi sert ul ?",
+            "answer": "À regrouper les éléments d’une liste dont l’ordre n’est pas essentiel au sens."
+          },
+          {
+            "question": "À quoi sert li ?",
+            "answer": "À délimiter un élément de la liste."
+          },
+          {
+            "question": "Où ajouter le quatrième élément ?",
+            "answer": "Dans un nouveau li placé avant la fermeture /ul."
+          },
+          {
+            "question": "Quatre lignes de texte font-elles quatre éléments ?",
+            "answer": "Non : les quatre éléments doivent être délimités par quatre li."
+          },
+          {
+            "question": "Que change l’ajout d’un li ?",
+            "answer": "Il ajoute un élément à la liste ; les autres éléments restent présents."
+          },
+          {
+            "question": "Des puces visibles prouvent-elles toute la structure ?",
+            "answer": "Non : on vérifie aussi que les li sont dans ul et que le code est correctement délimité."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "html-listes",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "html-listes",
+          "blockId": "defi"
+        },
+        "differentiation": [
+          "Lire une consigne à la fois et accompagner les gestes de clavier sans faire le raisonnement à la place de l’élève.",
+          "Demander une modification puis un exemple sur un autre sujet ; proposer l’indice seulement après un premier essai.",
+          "Noter réussite autonome, avec modèle ou avec aide. Un résultat visible ou une case cochée ne suffit pas à conclure à la maîtrise."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le nouvel élément est hors de la liste.",
+            "helps": [
+              "Faire montrer où la liste commence et finit.",
+              "Repérer /ul et le nouveau li.",
+              "Comparer l’indentation et les positions au modèle.",
+              "Déplacer un seul li puis faire ajouter un autre élément seul."
+            ]
+          },
+          {
+            "symptom": "Plusieurs lignes sont réunies dans un seul élément.",
+            "helps": [
+              "Demander de compter les éléments dans l’aperçu.",
+              "Compter les li dans le code.",
+              "Comparer une ligne de texte et un élément li.",
+              "Faire écrire deux li distincts puis expliquer le changement."
+            ]
+          },
+          {
+            "symptom": "L’élève ne peut créer qu’une copie du modèle.",
+            "helps": [
+              "Faire nommer le rôle de ul et de li.",
+              "Proposer un nouveau sujet et un seul élément pour démarrer.",
+              "Donner seulement la structure d’un li si nécessaire.",
+              "Retirer le modèle et demander un autre élément ; noter l’aide réellement utilisée."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Distinguer reproduction, compréhension, transfert et aides réellement utilisées. Aucun délai, score ou validation automatique n’est ajouté.",
+        "quickConductor": [
+          "Repérer la zone HTML et préserver le travail précédent.",
+          "Lire et expliquer les parties de l’exemple.",
+          "Modifier une seule partie à la fois et comparer code et aperçu.",
+          "Créer un autre exemple sans recopier le modèle.",
+          "Faire expliquer les essentiels et décider de la reprise selon les observations, sans validation automatique."
+        ],
+        "references": [
+          {
+            "title": "WHATWG — Liste non ordonnée et éléments de liste",
+            "url": "https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element"
+          }
+        ]
+      }
     },
     "html-liens": {
       "domainId": "web",
@@ -9781,13 +10258,25 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         {
+          "id": "preparer",
+          "type": "callout",
+          "title": "Avant de commencer",
+          "text": "Il faut repérer un texte entre une balise ouvrante et sa fermeture. Si nécessaire, reprends Titres et paragraphes. Ouvre CodePen et repère la zone HTML et l’aperçu. Travaille dans HTML, pas dans CSS ou JavaScript. Avant de remplacer ton essai, copie son HTML dans un fichier texte sur ton ordinateur pour le conserver. Aucun compte n’est nécessaire pour ces essais ; ne suppose pas que ton travail sera conservé après fermeture de l’onglet.",
+          "moduleLink": {
+            "moduleId": "html-titres-paragraphes",
+            "text": "Titres et paragraphes"
+          }
+        },
+        {
           "id": "cours",
           "type": "lesson",
           "title": "Comprendre un lien HTML",
           "paragraphs": [
             "La balise <a> crée un lien cliquable.",
             "L’attribut href indique l’adresse vers laquelle le lien mène. L’adresse entre guillemets est la destination.",
-            "Le texte entre <a> et </a> est le texte visible et cliquable. Dans l’exemple, c’est « Visiter le site »."
+            "Le texte entre <a> et </a> est le texte visible et cliquable. Dans l’exemple, c’est « Visiter le site ».",
+            "Pour un site externe, copie une adresse complète qui commence par https:// dans href, entre guillemets droits. Évite un texte vague comme « Clique ici » : annonce plutôt la destination.",
+            "Teste le lien depuis l’aperçu et compare l’adresse obtenue à celle prévue. Si l’aperçu bloque l’ouverture, essaie d’ouvrir le lien dans un nouvel onglet depuis son menu contextuel. Un blocage du site ou du réseau n’est pas forcément une erreur HTML ; demande de l’aide si nécessaire."
           ],
           "code": "<a href=\"https://example.com\">Visiter le site</a>"
         },
@@ -9799,30 +10288,180 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "lien-exemple",
-              "text": "Reproduis ou utilise le lien d’exemple.",
+              "text": "Reproduis le lien d’exemple, prévois sa destination puis teste-le depuis l’aperçu.",
               "hint": "La balise ouvrante contient href et l’adresse. Ajoute ensuite le texte visible puis la balise fermante.",
               "syntax": "<a href=\"https://example.com\">Visiter le site</a>"
             },
             {
               "id": "texte-lien",
-              "text": "Modifie uniquement le texte visible du lien. Garde la même adresse.",
+              "text": "Modifie uniquement le texte visible du lien. Teste-le et vérifie que la destination reste https://example.com.",
               "hint": "Change le texte entre <a> et </a>, sans toucher à l’adresse entre guillemets."
             },
             {
               "id": "adresse-lien",
-              "text": "Modifie l’adresse pour que le lien mène vers un autre site.",
+              "text": "Remplace href par https://www.wikipedia.org. Avant le clic, annonce la destination ; teste le lien et vérifie l’adresse. Adapte ensuite le texte visible pour annoncer cette destination.",
               "hint": "Remplace la destination dans href. Conserve les guillemets autour de la nouvelle adresse."
             },
             {
               "id": "deuxieme-lien",
-              "text": "Crée un deuxième lien avec une autre adresse et un autre texte. Essaie sans regarder l’exemple.",
+              "text": "Crée un deuxième lien avec une autre adresse complète et un autre texte. Essaie sans regarder l’exemple, puis teste sa destination.",
               "hint": "Choisis une nouvelle destination et un texte qui annonce le site. Écris une nouvelle balise a avec son href et sa fermeture.",
               "syntax": "<a href=\"https://www.wikipedia.org\">Découvrir Wikipédia</a>"
             }
           ]
+        },
+        {
+          "id": "autonome",
+          "type": "tasks",
+          "title": "À toi — annoncer et vérifier une destination",
+          "intro": "Garde tes premiers liens. Choisis un site public connu ou utilise https://example.com ; aucun compte ni donnée personnelle n’est nécessaire.",
+          "items": [
+            {
+              "id": "lien-autonome",
+              "text": "Sans recopier le modèle, ajoute un lien dont le texte annonce le site choisi. Prévois sa destination, teste-le et compare l’adresse obtenue.",
+              "hint": "Le texte est entre a et /a ; l’adresse complète est dans href, entre guillemets."
+            },
+            {
+              "id": "expliquer-lien",
+              "text": "Montre le texte visible et href dans ton code. Explique lequel changer pour renommer le lien sans changer sa destination.",
+              "hint": "Le libellé et la destination sont deux parties différentes. Précise si l’ouverture a été bloquée par l’aperçu ou le réseau."
+            }
+          ]
         }
       ],
-      "theme": "debutants"
+      "theme": "debutants",
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.text",
+          "expectation": "Repérer un texte entre une balise ouvrante et sa fermeture ; sinon reprendre Titres et paragraphes."
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer la destination écrite dans href du texte visible placé entre a et /a.",
+        "Changer uniquement le texte du lien et vérifier que sa destination reste la même, puis changer href séparément.",
+        "Créer un autre lien avec une adresse complète et un texte qui annonce sa destination, puis tester son ouverture.",
+        "Comparer la destination prévue, le code et le résultat du test ; ne pas confondre un blocage de l’aperçu ou du réseau avec une erreur HTML."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "html-liens",
+          "blockId": "exercices",
+          "label": "Reprendre l’exercice guidé"
+        }
+      ],
+      "bonusActivities": [],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Créer un lien vers un site.",
+        "entryDiagnosis": [
+          "Faire repérer ouverture, texte et fermeture sur un paragraphe connu ; proposer une reprise si ces repères manquent.",
+          "Vérifier que le travail précédent est conservé avant d’ajouter ou de modifier des éléments."
+        ],
+        "preparation": [
+          "Vérifier l’accès à CodePen et la présence de la zone HTML et de l’aperçu ; ne pas imposer de compte.",
+          "Prévoir la copie du HTML dans un fichier texte accessible pour préserver les essais.",
+          "Tester l’exemple et distinguer les contraintes du réseau ou de l’environnement de la compréhension du HTML."
+        ],
+        "why": "Séparer l’annonce du lien et sa destination, puis vérifier la navigation avant les exercices de réinvestissement et les futurs fichiers locaux.",
+        "discoverySpeech": [
+          "« Le texte annonce où aller ; href contient l’adresse réellement utilisée. »",
+          "« On change une seule partie à la fois, puis on teste ce qui a changé. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "html-liens",
+            "blockId": "cours"
+          },
+          "comments": [
+            "Faire lire la balise ouvrante avec href puis le texte entre a et /a.",
+            "Ne pas introduire les chemins locaux, target ou les attributs de sécurité comme prérequis.",
+            "Prévoir le résultat avant le clic et distinguer un problème de réseau ou d’aperçu d’une erreur de code."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Où se trouve la destination ?",
+            "answer": "Dans la valeur de href, entre guillemets dans la balise ouvrante a."
+          },
+          {
+            "question": "Où se trouve le texte visible ?",
+            "answer": "Entre la balise ouvrante a et la fermeture /a."
+          },
+          {
+            "question": "Renommer le texte change-t-il le site visité ?",
+            "answer": "Non : la destination reste dans href."
+          },
+          {
+            "question": "Peut-on écrire uniquement le nom du site dans href ?",
+            "answer": "Pour cet exercice de lien externe, on copie une adresse complète qui commence par https://."
+          },
+          {
+            "question": "Comment vérifier un lien ?",
+            "answer": "Prévoir la destination, tester le lien depuis l’aperçu et comparer l’adresse obtenue. Si l’aperçu bloque, essayer l’ouverture dans un nouvel onglet."
+          },
+          {
+            "question": "Un lien bloqué signifie-t-il forcément que href est faux ?",
+            "answer": "Non : le site distant, l’aperçu ou le réseau peut bloquer l’ouverture. On vérifie le code et on signale la limite avant de conclure."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "html-liens",
+          "blockId": "exercices"
+        },
+        "independentActivity": {
+          "moduleId": "html-liens",
+          "blockId": "autonome"
+        },
+        "differentiation": [
+          "Lire une consigne à la fois et accompagner les gestes de clavier sans faire le raisonnement à la place de l’élève.",
+          "Demander une modification puis un exemple sur un autre sujet ; proposer l’indice seulement après un premier essai.",
+          "Noter réussite autonome, avec modèle ou avec aide. Un résultat visible ou une case cochée ne suffit pas à conclure à la maîtrise."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le lien affiche l’adresse mais mène ailleurs.",
+            "helps": [
+              "Faire montrer le texte visible et l’adresse dans href.",
+              "Demander quelle partie fixe la destination.",
+              "Faire modifier uniquement le texte, puis uniquement href.",
+              "Faire créer un deuxième lien et prévoir la destination avant le test."
+            ]
+          },
+          {
+            "symptom": "L’adresse ouvre une mauvaise page ou reste sur CodePen.",
+            "helps": [
+              "Lire la valeur de href, pas seulement le libellé.",
+              "Vérifier l’adresse complète, les guillemets droits et la fermeture de a.",
+              "Comparer au lien connu vers https://example.com.",
+              "Tester une correction ; si le réseau bloque aussi le lien connu, ne pas attribuer le blocage à l’élève."
+            ]
+          },
+          {
+            "symptom": "L’aperçu bloque un site distant.",
+            "helps": [
+              "Vérifier d’abord que href est la destination attendue.",
+              "Essayer l’ouverture du lien dans un nouvel onglet depuis l’aperçu.",
+              "Distinguer le contexte CodePen, la connexion et le code HTML.",
+              "Reporter le test distant si nécessaire ; demander l’explication de texte/href et noter cette limite d’observation."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Distinguer reproduction, compréhension, transfert et aides réellement utilisées. Aucun délai, score ou validation automatique n’est ajouté.",
+        "quickConductor": [
+          "Repérer la zone HTML et préserver le travail précédent.",
+          "Lire et expliquer les parties de l’exemple.",
+          "Modifier une seule partie à la fois et comparer code et aperçu.",
+          "Créer un autre exemple sans recopier le modèle.",
+          "Faire expliquer les essentiels et décider de la reprise selon les observations, sans validation automatique."
+        ],
+        "references": [
+          {
+            "title": "WHATWG — Liens et attribut href",
+            "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element"
+          }
+        ]
+      }
     },
     "html-revision": {
       "domainId": "web",
@@ -9837,11 +10476,19 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         {
+          "id": "preparer",
+          "type": "callout",
+          "tone": "neutral",
+          "title": "Avant de commencer",
+          "text": "Réutilise titres, paragraphes, listes et liens. Conserve ton essai précédent dans un fichier texte, puis ouvre une nouvelle page HTML dans CodePen. Le socle ne demande ni image ni CSS. Essaie avant les indices ; note ensuite ceux que tu as utilisés."
+        },
+        {
           "type": "lesson",
           "id": "consigne",
           "title": "Mission autonome — Révision",
           "paragraphs": [
-            "Crée une petite page sur le sujet de ton choix. Essaie d'abord sans indice ni aide extérieure."
+            "Choisis un nouveau sujet et construis une page contenant un h1, deux parties de même importance annoncées par deux h2, deux paragraphes, une liste de trois éléments et un lien utile.",
+            "Les étapes suivantes précisent le résultat attendu. Les exemples de syntaxe restent des aides à ouvrir seulement après ton premier essai ; une page copiée n’est pas un essai autonome."
           ]
         },
         {
@@ -9851,13 +10498,13 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "titres",
-              "text": "Créer un titre principal puis au moins deux sous-titres avec des balises de h1 à h6.",
-              "hint": "h1 est le titre principal. h2, h3... servent à créer des niveaux de titres.",
-              "syntax": "<h1>Mon site</h1>\n<h2>Première partie</h2>\n<h3>Sous-partie</h3>"
+              "text": "Crée un h1 puis deux h2 pour deux parties de même importance. Le niveau indique leur rôle, pas la taille souhaitée.",
+              "hint": "Les deux parties sont au même niveau : elles ont chacune un h2. h3 servirait à une sous-partie, non demandée ici.",
+              "syntax": "<h1>Mon sujet</h1>\n<h2>Première partie</h2>\n<h2>Deuxième partie</h2>"
             },
             {
               "id": "deux-p",
-              "text": "Créer deux paragraphes.",
+              "text": "Crée deux paragraphes distincts, avec chacun ses balises p et /p ; place-les sous les parties correspondantes.",
               "hint": "Chaque paragraphe utilise la même balise.",
               "syntax": "<p>Mon paragraphe</p>"
             }
@@ -9883,20 +10530,20 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "lien",
-              "text": "Créer un lien vers un site de ton choix.",
-              "hint": "La destination se place dans href.",
+              "text": "Crée un lien vers un site public avec une adresse complète https:// et un texte qui annonce sa destination. Prévois puis teste son ouverture.",
+              "hint": "La destination est dans href, le texte visible entre a et /a. Compare l’adresse obtenue à celle prévue. Un blocage de l’aperçu ou du réseau n’est pas automatiquement une erreur HTML.",
               "syntax": "<a href=\"https://example.com\">Visiter le site</a>"
             }
           ]
         },
         {
           "type": "tasks",
-          "title": "Pour aller plus loin",
-          "intro": "Continue avec uniquement les notions que tu connais déjà.",
+          "title": "Bonus facultatifs",
+          "intro": "Garde d’abord une copie de ta page. Choisis une extension seulement si le socle est prêt ; aucun bonus n’est nécessaire pour continuer.",
           "items": [
             {
               "id": "bonus-section",
-              "text": "Ajoute une nouvelle section avec un h2 ou h3 et un paragraphe."
+              "text": "Ajoute une troisième partie de même importance avec un h2 et un paragraphe."
             },
             {
               "id": "bonus-liste",
@@ -9904,11 +10551,11 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "bonus-lien",
-              "text": "Ajoute un deuxième lien vers un autre site."
+              "text": "Ajoute un deuxième lien vers un autre site public, avec un texte explicite, puis teste sa destination."
             },
             {
               "id": "bonus-hierarchie",
-              "text": "Organise ta page avec plusieurs niveaux de titres entre h1 et h6."
+              "text": "Si ton contenu a une vraie sous-partie, ajoute un h3 sous un h2 et explique cette relation. N’ajoute pas des niveaux seulement pour varier les tailles."
             },
             {
               "id": "bonus-verification",
@@ -9918,14 +10565,181 @@ window.CODECRAFT_DATA = {
           "id": "approfondissement"
         },
         {
-          "type": "callout",
-          "tone": "neutral",
-          "title": "Point de validation",
-          "text": "Vérifie que tu sais refaire les éléments principaux sans regarder les exemples. Si tu es en cours, tu peux montrer ton travail au professeur. Sinon, passe au module suivant quand tu te sens prêt.",
-          "id": "pause"
+          "type": "tasks",
+          "title": "Teste et explique ta page",
+          "id": "pause",
+          "intro": "Compare le résultat visible avec le code, puis garde la page et une courte note des tests et aides utilisés.",
+          "items": [
+            {
+              "id": "verifier-page",
+              "text": "Repère les deux h2, les deux p et les trois li dans ul ; vérifie leurs fermetures. Explique l’organisation sans te limiter à leur apparence.",
+              "hint": "Un aperçu satisfaisant ne suffit pas : le navigateur peut réparer des erreurs de balises."
+            },
+            {
+              "id": "tester-lien",
+              "text": "Teste le lien et compare sa destination à href. Si le test est bloqué, décris le blocage au lieu d’affirmer que le lien fonctionne.",
+              "hint": "Le texte du lien et l’adresse sont deux choses différentes. Une limite réseau ou d’aperçu demande un autre test, pas une modification au hasard."
+            },
+            {
+              "id": "modifier-page",
+              "text": "Change un paragraphe et ajoute un li sans remplacer les autres. Vérifie le résultat et explique ce que tu as modifié."
+            }
+          ]
         }
       ],
-      "theme": "debutants"
+      "theme": "debutants",
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Choisir h1 pour le titre principal et h2 pour une partie."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Délimiter un paragraphe avec p et /p."
+        },
+        {
+          "skillId": "html.lists",
+          "expectation": "Placer chaque li à l’intérieur de ul."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer le texte d’un lien de sa destination href."
+        }
+      ],
+      "masteryCriteria": [
+        "Reconstruire une page réunissant titres, paragraphes, liste et lien sur un nouveau sujet ; préciser les modèles, indices ou aides utilisés.",
+        "Justifier deux h2 de même niveau et vérifier dans le code les deux p et les trois li placés dans ul.",
+        "Prévoir puis tester la destination du lien ; distinguer href, texte visible et éventuel blocage de l’environnement.",
+        "Modifier une partie de la page sans perdre les autres, puis expliquer l’effet obtenu et conserver le résultat."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "html-liens",
+          "blockId": "autonome",
+          "label": "Reprendre texte et destination du lien"
+        },
+        {
+          "moduleId": "html-mini-page-fondations",
+          "blockId": "defi",
+          "label": "Reprendre une mini-page sans lien"
+        }
+      ],
+      "bonusActivities": [],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Reconstruire seul une page avec les notions déjà apprises.",
+        "entryDiagnosis": [
+          "Faire rappeler les quatre familles de notions sans donner une page complète.",
+          "Demander comment conserver l’essai précédent et distinguer un lien visible d’un lien testé."
+        ],
+        "preparation": [
+          "Prévoir la sauvegarde du travail précédent et vérifier les zones utiles de CodePen sans imposer de compte.",
+          "Tester l’accès et l’aperçu ; distinguer une difficulté de l’environnement d’une difficulté de compréhension."
+        ],
+        "why": "Vérifier le réinvestissement conjoint des notions HTML dans une page personnelle, avec des essais de modification et un test réel de destination.",
+        "discoverySpeech": [
+          "« Les deux parties ont la même importance : elles ont deux h2. »",
+          "« Teste ce que tu peux tester ; décris un blocage au lieu d’inventer un résultat. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "html-revision",
+            "blockId": "revision-html-titres-paragraphes"
+          },
+          "comments": [
+            "Les exemples de syntaxe sont des aides repliées : relever leur usage après le premier essai.",
+            "Le bloc de tests vient après la construction ; accompagner le diagnostic sans réaliser toute la page.",
+            "Ne pas imposer h3, images, CSS ni bonus au socle."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi deux h2 plutôt qu’un h2 et un h3 ?",
+            "answer": "Les deux parties demandées sont de même importance ; h3 annoncerait une sous-partie."
+          },
+          {
+            "question": "Comment reconnaître deux paragraphes ?",
+            "answer": "Par deux éléments p distincts dans le code et leur contenu dans l’aperçu."
+          },
+          {
+            "question": "Où placer le nouvel élément de liste ?",
+            "answer": "Dans un nouveau li avant /ul sans remplacer les autres."
+          },
+          {
+            "question": "Que faut-il prévoir avant d’ouvrir le lien ?",
+            "answer": "La destination annoncée par son texte et l’adresse écrite dans href."
+          },
+          {
+            "question": "Que conclure si l’aperçu bloque le site distant ?",
+            "answer": "Le test est limité ; ce blocage ne prouve ni une erreur HTML ni un lien fonctionnel."
+          },
+          {
+            "question": "Comment apprécier l’autonomie ?",
+            "answer": "Observer les choix, explications et modifications sur le nouveau sujet, avec une trace des modèles, indices et aides."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "html-revision",
+          "blockId": "pause"
+        },
+        "independentActivity": {
+          "moduleId": "html-revision",
+          "blockId": "consigne"
+        },
+        "differentiation": [
+          "Observer un premier essai avant de fournir une aide ; accompagner les gestes sans faire les choix à la place de l’élève.",
+          "Demander une explication et une modification limitée plutôt qu’une copie de tout le modèle.",
+          "Distinguer réussite autonome, avec modèle ou avec aide ; conserver les indices de compréhension et les difficultés."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Les niveaux de titres remplacent la mise en forme.",
+            "helps": [
+              "Faire décrire les deux parties.",
+              "Demander si l’une appartient à l’autre.",
+              "Comparer h2 de même niveau et h3 sous-partie.",
+              "Faire corriger les deux titres et justifier leur relation."
+            ]
+          },
+          {
+            "symptom": "Le lien est considéré testé parce qu’il est visible.",
+            "helps": [
+              "Demander la destination attendue.",
+              "Repérer href et le libellé.",
+              "Faire comparer l’adresse après un test autorisé ; noter toute limite réseau.",
+              "Faire créer ou modifier un lien puis refaire la comparaison sans guidage."
+            ]
+          },
+          {
+            "symptom": "Une modification détruit le reste de la page.",
+            "helps": [
+              "Retrouver la copie de l’essai.",
+              "Localiser le seul élément à changer.",
+              "Limiter l’édition au contenu d’un p ou à un li supplémentaire.",
+              "Faire une autre modification autonome puis vérifier que les autres éléments restent présents."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Aucun acquis n’est déduit de la checklist, de l’ouverture d’un module ou du code copié. Noter les aides utilisées et décider d’une reprise selon les observations, sans verdict automatique d’orientation.",
+        "quickConductor": [
+          "Préserver l’essai et repérer le cahier des charges.",
+          "Observer les choix lors de la construction ou de l’adaptation.",
+          "Comparer code, aperçu et résultat des tests.",
+          "Faire modifier un élément puis expliquer l’effet.",
+          "Conserver le résultat et les aides utilisées ; proposer une reprise ciblée si nécessaire."
+        ],
+        "references": [
+          {
+            "title": "WHATWG — Titres",
+            "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
+          },
+          {
+            "title": "WHATWG — Lien",
+            "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element"
+          }
+        ]
+      }
     },
     "html-images": {
       "domainId": "web",
@@ -10835,7 +11649,7 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Crée une mini-page complète sur un sujet de ton choix. Essaie de ne regarder aucun indice. Utilise la checklist pour vérifier que rien ne manque.",
             "Résultat attendu : une page lisible sur un sujet de ton choix, où les liens fonctionnent et les images sont décrites. Tu réutilises les notions déjà apprises ; aucun CSS n’est demandé.",
-            "Travaille sans IA et essaie sans modèle. Les liens de consolidation en bas permettent de reprendre seulement une notion si tu bloques ; reviens ensuite à ton propre défi, sans recopier une page complète.",
+            "Travaille sans IA et essaie sans modèle. Le parcours accessible dans le fil d’Ariane permet de retrouver la leçon d’une notion qui bloque ; reviens ensuite à ton propre défi, sans recopier une page complète.",
             "Dans CodePen, utilise HTML ; CSS et JS peuvent rester vides. Pour les images, les ressources du module Images restent disponibles : copie uniquement la source entière dans src et rédige toi-même alt.",
             "Tu peux améliorer une page déjà commencée. Vérifie alors chaque exigence et fais aussi une modification nouvelle pour montrer ce que tu comprends."
           ]
@@ -10878,7 +11692,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "niveaux-titres",
-              "text": "Plusieurs niveaux de titres."
+              "text": "Deux sous-titres h2 pour deux parties de même importance."
             },
             {
               "id": "paragraphes",
@@ -11223,7 +12037,7 @@ window.CODECRAFT_DATA = {
           }
         ],
         "notes": [
-          "Pas de solution HTML complète publiée dans ce défi. Pour la correction, vérifier : un h1, plusieurs niveaux de titres, trois p au moins, un ul/li, deux a avec destinations testées, deux img avec sources et alt utiles.",
+          "Pas de solution HTML complète publiée dans ce défi. Pour la correction, vérifier : un h1, deux h2 pour des parties de même importance, trois p au moins, un ul/li, deux a avec destinations testées, deux img avec sources et alt utiles.",
           "Solution attendue du transfert : changer href sans toucher au texte du a ; remplacer la valeur de src et réécrire alt ; insérer un nouveau li à l’intérieur du ul. Le sujet et les mots restent libres.",
           "Observer et noter si utile autonome/avec modèle/avec aide dans la remarque existante, sans nouvel outil. Une case cochée ne vaut pas acquisition.",
           "Si le noyau HTML est compris, proposer C1, C2 ou l’affiche selon les acquis CSS. Aucun passage obligé par un bonus. Structure d’un document HTML et Fichiers et chemins sont désormais accessibles pour poursuivre avec des fichiers locaux.",
@@ -11895,7 +12709,7 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Si tu sais réaliser et expliquer les changements avec peu ou pas d’aide, tu peux continuer dans Débutants à partir du premier besoin restant. Tu n’as pas à refaire les compétences déjà comprises.",
             "Une difficulté sur une classe ou une couleur appelle une reprise ciblée. L’affiche n’est pas une validation automatique, et son bonus n’est pas obligatoire. Si tu es en cours, le professeur choisit avec toi la suite adaptée.",
-            "Si tu n’as pas encore réalisé la mini-page HTML complète, elle reste accessible ci-dessous lorsque titres, listes, liens et images sont compris. Aucun nouveau cours annoncé mais indisponible n’est nécessaire pour terminer cette affiche."
+            "Si tu n’as pas encore réalisé la mini-page HTML complète, retrouve-la dans le parcours depuis le fil d’Ariane lorsque titres, listes, liens et images sont compris. Pour poursuivre dans Débutants sans tout refaire, choisis Structure d’un document HTML si tu sais déjà expliquer ton HTML, tes classes et tes couleurs."
           ]
         }
       ],
@@ -12545,7 +13359,7 @@ window.CODECRAFT_DATA = {
           "title": "Le fichier index.html",
           "paragraphs": [
             "Copie ce cadre dans ton fichier d’exercice si tu n’en as pas encore. Si tu connais déjà le document complet, tu peux insérer seulement le contenu entre body et /body dans ton cadre existant.",
-            "head contient ici les réglages et le titre d’onglet ; body contient les éléments visibles. Pour comprendre ce cadre en détail, utilise Structure d’un document HTML dans les reprises en bas.",
+            "head contient ici les réglages et le titre d’onglet ; body contient les éléments visibles. Pour comprendre ce cadre en détail, retrouve Structure d’un document HTML depuis le parcours dans le fil d’Ariane.",
             "Observe la même adresse dans src et href. Le h1, le paragraphe, le lien et l’image utilisent des notions déjà rencontrées. alt décrit le dessin, tandis que le texte du lien annonce ce qui s’ouvrira."
           ],
           "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mes ressources</title>\n</head>\n<body>\n  <h1>Une forme à observer</h1>\n  <p>Mon dessin est rangé dans le dossier images.</p>\n  <img src=\"images/carre-bleu.svg\" alt=\"Un carré bleu\">\n  <p><a href=\"images/carre-bleu.svg\">Ouvrir le dessin du carré</a></p>\n</body>\n</html>"
@@ -12929,7 +13743,7 @@ window.CODECRAFT_DATA = {
           "id": "prerequis-css",
           "title": "Avant de commencer — La règle CSS",
           "tone": "neutral",
-          "text": "Tu dois pouvoir expliquer h1 { color: blue; } et modifier sa couleur. Si tu hésites encore entre sélecteur, propriété et valeur, reprends Découvrir le CSS puis utilise Retour dans ton navigateur pour revenir ici. Les liens de reprise du document et des chemins sont aussi disponibles en bas.",
+          "text": "Tu dois pouvoir expliquer h1 { color: blue; } et modifier sa couleur. Si tu hésites encore entre sélecteur, propriété et valeur, reprends Découvrir le CSS puis utilise Retour dans ton navigateur pour revenir ici. Retrouve les leçons du document et des chemins depuis le parcours dans le fil d’Ariane si nécessaire.",
           "moduleLink": {
             "text": "Découvrir le CSS",
             "moduleId": "css-decouverte"
@@ -13383,7 +14197,7 @@ window.CODECRAFT_DATA = {
       "domainId": "web",
       "title": "Préparer un projet de cartes",
       "type": "practice",
-      "objective": "Préparer une base de plusieurs cartes avant d'apprendre à les organiser avec Flexbox.",
+      "objective": "Préparer et vérifier une base de trois cartes pour travailler ensuite leur structure et leur disposition.",
       "skillIds": [
         "html.structure",
         "css.selectors",
@@ -13393,9 +14207,16 @@ window.CODECRAFT_DATA = {
       ],
       "blocks": [
         {
+          "id": "preparer",
+          "type": "callout",
+          "tone": "neutral",
+          "title": "Avant de commencer",
+          "text": "Tu peux utiliser ton projet ou la base fournie : aucune maîtrise préalable de Flexbox n’est demandée. Conserve le HTML et le CSS actuels dans deux fichiers texte avant de les remplacer. Dans CodePen, utilise les zones HTML et CSS, pas JavaScript ; aucun compte n’est nécessaire. Une base copiée permet de travailler, mais ne prouve pas que toutes ses propriétés CSS sont maîtrisées."
+        },
+        {
           "type": "tasks",
           "title": "1 — Choisis ta base de travail",
-          "intro": "Si tu possèdes déjà une page avec plusieurs cartes, ouvre-la pour l’utiliser. Sinon, ouvre CodePen et crée une base avec le HTML et le CSS de départ fournis ci-dessous. Aucun cours précédent n’est nécessaire.",
+          "intro": "Si tu as déjà plusieurs cartes, garde une copie puis vérifie-les avec les repères ci-dessous. Sinon, ouvre la base de départ et copie le HTML et le CSS dans leurs zones respectives. Il est normal que les cartes soient empilées à ce stade.",
           "items": [
             {
               "id": "retrouver-projet",
@@ -13413,16 +14234,20 @@ window.CODECRAFT_DATA = {
               "title": "HTML de départ",
               "code": "<div class=\"cartes\">\n  <div class=\"carte\">\n    <h2>Carte 1</h2>\n    <p>Premier contenu.</p>\n  </div>\n\n  <div class=\"carte\">\n    <h2>Carte 2</h2>\n    <p>Deuxième contenu.</p>\n  </div>\n\n  <div class=\"carte\">\n    <h2>Carte 3</h2>\n    <p>Troisième contenu.</p>\n  </div>\n</div>",
               "paragraphs": [
-                "Recopie ce code dans la zone HTML de CodePen. Il contient un conteneur .cartes et trois .carte, chacune avec un titre et un paragraphe. Tu peux personnaliser leurs textes."
-              ]
+                "Copie ce code dans la zone HTML. class=\"cartes\" nomme le groupe extérieur ; chaque class=\"carte\" nomme une carte contenant un h2 et un p. Le point de .carte appartient au sélecteur CSS, pas au nom écrit dans class.",
+                "Personnalise les trois titres et leurs paragraphes pour les distinguer. N’ajoute pas encore de règles Flexbox."
+              ],
+              "id": "base-html"
             },
             {
               "type": "lesson",
               "title": "CSS de départ",
               "code": ".cartes {\n  max-width: 800px;\n  margin: 20px auto;\n}\n\n.carte {\n  border: 2px solid #24324a;\n  padding: 20px;\n  margin: 10px;\n  border-radius: 12px;\n}\n\n.carte:hover {\n  background-color: #eeeeee;\n}",
               "paragraphs": [
-                "Recopie ce code dans la zone CSS. Les cartes restent les unes sous les autres : cette base sert uniquement à préparer leur contenu et leur apparence. Survole une carte pour observer son changement de fond."
-              ]
+                "Copie ce code dans la zone CSS. Les cartes restent les unes sous les autres : on prépare leur contenu et leur apparence, pas encore leur disposition.",
+                "La règle .carte s’applique à chaque élément de cette classe. .carte:hover change le fond pendant le survol à la souris ; un écran tactile peut ne pas reproduire ce comportement."
+              ],
+              "id": "base-css"
             }
           ],
           "id": "secours"
@@ -13430,9 +14255,11 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "role-checklist",
-          "title": "À quoi sert la checklist ?",
+          "title": "Comprendre les repères de la base",
           "paragraphs": [
-            "La checklist vérifie seulement que ta base technique est prête. Cocher une case ne signifie pas que tu maîtrises déjà la notion : tu peux avoir utilisé le code de départ. Compare ta page et ton code avec chaque élément demandé."
+            "Dans le HTML, le groupe .cartes entoure trois .carte distinctes ; chaque carte contient son titre et son paragraphe. Vérifie les ouvertures et fermetures des div, pas seulement l’aperçu.",
+            "Dans le CSS, border dessine la bordure ; padding écarte le contenu de cette bordure, à l’intérieur ; margin laisse de l’espace à l’extérieur ; border-radius arrondit les coins.",
+            "La checklist vérifie la présence de ces éléments, pas leur maîtrise. Si tu as copié la base, indique-le ; les manipulations qui suivent permettent de commencer à expliquer son fonctionnement."
           ]
         },
         {
@@ -13441,57 +14268,208 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "html-structure",
-              "text": "La page contient plusieurs éléments HTML bien organisés."
+              "text": "Je repère un groupe .cartes qui contient trois .carte distinctes et je vérifie les fermetures des div."
             },
             {
               "id": "classes",
-              "text": "J'ai utilisé plusieurs classes CSS."
+              "text": "Dans le HTML, class=\"carte\" correspond au sélecteur .carte du CSS ; je ne confonds pas carte et cartes."
             },
             {
               "id": "trois-cartes",
-              "text": "J'ai créé au moins 3 cartes."
+              "text": "Je compte trois cartes aux titres et paragraphes personnalisés dans le code et dans l’aperçu."
             },
             {
               "id": "bordures",
-              "text": "Mes cartes ont une bordure."
+              "text": "Je repère border dans .carte et je vois une bordure autour de chacune."
             },
             {
               "id": "padding",
-              "text": "J'ai utilisé padding."
+              "text": "Je repère padding : l’espace entre le contenu et la bordure est à l’intérieur de la carte."
             },
             {
               "id": "margin",
-              "text": "J'ai utilisé margin."
+              "text": "Je repère margin : l’espace est à l’extérieur de la carte."
             },
             {
               "id": "radius",
-              "text": "J'ai utilisé border-radius."
+              "text": "Je repère border-radius et j’observe les coins arrondis."
             },
             {
               "id": "hover",
-              "text": "J'ai créé au moins un effet :hover."
+              "text": "Je repère .carte:hover ; je teste le fond au survol si une souris est disponible. Sur tactile, je signale la limite du test."
             }
           ],
           "id": "verification"
         },
         {
-          "type": "callout",
-          "tone": "neutral",
-          "title": "Point de vérification",
-          "text": "Si tu réalises ce module pendant un cours, montre ton projet au professeur avant de continuer. Si tu travailles seul, vérifie que tous les éléments de la checklist sont présents avant de passer au module suivant.",
-          "id": "pause"
+          "type": "tasks",
+          "title": "Manipule une propriété à la fois",
+          "id": "pause",
+          "intro": "Travaille sur une copie et note la valeur de départ pour pouvoir la rétablir.",
+          "items": [
+            {
+              "id": "tester-padding",
+              "text": "Dans .carte, change seulement padding de 20px à 40px. Compare l’espace intérieur puis rétablis 20px.",
+              "hint": "Observe la distance entre le texte et sa bordure, pas l’espace extérieur entre les cartes."
+            },
+            {
+              "id": "tester-margin",
+              "text": "Change seulement margin de 10px à 25px. Compare l’espace extérieur puis rétablis 10px.",
+              "hint": "Garde padding inchangé : on compare une seule propriété à la fois."
+            },
+            {
+              "id": "adapter-carte",
+              "text": "Sans recopier toute la base, ajoute une quatrième carte dans le groupe .cartes. Donne-lui un titre et un paragraphe différents et explique pourquoi la règle .carte s’applique aussi à elle.",
+              "hint": "Ajoute un élément de classe carte avant la fermeture du groupe cartes. Vérifie les div et le résultat."
+            }
+          ]
         },
         {
           "type": "lesson",
           "id": "transition",
           "title": "Et ensuite ?",
           "paragraphs": [
-            "Tes cartes sont maintenant prêtes. Dans le prochain module, tu vas apprendre à identifier leur parent et leurs enfants avant de les organiser avec Flexbox."
+            "Si tu repères le groupe et ses cartes et que les tests précédents sont faits, conserve le HTML et le CSS. Tu pourras réutiliser cette base pour travailler Parent et enfants, puis Flexbox.",
+            "Si tu as utilisé le modèle ou une aide, indique-le : une base prête n’est pas une validation de toutes les notions HTML/CSS qu’elle contient."
           ]
         }
       ],
       "theme": "avances",
-      "bonus": "Ta base de travail est prête. Après le point de vérification, passe au module « Parent et enfants »."
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [],
+      "masteryCriteria": [
+        "Préparer et conserver une base de trois cartes personnalisées, en indiquant si elle vient du modèle ou d’un projet personnel.",
+        "Repérer le groupe cartes, les éléments de classe carte et la règle .carte qui s’applique à chacun.",
+        "Comparer padding et margin en modifiant une seule valeur à la fois, puis rétablir les valeurs de départ.",
+        "Ajouter une quatrième carte dans le groupe sans recopier toute la base et expliquer le style obtenu ; préciser les aides utilisées."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "css-boites-espacements",
+          "label": "Reprendre les espaces intérieur et extérieur"
+        }
+      ],
+      "bonusActivities": [],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Préparer et vérifier une base de trois cartes pour travailler ensuite leur structure et leur disposition.",
+        "entryDiagnosis": [
+          "Demander si l’élève dispose d’un projet ou doit utiliser la base fournie ; accepter les deux entrées.",
+          "Observer les repères HTML/CSS et proposer un accompagnement sans exiger Flexbox ni un projet précédent."
+        ],
+        "preparation": [
+          "Prévoir la sauvegarde du travail précédent et vérifier les zones utiles de CodePen sans imposer de compte.",
+          "Tester l’accès et l’aperçu ; distinguer une difficulté de l’environnement d’une difficulté de compréhension."
+        ],
+        "why": "Préparer un support stable pour Parent et enfants puis Flexbox, sans assimiler la copie du code de secours à une maîtrise globale du CSS.",
+        "discoverySpeech": [
+          "« Une base copiée est utilisable ; elle ne dit pas encore ce que tu sais expliquer. »",
+          "« Change une seule propriété, compare, puis remets la valeur de départ. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "web-projet-cartes",
+            "blockId": "base-html"
+          },
+          "comments": [
+            "Le HTML de départ regroupe trois cartes ; faire montrer les ouvertures et fermetures des div.",
+            "Le CSS de secours reste disponible dans le même bloc : nom de classe HTML sans point, sélecteur CSS avec point.",
+            "max-width et margin auto sont fournis pour l’apparence de la base, pas évalués ici ; ne pas ajouter Flexbox.",
+            "Le survol est testé avec une souris si disponible, sans pénaliser une limite tactile."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Quelle différence entre cartes et carte ?",
+            "answer": "cartes nomme le groupe extérieur ; carte nomme chaque élément auquel la règle .carte s’applique."
+          },
+          {
+            "question": "Où écrit-on le point de .carte ?",
+            "answer": "Dans le sélecteur CSS ; la valeur HTML est class=\"carte\"."
+          },
+          {
+            "question": "Que compare le test de padding ?",
+            "answer": "L’espace intérieur entre contenu et bordure ; margin reste inchangé."
+          },
+          {
+            "question": "Que compare le test de margin ?",
+            "answer": "L’espace extérieur ; padding reste inchangé. On ne déduit pas une distance exacte des marges verticales."
+          },
+          {
+            "question": "Pourquoi la quatrième carte a-t-elle le même style ?",
+            "answer": "Elle porte la classe carte, donc la même règle CSS s’applique aussi à elle."
+          },
+          {
+            "question": "Que prouve la checklist ou le survol ?",
+            "answer": "La présence des éléments et le comportement testé, pas la maîtrise de toutes les propriétés ; sur tactile le test du survol peut être limité."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "web-projet-cartes",
+          "blockId": "pause"
+        },
+        "independentActivity": {
+          "moduleId": "web-projet-cartes",
+          "blockId": "pause",
+          "itemId": "adapter-carte"
+        },
+        "differentiation": [
+          "Observer un premier essai avant de fournir une aide ; accompagner les gestes sans faire les choix à la place de l’élève.",
+          "Demander une explication et une modification limitée plutôt qu’une copie de tout le modèle.",
+          "Distinguer réussite autonome, avec modèle ou avec aide ; conserver les indices de compréhension et les difficultés."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le nom de classe et le sélecteur ne correspondent pas.",
+            "helps": [
+              "Faire repérer la classe HTML et la règle CSS.",
+              "Comparer carte et cartes caractère par caractère.",
+              "Rappeler que le point appartient au sélecteur CSS, pas à la valeur de class.",
+              "Corriger un nom puis ajouter une carte et expliquer son style."
+            ]
+          },
+          {
+            "symptom": "Padding et margin sont confondus.",
+            "helps": [
+              "Faire montrer le contenu et la bordure.",
+              "Changer seulement padding puis revenir à la valeur initiale.",
+              "Changer seulement margin et comparer l’espace extérieur.",
+              "Faire expliquer la différence sans imposer une distance exacte entre les cartes."
+            ]
+          },
+          {
+            "symptom": "La quatrième carte est placée hors du groupe.",
+            "helps": [
+              "Faire compter les cartes dans le code.",
+              "Repérer l’ouverture et la fermeture du groupe cartes.",
+              "Comparer la place des trois cartes puis déplacer le nouvel élément avant la fermeture du groupe.",
+              "Faire ajouter un contenu différent et justifier la structure sans recopier toute la base."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Aucun acquis n’est déduit de la checklist, de l’ouverture d’un module ou du code copié. Noter les aides utilisées et décider d’une reprise selon les observations, sans verdict automatique d’orientation.",
+        "quickConductor": [
+          "Préserver l’essai et repérer le cahier des charges.",
+          "Observer les choix lors de la construction ou de l’adaptation.",
+          "Comparer code, aperçu et résultat des tests.",
+          "Faire modifier un élément puis expliquer l’effet.",
+          "Conserver le résultat et les aides utilisées ; proposer une reprise ciblée si nécessaire."
+        ],
+        "references": [
+          {
+            "title": "MDN — Padding",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/padding"
+          },
+          {
+            "title": "MDN — Margin",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/margin"
+          },
+          {
+            "title": "MDN — Survol",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
+          }
+        ]
+      }
     },
     "html-parent-enfants": {
       "domainId": "web",
@@ -13588,7 +14566,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "copier-structure",
-              "text": "Recopie l’exemple des deux cartes dans la zone HTML."
+              "text": "Conserve ton HTML et ton CSS dans deux fichiers texte. Dans un nouveau Pen, recopie l’exemple des deux cartes dans la zone HTML ; garde ton projet précédent intact."
             },
             {
               "id": "troisieme-carte",
@@ -13676,7 +14654,7 @@ window.CODECRAFT_DATA = {
           "id": "transition",
           "title": "Et ensuite ?",
           "paragraphs": [
-            "Maintenant que tu sais identifier le parent et ses enfants, tu peux organiser une page en zones selon leur rôle. Si tu comprends aussi les classes CSS, tu peux explorer comment Flexbox organise les enfants d’un parent. Choisis la suite selon les prérequis indiqués ; les deux liens restent accessibles."
+            "Si tu peux expliquer le parent direct et ses enfants, tu peux organiser une page en zones selon leur rôle. Si tu comprends aussi les classes CSS, tu peux explorer comment Flexbox organise les enfants d’un parent. Dans Débutants, la suite est Organiser une page en zones ; dans Avancés, c’est Flexbox. Utilise la navigation de ton parcours et reprends seulement la notion qui bloque."
           ]
         }
       ],
@@ -13907,7 +14885,7 @@ window.CODECRAFT_DATA = {
           "title": "Base fournie — Apparence et espace d’observation",
           "paragraphs": [
             "Si tu arrives avec uniquement du HTML, voici le CSS nécessaire pour le diagnostic et les essais. Copie-le avant les questions suivantes.",
-            "Garde le HTML des trois cartes. Pour cet exercice, remplace le CSS de départ par la base ci-dessous ; ajoute ensuite les propriétés apprises dans la règle .cartes existante.",
+            "Retrouve le projet conservé avant l’exercice Parent et enfants. Garde son HTML avec au moins trois cartes et conserve son HTML et son CSS dans deux fichiers texte. Dans une copie du projet, remplace le CSS de départ par la base ci-dessous ; ajoute ensuite les propriétés apprises dans la règle .cartes existante.",
             "Les bordures, couleurs, tailles et espaces intérieurs ci-dessous servent uniquement à rendre les cartes et leur conteneur visibles. min-height donne au conteneur de la place pour observer l’alignement. min-width évite que les cartes deviennent trop étroites.",
             "Tu n’as pas besoin de savoir recréer cette apparence pour commencer Flexbox. Copier ce CSS ne prouve pas que tu maîtrises ces propriétés. La marge des cartes est mise à zéro pour mieux observer gap.",
             "Dans ce module, tu apprends à manipuler display, flex-direction, gap, justify-content, align-items et flex-wrap."
@@ -14458,92 +15436,6 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
-    "diagnostic-web": {
-      "domainId": "web",
-      "title": "Diagnostic Web",
-      "type": "diagnostic",
-      "objective": "Voir rapidement ce que tu sais déjà faire pour rejoindre le bon parcours.",
-      "skillIds": [
-        "html.headings",
-        "html.text",
-        "html.lists",
-        "html.links",
-        "css.colors",
-        "css.selectors",
-        "css.spacing",
-        "css.hover"
-      ],
-      "blocks": [
-        {
-          "type": "callout",
-          "tone": "neutral",
-          "title": "Diagnostic rapide",
-          "text": "Travaille sans Google, sans IA et sans aide. Fais uniquement ce que tu sais déjà faire. Dès qu'une étape est inconnue, arrête-toi et lève la main.",
-          "id": "diagnostic-0"
-        },
-        {
-          "type": "tasks",
-          "title": "Fais les étapes dans l'ordre",
-          "items": [
-            {
-              "id": "titre",
-              "text": "Créer un titre principal avec HTML."
-            },
-            {
-              "id": "autre-titre",
-              "text": "Créer un autre niveau de titre."
-            },
-            {
-              "id": "paragraphe",
-              "text": "Créer un paragraphe."
-            },
-            {
-              "id": "liste",
-              "text": "Créer une liste de trois éléments."
-            },
-            {
-              "id": "lien",
-              "text": "Créer un lien vers un site."
-            },
-            {
-              "id": "couleur",
-              "text": "Si tu connais CSS, changer la couleur d'un élément."
-            },
-            {
-              "id": "classe",
-              "text": "Créer une classe CSS et l'utiliser sur un élément."
-            },
-            {
-              "id": "espacements",
-              "text": "Utiliser margin et padding."
-            },
-            {
-              "id": "hover",
-              "text": "Créer un effet :hover si tu connais cette notion."
-            }
-          ],
-          "id": "diagnostic-1"
-        },
-        {
-          "type": "callout",
-          "tone": "stop",
-          "title": "Tu as terminé ou tu es bloqué ?",
-          "text": "Lève la main. Le professeur regardera jusqu'où tu es arrivé et te dira quel parcours rejoindre.",
-          "id": "diagnostic-2"
-        }
-      ],
-      "theme": "rattrapage",
-      "stuck": {
-        "title": "Je ne sais pas faire une étape",
-        "steps": [
-          "Ne cherche pas la réponse.",
-          "Ne regarde pas d’indice.",
-          "Arrête-toi à cette étape.",
-          "Lève la main."
-        ]
-      },
-      "bonus": "Aucun bonus pendant le diagnostic : attends que le professeur t'indique ton parcours."
-    }
   },
   "pathways": {
     "python-debutants": {
@@ -14562,7 +15454,7 @@ window.CODECRAFT_DATA = {
       "domainId": "web",
       "title": "Fondations",
       "theme": "fondations",
-      "objective": "Construire une première page HTML, puis la personnaliser avec des classes et des couleurs CSS.",
+      "objective": "Construire une mini-page HTML avec titres, listes, liens et images, puis créer une affiche avec des classes et des couleurs CSS.",
       "moduleIds": [
         "html-titres-paragraphes",
         "html-listes",
@@ -14579,7 +15471,7 @@ window.CODECRAFT_DATA = {
       "domainId": "web",
       "title": "Débutants",
       "theme": "debutants",
-      "objective": "Construire une page HTML avec des titres, des textes, des listes, des liens et des images, puis découvrir les classes et les couleurs CSS.",
+      "objective": "Structurer et styliser des pages HTML, gérer les fichiers et les images, puis construire un mini-site local avec une feuille CSS commune.",
       "moduleIds": [
         "html-titres-paragraphes",
         "html-listes",
@@ -14617,7 +15509,8 @@ window.CODECRAFT_DATA = {
     "fondations": "parcours/web-fondations",
     "debutants": "parcours/web-debutants",
     "avances": "parcours/web-avances",
-    "rattrapage": "module/diagnostic-web"
+    "rattrapage": "domaine/web",
+    "module/diagnostic-web": "domaine/web"
   }
 ,
   teacher: {
