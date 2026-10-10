@@ -18,7 +18,7 @@ test('cohérence des transitions Web et conservation des essais', () => {
   assert.equal(block('css-classes-couleurs', 'reprise-css').moduleLink.moduleId, 'css-decouverte');
   assert(data.pathways['web-fondations'].moduleIds.includes('css-decouverte'));
   assert(!data.pathways['web-debutants'].moduleIds.includes('css-decouverte'));
-  assert.deepEqual(Array.from(data.pathways['web-avances'].moduleIds), ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox']);
+  assert.deepEqual(Array.from(data.pathways['web-avances'].moduleIds), ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox', 'web-collection-cartes']);
   assert.match(JSON.stringify(block('web-affiche-numerique', 'suite')), /Structure d’un document HTML/);
   assert.match(JSON.stringify(block('html-parent-enfants', 'codepen')), /garde ton projet précédent intact/);
   assert.match(JSON.stringify(block('css-flexbox', 'apparence')), /au moins trois cartes.*deux fichiers texte.*copie du projet/);
@@ -35,7 +35,7 @@ test('consignes Web sans renvoi vers les anciens liens de pied de page', () => {
 test('Diagnostic Web retiré : catalogue sans liens morts et anciennes adresses vers le domaine', () => {
   assert.equal(data.modules['diagnostic-web'], undefined);
   assert.equal(data.domains.web.diagnosticModuleIds.length, 0);
-  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'web').length, 23);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'web').length, 24);
   assert.equal(data.aliases.rattrapage, 'domaine/web');
   assert.equal(data.aliases['module/diagnostic-web'], 'domaine/web');
   assert(!JSON.stringify(data.pathways).includes('diagnostic-web'));
@@ -112,7 +112,7 @@ test('cartes : préparation distincte de maîtrise, une propriété testée à l
 });
 
 test('revue HTML : trois contenus partagés, critères observables et guides résolus', () => {
-  assert.equal(Object.keys(data.modules).length, 54);
+  assert.equal(Object.values(data.modules).filter(module => module.domainId !== 'robotique').length, 62);
   for (const id of ids) {
     const module = data.modules[id];
     assert(data.pathways['web-fondations'].moduleIds.includes(id));

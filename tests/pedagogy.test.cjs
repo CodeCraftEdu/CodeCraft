@@ -84,7 +84,7 @@ test('inventaire Scratch partagé : démonstrations distinctes des bases élève
 test('lots Scratch : quatorze contenus réels, prérequis explicites et aucun acquis automatique', () => {
   assert.deepEqual(Array.from(data.pathways['scratch-debutants'].moduleIds), ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu', 'scratch-coordination', 'scratch-blocs-personnalises', 'scratch-clones', 'scratch-temps-difficulte', 'scratch-debogage', 'scratch-projet-personnel']);
   assert.equal(data.pathways['scratch-debutants'].domainId, 'jeux-video');
-  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'jeux-video').length, 14);
+  assert.equal(Object.keys(data.modules).filter(id => id.startsWith('scratch-')).length, 14);
   assert.equal(data.modules['scratch-decouverte'].prerequisiteSkills.length, 0);
   for (const id of data.pathways['scratch-debutants'].moduleIds) {
     const m = data.modules[id];
@@ -457,9 +457,9 @@ test('ressources CodePen : dessins embarqués identiques aux SVG du dépôt', ()
 });
 
 test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions facultatives', () => {
-  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python').length, 37);
-  assert.equal(Object.keys(data.skills).filter(id => !id.startsWith('python.')).length, 34);
-  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python' && m.teacherGuide).length, 37);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python' && m.domainId !== 'robotique').length, 42);
+  assert.equal(Object.keys(data.skills).filter(id => !id.startsWith('python.') && !id.startsWith('robotique.')).length, 38);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId !== 'python' && m.domainId !== 'robotique' && m.teacherGuide).length, 42);
   assert.equal(data.modules['html-mini-page'].type, 'challenge');
   assert.equal(data.modules['web-affiche-numerique'].type, 'project');
   assert.equal(JSON.stringify(data.modules['css-decouverte'].skillIds), '["css.colors"]');

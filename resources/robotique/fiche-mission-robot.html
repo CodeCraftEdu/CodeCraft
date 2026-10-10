@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ma mission de robot — fiche commune CodeCraft</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f1eee6; color: #263e43; font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 850px; margin: 30px auto; padding: 32px; background: #fffdf7; border-top: 5px solid #598b86; }
+    h1 { margin: 0 0 8px; font-size: 30px; } h2 { font-size: 20px; margin: 24px 0 10px; }
+    .brand { color: #5b486d; font-weight: 800; } .note { padding: 12px 16px; background: #edf5f3; }
+    .line { min-height: 42px; border-bottom: 1px solid #a5b9b4; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { border: 1px solid #9aaea9; padding: 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+    th { background: #edf5f3; } td { height: 102px; } th:first-child { width: 38%; }
+    small { display: block; margin-top: 6px; } .writing { min-height: 44px; border-bottom: 1px dotted #9aaea9; }
+    .actions { margin-bottom: 20px; } button, a { color: #263e43; font: inherit; }
+    button { padding: 8px 14px; border: 1px solid #598b86; background: #edf5f3; cursor: pointer; }
+    @media (max-width: 600px) { main { margin: 0; padding: 16px; } h1 { font-size: 25px; } th, td { padding: 6px; font-size: 13px; } }
+    @page { size: A4; margin: 14mm; }
+    @media print { body { background: white; font-size: 11pt; } main { margin: 0; padding: 0; max-width: none; border: 0; } .actions { display: none; } h1 { font-size: 22pt; } table, .note { break-inside: avoid; } th, td { padding: 7px; } td { height: 90px; } h2 { margin-top: 16px; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="actions"><button type="button" onclick="window.print()">Imprimer la fiche</button> · <a href="../../index.html#parcours/robotique-debutants">Parcours Robotique</a></div>
+  <p class="brand">CodeCraft · RB09 / RB10</p>
+  <h1>Ma mission et mes essais</h1>
+  <p>Même projet, même fiche pour les deux modules. Quelques mots suffisent ; tu peux dicter ou expliquer à l’oral. Rien n’est enregistré dans cette page.</p>
+  <p class="note"><strong>En préparation.</strong> Essais seulement avec les scènes et valeurs vérifiées par le professeur. Si un essai manque, écris « non testé ». Approche = marge plus petite, jamais recherche du contact.</p>
+  <h2>Ma mission</h2>
+  <p>Mon robot est un… ; sa mission est de s’arrêter avec une marge plus grande / plus petite que la référence.</p>
+  <div class="line" aria-label="Espace pour la phrase de mission"></div>
+  <p>Valeur choisie : seuil = __________ · Fichier : ______________________________</p>
+  <p>Explique ton choix à l’oral. Tu peux conserver une valeur qui convient. Garde l’original et la copie <strong>Ma-mission-robot</strong>.</p>
+  <h2>Prévoir, observer</h2>
+  <table>
+    <caption>Avant chaque essai, compare la mesure de départ à ton seuil et prévois ce qui se passera.</caption>
+    <thead><tr><th scope="col">Situation</th><th scope="col">Prévu</th><th scope="col">Observé</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">A · Même départ que la référence<small>Départ éloigné ; mêmes orientation, obstacle et puissance.</small></th><td></td><td>Premier essai RB09 :<div class="writing"></div>Confirmation RB10 :<div class="writing"></div></td></tr>
+      <tr><th scope="row">B · Proche au départ<small>Obstacle devant le capteur, sans contact initial ; même réglage.</small></th><td></td><td></td></tr>
+      <tr><th scope="row">C · Autre position d’obstacle<small>Départ éloigné ; même réglage et même puissance.</small></th><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p>Arrête avant tout placement. Note ce que tu observes au départ puis au cours de la même exécution. Compare ensuite à ta prévision. C vérifie un autre placement ; une comparaison de marge à la référence demanderait un nouvel essai de cette référence dans C. Si tu changes le programme ou son réglage, reprends A/B/C avant de conclure.</p>
+  <p>Correction et nouvel essai, seulement si nécessaire :</p><div class="line"></div>
+  <h2>Montrer et conserver</h2>
+  <p>Explique la règle, ton choix, une preuve et ce qui reste à vérifier. Dis les aides reçues. Exporte puis réimporte ton fichier avec aide si besoin : retrouve sa valeur et ses blocs.</p>
+  <small>Robot simulé : aucun arrêt mémorisé ni sécurité sur matériel réel validés. Cette fiche n’attribue pas de compétence automatiquement.</small>
+</main>
+</body>
+</html>

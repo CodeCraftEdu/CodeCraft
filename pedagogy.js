@@ -136,5 +136,16 @@
     } else el.append(node('p', project.studentInstructions));
     return el;
   }
-  window.CodeCraftPedagogy = { node, blocks, target, url, list, panel, prerequisites, criteria, relationList, orientations, resource, scratchProject };
+  // Position dans le catalogue, jamais progression ou validation d'un acquis.
+  function pathwayStage(moduleId, pathway) {
+    if (!pathway?.moduleIds.includes(moduleId)) return null;
+    const stages = pathway.stages || [];
+    const index = stages.findIndex(stage => stage.moduleIds.includes(moduleId));
+    if (index < 0) return null;
+    const stage = stages[index];
+    const moduleIds = stage.moduleIds.filter(id => pathway.moduleIds.includes(id) && data.modules[id]);
+    const position = moduleIds.indexOf(moduleId);
+    return { stage, number: index + 1, position: position + 1, total: moduleIds.length, isLast: position === moduleIds.length - 1 };
+  }
+  window.CodeCraftPedagogy = { node, blocks, target, url, list, panel, prerequisites, criteria, relationList, orientations, resource, scratchProject, pathwayStage };
 })();

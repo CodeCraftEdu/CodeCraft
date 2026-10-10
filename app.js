@@ -281,6 +281,17 @@
       figure.append(image, element('figcaption', '', block.illustration.caption));
       section.append(figure);
     }
+    if (block.downloads?.length) {
+      const downloads = element('ul', 'value-list');
+      block.downloads.forEach(resource => {
+        const item = element('li');
+        const anchor = link(resource.label, resource.path, 'lesson-text-link');
+        anchor.download = resource.filename;
+        item.append(anchor);
+        downloads.append(item);
+      });
+      section.append(downloads);
+    }
     if (block.coordinateDiagram) section.append(createCoordinateDiagram(block.coordinateDiagram));
     if (block.visualScript) {
       section.append(createScratchVisual(block.visualScript));
@@ -405,14 +416,21 @@
     main.append(element('h2', 'home-choice', data.site.homeChoiceLabel));
     const navigation = element('nav', 'route-grid home-domains');
     navigation.setAttribute('aria-label', 'Choisir un domaine');
+    const homeVisuals = {
+      'jeux-video': { name: 'game', tag: 'Scratch' },
+      python: { name: 'python', tag: 'Thonny' },
+      web: { name: 'web', tag: 'HTML · CSS' },
+      robotique: { name: 'robotique', tag: 'Circuits virtuels' }
+    };
     domains.forEach(id => {
       const domain = data.domains[id];
+      const visual = homeVisuals[id] || homeVisuals.web;
       const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', '#domaine/' + id);
-      entry.classList.add('home-domain', id === 'jeux-video' ? 'home-domain--game' : id === 'python' ? 'home-domain--python' : 'home-domain--web');
+      entry.classList.add('home-domain', 'home-domain--' + visual.name);
       const top = element('span', 'home-domain__top');
       top.setAttribute('aria-hidden', 'true');
       const scene = element('img', 'home-domain__scene');
-      scene.src = 'images/home-' + (id === 'jeux-video' ? 'game' : id === 'python' ? 'python' : 'web') + '.svg';
+      scene.src = 'images/home-' + visual.name + '.svg';
       scene.alt = '';
       scene.width = 400; scene.height = 108;
       top.append(scene);
@@ -422,7 +440,7 @@
       pictogram.width = 40; pictogram.height = 30;
       top.append(pictogram);
       entry.prepend(top);
-      entry.querySelector('.route-card-title').after(element('span', 'home-domain__tag', id === 'python' ? 'Thonny' : id === 'jeux-video' ? 'Scratch' : 'HTML · CSS'));
+      entry.querySelector('.route-card-title').after(element('span', 'home-domain__tag', visual.tag));
       entry.append(element('span', 'home-domain__action', 'Découvrir les parcours →'));
       navigation.append(entry);
     });
@@ -448,14 +466,39 @@
     start(pathway.title, pathway.theme, true, pathway.domainId);
     const article = element('article', 'lesson-page');
     article.append(intro(pathway.title, pathway.objective));
-    const list = element('ol', 'module-list');
-    pathway.moduleIds.forEach(moduleId => {
-      const item = data.modules[moduleId];
-      const row = element('li');
-      row.append(card(item.title, data.moduleTypes[item.type] + ' · ' + item.objective, moduleUrl(moduleId, id), pathway.theme));
-      list.append(row);
+    function moduleList(moduleIds) {
+      const list = element('ol', 'module-list');
+      const first = pathway.moduleIds.indexOf(moduleIds[0]);
+      if (first > 0) list.start = first + 1;
+      moduleIds.forEach(moduleId => {
+        const item = data.modules[moduleId];
+        const row = element('li');
+        row.append(card(item.title, data.moduleTypes[item.type] + ' · ' + item.objective, moduleUrl(moduleId, id), pathway.theme));
+        list.append(row);
+      });
+      return list;
+    }
+    const grouped = new Set();
+    (pathway.stages || []).forEach((stage, index) => {
+      const moduleIds = pathway.moduleIds.filter(moduleId => stage.moduleIds.includes(moduleId) && !grouped.has(moduleId));
+      if (!moduleIds.length && !stage.upcoming) return;
+      moduleIds.forEach(moduleId => grouped.add(moduleId));
+      const section = element('section', 'pathway-stage');
+      if (!moduleIds.length) section.classList.add('pathway-stage--upcoming');
+      const heading = element('h2', 'pathway-stage__title');
+      heading.id = 'pathway-stage-' + stage.id;
+      section.setAttribute('aria-labelledby', heading.id);
+      heading.append(element('span', 'pathway-stage__number', 'Étape ' + (index + 1)), element('span', '', stage.title));
+      section.append(heading, element('p', 'pathway-stage__description', stage.description));
+      if (moduleIds.length) section.append(moduleList(moduleIds));
+      if (stage.upcoming) section.append(element('p', 'pathway-stage__upcoming', stage.upcoming));
+      if (stage.pause) section.append(element('p', 'pathway-stage__pause', stage.pause));
+      article.append(section);
     });
-    article.append(list, link('← Retour aux parcours', domainUrl(pathway.domainId), 'button button--secondary back-button'));
+    const ungrouped = pathway.moduleIds.filter(moduleId => !grouped.has(moduleId));
+    if (ungrouped.length) article.append(moduleList(ungrouped));
+    if (pathway.nextStageLabel) article.append(element('p', 'pathway-stage__upcoming', pathway.nextStageLabel));
+    article.append(link('← Retour aux parcours', domainUrl(pathway.domainId), 'button button--secondary back-button'));
     main.append(article);
   }
 
@@ -484,6 +527,9 @@
     const item = data.modules[id];
     const candidate = own(data.pathways, requestedPathway);
     const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
+    const containing = Object.values(data.pathways).filter(value => value.domainId === item.domainId && value.moduleIds.includes(id));
+    const sequence = pathway || (containing.length === 1 ? containing[0] : null);
+    const stagePosition = pedagogy.pathwayStage(id, sequence);
     start(item.title, pathway ? pathway.theme : item.theme, true, item.domainId);
     document.body.dataset.lessonLayout = 'standard';
     const article = element('article', 'lesson-page');
@@ -507,11 +553,15 @@
       back.append(trail);
     }
     main.querySelector('.page-header--compact').append(back);
+    if (stagePosition) {
+      const { stage, number, position, total } = stagePosition;
+      article.append(element('p', 'lesson-stage-location', 'Étape ' + number + ' · ' + stage.title + (stage.upcoming ? ' — Leçon disponible' : ' — Module ' + position + ' sur ' + total)));
+    }
     article.append(intro(item.title, item.objective));
     // Le téléchargement de Thonny n'est utile qu'à l'installation. Scratch et
     // CodePen restent accessibles là où ils constituent l'environnement de travail.
-    const showTool = item.domainId === 'jeux-video' || id === 'python-thonny' ||
-      item.domainId === 'web';
+    const showTool = item.showTool !== false && (Boolean(item.tool) || item.domainId === 'jeux-video' || id === 'python-thonny' ||
+      item.domainId === 'web');
     const preparationBlock = item.blocks.find(block => block.type === 'callout' &&
       (block.id === 'preparer' || block.title.startsWith('Avant de commencer')));
     let preparation = null;
@@ -569,10 +619,9 @@
     const specificSupport = support(item);
     if (specificSupport) article.append(specificSupport);
     if (criteria) article.append(criteria);
+    if (stagePosition?.isLast && !stagePosition.stage.upcoming) article.append(element('p', 'lesson-stage-pause', stagePosition.stage.endMessage || ('Fin de l’étape ' + stagePosition.number + (stagePosition.stage.projectBlockId ? ' — conserve ton mini-projet : tu pourras le reprendre à la prochaine étape.' : ' — un bon moment pour faire une pause et reprendre ton projet avec une modification personnelle.'))));
     const navigation = element('nav', 'module-navigation module-navigation--lesson');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
-    const containing = Object.values(data.pathways).filter(value => value.domainId === item.domainId && value.moduleIds.includes(id));
-    const sequence = pathway || (containing.length === 1 ? containing[0] : null);
     if (sequence) {
       const position = sequence.moduleIds.indexOf(id);
       const previous = sequence.moduleIds[position-1];
@@ -580,6 +629,7 @@
       const context = pathway ? requestedPathway : null;
       if (previous) navigation.append(link('←\u00a0' + data.modules[previous].title, moduleUrl(previous, context), 'button button--secondary module-navigation__previous'));
       if (next) navigation.append(link(data.modules[next].title + '\u00a0→', moduleUrl(next, context), 'button button--primary module-navigation__next'));
+      else if (pathway && item.finalPathwayAction) navigation.append(link(item.finalPathwayAction, '#parcours/' + encodeURIComponent(requestedPathway), 'button button--primary module-navigation__next'));
     }
     if (navigation.childElementCount) article.append(navigation);
     main.append(article);

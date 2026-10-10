@@ -16,7 +16,7 @@ const orders = {
   'scratch-debutants': ['scratch-decouverte', 'scratch-actions', 'scratch-pilotage', 'scratch-boucles', 'scratch-reactions', 'scratch-variables', 'scratch-fin-partie', 'scratch-mini-jeu', 'scratch-coordination', 'scratch-blocs-personnalises', 'scratch-clones', 'scratch-temps-difficulte', 'scratch-debogage', 'scratch-projet-personnel'],
   'web-fondations': ['html-titres-paragraphes', 'html-listes', 'html-mini-page-fondations', 'html-liens', 'html-images', 'html-mini-page', 'css-decouverte', 'css-classes-couleurs', 'web-affiche-numerique'],
   'web-debutants': ['html-titres-paragraphes', 'html-listes', 'html-liens', 'html-revision', 'html-images', 'css-classes-couleurs', 'html-mini-page', 'html-document', 'html-fichiers-chemins', 'css-feuille-style', 'html-parent-enfants', 'html-zones', 'css-textes-lisibles', 'css-boites-espacements', 'css-dimensions-images', 'web-carte-personnelle', 'html-multipage', 'web-mini-site'],
-  'web-avances': ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox']
+  'web-avances': ['web-projet-cartes', 'html-parent-enfants', 'css-flexbox', 'web-collection-cartes']
 };
 for (const [id, order] of Object.entries(orders)) assert.deepEqual(data.pathways[id].moduleIds, order);
 for (const domain of Object.values(data.domains)) {
@@ -27,7 +27,7 @@ for (const module of Object.values(data.modules)) {
   assert(data.domains[module.domainId]);
   assert(data.moduleTypes[module.type]);
   for (const skill of module.skillIds) assert(data.skills[skill], skill);
-  const ids = module.blocks.flatMap(block => (block.items || []).map(item => item.id));
+  const ids = module.blocks.flatMap(block => (block.type === 'tasks' ? block.items || [] : []).map(item => item.id));
   assert.equal(new Set(ids).size, ids.length, module.title + ': identifiants de tâches uniques');
 }
 const css = data.modules['css-classes-couleurs'];

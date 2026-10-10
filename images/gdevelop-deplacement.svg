@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240" role="img" aria-labelledby="title desc">
+  <title id="title">Du personnage au pilotage</title>
+  <desc id="desc">Personnage reçoit un comportement fourni qui utilise les quatre flèches dans l’aperçu. Dans l’éditeur, on choisit sa place de départ.</desc>
+  <rect width="800" height="240" rx="10" fill="#f5ece3"/>
+  <g font-family="sans-serif" fill="#503d68">
+    <text x="24" y="32" font-size="20" font-weight="bold">Un fonctionnement fourni, à ajouter puis régler</text>
+    <rect x="24" y="55" width="200" height="130" rx="4" fill="#ead6b8"/>
+    <text x="40" y="83" font-size="18" font-weight="bold">Objet Personnage</text>
+    <text x="40" y="116" font-size="16">Son image reste droite</text>
+    <text x="40" y="148" font-size="16">Départ dans la scène</text>
+    <path d="M236 119h30m-9-9 9 9-9 9" fill="none" stroke="#a55d27" stroke-width="3"/>
+    <rect x="278" y="55" width="228" height="130" rx="4" fill="#dfcfdd"/>
+    <text x="294" y="83" font-size="18" font-weight="bold">Comportement</text>
+    <text x="294" y="116" font-size="16">Déplacement vu du dessus</text>
+    <text x="294" y="148" font-size="16">Flèches + vitesse choisie</text>
+    <path d="M518 119h30m-9-9 9 9-9 9" fill="none" stroke="#a55d27" stroke-width="3"/>
+    <rect x="560" y="55" width="216" height="130" rx="4" fill="#ead6b8"/>
+    <text x="576" y="83" font-size="18" font-weight="bold">Dans l’aperçu</text>
+    <text x="626" y="117" font-size="25">↑</text>
+    <text x="595" y="147" font-size="25">← ↓ →</text>
+    <text x="576" y="172" font-size="15">Piloter, puis relâcher</text>
+    <text x="24" y="218" font-size="16">Déplacer à la souris dans l’éditeur ≠ piloter pendant le jeu.</text>
+  </g>
+</svg>

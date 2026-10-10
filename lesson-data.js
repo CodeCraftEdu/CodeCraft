@@ -48,9 +48,9 @@ window.CODECRAFT_DATA = {
     },
     "jeux-video": {
       "title": "Jeu vidéo",
-      "homeDescription": "Donne vie à tes idées avec Scratch : personnages, mouvements et premiers jeux.",
-      "homeTag": "SCRATCH",
-      "pathwayIds": ["scratch-debutants"],
+      "homeDescription": "Crée tes premiers jeux avec Scratch, puis explore GDevelop pour donner vie à de nouveaux projets.",
+      "homeTag": "SCRATCH · GDEVELOP",
+      "pathwayIds": ["scratch-debutants", "gdevelop-debutants"],
       "diagnosticModuleIds": []
     },
     "web": {
@@ -63,9 +63,33 @@ window.CODECRAFT_DATA = {
         "web-avances"
       ],
       "diagnosticModuleIds": []
+    },
+    "robotique": {
+      "title": "Robotique",
+      "homeDescription": "Commande des circuits virtuels, puis imagine les réactions d’un robot avec des capteurs.",
+      "homeTag": "CIRCUITS · ROBOTS",
+      "pathwayIds": ["robotique-debutants"],
+      "diagnosticModuleIds": []
     }
   },
   "skills": {
+    "robotique.circuit": { "title": "Repérer un circuit complet, sa LED et sa résistance" },
+    "robotique.sortie": { "title": "Relier une commande de sortie à un effet observé sur le circuit" },
+    "robotique.sequence": { "title": "Lire et construire une suite de commandes de circuit" },
+    "robotique.attente": { "title": "Prévoir et modifier la durée d’un état pendant une attente" },
+    "robotique.boucle": { "title": "Repérer et expliquer la répétition d’un cycle de commandes" },
+    "robotique.entree": { "title": "Distinguer une entrée lue et une sortie commandée" },
+    "robotique.condition": { "title": "Prévoir et expliquer les deux cas d’une décision répétée" },
+    "robotique.evenement": { "title": "Relier un appui ponctuel à une action et expliquer ce qui reste affiché" },
+    "robotique.moteurs": { "title": "Commander un trajet temporisé, conserver un arrêt explicite et comparer un réglage" },
+    "robotique.distance": { "title": "Lire une distance reçue et la distinguer d’une limite choisie" },
+    "robotique.reglage": { "title": "Initialiser et utiliser une variable comme réglage d’une décision" },
+    "robotique.mission": { "title": "Choisir une mission observable et justifier un réglage" },
+    "robotique.tests": { "title": "Prévoir, comparer des essais et expliquer une conclusion avec ses limites" },
+    "gdevelop.workspace": { "title": "Créer, prévisualiser et retrouver un projet GDevelop local" },
+    "gdevelop.instances": { "title": "Distinguer objet et instances et modifier leurs positions" },
+    "gdevelop.events": { "title": "Relier condition et action et tester les deux états d’une interaction" },
+    "gdevelop.movement": { "title": "Régler et tester un déplacement fourni par un comportement" },
     "python.workspace": { "title": "Créer, enregistrer et exécuter un programme Python" },
     "python.output": { "title": "Afficher des messages et expliquer leur ordre" },
     "python.variables": { "title": "Conserver et réutiliser des valeurs dans des variables" },
@@ -81,6 +105,8 @@ window.CODECRAFT_DATA = {
     "python.random": { "title": "Importer random et distinguer tirage conservé et nouveaux appels" },
     "python.lists": { "title": "Créer, consulter, parcourir et compléter une liste" },
     "python.text": { "title": "Observer et transformer du texte selon une règle explicite" },
+    "python.functions": { "title": "Définir, appeler et réutiliser une fonction avec des paramètres" },
+    "python.return": { "title": "Renvoyer et réutiliser un résultat en distinguant les noms locaux" },
     "scratch.clones": { "title": "Créer et gérer des copies temporaires d’un personnage" },
     "scratch.time": { "title": "Mesurer et limiter le temps d’une partie" },
     "scratch.debugging": { "title": "Observer, expliquer et corriger une erreur dans un programme" },
@@ -175,6 +201,575 @@ window.CODECRAFT_DATA = {
     }
   },
   "modules": {
+    "robotique-lumiere": {
+      "domainId": "robotique",
+      "title": "Ma première lumière",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {"label":"Ouvrir le circuit de départ","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"},
+      "objective": "Comprendre le chemin d’un circuit et commander une LED virtuelle, d’abord éteinte puis allumée.",
+      "skillIds": ["robotique.circuit", "robotique.sortie"],
+      "prerequisiteSkills": [],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Ouvre le circuit de départ avec le lien ci-dessous, puis crée ta propre copie dans Tinkercad avec Tinker this (ou Copier et modifier). Nomme-la Ma première lumière. Si Tinkercad demande une connexion ou si tu ne peux pas créer ta copie, demande à ton enseignant l’accès prévu pour toi. Tout se passe à l’écran : aucun composant à acheter ni à brancher. Repère la LED placée à côté de la carte, puis ouvre Code et garde le mode Blocks."},
+        {"type":"lesson","id":"observer","title":"1 - Suivre et compléter le chemin de la lumière","paragraphs":["Repère la LED, la résistance, la carte et les fils. La LED est la lumière que nous voulons commander. La résistance reste dans le montage pour aider à protéger le circuit.","Suis du doigt le chemin des connexions sur le modèle. Avant un essai, prévois : si un fil du chemin manque, la LED peut-elle fonctionner comme prévu ? Observe la démonstration du professeur sur une copie, puis repère les deux bornes reliées par ce fil.","Dans ta copie, simulation arrêtée, le professeur prépare cette seule connexion à compléter et t’aide à retrouver ses deux bornes. Rétablis le fil et explique quelle partie du chemin tu as réunie. Garde la résistance, les autres fils et le sens de la LED. Fais vérifier le montage avant de lancer les essais de commande.","Un circuit qui ne s’allume pas n’est pas forcément une erreur de programme. Il faut aussi vérifier le montage. Tu peux désigner les bornes et expliquer le chemin pendant que le professeur aide au geste."]},
+        {"type":"lesson","id":"commander","title":"2 - Une sortie, deux états","paragraphs":["La carte peut envoyer une commande à la sortie reliée à la LED externe. Dans notre modèle, c’est la sortie 8. Montre-la sur le circuit et retrouve le 8 dans le bloc set pin 8 to LOW, placé dans on start (au démarrage).","LOW correspond ici à Éteindre. Prévois ce qui se passe, puis lance la simulation et observe la LED externe. Arrête la simulation, remplace seulement LOW par HIGH (Allumer) et essaie de nouveau. Ne retire ni la résistance ni les fils pour obtenir le changement.","Une LED déjà allumée ne prouve pas que ta commande fonctionne : compare les deux états sur le même montage. Si rien ne change, vérifie d’abord quelle lumière tu regardes, puis demande de l’aide pour comparer la sortie du programme aux connexions."]},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - prévoir et vérifier","items":[{"id":"rb01-reperer","text":"Montre la LED externe et la résistance. Simulation arrêtée, complète avec le professeur la connexion repérée, puis explique son rôle dans le chemin du circuit.","hint":"Retrouve les deux bornes montrées sur le modèle complet. Garde la résistance et les autres connexions ; fais vérifier ton fil avant la simulation."},{"id":"rb01-deux-etats","text":"Sur le même circuit, prévois puis teste Éteindre et Allumer. Montre la commande changée et l’effet observé sur la LED externe.","hint":"Arrête la simulation avant de modifier. Vérifie que le programme commande la sortie réellement reliée à cette LED, puis relance."}]},
+        {"type":"tasks","id":"autonomie","title":"À toi - prouver que la commande agit","items":[{"id":"rb01-preuve","text":"Sans changer les fils, choisis un état à obtenir, annonce-le, modifie la commande et teste. Montre ensuite comment obtenir l’autre état et explique pourquoi la LED change.","hint":"Ne change qu’une chose à la fois : la commande de la sortie. Compare ce que tu as prévu et ce que tu observes."}]}
+      ],
+      "masteryCriteria": ["Je reconnais la LED externe, la résistance et un chemin complet.","Je complète une connexion repérée avec une aide adaptée et explique son rôle.","Je montre la même sortie sur le montage et dans la commande préparée.","Je prévois puis vérifie deux états différents sur le montage complété."],
+      "teacherGuide": {
+        "objective": "Faire compléter et expliquer une connexion accompagnée, puis distinguer montage et commande par deux états sur une LED externe protégée par une résistance.",
+        "entryDiagnosis": ["Aucune expérience préalable en électronique ou avec Scratch n’est exigée. Faire montrer un objet, suivre un fil et formuler une prévision simple.","Distinguer une difficulté de manipulation de souris d’une difficulté à expliquer le circuit."],
+        "preparation": ["Circuit de départ créé et essayé le 8 octobre 2026 sur le compte professeur : Arduino Uno R3, sortie D8, résistance 220 Ω en série, LED externe rouge, retour GND. Le partage par lien est activé, sans référencement dans la galerie publique. La création et la reprise d’une copie depuis un compte élève restent à vérifier dans le contexte réel.","Dans Blocks, on start contient seulement set pin 8 to LOW. Essais séparés vérifiés sur le même câblage : LOW laisse la LED éteinte ; HIGH l’allume. Arrêter la simulation avant chaque changement puis relancer. Le modèle est sauvegardé sur LOW, sans attente ni clignotement.","Préparer une copie de démonstration pour l’essai du fil manquant. Dans la copie personnelle de l’élève, simulation arrêtée, repérer et noter les deux bornes d’une seule connexion sur le montage complet, puis l’ouvrir pour la remise accompagnée. Garder résistance, polarité et autres fils ; vérifier avant relance. Cette nouvelle manipulation et la création/reprise avec l’accès élève réel restent à vérifier selon R01. Le départ partagé reste complet ; ne pas donner un lien d’invitation à modifier l’original.","Cette leçon est indépendante d’un calendrier de stage. Le conducteur KidnKod en cinq séances reste dans les documents de préparation, pas dans la fiche élève."],
+        "why": "Une commande n’a de sens que si l’élève peut relier le programme à un effet visible et distinguer une panne de circuit d’un choix de commande.",
+        "discoverySpeech": ["Voici une lumière et son chemin. Si un fil manque, que prévois-tu ? Observons une copie puis remettons le chemin complet.","Quelle lumière regardons-nous ? Montre la LED externe et la sortie qui la commande.","Prévois Éteindre puis Allumer sur le même montage. Qu’est-ce qui change dans le programme, et qu’est-ce qui ne change pas dans les fils ?"],
+        "example": {"target":{"moduleId":"robotique-lumiere","blockId":"commander"},"comments":["Montrer les deux états sur la même LED externe ; ne pas s’appuyer sur le voyant intégré à la carte.","Arrêter la simulation avant une modification. Vérifier le câblage et les commandes dans l’outil réel avant la séance.","La découverte du clignotement, des durées et de la répétition appartient au module suivant, pas à cette première preuve de commande."]},
+        "questions": [{"question":"Pourquoi garder la résistance ?","answer":"Elle aide à limiter le courant et à protéger le montage ; ce n’est pas un réglage de durée."},{"question":"Une LED allumée prouve-t-elle que notre commande fonctionne ?","answer":"Non. Il faut observer deux états différents obtenus par la commande sur le même circuit."},{"question":"Pourquoi rien ne change malgré le programme ?","answer":"La sortie commandée peut ne pas correspondre à celle reliée à la LED, ou le chemin peut être incomplet. On vérifie progressivement."}],
+        "accompaniedActivity": {"moduleId":"robotique-lumiere","blockId":"guide"},
+        "independentActivity": {"moduleId":"robotique-lumiere","blockId":"autonomie"},
+        "differentiation": ["Si la manipulation bloque, préparer le circuit et accompagner le clic ; laisser à l’élève la prévision et l’explication.","Si l’élève est à l’aise, lui demander d’anticiper l’état avant chaque relance, sans introduire déjà les attentes."],
+        "commonErrors": [{"symptom":"La LED externe ne change pas d’état","helps":["Faire identifier précisément la lumière observée.","Comparer sortie de la commande et sortie câblée.","Suivre le chemin et vérifier la résistance et la polarité sur le montage vérifié.","Revenir à la copie de départ plutôt que modifier plusieurs éléments à la fois."]},{"symptom":"Le voyant de la carte change, pas la LED externe","helps":["Faire montrer les deux lumières.","Vérifier quel programme et quelle sortie commandent la LED externe.","Relancer avec le montage de départ validé."]}],
+        "notes": "Le montage, les deux états fixes et les blocs de la première leçon ont été essayés sur le compte professeur. Le départ est partagé par lien et rattaché à la page élève ; la copie et sa reprise avec un accès élève restent à vérifier. Le prototype de clignotement reste privé et constitue une référence distincte pour la suite. Voir docs/recette-tinkercad-premiere-lumiere.md pour les limites de la vérification.",
+        "quickConductor": ["Repérer le chemin, prévoir un fil manquant et observer la démonstration.","Simulation arrêtée, accompagner la remise de cette seule connexion dans la copie élève, puis vérifier le montage.","Associer sortie câblée et sortie commandée ; prévoir puis tester Éteindre et Allumer.","Faire expliquer la connexion et la preuve de commande avec aide graduée si besoin."],
+        "references": [{"title":"Départ Ma première lumière — à copier, accessible par lien","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"},{"title":"Prototype professeur — clignotement 3 s / 3 s, privé","url":"https://www.tinkercad.com/things/kUxQEjpMKHl-codecraft-robotique-01-allumer-une-led"},{"title":"Tinkercad — site officiel","url":"https://www.tinkercad.com/"}]
+      }
+    },
+    "robotique-signal": {
+      "domainId": "robotique",
+      "title": "Programmer un signal",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {"label":"Ouvrir le circuit de départ","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"},
+      "objective": "Faire clignoter une LED, expliquer son état pendant les attentes et choisir son rythme.",
+      "skillIds": ["robotique.sequence", "robotique.attente", "robotique.boucle"],
+      "prerequisiteSkills": [{"skillId":"robotique.circuit","expectation":"Repérer la LED externe et garder un chemin complet avec sa résistance."},{"skillId":"robotique.sortie","expectation":"Obtenir LOW puis HIGH sur la même sortie sans changer les fils."}],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Il faut pouvoir obtenir LOW (éteinte) puis HIGH (allumée) sur la LED externe sans changer les fils. Si cela bloque, reprends Ma première lumière avec une aide. Conserve ce premier projet : crée une copie nommée Mon-signal. Tu peux aussi copier le circuit de départ ci-dessous. Travaille dans Code, en mode Blocks, simulation arrêtée. Garde la sortie 8, les fils et la résistance."},
+        {"type":"lesson","id":"lire-cycle","title":"1 - L’attente garde le dernier état","paragraphs":["Voici un cycle : allumer la LED, attendre une seconde, l’éteindre, attendre une seconde. Pendant la première attente, elle reste allumée. L’attente ne l’éteint pas : c’est la commande LOW qui le fait.","Après la deuxième attente, le cycle recommence. Avant d’essayer, montre quand la LED s’éteint et où les actions reprennent. Le retour au début représente la répétition ; ce n’est pas une cinquième action à chercher."],"illustration":{"src":"images/robotique-cycle.svg","alt":"Dans forever, quatre actions : sortie 8 HIGH, attente 1 seconde, sortie 8 LOW, attente 1 seconde. Une flèche ramène au début. La LED reste allumée pendant la première attente et éteinte pendant la deuxième.","caption":"Schéma de lecture du cycle — les quatre actions sont placées dans forever."}},
+        {"type":"lesson","id":"construire","title":"2 - Construire les quatre actions","paragraphs":["Dans Control, prends forever (répéter sans fin). Place les quatre actions à l’intérieur, dans cet ordre : set pin 8 to HIGH ; wait 1 secs ; set pin 8 to LOW ; wait 1 secs. Les commandes set pin sont dans Output et wait dans Control. Vérifie secs (secondes), pas une autre unité.","Ta copie possède déjà set pin 8 to LOW dans on start. Déplace ce bloc dans forever pour l’utiliser comme troisième action. Ajoute les trois autres. Laisse on start vide : aucune deuxième commande ni deuxième cycle ne doit rester à côté du modèle.","Lance Start Simulation et observe au moins trois cycles sur la LED externe. Dans forever, la fin ramène à la première action tant que la simulation tourne. Pour changer un bloc, utilise Stop Simulation, modifie, puis relance. Si les quatre actions étaient seulement dans on start, elles ne seraient exécutées qu’une fois : après la dernière attente, la LED resterait éteinte."]},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - lire, prévoir, observer","items":[{"id":"rb02-cycle","text":"Construis le cycle 1 seconde allumée / 1 seconde éteinte. Avant de lancer, montre les deux commandes, les deux attentes et le retour au début. Observe au moins trois cycles et compare à ta prévision.","hint":"Vérifie une seule pile dans forever : HIGH, wait 1 secs, LOW, wait 1 secs. Les deux commandes visent la sortie 8."},{"id":"rb02-etat-attente","text":"Montre l’attente pendant laquelle la LED est allumée, puis celle pendant laquelle elle est éteinte. Explique ce qui commande le changement d’état.","hint":"Remonte à l’action juste avant chaque attente. HIGH allume ; LOW éteint. wait conserve cet état pendant la durée choisie."}]},
+        {"type":"tasks","id":"completer","title":"Compléter - l’action manquante","intro":"Garde Mon-signal intact. Simulation arrêtée, fais une copie nommée Signal-a-completer et retire seulement set pin 8 to LOW de forever. Les deux attentes restent présentes.","items":[{"id":"rb02-manquante","text":"Prévois ce que fera cette copie sans la commande d’extinction. Essaie, arrête, puis ajoute l’action manquante entre les deux attentes. Prévois et vérifie le résultat corrigé.","hint":"Sans LOW, les attentes ne changent pas l’état : la LED reste allumée. Pour retrouver le cycle, ajoute set pin 8 to LOW après la première attente et avant la seconde."}]},
+        {"type":"tasks","id":"autonomie","title":"À toi - deux secondes allumée","intro":"Reviens à Mon-signal : une seconde allumée et une seconde éteinte. Ne change ni les fils ni les commandes de sortie.","items":[{"id":"rb02-duree","text":"Obtiens deux secondes allumée puis une seconde éteinte, en répétition. Montre d’abord l’unique attente à modifier et prévois le résultat. Change-la, observe au moins trois cycles et explique pourquoi le temps éteint reste identique.","hint":"L’attente qui suit HIGH fixe le temps allumé. Passe seulement sa valeur de 1 à 2 ; garde l’attente après LOW à 1."},{"id":"rb02-transfert","text":"Sans modifier encore ton programme, montre ce qu’il faudrait changer pour obtenir une seconde allumée et deux secondes éteinte. Explique les deux réglages.","hint":"Le projet est maintenant à 2 / 1. Pour obtenir 1 / 2, remets à 1 l’attente après HIGH et passe à 2 celle après LOW."}]},
+        {"type":"tasks","id":"bonus","title":"Bonus - ton rythme","intro":"Ce bonus est facultatif. Tu peux poursuivre sans le faire.","items":[{"id":"rb02-rythme","text":"Choisis un autre rythme avec des durées entre 1 et 3 secondes. Annonce-le, change une seule attente à la fois et vérifie après chaque changement. Explique quelle durée correspond à chaque état.","hint":"Pars du programme actuel. Choisis d’abord le temps allumé ou le temps éteint, retrouve l’attente qui le règle, puis change seulement cette valeur."}]},
+        {"type":"callout","id":"conserver","title":"Conserver ton signal","text":"Arrête la simulation et vérifie le nom Mon-signal. Attends la fin de l’enregistrement, retourne à la liste de tes circuits, retrouve ce projet et ouvre-le de nouveau. Relance : retrouve-t-il le rythme que tu as choisi ? Si tu ne le retrouves pas, demande une aide avant de créer un nouveau circuit."}
+      ],
+      "masteryCriteria": ["Je lis les quatre actions et montre où le cycle recommence.","J’explique pourquoi la LED garde son état pendant une attente.","Je prévois puis vérifie l’effet d’une durée modifiée, sans changer les fils.","Je retrouve et relance mon signal enregistré."],
+      "teacherGuide": {
+        "objective": "Faire distinguer commande d’état, attente et répétition, puis observer une modification de durée justifiée par l’élève.",
+        "entryDiagnosis": ["Faire prévoir puis obtenir LOW et HIGH sur la LED externe. Résoudre une difficulté de sortie ou de montage avant d’ajouter les attentes.","Faire créer une copie de la première lumière ; distinguer aide d’accès et compréhension du programme."],
+        "preparation": ["Réutiliser le départ partagé de Ma première lumière : D8, résistance 220 Ω, LED externe, GND. Il contient on start avec set pin 8 to LOW ; ce bloc est déplacé dans forever pendant la construction.","La référence privée 1 s / 1 s est préparée ; les blocs du défi 2 s / 1 s et de la variante sans extinction ont été essayés successivement. Préparer une copie pour la démonstration sans LOW si nécessaire. Clic droit sur LOW puis Delete Block conserve la seconde attente ; ne pas utiliser l’annulation générale du circuit. Les libellés sont set pin, HIGH/LOW, wait … secs et forever.","Vérifier l’accès, la copie et la reprise avec l’accès élève réel. Aucun compte personnel n’est imposé par le cours : organiser l’accès avec l’enseignant si la connexion bloque."],
+        "why": "Une LED copiée qui clignote ne prouve pas que l’élève distingue l’état conservé pendant l’attente et le retour au début du cycle.",
+        "discoverySpeech": ["Après HIGH, que fait la LED pendant wait ? Quelle action demande ensuite l’extinction ?","Ces quatre actions sont dans forever. Où va-t-on après la dernière attente ?","Quelle attente faut-il allonger pour garder la lumière allumée plus longtemps, sans changer le temps éteint ?"],
+        "example": {"target":{"moduleId":"robotique-signal","blockId":"construire"},"comments":["Construire avec les élèves, sans distribuer d’emblée la référence complète. Déplacer LOW depuis on start ; garder une seule pile dans forever.","Faire lire et prévoir avant l’essai, puis observer trois cycles sur la LED externe. Ne pas utiliser le voyant intégré comme preuve.","on start exécute une fois ; forever répète. Montrer le conteneur réel, sans inventer une instruction Recommencer."]},
+        "questions": [{"question":"Est-ce wait qui éteint la lumière ?","answer":"Non. La LED reste dans le dernier état commandé ; LOW demande l’extinction."},{"question":"Que se passe-t-il sans LOW entre les attentes ?","answer":"HIGH garde la LED allumée ; les deux attentes ne la font pas changer d’état."},{"question":"Le projet est à 2 s allumée / 1 s éteinte. Pour obtenir 1 s / 2 s ?","answer":"Remettre à 1 l’attente après HIGH et passer à 2 celle après LOW. Ce transfert nécessite deux valeurs à changer, contrairement au défi précédent."}],
+        "accompaniedActivity": {"moduleId":"robotique-signal","blockId":"guide"},
+        "independentActivity": {"moduleId":"robotique-signal","blockId":"autonomie"},
+        "differentiation": ["Lire les consignes ensemble ou aider à glisser un bloc ; laisser l’élève indiquer l’ordre, prévoir et expliquer.","Si la construction bloque, fournir les quatre actions disposées et faire choisir leur ordre ou compléter LOW sur la copie professeur.","Pour aller plus loin, proposer un autre rythme avec une valeur à la fois ; aucun composant supplémentaire ni variable nécessaire."],
+        "commonErrors": [{"symptom":"La LED ne clignote pas ou une autre lumière change","helps":["Revenir aux deux états fixes ; repérer la LED externe et la sortie 8.","Vérifier les quatre actions dans forever, les deux attentes en secondes et la présence de LOW.","Vérifier qu’une ancienne pile n’est pas restée à côté ou dans on start."]},{"symptom":"La mauvaise durée est allongée","helps":["Faire montrer l’action précédant chaque attente.","Revenir à 1 / 1, prévoir puis modifier seulement l’attente après HIGH.","Observer trois cycles et faire expliquer l’état conservé."]},{"symptom":"L’élève modifie le mauvais projet","helps":["Vérifier le nom : Mon-signal pour le défi, Signal-a-completer pour l’action manquante.","Retrouver la copie conservée plutôt que reconstruire tous les fils."]}],
+        "notes": "Adaptation autonome de RB02 déjà revue dans les supports de séance 1. Les variantes de blocs 1 / 1, 2 / 1 et le retrait de LOW ont été essayés sur une référence professeur privée ; voir docs/recette-tinkercad-signal.md pour les limites. La copie et la reprise avec l’accès élève réel restent à vérifier. Le contexte de stage et sa durée ne sont pas imposés aux élèves. La question de transfert 1 / 2 est orale et ne crée pas une seconde mission obligatoire. Aucune compétence n’est validée par le clignotement ou les cases cochées.",
+        "quickConductor": ["Reprendre les deux états et créer Mon-signal.","Lire le cycle et associer chaque attente à l’état précédent.","Construire dans forever et observer trois cycles.","Compléter LOW sur une copie, puis revenir au projet intact.","Prévoir et réaliser 2 / 1 ; proposer oralement 1 / 2 sans indice initial.","Retrouver et relancer le signal ; noter l’aide reçue et l’explication."],
+        "references": [{"title":"Circuit de départ partagé — à copier","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"}]
+      }
+    },
+    "robotique-bouton": {
+      "domainId": "robotique", "title": "Le bouton donne une information", "type": "lesson", "theme": "fondations",
+      "objective": "Repérer l’entrée bouton et observer comment son état change pendant un appui et un relâchement.",
+      "tool": {"label":"Ouvrir le départ bouton à relier","url":"https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"},
+      "skillIds": ["robotique.entree"],
+      "prerequisiteSkills": [{"skillId":"robotique.circuit","expectation":"Repérer la LED externe et conserver sa résistance."},{"skillId":"robotique.sortie","expectation":"Obtenir LOW et HIGH sur la sortie 8 avec une aide si nécessaire."}],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Retrouve Mon-signal et montre la LED externe et sa sortie 8. Garde ce projet intact. Avec le professeur, copie le départ bouton et nomme ta copie Mon-bouton. Elle contient déjà le montage de la LED et presque tout celui du bouton ; elle ne contient pas encore sa règle de réaction. Si l’accès ou la copie bloque, demande une aide avant de modifier le projet."},
+        {"type":"lesson","id":"entree-sortie","title":"1 - Lire n’est pas commander","paragraphs":["Le bouton est une entrée : la carte peut lire son état. La LED est une sortie : une commande du programme peut l’allumer ou l’éteindre. Dans ce montage, appuyer sur le bouton ne commande pas directement la LED.","La résistance de la LED reste en place. Une autre résistance, de 10 kΩ, aide l’entrée à avoir un état défini au repos. Tu n’as pas à calculer sa valeur : repère les deux résistances et ne les retire pas."]},
+        {"type":"lesson","id":"relier","title":"2 - Compléter le fil de lecture","paragraphs":["Utilise Stop Simulation avant de changer un fil. Dans le départ à relier, il manque seulement la connexion entre D2 sur la carte et Terminal 2a du bouton. Repère ces noms avec le professeur avant de relier les deux bornes. Ne choisis pas une patte seulement parce qu’elle est à gauche ou à droite.","Les fils vers 5 V et GND et les deux résistances sont déjà présents. Ne les change pas. Tant que D2 n’est pas reliée, on ne peut pas interpréter sa lecture. Si la manipulation bloque, le professeur peut fournir la base préconnectée : le raisonnement reste le même.","Le programme de départ éteint D8 dans on start ; forever est vide. La LED ne réagit donc pas encore au bouton : c’est normal. Nous construirons cette réaction dans la prochaine leçon."],"illustration":{"src":"images/robotique-bouton-entree.svg","alt":"Schéma de connexions : 5 V vers Terminal 1a du bouton ; Terminal 2a vers D2, fil à compléter ; Terminal 2b vers résistance 10 kΩ puis GND. Les bornes 2a et 2b sont du même côté du contact.","caption":"Schéma de connexion, pas une capture ni une position physique des bornes. Le montage de la LED reste inchangé."}},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - repérer et relier","items":[{"id":"rb03-reperer","text":"Montre le bouton lu, la LED commandée, D2 et D8. Explique quelle broche sert à lire et laquelle sert à commander.","hint":"D2 reçoit l’information du bouton ; D8 commande la LED externe."},{"id":"rb03-fil","text":"Simulation arrêtée, repère Terminal 2a avec le professeur, puis complète uniquement son fil vers D2. Fais vérifier la connexion avant de lancer.","hint":"Les bornes sont nommées dans le composant. Ne retire aucun fil ni aucune résistance ; utilise la base préconnectée avec une aide si nécessaire."}]},
+        {"type":"lesson","id":"observer","title":"3 - Observer l’information, sans construire un nouveau programme","paragraphs":["Observe la démonstration du professeur sur son diagnostic préparé. Il affiche la lecture de D2 dans le moniteur série : 0 au repos, 1 pendant l’appui, puis 0 au relâchement. Le moniteur sert seulement à rendre l’information visible ; tu n’as pas à programmer cet affichage.","Dans notre montage, la lecture 0 se nomme aussi LOW : bouton relâché. La lecture 1 se nomme aussi HIGH : bouton appuyé. Ces noms décrivent ici l’information lue sur D2. Commander HIGH ou LOW sur D8 est une autre opération, qui agit sur la LED.","Pour maintenir le bouton simulé, le professeur garde le bouton de souris enfoncé sur son centre puis le relâche. Observe un maintien, pas seulement un clic très bref. Pendant le maintien, plusieurs lectures peuvent rester à 1 : lire de nouveau ne veut pas dire que le bouton a été pressé de nouveau."]},
+        {"type":"tasks","id":"autonomie","title":"À toi - prévoir trois états","items":[{"id":"rb03-etats","text":"Avant la démonstration, prévois les lectures au repos, pendant un maintien et après le relâchement. Observe cette suite deux fois et compare à ta prévision.","hint":"Avec ce montage : 0, puis plusieurs 1 pendant le maintien, puis 0."},{"id":"rb03-explication","text":"Montre ce qui change quand on relâche. La LED de ton départ doit-elle déjà suivre cette information ? Explique avec ce que contient son programme.","hint":"L’information d’entrée change, mais le départ ne contient pas encore la règle qui commande D8 selon D2."}]},
+        {"type":"callout","id":"conserver","title":"Conserver ton départ","text":"Arrête la simulation et vérifie le nom Mon-bouton. Attends la fin de l’enregistrement, retrouve cette copie dans tes circuits et rouvre-la avec une aide si nécessaire. Conserve Mon-signal séparément. La prochaine leçon utilisera ce départ relié, sans reconstruire les fils."}
+      ],
+      "masteryCriteria": ["Je montre l’entrée bouton et la sortie LED.","Je repère D2 pour lire et D8 pour commander.","Je prévois puis décris repos, maintien et relâchement.","Je distingue une information lue d’une réaction encore à programmer."],
+      "teacherGuide": {
+        "objective":"Faire distinguer entrée et sortie avant d’introduire la condition ; obtenir un départ relié préservé.",
+        "entryDiagnosis":["Faire montrer la LED externe et obtenir LOW/HIGH sur D8 avec aide. Résoudre la sortie avant d’ajouter l’entrée."],
+        "preparation":["Vérifier ouverture, copie, enregistrement et reprise avec l’accès élève réel : ces essais restent à faire. Ne pas travailler sur le compte professeur.","Le départ à relier manque seulement de D2 vers Terminal 2a. La base préconnectée fournit le même circuit si la manipulation bloque. Les deux ont on start LOW sur D8 et forever vide.","Diagnostic réservé à la démonstration : on start LOW sur D8 ; forever affiche read digital pin 2 via print to serial monitor avec newline. Tester 0 → 1 → 0 avant le cours. Aucun affichage série à construire par l’élève.","Maintien souris essayé ; accès clavier et observation continue d’un maintien prolongé restent à vérifier. Ne pas prescrire Shift-clic."],
+        "why":"Observer l’entrée séparément empêche de déduire sa lecture du seul comportement de la LED.",
+        "discoverySpeech":["« Quel élément donne une information ? Quel élément reçoit une commande ? »","« Pendant le maintien, la carte peut lire plusieurs fois le même état. »"],
+        "example":{"target":{"moduleId":"robotique-bouton","blockId":"observer"},"comments":["Montrer le diagnostic préparé sans ouvrir un nouveau projet élève. Le moniteur n’est pas un nouvel objectif.","Prévision avant geste, puis observation deux fois. Ne pas interpréter une entrée D2 encore déconnectée."]},
+        "questions":[{"question":"Pourquoi la LED du départ ne suit-elle pas le bouton ?","answer":"La lecture et la commande sont distinctes ; sa règle n’est pas construite."},{"question":"Les deux résistances ont-elles le même rôle ?","answer":"Celle de la LED limite le courant ; celle de l’entrée donne une référence au repos. Aucun calcul ni terme pull-down exigé."}],
+        "accompaniedActivity":{"moduleId":"robotique-bouton","blockId":"guide"},"independentActivity":{"moduleId":"robotique-bouton","blockId":"autonomie"},
+        "differentiation":["Réaliser les gestes de câblage ou fournir la base préconnectée ; laisser la prévision et l’explication à l’élève.","Faire expliquer une série de 1 pendant un maintien, sans introduire événement, compteur ou variable."],
+        "commonErrors":[{"symptom":"La lecture ne change pas","helps":["Vérifier le maintien simulé, puis D2 et les bornes nommées.","Comparer au diagnostic vérifié ; réparer la base avec le professeur, pas par des modifications logicielles au hasard."]},{"symptom":"L’élève attend une réaction de la LED","helps":["Distinguer diagnostic professeur et départ élève.","Montrer on start LOW et forever vide ; annoncer la règle de la prochaine leçon."]}],
+        "notes":"Adaptation autonome de RB03. Partage par lien confirmé ; essais techniques sur compte professeur, pas validation en classe. Voir docs/recette-tinkercad-bouton.md. Noter les aides de geste séparément de celles de raisonnement ; aucune validation automatique.",
+        "quickConductor":["Vérifier sortie et préserver Mon-signal.","Copier le départ, repérer entrée/sortie et compléter D2.","Prévoir puis observer le diagnostic 0 / 1 / 0 deux fois.","Faire expliquer pourquoi le départ ne réagit pas encore ; conserver Mon-bouton."],
+        "references":[{"title":"Départ à relier — sans solution","url":"https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"},{"title":"Base préconnectée — sans solution","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},{"title":"Diagnostic de lecture — démonstration professeur","url":"https://www.tinkercad.com/things/0HMEwEsJtNV-codecraft-bouton-diagnostic-de-lecture"}]
+      }
+    },
+    "robotique-decision": {
+      "domainId":"robotique", "title":"Choisir entre deux actions", "type":"lesson", "theme":"fondations",
+      "objective":"Commander la LED selon l’état du bouton, expliquer les deux cas et créer une version opposée.",
+      "tool":{"label":"Ouvrir la base bouton préconnectée","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},
+      "skillIds":["robotique.condition", "robotique.boucle"],
+      "prerequisiteSkills":[{"skillId":"robotique.entree","expectation":"Distinguer D2 lu et D8 commandé ; reconnaître repos et maintien."},{"skillId":"robotique.boucle","expectation":"Repérer que forever recommence tant que la simulation tourne."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Reprends Mon-bouton relié et montre D2, D8 et les deux états de l’entrée. Si cela bloque, reprends Le bouton donne une information avec une aide. Ne change pas les fils. Si tu n’as plus ta copie, utilise la base préconnectée avec le professeur et nomme la copie Mon-bouton. Garde Mon-signal intact : son clignotement ne doit pas rester dans cette règle."},
+        {"type":"lesson","id":"partiel","title":"Avant les blocs - choisir le cas manquant","paragraphs":["Nous voulons une lumière allumée pendant l’appui et éteinte au repos. Sur ce schéma de lecture : si le bouton est appuyé maintenant → Allumer ; sinon → [action à choisir] ; puis consulter de nouveau. Quelle action proposes-tu dans sinon ? Explique avant de regarder l’indice.","Ne supprime rien dans un projet existant. Cette question prépare la construction : après l’assemblage, un appui puis un relâchement permettront de vérifier ton choix."]},
+        {"type":"tasks","id":"completer","title":"Proposer avant de construire","items":[{"id":"rb04-sinon","text":"Nomme l’action du cas sinon et explique ce que tu devrais observer après avoir appuyé puis relâché. Tu vérifieras cette prévision dans l’exercice guidé.","hint":"Sinon devra commander LOW sur D8. Après l’appui, la LED doit s’éteindre au relâchement ; une LED déjà éteinte au départ ne suffit pas à vérifier ce cas."}]},
+        {"type":"lesson","id":"regle","title":"1 - Une question, deux cas","paragraphs":["Notre question est : le bouton est-il appuyé maintenant ? Si oui, allumer la LED ; sinon, l’éteindre. Prévois les résultats au repos, pendant l’appui et après le relâchement.","Sinon ne veut pas dire après avoir allumé. À chaque consultation, une seule branche est choisie selon la lecture actuelle. Ensuite, le programme consulte de nouveau le bouton. S’il est toujours maintenu, la même action reste choisie : la répétition ne crée pas un clignotement."],"illustration":{"src":"images/robotique-bouton-decision.svg","alt":"Quatre consultations : relâché, non, éteindre ; maintenu, oui, allumer ; toujours maintenu, oui, allumer ; relâché, non, éteindre.","caption":"Trace de lecture — les lignes sont des consultations successives, pas quatre blocs à recopier."}},
+        {"type":"lesson","id":"construire","title":"2 - Construire la décision répétée","paragraphs":["Simulation arrêtée, ouvre Code en mode Blocks. Dans Control, prends if then else et place-le dans forever. Dans Math, utilise la comparaison =. Mets read digital pin (Input), réglé sur 2, à gauche et HIGH à droite : read digital pin 2 = HIGH. La lecture HIGH vaut 1 et correspond à l’appui dans notre montage ; LOW vaut 0 et correspond au relâchement.","Dans le cas then, place set pin 8 to HIGH (Output). Dans le cas else, place set pin 8 to LOW. Déplace le LOW du départ depuis on start dans else ; laisse on start vide. Lire HIGH sur D2 permet de poser la question ; commander HIGH sur D8 demande l’allumage. Les deux commandes visent D8, la lecture vise D2.","Garde seulement cette règle dans forever : pas de wait ni d’ancienne pile de clignotement. Lance Start Simulation. Maintiens le bouton simulé avec la souris puis relâche ; recommence. Pour modifier, utilise Stop Simulation."]},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - prévoir, essayer, expliquer","items":[{"id":"rb04-etats","text":"Annonce l’état attendu de la LED au repos, pendant un maintien et après le relâchement. Construis la règle puis observe ces trois états deux fois.","hint":"Éteinte, allumée, éteinte. Vérifie les deux branches ensemble ; un seul essai au repos ne suffit pas."},{"id":"rb04-repetition","text":"Montre la question, les deux actions et ce qui recommence. Pendant un maintien plus long, la LED doit-elle clignoter ? Explique avec tes blocs.","hint":"forever relit D2 ; tant que D2 vaut HIGH, la même branche commande HIGH sur D8. Aucune attente de clignotement n’est présente."}]},
+        {"type":"tasks","id":"autonomie","title":"À toi - une lumière qui prévient au repos","intro":"Simulation arrêtée, copie Mon-bouton en Mon-bouton-inverse. Garde le principal intact. Dans la nouvelle version, nous voulons allumée au repos, éteinte pendant l’appui, puis allumée au relâchement. Le montage ne change pas.","items":[{"id":"rb04-inverse","text":"Propose une modification avant d’ouvrir l’indice. Prévois les trois résultats, modifie le programme de la copie, puis teste cette suite deux fois. Montre ce que tu as changé.","hint":"Tu peux garder la même question et échanger les actions : then LOW sur D8, else HIGH sur D8."},{"id":"rb04-comparer","text":"Compare les deux versions : qu’est-ce qui reste identique dans l’entrée, la question et les fils ? Qu’est-ce qui change dans les sorties commandées ?","hint":"D2 et la condition restent identiques ; les deux conséquences sont opposées. Retrouve le principal sans l’écraser."}]},
+        {"type":"tasks","id":"bonus","title":"Bonus - un essai pour un camarade","intro":"Facultatif, sans nouveau composant ni compteur.","items":[{"id":"rb04-camarade","text":"Propose repos, maintien plus long, relâchement, nouvel appui. Fais prévoir les résultats de ta version par un camarade ou le professeur, puis vérifiez sans changer le programme.","hint":"Annonce d’abord quelle version est ouverte ; montre ensuite la branche correspondant à chaque lecture."}]},
+        {"type":"callout","id":"conserver","title":"Conserver les deux versions","text":"Arrête la simulation et attends l’enregistrement. Retrouve Mon-bouton, relance et vérifie la règle principale. Garde aussi Mon-bouton-inverse avec son nom distinct et rouvre-le. Si tu ne retrouves pas une copie, demande une aide avant de recommencer. Mon-signal reste conservé séparément."}
+      ],
+      "masteryCriteria":["Je distingue la question testée des commandes de sortie.","J’explique les deux cas, y compris le relâchement après l’appui.","Je montre pourquoi la consultation recommence sans faire clignoter la LED.","Je prévois puis teste les trois états dans mes deux versions."],
+      "teacherGuide":{
+        "objective":"Faire construire et expliquer une décision à deux branches répétée, puis transférer vers le résultat opposé.",
+        "entryDiagnosis":["Faire montrer D2, D8 et les états lus au diagnostic. Reprendre RB03 si la lecture est confondue avec l’effet sur la LED.","Faire repérer forever ; aider aux gestes sans fournir les réponses au défi."],
+        "preparation":["Utiliser Mon-bouton relié ou une copie de la base préconnectée sans solution. Ne pas distribuer la référence complète comme départ.","Référence : forever contient if read digital pin 2 = HIGH, then set pin 8 to HIGH, else set pin 8 to LOW. on start vide ; aucun délai ni commande concurrente.","Référence inversée : même question, then LOW et else HIGH. Tester repos → maintien prolongé → relâchement deux fois avec observation continue avant distribution.","Les références sont partagées par lien. L’accès, la duplication, l’enregistrement et la reprise sur compte élève restent à vérifier."],
+        "why":"Tester après un appui permet de distinguer une vraie branche sinon d’une LED simplement éteinte au démarrage.",
+        "discoverySpeech":["« Sinon est l’autre cas, pas une action qui arrive plus tard. »","« Toujours maintenu : pourquoi la même branche reste-t-elle choisie ? »","« Dans la copie, nous voulons le résultat opposé. Que proposes-tu avant de modifier ? »"],
+        "example":{"target":{"moduleId":"robotique-decision","blockId":"construire"},"comments":["Assembler les deux branches ensemble dans forever. Ne pas essayer HIGH seul comme preuve de la condition.","Lire la trace, notamment toujours maintenu. Faire distinguer lecture D2 et commande D8.","Retirer LOW de on start et tout ancien clignotement de la copie, sans toucher Mon-signal."]},
+        "questions":[{"question":"Que manque-t-il sur le schéma partiel ?","answer":"LOW sur D8 dans sinon. Vérifier dans le principal intact après appui puis relâchement."},{"question":"Faut-il modifier les fils pour le résultat opposé ?","answer":"Non. Conserver la question et échanger les conséquences est une solution ; ne la donner qu’en indice."},{"question":"Un maintien prolongé doit-il faire clignoter ?","answer":"Non. Chaque lecture maintenue sélectionne la même commande, sans cycle HIGH/attente/LOW/attente."}],
+        "accompaniedActivity":{"moduleId":"robotique-decision","blockId":"guide"},"independentActivity":{"moduleId":"robotique-decision","blockId":"autonomie"},
+        "differentiation":["Aider au placement des blocs ; laisser prévoir les trois états et désigner les branches.","Pour le défi : relire les résultats voulus, puis suggérer de garder la question, puis seulement demander les actions. Noter si la stratégie a été donnée.","Accepter une autre proposition correcte discutée, sans imposer nouvelle notion ou câblage. Le bonus n’est pas requis pour poursuivre."],
+        "commonErrors":[{"symptom":"La LED clignote seule","helps":["Chercher anciennes actions et wait dans la copie.","Garder seulement la règle, aucune autre commande de D8."]},{"symptom":"La LED reste allumée après relâchement","helps":["Observer d’abord D2 ; si l’entrée change, vérifier else LOW et forever.","Ne pas ajouter LOW en dehors de la condition pour compenser une branche manquante."]},{"symptom":"Les copies sont confondues","helps":["Vérifier le nom avant chaque modification.","Retrouver le principal intact, puis la copie inversée ; conserver Mon-signal."]}],
+        "notes":"Adaptation autonome de RB04 à partir de la revue documentaire et des essais professeur. Aucun compteur, événement d’appui, bascule mémorisée, rebond ou C++ ajouté. Les cases ne valident pas la maîtrise. Voir docs/recette-tinkercad-bouton.md pour les limites techniques et les tests élèves différés.",
+        "quickConductor":["Reprendre le départ relié ; relier 0/LOW et 1/HIGH aux états observés sur D2.","Faire proposer le cas sinon sur schéma avant de montrer la règle complète.","Lire la trace, construire deux branches dans forever puis vérifier la prévision dans les trois états deux fois.","Créer la copie opposée, laisser proposer avant indices, essayer et expliquer.","Retrouver les deux versions ; noter les aides et la compréhension."],
+        "references":[{"title":"Base préconnectée — départ sans solution","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},{"title":"Référence professeur — si / sinon","url":"https://www.tinkercad.com/things/ed9JYU40iMH-codecraft-bouton-reference-si-sinon"},{"title":"Référence professeur — résultat opposé","url":"https://www.tinkercad.com/things/d1QIg2g5Q82-codecraft-bouton-reference-inversee"}]
+      }
+    },
+    "robotique-microbit": {
+      "domainId":"robotique", "title":"Retrouver les repères sur micro:bit", "type":"lesson", "theme":"fondations",
+      "objective":"Déclencher deux images avec les boutons de la carte virtuelle et expliquer pourquoi elles restent affichées.",
+      "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
+      "skillIds":["robotique.entree","robotique.evenement"],
+      "prerequisiteSkills":[{"skillId":"robotique.entree","expectation":"Montrer une entrée et une sortie sur le bouton–LED ; une aide de manipulation suffit."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Nous changeons de carte et de site, pas de projet Tinkercad à importer. Ouvre MakeCode, crée un Nouveau projet nommé Mes-images et garde le mode Blocs. Tout se passe à l’écran, sans matériel ni connexion à un compte. Le professeur peut aider à trouver les boutons et les blocs ; ne visite pas toutes les catégories."},
+        {"type":"lesson","id":"reperer","title":"1 - Une entrée, un programme, une sortie","paragraphs":["Repère les boutons A et B de la carte dans le simulateur. Ce sont nos entrées. Les petites lumières de l’écran forment les images : c’est notre sortie.","Le programme sera constitué de deux événements : lorsque le bouton A est pressé, et lorsque le bouton B est pressé. En anglais : on button A pressed et on button B pressed, dans Input (Entrées). Place un bloc show icon (montrer une icône), de Basic (Base), à l’intérieur de chacun.","Choisis un cœur pour A et un carré pour B. Aucun bloc d’affichage dans toujours : il ne doit pas y avoir un autre programme qui change l’écran en même temps."],"illustration":{"src":"images/robotique-microbit-reference.jpg","alt":"MakeCode montre deux piles : A affiche un cœur et B affiche un carré. La carte affiche le cœur après A.","caption":"Capture de la référence essayée. Les libellés de cette interface sont en anglais ; les mêmes événements existent dans l’interface française."}},
+        {"type":"lesson","id":"declencher","title":"2 - Déclencher n’est pas maintenir","paragraphs":["Avant de cliquer, prévois l’image obtenue avec A. Clique brièvement sur A puis relâche. Attends sans toucher aucun bouton : l’image reste. Ensuite clique sur B et observe le changement.","Le premier appui a déclenché l’affichage. Rien dans ce programme n’efface l’image après le relâchement. Ce n’est pas la règle bouton–LED qui relisait l’état du bouton et commandait aussi Éteindre au repos.","La carte seule n’est pas encore un robot roulant. Nous garderons Mes-images séparément du futur projet de trajet." ]},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - prévoir trois observations","items":[{"id":"rb05-a-attente","text":"Prévois puis teste A, une attente sans autre appui, puis B. Montre les deux événements et explique les trois résultats.","hint":"Chaque bouton déclenche son affichage. Cherche si une autre commande demande d’effacer l’image après l’appui."},{"id":"rb05-comparer","text":"Explique une différence avec la LED commandée pendant l’appui dans Tinkercad.","hint":"L’ancien programme consultait le bouton dans une boucle avec deux cas. Ici, l’événement déclenche une action ponctuelle."}]},
+        {"type":"tasks","id":"autonomie","title":"À toi - choisir tes deux images","items":[{"id":"rb05-images","text":"Choisis deux autres images différentes. Annonce ce que feront A puis B, change seulement les icônes, teste et explique l’image conservée sans nouvel appui.","hint":"Garde les deux événements séparés et remplace l’icône à l’intérieur de chacun, sans ajouter une boucle d’affichage."}]},
+        {"type":"callout","id":"conserver","title":"Conserver Mes-images","text":"Vérifie le nom du projet. Utilise l’icône de sauvegarde à côté du nom pour télécharger le fichier .hex : ce fichier conserve aussi le programme, pas seulement un dessin. Avec de l’aide, retrouve-le puis utilise l’accueil MakeCode → Importer → Importer un fichier. Rouvre-le et teste A puis B. Ne compte pas uniquement sur l’enregistrement du navigateur : il peut être indisponible ou effacé. Tu n’as ni carte à brancher ni projet à publier."}
+      ],
+      "masteryCriteria":["Je montre les entrées A/B et l’écran de sortie.","Je prévois A, l’attente sans appui et B, puis explique l’image conservée.","Je modifie deux images et retrouve ma sauvegarde avec une aide adaptée."],
+      "teacherGuide":{
+        "objective":"Transférer entrée/programme/sortie vers micro:bit et distinguer événement ponctuel et lecture répétée, sans détour par les moteurs.",
+        "entryDiagnosis":["Faire retrouver bouton → programme → LED ; aider à naviguer si nécessaire.","Ne pas exiger la reconstruction autonome du circuit ni une définition formelle d’événement."],
+        "preparation":["Référence A cœur / B carré essayée dans MakeCode le 9 octobre 2026. Clic bref et relâchement fonctionnent ; cœur conservé sans nouvel appui puis remplacé par le carré. Deux événements, aucun forever d’affichage.","Référence téléchargeable dans resources/robotique/makecode/RB05-Mes-images-reference.hex. L’élève construit dans un nouveau projet ; ne pas donner la référence complète comme départ.","Libellés observés en anglais. L’accès et les menus français dans le navigateur élève restent à vérifier. Aucune carte physique ni publication requise.","La sauvegarde automatique a signalé une indisponibilité dans le navigateur intégré. Exiger une copie exportée et accompagner la réimportation ; la recette du fichier RB05 avec un accès élève reste à faire."],
+        "why":"Une image qui persiste permet de distinguer une action déclenchée du maintien d’un état, avant le changement de lancement du trajet.",
+        "discoverySpeech":["« Nous retrouvons une entrée et une sortie sur une autre carte. »","« Que vois-tu après A, puis si nous ne touchons plus rien ? Quelle commande efface l’image ? »","« Nous conserverons ce projet séparément : les boutons ne commanderont pas automatiquement le futur robot. »"],
+        "example":{"target":{"moduleId":"robotique-microbit","blockId":"declencher"},"comments":["Faire prévoir avant chaque geste ; deux images statiques seulement.","Comparer explicitement avec la lecture D2 répétée, sans expérience de maintien prolongé.","Ne pas introduire bascule mémorisée, variable ou robot dans cette micro-activité."]},
+        "questions":[{"question":"Pourquoi le cœur reste-t-il après le relâchement ?","answer":"Il a été affiché et aucune commande ne l’efface ensuite."},{"question":"La carte est-elle déjà un robot qui roule ?","answer":"Non. Cette activité utilise seulement les boutons et l’écran de la carte virtuelle."}],
+        "accompaniedActivity":{"moduleId":"robotique-microbit","blockId":"guide"},"independentActivity":{"moduleId":"robotique-microbit","blockId":"autonomie"},
+        "differentiation":["Accompagner le placement des blocs, mais laisser prévoir les images.","Garder cette transition courte ; les moteurs seront étudiés dans un projet distinct."],
+        "commonErrors":[{"symptom":"L’image change toute seule","helps":["Chercher un affichage dans forever ou une autre pile.","Garder seulement les deux événements."]},{"symptom":"L’appui ne produit rien","helps":["Vérifier que la simulation tourne et que l’icône est à l’intérieur de l’événement.","Cliquer brièvement puis relâcher le bon bouton simulé."]}],
+        "notes":"Les cases sont des repères, pas une validation automatique. Sauvegarde, langue et gestes dans le navigateur de cours restent à vérifier ; ne pas mélanger ce projet et l’affichage du robot.",
+        "quickConductor":["Repérer entrées et sortie sans visite exhaustive.","Construire deux événements et faire prévoir A / attente / B.","Choisir deux images personnelles et expliquer la persistance.","Exporter puis retrouver le fichier avec aide."],
+        "references":[{"title":"Référence professeur — Mes-images (.hex)","url":"resources/robotique/makecode/RB05-Mes-images-reference.hex"},{"title":"Événement de bouton — documentation MakeCode","url":"https://makecode.microbit.org/reference/input/on-button-pressed"}]
+      }
+    },
+    "robotique-trajet": {
+      "domainId":"robotique", "title":"Avancer, tourner, arrêter", "type":"lesson", "theme":"fondations",
+      "objective":"Construire un trajet court avec un arrêt explicite, puis modifier un seul réglage et comparer les essais.",
+      "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
+      "skillIds":["robotique.sequence","robotique.attente","robotique.moteurs"],
+      "prerequisiteSkills":[{"skillId":"robotique.sequence","expectation":"Lire une suite d’actions dans l’ordre avec aide."},{"skillId":"robotique.evenement","expectation":"Reconnaître le lancement A/B du projet Mes-images avant de changer de déclencheur."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Garde Mes-images sauvegardé à part. Télécharge le départ ci-dessous, puis à l’accueil MakeCode choisis Importer → Importer un fichier et sélectionne ce .hex. Nomme ton projet Mon-trajet. Aucun matériel à brancher, aucun compte ni publication nécessaire. Le professeur accompagne l’import si besoin."},
+        {"type":"lesson","id":"base","title":"1 - Une base préparée, sans mouvement caché","paragraphs":["Le départ fournit le modèle robot elecfreaks cutebot, trois aides désactivées, une pause de préparation de 2000 ms et un arrêt final. Lance-le : le robot doit rester immobile. Il ne suit pas automatiquement la ligne dessinée.","Dans ce projet, on start (au démarrage) lance les actions une seule fois, de haut en bas. A et B ne pilotent aucun moteur. La pause de préparation laisse la scène se charger ; elle ne fait pas avancer le robot.","Garde les réglages préparés et l’arrêt. Tu vas insérer tes commandes de déplacement juste après la pause et avant robot motor stop (arrêter les moteurs). Ne copie pas les événements d’affichage de Mes-images."],"downloads":[{"label":"Télécharger le départ Mon-trajet (.hex)","path":"resources/robotique/makecode/RB06-Mon-trajet-depart.hex","filename":"RB06-Mon-trajet-depart.hex"}]},
+        {"type":"lesson","id":"avancer","title":"2 - Avancer puis s’arrêter","paragraphs":["Dans Robot, prends robot motor steer : direction 0, puissance 50 %, durée 1500 ms. Si la durée est cachée, le petit + du bloc permet d’afficher ce réglage. Place cette commande après la pause de préparation et avant l’arrêt déjà fourni.","0 signifie ici avancer droit. 1500 ms correspond à une seconde et demie. La durée permet de passer ensuite à l’action suivante : ne la confonds pas avec une commande d’arrêt. C’est robot motor stop qui termine le mouvement.","Prévois puis lance : préparation, avance, arrêt. Attends après l’arrivée pour vérifier que le robot reste immobile. La puissance est un réglage des moteurs, pas une vitesse mesurée ni une distance exacte à obtenir." ]},
+        {"type":"callout","id":"essai-visible","title":"Observer un essai complet","text":"Garde MakeCode et le robot visibles pendant le trajet, sans changer d’onglet. Agrandis la simulation si la scène est trop petite. Attends son chargement avant de relancer. Si le déplacement n’est pas cohérent d’un essai à l’autre, arrête et demande au professeur de vérifier le simulateur : ne change pas plusieurs blocs pour compenser un problème d’affichage."},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - prouver l’arrêt","items":[{"id":"rb06-avance","text":"Lis la séquence, annonce le moment du départ puis teste l’avance et l’arrêt. Montre le bloc qui garantit l’immobilité finale.","hint":"L’arrêt était déjà dans la base : ajoute l’avance avant lui, pas un second arrêt ailleurs."},{"id":"rb06-relance","text":"Refais le même essai depuis le même départ et la même orientation. Explique pourquoi le robot ne recommence pas tout seul.","hint":"Il n’y a pas de boucle dans le programme. Avec cette scène, Restart rejoue depuis le départ observé ; vérifie la position avant le mouvement. Si elle diffère, arrête la simulation et demande de l’aide avant de comparer."}]},
+        {"type":"lesson","id":"tourner","title":"3 - Ajouter un virage","paragraphs":["Insère un deuxième robot motor steer entre l’avance et l’arrêt : direction 50, puissance 50 %, durée 600 ms. Il fait tourner pendant un temps court. Garde les réglages de la première avance.","Prévois l’ordre : avancer, tourner, arrêter. Rejoue depuis le même départ et observe le changement d’orientation puis l’immobilité. Nous ne promettons pas un virage de 90° : regarde ce que cette simulation produit.","Sur ce schéma seulement : préparer → avancer → tourner → [dernière action manquante]. Quelle action manque pour finir immobile ? Ne retire pas l’arrêt de ton projet pour chercher la réponse."],"illustration":{"src":"images/robotique-trajet-reference.jpg","alt":"Référence MakeCode réimportée : modèle préparé, pause de 2000 ms, avance direction 0 à 50 % pendant 1500 ms, virage direction 50 à 50 % pendant 600 ms et arrêt final.","caption":"Capture du programme complet essayé. Les réglages de préparation restent fournis ; seules les deux commandes de déplacement sont à construire."}},
+        {"type":"tasks","id":"autonomie","title":"À toi - commencer le virage plus près du départ","intro":"Exporte d’abord Mon-trajet. Importe cette sauvegarde comme copie, nomme-la Mon-trajet-perso et conserve le fichier principal intact. Garde puissance, direction et durée du virage ainsi que l’arrêt final.","items":[{"id":"rb06-proposer","text":"Propose une modification pour commencer le virage plus près du départ que dans le modèle. Annonce ton résultat avant d’ouvrir l’indice, puis change un seul réglage.","hint":"Quelle action se produit avant le virage ? Cherche sa durée : une avance plus courte permet de tourner plus tôt. Choisis une durée positive, sans changer la puissance."},{"id":"rb06-comparer","text":"Compare au modèle depuis le même départ et la même orientation. Rejoue ta version deux fois et vérifie l’arrêt. Montre le réglage changé et explique l’effet.","hint":"Ne compare pas des départs différents. Si le robot n’est pas au bon endroit, arrête la simulation et reprends avec le professeur."}]},
+        {"type":"callout","id":"conserver","title":"Conserver tes deux trajets","text":"Exporte la version personnelle sous son nom distinct et garde aussi le fichier principal. Avec une aide si nécessaire, réimporte une sauvegarde et vérifie son programme puis son trajet. La liste des projets du navigateur ne remplace pas ces fichiers : l’enregistrement automatique peut être indisponible. Ne publie pas de données personnelles et ne branche pas de matériel pour sauvegarder."}
+      ],
+      "masteryCriteria":["Je montre le lancement au démarrage, distinct des appuis A/B.","Je lis avancer → tourner → arrêter et vérifie l’immobilité finale.","Je prévois une modification unique, compare des départs identiques et explique mon résultat.","Je conserve le principal et la copie personnelle avec une aide adaptée."],
+      "teacherGuide":{
+        "objective":"Construire une séquence moteur unique et sûre, puis faire raisonner sur une durée avant l’essai, sans capteur ni angle exact.",
+        "entryDiagnosis":["Faire lire une séquence et distinguer le lancement A/B de Mes-images du lancement au démarrage.","La navigation et l’import peuvent être accompagnés ; une difficulté de fichier ne vaut pas difficulté de raisonnement."],
+        "preparation":["Recette professeur MakeCode du 9 octobre 2026 : extension Microsoft microbit-robot, modèle elecfreaks cutebot, trois aides OFF (line following, speed smoothing, sensor and motor display). Documentation consultée : extension bêta, version affichée 2.7.4 ; édition MakeCode 9.0.12. Aucun logiciel installé ni matériel.","Départ .hex réimporté : initialisation, aides OFF, pause 2000 ms, arrêt, aucun mouvement. Référence complète .hex exportée et réimportée avec ses blocs et le simulateur fonctionnel. La pause facilite le chargement de la scène ; ne pas en déduire une garantie sur toute connexion.","Valeurs retenues pour la scène essayée : avance direction 0 / puissance 50 / durée 1500 ms ; virage direction 50 / puissance 50 / durée 600 ms ; arrêt final. Un seul mode steer et une seule pile on start. La référence complète a avancé, changé d’orientation puis fini immobile.","Deux lancements de la référence ont montré le retour au départ lors de Restart. Vérifier ce comportement et le point de départ dans le navigateur réel avant distribution ; ne pas exiger une remise manuelle à une orientation inconnue. Aucune promesse de cm ou d’angle.","L’import et les exports ont été très lents par moments ; une alerte a annoncé l’auto-sauvegarde indisponible dans le navigateur intégré. Les fichiers externes sont obligatoires. Accès élève, langue, reprise de copies et fonctionnement en cours restent à vérifier.","Ne pas donner la référence complète comme départ. Le socle minimal est avancer/arrêter ; virage et défi accompagnés. La comparaison facultative de puissance reste différée jusqu’à son propre essai, et n’est pas un exercice élève requis."],
+        "why":"L’arrêt fourni évite d’utiliser un mouvement incontrôlé comme diagnostic. Modifier un seul réglage donne une comparaison interprétable.",
+        "discoverySpeech":["« La base prépare le modèle et l’arrête. Que faut-il ajouter avant cet arrêt pour le déplacer ? »","« Les boutons ne commandent pas ce projet : montre ce qui le lance. »","« Le temps écoulé permet de passer au bloc suivant ; quel bloc termine vraiment le mouvement ? »","« Nous voulons tourner plus tôt. Que proposes-tu de changer, sans toucher aux autres réglages ? »"],
+        "example":{"target":{"moduleId":"robotique-trajet","blockId":"avancer"},"comments":["Montrer l’arrêt existant avant toute insertion et lire le lancement unique.","Faire prévoir puis observer une avance et une immobilité durable ; le virage vient ensuite.","Les nombres sont des réglages de cette scène simulée, pas des caractéristiques garanties d’un robot physique."]},
+        "questions":[{"question":"A ou B lance-t-il le trajet ?","answer":"Non. La pile on start s’exécute au démarrage, après préparation."},{"question":"Pourquoi garder motor stop ?","answer":"La commande temporisée permet de poursuivre la séquence mais ne remplace pas l’ordre d’arrêt."},{"question":"Qu’attendre après la fin ?","answer":"Le robot reste immobile ; aucune boucle ne rejoue le trajet."},{"question":"Pourquoi garder le même départ ?","answer":"Sinon on confond l’effet du réglage avec un changement de position ou d’orientation."}],
+        "accompaniedActivity":{"moduleId":"robotique-trajet","blockId":"guide"},"independentActivity":{"moduleId":"robotique-trajet","blockId":"autonomie"},
+        "differentiation":["Si l’import ralentit, fournir la base déjà ouverte, laisser prévoir et expliquer ; conserver essais et sauvegarde accompagnée.","Si nécessaire, terminer sur avancer/arrêter et noter virage ou défi non réalisés.","Pour le défi : demander la proposition, puis relire l’ordre, puis seulement suggérer la durée. Noter si la stratégie a été donnée."],
+        "commonErrors":[{"symptom":"Le robot reste immobile","helps":["Vérifier la scène chargée et l’initialisation fournie.","Chercher le déplacement placé après l’arrêt, une puissance nulle ou une durée non positive.","Revenir à la référence ; une panne du simulateur n’est pas une erreur pédagogique de l’élève."]},{"symptom":"Le robot continue ou recommence","helps":["Arrêter la simulation avant intervention.","Vérifier l’arrêt final et chercher des commandes concurrentes ou une pile forever."]},{"symptom":"Les essais ne sont pas comparables","helps":["Comparer départ et orientation avant le mouvement.","Vérifier qu’un seul réglage a changé."]},{"symptom":"Le projet n’est plus dans l’accueil","helps":["Retrouver le fichier exporté, pas seulement la liste locale.","Accompagner Importer un fichier et vérifier le nom puis les blocs."]}],
+        "notes":"Pas de décision selon obstacle, variable, suivi de ligne, radio, télécommande ni second mode moteur. Le schéma partiel est lu sans supprimer l’arrêt. En arrière-plan, certains essais ont donné peu de mouvement ; après affichage du navigateur, deux relances de la référence minimale ont montré avance et arrêt depuis le même départ. Cela suggère un effet de l’affichage, sans diagnostic certain : garder MakeCode visible pendant l’essai et refaire la recette dans le navigateur de cours. La démonstration facultative de puissance n’a pas encore sa recette. L’extension reste non confirmée par KidnKod ; essais professeur et efficacité en classe sont distincts.",
+        "quickConductor":["Importer le départ et constater l’immobilité ; distinguer les déclencheurs.","Insérer l’avance avant l’arrêt, prévoir puis tester.","Ajouter le virage et lire le schéma partiel sans casser le programme.","Sauvegarder le principal ; laisser proposer une copie personnelle et comparer deux essais.","Exporter, reprendre avec aide et noter ce qui reste à vérifier en classe."],
+        "references":[{"title":"Départ élève — Mon-trajet (.hex)","url":"resources/robotique/makecode/RB06-Mon-trajet-depart.hex"},{"title":"Référence professeur — avancer, arrêter (.hex)","url":"resources/robotique/makecode/RB06-Avancer-arreter-reference.hex"},{"title":"Référence professeur — avancer, tourner, arrêter (.hex)","url":"resources/robotique/makecode/RB06-Trajet-reference.hex"},{"title":"Extension Microsoft microbit-robot","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"}]
+      }
+    },
+    "robotique-distance": {
+      "domainId":"robotique", "title":"Lire une distance", "type":"lesson", "theme":"fondations",
+      "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
+      "objective":"Observer une distance robot immobile et distinguer la mesure reçue de la limite choisie.",
+      "skillIds":["robotique.distance"],
+      "prerequisiteSkills":[{"skillId":"robotique.entree","expectation":"Distinguer une information reçue et une action commandée."},{"skillId":"robotique.moteurs","expectation":"Repérer l’arrêt du robot et arrêter la simulation avant une intervention."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Garde tes trajets précédents. Aujourd’hui, le robot reste immobile : nous observons seulement son capteur de distance. Il faut pouvoir montrer une entrée et l’arrêt des moteurs ; sinon, reprends ces repères avec le professeur. Aucun matériel à brancher."},
+        {"type":"callout","id":"recette","title":"Support en préparation — essais accompagnés","text":"Cette leçon est accessible pour préparer le cours. Le placement du robot et les scènes proche/éloignée restent à vérifier avant utilisation avec des élèves. Travaille avec le professeur sur des situations qu’il a vérifiées ; une valeur affichée seule ne prouve pas qu’un obstacle est bien détecté."},
+        {"type":"lesson","id":"base","title":"1 - Ouvrir le projet d’observation","paragraphs":["Télécharge le fichier ci-dessous. Dans l’accueil MakeCode, utilise Importer → Importer un fichier, puis choisis ce fichier .hex. Reste en Blocs et nomme ta copie Ma-distance. Ce fichier contient aussi le programme : tu n’as pas à installer une extension ni à écrire en JavaScript.","La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom distance_cm. N’ajoute aucune commande d’avance, de virage ou de bouton.","Le bloc répéter tant que vrai (while true) est déjà préparé : ici, il sert à relire sans fin. Garde-le et la petite pause. Il ne fait pas bouger le robot."],"downloads":[{"label":"Télécharger le projet d’observation RB07 (.hex)","path":"resources/robotique/makecode/RB07-Ma-distance-observation.hex","filename":"RB07-Ma-distance-observation.hex"}]},
+        {"type":"lesson","id":"observer","title":"2 - Lire l’information reçue","paragraphs":["Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data — Simulator). Repère les nouvelles lignes distance_cm : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.","Observe la démonstration du professeur avec deux situations préparées et une cible devant le capteur. Avant chaque essai, prévois quelle situation donnera la mesure la plus petite. Note les deux lectures et montre celle qui correspond à la cible la plus proche.","Le robot et sa cible peuvent rester immobiles : relire ne fait pas forcément changer le nombre. Une lecture absente ou étrange est à vérifier avec le professeur ; elle ne signifie pas automatiquement que la voie est libre. Garde le robot et les données visibles. Arrête la simulation avant de modifier un placement." ]},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - comparer deux mesures","items":[{"id":"rb07-source","text":"Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne distance_cm et explique d’où vient le nombre.","hint":"Le capteur fournit l’information. Le bloc d’écriture permet seulement de la voir dans les données."},{"id":"rb07-comparer","text":"Prévois puis compare deux situations vérifiées par le professeur. Note leurs mesures et explique laquelle correspond à la cible la plus proche.","hint":"Compare les nouvelles lignes de chaque essai, pas d’anciennes données. Si une cible n’est pas détectée, ne compare pas cette valeur comme une distance fiable."}]},
+        {"type":"lesson","id":"limite","title":"3 - La mesure et notre limite","paragraphs":["Le capteur fournit une distance ; nous pouvons choisir une limite pour décider plus tard. Ce sont deux rôles différents. Déplacer la cible peut changer la mesure. Changer notre limite ne déplace pas la cible.","Voici un tableau pour réfléchir, pas des mesures à reproduire exactement dans le simulateur. La question est : distance plus petite que 20 ? Avec 30, la réponse est non ; avec 15, oui ; avec exactement 20, non. Le signe < signifie strictement plus petit que.","Nous ne commandons pas encore les moteurs. Dans la prochaine leçon, oui demandera Arrêter et non demandera Avancer. Les nombres du tableau ne garantissent pas un arrêt sûr sur du matériel."],"illustration":{"src":"images/robotique-distance-limite.svg","alt":"Tableau de raisonnement : distance 30 cm, 15 cm et 20 cm ; limite choisie 20 cm ; distance strictement inférieure à 20 : non, oui, non.","caption":"Exercice de lecture : égal à 20 n’est pas plus petit que 20. Ce tableau n’est pas une recette de placement."}},
+        {"type":"tasks","id":"autonomie","title":"À toi - distinguer les deux nombres","items":[{"id":"rb07-role","text":"Sans déplacer de robot, explique ce qui change si nous gardons une mesure de 18 cm et choisissons une limite de 20, puis de 25 cm. La mesure vient-elle de notre choix ?","hint":"La distance donnée reste 18. Seule notre limite change. Montre le rôle de chaque nombre avant de calculer une action."},{"id":"rb07-egalite","text":"Avec une limite de 20, réponds à la question distance < 20 pour 19, 20 et 21. Explique le cas égal sans chercher un placement au centimètre près.","hint":"19 est plus petit ; 20 est égal ; 21 est plus grand. Le signe < exclut l’égalité."}]},
+        {"type":"callout","id":"conserver","title":"Conserver ton observation","text":"Arrête la simulation. Exporte Ma-distance avec Enregistrer le projet ou Télécharger et garde le fichier hors du navigateur. Avec une aide si nécessaire, réimporte-le et retrouve les blocs et les données. La liste locale ne remplace pas cette sauvegarde."}
+      ],
+      "masteryCriteria":["Je montre le capteur et lis une mesure dans les données.","Je distingue une distance reçue d’une limite choisie.","Je lis < pour inférieur, égal et supérieur, sans confondre le tableau avec un essai réel."],
+      "teacherGuide":{
+        "objective":"Découvrir la mesure sans mouvement ni première variable ; réserver l’action moteur et le réglage nommé à RB08.",
+        "entryDiagnosis":["Faire montrer une entrée, une sortie et l’arrêt. Accompagner l’import sans en faire une preuve de compréhension.","Aucune connaissance des variables ou de l’unité physique au-delà d’une lecture de cm n’est requise."],
+        "preparation":["Statut : intégré pour préparation, recette pratique incomplète. Le projet d’observation ne contient aucun mouvement, événement A/B, détecteur de ligne ou variable. Modèle CuteBot et aides OFF fournis ; lecture numérique répétée et arrêt initial.","Contrôler deux placements immobiles avec une cible réellement détectée, orientation et vue des données. Le geste souris, la reprise de ces placements et le comportement sans cible restent à vérifier : protocoles R10 et R14. Ne pas utiliser le virage temporisé du diagnostic antérieur comme procédure élève.","Une valeur 40 a été affichée au départ de la recette ; ce n’est ni une portée maximale démontrée ni une preuve d’espace libre. Fournir des observations valides ou reporter la manipulation. Le tableau logique reste utilisable, mais ne remplace pas la preuve sensorielle.","Préparer accès élève, libellés français, import/export et écran suffisamment large. Le modèle du navigateur intégré ne prouve pas l’accès de cours ; pas de matériel réel ni compte obligatoire annoncé."],
+        "why":"Séparer information reçue et choix humain évite de faire croire que le capteur contient notre seuil ou qu’une mesure commande les moteurs toute seule.",
+        "discoverySpeech":["« Le robot ne bouge pas. Quelle information pouvons-nous observer ? »","« Ce nombre vient-il du capteur ou de notre choix ? »","« Nous choisissons 20 comme limite pour réfléchir. Cela déplace-t-il l’obstacle ? »"],
+        "example":{"target":{"moduleId":"robotique-distance","blockId":"observer"},"comments":["Prévoir puis observer deux lectures valides robot immobile. Fournir les gestes de placement après recette.","Serial write value est un moyen d’observation fourni, pas un chapitre sur les communications série.","Ne pas annoncer une scène essayée si seul le tableau est utilisé ; distinguer observation et raisonnement." ]},
+        "questions":[{"question":"Une lecture répétée doit-elle changer ?","answer":"Non : une scène immobile peut fournir le même nombre plusieurs fois."},{"question":"20 < 20 ?","answer":"Non, l’égalité n’est pas strictement inférieure."},{"question":"Changer la limite change-t-il la distance ?","answer":"Non : la limite est choisie, la distance est reçue du capteur."}],
+        "accompaniedActivity":{"moduleId":"robotique-distance","blockId":"guide"},"independentActivity":{"moduleId":"robotique-distance","blockId":"autonomie"},
+        "differentiation":["Lire les cm avec l’élève et lui laisser désigner la mesure la plus petite.","Faire verbaliser les deux rôles avant <. L’autonomie finale porte sur le tableau, pas sur un placement non vérifié."],
+        "commonErrors":[{"symptom":"La mesure ne change pas ou paraît étrange","helps":["Vérifier que l’on lit de nouvelles lignes.","Repérer l’orientation du capteur et une cible dans sa visée.","Comparer avec une scène professeur validée.","Si le support n’est pas fiable, suspendre l’essai plutôt qu’inventer une interprétation de 0 ou 40." ]},{"symptom":"Mesure et limite sont confondues","helps":["Montrer la ligne reçue et une limite écrite séparément.","Garder la limite et comparer deux mesures.","Garder une mesure donnée et changer la limite sur papier.","Faire expliquer qui fournit chaque nombre." ]}],
+        "notes":"Le conducteur atelier reste dans les documents ; cette leçon n’impose ni durée ni rythme. Ne pas cocher un acquis parce que le fichier a été importé. Les capteurs de ligne restent hors périmètre.",
+        "quickConductor":["Importer le projet immobile et conserver les trajets.","Faire prévoir, lire puis comparer deux observations valides.","Séparer mesure et limite ; travailler l’égalité sur tableau.","Faire expliquer puis sauvegarder avec aide si besoin."],
+        "references":[{"title":"Observation immobile RB07 (.hex)","url":"resources/robotique/makecode/RB07-Ma-distance-observation.hex"},{"title":"Extension Microsoft microbit-robot — documentation","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"},{"title":"Recette et réserves RB07/RB08","url":"docs/integration-robotique-capteurs.md"}]
+      }
+    },
+    "robotique-obstacle": {
+      "domainId":"robotique", "title":"S’arrêter devant un obstacle", "type":"lesson", "theme":"fondations",
+      "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
+      "objective":"Construire une décision répétée Avancer/Arrêter, puis nommer sa limite avec la variable seuil.",
+      "skillIds":["robotique.condition","robotique.reglage"],
+      "prerequisiteSkills":[{"skillId":"robotique.distance","expectation":"Lire une distance et la distinguer d’une limite choisie."},{"skillId":"robotique.condition","expectation":"Lire les deux branches si/sinon sur le bouton, avec aide si nécessaire."},{"skillId":"robotique.moteurs","expectation":"Identifier l’avance et l’arrêt ; arrêter la simulation avant intervention."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Retrouve la différence entre mesure et limite et les deux cas du bouton. Conserve Ma-distance et tes trajets : utilise une nouvelle base Mon-obstacle-fixe. Nous construisons d’abord la règle avec un nombre, puis seulement sa copie avec une variable."},
+        {"type":"callout","id":"recette","title":"Support en préparation — essais accompagnés","text":"Les essais d’approche sont à faire avec le professeur après vérification du départ et de l’obstacle. La remise au départ reproductible reste à valider. Si le robot est déjà proche, tourne, manque la cible ou touche l’obstacle, arrête la simulation et demande une vérification du support. Ne change pas les nombres au hasard pour compenser."},
+        {"type":"lesson","id":"base","title":"1 - Une base sans ancien trajet","paragraphs":["Télécharge puis importe le départ ci-dessous dans MakeCode, comme dans Lire une distance. Nomme-le Mon-obstacle-fixe. La base prépare le robot et l’arrête ; elle lit la distance mais ne contient ni décision ni avance. N’utilise pas le trajet temporisé précédent.","Une seule pile au démarrage prépare le robot, attend 2000 ms, puis entre dans répéter tant que vrai (while true), déjà fourni. Tout ce que nous ajouterons pour décider reste dans cette répétition : aucun programme moteur à côté, aucun appui A/B pour lancer un autre trajet.","La lecture numérique et la courte pause de 100 ms restent fournies. La pause laisse un peu de temps entre consultations ; elle ne sert pas à déterminer une longueur de trajet. Le professeur prépare la scène avant le lancement ; les 2000 ms ne garantissent pas le chargement sur tous les ordinateurs."],"downloads":[{"label":"Télécharger le départ RB08 sans décision (.hex)","path":"resources/robotique/makecode/RB08-Mon-obstacle-depart.hex","filename":"RB08-Mon-obstacle-depart.hex"}]},
+        {"type":"lesson","id":"construire","title":"2 - Une question, deux actions","paragraphs":["Avec le professeur, prends si… alors… sinon (if… then… else) dans Logique. Place-le dans la répétition fournie, avant l’écriture des données et la pause. Dans la comparaison <, place robot obstacle distance (cm), de Robot, à gauche et la limite fixe à droite.","Pour la référence de préparation, la limite est 20. Dans alors, place robot motor stop. Dans sinon, place robot motor steer, direction 0, puissance 25 %, sans durée. La règle se lit : distance < 20 ? Oui → Arrêter ; non → Avancer. Ces réglages ont servi aux essais professeur ; ils restent à vérifier dans la scène de cours.","N’ajoute pas la durée de 1500 ms du trajet : une longue attente retarderait la prochaine décision. Le programme relit, choisit, attend brièvement, puis relit. Une nouvelle consultation peut choisir encore la même action. Les deux branches ne doivent pas s’alterner automatiquement.","Sur le tableau seulement, 19 < 20 demande Arrêter ; 20 < 20 et 21 < 20 sont faux, donc demandent Avancer. Ne cherche pas à placer le robot exactement à 20 cm pour démontrer cette égalité."],"illustration":{"src":"images/robotique-obstacle-regle.svg","alt":"Règle répétée : lire la distance, comparer distance < limite, oui arrêter, sinon avancer, puis revenir à une nouvelle lecture.","caption":"Schéma de raisonnement, pas capture de blocs ni garantie de sécurité physique."}},
+        {"type":"tasks","id":"guide","title":"Exercice guidé - observer une nouvelle décision","items":[{"id":"rb08-prevoir","text":"Lis les deux branches. Prévois l’action depuis une situation éloignée, puis depuis une situation proche préparées par le professeur.","hint":"Lis la mesure réelle et compare-la à la limite. Une scène proche doit donner une mesure valide inférieure à la limite."},{"id":"rb08-approche","text":"Depuis le départ éloigné vérifié, observe l’avance puis l’arrêt avant contact dans la même exécution. Explique pourquoi le robot peut décider de s’arrêter sans relance.","hint":"Sa mesure est relue pendant l’avance. Deux essais séparés ne prouvent pas à eux seuls cette réévaluation. Si le départ n’est pas fiable, reporte cet essai avec le professeur."},{"id":"rb08-proche","text":"Dans la scène proche vérifiée, constate l’arrêt dès le départ. Montre la branche choisie, puis arrête la simulation avant toute intervention.","hint":"L’arrêt initial de la base ne suffit pas comme preuve : il faut expliquer la condition et vérifier la règle en fonctionnement."}]},
+        {"type":"lesson","id":"seuil","title":"3 - Donner un nom à notre limite","paragraphs":["Exporte Mon-obstacle-fixe avant de continuer. Importe cette sauvegarde comme copie et nomme-la Mon-robot-prudent. Avec le professeur, crée une seule variable nommée seuil dans Variables.","Place définir seuil à 20 (set seuil to 20) au démarrage, après la préparation et l’arrêt du robot, avant la répétition. Dans distance < 20, remplace seulement le nombre de droite par le bloc seuil. Ne remplace pas la lecture du capteur.","Montre les deux endroits : ici nous donnons la valeur ; là nous l’utilisons. seuil conserve notre réglage. Il ne reçoit pas automatiquement la distance et ne change pas tout seul quand le robot avance.","Prévois le résultat avec la même valeur 20, puis compare les deux versions depuis une scène identique vérifiée. Nous nommons la même limite : la règle attendue reste la même, sans promettre un arrêt au centimètre près." ]},
+        {"type":"tasks","id":"reglage","title":"Essai accompagné - changer seulement le seuil","intro":"Fais cet essai seulement avec deux réglages et une remise au départ vérifiés par le professeur. La variante 25 a été essayée dans le diagnostic professeur ; elle ne garantit pas le résultat sur un autre départ.","items":[{"id":"rb08-valeur","text":"Avant de modifier le projet, compare sur papier une distance de 23 à seuil = 20 puis seuil = 25. Prévois les deux actions avec le professeur.","hint":"23 < 20 est faux : Avancer. 23 < 25 est vrai : Arrêter. La mesure est identique ; seule la limite a changé."},{"id":"rb08-essai","text":"Change uniquement la valeur initiale de seuil pour celle proposée par le professeur. Garde scène, puissance et règle ; relance depuis le même départ, compare l’arrêt et note le réglage conservé.","hint":"La relance redonne sa valeur initiale à seuil. Si le départ diffère ou que le robot est déjà proche, tu ne peux pas attribuer la différence au seul réglage."}]},
+        {"type":"tasks","id":"autonomie","title":"À toi - expliquer le réglage","items":[{"id":"rb08-expliquer","text":"Montre où seuil reçoit sa valeur et où elle est utilisée. Explique ce qui change si robot et obstacle restent immobiles mais que nous changeons seulement la valeur initiale.","hint":"Nous changeons la limite choisie, pas la mesure du capteur. Le nombre plus grand ne rend pas le robot plus rapide."}]},
+        {"type":"callout","id":"conserver","title":"Conserver les deux versions","text":"Arrête la simulation et exporte Mon-robot-prudent sous son nom distinct, sans remplacer Mon-obstacle-fixe. Réimporte une sauvegarde avec une aide si nécessaire et retrouve la valeur initiale et la comparaison. La règle peut redemander Avancer si la mesure devient éloignée : ce n’est pas un arrêt mémorisé ni une sécurité physique. Le projet personnel viendra dans la suite du parcours."}
+      ],
+      "masteryCriteria":["J’explique les deux branches et l’égalité avec <.","Je montre la mesure relue et distingue un arrêt après approche de deux essais séparés.","Je montre l’initialisation de seuil et son utilisation, sans le confondre avec la distance.","Je compare un seul réglage sur des scènes identiques et conserve les deux versions avec une aide adaptée."],
+      "teacherGuide":{
+        "objective":"Faire comprendre la règle fixe complète, sa réévaluation, puis introduire une seule variable comme limite nommée, avec modification accompagnée.",
+        "entryDiagnosis":["Faire distinguer mesure reçue et limite choisie, lire si/sinon et montrer motor stop. Fournir les manipulations si nécessaire.","Ne pas exiger une connaissance préalable des variables ; cette première initialisation et son utilisation sont accompagnées."],
+        "preparation":["Statut : intégré pour préparation, recette pratique incomplète. Départ sans if ni motor steer ; boucle fournie dans une seule pile on start après initialisation. Pas de virage A, suivi de ligne, affichage d’assistance ou second contrôleur moteur.","Références fixe et seuil réservées au professeur. Paramètres de préparation : direction 0, puissance 25, limite 20, courte pause 100 ms, aucune durée moteur. Les anciens diagnostics A/B ont montré une approche et l’effet de 20 puis 25 ; ils ne valident pas le nouveau départ ni la répétabilité après import.","Avant distribution : protocoles R10–R12 et R14. Préparer une scène loin donnant une avance puis arrêt avant contact, une scène proche donnant un arrêt immédiat, deux relances comparables et la seconde valeur. Ne pas annoncer que les nouveaux supports ont passé ces essais tant que les placements ne sont pas fiabilisés.","Séparer égalité sur tableau et essai réel. Une valeur sans cible n’est pas une voie libre démontrée. En cas de contact, de mesure douteuse ou de départ déjà proche, arrêter et vérifier le support ; ne pas introduire filtrage, variable distance ou nouveau chapitre en urgence.","La répétition while true reste fournie et lue comme relire sans fin ; l’élève ne doit pas reconstruire cette préparation. Prioriser les deux cas fixes puis seuil initialisé/utilisé à valeur identique. Reporter la modification si nécessaire ; aucune mission autonome supplémentaire.","Préserver copie fixe et copie prudente, exporter hors navigateur, vérifier accès élève et reprise. Aucun matériel réel, aucune publication de compte élève ni programme texte à saisir."],
+        "why":"La substitution à valeur identique donne du sens à la variable avant la modification ; des scènes identiques permettent ensuite d’attribuer l’effet à un seul réglage.",
+        "discoverySpeech":["« Le trajet d’avant ne doit plus commander les moteurs. Qui décide maintenant ? »","« La mesure diminue pendant l’avance. Pourquoi pouvons-nous choisir une nouvelle action sans relancer ? »","« Avec seuil égal à 20, nous donnons un nom au même réglage. Montre les deux endroits. »","« À mesure identique, une limite plus grande peut demander l’arrêt plus tôt. Elle ne change pas la puissance. »"],
+        "example":{"target":{"moduleId":"robotique-obstacle","blockId":"construire"},"comments":["Construire si et sinon ensemble dans la répétition fournie. Montrer l’absence de durée bloquante.","La console et la comparaison relisent le capteur séparément : ne pas présenter la trace comme une paire atomique mesure/action.","Ne pas donner une référence complète comme départ. L’ancien diagnostic technique A/B reste hors fiche élève." ]},
+        "questions":[{"question":"20 < 20 demande quelle action ?","answer":"Sinon, donc Avancer. L’égalité est traitée sur tableau."},{"question":"La boucle doit-elle alterner Avancer et Arrêter ?","answer":"Non : elle choisit selon la nouvelle mesure, parfois la même action."},{"question":"seuil reçoit-il la distance ?","answer":"Non, sa valeur est choisie au démarrage ; le capteur fournit la mesure à gauche de <."},{"question":"Pourquoi relancer après un changement initial ?","answer":"Pour exécuter de nouveau le bloc qui donne la valeur à seuil."}],
+        "accompaniedActivity":{"moduleId":"robotique-obstacle","blockId":"guide"},"independentActivity":{"moduleId":"robotique-obstacle","blockId":"autonomie"},
+        "differentiation":["Lire la question et les deux branches avant l’assemblage. Un arrêt initial seul ne prouve pas la condition.","Faire pointer affectation et utilisation de seuil avec aide. Noter introduit avec aide ou à reprendre, pas maîtrisé automatiquement.","Si la recette bloque, travailler la trace sur papier et noter la manipulation non faite ; ne pas considérer l’observation réelle acquise."],
+        "commonErrors":[{"symptom":"Le robot ne s’arrête pas avant contact","helps":["Arrêter immédiatement la simulation.","Vérifier visée et mesure valide avec la référence immobile.","Vérifier <, branches, absence de durée moteur et aides OFF.","Reprendre la recette professeur avant de proposer d’autres seuils." ]},{"symptom":"Le résultat change en remplaçant 20 par seuil","helps":["Comparer la valeur initiale à l’ancien nombre.","Vérifier l’affectation avant la répétition.","Montrer seuil à droite et la mesure à gauche.","Comparer départs et autres réglages avant d’attribuer l’écart à la variable." ]},{"symptom":"La nouvelle valeur n’a pas d’effet","helps":["Montrer le bloc modifié.","Vérifier que la comparaison utilise réellement seuil.","Relancer après changement de l’initialisation.","Comparer une même scène valide et non un départ déjà proche." ]},{"symptom":"Des mouvements inattendus apparaissent","helps":["Arrêter avant intervention.","Chercher un ancien trajet ou un événement A/B moteur.","Vérifier trois aides OFF et un seul contrôleur.","Repartir d’une copie du départ fourni plutôt que modifier plusieurs programmes." ]}],
+        "notes":"Pas de recul, évitement, ligne, radio, vitesse variable ou arrêt mémorisé. Retour à une mesure éloignée dans la même exécution facultatif après recette ; jamais déplacer un robot en mouvement. Les pages RB09/RB10 sont intégrées en préparation ; leurs scènes restent à valider. Si l’essai de changement du seuil est reporté, utiliser la reprise ciblée de RB09 avant le choix personnel.",
+        "quickConductor":["Importer le départ immobile et lire la préparation fournie.","Prévoir puis construire les deux branches fixes.","Observer l’approche sans relance et la scène proche après recette.","Préserver fixe ; introduire seuil puis comparer à valeur identique.","Changer une seule valeur avec aide si possible ; expliquer et exporter les deux copies."],
+        "references":[{"title":"Départ RB08 sans décision (.hex)","url":"resources/robotique/makecode/RB08-Mon-obstacle-depart.hex"},{"title":"Référence professeur — limite fixe (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"},{"title":"Référence professeur — seuil (.hex)","url":"resources/robotique/makecode/RB08-Robot-prudent-reference.hex"},{"title":"Recette et réserves RB07/RB08","url":"docs/integration-robotique-capteurs.md"},{"title":"Extension Microsoft microbit-robot","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"}]
+      }
+    },
+    "robotique-mission": {
+      "domainId":"robotique", "title":"Ma mission de robot", "type":"project", "theme":"fondations",
+      "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
+      "objective":"Choisir une mission, justifier ton réglage et observer un premier résultat.",
+      "skillIds":["robotique.mission","robotique.reglage"],
+      "prerequisiteSkills":[{"skillId":"robotique.distance","expectation":"Distinguer une mesure reçue et une limite choisie."},{"skillId":"robotique.condition","expectation":"Montrer les deux branches de la règle répétée."},{"skillId":"robotique.reglage","expectation":"Retrouver où seuil reçoit sa valeur et où elle est utilisée, avec aide si nécessaire."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Retrouve Mon-robot-prudent et sa règle : distance < seuil ? Oui → Arrêter ; non → Avancer. Montre où seuil reçoit sa valeur et où elle est utilisée. Si tu hésites, reprends ce point avec le professeur ; inutile de reconstruire tout le robot."},
+        {"type":"callout","id":"recette","title":"Support en préparation — essais accompagnés","text":"Les scènes et les valeurs possibles pour les missions restent à vérifier avant le cours. Fais les essais seulement dans les situations validées par le professeur. Si le placement n’est pas fiable, prépare ta mission sur papier et note non testé : ne remplace pas un résultat réel par une supposition."},
+        {"type":"lesson","id":"copie","title":"1 - Garder ton projet et ta trace","paragraphs":["Exporte Mon-robot-prudent et garde ce fichier intact. Réimporte-le comme copie, puis nomme celle-ci Ma-mission-robot. Si ton projet manque, demande au professeur une base de reprise : tu retrouveras la règle déjà étudiée, pas un nouveau programme à recopier.","Télécharge la fiche commune ci-dessous et ouvre-la dans ton navigateur pour l’imprimer, ou utilise-la comme modèle sur papier. Une phrase de mission et quelques mots prévu / observé suffisent ; tu peux aussi dicter au professeur. Garde la même fiche et le même projet pour la prochaine leçon. Aucun nom complet n’est demandé."],"downloads":[{"label":"Fiche commune — ma mission et mes essais (HTML imprimable)","path":"resources/robotique/fiche-mission-robot.html","filename":"fiche-mission-robot.html"}]},
+        {"type":"tasks","id":"reprise-seuil","title":"Si tu n’as pas encore essayé un autre seuil","intro":"Fais cette reprise avec le professeur si le changement de réglage a été reporté dans S’arrêter devant un obstacle, ou si son effet reste difficile à expliquer. Si tu l’as déjà essayé et expliqué, passe à la référence.","items":[{"id":"rb09-reprise-papier","text":"Sur papier, garde une mesure de 23 et prévois l’action avec seuil = 20, puis seuil = 25. Explique quel nombre est choisi et lequel vient du capteur.","hint":"23 < 20 est faux : Avancer ; 23 < 25 est vrai : Arrêter. Seule la limite choisie change dans cet exercice."},{"id":"rb09-reprise-essai","text":"Dans ta copie, montre l’initialisation et l’emploi de seuil. Le professeur propose deux valeurs vérifiées : prévois puis compare leur effet depuis la même scène, avec la même puissance. Retrouve ensuite le réglage conservé et explique le résultat avant de choisir ta mission.","hint":"Change seulement la valeur initiale, puis relance depuis le départ vérifié. Les nombres du papier ne sont pas des valeurs de simulation garanties. Si cet essai reste impossible, note non testé et reprends-le avec le professeur avant le choix personnel."}]},
+        {"type":"tasks","id":"guide","title":"Observer la référence avant de choisir","intro":"Le professeur montre Reference-arret dans la scène A : départ éloigné, obstacle devant, avance puis arrêt avant contact. Il conserve son réglage.","items":[{"id":"rb09-reference","text":"Repère l’espace qui reste devant l’obstacle à l’arrêt : c’est la marge. Explique ce que voudrait dire une marge plus grande ou plus petite.","hint":"Plus grande : le robot reste plus loin de l’obstacle. Plus petite : il s’arrête plus près, mais toujours avant contact. Il ne s’agit pas de rouler plus vite."},{"id":"rb09-regle","text":"Dans ton projet intact, montre la mesure, la question et les deux actions possibles. Où se trouve le réglage choisi ?","hint":"Le capteur donne la distance. seuil reçoit notre valeur au démarrage et sert à la comparaison. Ne supprime aucun bloc pour faire cette lecture."}]},
+        {"type":"lesson","id":"choisir","title":"2 - Une mission que l’on peut observer","paragraphs":["Ton robot peut être livreur, explorateur ou robot de secours. Ce thème donne une raison à ton choix ; il n’ajoute pas de livraison, de labyrinthe ou de nouvelle commande.","Choisis une mission disponible après vérification du professeur : prudente, avancer puis s’arrêter avec une marge plus grande que la référence ; approche, avancer puis s’arrêter avec une marge plus petite, toujours avant contact.","Approche n’est pas une course vers l’obstacle ni une recherche du plus petit seuil possible. Utilise seulement les valeurs vérifiées pour ta mission. Si cette mission n’est pas réalisable, le professeur doit revoir le support avant de la proposer.","Écris une phrase : Mon robot est un… ; sa mission est de s’arrêter avec une marge… Explique ton choix à l’oral. Choisis une valeur de seuil autorisée et prévois son effet avant un indice. Tu peux garder une valeur pertinente de ton projet précédent : changer un nombre n’est pas obligatoire.","Montre la valeur donnée à seuil avant la répétition et son emploi à droite de <. Garde puissance, préparation, règle et courte pause identiques. Le nombre ne modifie pas la mesure reçue et ne change pas tout seul pendant l’avance."]},
+        {"type":"tasks","id":"autonomie","title":"À toi - un premier résultat dans A","intro":"Après ta prévision, le professeur prépare les mêmes départ, orientation, obstacle et puissance que pour la référence. Arrête toujours la simulation avant tout placement ; ne déplace jamais un robot en mouvement.","items":[{"id":"rb09-prevision","text":"Note ou dis ce que tu prévois dans A. Lance ta copie et observe l’avance puis l’arrêt avant contact dans une seule exécution.","hint":"Si le robot reste arrêté dès le départ, ce n’est pas la réussite de cette mission. Si la scène ou la mesure paraît étrange, arrête et vérifie avec le professeur avant de toucher au seuil."},{"id":"rb09-resultat","text":"Compare la marge à celle de la référence. Note quelques mots dans premier essai A et explique si ce premier résultat correspond à ton objectif.","hint":"Garde des conditions égales. Si elles ont changé, la différence ne prouve pas l’effet du réglage. Modifie seulement si nécessaire, après diagnostic, et reteste."}]},
+        {"type":"callout","id":"conserver","title":"Garder ce premier résultat","text":"Arrête et exporte Ma-mission-robot sous son nom, sans remplacer l’original. Garde la fiche et la valeur choisie. Tu as un premier résultat, pas encore une mission vérifiée partout : la suite confirmera A et testera B/C. Si l’essai n’a pas pu être réalisé, note non testé et conserve ta préparation."}
+      ],
+      "masteryCriteria":["Je formule une mission observable, pas seulement un thème.","Je justifie mon réglage et montre où il est donné et utilisé.","Je confronte une première prévision au résultat A, ou identifie l’essai non réalisé.","Je conserve mon original, ma copie et la même fiche pour la suite."],
+      "teacherGuide":{
+        "objective":"Passer d’un réglage guidé à un objectif personnel, une prévision et un premier résultat, sans nouvelle mécanique.",
+        "entryDiagnosis":["Faire pointer mesure, comparaison, deux actions et seuil dans le projet intact.","Demander si l’essai de changement guidé RB08 a été réalisé et expliqué. Sinon, utiliser reprise-seuil avant la référence et le choix personnel : papier, pointage, puis essai accompagné sur deux valeurs vérifiées. Une prévision sur papier seule ne valide pas cet essai.","Distinguer aide de manipulation et besoin de reprise conceptuelle ; aucun acquis automatique."],
+        "preparation":["Recette pratique incomplète : R10–R12/R14 puis R15 avant distribution. Les scènes de mission et leurs plages ne sont pas validées.","Préparer Reference-arret à partir du fixe RB08, avec limite conservée ; noter scène A, orientation, obstacle, puissance et mesures. Montrer son arrêt avant le choix.","Vérifier deux missions avec avance initiale et arrêt avant contact ; ne pas inventer une plage numérique ni proposer approche si elle échoue.","Prévoir la fiche commune et une base de reprise variable RB08 si le projet manque. Ce programme complet reprend un prérequis, il n’est pas un départ sans solution.","Accès élève, copie personnelle et sauvegarde restent à vérifier ; pas de compte ou partage public imposé."],
+        "why":"Le choix porte sur une contrainte observable et sa justification, pas sur l’habillage du robot. Un programme identique peut être pertinent si l’élève explique son choix et le vérifie.",
+        "discoverySpeech":["Voici la marge laissée par notre référence. Quel objectif aimerais-tu donner à ton robot ?","Tu choisiras ton réglage dans les possibilités vérifiées, puis tu prévois avant d’essayer. Nous ne cherchons jamais le contact."],
+        "example":{"target":{"moduleId":"robotique-mission","blockId":"guide"},"comments":["Démonstration courte de A avant mission ; ne pas donner le sens du changement ni la valeur solution.","La comparaison exige mêmes conditions. Une capture de programme n’atteste pas la scène." ]},
+        "questions":[{"question":"Un robot déjà arrêté au départ réussit-il la mission A ?","answer":"Non : A demande une avance puis un arrêt. Cet arrêt initial est utile dans B, pas suffisant pour A."},{"question":"Faut-il forcément modifier le nombre ?","answer":"Non, si le réglage répond à l’objectif ; demander justification et essai."},{"question":"Une valeur plus grande rend-elle le robot plus rapide ?","answer":"Non : seuil règle la comparaison, pas la puissance ni la mesure."}],
+        "accompaniedActivity":{"moduleId":"robotique-mission","blockId":"guide"},"independentActivity":{"moduleId":"robotique-mission","blockId":"autonomie"},
+        "differentiation":["Question → pointage → deux valeurs admissibles → démonstration si nécessaire, sans supprimer la prévision personnelle.","Une phrase et quelques mots suffisent sur la fiche ; justification orale et dictée possibles. Garder détails techniques et aides dans le relevé professeur.","Élève rapide : préciser la conclusion ou refaire A, pas ajouter une nouvelle variable. Si placement bloqué, préparation non testée explicitement."],
+        "commonErrors":[{"symptom":"Le thème ne donne aucun objectif observable","helps":["Faire montrer la marge de référence.","Demander ce qui doit être différent à l’arrêt.","Proposer les deux contraintes vérifiées.","Faire reformuler sans ajouter de mécanique." ]},{"symptom":"L’arrêt semble différent mais le départ a changé","helps":["Arrêter la simulation.","Comparer captures et orientation.","Rétablir les conditions vérifiées sans changer le seuil.","Retester et limiter la conclusion aux observations comparables." ]}],
+        "notes":"Premier essai A en RB09, confirmation et B/C en RB10. Pas de panne imposée, seuil minimal, radio, ligne, recul ou navigation. Le réglage virtuel n’est pas une sécurité matérielle.",
+        "quickConductor":["Retrouver les repères et préserver le projet.","Si le changement guidé RB08 manque ou reste fragile, faire la reprise ciblée avant le choix personnel.","Montrer la référence A puis laisser choisir la mission.","Faire justifier et prévoir le seul réglage.","Observer un premier A, conserver trace et export."],
+        "references":[{"title":"Fiche commune imprimable","url":"resources/robotique/fiche-mission-robot.html"},{"title":"Base de reprise professeur — règle avec seuil (.hex)","url":"resources/robotique/makecode/RB08-Robot-prudent-reference.hex"},{"title":"Référence fixe professeur (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"},{"title":"Scènes de mission — préparation et réserves","url":"docs/integration-robotique-missions.md"},{"title":"Protocole R15","url":"docs/protocoles-verifications-manuelles.md"}]
+      }
+    },
+    "robotique-tests": {
+      "domainId":"robotique", "title":"Tester, expliquer, améliorer", "type":"lesson", "theme":"fondations", "finalPathwayAction":"Revenir au parcours",
+      "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
+      "objective":"Vérifier ta mission dans plusieurs situations, expliquer les résultats et améliorer seulement si nécessaire.",
+      "skillIds":["robotique.tests","robotique.condition"],
+      "prerequisiteSkills":[{"skillId":"robotique.mission","expectation":"Retrouver mission, réglage, copie et premier résultat A, ou signaler l’essai non effectué."},{"skillId":"robotique.reglage","expectation":"Montrer la valeur réellement initialisée et son emploi."}],
+      "prerequisitesInContent":true,
+      "blocks":[
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Reprends Ma-mission-robot et la même fiche : mission, valeur et premier résultat A. Ne crée pas un projet par essai. Si A n’a pas été réalisé, commence par cet essai accompagné ; il ne devient pas une confirmation fictive."},
+        {"type":"callout","id":"recette","title":"Support en préparation — essais accompagnés","text":"Les trois scènes et leurs réglages restent à valider avant utilisation en cours. Le professeur doit vérifier les placements et les mesures. Si la simulation est indisponible, tu peux prévoir sur papier, mais la mission pratique reste non testée."},
+        {"type":"lesson","id":"situations","title":"1 - Trois situations à prévoir","paragraphs":["A : même départ éloigné, même orientation et même obstacle que pour le premier essai et Reference-arret. Garde ton réglage. Retrouve ta prévision et ton premier résultat avant de confirmer ; le professeur remontre la référence si nécessaire.","B : l’obstacle est proche dès le départ, sans contact. Le professeur t’aide à lire une mesure valide. Compare-la à ton seuil et propose ce que fera le robot avant de lancer.","C : l’obstacle est à une autre position et le départ reste éloigné. Garde ton réglage. Prévois l’action au départ, puis ce qui pourrait changer pendant le déplacement, en expliquant avec la règle.","Dans les données de chaque situation, note quelques mots de prévision avant de regarder le résultat ou l’indice. Une autre position vérifie le comportement ailleurs ; comparer la marge à Reference-arret dans C demanderait une nouvelle comparaison dans cette scène. L’égalité se réfléchit sur le tableau, pas avec un placement au centimètre près."],"downloads":[{"label":"Retrouver la même fiche commune (HTML imprimable)","path":"resources/robotique/fiche-mission-robot.html","filename":"fiche-mission-robot.html"}]},
+        {"type":"tasks","id":"guide","title":"Essais accompagnés - confirmer puis varier la scène","intro":"Prévois chaque résultat juste avant l’essai et explique-le avec la mesure et ton seuil. Le professeur prépare les scènes validées. Arrête avant tout placement ; ne déplace jamais un robot en mouvement.","items":[{"id":"rb10-a","text":"Reprends A depuis le départ connu. Compare au premier résultat et à ta prévision, puis note la confirmation sur la même ligne de fiche.","hint":"Départ, orientation, obstacle, puissance et réglage doivent correspondre. Si le premier résultat manque, note premier essai et ne prétends pas avoir confirmé."},{"id":"rb10-b","text":"À partir de la mesure au départ de B, prévois l’action et la branche choisie. Lance, observe pendant quelques secondes, puis compare le résultat à ta prévision.","hint":"Une mesure valide inférieure à seuil choisit Arrêter ; le robot doit rester immobile. L’arrêt initial technique seul ne suffit pas : explique la règle en fonctionnement."},{"id":"rb10-c","text":"Dans C, prévois ce que fera le robot au départ puis au cours de l’essai. Teste avec le même réglage et note prévu / observé. Explique le rôle d’une nouvelle lecture.","hint":"Depuis la scène éloignée vérifiée, on attend avance puis arrêt avant contact dans la même exécution. Deux lancements séparés ne démontrent pas cette nouvelle décision. Cet essai ne prouve pas que le robot évitera tous les obstacles partout."}]},
+        {"type":"lesson","id":"diagnostic","title":"2 - Comprendre avant de modifier","paragraphs":["Compare prévision et observation. Si elles correspondent, garde ton programme : il n’est pas nécessaire de fabriquer une erreur pour l’améliorer.","Si le résultat surprend, arrête et vérifie avec le professeur la scène, la mesure reçue, la valeur réellement donnée à seuil, les deux branches et une éventuelle commande moteur concurrente. Une mesure absente ou étrange ne signifie pas automatiquement voie libre.","Choisis une seule correction pertinente et prévois son effet. Reteste ; si tu changes le programme ou son réglage, reprends A/B/C avant de conclure. Les valeurs restent parmi celles vérifiées pour la mission. Ne réduis pas le seuil au hasard pour te rapprocher du contact." ]},
+        {"type":"tasks","id":"autonomie","title":"À toi - montrer ta mission et ses preuves","items":[{"id":"rb10-expliquer","text":"Présente le capteur, la question et les deux actions commandées aux moteurs. Explique ton choix conservé ou modifié et montre un essai qui soutient ta conclusion.","hint":"Le capteur fournit l’entrée ; les moteurs sont les sorties commandées. Avancer et Arrêter sont les deux actions possibles. Tu peux parler ; cite aussi les aides reçues et ce qui était préparé."},{"id":"rb10-limites","text":"Explique ce que tes essais montrent et ce qui reste non vérifié. Si un essai a échoué ou manque, indique-le avec une piste précise.","hint":"A compare une marge ; B vérifie l’arrêt au départ proche ; C vérifie un autre placement. Un résultat expliqué n’est pas automatiquement une réussite technique."}]},
+        {"type":"callout","id":"conserver","title":"Retrouver ton projet après le parcours","text":"Arrête la simulation, exporte ton projet final et garde l’original. Réimporte le fichier et retrouve nom, valeur et règle, avec aide si besoin. Conserve la fiche et les essais à reprendre. Ton robot peut repartir si la distance devient grande : ce n’est pas un arrêt mémorisé ni une sécurité sur matériel réel."}
+      ],
+      "masteryCriteria":["Je distingue ce que j’avais prévu et ce que j’observe.","Je compare A dans des conditions égales et explique les rôles différents de B/C.","J’explique la nouvelle décision pendant une même approche.","Je diagnostique avant de changer, conserve une preuve et retrouve mon projet ; je signale les essais manquants."],
+      "teacherGuide":{
+        "objective":"Faire conduire et expliquer des essais comparables ; corriger seulement si nécessaire et distinguer preuve, réussite technique et acquisition.",
+        "entryDiagnosis":["Retrouver copie, mission, réglage et premier A. Si absent, faire le premier essai avant de parler de confirmation.","Demander l’attendu de chaque situation avant la manipulation ; une prévision erronée reste une information utile."],
+        "preparation":["Recette pratique incomplète : R15 et préalables capteurs avant distribution. Scènes, valeurs et accès élèves restent à vérifier.","A identique à RB09 ; B doit demander arrêt pour toutes les valeurs autorisées, C permettre avance puis arrêt. Arrêter avant les placements.","Garder référence fixe et puissance, trace commune et export de reprise ; ni nouveau programme par scène ni nouvelle variable.","Conserver les preuves techniques dans la fiche professeur des scènes ; ne pas surcharger la fiche élève."],
+        "why":"Le test apprend à limiter une conclusion à ses preuves. C élargit la vérification sans prouver une navigation générale ; un code conforme n’a pas à être changé pour être considéré comme travaillé.",
+        "discoverySpeech":["Tu as un premier résultat. Vérifions qu’il se retrouve, puis changeons la situation sans changer ton réglage.","Un résultat inattendu nous invite à vérifier avant de modifier. Dire ce qui manque est plus juste que prétendre avoir tout testé."],
+        "example":{"target":{"moduleId":"robotique-tests","blockId":"situations"},"comments":["Confirmation A puis prévision personnelle juste avant B/C ; recueillir mesure, seuil et action proposée avant d’ouvrir les indices. Attendus professeur : B arrêt et immobilité ; C avance puis arrêt avant contact. Conserver la trace RB09.","A/C : transition dans la même exécution. La console relit séparément de la condition, pas trace atomique mesure/action.","Une capture seule ne prouve pas la répétabilité ou l’immobilité maintenue." ]},
+        "questions":[{"question":"Que vérifie B que A ne montrait pas au départ ?","answer":"La décision Arrêter quand la mesure est déjà proche au lancement."},{"question":"C prouve-t-il une marge plus petite que la référence ?","answer":"Non, sauf comparaison supplémentaire dans C ; le socle y vérifie avance puis arrêt."},{"question":"Faut-il changer un programme qui convient ?","answer":"Non ; conserver, justifier et montrer les preuves. Après une modification pertinente, refaire A/B/C."}],
+        "accompaniedActivity":{"moduleId":"robotique-tests","blockId":"guide"},"independentActivity":{"moduleId":"robotique-tests","blockId":"autonomie"},
+        "differentiation":["Dicter prévu/observé ou expliquer oralement ; recueillir séparément aide de souris et raisonnement.","Aider à identifier une seule anomalie, sans fournir d’emblée plusieurs changements.","Approfondir par répétition ou portée d’une conclusion, sans bonus de mécanique ni compétition."],
+        "commonErrors":[{"symptom":"L’élève conclut pour toutes les scènes à partir de A","helps":["Faire nommer le résultat de A.","Demander ce que change B.","Prévoir C avant de lancer.","Reformuler la conclusion avec ses limites." ]},{"symptom":"Plusieurs réglages changent après un résultat inattendu","helps":["Arrêter et préserver la version.","Vérifier d’abord scène et mesure.","Identifier une seule correction justifiée.","Prévoir, retester puis reprendre A/B/C avant conclusion." ]}],
+        "notes":"Observer l’explication individuelle, pas seulement une démonstration collective. Aucun acquis automatique, partage public, vidéo ou nom complet demandé. Réserve pratique maintenue tant que les scènes ne sont pas validées.",
+        "quickConductor":["Retrouver premier résultat et copie.","Confirmer A puis prévoir et essayer B/C.","Diagnostiquer/corriger si besoin, reprendre les essais après changement.","Faire présenter preuve et limites, exporter puis réimporter."],
+        "references":[{"title":"Fiche commune imprimable","url":"resources/robotique/fiche-mission-robot.html"},{"title":"Scènes de mission — préparation et réserves","url":"docs/integration-robotique-missions.md"},{"title":"Protocoles R15 et observation R13","url":"docs/protocoles-verifications-manuelles.md"},{"title":"Référence fixe professeur (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"}]
+      }
+    },
+    "gdevelop-projet": {
+      "domainId": "jeux-video",
+      "title": "Mon premier projet GDevelop",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Placer un personnage, essayer la scène et retrouver son projet après fermeture.",
+      "tool": {"label":"Télécharger GDevelop — site officiel","url":"https://gdevelop.io/download"},
+      "skillIds": ["gdevelop.workspace"],
+      "prerequisiteSkills": [],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Prépare une petite pièce à explorer : aujourd’hui, tu y places le personnage et tu retrouves ton travail. Il reste immobile pour cette leçon. Garde CodeCraft ouvert à côté de GDevelop, en français. Le professeur peut aider au lancement et aux fichiers ; aucun compte ni publication ne sont nécessaires pour ce projet local."},
+        {"type":"lesson","id":"kit","title":"1 - Ton matériel de départ","paragraphs": [
+          "Télécharge puis extrais le kit dans ton dossier de travail, avec le professeur si nécessaire. Appelle le dossier mon-premier-jeu. Ne travaille pas dans le ZIP : les images doivent être accessibles dans le dossier extrait.",
+          "Le kit fournit le personnage et les futurs objets à trouver, pas un jeu terminé. Garde le dossier images avec ton projet ; la notice explique les fichiers si tu en as besoin."
+        ],"downloads":[{"label":"Télécharger le kit de départ (ZIP)","path":"resources/gdevelop/kit-depart.zip","filename":"kit-codecraft-gdevelop.zip"},{"label":"Télécharger la notice du kit","path":"resources/gdevelop/kit/NOTICE.txt","filename":"NOTICE.txt"}] },
+        {"type":"lesson","id":"exemple","title":"2 - Du projet à l’aperçu","paragraphs": [
+          "Crée un projet vide enregistré localement dans mon-premier-jeu, à côté du dossier images, puis une scène nommée Jeu. Le professeur peut t’aider à trouver ces commandes si l’interface diffère ; ne choisis ni modèle de jeu ni création de compte. Le fichier de travail proposé s’appelle jeu.json.",
+          "Ajoute un objet Sprite nommé Personnage. Dans son éditeur, crée une animation contenant une seule image : images/personnage.png. Ici, « animation » est le rangement de l’image dans GDevelop ; nous n’animons pas encore le pion.",
+          "Glisse un exemplaire de Personnage dans le cadre visible de Jeu, sans le coller au bord. Prévois ce que montrera l’aperçu, puis lance-le. Le pion visible et immobile est le résultat attendu. Ferme l’aperçu : tu retrouves la scène que tu peux modifier."
+        ],"illustration":{"src":"images/gdevelop-projet.svg","alt":"Le projet contient la scène Jeu et le dossier images. Un objet Personnage est placé dans Jeu, puis visible dans l’aperçu.","caption":"Projet → scène à modifier → aperçu à essayer. L’aperçu ne remplace pas le fichier de travail."} },
+        {"type":"tasks","id":"guide","title":"Exercice guidé - voir puis retrouver","items": [
+          {"id":"gd01-visible","text":"Avec le professeur, place le personnage et lance l’aperçu. Montre où tu prépares sa position et où tu observes le résultat.","hint":"Si la liste contient Personnage mais que l’aperçu est vide, reviens à la scène et glisse un exemplaire de cet objet à l’intérieur du cadre visible."},
+          {"id":"gd01-position","text":"Avant de déplacer le pion dans l’éditeur, annonce où il apparaîtra. Ferme l’aperçu, change sa position, relance un aperçu neuf et compare à ta prévision.","hint":"Une fenêtre d’aperçu déjà ouverte n’est pas ton éditeur. Ferme-la puis relance un nouvel aperçu après la modification."},
+          {"id":"gd01-reouvrir","text":"Enregistre cette position. Montre le dossier et le fichier que tu devras ouvrir pour retrouver ton travail ; garde les images à côté.","hint":"Utilise Fichier → Enregistrer, puis l’ouverture d’un projet local. Ne déplace pas jeu.json seul : laisse le dossier images à côté."}
+        ] },
+        {"type":"tasks","id":"autonomie","title":"À toi - une position choisie","items": [
+          {"id":"gd01-autonome","text":"Choisis le point de départ de ton explorateur dans le cadre visible. Prévois son emplacement, modifie la scène puis enregistre. Ferme le projet et rouvre le bon fichier : vérifie dans un aperçu neuf la position ET l’image conservées.","hint":"Travaille toujours sur jeu.json dans ton dossier. Une image manquante ou une ancienne position est un problème à observer, pas une raison de tout recréer."}
+        ] },
+        {"type":"tasks","id":"bonus","title":"Bonus - garder une copie","items": [
+          {"id":"gd01-copie","text":"Après sauvegarde et fermeture, copie tout le dossier mon-premier-jeu sous un autre nom. Ouvre jeu.json de la copie et teste l’image. Garde l’original intact.","hint":"La copie doit contenir jeu.json ET images. Le titre de la fenêtre peut être identique : vérifie le chemin du fichier ouvert avant de modifier la copie."}
+        ] }
+      ],
+      "masteryCriteria": ["Distinguer la scène à modifier et l’aperçu à essayer.","Placer un exemplaire de Personnage et vérifier sa position dans un nouvel aperçu.","Enregistrer et rouvrir le bon projet avec son image et sa dernière position."],
+      "consolidation": [{"moduleId":"gdevelop-projet","blockId":"guide","label":"Retrouver le personnage après fermeture"}],
+      "bonusActivities": [{"moduleId":"gdevelop-projet","blockId":"bonus","label":"Conserver une copie complète"}],
+      "nextSteps": [{"moduleId":"gdevelop-deplacement","label":"Déplacer mon personnage","prerequisiteSkills":[{"skillId":"gdevelop.workspace","expectation":"Retrouver le personnage et lancer son aperçu."}]}],
+      "teacherGuide": {
+        "objective": "Obtenir un premier résultat visible puis prouver la réouverture d’un projet local, sans confondre aperçu et source.",
+        "entryDiagnosis": ["Faire montrer un projet Scratch sauvegardé et expliquer la différence entre modifier et lancer. Une aide locale suffit si la sauvegarde n’est pas autonome.","Ne pas exiger les quatorze modules Scratch : score, clones et messages ne sont pas nécessaires ici."],
+        "preparation": ["Recette dans GDevelop encore à effectuer : relever version et menus français, vérifier création vide locale sans compte, import et réouverture. Les tests CodeCraft ne valident pas le moteur.","Extraire le kit, vérifier les trois PNG ; préparer un dossier de travail accessible. Garder une copie intacte, sans fabriquer un fichier JSON à importer non testé.","Garder la résolution par défaut si le cadre est visible ; 800 × 450 est une possibilité de démonstration, pas un prérequis. Aider au premier import, sans prendre tout le projet en main.","Les fichiers et le premier import peuvent être préparés/accompagnés. Ne pas évaluer la logique à partir de l’extraction du ZIP. Une seule réouverture complète est exigée dans l’activité autonome ; la copie reste un bonus."],
+        "why": "Le premier obstacle est retrouver son travail, pas programmer. Le résultat visible doit précéder les explications détaillées sur les fichiers.",
+        "discoverySpeech": ["Nous préparons une petite pièce à explorer. Aujourd’hui, le personnage apparaît ; il n’a pas encore de commande de déplacement. Dans quelle fenêtre pouvons-nous choisir sa place ?","Je place un exemplaire dans la scène. Prévois ce que nous verrons avant de lancer l’aperçu. Une fois fermé, nous pouvons changer la place : est-ce la même chose que programmer un mouvement ?","Tu choisis maintenant ton point de départ. Enregistrer puis rouvrir vérifie que ta décision est conservée avec l’image. Je peux aider à retrouver le dossier ; c’est toi qui annonces et vérifies le résultat."],
+        "example": {"target":{"moduleId":"gdevelop-projet","blockId":"exemple"},"comments":["Montrer seulement scène, objet et aperçu ; un Sprite avec une image. L’animation de rangement n’enseigne pas une animation visuelle.","Faire prévoir puis obtenir le résultat visible avant de développer les détails de fichiers. Modifier une place, relancer et comparer.","Accompagner création locale/import si nécessaire, puis laisser le choix et le test à l’élève. Menus/version et réouverture restent à essayer dans le moteur."]},
+        "questions": [{"question":"Pourquoi mon objet dans la liste n’apparaît-il pas ?","answer":"Il faut en placer un exemplaire dans la scène, à l’intérieur du cadre visible."},{"question":"Si je déplace le pion dans l’éditeur, ai-je programmé son déplacement ?","answer":"Non : on change la position préparée. Aucun événement ne le déplace pendant le jeu."},{"question":"Que doit contenir la copie du projet ?","answer":"Le fichier source et ses ressources ; vérifier concrètement la réouverture et l’aperçu de la copie."}],
+        "accompaniedActivity": {"moduleId":"gdevelop-projet","blockId":"guide"},
+        "independentActivity": {"moduleId":"gdevelop-projet","blockId":"autonomie"},
+        "differentiation": ["Si l’interface bloque, accompagner la création et l’import ; laisser l’élève placer, prévoir et vérifier.","Si l’élève est autonome, proposer la copie complète plutôt qu’un nouveau concept de jeu."],
+        "commonErrors": [{"symptom":"Personnage existe mais l’aperçu reste vide","helps":["Demander où le pion devrait apparaître.","Comparer la liste des objets et la scène.","Vérifier le cadre visible et le placement d’un exemplaire.","Montrer le glisser-déposer, puis laisser l’élève placer et relancer."]},{"symptom":"L’image manque après réouverture","helps":["Faire retrouver le chemin de jeu.json.","Faire chercher le dossier images à côté.","Comparer le dossier utilisé à l’extraction initiale du kit.","Réimporter personnage.png depuis le bon dossier, enregistrer et retester la réouverture."]},{"symptom":"L’ancienne position reste visible","helps":["Demander ce qui a été modifié et dans quelle fenêtre.","Fermer puis relancer l’aperçu.","Vérifier la sauvegarde et le chemin du fichier rouvert.","Déplacer ensemble un pion, enregistrer puis faire refaire seul le cycle complet."]}],
+        "notes": "Distinguer aide fichiers/lecture/interface, réalisation avec modèle et décision autonome. Une réouverture probante suffit ici, pas plusieurs cycles identiques. La suite GD04 ajoute le déplacement fourni par un comportement ; ne pas le préinstaller sans explication dans cette première leçon.",
+        "quickConductor": ["Préparer/accompagner le dossier sans visite exhaustive.","Placer un personnage, prévoir et regarder l’aperçu.","Changer sa place, prévoir et comparer.","Laisser choisir le départ, sauvegarder et effectuer une réouverture probante."],
+        "references": [{"title":"GDevelop — interface","url":"https://wiki.gdevelop.io/gdevelop5/interface/"},{"title":"GDevelop — Sprite","url":"https://wiki.gdevelop.io/gdevelop5/objects/sprite/"}]
+      }
+    },
+    "gdevelop-deplacement": {
+      "domainId": "jeux-video", "title": "Déplacer mon personnage", "type": "lesson", "theme": "fondations", "showTool": false,
+      "objective": "Piloter ton personnage avec les flèches et choisir une vitesse adaptée à ton trajet.",
+      "skillIds": ["gdevelop.movement"],
+      "prerequisiteSkills": [{"skillId":"gdevelop.workspace","expectation":"Retrouver le personnage, essayer la scène et enregistrer son projet."}],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Rouvre le projet de Mon premier projet GDevelop, avec Personnage visible, et enregistre. Place son départ loin des bords. Un comportement est un fonctionnement fourni par GDevelop : tu vas l’ajouter au personnage, sans écrire encore tes propres événements. Si tu as déjà ajouté des jetons ou un message, garde-les ; nous ne changeons que Personnage."},
+        {"type":"lesson","id":"exemple","title":"1 - Donner des commandes au personnage","paragraphs":[
+          "Ouvre l’éditeur de l’objet Personnage, puis sa partie comportements. Ajoute le comportement de déplacement vu du dessus (Top-Down Movement). Le professeur peut t’aider à retrouver ce choix si les libellés diffèrent ; n’ajoute pas un déplacement de plateformes ou un moteur physique.",
+          "Garde les contrôles standards aux flèches et désactive la rotation de l’objet pour que son image reste droite. Avec une aide si nécessaire, désactive aussi les diagonales : nous essayons d’abord une direction à la fois. Laisse les autres paramètres au réglage de départ accompagné ; tu n’as pas à apprendre toute la liste avant de jouer.",
+          "Prévois ce qui se passera si tu maintiens la flèche droite puis la relâches. Lance un aperçu neuf, clique dedans pour lui donner le clavier, fais un court trajet à droite puis reviens à gauche. Essaie ensuite haut et bas séparément, en relâchant entre les essais. Laisse le personnage s’arrêter avant de repartir ; ne l’amène pas au bord.",
+          "Montre où le comportement est ajouté. Les flèches fonctionnent grâce au pilotage qu’il fournit, même si tu n’as ajouté aucun événement de déplacement. Ce n’est pas la même chose que déplacer le personnage à la souris dans l’éditeur : ici, tu le pilotes pendant l’aperçu."
+        ],"illustration":{"src":"images/gdevelop-deplacement.svg","alt":"L’objet Personnage reçoit un comportement de déplacement fourni qui utilise les quatre flèches. Dans l’aperçu, les flèches pilotent le personnage ; dans l’éditeur, on choisit sa place de départ.","caption":"Schéma, pas une capture de GDevelop. Le comportement fournit le pilotage ; nous n’écrivons pas encore les événements de déplacement."}},
+        {"type":"lesson","id":"vitesse","title":"2 - Une vitesse qui te convient","paragraphs":[
+          "Ferme l’aperçu et retrouve la vitesse maximale dans le comportement de Personnage. C’est une limite de rapidité, pas une position. Le départ et l’arrêt peuvent être progressifs : pour cette leçon, garde les réglages d’accélération et de décélération accompagnés, sans les changer pendant la comparaison.",
+          "Avec le professeur, essaie deux vitesses positives sur le même petit trajet horizontal, depuis le même départ central. 120 puis 240 sont des valeurs de départ à confirmer dans votre version, pas des valeurs à recopier obligatoirement. Avant le second essai, prévois ce qui changera : ne modifie que la vitesse maximale, puis relance un aperçu neuf.",
+          "Compare ce que tu observes et essaie de t’arrêter près de la même zone. Plus rapide peut faciliter l’exploration ; moins rapide peut faciliter la précision. Si tu ne vois aucune différence, demande une aide pour choisir deux réglages comparables : n’invente pas un résultat. Doubler une limite ne veut pas dire que chaque petit trajet sera immédiatement deux fois plus rapide.",
+          "Un aperçu neuf repart du placement préparé dans la scène. Si le personnage est sorti de l’écran, ferme l’aperçu et relance depuis un départ central avec des essais plus courts. Nous n’avons pas encore construit de murs qui le bloquent."
+        ]},
+        {"type":"tasks","id":"guide","title":"Adaptation guidée - viser plus facilement","items":[
+          {"id":"gd04-reglage","text":"Avec le réglage rapide essayé, tu voudrais explorer une conduite plus lente pour viser un endroit. Garde les mêmes commandes et la même orientation. Trouve le réglage à modifier, prévois son effet, puis essaie ton choix.","hint":"Cherche ce qui influence la rapidité : la vitesse maximale vue dans l’exemple. Choisis une valeur positive plus basse ; ne change ni l’angle, ni l’accélération, ni la place de départ."},
+          {"id":"gd04-verifier","text":"Repars du même placement et vise le même endroit. Explique la différence réellement observée. Conserve ton réglage ou ajuste-le puis reteste, et enregistre ton choix.","hint":"Un seul paramètre change à la fois. Tu n’as pas à revenir à une valeur prescrite : indique quel réglage t’aide et ce que tu as vérifié."}
+        ]},
+        {"type":"tasks","id":"autonomie","title":"À toi - un aller et un retour","intro":"La scène peut rester vide : aucune cible à créer, aucun décor ni coordonnées à calculer. Choisis une zone à l’œil ou indique-la sur un croquis.","items":[
+          {"id":"gd04-trajet","text":"Place le départ au centre dans l’éditeur. Choisis une zone loin des bords, par exemple un peu plus haut et à droite. Annonce un trajet avec un changement de direction, rejoins la zone puis reviens près du centre. Relâche les flèches pour t’arrêter à l’aller et au retour.","hint":"Une direction à la fois suffit : tu peux aller à droite puis en haut, et revenir par le trajet inverse. Vise une zone, pas un pixel exact ; relance un aperçu neuf si tu sors du cadre."},
+          {"id":"gd04-choix","text":"Choisis une vitesse adaptée à ton trajet et explique pourquoi. Si elle ne te convient pas, change seulement ce réglage et reteste. Enregistre, ferme puis rouvre le projet une fois : vérifie que les flèches et ta vitesse sont conservées.","hint":"Garde jeu.json et images ensemble. L’aperçu ne sauvegarde pas la dernière position jouée comme nouveau départ : tu retrouves le placement de la scène et les réglages enregistrés."}
+        ]},
+        {"type":"tasks","id":"bonus","title":"Bonus - essayer les diagonales","items":[
+          {"id":"gd04-diagonales","text":"Sur une copie complète de ton dossier, active les diagonales dans le comportement, sans changer la rotation ni la vitesse. Essaie deux flèches voisines ensemble. Compare à la version à quatre directions et explique laquelle tu choisirais ; garde l’original intact.","hint":"Droite et haut ensemble permettent d’essayer une diagonale. Compare les deux versions avant de conclure : ne change qu’une option, sans ajouter de touches personnalisées ni d’événement."}
+        ]}
+      ],
+      "masteryCriteria":["Retrouver le comportement qui pilote Personnage avec les flèches.","Tester les directions et expliquer ce qui se passe quand on relâche.","Changer seulement la vitesse maximale, prévoir puis expliquer son choix après essai.","Retrouver le déplacement choisi dans son projet enregistré."],
+      "consolidation":[{"moduleId":"gdevelop-deplacement","blockId":"guide","label":"Adapter une vitesse et retester"}],
+      "bonusActivities":[{"moduleId":"gdevelop-deplacement","blockId":"bonus","label":"Comparer quatre et huit directions"}],
+      "nextSteps":[{"moduleId":"gdevelop-objets","label":"Placer mes personnages et mes objets","prerequisiteSkills":[{"skillId":"gdevelop.workspace","expectation":"Retrouver son projet et essayer la scène ; le déplacement reste un contexte, pas un prérequis pour distinguer les instances."}]}],
+      "teacherGuide":{
+        "objective":"Obtenir tôt un personnage pilotable, distinguer comportement fourni et événements écrits, puis faire adapter une vitesse avec prévision et vérification.",
+        "entryDiagnosis":["Faire retrouver le personnage de GD01 et montrer scène/aperçu. Aider aux fichiers si nécessaire ; aucun événement, X/Y ou instances multiples requis.","Si l’élève a déjà GD02/GD03, conserver ses jetons et son message. Le comportement doit être ajouté uniquement à Personnage."],
+        "preparation":["Recette GDevelop non effectuée : relever version, menus français, noms des options et valeurs de départ. Aucun test CodeCraft ne valide le déplacement moteur.","Reprendre le projet GD01 et le kit existant, un personnage visible au centre, caméra fixe. 800 × 450 est un cadre conseillé, pas un prérequis ; pas de JSON préfabriqué non testé.","Préparer/accompagner les réglages de référence : flèches standards actives, rotation et diagonales désactivées, accélération/décélération positives permettant une conduite accessible. Ces deux derniers paramètres ne sont pas des acquis exigés.","Avant publication comme cours prêt à utiliser, tester deux vitesses sur le même trajet et depuis le même départ, autres paramètres constants. 120/240 sont provisoires. Relever cadre, valeurs et observations ; si la différence n’est pas perceptible sans sortir de l’écran, ajuster la référence puis refaire les deux essais.","Vérifier aperçu neuf, relâchement/arrêt, sauvegarde/réouverture, copie du bonus et maintien des règles GD03 si elles existent. Installation du moteur ou compte : accord distinct, pas implicite."],
+        "why":"Le projet et l’aperçu de GD01 suffisent pour apprendre ce pilotage fourni. Le résultat jouable donne ensuite un contexte aux objets de GD02 et aux règles de GD03 ; aucune supériorité universelle de cet ordre n’est revendiquée.",
+        "discoverySpeech":["Nous retrouvons ton personnage. Un comportement fourni par GDevelop sait lire les flèches et le déplacer : nous allons l’ajouter, pas le laisser caché dans une démonstration.","Prévois le résultat de droite puis du relâchement. Essayons avant de parcourir tous les réglages. Tu pilotes dans l’aperçu ; déplacer à la souris dans l’éditeur choisit seulement le départ.","Une vitesse plus grande est-elle toujours plus facile ? Comparons un seul réglage sur le même trajet, puis choisis celui qui te convient et explique ton essai."],
+        "example":{"target":{"moduleId":"gdevelop-deplacement","blockId":"exemple"},"comments":["Ajouter le comportement sur le personnage initial immobile. Accompagner quatre directions sans rotation ; obtenir un résultat pilotable avant les paramètres détaillés.","Vitesse comparée ensuite dans le bloc Une vitesse qui te convient : mêmes départ/trajet, une seule valeur modifiée. Ne pas transformer accélération/décélération en cours de physique.","L’adaptation guidée n’est pas un modèle partiel : le modèle fonctionne, l’élève choisit un changement. Ne pas refaire la démonstration intégrale ni inventer une difficulté de précision si elle n’est pas observée."]},
+        "questions":[{"question":"Pourquoi les flèches fonctionnent-elles sans événements de déplacement ajoutés ?","answer":"Le comportement fournit ce pilotage. Faire montrer où il est attaché ; cela ne signifie pas qu’aucune logique ne tourne dans le moteur."},{"question":"Changer la vitesse maximale change-t-il le départ ?","answer":"Non, le départ est le placement préparé dans l’éditeur. Comparer avec un aperçu neuf depuis le même placement."},{"question":"Que se passe-t-il quand tu relâches ?","answer":"Observer le ralentissement puis l’arrêt selon les réglages. Ne pas exiger la réponse instantanément si le personnage glisse un peu."},{"question":"Comment sais-tu que ta nouvelle vitesse convient ?","answer":"L’élève montre un trajet comparable, explique l’effet observé et sa décision. Une valeur recopiée seule ne prouve pas le choix."},{"question":"Le bord de l’écran bloque-t-il déjà le personnage ?","answer":"Non : aucun mur ou confinement n’a été enseigné. Fermer/relancer permet de repartir ; les murs seront étudiés plus tard."}],
+        "accompaniedActivity":{"moduleId":"gdevelop-deplacement","blockId":"guide"},
+        "independentActivity":{"moduleId":"gdevelop-deplacement","blockId":"autonomie"},
+        "differentiation":["Reprendre droite/gauche, puis haut/bas. Proposer deux valeurs testées et accompagner la recherche du champ ; garder prévision, décision et explication à l’élève.","La mission part du centre, vise une zone à l’œil puis revient avec un changement de direction. Aucun nouvel objet, décor, pixel exact ou temps record requis.","Élève rapide : bonus diagonales sur copie, pas collisions, nouvelles touches ou caméra introduites discrètement."],
+        "commonErrors":[
+          {"symptom":"Les flèches ne font rien","helps":["Demander quelle fenêtre reçoit le clavier et quel résultat est attendu.","Cliquer dans l’aperçu, essayer une flèche et comparer scène/aperçu.","Vérifier que le comportement est sur Personnage et que les contrôles standards sont actifs.","Contrôler les valeurs positives avec aide puis relancer un aperçu neuf ; ne pas ajouter des événements pour masquer le problème."]},
+          {"symptom":"L’image tourne ou le personnage glisse","helps":["Faire distinguer orientation de l’image et mouvement observé.","Chercher l’option de rotation et la désactiver, puis retester.","Observer après relâchement : une décélération peut produire un arrêt progressif, pas une panne.","Si la conduite est impraticable, ajuster les paramètres de référence avec le professeur et les relever ; ne pas imposer ces nouveaux paramètres comme acquis GD04."]},
+          {"symptom":"Le personnage sort du cadre","helps":["Demander où se trouvait le départ et combien de temps la flèche a été maintenue.","Fermer l’aperçu et repartir d’un placement central.","Faire des trajets plus courts ou choisir une vitesse moindre, en changeant une seule chose par essai.","Faire aller à une zone proche et revenir ; ne pas ajouter de mur, confinement ou caméra cachés pour réussir GD04."]},
+          {"symptom":"La comparaison de vitesse ne montre rien","helps":["Demander ce qui était attendu et ce qui a réellement été observé.","Reprendre les mêmes départ et trajet dans deux aperçus neufs.","Vérifier que seule la vitesse maximale change et que l’élève observe le bon personnage.","Si la différence reste peu visible, revoir la référence technique puis refaire les deux essais ; ne pas demander de réciter plus rapide sans observation."]}
+        ],
+        "notes":"Suivi manuel et aides relevées séparément : pointer le comportement, prévoir, adapter puis expliquer le trajet. Une case cochée ou une capture du site ne valide ni le moteur ni un acquis. La recette moteur reste en attente. Garder source et images ; aucune reconstruction complète ou répétition de sauvegardes pour remplir la leçon.",
+        "quickConductor":["Retrouver le projet et accompagner l’ajout du comportement.","Prévoir puis piloter quatre directions avant les paramètres détaillés.","Comparer deux vitesses testées, adapter un réglage et expliquer le résultat.","Choisir centre → zone → centre, retester le choix et vérifier une réouverture."],
+        "references":[{"title":"GDevelop — comportement de déplacement vu du dessus","url":"https://wiki.gdevelop.io/gdevelop5/behaviors/topdown/"},{"title":"GDevelop — aperçu","url":"https://wiki.gdevelop.io/gdevelop5/interface/preview/"}]
+      }
+    },
+    "gdevelop-objets": {
+      "domainId": "jeux-video",
+      "title": "Placer mes personnages et mes objets",
+      "type": "lesson",
+      "theme": "fondations",
+      "showTool": false,
+      "objective": "Créer plusieurs exemplaires d’un objet et prévoir ce qui change pour un seul ou pour tous.",
+      "skillIds": ["gdevelop.instances"],
+      "prerequisiteSkills": [{"skillId":"gdevelop.workspace","expectation":"Rouvrir son projet et essayer la scène."}],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Rouvre ton projet et vérifie le personnage dans la petite pièce. Nous y préparons les objets à trouver. Garde les images près du fichier ; si elles manquent, demande une aide ciblée. Si tu viens de Déplacer mon personnage, conserve son comportement. Si tu arrives directement ici, un personnage immobile suffit : le déplacement n’est pas nécessaire pour comprendre cette leçon."},
+        {"type":"lesson","id":"exemple","title":"1 - Un objet, plusieurs exemplaires","paragraphs": [
+          "Crée un seul Sprite nommé Jeton avec une animation contenant images/jeton.png. Place trois exemplaires espacés dans le cadre visible de la scène. Ne crée pas Jeton2 ou Jeton3 : regarde la liste, puis compte les jetons dans la pièce.",
+          "Chaque exemplaire placé est une instance. L’objet définit leur dessin commun ; les instances ont leurs propres positions. Prévois : si tu déplaces un seul jeton dans la scène, lesquels garderont leur place ? Essaie ce déplacement puis vérifie dans l’aperçu.",
+          "Ferme l’aperçu. Prévois maintenant ce qui changera si tu modifies le dessin de l’objet Jeton. Dans sa définition, remplace l’image existante par images/jeton-alternatif.png ; n’ajoute ni animation ni nouvel objet. Relance : les trois dessins changent, mais les positions restent les mêmes.",
+          "Tu as agi à deux endroits différents : la position d’un exemplaire dans la scène, puis l’image commune dans la définition de l’objet. Montre lequel tu choisirais pour changer une seule place ou tous les dessins."
+        ],"illustration":{"src":"images/gdevelop-instances.svg","alt":"Une définition Jeton fournit trois exemplaires : leurs dessins sont communs, leurs positions peuvent être différentes. Les nombres du schéma sont seulement des exemples.","caption":"Un dessin commun, des positions individuelles. Les coordonnées du schéma ne sont pas des placements imposés."} },
+        {"type":"lesson","id":"reperes","title":"2 - Prévoir avec X et Y","paragraphs": [
+          "Avec la caméra par défaut, X augmente vers la droite et Y vers le bas. Dans Scratch, Y augmentait vers le haut. Ne change ni caméra ni zoom du jeu pour cette comparaison.",
+          "Sélectionne un seul jeton et lis son X. Augmente un peu cette valeur, sans changer Y : prévois le sens puis vérifie dans un aperçu neuf. Fais ensuite varier seulement Y et prévois à nouveau. Choisis des valeurs qui gardent le jeton dans le cadre visible."
+        ],"illustration":{"src":"images/gdevelop-coordonnees.svg","alt":"Dans GDevelop avec la caméra par défaut, X augmente vers la droite et Y vers le bas. Changer X d’une instance la déplace horizontalement, changer Y la déplace verticalement.","caption":"Les coordonnées sont les propriétés de l’instance sélectionnée, pas un programme de mouvement."} },
+        {"type":"tasks","id":"guide","title":"Exercice guidé - un seul ou tous ?","items": [
+          {"id":"gd02-trois","text":"Montre un objet Jeton dans la liste et trois exemplaires dans la pièce. Sans rien modifier, indique où agir pour changer une seule position et où agir pour changer leurs trois dessins.","hint":"Trois placements depuis le même objet suffisent. La liste contient Personnage et Jeton, pas un objet différent pour chaque jeton."},
+          {"id":"gd02-image","text":"Le professeur a commencé un changement d’image commune. Termine le remplacement par l’autre image du kit, annonce quels jetons changeront puis vérifie. Explique pourquoi leurs positions restent identiques.","hint":"Ouvre la définition de Jeton et remplace l’image existante par celle du kit qui n’est pas utilisée. Le même objet fournit le dessin des trois exemplaires."},
+          {"id":"gd02-position","text":"Choisis un jeton. Augmente seulement son X, prévois puis vérifie. Fais ensuite varier seulement Y. Explique le sens et montre les jetons qui n’ont pas bougé.","hint":"Observe les propriétés de l’instance sélectionnée et garde-la dans le cadre. Si plusieurs sont sélectionnées, clique dans le vide et choisis un seul jeton."}
+        ] },
+        {"type":"tasks","id":"autonomie","title":"À toi - prépare les objets à trouver","items": [
+          {"id":"gd02-carre","text":"Ajoute un quatrième exemplaire du même objet Jeton et choisis un arrangement pour ta future collecte. Laisse-les visibles et espacés. Prévois leur disposition puis vérifie, sans créer quatre objets différents.","hint":"Tu peux placer les exemplaires à la souris ou utiliser leurs propriétés. Aucun carré ni coordonnées exactes ne sont imposés ; la liste garde un seul objet Jeton."},
+          {"id":"gd02-un-seul","text":"Choisis un jeton à déplacer, sans toucher aux autres. Annonce ce qui doit rester identique, choisis ses nouvelles X et Y puis vérifie. Montre où tu changerais le dessin des quatre jetons et enregistre.","hint":"Sélectionne l’exemplaire dans la scène pour sa position. Le dessin partagé se modifie dans la définition de Jeton ; ne mélange pas ces deux endroits."}
+        ] },
+        {"type":"tasks","id":"bonus","title":"Bonus - retirer puis replacer","items": [
+          {"id":"gd02-retirer","text":"Retire une instance depuis la scène, sans supprimer l’objet Jeton dans la liste. Replace ensuite un exemplaire à cet endroit et vérifie le résultat.","hint":"Supprimer l’instance sélectionnée retire un seul placement. Supprimer l’objet dans la liste n’a pas le même effet : ne le fais pas pour cet essai."}
+        ] }
+      ],
+      "masteryCriteria": ["Distinguer un objet et plusieurs instances placées dans la scène.","Prévoir le sens d’un changement de X ou Y, puis déplacer une seule instance.","Expliquer pourquoi changer l’image de l’objet modifie tous ses exemplaires sans déplacer leurs positions."],
+      "consolidation": [{"moduleId":"gdevelop-objets","blockId":"guide","label":"Comparer changement local et commun"}],
+      "bonusActivities": [{"moduleId":"gdevelop-objets","blockId":"bonus","label":"Retirer une instance"}],
+      "nextSteps": [{"moduleId":"gdevelop-evenements","label":"Quand ceci arrive, fais cela","prerequisiteSkills":[{"skillId":"gdevelop.instances","expectation":"Placer et nommer les objets sans confondre leur définition et leurs instances."}]}],
+      "teacherGuide": {
+        "objective": "Construire la distinction objet/instance par deux modifications contrastées : une position locale et une image commune.",
+        "entryDiagnosis": ["Faire rouvrir le projet GD01 et vérifier l’image du pion.","Demander ce qui était modifié dans l’éditeur et ce qui était observé dans l’aperçu."],
+        "preparation": ["Recette moteur à faire : confirmer propriétés X/Y, remplacement d’une image unique et suppression locale. Ne pas annoncer une validation GDevelop sur la base des tests du site.","Préparer jeton.png et jeton-alternatif.png dans le même dossier images. Garder caméra et taille des instances par défaut.","Si le projet précédent manque, reconstruire le pion depuis GD01 avec le kit ; aucun projet préfabriqué non testé à importer.","Si GD04 a déjà été étudié, conserver le comportement de Personnage sans en faire un prérequis caché. Les coordonnées du schéma sont des exemples, pas une grille à recopier."],
+        "why": "Cette distinction prépare les futures conditions et actions sur objets sans introduire prématurément sélection d’instances, variables ou création dynamique.",
+        "discoverySpeech": ["Notre pièce contient des objets à trouver. Regardons un seul objet Jeton et ses trois exemplaires. Prévois ce qui se passera si je ne change que la place de celui-ci.","Maintenant je change le dessin dans la définition commune. Avant l’aperçu, lesquels changeront ? Retrouve ce qui est commun et ce qui est propre à un exemplaire.","Les nombres permettent de choisir une place. X augmente à droite, Y vers le bas. Essaie une seule coordonnée et explique le résultat, puis prépare ton propre arrangement."],
+        "example": {"target":{"moduleId":"gdevelop-objets","blockId":"exemple"},"comments":["Commencer par le contraste position d’une instance / image de l’objet, avant les nombres X/Y.","Placer librement trois exemplaires espacés ; les valeurs du schéma illustrent des positions différentes, pas une activité de géométrie.","Modéliser le raisonnement et un remplacement complet, puis proposer un remplacement partiel. Pour le transfert, donner les contraintes de visibilité/espacement, pas chaque coordonnée."]},
+        "questions": [{"question":"Combien d’objets Jeton pour trois jetons visibles ?","answer":"Une seule définition Jeton et trois instances dans la scène."},{"question":"Y passe de 150 à 220 : dans quel sens ?","answer":"Vers le bas avec la caméra par défaut ; demander une vérification."},{"question":"Changer l’image de Jeton déplace-t-il les trois instances ?","answer":"Non. Leur image commune change ; leurs X et Y ne changent pas."}],
+        "accompaniedActivity": {"moduleId":"gdevelop-objets","blockId":"guide"},
+        "independentActivity": {"moduleId":"gdevelop-objets","blockId":"autonomie"},
+        "differentiation": ["En cas de difficulté de sélection, accompagner le premier clic, puis faire choisir seul l’instance suivante.","Pour aller plus loin, proposer le retrait et replacement d’une instance, pas une collision ni un inventaire."],
+        "commonErrors": [{"symptom":"Trois objets différents ont été créés","helps":["Demander de compter les noms dans la liste.","Comparer la liste au schéma objet/instances.","Montrer qu’un objet peut être glissé plusieurs fois.","Sur une copie sauvegardée, reconstruire trois instances de Jeton ; faire refaire un placement seul."]},{"symptom":"Tous les jetons se déplacent ou le sens est mal prévu","helps":["Demander combien d’instances sont sélectionnées.","Isoler une sélection et ne changer qu’un nombre.","Reprendre le schéma X vers la droite, Y vers le bas.","Faire X = 400 puis 440 sur une seule instance, tester ; ensuite faire varier Y et laisser expliquer."]},{"symptom":"L’image alternative ne remplace pas le dessin","helps":["Comparer les positions et les dessins, sans tout modifier.","Vérifier l’objet édité : Jeton, pas Personnage.","Compter animations et images : une seule de chaque.","Remplacer l’unique image existante par jeton-alternatif.png, puis relancer et comparer les trois instances."]}],
+        "notes": "Observer prévision, explication du lieu où agir et transfert, pas fidélité à des coordonnées. Distinguer aide de sélection et confusion objet/instance. Le déplacement du personnage peut être conservé s’il a été étudié, sans être ajouté secrètement.",
+        "quickConductor": ["Compter une définition et trois exemplaires.","Prévoir puis comparer place individuelle et dessin commun.","Compléter une modification puis tester un X et un Y.","Choisir quatre placements et modifier une instance sans déplacer les autres."],
+        "references": [{"title":"GDevelop — objets et instances","url":"https://wiki.gdevelop.io/gdevelop5/objects/"},{"title":"GDevelop — concepts de base","url":"https://wiki.gdevelop.io/gdevelop5/tutorials/basic-game-making-concepts/"}]
+      }
+    },
+    "gdevelop-evenements": {
+      "domainId": "jeux-video",
+      "title": "Quand ceci arrive, fais cela",
+      "type": "lesson",
+      "theme": "fondations",
+      "showTool": false,
+      "objective": "Faire apparaître un indice pendant une touche maintenue et expliquer les deux règles qui contrôlent sa visibilité.",
+      "skillIds": ["gdevelop.events"],
+      "prerequisiteSkills": [{"skillId":"gdevelop.instances","expectation":"Créer un objet, le nommer et en placer un exemplaire."},{"skillId":"scratch.conditions","expectation":"Expliquer un choix entre une condition et une action, avec aide si nécessaire."}],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Reprends ta petite pièce et ses jetons. Garde le déplacement de Personnage si tu l’as étudié ; les flèches le pilotent déjà. Nous ajoutons un indice à consulter avec une autre touche : aucun score ni collecte pour l’instant. Une condition pose une question ; une action agit quand elle est vraie. Tu peux revoir ce repère avec le professeur, sans terminer tout Scratch."},
+        {"type":"lesson","id":"message","title":"1 - Préparer le résultat visible","paragraphs": [
+          "Ajoute un objet Texte nommé Message. Donne-lui le contenu Les jetons sont dans la pièce !, une taille lisible (24 est un exemple) et une couleur contrastée avec le fond. Place un seul exemplaire dans le cadre visible.",
+          "Vérifie dans l’aperçu que l’indice est lisible, puis ferme-le. Ce premier contrôle vérifie seulement le texte et son placement : sa visibilité actuelle ne prouve pas encore qu’une règle clavier fonctionne."
+        ] },
+        {"type":"lesson","id":"exemple","title":"2 - Lire puis essayer la paire complète","paragraphs": [
+          "Observe les deux règles du schéma ensemble : Espace maintenue → Afficher Message ; Espace non maintenue → Masquer Message. Avant de les essayer, prévois le résultat sans appui, pendant un appui maintenu puis après relâchement. Montre ce qui teste et ce qui agit.",
+          "Dans les événements de Jeu, construis cette paire avec le professeur si nécessaire. Premier événement standard : condition clavier Espace pressée (état maintenu), action Afficher Message. Pas « vient d’être pressée ». Ne lance pas encore un essai de ce seul événement : Message était déjà visible, tu ne pourrais pas constater le changement.",
+          "Deuxième événement standard : prends la même condition Espace et inverse cette condition pour tester « Espace n’est pas pressée » ; action Masquer Message. L’inversion se trouve dans l’édition ou le menu de la condition selon la version : demande une aide de manipulation si nécessaire. Ne choisis pas « vient d’être relâchée » et ne laisse pas Masquer sans condition.",
+          "Lance maintenant un aperçu neuf avec les deux règles. Sans appui, l’indice est masqué ; pendant Espace, il est visible ; après relâchement, il est masqué. Clique dans l’aperçu pour lui donner le clavier si nécessaire. Recommence et compare à ta prévision.",
+          "Les règles sont retestées pendant le jeu. L’une demande d’afficher, l’autre de masquer selon l’état de la même touche. Pas besoin d’ajouter un bloc « répéter indéfiniment ». La visibilité observée ne mesure pas combien de fois elles ont été évaluées."
+        ],"illustration":{"src":"images/gdevelop-evenements.svg","alt":"Deux événements séparés : si Espace est maintenue, afficher Message ; si Espace n’est pas maintenue, masquer Message. Chaque condition est reliée à sa propre action.","caption":"Schéma de lecture, pas une capture de l’interface. Les deux conditions sont opposées."} },
+        {"type":"tasks","id":"guide","title":"Exercice guidé - comprendre puis compléter","items": [
+          {"id":"gd03-texte","text":"Dans une copie de travail préparée avec le professeur, retire seulement la règle Masquer. Prévois puis teste repos, appui et relâchement : qu’est-ce qui ne fonctionne plus comme dans la paire complète ? Restaure la règle et vérifie avant de conserver le projet.","hint":"Au repos, le texte peut être visible dès le départ ; après un appui rien ne demande de le masquer. Ne prends pas ce résultat pour la preuve que la première condition fonctionne. Compare avec la paire complète et ne touche pas à ton original."},
+          {"id":"gd03-deux-regles","text":"Sur le support partiel du professeur, les conditions utilisent F : F maintenue → Afficher Message ; F non maintenue → action manquante. Choisis cette action, explique-la puis reconstruis et teste la paire complète dans une copie.","hint":"Pour que l’indice soit invisible sans appui, l’action manquante doit masquer Message. Les deux conditions doivent porter sur F et rester opposées. Un schéma partiel suffit si aucun projet testé n’est disponible."},
+          {"id":"gd03-test","text":"Avec la paire complète restaurée, prévois puis teste sans appui, pendant un maintien et après relâchement, deux fois. Montre la règle responsable de chaque résultat. Enregistre ton projet de travail sans remplacer l’original par un essai incomplet.","hint":"Clique dans l’aperçu pour que le clavier y soit reçu. Au repos le message doit être masqué, pendant l’appui visible, après le relâchement masqué."}
+        ] },
+        {"type":"tasks","id":"autonomie","title":"Projet d’étape 1 — Ma scène explorable","items": [
+          {"id":"gd03-transfert","text":"Reprends ton projet, sans devoir repartir de zéro. Choisis un arrangement personnel avec un personnage pilotable et au moins trois exemplaires d’un même objet. Choisis un indice pour cette scène et une touche simple qui n’est pas utilisée ailleurs, distincte des flèches. L’indice doit être visible seulement pendant son maintien. Prévois les trois états avant de modifier. Aucun mur bloquant, ramassage, score ni victoire n’est demandé.","hint":"Réutilise le déplacement étudié et les objets déjà créés. Change le contenu de Message et la commande dans les deux conditions. Garde l’inversion sur le test opposé. Les actions doivent encore correspondre à ta prévision. Tu peux revoir une leçon ou demander une aide de manipulation."},
+          {"id":"gd03-ancienne","text":"Teste le déplacement et l’ancienne commande de l’indice : elle ne doit plus agir. Teste ta nouvelle touche au repos, pendant son maintien, après relâchement puis lors d’un second appui. Explique les deux règles à quelqu’un. Choisis ensuite une autre touche libre, prévois le résultat, modifie les deux conditions et refais les essais. Enregistre, ferme et rouvre ton projet depuis son dossier ; relance l’aperçu pour vérifier que personnages, objets et règles sont conservés.","hint":"Lis les noms de touche dans les deux conditions : ils doivent être identiques, l’une maintenue et l’autre inversée. Vérifie aussi que l’aperçu reçoit le clavier. Garde les images sources dans le dossier du projet. Si un essai échoue, cherche la cause avec une aide : ce n’est pas une raison pour tout recommencer."}
+        ] },
+        {"type":"tasks","id":"bonus","title":"Bonus - le résultat opposé","items": [
+          {"id":"gd03-inverse","text":"Dans une copie conservant l’original intact, échange les actions Afficher et Masquer des deux règles de ta commande choisie. Prévois puis teste repos, maintien, relâchement et nouvel appui. Explique pourquoi le résultat est désormais opposé.","hint":"Conserve les mêmes conditions. La touche maintenue masque désormais le texte, et la touche non maintenue l’affiche. Aucune variable ni bascule n’est nécessaire."}
+        ] },
+        {"type":"lesson","id":"bilan-etape","title":"Montrer ma scène et expliquer mes choix","paragraphs":["Présente ton projet à quelqu’un avec ces repères. Le bonus précédent reste facultatif : conserve la scène où l’indice apparaît pendant l’appui, pas la copie au résultat opposé.","Montre un objet dans la liste puis ses exemplaires dans la scène. Explique ce qui est commun et ce qui peut changer pour un seul exemplaire. Montre ensuite ce qui pilote le personnage et ce qui contrôle l’indice : le comportement de déplacement et les événements n’ont pas le même rôle.","Si un repère reste difficile, reprends seulement ce point avec une aide puis refais l’essai. Tu peux faire une pause ici et conserver ce projet pour l’étape suivante. Cocher une activité ne valide pas automatiquement ces acquis."],"valuesTitle":"Repères pour le projet d’étape","values":["Le personnage se déplace avec les commandes connues, dans une scène où les objets sont visibles.","Au moins trois exemplaires d’un même objet sont placés ; tu sais montrer leur définition commune et une position individuelle.","L’indice est masqué au repos, visible pendant l’appui et masqué au relâchement, y compris après un second appui.","Tu sais changer la commande dans les deux règles, prévoir puis tester le résultat.","Le projet rouvert conserve ses éléments et fonctionne encore dans l’aperçu."]}
+      ],
+      "masteryCriteria": ["Distinguer la condition testée et l’action exécutée dans un événement.","Expliquer pourquoi les deux règles donnent un résultat au repos, pendant l’appui et au relâchement.","Changer une touche dans les deux conditions et vérifier l’ancienne et la nouvelle commande."],
+      "consolidation": [{"moduleId":"gdevelop-evenements","blockId":"guide","label":"Tester les trois états du clavier"}],
+      "bonusActivities": [{"moduleId":"gdevelop-evenements","blockId":"bonus","label":"Inverser le résultat dans une copie"}],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Faire lire et construire une paire de règles opposées, sans confondre touche maintenue et transition clavier.",
+        "entryDiagnosis": ["Faire nommer un objet et montrer son instance dans la scène.","Demander un exemple Scratch de condition et d’action ; rappeler localement le repère si nécessaire."],
+        "preparation": ["Recette moteur en attente : relever les libellés français de condition clavier maintenue, inversion, Afficher et Masquer ; tester les trois états et le focus de l’aperçu.","Réutiliser le projet de GD02. Préparer un fond permettant de lire Message, un seul Texte de taille 24 dans le cadre visible.","Ne pas utiliser un projet JSON généré non testé, une condition « vient d’être pressée », une variable de bascule ni un événement Masquer inconditionnel.","Présenter la paire complète avant le premier essai clavier. Pour la panne et l’exemple partiel F, préparer une copie distincte ou reconstruire avec l’élève ; aucun projet de départ non testé n’est annoncé. Restaurer la paire avant de sauvegarder l’état de reprise."],
+        "why": "Deux états simples rendent observable le lien entre test et conséquence. La règle de maintien est réévaluée ; elle n’attend pas une nouvelle transition pour s’appliquer.",
+        "discoverySpeech": ["L’indice doit se voir seulement pendant l’appui. Voici les deux lignes ensemble : quelle ligne explique le repos, laquelle explique le maintien ? Prévois avant notre essai.","Nous assemblons les deux règles, puis essayons. Afficher seule ne démontrerait rien au premier appui puisque notre texte était déjà visible. La comparaison commence avec un exemple complet qui change réellement de visibilité.","Sur une copie fonctionnelle, retirons Masquer : prévois le résultat après relâchement, puis vérifie et restaure. Complète ensuite une petite partie manquante ; enfin choisis ton propre indice et ta commande."],
+        "example": {"target":{"moduleId":"gdevelop-evenements","blockId":"exemple"},"comments":["Vérifier le Texte seul pour isoler placement/lisibilité, sans appeler cela un essai des événements.","Lire/prévoir la paire complète, assembler avec aide déclarée puis essayer les trois états. Ne plus commencer par Afficher seule.","Retirer Masquer seulement après la paire fonctionnelle et sur une copie ; restaurer. Schéma partiel F avant mission libre, gestes d’inversion à confirmer sur la version de référence."]},
+        "questions": [{"question":"Que se passe-t-il si on supprime le deuxième événement ?","answer":"Après le premier appui, rien ne demande de masquer : Message reste visible au relâchement."},{"question":"Pourquoi ne pas masquer sans condition ?","answer":"Cette action serait exécutée même pendant l’appui et contredirait l’affichage."},{"question":"Pourquoi changer la touche dans les deux règles ?","answer":"Les deux tests doivent rester opposés pour la même touche ; changer un seul laisse des états contradictoires."},{"question":"Une touche Espace qui affiche un texte déjà visible prouve-t-elle que la règle fonctionne ?","answer":"Non, il n’y a pas de changement visible. La paire complète permet de comparer sans appui, maintien et relâchement."}],
+        "accompaniedActivity": {"moduleId":"gdevelop-evenements","blockId":"guide"},
+        "independentActivity": {"moduleId":"gdevelop-evenements","blockId":"autonomie"},
+        "differentiation": ["Aider à chercher/inverser la condition, en laissant prévoir et expliquer. Si l’exemple partiel bloque, reprendre le modèle complet puis retirer seulement une action.","Pour aller plus loin, changer la mission ou échanger les actions dans une copie ; pas variable/bascule ni troisième règle. Respecter les commandes de déplacement déjà connues."],
+        "commonErrors": [{"symptom":"Le clavier semble ne rien faire","helps":["Demander quelle fenêtre reçoit le clavier.","Cliquer dans l’aperçu puis maintenir la touche.","Vérifier le nom de la touche et le test maintenu, non la transition.","Réduire à la paire complète du schéma, vérifier sa condition de maintien et son inversion, puis essayer repos/appui/relâchement ; ne pas tester Afficher seule sur un texte déjà visible."]},{"symptom":"Message reste affiché après relâchement","helps":["Faire lire la conséquence attendue au repos.","Chercher la règle qui demande de masquer.","Vérifier l’inversion et la même touche dans les deux événements.","Construire le deuxième événement avec la condition maintenue inversée et Masquer Message, puis refaire trois états."]},{"symptom":"Message est toujours masqué","helps":["Vérifier qu’il était visible avant les événements.","Lire chaque action et l’objet ciblé.","Chercher un masquage sans condition ou deux règles non opposées.","Réduire aux deux événements du schéma, puis tester sans appui, maintenu et relâché avant tout bonus."]},{"symptom":"La nouvelle touche donne un résultat incohérent","helps":["Demander ce qui a changé dans chaque événement.","Comparer les deux noms de touche.","Vérifier que seule la seconde condition est inversée.","Choisir la même commande inutilisée dans les deux conditions, conserver l’opposition, tester l’ancienne puis la nouvelle commande et laisser expliquer."]}],
+        "notes": "Reproduction accompagnée, complément partiel et mission choisie sont trois preuves distinctes. Observer aide reçue, prévision et re-test. Aucun projet moteur préfabriqué testé n’est fourni. Conserver le comportement étudié en GD04 ; choisir une commande d’indice distincte des flèches. Ne pas annoncer de recette moteur. Le mini-projet Ma scène explorable remplace l’ancienne mission autonome : réinvestir GD01, GD04, GD02 et GD03 sans repartir de zéro. Utiliser les cinq repères du bloc bilan-etape pour observer déplacement, définition/instances, trois états de l’indice, modification de commande et réouverture. Demander une prévision avant la modification puis une explication après l’essai ; noter séparément les aides de manipulation et de raisonnement. Une case cochée ou un décor personnalisé ne suffit pas à établir la compréhension. Si nécessaire, reprendre un seul repère et refaire un essai ; ni bonus, murs, collecte, score ou victoire requis.",
+        "quickConductor": ["Vérifier l’indice lisible sans prétendre tester le clavier.","Lire, prévoir et essayer la paire complète.","Retirer/restaurer Masquer sur copie, puis compléter le modèle F.","Choisir indice/commande, tester ancienne et nouvelle commandes, sauvegarder une paire cohérente."],
+        "references": [{"title":"GDevelop — référence clavier","url":"https://wiki.gdevelop.io/gdevelop5/all-features/keyboard/reference/"},{"title":"GDevelop — événements","url":"https://wiki.gdevelop.io/gdevelop5/events/"}]
+      }
+    },
     "python-thonny": {
       "domainId": "python", "title": "Premiers pas avec Thonny", "type": "lesson", "theme": "fondations",
       "presentation": "workshop",
@@ -1413,6 +2008,978 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
+    "python-fonctions": {
+      "domainId": "python",
+      "title": "Définir et appeler une fonction",
+      "type": "lesson",
+      "theme": "fondations",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "objective": "Regrouper des instructions, appeler une fonction et réutiliser son bloc avec des paramètres.",
+      "skillIds": [
+        "python.functions"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, enregistrer et exécuter un fichier entier."
+        },
+        {
+          "skillId": "python.output",
+          "expectation": "Lire l'ordre des affichages."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Distinguer nom et valeur."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Enregistre tes essais précédents et crée fonctions.py dans Thonny, sans les remplacer. Il faut pouvoir expliquer un affichage et une variable ; sinon, reprends Variables et valeurs. Fais évoluer ce fichier pendant la découverte et les essais guidés.",
+          "moduleLink": {
+            "moduleId": "python-variables",
+            "text": "Variables et valeurs"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "1 - Définir n'est pas appeler",
+          "paragraphs": [
+            "def définit un bloc réutilisable. annoncer est le nom choisi ; les parenthèses sont vides ici, les deux-points annoncent le corps indenté. Les deux instructions du corps ne s'exécutent pas au moment où cette définition est rencontrée.",
+            "annoncer() appelle la fonction : ses deux messages s'affichent dans l'ordre, puis le programme reprend après l'appel. Ici, Préparation s'affiche avant ces messages, puis Fin. Les lignes non indentées sont hors du corps.",
+            "Prévois les affichages, puis ajoute un second appel avant Fin : les deux instructions sont réutilisées sans les recopier. Change ensuite un message dans le corps et vérifie qu'il change lors des deux appels.",
+            "Retire provisoirement les appels, sans supprimer la définition : les messages du corps ne s'affichent plus. Restaure ensuite un appel. Relance toujours le fichier entier, avec la définition avant son premier appel."
+          ],
+          "code": "def annoncer():\n    print(\"Prépare ton matériel\")\n    print(\"Départ de la visite\")\n\nprint(\"Préparation\")\nannoncer()\nprint(\"Fin\")"
+        },
+        {
+          "type": "lesson",
+          "id": "parametre",
+          "title": "2 - Une valeur différente à chaque appel",
+          "paragraphs": [
+            "Dans fonctions.py, remplace la version précédente par ce modèle après avoir terminé ses essais. nom est un paramètre : il reçoit la valeur fournie entre les parenthèses à chaque appel. Dans saluer(\"Nova\"), \"Nova\" est l'argument ; ce n'est pas le nom du paramètre.",
+            "Le corps est écrit une seule fois mais s'exécute deux fois avec des valeurs différentes. Modifier un argument ne demande pas de recopier ou de modifier le corps."
+          ],
+          "code": "def saluer(nom):\n    print(\"Bonjour\", nom)\n\nsaluer(\"Nova\")\nsaluer(\"Orion\")"
+        },
+        {
+          "type": "lesson",
+          "id": "deux-parametres",
+          "title": "3 - Deux paramètres, un ordre",
+          "paragraphs": [
+            "Fais évoluer fonctions.py vers ce modèle. Les virgules séparent les deux paramètres puis les deux arguments. Le premier argument donne nom, le second donne role ; l'ordre compte.",
+            "Prévois les deux phrases. Inverse provisoirement les arguments du premier appel, explique le résultat puis restaure leur ordre. Un argument manquant ou en trop provoque ici TypeError ; corrige l'appel, pas le nombre de messages."
+          ],
+          "code": "def presenter(nom, role):\n    print(nom, \"est\", role)\n\npresenter(\"Nova\", \"pilote\")\npresenter(\"Orion\", \"guide\")"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Vérifie tes appels",
+          "intro": "Continue avec presenter dans fonctions.py. Garde seulement le diagnostic incorrect dans une copie.",
+          "items": [
+            {
+              "id": "double-appel",
+              "text": "Ajoute un troisième appel de presenter avec un autre nom et un autre rôle. Prévois les trois phrases puis explique pourquoi le corps est exécuté trois fois.",
+              "hint": "Trois appels séparés, pas trois copies du print du corps."
+            },
+            {
+              "id": "changer-argument",
+              "text": "Change seulement le premier argument du premier appel. Vérifie que les deux autres messages ne changent pas.",
+              "hint": "Chaque appel donne une nouvelle valeur au paramètre."
+            },
+            {
+              "id": "argument-manquant",
+              "text": "Enregistre fonctions.py puis crée diagnostic_appel.py avec Enregistrer sous. Enlève le second argument du premier appel de presenter. Lis TypeError, corrige puis relance le fichier entier.",
+              "hint": "L'appel doit fournir deux arguments dans ce modèle."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - une fonction personnelle",
+          "intro": "Crée ma_presentation.py avec des noms et rôles fictifs. Essaie sans recopier le modèle entier.",
+          "items": [
+            {
+              "id": "fonction-personnelle",
+              "text": "Définis une fonction à deux paramètres qui affiche deux messages de ton choix, dont au moins un utilise les deux valeurs reçues. Appelle-la pour trois couples de valeurs différents.",
+              "hint": "Sépare le corps unique et les trois appels."
+            },
+            {
+              "id": "modifier-corps",
+              "text": "Modifie un mot fixe dans le corps. Prévois quels messages changent puis teste. Modifie ensuite un seul argument et compare.",
+              "hint": "Une modification du corps agit à chaque appel ; un argument concerne cet appel."
+            },
+            {
+              "id": "expliquer-appels",
+              "text": "Montre une définition, un appel, un paramètre et un argument ; explique l'ordre sans parler de trois fonctions différentes.",
+              "hint": "La même fonction est réutilisée."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - appeler pendant un parcours",
+          "intro": "Seulement si listes et for sont compris ; garde la version précédente.",
+          "items": [
+            {
+              "id": "parcours-fonction",
+              "text": "Dans une copie, reprends la petite fonction saluer de la découverte. Définis une liste de trois noms fictifs et parcours-la avec for pour appeler saluer sur chaque valeur. Explique où sont la définition, la boucle et les appels.",
+              "hint": "La définition est avant la boucle ; l'appel est dans le bloc for."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer la définition d'une fonction de ses appels et prévoir leur ordre.",
+        "Repérer le corps indenté et revenir au programme après l'appel.",
+        "Expliquer paramètre, argument et ordre de deux valeurs fournies.",
+        "Créer des appels personnels et tester une modification du corps puis d'un argument."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-variables",
+          "blockId": "guide",
+          "label": "Revoir les valeurs"
+        },
+        {
+          "moduleId": "python-fonctions",
+          "blockId": "guide",
+          "label": "Revoir les appels"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-fonctions",
+          "blockId": "bonus",
+          "label": "Appeler pendant un parcours",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.for",
+              "expectation": "Suivre un for."
+            },
+            {
+              "skillId": "python.lists",
+              "expectation": "Parcourir les valeurs d'une liste."
+            }
+          ]
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "python-retour",
+          "label": "Renvoyer un résultat",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.functions",
+              "expectation": "Distinguer définition, appels et paramètres."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Regrouper des instructions, appeler une fonction et réutiliser son bloc avec des paramètres.",
+        "entryDiagnosis": [
+          "Créer, enregistrer et exécuter un fichier entier.",
+          "Lire l'ordre des affichages.",
+          "Distinguer nom et valeur."
+        ],
+        "preparation": [
+          "Prévoir fonctions.py, qui évolue de la découverte aux essais guidés ; conserver le fichier précédent du parcours. Réserver diagnostic_appel.py au diagnostic et ma_presentation.py à la création autonome.",
+          "Relancer le fichier entier : ne pas dépendre des définitions ou variables restées dans une ancienne console.",
+          "Observer une prédiction avant de montrer l'indice ; distinguer aide aux fichiers/clavier et aide au raisonnement."
+        ],
+        "why": "Écrire un bloc une fois, le réutiliser lors de plusieurs appels et modifier tous ces usages en changeant un seul corps.",
+        "discoverySpeech": [
+          "« Où la fonction est-elle définie et où est-elle appelée ? »",
+          "« Quelle valeur entre dans cet appel, et que se passe-t-il ensuite ? »",
+          "« Prévois un résultat, exécute puis explique une modification. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-fonctions",
+            "blockId": "exemple",
+            "label": "Exemple ou cahier des charges"
+          },
+          "comments": [
+            "Faire prévoir les affichages avant de lancer le fichier entier.",
+            "Faire appeler deux fois le corps de deux instructions, puis modifier un message une seule fois ; distinguer réutilisation et duplication.",
+            "Introduire un paramètre puis deux, et faire expliquer l'ordre des arguments."
+          ]
+        },
+        "questions": [
+          {
+            "question": "La définition seule affiche-t-elle le message ?",
+            "answer": "Non, son corps sera exécuté lors d'un appel."
+          },
+          {
+            "question": "Deux appels créent-ils deux définitions ?",
+            "answer": "Non, ils exécutent deux fois le même corps."
+          },
+          {
+            "question": "Quelle différence entre nom et \"Nova\" ?",
+            "answer": "nom est le paramètre ; \"Nova\" est la valeur argument fournie lors d'un appel."
+          },
+          {
+            "question": "Pourquoi l'ordre compte-t-il ici ?",
+            "answer": "Les arguments positionnels sont associés dans l'ordre aux paramètres."
+          },
+          {
+            "question": "Que change un mot fixe du corps ?",
+            "answer": "Tous les appels utilisent la nouvelle version du corps."
+          },
+          {
+            "question": "Faut-il return pour afficher une phrase ?",
+            "answer": "Non. Ce module utilise print dans le corps ; les valeurs renvoyées sont la prochaine leçon."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-fonctions",
+          "blockId": "guide",
+          "label": "Essais accompagnés"
+        },
+        "independentActivity": {
+          "moduleId": "python-fonctions",
+          "blockId": "autonomie",
+          "label": "Création et transfert autonomes"
+        },
+        "differentiation": [
+          "Reprendre une seule notion fragile sans exiger un bonus ni un projet antérieur entièrement terminé.",
+          "Faire évoluer le même fichier pour le guidé ; réserver les copies aux variantes et diagnostics.",
+          "Distinguer réussite autonome, avec modèle ou avec aide ; ne pas conclure à la maîtrise sur le seul rendu."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La définition est confondue avec l'appel ou le bloc n'est pas exécuté.",
+            "helps": [
+              "Faire lire le fichier de haut en bas.",
+              "Repérer def, deux-points et indentation.",
+              "Chercher l'appel séparé après la définition.",
+              "Ajouter ou déplacer uniquement l'appel, relancer le fichier entier et expliquer l'ordre."
+            ]
+          },
+          {
+            "symptom": "Les arguments ne correspondent pas aux paramètres.",
+            "helps": [
+              "Repérer les valeurs données à l'appel.",
+              "Comparer nombre et ordre aux paramètres.",
+              "Lire le message d'erreur ou les affichages inversés.",
+              "Corriger un appel, puis tester deux valeurs différentes sans changer la définition."
+            ]
+          },
+          {
+            "symptom": "Le corps et la suite du programme sont mal séparés.",
+            "helps": [
+              "Repérer les lignes qui appartiennent à la fonction.",
+              "Comparer leur indentation avec les appels.",
+              "Vérifier les deux-points et le retour à la marge des appels.",
+              "Corriger l'indentation sans recopier le bloc ; prédire et tester deux appels."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel : ni ouverture ni case cochée ne valide un acquis. Ce module distingue définition, appel et paramètres ; return et les noms locaux seront enseignés dans le suivant. Le bonus avec liste et for est facultatif.",
+        "quickConductor": [
+          "Vérifier les prérequis et sauvegarder.",
+          "Lire et prédire les deux instructions du premier corps.",
+          "Comparer définition seule, un appel et deux appels ; faire évoluer vers un puis deux paramètres.",
+          "Faire créer et modifier une variante personnelle.",
+          "Noter les tests, explications et aides ; choisir manuellement une reprise."
+        ],
+        "references": [
+          {
+            "title": "Python - fonctions",
+            "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+          }
+        ]
+      }
+    },
+    "python-retour": {
+      "domainId": "python",
+      "title": "Renvoyer un résultat",
+      "type": "lesson",
+      "theme": "fondations",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
+      "skillIds": [
+        "python.return"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.functions",
+          "expectation": "Définir une fonction et fournir des arguments."
+        },
+        {
+          "skillId": "python.variables",
+          "expectation": "Conserver puis réutiliser une valeur."
+        },
+        {
+          "skillId": "python.numbers",
+          "expectation": "Expliquer une addition."
+        },
+        {
+          "skillId": "python.conditions",
+          "expectation": "Suivre les deux issues de if/else."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Enregistre les essais précédents et crée resultat.py. Il faut distinguer définition, appel et paramètres ; sinon, reprends Définir et appeler une fonction. Les exemples utilisent des nombres fixes.",
+          "moduleLink": {
+            "moduleId": "python-fonctions",
+            "text": "Définir et appeler une fonction"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "exemple",
+          "title": "1 - Renvoyer puis utiliser",
+          "paragraphs": [
+            "return renvoie une valeur à l'endroit qui a appelé la fonction et termine cet appel. Ici, l'appel ajouter_bonus(3) renvoie 5 : points conserve cette valeur, puis le programme l'affiche et l'utilise dans une addition.",
+            "bonus est créé dans le corps. Le résultat est renvoyé, pas la variable elle-même. Un return n'arrête pas tout le fichier : les lignes après l'appel continuent."
+          ],
+          "code": "def ajouter_bonus(nombre):\n    bonus = 2\n    return nombre + bonus\n\npoints = ajouter_bonus(3)\nprint(points)\nprint(points + 1)"
+        },
+        {
+          "type": "lesson",
+          "id": "afficher-ou-retourner",
+          "title": "2 - Afficher ne suffit pas à renvoyer",
+          "paragraphs": [
+            "Dans afficher_resultat.py, compare cette fonction au premier modèle. print montre 5, mais la fonction ne contient pas return. Son résultat renvoyé est None, qui indique ici l'absence de valeur utile renvoyée. resultat conserve None, pas 5.",
+            "Prévois les deux affichages : 5 puis None. Pour conserver un nombre, remplace le print du corps par return nombre + 2 ; le print extérieur affichera alors 5. Ce n'est pas une conversion de None."
+          ],
+          "code": "def montrer_bonus(nombre):\n    print(nombre + 2)\n\nresultat = montrer_bonus(3)\nprint(resultat)"
+        },
+        {
+          "type": "lesson",
+          "id": "local",
+          "title": "3 - Des noms locaux à chaque appel",
+          "paragraphs": [
+            "Dans noms_locaux.py, nombre reçoit 4 lors de l'appel. resultat_local est créé dans le corps : ces noms sont locaux à cet appel. La valeur renvoyée est conservée à l'extérieur dans resultat_exterieur. Les affichages donnent 8 puis 100.",
+            "Dans une copie diagnostic_local.py, ajoute print(resultat_local) après les affichages : NameError est attendu car ce nom n'a pas été défini à l'extérieur. Le résultat utilisable est déjà dans resultat_exterieur ; utilise ce nom pour corriger. Relance le fichier entier dans une console propre.",
+            "Reviens à noms_locaux.py. Après avoir expliqué les noms distincts, renomme valeur_exterieure en nombre sur sa ligne de définition et dans le dernier print, sans changer la fonction. Prévois puis vérifie 8 et 100 : le paramètre nombre reçoit 4, mais la variable extérieure nombre garde 100. Un même nom peut désigner deux variables différentes selon l'endroit."
+          ],
+          "code": "valeur_exterieure = 100\n\ndef doubler(nombre):\n    resultat_local = nombre + nombre\n    return resultat_local\n\nresultat_exterieur = doubler(4)\nprint(resultat_exterieur)\nprint(valeur_exterieure)"
+        },
+        {
+          "type": "lesson",
+          "id": "deux-issues",
+          "title": "4 - Un résultat dans les deux issues",
+          "paragraphs": [
+            "Dans point_fixe.py, la fonction compare deux textes fournis à ses paramètres. Chaque branche renvoie un entier : 1 si les textes sont égaux, 0 sinon. Les textes sont donnés directement aux appels, sans saisie.",
+            "Le return choisi termine l'appel ; les print extérieurs montrent les valeurs renvoyées. Sans return dans une issue, cet appel renverrait None. Les trois appels vérifient juste, faux et vide."
+          ],
+          "code": "def attribuer_point(reponse, attendue):\n    if reponse == attendue:\n        return 1\n    else:\n        return 0\n\nprint(attribuer_point(\"tour\", \"tour\"))\nprint(attribuer_point(\"lune\", \"tour\"))\nprint(attribuer_point(\"\", \"tour\"))"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Vérifie les résultats",
+          "intro": "Réutilise les fichiers de découverte ; garde les diagnostics dans des copies.",
+          "items": [
+            {
+              "id": "deux-resultats",
+              "text": "Dans resultat.py, conserve deux appels pour 3 puis 0 dans deux variables différentes. Prévois puis affiche leurs valeurs et leur somme.",
+              "hint": "Chaque appel renvoie un résultat indépendant : 5 puis 2."
+            },
+            {
+              "id": "comparer-print-return",
+              "text": "Dans une copie d'afficher_resultat.py, remplace le print du corps par return. Compare les affichages et ce qui est conservé.",
+              "hint": "Le print extérieur doit rester ; le résultat n'est plus None."
+            },
+            {
+              "id": "tester-issues",
+              "text": "Change les textes des appels dans point_fixe.py et teste deux textes égaux, différents et vides. Explique les valeurs renvoyées.",
+              "hint": "Deux textes vides sont égaux ; le cas vide comparé à tour reste faux."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "À toi - créer et réutiliser des résultats",
+          "intro": "Crée mon_calcul.py sans recopier tout le premier fichier. Puis crée mon_point.py pour appliquer une règle personnelle.",
+          "items": [
+            {
+              "id": "calcul-personnel",
+              "text": "Définis une fonction qui ajoute ton bonus fixe à un nombre reçu. Renvoie le résultat sans l'afficher dans le corps ; conserve deux appels et affiche leur somme.",
+              "hint": "Les affichages et les variables de résultats sont hors de la fonction."
+            },
+            {
+              "id": "tester-zero",
+              "text": "Prévois et teste un nombre positif puis zéro. Explique le rôle de l'entrée et de la valeur renvoyée.",
+              "hint": "Zéro reste une entrée valide ; on ne le confond pas avec un appel absent."
+            },
+            {
+              "id": "modifier-bonus",
+              "text": "Enregistre puis crée mon_calcul_variante.py avec Enregistrer sous, avec un autre bonus. Prévois les deux résultats et leur somme. Montre les noms définis dans le corps et ceux définis à l'extérieur, puis explique comment le résultat passe de l'un à l'autre.",
+              "hint": "Le bonus local est recréé pour chaque appel ; garde la version de départ."
+            },
+            {
+              "id": "regle-personnelle",
+              "text": "Dans mon_point.py, crée une fonction à deux paramètres : une proposition textuelle et une réponse attendue. Choisis tes propres mots. Renvoie 1 si les textes sont égaux, 0 sinon, sans afficher dans la fonction. Conserve puis affiche les résultats de trois appels : égal, différent et vide face à une réponse attendue non vide.",
+              "hint": "Prévois 1, 0 et 0 ; la comparaison utilise les paramètres, pas un mot fixé dans le corps."
+            },
+            {
+              "id": "transfert-regle",
+              "text": "Change uniquement la réponse attendue dans les appels, sans modifier la définition. Prévois puis teste la nouvelle réponse, l'ancienne et vide. Explique pourquoi chaque branche doit renvoyer un nombre.",
+              "hint": "Le nouveau mot est accepté ; l'ancien, s'il est différent, est refusé. Le résultat se conserve hors du corps."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - préparer du texte",
+          "intro": "Si strip et lower sont compris, utilise une copie preparation.py.",
+          "items": [
+            {
+              "id": "retour-texte",
+              "text": "Définis une fonction à un paramètre qui prépare un texte avec strip puis lower et renvoie le résultat. Garde le texte original et affiche original/résultat pour \"  TOUR  \" puis vide.",
+              "hint": "Conserve les transformations en deux étapes ; la fonction ne demande pas input."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer un affichage print du résultat renvoyé par return, y compris None sans retour utile.",
+        "Conserver deux résultats et les réutiliser hors de la fonction.",
+        "Identifier les paramètres et noms locaux, retrouver le résultat conservé à l'extérieur et expliquer la comparaison de deux noms identiques.",
+        "Créer et tester personnellement une fonction à deux issues, puis modifier un calcul et une réponse attendue avec prévision."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-fonctions",
+          "blockId": "guide",
+          "label": "Revoir les appels"
+        },
+        {
+          "moduleId": "python-retour",
+          "blockId": "guide",
+          "label": "Revoir les résultats"
+        },
+        {
+          "moduleId": "python-erreurs",
+          "blockId": "guide",
+          "label": "Relire un nom inconnu"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-retour",
+          "blockId": "bonus",
+          "label": "Renvoyer du texte préparé",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.text",
+              "expectation": "Conserver strip et lower."
+            }
+          ]
+        }
+      ],
+      "nextSteps": [
+        {
+          "moduleId": "python-quiz",
+          "label": "Créer un quiz personnalisable",
+          "prerequisiteSkills": [
+            {
+              "skillId": "python.return",
+              "expectation": "Conserver un nombre sur chaque issue."
+            },
+            {
+              "skillId": "python.text",
+              "expectation": "Annoncer et tester une règle de texte."
+            }
+          ]
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
+        "entryDiagnosis": [
+          "Définir une fonction et fournir des arguments.",
+          "Conserver puis réutiliser une valeur.",
+          "Expliquer une addition.",
+          "Suivre les deux issues de if/else."
+        ],
+        "preparation": [
+          "Créer les fichiers annoncés dans Thonny ; sauvegarder le travail précédent et conserver les variantes importantes avec Enregistrer sous.",
+          "Relancer le fichier entier : ne pas dépendre des définitions ou variables restées dans une ancienne console.",
+          "Observer une prédiction avant de montrer l'indice ; distinguer aide aux fichiers/clavier et aide au raisonnement."
+        ],
+        "why": "Réutiliser une règle comprise puis vérifier ce qu'elle reçoit, fait et renvoie plutôt que recopier un programme.",
+        "discoverySpeech": [
+          "« Où la fonction est-elle définie et où est-elle appelée ? »",
+          "« Quelle valeur entre dans cet appel, et que se passe-t-il ensuite ? »",
+          "« Prévois un résultat, exécute puis explique une modification. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-retour",
+            "blockId": "exemple",
+            "label": "Exemple ou cahier des charges"
+          },
+          "comments": [
+            "Prédire la valeur renvoyée, l'affichage puis le calcul extérieur.",
+            "Comparer print et return sans présenter None comme un résultat numérique.",
+            "Montrer les noms distincts et le résultat conservé avant de comparer un même nom dans deux endroits. Isoler le NameError dans une copie."
+          ]
+        },
+        "questions": [
+          {
+            "question": "return arrête-t-il le fichier ?",
+            "answer": "Il termine l'appel courant ; le programme reprend après l'appel."
+          },
+          {
+            "question": "Que conserve points dans le premier modèle ?",
+            "answer": "5, valeur renvoyée pour l'entrée 3."
+          },
+          {
+            "question": "Pourquoi None après la fonction d'affichage ?",
+            "answer": "Sans return avec une valeur, cet appel renvoie None ; print a affiché sans fournir ce nombre au programme."
+          },
+          {
+            "question": "Que devient le nombre extérieur après avoir renommé valeur_exterieure en nombre ?",
+            "answer": "Il reste à 100 ; le paramètre nombre reçoit 4 pour l'appel et le retour vaut 8, conservé dans resultat_exterieur."
+          },
+          {
+            "question": "Pourquoi print(resultat_local) à l'extérieur échoue-t-il ?",
+            "answer": "Ce nom est défini dans le corps, pas à l'extérieur. Le retour a été conservé dans resultat_exterieur ; ce nom permet d'utiliser sa valeur."
+          },
+          {
+            "question": "Pourquoi return 0 dans l'issue fausse ?",
+            "answer": "Le programme reçoit ainsi un nombre même lorsque la comparaison est fausse ; il ne reçoit pas None."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-retour",
+          "blockId": "guide",
+          "label": "Essais accompagnés"
+        },
+        "independentActivity": {
+          "moduleId": "python-retour",
+          "blockId": "autonomie",
+          "label": "Création et transfert autonomes"
+        },
+        "differentiation": [
+          "Reprendre une seule notion fragile sans exiger un bonus ni un projet antérieur entièrement terminé.",
+          "Commencer avec des noms distincts et une affectation explicite du retour ; comparer les noms identiques seulement après explication. Réserver les copies aux diagnostics et variantes.",
+          "Distinguer réussite autonome, avec modèle ou avec aide ; ne pas conclure à la maîtrise sur le seul rendu."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La définition est confondue avec l'appel ou le bloc n'est pas exécuté.",
+            "helps": [
+              "Faire lire le fichier de haut en bas.",
+              "Repérer def, deux-points et indentation.",
+              "Chercher l'appel séparé après la définition.",
+              "Ajouter ou déplacer uniquement l'appel, relancer le fichier entier et expliquer l'ordre."
+            ]
+          },
+          {
+            "symptom": "Les arguments ne correspondent pas aux paramètres.",
+            "helps": [
+              "Repérer les valeurs données à l'appel.",
+              "Comparer nombre et ordre aux paramètres.",
+              "Lire le message d'erreur ou les affichages inversés.",
+              "Corriger un appel, puis tester deux valeurs différentes sans changer la définition."
+            ]
+          },
+          {
+            "symptom": "Affichage, résultat ou nom local sont confondus.",
+            "helps": [
+              "Montrer la ligne qui affiche et celle qui conserve.",
+              "Suivre un appel et son retour vers le programme.",
+              "Vérifier return sur chaque issue et les noms utilisés hors du bloc.",
+              "Conserver le résultat dans une variable extérieure ; ne pas chercher à utiliser directement un nom local. Retester et expliquer."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel : ni ouverture ni case cochée ne valide un acquis. Observer conservation et réutilisation des résultats, noms locaux et deux issues avec retour explicite. Pas de saisie ou global dans le socle ; le bonus texte est facultatif.",
+        "quickConductor": [
+          "Vérifier les prérequis et sauvegarder.",
+          "Lire un exemple ou le cahier des charges.",
+          "Prédire puis tester les deux issues ou plusieurs appels.",
+          "Faire créer le calcul personnel puis une règle textuelle à deux issues, sans dicter le corps ; observer leurs modifications et tests.",
+          "Noter les tests, explications et aides ; choisir manuellement une reprise."
+        ],
+        "references": [
+          {
+            "title": "Python - fonctions",
+            "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+          }
+        ]
+      }
+    },
+    "python-quiz": {
+      "domainId": "python",
+      "title": "Mon quiz personnalisable",
+      "type": "project",
+      "theme": "fondations",
+      "prerequisitesInContent": true,
+      "tool": {
+        "label": "Site officiel de Thonny",
+        "url": "https://thonny.org/"
+      },
+      "objective": "Créer trois questions réutilisant une fonction, une règle de réponse et un score expliqué.",
+      "skillIds": [
+        "python.functions",
+        "python.return",
+        "python.input",
+        "python.text",
+        "python.conditions",
+        "python.accumulation"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.functions",
+          "expectation": "Fournir deux arguments à une fonction."
+        },
+        {
+          "skillId": "python.return",
+          "expectation": "Conserver un entier renvoyé sur les deux issues."
+        },
+        {
+          "skillId": "python.input",
+          "expectation": "Saisir une réponse dans la console."
+        },
+        {
+          "skillId": "python.text",
+          "expectation": "Préparer la réponse avec strip et lower."
+        },
+        {
+          "skillId": "python.conditions",
+          "expectation": "Comparer deux textes avec if/else."
+        },
+        {
+          "skillId": "python.accumulation",
+          "expectation": "Initialiser et actualiser un total."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Enregistre tes autres fichiers et crée quiz.py, sans les remplacer. Il faut pouvoir fournir deux arguments, conserver un résultat, préparer un texte et cumuler des points ; si nécessaire, reprends Renvoyer un résultat. Le score repart à zéro à chaque lancement.",
+          "moduleLink": {
+            "moduleId": "python-retour",
+            "text": "Renvoyer un résultat"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "contrat",
+          "title": "Un quiz personnel, une règle claire",
+          "paragraphs": [
+            "Choisis un thème et trois questions avec une réponse courte chacune, sans renseignements personnels. Définis une seule fonction poser_question(question, attendue) : les arguments donnent le texte à demander et la réponse attendue.",
+            "Dans le corps, input(question) renvoie le texte saisi. Conserve-le dans une variable locale reponse, puis conserve les résultats de strip et de lower dans deux autres variables. Compare le texte préparé à attendue, donnée en minuscules sans espace aux bords : renvoie 1 s'il correspond, 0 sinon.",
+            "La règle tolère les majuscules et les espaces aux bords, pas les fautes, accents différents ni espaces au milieu. Une réponse vide est refusée car tes réponses attendues sont non vides.",
+            "Initialise le score à zéro dans le programme, hors de la fonction et avant les appels. Chaque appel renvoie des points que tu ajoutes au score. Trois appels posent trois questions ; après le dernier ajout, affiche les points sur 3."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "plan",
+          "title": "1 - Prépare les questions",
+          "intro": "Note ton plan avant de coder.",
+          "items": [
+            {
+              "id": "choisir-questions",
+              "text": "Écris tes trois questions et leurs réponses attendues, simples et non vides, en minuscules sans espace aux bords. Annonce la règle de saisie à la personne qui joue.",
+              "hint": "Ne mélange pas correction orthographique et préparation de la casse."
+            },
+            {
+              "id": "prevoir-tests",
+              "text": "Prévois une réponse correcte, une fausse, une vide et des variantes de casse/bords pour une de tes questions.",
+              "hint": "Écris les résultats attendus avant de lancer."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "2 - Une question avant le score",
+          "intro": "Fais évoluer quiz.py : une fonction et un appel de test d'abord, puis un programme qui compte ses points.",
+          "items": [
+            {
+              "id": "fonction-question",
+              "text": "Reprends ta comparaison à deux paramètres de mon_point.py. Adapte sa définition en poser_question(question, attendue) : le premier paramètre contient maintenant la question à afficher, et non la réponse du joueur. Garde attendue comme second paramètre.",
+              "hint": "Avant, reponse venait du premier argument. Maintenant, question vient du premier argument et reponse sera créée dans le corps grâce à la saisie."
+            },
+            {
+              "id": "saisie-locale",
+              "text": "Avant la comparaison, pose la question reçue et conserve le texte saisi dans reponse. Fais un premier essai avec une comparaison exacte, sans préparation du texte. Appelle une seule fois la fonction et conserve le résultat avant de l'afficher.",
+              "hint": "Utilise reponse = input(question). Compare reponse à attendue ; chaque branche doit renvoyer 1 ou 0. Le premier argument est le texte de la question, le second la réponse attendue."
+            },
+            {
+              "id": "preparer-reponse",
+              "text": "Ajoute strip puis lower en deux étapes avant la comparaison. Compare désormais le texte préparé à attendue. Prévois les valeurs intermédiaires pour une réponse avec des majuscules et des espaces aux bords.",
+              "hint": "Conserve reponse.strip() dans sans_bords, puis sans_bords.lower() dans normalisee. La comparaison porte sur normalisee, pas sur reponse."
+            },
+            {
+              "id": "verifier-question",
+              "text": "Relance la question avec la bonne réponse, une mauvaise, vide, des majuscules et des espaces aux bords. Prévois les résultats et explique les deux arguments, la réponse locale et l'entier renvoyé.",
+              "hint": "Le résultat est un nombre ; un affichage juste/faux ne remplace pas return."
+            },
+            {
+              "id": "debut-score",
+              "text": "Enregistre la version de test. Remplace ensuite la partie située après la définition par : score = 0, un seul appel conservé dans points, score = score + points, puis affichage du score. Ne conserve pas un ancien appel de test en plus. Relance avec juste puis faux : attends 1 puis 0.",
+              "hint": "L'initialisation précède l'appel ; une seule question doit être posée par lancement à cette étape."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "3 - Ton quiz de trois questions",
+          "intro": "Continue dans quiz.py avec tes textes ; essaie sans regarder un programme complet.",
+          "items": [
+            {
+              "id": "trois-appels",
+              "text": "Pars de ton programme qui compte une question. Garde son premier appel et son addition ; ajoute deux appels avec leurs additions pour atteindre exactement trois questions. Affiche le bilan sur 3 après le dernier ajout.",
+              "hint": "Compte les appels présents hors de la définition : trois, pas trois nouveaux appels ajoutés au premier. score = 0 reste une seule fois avant eux."
+            },
+            {
+              "id": "tester-parties",
+              "text": "Teste trois réponses justes, trois fausses puis un mélange avec une réponse vide. Prévois et vérifie les scores 3, 0 et celui du mélange. Note les aides utilisées.",
+              "hint": "Le total ajoute les trois résultats 1 ou 0, y compris le premier et le dernier."
+            },
+            {
+              "id": "modifier-question",
+              "text": "Enregistre puis crée quiz_variante.py. Change une question et sa réponse attendue. Teste la nouvelle réponse, l'ancienne et les autres questions ; mets à jour tout message de correction éventuel.",
+              "hint": "Le texte demandé et attendue sont deux arguments distincts. Une ancienne réponse différente doit être refusée."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "presentation",
+          "title": "4 - Montre et explique",
+          "intro": "Les essais et l'explication comptent ensemble, pas les cases cochées.",
+          "items": [
+            {
+              "id": "expliquer-score",
+              "text": "Montre les paramètres, les variables locales, le retour et le total extérieur. Explique pourquoi deux parties relancées ne partagent pas leur score.",
+              "hint": "Chaque lancement réexécute score = 0 ; aucune donnée n'est enregistrée."
+            },
+            {
+              "id": "limites-quiz",
+              "text": "Explique quelles différences la règle tolère et refuse. Présente une modification personnelle et ses tests, en précisant modèles, indices ou aide reçue.",
+              "hint": "strip/lower ne corrigent ni fautes ni espaces internes ; les limites sont annoncées."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Bonus - une quatrième question",
+          "intro": "Facultatif ; conserve le quiz sur 3.",
+          "items": [
+            {
+              "id": "quatrieme-question",
+              "text": "Dans une copie quiz_quatre.py, ajoute une question avec un nouvel appel, sans recopier la définition. Actualise les points après cet appel et le bilan sur 4 ; teste quatre justes puis une fausse.",
+              "hint": "Change le nombre total annoncé, pas la valeur d'un point."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "bonus-message",
+          "title": "Bonus - un retour au joueur",
+          "intro": "Facultatif et indépendant de la quatrième question ; tu peux garder ton quiz sur 3.",
+          "items": [
+            {
+              "id": "retour-joueur",
+              "text": "Si tu souhaites un message juste/faux, ajoute-le dans chaque branche avant le return correspondant. Reteste les scores pour vérifier que l'affichage n'a pas remplacé le résultat renvoyé.",
+              "hint": "return termine l'appel : un message placé après lui dans la même branche ne sera pas affiché."
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Créer des questions personnelles et annoncer une règle de réponse testée, y compris vide.",
+        "Réutiliser une fonction à deux paramètres et renvoyer 1 ou 0 sur chaque issue.",
+        "Conserver et cumuler les résultats hors de la fonction sans réinitialiser le score entre les questions.",
+        "Modifier une question, retester les scores et expliquer variables locales, limites et aides utilisées."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "python-fonctions",
+          "blockId": "guide",
+          "label": "Revoir les paramètres"
+        },
+        {
+          "moduleId": "python-retour",
+          "blockId": "guide",
+          "label": "Revoir les résultats"
+        },
+        {
+          "moduleId": "python-texte",
+          "blockId": "guide",
+          "label": "Revoir les réponses préparées"
+        },
+        {
+          "moduleId": "python-compteurs",
+          "blockId": "guide",
+          "label": "Revoir un total"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "python-quiz",
+          "blockId": "bonus",
+          "label": "Ajouter une question"
+        },
+        {
+          "moduleId": "python-quiz",
+          "blockId": "bonus-message",
+          "label": "Afficher un retour au joueur"
+        }
+      ],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Créer trois questions réutilisant une fonction, une règle de réponse et un score expliqué.",
+        "entryDiagnosis": [
+          "Fournir deux arguments à une fonction.",
+          "Conserver un entier renvoyé sur les deux issues.",
+          "Saisir une réponse dans la console.",
+          "Préparer la réponse avec strip et lower.",
+          "Comparer deux textes avec if/else.",
+          "Initialiser et actualiser un total."
+        ],
+        "preparation": [
+          "Créer les fichiers annoncés dans Thonny ; sauvegarder le travail précédent et conserver les variantes importantes avec Enregistrer sous.",
+          "Relancer le fichier entier : ne pas dépendre des définitions ou variables restées dans une ancienne console.",
+          "Observer une prédiction avant de montrer l'indice ; distinguer aide aux fichiers/clavier et aide au raisonnement."
+        ],
+        "why": "Réutiliser une règle comprise puis vérifier ce qu'elle reçoit, fait et renvoie plutôt que recopier un programme.",
+        "discoverySpeech": [
+          "« Où la fonction est-elle définie et où est-elle appelée ? »",
+          "« Quelle valeur entre dans cet appel, et que se passe-t-il ensuite ? »",
+          "« Prévois un résultat, exécute puis explique une modification. »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "python-quiz",
+            "blockId": "contrat",
+            "label": "Exemple ou cahier des charges"
+          },
+          "comments": [
+            "Lire le cahier des charges, puis faire annoncer les trois questions et la règle.",
+            "Faire fonctionner une seule question avant d'ajouter le score et les trois appels.",
+            "Ne pas publier de solution complète ; noter les tests, les modifications et les aides reçues."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi trois appels mais une définition ?",
+            "answer": "La même règle est réutilisée avec des arguments différents ; le corps n'est pas recopié."
+          },
+          {
+            "question": "Que reçoit attendue ?",
+            "answer": "La réponse attendue donnée comme second argument, en minuscules sans espace aux bords."
+          },
+          {
+            "question": "Pourquoi préparer reponse et non seulement l'afficher ?",
+            "answer": "Le programme compare le résultat conservé de strip puis lower à attendue."
+          },
+          {
+            "question": "Où initialise-t-on le score ?",
+            "answer": "Une seule fois hors de la fonction, avant le premier appel."
+          },
+          {
+            "question": "Que se passe-t-il avec juste, faux, vide ?",
+            "answer": "Les retours sont 1, 0, 0 si les réponses attendues sont non vides ; le total vaut 1."
+          },
+          {
+            "question": "Le projet valide-t-il automatiquement listes et hasard ?",
+            "answer": "Non. Son socle n'utilise ni liste ni hasard ; il vérifie des explications et modifications ciblées, manuellement."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "python-quiz",
+          "blockId": "guide",
+          "label": "Essais accompagnés"
+        },
+        "independentActivity": {
+          "moduleId": "python-quiz",
+          "blockId": "autonomie",
+          "label": "Création et transfert autonomes"
+        },
+        "differentiation": [
+          "Reprendre une seule notion fragile sans exiger un bonus ni un projet antérieur entièrement terminé.",
+          "Accompagner séparément changement du premier paramètre, saisie locale, préparation du texte et cumul. Faire expliquer chaque étape ; ne pas ajouter les trois questions tant que l'appel isolé ne renvoie pas 1 et 0.",
+          "Distinguer réussite autonome, avec modèle ou avec aide ; ne pas conclure à la maîtrise sur le seul rendu."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La question et la réponse saisie sont confondues lors de l'adaptation.",
+            "helps": [
+              "Faire nommer les deux arguments : texte de la question et réponse attendue.",
+              "Repérer où reponse est créée à l'intérieur de la fonction.",
+              "Comparer la saisie à attendue, puis faire suivre reponse, sans_bords et normalisee.",
+              "Le premier paramètre question est utilisé par input ; la réponse n'est plus un argument fourni à cet appel. Tester deux réponses avec la même question."
+            ]
+          },
+          {
+            "symptom": "Les arguments ne correspondent pas aux paramètres.",
+            "helps": [
+              "Repérer les valeurs données à l'appel.",
+              "Comparer nombre et ordre aux paramètres.",
+              "Lire le message d'erreur ou les affichages inversés.",
+              "Corriger un appel, puis tester deux valeurs différentes sans changer la définition."
+            ]
+          },
+          {
+            "symptom": "Affichage, résultat ou nom local sont confondus.",
+            "helps": [
+              "Montrer la ligne qui affiche et celle qui conserve.",
+              "Suivre un appel et son retour vers le programme.",
+              "Vérifier return sur chaque issue et les noms utilisés hors du bloc.",
+              "Conserver le résultat dans une variable extérieure ; ne pas chercher à utiliser directement un nom local. Retester et expliquer."
+            ]
+          },
+          {
+            "symptom": "Le score reste à 1, recommence ou oublie une question.",
+            "helps": [
+              "Faire noter les trois résultats attendus.",
+              "Repérer l'initialisation et chaque addition.",
+              "Compter les appels hors de la définition : un pendant le guidé, puis exactement trois. Supprimer l'ancien appel de diagnostic ; vérifier l'initialisation avant eux et une addition après chacun.",
+              "Garder le total hors de la fonction ; tester 3 justes, 0 juste et un mélange, puis relancer pour vérifier le nouveau départ."
+            ]
+          }
+        ],
+        "notes": "Le suivi reste manuel. Aucun acquis automatique sur ouverture, copie ou case cochée. Pas de dictionnaires, liste de listes, zip, global, récursion, argument par défaut ou exception cachée. Les fonctions utilisent des valeurs simples. Ce projet n'évalue pas toutes les compétences Python par sa seule réussite.",
+        "quickConductor": [
+          "Vérifier les prérequis et sauvegarder.",
+          "Lire un exemple ou le cahier des charges.",
+          "Vérifier comparaison exacte puis préparation textuelle et retours ; remplacer le programme de test par un appel compté.",
+          "Ajouter deux appels, prédire et tester les scores, puis modifier une question et vérifier nouvelle et ancienne réponse.",
+          "Noter les tests, explications et aides ; choisir manuellement une reprise."
+        ],
+        "references": [
+          {
+            "title": "Python - fonctions",
+            "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+          }
+        ]
+      }
+    },
     "python-listes": {
       "domainId": "python", "title": "Regrouper des valeurs dans une liste", "type": "lesson", "theme": "fondations",
       "objective": "Conserver plusieurs valeurs, consulter une position, parcourir et compléter une liste.",
@@ -1531,7 +3098,7 @@ window.CODECRAFT_DATA = {
           { "id": "regle-tests", "text": "Dans comparaison_texte.py, prévois puis teste tour, Tour, tour entouré d'espaces, TO UR, lune, une réponse vide et une réponse composée d'espaces. Explique chaque issue.", "hint": "Les trois premiers correspondent. Les autres non : ni correction des espaces internes, ni faute corrigée. Vide et espaces donnent un texte préparé vide, sans IndexError." }
         ] },
         { "type": "tasks", "id": "autonomie", "title": "À toi - ton mot accepté", "intro": "Crée mon_mot.py avec ton propre mot et tes messages. Choisis un mot simple en minuscules, sans accent ni espace ; essaie avant de consulter les indices.", "items": [
-          { "id": "mot-personnel", "text": "Annonce ta règle : majuscules et espaces aux bords tolérés. Pose la question, garde la réponse originale, prépare-la en deux étapes et affiche un message personnel pour chaque issue.", "hint": "input conserve le texte d'origine ; strip puis lower produisent les résultats. Compare le texte préparé au mot choisi avec if/else." },
+          { "id": "mot-personnel", "text": "Annonce ta règle : majuscules et espaces aux bords tolérés. Pose la question, garde la réponse originale, prépare-la en deux étapes et affiche un message personnel pour chaque issue.", "hint": "input renvoie le texte saisi ; l'affectation à reponse le conserve. strip puis lower produisent de nouveaux résultats à conserver eux aussi. Compare le texte préparé au mot choisi avec if/else." },
           { "id": "mot-tests", "text": "Choisis des tests avec majuscules, espaces aux bords, un mot différent et une réponse vide. Prévois chaque issue puis exécute. Explique les limites de ta règle et montre que l'original reste disponible.", "hint": "Les deux transformations ne retirent pas les espaces internes et ne corrigent pas une faute. N'utilise pas d'indice sur la réponse." },
           { "id": "mot-modifie", "text": "Enregistre puis crée mon_mot_modifie.py avec Enregistrer sous. Change le mot accepté dans la question et la comparaison. Teste le nouveau et l'ancien mot : explique ce qui a changé.", "hint": "La question annonce la règle mais seule la comparaison décide. Conserve mon_mot.py pour retrouver le premier essai." }
         ] },
@@ -1549,7 +3116,7 @@ window.CODECRAFT_DATA = {
         { "moduleId": "python-saisie", "blockId": "guide", "label": "Revoir la réponse conservée" },
         { "moduleId": "python-conditions", "blockId": "guide", "label": "Revoir les deux issues" }
       ],
-      "bonusActivities": [{ "moduleId": "python-texte", "blockId": "remplacement", "label": "Remplacer une partie d'un message" }], "nextSteps": [],
+      "bonusActivities": [{ "moduleId": "python-texte", "blockId": "remplacement", "label": "Remplacer une partie d'un message" }], "nextSteps": [{ "moduleId": "python-fonctions", "label": "Définir et appeler une fonction", "prerequisiteSkills": [{ "skillId": "python.variables", "expectation": "Conserver et réutiliser une valeur ; sinon reprendre Variables et valeurs." }] }],
       "teacherGuide": {
         "objective": "Observer une chaîne puis construire une règle de comparaison explicite, sans masquer les transformations.",
         "entryDiagnosis": ["Faire expliquer longueur et indice d'une liste.", "Reprendre une réponse conservée et une comparaison textuelle exacte ; ne pas présupposer la normalisation."],
@@ -14859,6 +16426,370 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
+    "web-collection-cartes": {
+      "domainId": "web",
+      "title": "Ma collection de cartes",
+      "type": "project",
+      "theme": "avances",
+      "objective": "Créer une collection personnelle, choisir sa disposition et expliquer ses changements à différentes largeurs.",
+      "skillIds": [
+        "html.structure",
+        "css.selectors",
+        "css.flexbox"
+      ],
+      "prerequisitesInContent": true,
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent commun et les enfants directs d’une collection."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.flexbox",
+          "expectation": "Choisir le parent Flexbox et expliquer direction, axes, écart et retour à la ligne."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Travaille sur une copie de ta collection après Flexbox. Conserve le HTML et le CSS dans deux fichiers texte avant toute modification. Sans support, reprends Préparer un projet de cartes puis les essais Flexbox. Ouvre HTML et CSS dans leurs panneaux CodePen ; aucun compte ni conservation durable de l’onglet n’est supposé. Tu peux garder l’apparence fournie : pas d’image, de fichier CSS externe ni de publication à ajouter.",
+          "moduleLink": {
+            "moduleId": "web-projet-cartes",
+            "text": "Préparer un projet de cartes"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "projet",
+          "title": "Une collection qui te ressemble",
+          "paragraphs": [
+            "Choisis un thème : lieux imaginaires, jeux inventés, idées d’activités ou objets fictifs. N’utilise pas de renseignements personnels. Adapte ton projet existant au lieu de recopier le cours : si quatre cartes sont déjà présentes, garde leur structure et change leurs contenus.",
+            "Chaque carte présente un titre et un paragraphe différents. Pour le départ, réunis quatre cartes dans un même parent et utilise une classe commune pour les cartes. Prévois une disposition en ligne qui peut revenir à la ligne quand la place manque.",
+            "Le résultat n’a pas besoin de ressembler au site CodeCraft. L’apparence du cours peut rester inchangée ; ce sont la structure, tes choix de disposition et leurs effets que tu vas montrer."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "plan",
+          "title": "1 — Prévois le résultat",
+          "intro": "Avant de modifier le code, prépare un plan court avec tes mots.",
+          "items": [
+            {
+              "id": "choisir-contenus",
+              "text": "Note le thème et les quatre titres. Prévois un texte différent par carte ; donne à l’une d’elles un paragraphe plus long, avec des mots ordinaires."
+            },
+            {
+              "id": "prevoir-disposition",
+              "text": "Décris la disposition en ligne, l’écart et la répartition souhaités. Prévois ce qui pourrait changer quand l’aperçu devient plus étroit.",
+              "hints": [
+                "Décris ce que tu veux voir, sans commencer par une liste de propriétés.",
+                "Distingue l’écart entre deux cartes et la place libre autour du groupe.",
+                "Repère le parent qui les contient toutes.",
+                "Reprends les étapes direction, gap, répartition et wrap de Flexbox ; choisis ensuite ton propre résultat."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "id": "exigences",
+          "title": "Le cahier des charges",
+          "items": [
+            {
+              "text": "Quatre cartes au départ, avec des titres et des paragraphes différents."
+            },
+            {
+              "text": "Un parent commun et une classe commune aux cartes."
+            },
+            {
+              "text": "Une disposition en ligne, un écart choisi et un retour à la ligne lorsque la place manque."
+            },
+            {
+              "text": "Contenus lisibles à deux largeurs et choix expliqués avec les aides utilisées."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "realisation",
+          "title": "2 — Réalise et compare",
+          "intro": "Essaie avant l’indice. Modifie une propriété à la fois pour reconnaître son effet ; aucun modèle complet de projet n’est donné.",
+          "items": [
+            {
+              "id": "adapter-structure",
+              "text": "Adapte tes quatre cartes. Montre leur parent commun et vérifie les fermetures ; conserve l’ordre choisi dans le HTML.",
+              "hints": [
+                "Repère ce qui appartient à une carte et ce qui appartient au groupe.",
+                "Les titres et paragraphes restent dans leur propre carte.",
+                "La classe de chaque carte doit correspondre à la règle commune.",
+                "Compare avec Parent et enfants ; déplace seulement l’élément mal placé avant de reprendre tes contenus."
+              ]
+            },
+            {
+              "id": "choisir-reglages",
+              "text": "Réalise le plan en choisissant les réglages du parent. Compare deux répartitions et deux écarts, puis conserve ceux que tu peux justifier.",
+              "hints": [
+                "Quels éléments veux-tu organiser ensemble ?",
+                "Cherche leur parent et sa règle CSS.",
+                "Sépare direction, écart, répartition et retour à la ligne ; observe une modification à la fois.",
+                "Reprends un essai de Flexbox qui concerne ta difficulté, puis reviens à ton plan sans recopier toute sa solution."
+              ]
+            },
+            {
+              "id": "comparer-alignement",
+              "text": "Dans un aperçu assez large, place deux cartes de hauteurs différentes sur la même ligne. Compare leur alignement au début puis au centre sur l’autre axe ; explique et conserve ton choix.",
+              "hints": [
+                "Le paragraphe plus long peut rendre une carte plus haute.",
+                "Observe les bords hauts et bas des cartes sur une même ligne.",
+                "En ligne, l’axe transversal est vertical dans ces exemples.",
+                "Compare align-items: flex-start puis center sur le parent. Si tu ne vois rien, vérifie qu’il y a plusieurs cartes sur la ligne et des hauteurs différentes."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "verification",
+          "title": "3 — Mets ta collection à l’épreuve",
+          "intro": "Note pour chaque essai ce que tu prévoyais, ce que tu observes et ce que tu corriges. Conserve le HTML et le CSS finaux.",
+          "items": [
+            {
+              "id": "tester-largeurs",
+              "text": "Compare un aperçu large puis étroit, par exemple autour de 700 puis 300 px disponibles si ton écran le permet. Compte les lignes et vérifie les textes et l’ordre. Aucun nombre exact de cartes par ligne n’est imposé.",
+              "hints": [
+                "Réduis progressivement la largeur de l’aperçu, pas seulement celle de la page de cours.",
+                "Compare avec ton plan ; indique les deux largeurs réellement testées.",
+                "Vérifie flex-wrap, la direction et les dimensions de l’apparence conservée.",
+                "Avec row et wrap, les cartes qui ne tiennent plus passent à une autre ligne. Si une carte seule dépasse, sa largeur doit aussi être revue : wrap ne répare pas tout."
+              ]
+            },
+            {
+              "id": "ajouter-carte",
+              "text": "Prévois l’effet puis ajoute une cinquième carte avec un nouveau titre et paragraphe, sans lui créer une règle CSS individuelle. Compare aux deux largeurs et explique pourquoi les règles existantes s’appliquent.",
+              "hints": [
+                "Garde les quatre cartes précédentes.",
+                "La nouvelle carte appartient au même parent.",
+                "Elle porte la même classe que les autres cartes.",
+                "Ajoute un enfant au groupe puis vérifie la règle commune ; change son texte, pas toute la structure du projet."
+              ]
+            },
+            {
+              "id": "allonger-texte",
+              "text": "Ajoute temporairement une phrase à un paragraphe avec des mots ordinaires. Vérifie que tout le texte reste visible et observe la hauteur et l’alignement. Ne masque pas le débordement ; conserve ou retire la phrase après comparaison."
+            },
+            {
+              "id": "presenter",
+              "text": "Montre le code et les deux aperçus. Explique le parent, deux choix de disposition et le comportement après l’ajout de la carte. Précise les indices, modèles ou aides utilisés ; des cases cochées ne prouvent pas la compréhension."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "transfert",
+          "title": "4 — Change de disposition",
+          "intro": "Conserve le projet final, puis travaille sur une copie pour cette variante. Essaie sans regarder les exemples du cours.",
+          "items": [
+            {
+              "id": "colonne-centree",
+              "text": "Dispose les cartes en colonne et centre-les horizontalement dans leur parent. Compare au projet en ligne : explique les deux axes et annule seulement le centrage pour montrer son effet.",
+              "hints": [
+                "Quels sont le sens de la collection et le sens du centrage demandé ?",
+                "En colonne, l’axe principal est vertical et l’autre axe est horizontal dans nos exemples.",
+                "Le parent doit être plus large qu’une carte pour rendre le centrage visible.",
+                "Sur le parent, compare flex-direction: column et align-items: center avec align-items: flex-start ; ne centre pas seulement le texte."
+              ]
+            },
+            {
+              "id": "expliquer-variante",
+              "text": "Explique quels réglages tu as conservés, changés ou retirés. La variante et le projet principal restent deux essais distincts ; note l’aide reçue si nécessaire."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "bonus",
+          "title": "Facultatif — Une autre collection",
+          "blocks": [
+            {
+              "type": "tasks",
+              "id": "autre-collection",
+              "title": "Transfère sur un autre thème",
+              "intro": "Ce bonus n’est pas nécessaire pour terminer le projet.",
+              "items": [
+                {
+                  "id": "autre-theme",
+                  "text": "Dans un nouveau Pen, organise une autre collection avec des contenus et un nombre de cartes différents. Choisis les réglages sans recopier tout le CSS de ton projet ; réutilise seulement l’apparence fournie si nécessaire. Explique ce qui fonctionne aussi dans ce nouveau contexte."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Personnaliser les cartes et expliquer leur parent commun, leurs enfants directs et la règle partagée.",
+        "Choisir et justifier la disposition, les écarts et l’alignement après comparaison des effets.",
+        "Tester deux largeurs, ajouter une carte sans règle individuelle et expliquer le retour à la ligne sans cacher le contenu.",
+        "Passer à une colonne centrée horizontalement, expliquer les axes et préciser les aides utilisées."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "html-parent-enfants",
+          "blockId": "reparer",
+          "label": "Revoir les regroupements"
+        },
+        {
+          "moduleId": "css-classes-couleurs",
+          "label": "Revoir classes et sélecteurs"
+        },
+        {
+          "moduleId": "css-flexbox",
+          "blockId": "reparer",
+          "label": "Revoir le parent et les axes"
+        }
+      ],
+      "bonusActivities": [
+        {
+          "moduleId": "web-collection-cartes",
+          "blockId": "autre-collection",
+          "label": "Organiser une autre collection"
+        }
+      ],
+      "nextSteps": [],
+      "teacherGuide": {
+        "objective": "Observer un réinvestissement autonome de la structure, des sélecteurs et de Flexbox sur une collection personnalisée, sans confondre copie d’apparence et maîtrise.",
+        "entryDiagnosis": [
+          "Faire montrer le parent et ses enfants directs, puis relier une classe à une règle. Un support absent appelle la préparation, pas un verdict d’incompréhension.",
+          "Demander pourquoi la collection change de lignes et comment les axes changent en column. Si l’explication manque, reprendre une activité ciblée de Flexbox.",
+          "Faire lire un titre et un paragraphe de la base ; accompagner leur écriture si nécessaire, sans imposer document complet, images ou fichiers locaux."
+        ],
+        "preparation": [
+          "Prévoir une copie du projet et sauvegarder le travail précédent : HTML et CSS dans deux fichiers texte. Vérifier les panneaux CodePen et l’aperçu sans imposer de compte.",
+          "Réutiliser l’apparence fournie dans Flexbox, avec cartes de 160px et marge à zéro si nécessaire. Garder le parent limité à la place disponible et une hauteur de carte laissée au contenu ; supprimer une hauteur fixe héritée qui cache le texte.",
+          "Prévoir deux largeurs réellement disponibles. Les exemples 700 et 300 px sont des repères, pas des conditions liées au matériel.",
+          "Pour l’alignement en row, utiliser des cartes de hauteurs différentes sur une même ligne. Pour le transfert en column, laisser de la largeur libre autour d’une carte."
+        ],
+        "why": "Un projet doit faire choisir et vérifier plutôt que refaire une recette. Ajouter du contenu et changer la direction distinguent un rendu reproduit d’une règle comprise.",
+        "discoverySpeech": [
+          "« Quelle disposition veux-tu obtenir, et que prévoit ton plan quand la place diminue ? »",
+          "« Montre ce que ton réglage change réellement ; annule-le un instant pour comparer. »",
+          "« Une cinquième carte doit-elle recevoir une nouvelle règle, et pourquoi ? »"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "css-flexbox",
+            "blockId": "mission",
+            "label": "Mise en pratique Flexbox existante"
+          },
+          "comments": [
+            "Le support et les essais du cours restent disponibles comme reprise ; ne pas afficher leur solution complète avant le premier essai du projet.",
+            "Demander une prédiction, observer une modification et faire expliquer avant une aide supplémentaire.",
+            "Le projet n’impose ni couleurs nouvelles, ni images, ni nouvelle propriété d’apparence."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Quel élément porte les réglages de disposition ?",
+            "answer": "Le parent commun aux cartes. Les h2 et p restent des descendants à l’intérieur de chaque carte."
+          },
+          {
+            "question": "Quelle différence entre gap et justify-content ?",
+            "answer": "gap réserve un écart entre éléments ; justify-content répartit l’espace libre sur l’axe principal, ligne par ligne. Les deux peuvent se cumuler."
+          },
+          {
+            "question": "Pourquoi une répartition peut-elle sembler sans effet ?",
+            "answer": "Il faut de l’espace libre ; vérifier la ligne, la largeur, la direction et le parent avant de conclure à une erreur."
+          },
+          {
+            "question": "Pourquoi la cinquième carte reprend-elle les règles ?",
+            "answer": "Elle porte la classe commune et devient un enfant du même parent Flexbox. Aucune règle individuelle n’est nécessaire."
+          },
+          {
+            "question": "Wrap règle-t-il tous les débordements ?",
+            "answer": "Non. Une carte elle-même trop large ou un contenu insécable peut dépasser. Observer les dimensions sans cacher le contenu ni introduire une nouvelle propriété non enseignée."
+          },
+          {
+            "question": "En colonne, comment obtenir un centrage horizontal ?",
+            "answer": "Dans nos exemples, flex-direction: column rend l’axe principal vertical ; align-items: center centre sur l’axe transversal horizontal. Le parent doit laisser de la largeur libre."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "web-collection-cartes",
+          "blockId": "realisation",
+          "label": "Un choix de disposition expliqué",
+          "itemId": "choisir-reglages"
+        },
+        "independentActivity": {
+          "moduleId": "web-collection-cartes",
+          "blockId": "transfert",
+          "label": "Colonne centrée sans recette",
+          "itemId": "colonne-centree"
+        },
+        "differentiation": [
+          "Accompagner une modification après un essai observé ; proposer Parent et enfants, Classes ou Flexbox selon la difficulté, pas un parcours entier.",
+          "Conserver l’apparence fournie et réduire l’écriture des textes si nécessaire. Le contenu reste personnalisé ; aucune difficulté motrice n’est assimilée à une difficulté de raisonnement.",
+          "Distinguer réussite autonome, avec modèle ou avec aide. Le bonus n’est pas un préalable et un rendu esthétique n’est pas un critère de maîtrise."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La disposition ou le style ne concerne pas la nouvelle carte.",
+            "helps": [
+              "Faire montrer les quatre cartes anciennes et le nouvel élément.",
+              "Repérer la fermeture du groupe et la classe de la nouvelle carte.",
+              "Comparer parent direct et sélecteur avec une carte qui fonctionne.",
+              "Déplacer seulement le nouvel élément dans le groupe ou corriger sa classe, puis expliquer pourquoi la règle commune agit."
+            ]
+          },
+          {
+            "symptom": "Le centrage vise le texte ou le mauvais axe.",
+            "helps": [
+              "Faire décrire ce qui doit être centré : cartes ou texte.",
+              "Demander la direction actuelle et les deux axes.",
+              "Comparer la largeur du parent et celle d’une carte ; laisser de l’espace libre.",
+              "Sur la copie en column, tester align-items: center puis flex-start sur le parent et justifier le déplacement horizontal."
+            ]
+          },
+          {
+            "symptom": "Le retour à la ligne ou la lisibilité semble échouer.",
+            "helps": [
+              "Observer le nombre de lignes et désigner précisément le contenu qui dépasse.",
+              "Vérifier parent, row/wrap et dimensions de la base sans changer plusieurs propriétés.",
+              "Comparer une carte seule à la place disponible ; vérifier une hauteur fixe héritée et utiliser des mots ordinaires.",
+              "Revenir si nécessaire à l’apparence du cours (cartes de 160px, parent limité à la place disponible), puis tester wrap et l’allongement du texte sans overflow caché ; expliquer la cause et noter l’aide."
+            ]
+          }
+        ],
+        "notes": [
+          "Le suivi reste manuel. Aucun acquis automatique n’est déduit d’une checklist, d’une ouverture de page ou d’une copie du modèle.",
+          "Observer structure, sélecteurs et Flexbox sur modification expliquée. Les couleurs, bordures, dimensions ou le responsive complet ne sont pas validés par la copie du CSS d’apparence.",
+          "Le nombre de cartes par ligne dépend des largeurs et des écarts : ne pas imposer une répartition exacte ni une égalité de toutes les hauteurs.",
+          "align-items agit dans chaque ligne ; ne pas introduire align-content, flex-grow, media queries, Grid, JavaScript ou publication dans ce projet.",
+          "Conserver les repères des activités Flexbox historiques. La mission devient une mise en pratique ; le nouveau projet est le transfert personnel, pas une seconde recette."
+        ],
+        "quickConductor": [
+          "Vérifier le support et conserver les deux codes.",
+          "Observer le plan avant les modifications.",
+          "Faire réaliser et justifier un choix à la fois.",
+          "Tester les deux largeurs, l’ajout et le texte plus long.",
+          "Donner la consigne colonne/centrage sans nommer de propriété.",
+          "Noter explications et aides reçues ; choisir manuellement une reprise si nécessaire."
+        ],
+        "references": [
+          {
+            "title": "MDN — align-items",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-items"
+          },
+          {
+            "title": "MDN — flex-wrap",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap"
+          }
+        ]
+      }
+    },
     "css-flexbox": {
       "domainId": "web",
       "title": "Flexbox",
@@ -15010,7 +16941,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "tasks",
-          "title": "Mission jalon — Organiser une collection",
+          "title": "Mise en pratique — Organiser une collection",
           "intro": "Utilise trois cartes avec un titre et un paragraphe. Procède par essais ; explique tes choix avec tes mots.",
           "items": [
             {
@@ -15258,9 +17189,8 @@ window.CODECRAFT_DATA = {
       ],
       "nextSteps": [
         {
-          "moduleId": "css-flexbox",
-          "blockId": "mission",
-          "label": "Réinvestir dans une collection personnelle",
+          "moduleId": "web-collection-cartes",
+          "label": "Créer et tester une collection personnelle",
           "prerequisiteSkills": [
             {
               "skillId": "html.structure",
@@ -15357,7 +17287,7 @@ window.CODECRAFT_DATA = {
         "independentActivity": {
           "moduleId": "css-flexbox",
           "blockId": "mission",
-          "label": "Mission jalon — Collection de cartes"
+          "label": "Mise en pratique — Collection de cartes"
         },
         "differentiation": [
           "Si les regroupements ou classes sont fragiles, revenir à la notion concernée sans imposer de durée. Fournir l’apparence puis accompagner un seul réglage.",
@@ -15438,10 +17368,34 @@ window.CODECRAFT_DATA = {
     },
   },
   "pathways": {
+    "robotique-debutants": {
+      "domainId": "robotique", "title": "Premiers pas en robotique", "theme": "fondations",
+      "objective": "Commander un circuit, piloter un robot, décider selon une distance puis préparer et vérifier sa mission. Dix modules accessibles ; capteurs et missions restent en préparation, avec recette pratique à terminer avant utilisation en cours.",
+      "moduleIds": ["robotique-lumiere", "robotique-signal", "robotique-bouton", "robotique-decision", "robotique-microbit", "robotique-trajet", "robotique-distance", "robotique-obstacle", "robotique-mission", "robotique-tests"],
+      "stages": [
+        {"id":"commander-circuit","title":"Commander un circuit","description":"Repérer le chemin d’une lumière, créer un signal puis réagir à un bouton avec deux actions possibles.","moduleIds":["robotique-lumiere", "robotique-signal", "robotique-bouton", "robotique-decision"]},
+        {"id":"piloter-robot","title":"Piloter un robot","description":"Retrouver les entrées et sorties sur micro:bit, puis construire un trajet avec arrêt explicite.","moduleIds":["robotique-microbit", "robotique-trajet"],"pause":"Point de pause : expliquer le déclenchement, montrer l’arrêt final et conserver son trajet."},
+        {"id":"decider-capteur","title":"Décider avec un capteur","description":"Lire une distance puis demander un arrêt selon une limite. Supports en préparation : placements et recette pratique à terminer avant le cours.","moduleIds":["robotique-distance", "robotique-obstacle"],"pause":"Point de pause : distinguer mesure et limite, expliquer les deux branches et retrouver les deux versions sauvegardées. Les essais non réalisés restent à reprendre."},
+        {"id":"realiser-mission","title":"Réaliser sa mission","description":"Choisir une mission, observer un premier résultat puis confirmer et tester d’autres situations. Supports en préparation : scènes et valeurs à valider avant le cours.","moduleIds":["robotique-mission","robotique-tests"],"pause":"Point de pause : montrer mission, règle, preuves et sauvegarde, avec aides identifiées. Les essais manquants restent à reprendre.","endMessage":"Fin du parcours : conserve ton projet et tes preuves. Les essais non réalisés restent à reprendre avec le professeur ; aucune sécurité matérielle n’est validée."}
+      ]
+    },
+    "gdevelop-debutants": {
+      "domainId": "jeux-video", "title": "Mes premiers jeux avec GDevelop", "theme": "fondations",
+      "objective": "Après Scratch, retrouver son projet, piloter un personnage, placer des objets et construire une première interaction clavier. Quatre premières leçons disponibles ; le parcours sera complété par lots.",
+      "moduleIds": ["gdevelop-projet", "gdevelop-deplacement", "gdevelop-objets", "gdevelop-evenements"],
+      "stages": [{
+        "id": "prendre-commandes", "title": "Prendre les commandes",
+        "description": "Créer ton projet, piloter ton personnage et préparer tes premières interactions.",
+        "moduleIds": ["gdevelop-projet", "gdevelop-deplacement", "gdevelop-objets", "gdevelop-evenements"],
+        "pause": "Projet de fin d’étape : Ma scène explorable, dans la dernière leçon. Un point de pause après une modification personnelle expliquée et testée.",
+        "projectBlockId": "autonomie"
+      }],
+      "nextStageLabel": "Ensuite : Explorer et ramasser — à venir."
+    },
     "python-debutants": {
       "domainId": "python", "title": "Premiers pas avec Python", "theme": "fondations",
-      "objective": "Partir de zéro, créer des programmes interactifs, calculer, choisir et répéter des actions avec Thonny.",
-      "moduleIds": ["python-thonny", "python-affichage", "python-variables", "python-saisie", "python-conversation", "python-calculs", "python-erreurs", "python-conditions", "python-elif", "python-aventure", "python-for", "python-while", "python-compteurs", "python-hasard", "python-nombre-mystere", "python-listes", "python-texte"]
+      "objective": "Partir de zéro, créer des programmes interactifs, manipuler des listes et du texte, puis réutiliser des fonctions pour construire un quiz avec Thonny.",
+      "moduleIds": ["python-thonny", "python-affichage", "python-variables", "python-saisie", "python-conversation", "python-calculs", "python-erreurs", "python-conditions", "python-elif", "python-aventure", "python-for", "python-while", "python-compteurs", "python-hasard", "python-nombre-mystere", "python-listes", "python-texte", "python-fonctions", "python-retour", "python-quiz"]
     },
     "scratch-debutants": {
       "domainId": "jeux-video",
@@ -15497,11 +17451,12 @@ window.CODECRAFT_DATA = {
       "domainId": "web",
       "title": "Avancés",
       "theme": "avances",
-      "objective": "Approfondir la mise en page CSS en comprenant la structure parent/enfants et en utilisant Flexbox.",
+      "objective": "Comprendre la structure parent/enfants, utiliser Flexbox puis créer et tester une collection personnelle de cartes.",
       "moduleIds": [
         "web-projet-cartes",
         "html-parent-enfants",
-        "css-flexbox"
+        "css-flexbox",
+        "web-collection-cartes"
       ]
     }
   },

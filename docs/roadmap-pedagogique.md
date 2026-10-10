@@ -1,6 +1,10 @@
 # Roadmap pédagogique de CodeCraft
 
-Document de référence : cadrage transmis et validé par le propriétaire du projet. Les sections 1 à 12 conservent les décisions pédagogiques ; les sections 13 à 19 distinguent l’état vérifié du dépôt, les lots réalisés et les contenus encore prévus. Aucun calendrier de progression élève n’est imposé.
+La [cartographie Python validée](cartographie-python.md) fixe la progression débutant, intermédiaire, confirmé, spécialisations et professionnalisation. Les modules futurs restent à spécifier ; cette décision n'ajoute aucun contenu vide au catalogue.
+
+Le domaine Jeu vidéo poursuit désormais **Scratch → GDevelop** (décision du 7 octobre 2026). La [roadmap GDevelop](roadmap-gdevelop.md), révisée le 8 octobre après recherches pédagogiques et communautaires, distingue 10 modules de socle, 4 de projet et 19 approfondissements au choix. GDevelop est un moteur de création à part entière, pas un passage obligatoire vers Godot. Quatre leçons et guides sont intégrés : GD01 → GD04 → GD02 → GD03, après ajustements et revue du déplacement. La recette moteur reste à effectuer.
+
+Document de référence : cadrage transmis et validé par le propriétaire du projet. Les sections 1 à 12 conservent les décisions pédagogiques ; les sections 13 à 21 distinguent l’état vérifié du dépôt, les lots réalisés et les contenus encore prévus. Aucun calendrier de progression élève n’est imposé.
 
 ## 1. Objectif et identité
 
@@ -15,7 +19,7 @@ Le périmètre décidé est :
 
 CodeCraft est générique et indépendant de Startup Académie. Le référentiel Startup Académie reste une couche externe facultative de correspondance et de suivi professeur. Il ne dicte ni les intitulés publics ni l’ordre pédagogique.
 
-Ne pas importer les programmes internes de mes cours pour d’autres organismes. Le domaine Jeu vidéo / Scratch de CodeCraft reste générique et indépendant ; les ressources externes ne doivent pas structurer sa progression.
+Ne pas importer les programmes internes de mes cours pour d’autres organismes. Le domaine Jeu vidéo / Scratch puis GDevelop de CodeCraft reste générique et indépendant. Les ressources publiques peuvent éclairer une progression originale et sourcée ; elles ne deviennent pas un cursus copié ni un référentiel externe imposé.
 
 ## 2. Progression adaptative
 
@@ -73,7 +77,7 @@ Débutants :
 Titres et paragraphes → Listes HTML → Liens HTML → Révision HTML → Images HTML → Classes et couleurs CSS → Mini-page HTML complète.
 
 Avancés :
-Préparer un projet de cartes → Parent et enfants → Flexbox.
+Préparer un projet de cartes → Parent et enfants → Flexbox → Ma collection de cartes.
 
 Diagnostic Web a été retiré sur décision utilisateur ; les anciennes adresses renvoient au choix des parcours Web.
 
@@ -365,7 +369,7 @@ C7–C9 restent un seul module, avec ses identifiants d’activités actuels. Ne
 - Ma carte personnelle : `web-carte-personnelle`, type `project`, cahier des charges, réalisation, vérifications/transfert, reprises ciblées, bonus et teacherGuide ; sans Flexbox obligatoire.
 - Mon mini-site : `web-mini-site`, type `project`, deux pages (troisième facultative), navigation et feuille CSS commune, ressources réutilisées, vérifications/transfert, pannes, bonus et teacherGuide ; sans Flexbox ni publication obligatoire.
 - Mon site personnel, Publier et vérifier : **à créer**.
-- Ma collection de cartes : l’activité `css-flexbox/mission` s’intitule déjà « Mission jalon — Organiser une collection ». À réutiliser comme base ; le projet jalon complet n’est pas encore implémenté comme module autonome. Ne pas présenter `web-projet-cartes` comme ce projet final.
+- Ma collection de cartes : projet autonome `web-collection-cartes` disponible après Flexbox. La mission historique `css-flexbox/mission` conserve ses tâches et devient « Mise en pratique — Organiser une collection ». Le projet final personnalise le support, demande des choix et des tests ; `web-projet-cartes` reste une préparation.
 - `web-projet-cartes` : « Préparer un projet de cartes », type `practice`, base de travail et checklist, pas un projet final.
 - `html-revision` : pratique autonome sur titres, paragraphes, listes et liens ; exercices propres au module, sans dépendance aux blocs des cours. Pas d’images exigées avant leur découverte.
 - `diagnostic-web` : retiré le 7 octobre 2026 sur décision utilisateur ; anciennes adresses redirigées vers le domaine Web.
@@ -374,7 +378,7 @@ C7–C9 restent un seul module, avec ses identifiants d’activités actuels. Ne
 
 ### Compétences et infrastructure réellement disponibles
 
-Le domaine `web` et les parcours `web-fondations`, `web-debutants`, `web-avances` référencent désormais un catalogue de vingt-trois modules après retrait de Diagnostic Web. Les douze compétences initiales gardent leur définition :
+Le domaine `web` et les parcours `web-fondations`, `web-debutants`, `web-avances` référencent désormais un catalogue de vingt-quatre modules après retrait de Diagnostic Web et ajout de Ma collection de cartes. Les douze compétences initiales gardent leur définition :
 
 `html.headings`, `html.text`, `html.lists`, `html.links`, `html.images`, `html.structure`, `css.selectors`, `css.colors`, `css.spacing`, `css.borders`, `css.hover`, `css.flexbox`.
 
@@ -675,3 +679,26 @@ Le cours requiert document complet, fichiers/chemins et liens, mais pas CSS. Le 
 | Mon mini-site | [Projet](http://127.0.0.1:8000/#module/web-mini-site?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/web-mini-site) |
 
 Essai court : ouvrir directement la deuxième page puis rejoindre l’accueil par son menu ; renommer cette page et réparer les deux menus ; modifier une règle commune puis actualiser les deux pages. Comparer explication autonome, avec modèle ou avec aide.
+
+## 20. Point de reprise Web Avancés — mis de côté le 7 octobre 2026
+
+Décision utilisateur : revenir au parcours Python ; ne pas poursuivre Web Avancés pour le moment.
+
+- Ma collection de cartes est implémentée, revue pédagogiquement et testée ; la review manuelle reste en attente. Le lot est encore non commité. Voir [sa spécification et sa revue](specification-web-collection.md).
+- À la reprise, examiner le partage du cours Organiser une page en zones et ses prérequis pour Avancés avant de créer un nouveau cours : pas de duplication ni de répétition obligatoire.
+- Préparer ensuite C10 (écrans, viewport, media query simple), puis C11 (liens/boutons, survol et focus). H9/C3 existent et seront repris selon les besoins ; C12, Mon site personnel et Publier et vérifier restent à créer.
+- C10 n’est ni spécifié en détail ni implémenté. Garder les thèmes existants, revoir chaque spécification avant réalisation et demander un accord distinct avant tout commit.
+
+## 21. Suite Jeu vidéo - GDevelop après Scratch
+
+Décision utilisateur du 7 octobre 2026 : développer la suite de Scratch avec GDevelop. Ne pas poursuivre une passerelle Godot par défaut ni imposer Python ou JavaScript avant cette suite.
+
+- État existant : les 14 modules Scratch sont implémentés. Ils restent disponibles, avec leurs identifiants, projets et guides.
+- Objectif de la suite : apprendre à concevoir, comprendre, modifier, déboguer et terminer de petits jeux 2D par programmation visuelle.
+- Entrée selon les acquis observés : sauvegarde, événements, déplacements, conditions, contacts, variable et remise à zéro. Clones, messages et paramètres de blocs personnalisés ne sont pas des prérequis obligatoires d'entrée.
+- La [roadmap détaillée révisée](roadmap-gdevelop.md) prévoit 10 modules de socle, 4 de projet personnel et 19 approfondissements au choix, soit 33 modules cartographiés ; 16 modules de branches sont envisagés séparément. Le chemin recommandé est de 14 modules, pas toute la bibliothèque. Un module n'est pas une séance.
+- Le lot GD01–GD03 et ses guides sont ajustés ; GD04 et son guide sont revus, corrigés et intégrés après GD01. Ordre du socle : GD01 → GD04 → GD02 → GD03 → GD05 → GD06 → GD07 → GD08 → GD25 → GD09 ; seuls les quatre premiers sont disponibles. Réaliser par petits lots autorisés et essayés dans GDevelop ; aucune production globale déclenchée par cette roadmap.
+- Le premier lot GD01–GD03 est intégré avec guides et kit, selon la [spécification et sa revue de conception](specification-gdevelop-lot-1.md). Les tests CodeCraft passent ; essai dans le moteur et workflow local restent à vérifier, sans installation effectuée.
+- Privilégier l'application de bureau et les projets locaux ; recette de sauvegarde, ressources et réouverture à effectuer avant de considérer les gestes et solutions validés. Aucun compte élève, achat, service cloud, IA ou publication publique obligatoire.
+- Réutiliser le modèle visuel de leçon validé et la palette Jeu vidéo. Ne pas créer de nouveau domaine moteur ni de pages vides pour les modules futurs.
+- Statut : choix du moteur décidé ; roadmap de référence stabilisée v1 après application des six corrections de sa seconde revue. Ordre des règles en GD07, conditions combinées/étapes en GD08, portée du chronomètre en GD29, dépendances allégées et transfert fonctionnel dans les projets. Totaux inchangés : 33 modules et 16 de branches, pas un quota de séances. Structure modifiée seulement sur motif concret, revue et décision documentée. Quatre leçons et guides implémentés, nouvel ordre appliqué, ressources disponibles ; 133 tests unitaires et 17 vues navigateur ciblées réussis. Prochaine étape : recette moteur du début, puis préparation autorisée de GD05–GD06. Aucun essai GDevelop ni validation en classe revendiqué à ce stade.

@@ -9,7 +9,7 @@ const root = path.join(__dirname, '..');
 const context = { window: {}, URLSearchParams };
 for (const file of ['lesson-data.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;
-const ids = ['python-thonny', 'python-affichage', 'python-variables', 'python-saisie', 'python-conversation', 'python-calculs', 'python-erreurs', 'python-conditions', 'python-elif', 'python-aventure', 'python-for', 'python-while', 'python-compteurs', 'python-hasard', 'python-nombre-mystere', 'python-listes', 'python-texte'];
+const ids = ['python-thonny', 'python-affichage', 'python-variables', 'python-saisie', 'python-conversation', 'python-calculs', 'python-erreurs', 'python-conditions', 'python-elif', 'python-aventure', 'python-for', 'python-while', 'python-compteurs', 'python-hasard', 'python-nombre-mystere', 'python-listes', 'python-texte', 'python-fonctions', 'python-retour', 'python-quiz'];
 const block = (id, name) => data.modules[id].blocks.find(b => b.id === name);
 
 test('Thonny : présentation pilote, trois actions et consignes intégralement réutilisées', () => {
@@ -45,10 +45,10 @@ test('Python revue 1–4 : autonomie fichiers, essais conservés et introduction
   assert(block('python-variables', 'autonomie').items.some(i => i.id === 'test-propre'));
 });
 
-test('Python : dix-sept contenus réels, aucun module futur vide', () => {
+test('Python : vingt contenus réels, aucun module futur vide', () => {
   assert.deepEqual(Array.from(data.domains.python.pathwayIds), ['python-debutants']);
   assert.deepEqual(Array.from(data.pathways['python-debutants'].moduleIds), ids);
-  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'python').length, 17);
+  assert.equal(Object.values(data.modules).filter(m => m.domainId === 'python').length, 20);
   assert.equal(data.modules['python-conversation'].type, 'project');
   const learned = new Set();
   for (const id of ids) {
@@ -81,7 +81,7 @@ test('Python : dix-sept contenus réels, aucun module futur vide', () => {
     assert.equal(new Set(taskIds).size, taskIds.length, 'Identifiants de cases uniques');
     assert(!activities.some(b => b.type === 'reference'), 'Aucun couplage entre exercices');
   }
-  assert.equal(learned.size, 15);
+  assert.equal(learned.size, 17);
   assert.equal(data.modules['python-thonny'].prerequisiteSkills.length, 0);
   assert.equal(data.modules['python-conversation'].nextSteps[0].moduleId, 'python-calculs');
   assert.equal(data.modules['python-conditions'].nextSteps[0].moduleId, 'python-elif');
@@ -89,7 +89,10 @@ test('Python : dix-sept contenus réels, aucun module futur vide', () => {
   assert.equal(data.modules['python-compteurs'].nextSteps[0].moduleId, 'python-hasard');
   assert.equal(data.modules['python-nombre-mystere'].nextSteps[0].moduleId, 'python-listes');
   assert.equal(data.modules['python-listes'].nextSteps[0].moduleId, 'python-texte');
-  assert.equal(data.modules['python-texte'].nextSteps.length, 0);
+  assert.equal(data.modules['python-texte'].nextSteps[0].moduleId, 'python-fonctions');
+  assert.equal(data.modules['python-fonctions'].nextSteps[0].moduleId, 'python-retour');
+  assert.equal(data.modules['python-retour'].nextSteps[0].moduleId, 'python-quiz');
+  assert.equal(data.modules['python-quiz'].nextSteps.length, 0);
 });
 
 test('Python checkpoint : transitions continues, reprises accessibles et autonomie dans le socle', () => {
@@ -349,7 +352,7 @@ test('Python lot 6 : listes, texte, cas vides et transfert de casse', () => {
     if (success) assert.equal(r.status, 0, r.stderr);
     return { ...r, stdout: r.stdout.replace(/\r\n/g, '\n') };
   };
-  for (const id of ids.slice(15)) {
+  for (const id of ids.slice(15, 17)) {
     const m = data.modules[id];
     assert.equal(m.prerequisitesInContent, true);
     assert.equal(m.blocks.filter(b => b.title === 'Avant de commencer').length, 1);

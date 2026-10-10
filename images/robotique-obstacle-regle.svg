@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" role="img" aria-labelledby="title desc">
+<title id="title">Lire, comparer, agir, relire</title>
+<desc id="desc">Lire la distance puis comparer distance strictement inférieure à la limite. Oui : arrêter. Non : avancer. Les deux branches reviennent à une nouvelle lecture.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#668ac2"/></marker></defs>
+<path d="M12 0H788L800 12V328L788 340H12L0 328V12Z" fill="#eef3fa"/>
+<g fill="#d6e2f3" stroke="#99b2d8" stroke-width="2"><path d="M284 20H516L526 30V68L516 78H284L274 68V30Z"/><path d="M400 106L530 158L400 210L270 158Z"/><path d="M85 233H275L285 243V281L275 291H85L75 281V243Z"/><path d="M525 233H715L725 243V281L715 291H525L515 281V243Z"/></g>
+<g fill="none" stroke="#668ac2" stroke-width="3" marker-end="url(#arrow)"><path d="M400 78V104"/><path d="M270 158H180V231"/><path d="M530 158H620V231"/><path d="M180 291V316H40V49H271"/><path d="M620 291V316H180"/></g>
+<g font-family="Arial,sans-serif" fill="#293f66" text-anchor="middle" font-size="22"><text x="400" y="57" font-weight="bold">Lire la distance</text><text x="400" y="166">Distance &lt; limite ?</text><text x="180" y="271" font-weight="bold">Arrêter</text><text x="620" y="271" font-weight="bold">Avancer</text><text x="180" y="213">Oui</text><text x="620" y="213">Non / sinon</text><text x="151" y="91" font-size="18">Nouvelle lecture</text></g>
+</svg>

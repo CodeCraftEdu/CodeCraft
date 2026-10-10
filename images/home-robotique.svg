@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 108" role="img" aria-label="Paysage géométrique de robotique">
+  <defs><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#294d63"/><stop offset="1" stop-color="#92b8ad"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h400v108H0z"/>
+  <circle cx="92" cy="29" r="15" fill="#f4d59b"/>
+  <path d="M0 76 60 64 102 76 169 54 223 75 302 47 400 74v34H0z" fill="#78a39e"/>
+  <path d="M0 93 71 77 120 88 191 68 260 91 335 66 400 84v24H0z" fill="#4c7a7d"/>
+  <path d="M0 108 88 91 147 105 204 80 271 108zM241 108l91-37 68 20v17z" fill="#294d63"/>
+  <path d="M155 108V88h31m13-8h39m66 28V87h39" fill="none" stroke="#c7d6bc" stroke-width="2" opacity=".65"/>
+  <circle cx="155" cy="88" r="3" fill="#f4d59b"/><circle cx="199" cy="80" r="3" fill="#f4d59b"/><circle cx="304" cy="87" r="3" fill="#f4d59b"/>
+</svg>

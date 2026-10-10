@@ -20,6 +20,7 @@ body.student-lowpoly[data-route="rattrapage"] { --route: #b7652c; --route-dark: 
 body.student-lowpoly[data-domain="jeux-video"] { --route: #a55d27; --route-dark: #75421f; --route-soft: #f7e6d6; }
 body.student-lowpoly[data-domain="python"] { --route: #3f69c6; --route-dark: #29498f; --route-soft: #e4ebfb; }
 body.student-lowpoly[data-domain="web"]:not([data-route]) { --route: #4f8045; --route-dark: #355d31; --route-soft: #e4efdd; }
+body.student-lowpoly[data-domain="robotique"] { --route: #467e81; --route-dark: #285363; --route-soft: #e0eeeb; }
 body.student-lowpoly[data-domain="jeux-video"] .route-card { --card-accent: var(--route); }
 
 /* L'accueil a sa propre identité ; les univers restent distincts. */
@@ -58,9 +59,11 @@ body.student-lowpoly .domain-banner {
 }
 body.student-lowpoly[data-domain="jeux-video"] .domain-banner { background-image: linear-gradient(90deg, #613f55b3, #613f5530 38%, transparent 72%), url('images/banner-game.svg'); }
 body.student-lowpoly[data-domain="web"] .domain-banner { background-image: linear-gradient(90deg, #284e49b3, #284e4930 38%, transparent 72%), url('images/banner-web.svg'); }
+body.student-lowpoly[data-domain="robotique"] .domain-banner { background-image: linear-gradient(90deg, #1b394fb8, #1b394f30 42%, transparent 72%), url('images/banner-robotique.svg'); }
 body.student-lowpoly .home-domain--game { --card-accent: #a55d27; }
 body.student-lowpoly .home-domain--web { --card-accent: #4f8045; }
 body.student-lowpoly .home-domain--python { --card-accent: #3f69c6; }
+body.student-lowpoly .home-domain--robotique { --card-accent: #467e81; }
 
 /* Cartes de bibliothèque : facettes limitées aux bords, petites gemmes décoratives. */
 body.student-lowpoly .route-card {
@@ -86,6 +89,7 @@ body.student-lowpoly .home-domain__action { border-top: 1px solid var(--line); }
 body.student-lowpoly .home-domain { padding: 0 0 24px; background: var(--paper); --sky-top: #253b68; --sky-bottom: #9bb9d7; --ridge: #7893bb; --peak: #415d8c; --near: #31446c; }
 body.student-lowpoly .home-domain--game { --sky-top: #80506a; --sky-bottom: #edbd8b; --ridge: #d89b84; --peak: #ae735f; --near: #765269; }
 body.student-lowpoly .home-domain--web { --sky-top: #386967; --sky-bottom: #bdd7b2; --ridge: #8bb5a7; --peak: #5c9186; --near: #37695f; }
+body.student-lowpoly .home-domain--robotique { --sky-top: #294d63; --sky-bottom: #92b8ad; --ridge: #78a39e; --peak: #4c7a7d; --near: #294d63; }
 body.student-lowpoly .home-domain::after { display: none; }
 body.student-lowpoly .home-domain:hover,
 body.student-lowpoly .home-domain:focus-visible {
@@ -104,9 +108,24 @@ body.student-lowpoly .home-domain .route-card-title, body.student-lowpoly .home-
 body.student-lowpoly .home-domain__tag { margin-top: 6px; font-size: .8rem; font-weight: 600; letter-spacing: .03em; }
 body.student-lowpoly .home-domain__action { width: calc(100% - 52px); }
 @media (min-width: 1000px) {
-  body.student-lowpoly .home-domains { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body.student-lowpoly .home-domains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 body.student-lowpoly .module-list { gap: 16px; }
+
+/* Repères de parcours informatifs : aucune jauge ou validation automatique. */
+body.student-lowpoly .pathway-stage { margin: 28px 0; }
+body.student-lowpoly .pathway-stage__title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 0 0 10px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 1.45rem; color: var(--route-dark); }
+body.student-lowpoly .pathway-stage__number { flex-shrink: 0; padding: 8px 12px; font-size: .8rem; font-weight: 700; color: var(--route-dark); background: var(--route-soft); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+body.student-lowpoly .pathway-stage__description { margin: 0 0 18px; color: var(--muted); line-height: 1.6; }
+body.student-lowpoly .pathway-stage__pause,
+body.student-lowpoly .pathway-stage__upcoming { margin: 18px 0; color: var(--muted); font-size: .95rem; line-height: 1.6; }
+body.student-lowpoly .pathway-stage__upcoming { padding-top: 16px; border-top: 1px solid var(--line); }
+body.student-lowpoly .pathway-stage--upcoming { margin: 14px 0; padding: 12px 18px; border-left: 3px solid var(--route); background: color-mix(in srgb, var(--route-soft) 70%, var(--paper)); }
+body.student-lowpoly .pathway-stage--upcoming .pathway-stage__title { padding-top: 0; border-top: 0; font-size: 1.15rem; }
+body.student-lowpoly .pathway-stage--upcoming .pathway-stage__description { margin-bottom: 4px; }
+body.student-lowpoly .pathway-stage--upcoming .pathway-stage__upcoming { margin: 4px 0 0; padding: 0; border-top: 0; }
+body.student-lowpoly .lesson-stage-location { margin: 0 0 12px; color: var(--route-dark); font-size: .85rem; font-weight: 600; line-height: 1.6; }
+body.student-lowpoly .lesson-stage-pause { margin: 18px 0 12px; padding-left: 12px; border-left: 2px solid var(--lesson-edge); color: var(--lesson-muted); font-size: .9rem; line-height: 1.6; }
 
 /* Hero compact et boutons taillés : couleurs du parcours, pas violet partout. */
 body.student-lowpoly .lesson-intro {
@@ -132,6 +151,11 @@ body.student-lowpoly[data-lesson-layout="standard"][data-domain="python"] {
   --lesson-hero-start: #dfe9f5; --lesson-hero-end: #cedef0;
 }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="jeux-video"] { --lesson-scene: url('images/banner-game.svg'); }
+body.student-lowpoly[data-lesson-layout="standard"][data-domain="robotique"] {
+  --lesson-scene: url('images/banner-robotique.svg');
+  --lesson-ink: #254657; --lesson-muted: #3d6070;
+  --lesson-hero-start: #e0eeeb; --lesson-hero-end: #c9e1dc;
+}
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="web"][data-route="fondations"] { --lesson-scene-filter: hue-rotate(60deg); }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="web"][data-route="avances"] { --lesson-scene-filter: hue-rotate(115deg); }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="web"][data-route="rattrapage"] { --lesson-scene-filter: hue-rotate(235deg); }
@@ -288,6 +312,10 @@ body.student-lowpoly .pedagogy-choice--nextSteps a:focus-visible { outline: 0; b
   body.student-lowpoly .home-header .brand { font-size: clamp(1.9rem, 9vw, 2.5rem); }
   body.student-lowpoly .home-header .home-eyebrow { font-size: .7rem; }
 }
+body.student-lowpoly [data-activity-id="bilan-etape"] .value-list {
+  font-family: inherit;
+}
+
 @media print {
   body.student-lowpoly { background: white; }
   body.student-lowpoly .content-card { box-shadow: none; }

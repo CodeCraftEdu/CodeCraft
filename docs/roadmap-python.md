@@ -1,5 +1,7 @@
 # Python — roadmap adaptative et premier lot
 
+La [cartographie Python de référence](cartographie-python.md) est validée : environ 20 modules débutants existants, 20 intermédiaires et 20 confirmés, puis spécialisations et professionnalisation. Elle fixe la direction sans publier de modules futurs ni imposer de calendrier.
+
 La DA low-poly est désormais appliquée à l’interface élève via `student-lowpoly.css` ; le sélecteur et l’aperçu exploratoires ont été retirés. Les notes d’essais ci-dessous restent l’historique des choix visuels. La référence actuelle est [la direction visuelle](direction-visuelle.md).
 
 ## Décisions
@@ -72,9 +74,15 @@ La [spécification du lot 5](specification-python-lot-5.md) est revue, ajustée 
 
 La [spécification du lot 6](specification-python-lot-6.md) est revue, ajustée et réalisée : Regrouper des valeurs dans une liste (`python-listes`), puis Explorer et préparer du texte (`python-texte`). Les activités réutilisent les fichiers de découverte ; les variantes importantes sont conservées dans des copies. Le transfert sans lower conserve explicitement la variable comparée et strip. Les deux guides et compétences sont intégrés : dix-sept modules et quinze compétences Python évaluables manuellement. 43 tests Python/pédagogie et 9 vues navigateur ciblées réussis.
 
-## Suite proposée - non implémentée
+## Septième lot réalisé
 
-Socle commun restant, modules 18 à 20 : fonctions et paramètres → return et variables locales → projet quiz personnalisable. Revue du lot 6 réalisé avant de préparer cette suite. Le lot 5 réalisé a déjà été relu sans correction nécessaire identifiée.
+La [spécification du lot 7](specification-python-lot-7.md) est revue, ajustée et implémentée : Définir et appeler une fonction (`python-fonctions`), Renvoyer un résultat (`python-retour`), Mon quiz personnalisable (`python-quiz`). Deux paramètres sont introduits avant le quiz ; affichage et résultat, noms locaux et total extérieur sont distingués. Le projet réutilise une seule fonction pour trois questions textuelles, sans structure de données nouvelle ni solution complète publiée.
+
+Le socle prévu compte maintenant vingt modules et dix-sept compétences évaluables manuellement, avec leurs guides et transitions. Checkpoint technique du 7 octobre 2026 : 125 tests unitaires sur 125 et 161 vues navigateur passent, avec les vingt leçons Python, leurs guides et les non-régressions Web/Scratch. Les flux professeur passent également. Les attentes obsolètes sont corrigées : styles historiques de l'archive figée (sans modifier l'archive), trois cartes d'accueil et navigation Thonny avec ou sans contexte de parcours. Aucun commit. La recette dans Thonny et l'observation avec élèves restent à faire.
+
+## Approfondissements proposés - non implémentés
+
+Les vingt modules du socle commun sont implémentés. Ne pas publier de nouvelles extensions avant une recette du parcours dans Thonny et une revue manuelle des dernières leçons. Web Avancés reste de côté, avec son point de reprise dans la roadmap générale.
 
 Le débogage commence dès les premiers modules ; son approfondissement n’est pas un prérequis caché. Avant de travailler les conversions, préciser les entrées attendues. Enseigner la gestion complète des mauvaises saisies ensuite, sans cacher try/except dans les premiers modèles.
 
@@ -90,10 +98,12 @@ Références techniques : [Thonny](https://thonny.org/), [print](https://docs.py
 
 ## Vérifications reproductibles
 
+Les actions à effectuer par l'utilisateur sont regroupées dans [Vérifications manuelles en attente](verifications-manuelles-en-attente.md). Elles sont mises de côté à sa demande, à rappeler lorsqu'il demandera la liste ; ce report ne vaut pas validation.
+
 La [revue pédagogique](revue-pedagogique-python.md) couvre les dix premiers modules : toutes les corrections validées sont appliquées. Le checkpoint transversal des transitions, critères et reprises est effectué : pas de rupture majeure identifiée et deux ajustements mineurs d'orientation appliqués. La spécification du lot 4 est revue, ajustée et implémentée ; la recette réelle dans Thonny reste à faire.
 
-`node --test tests/python.test.cjs tests/pedagogy.test.cjs` vérifie les références, prérequis, critères, sorties Python, erreurs intentionnelles et l’absence de progression automatique. Python doit être disponible, ou son exécutable indiqué dans `PYTHON_PATH`.
+`node --test tests/python.test.cjs tests/python-lot7.test.cjs tests/pedagogy.test.cjs` vérifie les références, prérequis, critères, sorties Python, erreurs intentionnelles et l’absence de progression automatique. Python doit être disponible, ou son exécutable indiqué dans `PYTHON_PATH`.
 
-`node tests/python-browser.cjs` contrôle Chrome headless : accueil, domaines, parcours, dix-sept modules Python, dix-sept guides, lien direct, précédent/suivant, illustration et débordement mobile. Un argument filtre les vues par fragments séparés par `|` pour les contrôles ciblés. Les captures sont temporaires ; aucun fichier privé n’est ouvert. `CHROME_PATH` peut préciser l’exécutable.
+`node tests/python-browser.cjs` contrôle Chrome headless : accueil, domaines, parcours, vingt modules Python, vingt guides, lien direct, précédent/suivant, illustration et débordement mobile. Un argument filtre les vues par fragments séparés par `|` pour les contrôles ciblés. Les captures sont temporaires ; aucun fichier privé n’est ouvert. `CHROME_PATH` peut préciser l’exécutable.
 
 L’essai réel dans Thonny reste à effectuer : enregistrer/rouvrir un fichier, répondre dans la console et utiliser Stop/Restart. Les tests en ligne de commande ne valident pas les manipulations de l’application ni l’efficacité pédagogique en situation.

@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const { createHash } = require('node:crypto');
 const model = require('../teacher-model.js');
 const { createFileAccess } = require('../teacher-file-access.js');
 const root = path.join(__dirname, '..');
@@ -466,5 +467,11 @@ test('archive autonome : contenu teacher identique, styles embarqués, pas de sc
   const copy = { window: {} }; vm.runInNewContext(inline, copy);
   assert.equal(JSON.stringify(copy.window.CODECRAFT_DATA.teacher), JSON.stringify(data.window.CODECRAFT_DATA.teacher));
   assert(!/<script[^>]+src=/.test(archive)); assert(!/<link[^>]+stylesheet/.test(archive));
-  assert(archive.includes(fs.readFileSync(path.join(root, 'styles.css'), 'utf8')));
+  // Archive figée : préserver ses styles historiques, pas les CSS du site vivant.
+  const styles = [...archive.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(match =>
+    createHash('sha256').update(match[1].replace(/\r\n/g, '\n')).digest('hex'));
+  assert.deepEqual(styles, [
+    '0bb57c94949d2c7888490496cbdd3d954ee9321229f2f4ba2147e17ebcac4419',
+    '7e4c87ac460eec1ac045fa89b0dfa8eb8af870050cfd732e2a57863af7fe68fc'
+  ], 'Styles embarqués historiques inchangés');
 });

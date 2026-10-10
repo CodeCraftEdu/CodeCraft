@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" role="img" aria-label="Paysage géométrique traversé de pistes de circuit">
+  <defs><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#294d63"/><stop offset="1" stop-color="#99bdaf"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1200v150H0z"/>
+  <circle cx="855" cy="35" r="22" fill="#f3d49b"/>
+  <path d="M0 125 160 100 340 128 530 74 714 111 909 62 1080 106 1200 80v70H0z" fill="#80a7a0"/>
+  <path d="M0 150 178 119 348 146 544 101 717 138 910 91 1085 130 1200 108v42H0z" fill="#527e80"/>
+  <path d="M0 150 151 133 294 150zm365 0 175-31 123 31zm347 0 207-36 170 36zm379 0 109-24v24z" fill="#2b5265"/>
+  <path d="M580 150v-22h66l24-16h64m119 38v-20h82l31-18h69" fill="none" stroke="#cadbc8" stroke-width="3" opacity=".6"/>
+  <circle cx="580" cy="128" r="4" fill="#f3d49b"/><circle cx="734" cy="112" r="4" fill="#f3d49b"/><circle cx="853" cy="130" r="4" fill="#f3d49b"/><circle cx="1035" cy="112" r="4" fill="#f3d49b"/>
+</svg>

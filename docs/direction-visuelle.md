@@ -30,7 +30,7 @@ Les fichiers `styles.css` et `pedagogy.css` de référence restent inchangés. P
 
 ## Modèle commun des leçons
 
-Le modèle validé sur « Poser une question » est généralisé aux 54 modules élèves restants avec `data-lesson-layout="standard"`. Le marqueur est retiré lors du retour à une bibliothèque. Les pages de domaine, l’accueil et les guides professeur conservent leur présentation.
+Le modèle validé sur « Poser une question » est généralisé aux 58 modules élèves avec `data-lesson-layout="standard"`. Le marqueur est retiré lors du retour à une bibliothèque. Les pages de domaine, l’accueil et les guides professeur conservent leur présentation.
 
 - Une ligne de navigation réunit CodeCraft et le fil d’Ariane complet, leçon actuelle comprise ; elle se répartit sur deux lignes sur petit écran.
 - Le bandeau compact utilise un fond clair et un fondu continu vers le paysage du domaine. Python garde ses montagnes bleues, Scratch ses îlots ambre ; Web utilise ses vallées, teintées selon le parcours choisi : bleu, vert ou violet.
@@ -39,6 +39,12 @@ Le modèle validé sur « Poser une question » est généralisé aux 54 modules
 - « Les essentiels » est visible sans dépliage et reprend les critères propres au module. Aucun critère n’est ajouté aux anciens modules Web qui n’en possèdent pas : leur enrichissement relève d’une revue pédagogique séparée.
 - Les orientations restent dans le catalogue et les guides professeur ; les listes de liens redondants ne sont plus rendues en fin de leçon élève. Les aides et bonus spécifiques au contenu sont conservés.
 - La fin affiche uniquement les voisins réels du parcours, avec des boutons de même hauteur. En accès direct, les voisins ne sont déduits que si le module appartient à un seul parcours. Un contexte invalide est ignoré ; les modules partagés ne reçoivent pas une suite arbitraire. Aucun bouton Accueil ni lien intermédiaire « Voir le parcours » n’est ajouté.
+
+## Repères d’étape GDevelop
+
+Le parcours GDevelop regroupe les quatre leçons disponibles sous « Étape 1 — Prendre les commandes » : petite étiquette facettée, titre, description et séparation fine, sans nouveau bandeau illustré. Une courte note propose un point de pause ; l’étape suivante est seulement annoncée en texte, sans carte vide.
+
+Les leçons affichent un repère compact entre navigation et bandeau : étape, intitulé et position du module. Le fil d’Ariane complet est conservé. Seule la dernière leçon porte la note de fin d’étape, sans nouveau bouton. Ces repères décrivent la structure du parcours, jamais des acquis ou une progression validée. Ils restent facultatifs dans les données et ne changent pas les autres parcours.
 
 ## Vérifications
 

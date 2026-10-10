@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" role="img" aria-labelledby="title desc">
+<title id="title">Mesure reçue et limite choisie</title>
+<desc id="desc">Tableau de raisonnement avec limite 20 : 30 est supérieur, 15 est inférieur et 20 est égal. Seule la mesure 15 est strictement inférieure à la limite.</desc>
+<path d="M12 0H788L800 12V248L788 260H12L0 248V12Z" fill="#eef3fa"/>
+<g fill="#293f66" font-family="Arial,sans-serif" font-size="22">
+<g font-weight="bold"><text x="28" y="38">Distance donnée</text><text x="300" y="38">Limite choisie</text><text x="540" y="38">Distance &lt; limite ?</text></g>
+<text x="28" y="90">30 cm</text><text x="300" y="90">20 cm</text><text x="540" y="90">Non : plus grande</text>
+<text x="28" y="145">15 cm</text><text x="300" y="145">20 cm</text><text x="540" y="145">Oui : plus petite</text>
+<text x="28" y="200">20 cm</text><text x="300" y="200">20 cm</text><text x="540" y="200">Non : égale</text>
+<text x="28" y="240" font-size="17">Pour réfléchir sur papier — pas un placement de simulation validé.</text>
+</g><g stroke="#bbcce3"><path d="M28 53H772M28 110H772M28 165H772M28 218H772"/></g>
+</svg>

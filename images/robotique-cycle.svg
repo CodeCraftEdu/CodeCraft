@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 214" role="img" aria-labelledby="title desc">
+  <title id="title">Le cycle du signal</title>
+  <desc id="desc">HIGH allume la LED, wait 1 secs la laisse allumée, LOW l’éteint, wait 1 secs la laisse éteinte. forever ramène au début.</desc>
+  <rect width="820" height="214" fill="#eef5f4"/>
+  <g font-family="Arial, sans-serif" fill="#294f50">
+    <text x="24" y="30" font-size="18" font-weight="700">Dans forever : le cycle recommence</text>
+    <g fill="#fffdf7" stroke="#8daead" stroke-width="2">
+      <path d="M24 56H185L195 66V130H34L24 120Z"/>
+      <path d="M226 56H387L397 66V130H236L226 120Z"/>
+      <path d="M428 56H589L599 66V130H438L428 120Z"/>
+      <path d="M630 56H791L801 66V130H640L630 120Z"/>
+    </g>
+    <g font-size="17" text-anchor="middle">
+      <text x="110" y="85" font-weight="700">1. Allumer</text><text x="110" y="112">sortie 8 : HIGH</text>
+      <text x="312" y="85" font-weight="700">2. Attendre 1 s</text><text x="312" y="112">reste allumée</text>
+      <text x="514" y="85" font-weight="700">3. Éteindre</text><text x="514" y="112">sortie 8 : LOW</text>
+      <text x="716" y="85" font-weight="700">4. Attendre 1 s</text><text x="716" y="112">reste éteinte</text>
+    </g>
+    <g fill="none" stroke="#547f7f" stroke-width="3" stroke-linejoin="round">
+      <path d="M199 93H219M213 87L219 93L213 99M401 93H421M415 87L421 93L415 99M603 93H623M617 87L623 93L617 99"/>
+      <path d="M716 138V176H110V138M104 144L110 138L116 144"/>
+    </g>
+    <text x="413" y="202" text-anchor="middle" font-size="15">Retour à la première action, tant que la simulation tourne</text>
+  </g>
+</svg>

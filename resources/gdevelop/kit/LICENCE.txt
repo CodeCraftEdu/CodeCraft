@@ -1,0 +1,6 @@
+Les trois images originales du kit CodeCraft GDevelop et leurs sources SVG
+sont mises à disposition sous Creative Commons Zero 1.0 Universal (CC0).
+Vous pouvez les utiliser, modifier et redistribuer, y compris dans vos jeux.
+L'attribution à CodeCraft est appréciée mais non obligatoire.
+Texte de la licence : https://creativecommons.org/publicdomain/zero/1.0/
+Aucun personnage, logo ou graphisme d'une franchise tierce n'est utilisé.

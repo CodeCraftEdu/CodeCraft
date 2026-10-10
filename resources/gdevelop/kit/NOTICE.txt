@@ -1,0 +1,23 @@
+KIT CODECRAFT — PREMIERS PAS GDEVELOP
+
+1. Extraire tout le ZIP dans votre dossier de travail, pas seulement une image.
+2. Renommer le dossier extrait mon-premier-jeu.
+3. Créer le projet vide dans GDevelop (application de bureau, sauvegarde locale).
+4. Enregistrer sa source jeu.json dans ce dossier, à côté de images.
+5. Importer les PNG depuis images, puis garder ce dossier avec le projet.
+6. Pour une copie, copier TOUT le dossier après sauvegarde et fermeture.
+7. Rouvrir jeu.json de la copie et vérifier les images dans un nouvel aperçu.
+
+Images originales CodeCraft, fond transparent :
+- personnage.png : 64 x 64 pixels, pion statique.
+- jeton.png : 32 x 32 pixels, losange.
+- jeton-alternatif.png : 32 x 32 pixels, forme octogonale.
+Les jetons ont la même taille et des silhouettes différentes.
+
+Ce kit n'est PAS un projet GDevelop prêt à ouvrir : aucun fichier jeu.json
+n'est fourni. Le projet est construit dans les leçons. Les essais de création,
+de sauvegarde et de portabilité dans GDevelop restent à effectuer par le
+professeur sur sa version. Aucun compte ni publication n'est requis ici.
+
+Licence : voir LICENCE.txt. Ne pas supprimer un projet existant pour extraire
+le kit ; utiliser un nouveau dossier.

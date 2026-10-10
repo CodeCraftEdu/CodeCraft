@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-labelledby="title desc">
+<title id="title">Le fil de lecture du bouton</title><desc id="desc">Schéma logique des bornes, sans position physique. 5 V vers Terminal 1a ; contact vers Terminal 2a, reliée à D2 par le fil à compléter ; Terminal 2b vers 10 kΩ puis GND.</desc>
+<rect width="800" height="300" rx="12" fill="#eef3fa"/>
+<g font-family="Arial,sans-serif" fill="#293f66" font-size="20">
+<text x="24" y="35" font-weight="bold">Entrée bouton — schéma de connexions</text>
+<text x="24" y="105">5 V</text><text x="150" y="80">Terminal 1a</text><text x="405" y="80">Terminal 2a</text><text x="715" y="105">D2</text>
+<text x="440" y="190">Terminal 2b</text><text x="575" y="240">10 kΩ</text><text x="715" y="240">GND</text>
+<text x="510" y="140" font-size="17">Fil à compléter</text><text x="24" y="275" font-size="17">2a et 2b : même côté du contact. La sortie LED sur D8 reste inchangée.</text>
+</g>
+<g stroke="#416dba" stroke-width="4" fill="none"><path d="M85 100H225M225 100l80 -35M320 100H475"/><path d="M475 100H700" stroke-dasharray="10 7"/><path d="M475 100V165H550V230H570M665 230H700"/></g>
+<g fill="#293f66"><circle cx="225" cy="100" r="6"/><circle cx="320" cy="100" r="6"/><circle cx="475" cy="100" r="6"/></g>
+<rect x="570" y="215" width="95" height="30" fill="#d3dfef" stroke="#416dba" stroke-width="3"/>
+<text x="235" y="145" font-family="Arial,sans-serif" font-size="17" fill="#293f66">Contact au repos</text>
+</svg>

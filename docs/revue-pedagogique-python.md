@@ -150,3 +150,41 @@ Deux ajustements validés et appliqués : limiter les créations de fichiers pen
 Les modules 16 et 17, leurs guides et les transitions sont intégrés conformément à la spécification ajustée. Les listes distinguent longueur, indice et valeur parcourue ; append est expliqué avant usage. Le texte distingue transformation et mutation, puis comparaison personnelle et changement de règle. Vide et IndexError sont traités explicitement sans gestion d'exception cachée. Les activités autonomes demandent des valeurs et tests personnels, puis une modification.
 
 43 tests Python/pédagogie et 9 vues navigateur ciblées réussis ; capture mobile texte inspectée. Le catalogue compte 17 modules sur 20 et 15 compétences évaluables manuellement. Pas de changement de DA ou de suivi privé. Suite conseillée : revue des deux modules réalisés, puis préparation des fonctions. La recette dans Thonny et l'observation en cours restent à faire.
+
+### Revue des modules 16 et 17 réalisés
+
+Relecture du support, des activités et des contrôles : longueur/indice/valeur parcourue distingués, append hors du parcours, nouveau bilan après ajout, cas vide sans consultation. Les transformations du texte conservent leur résultat et l'original ; casse, bords, intérieur et vide sont traités séparément. Le transfert sans lower garde la variable comparée et strip. Les activités personnelles et variantes demandent prévision, modification puis test. Aucun besoin de refonte identifié dans le parcours écrit.
+
+La préparation des fonctions ne suppose ni hasard, while, gestion d'exception ni bonus replace acquis. Le dernier lot est spécifié et revu dans [Fonctions, résultats et quiz](specification-python-lot-7.md) : deux paramètres enseignés avant le quiz, print/return et None distingués, portée locale explicite, score extérieur, aucune liste parallèle ou structure nouvelle imposée. Cette revue ne remplace pas un essai avec élèves ni la recette dans Thonny.
+
+## Lot 7 - réalisation et revue finale
+
+Les modules 18 à 20 et leurs guides sont implémentés. Relecture et ajustements : erreurs et commentaires des guides ciblés sur les notions déjà enseignées ; deux arguments avant le projet ; comparaison fixe avant saisie ; résultat numérique sur les deux branches ; test zéro et noms locaux avant score. Le quiz utilise trois appels explicites d'une seule fonction, des réponses attendues non vides en minuscules, une préparation textuelle par étapes et un cumul extérieur.
+
+L'autonomie demande des questions personnelles, des tests prévus puis une modification conservée et retestée. Ni solution complète ni nouvelle structure cachée ; listes, hasard et while ne sont pas acquis indirectement. Bonus facultatif, suivi manuel inchangé. 62 tests ciblés et 20 vues navigateur passent ; captures fonctions ordinateur et fin quiz mobile inspectées. La suite complète garde un échec préexistant de l'archive professeur (121/122).
+
+Les vingt modules du socle sont maintenant disponibles. La prochaine étape est la recette dans Thonny et la revue manuelle du parcours, pas un approfondissement supplémentaire ni un commit automatique.
+
+## Lot 7 - corrections de la revue utilisateur et seconde revue
+
+Corrections appliquées aux modules 18 à 20 : fonctions.py évolue pendant la découverte et le guidé ; le premier corps contient deux instructions pour montrer la réutilisation et la modification commune. Les copies restent réservées aux diagnostics, créations et variantes. Le module return commence par des noms distincts et un résultat conservé explicitement ; la comparaison de noms identiques vient ensuite. L'autonomie ajoute mon_point.py, ses deux issues et un changement de réponse attendue sans modifier le corps.
+
+Le quiz distingue maintenant question reçue, réponse saisie et réponse attendue. L'adaptation passe par une comparaison exacte, puis strip/lower conservés séparément. La partie de test est remplacée par un unique appel compté ; l'autonomie ajoute deux appels au premier, sans question supplémentaire oubliée. Les mentions inutiles de notions non utilisées sont retirées des consignes. Le retour juste/faux reste facultatif et doit précéder return.
+
+Recette technique : 64 tests ciblés réussis, dont prévision des deux instructions, noms distincts/identiques, NameError intentionnel, transfert personnel 1/0, comparaison exacte puis préparée et score sur une seule question. 15 vues Chrome ciblées passent, avec guides, contexte/direct et mobile 390 px. Aucun commit, DA et suivi privé inchangés.
+
+Seconde revue : contrôle transversal des prérequis, critères et activités autonomes des vingt modules, avec lecture détaillée des trois dernières leçons. Pas de rupture majeure identifiée dans le parcours écrit. Les projets intermédiaires conservent leurs objectifs ciblés ; le quiz n'atteste pas automatiquement listes, hasard ou while. La construction guidée précède désormais les transferts personnels requis.
+
+Trois ajustements éditoriaux restent proposés, non appliqués dans cette passe :
+
+- Module 17 : l'indice « input conserve le texte d'origine » doit distinguer le texte renvoyé par input de sa conservation par affectation, comme le module 20 corrigé.
+- Module 19 : « À toi - ton calcul réutilisable » ne couvre plus la seconde activité de comparaison textuelle ; élargir le titre.
+- Module 20 : le bloc « Bonus - une quatrième question » contient aussi un retour juste/faux indépendant ; séparer ou nommer clairement ces deux extensions facultatives.
+
+Cette seconde revue ne vaut ni validation utilisateur ni observation de l'efficacité pédagogique. Après ces finitions, priorité à la recette dans Thonny et à la revue manuelle plutôt qu'à de nouveaux modules.
+
+### Finitions appliquées
+
+Les trois finitions sont réalisées : l'indice du module texte distingue le texte renvoyé par input et l'affectation à reponse ; l'autonomie de return s'intitule « À toi - créer et réutiliser des résultats » ; les deux bonus du quiz ont des blocs et références distincts. « Bonus - un retour au joueur » indique son indépendance de la quatrième question et conserve la consigne d'affichage avant return.
+
+65 tests ciblés réussissent. Aucun changement de DA, de compétence ou de suivi privé, aucun commit. La validation manuelle et l'essai dans Thonny restent à effectuer.

@@ -12,7 +12,7 @@ const vm = require('node:vm');
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), sandbox);
 const catalog = sandbox.window.CODECRAFT_DATA;
-const ids = ['python-thonny', 'python-affichage', 'python-variables', 'python-saisie', 'python-conversation', 'python-calculs', 'python-erreurs', 'python-conditions', 'python-elif', 'python-aventure', 'python-for', 'python-while', 'python-compteurs', 'python-hasard', 'python-nombre-mystere', 'python-listes', 'python-texte'];
+const ids = ['python-thonny', 'python-affichage', 'python-variables', 'python-saisie', 'python-conversation', 'python-calculs', 'python-erreurs', 'python-conditions', 'python-elif', 'python-aventure', 'python-for', 'python-while', 'python-compteurs', 'python-hasard', 'python-nombre-mystere', 'python-listes', 'python-texte', 'python-fonctions', 'python-retour', 'python-quiz'];
 // Chrome impose parfois une largeur minimale de fenêtre de 500 px.
 // L'émulation CDP garantit un vrai viewport CSS de 390 px, pas un faux mobile.
 async function narrowBrowser(chrome, profile, url, width, screenshot) {
@@ -115,7 +115,7 @@ const probe = `<script>addEventListener('load', () => {
 (async () => {
   const server = http.createServer((req, res) => {
     const name = new URL(req.url, 'http://localhost').pathname.slice(1);
-    if (!/^(?:[a-z-]+\.(?:html|js|css)|assets\/(?:python|exercices)\/[a-z-]+\.svg|images\/[a-zA-Z0-9_.-]+)$/.test(name)) { res.writeHead(404); res.end(); return; }
+    if (!/^(?:[a-z-]+\.(?:html|js|css)|assets\/(?:python|exercices)\/[a-z-]+\.svg|images\/[a-zA-Z0-9_.-]+|resources\/gdevelop\/(?:kit-depart\.zip|kit\/(?:NOTICE|LICENCE)\.txt|kit\/images\/[a-z-]+\.png))$/.test(name)) { res.writeHead(404); res.end(); return; }
     const file = path.join(root, name);
     if (!fs.existsSync(file)) { res.writeHead(404); res.end(); return; }
     const ext = path.extname(name);
@@ -129,6 +129,14 @@ const probe = `<script>addEventListener('load', () => {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-python-browser-'));
   const chrome = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
   const cases = [
+    ['index.html#parcours/gdevelop-debutants', ['#module/gdevelop-projet?parcours=gdevelop-debutants', '#module/gdevelop-deplacement?parcours=gdevelop-debutants', '#module/gdevelop-objets?parcours=gdevelop-debutants', '#module/gdevelop-evenements?parcours=gdevelop-debutants'], 1200],
+    ['index.html#parcours/gdevelop-debutants', ['pathway-stage__title', 'Prendre les commandes', 'Explorer et ramasser — à venir'], 390],
+    ['index.html#module/gdevelop-deplacement?parcours=python-debutants', ['Étape 1 · Prendre les commandes — Module 2 sur 4'], 1200],
+    ...['gdevelop-projet', 'gdevelop-deplacement', 'gdevelop-objets', 'gdevelop-evenements'].flatMap(id => [
+      ['index.html#module/' + id + '?parcours=gdevelop-debutants', ['lesson-checkpoint', 'aria-current="page"', 'data-test-scene="banner-game.svg"'], 1200],
+      ['index.html#module/' + id + '?parcours=gdevelop-debutants', ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
+      ['prof.html#guide/' + id, ['Guide professeur', 'Questions et réponses attendues', 'Erreurs fréquentes et aides graduées', 'index.html#module/' + id], 1200]
+    ]),
     ['index.html', ['#domaine/python', '>Thonny<', 'images/home-python.svg', 'images/home-game.svg', 'images/home-web.svg'], 1200],
     ['index.html#domaine/python', ['#parcours/python-debutants', 'Premiers pas avec Python'], 1200],
     ['index.html#domaine/python', ['domain-banner', '#parcours/python-debutants'], 540],
@@ -166,13 +174,18 @@ const probe = `<script>addEventListener('load', () => {
       ['index.html#module/' + id + '?parcours=web-debutants', ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
       ['prof.html#guide/' + id, ['Guide professeur', 'Questions et réponses attendues', 'Erreurs fréquentes et aides graduées', 'index.html#module/' + id], 1200]
     ]),
-    ...[['html-mini-page-fondations', 'web-fondations'], ['html-revision', 'web-debutants'], ['web-projet-cartes', 'web-avances']].flatMap(([id, pathway]) => [
+    ...[['html-mini-page-fondations', 'web-fondations'], ['html-revision', 'web-debutants'], ['web-projet-cartes', 'web-avances'], ['web-collection-cartes', 'web-avances']].flatMap(([id, pathway]) => [
       ['index.html#module/' + id + '?parcours=' + pathway, ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
       ['index.html#module/' + id, ['lesson-checkpoint', 'aria-current="page"'], 390],
       ['prof.html#guide/' + id, ['Guide professeur', 'Questions et réponses attendues', 'Erreurs fréquentes et aides graduées', 'index.html#module/' + id], 1200]
     ]),
     ['index.html#module/python-thonny?parcours=python-debutants', ['lesson-checkpoint', 'Télécharger Thonny'], 390],
+    ['index.html#module/python-thonny', ['lesson-checkpoint', 'Télécharger Thonny'], 390],
     ['index.html#module/python-texte?parcours=python-debutants', ['lesson-checkpoint'], 390],
+    ...['python-fonctions', 'python-retour', 'python-quiz'].flatMap(id => [
+      ['index.html#module/' + id + '?parcours=python-debutants', ['lesson-checkpoint', 'aria-current="page"'], 390],
+      ['index.html#module/' + id, ['lesson-checkpoint', 'aria-current="page"'], 390]
+    ]),
     ['index.html#module/scratch-pilotage?parcours=scratch-debutants', ['lesson-checkpoint'], 390],
     ['index.html#module/scratch-mini-jeu?parcours=scratch-debutants', ['lesson-checkpoint'], 390],
     ['index.html#module/web-mini-site?parcours=web-debutants', ['lesson-checkpoint'], 390],
@@ -189,7 +202,7 @@ const probe = `<script>addEventListener('load', () => {
     for (const [route, expected, width] of selected) {
       const profile = fs.mkdtempSync(path.join(temp, 'profile-'));
       try {
-      const captureId = route.startsWith('index.html#module/') ? route.split('#module/')[1].split('?')[0] : null;
+      const captureId = route.startsWith('index.html#module/') ? route.split('#module/')[1].split('?')[0] : route === 'index.html#parcours/gdevelop-debutants' ? 'gdevelop-parcours' : null;
       const screenshot = captureId ? path.join(temp, captureId + '-' + (new URL(base + route).hash.match(/parcours=([^&]+)/)?.[1] || 'direct') + '-' + width + '.png') : null;
       const args = ['--headless=new', '--disable-gpu', '--force-device-scale-factor=1', '--no-first-run', '--no-default-browser-check', '--user-data-dir=' + profile,
         '--window-size=' + width + ',1100', '--virtual-time-budget=1500', '--dump-dom', ...(screenshot ? ['--screenshot=' + screenshot] : []), base + route];
@@ -246,7 +259,10 @@ const probe = `<script>addEventListener('load', () => {
         assert(!stdout.includes('pedagogy-choices__grid'));
         assert(!stdout.includes('pedagogy-choice--bonusActivities'));
         assert(stdout.includes('Bonus - garder deux essais'));
-        assert.equal((stdout.match(/href="#module\/python-affichage\?parcours=python-debutants"/g) || []).length, 1, 'Une seule action Continuer');
+        const nextHref = route.includes('parcours=python-debutants')
+          ? '#module/python-affichage?parcours=python-debutants'
+          : '#module/python-affichage';
+        assert.equal((stdout.match(/href="[^"]*"/g) || []).filter(link => link === 'href="' + nextHref + '"').length, 1, 'Une seule action Continuer avec le contexte attendu');
         assert(!stdout.includes('visual-trial-card-preview'));
         assert(stdout.includes('À toi - créer et retrouver un fichier'));
         assert(stdout.includes('Crée accueil.py'));
@@ -360,6 +376,39 @@ const probe = `<script>addEventListener('load', () => {
         assert(!stdout.includes('class="student-lowpoly"'));
       }
       if (route.startsWith('index.html#module/python-') || route.startsWith('index.html#domaine/python') || route.startsWith('index.html#parcours/python-') || route.startsWith('prof.html#guide/python-') || route === 'index.html') assert(!stdout.includes('href="https://codepen.io/pen"'), `${route}: mauvais outil`);
+      if (route.startsWith('index.html#module/gdevelop-')) {
+        assert(!stdout.includes('href="https://codepen.io/pen"'), 'Pas de faux outil CodePen');
+        const id = route.split('#module/')[1].split('?')[0];
+        const stage = catalog.pathways['gdevelop-debutants'].stages[0];
+        const position = stage.moduleIds.indexOf(id) + 1;
+        assert(stdout.includes('Étape 1 · Prendre les commandes — Module ' + position + ' sur 4'), 'Position dans l’étape, sans acquis automatique');
+        assert.equal(stdout.includes('class="lesson-stage-pause"'), position === 4, 'Pause seulement dans la dernière leçon');
+        assert.equal(stdout.includes('Projet d’étape 1 — Ma scène explorable'), position === 4, 'Mini-projet uniquement en fin d’étape');
+        if (position === 4) assert(stdout.includes('Repères pour le projet d’étape'), 'Critères du mini-projet visibles');
+        assert(!stdout.includes('role="progressbar"'), 'Pas de jauge de maîtrise');
+        assert.equal(stdout.includes('href="https://gdevelop.io/download"'), id === 'gdevelop-projet', 'Téléchargement du moteur uniquement dans la première leçon');
+        for (const resource of catalog.modules[id].blocks.flatMap(block => block.downloads || [])) {
+          assert(stdout.includes('download="' + resource.filename + '"'), 'Attribut téléchargement conservé');
+          const response = await fetch(base + resource.path);
+          assert.equal(response.status, 200, 'Ressource téléchargeable via HTTP');
+          const bytes = Buffer.from(await response.arrayBuffer());
+          assert.deepEqual(bytes, fs.readFileSync(path.join(root, resource.path)), 'Téléchargement non altéré');
+        }
+      }
+      if (route === 'index.html#parcours/gdevelop-debutants') {
+        assert.equal((stdout.match(/class="pathway-stage"/g) || []).length, 1);
+        assert(stdout.includes('aria-labelledby="pathway-stage-prendre-commandes"'));
+        assert(stdout.includes('Projet de fin d’étape : Ma scène explorable'));
+        assert(stdout.includes('Explorer et ramasser — à venir'));
+        assert.equal((stdout.match(/class="route-card /g) || []).length, 4, 'Pas de carte vide ou bloquée');
+        const offsets = catalog.pathways['gdevelop-debutants'].moduleIds.map(id => stdout.indexOf('href="#module/' + id + '?parcours=gdevelop-debutants"'));
+        assert(offsets.every((offset, i) => offset >= 0 && (i === 0 || offset > offsets[i - 1])), 'Ordre du parcours inchangé');
+        assert(!stdout.includes('role="progressbar"'));
+      }
+      if ((route.startsWith('index.html#module/') || route.startsWith('index.html#parcours/')) && !route.includes('gdevelop-')) {
+        assert(!stdout.includes('lesson-stage-location'));
+        assert(!stdout.includes('class="pathway-stage"'));
+      }
       console.log('OK : ' + route + ' (viewport ' + stdout.match(/data-test-viewport="(\d+)"/)[1] + 'px)');
       } finally {
         // Le répertoire vient de mkdtemp et doit rester un enfant direct de
