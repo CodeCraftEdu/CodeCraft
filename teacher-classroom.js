@@ -92,7 +92,7 @@
         for (const skillId of mapping.skillIds) {
           const skill = catalog.skills[skillId];
           const item = make('li');
-          item.append(document.createTextNode((skill?.title || skillId) + ' — '));
+          item.append(document.createTextNode((skill?.title || skillId) + ' : '));
           const value = make('strong', '', stateLabel.get(model.getProgress(doc, student.id, skillId).status));
           value.dataset.mappedSkillId = skillId;
           item.append(value); list.append(item);
@@ -105,7 +105,7 @@
         heading.append(make('span', 'teacher-objective-code', objective.code), document.createTextNode(' ' + objective.title));
         row.append(heading, mappedSkills(objective, student));
         const controls = make('div', 'teacher-status-buttons'); controls.setAttribute('role', 'group');
-        controls.setAttribute('aria-label', 'Statut officiel — ' + objective.code + ' ' + objective.title);
+        controls.setAttribute('aria-label', 'Statut officiel : ' + objective.code + ' ' + objective.title);
         const date = make('p', 'teacher-acquired-date'); date.setAttribute('aria-live', 'polite');
         function refresh() {
           const progress = model.getFrameworkProgress(doc, student.id, framework.id, objective.id);
@@ -123,7 +123,7 @@
         comment.append(make('summary', '', 'Remarque d’évaluation officielle (facultative)'));
         const progress = model.getFrameworkProgress(doc, student.id, framework.id, objective.id);
         comment.open = !!progress.note;
-        const note = input(comment, 'Remarque — ' + objective.code, 'framework-note-' + framework.id + '-' + objective.id, progress.note || '', true);
+        const note = input(comment, 'Remarque : ' + objective.code, 'framework-note-' + framework.id + '-' + objective.id, progress.note || '', true);
         note.addEventListener('input', () => edit(() => model.updateFrameworkProgress(doc, student.id, framework.id, objective.id, { note: note.value })));
         row.append(controls, date, comment); refresh(); parent.append(row);
       }
@@ -139,7 +139,7 @@
       function renderFramework(container, framework, student) {
         if (!framework?.levels?.length) return;
         const panel = make('details', 'teacher-framework-panel'); panel.open = true;
-        panel.append(make('summary', 'section-title', 'Référentiel externe — ' + framework.name));
+        panel.append(make('summary', 'section-title', 'Référentiel externe : ' + framework.name));
         panel.append(
           make('p', 'teacher-caption', framework.version + (framework.source ? ' · ' + framework.source : '')),
           make('p', 'teacher-framework-warning', 'Le statut officiel est décidé manuellement par le professeur. Les compétences CodeCraft correspondantes n’entraînent aucune validation automatique.')
@@ -147,7 +147,7 @@
         const label = make('label', '', 'Niveau affiché'); label.htmlFor = 'framework-level';
         const select = make('select'); select.id = 'framework-level';
         for (const level of framework.levels.slice().sort((a, b) => a.order - b.order)) {
-          const option = make('option', '', level.code + ' — ' + level.name + (level.ageRange ? ' (' + level.ageRange + ')' : ''));
+          const option = make('option', '', level.code + ' : ' + level.name + (level.ageRange ? ' (' + level.ageRange + ')' : ''));
           option.value = level.id; select.append(option);
         }
         select.value = preferredLevel(framework); levelByClass.set(classId, select.value);
@@ -158,7 +158,7 @@
         const level = framework.levels.find(item => item.id === select.value);
         level.stages.slice().sort((a, b) => a.order - b.order).forEach((stage, index) => {
           const section = make('details', 'teacher-framework-stage'); section.open = index === 0;
-          section.append(make('summary', '', stage.code + ' — ' + stage.name));
+          section.append(make('summary', '', stage.code + ' : ' + stage.name));
           for (const objective of stage.objectives) renderFrameworkObjective(section, framework, objective, student);
           panel.append(section);
         });
@@ -254,7 +254,7 @@
             const row = make('section', 'teacher-skill'); row.dataset.skillId = skillId;
             row.append(make('h5', '', skill.title));
             const controls = make('div', 'teacher-status-buttons'); controls.setAttribute('role', 'group');
-            controls.setAttribute('aria-label', 'Statut — ' + skill.title);
+            controls.setAttribute('aria-label', 'Statut : ' + skill.title);
             const date = make('p', 'teacher-acquired-date'); date.setAttribute('aria-live', 'polite');
             function refresh() {
               const p = model.getProgress(doc, student.id, skillId);
@@ -274,7 +274,7 @@
             comment.append(make('summary', '', 'Remarque pédagogique (facultative)'));
             const p = model.getProgress(doc, student.id, skillId);
             comment.open = !!p.note;
-            const text = input(comment, 'Remarque — ' + skill.title, 'skill-note-' + skillId, p.note || '', true);
+            const text = input(comment, 'Remarque : ' + skill.title, 'skill-note-' + skillId, p.note || '', true);
             text.addEventListener('input', () => edit(() => model.updateProgress(doc, student.id, skillId, { note: text.value })));
             row.append(controls, date, comment); refresh(); group.append(row);
           }
@@ -287,7 +287,7 @@
         details.append(make('p', 'teacher-caption', 'Importe un fichier JSON privé fourni séparément. Son contenu sera copié dans cet Espace CodeCraft et ne sera envoyé nulle part.'));
         if (doc.frameworks.length) {
           const list = make('ul');
-          for (const framework of doc.frameworks) list.append(make('li', '', framework.name + ' — ' + framework.version));
+          for (const framework of doc.frameworks) list.append(make('li', '', framework.name + ' : ' + framework.version));
           details.append(list);
         } else details.append(make('p', '', 'Aucun référentiel externe importé.'));
         const label = make('label', '', 'Fichier de référentiel privé (.json)'); label.htmlFor = 'framework-import';
@@ -312,7 +312,7 @@
         const select = make('select'); select.id = 'class-select';
         if (!doc.classes.length) select.append(make('option', '', 'Aucune classe pour le moment'));
         for (const c of doc.classes) {
-          const option = make('option', '', c.name + (contextName(c) ? ' — ' + contextName(c) : ''));
+          const option = make('option', '', c.name + (contextName(c) ? ' : ' + contextName(c) : ''));
           option.value = c.id; select.append(option);
         }
         select.value = classId || '';
@@ -341,7 +341,7 @@
             if (edit(() => model.updateClass(doc, c.id, { name: name.value, contextName: context.value, contextId: uid() }), true)) {
               name.value = c.name;
               const option = [...select.options].find(o => o.value === c.id);
-              option.textContent = c.name + (contextName(c) ? ' — ' + contextName(c) : '');
+              option.textContent = c.name + (contextName(c) ? ' : ' + contextName(c) : '');
             } else { name.value = c.name; context.value = contextName(c); }
           }
           name.addEventListener('change', update); context.addEventListener('change', update);
@@ -370,9 +370,9 @@
           top.append(editClass);
           const frameworkLabel = make('label', '', 'Référentiel externe de la classe (facultatif)'); frameworkLabel.htmlFor = 'class-framework';
           const frameworkSelect = make('select'); frameworkSelect.id = 'class-framework';
-          const noFramework = make('option', '', 'Aucun — compétences CodeCraft uniquement'); noFramework.value = ''; frameworkSelect.append(noFramework);
+          const noFramework = make('option', '', 'Aucun : compétences CodeCraft uniquement'); noFramework.value = ''; frameworkSelect.append(noFramework);
           for (const framework of doc.frameworks) {
-            const option = make('option', '', framework.name + ' — ' + framework.version);
+            const option = make('option', '', framework.name + ' : ' + framework.version);
             option.value = framework.id; frameworkSelect.append(option);
           }
           frameworkSelect.value = c.frameworkId || '';

@@ -10,20 +10,142 @@
   });
   const checks = new Set();
   const demoCleanups = [];
+  // Partagé avec les panneaux pédagogiques, créés après le chargement de l'app.
+  window.CodeCraftInlineText = appendInlineText;
+  window.CodeCraftHighlightCode = highlightCode;
+  window.CodeCraftCreateCode = createCode;
   // Nettoyage d'affichage uniquement : conserver les données, les liens et le code.
-  const studentTitle = text => text.replace(/^\s*\d+\s*(?:--+|[.:-]|[–—])\s*/, '')
-    .replace(/\s+(?:--+|[–—]|-)\s+/g, ' : ');
+  const studentTitle = text => text.replace(/^\s*\d+\s*(?:--+|[.:-]|[\u2013\u2014])\s*/, '')
+    .replace(/\s+(?:--+|[\u2013\u2014]|-)\s+/g, ' : ');
+  function appendInlineText(node, text) {
+    // Construire des nœuds texte : les exemples HTML ne sont jamais exécutés.
+    const tags = 'html|head|body|title|meta|link|h[1-6]|p|a|img|ul|ol|li|div|span|header|main|footer|nav|section|article|strong|em|br|button|input|label|form|table|thead|tbody|tr|th|td|figure|figcaption|select|option|textarea|video|audio|source|script|style';
+    // Les noms nus sont reconnus uniquement en Web. « a » et « article » restent
+    // des mots ordinaires sauf après une mention explicite de balise/élément.
+    const web = document.body?.dataset?.domain === 'web';
+    const attributes = 'lang|charset|href|src|alt|srcset|sizes|rel|class|id|target|loading|colspan|rowspan';
+    const pair = '(?:html|head|body|title|h[1-6]|ul|ol|li|div|span|' + attributes + ')';
+    const boundary = '(?![\\w-]|\\.[\\w])';
+    const bare = web ? '|(?<![\\w./-])(?:' + attributes + ')\\s*=\\s*(?:"[^"\\n]*"|\'[^\'\\n]*\')'
+      + '|(?<![\\w./-])' + pair + '(?:/' + pair + ')+' + boundary
+      + '|(?<![\\w./-])/?(?:html|head|body|title|meta|link|h[1-6]|p|img|ul|ol|li|div|span|header|main|footer|nav|strong|em|br|input|textarea|' + attributes + ')' + boundary
+      + '|(?<=balise |élément )a\\b|(?<=balise |élément )article\\b|(?<=attribut )(?:style|name|type|content|value|width|height)\\b' : '';
+    const pattern = new RegExp('`([^`\\n]+)`|<!doctype\\s+html>|<\\/?(?:' + tags + ')(?:\\s+[^<>\\n]*)?\\s*\\/?>' + bare, 'g');
+    let position = 0;
+    for (const match of text.matchAll(pattern)) {
+      if (match.index > position) node.append(document.createTextNode(text.slice(position, match.index)));
+      const code = document.createElement('code');
+      code.className = 'inline-code';
+      code.textContent = match[1] || match[0];
+      node.append(code);
+      position = match.index + match[0].length;
+    }
+    if (position < text.length) node.append(document.createTextNode(text.slice(position)));
+  }
+  function setInlineText(node, text) {
+    node.replaceChildren();
+    appendInlineText(node, text);
+  }
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
-    if (text !== undefined) node.textContent = /(?:^|\s)(?:section-title|subheading|lesson-title|route-card-title)(?:\s|$)/.test(className || '') ? studentTitle(text) : text;
+    if (text !== undefined) {
+      if (tag === 'p' || tag === 'li' || (tag === 'span' && className === 'task-text')) appendInlineText(node, text);
+      else node.textContent = /(?:^|\s)(?:section-title|subheading|lesson-title|route-card-title)(?:\s|$)/.test(className || '') ? studentTitle(text) : text;
+    }
     return node;
   };
-  function createCode(code) {
+  function codeTokens(source) {
+    const tokens = [];
+    const add = (text, kind = '') => { if (text) tokens.push({ text, kind }); };
+    if (/<\/?[a-z][\w:-]*(?:\s|>|\/)|<!doctype|<!--/i.test(source)) {
+      const tags = /<!--[\s\S]*?(?:-->|$)|<!doctype[^>]*>|<\/?[a-z][\w:-]*(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
+      let position = 0;
+      for (const match of source.matchAll(tags)) {
+        add(source.slice(position, match.index));
+        const tag = match[0];
+        if (tag.startsWith('<!--')) add(tag, 'comment');
+        else if (/^<!doctype/i.test(tag)) add(tag, 'tag');
+        else {
+          const opening = tag.match(/^(<\/?)([\w:-]+)/);
+          add(opening[1]); add(opening[2], 'tag');
+          const rest = tag.slice(opening[0].length);
+          let offset = 0;
+          for (const attribute of rest.matchAll(/"[^"]*"|'[^']*'|[\w:-]+(?=\s*=)/g)) {
+            add(rest.slice(offset, attribute.index));
+            add(attribute[0], /^["']/.test(attribute[0]) ? 'string' : 'attribute');
+            offset = attribute.index + attribute[0].length;
+          }
+          add(rest.slice(offset));
+        }
+        position = match.index + tag.length;
+      }
+      add(source.slice(position));
+    } else {
+      const css = /\{[\s\S]*?[\w-]+\s*:/.test(source) && !/^\s*\{/.test(source);
+      const python = /(^|\n)\s*(?:def |from |import |print\(|if .*:|for .*:|while .*:)/.test(source);
+      const pattern = python
+        ? /#[^\n]*|"""[\s\S]*?(?:"""|$)|'''[\s\S]*?(?:'''|$)|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:def|return|if|elif|else|for|while|in|import|from|as|and|or|not|True|False|None|break|continue|class|try|except|with)\b|\b(?:print|input|int|float|str|len|range|list|sum|min|max)(?=\s*\()|\b\d+(?:\.\d+)?\b/g
+        : /\/\*[\s\S]*?(?:\*\/|$)|\/\/[^\n]*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:const|let|var|function|return|if|else|for|while|new|true|false|null|undefined|async|await|class|import|export)\b|[\w-]+(?=\s*:)|#[\da-fA-F]{3,8}\b|\b\d+(?:\.\d+)?(?:px|rem|em|%|s)?/g;
+      let position = 0;
+      for (const match of source.matchAll(pattern)) {
+        add(source.slice(position, match.index));
+        const value = match[0];
+        const kind = /^(?:\/\*|\/\/)/.test(value) || (python && value.startsWith('#')) ? 'comment'
+          : /^["']/.test(value) ? 'string'
+          : /^\d|^#/.test(value) ? 'number'
+          : css ? 'attribute'
+          : /^(?:print|input|int|float|str|len|range|list|sum|min|max)$/.test(value) ? 'function' : 'keyword';
+        add(value, kind);
+        position = match.index + value.length;
+      }
+      add(source.slice(position));
+    }
+    return tokens;
+  }
+  function highlightCode(node, source, activeProperty) {
+    node.replaceChildren();
+    node.className = 'editor-code';
+    const lines = source.split('\n');
+    const content = lines.map((text, index) => {
+      const active = activeProperty && text.trimStart().startsWith(activeProperty + ':');
+      const line = element('span', 'editor-line' + (active ? ' editor-line--active' : ''));
+      const number = element('span', 'editor-line__number');
+      number.setAttribute('aria-hidden', 'true');
+      number.setAttribute('data-line', String(index + 1));
+      const value = element('span', 'editor-line__text');
+      const indent = text.match(/^[ \t]*/)[0].replace(/\t/g, '    ').length;
+      value.setAttribute('style', '--indent: ' + indent + 'ch');
+      line.append(number, value);
+      if (index) node.append('\n');
+      node.append(line);
+      return value;
+    });
+    let index = 0;
+    codeTokens(source).forEach(token => {
+      token.text.split('\n').forEach((part, offset) => {
+        if (offset) index++;
+        if (part) content[index].append(token.kind ? element('span', 'syntax-token--' + token.kind, part) : part);
+      });
+    });
+  }
+  function codeFileLabel(code, label) {
+    if (label && !['HTML', 'CSS'].includes(label)) return label;
+    if (/<\/?[a-z][\w:-]*(?:\s|>|\/)|<!doctype/i.test(code)) return 'index.html';
+    if (/\{[\s\S]*?[\w-]+\s*:/.test(code) && !/^\s*\{/.test(code)) return 'style.css';
+    if (/\b(?:const|let|var|function|console\.log)\b/.test(code)) return 'script.js';
+    if (/\b(?:print|input|range)\s*\(|(^|\n)\s*(?:def |import |from |if .*:|for .*:)/.test(code)) return 'main.py';
+    return label || 'Code';
+  }
+  function createCode(code, filename) {
+    const editor = element('div', 'code-editor');
+    editor.append(element('p', 'code-editor__header', codeFileLabel(code, filename)));
     const pre = element("pre", "code-block");
-    const codeNode = element("code", "", code);
+    const codeNode = element("code");
+    highlightCode(codeNode, code);
     pre.append(codeNode);
-    return pre;
+    editor.append(pre);
+    return editor;
   }
 
   function createHint(item) {
@@ -32,7 +154,7 @@
     if (item.hint) details.append(element("p", "", item.hint));
     (item.hints || []).forEach((text, index) => {
       const step = element('details', 'syntax');
-      const labels = ['1 — Où regarder', '2 — Cibler la difficulté', '3 — Comparer', '4 — Corriger pas à pas'];
+      const labels = ['Où regarder', 'Cibler la difficulté', 'Comparer', 'Corriger pas à pas'];
       step.append(element('summary', '', labels[index] || 'Aide supplémentaire'), element('p', '', text));
       details.append(step);
     });
@@ -94,19 +216,17 @@
   }
 
   function createCallout(block) {
-    const section = element("section", `callout callout--${block.tone || "neutral"}`);
+    const section = element("section", block.presentation === 'compact' ? 'lesson-note' : `callout callout--${block.tone || "neutral"}`);
     section.append(element("h2", "section-title", block.title));
     const paragraph = element("p");
     const moduleLink = block.moduleLink;
     const position = moduleLink ? block.text.indexOf(moduleLink.text) : -1;
     if (position >= 0) {
-      paragraph.append(
-        block.text.slice(0, position),
-        link(moduleLink.text, moduleUrl(moduleLink.moduleId), ''),
-        block.text.slice(position + moduleLink.text.length)
-      );
+      appendInlineText(paragraph, block.text.slice(0, position));
+      paragraph.append(link(moduleLink.text, moduleUrl(moduleLink.moduleId), ''));
+      appendInlineText(paragraph, block.text.slice(position + moduleLink.text.length));
     } else {
-      paragraph.textContent = block.text;
+      appendInlineText(paragraph, block.text);
     }
     section.append(paragraph);
     if (block.illustration) section.append(createIllustration(block.illustration));
@@ -143,11 +263,9 @@
     config.cards.forEach(text => cards.append(element('div', 'carte', text)));
     preview.append(cards);
     const source = element('div', 'flex-display-demo__source');
-    source.append(element('p', 'flex-display-demo__caption', config.codeLabel));
+    source.append(element('p', 'flex-display-demo__caption', 'style.css'));
     const pre = element('pre', 'code-block');
     const code = element('code');
-    const value = element('strong', 'flex-display-demo__value');
-    code.append('.cartes {\n  ', element('span', 'web-code-token--property', 'display'), ': ', value, ';\n}');
     pre.append(code);
     source.append(pre);
     layout.append(source, preview);
@@ -157,13 +275,13 @@
       const display = select.value === 'flex' ? 'flex' : 'block';
       select.value = display;
       cards.style.display = display;
-      value.textContent = display;
-      feedback.textContent = config.options.find(option => option.value === display).feedback;
+      highlightCode(code, '.cartes {\n  display: ' + display + ';\n}', 'display');
+      feedback.replaceChildren(element('span', 'task-text', config.options.find(option => option.value === display).feedback));
     };
     select.value = 'block';
     select.addEventListener('change', update);
     update();
-    demo.append(label, layout, feedback, element('p', 'section-intro', config.note));
+    demo.append(label, layout, feedback);
     return demo;
   }
 
@@ -204,7 +322,7 @@
     const axes = element('p', 'flex-property-demo__axes');
     preview.append(axes);
     const source = element('div', 'flex-property-demo__source');
-    source.append(element('p', 'flex-property-demo__caption', 'CSS appliqué au parent'));
+    source.append(element('p', 'flex-property-demo__caption', 'style.css'));
     const pre = element('pre', 'code-block');
     const code = element('code');
     pre.append(code); source.append(pre); layout.append(source, preview);
@@ -220,23 +338,17 @@
       select.value = option.value;
       const styles = { ...defaults, [config.property]: option.value };
       Object.entries(styles).forEach(([name, value]) => cards.style.setProperty(name, value));
-      code.replaceChildren();
-      code.append('.cartes {\n');
-      Object.entries(styles).forEach(([name, value]) => {
-        code.append('  ', element('span', 'web-code-token--property', name), ': ');
-        code.append(name === config.property ? element('strong', 'flex-property-demo__value', value) : value);
-        code.append(';\n');
-      });
-      if (config.property === 'flex-wrap') code.append('  width: 260px;\n  max-width: 100%;\n  align-content: flex-start;\n');
-      code.append('}');
+      let css = '.cartes {\n' + Object.entries(styles).map(([name, value]) => '  ' + name + ': ' + value + ';\n').join('');
+      if (config.property === 'flex-wrap') css += '  width: 260px;\n  max-width: 100%;\n  align-content: flex-start;\n';
+      highlightCode(code, css + '}', config.property);
       const column = styles['flex-direction'] === 'column';
       axes.textContent = column ? 'Axe principal ↓ · Axe transversal →' : 'Axe principal → · Axe transversal ↓';
-      feedback.textContent = option.feedback;
+      feedback.replaceChildren(element('span', 'task-text', option.feedback));
     };
     select.value = config.options[0].value;
     select.addEventListener('change', update);
     update();
-    demo.append(label, layout, feedback, element('p', 'section-intro', config.note));
+    demo.append(label, layout, feedback);
     return demo;
   }
 
@@ -256,6 +368,7 @@
     const layout = element('div', 'web-comparison__layout');
     const result = element('div', 'web-comparison__result');
     const previewLabel = element('p', 'web-comparison__caption', 'Aperçu');
+    const tab = element('p', 'web-comparison__tab');
     const frame = element('iframe', 'web-comparison__frame');
     frame.title = config.title + ' : résultat de la version choisie';
     // Origine conservée uniquement pour mesurer le contenu ; scripts et navigation restent interdits.
@@ -276,7 +389,7 @@
       }
     });
     demoCleanups.push(() => { if (resizeObserver) resizeObserver.disconnect(); });
-    result.append(previewLabel, frame);
+    result.append(previewLabel, tab, frame);
     const source = element('div', 'web-comparison__source');
     const sourceLabel = element('p', 'web-comparison__caption');
     source.append(sourceLabel);
@@ -287,26 +400,21 @@
     feedback.setAttribute('role', 'status');
     const update = () => {
       const variant = config.variants[Number(select.value)] || config.variants[0];
+      tab.hidden = !variant.tabTitle;
+      tab.textContent = variant.tabTitle ? 'Onglet simulé : ' + variant.tabTitle : '';
       const base = 'body{margin:16px;color:#292d32;background:#fff;font:16px/1.5 Arial,sans-serif;overflow-wrap:anywhere}h1{font-size:26px}h2{font-size:21px}a{color:#174b9b}pre{white-space:pre-wrap}*{box-sizing:border-box}';
       frame.srcdoc = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; img-src data:"><style>' + base + (variant.css || '') + '</style></head><body>' + variant.html + '</body></html>';
-      code.replaceChildren();
-      const tokens = variant.code.split(/("[^"\n]*"|'[^'\n]*'|<\/?[\w-]+|[\w-]+(?=\s*[:=])|#[\da-fA-F]{3,8}\b|\b\d+(?:\.\d+)?(?:px|rem|%)?)/g);
-      tokens.forEach((token, index) => {
-        if (!token) return;
-        if (index % 2 === 0) { code.append(token); return; }
-        const kind = /^["']/.test(token) ? 'string' : /^\d|^#/.test(token) ? 'value' : 'property';
-        code.append(element('span', 'web-code-token--' + kind, token));
-      });
-      sourceLabel.textContent = config.codeLabel || (/^\s*</.test(variant.code) ? 'HTML' : /\{/.test(variant.code) && !/^HTML|^Dans/.test(variant.code) ? 'CSS' : 'Code · repères');
+      highlightCode(code, variant.code);
+      sourceLabel.textContent = codeFileLabel(variant.code, config.codeLabel);
       source.hidden = !variant.code;
       layout.style.gridTemplateColumns = variant.code ? '' : '1fr';
-      feedback.textContent = variant.feedback;
+      feedback.replaceChildren(element('span', 'task-text', variant.feedback));
     };
     select.value = '0';
     select.addEventListener('change', update);
     reset.addEventListener('click', () => { select.value = '0'; update(); });
     update();
-    demo.append(controls, layout, feedback, element('p', 'section-intro', config.note));
+    demo.append(controls, layout, feedback);
     return demo;
   }
 
@@ -391,10 +499,7 @@
     header.append(element('span', 'code-diagram__zone', 'Éditeur'), tools);
     const pre = element('pre', 'code-diagram__source');
     const code = element('code');
-    config.codeParts.forEach(part => {
-      const kind = ['function', 'string'].includes(part.kind) ? part.kind : 'plain';
-      code.append(element('span', 'code-diagram__token--' + kind, part.text));
-    });
+    highlightCode(code, config.codeParts.map(part => part.text).join(''));
     pre.append(code);
     editor.append(header, pre);
     const consolePanel = element('div', 'code-diagram__console');
@@ -414,10 +519,10 @@
       section.append(steps);
     } else if (block.actionSteps) {
       const steps = element('ol', 'lesson-actions');
-      block.actionSteps.forEach((step, index) => {
+      block.actionSteps.forEach((step) => {
         const action = element('li', 'lesson-action');
         const heading = element('h3', 'lesson-action__title');
-        heading.append(element('span', 'lesson-action__number', String(index + 1)), document.createTextNode(step.title));
+        heading.append(document.createTextNode(step.title));
         action.append(heading, element('p', '', block.paragraphs[step.paragraphIndex]));
         if (step.showCode) {
           action.append(element('p', 'lesson-action__label', 'Dans l’éditeur'), createCode(block.code));
@@ -447,7 +552,7 @@
     if (block.coordinateDiagram) section.append(createCoordinateDiagram(block.coordinateDiagram));
     if (block.visualScript) {
       section.append(createScratchVisual(block.visualScript));
-    } else if (block.code && !block.actionSteps) section.append(createCode(block.code));
+    } else if (block.code && !block.actionSteps) section.append(createCode(block.code, block.filename || block.title?.match(/\b[\w-]+\.(?:html|css|js|py)\b/)?.[0]));
     if (visual && block.shortSteps && block.paragraphs?.length) {
       const details = element('details', 'hint scratch-explanations');
       details.append(element('summary', '', 'Explications et repères supplémentaires'));
@@ -523,7 +628,7 @@
     disposeCourseNavigation = null;
     main.classList.remove('site-shell--course');
     delete document.body.dataset.lessonLayout;
-    document.title = title + ' — ' + data.site.name;
+    document.title = title + ' : ' + data.site.name;
     if (theme) document.body.dataset.route = theme;
     else delete document.body.dataset.route;
     if (domainId) document.body.dataset.domain = domainId;
@@ -687,7 +792,7 @@
     main.querySelector('.page-header--compact').append(back);
     if (stagePosition) {
       const { stage, number, position, total } = stagePosition;
-      article.append(element('p', 'lesson-stage-location', 'Étape ' + number + ' · ' + stage.title + (stage.upcoming ? ' — Leçon disponible' : ' — Module ' + position + ' sur ' + total)));
+      article.append(element('p', 'lesson-stage-location', 'Étape ' + number + ' · ' + stage.title + (stage.upcoming ? ' : Leçon disponible' : ' : Module ' + position + ' sur ' + total)));
     }
     article.append(intro(item.title, item.objective));
     // Le téléchargement de Thonny n'est utile qu'à l'installation. Scratch et
@@ -704,7 +809,7 @@
         const prerequisites = pedagogy.prerequisites(item);
         const list = prerequisites.querySelector('ul');
         if (list?.childElementCount) {
-          [...list.children].forEach((row, index) => { row.textContent = item.prerequisiteSkills[index].expectation; });
+          [...list.children].forEach((row, index) => { setInlineText(row, item.prerequisiteSkills[index].expectation); });
           preparation.append(list);
         }
       }
@@ -716,7 +821,7 @@
       preparation.querySelector('.section-intro').remove();
       const list = preparation.querySelector('ul');
       if (list) {
-        [...list.children].forEach((row, index) => { row.textContent = item.prerequisiteSkills[index].expectation; });
+        [...list.children].forEach((row, index) => { setInlineText(row, item.prerequisiteSkills[index].expectation); });
         if (!list.childElementCount) list.remove();
       }
       article.append(preparation);
@@ -755,7 +860,7 @@
     const specificSupport = support(item);
     if (specificSupport) article.append(specificSupport);
     if (criteria) article.append(criteria);
-    if (stagePosition?.isLast && !stagePosition.stage.upcoming) article.append(element('p', 'lesson-stage-pause', stagePosition.stage.endMessage || ('Fin de l’étape ' + stagePosition.number + (stagePosition.stage.projectBlockId ? ' — conserve ton mini-projet : tu pourras le reprendre à la prochaine étape.' : ' — un bon moment pour faire une pause et reprendre ton projet avec une modification personnelle.'))));
+    if (stagePosition?.isLast && !stagePosition.stage.upcoming) article.append(element('p', 'lesson-stage-pause', stagePosition.stage.endMessage || ('Fin de l’étape ' + stagePosition.number + (stagePosition.stage.projectBlockId ? ' : conserve ton mini-projet : tu pourras le reprendre à la prochaine étape.' : ' : un bon moment pour faire une pause et reprendre ton projet avec une modification personnelle.'))));
     const navigation = element('nav', 'module-navigation module-navigation--lesson');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
     if (sequence) {

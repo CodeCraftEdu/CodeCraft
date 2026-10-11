@@ -21,7 +21,8 @@ class Node {
 const element = (tag, cls, text) => new Node(tag, cls, text);
 const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
 const fn = source.slice(source.indexOf('  function createFlexPropertyDemo('), source.indexOf('  function createScratchScript('));
-const render = vm.runInNewContext(fn + '\ncreateFlexPropertyDemo;', { element });
+const syntax = source.slice(source.indexOf('  function codeTokens('), source.indexOf('  function createCode('));
+const render = vm.runInNewContext(syntax + fn + '\ncreateFlexPropertyDemo;', { element });
 const nodes = n => [n, ...n.children.filter(x => x instanceof Node).flatMap(nodes)];
 const text = n => typeof n === 'string' ? n : n.textContent + n.children.map(text).join('');
 
@@ -30,6 +31,7 @@ test('Flexbox : chaque choix change uniquement sa propriété et synchronise CSS
   for (const config of configs) {
     const demo = render(config);
     const all = nodes(demo);
+    assert(!demo.children.some(n => n.cls === 'section-intro'));
     const select = all.find(n => n.tag === 'select');
     const cards = all.find(n => n.cls === 'flex-property-demo__cards');
     const code = all.find(n => n.tag === 'code');
@@ -41,7 +43,7 @@ test('Flexbox : chaque choix change uniquement sa propriété et synchronise CSS
       select.value = option.value; select.events.change();
       assert.equal(cards.style[config.property], option.value);
       assert(text(code).includes(config.property + ': ' + option.value + ';'));
-      assert.equal(feedback.textContent, option.feedback);
+      assert.equal(text(feedback), option.feedback);
       for (const key of Object.keys(initial).filter(k => k !== config.property)) assert.equal(cards.style[key], initial[key]);
     }
     select.value = config.options[0].value; select.events.change();

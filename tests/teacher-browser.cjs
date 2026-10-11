@@ -99,7 +99,7 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
     await wait('(async()=>{try{return JSON.parse(await readTestFile()).classes[0]?.frameworkId === "framework-browser-test"}catch{return false}})()');
     await evaluate('document.getElementById("new-student-name").value="Élève fictif A";document.querySelector(".teacher-add-student").requestSubmit()');
     await wait('document.querySelectorAll(".teacher-skill").length === Object.keys(CODECRAFT_DATA.skills).length && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
-    assert.equal(await evaluate('document.querySelector(".teacher-framework-panel summary").textContent'), 'Référentiel externe — Référentiel privé fictif');
+    assert.equal(await evaluate('document.querySelector(".teacher-framework-panel summary").textContent'), 'Référentiel externe : Référentiel privé fictif');
     assert.equal(await evaluate('document.querySelector(' + JSON.stringify('[data-framework-objective-id] [data-mapped-skill-id="html.lists"]') + ').textContent'), 'À voir');
     await evaluate('document.querySelector(' + JSON.stringify('[data-framework-objective-id] [data-status="in-progress"]') + ').click()');
     await wait('(async()=>{try{return JSON.parse(await readTestFile()).frameworkProgress[0]?.status === "in-progress"}catch{return false}})()');

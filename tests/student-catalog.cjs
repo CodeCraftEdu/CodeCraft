@@ -654,14 +654,14 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
     await wait('document.querySelector("#teacher-guides").open');
     for (const id of Object.keys(data.modules).filter(id => data.modules[id].teacherGuide)) {
       await evaluate(`document.querySelector('a[href="#guide/${id}"]').click()`);
-      await wait('document.querySelector("[data-guide-view] h2")?.textContent === ' + JSON.stringify('Guide professeur — ' + data.modules[id].title));
+      await wait('document.querySelector("[data-guide-view] h2")?.textContent === ' + JSON.stringify('Guide professeur : ' + data.modules[id].title));
       assert.equal(await evaluate('document.querySelector("#teacher-guides").open'), true);
       assert.equal(await evaluate('document.getElementById("save-state").textContent'), 'Aucun Espace CodeCraft ouvert');
-      assert((await evaluate('document.querySelector("[data-guide-view]").textContent')).includes('Conducteur rapide — sans horaires imposés'));
+      assert((await evaluate('document.querySelector("[data-guide-view]").textContent')).includes('Conducteur rapide : sans horaires imposés'));
       assert.equal(await evaluate('document.querySelectorAll("[data-guide-view] input").length'), 0);
     }
     await call('Page.reload');
-    await wait('document.querySelector("[data-guide-view] h2")?.textContent === "Guide professeur — Flexbox"');
+    await wait('document.querySelector("[data-guide-view] h2")?.textContent === "Guide professeur : Flexbox"');
     assert(await evaluate('!!document.querySelector(\'a[href="prof-conducteur-historique.html"]\')'));
     await navigate('#module/html-images', 'Images HTML');
     await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -713,27 +713,27 @@ const moduleRoute = (id, pathway) => '#module/' + id + (pathway ? '?parcours=' +
         await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
       }
       await call('Page.navigate', { url: base.replace('index.html', 'prof.html') + '#guide/' + id });
-      await wait('document.querySelector("[data-guide-view] h2")?.textContent === ' + JSON.stringify('Guide professeur — ' + data.modules[id].title));
+      await wait('document.querySelector("[data-guide-view] h2")?.textContent === ' + JSON.stringify('Guide professeur : ' + data.modules[id].title));
       await capture('guide-' + id, '[data-guide-view] h2');
     }
     await navigate('#module/web-affiche-numerique?activite=cahier-charges', 'Mon affiche numérique');
     await capture('affiche', '[data-activity-id=cahier-charges]');
     await call('Page.navigate', { url: base.replace('index.html','prof.html') + '#guide/css-decouverte' });
-    await wait('document.querySelector("[data-guide-view] h2")?.textContent === "Guide professeur — Découvrir le CSS"');
+    await wait('document.querySelector("[data-guide-view] h2")?.textContent === "Guide professeur : Découvrir le CSS"');
     await capture('guide-css', '[data-guide-view] h2');
     await navigate('#module/html-fichiers-chemins?activite=arbre','Fichiers et chemins');
     await capture('fichiers-chemins','[data-activity-id=arbre]');
     await navigate('#module/css-feuille-style?activite=liaison','Relier une feuille de style');
     await capture('feuille-style','[data-activity-id=liaison]');
     await call('Page.navigate', { url: base.replace('index.html','prof.html') + '#guide/html-document' });
-    await wait('document.querySelector("[data-guide-view] h2")?.textContent === "Guide professeur — Structure d’un document HTML"');
+    await wait('document.querySelector("[data-guide-view] h2")?.textContent === "Guide professeur : Structure d’un document HTML"');
     await capture('guide-document','[data-guide-view] h2');
     for (const [id,activity] of [['html-zones','sections'],['css-textes-lisibles','css'],['css-boites-espacements','css'],['css-dimensions-images','css'],['web-carte-personnelle','cahier-charges'],['html-multipage','navigation'],['web-mini-site','cahier-charges']]) {
       await navigate(moduleRoute(id,'web-debutants')+'&activite='+activity,data.modules[id].title);
       assert.equal(await evaluate('document.activeElement.dataset.activityId'),activity);
       await capture(id,'[data-activity-id='+activity+']');
       await call('Page.navigate',{url:base.replace('index.html','prof.html')+'#guide/'+id});
-      await wait('document.querySelector("[data-guide-view] h2")?.textContent === '+JSON.stringify('Guide professeur — '+data.modules[id].title));
+      await wait('document.querySelector("[data-guide-view] h2")?.textContent === '+JSON.stringify('Guide professeur : '+data.modules[id].title));
       await capture('guide-'+id,'[data-guide-view] h2');
     }
     await mountExample(projectHTML,projectCSS);

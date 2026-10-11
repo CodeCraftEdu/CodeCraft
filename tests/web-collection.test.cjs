@@ -17,7 +17,7 @@ test('collection : dernier projet Avancés, sans modification des autres parcour
   for (const name of ['web-fondations', 'web-debutants']) assert(!data.pathways[name].moduleIds.includes(id));
   assert.equal(project.nextSteps.length, 0);
   assert(ui.url({ moduleId: id }, 'web-avances').includes('parcours=web-avances'));
-  assert.equal(data.modules['css-flexbox'].blocks.find(b => b.id === 'mission').title, 'Mise en pratique — Organiser une collection');
+  assert.equal(data.modules['css-flexbox'].blocks.find(b => b.id === 'mission').title, 'Mise en pratique : Organiser une collection');
   assert(data.modules['css-flexbox'].blocks.find(b => b.id === 'mission').items.some(t => t.id === 'mission-wrap'));
 });
 

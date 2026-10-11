@@ -234,7 +234,7 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{"symptom":"La LED externe ne change pas d’état","helps":["Faire identifier précisément la lumière observée.","Comparer sortie de la commande et sortie câblée.","Suivre le chemin et vérifier la résistance et la polarité sur le montage vérifié.","Revenir à la copie de départ plutôt que modifier plusieurs éléments à la fois."]},{"symptom":"Le voyant de la carte change, pas la LED externe","helps":["Faire montrer les deux lumières.","Vérifier quel programme et quelle sortie commandent la LED externe.","Relancer avec le montage de départ validé."]}],
         "notes": "Le montage, les deux états fixes et les blocs de la première leçon ont été essayés sur le compte professeur. Le départ est partagé par lien et rattaché à la page élève ; la copie et sa reprise avec un accès élève restent à vérifier. Le prototype de clignotement reste privé et constitue une référence distincte pour la suite. Voir docs/recette-tinkercad-premiere-lumiere.md pour les limites de la vérification.",
         "quickConductor": ["Repérer la LED externe et la résistance sur le circuit complet.","Simulation arrêtée, suivre les connexions de la sortie 8 à GND et prévoir l’effet d’un fil manquant sans modifier le montage.","Associer sortie câblée et sortie commandée ; prévoir puis tester Éteindre et Allumer.","Faire expliquer le chemin et la preuve de commande avec aide graduée si besoin. L’ancienne manipulation du fil manquant reste une variante accompagnée facultative, pas un préalable à la fiche élève."],
-        "references": [{"title":"Départ Ma première lumière — à copier, accessible par lien","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"},{"title":"Prototype professeur — clignotement 3 s / 3 s, privé","url":"https://www.tinkercad.com/things/kUxQEjpMKHl-codecraft-robotique-01-allumer-une-led"},{"title":"Tinkercad — site officiel","url":"https://www.tinkercad.com/"}]
+        "references": [{"title":"Départ Ma première lumière : à copier, accessible par lien","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"},{"title":"Prototype professeur : clignotement 3 s / 3 s, privé","url":"https://www.tinkercad.com/things/kUxQEjpMKHl-codecraft-robotique-01-allumer-une-led"},{"title":"Tinkercad : site officiel","url":"https://www.tinkercad.com/"}]
       }
     },
     "robotique-signal": {
@@ -249,7 +249,7 @@ window.CODECRAFT_DATA = {
       "prerequisitesInContent": true,
       "blocks": [
         {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Il faut pouvoir obtenir LOW (éteinte) puis HIGH (allumée) sur la LED externe sans changer les fils. Si cela bloque, reprends Ma première lumière avec une aide. Conserve ce premier projet : crée une copie nommée Mon-signal. Tu peux aussi copier le circuit de départ ci-dessous. Travaille dans Code, en mode Blocks, simulation arrêtée. Garde la sortie 8, les fils et la résistance."},
-        {"type":"lesson","id":"lire-cycle","title":"1 - L’attente garde le dernier état","paragraphs":["Voici un cycle : allumer la LED, attendre une seconde, l’éteindre, attendre une seconde. Pendant la première attente, elle reste allumée. L’attente ne l’éteint pas : c’est la commande LOW qui le fait.","Après la deuxième attente, le cycle recommence. Avant d’essayer, montre quand la LED s’éteint et où les actions reprennent. Le retour au début représente la répétition ; ce n’est pas une cinquième action à chercher."],"illustration":{"src":"images/robotique-cycle.svg","alt":"Dans forever, quatre actions : sortie 8 HIGH, attente 1 seconde, sortie 8 LOW, attente 1 seconde. Une flèche ramène au début. La LED reste allumée pendant la première attente et éteinte pendant la deuxième.","caption":"Schéma de lecture du cycle — les quatre actions sont placées dans forever."}},
+        {"type":"lesson","id":"lire-cycle","title":"1 - L’attente garde le dernier état","paragraphs":["Voici un cycle : allumer la LED, attendre une seconde, l’éteindre, attendre une seconde. Pendant la première attente, elle reste allumée. L’attente ne l’éteint pas : c’est la commande LOW qui le fait.","Après la deuxième attente, le cycle recommence. Avant d’essayer, montre quand la LED s’éteint et où les actions reprennent. Le retour au début représente la répétition ; ce n’est pas une cinquième action à chercher."],"illustration":{"src":"images/robotique-cycle.svg","alt":"Dans forever, quatre actions : sortie 8 HIGH, attente 1 seconde, sortie 8 LOW, attente 1 seconde. Une flèche ramène au début. La LED reste allumée pendant la première attente et éteinte pendant la deuxième.","caption":"Schéma de lecture du cycle : les quatre actions sont placées dans forever."}},
         {"type":"lesson","id":"construire","title":"2 - Construire les quatre actions","paragraphs":["Dans Control, prends forever (répéter sans fin). Place les quatre actions à l’intérieur, dans cet ordre : set pin 8 to HIGH ; wait 1 secs ; set pin 8 to LOW ; wait 1 secs. Les commandes set pin sont dans Output et wait dans Control. Vérifie secs (secondes), pas une autre unité.","Ta copie possède déjà set pin 8 to LOW dans on start. Déplace ce bloc dans forever pour l’utiliser comme troisième action. Ajoute les trois autres. Laisse on start vide : aucune deuxième commande ni deuxième cycle ne doit rester à côté du modèle.","Lance Start Simulation et observe au moins trois cycles sur la LED externe. Dans forever, la fin ramène à la première action tant que la simulation tourne. Pour changer un bloc, utilise Stop Simulation, modifie, puis relance. Si les quatre actions étaient seulement dans on start, elles ne seraient exécutées qu’une fois : après la dernière attente, la LED resterait éteinte."]},
         {"type":"tasks","id":"guide","title":"Exercice guidé - lire, prévoir, observer","items":[{"id":"rb02-cycle","text":"Construis le cycle 1 seconde allumée / 1 seconde éteinte. Avant de lancer, montre les deux commandes, les deux attentes et le retour au début. Observe au moins trois cycles et compare à ta prévision.","hint":"Vérifie une seule pile dans forever : HIGH, wait 1 secs, LOW, wait 1 secs. Les deux commandes visent la sortie 8."},{"id":"rb02-etat-attente","text":"Montre l’attente pendant laquelle la LED est allumée, puis celle pendant laquelle elle est éteinte. Explique ce qui commande le changement d’état.","hint":"Remonte à l’action juste avant chaque attente. HIGH allume ; LOW éteint. wait conserve cet état pendant la durée choisie."}]},
         {"type":"tasks","id":"completer","title":"Compléter - l’action manquante","intro":"Garde Mon-signal intact. Simulation arrêtée, fais une copie nommée Signal-a-completer et retire seulement set pin 8 to LOW de forever. Les deux attentes restent présentes.","items":[{"id":"rb02-manquante","text":"Prévois ce que fera cette copie sans la commande d’extinction. Essaie, arrête, puis ajoute l’action manquante entre les deux attentes. Prévois et vérifie le résultat corrigé.","hint":"Sans LOW, les attentes ne changent pas l’état : la LED reste allumée. Pour retrouver le cycle, ajoute set pin 8 to LOW après la première attente et avant la seconde."}]},
@@ -272,7 +272,7 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{"symptom":"La LED ne clignote pas ou une autre lumière change","helps":["Revenir aux deux états fixes ; repérer la LED externe et la sortie 8.","Vérifier les quatre actions dans forever, les deux attentes en secondes et la présence de LOW.","Vérifier qu’une ancienne pile n’est pas restée à côté ou dans on start."]},{"symptom":"La mauvaise durée est allongée","helps":["Faire montrer l’action précédant chaque attente.","Revenir à 1 / 1, prévoir puis modifier seulement l’attente après HIGH.","Observer trois cycles et faire expliquer l’état conservé."]},{"symptom":"L’élève modifie le mauvais projet","helps":["Vérifier le nom : Mon-signal pour le défi, Signal-a-completer pour l’action manquante.","Retrouver la copie conservée plutôt que reconstruire tous les fils."]}],
         "notes": "Adaptation autonome de RB02 déjà revue dans les supports de séance 1. Les variantes de blocs 1 / 1, 2 / 1 et le retrait de LOW ont été essayés sur une référence professeur privée ; voir docs/recette-tinkercad-signal.md pour les limites. La copie et la reprise avec l’accès élève réel restent à vérifier. Le contexte de stage et sa durée ne sont pas imposés aux élèves. La question de transfert 1 / 2 est orale et ne crée pas une seconde mission obligatoire. Aucune compétence n’est validée par le clignotement ou les cases cochées.",
         "quickConductor": ["Reprendre les deux états et créer Mon-signal.","Lire le cycle et associer chaque attente à l’état précédent.","Construire dans forever et observer trois cycles.","Compléter LOW sur une copie, puis revenir au projet intact.","Prévoir et réaliser 2 / 1 ; proposer oralement 1 / 2 sans indice initial.","Retrouver et relancer le signal ; noter l’aide reçue et l’explication."],
-        "references": [{"title":"Circuit de départ partagé — à copier","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"}]
+        "references": [{"title":"Circuit de départ partagé : à copier","url":"https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"}]
       }
     },
     "robotique-bouton": {
@@ -305,7 +305,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"La lecture ne change pas","helps":["Vérifier le maintien simulé, puis D2 et les bornes nommées.","Comparer au diagnostic vérifié ; réparer la base avec le professeur, pas par des modifications logicielles au hasard."]},{"symptom":"L’élève attend une réaction de la LED","helps":["Distinguer diagnostic professeur et départ élève.","Montrer on start LOW et forever vide ; annoncer la règle de la prochaine leçon."]}],
         "notes":"Adaptation autonome de RB03. Partage par lien confirmé ; essais techniques sur compte professeur, pas validation en classe. Voir docs/recette-tinkercad-bouton.md. Noter les aides de geste séparément de celles de raisonnement ; aucune validation automatique.",
         "quickConductor":["Vérifier sortie et préserver Mon-signal.","Copier le départ, repérer entrée/sortie et compléter D2.","Prévoir puis observer le diagnostic 0 / 1 / 0 deux fois.","Faire expliquer pourquoi le départ ne réagit pas encore ; conserver Mon-bouton."],
-        "references":[{"title":"Départ à relier — sans solution","url":"https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"},{"title":"Base préconnectée — sans solution","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},{"title":"Diagnostic de lecture — démonstration professeur","url":"https://www.tinkercad.com/things/0HMEwEsJtNV-codecraft-bouton-diagnostic-de-lecture"}]
+        "references":[{"title":"Départ à relier : sans solution","url":"https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"},{"title":"Base préconnectée : sans solution","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},{"title":"Diagnostic de lecture : démonstration professeur","url":"https://www.tinkercad.com/things/0HMEwEsJtNV-codecraft-bouton-diagnostic-de-lecture"}]
       }
     },
     "robotique-decision": {
@@ -319,7 +319,7 @@ window.CODECRAFT_DATA = {
         {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Reprends Mon-bouton relié et montre D2, D8 et les deux états de l’entrée. Si cela bloque, reprends Le bouton donne une information avec une aide. Ne change pas les fils. Si tu n’as plus ta copie, utilise la base préconnectée avec le professeur et nomme la copie Mon-bouton. Garde Mon-signal intact : son clignotement ne doit pas rester dans cette règle."},
         {"type":"lesson","id":"partiel","title":"Avant les blocs - choisir le cas manquant","paragraphs":["Nous voulons une lumière allumée pendant l’appui et éteinte au repos. Sur ce schéma de lecture : si le bouton est appuyé maintenant → Allumer ; sinon → [action à choisir] ; puis consulter de nouveau. Quelle action proposes-tu dans sinon ? Explique avant de regarder l’indice.","Ne supprime rien dans un projet existant. Cette question prépare la construction : après l’assemblage, un appui puis un relâchement permettront de vérifier ton choix."]},
         {"type":"tasks","id":"completer","title":"Proposer avant de construire","items":[{"id":"rb04-sinon","text":"Nomme l’action du cas sinon et explique ce que tu devrais observer après avoir appuyé puis relâché. Tu vérifieras cette prévision dans l’exercice guidé.","hint":"Sinon devra commander LOW sur D8. Après l’appui, la LED doit s’éteindre au relâchement ; une LED déjà éteinte au départ ne suffit pas à vérifier ce cas."}]},
-        {"type":"lesson","id":"regle","title":"1 - Une question, deux cas","paragraphs":["Notre question est : le bouton est-il appuyé maintenant ? Si oui, allumer la LED ; sinon, l’éteindre. Prévois les résultats au repos, pendant l’appui et après le relâchement.","Sinon ne veut pas dire après avoir allumé. À chaque consultation, une seule branche est choisie selon la lecture actuelle. Ensuite, le programme consulte de nouveau le bouton. S’il est toujours maintenu, la même action reste choisie : la répétition ne crée pas un clignotement."],"illustration":{"src":"images/robotique-bouton-decision.svg","alt":"Quatre consultations : relâché, non, éteindre ; maintenu, oui, allumer ; toujours maintenu, oui, allumer ; relâché, non, éteindre.","caption":"Trace de lecture — les lignes sont des consultations successives, pas quatre blocs à recopier."}},
+        {"type":"lesson","id":"regle","title":"1 - Une question, deux cas","paragraphs":["Notre question est : le bouton est-il appuyé maintenant ? Si oui, allumer la LED ; sinon, l’éteindre. Prévois les résultats au repos, pendant l’appui et après le relâchement.","Sinon ne veut pas dire après avoir allumé. À chaque consultation, une seule branche est choisie selon la lecture actuelle. Ensuite, le programme consulte de nouveau le bouton. S’il est toujours maintenu, la même action reste choisie : la répétition ne crée pas un clignotement."],"illustration":{"src":"images/robotique-bouton-decision.svg","alt":"Quatre consultations : relâché, non, éteindre ; maintenu, oui, allumer ; toujours maintenu, oui, allumer ; relâché, non, éteindre.","caption":"Trace de lecture : les lignes sont des consultations successives, pas quatre blocs à recopier."}},
         {"type":"lesson","id":"construire","title":"2 - Construire la décision répétée","paragraphs":["Simulation arrêtée, ouvre Code en mode Blocks. Dans Control, prends if then else et place-le dans forever. Dans Math, utilise la comparaison =. Mets read digital pin (Input), réglé sur 2, à gauche et HIGH à droite : read digital pin 2 = HIGH. La lecture HIGH vaut 1 et correspond à l’appui dans notre montage ; LOW vaut 0 et correspond au relâchement.","Dans le cas then, place set pin 8 to HIGH (Output). Dans le cas else, place set pin 8 to LOW. Déplace le LOW du départ depuis on start dans else ; laisse on start vide. Lire HIGH sur D2 permet de poser la question ; commander HIGH sur D8 demande l’allumage. Les deux commandes visent D8, la lecture vise D2.","Garde seulement cette règle dans forever : pas de wait ni d’ancienne pile de clignotement. Lance Start Simulation. Maintiens le bouton simulé avec la souris puis relâche ; recommence. Pour modifier, utilise Stop Simulation."]},
         {"type":"tasks","id":"guide","title":"Exercice guidé - prévoir, essayer, expliquer","items":[{"id":"rb04-etats","text":"Annonce l’état attendu de la LED au repos, pendant un maintien et après le relâchement. Construis la règle puis observe ces trois états deux fois.","hint":"Éteinte, allumée, éteinte. Vérifie les deux branches ensemble ; un seul essai au repos ne suffit pas."},{"id":"rb04-repetition","text":"Montre la question, les deux actions et ce qui recommence. Pendant un maintien plus long, la LED doit-elle clignoter ? Explique avec tes blocs.","hint":"forever relit D2 ; tant que D2 vaut HIGH, la même branche commande HIGH sur D8. Aucune attente de clignotement n’est présente."}]},
         {"type":"tasks","id":"autonomie","title":"À toi - une lumière qui prévient au repos","intro":"Simulation arrêtée, copie Mon-bouton en Mon-bouton-inverse. Garde le principal intact. Dans la nouvelle version, nous voulons allumée au repos, éteinte pendant l’appui, puis allumée au relâchement. Le montage ne change pas.","items":[{"id":"rb04-inverse","text":"Propose une modification avant d’ouvrir l’indice. Prévois les trois résultats, modifie le programme de la copie, puis teste cette suite deux fois. Montre ce que tu as changé.","hint":"Tu peux garder la même question et échanger les actions : then LOW sur D8, else HIGH sur D8."},{"id":"rb04-comparer","text":"Compare les deux versions : qu’est-ce qui reste identique dans l’entrée, la question et les fils ? Qu’est-ce qui change dans les sorties commandées ?","hint":"D2 et la condition restent identiques ; les deux conséquences sont opposées. Retrouve le principal sans l’écraser."}]},
@@ -340,7 +340,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"La LED clignote seule","helps":["Chercher anciennes actions et wait dans la copie.","Garder seulement la règle, aucune autre commande de D8."]},{"symptom":"La LED reste allumée après relâchement","helps":["Observer d’abord D2 ; si l’entrée change, vérifier else LOW et forever.","Ne pas ajouter LOW en dehors de la condition pour compenser une branche manquante."]},{"symptom":"Les copies sont confondues","helps":["Vérifier le nom avant chaque modification.","Retrouver le principal intact, puis la copie inversée ; conserver Mon-signal."]}],
         "notes":"Adaptation autonome de RB04 à partir de la revue documentaire et des essais professeur. Aucun compteur, événement d’appui, bascule mémorisée, rebond ou C++ ajouté. Les cases ne valident pas la maîtrise. Voir docs/recette-tinkercad-bouton.md pour les limites techniques et les tests élèves différés.",
         "quickConductor":["Reprendre le départ relié ; relier 0/LOW et 1/HIGH aux états observés sur D2.","Faire proposer le cas sinon sur schéma avant de montrer la règle complète.","Lire la trace, construire deux branches dans forever puis vérifier la prévision dans les trois états deux fois.","Créer la copie opposée, laisser proposer avant indices, essayer et expliquer.","Retrouver les deux versions ; noter les aides et la compréhension."],
-        "references":[{"title":"Base préconnectée — départ sans solution","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},{"title":"Référence professeur — si / sinon","url":"https://www.tinkercad.com/things/ed9JYU40iMH-codecraft-bouton-reference-si-sinon"},{"title":"Référence professeur — résultat opposé","url":"https://www.tinkercad.com/things/d1QIg2g5Q82-codecraft-bouton-reference-inversee"}]
+        "references":[{"title":"Base préconnectée : départ sans solution","url":"https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"},{"title":"Référence professeur : si / sinon","url":"https://www.tinkercad.com/things/ed9JYU40iMH-codecraft-bouton-reference-si-sinon"},{"title":"Référence professeur : résultat opposé","url":"https://www.tinkercad.com/things/d1QIg2g5Q82-codecraft-bouton-reference-inversee"}]
       }
     },
     "robotique-microbit": {
@@ -348,12 +348,12 @@ window.CODECRAFT_DATA = {
       "objective":"Déclencher deux images avec les boutons de la carte virtuelle et expliquer pourquoi elles restent affichées.",
       "tool":{"label":"Ouvrir MakeCode micro:bit","url":"https://makecode.microbit.org/"},
       "skillIds":["robotique.entree","robotique.evenement"],
-      "prerequisiteSkills":[{"skillId":"robotique.entree","expectation":"Montrer une entrée et une sortie sur le bouton–LED ; une aide de manipulation suffit."}],
+      "prerequisiteSkills":[{"skillId":"robotique.entree","expectation":"Montrer une entrée et une sortie sur le bouton-LED ; une aide de manipulation suffit."}],
       "prerequisitesInContent":true,
       "blocks":[
         {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Nous changeons de carte et de site, pas de projet Tinkercad à importer. Ouvre MakeCode, crée un Nouveau projet nommé Mes-images et garde le mode Blocs. Tout se passe à l’écran, sans matériel ni connexion à un compte. Le professeur peut aider à trouver les boutons et les blocs ; ne visite pas toutes les catégories."},
         {"type":"lesson","id":"reperer","title":"1 - Une entrée, un programme, une sortie","paragraphs":["Repère les boutons A et B de la carte dans le simulateur. Ce sont nos entrées. Les petites lumières de l’écran forment les images : c’est notre sortie.","Le programme sera constitué de deux événements : lorsque le bouton A est pressé, et lorsque le bouton B est pressé. En anglais : on button A pressed et on button B pressed, dans Input (Entrées). Place un bloc show icon (montrer une icône), de Basic (Base), à l’intérieur de chacun.","Choisis un cœur pour A et un carré pour B. Aucun bloc d’affichage dans toujours : il ne doit pas y avoir un autre programme qui change l’écran en même temps."],"illustration":{"src":"images/robotique-microbit-reference.jpg","alt":"MakeCode montre deux piles : A affiche un cœur et B affiche un carré. La carte affiche le cœur après A.","caption":"Capture de la référence essayée. Les libellés de cette interface sont en anglais ; les mêmes événements existent dans l’interface française."}},
-        {"type":"lesson","id":"declencher","title":"2 - Déclencher n’est pas maintenir","paragraphs":["Avant de cliquer, prévois l’image obtenue avec A. Clique brièvement sur A puis relâche. Attends sans toucher aucun bouton : l’image reste. Ensuite clique sur B et observe le changement.","Le premier appui a déclenché l’affichage. Rien dans ce programme n’efface l’image après le relâchement. Ce n’est pas la règle bouton–LED qui relisait l’état du bouton et commandait aussi Éteindre au repos.","La carte seule n’est pas encore un robot roulant. Nous garderons Mes-images séparément du futur projet de trajet." ]},
+        {"type":"lesson","id":"declencher","title":"2 - Déclencher n’est pas maintenir","paragraphs":["Avant de cliquer, prévois l’image obtenue avec A. Clique brièvement sur A puis relâche. Attends sans toucher aucun bouton : l’image reste. Ensuite clique sur B et observe le changement.","Le premier appui a déclenché l’affichage. Rien dans ce programme n’efface l’image après le relâchement. Ce n’est pas la règle bouton-LED qui relisait l’état du bouton et commandait aussi Éteindre au repos.","La carte seule n’est pas encore un robot roulant. Nous garderons Mes-images séparément du futur projet de trajet." ]},
         {"type":"tasks","id":"guide","title":"Exercice guidé - prévoir trois observations","items":[{"id":"rb05-a-attente","text":"Prévois puis teste A, une attente sans autre appui, puis B. Montre les deux événements et explique les trois résultats.","hint":"Chaque bouton déclenche son affichage. Cherche si une autre commande demande d’effacer l’image après l’appui."},{"id":"rb05-comparer","text":"Explique une différence avec la LED commandée pendant l’appui dans Tinkercad.","hint":"L’ancien programme consultait le bouton dans une boucle avec deux cas. Ici, l’événement déclenche une action ponctuelle."}]},
         {"type":"tasks","id":"autonomie","title":"À toi - choisir tes deux images","items":[{"id":"rb05-images","text":"Choisis deux autres images différentes. Annonce ce que feront A puis B, change seulement les icônes, teste et explique l’image conservée sans nouvel appui.","hint":"Garde les deux événements séparés et remplace l’icône à l’intérieur de chacun, sans ajouter une boucle d’affichage."}]},
         {"type":"callout","id":"conserver","title":"Conserver Mes-images","text":"Vérifie le nom du projet. Utilise l’icône de sauvegarde à côté du nom pour télécharger le fichier .hex : ce fichier conserve aussi le programme, pas seulement un dessin. Avec de l’aide, retrouve-le puis utilise l’accueil MakeCode → Importer → Importer un fichier. Rouvre-le et teste A puis B. Ne compte pas uniquement sur l’enregistrement du navigateur : il peut être indisponible ou effacé. Tu n’as ni carte à brancher ni projet à publier."}
@@ -372,7 +372,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"L’image change toute seule","helps":["Chercher un affichage dans forever ou une autre pile.","Garder seulement les deux événements."]},{"symptom":"L’appui ne produit rien","helps":["Vérifier que la simulation tourne et que l’icône est à l’intérieur de l’événement.","Cliquer brièvement puis relâcher le bon bouton simulé."]}],
         "notes":"Les cases sont des repères, pas une validation automatique. Sauvegarde, langue et gestes dans le navigateur de cours restent à vérifier ; ne pas mélanger ce projet et l’affichage du robot.",
         "quickConductor":["Repérer entrées et sortie sans visite exhaustive.","Construire deux événements et faire prévoir A / attente / B.","Choisir deux images personnelles et expliquer la persistance.","Exporter puis retrouver le fichier avec aide."],
-        "references":[{"title":"Référence professeur — Mes-images (.hex)","url":"resources/robotique/makecode/RB05-Mes-images-reference.hex"},{"title":"Événement de bouton — documentation MakeCode","url":"https://makecode.microbit.org/reference/input/on-button-pressed"}]
+        "references":[{"title":"Référence professeur : Mes-images (.hex)","url":"resources/robotique/makecode/RB05-Mes-images-reference.hex"},{"title":"Événement de bouton : documentation MakeCode","url":"https://makecode.microbit.org/reference/input/on-button-pressed"}]
       }
     },
     "robotique-trajet": {
@@ -383,7 +383,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills":[{"skillId":"robotique.sequence","expectation":"Lire une suite d’actions dans l’ordre avec aide."},{"skillId":"robotique.evenement","expectation":"Reconnaître le lancement A/B du projet Mes-images avant de changer de déclencheur."}],
       "prerequisitesInContent":true,
       "blocks":[
-        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Garde Mes-images sauvegardé à part. Télécharge le départ ci-dessous, puis à l’accueil MakeCode choisis Importer → Importer un fichier et sélectionne ce .hex. Nomme ton projet Mon-trajet. Aucun matériel à brancher, aucun compte ni publication nécessaire. Le professeur accompagne l’import si besoin."},
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Garde Mes-images sauvegardé à part. Télécharge le départ ci-dessous, puis à l’accueil MakeCode choisis Importer → Importer un fichier et sélectionne ce .hex. Nomme ton projet Mon-trajet."},
         {"type":"lesson","id":"base","title":"1 - Une base préparée, sans mouvement caché","paragraphs":["Le départ fournit le modèle robot elecfreaks cutebot, trois aides désactivées, une pause de préparation de 2000 ms et un arrêt final. Lance-le : le robot doit rester immobile. Il ne suit pas automatiquement la ligne dessinée.","Dans ce projet, on start (au démarrage) lance les actions une seule fois, de haut en bas. A et B ne pilotent aucun moteur. La pause de préparation laisse la scène se charger ; elle ne fait pas avancer le robot.","Garde les réglages préparés et l’arrêt. Tu vas insérer tes commandes de déplacement juste après la pause et avant robot motor stop (arrêter les moteurs). Ne copie pas les événements d’affichage de Mes-images."],"downloads":[{"label":"Télécharger le départ Mon-trajet (.hex)","path":"resources/robotique/makecode/RB06-Mon-trajet-depart.hex","filename":"RB06-Mon-trajet-depart.hex"}]},
         {"type":"lesson","id":"avancer","title":"2 - Avancer puis s’arrêter","paragraphs":["Dans Robot, prends robot motor steer : direction 0, puissance 50 %, durée 1500 ms. Si la durée est cachée, le petit + du bloc permet d’afficher ce réglage. Place cette commande après la pause de préparation et avant l’arrêt déjà fourni.","0 signifie ici avancer droit. 1500 ms correspond à une seconde et demie. La durée permet de passer ensuite à l’action suivante : ne la confonds pas avec une commande d’arrêt. C’est robot motor stop qui termine le mouvement.","Prévois puis lance : préparation, avance, arrêt. Attends après l’arrivée pour vérifier que le robot reste immobile. La puissance est un réglage des moteurs, pas une vitesse mesurée ni une distance exacte à obtenir." ]},
         {"type":"callout","id":"essai-visible","title":"Observer un essai complet","text":"Garde MakeCode et le robot visibles pendant le trajet, sans changer d’onglet. Agrandis la simulation si la scène est trop petite. Attends son chargement avant de relancer. Si le déplacement n’est pas cohérent d’un essai à l’autre, arrête et demande au professeur de vérifier le simulateur : ne change pas plusieurs blocs pour compenser un problème d’affichage."},
@@ -406,7 +406,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"Le robot reste immobile","helps":["Vérifier la scène chargée et l’initialisation fournie.","Chercher le déplacement placé après l’arrêt, une puissance nulle ou une durée non positive.","Revenir à la référence ; une panne du simulateur n’est pas une erreur pédagogique de l’élève."]},{"symptom":"Le robot continue ou recommence","helps":["Arrêter la simulation avant intervention.","Vérifier l’arrêt final et chercher des commandes concurrentes ou une pile forever."]},{"symptom":"Les essais ne sont pas comparables","helps":["Comparer départ et orientation avant le mouvement.","Vérifier qu’un seul réglage a changé."]},{"symptom":"Le projet n’est plus dans l’accueil","helps":["Retrouver le fichier exporté, pas seulement la liste locale.","Accompagner Importer un fichier et vérifier le nom puis les blocs."]}],
         "notes":"Pas de décision selon obstacle, variable, suivi de ligne, radio, télécommande ni second mode moteur. Le schéma partiel est lu sans supprimer l’arrêt. En arrière-plan, certains essais ont donné peu de mouvement ; après affichage du navigateur, deux relances de la référence minimale ont montré avance et arrêt depuis le même départ. Cela suggère un effet de l’affichage, sans diagnostic certain : garder MakeCode visible pendant l’essai et refaire la recette dans le navigateur de cours. La démonstration facultative de puissance n’a pas encore sa recette. L’extension reste non confirmée par KidnKod ; essais professeur et efficacité en classe sont distincts.",
         "quickConductor":["Importer le départ et constater l’immobilité ; distinguer les déclencheurs.","Insérer l’avance avant l’arrêt, prévoir puis tester.","Ajouter le virage et lire le schéma partiel sans casser le programme.","Sauvegarder le principal ; laisser proposer une copie personnelle et comparer deux essais.","Exporter, reprendre avec aide et noter ce qui reste à vérifier en classe."],
-        "references":[{"title":"Départ élève — Mon-trajet (.hex)","url":"resources/robotique/makecode/RB06-Mon-trajet-depart.hex"},{"title":"Référence professeur — avancer, arrêter (.hex)","url":"resources/robotique/makecode/RB06-Avancer-arreter-reference.hex"},{"title":"Référence professeur — avancer, tourner, arrêter (.hex)","url":"resources/robotique/makecode/RB06-Trajet-reference.hex"},{"title":"Extension Microsoft microbit-robot","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"}]
+        "references":[{"title":"Départ élève : Mon-trajet (.hex)","url":"resources/robotique/makecode/RB06-Mon-trajet-depart.hex"},{"title":"Référence professeur : avancer, arrêter (.hex)","url":"resources/robotique/makecode/RB06-Avancer-arreter-reference.hex"},{"title":"Référence professeur : avancer, tourner, arrêter (.hex)","url":"resources/robotique/makecode/RB06-Trajet-reference.hex"},{"title":"Extension Microsoft microbit-robot","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"}]
       }
     },
     "robotique-distance": {
@@ -420,7 +420,7 @@ window.CODECRAFT_DATA = {
         {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Garde tes trajets précédents. Aujourd’hui, le robot reste immobile : nous observons seulement son capteur de distance. Il faut pouvoir montrer une entrée et l’arrêt des moteurs ; sinon, reprends ces repères avec le professeur. Aucun matériel à brancher."},
         {"type":"callout","id":"recette","title":"Bien lire la distance","text":"Repère l’obstacle devant le capteur avec le professeur, puis regarde les nouvelles mesures. Si le nombre paraît étrange, vérifiez la position et l’orientation du robot avant de comparer les distances."},
         {"type":"lesson","id":"base","title":"1 - Ouvrir le projet d’observation","paragraphs":["Télécharge le fichier ci-dessous. Dans l’accueil MakeCode, utilise Importer → Importer un fichier, puis choisis ce fichier .hex. Reste en Blocs et nomme ta copie Ma-distance. Ce fichier contient aussi le programme : tu n’as pas à installer une extension ni à écrire en JavaScript.","La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom distance_cm. N’ajoute aucune commande d’avance, de virage ou de bouton.","Le bloc répéter tant que vrai (while true) est déjà préparé : ici, il sert à relire sans fin. Garde-le et la petite pause. Il ne fait pas bouger le robot."],"downloads":[{"label":"Télécharger le projet d’observation RB07 (.hex)","path":"resources/robotique/makecode/RB07-Ma-distance-observation.hex","filename":"RB07-Ma-distance-observation.hex"}]},
-        {"type":"lesson","id":"observer","title":"2 - Lire l’information reçue","paragraphs":["Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data — Simulator). Repère les nouvelles lignes distance_cm : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.","Observe la démonstration du professeur avec deux situations préparées et une cible devant le capteur. Avant chaque essai, prévois quelle situation donnera la mesure la plus petite. Note les deux lectures et montre celle qui correspond à la cible la plus proche.","Le robot et sa cible peuvent rester immobiles : relire ne fait pas forcément changer le nombre. Une lecture absente ou étrange est à vérifier avec le professeur ; elle ne signifie pas automatiquement que la voie est libre. Garde le robot et les données visibles. Avec ce programme d’observation sans avance, garde la simulation active pour glisser le robot immobile ; arrête-la pour modifier le programme." ]},
+        {"type":"lesson","id":"observer","title":"2 - Lire l’information reçue","paragraphs":["Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data : Simulator). Repère les nouvelles lignes distance_cm : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.","Observe la démonstration du professeur avec deux situations préparées et une cible devant le capteur. Avant chaque essai, prévois quelle situation donnera la mesure la plus petite. Note les deux lectures et montre celle qui correspond à la cible la plus proche.","Le robot et sa cible peuvent rester immobiles : relire ne fait pas forcément changer le nombre. Une lecture absente ou étrange est à vérifier avec le professeur ; elle ne signifie pas automatiquement que la voie est libre. Garde le robot et les données visibles. Avec ce programme d’observation sans avance, garde la simulation active pour glisser le robot immobile ; arrête-la pour modifier le programme." ]},
         {"type":"tasks","id":"guide","title":"Exercice guidé - comparer deux mesures","items":[{"id":"rb07-source","text":"Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne distance_cm et explique d’où vient le nombre.","hint":"Le capteur fournit l’information. Le bloc d’écriture permet seulement de la voir dans les données."},{"id":"rb07-comparer","text":"Prévois puis compare deux situations vérifiées par le professeur. Note leurs mesures et explique laquelle correspond à la cible la plus proche.","hint":"Compare les nouvelles lignes de chaque essai, pas d’anciennes données. Si une cible n’est pas détectée, ne compare pas cette valeur comme une distance fiable."}]},
         {"type":"lesson","id":"limite","title":"3 - La mesure et notre limite","paragraphs":["Le capteur fournit une distance ; nous pouvons choisir une limite pour décider plus tard. Ce sont deux rôles différents. Déplacer la cible peut changer la mesure. Changer notre limite ne déplace pas la cible.","Voici un tableau pour réfléchir, pas des mesures à reproduire exactement dans le simulateur. La question est : distance plus petite que 20 ? Avec 30, la réponse est non ; avec 15, oui ; avec exactement 20, non. Le signe < signifie strictement plus petit que.","Nous ne commandons pas encore les moteurs. Dans la prochaine leçon, oui demandera Arrêter et non demandera Avancer. Les nombres du tableau ne garantissent pas un arrêt sûr sur du matériel."],"illustration":{"src":"images/robotique-distance-limite.svg","alt":"Tableau de raisonnement : distance 30 cm, 15 cm et 20 cm ; limite choisie 20 cm ; distance strictement inférieure à 20 : non, oui, non.","caption":"Exercice de lecture : égal à 20 n’est pas plus petit que 20. Tu n’as pas besoin de placer le robot exactement à ces distances."}},
         {"type":"tasks","id":"autonomie","title":"À toi - distinguer les deux nombres","items":[{"id":"rb07-role","text":"Sans déplacer de robot, explique ce qui change si nous gardons une mesure de 18 cm et choisissons une limite de 20, puis de 25 cm. La mesure vient-elle de notre choix ?","hint":"La distance donnée reste 18. Seule notre limite change. Montre le rôle de chaque nombre avant de calculer une action."},{"id":"rb07-egalite","text":"Avec une limite de 20, réponds à la question distance < 20 pour 19, 20 et 21. Explique le cas égal sans chercher un placement au centimètre près.","hint":"19 est plus petit ; 20 est égal ; 21 est plus grand. Le signe < exclut l’égalité."}]},
@@ -440,7 +440,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"La mesure ne change pas ou paraît étrange","helps":["Vérifier que l’on lit de nouvelles lignes.","Repérer l’orientation du capteur et une cible dans sa visée.","Comparer avec une scène professeur validée.","Si le support n’est pas fiable, suspendre l’essai plutôt qu’inventer une interprétation de 0 ou 40." ]},{"symptom":"Mesure et limite sont confondues","helps":["Montrer la ligne reçue et une limite écrite séparément.","Garder la limite et comparer deux mesures.","Garder une mesure donnée et changer la limite sur papier.","Faire expliquer qui fournit chaque nombre." ]}],
         "notes":"Le conducteur atelier reste dans les documents ; cette leçon n’impose ni durée ni rythme. Ne pas cocher un acquis parce que le fichier a été importé. Les capteurs de ligne restent hors périmètre.",
         "quickConductor":["Importer le projet immobile et conserver les trajets.","Faire prévoir, lire puis comparer deux observations valides.","Séparer mesure et limite ; travailler l’égalité sur tableau.","Faire expliquer puis sauvegarder avec aide si besoin."],
-        "references":[{"title":"Observation immobile RB07 (.hex)","url":"resources/robotique/makecode/RB07-Ma-distance-observation.hex"},{"title":"Extension Microsoft microbit-robot — documentation","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"},{"title":"Recette et réserves RB07/RB08","url":"docs/integration-robotique-capteurs.md"}]
+        "references":[{"title":"Observation immobile RB07 (.hex)","url":"resources/robotique/makecode/RB07-Ma-distance-observation.hex"},{"title":"Extension Microsoft microbit-robot : documentation","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"},{"title":"Recette et réserves RB07/RB08","url":"docs/integration-robotique-capteurs.md"}]
       }
     },
     "robotique-obstacle": {
@@ -465,7 +465,7 @@ window.CODECRAFT_DATA = {
       "teacherGuide":{
         "objective":"Faire comprendre la règle fixe complète, sa réévaluation, puis introduire une seule variable comme limite nommée, avec modification accompagnée.",
         "entryDiagnosis":["Faire distinguer mesure reçue et limite choisie, lire si/sinon et montrer motor stop. Fournir les manipulations si nécessaire.","Ne pas exiger une connaissance préalable des variables ; cette première initialisation et son utilisation sont accompagnées."],
-        "preparation":["Statut : intégré pour préparation, recette pratique incomplète. Départ sans if sur la distance ni motor steer ; une seule pile on start, attente fournie de A avec mesure active, puis boucle de travail. A libère cette attente une seule fois, sans événement moteur parallèle. Pas de virage A, suivi de ligne, affichage d’assistance ou second contrôleur moteur.","Références fixe et seuil réservées au professeur. Paramètres de préparation : direction 0, puissance 25, limite 20, courte pause 100 ms, aucune durée moteur. Essais du 10 octobre avec attente de A : fixe 20 et variable 20 observés depuis 26 jusqu’à 18 ; proche 7 immobile après A confirmé pour le fixe. Les variantes 15/25 et leurs réserves sont documentées dans l’intégration missions. Les placements identiques, répétitions et contrôles de cours restent à vérifier.","Avant distribution : protocoles R10–R12 et R14. Préparer une scène loin donnant une avance puis arrêt avant contact, une scène proche donnant un arrêt immédiat, deux relances comparables et la seconde valeur. Conserver les observations déjà effectuées ; compléter les comparaisons à placements identiques et les contrôles de cours avant distribution.","Séparer égalité sur tableau et essai réel. Une valeur sans cible n’est pas une voie libre démontrée. En cas de contact, de mesure douteuse ou de départ déjà proche, arrêter et vérifier le support ; ne pas introduire filtrage, variable distance ou nouveau chapitre en urgence.","La répétition while true reste fournie et lue comme relire sans fin ; l’élève ne doit pas reconstruire cette préparation. Prioriser les deux cas fixes puis seuil initialisé/utilisé à valeur identique. Reporter la modification si nécessaire ; aucune mission autonome supplémentaire.","Préserver copie fixe et copie prudente, exporter hors navigateur, vérifier accès élève et reprise. Aucun matériel réel, aucune publication de compte élève ni programme texte à saisir."],
+        "preparation":["Statut : intégré pour préparation, recette pratique incomplète. Départ sans if sur la distance ni motor steer ; une seule pile on start, attente fournie de A avec mesure active, puis boucle de travail. A libère cette attente une seule fois, sans événement moteur parallèle. Pas de virage A, suivi de ligne, affichage d’assistance ou second contrôleur moteur.","Références fixe et seuil réservées au professeur. Paramètres de préparation : direction 0, puissance 25, limite 20, courte pause 100 ms, aucune durée moteur. Essais du 10 octobre avec attente de A : fixe 20 et variable 20 observés depuis 26 jusqu’à 18 ; proche 7 immobile après A confirmé pour le fixe. Les variantes 15/25 et leurs réserves sont documentées dans l’intégration missions. Les placements identiques, répétitions et contrôles de cours restent à vérifier.","Avant distribution : protocoles R10-R12 et R14. Préparer une scène loin donnant une avance puis arrêt avant contact, une scène proche donnant un arrêt immédiat, deux relances comparables et la seconde valeur. Conserver les observations déjà effectuées ; compléter les comparaisons à placements identiques et les contrôles de cours avant distribution.","Séparer égalité sur tableau et essai réel. Une valeur sans cible n’est pas une voie libre démontrée. En cas de contact, de mesure douteuse ou de départ déjà proche, arrêter et vérifier le support ; ne pas introduire filtrage, variable distance ou nouveau chapitre en urgence.","La répétition while true reste fournie et lue comme relire sans fin ; l’élève ne doit pas reconstruire cette préparation. Prioriser les deux cas fixes puis seuil initialisé/utilisé à valeur identique. Reporter la modification si nécessaire ; aucune mission autonome supplémentaire.","Préserver copie fixe et copie prudente, exporter hors navigateur, vérifier accès élève et reprise. Aucun matériel réel, aucune publication de compte élève ni programme texte à saisir."],
         "why":"La substitution à valeur identique donne du sens à la variable avant la modification ; des scènes identiques permettent ensuite d’attribuer l’effet à un seul réglage.",
         "discoverySpeech":["« Le trajet d’avant ne doit plus commander les moteurs. Qui décide maintenant ? »","« La mesure diminue pendant l’avance. Pourquoi pouvons-nous choisir une nouvelle action sans relancer ? »","« Avec seuil égal à 20, nous donnons un nom au même réglage. Montre les deux endroits. »","« À mesure identique, une limite plus grande peut demander l’arrêt plus tôt. Elle ne change pas la puissance. »"],
         "example":{"target":{"moduleId":"robotique-obstacle","blockId":"construire"},"comments":["Construire si et sinon ensemble dans la répétition fournie. Montrer la seconde boucle après l’attente de A et l’absence de durée bloquante.","La console et la comparaison relisent le capteur séparément : ne pas présenter la trace comme une paire atomique mesure/action.","Ne pas donner une référence complète comme départ. L’ancien diagnostic technique A/B reste hors fiche élève." ]},
@@ -475,7 +475,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"Le robot ne s’arrête pas avant contact","helps":["Arrêter immédiatement la simulation.","Vérifier visée et mesure valide avec la référence immobile.","Vérifier <, branches, absence de durée moteur et aides OFF.","Reprendre la recette professeur avant de proposer d’autres seuils." ]},{"symptom":"Le résultat change en remplaçant 20 par seuil","helps":["Comparer la valeur initiale à l’ancien nombre.","Vérifier l’affectation avant la répétition.","Montrer seuil à droite et la mesure à gauche, dans la seconde boucle après l’attente de A.","Comparer départs et autres réglages avant d’attribuer l’écart à la variable." ]},{"symptom":"La nouvelle valeur n’a pas d’effet","helps":["Montrer le bloc modifié.","Vérifier que la comparaison utilise réellement seuil.","Relancer après changement de l’initialisation.","Comparer une même scène valide et non un départ déjà proche." ]},{"symptom":"Des mouvements inattendus apparaissent","helps":["Arrêter avant intervention.","Chercher un ancien trajet ou un événement A/B moteur.","Vérifier trois aides OFF et un seul contrôleur.","Repartir d’une copie du départ fourni plutôt que modifier plusieurs programmes." ]}],
         "notes":"Pas de recul, évitement, ligne, radio, vitesse variable ou arrêt mémorisé. Retour à une mesure éloignée dans la même exécution facultatif après recette ; jamais déplacer un robot en mouvement. Les pages RB09/RB10 sont intégrées en préparation ; leurs scènes restent à valider. Si l’essai de changement du seuil est reporté, utiliser la reprise ciblée de RB09 avant le choix personnel.",
         "quickConductor":["Importer le départ immobile et lire la préparation fournie.","Prévoir puis construire les deux branches fixes.","Observer l’approche sans relance et la scène proche après recette.","Préserver fixe ; introduire seuil puis comparer à valeur identique.","Changer une seule valeur avec aide si possible ; expliquer et exporter les deux copies."],
-        "references":[{"title":"Départ RB08 sans décision (.hex)","url":"resources/robotique/makecode/RB08-Mon-obstacle-depart.hex"},{"title":"Référence professeur — limite fixe (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"},{"title":"Référence professeur — seuil (.hex)","url":"resources/robotique/makecode/RB08-Robot-prudent-reference.hex"},{"title":"Recette et réserves RB07/RB08","url":"docs/integration-robotique-capteurs.md"},{"title":"Extension Microsoft microbit-robot","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"}]
+        "references":[{"title":"Départ RB08 sans décision (.hex)","url":"resources/robotique/makecode/RB08-Mon-obstacle-depart.hex"},{"title":"Référence professeur : limite fixe (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"},{"title":"Référence professeur : seuil (.hex)","url":"resources/robotique/makecode/RB08-Robot-prudent-reference.hex"},{"title":"Recette et réserves RB07/RB08","url":"docs/integration-robotique-capteurs.md"},{"title":"Extension Microsoft microbit-robot","url":"https://makecode.microbit.org/pkg/microsoft/microbit-robot"}]
       }
     },
     "robotique-mission": {
@@ -488,7 +488,7 @@ window.CODECRAFT_DATA = {
       "blocks":[
         {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Retrouve Mon-robot-prudent et sa règle : distance < seuil ? Oui → Arrêter ; non → Avancer. Montre où seuil reçoit sa valeur et où elle est utilisée. Si tu hésites, reprends ce point avec le professeur ; inutile de reconstruire tout le robot."},
         {"type":"callout","id":"recette","title":"Choisir ton terrain d’essai","text":"Le professeur te propose les situations et les réglages pour ta mission. Repère le départ et l’obstacle avant de lancer. Note séparément ce que tu prévois et ce que tu observes ; si tu n’as pas fait un essai, écris « non testé »."},
-        {"type":"lesson","id":"copie","title":"1 - Garder ton projet et ta trace","paragraphs":["Exporte Mon-robot-prudent et garde ce fichier intact. Réimporte-le comme copie, puis nomme celle-ci Ma-mission-robot. Si ton projet manque, demande au professeur une base de reprise : tu retrouveras la règle déjà étudiée, pas un nouveau programme à recopier.","Télécharge la fiche commune ci-dessous et ouvre-la dans ton navigateur pour l’imprimer, ou utilise-la comme modèle sur papier. Une phrase de mission et quelques mots prévu / observé suffisent ; tu peux aussi dicter au professeur. Garde la même fiche et le même projet pour la prochaine leçon. Aucun nom complet n’est demandé."],"downloads":[{"label":"Fiche commune — ma mission et mes essais (HTML imprimable)","path":"resources/robotique/fiche-mission-robot.html","filename":"fiche-mission-robot.html"}]},
+        {"type":"lesson","id":"copie","title":"1 - Garder ton projet et ta trace","paragraphs":["Exporte Mon-robot-prudent et garde ce fichier intact. Réimporte-le comme copie, puis nomme celle-ci Ma-mission-robot. Si ton projet manque, demande au professeur une base de reprise : tu retrouveras la règle déjà étudiée, pas un nouveau programme à recopier.","Télécharge la fiche commune ci-dessous et ouvre-la dans ton navigateur pour l’imprimer, ou utilise-la comme modèle sur papier. Une phrase de mission et quelques mots prévu / observé suffisent ; tu peux aussi dicter au professeur. Garde la même fiche et le même projet pour la prochaine leçon. Aucun nom complet n’est demandé."],"downloads":[{"label":"Fiche commune : ma mission et mes essais (HTML imprimable)","path":"resources/robotique/fiche-mission-robot.html","filename":"fiche-mission-robot.html"}]},
         {"type":"tasks","id":"reprise-seuil","title":"Si tu n’as pas encore essayé un autre seuil","intro":"Fais cette reprise avec le professeur si le changement de réglage a été reporté dans S’arrêter devant un obstacle, ou si son effet reste difficile à expliquer. Si tu l’as déjà essayé et expliqué, passe à la référence.","items":[{"id":"rb09-reprise-papier","text":"Sur papier, garde une mesure de 23 et prévois l’action avec seuil = 20, puis seuil = 25. Explique quel nombre est choisi et lequel vient du capteur.","hint":"23 < 20 est faux : Avancer ; 23 < 25 est vrai : Arrêter. Seule la limite choisie change dans cet exercice."},{"id":"rb09-reprise-essai","text":"Dans ta copie, montre l’initialisation et l’emploi de seuil. Le professeur propose deux valeurs vérifiées : prévois puis compare leur effet depuis la même scène, avec la même puissance. Retrouve ensuite le réglage conservé et explique le résultat avant de choisir ta mission.","hint":"Change seulement la valeur initiale, puis relance depuis le départ vérifié. Les nombres du papier ne sont pas des valeurs de simulation garanties. Si cet essai reste impossible, note non testé et reprends-le avec le professeur avant le choix personnel."}]},
         {"type":"tasks","id":"guide","title":"Observer la référence avant de choisir","intro":"Le professeur montre Reference-arret dans la scène A : départ éloigné, obstacle devant, avance puis arrêt avant contact. Il conserve son réglage.","items":[{"id":"rb09-reference","text":"Repère l’espace qui reste devant l’obstacle à l’arrêt : c’est la marge. Explique ce que voudrait dire une marge plus grande ou plus petite.","hint":"Plus grande : le robot reste plus loin de l’obstacle. Plus petite : il s’arrête plus près, mais toujours avant contact. Il ne s’agit pas de rouler plus vite."},{"id":"rb09-regle","text":"Dans ton projet intact, montre la mesure, la question et les deux actions possibles. Où se trouve le réglage choisi ?","hint":"Le capteur donne la distance. seuil reçoit notre valeur au démarrage et sert à la comparaison. Ne supprime aucun bloc pour faire cette lecture."}]},
         {"type":"lesson","id":"choisir","title":"2 - Une mission que l’on peut observer","paragraphs":["Ton robot peut être livreur, explorateur ou robot de secours. Ce thème donne une raison à ton choix ; il n’ajoute pas de livraison, de labyrinthe ou de nouvelle commande.","Choisis une mission disponible après vérification du professeur : prudente, avancer puis s’arrêter avec une marge plus grande que la référence ; approche, avancer puis s’arrêter avec une marge plus petite, toujours avant contact.","Approche n’est pas une course vers l’obstacle ni une recherche du plus petit seuil possible. Utilise seulement les valeurs vérifiées pour ta mission. Si le robot touche l’obstacle ou réagit autrement que prévu, arrête et vérifie avec le professeur avant de recommencer.","Écris une phrase : Mon robot est un… ; sa mission est de s’arrêter avec une marge… Explique ton choix à l’oral. Choisis une valeur de seuil autorisée et prévois son effet avant un indice. Tu peux garder une valeur pertinente de ton projet précédent : changer un nombre n’est pas obligatoire.","Montre la valeur donnée à seuil avant la boucle d’attente de A et son emploi à droite de < dans la seconde boucle. Garde puissance, préparation, règle et courte pause identiques. Le nombre ne modifie pas la mesure reçue et ne change pas tout seul pendant l’avance."]},
@@ -499,7 +499,7 @@ window.CODECRAFT_DATA = {
       "teacherGuide":{
         "objective":"Passer d’un réglage guidé à un objectif personnel, une prévision et un premier résultat, sans nouvelle mécanique.",
         "entryDiagnosis":["Faire pointer mesure, comparaison, deux actions et seuil dans le projet intact.","Demander si l’essai de changement guidé RB08 a été réalisé et expliqué. Sinon, utiliser reprise-seuil avant la référence et le choix personnel : papier, pointage, puis essai accompagné sur deux valeurs vérifiées. Une prévision sur papier seule ne valide pas cet essai.","Distinguer aide de manipulation et besoin de reprise conceptuelle ; aucun acquis automatique."],
-        "preparation":["Recette pratique incomplète : essais du 10 octobre documentés, R10–R12/R14 et R15 restent partiels. Approche à 15 : départ 26 puis arrêt 13 devant chaque rectangle, proche 7 immobile après A confirmé. Prudente à 25 : autre rectangle depuis 26, arrêt 22–23 ; proche 7 immobile après relâchement de A confirmé par l’utilisateur. Référence 20 : arrêt 18 avec attente de A ; 17 provient d’une version antérieure. Valeurs ponctuelles, aucune plage ni distance exacte garantie.","Préparer Reference-arret à partir du fixe RB08, avec limite conservée ; noter scène A, orientation, obstacle, puissance et mesures. Montrer son arrêt avant le choix.","Confirmer la comparaison des missions à conditions égales avant le cours ; ne pas inventer une plage numérique ni proposer approche si elle échoue dans la scène utilisée.","Prévoir la fiche commune et une base de reprise variable RB08 si le projet manque. Ce programme complet reprend un prérequis, il n’est pas un départ sans solution.","Les copies professeur 15/25 ont été exportées et réimportées avec réglages retrouvés. Accès élève et téléchargement/ouverture locale/impression de la fiche restent à vérifier ; pas de compte ou partage public imposé."],
+        "preparation":["Recette pratique incomplète : essais du 10 octobre documentés, R10-R12/R14 et R15 restent partiels. Approche à 15 : départ 26 puis arrêt 13 devant chaque rectangle, proche 7 immobile après A confirmé. Prudente à 25 : autre rectangle depuis 26, arrêt 22-23 ; proche 7 immobile après relâchement de A confirmé par l’utilisateur. Référence 20 : arrêt 18 avec attente de A ; 17 provient d’une version antérieure. Valeurs ponctuelles, aucune plage ni distance exacte garantie.","Préparer Reference-arret à partir du fixe RB08, avec limite conservée ; noter scène A, orientation, obstacle, puissance et mesures. Montrer son arrêt avant le choix.","Confirmer la comparaison des missions à conditions égales avant le cours ; ne pas inventer une plage numérique ni proposer approche si elle échoue dans la scène utilisée.","Prévoir la fiche commune et une base de reprise variable RB08 si le projet manque. Ce programme complet reprend un prérequis, il n’est pas un départ sans solution.","Les copies professeur 15/25 ont été exportées et réimportées avec réglages retrouvés. Accès élève et téléchargement/ouverture locale/impression de la fiche restent à vérifier ; pas de compte ou partage public imposé."],
         "why":"Le choix porte sur une contrainte observable et sa justification, pas sur l’habillage du robot. Un programme identique peut être pertinent si l’élève explique son choix et le vérifie.",
         "discoverySpeech":["Voici la marge laissée par notre référence. Quel objectif aimerais-tu donner à ton robot ?","Tu choisiras ton réglage dans les possibilités vérifiées, puis tu prévois avant d’essayer. Nous ne cherchons jamais le contact."],
         "example":{"target":{"moduleId":"robotique-mission","blockId":"guide"},"comments":["Démonstration courte de A avant mission ; ne pas donner le sens du changement ni la valeur solution.","La comparaison exige mêmes conditions. Une capture de programme n’atteste pas la scène." ]},
@@ -509,7 +509,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"Le thème ne donne aucun objectif observable","helps":["Faire montrer la marge de référence.","Demander ce qui doit être différent à l’arrêt.","Proposer les deux contraintes vérifiées.","Faire reformuler sans ajouter de mécanique." ]},{"symptom":"L’arrêt semble différent mais le départ a changé","helps":["Arrêter la simulation.","Comparer captures et orientation.","Rétablir les conditions vérifiées sans changer le seuil.","Retester et limiter la conclusion aux observations comparables." ]}],
         "notes":"Premier essai A en RB09, confirmation et B/C en RB10. Pas de panne imposée, seuil minimal, radio, ligne, recul ou navigation. Le réglage virtuel n’est pas une sécurité matérielle.",
         "quickConductor":["Retrouver les repères et préserver le projet.","Si le changement guidé RB08 manque ou reste fragile, faire la reprise ciblée avant le choix personnel.","Montrer la référence A puis laisser choisir la mission.","Faire justifier et prévoir le seul réglage.","Observer un premier A, conserver trace et export."],
-        "references":[{"title":"Fiche commune imprimable","url":"resources/robotique/fiche-mission-robot.html"},{"title":"Base de reprise professeur — règle avec seuil (.hex)","url":"resources/robotique/makecode/RB08-Robot-prudent-reference.hex"},{"title":"Référence fixe professeur (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"},{"title":"Scènes de mission — préparation et réserves","url":"docs/integration-robotique-missions.md"},{"title":"Protocole R15","url":"docs/protocoles-verifications-manuelles.md"}]
+        "references":[{"title":"Fiche commune imprimable","url":"resources/robotique/fiche-mission-robot.html"},{"title":"Base de reprise professeur : règle avec seuil (.hex)","url":"resources/robotique/makecode/RB08-Robot-prudent-reference.hex"},{"title":"Référence fixe professeur (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"},{"title":"Scènes de mission : préparation et réserves","url":"docs/integration-robotique-missions.md"},{"title":"Protocole R15","url":"docs/protocoles-verifications-manuelles.md"}]
       }
     },
     "robotique-tests": {
@@ -524,7 +524,7 @@ window.CODECRAFT_DATA = {
         {"type":"callout","id":"recette","title":"Prévoir, essayer, comparer","text":"Prépare chaque situation avec le professeur et lis la mesure avant de lancer. Annonce ce que fera ton robot, puis compare avec le résultat. Si tu ne peux pas lancer la simulation, garde ta prévision et note « non testé » à la place du résultat."},
         {"type":"lesson","id":"situations","title":"1 - Trois situations à prévoir","paragraphs":["A : même départ éloigné, même orientation et même obstacle que pour le premier essai et Reference-arret. Garde ton réglage. Retrouve ta prévision et ton premier résultat avant de confirmer ; le professeur remontre la référence si nécessaire.","B : l’obstacle est proche dès le départ, sans contact. Le professeur t’aide à lire une mesure valide. Compare-la à ton seuil et propose ce que fera le robot avant de lancer.","C : l’obstacle est à une autre position et le départ reste éloigné. Garde ton réglage. Prévois l’action au départ, puis ce qui pourrait changer pendant le déplacement, en expliquant avec la règle.","Dans les données de chaque situation, note quelques mots de prévision avant de regarder le résultat ou l’indice. Une autre position vérifie le comportement ailleurs ; comparer la marge à Reference-arret dans C demanderait une nouvelle comparaison dans cette scène. L’égalité se réfléchit sur le tableau, pas avec un placement au centimètre près."],"downloads":[{"label":"Retrouver la même fiche commune (HTML imprimable)","path":"resources/robotique/fiche-mission-robot.html","filename":"fiche-mission-robot.html"}]},
         {"type":"tasks","id":"guide","title":"Essais accompagnés - confirmer puis varier la scène","intro":"Prévois chaque résultat juste avant l’essai et explique-le avec la mesure et ton seuil. Le professeur prépare les scènes validées. Après relance, place le robot pendant l’attente de A, simulation active et moteurs arrêtés. Lis la mesure puis appuie sur A sans relance intermédiaire ; ne déplace jamais un robot en mouvement.","items":[{"id":"rb10-a","text":"Reprends A depuis le départ connu. Compare au premier résultat et à ta prévision, puis note la confirmation sur la même ligne de fiche.","hint":"Départ, orientation, obstacle, puissance et réglage doivent correspondre. Si le premier résultat manque, note premier essai et ne prétends pas avoir confirmé."},{"id":"rb10-b","text":"À partir de la mesure au départ de B, prévois l’action et la branche choisie. Lance, observe pendant quelques secondes, puis compare le résultat à ta prévision.","hint":"Une mesure valide inférieure à seuil choisit Arrêter ; le robot doit rester immobile. L’arrêt initial technique seul ne suffit pas : explique la règle en fonctionnement."},{"id":"rb10-c","text":"Dans C, prévois ce que fera le robot au départ puis au cours de l’essai. Teste avec le même réglage et note prévu / observé. Explique le rôle d’une nouvelle lecture.","hint":"Depuis la scène éloignée vérifiée, on attend avance puis arrêt avant contact dans la même exécution. Deux lancements séparés ne démontrent pas cette nouvelle décision. Cet essai ne prouve pas que le robot évitera tous les obstacles partout."}]},
-        {"type":"lesson","id":"diagnostic","title":"2 - Comprendre avant de modifier","paragraphs":["Compare prévision et observation. Si elles correspondent, garde ton programme : il n’est pas nécessaire de fabriquer une erreur pour l’améliorer.","Si le résultat surprend, arrête et vérifie avec le professeur la scène, la mesure reçue, la valeur réellement donnée à seuil, les deux branches et une éventuelle commande moteur concurrente. Une mesure absente ou étrange ne signifie pas automatiquement voie libre.","Choisis une seule correction pertinente et prévois son effet. Reteste ; si tu changes le programme ou son réglage, reprends A/B/C avant de conclure. Les valeurs restent parmi celles vérifiées pour la mission. Ne réduis pas le seuil au hasard pour te rapprocher du contact." ]},
+        {"type":"lesson","id":"diagnostic","title":"2 - Comprendre avant de modifier","paragraphs":["Compare ta prévision au résultat observé et explique les écarts éventuels.","Si le résultat surprend, arrête et vérifie avec le professeur la scène, la mesure reçue, la valeur réellement donnée à seuil, les deux branches et une éventuelle commande moteur concurrente. Une mesure absente ou étrange ne signifie pas automatiquement voie libre.","Choisis une seule correction pertinente et prévois son effet. Reteste ; si tu changes le programme ou son réglage, reprends A/B/C avant de conclure. Les valeurs restent parmi celles vérifiées pour la mission. Ne réduis pas le seuil au hasard pour te rapprocher du contact." ]},
         {"type":"tasks","id":"autonomie","title":"À toi - montrer ta mission et ses preuves","items":[{"id":"rb10-expliquer","text":"Présente le capteur, la question et les deux actions commandées aux moteurs. Explique ton choix conservé ou modifié et montre un essai qui soutient ta conclusion.","hint":"Le capteur fournit l’entrée ; les moteurs sont les sorties commandées. Avancer et Arrêter sont les deux actions possibles. Tu peux parler ; cite aussi les aides reçues et ce qui était préparé."},{"id":"rb10-limites","text":"Explique ce que tes essais montrent et ce qui reste non vérifié. Si un essai a échoué ou manque, indique-le avec une piste précise.","hint":"A compare une marge ; B vérifie l’arrêt au départ proche ; C vérifie un autre placement. Un résultat expliqué n’est pas automatiquement une réussite technique."}]},
         {"type":"callout","id":"conserver","title":"Retrouver ton projet après le parcours","text":"Arrête la simulation, exporte ton projet final et garde l’original. Réimporte le fichier et retrouve nom, valeur et règle, avec aide si besoin. Conserve la fiche et les essais à reprendre. Ton robot peut repartir si la distance devient grande : ce n’est pas un arrêt mémorisé ni une sécurité sur matériel réel."}
       ],
@@ -532,7 +532,7 @@ window.CODECRAFT_DATA = {
       "teacherGuide":{
         "objective":"Faire conduire et expliquer des essais comparables ; corriger seulement si nécessaire et distinguer preuve, réussite technique et acquisition.",
         "entryDiagnosis":["Retrouver copie, mission, réglage et premier A. Si absent, faire le premier essai avant de parler de confirmation.","Demander l’attendu de chaque situation avant la manipulation ; une prévision erronée reste une information utile."],
-        "preparation":["Recette pratique incomplète : R15 reste partiel. Approche 15 : deux cibles depuis 26, arrêt 13 ; proche 7 immobile après A confirmé. Prudente 25 : autre cible depuis 26, arrêt 22–23 ; proche 7 immobile après relâchement de A confirmé par l’utilisateur (capture bf3b1891). Copies 15/25 réimportées. Comparaisons équitables, répétitions, accès élève et fiche imprimée restent à vérifier.","A identique à RB09 ; B doit demander arrêt pour toutes les valeurs autorisées, C permettre avance puis arrêt. Après relance, placer pendant l’attente de A, simulation active et moteurs arrêtés ; relever la mesure puis appuyer sur A sans relance intermédiaire.","Garder référence fixe et puissance, trace commune et export de reprise ; ni nouveau programme par scène ni nouvelle variable.","Conserver les preuves techniques dans la fiche professeur des scènes ; ne pas surcharger la fiche élève. Ne pas transformer les arrêts observés en distances exactes garanties ni redemander les premiers essais approche déjà réalisés."],
+        "preparation":["Recette pratique incomplète : R15 reste partiel. Approche 15 : deux cibles depuis 26, arrêt 13 ; proche 7 immobile après A confirmé. Prudente 25 : autre cible depuis 26, arrêt 22-23 ; proche 7 immobile après relâchement de A confirmé par l’utilisateur (capture bf3b1891). Copies 15/25 réimportées. Comparaisons équitables, répétitions, accès élève et fiche imprimée restent à vérifier.","A identique à RB09 ; B doit demander arrêt pour toutes les valeurs autorisées, C permettre avance puis arrêt. Après relance, placer pendant l’attente de A, simulation active et moteurs arrêtés ; relever la mesure puis appuyer sur A sans relance intermédiaire.","Garder référence fixe et puissance, trace commune et export de reprise ; ni nouveau programme par scène ni nouvelle variable.","Conserver les preuves techniques dans la fiche professeur des scènes ; ne pas surcharger la fiche élève. Ne pas transformer les arrêts observés en distances exactes garanties ni redemander les premiers essais approche déjà réalisés."],
         "why":"Le test apprend à limiter une conclusion à ses preuves. C élargit la vérification sans prouver une navigation générale ; un code conforme n’a pas à être changé pour être considéré comme travaillé.",
         "discoverySpeech":["Tu as un premier résultat. Vérifions qu’il se retrouve, puis changeons la situation sans changer ton réglage.","Un résultat inattendu nous invite à vérifier avant de modifier. Dire ce qui manque est plus juste que prétendre avoir tout testé."],
         "example":{"target":{"moduleId":"robotique-tests","blockId":"situations"},"comments":["Confirmation A puis prévision personnelle juste avant B/C ; recueillir mesure, seuil et action proposée avant d’ouvrir les indices. Attendus professeur : B arrêt et immobilité ; C avance puis arrêt avant contact. Conserver la trace RB09.","A/C : transition dans la même exécution. La console relit séparément de la condition, pas trace atomique mesure/action.","Une capture seule ne prouve pas la répétabilité ou l’immobilité maintenue." ]},
@@ -542,7 +542,7 @@ window.CODECRAFT_DATA = {
         "commonErrors":[{"symptom":"L’élève conclut pour toutes les scènes à partir de A","helps":["Faire nommer le résultat de A.","Demander ce que change B.","Prévoir C avant de lancer.","Reformuler la conclusion avec ses limites." ]},{"symptom":"Plusieurs réglages changent après un résultat inattendu","helps":["Arrêter et préserver la version.","Vérifier d’abord scène et mesure.","Identifier une seule correction justifiée.","Prévoir, retester puis reprendre A/B/C avant conclusion." ]}],
         "notes":"Observer l’explication individuelle, pas seulement une démonstration collective. Aucun acquis automatique, partage public, vidéo ou nom complet demandé. Réserve pratique maintenue tant que les scènes ne sont pas validées.",
         "quickConductor":["Retrouver premier résultat et copie.","Confirmer A puis prévoir et essayer B/C.","Diagnostiquer/corriger si besoin, reprendre les essais après changement.","Faire présenter preuve et limites, exporter puis réimporter."],
-        "references":[{"title":"Fiche commune imprimable","url":"resources/robotique/fiche-mission-robot.html"},{"title":"Scènes de mission — préparation et réserves","url":"docs/integration-robotique-missions.md"},{"title":"Protocoles R15 et observation R13","url":"docs/protocoles-verifications-manuelles.md"},{"title":"Référence fixe professeur (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"}]
+        "references":[{"title":"Fiche commune imprimable","url":"resources/robotique/fiche-mission-robot.html"},{"title":"Scènes de mission : préparation et réserves","url":"docs/integration-robotique-missions.md"},{"title":"Protocoles R15 et observation R13","url":"docs/protocoles-verifications-manuelles.md"},{"title":"Référence fixe professeur (.hex)","url":"resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"}]
       }
     },
     "gdevelop-projet": {
@@ -551,12 +551,12 @@ window.CODECRAFT_DATA = {
       "type": "lesson",
       "theme": "fondations",
       "objective": "Placer un personnage, essayer la scène et retrouver son projet après fermeture.",
-      "tool": {"label":"Télécharger GDevelop — site officiel","url":"https://gdevelop.io/download"},
+      "tool": {"label":"Télécharger GDevelop : site officiel","url":"https://gdevelop.io/download"},
       "skillIds": ["gdevelop.workspace"],
       "prerequisiteSkills": [],
       "prerequisitesInContent": true,
       "blocks": [
-        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Prépare une petite pièce à explorer : aujourd’hui, tu y places le personnage et tu retrouves ton travail. Il reste immobile pour cette leçon. Garde CodeCraft ouvert à côté de GDevelop, en français. Le professeur peut aider au lancement et aux fichiers ; aucun compte ni publication ne sont nécessaires pour ce projet local."},
+        {"type":"callout","id":"preparer","title":"Avant de commencer","text":"Ouvre GDevelop en français et garde CodeCraft à côté. Aujourd’hui, tu vas placer un personnage dans une petite pièce, puis enregistrer ton projet."},
         {"type":"lesson","id":"kit","title":"1 - Ton matériel de départ","paragraphs": [
           "Télécharge puis extrais le kit dans ton dossier de travail, avec le professeur si nécessaire. Appelle le dossier mon-premier-jeu. Ne travaille pas dans le ZIP : les images doivent être accessibles dans le dossier extrait.",
           "Le kit fournit le personnage et les futurs objets à trouver, pas un jeu terminé. Garde le dossier images avec ton projet ; la notice explique les fichiers si tu en as besoin."
@@ -596,7 +596,7 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{"symptom":"Personnage existe mais l’aperçu reste vide","helps":["Demander où le pion devrait apparaître.","Comparer la liste des objets et la scène.","Vérifier le cadre visible et le placement d’un exemplaire.","Montrer le glisser-déposer, puis laisser l’élève placer et relancer."]},{"symptom":"L’image manque après réouverture","helps":["Faire retrouver le chemin de jeu.json.","Faire chercher le dossier images à côté.","Comparer le dossier utilisé à l’extraction initiale du kit.","Réimporter personnage.png depuis le bon dossier, enregistrer et retester la réouverture."]},{"symptom":"L’ancienne position reste visible","helps":["Demander ce qui a été modifié et dans quelle fenêtre.","Fermer puis relancer l’aperçu.","Vérifier la sauvegarde et le chemin du fichier rouvert.","Déplacer ensemble un pion, enregistrer puis faire refaire seul le cycle complet."]}],
         "notes": "Distinguer aide fichiers/lecture/interface, réalisation avec modèle et décision autonome. Une réouverture probante suffit ici, pas plusieurs cycles identiques. La suite GD04 ajoute le déplacement fourni par un comportement ; ne pas le préinstaller sans explication dans cette première leçon.",
         "quickConductor": ["Préparer/accompagner le dossier sans visite exhaustive.","Placer un personnage, prévoir et regarder l’aperçu.","Changer sa place, prévoir et comparer.","Laisser choisir le départ, sauvegarder et effectuer une réouverture probante."],
-        "references": [{"title":"GDevelop — interface","url":"https://wiki.gdevelop.io/gdevelop5/interface/"},{"title":"GDevelop — Sprite","url":"https://wiki.gdevelop.io/gdevelop5/objects/sprite/"}]
+        "references": [{"title":"GDevelop : interface","url":"https://wiki.gdevelop.io/gdevelop5/interface/"},{"title":"GDevelop : Sprite","url":"https://wiki.gdevelop.io/gdevelop5/objects/sprite/"}]
       }
     },
     "gdevelop-deplacement": {
@@ -654,7 +654,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes":"Suivi manuel et aides relevées séparément : pointer le comportement, prévoir, adapter puis expliquer le trajet. Une case cochée ou une capture du site ne valide ni le moteur ni un acquis. La recette moteur reste en attente. Garder source et images ; aucune reconstruction complète ou répétition de sauvegardes pour remplir la leçon.",
         "quickConductor":["Retrouver le projet et accompagner l’ajout du comportement.","Prévoir puis piloter quatre directions avant les paramètres détaillés.","Comparer deux vitesses testées, adapter un réglage et expliquer le résultat.","Choisir centre → zone → centre, retester le choix et vérifier une réouverture."],
-        "references":[{"title":"GDevelop — comportement de déplacement vu du dessus","url":"https://wiki.gdevelop.io/gdevelop5/behaviors/topdown/"},{"title":"GDevelop — aperçu","url":"https://wiki.gdevelop.io/gdevelop5/interface/preview/"}]
+        "references":[{"title":"GDevelop : comportement de déplacement vu du dessus","url":"https://wiki.gdevelop.io/gdevelop5/behaviors/topdown/"},{"title":"GDevelop : aperçu","url":"https://wiki.gdevelop.io/gdevelop5/interface/preview/"}]
       }
     },
     "gdevelop-objets": {
@@ -710,7 +710,7 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{"symptom":"Trois objets différents ont été créés","helps":["Demander de compter les noms dans la liste.","Comparer la liste au schéma objet/instances.","Montrer qu’un objet peut être glissé plusieurs fois.","Sur une copie sauvegardée, reconstruire trois instances de Jeton ; faire refaire un placement seul."]},{"symptom":"Tous les jetons se déplacent ou le sens est mal prévu","helps":["Demander combien d’instances sont sélectionnées.","Isoler une sélection et ne changer qu’un nombre.","Reprendre le schéma X vers la droite, Y vers le bas.","Faire X = 400 puis 440 sur une seule instance, tester ; ensuite faire varier Y et laisser expliquer."]},{"symptom":"L’image alternative ne remplace pas le dessin","helps":["Comparer les positions et les dessins, sans tout modifier.","Vérifier l’objet édité : Jeton, pas Personnage.","Compter animations et images : une seule de chaque.","Remplacer l’unique image existante par jeton-alternatif.png, puis relancer et comparer les trois instances."]}],
         "notes": "Observer prévision, explication du lieu où agir et transfert, pas fidélité à des coordonnées. Distinguer aide de sélection et confusion objet/instance. Le déplacement du personnage peut être conservé s’il a été étudié, sans être ajouté secrètement.",
         "quickConductor": ["Compter une définition et trois exemplaires.","Prévoir puis comparer place individuelle et dessin commun.","Compléter une modification puis tester un X et un Y.","Choisir quatre placements et modifier une instance sans déplacer les autres."],
-        "references": [{"title":"GDevelop — objets et instances","url":"https://wiki.gdevelop.io/gdevelop5/objects/"},{"title":"GDevelop — concepts de base","url":"https://wiki.gdevelop.io/gdevelop5/tutorials/basic-game-making-concepts/"}]
+        "references": [{"title":"GDevelop : objets et instances","url":"https://wiki.gdevelop.io/gdevelop5/objects/"},{"title":"GDevelop : concepts de base","url":"https://wiki.gdevelop.io/gdevelop5/tutorials/basic-game-making-concepts/"}]
       }
     },
     "gdevelop-evenements": {
@@ -741,7 +741,7 @@ window.CODECRAFT_DATA = {
           {"id":"gd03-deux-regles","text":"Sur le support partiel du professeur, les conditions utilisent F : F maintenue → Afficher Message ; F non maintenue → action manquante. Choisis cette action, explique-la puis reconstruis et teste la paire complète dans une copie.","hint":"Pour que l’indice soit invisible sans appui, l’action manquante doit masquer Message. Les deux conditions doivent porter sur F et rester opposées. Un schéma partiel suffit si aucun projet testé n’est disponible."},
           {"id":"gd03-test","text":"Avec la paire complète restaurée, prévois puis teste sans appui, pendant un maintien et après relâchement, deux fois. Montre la règle responsable de chaque résultat. Enregistre ton projet de travail sans remplacer l’original par un essai incomplet.","hint":"Clique dans l’aperçu pour que le clavier y soit reçu. Au repos le message doit être masqué, pendant l’appui visible, après le relâchement masqué."}
         ] },
-        {"type":"tasks","id":"autonomie","title":"Projet d’étape 1 — Ma scène explorable","items": [
+        {"type":"tasks","id":"autonomie","title":"Projet d’étape 1 : Ma scène explorable","items": [
           {"id":"gd03-transfert","text":"Reprends ton projet, sans devoir repartir de zéro. Choisis un arrangement personnel avec un personnage pilotable et au moins trois exemplaires d’un même objet. Choisis un indice pour cette scène et une touche simple qui n’est pas utilisée ailleurs, distincte des flèches. L’indice doit être visible seulement pendant son maintien. Prévois les trois états avant de modifier. Aucun mur bloquant, ramassage, score ni victoire n’est demandé.","hint":"Réutilise le déplacement étudié et les objets déjà créés. Change le contenu de Message et la commande dans les deux conditions. Garde l’inversion sur le test opposé. Les actions doivent encore correspondre à ta prévision. Tu peux revoir une leçon ou demander une aide de manipulation."},
           {"id":"gd03-ancienne","text":"Teste le déplacement et l’ancienne commande de l’indice : elle ne doit plus agir. Teste ta nouvelle touche au repos, pendant son maintien, après relâchement puis lors d’un second appui. Explique les deux règles à quelqu’un. Choisis ensuite une autre touche libre, prévois le résultat, modifie les deux conditions et refais les essais. Enregistre, ferme et rouvre ton projet depuis son dossier ; relance l’aperçu pour vérifier que personnages, objets et règles sont conservés.","hint":"Lis les noms de touche dans les deux conditions : ils doivent être identiques, l’une maintenue et l’autre inversée. Vérifie aussi que l’aperçu reçoit le clavier. Garde les images sources dans le dossier du projet. Si un essai échoue, cherche la cause avec une aide : ce n’est pas une raison pour tout recommencer."}
         ] },
@@ -768,7 +768,7 @@ window.CODECRAFT_DATA = {
         "commonErrors": [{"symptom":"Le clavier semble ne rien faire","helps":["Demander quelle fenêtre reçoit le clavier.","Cliquer dans l’aperçu puis maintenir la touche.","Vérifier le nom de la touche et le test maintenu, non la transition.","Réduire à la paire complète du schéma, vérifier sa condition de maintien et son inversion, puis essayer repos/appui/relâchement ; ne pas tester Afficher seule sur un texte déjà visible."]},{"symptom":"Message reste affiché après relâchement","helps":["Faire lire la conséquence attendue au repos.","Chercher la règle qui demande de masquer.","Vérifier l’inversion et la même touche dans les deux événements.","Construire le deuxième événement avec la condition maintenue inversée et Masquer Message, puis refaire trois états."]},{"symptom":"Message est toujours masqué","helps":["Vérifier qu’il était visible avant les événements.","Lire chaque action et l’objet ciblé.","Chercher un masquage sans condition ou deux règles non opposées.","Réduire aux deux événements du schéma, puis tester sans appui, maintenu et relâché avant tout bonus."]},{"symptom":"La nouvelle touche donne un résultat incohérent","helps":["Demander ce qui a changé dans chaque événement.","Comparer les deux noms de touche.","Vérifier que seule la seconde condition est inversée.","Choisir la même commande inutilisée dans les deux conditions, conserver l’opposition, tester l’ancienne puis la nouvelle commande et laisser expliquer."]}],
         "notes": "Reproduction accompagnée, complément partiel et mission choisie sont trois preuves distinctes. Observer aide reçue, prévision et re-test. Aucun projet moteur préfabriqué testé n’est fourni. Conserver le comportement étudié en GD04 ; choisir une commande d’indice distincte des flèches. Ne pas annoncer de recette moteur. Le mini-projet Ma scène explorable remplace l’ancienne mission autonome : réinvestir GD01, GD04, GD02 et GD03 sans repartir de zéro. Utiliser les cinq repères du bloc bilan-etape pour observer déplacement, définition/instances, trois états de l’indice, modification de commande et réouverture. Demander une prévision avant la modification puis une explication après l’essai ; noter séparément les aides de manipulation et de raisonnement. Une case cochée ou un décor personnalisé ne suffit pas à établir la compréhension. Si nécessaire, reprendre un seul repère et refaire un essai ; ni bonus, murs, collecte, score ou victoire requis.",
         "quickConductor": ["Vérifier l’indice lisible sans prétendre tester le clavier.","Lire, prévoir et essayer la paire complète.","Retirer/restaurer Masquer sur copie, puis compléter le modèle F.","Choisir indice/commande, tester ancienne et nouvelle commandes, sauvegarder une paire cohérente."],
-        "references": [{"title":"GDevelop — référence clavier","url":"https://wiki.gdevelop.io/gdevelop5/all-features/keyboard/reference/"},{"title":"GDevelop — événements","url":"https://wiki.gdevelop.io/gdevelop5/events/"}]
+        "references": [{"title":"GDevelop : référence clavier","url":"https://wiki.gdevelop.io/gdevelop5/all-features/keyboard/reference/"},{"title":"GDevelop : événements","url":"https://wiki.gdevelop.io/gdevelop5/events/"}]
       }
     },
     "python-thonny": {
@@ -778,7 +778,7 @@ window.CODECRAFT_DATA = {
       "tool": { "label": "Télécharger Thonny", "url": "https://thonny.org/" },
       "skillIds": ["python.workspace"], "prerequisiteSkills": [], "prerequisitesInContent": true,
       "blocks": [
-        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Aucune expérience en programmation n’est nécessaire. Ouvre Thonny sur ton ordinateur et garde CodeCraft à côté. Si Thonny n’est pas installé, le bouton Télécharger Thonny mène au site officiel : installe la version adaptée à ton système, puis ouvre l’application. Aucun compte n’est requis." },
+        { "type": "callout", "id": "preparer", "title": "Avant de commencer", "text": "Ouvre Thonny et garde CodeCraft à côté. Pour l’installer, utilise le bouton Télécharger Thonny et choisis la version adaptée à ton ordinateur." },
         { "type": "lesson", "id": "reperes", "title": "1 - Où écrire et où lire ?", "paragraphs": [
           "Dans l’éditeur, en haut, tu écris les instructions du programme. Dans la console, en bas, tu lis les résultats. Si elle est masquée, utilise Affichage → Console.",
           "Exécuter (triangle vert) lance le fichier ouvert dans l’éditeur. Arrêter / redémarrer (carré rouge) interrompt un programme et remet la console à zéro. La disposition peut varier : le schéma sert de repère.",
@@ -1166,7 +1166,7 @@ window.CODECRAFT_DATA = {
         { "type": "tasks", "id": "autonomie", "title": "3 - Construis ton aventure", "intro": "Enregistre le premier essai, puis crée mon_aventure.py pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.", "items": [{ "id": "accueil-pseudo", "text": "Affiche un accueil, demande un pseudo fictif et réutilise-le dans un message. Garde cette réponse distincte du choix de destination.", "hint": "Deux informations nécessitent deux noms de variables différents. print peut afficher un texte et une variable séparés par une virgule." }, { "id": "trois-lieux", "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne if/elif/elif/else : un événement propre à chaque lieu, puis un message utile pour tout autre mot.", "hint": "Trois comparaisons exactes avec == ; else conseille les mots acceptés. Une seule issue doit s’afficher par essai." }, { "id": "fin-commune", "text": "Ajoute un message de fin qui s’affiche après le choix, quelle que soit la destination.", "hint": "Aligne ce print avec if, pas avec les messages des branches." }] },
         { "type": "tasks", "id": "verification", "title": "4 - Vérifie chaque route", "items": [{ "id": "quatre-routes", "text": "Prédis puis teste les trois mots acceptés et un mot inconnu. Note pour chaque essai le mot saisi et l’unique événement attendu. Vérifie aussi le message de fin.", "hint": "Ne teste pas seulement ton lieu préféré. Utilise un nouveau pseudo pour vérifier qu’il vient réellement de la saisie." }, { "id": "casse-espace", "text": "Teste un mot accepté avec une majuscule, puis avec un espace ajouté. Vérifie que le message pour lieu inconnu s’affiche et explique pourquoi.", "hint": "L’égalité textuelle est exacte : on n’utilise ici aucun traitement automatique des réponses." }, { "id": "modifier-route", "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par else. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.", "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de else doit annoncer les choix à jour, sans l’ancien mot." }, { "id": "retrouver-projet", "text": "Enregistre, ferme et rouvre le fichier. Relance-le et explique l’origine de chaque réponse et le choix des branches.", "hint": "Le fichier conserve les instructions, pas les réponses de la précédente exécution. Toutes les variables nécessaires doivent être définies dans le fichier." }] },
         { "type": "tasks", "id": "bonus", "title": "Bonus - une destination supplémentaire", "items": [{ "id": "quatrieme-lieu", "text": "Ajoute une quatrième destination annoncée dans la question et une branche elif avant else. Teste les quatre destinations et un mot inconnu.", "hint": "Garde else en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire." }] },
-        { "type": "callout", "id": "suite", "title": "Pour la suite", "text": "Si tu peux expliquer et modifier les routes avec peu ou pas d’aide, tu as réinvesti les premières décisions. Sinon, reprends une route ou la chaîne. La prochaine étape prévue est de répéter des actions avec des boucles ; elle n’est pas nécessaire pour terminer cette scène." }
+        { "type": "callout", "id": "suite", "title": "Pour la suite", "text": "Explique les routes de ton aventure et essaie de modifier un choix. Ensuite, tu découvriras comment répéter des actions avec des boucles." }
       ],
       "masteryCriteria": ["Créer une scène personnelle avec trois destinations réellement choisies par la saisie.", "Conserver le pseudo et le lieu dans des variables distinctes, sans conversion numérique du lieu.", "Tester les trois routes et une entrée inconnue ; expliquer l’égalité exacte et l’issue exclusive.", "Modifier une destination sans casser les autres et retrouver le programme enregistré.", "Distinguer reproduction, compréhension et transfert pour chaque compétence réinvestie."],
       "consolidation": [{ "moduleId": "python-aventure", "blockId": "guide", "label": "Repartir d’une destination" }, { "moduleId": "python-elif", "blockId": "guide", "label": "Revoir les issues exclusives" }, { "moduleId": "python-saisie", "blockId": "guide", "label": "Revoir la réponse textuelle" }],
@@ -3819,7 +3819,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "notions",
-          "title": "1 — Au lieu de recopier",
+          "title": "1 : Au lieu de recopier",
           "paragraphs": [
             "Une boucle exécute plusieurs fois les blocs placés à l’intérieur. Dans Contrôle (orange), « répéter 10 fois » possède un nombre modifiable et un creux pour y accrocher les actions. Sur nos modèles, « fin du bloc » repère le bas du creux : ce n’est pas un bloc à ajouter dans Scratch.",
             "« Répéter 4 fois » fait quatre tours puis continue après la boucle. Un bloc placé après la boucle se fait une seule fois, pas à chaque tour.",
@@ -3829,7 +3829,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "2 — Quatre petits déplacements",
+          "title": "2 : Quatre petits déplacements",
           "paragraphs": [
             "Le chat du projet neuf regarde à droite : avancer de 20 pas le déplace vers la droite. Nous ne changeons pas sa direction dans cet essai.",
             "Les quatre déplacements de 20 pas donnent au total 80 pas. Tu peux compter quatre mouvements ; une difficulté de calcul ne t’empêche pas de comprendre les quatre tours.",
@@ -3841,7 +3841,7 @@ window.CODECRAFT_DATA = {
             "Prédis combien de déplacements tu verras. Lance au drapeau, observe, puis replace le chat au centre avant de recommencer."
           ],
           "visualScript": {
-            "caption": "2 — Quatre petits déplacements",
+            "caption": "2 : Quatre petits déplacements",
             "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
@@ -3917,7 +3917,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "À toi — change la répétition",
+          "title": "À toi : change la répétition",
           "intro": "Change une seule chose et prédis avant de tester.",
           "items": [
             {
@@ -3945,7 +3945,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "continue",
-          "title": "3 — Répéter jusqu’à l’arrêt",
+          "title": "3 : Répéter jusqu’à l’arrêt",
           "paragraphs": [
             "Un costume est une apparence du même sprite. Dans l’onglet Costumes, le chat de départ possède deux costumes : ce modèle passe de l’un à l’autre, puis recommence.",
             "Sans pause, les changements sont trop rapides pour être bien observés. Attendre 0.5 secondes rend chaque apparence visible. La pause ne termine pas la boucle."
@@ -3956,7 +3956,7 @@ window.CODECRAFT_DATA = {
             "Lance : les costumes alternent. Clique sur le bouton rouge pour arrêter."
           ],
           "visualScript": {
-            "caption": "3 — Répéter jusqu’à l’arrêt",
+            "caption": "3 : Répéter jusqu’à l’arrêt",
             "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
@@ -4008,7 +4008,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "Sans modèle — choisis la bonne boucle",
+          "title": "Sans modèle : choisis la bonne boucle",
           "intro": "Sauvegarde ton animation actuelle, puis choisis Fichier → Nouveau. Dans ce projet neuf avec le chat, crée une petite animation avec les blocs connus : aucune ancienne boucle ne tournera en même temps.",
           "items": [
             {
@@ -4036,7 +4036,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — deux réglages, deux effets",
+          "title": "Bonus : deux réglages, deux effets",
           "intro": "Utilise seulement les notions déjà expliquées.",
           "items": [
             {
@@ -4182,11 +4182,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "Scratch — idées et tutoriels",
+            "title": "Scratch : idées et tutoriels",
             "url": "https://scratch.mit.edu/ideas"
           },
           {
-            "title": "Scratch — projets de départ officiels",
+            "title": "Scratch : projets de départ officiels",
             "url": "https://scratch.mit.edu/help/starter_projects/"
           }
         ]
@@ -4225,7 +4225,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "preparer",
-          "title": "1 — Un chat et une cible",
+          "title": "1 : Un chat et une cible",
           "paragraphs": [
         "Sauvegarde ton projet actuel avant de commencer. Ouvre ensuite le projet de départ proposé au-dessus : le chat et la souris nommée Cible sont prêts, sans scripts. Tu peux aussi choisir Fichier → Nouveau pour ne pas mélanger les anciennes commandes, sans supprimer ton travail précédent. Le chat reste le joueur.",
             "Avec le projet de départ, garde la souris Cible : n’ajoute pas de deuxième cible. Si tu pars d’un projet vide, clique en bas à droite sur Choisir un sprite et prends Ball dans la bibliothèque. Sélectionne sa miniature puis, dans le champ du nom sous la scène, renomme-le Cible.",
@@ -4246,7 +4246,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "condition",
-          "title": "2 — Une question qui peut être vraie ou fausse",
+          "title": "2 : Une question qui peut être vraie ou fausse",
           "paragraphs": [
             "Dans Contrôle (orange), « si … alors » possède un emplacement de condition et un creux pour les actions. Si la condition est vraie, les actions à l’intérieur s’exécutent. Si elle est fausse, on les saute et on continue la pile.",
             "Dans Capteurs (bleu clair), « touche espace pressée ? » pose une question. Son menu permet de choisir flèche droite ou gauche. Place ce bloc dans l’emplacement de condition du si.",
@@ -4258,7 +4258,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "3 — Maintenir une touche, toucher la cible",
+          "title": "3 : Maintenir une touche, toucher la cible",
           "paragraphs": [
             "Les tests droite et gauche sont deux si séparés, l’un après l’autre. Appuyer sur les deux touches ensemble peut annuler les déplacements ; teste d’abord une touche à la fois.",
             "La pause de 0.03 seconde est dans la boucle, après les si ; elle ralentit la vérification. Les touches doivent rester accessibles au clavier : clique d’abord sur la scène.",
@@ -4271,7 +4271,7 @@ window.CODECRAFT_DATA = {
             "Clique sur la scène. Maintiens droite pour rejoindre la cible : le chat parle puis revient à gauche. Teste aussi gauche ; le bouton rouge arrête l’essai."
           ],
           "visualScript": {
-            "caption": "3 — Maintenir une touche, toucher la cible",
+            "caption": "3 : Maintenir une touche, toucher la cible",
             "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
@@ -4445,7 +4445,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "À toi — observer vrai et faux",
+          "title": "À toi : observer vrai et faux",
           "intro": "Avant le test, dis si la condition devrait être vraie.",
           "items": [
             {
@@ -4478,7 +4478,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "Sans modèle — change une règle",
+          "title": "Sans modèle : change une règle",
           "intro": "Tu peux garder ton programme ; fais les choix toi-même.",
           "items": [
             {
@@ -4506,7 +4506,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — ajouter haut et bas",
+          "title": "Bonus : ajouter haut et bas",
           "intro": "Si X/Y et les si sont compris.",
           "items": [
             {
@@ -4673,11 +4673,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "Scratch — idées et tutoriels",
+            "title": "Scratch : idées et tutoriels",
             "url": "https://scratch.mit.edu/ideas"
           },
           {
-            "title": "Scratch — projets de départ officiels",
+            "title": "Scratch : projets de départ officiels",
             "url": "https://scratch.mit.edu/help/starter_projects/"
           }
         ]
@@ -4694,16 +4694,16 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.loops", "expectation": "Utiliser répéter un nombre de fois ; sinon reprendre Répéter des actions." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "preparer", "title": "1 — Un modèle, plusieurs copies", "paragraphs": [
+        { "type": "lesson", "id": "preparer", "title": "1 : Un modèle, plusieurs copies", "paragraphs": [
           "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau. Dans ce projet neuf, supprime le chat, puis choisis le sprite Star dans la bibliothèque. Dans le champ Taille sous la scène, mets 40 pour que plusieurs étoiles tiennent côte à côte. Tout le code suivant appartient à Star.",
           "Dupliquer un sprite crée un autre personnage dans la liste. Un clone est différent : c’est une copie temporaire créée pendant l’exécution. Il n’ajoute pas une nouvelle vignette dans la liste des sprites et utilise le code du modèle.",
           "Dans Apparence (violet), cacher rend le modèle invisible, sans arrêter son code ; montrer rend une copie visible. Dans Contrôle (orange), créer un clone de moi-même copie le sprite à sa position actuelle. Le clone hérite aussi de sa visibilité : comme notre modèle sera caché, il faudra montrer chaque clone.",
           "Quand je commence comme un clone lance une pile uniquement pour la nouvelle copie. Supprimer ce clone la détruit, contrairement à cacher. Le modèle original reste disponible pour fabriquer d’autres copies."
         ] },
-        { "type": "lesson", "id": "exemple", "title": "2 — Trois étoiles temporaires",
+        { "type": "lesson", "id": "exemple", "title": "2 : Trois étoiles temporaires",
           "shortSteps": ["Sur Star, construis la pile de drapeau : cacher, aller à (-120, 0), puis répéter 3 fois la création et le déplacement de 80.", "À côté, construis quand je commence comme un clone → montrer → attendre 2 secondes → supprimer ce clone.", "Lance le drapeau : trois étoiles apparaissent à -120, -40 et 40, puis disparaissent après environ deux secondes."],
           "paragraphs": ["Dans la boucle du modèle, crée d’abord la copie, puis déplace le modèle. Inverser ces deux actions change les positions obtenues.", "Les copies ne suivent pas les déplacements suivants du modèle : chacune garde sa propre position. À la fin de la boucle, le modèle est à 120 mais reste invisible.", "Les deux piles appartiennent au même sprite Star. Ne mets pas créer un clone dans la pile qui démarre les clones : chacun fabriquerait de nouvelles copies.", "Relancer le drapeau supprime les anciens clones avant de recommencer. Sauvegarde ton essai depuis Fichier ou avec ton compte personnel."],
-          "visualScript": { "caption": "Dans Star — une fabrique et une vie de copie", "note": "Le modèle caché crée trois copies. Chaque copie lance sa propre pile orange.", "stacks": [
+          "visualScript": { "caption": "Dans Star : une fabrique et une vie de copie", "note": "Le modèle caché crée trois copies. Chaque copie lance sa propre pile orange.", "stacks": [
             { "caption": "Le modèle original", "blocks": [
               { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Démarrer une nouvelle série." },
               { "category": "looks", "label": "Apparence", "parts": ["cacher"], "explanation": "Le modèle travaille sans être affiché." },
@@ -4720,20 +4720,20 @@ window.CODECRAFT_DATA = {
               { "category": "control", "label": "Contrôle", "parts": ["supprimer ce clone"], "explanation": "Retirer cette copie, pas le modèle." }
             ] }
           ] },
-          "code": "Dans Star — modèle :\nquand le drapeau vert est cliqué\n  cacher\n  aller à x: -120 y: 0\n  répéter 3 fois\n    créer un clone de moi-même\n    ajouter 80 à x\n\nDans Star — copies :\nquand je commence comme un clone\n  montrer\n  attendre 2 secondes\n  supprimer ce clone"
+          "code": "Dans Star : modèle :\nquand le drapeau vert est cliqué\n  cacher\n  aller à x: -120 y: 0\n  répéter 3 fois\n    créer un clone de moi-même\n    ajouter 80 à x\n\nDans Star : copies :\nquand je commence comme un clone\n  montrer\n  attendre 2 secondes\n  supprimer ce clone"
         },
         { "type": "tasks", "id": "guide", "title": "Observer avant de modifier", "items": [
           { "id": "compter", "text": "Lance : compte trois étoiles visibles, mais une seule vignette de sprite sous la scène.", "hint": "Le modèle est caché ; les trois étoiles visibles sont ses clones." },
           { "id": "position", "text": "Explique pourquoi la deuxième étoile est en x = -40. Montre le bloc qui prépare sa position.", "hint": "Le modèle passe de -120 à -40 avec ajouter 80 à x, après la première création." },
           { "id": "disparition", "text": "Dans la pile des clones, change la pause à 4 secondes. Prédis ce qui change, puis relance.", "hint": "La quantité et les positions ne changent pas. Seule la durée de vie change." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — quatre copies bien espacées", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle : quatre copies bien espacées", "items": [
           { "id": "quatre", "text": "Pars de ton essai : fais quatre copies, depuis -120, avec un déplacement de 60 entre les créations. Essaie avant de rouvrir le modèle.", "hint": "Change la répétition à 4 et le déplacement à 60 dans le modèle, pas dans la pile des clones." },
           { "id": "predire", "text": "Annonce les quatre positions avant de lancer. Teste et vérifie que toutes les copies sont visibles.", "hint": "Les positions sont -120, -60, 0 et 60. Le modèle finit à 120, caché." },
           { "id": "distinguer", "text": "Explique ce qui lance le modèle et ce qui lance chaque copie. Relance avant leur disparition : aucune ancienne copie ne doit s’accumuler." },
           { "id": "conserver", "text": "Sauvegarde ta version. Savoir reproduire la pile n’est pas la même chose que savoir expliquer les positions et la disparition." }
         ] },
-        { "type": "details", "id": "bonus", "title": "Bonus facultatif — ramasser les étoiles", "blocks": [
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif : ramasser les étoiles", "blocks": [
           { "type": "lesson", "id": "ramasser", "title": "Une étoile, un point", "paragraphs": [
             "Prérequis : savoir créer une variable globale et ajouter un point ; sinon laisse ce bonus de côté et reprends Compter et mémoriser.",
             "Travaille dans une copie. Crée score pour tous les sprites. Au tout début de la pile de drapeau, mets score à 0. Garde le modèle caché et les créations.",
@@ -4770,7 +4770,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes. Un score du bonus ne valide pas la compétence ; demander une explication et une modification prédite.",
         "quickConductor": ["Vérifier boucle et coordonnées.", "Montrer modèle caché et copie visible.", "Assembler et tester trois copies.", "Prédire quatre positions puis essayer.", "Choisir reprise ou bonus variables et sauvegarder."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-temps-difficulte": {
@@ -4784,17 +4784,17 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.game-rules", "expectation": "Comprendre stop tout et le redémarrage au drapeau ; sinon reprendre Gagner, perdre et recommencer." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "preparer", "title": "1 — Dix secondes pour cliquer", "paragraphs": [
+        { "type": "lesson", "id": "preparer", "title": "1 : Dix secondes pour cliquer", "paragraphs": [
           "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau, puis garde le chat. Cet essai est un petit défi de clics, pas encore un jeu complet. Il ne nécessite ni clones ni ancien projet. Tout le code est placé dans le chat.",
           "Dans Variables, crée score et duree pour tous les sprites. Score compte les clics, duree contient la durée autorisée en secondes. Garde score affiché.",
           "Dans Capteurs (bleu clair), le bloc ovale chronomètre donne le temps écoulé. Glisse cet ovale dans une case : ne tape pas le mot chronomètre au clavier. Réinitialiser le chronomètre repart de zéro pour tout le projet. On le fait une seule fois au début de la partie, pas à chaque clic.",
           "Dans Opérateurs (vert), < compare deux nombres : chronomètre < duree signifie qu’il reste du temps. > signifie strictement supérieur : chronomètre > duree devient vrai juste après la limite. Glisse les ovales chronomètre et duree dans les deux cases de ces comparaisons.",
           "Dans Contrôle, attendre jusqu’à ce que attend que sa condition soit vraie. Dans Apparence, mettre la taille à 100 % de la taille initiale retrouve la taille de départ ; 50 % donnera un chat plus petit."
         ] },
-        { "type": "lesson", "id": "exemple", "title": "2 — Démarrer, compter et terminer",
+        { "type": "lesson", "id": "exemple", "title": "2 : Démarrer, compter et terminer",
           "shortSteps": ["Construis la pile de drapeau : score = 0, duree = 10, position (0, 0), taille 100 %, puis réinitialiser le chronomètre.", "Ajoute attendre jusqu’à ce que chronomètre > duree, dire Terminé ! pendant 2 secondes, puis stop tout.", "À côté, construis quand ce sprite est cliqué → si chronomètre < duree alors ajouter 1 à score. Lance et clique sur le chat."],
           "paragraphs": ["Quand ce sprite est cliqué est un événement jaune : il démarre une pile pour chaque clic sur le chat. Ajouter 1 doit rester à l’intérieur du si.", "Pendant les dix premières secondes, les clics donnent des points. À dix secondes exactement, chronomètre < duree est faux : les clics ne comptent plus, même pendant le message final de deux secondes.", "Le message apparaît dès que le temps dépasse dix secondes, puis stop tout arrête les scripts. Le chronomètre de Scratch peut continuer à avancer : c’est le score qui reste bloqué. Au drapeau suivant, score et chronomètre repartent de zéro.", "Si tu coches chronomètre dans Capteurs, sa valeur s’affiche sur la scène pour observer les essais. Le temps concerne tout le projet, pas un chronomètre différent par sprite."],
-          "visualScript": { "caption": "Dans le chat — une partie et des clics autorisés", "note": "Les comparaisons sont des blocs verts ; chronomètre et duree sont des valeurs glissées dans leurs cases.", "stacks": [
+          "visualScript": { "caption": "Dans le chat : une partie et des clics autorisés", "note": "Les comparaisons sont des blocs verts ; chronomètre et duree sont des valeurs glissées dans leurs cases.", "stacks": [
             { "caption": "Démarrer puis terminer", "blocks": [
               { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Une nouvelle partie." },
               { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "score" }, " à ", { "value": "0" }], "explanation": "Effacer les anciens points." },
@@ -4826,7 +4826,7 @@ window.CODECRAFT_DATA = {
           { "id": "choisir", "text": "Choisis une version facile et une version plus difficile. Explique les réglages choisis et vérifie pour chacune que le score s’arrête à la limite." },
           { "id": "sauver", "text": "Sauvegarde ton essai. Un bon score ne prouve pas à lui seul que tu comprends le chronomètre ou les conditions." }
         ] },
-        { "type": "details", "id": "bonus", "title": "Bonus facultatif — plus difficile en cours de partie", "blocks": [
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif : plus difficile en cours de partie", "blocks": [
           { "type": "lesson", "id": "progressif", "title": "Une cible qui rétrécit", "paragraphs": [
             "Seulement si le temps, les conditions et les piles parallèles sont compris : travaille dans une copie avec duree = 10 et taille = 100 au départ.",
             "Ajoute une troisième pile dans le chat : drapeau → attendre 5 secondes → si chronomètre < duree alors mettre la taille à 50 % de la taille initiale. Ne remets ni score ni chronomètre à zéro dans cette pile.",
@@ -4863,7 +4863,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes. Demander une prédiction, l’explication de la limite et un test de reprise ; ni le score ni les cases ne valident automatiquement une compétence.",
         "quickConductor": ["Vérifier variables et condition.", "Présenter mesure et limite.", "Construire les deux piles et tester pendant le message.", "Comparer durée puis taille.", "Choisir reprise ou difficulté progressive et sauvegarder."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-debogage": {
@@ -4879,16 +4879,16 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.conditions", "expectation": "Comprendre si et une comparaison ; sinon reprendre Faire réagir le jeu avant le défi de seuil." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "methode", "title": "1 — Une erreur, une enquête", "paragraphs": [
+        { "type": "lesson", "id": "methode", "title": "1 : Une erreur, une enquête", "paragraphs": [
           "Un bug est une différence entre ce que tu veux obtenir et ce que fait ton programme. Il ne signifie pas que tout est raté. Sauvegarde ton travail actuel avant de choisir Fichier → Nouveau, puis garde le chat. Nous allons réparer de petits scripts dans ce projet neuf : aucun jeu partagé n’est nécessaire.",
           "Dis d’abord : Je veux que… Puis décris : Quand je fais…, j’observe… Lance toujours de la même façon pour comparer. Choisis une piste, change une seule chose et reteste. Si elle ne résout pas le problème, remets la version précédente avant d’essayer autre chose.",
           "Vérifie le sprite sélectionné, l’événement qui lance la pile, les blocs accrochés, leur ordre, puis les conditions et les valeurs. Un bloc détaché ne fait pas partie de la pile. Cliquer directement sur une pile teste ses actions, mais ne prouve pas que le drapeau la lance.",
           "Après une correction, refais le test qui échouait, puis recommence la partie. La solution doit fonctionner aussi au redémarrage. Garde une copie avant d’enquêter dans un grand jeu."
         ] },
-        { "type": "lesson", "id": "exemple", "title": "2 — Le chat revient au mauvais endroit",
+        { "type": "lesson", "id": "exemple", "title": "2 : Le chat revient au mauvais endroit",
           "shortSteps": ["Dans un projet neuf, construis exactement la pile volontairement incorrecte ci-dessous, sur le chat.", "Résultat voulu : au drapeau, partir de (0, 0) puis finir en (40, 0). Lance et observe les champs X/Y sous la scène.", "Explique quel bloc efface le déplacement. Change uniquement l’ordre des deux actions, puis lance deux fois pour vérifier."],
           "paragraphs": ["Ajouter 40 à x déplace depuis la position actuelle. Aller à x: 0 y: 0 fixe une position et remplace le déplacement précédent. Les actions sont exécutées de haut en bas.", "Dans ce modèle incorrect, la dernière action remet toujours le chat au centre. La position finale est (0, 0), même s’il a bougé brièvement. Lis X/Y : le mouvement peut être trop rapide pour le voir.", "Essaie avant d’ouvrir l’indice. Il n’est pas nécessaire d’ajouter un nouveau bloc ou une pause."],
-          "visualScript": { "caption": "À réparer — ordre volontairement incorrect", "note": "C’est un problème à résoudre, pas la solution. Lis X/Y après le lancement.", "blocks": [
+          "visualScript": { "caption": "À réparer : ordre volontairement incorrect", "note": "C’est un problème à résoudre, pas la solution. Lis X/Y après le lancement.", "blocks": [
             { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Le test démarre au drapeau." },
             { "category": "motion", "label": "Mouvement", "parts": ["ajouter ", { "value": "40" }, " à x"], "explanation": "Déplacement avant le placement dans cette version incorrecte." },
             { "category": "motion", "label": "Mouvement", "parts": ["aller à x: ", { "value": "0" }, " y: ", { "value": "0" }], "explanation": "Cette action remplace la position obtenue juste avant." }
@@ -4900,37 +4900,37 @@ window.CODECRAFT_DATA = {
           { "id": "ordre", "text": "Répare uniquement l’ordre. Vérifie la position (40, 0) après deux lancements.", "hint": "Il faut d’abord aller à (0, 0), puis ajouter 40 à x. Sinon le placement efface le déplacement." },
           { "id": "evenement", "text": "Dans une copie de l’essai réparé, remplace le drapeau par quand la touche espace est pressée (Événements). Teste le drapeau puis espace. Est-ce un bug si le drapeau ne lance plus cette pile ?", "hint": "Non : elle attend maintenant espace. Un événement différent explique un lancement différent, sans erreur dans les actions." }
         ] },
-        { "type": "lesson", "id": "score", "title": "3 — Un score qui reste à un", "paragraphs": [
+        { "type": "lesson", "id": "score", "title": "3 : Un score qui reste à un", "paragraphs": [
           "Enregistre le premier essai, puis crée un autre projet neuf avec le chat pour ne pas mélanger les scripts. Crée score pour tous les sprites dans Variables et garde son affichage coché.",
           "Construis les deux piles ci-dessous. Quand ce sprite est cliqué, dans Événements, lance une pile à chaque clic sur le chat. La pile du clic est volontairement incorrecte : après trois clics, score devrait compter 1, 2, 3, mais reste à 1.",
           "Mettre score à 0 remplace la valeur ; ajouter 1 à score augmente la valeur actuelle. Compare quand ces actions doivent être exécutées : au départ ou à chaque clic ?",
           "Répare maintenant ce premier problème, avant de passer au seuil. Lance le drapeau, vérifie score = 0, puis clique trois fois : le score doit afficher 1, 2, 3. Essaie avant d’ouvrir l’indice de l’enquête sur le score plus bas. Garde ce même projet pour l’exercice suivant."
-        ], "visualScript": { "caption": "À réparer — la remise à zéro est répétée", "note": "Deux piles dans le même chat. Cherche celle qui efface les points à chaque clic.", "stacks": [
+        ], "visualScript": { "caption": "À réparer : la remise à zéro est répétée", "note": "Deux piles dans le même chat. Cherche celle qui efface les points à chaque clic.", "stacks": [
           { "caption": "Le départ", "blocks": [
             { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Le début de la partie." },
             { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "score" }, " à ", { "value": "0" }], "explanation": "La remise à zéro est utile au départ." }
           ] },
-          { "caption": "Le clic — version incorrecte", "blocks": [
+          { "caption": "Le clic : version incorrecte", "blocks": [
             { "category": "events", "label": "Événements", "parts": ["quand ce sprite est cliqué"], "explanation": "Cette pile repart à chaque clic." },
             { "category": "variables", "label": "Variables", "parts": ["mettre ", { "choice": "score" }, " à ", { "value": "0" }], "explanation": "Cette action efface les points précédents." },
             { "category": "variables", "label": "Variables", "parts": ["ajouter ", { "value": "1" }, " à ", { "choice": "score" }], "explanation": "Ajouter un point après les avoir effacés." }
           ] }
         ] }, "code": "Pile de départ :\nquand le drapeau vert est cliqué\n  mettre score à 0\n\nPile volontairement incorrecte :\nquand ce sprite est cliqué\n  mettre score à 0\n  ajouter 1 à score" },
-        { "type": "lesson", "id": "seuil", "title": "4 — Un message qui arrive trop tard", "paragraphs": [
+        { "type": "lesson", "id": "seuil", "title": "4 : Un message qui arrive trop tard", "paragraphs": [
           "Après avoir réparé le score, ajoute si … alors sous ajouter 1 dans la pile du clic. Place la comparaison verte score > 3 dans la condition et dire Gagné ! pendant 1 seconde à l’intérieur du si.",
           "Prends > dans Opérateurs. Glisse l’ovale score de Variables dans sa première case et écris 3 dans l’autre. Ne tape pas le mot score comme du texte. > signifie strictement plus grand : 3 > 3 est faux, 4 > 3 est vrai.",
           "Résultat voulu : afficher Gagné ! dès le troisième clic, pas seulement au quatrième. Avant chaque test, lance le drapeau et vérifie score = 0. Clique ensuite une fois à la fois et observe le score et le message. Ce test vérifie uniquement le seuil du message : il ne termine pas une partie. Corrige le nombre comparé sans changer la valeur d’un point."
-        ], "visualScript": { "caption": "À réparer — le seuil arrive un point trop tard", "note": "Sous ajouter 1 dans le clic réparé. Le nombre comparé est volontairement incorrect.", "blocks": [
+        ], "visualScript": { "caption": "À réparer : le seuil arrive un point trop tard", "note": "Sous ajouter 1 dans le clic réparé. Le nombre comparé est volontairement incorrect.", "blocks": [
           { "category": "control", "label": "Contrôle", "parts": ["si ", { "condition": [{ "value": "score" }, " > ", { "value": "3" }], "operator": true }, " alors"], "explanation": "Est-ce vrai lorsque score vaut exactement trois ?", "children": [
             { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Gagné !" }, " pendant ", { "value": "1" }, " seconde"], "explanation": "Le message dépend du test, sans arrêter le jeu." }
           ] }
         ] }, "code": "À ajouter sous ajouter 1 à score :\nsi <score > 3> alors\n  dire Gagné ! pendant 1 seconde\n\nSeuil volontairement incorrect pour gagner dès 3 points." },
-        { "type": "tasks", "id": "autonomie", "title": "Sans solution — deux enquêtes", "intro": "Essaie avant les indices : attendu, observé, une piste, une modification, nouveau test.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "Sans solution : deux enquêtes", "intro": "Essaie avant les indices : attendu, observé, une piste, une modification, nouveau test.", "items": [
           { "id": "score-fixe", "text": "Répare le score qui reste à 1 avant de passer au seuil. Lance le drapeau, vérifie score = 0, puis teste trois clics : 1, 2, 3. Relance le drapeau : 0, puis le premier clic doit donner 1.", "hint": "Garde mettre score à 0 uniquement au drapeau. Retire cette remise à zéro du clic, mais garde ajouter 1." },
           { "id": "seuil-trois", "text": "Répare le seuil. Avant chaque test, lance le drapeau et vérifie score = 0. Clique une fois à la fois : aucun Gagné ! aux clics 1 et 2, puis Gagné ! au clic 3. Change seulement le nombre de la comparaison.", "hint": "Score > 2 est vrai à partir de 3. Il reste vrai aux clics suivants : nous n’avons pas demandé un arrêt ou un message unique." },
           { "id": "preuve", "text": "Explique pourquoi chaque ancienne version échouait. Cite un test qui prouve ta correction, puis sauvegarde." }
         ] },
-        { "type": "details", "id": "bonus", "title": "Bonus facultatif — enquêter dans ton jeu", "blocks": [
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif : enquêter dans ton jeu", "blocks": [
           { "type": "lesson", "id": "transfert", "title": "Une panne à la fois", "paragraphs": [
             "Prérequis : avoir un jeu dont tu comprends les événements et les règles. Sinon, les petits essais suffisent.",
             "Dans une copie, choisis un comportement à vérifier : démarrage, commande, score ou fin. Décris le résultat attendu, puis teste. S’il y a un problème, change une seule chose à la fois.",
@@ -4968,7 +4968,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Noter autonomie, modèle/indice ou aide dans les remarques existantes. Un jeu réparé sans explication, une visite ou des cases cochées ne valent pas acquisition automatique.",
         "quickConductor": ["Vérifier les bases utiles.", "Faire dire attendu et observé.", "Réparer l’ordre et tester deux départs.", "Résoudre score puis seuil selon les acquis.", "Expliquer la cause et choisir reprise ou transfert."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-projet-personnel": {
@@ -4986,29 +4986,29 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.debugging", "expectation": "Comparer attendu et observé, puis tester une modification à la fois ; reprendre Déboguer son jeu si nécessaire." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "exemple", "title": "1 — Un petit jeu à toi", "paragraphs": [
+        { "type": "lesson", "id": "exemple", "title": "1 : Un petit jeu à toi", "paragraphs": [
           "Choisis une idée que tu peux expliquer en une phrase. Ce projet ne demande pas d’utiliser tout Scratch : choisis seulement des notions que tu comprends. Tu peux demander une aide, puis reprendre une étape seul.",
           "Sauvegarde ton travail actuel avant de changer de projet. Tu peux ensuite choisir Fichier → Nouveau, créer une copie personnelle de ton mini-jeu ou ouvrir la base chat/cible proposée en haut. Cette base est facultative : elle fournit des personnages sans scripts, pas un jeu terminé. Avec ton compte, utilise Remix pour la base partagée ; sans compte, conserve un fichier depuis Fichier → Sauvegarder sur votre ordinateur. Si tu reprends ton mini-jeu, garde son original et travaille dans une copie sous un autre nom.",
           "Un plan possible, pas une solution à recopier : un personnage se déplace à droite et à gauche, touche une cible fixe pour gagner un point et retourne au départ. Trois points font gagner ; le drapeau remet tout au départ. Personnalise l’histoire et les règles, pas seulement le titre.",
-          "Ne cherche pas tout de suite un grand monde, plusieurs niveaux ou de beaux dessins. Ta première version doit simplement se lancer, se jouer, se terminer et recommencer. Aucun compte ni partage public n’est obligatoire."
+          "Commence par une petite version qui se lance, se joue, se termine et recommence."
         ] },
-        { "type": "callout", "id": "choix-poursuite", "title": "Option — une poursuite simple", "text": "Déplace un personnage vers une cible fixe, compte les contacts et choisis une victoire atteignable. Prérequis : touches, positions et contacts. Reprends Mon premier mini-jeu si ces règles sont encore difficiles. La cible aléatoire de certaines démonstrations n’est pas demandée.", "moduleLink": { "moduleId": "scratch-mini-jeu", "text": "Mon premier mini-jeu" } },
-        { "type": "callout", "id": "choix-clics", "title": "Option — des clics chronométrés", "text": "Clique sur une cible pendant un temps limité, compte les points et termine la partie quand le temps est écoulé. Prérequis supplémentaire : chronomètre et condition qui bloque les points. Reprends Gérer le temps et la difficulté avant de choisir cette option si nécessaire.", "moduleLink": { "moduleId": "scratch-temps-difficulte", "text": "Gérer le temps et la difficulté" } },
-        { "type": "callout", "id": "choix-labyrinthe", "title": "Option — un labyrinthe que tu connais déjà", "text": "Choisis cette option seulement si tu possèdes déjà un labyrinthe et sais expliquer ses déplacements, ses murs et le retour au départ. Travaille dans une copie. Ce projet n’enseigne pas de nouvelles règles de murs. Sinon, commence par la poursuite avec Mon premier mini-jeu ; un labyrinthe n’est pas nécessaire pour réussir ce projet.", "moduleLink": { "moduleId": "scratch-mini-jeu", "text": "Mon premier mini-jeu" } },
-        { "type": "tasks", "id": "plan", "title": "2 — Prépare ton plan avant de coder", "intro": "Tu peux l’écrire dans un petit document ou le dire à quelqu’un. Quelques phrases suffisent.", "items": [
+        { "type": "callout", "id": "choix-poursuite", "title": "Option : une poursuite simple", "text": "Déplace un personnage vers une cible fixe, compte les contacts et choisis une victoire atteignable. Prérequis : touches, positions et contacts. Reprends Mon premier mini-jeu si ces règles sont encore difficiles. La cible aléatoire de certaines démonstrations n’est pas demandée.", "moduleLink": { "moduleId": "scratch-mini-jeu", "text": "Mon premier mini-jeu" } },
+        { "type": "callout", "id": "choix-clics", "title": "Option : des clics chronométrés", "text": "Clique sur une cible pendant un temps limité, compte les points et termine la partie quand le temps est écoulé. Prérequis supplémentaire : chronomètre et condition qui bloque les points. Reprends Gérer le temps et la difficulté avant de choisir cette option si nécessaire.", "moduleLink": { "moduleId": "scratch-temps-difficulte", "text": "Gérer le temps et la difficulté" } },
+        { "type": "callout", "id": "choix-labyrinthe", "title": "Option : un labyrinthe que tu connais déjà", "text": "Choisis cette option seulement si tu possèdes déjà un labyrinthe et sais expliquer ses déplacements, ses murs et le retour au départ. Travaille dans une copie. Ce projet n’enseigne pas de nouvelles règles de murs. Sinon, commence par la poursuite avec Mon premier mini-jeu ; un labyrinthe n’est pas nécessaire pour réussir ce projet.", "moduleLink": { "moduleId": "scratch-mini-jeu", "text": "Mon premier mini-jeu" } },
+        { "type": "tasks", "id": "plan", "title": "2 : Prépare ton plan avant de coder", "intro": "Tu peux l’écrire dans un petit document ou le dire à quelqu’un. Quelques phrases suffisent.", "items": [
           { "id": "idee", "text": "Décris le but en une phrase et choisis un nom pour ton jeu.", "hint": "Par exemple : ramasser trois objets, ou obtenir des points en cliquant avant la fin du temps." },
           { "id": "commandes", "text": "Choisis les commandes : quelles touches ou quels clics ? Dis quelle action produit chacune." },
           { "id": "regles", "text": "Décris ce qui donne un point, ce qui termine la partie et ce que le drapeau remet à zéro. Une victoire OU une fin au temps suffit ; une défaite supplémentaire n’est pas obligatoire." },
           { "id": "limite", "text": "Choisis seulement une mécanique principale. Pour chaque notion encore inconnue, enlève-la du premier plan ou ouvre sa reprise avant de l’utiliser." }
         ] },
-        { "type": "checklist", "id": "guide", "title": "3 — Construis une version minimale", "items": [
+        { "type": "checklist", "id": "guide", "title": "3 : Construis une version minimale", "items": [
           { "id": "demarrer", "text": "Un drapeau qui remet le score, les positions et les autres valeurs utilisées au départ." },
           { "id": "jouer", "text": "Une commande qui permet vraiment d’agir, avec une cible ou un but accessible." },
           { "id": "compter", "text": "Un score lisible qui compte uniquement les actions prévues, sans points gratuits ni doublons." },
           { "id": "finir", "text": "Une fin atteignable et annoncée clairement. Après la fin, aucune action ne change encore le résultat." },
           { "id": "reprendre", "text": "Un nouveau drapeau permet de rejouer depuis l’état initial." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "4 — Construis, teste, explique", "intro": "Construis une étape puis teste-la, plutôt que tout programmer avant le premier essai. Il n’y a pas de solution complète à recopier ici ; les cours restent accessibles plus bas.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "4 : Construis, teste, explique", "intro": "Construis une étape puis teste-la, plutôt que tout programmer avant le premier essai. Il n’y a pas de solution complète à recopier ici ; les cours restent accessibles plus bas.", "items": [
           { "id": "copie", "text": "Crée ta version de travail et conserve un premier fichier ou remix sous un nom reconnaissable. Ne modifie pas l’original d’un autre projet." },
           { "id": "premier-test", "text": "Teste le départ et les commandes avant d’ajouter le score. Corrige ce qui bloque, une modification à la fois.", "hint": "Si rien ne démarre, vérifie le sprite sélectionné, le bon événement et les blocs accrochés." },
           { "id": "points-fin", "text": "Ajoute le score puis la fin prévue. Teste les points sans atteindre la fin, puis atteins-la. Vérifie que les actions ne modifient plus le résultat après la fin.", "hint": "Pour les clics au temps, protège l’ajout du point par une condition de temps : stop tout seul n’empêche pas un nouvel événement de clic." },
@@ -5017,7 +5017,7 @@ window.CODECRAFT_DATA = {
           { "id": "justifier", "text": "Montre une règle dans ton code, explique pourquoi elle fonctionne puis prédis l’effet d’un petit changement. Teste ce changement dans une copie.", "hint": "Change un seuil ou une durée déjà compris, pas plusieurs réglages à la fois. Une réussite avec modèle et une explication autonome sont deux observations différentes." },
           { "id": "sauver", "text": "Sauvegarde la version finale et rouvre le fichier ou le remix pour vérifier que tu retrouves ton travail. Un ancien téléchargement ne se met pas à jour tout seul." }
         ] },
-        { "type": "checklist", "id": "verification", "title": "5 — Vérifie ton jeu", "items": [
+        { "type": "checklist", "id": "verification", "title": "5 : Vérifie ton jeu", "items": [
           { "id": "notice-test", "text": "Les commandes et le but correspondent à la notice ; le jeu est jouable sans explication orale indispensable." },
           { "id": "sans-action", "text": "Sans action du joueur, pas de points injustifiés. Si le temps fait partie des règles, la partie peut se terminer sans clic." },
           { "id": "un-point", "text": "Une action prévue donne le bon nombre de points : un contact prolongé ne donne pas une victoire instantanée." },
@@ -5025,7 +5025,7 @@ window.CODECRAFT_DATA = {
           { "id": "deux-parties", "text": "Deux parties complètes fonctionnent, avec remise à zéro et retour au départ entre elles." },
           { "id": "preuve-test", "text": "Tu peux expliquer une règle, une difficulté rencontrée et le test qui a confirmé une correction." }
         ] },
-        { "type": "details", "id": "bonus", "title": "Bonus facultatif — une seule extension", "blocks": [
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif : une seule extension", "blocks": [
           { "type": "lesson", "id": "extension", "title": "Améliorer sans casser la base", "paragraphs": [
             "Sauvegarde une copie de la version jouable. Choisis une seule extension dont tu maîtrises déjà les prérequis ; tu peux aussi simplement améliorer la notice ou choisir un décor de la bibliothèque Scratch.",
             "Si tu comprends les messages : ajoute un court échange entre deux personnages avec Coordonner plusieurs personnages. Si tu comprends les clones et les variables : ajoute des objets à ramasser avec Créer plusieurs personnages avec des clones.",
@@ -5033,7 +5033,7 @@ window.CODECRAFT_DATA = {
             "Ces options ne sont pas une liste à compléter. Laisse de côté celles que tu ne comprends pas encore. Après l’extension, refais les tests de points, fin et redémarrage. Si elle casse la base, reviens à ta copie et cherche une seule cause."
           ] }
         ] },
-        { "type": "lesson", "id": "suite", "title": "Et après ce projet ?", "paragraphs": ["Tu as un jeu que tu peux présenter, expliquer et améliorer. Ce n’est pas une validation automatique de toutes les compétences Scratch. Reprends les notions qui demandent encore de l’aide, ou choisis une nouvelle idée de même taille. Passer à un autre outil n’est pas obligatoire et aucun rythme n’est imposé."] }
+        { "type": "lesson", "id": "suite", "title": "Et après ce projet ?", "paragraphs": ["Présente ton jeu, explique son programme et choisis une amélioration. Tu peux ensuite essayer une nouvelle idée de même taille."] }
       ],
       "masteryCriteria": ["Choisir des règles réalisables avec les notions comprises et expliquer son plan.", "Construire une version jouable avec score, fin et redémarrage, sans solution intégrale fournie.", "Tester les limites et deux parties, identifier une panne et justifier sa correction.", "Expliquer une règle et prédire un changement, en distinguant autonomie, modèle ou aide ; une décoration ou un score élevé ne prouve pas la compréhension."],
       "consolidation": [{ "moduleId": "scratch-mini-jeu", "blockId": "guide", "label": "Reprendre un jeu horizontal simple" }, { "moduleId": "scratch-pilotage", "blockId": "exemple", "label": "Revoir les déplacements au clavier" }, { "moduleId": "scratch-variables", "blockId": "exemple", "label": "Revoir le score et sa remise à zéro" }, { "moduleId": "scratch-fin-partie", "blockId": "exemple", "label": "Revoir fin et reprise" }, { "moduleId": "scratch-debogage", "blockId": "autonomie", "label": "Chercher une panne avec méthode" }],
@@ -5069,7 +5069,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Observer séparément les compétences utilisées. Ne pas déclarer tous les acquis du parcours à partir d’un projet terminé. Utiliser les remarques existantes pour autonomie, modèle ou aide ; aucun nouveau dispositif de suivi. Décoration et performance du joueur ne remplacent pas l’explication.",
         "quickConductor": ["Choisir une idée limitée et vérifier ses prérequis.", "Énoncer commandes, score, fin et reprise.", "Construire puis tester chaque étape.", "Faire jouer et demander une prédiction justifiée.", "Vérifier deux parties, sauvegarder puis choisir reprise ou une extension."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-coordination": {
@@ -5084,51 +5084,51 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.sequence", "expectation": "Assembler dire pendant … secondes et comprendre l’ordre d’une pile : reprendre Déclencher et enchaîner des actions." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "preparer", "title": "1 — Deux personnages, deux programmes", "paragraphs": [
+        { "type": "lesson", "id": "preparer", "title": "1 : Deux personnages, deux programmes", "paragraphs": [
           "Sauvegarde ton travail précédent avant d’ouvrir le projet de départ Carte animée proposé au-dessus, puis garde ta copie de cette base. Pico et Tera sont prêts, sans code. Pour ce premier essai, laisse Giga de côté : il n’a aucun rôle à programmer.",
           "Sans la base partagée, après la sauvegarde, choisis Fichier → Nouveau : supprime le chat avec la corbeille de sa miniature, ajoute Pico et Tera depuis Choisir un sprite. Place Pico en x = -150, y = -50 et Tera en x = 150, y = -50 avec leurs champs sous la scène.",
           "Quand tu sélectionnes la miniature de Pico, tu écris pour Pico. Quand tu sélectionnes Tera, tu écris pour Tera. Une pile de Pico ne se déplace pas automatiquement dans Tera.",
           "Nous voulons ce dialogue : Pico dit Bonjour, Tera répond Salut, puis Pico termine. Deux piles au drapeau démarreraient en même temps : un message permettra de choisir quand Tera parle."
         ] },
         { "type": "callout", "id": "reprise", "title": "L’ordre des actions reste difficile ?", "text": "Reprends Déclencher et enchaîner des actions pour comparer le drapeau et les actions qui se suivent.", "moduleLink": { "moduleId": "scratch-actions", "text": "Déclencher et enchaîner des actions" } },
-        { "type": "lesson", "id": "messages", "title": "2 — Envoyer un signal, pas une bulle", "paragraphs": [
+        { "type": "lesson", "id": "messages", "title": "2 : Envoyer un signal, pas une bulle", "paragraphs": [
           "Dans Événements (jaune), prends envoyer à tous … et attendre. Ouvre son menu, choisis Nouveau message et nomme-le reponse. C’est le nom d’un signal dans le programme : ce texte ne s’affiche pas dans une bulle.",
           "Dans Tera, prends quand je reçois … dans Événements et sélectionne le même message reponse. Les actions placées sous ce bloc se lancent quand le signal arrive, pas au drapeau.",
           "Envoyer à tous … et attendre lance les piles qui reçoivent ce message et attend qu’elles soient terminées avant de poursuivre. Envoyer à tous … sans attendre les lance aussi, mais l’expéditeur poursuit immédiatement.",
           "Un message est reçu par tous les personnages qui ont une pile correspondante. Ici, seul Tera reçoit reponse. Garde une réception courte, sans boucle infinie : sinon Pico attendrait sans fin."
         ] },
-        { "type": "lesson", "id": "exemple", "title": "3 — Un dialogue dans le bon ordre",
+        { "type": "lesson", "id": "exemple", "title": "3 : Un dialogue dans le bon ordre",
           "shortSteps": [
             "Dans Pico, assemble le drapeau, Bonjour pendant 2 secondes, envoyer reponse et attendre, puis À bientôt pendant 2 secondes.",
             "Dans Tera, assemble quand je reçois reponse puis Salut pendant 2 secondes. Ne mets pas de drapeau sur cette réponse.",
             "Lance le drapeau : Bonjour → Salut → À bientôt. Relance : le même ordre doit recommencer."
           ],
           "paragraphs": ["Les deux piles du modèle appartiennent à deux personnages différents : sélectionne la bonne miniature avant de construire.", "Dans Apparence (violet), dire … pendant … secondes garde la bulle visible puis laisse passer à l’action suivante. Une attente fixe copiée sur Tera serait fragile si on changeait la durée du Bonjour ; le message part après sa fin.", "Modifie Bonjour pour durer 4 secondes : Tera doit toujours répondre après, sans changer de délai chez Tera."],
-          "visualScript": { "caption": "Deux personnages — un signal reponse", "note": "Modèles à construire sur les deux sprites. Aucun éditeur interactif ici.", "stacks": [
-            { "caption": "Pico — lance le dialogue", "blocks": [
+          "visualScript": { "caption": "Deux personnages : un signal reponse", "note": "Modèles à construire sur les deux sprites. Aucun éditeur interactif ici.", "stacks": [
+            { "caption": "Pico : lance le dialogue", "blocks": [
               { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Pico démarre au drapeau." },
               { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Bonjour !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "Pico parle avant d’envoyer le signal." },
               { "category": "events", "label": "Événements", "parts": ["envoyer à tous ", { "choice": "reponse" }, " et attendre"], "explanation": "Tera reçoit le signal ; Pico attend la fin de sa pile." },
               { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "À bientôt !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "Pico reprend après la réponse." }
             ] },
-            { "caption": "Tera — répond au signal", "blocks": [
+            { "caption": "Tera : répond au signal", "blocks": [
               { "category": "events", "label": "Événements", "parts": ["quand je reçois ", { "choice": "reponse" }], "explanation": "Cette pile démarre au message, pas au drapeau." },
               { "category": "looks", "label": "Apparence", "parts": ["dire ", { "value": "Salut !" }, " pendant ", { "value": "2" }, " secondes"], "explanation": "La pile termine après les deux secondes." }
             ] }
           ] },
           "code": "Pico :\nquand le drapeau vert est cliqué\n  dire Bonjour ! pendant 2 secondes\n  envoyer à tous reponse et attendre\n  dire À bientôt ! pendant 2 secondes\n\nTera :\nquand je reçois reponse\n  dire Salut ! pendant 2 secondes"
         },
-        { "type": "tasks", "id": "guide", "title": "À toi — vérifier le passage de parole", "items": [
+        { "type": "tasks", "id": "guide", "title": "À toi : vérifier le passage de parole", "items": [
           { "id": "ordre", "text": "Lance le dialogue puis relance-le : vérifie Bonjour, Salut, À bientôt dans cet ordre.", "hint": "Le signal part après Bonjour et Pico attend que la réception finisse." },
           { "id": "duree", "text": "Fais durer Bonjour 4 secondes. Prédis quand Tera répond, puis teste.", "hint": "Tera attend le message, pas un délai fixé depuis le drapeau." },
           { "id": "comparer", "text": "Dans une copie, remplace envoyer et attendre par envoyer sans attendre. Observe les deux dernières bulles, puis restaure.", "hint": "Salut et À bientôt peuvent apparaître en même temps. Sans attendre ne veut pas dire sans envoyer." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — un autre échange", "intro": "Sauvegarde ton premier dialogue pour le conserver. Ouvre ensuite une nouvelle copie de la base Carte animée sans code, ou choisis Fichier → Nouveau et ajoute Pico et Tera comme au début. Construis ce nouvel échange dans un projet distinct : ne supprime pas les piles de ton premier dialogue. Change l’histoire sans inventer de nouveau mécanisme.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle : un autre échange", "intro": "Sauvegarde ton premier dialogue pour le conserver. Ouvre ensuite une nouvelle copie de la base Carte animée sans code, ou choisis Fichier → Nouveau et ajoute Pico et Tera comme au début. Construis ce nouvel échange dans un projet distinct : ne supprime pas les piles de ton premier dialogue. Change l’histoire sans inventer de nouveau mécanisme.", "items": [
           { "id": "inverser", "text": "Fais commencer Tera, répondre Pico, puis terminer Tera. Essaie avant d’ouvrir l’indice.", "hint": "L’expéditeur porte la pile du drapeau ; l’autre porte quand je reçois. Garde le même message dans les deux menus et pas d’ancienne pile concurrente." },
           { "id": "textes", "text": "Écris trois nouvelles répliques et change une durée. Explique pourquoi la réponse arrive toujours au bon moment.", "hint": "Le signal est envoyé à la fin de la première réplique et l’expéditeur attend la fin du receveur." },
           { "id": "sauver", "text": "Teste deux lancements puis sauvegarde ta copie sur ton compte ou sur ton ordinateur." }
         ] },
-        { "type": "details", "id": "bonus", "title": "Bonus facultatif — une scène suivante", "blocks": [
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif : une scène suivante", "blocks": [
           { "type": "lesson", "id": "decors", "title": "Un décor appartient à la scène", "paragraphs": [
             "Un costume change l’apparence d’un personnage ; un arrière-plan change le décor de toute la scène. Sélectionne la miniature Scène en bas à droite, puis l’onglet Arrière-plans. Choisis deux décors dans la bibliothèque si nécessaire et renomme-les Depart et Suite dans le champ de nom de cet onglet.",
             "Sur la scène, ajoute une pile au drapeau avec basculer sur l’arrière-plan Depart, dans Apparence. Cette pile remet le décor au départ à chaque lancement.",
@@ -5164,7 +5164,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Distinguer reproduction et compréhension par le changement de durée et l’inversion. Noter autonomie, modèle ou aide dans les remarques existantes ; aucun acquis automatique. Les messages ne sont pas les communications réseau ni les données privées.",
         "quickConductor": ["Vérifier sélection et ordre d’une pile.", "Construire émission et réception.", "Tester avec une durée différente.", "Comparer avec/sans attendre puis inverser les rôles.", "Proposer reprise ou décor facultatif et sauvegarder."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-blocs-personnalises": {
@@ -5178,20 +5178,20 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.workspace", "expectation": "Sélectionner le sprite qui possède le code et conserver une copie." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "preparer", "title": "1 — Une action que tu répètes", "paragraphs": [
+        { "type": "lesson", "id": "preparer", "title": "1 : Une action que tu répètes", "paragraphs": [
           "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau, puis garde le chat. Ce petit essai ne demande ni score ni jeu précédent. Sélectionne le chat : tout le code de ce module lui appartient.",
           "Nous allons nommer l’action qui remet le chat en x = -100, y = 0 : retour au départ. Ce nom décrit une action ; ce n’est pas une nouvelle variable ni un message.",
           "Un bloc personnalisé contient une recette. Créer sa définition ne la lance pas automatiquement au drapeau. Pour l’utiliser dans ton programme, place le bloc portant son nom dans une pile : c’est l’appel. Dans Scratch, Mes blocs appartient au sprite sélectionné, pas automatiquement à tous les sprites."
         ] },
-        { "type": "lesson", "id": "creer", "title": "2 — Définir la recette", "paragraphs": [
+        { "type": "lesson", "id": "creer", "title": "2 : Définir la recette", "paragraphs": [
           "Dans Mes blocs (rose), clique sur Créer un bloc. Écris retour au départ et valide avec OK. Ne coche pas Exécuter sans rafraîchissement d’écran : ce réglage n’est pas nécessaire ici.",
           "Un bloc définir retour au départ apparaît dans la zone de code. Accroche sous lui aller à x: -100 y: 0, trouvé dans Mouvement. Ne lui ajoute pas un drapeau : définir est le début de cette recette.",
           "Le bloc retour au départ est maintenant disponible dans Mes blocs. Chaque fois qu’il est appelé sur ce sprite, Scratch exécute les actions sous définir, puis reprend la pile qui l’a appelé."
         ] },
-        { "type": "lesson", "id": "exemple", "title": "3 — Appeler la même recette deux fois",
+        { "type": "lesson", "id": "exemple", "title": "3 : Appeler la même recette deux fois",
           "shortSteps": ["Construis définir retour au départ → aller à (-100, 0).", "À côté, construis drapeau → retour au départ → ajouter 60 à x → attendre 1 seconde → retour au départ.", "Lance : le chat part à gauche, avance vers -40, puis revient à -100. La définition n’est écrite qu’une seule fois."],
           "paragraphs": ["Les deux piles sont dans le chat. Les blocs roses d’appel portent seulement retour au départ, pas définir.", "Ajouter 60 à x donne -40 depuis -100, sans dépendre de la direction du costume. La pause d’une seconde permet de voir le déplacement avant le second retour.", "Change seulement X dans la définition, de -100 à -150. Les deux appels utiliseront cette nouvelle valeur : le chat passera par -90 avant de revenir à -150. Remets ensuite -100."],
-          "visualScript": { "caption": "Une définition, deux appels — dans le même sprite", "note": "La recette n’est pas une pile de drapeau. Les appels réutilisent sa définition.", "stacks": [
+          "visualScript": { "caption": "Une définition, deux appels : dans le même sprite", "note": "La recette n’est pas une pile de drapeau. Les appels réutilisent sa définition.", "stacks": [
             { "caption": "La recette", "blocks": [
               { "category": "custom", "label": "Mes blocs", "parts": ["définir retour au départ"], "explanation": "Donner un nom aux actions, sans les lancer au drapeau." },
               { "category": "motion", "label": "Mouvement", "parts": ["aller à x: ", { "value": "-100" }, " y: ", { "value": "0" }], "explanation": "L’action de la recette." }
@@ -5204,20 +5204,20 @@ window.CODECRAFT_DATA = {
               { "category": "custom", "label": "Mes blocs", "parts": ["retour au départ"], "explanation": "Second appel, sans recopier aller à x/y." }
             ] }
           ] },
-          "code": "Dans le chat — définition :\ndéfinir retour au départ\n  aller à x: -100 y: 0\n\nDans le chat — utilisation :\nquand le drapeau vert est cliqué\n  retour au départ\n  ajouter 60 à x\n  attendre 1 secondes\n  retour au départ"
+          "code": "Dans le chat : définition :\ndéfinir retour au départ\n  aller à x: -100 y: 0\n\nDans le chat : utilisation :\nquand le drapeau vert est cliqué\n  retour au départ\n  ajouter 60 à x\n  attendre 1 secondes\n  retour au départ"
         },
-        { "type": "tasks", "id": "guide", "title": "À toi — une modification, deux effets", "items": [
+        { "type": "tasks", "id": "guide", "title": "À toi : une modification, deux effets", "items": [
           { "id": "tester", "text": "Teste les deux appels. Compte une seule définition et deux blocs retour au départ.", "hint": "Définir n’est pas un appel : il indique où la recette commence." },
           { "id": "changer", "text": "Dans la définition, change le départ à -150. Prédis la position intermédiaire puis teste. Remets -100.", "hint": "Le déplacement de +60 donne -90 depuis -150. Les deux appels reviennent à -150." },
           { "id": "expliquer", "text": "Explique pourquoi tu n’as changé qu’un seul bloc aller à x/y, alors que le retour est utilisé deux fois." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — ta propre recette", "intro": "Réutilise uniquement des actions déjà connues.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle : ta propre recette", "intro": "Réutilise uniquement des actions déjà connues.", "items": [
           { "id": "recette", "text": "Crée un bloc saluer qui dit ton message pendant 1 seconde puis ajoute 20 à x.", "hint": "Créer un bloc saluer, puis accrocher les deux actions sous définir saluer." },
           { "id": "appels", "text": "Dans une nouvelle pile, au clic sur la touche espace, appelle d’abord retour au départ, puis saluer deux fois. Chaque essai commence ainsi en (-100, 0). Laisse la pile du drapeau terminer avant de tester avec espace.", "hint": "Quand la touche espace est pressée se trouve dans Événements. Accroche retour au départ avant les deux appels saluer : depuis -100, +20 puis +20 mènent à -60." },
           { "id": "predire", "text": "Avant de changer la recette, prédis l’effet de +30 à la place de +20. Modifie une seule définition puis appuie sur espace : retour au départ remet le chat à -100 avant les deux appels.", "hint": "Depuis -100, deux déplacements de 30 mènent à -40. Les deux appels utilisent la recette modifiée." },
           { "id": "sauver", "text": "Sauvegarde. Si ton mini-jeu fonctionne déjà, tu peux remplacer ses deux retours au départ par des appels, sans changer ses règles.", "hint": "Cette reprise du jeu est facultative. Crée la définition dans Chat et garde score = 0 séparé au drapeau : un contact ne doit pas effacer les points." }
         ] },
-        { "type": "details", "id": "bonus", "title": "Bonus facultatif — une distance au choix", "blocks": [
+        { "type": "details", "id": "bonus", "title": "Bonus facultatif : une distance au choix", "blocks": [
           { "type": "lesson", "id": "parametre", "title": "Un paramètre donne une valeur à chaque appel", "paragraphs": [
             "Quand les définitions et appels sont compris, crée un autre bloc nommé deplacer. Dans la fenêtre Créer un bloc, ajoute une entrée nombre ou texte, nomme-la distance, puis valide. Garde le réglage sans rafraîchissement décoché.",
             "Sous définir deplacer (distance), ajoute le bloc Mouvement ajouter … à x. Glisse le petit ovale distance du bloc définir dans sa case numérique. N’écris pas le mot distance au clavier : il faut utiliser le reporter du paramètre.",
@@ -5225,7 +5225,7 @@ window.CODECRAFT_DATA = {
             "Dans une nouvelle pile de drapeau, appelle retour au départ puis deplacer (20), attendre 1 seconde, deplacer (50). Chaque appel fournit sa propre distance : depuis -100, tu passes à -80 puis -30.",
             "Distance n’est pas une variable globale à créer : c’est une entrée disponible dans cette définition. Ne mets pas retour au départ dans deplacer, sinon chaque appel effacerait le déplacement précédent. Essaie ensuite 10 et 30 et prédis la position finale."
           ],
-          "visualScript": { "caption": "Dans le chat — une distance différente à chaque appel", "note": "Bonus : la case distance reçoit la valeur donnée à chaque appel. Les ovales du modèle représentent les valeurs, pas des menus.", "stacks": [
+          "visualScript": { "caption": "Dans le chat : une distance différente à chaque appel", "note": "Bonus : la case distance reçoit la valeur donnée à chaque appel. Les ovales du modèle représentent les valeurs, pas des menus.", "stacks": [
             { "caption": "La définition avec entrée", "blocks": [
               { "category": "custom", "label": "Mes blocs", "parts": ["définir deplacer ", { "value": "distance" }], "explanation": "Distance est l’entrée de cette recette." },
               { "category": "motion", "label": "Mouvement", "parts": ["ajouter ", { "value": "distance" }, " à x"], "explanation": "Glisser l’ovale distance de la définition dans cette case." }
@@ -5268,7 +5268,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Observer une modification de définition et la prédiction des deux appels pour distinguer compréhension et copie. Consigner autonomie, modèle ou aide dans les remarques existantes sans nouveau dispositif. Ne pas déduire que le paramètre est acquis quand seuls les appels simples le sont.",
         "quickConductor": ["Vérifier position et ordre.", "Nommer une recette et distinguer l’appel.", "Tester deux appels et une modification unique.", "Créer saluer sans modèle.", "Choisir reprise, transfert au jeu ou paramètre facultatif puis sauvegarder."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-fin-partie": {
@@ -5287,7 +5287,7 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.coordinates", "expectation": "Savoir que diminuer X déplace vers la gauche ; le départ est x = -100, y = 0." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "preparer", "title": "1 — Une partie avec des règles",
+        { "type": "lesson", "id": "preparer", "title": "1 : Une partie avec des règles",
           "paragraphs": [
             "Reprends ton programme de Compter et mémoriser : Chat revient à (-100, 0) après un contact avec Cible et gagne 1 point. Cible reste à (80, 0). Teste deux contacts puis le drapeau : score doit faire 1, 2, puis 0.",
             "Sans ce programme, ouvre Compter et mémoriser et reconstruis son modèle. La base Scratch sans scripts ne suffit pas ici. Ne repars pas du jeu complet avec la souris aléatoire : ses règles sont différentes.",
@@ -5296,14 +5296,14 @@ window.CODECRAFT_DATA = {
         { "type": "callout", "id": "reprise", "title": "Le compteur n’est pas prêt ?",
           "text": "Reprends Compter et mémoriser : un point par contact, puis remise à zéro au drapeau.",
           "moduleLink": { "moduleId": "scratch-variables", "text": "Compter et mémoriser" } },
-        { "type": "lesson", "id": "comparaisons", "title": "2 — Comparer avant de décider",
+        { "type": "lesson", "id": "comparaisons", "title": "2 : Comparer avant de décider",
           "paragraphs": [
             "Dans Opérateurs (vert), prends le bloc avec =. Il compare deux valeurs. Glisse le petit bloc ovale score depuis Variables dans sa première case et écris 3 dans la seconde. La question « score = 3 » est vraie à 3 points, fausse à 0, 1 ou 2.",
             "Pour la limite à gauche, prends le bloc < dans Opérateurs. Dans Mouvement (bleu), prends le bloc ovale abscisse x : il donne la position horizontale du personnage. Glisse-le dans la première case et écris -180 dans la seconde. « abscisse x < -180 » est vraie à -181 ou -190, mais fausse à -180 ou -100. Plus petit ne veut pas dire plus proche de zéro.",
             "Ces blocs verts posent des questions : ils ne modifient ni score ni X. Place chaque comparaison dans le trou du bloc si … alors. Dans les modèles, la question verte distingue la comparaison d’un capteur bleu clair.",
             "Dans Contrôle (orange), le bloc stop possède un menu : choisis tout. Il arrête les scripts de tous les personnages. Un simple message ne suffit pas à terminer une partie. Le drapeau relancera les scripts : garde mettre score à 0 et aller à (-100, 0) avant la boucle."
           ] },
-        { "type": "lesson", "id": "exemple", "title": "3 — Deux tests pour terminer",
+        { "type": "lesson", "id": "exemple", "title": "3 : Deux tests pour terminer",
           "shortSteps": [
             "Garde la pile du chat déjà construite. Dans sa boucle, après le si de contact et avant attendre 0.03 secondes, ajoute les deux si du modèle.",
         "Dans chaque si, place le message dire … pendant 2 secondes puis stop tout. Les conditions vertes se construisent avec Opérateurs et les blocs ovales score / abscisse x.",
@@ -5315,7 +5315,7 @@ window.CODECRAFT_DATA = {
             "Avec un point par contact, score passe exactement par 3. Si tu avais essayé 2 points par contact, remets 1 avant ce modèle : 0, 2, 4 ne rencontre jamais 3. On adaptera les règles autonomes en gardant des valeurs atteignables."
           ],
           "visualScript": {
-            "caption": "Ajouts dans la boucle du chat — après le contact", "note": "Deux blocs si à insérer, pas une nouvelle pile. Les actions indentées appartiennent à leur si.",
+            "caption": "Ajouts dans la boucle du chat : après le contact", "note": "Deux blocs si à insérer, pas une nouvelle pile. Les actions indentées appartiennent à leur si.",
             "blocks": [
               { "category": "control", "label": "Contrôle + Opérateurs", "parts": ["si ", { "condition": [{ "value": "score" }, " = ", { "value": "3" }], "operator": true }, " alors"], "explanation": "À trois points, on annonce la victoire puis on arrête tout.",
                 "children": [
@@ -5331,17 +5331,17 @@ window.CODECRAFT_DATA = {
           },
           "code": "À insérer dans la boucle existante, après le si de contact :\nsi <score = 3> alors\n  dire Gagné ! pendant 2 secondes\n  stop tout\nsi <abscisse x < -180> alors\n  dire Perdu ! pendant 2 secondes\n  stop tout"
         },
-        { "type": "tasks", "id": "guide", "title": "À toi — tester les deux fins", "intro": "Une règle est prête seulement si tu l’as testée.", "items": [
+        { "type": "tasks", "id": "guide", "title": "À toi : tester les deux fins", "intro": "Une règle est prête seulement si tu l’as testée.", "items": [
           { "id": "victoire", "text": "Touche Cible trois fois. Vérifie le message Gagné et l’arrêt des déplacements après le message.", "hint": "Le test score = 3 est dans la boucle après le contact ; stop tout est dans le si." },
           { "id": "defaite", "text": "Relance. Sans toucher Cible, maintiens gauche jusqu’à dépasser la limite. Vérifie Perdu et l’arrêt.", "hint": "À x = -180, le test est encore faux ; il devient vrai juste après, vers la gauche." },
           { "id": "recommencer", "text": "Relance après chaque fin : vérifie score = 0 et Chat en (-100, 0). Sauvegarde ta version.", "hint": "La remise à zéro et la position de départ restent avant la boucle de drapeau." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "Sans modèle — change une règle", "intro": "Essaie avant d’ouvrir l’indice. Une modification à la fois.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "Sans modèle : change une règle", "intro": "Essaie avant d’ouvrir l’indice. Une modification à la fois.", "items": [
           { "id": "seuil", "text": "Demande cinq contacts pour gagner. Prédis quand la partie s’arrêtera puis vérifie.", "hint": "Garde 1 point par contact et compare score à 5." },
           { "id": "limite", "text": "Fais perdre plus près du départ : choisis une limite entre -180 et -100. Explique pourquoi le départ reste autorisé.", "hint": "Par exemple -150 : au départ -100 < -150 est faux, mais -151 < -150 est vrai." },
           { "id": "preuve", "text": "Sans nommer les blocs, explique ce qui fait gagner, perdre et recommencer. Teste deux nouvelles parties.", "hint": "Décris les événements du jeu et montre ensuite où ton programme applique chaque règle." }
         ] },
-        { "type": "tasks", "id": "bonus", "title": "Bonus — une règle impossible ?", "intro": "Seulement si les deux fins et le redémarrage sont compris. Travaille dans une copie.", "items": [
+        { "type": "tasks", "id": "bonus", "title": "Bonus : une règle impossible ?", "intro": "Seulement si les deux fins et le redémarrage sont compris. Travaille dans une copie.", "items": [
           { "id": "saut", "text": "Avec victoire à 3, fais gagner 2 points par contact. Prédis le problème, teste puis corrige sans nouvelle propriété.", "hint": "Depuis 0, le score fait 2, 4, 6 : jamais 3. Remets un point par contact ou choisis une victoire à 4." }
         ] }
       ],
@@ -5377,7 +5377,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Distinguer réussite autonome, avec modèle et avec aide dans les remarques existantes. Une reproduction correcte ne prouve pas la compréhension : demander une prédiction et une modification. Aucun acquis automatique ni rythme imposé.",
         "quickConductor": ["Vérifier score et retour au départ.", "Faire verbaliser gagner, perdre, recommencer.", "Construire une comparaison puis placer les tests.", "Tester victoire, défaite et nouvelle partie.", "Choisir consolidation, modification autonome ou projet selon les acquis."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-mini-jeu": {
@@ -5393,14 +5393,14 @@ window.CODECRAFT_DATA = {
         { "skillId": "scratch.game-rules", "expectation": "Tester victoire, défaite et redémarrage : reprendre Gagner, perdre et recommencer si nécessaire." }
       ],
       "blocks": [
-        { "type": "lesson", "id": "exemple", "title": "1 — Choisis ton petit jeu", "paragraphs": [
+        { "type": "lesson", "id": "exemple", "title": "1 : Choisis ton petit jeu", "paragraphs": [
           "Reprends une copie de ton programme Gagner, perdre et recommencer. Tu peux garder le chat et la souris : aucun nouveau dessin n’est obligatoire. Si tu n’as plus ta copie, reconstruis les modèles des modules Score et Fin de partie ; ils restent accessibles.",
           "Choisis une histoire en une phrase : par exemple, le chat rapporte trois objets sans aller trop loin à gauche. Ce n’est qu’une idée : tu peux inventer la tienne avec les mêmes règles.",
           "Écris ou dis tes quatre règles avant de coder : quelles touches déplacent, ce qui donne un point, ce qui fait gagner, ce qui fait perdre. Le drapeau recommence la partie.",
             "Pour ce premier projet, garde le déplacement horizontal, la cible fixe et un point par contact. Choisis un seuil entier de 3 à 5 (3, 4 ou 5) et une limite gauche entre -180 et -120. Le départ reste (-100, 0) et la cible (80, 0) : les règles sont atteignables."
         ] },
         { "type": "callout", "id": "reprise", "title": "Une fin de partie reste difficile ?", "text": "Reprends Gagner, perdre et recommencer pour tester les règles avant de les personnaliser.", "moduleLink": { "moduleId": "scratch-fin-partie", "text": "Gagner, perdre et recommencer" } },
-        { "type": "checklist", "id": "guide", "title": "2 — Les éléments de ton jeu", "items": [
+        { "type": "checklist", "id": "guide", "title": "2 : Les éléments de ton jeu", "items": [
           { "id": "joueur", "text": "Un personnage contrôlé avec droite et gauche." },
           { "id": "contact", "text": "Une cible fixe : un contact donne un point et le personnage retourne au départ." },
           { "id": "compteur", "text": "Un score visible, sans point gagné loin de la cible." },
@@ -5408,21 +5408,21 @@ window.CODECRAFT_DATA = {
           { "id": "defaite", "text": "Une défaite testable en allant trop à gauche, avec message puis arrêt." },
           { "id": "reset", "text": "Le drapeau remet score à 0 et le personnage au départ pour rejouer." }
         ] },
-        { "type": "tasks", "id": "autonomie", "title": "3 — Personnalise et fais jouer", "intro": "Essaie sans rouvrir les modèles ; une aide reste possible. Tu n’as pas besoin de nouvelles notions.", "items": [
+        { "type": "tasks", "id": "autonomie", "title": "3 : Personnalise et fais jouer", "intro": "Essaie sans rouvrir les modèles ; une aide reste possible. Tu n’as pas besoin de nouvelles notions.", "items": [
           { "id": "regles", "text": "Choisis d’abord un seuil entier de victoire : 3, 4 ou 5 contacts. Prédis, change seulement ce seuil et teste une victoire. Ensuite choisis une limite gauche entre -180 et -120, prédis, modifie seulement la limite et teste une défaite après un nouveau drapeau.", "hint": "Garde un point par contact. Teste chaque changement séparément : le départ -100 doit rester à droite de la limite." },
           { "id": "messages", "text": "Écris tes propres messages de victoire et de défaite, adaptés à ton histoire.", "hint": "Change seulement le texte de dire … pendant 2 secondes. Garde stop tout après chaque message." },
           { "id": "consigne", "text": "Ajoute les commandes et les règles dans les instructions de la page Scratch, ou dans un petit texte conservé à côté du fichier.", "hint": "Écris comment bouger, gagner, perdre et recommencer. La publication n’est pas obligatoire." },
           { "id": "testeur", "text": "Fais jouer quelqu’un avec tes instructions. Si tu es seul, teste le jeu en suivant ces instructions sans lire le code.", "hint": "Teste un joueur qui gagne et un joueur qui perd, pas seulement un chemin heureux." },
           { "id": "sauver", "text": "Conserve ta version : sauvegarde sur ton propre compte ou télécharge un nouveau .sb3.", "hint": "Ne modifie pas le compte du professeur. Un ancien téléchargement ne se met pas à jour." }
         ] },
-        { "type": "tasks", "id": "verification", "title": "Vérifie ton travail", "intro": "Les cases sont des repères, pas une validation de compétence.", "items": [
+        { "type": "tasks", "id": "verification", "title": "Vérifie ton travail", "intro": "Teste chaque point sur ton jeu.", "items": [
           { "id": "sans-contact", "text": "Ne bouge pas : aucun point ne s’ajoute et la partie n’est pas perdue au départ.", "hint": "Le départ est hors du contact et du côté autorisé de la limite." },
           { "id": "gagner", "text": "Gagne avec le nombre annoncé de contacts. Après le message, les touches ne déplacent plus le personnage." },
           { "id": "perdre", "text": "Relance puis perds en passant la limite. Après le message, les touches ne déplacent plus le personnage." },
           { "id": "rejouer", "text": "Relance après chaque fin. Vérifie deux parties avec score zéro et position initiale." },
           { "id": "comprendre", "text": "Sans regarder le modèle, montre les règles dans ton code et explique ce qui changerait avec un autre seuil." }
         ] },
-        { "type": "tasks", "id": "bonus", "title": "Bonus facultatif — ton univers", "intro": "Seulement quand les règles fonctionnent. Sauvegarde d’abord une copie.", "items": [
+        { "type": "tasks", "id": "bonus", "title": "Bonus facultatif : ton univers", "intro": "Seulement quand les règles fonctionnent. Sauvegarde d’abord une copie.", "items": [
           { "id": "decor", "text": "Choisis un autre décor dans la bibliothèque Scratch et vérifie que les personnages restent visibles.", "hint": "Clique sur Choisir un arrière-plan en bas à droite. Un décor ne change pas les règles de contact." },
           { "id": "costume", "text": "Si tu sais déjà changer de costume, personnalise le personnage puis reteste le départ et le contact.", "hint": "Reprends les essais de costumes dans Répéter des actions si nécessaire. La taille du dessin peut changer le moment du contact." }
         ] },
@@ -5462,7 +5462,7 @@ window.CODECRAFT_DATA = {
         ],
         "notes": "Projet jalon : observer transfert et explication. Relever réussite autonome, avec modèle ou avec aide dans les remarques existantes ; ne pas créer de nouveau suivi ni valider automatiquement les skills. Les cases, le score et le partage du projet ne certifient rien.",
         "quickConductor": ["Vérifier le jeu précédent.", "Faire choisir une histoire et quatre règles.", "Personnaliser et tester un seuil entier, puis modifier et tester séparément la limite ; personnaliser les messages.", "Faire tester victoire, défaite et deux départs.", "Demander une prédiction et une explication, puis choisir reprise ou bonus."],
-        "references": [{ "title": "Scratch — idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
+        "references": [{ "title": "Scratch : idées et tutoriels", "url": "https://scratch.mit.edu/ideas" }]
       }
     },
     "scratch-variables": {
@@ -5498,7 +5498,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "preparer",
-          "title": "1 — Retrouve ou reconstruis la base",
+          "title": "1 : Retrouve ou reconstruis la base",
           "paragraphs": [
         "Ouvre une copie de ton .sb3 de Faire réagir le jeu, sans créer un projet vide : nous prolongeons le programme. Si tu n’as pas ce fichier, ouvre Faire réagir le jeu avec le lien ci-dessous pour construire les sprites et la pile, tester les contacts et sauvegarder. Reviens ensuite dans Compter et mémoriser avec cette base prête avant d’ajouter le score.",
             "La base attendue : un chat à gauche, un sprite nommé exactement Cible à x = 80, y = 0, une boucle de déplacement droite/gauche et un retour à x = -100, y = 0 au contact.",
@@ -5518,7 +5518,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "notions",
-          "title": "2 — Une boîte qui garde un nombre",
+          "title": "2 : Une boîte qui garde un nombre",
           "paragraphs": [
             "Une variable est une valeur mémorisée qui peut changer. Ici, score garde le nombre de cibles touchées.",
             "Dans Variables (orange foncé), clique sur Créer une variable. Nomme-la score et choisis Pour tous les sprites. Coche la case à côté de score pour afficher le compteur sur la scène.",
@@ -5530,7 +5530,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "3 — Un point par contact",
+          "title": "3 : Un point par contact",
           "paragraphs": [
             "Le retour du chat à gauche sépare les sprites après chaque point. Sans ce retour, un contact qui dure peut donner plusieurs points au fil des tours de boucle.",
             "Ne mets pas score à 0 dans la boucle : elle effacerait sans cesse les points. Ne mets pas ajouter 1 hors du si : tu gagnerais des points sans toucher la cible.",
@@ -5542,7 +5542,7 @@ window.CODECRAFT_DATA = {
             "Lance, touche la cible deux fois : le score doit afficher 2. Relance le drapeau : il revient à 0."
           ],
           "visualScript": {
-            "caption": "3 — Un point par contact",
+            "caption": "3 : Un point par contact",
             "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
@@ -5746,7 +5746,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "À toi — vérifier le compteur",
+          "title": "À toi : vérifier le compteur",
           "intro": "Teste les règles du score, pas seulement son affichage.",
           "items": [
             {
@@ -5779,7 +5779,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "Sans modèle — choisis ta règle de points",
+          "title": "Sans modèle : choisis ta règle de points",
           "intro": "Change seulement la règle de score, puis explique.",
           "items": [
             {
@@ -5807,7 +5807,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — diagnostiquer un score étrange",
+          "title": "Bonus : diagnostiquer un score étrange",
           "intro": "Travaille dans une copie et restaure le programme après chaque essai.",
           "items": [
             {
@@ -5959,11 +5959,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "Scratch — idées et tutoriels",
+            "title": "Scratch : idées et tutoriels",
             "url": "https://scratch.mit.edu/ideas"
           },
           {
-            "title": "Scratch — projets de départ officiels",
+            "title": "Scratch : projets de départ officiels",
             "url": "https://scratch.mit.edu/help/starter_projects/"
           }
         ]
@@ -5987,9 +5987,9 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "reperes",
-          "title": "1 — Ton atelier de jeu",
+          "title": "1 : Ton atelier de jeu",
           "paragraphs": [
-            "Clique sur Ouvrir Scratch. L’éditeur s’ouvre dans un nouvel onglet : garde CodeCraft ouvert pour retrouver les consignes. Aucun compte n’est nécessaire pour cet essai ; nous téléchargerons le projet sur ton ordinateur.",
+            "Clique sur Ouvrir Scratch et garde CodeCraft ouvert à côté. À la fin de l’essai, tu enregistreras ton projet sur ton ordinateur.",
             "Si Scratch est en anglais, clique sur le globe en haut et choisis Français. Ferme le tutoriel qui masque l’éditeur si nécessaire. Nous gardons le chat déjà présent.",
             "La scène est la zone où tu vois le résultat. Un sprite est un personnage ou un objet du projet : le chat est notre premier sprite. Clique sur sa miniature sous la scène pour le sélectionner.",
             "L’onglet Code affiche les catégories de blocs à gauche et la zone de programmation au centre. Fais glisser un bloc vers cette zone pour donner une instruction au sprite sélectionné. Un script est un ensemble de blocs accrochés."
@@ -5998,7 +5998,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "2 — Une première action",
+          "title": "2 : Une première action",
           "paragraphs": [
             "Dans la catégorie bleue Mouvement, glisse « avancer de 10 pas » au centre. Clique directement sur ce bloc : le chat avance un peu. Clique une deuxième fois pour observer un nouveau déplacement.",
             "Dans la catégorie jaune Événements, prends « quand le drapeau vert est cliqué ». Accroche le bloc bleu juste dessous : rapproche-le jusqu’à voir qu’ils s’emboîtent.",
@@ -6006,7 +6006,7 @@ window.CODECRAFT_DATA = {
             "Assemble les deux blocs comme sur le modèle ci-dessous. C’est un repère visuel : retrouve les vrais blocs dans Scratch, puis teste avec le drapeau."
           ],
           "visualScript": {
-            "caption": "Deux blocs accrochés — un seul script",
+            "caption": "Deux blocs accrochés : un seul script",
             "note": "Modèle à reproduire dans Scratch, pas un éditeur interactif.",
             "blocks": [
               { "category": "events", "label": "Événements", "parts": ["quand le ", { "flag": true }, " est cliqué"], "explanation": "Le départ : un clic sur le drapeau lance la pile." },
@@ -6023,7 +6023,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "À toi — repérer et essayer",
+          "title": "À toi : repérer et essayer",
           "intro": "Avance une étape à la fois.",
           "items": [
             {
@@ -6051,7 +6051,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "conserver",
-          "title": "3 — Sauvegarder sans compte",
+          "title": "3 : Sauvegarder sans compte",
           "paragraphs": [
             "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer premier-essai.sb3.",
             "Le téléchargement garde l’état du projet à ce moment-là. Après de nouvelles modifications, télécharge une nouvelle version : ne suppose pas que l’ancien fichier a changé.",
@@ -6062,7 +6062,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "Sans modèle — retrouve ton atelier",
+          "title": "Sans modèle : retrouve ton atelier",
           "intro": "Replie ou remonte moins souvent vers les exemples. Tu peux utiliser un indice si tu bloques.",
           "items": [
             {
@@ -6085,7 +6085,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — un autre essai",
+          "title": "Bonus : un autre essai",
           "intro": "Seulement si les repères sont clairs.",
           "items": [
             {
@@ -6119,7 +6119,7 @@ window.CODECRAFT_DATA = {
         {
           "moduleId": "scratch-actions",
           "blockId": "exemple",
-          "label": "Enchaîner des actions — savoir retrouver les blocs et sauvegarder son projet"
+          "label": "Enchaîner des actions : savoir retrouver les blocs et sauvegarder son projet"
         }
       ],
       "teacherGuide": {
@@ -6210,11 +6210,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "Scratch — idées et tutoriels officiels",
+            "title": "Scratch : idées et tutoriels officiels",
             "url": "https://scratch.mit.edu/ideas"
           },
           {
-            "title": "Scratch — projets de départ officiels",
+            "title": "Scratch : projets de départ officiels",
             "url": "https://scratch.mit.edu/help/starter_projects/"
           }
         ]
@@ -6254,7 +6254,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "notions",
-          "title": "1 — Un départ et un ordre",
+          "title": "1 : Un départ et un ordre",
           "paragraphs": [
             "Un événement est ce qui déclenche le script. « quand le drapeau vert est cliqué » démarre les blocs attachés dessous lorsque tu cliques sur le drapeau.",
             "Les blocs d’une même pile s’exécutent de haut en bas. Des blocs posés à côté, sans être accrochés, ne font pas partie de cette pile.",
@@ -6266,7 +6266,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "2 — Assemble cette petite scène",
+          "title": "2 : Assemble cette petite scène",
           "paragraphs": [
             "Sélectionne le chat du projet neuf préparé au début. Il n’a pas d’ancienne pile : tu peux construire cet essai sans supprimer ton travail précédent. Reste dans ce projet pour modifier les messages, l’ordre et la pause.",
             "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous. Ce modèle se lit ; il ne se colle pas comme du code texte.",
@@ -6368,7 +6368,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — change l’histoire",
+          "title": "Exercice guidé : change l’histoire",
           "intro": "Un seul changement à la fois : prédis, teste, explique.",
           "items": [
             {
@@ -6396,7 +6396,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "À toi — une scène sans modèle",
+          "title": "À toi : une scène sans modèle",
           "intro": "Sauvegarde ton exercice guidé, puis choisis Fichier → Nouveau. Dans ce projet neuf avec le chat, crée ta scène avec les blocs connus. Ton premier essai reste conservé et ne se lance pas en même temps. Essaie avant l’indice.",
           "items": [
             {
@@ -6419,7 +6419,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — déclencher autrement",
+          "title": "Bonus : déclencher autrement",
           "intro": "Aucune boucle nécessaire.",
           "items": [
             {
@@ -6463,7 +6463,7 @@ window.CODECRAFT_DATA = {
         {
           "moduleId": "scratch-pilotage",
           "blockId": "position",
-          "label": "Piloter un personnage — comprendre le départ et l’ordre des blocs"
+          "label": "Piloter un personnage : comprendre le départ et l’ordre des blocs"
         }
       ],
       "teacherGuide": {
@@ -6553,11 +6553,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "Scratch — idées et tutoriels officiels",
+            "title": "Scratch : idées et tutoriels officiels",
             "url": "https://scratch.mit.edu/ideas"
           },
           {
-            "title": "Scratch — projets de départ officiels",
+            "title": "Scratch : projets de départ officiels",
             "url": "https://scratch.mit.edu/help/starter_projects/"
           }
         ]
@@ -6607,7 +6607,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "position",
-          "title": "1 — Où est le personnage ?",
+          "title": "1 : Où est le personnage ?",
           "paragraphs": [
             "Sous la scène, sélectionne le chat. Les valeurs x et y indiquent sa position : x repère gauche/droite, y repère bas/haut. Au centre, x = 0 et y = 0.",
             "Quand x augmente, le chat va à droite ; quand x diminue, il va à gauche. Quand y augmente, il monte ; quand y diminue, il descend. Un nombre négatif comme -10 permet ici d’aller dans le sens opposé.",
@@ -6666,7 +6666,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "2 — Quatre touches, quatre petites piles",
+          "title": "2 : Quatre touches, quatre petites piles",
           "paragraphs": [
             "Dans Événements, « quand la touche espace est pressée » possède un menu : choisis flèche droite, gauche, haut ou bas. Chaque pile ci-dessous possède son propre départ.",
             "Dans Mouvement, « ajouter 10 à x » change seulement x ; « ajouter 10 à y » change seulement y. Modifie le nombre pour écrire -10 lorsque nécessaire.",
@@ -6805,7 +6805,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — essaie les commandes",
+          "title": "Exercice guidé : essaie les commandes",
           "intro": "Prédis la direction avant chaque essai.",
           "items": [
             {
@@ -6838,7 +6838,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "Sans modèle — choisis et explique",
+          "title": "Sans modèle : choisis et explique",
           "intro": "Garde ton projet sauvegardé. Essaie avant de lire les indices.",
           "items": [
             {
@@ -6866,7 +6866,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — un retour par touche",
+          "title": "Bonus : un retour par touche",
           "intro": "Seulement si les quatre commandes sont comprises.",
           "items": [
             {
@@ -6915,7 +6915,7 @@ window.CODECRAFT_DATA = {
           "label": "Créer une touche de retour au départ"
         }
       ],
-        "nextSteps": [{ "moduleId": "scratch-boucles", "blockId": "notions", "label": "Répéter des actions — savoir lire une pile et utiliser une pause" }],
+        "nextSteps": [{ "moduleId": "scratch-boucles", "blockId": "notions", "label": "Répéter des actions : savoir lire une pile et utiliser une pause" }],
         "teacherGuide": {
         "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
         "entryDiagnosis": [
@@ -7018,11 +7018,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "Scratch — idées et tutoriels officiels",
+            "title": "Scratch : idées et tutoriels officiels",
             "url": "https://scratch.mit.edu/ideas"
           },
           {
-            "title": "Scratch — projets de départ officiels",
+            "title": "Scratch : projets de départ officiels",
             "url": "https://scratch.mit.edu/help/starter_projects/"
           }
         ]
@@ -7056,7 +7056,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "environnement",
           "title": "Ici, on travaille avec des fichiers",
-          "text": "Le bouton CodePen reste disponible dans CodeCraft, mais un Pen unique ne remplace pas les fichiers de ce cours. Utilise un éditeur comme VS Code et un navigateur. Si créer et enregistrer un fichier HTML est encore difficile, reprends Structure d’un document HTML, puis reviens ici avec Retour dans le navigateur. Aucun serveur, compte, extension ni publication n’est nécessaire.",
+          "text": "Pour ce cours, travaille avec des fichiers dans un éditeur comme VS Code et ouvre-les dans ton navigateur. Tu peux retrouver la création d’un fichier dans Structure d’un document HTML.",
           "moduleLink": {
             "moduleId": "html-document",
             "text": "Structure d’un document HTML"
@@ -7065,7 +7065,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Deux pages, deux fichiers",
+          "title": "1 : Deux pages, deux fichiers",
           "paragraphs": [
             "Résultat attendu : tu peux aller de l’accueil à une page de découvertes, puis revenir par un lien présent sur la page, sans dépendre du bouton Retour du navigateur.",
             "Crée un NOUVEAU dossier mini-navigation, pour garder tes exercices précédents. Dans ton éditeur, crée puis enregistre deux fichiers distincts avec les noms ci-dessous. Affiche les extensions dans l’explorateur si nécessaire : decouvertes.html.txt n’est pas le fichier demandé.",
@@ -7077,7 +7077,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "liens",
-          "title": "2 — Une destination depuis la page actuelle",
+          "title": "2 : Une destination depuis la page actuelle",
           "paragraphs": [
             "Dans href, decouvertes.html désigne ici un fichier situé dans le même dossier que la page contenant le lien. Le navigateur cherche la destination depuis cette page, pas depuis ton éditeur.",
             "Le texte Découvertes annonce la destination ; modifier seulement ce texte ne change pas le fichier ouvert. Pour revenir, href=\"index.html\" vise le fichier d’accueil.",
@@ -7089,7 +7089,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "navigation",
-          "title": "3 — Retrouver les mêmes choix",
+          "title": "3 : Retrouver les mêmes choix",
           "paragraphs": [
             "nav regroupe les principaux liens de navigation. C’est un conteneur HTML qui s’ouvre et se ferme ; les liens sont placés à l’intérieur. Il ne crée pas de boutons ni de mise en page automatiquement.",
             "Dans notre petite navigation, les deux pages proposent Accueil et Découvertes dans le même ordre. Un lien vers la page déjà affichée est possible ; il la recharge simplement.",
@@ -7101,7 +7101,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "accueil",
-          "title": "index.html — Le document d’accueil",
+          "title": "index.html : Le document d’accueil",
           "paragraphs": [
             "Copie uniquement ce document dans index.html, puis enregistre. Son titre d’onglet et son titre visible permettront de reconnaître la page."
           ],
@@ -7110,7 +7110,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "seconde",
-          "title": "decouvertes.html — Le deuxième document",
+          "title": "decouvertes.html : Le deuxième document",
           "paragraphs": [
             "Copie ce document dans decouvertes.html, pas à la suite du précédent. Enregistre aussi ce fichier."
           ],
@@ -7119,7 +7119,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Faire l’aller et le retour",
+          "title": "Exercice guidé : Faire l’aller et le retour",
           "intro": "Ouvre index.html depuis ton dossier dans un navigateur. Si le double-clic ouvre l’éditeur, utilise Ouvrir avec et choisis ton navigateur.",
           "items": [
             {
@@ -7153,7 +7153,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Renommer sans perdre les chemins",
+          "title": "Mission autonome : Renommer sans perdre les chemins",
           "intro": "Travaille dans une copie du dossier mini-navigation. Essaie avant d’ouvrir les indices.",
           "items": [
             {
@@ -7218,7 +7218,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Un lien visible, mais une destination absente",
+          "title": "Consolidation : Un lien visible, mais une destination absente",
           "paragraphs": [
             "Dans une copie de ta version réparée, remplace seulement le lien vers idees.html de index.html par celui-ci. Le texte reste correct ; l’adresse comporte une faute.",
             "Teste le lien. Selon le navigateur, une page d’erreur ou une indication de fichier introuvable apparaît. Pour réparer, reviens à l’éditeur et au fichier ; une erreur de navigation n’a pas supprimé ton travail."
@@ -7260,7 +7260,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-detail",
-          "title": "Bonus facultatif — Une troisième destination",
+          "title": "Bonus facultatif : Une troisième destination",
           "blocks": [
             {
               "type": "tasks",
@@ -7563,15 +7563,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Créer des liens",
+            "title": "MDN : Créer des liens",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links"
           },
           {
-            "title": "MDN — Manipuler les fichiers",
+            "title": "MDN : Manipuler les fichiers",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
           },
           {
-            "title": "MDN — nav",
+            "title": "MDN : nav",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav"
           }
         ]
@@ -7656,12 +7656,12 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "intention",
-          "title": "1 — Un petit site, pas deux copies de la même page",
+          "title": "1 : Un petit site, pas deux copies de la même page",
           "paragraphs": [
             "Choisis un thème libre et non personnel : par exemple un petit musée de formes, un lieu imaginaire ou un carnet d’idées. Ne publie aucune identité, adresse, photo personnelle ou donnée d’élève.",
             "L’accueil présente le thème et indique où aller. La seconde page apporte un contenu différent. Deux pages suffisent ; une troisième est un bonus facultatif.",
             "Le résultat doit fonctionner depuis n’importe quelle page, garder des styles cohérents et afficher au moins une image. Le projet réutilise les notions apprises : le but est de décider, vérifier et expliquer, pas d’ajouter des effets.",
-            "Travaille sans IA, dans une copie de tes fichiers ou un nouveau dossier. Garde tes réalisations précédentes. Le bouton CodePen de l’interface n’est pas l’environnement de cet exercice multipage ; utilise un éditeur et un navigateur."
+            "Travaille dans une copie de tes fichiers ou un nouveau dossier pour garder tes réalisations précédentes. Utilise ton éditeur de texte et ton navigateur."
           ]
         },
         {
@@ -7710,7 +7710,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "dossier",
-          "title": "2 — Préparer l’organisation",
+          "title": "2 : Préparer l’organisation",
           "paragraphs": [
             "Tu peux garder index.html et idees.html de l’exercice précédent, dans une copie. L’arbre ci-dessous est un exemple d’organisation : adapte le nom de ta seconde page et celui de l’image.",
             "Les deux HTML et style.css restent voisins. Les dessins sont rangés dans images. Conserver cette organisation limite les nouveaux chemins à comprendre : chaque HTML peut utiliser href=\"style.css\" et src=\"images/carre-bleu.svg\".",
@@ -7721,7 +7721,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "liaison",
-          "title": "3 — Une feuille pour les deux documents",
+          "title": "3 : Une feuille pour les deux documents",
           "paragraphs": [
             "Dans head de CHAQUE page, relie le même fichier style.css. Cette ligne est un rappel de Relier une feuille de style ; elle n’est pas un lien cliquable à placer dans le menu.",
             "Si tu pars d’une copie qui utilisait un autre fichier CSS, garde une copie de sauvegarde puis remplace son ancienne liaison par celle vers la feuille commune. Ne conserve pas une deuxième feuille ou un ancien bloc style qui masquerait tes essais."
@@ -7784,7 +7784,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "realisation",
-          "title": "4 — Réaliser ton mini-site",
+          "title": "4 : Réaliser ton mini-site",
           "intro": "Essaie avant d’ouvrir les aides. Les cours restent accessibles ; aucune solution complète du projet n’est fournie.",
           "items": [
             {
@@ -7836,7 +7836,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "verifier",
-          "title": "5 — Vérifier comme un visiteur",
+          "title": "5 : Vérifier comme un visiteur",
           "intro": "Enregistre tous les fichiers. Tester seulement index.html ne suffit pas.",
           "items": [
             {
@@ -7872,7 +7872,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "consolider",
-          "title": "Consolidation — Trois causes à ne pas mélanger",
+          "title": "Consolidation : Trois causes à ne pas mélanger",
           "intro": "Fais ces essais dans une copie du dossier. Répare chaque panne avant la suivante.",
           "items": [
             {
@@ -7914,7 +7914,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-detail",
-          "title": "Bonus facultatif — Une troisième page cohérente",
+          "title": "Bonus facultatif : Une troisième page cohérente",
           "blocks": [
             {
               "type": "tasks",
@@ -8330,15 +8330,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Créer des liens",
+            "title": "MDN : Créer des liens",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links"
           },
           {
-            "title": "MDN — link et feuille externe",
+            "title": "MDN : link et feuille externe",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link"
           },
           {
-            "title": "MDN — Fichiers et chemins",
+            "title": "MDN : Fichiers et chemins",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
           }
         ]
@@ -8386,17 +8386,17 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Une carte qui laisse sa place à l’image",
+          "title": "1 : Une carte qui laisse sa place à l’image",
           "paragraphs": [
             "Tu vas obtenir une carte de 320px de large dans un aperçu assez grand. Elle pourra devenir plus étroite si la place manque ; son image suivra sa largeur en gardant sa forme.",
             "Ouvre un nouveau Pen : HTML et CSS vont dans leurs panneaux respectifs. En local, utilise une copie de ton projet avec feuille déjà reliée : contenu dans body, règles dans le fichier CSS, puis enregistre et actualise. Retrouve Relier une feuille de style depuis le parcours dans le fil d’Ariane.",
-            "Travaille sans IA. Les dessins fournis suffisent : aucune recherche d’image, aucun téléversement ni compte supplémentaire ne sont nécessaires. Un thème personnel ne demande aucune information personnelle."
+            "Utilise les dessins fournis pour tes essais de dimensions."
           ]
         },
         {
           "type": "lesson",
           "id": "largeur",
-          "title": "2 — Largeur de la carte : que mesure-t-on ?",
+          "title": "2 : Largeur de la carte : que mesure-t-on ?",
           "paragraphs": [
             "width fixe ici la largeur souhaitée de la carte. px signifie pixel CSS : width: 320px vise une largeur de 320 pixels CSS.",
             "Par défaut, la largeur d’une div désigne seulement son contenu : padding et bordure s’ajoutent. Avec 320px de contenu, 16px de padding de chaque côté et une bordure de 2px, la boîte ferait 356px de large.",
@@ -8408,7 +8408,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "proportions",
-          "title": "3 — Image : une largeur et une hauteur liée",
+          "title": "3 : Image : une largeur et une hauteur liée",
           "paragraphs": [
             "Une image a des dimensions d’origine. Les deux dessins ci-dessous font 160 × 120 : le fichier entier est un rectangle, même si la forme dessinée à l’intérieur est un cercle ou un carré.",
             "Sur .illustration, width: 100% prend la largeur du contenu de la carte, sans son padding ni sa bordure. Cette règle peut agrandir une petite image ; une photo de faible qualité pourrait alors devenir floue.",
@@ -8420,7 +8420,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "sources",
-          "title": "4 — Choisir une source sans la retaper",
+          "title": "4 : Choisir une source sans la retaper",
           "paragraphs": [
             "Pour le premier essai, prends le cercle orange. Clique sur Copier uniquement la source dans sa carte ci-dessous. Colle TOUT ce texte entre les guillemets de src dans l’exemple HTML, sans le retaper ni le modifier. Rédige ensuite toi-même alt entre ses propres guillemets.",
             "Le code court avec src=\"\" ci-dessous est un squelette à compléter, pas une image prête à s’afficher. Les données encodées restent repliées dans la ressource.",
@@ -8442,7 +8442,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "html",
-          "title": "HTML — Squelette à compléter",
+          "title": "HTML : Squelette à compléter",
           "paragraphs": [
             "Colle cet extrait dans HTML (ou dans body en local). Complète src et alt avant d’évaluer la taille de l’image. Les classes carte et illustration relient les éléments aux règles ci-dessous."
           ],
@@ -8451,7 +8451,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "css",
-          "title": "CSS — La carte et son image",
+          "title": "CSS : La carte et son image",
           "paragraphs": [
             "Colle ces règles dans CSS, sans balises <style>. Les propriétés de largeur concernent deux éléments différents : la carte et l’image. L’image ne possède ici ni padding ni bordure.",
             "La bordure et le fond sont des repères déjà rencontrés ; le petit espace qui peut rester sous une image en ligne n’est pas une déformation et n’a pas à être corrigé dans ce module."
@@ -8461,7 +8461,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Observer un changement à la fois",
+          "title": "Exercice guidé : Observer un changement à la fois",
           "intro": "Agrandis l’aperçu pour laisser au moins 400px de place à la carte, puis compare.",
           "items": [
             {
@@ -8495,7 +8495,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Changer la carte sans écraser le dessin",
+          "title": "Mission autonome : Changer la carte sans écraser le dessin",
           "intro": "Essaie d’abord sans les indices ; conserve une copie de ton départ.",
           "items": [
             {
@@ -8572,7 +8572,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Le cercle est devenu ovale",
+          "title": "Consolidation : Le cercle est devenu ovale",
           "paragraphs": [
             "Dans une copie, remets le cercle, la carte à 320px et un aperçu assez large. Remplace uniquement .illustration par cette règle : l’adresse de l’image reste correcte."
           ],
@@ -8609,7 +8609,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-detail",
-          "title": "Bonus facultatif — Limiter l’image sans l’agrandir",
+          "title": "Bonus facultatif : Limiter l’image sans l’agrandir",
           "blocks": [
             {
               "type": "lesson",
@@ -8625,7 +8625,7 @@ window.CODECRAFT_DATA = {
               "type": "tasks",
               "id": "bonus",
               "title": "Comparer avec la même image",
-              "intro": "Ce choix est facultatif ; il n’est pas nécessaire pour passer au projet.",
+              "intro": "Pour aller plus loin, essaie ce changement.",
               "items": [
                 {
                   "id": "comparer-naturel",
@@ -8929,19 +8929,19 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Dimensions en CSS",
+            "title": "MDN : Dimensions en CSS",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing"
           },
           {
-            "title": "MDN — box-sizing",
+            "title": "MDN : box-sizing",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-sizing"
           },
           {
-            "title": "MDN — max-width",
+            "title": "MDN : max-width",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/max-width"
           },
           {
-            "title": "MDN — height",
+            "title": "MDN : height",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/height"
           }
         ]
@@ -9016,18 +9016,18 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "intention",
-          "title": "1 — Une création personnelle, sans données personnelles",
+          "title": "1 : Une création personnelle, sans données personnelles",
           "paragraphs": [
             "Crée une carte qui présente une idée, un lieu imaginaire, une activité ou un objet inventé. Personnel signifie que tu fais tes choix : ne mets ni nom complet, ni photo de toi, ni adresse, ni autre information privée.",
             "Résultat attendu : une seule carte illustrée, avec un titre, deux courts paragraphes et une présentation lisible. Elle tient dans les largeurs que tu testes, sans déformer son image.",
             "Ce n’est ni une course ni un concours de décoration. Tu peux garder des couleurs simples et utiliser le dessin fourni. Ce qui compte : choisir, expliquer et modifier ton code.",
-            "Travaille sans IA. Le projet n’impose ni Flexbox, ni arrondis, ni survol, ni publication. Les liens, les listes et les zones de page ne sont pas nécessaires pour cette seule carte."
+            "Concentre-toi sur le contenu de ta carte, ses couleurs et ses espacements."
           ]
         },
         {
           "type": "checklist",
           "id": "cahier-charges",
-          "title": "Cahier des charges — Ce que ta carte doit contenir",
+          "title": "Cahier des charges : Ce que ta carte doit contenir",
           "items": [
             {
               "id": "exigence-1",
@@ -9066,7 +9066,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "organisation",
-          "title": "2 — Choisir ton environnement",
+          "title": "2 : Choisir ton environnement",
           "paragraphs": [
             "Dans CodePen : crée un nouveau Pen, avec le contenu dans HTML et les règles dans CSS. Tu peux aussi partir d’une copie de ton exercice Dimensions, mais il faudra changer le contenu, ajouter le second paragraphe et justifier tes choix.",
             "En local : fais une copie de ton dossier HTML/CSS. Garde le cadre complet, sa ligne link et les fichiers associés ; remplace le contenu de body et adapte la feuille. Enregistre les deux fichiers et actualise index.html. La gestion des fichiers n’est pas une nouvelle exigence si tu choisis CodePen.",
@@ -9116,7 +9116,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "realisation",
-          "title": "3 — Réaliser ta carte",
+          "title": "3 : Réaliser ta carte",
           "intro": "Essaie chaque étape avant d’ouvrir son indice. Aucun code complet de projet n’est fourni ici.",
           "items": [
             {
@@ -9174,7 +9174,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "verifier",
-          "title": "4 — Vérifier puis expliquer",
+          "title": "4 : Vérifier puis expliquer",
           "intro": "Le résultat visuel et l’explication comptent ensemble.",
           "items": [
             {
@@ -9206,7 +9206,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "consolider",
-          "title": "Consolidation — Reprendre seulement le point fragile",
+          "title": "Consolidation : Reprendre seulement le point fragile",
           "intro": "N’efface pas tout le projet. Garde une copie et choisis le symptôme qui correspond.",
           "items": [
             {
@@ -9248,7 +9248,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-detail",
-          "title": "Bonus facultatif — Deux cartes, deux usages",
+          "title": "Bonus facultatif : Deux cartes, deux usages",
           "blocks": [
             {
               "type": "tasks",
@@ -9679,19 +9679,19 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — L’élément img",
+            "title": "MDN : L’élément img",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
           },
           {
-            "title": "MDN — Dimensions en CSS",
+            "title": "MDN : Dimensions en CSS",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing"
           },
           {
-            "title": "MDN — Le modèle de boîte",
+            "title": "MDN : Le modèle de boîte",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model"
           },
           {
-            "title": "MDN — line-height",
+            "title": "MDN : line-height",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/line-height"
           }
         ]
@@ -9734,7 +9734,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Donner un rôle aux regroupements",
+          "title": "1 : Donner un rôle aux regroupements",
           "paragraphs": [
             "Résultat attendu : une petite page avec une introduction, son contenu principal et une information finale. Tu sauras dire pourquoi chaque contenu est à cet endroit, même sans couleur.",
             "Une div regroupe des éléments sans préciser leur rôle. Certaines balises permettent d’indiquer ce que contient le regroupement : c’est le sens du contenu, pas sa décoration.",
@@ -9744,7 +9744,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "roles",
-          "title": "2 — Trois zones pour cette page",
+          "title": "2 : Trois zones pour cette page",
           "paragraphs": [
             "header présente ici la page : son titre et une courte introduction. Ce n’est pas head : head contient les informations du document, alors que ce header est un élément affiché dans body.",
             "main contient le sujet principal de la page. Dans cet exercice, utilise un seul main ; place-le après header, pas à l’intérieur de header.",
@@ -9755,7 +9755,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple",
-          "title": "Exemple — Introduction, sujet, information finale",
+          "title": "Exemple : Introduction, sujet, information finale",
           "paragraphs": [
             "Lis les fermetures : header, main et footer sont au même niveau. Le h2 est enfant de main ; le h1 est enfant de header. Les espaces en début de ligne rendent l’imbrication plus facile à lire."
           ],
@@ -9764,7 +9764,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Repérer les rôles",
+          "title": "Exercice guidé : Repérer les rôles",
           "intro": "Utilise l’exemple, puis change une seule chose à la fois.",
           "items": [
             {
@@ -9794,7 +9794,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "sections",
-          "title": "3 — Plusieurs sujets dans le contenu principal",
+          "title": "3 : Plusieurs sujets dans le contenu principal",
           "paragraphs": [
             "Si main contient plusieurs parties sur des thèmes différents, section regroupe un de ces thèmes. Donne généralement un titre à chaque section pour annoncer son sujet.",
             "Dans cette variante, remplace le main de l’exemple par celui ci-dessous ; garde header et footer. N’ajoute pas un deuxième main.",
@@ -9805,7 +9805,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Un carnet sur un autre thème",
+          "title": "Mission autonome : Un carnet sur un autre thème",
           "intro": "Essaie avant d’ouvrir les indices. Pars d’une zone HTML vide ou remanie ton exemple sans en copier les textes.",
           "items": [
             {
@@ -9868,7 +9868,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Tout dans l’introduction ?",
+          "title": "Consolidation : Tout dans l’introduction ?",
           "paragraphs": [
             "Cette page s’affiche, mais son contenu principal est rangé dans header. Lis l’extrait avant de corriger ; ne cherche pas un effet CSS."
           ],
@@ -9899,7 +9899,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-navigation",
-          "title": "Bonus facultatif — Un groupe de liens de navigation",
+          "title": "Bonus facultatif : Un groupe de liens de navigation",
           "blocks": [
             {
               "type": "lesson",
@@ -10142,11 +10142,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Structurer un document",
+            "title": "MDN : Structurer un document",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents"
           },
           {
-            "title": "MDN — L’élément main",
+            "title": "MDN : L’élément main",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main"
           }
         ]
@@ -10193,17 +10193,17 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Aider à lire, pas seulement décorer",
+          "title": "1 : Aider à lire, pas seulement décorer",
           "paragraphs": [
             "Résultat attendu : un titre bien repérable et deux paragraphes faciles à lire. Tu modifieras un réglage à la fois et expliqueras la différence.",
             "Ouvre un nouveau Pen : le code HTML va dans HTML, les règles dans CSS. Ne copie pas les noms des panneaux dans le code. En local, utilise une copie de ton projet avec sa feuille CSS déjà reliée : extrait HTML dans body, règles dans le fichier CSS. Si cette liaison est nouvelle pour toi, retrouve Relier une feuille de style depuis le parcours dans le fil d’Ariane.",
-            "Travaille sans IA. Compare les effets et garde les mots identiques pendant les premiers essais ; une page reproduite ne suffit pas pour montrer que tu comprends chaque réglage."
+            "Compare les effets en gardant les mêmes mots pendant les premiers essais."
           ]
         },
         {
           "type": "lesson",
           "id": "notions",
-          "title": "2 — Quatre réglages différents",
+          "title": "2 : Quatre réglages différents",
           "paragraphs": [
             "font-family choisit la famille de caractères. sans-serif demande une police sans empattements disponible sur l’appareil ; serif en demande une avec de petites terminaisons. Le dessin exact peut varier selon l’ordinateur. Aucun téléchargement de police n’est nécessaire.",
             "font-size règle la taille des caractères. Ici px signifie pixel CSS, une unité de taille à l’écran : 18px donne des lettres plus grandes que 12px. N’ajoute pas d’espace entre 18 et px.",
@@ -10215,7 +10215,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "html",
-          "title": "HTML — Deux classes, deux rôles",
+          "title": "HTML : Deux classes, deux rôles",
           "paragraphs": [
             "Les deux paragraphes partagent lecture : une règle pourra améliorer les deux. Le titre garde sa classe titre."
           ],
@@ -10224,7 +10224,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "css",
-          "title": "CSS — Un point de départ lisible",
+          "title": "CSS : Un point de départ lisible",
           "paragraphs": [
             "Copie les règles, puis observe avant de modifier. N’ajoute pas de balises <style> dans le panneau CSS ou le fichier CSS.",
             "Ces propriétés peuvent se transmettre d’un parent à ses enfants : on parle d’héritage. Ici on les place directement sur les éléments ciblés pour voir les essais simplement ; changer .lecture ne doit pas changer le h1."
@@ -10234,7 +10234,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Comparer un réglage à la fois",
+          "title": "Exercice guidé : Comparer un réglage à la fois",
           "intro": "Après chaque essai, observe puis rétablis le réglage indiqué.",
           "items": [
             {
@@ -10264,7 +10264,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Une note facile à lire",
+          "title": "Mission autonome : Une note facile à lire",
           "intro": "Écris tes propres textes : un titre et deux paragraphes de plusieurs phrases. Essaie avant les indices.",
           "items": [
             {
@@ -10331,7 +10331,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Pourquoi les lignes sont-elles serrées ?",
+          "title": "Consolidation : Pourquoi les lignes sont-elles serrées ?",
           "paragraphs": [
             "Dans une copie, remplace seulement la règle .lecture par celle-ci. Les deux déclarations sont valides : c’est le choix des valeurs qu’il faut discuter."
           ],
@@ -10362,7 +10362,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-detail",
-          "title": "Bonus facultatif — Deux ambiances, même lecture",
+          "title": "Bonus facultatif : Deux ambiances, même lecture",
           "blocks": [
             {
               "type": "tasks",
@@ -10595,15 +10595,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Fondamentaux du style de texte",
+            "title": "MDN : Fondamentaux du style de texte",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Fundamentals"
           },
           {
-            "title": "MDN — line-height",
+            "title": "MDN : line-height",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/line-height"
           },
           {
-            "title": "MDN — text-align",
+            "title": "MDN : text-align",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-align"
           }
         ]
@@ -10647,7 +10647,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Une boîte autour du contenu",
+          "title": "1 : Une boîte autour du contenu",
           "paragraphs": [
             "Résultat attendu : deux cartes dont le texte ne touche pas la bordure et qui sont séparées du cadre extérieur. Tu sauras changer l’espace du bon côté de la bordure.",
             "Ouvre un nouveau Pen, puis utilise HTML et CSS séparément. En local, travaille dans une copie avec une feuille déjà reliée : extrait HTML dans body, règles dans le fichier CSS, puis enregistre et actualise. Le cours de liaison est accessible dans les reprises si nécessaire.",
@@ -10657,7 +10657,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "couches",
-          "title": "2 — De l’intérieur vers l’extérieur",
+          "title": "2 : De l’intérieur vers l’extérieur",
           "paragraphs": [
             "padding éloigne le contenu de sa bordure. Le fond de la boîte remplit aussi cet espace intérieur.",
             "border trace ici une ligne autour du contenu et du padding. border: 2px solid navy signifie une épaisseur de 2 pixels CSS, un trait continu (solid) et la couleur bleu marine (navy). Épaisseur, style du trait et couleur ont chacun leur rôle.",
@@ -10670,7 +10670,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "html",
-          "title": "HTML — Deux cartes dans un atelier",
+          "title": "HTML : Deux cartes dans un atelier",
           "paragraphs": [
             "Les deux .carte sont enfants directs de .atelier. Le h2 et le p de chaque carte sont ses enfants. Les classes titre et texte servent ici à retirer leurs marges par défaut."
           ],
@@ -10679,7 +10679,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "css",
-          "title": "CSS — Voir les deux sortes d’espace",
+          "title": "CSS : Voir les deux sortes d’espace",
           "paragraphs": [
             "Le cadre gris de .atelier permet de repérer le parent. Dans chaque carte, le fond blanc continue jusqu’à sa bordure bleue. Dehors, on voit le gris du parent.",
             "Observe surtout le côté gauche de la première carte : la distance entre le cadre gris et la bordure bleue montre sa marge ; la distance entre la bordure bleue et les mots montre son padding.",
@@ -10690,7 +10690,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Changer un seul espace",
+          "title": "Exercice guidé : Changer un seul espace",
           "intro": "Garde les mots et l’épaisseur des bordures pendant les comparaisons.",
           "items": [
             {
@@ -10720,7 +10720,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Choisir l’espace utile",
+          "title": "Mission autonome : Choisir l’espace utile",
           "intro": "Essaie sans lire les noms de propriétés dans les indices. Garde une copie de ton départ.",
           "items": [
             {
@@ -10791,7 +10791,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Beaucoup d’espace, mais du mauvais côté",
+          "title": "Consolidation : Beaucoup d’espace, mais du mauvais côté",
           "paragraphs": [
             "Dans une copie, remplace seulement la règle .carte par celle-ci ; garde le HTML, le cadre et les marges à zéro des titres et paragraphes."
           ],
@@ -10822,7 +10822,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus-detail",
-          "title": "Bonus facultatif — Compact ou aéré ?",
+          "title": "Bonus facultatif : Compact ou aéré ?",
           "blocks": [
             {
               "type": "tasks",
@@ -11116,15 +11116,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Le modèle de boîte",
+            "title": "MDN : Le modèle de boîte",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model"
           },
           {
-            "title": "MDN — Fusion des marges",
+            "title": "MDN : Fusion des marges",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing"
           },
           {
-            "title": "MDN — border",
+            "title": "MDN : border",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/border"
           }
         ]
@@ -11144,7 +11144,7 @@ window.CODECRAFT_DATA = {
           "id": "preparer",
           "type": "callout",
           "title": "Avant de commencer",
-          "text": "Aucune notion HTML n’est supposée. Ouvre CodePen et repère la zone HTML et l’aperçu. Travaille dans HTML, pas dans CSS ou JavaScript. Avant de remplacer ton essai, copie son HTML dans un fichier texte sur ton ordinateur pour le conserver. Aucun compte n’est nécessaire pour ces essais ; ne suppose pas que ton travail sera conservé après fermeture de l’onglet."
+          "text": "Ouvre CodePen et repère la zone HTML et l’aperçu. Écris dans HTML. Pour garder ton travail, copie ton code dans un fichier texte avant de fermer l’onglet ou de commencer un autre essai."
         },
         {
           "id": "cours",
@@ -11159,7 +11159,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "tasks",
-          "title": "Exercice guidé — Titre et paragraphe",
+          "title": "Exercice guidé : Titre et paragraphe",
           "items": [
             {
               "id": "html-codepen",
@@ -11206,7 +11206,7 @@ window.CODECRAFT_DATA = {
         {
           "id": "autonome",
           "type": "tasks",
-          "title": "À toi de jouer — sans modèle",
+          "title": "À toi de jouer : sans modèle",
           "intro": "Choisis un nouveau sujet pour ta page. Essaie de créer les éléments suivants sans recopier l’exercice guidé. Fais un premier essai avant d’ouvrir les indices.",
           "items": [
             {
@@ -11359,7 +11359,7 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "WHATWG — Niveaux de titres",
+            "title": "WHATWG : Niveaux de titres",
             "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
           }
         ]
@@ -11381,7 +11381,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "tone": "neutral",
           "title": "Avant de commencer",
-          "text": "Réutilise les titres, paragraphes et listes déjà travaillés. Ouvre un nouvel essai dans la zone HTML de CodePen et garde l’ancien code dans un fichier texte. Aucun compte ni CSS n’est nécessaire. Si une notion te manque, reprends la leçon correspondante avant de réessayer."
+          "text": "Réutilise les titres, paragraphes et listes déjà travaillés. Garde ton ancien code dans un fichier texte, puis ouvre un nouvel essai dans la zone HTML de CodePen."
         },
         {
           "id": "defi",
@@ -11440,18 +11440,10 @@ window.CODECRAFT_DATA = {
         },
         {
           "id": "bonus",
-          "type": "details",
-          "title": "Pour réessayer — facultatif",
-          "blocks": [
-            {
-              "id": "nouveau-sujet",
-              "type": "lesson",
-              "title": "Un autre petit sujet",
-              "paragraphs": [
-                "Conserve ta page puis essaie un autre sujet sans recopier le premier. Compare les aides utilisées ; ce nouvel essai n’est pas nécessaire pour continuer."
-              ]
-            }
-          ]
+          "type": "callout",
+          "presentation": "compact",
+          "title": "Pour réessayer (facultatif)",
+          "text": "Conserve ta page et essaie un autre sujet en réutilisant ce que tu as appris."
         }
       ],
       "theme": "fondations",
@@ -11600,11 +11592,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "WHATWG — Titres",
+            "title": "WHATWG : Titres",
             "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
           },
           {
-            "title": "WHATWG — Liste",
+            "title": "WHATWG : Liste",
             "url": "https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element"
           }
         ]
@@ -11623,7 +11615,7 @@ window.CODECRAFT_DATA = {
           "id": "preparer",
           "type": "callout",
           "title": "Avant de commencer",
-          "text": "Il faut repérer un texte entre une balise ouvrante et sa fermeture. Si nécessaire, reprends Titres et paragraphes. Ouvre CodePen et repère la zone HTML et l’aperçu. Travaille dans HTML, pas dans CSS ou JavaScript. Avant de remplacer ton essai, copie son HTML dans un fichier texte sur ton ordinateur pour le conserver. Aucun compte n’est nécessaire pour ces essais ; ne suppose pas que ton travail sera conservé après fermeture de l’onglet.",
+          "text": "Repère la balise ouvrante, le texte et la fermeture ; retrouve ces repères dans Titres et paragraphes au besoin. Ouvre la zone HTML et l’aperçu de CodePen. Pour garder ton travail, copie ton code dans un fichier texte avant de fermer l’onglet ou de commencer un autre essai.",
           "moduleLink": {
             "moduleId": "html-titres-paragraphes",
             "text": "Titres et paragraphes"
@@ -11643,7 +11635,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "tasks",
-          "title": "Exercice guidé — Après les titres et paragraphes",
+          "title": "Exercice guidé : Après les titres et paragraphes",
           "items": [
             {
               "id": "liste-trois",
@@ -11810,7 +11802,7 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "WHATWG — Liste non ordonnée et éléments de liste",
+            "title": "WHATWG : Liste non ordonnée et éléments de liste",
             "url": "https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element"
           }
         ]
@@ -11829,7 +11821,7 @@ window.CODECRAFT_DATA = {
           "id": "preparer",
           "type": "callout",
           "title": "Avant de commencer",
-          "text": "Il faut repérer un texte entre une balise ouvrante et sa fermeture. Si nécessaire, reprends Titres et paragraphes. Ouvre CodePen et repère la zone HTML et l’aperçu. Travaille dans HTML, pas dans CSS ou JavaScript. Avant de remplacer ton essai, copie son HTML dans un fichier texte sur ton ordinateur pour le conserver. Aucun compte n’est nécessaire pour ces essais ; ne suppose pas que ton travail sera conservé après fermeture de l’onglet.",
+          "text": "Repère la balise ouvrante, le texte et la fermeture ; retrouve ces repères dans Titres et paragraphes au besoin. Ouvre la zone HTML et l’aperçu de CodePen. Pour garder ton travail, copie ton code dans un fichier texte avant de fermer l’onglet ou de commencer un autre essai.",
           "moduleLink": {
             "moduleId": "html-titres-paragraphes",
             "text": "Titres et paragraphes"
@@ -11881,7 +11873,7 @@ window.CODECRAFT_DATA = {
         {
           "id": "autonome",
           "type": "tasks",
-          "title": "À toi — annoncer et vérifier une destination",
+          "title": "À toi : annoncer et vérifier une destination",
           "intro": "Garde tes premiers liens. Choisis un site public connu ou utilise https://example.com ; aucun compte ni donnée personnelle n’est nécessaire.",
           "items": [
             {
@@ -12025,7 +12017,7 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "WHATWG — Liens et attribut href",
+            "title": "WHATWG : Liens et attribut href",
             "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element"
           }
         ]
@@ -12053,7 +12045,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "consigne",
-          "title": "Mission autonome — Révision",
+          "title": "Mission autonome : Révision",
           "paragraphs": [
             "Choisis un nouveau sujet et construis une page contenant un h1, deux parties de même importance annoncées par deux h2, deux paragraphes, une liste de trois éléments et un lien utile.",
             "Les étapes suivantes précisent le résultat attendu. Les exemples de syntaxe restent des aides à ouvrir seulement après ton premier essai ; une page copiée n’est pas un essai autonome."
@@ -12062,7 +12054,7 @@ window.CODECRAFT_DATA = {
         {
           "id": "revision-html-titres-paragraphes",
           "type": "tasks",
-          "title": "Titres et paragraphes — Révision",
+          "title": "Titres et paragraphes : Révision",
           "items": [
             {
               "id": "titres",
@@ -12081,7 +12073,7 @@ window.CODECRAFT_DATA = {
         {
           "id": "revision-html-listes",
           "type": "tasks",
-          "title": "Liste — Révision",
+          "title": "Liste : Révision",
           "items": [
             {
               "id": "liste",
@@ -12299,11 +12291,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "WHATWG — Titres",
+            "title": "WHATWG : Titres",
             "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
           },
           {
-            "title": "WHATWG — Lien",
+            "title": "WHATWG : Lien",
             "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element"
           }
         ]
@@ -12322,7 +12314,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "cours",
-          "title": "1 — Une source et un texte alternatif — exemple explicatif",
+          "title": "1 : Une source et un texte alternatif : exemple explicatif",
           "paragraphs": [
             "img insère une image. src indique sa source ; alt donne un texte qui transmet l’information utile apportée par l’image dans cette page.",
             "Le texte alternatif aide notamment les personnes qui utilisent un lecteur d’écran et peut remplacer une image absente. Ce n’est pas une légende visible sous l’image.",
@@ -12335,7 +12327,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "ressources-intro",
-          "title": "2 — Choisis la bonne source",
+          "title": "2 : Choisis la bonne source",
           "paragraphs": [
             "L’exemple court ci-dessus fonctionne dans un projet local seulement si le dossier assets/exercices contient l’image, à côté de ta page HTML. Dans CodePen, ce chemin ne pointe pas vers ton ordinateur.",
             "Pour CodePen, clique sur « Copier uniquement la source » sous le dessin choisi. Colle cette source entière entre les guillemets de src, sans la retaper ni la modifier. Ensuite, rédige toi-même alt entre ses propres guillemets. La source contient le dessin et fonctionne sans serveur d’images ; ses données encodées restent repliées.",
@@ -12345,19 +12337,19 @@ window.CODECRAFT_DATA = {
         {
           "type": "resource",
           "id": "ressource-carre",
-          "title": "Image de départ — carré bleu",
+          "title": "Image de départ : carré bleu",
           "resourceId": "carre-bleu"
         },
         {
           "type": "resource",
           "id": "ressource-cercle",
-          "title": "Image de remplacement — cercle orange",
+          "title": "Image de remplacement : cercle orange",
           "resourceId": "cercle-orange"
         },
         {
           "type": "tasks",
           "id": "exercices",
-          "title": "3 — Exercice guidé",
+          "title": "3 : Exercice guidé",
           "intro": "Dans HTML sur CodePen, commence avec <img src=\"\" alt=\"\">. Remplis d’abord src, puis rédige toi-même alt. Avance une étape à la fois.",
           "items": [
             {
@@ -12389,7 +12381,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "aide-fondations",
-          "title": "Besoin d’un squelette titre/paragraphe ? — Fondations ou autre parcours",
+          "title": "Besoin d’un squelette titre/paragraphe ? : Fondations ou autre parcours",
           "blocks": [
             {
               "type": "lesson",
@@ -12398,7 +12390,7 @@ window.CODECRAFT_DATA = {
               "paragraphs": [
                 "Si tu ne sais pas encore créer un titre et un paragraphe, utilise ce squelette fourni. Le titre et le texte sont déjà prêts : leur création n’est pas nécessaire pour travailler les images.",
                 "Sous le carré bleu, clique sur « Copier uniquement la source ». Dans le squelette, colle cette source entière entre les guillemets de src sans la retaper ni la modifier. Rédige toi-même alt pour décrire l’information utile de l’image. Tu peux ensuite personnaliser les textes.",
-                "Si sélectionner ou coller te bloque, demande une aide à la manipulation si tu es en cours. Cette aide ne préjuge pas de ta compréhension de src et alt."
+                "Observe comment src et alt changent le résultat dans l’aperçu."
               ],
               "code": "<h1>Mes formes</h1>\n<p>Voici une forme que je reconnais.</p>\n<img src=\"\" alt=\"\">"
             }
@@ -12407,7 +12399,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "4 — Mission autonome",
+          "title": "4 : Mission autonome",
           "intro": "Présente une forme avec un titre, un paragraphe et une image. Si tu ne sais pas encore créer les textes, utilise le squelette repliable juste au-dessus. Tu peux réussir la partie images avec ce support. Si ces bases sont maîtrisées, commence sans squelette.",
           "items": [
             {
@@ -12427,7 +12419,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "depannage",
-          "title": "Consolidation — Une image absente",
+          "title": "Consolidation : Une image absente",
           "intro": "Teste volontairement une erreur, puis corrige-la. Utilise les deux ressources disponibles au-dessus.",
           "items": [
             {
@@ -12455,7 +12447,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus-presentation",
-          "title": "Bonus — Deuxième présentation illustrée",
+          "title": "Bonus : Deuxième présentation illustrée",
           "intro": "Si ta première présentation fonctionne, ajoute une autre présentation. Si tu ne connais pas h2, le titre et le paragraphe sont fournis dans l’indice : utilise-les sans devoir maîtriser une nouvelle balise.",
           "items": [
             {
@@ -12469,7 +12461,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus-lien",
-          "title": "Bonus — Une image cliquable",
+          "title": "Bonus : Une image cliquable",
           "intro": "Seulement si tu sais déjà créer un lien avec a et href. Sinon, tu peux passer ce bonus et revenir après Liens HTML.",
           "items": [
             {
@@ -12556,7 +12548,7 @@ window.CODECRAFT_DATA = {
       "nextSteps": [
         {
           "moduleId": "html-mini-page",
-          "label": "Mini-page HTML — si les bases nécessaires sont maîtrisées",
+          "label": "Mini-page HTML : si les bases nécessaires sont maîtrisées",
           "prerequisiteSkills": [
             {
               "skillId": "html.headings",
@@ -12582,7 +12574,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "moduleId": "css-classes-couleurs",
-          "label": "Classes et couleurs — si titres et paragraphes sont maîtrisés",
+          "label": "Classes et couleurs : si titres et paragraphes sont maîtrisés",
           "prerequisiteSkills": [
             {
               "skillId": "html.headings",
@@ -12707,15 +12699,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Élément img",
+            "title": "MDN : Élément img",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
           },
           {
-            "title": "W3C WAI — Images décoratives",
+            "title": "W3C WAI : Images décoratives",
             "url": "https://www.w3.org/WAI/tutorials/images/decorative/"
           },
           {
-            "title": "MDN — Adresses data:",
+            "title": "MDN : Adresses data:",
             "url": "https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data"
           }
         ]
@@ -12735,7 +12727,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "callout",
           "id": "reprise-css",
-          "title": "Avant de commencer — Comprends-tu une règle ?",
+          "title": "Avant de commencer : Comprends-tu une règle ?",
           "tone": "neutral",
           "text": "Dans p { color: blue; }, peux-tu montrer la cible, la propriété et la valeur, puis changer seulement le fond avec background-color ? Si tu hésites, ouvre Découvrir le CSS et reviens ici ensuite. Si tu sais déjà l’expliquer, continue sans refaire ce cours.",
           "moduleLink": {
@@ -12746,7 +12738,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "classe-html",
-          "title": "1 — Donner une classe en HTML",
+          "title": "1 : Donner une classe en HTML",
           "paragraphs": [
             "Sache créer un titre et un paragraphe, et expliquer une règle CSS simple. Tu peux utiliser un nouveau CodePen : commencer sans anciennes règles rend les résultats plus faciles à comprendre.",
             "Le HTML décrit le contenu. Le CSS permet de changer son apparence, par exemple la couleur du texte.",
@@ -12758,7 +12750,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "selecteur-css",
-          "title": "2 — Retrouver cette classe en CSS",
+          "title": "2 : Retrouver cette classe en CSS",
           "paragraphs": [
             "Dans le panneau CSS de CodePen, écris la règle ci-dessous. Ne la mets pas dans le panneau HTML.",
             "Le sélecteur .titre choisit les éléments dont la classe est titre. Le point se met dans le CSS, pas dans la valeur de class en HTML. Les deux noms doivent correspondre exactement.",
@@ -12770,7 +12762,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Un titre en couleur",
+          "title": "Exercice guidé : Un titre en couleur",
           "items": [
             {
               "id": "html",
@@ -12790,7 +12782,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "autonomie",
-          "title": "À toi de jouer — Relier HTML et CSS",
+          "title": "À toi de jouer : Relier HTML et CSS",
           "intro": "Essaie d’abord seul. Les noms de couleurs CSS utilisés ici sont en anglais : green signifie vert, orange signifie orange.",
           "items": [
             {
@@ -12826,7 +12818,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "defi",
-          "title": "Petit défi — Deux classes, deux couleurs",
+          "title": "Petit défi : Deux classes, deux couleurs",
           "intro": "Crée une nouvelle petite page avec un titre et deux paragraphes. Essaie sans regarder les exemples.",
           "items": [
             {
@@ -12880,7 +12872,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Un groupe qui ne change pas",
+          "title": "Consolidation : Un groupe qui ne change pas",
           "paragraphs": [
             "Teste les deux extraits suivants dans un nouvel essai. Le premier va dans HTML, le second dans CSS. Les deux textes devraient devenir verts : cherche pourquoi un seul change."
           ],
@@ -12918,7 +12910,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — Deux variantes visuelles",
+          "title": "Bonus : Deux variantes visuelles",
           "intro": "Facultatif : utilise uniquement des classes et des couleurs. Tu peux garder le même HTML et changer ses classes.",
           "items": [
             {
@@ -13040,7 +13032,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "moduleId": "web-affiche-numerique",
-          "label": "Créer une affiche — si règles et classes sont comprises",
+          "label": "Créer une affiche : si règles et classes sont comprises",
           "prerequisiteSkills": [
             {
               "skillId": "html.headings",
@@ -13179,19 +13171,19 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Sélecteurs de classe",
+            "title": "MDN : Sélecteurs de classe",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Class_selectors"
           },
           {
-            "title": "MDN — Découvrir la syntaxe CSS",
+            "title": "MDN : Découvrir la syntaxe CSS",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS"
           },
           {
-            "title": "MDN — color",
+            "title": "MDN : color",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color"
           },
           {
-            "title": "MDN — background-color",
+            "title": "MDN : background-color",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-color"
           }
         ]
@@ -13326,7 +13318,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — Une nouvelle rubrique",
+          "title": "Bonus : Une nouvelle rubrique",
           "intro": "Facultatif, avec les mêmes notions seulement. La page HTML peut être réussie sans ce bonus et sans CSS.",
           "items": [
             {
@@ -13342,7 +13334,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "local",
-          "title": "Avec VS Code — Cadre de fichier fourni",
+          "title": "Avec VS Code : Cadre de fichier fourni",
           "blocks": [
             {
               "type": "lesson",
@@ -13483,7 +13475,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "moduleId": "web-affiche-numerique",
-          "label": "Mon affiche numérique — prolongement CSS facultatif",
+          "label": "Mon affiche numérique : prolongement CSS facultatif",
           "prerequisiteSkills": [
             {
               "skillId": "html.headings",
@@ -13621,15 +13613,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Élément img",
+            "title": "MDN : Élément img",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
           },
           {
-            "title": "HTML Standard — Sémantique des éléments",
+            "title": "HTML Standard : Sémantique des éléments",
             "url": "https://html.spec.whatwg.org/multipage/semantics.html"
           },
           {
-            "title": "HTML Standard — Élément style",
+            "title": "HTML Standard : Élément style",
             "url": "https://html.spec.whatwg.org/multipage/semantics.html#the-style-element"
           }
         ]
@@ -13658,7 +13650,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "demarrer",
-          "title": "1 — Contenu et apparence",
+          "title": "1 : Contenu et apparence",
           "paragraphs": [
             "Tu vas obtenir un titre bleu sur fond blanc et deux paragraphes noirs sur fond jaune clair. Puis tu changeras leur apparence sans changer leurs mots.",
             "Le HTML décrit le contenu : titre, paragraphe… Le CSS règle son apparence. Le navigateur applique déjà une présentation par défaut ; tu peux la modifier avec tes règles.",
@@ -13669,7 +13661,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "html",
-          "title": "HTML — Le contenu de départ",
+          "title": "HTML : Le contenu de départ",
           "paragraphs": [
             "Un titre et deux paragraphes : observe les trois éléments avant de leur donner des couleurs."
           ],
@@ -13678,7 +13670,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "regle",
-          "title": "CSS — Lire une règle",
+          "title": "CSS : Lire une règle",
           "paragraphs": [
             "h1 est le sélecteur : il choisit les éléments h1 de la page. Ici, il y en a un. On écrit h1 sans les chevrons du HTML.",
             "Entre les accolades { et }, chaque déclaration indique une propriété et sa valeur. Dans color: blue;, color est la propriété et blue la valeur. Les deux-points séparent les deux ; termine chaque déclaration par un point-virgule.",
@@ -13700,7 +13692,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Changer une chose à la fois",
+          "title": "Exercice guidé : Changer une chose à la fois",
           "intro": "Garde les mots du HTML identiques pendant ces essais.",
           "items": [
             {
@@ -13730,7 +13722,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Choisir les bonnes règles",
+          "title": "Mission autonome : Choisir les bonnes règles",
           "intro": "Crée un nouveau titre et deux paragraphes sur un autre sujet. Essaie avant d’ouvrir les indices.",
           "items": [
             {
@@ -13785,7 +13777,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "reparer",
-          "title": "Consolidation — Une règle à réparer",
+          "title": "Consolidation : Une règle à réparer",
           "intro": "Dans un essai séparé, copie dans HTML <p>Texte à réparer</p> et dans CSS : p { color = blue; background-color: white; }. Le texte devrait devenir bleu, mais la déclaration de couleur est incorrecte.",
           "items": [
             {
@@ -13813,7 +13805,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — Deux ambiances",
+          "title": "Bonus : Deux ambiances",
           "intro": "Ce bonus est facultatif. Utilise seulement les propriétés déjà expliquées.",
           "items": [
             {
@@ -13829,7 +13821,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "projet-local",
-          "title": "Avec VS Code — Squelette facultatif fourni",
+          "title": "Avec VS Code : Squelette facultatif fourni",
           "blocks": [
             {
               "type": "lesson",
@@ -14002,23 +13994,23 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Découvrir la syntaxe CSS",
+            "title": "MDN : Découvrir la syntaxe CSS",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS"
           },
           {
-            "title": "MDN — Sélecteurs de type",
+            "title": "MDN : Sélecteurs de type",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Type_selectors"
           },
           {
-            "title": "MDN — color",
+            "title": "MDN : color",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color"
           },
           {
-            "title": "MDN — background-color",
+            "title": "MDN : background-color",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-color"
           },
           {
-            "title": "HTML Standard — Élément style",
+            "title": "HTML Standard : Élément style",
             "url": "https://html.spec.whatwg.org/multipage/semantics.html#the-style-element"
           }
         ]
@@ -14058,12 +14050,12 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "projet",
-          "title": "Ton projet — Une affiche qui transmet un message",
+          "title": "Ton projet : Une affiche qui transmet un message",
           "paragraphs": [
             "Crée une affiche sur une activité imaginaire, une idée ou une passion, sans information personnelle. Une affiche doit faire comprendre son sujet et donner quelques informations utiles.",
             "Résultat attendu : un titre, au moins deux paragraphes et deux groupes de styles lisibles. Les couleurs servent à distinguer le titre et les informations ; tu n’as pas besoin de décoration supplémentaire.",
             "Tu peux partir d’une page existante ou d’un essai neuf. Le but est de décider quels éléments partagent un style et d’expliquer tes choix, pas de recopier une affiche terminée.",
-            "Travaille sans IA. Dans CodePen, écris le contenu dans HTML et les règles dans CSS ; laisse JS vide. Une image, un lien et une liste ne sont pas obligatoires."
+            "Dans CodePen, écris le contenu dans HTML et les règles dans CSS."
           ]
         },
         {
@@ -14092,7 +14084,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple-html",
-          "title": "Petit exemple à comprendre — Pas l’affiche finale",
+          "title": "Petit exemple à comprendre : Pas l’affiche finale",
           "paragraphs": [
             "Cet essai montre le lien entre contenu et style. annonce désigne ici le titre et information le paragraphe. Ces noms sont choisis : ils n’ont pas de pouvoir particulier.",
             "Tu peux tester cet extrait dans HTML, puis celui qui suit dans CSS avant de préparer ton propre sujet. Ajoute un second p portant information pour prédire ce qu’il recevra."
@@ -14102,7 +14094,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "exemple-css",
-          "title": "CSS — Deux groupes lisibles",
+          "title": "CSS : Deux groupes lisibles",
           "paragraphs": [
             ".annonce choisit les éléments dont class vaut annonce ; .information choisit ceux portant information.",
             "color donne la couleur des lettres, background-color celle de leur fond. white signifie blanc, navy bleu très foncé, black noir et lightyellow jaune clair.",
@@ -14218,7 +14210,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "reparer",
-          "title": "Consolidation — Retrouver la cause",
+          "title": "Consolidation : Retrouver la cause",
           "intro": "Conserve ta page. Choisis seulement l’essai correspondant à ta difficulté.",
           "items": [
             {
@@ -14246,7 +14238,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — Une seconde ambiance",
+          "title": "Bonus : Une seconde ambiance",
           "intro": "Facultatif, sans nouvelle notion et sans changer le message.",
           "items": [
             {
@@ -14276,7 +14268,7 @@ window.CODECRAFT_DATA = {
           "title": "Et ensuite ?",
           "paragraphs": [
             "Si tu sais réaliser et expliquer les changements avec peu ou pas d’aide, tu peux continuer dans Débutants à partir du premier besoin restant. Tu n’as pas à refaire les compétences déjà comprises.",
-            "Une difficulté sur une classe ou une couleur appelle une reprise ciblée. L’affiche n’est pas une validation automatique, et son bonus n’est pas obligatoire. Si tu es en cours, le professeur choisit avec toi la suite adaptée.",
+            "Présente ton affiche et explique tes choix de classes et de couleurs. Reprends la leçon correspondante pour les réglages qui te posent encore problème.",
             "Si tu n’as pas encore réalisé la mini-page HTML complète, retrouve-la dans le parcours depuis le fil d’Ariane lorsque titres, listes, liens et images sont compris. Pour poursuivre dans Débutants sans tout refaire, choisis Structure d’un document HTML si tu sais déjà expliquer ton HTML, tes classes et tes couleurs."
           ]
         }
@@ -14472,19 +14464,19 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Sélecteurs de classe",
+            "title": "MDN : Sélecteurs de classe",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Class_selectors"
           },
           {
-            "title": "MDN — color",
+            "title": "MDN : color",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color"
           },
           {
-            "title": "MDN — background-color",
+            "title": "MDN : background-color",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-color"
           },
           {
-            "title": "MDN — Découvrir la syntaxe CSS",
+            "title": "MDN : Découvrir la syntaxe CSS",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS"
           }
         ]
@@ -14513,24 +14505,25 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Du contenu à un fichier complet",
+          "title": "1 : Du contenu à un fichier complet",
           "paragraphs": [
             "Tu as déjà assemblé une petite page avec un titre et du texte. Tu vas maintenant créer son cadre complet dans un fichier : le résultat sera une page visible dans le navigateur avec un nom dans son onglet.",
-            "Dans CodePen, le panneau HTML reçoit habituellement le contenu visible ; CodePen fournit le cadre autour. Ne colle pas le document complet de ce cours dans ce panneau pour tester le titre d’onglet.",
-            "Pour réaliser les essais, utilise VS Code ou un éditeur de texte déjà installé, et un navigateur. Aucun serveur, extension ou publication n’est nécessaire. Si tu ne peux pas créer de fichiers, lis le document et repère ses parties ; demande une aide d’installation ou de manipulation si tu es en cours, puis fais les essais sur un poste adapté.",
-            "Travaille sans IA. Une aide pour cliquer, sélectionner ou enregistrer ne remplace pas tes choix dans le code."
+            "Dans CodePen, tu as écrit le contenu de la page. Ici, tu vas créer un fichier HTML complet et l’ouvrir dans ton navigateur.",
+            "Pour les essais, ouvre VS Code ou ton éditeur de texte, puis garde un navigateur à côté.",
+            "Écris toi-même le code, puis enregistre le fichier pour observer le résultat."
           ]
         },
         {
           "type": "lesson",
           "id": "comprendre",
-          "title": "2 — À quoi servent les parties ?",
+          "title": "Les principaux éléments du document",
           "paragraphs": [
-            "<!doctype html> annonce un document HTML moderne. Cette déclaration se place au début ; elle n’a pas de balise fermante.",
-            "html entoure le document. lang=\"fr\" indique sa langue principale. À l’intérieur, head rassemble les informations pour le navigateur et body contient ce que tu veux afficher dans la page.",
-            "title, placé dans head, nomme l’onglet. h1, placé dans body, est le titre principal visible. Ils peuvent être différents ; modifier l’un ne modifie pas automatiquement l’autre.",
-            "meta charset=\"utf-8\" indique comment lire les caractères, notamment les accents. Garde cette ligne ; meta n’a pas de balise fermante. Elle n’écrit pas une phrase dans la page.",
-            "Les espaces au début des lignes aident à lire les parties. Ce sont les balises, pas ces espaces, qui les délimitent."
+            "<!doctype html> se place au début du fichier et indique au navigateur qu’il s’agit d’un document HTML moderne.",
+            "<html> entoure le document. L’attribut `lang=\"fr\"` indique que sa langue principale est le français.",
+            "<head> rassemble les informations destinées au navigateur. <body> contient le contenu visible de la page.",
+            "<title>, dans <head>, donne son nom à l’onglet du navigateur. <h1>, dans <body>, affiche le titre principal de la page. Le titre de l’onglet et celui de la page peuvent être différents : chacun se modifie séparément.",
+            "<meta charset=\"utf-8\"> permet au navigateur de lire correctement les caractères, notamment les accents.",
+            "Les espaces au début des lignes rendent le code plus facile à lire. Les balises délimitent les éléments du document."
           ]
         },
         {
@@ -14545,7 +14538,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Créer, enregistrer, observer",
+          "title": "Exercice guidé : Créer, enregistrer, observer",
           "intro": "Utilise un nouveau dossier pour ne pas écraser une page existante.",
           "items": [
             {
@@ -14579,7 +14572,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Deux titres, deux rôles",
+          "title": "Mission autonome : Deux titres, deux rôles",
           "intro": "Pars d’une copie de ton cadre, ou remplace seulement le contenu de body par ta petite page déjà réalisée. Ne place pas un second document complet dans body.",
           "items": [
             {
@@ -14588,7 +14581,7 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Cherche la partie qui contient les informations du document et celle du contenu visible.",
                 "title et h1 n’ont pas le même rôle.",
-                "Compare head/body dans l’exemple.",
+                "Compare <head> et <body> dans l’exemple.",
                 "Place title dans head et h1 dans body. Enregistre et vérifie les deux endroits du navigateur."
               ]
             },
@@ -14628,7 +14621,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "panne",
-          "title": "Consolidation — Les titres ont été inversés",
+          "title": "Consolidation : Les titres ont été inversés",
           "paragraphs": [
             "Le code ci-dessous est lisible par le navigateur, mais il ne répond pas à la demande : l’onglet doit annoncer Carnet et la page doit afficher Les volcans. Corrige les deux textes sans déplacer les balises ni réécrire le document."
           ],
@@ -14659,7 +14652,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "bonus",
-          "title": "Bonus — Ajouter une rubrique",
+          "title": "Bonus : Ajouter une rubrique",
           "intro": "Facultatif : si tu sais utiliser un h2 et un paragraphe, ajoute une rubrique au contenu visible. Sinon, reprends les niveaux de titres avant ce bonus.",
           "items": [
             {
@@ -14841,15 +14834,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Le head et les métadonnées du document",
+            "title": "MDN : Le head et les métadonnées du document",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Webpage_metadata"
           },
           {
-            "title": "HTML Standard — Élément title",
+            "title": "HTML Standard : Élément title",
             "url": "https://html.spec.whatwg.org/multipage/semantics.html#the-title-element"
           },
           {
-            "title": "MDN — Manipuler des fichiers",
+            "title": "MDN : Manipuler des fichiers",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
           }
         ]
@@ -14878,11 +14871,11 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Le navigateur doit retrouver un fichier",
+          "title": "1 : Le navigateur doit retrouver un fichier",
           "paragraphs": [
             "Tu vas afficher un dessin enregistré dans un dossier et créer un lien qui ouvre ce même dessin. Le résultat attendu est une image visible et un lien qui mène au bon fichier.",
             "Un fichier contient des données ; un dossier sert à ranger des fichiers. Une extension comme .html ou .svg fait partie du nom et indique un type de fichier. Le dessin fourni est un SVG : une image que le navigateur sait afficher, sans devoir en écrire le code.",
-            "Utilise ton dossier atelier-web ou crée une copie de travail. Il te faut un éditeur de texte, un navigateur et l’accès aux dossiers. Travaille sans IA ; une aide pour déplacer un fichier peut rester séparée de ton raisonnement sur le chemin.",
+            "Ouvre ton dossier atelier-web dans ton éditeur de texte et garde le navigateur à côté pour tester les chemins.",
             "Dans CodePen, écrire images/carre-bleu.svg ne donne pas accès à un dossier de ton ordinateur. Ici, les essais se font dans tes fichiers locaux. Sans accès aux fichiers, tu peux raisonner sur l’arbre, mais l’essai de chargement restera à faire dans cet environnement."
           ]
         },
@@ -14900,7 +14893,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "arbre",
-          "title": "2 — Ton dossier de départ",
+          "title": "2 : Ton dossier de départ",
           "paragraphs": [
             "Si tu n’as pas encore de dossier de travail, crée atelier-web, ouvre-le dans VS Code avec Fichier → Ouvrir le dossier, puis crée un fichier nommé index.html. Son contenu complet est fourni plus bas. Tu n’as pas besoin d’avoir fait le cours précédent pour disposer de ce cadre.",
             "Crée un dossier images à côté de index.html dans atelier-web. Place le fichier téléchargé carre-bleu.svg dans images. Vérifie son nom exact, y compris le tiret et l’extension.",
@@ -14912,7 +14905,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "chemin",
-          "title": "3 — Lire un chemin relatif",
+          "title": "3 : Lire un chemin relatif",
           "paragraphs": [
             "Dans ce document, un chemin relatif part du dossier qui contient index.html. images/carre-bleu.svg signifie : entrer dans images, puis prendre carre-bleu.svg.",
             "On utilise / pour séparer les dossiers dans le chemin HTML, même sous Windows. Ne copie pas le chemin complet de ton ordinateur : il ne désignerait pas la même chose sur un autre poste.",
@@ -14935,8 +14928,8 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Suivre le chemin",
-          "intro": "Enregistre index.html puis ouvre-le dans le navigateur. Aucun serveur n’est nécessaire.",
+          "title": "Exercice guidé : Suivre le chemin",
+          "intro": "Enregistre index.html puis ouvre-le dans le navigateur.",
           "items": [
             {
               "id": "verifier-dossiers",
@@ -14965,7 +14958,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Renommer sans perdre la ressource",
+          "title": "Mission autonome : Renommer sans perdre la ressource",
           "intro": "Garde le dossier images. Tu vas changer un nom, pas le dessin.",
           "items": [
             {
@@ -15014,7 +15007,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "reparer",
-          "title": "Consolidation — Image absente, quelle cause ?",
+          "title": "Consolidation : Image absente, quelle cause ?",
           "intro": "Utilise maintenant ton fichier images/forme.svg. Crée une erreur volontaire puis répare-la.",
           "items": [
             {
@@ -15040,7 +15033,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "bonus-explication",
-          "title": "Bonus — Un niveau de dossier supplémentaire",
+          "title": "Bonus : Un niveau de dossier supplémentaire",
           "paragraphs": [
             "Facultatif : un chemin peut traverser plusieurs dossiers en les séparant par /. Dans media/images/forme.svg, on entre d’abord dans media, puis images, puis on ouvre forme.svg.",
             "Pour essayer sans perdre ton travail, fais une copie de ton dossier atelier-web avec son contenu. Dans cette copie, crée media puis déplace images à l’intérieur. Garde index.html à la racine."
@@ -15136,7 +15129,7 @@ window.CODECRAFT_DATA = {
       "nextSteps": [
         {
           "moduleId": "css-feuille-style",
-          "label": "Relier une feuille de style — si document, chemins et règle CSS sont compris",
+          "label": "Relier une feuille de style : si document, chemins et règle CSS sont compris",
           "prerequisiteSkills": [
             {
               "skillId": "html.document",
@@ -15272,11 +15265,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Manipuler des fichiers",
+            "title": "MDN : Manipuler des fichiers",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
           },
           {
-            "title": "MDN — Résolution des références relatives",
+            "title": "MDN : Résolution des références relatives",
             "url": "https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references"
           }
         ]
@@ -15309,7 +15302,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "callout",
           "id": "prerequis-css",
-          "title": "Avant de commencer — La règle CSS",
+          "title": "Avant de commencer : La règle CSS",
           "tone": "neutral",
           "text": "Tu dois pouvoir expliquer h1 { color: blue; } et modifier sa couleur. Si tu hésites encore entre sélecteur, propriété et valeur, reprends Découvrir le CSS puis utilise Retour dans ton navigateur pour revenir ici. Retrouve les leçons du document et des chemins depuis le parcours dans le fil d’Ariane si nécessaire.",
           "moduleLink": {
@@ -15320,18 +15313,18 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "depart",
-          "title": "1 — Deux fichiers, deux rôles",
+          "title": "1 : Deux fichiers, deux rôles",
           "paragraphs": [
             "Tu vas obtenir un titre bleu dont la couleur est définie dans un fichier style.css séparé. Puis tu modifieras ce fichier et vérifieras que la page suit bien le changement.",
             "Le fichier index.html conserve le contenu et son cadre. Le fichier style.css contient seulement les règles CSS, sans balises HTML. Une feuille externe est un fichier séparé de la page, pas forcément un fichier sur Internet.",
             "CodePen relie son panneau CSS à l’aperçu pour toi. Les essais de ce module se font avec de vrais fichiers locaux dans un éditeur comme VS Code. Tu n’as pas à coller link dans le panneau HTML de CodePen ni à téléverser un fichier.",
-            "Utilise un nouveau dossier atelier-style. Tu gardes ainsi tes exercices précédents. Aucun serveur ni publication n’est requis. Travaille sans IA ; si tu as besoin d’aide pour les fichiers, distingue cette manipulation de l’explication du lien HTML/CSS."
+            "Crée un dossier atelier-style pour garder tes exercices précédents. Ouvre-le dans ton éditeur de texte."
           ]
         },
         {
           "type": "lesson",
           "id": "liaison",
-          "title": "2 — La ligne qui relie HTML et CSS",
+          "title": "2 : La ligne qui relie HTML et CSS",
           "paragraphs": [
             "Ajoute cette ligne dans head du document. link indique une ressource liée ; rel=\"stylesheet\" précise qu’il s’agit d’une feuille de style. href donne le chemin vers le fichier CSS.",
             "Ici style.css est dans le même dossier que index.html, donc son nom suffit. Ne l’écris pas styles.css : le nom doit être exactement celui du fichier créé.",
@@ -15352,7 +15345,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "html",
-          "title": "index.html — Le document complet",
+          "title": "index.html : Le document complet",
           "paragraphs": [
             "Copie ce document dans index.html. Repère link dans head et h1 dans body. Cet essai ne contient aucun ancien bloc style : ainsi, le résultat dépend du fichier CSS externe."
           ],
@@ -15361,7 +15354,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "css",
-          "title": "style.css — Seulement des règles",
+          "title": "style.css : Seulement des règles",
           "paragraphs": [
             "Copie cette règle dans style.css. N’ajoute ni <style>, ni </style>, ni cadre HTML dans ce fichier. Le sélecteur h1 et color ont le même sens que dans le panneau CSS de CodePen."
           ],
@@ -15370,7 +15363,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "guide",
-          "title": "Exercice guidé — Prouver que la feuille est chargée",
+          "title": "Exercice guidé : Prouver que la feuille est chargée",
           "intro": "Enregistre les deux fichiers. Ouvre index.html dans le navigateur, pas style.css.",
           "items": [
             {
@@ -15400,7 +15393,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "mission",
-          "title": "Mission autonome — Retrouver la bonne feuille",
+          "title": "Mission autonome : Retrouver la bonne feuille",
           "intro": "Après l’essai violet, fais une modification de nom, puis une nouvelle règle. Essaie avant d’ouvrir les aides.",
           "items": [
             {
@@ -15459,7 +15452,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "reparer",
-          "title": "Consolidation — Chemin ou règle ?",
+          "title": "Consolidation : Chemin ou règle ?",
           "intro": "Pars de ta version avec theme.css et les règles h1 et p. Fais les deux essais séparément, en réparant le premier avant le second.",
           "items": [
             {
@@ -15491,7 +15484,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "bonus-explication",
-          "title": "Bonus — Ranger le CSS dans un dossier",
+          "title": "Bonus : Ranger le CSS dans un dossier",
           "paragraphs": [
             "Facultatif : fais une copie du projet. Crée un dossier css à côté de index.html puis déplace theme.css dedans.",
             "Depuis index.html, le chemin devient css/theme.css : même raisonnement qu’avec les images. Les règles dans le fichier CSS ne changent pas. Adapte seulement href dans link.",
@@ -15747,15 +15740,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Élément link",
+            "title": "MDN : Élément link",
             "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link"
           },
           {
-            "title": "MDN — Relier le CSS au document",
+            "title": "MDN : Relier le CSS au document",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Getting_started"
           },
           {
-            "title": "MDN — Résolution des références relatives",
+            "title": "MDN : Résolution des références relatives",
             "url": "https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references"
           }
         ]
@@ -15779,11 +15772,11 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "tone": "neutral",
           "title": "Avant de commencer",
-          "text": "Tu peux utiliser ton projet ou la base fournie : aucune maîtrise préalable de Flexbox n’est demandée. Conserve le HTML et le CSS actuels dans deux fichiers texte avant de les remplacer. Dans CodePen, utilise les zones HTML et CSS, pas JavaScript ; aucun compte n’est nécessaire. Une base copiée permet de travailler, mais ne prouve pas que toutes ses propriétés CSS sont maîtrisées."
+          "text": "Utilise ton projet ou la base fournie. Conserve ton HTML et ton CSS dans deux fichiers texte, puis ouvre les zones HTML et CSS de CodePen."
         },
         {
           "type": "tasks",
-          "title": "1 — Choisis ta base de travail",
+          "title": "1 : Choisis ta base de travail",
           "intro": "Si tu as déjà plusieurs cartes, garde une copie puis vérifie-les avec les repères ci-dessous. Sinon, ouvre la base de départ et copie le HTML et le CSS dans leurs zones respectives. Il est normal que les cartes soient empilées à ce stade.",
           "items": [
             {
@@ -15832,7 +15825,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "checklist",
-          "title": "2 — Vérifie ta base de cartes",
+          "title": "2 : Vérifie ta base de cartes",
           "items": [
             {
               "id": "html-structure",
@@ -15898,7 +15891,7 @@ window.CODECRAFT_DATA = {
           "title": "Et ensuite ?",
           "paragraphs": [
             "Si tu repères le groupe et ses cartes et que les tests précédents sont faits, conserve le HTML et le CSS. Tu pourras réutiliser cette base pour travailler Parent et enfants, puis Flexbox.",
-            "Si tu as utilisé le modèle ou une aide, indique-le : une base prête n’est pas une validation de toutes les notions HTML/CSS qu’elle contient."
+            "Garde le HTML et le CSS de tes cartes pour les prochains essais sur Parent et enfants, puis Flexbox."
           ]
         }
       ],
@@ -16025,15 +16018,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Padding",
+            "title": "MDN : Padding",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/padding"
           },
           {
-            "title": "MDN — Margin",
+            "title": "MDN : Margin",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/margin"
           },
           {
-            "title": "MDN — Survol",
+            "title": "MDN : Survol",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
           }
         ]
@@ -16129,7 +16122,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "codepen",
-          "title": "Dans CodePen — Ajoute une troisième carte",
+          "title": "Dans CodePen : Ajoute une troisième carte",
           "intro": "Clique sur « Ouvrir CodePen » et travaille dans la zone HTML. Aucun CSS n’est nécessaire pour cet exercice.",
           "items": [
             {
@@ -16151,7 +16144,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "defi",
-          "title": "Mini-défi — Construis une galerie",
+          "title": "Mini-défi : Construis une galerie",
           "intro": "Sans recopier l’exemple, crée une nouvelle structure sous la précédente. Les noms galerie et photo sont seulement des noms de classes : tu n’as pas besoin d’ajouter d’images.",
           "items": [
             {
@@ -16175,7 +16168,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "reparer",
-          "title": "Consolidation — Une carte au mauvais endroit",
+          "title": "Consolidation : Une carte au mauvais endroit",
           "intro": "Dans ton exemple, déplace volontairement la troisième carte à l’intérieur de la deuxième. Observe l’arbre que cela produit, puis répare.",
           "items": [
             {
@@ -16197,7 +16190,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "regroupements",
-          "title": "Bonus — Un groupe dans une carte",
+          "title": "Bonus : Un groupe dans une carte",
           "intro": "Repars de tes cartes correctement placées.",
           "items": [
             {
@@ -16286,7 +16279,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "moduleId": "css-flexbox",
-          "label": "Flexbox — si structure et sélecteurs sont compris",
+          "label": "Flexbox : si structure et sélecteurs sont compris",
           "prerequisiteSkills": [
             {
               "skillId": "html.structure",
@@ -16421,7 +16414,7 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Structure arborescente du document",
+            "title": "MDN : Structure arborescente du document",
             "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
           }
         ]
@@ -16458,7 +16451,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Travaille sur une copie de ta collection après Flexbox. Conserve le HTML et le CSS dans deux fichiers texte avant toute modification. Sans support, reprends Préparer un projet de cartes puis les essais Flexbox. Ouvre HTML et CSS dans leurs panneaux CodePen ; aucun compte ni conservation durable de l’onglet n’est supposé. Tu peux garder l’apparence fournie : pas d’image, de fichier CSS externe ni de publication à ajouter.",
+          "text": "Travaille sur une copie de ta collection après Flexbox, ou retrouve la base dans Préparer un projet de cartes. Conserve le HTML et le CSS dans deux fichiers texte, puis ouvre-les dans leurs panneaux CodePen. Tu peux garder l’apparence fournie.",
           "moduleLink": {
             "moduleId": "web-projet-cartes",
             "text": "Préparer un projet de cartes"
@@ -16477,7 +16470,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "plan",
-          "title": "1 — Prévois le résultat",
+          "title": "1 : Prévois le résultat",
           "intro": "Avant de modifier le code, prépare un plan court avec tes mots.",
           "items": [
             {
@@ -16518,7 +16511,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "realisation",
-          "title": "2 — Réalise et compare",
+          "title": "2 : Réalise et compare",
           "intro": "Essaie avant l’indice. Modifie une propriété à la fois pour reconnaître son effet ; aucun modèle complet de projet n’est donné.",
           "items": [
             {
@@ -16556,7 +16549,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "verification",
-          "title": "3 — Mets ta collection à l’épreuve",
+          "title": "3 : Mets ta collection à l’épreuve",
           "intro": "Note pour chaque essai ce que tu prévoyais, ce que tu observes et ce que tu corriges. Conserve le HTML et le CSS finaux.",
           "items": [
             {
@@ -16592,7 +16585,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "transfert",
-          "title": "4 — Change de disposition",
+          "title": "4 : Change de disposition",
           "intro": "Conserve le projet final, puis travaille sur une copie pour cette variante. Essaie sans regarder les exemples du cours.",
           "items": [
             {
@@ -16614,13 +16607,13 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "bonus",
-          "title": "Facultatif — Une autre collection",
+          "title": "Facultatif : Une autre collection",
           "blocks": [
             {
               "type": "tasks",
               "id": "autre-collection",
               "title": "Transfère sur un autre thème",
-              "intro": "Ce bonus n’est pas nécessaire pour terminer le projet.",
+              "intro": "Pour aller plus loin, essaie une autre collection.",
               "items": [
                 {
                   "id": "autre-theme",
@@ -16781,11 +16774,11 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — align-items",
+            "title": "MDN : align-items",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-items"
           },
           {
-            "title": "MDN — flex-wrap",
+            "title": "MDN : flex-wrap",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap"
           }
         ]
@@ -16814,7 +16807,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "apparence",
-          "title": "Base fournie — Apparence et espace d’observation",
+          "title": "Base fournie : Apparence et espace d’observation",
           "paragraphs": [
             "Si tu arrives avec uniquement du HTML, voici le CSS nécessaire pour le diagnostic et les essais. Copie-le avant les questions suivantes.",
             "Retrouve le projet conservé avant l’exercice Parent et enfants. Garde son HTML avec au moins trois cartes et conserve son HTML et son CSS dans deux fichiers texte. Dans une copie du projet, remplace le CSS de départ par la base ci-dessous ; ajoute ensuite les propriétés apprises dans la règle .cartes existante.",
@@ -16827,7 +16820,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "diagnostic",
-          "title": "Diagnostic d’entrée — Que sais-tu expliquer ?",
+          "title": "Diagnostic d’entrée : Que sais-tu expliquer ?",
           "intro": "Utilise le code de départ fourni juste au-dessus pour répondre. Si ton projet n’avait pas encore de CSS, copie d’abord cette base : un code absent n’est pas un sélecteur non compris.",
           "items": [
             {
@@ -16847,7 +16840,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "cours",
-          "title": "1 — Activer Flexbox sur le parent",
+          "title": "1 : Activer Flexbox sur le parent",
           "paragraphs": [
             "Le conteneur .cartes contient les éléments .carte. Ajoute display: flex dans sa règle CSS. Ses enfants directs deviennent les éléments organisés par Flexbox.",
             "Les h2 et p à l’intérieur d’une carte ne deviennent pas les enfants directs de .cartes. Mettre display: flex sur .carte organiserait le contenu de chaque carte, pas les cartes entre elles."
@@ -16855,21 +16848,21 @@ window.CODECRAFT_DATA = {
           "code": ".cartes {\n  display: flex;\n}",
           "demonstration": {
             "type": "flex-display",
-            "title": "Observe — Active Flexbox",
+            "title": "Observe : Active Flexbox",
             "intro": "Choisis le mode d’affichage du parent. Observe les cartes et la valeur qui change dans le code, puis reviens au premier choix pour comparer.",
             "controlLabel": "Affichage du parent",
-            "previewLabel": ".cartes — le parent des trois cartes",
+            "previewLabel": ".cartes : le parent des trois cartes",
             "codeLabel": "Règle appliquée au parent",
             "cards": ["A", "B", "C"],
             "options": [
               {
                 "value": "block",
-                "label": "block — Sans Flexbox",
+                "label": "block : Sans Flexbox",
                 "feedback": "Sans Flexbox : les trois cartes de cet exemple sont empilées."
               },
               {
                 "value": "flex",
-                "label": "flex — Avec Flexbox",
+                "label": "flex : Avec Flexbox",
                 "feedback": "Avec Flexbox : les mêmes cartes se placent côte à côte, dans le même ordre A, B, C."
               }
             ],
@@ -16879,7 +16872,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "axes",
-          "title": "2 — Direction et axes",
+          "title": "2 : Direction et axes",
           "paragraphs": [
             "Ajoute flex-direction: row au parent. Dans nos exemples en français, les cartes se suivent sur une ligne de gauche à droite : c’est l’axe principal. L’axe transversal lui est perpendiculaire.",
             "Remplace row par column : les cartes se suivent maintenant de haut en bas. L’axe principal devient vertical et l’axe transversal horizontal. Puis reviens à row.",
@@ -16900,7 +16893,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "espacement",
-          "title": "3 — Régler gap",
+          "title": "3 : Régler gap",
           "paragraphs": [
             "Ajoute gap: 20px au parent. gap règle les gouttières entre les cartes ; il n’ajoute pas de marge extérieure autour de la collection.",
             "Teste 5px, 20px puis 30px. En column, l’écart suit la colonne. Avec plusieurs lignes, cette valeur s’applique aussi entre les lignes."
@@ -16920,7 +16913,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "title": "4 — Répartir avec justify-content",
+          "title": "4 : Répartir avec justify-content",
           "paragraphs": [
             "justify-content répartit l’espace libre sur l’axe principal. Avec row dans notre exemple, il agit horizontalement ; avec column, verticalement.",
             "S’il ne reste pas de place libre, changer la répartition peut avoir peu ou pas d’effet. Pour tester en column, tu peux donner plus de hauteur au conteneur en changeant temporairement min-height: 420px en min-height: 800px.",
@@ -16956,7 +16949,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "alignement",
-          "title": "5 — Aligner avec align-items",
+          "title": "5 : Aligner avec align-items",
           "paragraphs": [
             "align-items place les cartes sur l’axe transversal : verticalement en row, horizontalement en column dans nos exemples.",
             "Teste flex-start, center puis flex-end. Dans notre conteneur plus haut que les cartes, observe leur placement. La valeur initiale stretch peut étirer les cartes sur cet axe si leur taille le permet.",
@@ -16979,7 +16972,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "retour-ligne",
-          "title": "6 — Autoriser plusieurs lignes",
+          "title": "6 : Autoriser plusieurs lignes",
           "paragraphs": [
             "Par défaut, flex-wrap vaut nowrap : les cartes restent sur une seule ligne. Elles peuvent se rétrécir si leurs dimensions le permettent, ou déborder si elles ne tiennent pas.",
             "En row, réduis la largeur de l’aperçu. Ajoute flex-wrap: wrap : les cartes peuvent passer à la ligne suivante. Notre min-width fourni rend ce changement facile à observer.",
@@ -16999,7 +16992,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "tasks",
-          "title": "Mise en pratique — Organiser une collection",
+          "title": "Mise en pratique : Organiser une collection",
           "intro": "Utilise trois cartes avec un titre et un paragraphe. Procède par essais ; explique tes choix avec tes mots.",
           "items": [
             {
@@ -17059,7 +17052,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "comprehension",
-          "title": "Vérifie ta compréhension — Choisis les réglages",
+          "title": "Vérifie ta compréhension : Choisis les réglages",
           "intro": "Garde trois cartes. Utilise les réglages de départ fournis juste avant cette activité. Essaie d’abord sans regarder les exemples de solution ; explique ensuite ce que tu as changé.",
           "items": [
             {
@@ -17081,7 +17074,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "reparer",
-          "title": "Consolidation — Retrouver le bon élément et le bon axe",
+          "title": "Consolidation : Retrouver le bon élément et le bon axe",
           "intro": "Prends le temps de comparer avant de corriger.",
           "items": [
             {
@@ -17108,7 +17101,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "tasks",
-          "title": "Bonus — Étendre la collection",
+          "title": "Bonus : Étendre la collection",
           "intro": "Quand tu sais expliquer tes réglages, passe à six cartes et utilise à nouveau les réglages de départ fournis au-dessus. Ils remettent les cartes en ligne avant la comparaison.",
           "items": [
             {
@@ -17135,7 +17128,7 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "navigation",
-          "title": "Bonus — Une petite navigation",
+          "title": "Bonus : Une petite navigation",
           "intro": "Réutilise Flexbox dans un autre contexte. Si tu ne connais pas encore les liens, les éléments restent de simples textes ; tu n’as pas besoin d’ajouter de lien.",
           "items": [
             {
@@ -17345,7 +17338,7 @@ window.CODECRAFT_DATA = {
         "independentActivity": {
           "moduleId": "css-flexbox",
           "blockId": "mission",
-          "label": "Mise en pratique — Collection de cartes"
+          "label": "Mise en pratique : Collection de cartes"
         },
         "differentiation": [
           "Si les regroupements ou classes sont fragiles, revenir à la notion concernée sans imposer de durée. Fournir l’apparence puis accompagner un seul réglage.",
@@ -17410,15 +17403,15 @@ window.CODECRAFT_DATA = {
         ],
         "references": [
           {
-            "title": "MDN — Notions fondamentales de Flexbox",
+            "title": "MDN : Notions fondamentales de Flexbox",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts"
           },
           {
-            "title": "MDN — align-items",
+            "title": "MDN : align-items",
             "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-items"
           },
           {
-            "title": "MDN — Apprendre Flexbox",
+            "title": "MDN : Apprendre Flexbox",
             "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox"
           }
         ]
@@ -17448,7 +17441,7 @@ window.CODECRAFT_DATA = {
         "pause": "Projet de fin d’étape : Ma scène explorable, dans la dernière leçon. Un point de pause après une modification personnelle expliquée et testée.",
         "projectBlockId": "autonomie"
       }],
-      "nextStageLabel": "Ensuite : Explorer et ramasser — à venir."
+      "nextStageLabel": "Ensuite : Explorer et ramasser : à venir."
     },
     "python-debutants": {
       "domainId": "python", "title": "Premiers pas avec Python", "theme": "fondations",
@@ -17616,10 +17609,10 @@ window.CODECRAFT_DATA = {
 ,
   teacher: {
     title: "Conducteur de la séance",
-    subtitle: "Séance multi-parcours — 90 minutes",
+    subtitle: "Séance multi-parcours : 90 minutes",
     schedule: [
       {
-        time: "00–05",
+        time: "00-05",
         title: "Accueil",
         items: [
           "Rappeler que chaque élève suit son parcours CodeCraft.",
@@ -17631,7 +17624,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "05–10",
+        time: "05-10",
         title: "Démarrage autonome",
         items: [
           "Fondations : commencer étape 1.",
@@ -17642,7 +17635,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "10–32",
+        time: "10-32",
         title: "Avancés",
         items: [
           "Vérifier réellement le projet précédent : classes, cartes, border, padding, margin, border-radius et hover.",
@@ -17654,7 +17647,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "32–40",
+        time: "32-40",
         title: "Fondations",
         items: [
           "Vérifier h1 et p.",
@@ -17665,7 +17658,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "40–57",
+        time: "40-57",
         title: "Débutants",
         items: [
           "Vérifier la page reconstruite : titres h1 à h6, paragraphes, liste et lien.",
@@ -17675,7 +17668,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "57–73",
+        time: "57-73",
         title: "Avancés",
         items: [
           "Vérifier la compréhension réelle de display: flex, gap et justify-content.",
@@ -17690,7 +17683,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "73–82",
+        time: "73-82",
         title: "Petit tour Fondations + Débutants",
         groups: [
           {
@@ -17720,7 +17713,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "82–88",
+        time: "82-88",
         title: "Bilan rapide",
         items: [
           "Demander éventuellement un partage d’écran très court à un débutant et à un avancé.",
@@ -17732,7 +17725,7 @@ window.CODECRAFT_DATA = {
         ]
       },
       {
-        time: "88–90",
+        time: "88-90",
         title: "Conclusion",
         items: [
           "Rappeler le fonctionnement par parcours et l’objectif d’autonomie."
@@ -17782,7 +17775,7 @@ window.CODECRAFT_DATA = {
     const block = data.modules[moduleId].blocks.find(b => b.id === blockId);
     if (!block || block.type !== 'lesson') throw new Error('Support Web introuvable : ' + moduleId + '/' + blockId);
     block.demonstration = { type: 'web-comparison', title, intro, variants,
-      note: note || 'Cet aperçu est un exemple isolé. Compare les versions, puis fais tes propres essais dans ton projet. Il ne sauvegarde ni ne valide ton travail.', codeLabel };
+      note: note ?? 'Compare les versions, puis fais tes propres essais dans ton projet.', codeLabel };
   };
   const v = (label, html, code, feedback, css = '') => ({ label, html, code, feedback, css });
   const shape = '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="64" fill="#d77822"/></svg>';
@@ -17805,10 +17798,6 @@ window.CODECRAFT_DATA = {
     v('Texte : Visiter le site', '<p><u>Visiter le site</u></p><p>Destination : https://example.com</p>', '<a href="https://example.com">Visiter le site</a>', 'Le texte visible annonce le lien. href contient une autre information : sa destination.'),
     v('Texte : Découvrir un exemple', '<p><u>Découvrir un exemple</u></p><p>Destination : https://example.com</p>', '<a href="https://example.com">Découvrir un exemple</a>', 'Le texte change, mais la destination reste exactement la même.')
   ], 'Les liens sont représentés, pas ouverts dans cette démonstration. Teste les vrais liens depuis ton projet.');
-  add('html-revision', 'consigne', 'Lis le cahier des charges par rôle', 'Explore les éléments à prévoir avant ton essai, sans voir le code d’une page terminée.', [
-    v('Organiser', '<h2>Un sujet → deux parties</h2><p>Titre principal</p><ul><li>Première partie et son paragraphe</li><li>Deuxième partie et son paragraphe</li></ul>', '', 'Choisis toi-même ton sujet et tes textes. Deux parties de même importance utilisent le même niveau de titre.'),
-    v('Compléter et tester', '<h2>Des éléments à vérifier</h2><ul><li>Une liste de trois éléments</li><li>Un lien utile</li><li>Une destination qui correspond au texte</li></ul>', '', 'Ce repère ne remplace pas ton essai autonome. Construis, puis teste dans ton projet.')
-  ]);
   add('html-images', 'cours', 'L’image et sa description', 'Compare une image disponible et une source indisponible. La description reste utile dans les deux cas.', [
     v('Image disponible', picture, '<img src="images/cercle-orange.svg"\n     alt="Un cercle orange">', 'Le dessin apparaît. alt décrit son information utile ; ce n’est pas une légende visible.'),
     v('Source indisponible : représentation', '<div style="border:1px dashed gray;padding:16px">Image indisponible<br>Texte alternatif : Un cercle orange</div>', '<img src="images/fichier-absent.svg"\n     alt="Un cercle orange">', 'Le texte alternatif fournit encore une description. Une source incorrecte ne se répare pas en changeant alt.')
@@ -17817,14 +17806,16 @@ window.CODECRAFT_DATA = {
     v('La classe correspond', '<p class="info">Premier message</p><p class="info">Deuxième message</p>', 'HTML : class="info"\n\nCSS :\n.info { color: green; }', 'Les deux éléments qui partagent info deviennent verts.', '.info{color:green}'),
     v('Le nom ne correspond pas', '<p class="info">Premier message</p><p class="info">Deuxième message</p>', 'HTML : class="info"\n\nCSS :\n.infos { color: green; }', 'infos ne correspond pas à info : cette règle ne sélectionne aucun des deux paragraphes.', '.infos{color:green}')
   ]);
-  add('html-mini-page', 'defi', 'Ta mini-page : deux vérifications différentes', 'Avant de coder, distingue le contenu à créer et les comportements à tester.', [
-    v('Le contenu', '<h2>Présenter un sujet</h2><ul><li>Des titres et des paragraphes</li><li>Une liste</li><li>Une image avec sa description</li></ul>', '', 'Choisis ton propre sujet. Ces repères ne fournissent ni les textes ni une page à recopier.'),
-    v('Le fonctionnement', '<h2>Regarder comme un visiteur</h2><ul><li>L’image est-elle disponible ?</li><li>Le texte alternatif décrit-il la bonne image ?</li><li>Le lien ouvre-t-il la destination annoncée ?</li></ul>', '', 'Un joli aperçu ne prouve pas que les liens et les sources fonctionnent. Teste-les dans ton projet.')
-  ]);
-  add('html-document', 'comprendre', 'Titre d’onglet ou titre dans la page ?', 'Observe où se trouve chaque information dans le document.', [
-    v('Le titre d’onglet', '<div style="background:#edf1f7;padding:8px">Onglet représenté : Mon carnet</div><h1>Ma page locale</h1><p>Le contenu visible reste dans body.</p>', '<head>\n  <title>Mon carnet</title>\n</head>', 'title nomme l’onglet du navigateur. Ce bandeau représente cet onglet ; il ne fait pas partie du contenu HTML à écrire dans body.'),
-    v('Le titre visible', '<div style="background:#edf1f7;padding:8px">Onglet représenté : Mon carnet</div><h1>Mes découvertes</h1><p>Le contenu visible reste dans body.</p>', '<body>\n  <h1>Mes découvertes</h1>\n</body>', 'h1 change le titre visible dans la page, pas le titre d’onglet défini dans head.')
-  ]);
+  const documentVariant = (label, tabTitle, heading, feedback) => ({
+    ...v(label, '<h1>' + heading + '</h1><p>Je construis une page HTML.</p>',
+      '<!doctype html>\n<html lang="fr">\n<head>\n  <meta charset="utf-8">\n  <title>' + tabTitle + '</title>\n</head>\n<body>\n  <h1>' + heading + '</h1>\n  <p>Je construis une page HTML.</p>\n</body>\n</html>', feedback),
+    tabTitle
+  });
+  add('html-document', 'comprendre', 'Deux titres, deux endroits', 'Pars de la version « Départ ». Compare ensuite chaque modification au départ : title nomme l’onglet ; h1 est le titre que tu lis dans la page.', [
+    documentVariant('Départ', 'Mon carnet', 'Ma page locale', 'Dans head, title donne « Mon carnet » à l’onglet. Dans body, h1 affiche « Ma page locale » dans la page. Ces deux textes peuvent être différents.'),
+    documentVariant('Changer seulement title', 'Carnet nature', 'Ma page locale', 'Seul le texte de title a changé : l’onglet indique maintenant « Carnet nature ». Le h1 reste « Ma page locale » et le contenu de la page ne change pas.'),
+    documentVariant('Changer seulement h1', 'Mon carnet', 'Mes découvertes', 'Par rapport au départ, seul le texte de h1 a changé : la page affiche « Mes découvertes ». Le title reste « Mon carnet », donc l’onglet garde ce nom.')
+  ], '', 'index.html');
   add('html-fichiers-chemins', 'chemin', 'Pars du fichier HTML pour retrouver l’image', 'Dans ce dossier représenté, index.html se trouve à côté du dossier images.', [
     v('Le bon chemin', tree + '<p>index.html → images → forme.svg</p>', '<img src="images/forme.svg" alt="Une forme">', 'Entre dans images, puis retrouve forme.svg. Les noms et extensions doivent correspondre.'),
     v('Un dossier oublié', tree + '<p>index.html → forme.svg : aucun fichier à cet endroit</p>', '<img src="forme.svg" alt="Une forme">', 'Ce chemin cherche forme.svg à côté d’index.html, alors que le dessin est dans images.')
@@ -17856,10 +17847,6 @@ window.CODECRAFT_DATA = {
     v('height: auto', picture, '.illustration {\n  width: 160px;\n  height: auto;\n}', 'La hauteur suit les proportions d’origine : le cercle reste rond.', '.illustration{width:160px;height:auto}'),
     v('height: 80px', picture, '.illustration {\n  width: 160px;\n  height: 80px;\n}', 'La largeur ne change pas, mais la hauteur est forcée : le cercle devient ovale.', '.illustration{width:160px;height:80px}')
   ]);
-  add('web-carte-personnelle', 'intention', 'Ta carte : message et présentation', 'Deux regards pour préparer ta création, sans recevoir une carte terminée à recopier.', [
-    v('Ce qu’elle raconte', '<h2>Un thème non personnel</h2><ul><li>Un titre clair</li><li>Deux courts paragraphes</li><li>Une image pertinente et décrite</li></ul>', '', 'Prépare ton propre message avant les couleurs et les espaces.'),
-    v('Comment elle se lit', '<h2>Des choix à expliquer</h2><ul><li>Texte lisible</li><li>Espaces intérieurs et extérieurs</li><li>Image non déformée</li><li>Largeurs testées</li></ul>', '', 'La checklist du projet précise les exigences. Ce repère ne valide rien : montre tes essais et explique tes choix.')
-  ]);
   add('html-multipage', 'liens', 'Deux pages : faire l’aller et le retour', 'Change la page représentée pour lire le lien nécessaire à chaque trajet.', [
     v('Depuis index.html', '<p>Page représentée : index.html</p><h1>Mon carnet</h1><p>Trajet : index.html → decouvertes.html</p>', '<a href="decouvertes.html">Découvertes</a>', 'Depuis l’accueil, ce lien cherche le fichier voisin decouvertes.html.'),
     v('Depuis decouvertes.html', '<p>Page représentée : decouvertes.html</p><h1>Mes découvertes</h1><p>Trajet : decouvertes.html → index.html</p>', '<a href="index.html">Accueil</a>', 'Le lien de retour doit être écrit dans la deuxième page : le premier lien ne le crée pas automatiquement.')
@@ -17875,15 +17862,6 @@ window.CODECRAFT_DATA = {
   add('css-decouverte', 'paragraphes', 'Les lettres ou le fond ?', 'Compare deux fonds pour les mêmes paragraphes. La couleur de leurs lettres reste noire.', [
     v('Fond blanc', '<p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>', 'p {\n  color: black;\n  background-color: white;\n}', 'Les lettres sont noires sur fond blanc. La règle p agit sur les deux paragraphes.', 'p{color:black;background-color:white}'),
     v('Fond jaune clair', '<p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>', 'p {\n  color: black;\n  background-color: lightyellow;\n}', 'background-color change le fond de chaque paragraphe, pas la couleur de ses lettres.', 'p{color:black;background-color:lightyellow}')
-  ]);
-  const firstProject = data.modules['html-mini-page-fondations'].blocks;
-  firstProject.splice(firstProject.findIndex(b => b.id === 'verification'), 0, {
-    type: 'lesson', id: 'repere-visuel', title: 'Relire ta mini-page',
-    paragraphs: ['Après ton premier essai, utilise ces repères pour relire ta création. Ils ne donnent ni les textes ni le code d’une page terminée.']
-  });
-  add('html-mini-page-fondations', 'repere-visuel', 'Un contenu organisé, puis un code à vérifier', 'Deux regards sur ta création : ce qu’un visiteur comprend et ce que tes balises décrivent.', [
-    v('Regarder le contenu', '<h2>Ta mini-page</h2><ul><li>Un titre principal qui annonce le sujet</li><li>Des paragraphes pour présenter tes idées</li><li>Une liste qui regroupe des éléments</li></ul>', '', 'Relis ton propre contenu. La consigne du projet indique les éléments attendus ; ces repères ne sont pas une page modèle.'),
-    v('Relire les balises', '<h2>Ton code raconte-t-il la même chose ?</h2><ul><li>Le titre utilise le bon rôle</li><li>Chaque paragraphe possède ses balises</li><li>Chaque élément de liste est placé dans la liste</li></ul>', '', 'Un aperçu correct ne suffit pas : le navigateur peut réparer certaines erreurs. Vérifie les balises dans ton code.')
   ]);
   add('web-affiche-numerique', 'exemple-css', 'Deux groupes, deux rôles visuels', 'Le petit exemple reste le même. Compare la présentation neutre et les couleurs des deux classes.', [
     v('Sans couleurs personnalisées', '<h1 class="annonce">Atelier découverte</h1><p class="information">Une idée à essayer.</p>', '.annonce {\n  color: black;\n  background-color: white;\n}\n.information {\n  color: black;\n  background-color: white;\n}', 'Le titre et le paragraphe existent déjà : le CSS ne crée pas leur contenu.', '.annonce,.information{color:black;background-color:white}'),

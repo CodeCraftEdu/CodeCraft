@@ -78,12 +78,15 @@ body.student-lowpoly :is(.web-comparison__result, .flex-display-demo__preview, .
   background: #fffcf7;
   clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
 }
-body.student-lowpoly :is(.web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) {
+body.student-lowpoly :is(.code-editor, .web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) {
+  min-width: 0;
+  max-width: 100%;
   overflow: hidden;
+  border: 1px solid #3b3c34;
   border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2);
-  background: var(--demo-editor);
+  background: #25271f;
   color: #f4f5ef;
-  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
 }
 body.student-lowpoly :is(.web-comparison__caption, .flex-display-demo__caption, .flex-property-demo__caption) {
   margin: 0;
@@ -94,27 +97,42 @@ body.student-lowpoly :is(.web-comparison__caption, .flex-display-demo__caption, 
   color: var(--route-dark);
   border-bottom: 1px solid var(--demo-edge);
 }
-body.student-lowpoly :is(.web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) > p {
-  background: linear-gradient(135deg, var(--route) 0 24px, var(--route-dark) 24px calc(100% - 24px), color-mix(in srgb, var(--route-dark) 80%, black) calc(100% - 24px));
-  color: #fffdf7;
-  border-bottom: 1px solid color-mix(in srgb, var(--route) 50%, var(--demo-editor));
+body.student-lowpoly :is(.code-editor, .web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) > p {
+  margin: 0;
+  font-size: .85rem;
+  padding: .45rem .85rem;
+  background: #2d2f26;
+  color: #c4c5bc;
+  border-bottom: 1px solid #3b3c34;
+  font-weight: 400;
+  font-family: Consolas, 'Courier New', monospace;
 }
+body.student-lowpoly :is(.code-editor, .web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) > p::before { content: '‹›'; margin-right: .6rem; color: #ed914d; }
+body.student-lowpoly .code-editor { margin-top: 18px; }
+body.student-lowpoly .code-editor .code-block { margin: 0; border: 0; clip-path: none; }
+body.student-lowpoly .syntax .code-editor { margin: 0 12px 12px; }
 body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) .code-block {
-  padding: 1.25rem 1rem;
+  min-width: 0;
+  max-height: none;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: visible;
+  padding: .7rem .6rem;
   border: 0;
   border-radius: 0;
   clip-path: none;
   box-shadow: none;
-  background: var(--demo-editor);
+  background: #25271f;
   color: #f4f5ef;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: .95rem;
+  line-height: 1.5;
 }
 body.student-lowpoly :is(.web-comparison__layout, .flex-display-demo__layout, .flex-property-demo__layout) { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 16px; }
 body.student-lowpoly .web-comparison__frame { border: 0; height: 160px; }
-body.student-lowpoly :is(.web-code-token--property) { color: #9bd7f3; }
-body.student-lowpoly .web-code-token--string { color: #f2d399; }
-body.student-lowpoly .web-code-token--value { color: #c2e3ac; }
+body.student-lowpoly .web-comparison__tab { margin: 0; padding: 8px 16px; background: var(--paper); color: var(--muted); border-bottom: 1px solid var(--demo-edge); font-size: .9rem; }
+body.student-lowpoly .web-code-token--property { color: #c6e86c; }
+body.student-lowpoly .web-code-token--string { color: #f2d862; }
+body.student-lowpoly .web-code-token--value { color: #b5cea8; }
 body.student-lowpoly .flex-property-demo__viewport { padding: 10px; }
 body.student-lowpoly .flex-property-demo__axes { margin: 0; padding: 8px 12px; color: var(--muted); }
 body.student-lowpoly .flex-display-demo .cartes { margin: 10px; }
@@ -402,11 +420,22 @@ body.student-lowpoly .support-card--stuck { background: #fff2e1; }
 body.student-lowpoly .support-card--done { background: #eef4e7; }
 body.student-lowpoly .support-card .section-title::before { display: none; }
 body.student-lowpoly .task-item, body.student-lowpoly .check-item { border-top-width: 1px; border-top-color: #ded6de; }
+body.student-lowpoly .task-item { padding-block: 10px; }
+body.student-lowpoly .task-item:first-child { padding-top: 0; }
+body.student-lowpoly .task-item:last-child { padding-bottom: 0; }
+body.student-lowpoly .task-list .task-label { min-height: 30px; }
+body.student-lowpoly .task-item > .hint { margin-top: 2px; }
 body.student-lowpoly .hint { border: 0; border-left: 2px solid var(--route); border-radius: 0; background: transparent; }
 body.student-lowpoly .hint > summary { min-height: 44px; padding: .65rem .8rem; font-size: .95rem; font-weight: 600; }
-body.student-lowpoly .hint[open], body.student-lowpoly .hint > summary:hover { background: var(--route-soft); }
+body.student-lowpoly .task-item > .hint > summary { padding-block: .4rem; }
+body.student-lowpoly .task-item > .hint > p { padding-bottom: 8px; }
+body.student-lowpoly .task-item > .hint .syntax { margin-block: 0; }
+body.student-lowpoly .hint > summary:hover { background: var(--route-soft); }
+body.student-lowpoly .hint[open] { background: transparent; }
+body.student-lowpoly .hint > .syntax { border: 0; background: transparent; }
+body.student-lowpoly .hint > .syntax + .syntax { border-top: 1px solid var(--line); }
 body.student-lowpoly .syntax { border-width: 1px; }
-body.student-lowpoly .code-block { border: 0; border-bottom: 4px solid var(--route-dark); border-radius: 2px; background: color-mix(in srgb, var(--route-dark) 25%, #25262d); }
+body.student-lowpoly .code-block { border: 1px solid #3b3c34; border-radius: 0; background: #25271f; color: #f5f5ef; padding: .7rem .6rem; font-size: .95rem; line-height: 1.5; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px); }
 body.student-lowpoly .disclosure-body .content-card { background: var(--paper); border: 0; box-shadow: none; }
 body.student-lowpoly .scratch-script, body.student-lowpoly .scratch-scripts { border: 1px solid var(--line); background: color-mix(in srgb, var(--route) 4%, var(--paper)); border-radius: 2px; }
 /* Les couleurs et silhouettes pédagogiques des vrais blocs Scratch sont conservées. */

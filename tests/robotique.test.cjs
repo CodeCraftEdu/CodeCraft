@@ -159,7 +159,7 @@ test('les guides de mission conservent les preuves récentes sans annoncer une v
     const preparation = data.modules[id].teacherGuide.preparation.join(' ');
     assert.match(preparation, /Recette pratique incomplète/);
     assert.match(preparation, /13/);
-    assert.match(preparation, /22–23/);
+    assert.match(preparation, /22-23/);
     assert.match(preparation, /réimport/);
     assert.match(preparation, /conditions égales|équitables/);
     assert.match(preparation, /impression|imprimée/);

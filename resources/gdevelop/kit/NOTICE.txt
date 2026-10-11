@@ -1,4 +1,4 @@
-KIT CODECRAFT — PREMIERS PAS GDEVELOP
+KIT CODECRAFT : PREMIERS PAS GDEVELOP
 
 1. Extraire tout le ZIP dans votre dossier de travail, pas seulement une image.
 2. Renommer le dossier extrait mon-premier-jeu.

@@ -87,13 +87,13 @@
       else loose.length = 0;
     };
     for (const line of normalizedQuickSource(source).split('\n')) {
-      const match = line.match(/^\s*(\d{1,2}:\d{2})\s*[–—-]\s*(\d{1,2}:\d{2})\s*(?:—|-)\s*(.*)$/);
+      const match = line.match(/^\s*(\d{1,2}:\d{2})\s*[-\u2013\u2014]\s*(\d{1,2}:\d{2})\s*(?::|-|\u2014)\s*(.*)$/);
       if (match) {
         flushLoose();
-        const parts = match[3].split(/\s+(?:—|–|-)\s+/).map(item => item.trim()).filter(Boolean);
+        const parts = match[3].split(/\s+(?::|-|\u2013|\u2014)\s+/).map(item => item.trim()).filter(Boolean);
         current = {
-          type: 'slot', time: match[1] + '–' + match[2],
-          group: parts.length > 1 ? parts.shift() : '', title: parts.join(' — ') || match[3].trim(), lines: []
+          type: 'slot', time: match[1] + '-' + match[2],
+          group: parts.length > 1 ? parts.shift() : '', title: parts.join(' : ') || match[3].trim(), lines: []
         };
         items.push(current);
       } else if (current) current.lines.push(line);
@@ -181,7 +181,7 @@
         const panel = disclosure(parent, title + ' (' + selected.length + ')');
         const values = new Set(selected);
         const all = [...items];
-        for (const id of selected) if (!all.some(item => item.id === id)) all.push({ id, title: id + ' — référence conservée' });
+        for (const id of selected) if (!all.some(item => item.id === id)) all.push({ id, title: id + ' : référence conservée' });
         if (!all.length) panel.append(make('p', 'Aucun élément disponible.'));
         const list = make('div', undefined, 'session-choices');
         for (const item of all) {
@@ -208,7 +208,7 @@
           return String(Math.floor(total / 60) % 24).padStart(2, '0') + ':' + String(total % 60).padStart(2, '0') +
             (total >= 1440 ? ' (J+' + Math.floor(total / 1440) + ')' : '');
         }
-        return time(slot.startMinute) + '–' + time(slot.startMinute + slot.durationMinutes);
+        return time(slot.startMinute) + '-' + time(slot.startMinute + slot.durationMinutes);
       }
       function participantName(session, id) {
         return model.sessionRoster(doc, session).find(item => item.studentId === id)?.name || doc.students.find(item => item.id === id)?.name || id;
@@ -216,7 +216,7 @@
       function frameworkOf(session) { return doc.frameworks.find(item => item.id === session.frameworkId); }
       function objectiveChoices(session) {
         const framework = frameworkOf(session);
-        return framework ? model.objectivesOf(framework).map(item => ({ id: item.id, title: item.code + ' — ' + item.title })) : [];
+        return framework ? model.objectivesOf(framework).map(item => ({ id: item.id, title: item.code + ' : ' + item.title })) : [];
       }
       function printDocument(session) {
         const page = make('article', undefined, 'conductor-print');
@@ -298,18 +298,18 @@
       }
       window.addEventListener('beforeprint', preparePrint);
       function preparation(parent, session) {
-        const panel = disclosure(parent, 'Aide à la préparation — élèves et bibliothèque');
+        const panel = disclosure(parent, 'Aide à la préparation : élèves et bibliothèque');
         panel.append(make('p', 'Les états ci-dessous sont les états actuels. Choisis toi-même les objectifs et les groupes de cette séance.', 'teacher-caption'));
         for (const member of model.sessionRoster(doc, session)) {
           const membership = doc.memberships.find(item => item.classId === session.classId && item.studentId === member.studentId);
           const pathway = catalog.pathways[membership?.pathwayId]?.title || 'Non renseigné';
-          const row = disclosure(panel, member.name + ' — ' + pathway + ' · ' + presenceNames[session.attendance?.find(item => item.studentId === member.studentId)?.status || 'unknown']);
+          const row = disclosure(panel, member.name + ' : ' + pathway + ' · ' + presenceNames[session.attendance?.find(item => item.studentId === member.studentId)?.status || 'unknown']);
           row.dataset.preparationStudentId = member.studentId;
           row.append(make('p', 'Parcours actuel dans cette classe : ' + pathway));
           const entries = doc.progress.filter(item => item.studentId === member.studentId && progressNames[item.status]);
           if (!entries.length) row.append(make('p', 'Aucune compétence En cours ou Acquise renseignée.'));
           const list = make('ul');
-          for (const entry of entries) list.append(make('li', (catalog.skills[entry.skillId]?.title || entry.skillId) + ' — ' + progressNames[entry.status]));
+          for (const entry of entries) list.append(make('li', (catalog.skills[entry.skillId]?.title || entry.skillId) + ' : ' + progressNames[entry.status]));
           row.append(list);
         }
         const modules = disclosure(panel, 'Modules CodeCraft disponibles');
@@ -319,7 +319,7 @@
           const p = make('p'); p.append(link); modules.append(p);
         }
         if (frameworkOf(session)) {
-          const external = disclosure(panel, frameworkOf(session).name + ' — objectifs officiels');
+          const external = disclosure(panel, frameworkOf(session).name + ' : objectifs officiels');
           const list = make('ul'); objectiveChoices(session).forEach(item => list.append(make('li', item.title))); external.append(list);
         }
       }
@@ -354,7 +354,7 @@
         quickActions.append(modifyQuick, openMode);
         quickPanel.append(quickPreview, quickActions, quickEdit);
         editor.append(quickPanel);
-        const attendance = disclosure(editor, 'Présences — composition de cette séance', true);
+        const attendance = disclosure(editor, 'Présences : composition de cette séance', true);
         const members = model.sessionRoster(doc, session);
         if (!members.length) attendance.append(make('p', 'Aucun élève dans la composition de cette séance.'));
         if (members.length) attendance.append(button('Tout le monde présent', () => {
@@ -410,7 +410,7 @@
         const targets = disclosure(advanced, 'Objectifs et modules de la séance');
         choices(targets, 'Compétences CodeCraft', skillChoices, session.skillIds, ids => update({ skillIds: ids }, true), 'session-skills');
         choices(targets, 'Modules CodeCraft', moduleChoices, session.moduleIds || [], ids => update({ moduleIds: ids }, true), 'session-modules');
-        if (session.frameworkId) choices(targets, 'Objectifs — ' + (frameworkOf(session)?.name || 'référentiel conservé'), objectiveChoices(session), session.objectiveIds || [], ids => update({ objectiveIds: ids }, true), 'session-objectives');
+        if (session.frameworkId) choices(targets, 'Objectifs : ' + (frameworkOf(session)?.name || 'référentiel conservé'), objectiveChoices(session), session.objectiveIds || [], ids => update({ objectiveIds: ids }, true), 'session-objectives');
         const preparationHost = make('div'); advanced.append(preparationHost); preparation(preparationHost, session);
         const conductor = make('section', undefined, 'session-conductor');
         conductor.append(make('h4', 'Conducteur'));
@@ -422,7 +422,7 @@
           all.forEach((slot, index) => {
             const card = make('details', undefined, 'session-slot'); card.dataset.slotId = slot.id;
             card.open = focusId ? slot.id === focusId : index === 0;
-            const slotLabel = item => (index + 1) + ' · ' + range(session, item) + ' · ' + (item.title || 'Créneau sans titre') + ' — ' +
+            const slotLabel = item => (index + 1) + ' · ' + range(session, item) + ' · ' + (item.title || 'Créneau sans titre') + ' : ' +
               (item.studentIds?.length ? item.studentIds.map(id => participantName(session, id)).join(', ') : 'Toute la classe');
             const title = make('summary', slotLabel(slot));
             title.tabIndex = 0; card.append(title);
@@ -449,10 +449,10 @@
             const duration = field(grid, 'Durée (minutes)', 'slot-duration-' + slot.id, slot.durationMinutes, 'number', value => saveSlot({ durationMinutes: Number(value) }, true)); duration.min = '1'; duration.required = true;
             field(card, 'Titre du créneau', 'slot-title-' + slot.id, slot.title, 'text', value => saveSlot({ title: value }));
             field(card, 'Instructions / notes professeur', 'slot-instructions-' + slot.id, slot.instructions, 'textarea', value => saveSlot({ instructions: value }));
-            const people = members.map(item => ({ id: item.studentId, title: item.name + ' — ' + presenceNames[session.attendance?.find(a => a.studentId === item.studentId)?.status || 'unknown'] }));
-            choices(card, 'Élèves ciblés — aucun = toute la classe', people, slot.studentIds || [], ids => saveSlot({ studentIds: ids }, true), 'slot-students');
+            const people = members.map(item => ({ id: item.studentId, title: item.name + ' : ' + presenceNames[session.attendance?.find(a => a.studentId === item.studentId)?.status || 'unknown'] }));
+            choices(card, 'Élèves ciblés : aucun = toute la classe', people, slot.studentIds || [], ids => saveSlot({ studentIds: ids }, true), 'slot-students');
             const pathways = [['', 'Aucun parcours précisé'], ...Object.entries(catalog.pathways).map(([id, item]) => [id, item.title])];
-            if (slot.pathwayId && !catalog.pathways[slot.pathwayId]) pathways.push([slot.pathwayId, slot.pathwayId + ' — référence conservée']);
+            if (slot.pathwayId && !catalog.pathways[slot.pathwayId]) pathways.push([slot.pathwayId, slot.pathwayId + ' : référence conservée']);
             select(card, 'Parcours du créneau (facultatif)', 'slot-pathway-' + slot.id, pathways, slot.pathwayId || '', value => saveSlot({ pathwayId: value }, true));
             choices(card, 'Modules du créneau', moduleChoices, slot.moduleIds || [], ids => saveSlot({ moduleIds: ids }, true), 'slot-modules');
             choices(card, 'Compétences du créneau', skillChoices, slot.skillIds || [], ids => saveSlot({ skillIds: ids }, true), 'slot-skills');

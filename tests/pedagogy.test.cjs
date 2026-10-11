@@ -9,6 +9,29 @@ const context = { window: {}, URLSearchParams };
 for (const file of ['lesson-data.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;
 
+test('textes du site : aucun tiret long dans les sources publiées', () => {
+  const folders = [root, path.join(root, 'images'), path.join(root, 'assets'), path.join(root, 'resources')];
+  function check(folder, recursive) {
+    for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
+      const file = path.join(folder, entry.name);
+      if (entry.isDirectory() && recursive) check(file, true);
+      else if (entry.isFile() && /\.(?:js|html|svg|txt|css)$/.test(entry.name)) {
+        assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /[\u2013\u2014]/, path.relative(root, file));
+      }
+    }
+  }
+  folders.forEach((folder, index) => check(folder, index !== 0));
+});
+
+test('source encodée : dessin embarqué, décodage et usage CodePen expliqués', () => {
+  const source = fs.readFileSync(path.join(root, 'pedagogy.js'), 'utf8');
+  assert(source.includes('Cette source contient le dessin SVG sous forme de texte.'));
+  assert(source.includes('`data:image/svg+xml,`'));
+  assert(source.includes('`%3C`'));
+  assert(source.includes('dans CodePen sans héberger un fichier image'));
+  assert(source.includes('Le navigateur décode le texte et affiche l’image.'));
+});
+
 test('fin de module : encarts génériques supprimés, consignes spécifiques conservées', () => {
   const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const start = source.indexOf('  function support(item) {');

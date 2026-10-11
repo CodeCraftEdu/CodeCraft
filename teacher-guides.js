@@ -33,7 +33,7 @@
     panel.open = true; view.replaceChildren();
     const module = data.modules[id], guide = module?.teacherGuide;
     if (!guide) { view.append(ui.node('p', 'Ce guide n’est pas disponible. Choisis un module dans la liste.')); return; }
-    const title = ui.node('h2', 'Guide professeur — ' + module.title); title.tabIndex = -1;
+    const title = ui.node('h2', 'Guide professeur : ' + module.title); title.tabIndex = -1;
     view.append(title, section('Objectif pédagogique', guide.objective), ui.prerequisites(module),
       section('Diagnostic d’entrée', guide.entryDiagnosis), section('À préparer', guide.preparation),
       section('Pourquoi cette notion ?', guide.why), section('Speech de découverte', guide.discoverySpeech));
@@ -57,7 +57,7 @@
     view.append(errors);
     if (criteria) view.append(criteria);
     const orientations = ui.orientations(module, null, true); if (orientations) view.append(orientations);
-    view.append(section('Notes professeur', guide.notes), section('Conducteur rapide — sans horaires imposés', guide.quickConductor, true));
+    view.append(section('Notes professeur', guide.notes), section('Conducteur rapide : sans horaires imposés', guide.quickConductor, true));
     const references = section('Références techniques', 'Pour vérifier ou approfondir les explications :');
     const list = ui.node('ul');
     for (const ref of guide.references) {

@@ -130,8 +130,8 @@ const probe = `<script>addEventListener('load', () => {
   const chrome = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
   const cases = [
     ['index.html#parcours/gdevelop-debutants', ['#module/gdevelop-projet?parcours=gdevelop-debutants', '#module/gdevelop-deplacement?parcours=gdevelop-debutants', '#module/gdevelop-objets?parcours=gdevelop-debutants', '#module/gdevelop-evenements?parcours=gdevelop-debutants'], 1200],
-    ['index.html#parcours/gdevelop-debutants', ['pathway-stage__title', 'Prendre les commandes', 'Explorer et ramasser — à venir'], 390],
-    ['index.html#module/gdevelop-deplacement?parcours=python-debutants', ['Étape 1 · Prendre les commandes — Module 2 sur 4'], 1200],
+    ['index.html#parcours/gdevelop-debutants', ['pathway-stage__title', 'Prendre les commandes', 'Explorer et ramasser : à venir'], 390],
+    ['index.html#module/gdevelop-deplacement?parcours=python-debutants', ['Étape 1 · Prendre les commandes : Module 2 sur 4'], 1200],
     ...['gdevelop-projet', 'gdevelop-deplacement', 'gdevelop-objets', 'gdevelop-evenements'].flatMap(id => [
       ['index.html#module/' + id + '?parcours=gdevelop-debutants', ['lesson-checkpoint', 'aria-current="page"', 'data-test-scene="banner-game.svg"'], 1200],
       ['index.html#module/' + id + '?parcours=gdevelop-debutants', ['lesson-checkpoint', 'data-test-checkbox="true"'], 390],
@@ -214,7 +214,7 @@ const probe = `<script>addEventListener('load', () => {
       if (route.startsWith('index.html#module/python-saisie')) {
         assert(stdout.includes('data-lesson-layout="standard"'));
         assert.equal((stdout.match(/>Avant de commencer<\/h2>/g) || []).length, 1);
-        assert(!stdout.includes('Avant de commencer — repères'));
+        assert(!stdout.includes('Avant de commencer : repères'));
         assert(!stdout.includes('Retour à l’accueil'));
         assert(!stdout.includes('Retour à l&#39;accueil'));
         assert(!stdout.includes('href="https://thonny.org/"'));
@@ -244,7 +244,7 @@ const probe = `<script>addEventListener('load', () => {
       }
       if (route.startsWith('index.html#module/python-thonny')) {
         assert.equal((stdout.match(/>Avant de commencer<\/h2>/g) || []).length, 1, 'Un seul encart de démarrage');
-        assert(!stdout.includes('Avant de commencer — repères'));
+        assert(!stdout.includes('Avant de commencer : repères'));
         assert(!stdout.includes('avec un adulte'));
         assert(stdout.includes('cela signifie que Python attend une instruction'));
         assert(stdout.includes('lesson-page--workshop'));
@@ -269,15 +269,15 @@ const probe = `<script>addEventListener('load', () => {
       }
       if (ids.slice(1, 4).some(id => route.startsWith('index.html#module/' + id))) {
         assert.equal((stdout.match(/>Avant de commencer<\/h2>/g) || []).length, 1);
-        assert(!stdout.includes('Avant de commencer — repères'));
+        assert(!stdout.includes('Avant de commencer : repères'));
         assert(!stdout.includes('Stop/Restart'));
       }
       if (ids.slice(5).some(id => route.startsWith('index.html#module/' + id))) {
         assert.equal((stdout.match(/>Avant de commencer<\/h2>/g) || []).length, 1);
-        assert(!stdout.includes('Avant de commencer — repères'), 'Préparation et prérequis fusionnés');
+        assert(!stdout.includes('Avant de commencer : repères'), 'Préparation et prérequis fusionnés');
       }
       if (route.startsWith('index.html#module/python-conversation')) {
-        assert(!stdout.includes('Avant de commencer — repères'));
+        assert(!stdout.includes('Avant de commencer : repères'));
         assert(stdout.includes('conversation_modifiee.py'));
       }
       if (route.startsWith('index.html#module/python-calculs')) {
@@ -381,9 +381,9 @@ const probe = `<script>addEventListener('load', () => {
         const id = route.split('#module/')[1].split('?')[0];
         const stage = catalog.pathways['gdevelop-debutants'].stages[0];
         const position = stage.moduleIds.indexOf(id) + 1;
-        assert(stdout.includes('Étape 1 · Prendre les commandes — Module ' + position + ' sur 4'), 'Position dans l’étape, sans acquis automatique');
+        assert(stdout.includes('Étape 1 · Prendre les commandes : Module ' + position + ' sur 4'), 'Position dans l’étape, sans acquis automatique');
         assert.equal(stdout.includes('class="lesson-stage-pause"'), position === 4, 'Pause seulement dans la dernière leçon');
-        assert.equal(stdout.includes('Projet d’étape 1 — Ma scène explorable'), position === 4, 'Mini-projet uniquement en fin d’étape');
+        assert.equal(stdout.includes('Projet d’étape 1 : Ma scène explorable'), position === 4, 'Mini-projet uniquement en fin d’étape');
         if (position === 4) assert(stdout.includes('Repères pour le projet d’étape'), 'Critères du mini-projet visibles');
         assert(!stdout.includes('role="progressbar"'), 'Pas de jauge de maîtrise');
         assert.equal(stdout.includes('href="https://gdevelop.io/download"'), id === 'gdevelop-projet', 'Téléchargement du moteur uniquement dans la première leçon');
@@ -399,7 +399,7 @@ const probe = `<script>addEventListener('load', () => {
         assert.equal((stdout.match(/class="pathway-stage"/g) || []).length, 1);
         assert(stdout.includes('aria-labelledby="pathway-stage-prendre-commandes"'));
         assert(stdout.includes('Projet de fin d’étape : Ma scène explorable'));
-        assert(stdout.includes('Explorer et ramasser — à venir'));
+        assert(stdout.includes('Explorer et ramasser : à venir'));
         assert.equal((stdout.match(/class="route-card /g) || []).length, 4, 'Pas de carte vide ou bloquée');
         const offsets = catalog.pathways['gdevelop-debutants'].moduleIds.map(id => stdout.indexOf('href="#module/' + id + '?parcours=gdevelop-debutants"'));
         assert(offsets.every((offset, i) => offset >= 0 && (i === 0 || offset > offsets[i - 1])), 'Ordre du parcours inchangé');

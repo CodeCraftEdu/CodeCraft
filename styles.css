@@ -352,16 +352,11 @@ body[data-route] .lesson-intro > .button {
   margin: 0;
   padding: 0;
   list-style: none;
-  counter-reset: missions;
-}
-
-.task-item {
-  counter-increment: missions;
 }
 
 .task-item,
 .check-item {
-  padding: 15px 0;
+  padding: 4px 0;
   border-top: 2px solid #d4cdbc;
 }
 
@@ -377,26 +372,17 @@ body[data-route] .lesson-intro > .button {
 }
 
 .task-label {
-  min-height: 50px;
+  min-height: 44px;
   display: grid;
   grid-template-columns: 32px 1fr;
-  align-items: start;
+  align-items: center;
   gap: 13px;
   cursor: pointer;
-}
-
-.task-list .task-label::before {
-  content: counter(missions) ".";
-  grid-column: 2;
-  grid-row: 1;
-  margin-right: 4px;
-  font-weight: 800;
 }
 
 .task-list .task-text {
   grid-column: 2;
   grid-row: 1;
-  padding-left: 30px;
 }
 
 .task-label input {
@@ -404,7 +390,7 @@ body[data-route] .lesson-intro > .button {
   height: 26px;
   grid-column: 1;
   grid-row: 1;
-  margin: 1px 0 0;
+  margin: 0;
   accent-color: var(--route);
   cursor: pointer;
 }
@@ -457,8 +443,33 @@ code,
   margin: 0 12px 12px;
 }
 
+/* Aides graduées : une liste légère, pas des cartes dans une carte. */
+.hint > .syntax {
+  margin: 0 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.hint > .syntax + .syntax { border-top: 1px solid var(--line); }
+.hint > .syntax > summary {
+  min-height: 36px;
+  padding: 6px 0;
+  font-size: .9rem;
+  font-weight: 600;
+}
+.hint > .syntax > p {
+  margin: 0;
+  padding: 0 0 10px 14px;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
 .code-block {
   max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  height: auto;
+  max-height: none;
   margin: 18px 0 0;
   padding: 18px;
   border: 3px solid #171914;

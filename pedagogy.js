@@ -4,7 +4,10 @@
   const data = window.CODECRAFT_DATA;
   const node = (tag, text, cls) => {
     const el = document.createElement(tag);
-    if (text !== undefined) el.textContent = text;
+    if (text !== undefined) {
+      if (['p', 'li'].includes(tag) && window.CodeCraftInlineText) window.CodeCraftInlineText(el, text);
+      else el.textContent = text;
+    }
     if (cls) el.className = cls;
     return el;
   };
@@ -35,7 +38,7 @@
     return el;
   }
   function prerequisites(module) {
-    const el = panel('Avant de commencer — repères');
+    const el = panel('Avant de commencer : repères');
     if (module.prerequisiteSkills === undefined) {
       el.append(node('p', 'Les prérequis ne sont pas encore détaillés pour ce module. Cela ne signifie pas qu’ils sont acquis.'));
     } else {
@@ -99,10 +102,17 @@
     image.addEventListener('error', () => { status.textContent = 'Le fichier n’est pas disponible ici. Essaie la version CodePen ci-dessous ; cette indisponibilité n’est pas une faute dans ton exercice.'; });
     const download = node('a', 'Télécharger pour un projet local'); download.href = entry.path; download.download = entry.id + '.svg';
     const source = node('section', undefined, 'image-source');
-    source.append(node('h3', '1 — La source à copier dans src'), node('p', 'Copie la source entière, puis colle-la entre les guillemets de src="". Ne la retape pas et ne la modifie pas.'));
+    source.append(node('h3', 'La source à copier dans src'),
+      node('p', 'Cette source contient le dessin SVG sous forme de texte. Le début `data:image/svg+xml,` indique au navigateur qu’il reçoit directement une image SVG ; les codes comme `%3C` représentent les caractères du dessin, ici `<`.'),
+      node('p', 'Dans cet exemple, elle permet d’afficher le dessin dans CodePen sans héberger un fichier image. Le navigateur décode le texte et affiche l’image. Copie la source entière entre les guillemets de `src=""`.'));
     const details = node('details');
-    details.append(node('summary', 'Voir la source encodée — copie manuelle'));
-    const pre = node('pre', undefined, 'code-block'); pre.append(node('code', entry.codepenSrc));
+    details.append(node('summary', 'Voir la source encodée (copie manuelle)'));
+    let pre;
+    if (window.CodeCraftCreateCode) pre = window.CodeCraftCreateCode(entry.codepenSrc, 'image.svg');
+    else {
+      pre = node('pre', undefined, 'code-block');
+      pre.append(node('code', entry.codepenSrc));
+    }
     details.append(pre);
     const copy = node('button', 'Copier uniquement la source', 'button button--secondary'); copy.type = 'button';
     copy.addEventListener('click', async () => {
@@ -111,7 +121,7 @@
     });
     source.append(copy, details);
     const alternative = node('section', undefined, 'image-alternative');
-    alternative.append(node('h3', '2 — Le texte alternatif à écrire dans alt'), node('p', 'Observe l’image. Rédige toi-même une courte description entre les guillemets de alt="". Ce texte n’est pas inclus dans la source copiée.'));
+    alternative.append(node('h3', 'Le texte alternatif à écrire dans alt'), node('p', 'Observe l’image. Rédige une courte description entre les guillemets de `alt=""`. Cet attribut décrit l’image, tandis que `src` fournit le dessin.'));
     el.append(image, status, download, source, alternative);
     return el;
   }
@@ -122,7 +132,7 @@
     const starter = !module.scratchProjectContinuation && valid(project.starterUrl);
     const demo = teacher && valid(project.demoUrl);
     if (!teacher && !starter) return null;
-    const el = panel(teacher ? 'Projet Scratch — ressources de cours' : 'Projet de départ — ' + project.title);
+    const el = panel(teacher ? 'Projet Scratch : ressources de cours' : 'Projet de départ : ' + project.title);
     el.classList.add(teacher ? 'teacher-guide-section' : 'content-card');
     function button(label, href) {
       const anchor = node('a', label, 'button button--secondary');

@@ -17,7 +17,7 @@ test('Étapes GDevelop : groupe disponible sans modules futurs et autres parcour
   assert.equal(stage.title, 'Prendre les commandes');
   assert.deepEqual(Array.from(stage.moduleIds), ids);
   assert(stage.pause.includes('modification personnelle'));
-  assert(pathway.nextStageLabel.includes('Explorer et ramasser — à venir'));
+  assert(pathway.nextStageLabel.includes('Explorer et ramasser : à venir'));
   for (const id of ['python-debutants', 'scratch-debutants', 'web-fondations', 'web-debutants', 'web-avances']) {
     assert.equal(data.pathways[id].stages, undefined);
   }

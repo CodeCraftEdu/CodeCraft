@@ -164,7 +164,8 @@ test('revue HTML : repères historiques conservés et balises des exemples équi
 test('revue HTML : essais conservés, transfert et vérification du code explicites', () => {
   for (const id of ids) {
     assert(block(id, 'preparer').text.includes('fichier texte'));
-    assert(block(id, 'preparer').text.includes('Aucun compte'));
+    assert(block(id, 'preparer').text.includes('zone HTML'));
+    assert(!block(id, 'preparer').text.includes('ne suppose pas'));
   }
   const title = data.modules[ids[0]];
   assert(!title.bonus.includes('Efface'));

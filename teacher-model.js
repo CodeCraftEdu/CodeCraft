@@ -80,7 +80,7 @@
   });
 
   function fail(path, message) {
-    throw new Error('Document invalide — ' + path + ' : ' + message);
+    throw new Error('Document invalide : ' + path + ' : ' + message);
   }
   function check(value, rule, path) {
     if (value === undefined && rule.optional) return;
@@ -330,7 +330,7 @@
   }
   function setMembershipPathway(doc, classId, studentId, pathwayId, catalog) {
     const membership = doc.memberships.find(item => item.classId === classId && item.studentId === studentId);
-    if (!membership) throw new Error('Rattachement élève–classe introuvable.');
+    if (!membership) throw new Error('Rattachement élève-classe introuvable.');
     if (pathwayId !== '') {
       check(pathwayId, id, 'parcours');
       if (!catalog || !Object.hasOwn(catalog.pathways || {}, pathwayId)) throw new Error('Parcours CodeCraft introuvable.');
@@ -343,7 +343,7 @@
   function removeStudentFromClass(doc, classId, studentId) {
     find(doc.classes, classId, 'Classe'); find(doc.students, studentId, 'Élève');
     const index = doc.memberships.findIndex(item => item.classId === classId && item.studentId === studentId);
-    if (index < 0) throw new Error('Rattachement élève–classe introuvable.');
+    if (index < 0) throw new Error('Rattachement élève-classe introuvable.');
     doc.memberships.splice(index, 1);
     return true;
   }

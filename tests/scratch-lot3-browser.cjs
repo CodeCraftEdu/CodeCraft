@@ -26,7 +26,7 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('y = 120'));
       assert(!dom.includes('y = 60 puis rejoins'));
     }],
-    ['prof.html#guide/scratch-reactions', 'Guide professeur — Faire réagir le jeu', dom => {
+    ['prof.html#guide/scratch-reactions', 'Guide professeur : Faire réagir le jeu', dom => {
       assert(dom.includes('suspend cette pile'));
       assert(dom.includes('cible (80, 120)'));
       assert(!dom.includes('Retirer les anciennes commandes'));
@@ -36,7 +36,7 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('Reviens ensuite dans Compter et mémoriser'));
       assert(!dom.includes('Ouvrir le projet de départ'));
     }],
-    ['prof.html#guide/scratch-variables', 'Guide professeur — Compter et mémoriser', dom => {
+    ['prof.html#guide/scratch-variables', 'Guide professeur : Compter et mémoriser', dom => {
       assert(dom.includes('deuxième contact → 2'));
       assert(dom.includes('depuis 5, un contact donne 7'));
     }],
@@ -45,7 +45,7 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('Détache d’abord la suite'));
       assert(!dom.includes('Retire ton ancienne pile'));
     }],
-    ['prof.html#guide/scratch-actions', 'Guide professeur — Déclencher et enchaîner des actions', dom => {
+    ['prof.html#guide/scratch-actions', 'Guide professeur : Déclencher et enchaîner des actions', dom => {
       assert(dom.includes('Quels blocs font attendre'));
       assert(dom.includes('insérer le message'));
     }],
@@ -54,7 +54,7 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('https://scratch.mit.edu/projects/1388027652/'));
       assert(dom.includes('Quatre piles séparées'));
     }],
-    ['prof.html#guide/scratch-pilotage', 'Guide professeur — Piloter un personnage', dom => {
+    ['prof.html#guide/scratch-pilotage', 'Guide professeur : Piloter un personnage', dom => {
       assert(dom.includes('Garder ensuite ce projet'));
       assert(dom.includes('cinq piles de base'));
     }],
@@ -62,7 +62,7 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('aucune ancienne boucle ne tournera en même temps'));
       assert(!dom.includes('retire les autres piles'));
     }],
-    ['prof.html#guide/scratch-boucles', 'Guide professeur — Répéter des actions', dom => {
+    ['prof.html#guide/scratch-boucles', 'Guide professeur : Répéter des actions', dom => {
       assert(dom.includes('quatre pauses de 0.3'));
       assert(dom.includes('quatre puis deux tours'));
     }],
@@ -73,19 +73,19 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('Une seule extension') || dom.includes('une seule extension'));
       assert(dom.includes('Deux parties complètes'));
     }],
-    ['prof.html#guide/scratch-projet-personnel', 'Guide professeur — Mon projet personnel', dom => {
+    ['prof.html#guide/scratch-projet-personnel', 'Guide professeur : Mon projet personnel', dom => {
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('https://scratch.mit.edu/projects/1388025424/'));
       assert(dom.includes('Faut-il utiliser des clones et des messages'));
     }],
     ['index.html#module/scratch-debogage?parcours=scratch-debutants', 'Déboguer son jeu', dom => {
-      assert(dom.includes('À réparer — ordre volontairement incorrect'));
+      assert(dom.includes('À réparer : ordre volontairement incorrect'));
       assert(dom.includes('Un score qui reste à un'));
       assert(dom.includes('scratch-script__condition--operator'));
       assert(dom.includes('#module/scratch-temps-difficulte?parcours=scratch-debutants'));
-      assert(dom.includes('Sans solution — deux enquêtes'));
+      assert(dom.includes('Sans solution : deux enquêtes'));
     }],
-    ['prof.html#guide/scratch-debogage', 'Guide professeur — Déboguer son jeu', dom => {
+    ['prof.html#guide/scratch-debogage', 'Guide professeur : Déboguer son jeu', dom => {
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('Le message arrive encore au quatrième point'));
       assert(dom.includes('Une position effacée'));
@@ -103,11 +103,11 @@ const root = path.join(__dirname, '..');
       assert.equal((dom.match(/class="scratch-script__condition scratch-script__condition--operator"/g) || []).length, 2);
       assert(dom.includes('#module/scratch-clones?parcours=scratch-debutants'));
     }],
-    ['prof.html#guide/scratch-clones', 'Guide professeur — Créer plusieurs personnages avec des clones', dom => {
+    ['prof.html#guide/scratch-clones', 'Guide professeur : Créer plusieurs personnages avec des clones', dom => {
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('Les copies se multiplient sans contrôle'));
     }],
-    ['prof.html#guide/scratch-temps-difficulte', 'Guide professeur — Gérer le temps et la difficulté', dom => {
+    ['prof.html#guide/scratch-temps-difficulte', 'Guide professeur : Gérer le temps et la difficulté', dom => {
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('dix secondes exactement'));
     }],
@@ -126,8 +126,8 @@ const root = path.join(__dirname, '..');
     }],
     ['index.html#module/scratch-coordination?parcours=scratch-debutants', 'Coordonner plusieurs personnages', dom => {
       assert(dom.includes('https://scratch.mit.edu/projects/1388027889/'));
-      assert(dom.includes('Pico — lance le dialogue'));
-      assert(dom.includes('Tera — répond au signal'));
+      assert(dom.includes('Pico : lance le dialogue'));
+      assert(dom.includes('Tera : répond au signal'));
       assert(dom.includes('#module/scratch-blocs-personnalises?parcours=scratch-debutants'));
       assert(!dom.includes('Scratch est en anglais ?'));
     }],
@@ -137,21 +137,21 @@ const root = path.join(__dirname, '..');
       assert(dom.includes('#module/scratch-coordination?parcours=scratch-debutants'));
       assert(!dom.includes('Scratch est en anglais ?'));
     }],
-    ['prof.html#guide/scratch-coordination', 'Guide professeur — Coordonner plusieurs personnages', dom => {
+    ['prof.html#guide/scratch-coordination', 'Guide professeur : Coordonner plusieurs personnages', dom => {
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('https://scratch.mit.edu/projects/1388025602/'));
     }],
-    ['prof.html#guide/scratch-blocs-personnalises', 'Guide professeur — Créer ses propres blocs', dom => {
+    ['prof.html#guide/scratch-blocs-personnalises', 'Guide professeur : Créer ses propres blocs', dom => {
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('Deux appels demandent-ils deux définitions'));
     }],
-    ['prof.html#guide/scratch-fin-partie', 'Guide professeur — Gagner, perdre et recommencer', dom => {
+    ['prof.html#guide/scratch-fin-partie', 'Guide professeur : Gagner, perdre et recommencer', dom => {
       assert(dom.includes('abscisse x'));
       assert(dom.includes('Questions et réponses attendues'));
       assert(dom.includes('À -180 exactement'));
     }]
   ];
-  cases.push(['prof.html#guide/scratch-mini-jeu', 'Guide professeur — Mon premier mini-jeu', dom => {
+  cases.push(['prof.html#guide/scratch-mini-jeu', 'Guide professeur : Mon premier mini-jeu', dom => {
     assert(dom.includes('seuil entier'));
     assert(dom.includes('tester séparément la limite'));
   }]);
