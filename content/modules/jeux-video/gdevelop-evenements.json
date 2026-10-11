@@ -1,0 +1,260 @@
+{
+  "domainId": "jeux-video",
+  "title": "Quand ceci arrive, fais cela",
+  "type": "lesson",
+  "theme": "fondations",
+  "showTool": false,
+  "objective": "Faire apparaître un indice pendant une touche maintenue et expliquer les deux règles qui contrôlent sa visibilité.",
+  "skillIds": [
+    "gdevelop.events"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "gdevelop.instances",
+      "expectation": "Créer un objet, le nommer et en placer un exemplaire."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Expliquer un choix entre une condition et une action, avec aide si nécessaire."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Reprends ta petite pièce et ses jetons. Garde le déplacement de Personnage si tu l’as étudié ; les flèches le pilotent déjà. Nous ajoutons un indice à consulter avec une autre touche : aucun score ni collecte pour l’instant. Une condition pose une question ; une action agit quand elle est vraie. Tu peux revoir ce repère avec le professeur, sans terminer tout Scratch."
+    },
+    {
+      "type": "lesson",
+      "id": "message",
+      "title": "1 - Préparer le résultat visible",
+      "paragraphs": [
+        "Ajoute un objet Texte nommé Message. Donne-lui le contenu Les jetons sont dans la pièce !, une taille lisible (24 est un exemple) et une couleur contrastée avec le fond. Place un seul exemplaire dans le cadre visible.",
+        "Vérifie dans l’aperçu que l’indice est lisible, puis ferme-le. Ce premier contrôle vérifie seulement le texte et son placement : sa visibilité actuelle ne prouve pas encore qu’une règle clavier fonctionne."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 - Lire puis essayer la paire complète",
+      "paragraphs": [
+        "Observe les deux règles du schéma ensemble : Espace maintenue → Afficher Message ; Espace non maintenue → Masquer Message. Avant de les essayer, prévois le résultat sans appui, pendant un appui maintenu puis après relâchement. Montre ce qui teste et ce qui agit.",
+        "Dans les événements de Jeu, construis cette paire avec le professeur si nécessaire. Premier événement standard : condition clavier Espace pressée (état maintenu), action Afficher Message. Pas « vient d’être pressée ». Ne lance pas encore un essai de ce seul événement : Message était déjà visible, tu ne pourrais pas constater le changement.",
+        "Deuxième événement standard : prends la même condition Espace et inverse cette condition pour tester « Espace n’est pas pressée » ; action Masquer Message. L’inversion se trouve dans l’édition ou le menu de la condition selon la version : demande une aide de manipulation si nécessaire. Ne choisis pas « vient d’être relâchée » et ne laisse pas Masquer sans condition.",
+        "Lance maintenant un aperçu neuf avec les deux règles. Sans appui, l’indice est masqué ; pendant Espace, il est visible ; après relâchement, il est masqué. Clique dans l’aperçu pour lui donner le clavier si nécessaire. Recommence et compare à ta prévision.",
+        "Les règles sont retestées pendant le jeu. L’une demande d’afficher, l’autre de masquer selon l’état de la même touche. Pas besoin d’ajouter un bloc « répéter indéfiniment ». La visibilité observée ne mesure pas combien de fois elles ont été évaluées."
+      ],
+      "illustration": {
+        "src": "images/gdevelop-evenements.svg",
+        "alt": "Deux événements séparés : si Espace est maintenue, afficher Message ; si Espace n’est pas maintenue, masquer Message. Chaque condition est reliée à sa propre action.",
+        "caption": "Schéma de lecture, pas une capture de l’interface. Les deux conditions sont opposées."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - comprendre puis compléter",
+      "items": [
+        {
+          "id": "gd03-texte",
+          "text": "Dans une copie de travail préparée avec le professeur, retire seulement la règle Masquer. Prévois puis teste repos, appui et relâchement : qu’est-ce qui ne fonctionne plus comme dans la paire complète ? Restaure la règle et vérifie avant de conserver le projet.",
+          "hint": "Au repos, le texte peut être visible dès le départ ; après un appui rien ne demande de le masquer. Ne prends pas ce résultat pour la preuve que la première condition fonctionne. Compare avec la paire complète et ne touche pas à ton original."
+        },
+        {
+          "id": "gd03-deux-regles",
+          "text": "Sur le support partiel du professeur, les conditions utilisent F : F maintenue → Afficher Message ; F non maintenue → action manquante. Choisis cette action, explique-la puis reconstruis et teste la paire complète dans une copie.",
+          "hint": "Pour que l’indice soit invisible sans appui, l’action manquante doit masquer Message. Les deux conditions doivent porter sur F et rester opposées. Un schéma partiel suffit si aucun projet testé n’est disponible."
+        },
+        {
+          "id": "gd03-test",
+          "text": "Avec la paire complète restaurée, prévois puis teste sans appui, pendant un maintien et après relâchement, deux fois. Montre la règle responsable de chaque résultat. Enregistre ton projet de travail sans remplacer l’original par un essai incomplet.",
+          "hint": "Clique dans l’aperçu pour que le clavier y soit reçu. Au repos le message doit être masqué, pendant l’appui visible, après le relâchement masqué."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Projet d’étape 1 : Ma scène explorable",
+      "items": [
+        {
+          "id": "gd03-transfert",
+          "text": "Reprends ton projet, sans devoir repartir de zéro. Choisis un arrangement personnel avec un personnage pilotable et au moins trois exemplaires d’un même objet. Choisis un indice pour cette scène et une touche simple qui n’est pas utilisée ailleurs, distincte des flèches. L’indice doit être visible seulement pendant son maintien. Prévois les trois états avant de modifier. Aucun mur bloquant, ramassage, score ni victoire n’est demandé.",
+          "hint": "Réutilise le déplacement étudié et les objets déjà créés. Change le contenu de Message et la commande dans les deux conditions. Garde l’inversion sur le test opposé. Les actions doivent encore correspondre à ta prévision. Tu peux revoir une leçon ou demander une aide de manipulation."
+        },
+        {
+          "id": "gd03-ancienne",
+          "text": "Teste le déplacement et l’ancienne commande de l’indice : elle ne doit plus agir. Teste ta nouvelle touche au repos, pendant son maintien, après relâchement puis lors d’un second appui. Explique les deux règles à quelqu’un. Choisis ensuite une autre touche libre, prévois le résultat, modifie les deux conditions et refais les essais. Enregistre, ferme et rouvre ton projet depuis son dossier ; relance l’aperçu pour vérifier que personnages, objets et règles sont conservés.",
+          "hint": "Lis les noms de touche dans les deux conditions : ils doivent être identiques, l’une maintenue et l’autre inversée. Vérifie aussi que l’aperçu reçoit le clavier. Garde les images sources dans le dossier du projet. Si un essai échoue, cherche la cause avec une aide : ce n’est pas une raison pour tout recommencer."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - le résultat opposé",
+      "items": [
+        {
+          "id": "gd03-inverse",
+          "text": "Dans une copie conservant l’original intact, échange les actions Afficher et Masquer des deux règles de ta commande choisie. Prévois puis teste repos, maintien, relâchement et nouvel appui. Explique pourquoi le résultat est désormais opposé.",
+          "hint": "Conserve les mêmes conditions. La touche maintenue masque désormais le texte, et la touche non maintenue l’affiche. Aucune variable ni bascule n’est nécessaire."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "bilan-etape",
+      "title": "Montrer ma scène et expliquer mes choix",
+      "paragraphs": [
+        "Présente ton projet à quelqu’un avec ces repères. Le bonus précédent reste facultatif : conserve la scène où l’indice apparaît pendant l’appui, pas la copie au résultat opposé.",
+        "Montre un objet dans la liste puis ses exemplaires dans la scène. Explique ce qui est commun et ce qui peut changer pour un seul exemplaire. Montre ensuite ce qui pilote le personnage et ce qui contrôle l’indice : le comportement de déplacement et les événements n’ont pas le même rôle.",
+        "Si un repère reste difficile, reprends seulement ce point avec une aide puis refais l’essai. Tu peux faire une pause ici et conserver ce projet pour l’étape suivante. Cocher une activité ne valide pas automatiquement ces acquis."
+      ],
+      "valuesTitle": "Repères pour le projet d’étape",
+      "values": [
+        "Le personnage se déplace avec les commandes connues, dans une scène où les objets sont visibles.",
+        "Au moins trois exemplaires d’un même objet sont placés ; tu sais montrer leur définition commune et une position individuelle.",
+        "L’indice est masqué au repos, visible pendant l’appui et masqué au relâchement, y compris après un second appui.",
+        "Tu sais changer la commande dans les deux règles, prévoir puis tester le résultat.",
+        "Le projet rouvert conserve ses éléments et fonctionne encore dans l’aperçu."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer la condition testée et l’action exécutée dans un événement.",
+    "Expliquer pourquoi les deux règles donnent un résultat au repos, pendant l’appui et au relâchement.",
+    "Changer une touche dans les deux conditions et vérifier l’ancienne et la nouvelle commande."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "gdevelop-evenements",
+      "blockId": "guide",
+      "label": "Tester les trois états du clavier"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "gdevelop-evenements",
+      "blockId": "bonus",
+      "label": "Inverser le résultat dans une copie"
+    }
+  ],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Faire lire et construire une paire de règles opposées, sans confondre touche maintenue et transition clavier.",
+    "entryDiagnosis": [
+      "Faire nommer un objet et montrer son instance dans la scène.",
+      "Demander un exemple Scratch de condition et d’action ; rappeler localement le repère si nécessaire."
+    ],
+    "preparation": [
+      "Recette moteur en attente : relever les libellés français de condition clavier maintenue, inversion, Afficher et Masquer ; tester les trois états et le focus de l’aperçu.",
+      "Réutiliser le projet de GD02. Préparer un fond permettant de lire Message, un seul Texte de taille 24 dans le cadre visible.",
+      "Ne pas utiliser un projet JSON généré non testé, une condition « vient d’être pressée », une variable de bascule ni un événement Masquer inconditionnel.",
+      "Présenter la paire complète avant le premier essai clavier. Pour la panne et l’exemple partiel F, préparer une copie distincte ou reconstruire avec l’élève ; aucun projet de départ non testé n’est annoncé. Restaurer la paire avant de sauvegarder l’état de reprise."
+    ],
+    "why": "Deux états simples rendent observable le lien entre test et conséquence. La règle de maintien est réévaluée ; elle n’attend pas une nouvelle transition pour s’appliquer.",
+    "discoverySpeech": [
+      "L’indice doit se voir seulement pendant l’appui. Voici les deux lignes ensemble : quelle ligne explique le repos, laquelle explique le maintien ? Prévois avant notre essai.",
+      "Nous assemblons les deux règles, puis essayons. Afficher seule ne démontrerait rien au premier appui puisque notre texte était déjà visible. La comparaison commence avec un exemple complet qui change réellement de visibilité.",
+      "Sur une copie fonctionnelle, retirons Masquer : prévois le résultat après relâchement, puis vérifie et restaure. Complète ensuite une petite partie manquante ; enfin choisis ton propre indice et ta commande."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "gdevelop-evenements",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Vérifier le Texte seul pour isoler placement/lisibilité, sans appeler cela un essai des événements.",
+        "Lire/prévoir la paire complète, assembler avec aide déclarée puis essayer les trois états. Ne plus commencer par Afficher seule.",
+        "Retirer Masquer seulement après la paire fonctionnelle et sur une copie ; restaurer. Schéma partiel F avant mission libre, gestes d’inversion à confirmer sur la version de référence."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Que se passe-t-il si on supprime le deuxième événement ?",
+        "answer": "Après le premier appui, rien ne demande de masquer : Message reste visible au relâchement."
+      },
+      {
+        "question": "Pourquoi ne pas masquer sans condition ?",
+        "answer": "Cette action serait exécutée même pendant l’appui et contredirait l’affichage."
+      },
+      {
+        "question": "Pourquoi changer la touche dans les deux règles ?",
+        "answer": "Les deux tests doivent rester opposés pour la même touche ; changer un seul laisse des états contradictoires."
+      },
+      {
+        "question": "Une touche Espace qui affiche un texte déjà visible prouve-t-elle que la règle fonctionne ?",
+        "answer": "Non, il n’y a pas de changement visible. La paire complète permet de comparer sans appui, maintien et relâchement."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "gdevelop-evenements",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "gdevelop-evenements",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Aider à chercher/inverser la condition, en laissant prévoir et expliquer. Si l’exemple partiel bloque, reprendre le modèle complet puis retirer seulement une action.",
+      "Pour aller plus loin, changer la mission ou échanger les actions dans une copie ; pas variable/bascule ni troisième règle. Respecter les commandes de déplacement déjà connues."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le clavier semble ne rien faire",
+        "helps": [
+          "Demander quelle fenêtre reçoit le clavier.",
+          "Cliquer dans l’aperçu puis maintenir la touche.",
+          "Vérifier le nom de la touche et le test maintenu, non la transition.",
+          "Réduire à la paire complète du schéma, vérifier sa condition de maintien et son inversion, puis essayer repos/appui/relâchement ; ne pas tester Afficher seule sur un texte déjà visible."
+        ]
+      },
+      {
+        "symptom": "Message reste affiché après relâchement",
+        "helps": [
+          "Faire lire la conséquence attendue au repos.",
+          "Chercher la règle qui demande de masquer.",
+          "Vérifier l’inversion et la même touche dans les deux événements.",
+          "Construire le deuxième événement avec la condition maintenue inversée et Masquer Message, puis refaire trois états."
+        ]
+      },
+      {
+        "symptom": "Message est toujours masqué",
+        "helps": [
+          "Vérifier qu’il était visible avant les événements.",
+          "Lire chaque action et l’objet ciblé.",
+          "Chercher un masquage sans condition ou deux règles non opposées.",
+          "Réduire aux deux événements du schéma, puis tester sans appui, maintenu et relâché avant tout bonus."
+        ]
+      },
+      {
+        "symptom": "La nouvelle touche donne un résultat incohérent",
+        "helps": [
+          "Demander ce qui a changé dans chaque événement.",
+          "Comparer les deux noms de touche.",
+          "Vérifier que seule la seconde condition est inversée.",
+          "Choisir la même commande inutilisée dans les deux conditions, conserver l’opposition, tester l’ancienne puis la nouvelle commande et laisser expliquer."
+        ]
+      }
+    ],
+    "notes": "Reproduction accompagnée, complément partiel et mission choisie sont trois preuves distinctes. Observer aide reçue, prévision et re-test. Aucun projet moteur préfabriqué testé n’est fourni. Conserver le comportement étudié en GD04 ; choisir une commande d’indice distincte des flèches. Ne pas annoncer de recette moteur. Le mini-projet Ma scène explorable remplace l’ancienne mission autonome : réinvestir GD01, GD04, GD02 et GD03 sans repartir de zéro. Utiliser les cinq repères du bloc bilan-etape pour observer déplacement, définition/instances, trois états de l’indice, modification de commande et réouverture. Demander une prévision avant la modification puis une explication après l’essai ; noter séparément les aides de manipulation et de raisonnement. Une case cochée ou un décor personnalisé ne suffit pas à établir la compréhension. Si nécessaire, reprendre un seul repère et refaire un essai ; ni bonus, murs, collecte, score ou victoire requis.",
+    "quickConductor": [
+      "Vérifier l’indice lisible sans prétendre tester le clavier.",
+      "Lire, prévoir et essayer la paire complète.",
+      "Retirer/restaurer Masquer sur copie, puis compléter le modèle F.",
+      "Choisir indice/commande, tester ancienne et nouvelle commandes, sauvegarder une paire cohérente."
+    ],
+    "references": [
+      {
+        "title": "GDevelop : référence clavier",
+        "url": "https://wiki.gdevelop.io/gdevelop5/all-features/keyboard/reference/"
+      },
+      {
+        "title": "GDevelop : événements",
+        "url": "https://wiki.gdevelop.io/gdevelop5/events/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "domainId": "python",
+  "title": "Répéter un nombre de fois",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Construire une répétition avec for/range et prévoir ses passages.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.for"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, conserver et relancer un fichier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher et prévoir l’ordre des résultats."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Définir et réutiliser une valeur."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Repérer un bloc indenté et une ligne hors du bloc ; sinon reprendre Faire un choix."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir afficher, réutiliser une variable et repérer un bloc indenté. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée repetitions.py sans les effacer. Commence avec un nombre de tours fixe.",
+      "moduleLink": {
+        "moduleId": "python-conditions",
+        "text": "Revoir les blocs indentés"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Une action répétée",
+      "paragraphs": [
+        "Au lieu d’écrire trois print identiques, for répète un bloc. for tour in range(3) signifie ici : pour chaque valeur fournie par range(3), exécuter les instructions indentées.",
+        "tour est un nom de variable : for lui affecte successivement les valeurs fournies. in relie ce nom à la suite parcourue. Garde les deux-points et quatre espaces devant les instructions du bloc.",
+        "Prédis combien de Bonjour ! et de Fin s’afficheront. Le print de Fin, non indenté, vient après la boucle."
+      ],
+      "code": "for tour in range(3):\n    print(\"Bonjour !\")\nprint(\"Fin\")"
+    },
+    {
+      "type": "lesson",
+      "id": "valeurs",
+      "title": "2 - Les valeurs de tour",
+      "paragraphs": [
+        "Enregistre repetitions.py puis crée tours.py pour ce modèle. range(3) fournit 0, 1, 2 : trois valeurs, en commençant par 0. La borne 3 est exclue.",
+        "Exécute, puis remplace range(3) par range(1, 4). Prédis les valeurs : elles vont de 1 à 3, pas jusqu’à 4. La première borne est le début ; la seconde est la fin exclue.",
+        "range n’est pas une liste. Ici, for parcourt une suite de nombres ; plus tard, il pourra parcourir d’autres éléments. Pas besoin d’une liste pour ces essais."
+      ],
+      "code": "for tour in range(3):\n    print(\"Tour\", tour)\nprint(\"Fin\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - prévoir les passages",
+      "items": [
+        {
+          "id": "passages",
+          "text": "Dans repetitions.py, prédis puis teste range(1), range(3) et range(0). Vérifie aussi le message après la boucle.",
+          "hint": "Un, trois puis zéro Bonjour ! ; Fin s’affiche une seule fois dans les trois essais."
+        },
+        {
+          "id": "bornes",
+          "text": "Dans tours.py, compare range(1, 4), range(1, 5) et range(1, 1). Prédis les valeurs et le nombre de passages avant chaque essai.",
+          "hint": "1 à 3, puis 1 à 4, puis aucun tour : la borne de fin est exclue. Fin reste affiché."
+        },
+        {
+          "id": "bloc",
+          "text": "Rouvre repetitions.py et rétablis range(3). Place provisoirement le print de Fin dans le bloc. Prédis la différence avec trois tours, teste, puis remets-le après la boucle.",
+          "hint": "Dans le bloc, Fin se répète à chaque tour ; hors du bloc, il s’affiche une seule fois."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - ton parcours de tours",
+      "intro": "Enregistre repetitions.py et tours.py, puis crée parcours_tours.py. Conserve les exemples ; essaie avant les indices.",
+      "items": [
+        {
+          "id": "tours-personnels",
+          "text": "Affiche les tours de 1 à 4 avec un message de ton choix à chaque tour, puis un seul message de fin. Essaie sans recopier le modèle complet.",
+          "hint": "Avec range à deux bornes, la première valeur est incluse et la dernière borne est exclue. Affiche la variable sans guillemets autour de son nom."
+        },
+        {
+          "id": "changer-tours",
+          "text": "Passe à six tours en changeant la borne. Explique le début, la dernière valeur et le nombre de passages avant de tester.",
+          "hint": "Pour commencer à 1 et finir à 6, la borne exclue doit être 7."
+        },
+        {
+          "id": "aucun-tour",
+          "text": "Enregistre ton programme, puis crée parcours_vide.py avec Enregistrer sous. Modifie les bornes pour n’avoir aucun tour. Prédis puis teste le message final ; rouvre ensuite le premier fichier.",
+          "hint": "Deux bornes égales ne donnent aucun passage. Un print hors du bloc doit encore s’exécuter."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - choisir le nombre de tours",
+      "items": [
+        {
+          "id": "nombre-saisi",
+          "text": "Dans repetitions_saisie.py, demande un entier de 0 à 6, conserve la réponse puis convertis-la avec int en deux lignes. Utilise le nombre pour répéter ton message. Teste 0, 1 et 4.",
+          "hint": "range peut recevoir la variable numérique. Ce programme ne contrôle pas le domaine 0 à 6 ; une saisie non convertible provoque toujours ValueError. Pas de gestion d’erreur à ajouter."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Prévoir les valeurs de range à une ou deux bornes et distinguer fin exclue et dernière valeur.",
+    "Construire une répétition personnelle puis modifier son nombre de tours.",
+    "Expliquer les instructions dans le bloc et après, même sans passage.",
+    "Conserver les variantes et distinguer reproduction, explication et modification autonome."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-for",
+      "blockId": "guide",
+      "label": "Revoir valeurs, bornes et bloc"
+    },
+    {
+      "moduleId": "python-affichage",
+      "blockId": "guide",
+      "label": "Revoir affichage et ordre"
+    },
+    {
+      "moduleId": "python-conditions",
+      "blockId": "guide",
+      "label": "Revoir l’indentation"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-for",
+      "blockId": "bonus",
+      "label": "Choisir le nombre de répétitions"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-while",
+      "label": "Répéter tant que",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.for",
+          "expectation": "Prévoir les passages et expliquer le bloc répété ; sinon reprendre les tours."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Enseigner une répétition connue et sa borne exclue, sans liste ni compteur de score.",
+    "entryDiagnosis": [
+      "Faire prévoir trois print puis montrer un bloc indenté.",
+      "Distinguer l’aide au clavier de la compréhension de l’ordre."
+    ],
+    "preparation": [
+      "Créer repetitions.py, tours.py puis parcours_tours.py ; garder les variantes.",
+      "Préparer zéro, un et plusieurs passages ; aucune conversion nécessaire au socle."
+    ],
+    "why": "Une seule structure répète un bloc sans recopier ses instructions.",
+    "discoverySpeech": [
+      "« Combien de fois ce message doit-il apparaître ? »",
+      "« Quelles valeurs tour reçoit-il ? »",
+      "« Quelles lignes ne se répètent pas ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-for",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Trois Bonjour ! puis Fin.",
+        "Afficher ensuite tour pour rendre visibles 0, 1, 2.",
+        "range(1, 1) ne passe jamais dans le bloc."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi 3 n’est-il pas affiché par range(3) ?",
+        "answer": "La borne de fin est exclue ; les valeurs sont 0, 1, 2."
+      },
+      {
+        "question": "Quelle différence avec range(1, 4) ?",
+        "answer": "Trois passages aussi, mais les valeurs sont 1, 2, 3."
+      },
+      {
+        "question": "Que devient Fin avec zéro passage ?",
+        "answer": "Il s’affiche si son instruction est après le bloc, non indentée."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-for",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-for",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Rester d’abord sur un message identique, puis afficher tour.",
+      "Faire suivre les valeurs oralement plutôt que demander un tableau logiciel.",
+      "Proposer la saisie numérique seulement en bonus."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le nombre de tours ou de Fin est incorrect.",
+        "helps": [
+          "Faire annoncer la sortie attendue.",
+          "Repérer les bornes et les espaces du print.",
+          "Suivre les valeurs sans inclure la borne de fin.",
+          "Corriger une borne ou un alignement puis retester zéro, un et plusieurs passages."
+        ]
+      }
+    ],
+    "notes": "for peut parcourir autre chose que des nombres ; ne pas ajouter listes ou pas négatif ici. Aucune validation automatique.",
+    "quickConductor": [
+      "Diagnostiquer affichage et bloc.",
+      "Lire puis exécuter la répétition.",
+      "Afficher les valeurs et comparer les bornes.",
+      "Créer, modifier et expliquer les tours personnels.",
+      "Conserver la variante vide et choisir une reprise."
+    ],
+    "references": [
+      {
+        "title": "Python - for et range",
+        "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#the-range-function"
+      }
+    ]
+  }
+}

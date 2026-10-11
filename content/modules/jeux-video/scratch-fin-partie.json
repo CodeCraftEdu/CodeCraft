@@ -1,0 +1,388 @@
+{
+  "domainId": "jeux-video",
+  "title": "Gagner, perdre et recommencer",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Choisir une condition de victoire et de défaite, arrêter la partie et la relancer proprement.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "scratchProjectId": "chat-cible",
+  "scratchProjectContinuation": true,
+  "skillIds": [
+    "scratch.game-rules",
+    "scratch.conditions",
+    "scratch.variables"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Obtenir un point par contact et remettre score à 0 au drapeau : reprendre Compter et mémoriser."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Placer une action dans le bon si et expliquer quand elle s’exécute."
+    },
+    {
+      "skillId": "scratch.coordinates",
+      "expectation": "Savoir que diminuer X déplace vers la gauche ; le départ est x = -100, y = 0."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Une partie avec des règles",
+      "paragraphs": [
+        "Reprends ton programme de Compter et mémoriser : Chat revient à (-100, 0) après un contact avec Cible et gagne 1 point. Cible reste à (80, 0). Teste deux contacts puis le drapeau : score doit faire 1, 2, puis 0.",
+        "Sans ce programme, ouvre Compter et mémoriser et reconstruis son modèle. La base Scratch sans scripts ne suffit pas ici. Ne repars pas du jeu complet avec la souris aléatoire : ses règles sont différentes.",
+        "Notre règle : à 3 points, tu gagnes. Si tu pars trop à gauche, avec X plus petit que -180, tu perds. Dans les deux cas, le jeu affiche un message et s’arrête. Le drapeau vert démarre une nouvelle partie."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Le compteur n’est pas prêt ?",
+      "text": "Reprends Compter et mémoriser : un point par contact, puis remise à zéro au drapeau.",
+      "moduleLink": {
+        "moduleId": "scratch-variables",
+        "text": "Compter et mémoriser"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "comparaisons",
+      "title": "2 : Comparer avant de décider",
+      "paragraphs": [
+        "Dans Opérateurs (vert), prends le bloc avec =. Il compare deux valeurs. Glisse le petit bloc ovale score depuis Variables dans sa première case et écris 3 dans la seconde. La question « score = 3 » est vraie à 3 points, fausse à 0, 1 ou 2.",
+        "Pour la limite à gauche, prends le bloc < dans Opérateurs. Dans Mouvement (bleu), prends le bloc ovale abscisse x : il donne la position horizontale du personnage. Glisse-le dans la première case et écris -180 dans la seconde. « abscisse x < -180 » est vraie à -181 ou -190, mais fausse à -180 ou -100. Plus petit ne veut pas dire plus proche de zéro.",
+        "Ces blocs verts posent des questions : ils ne modifient ni score ni X. Place chaque comparaison dans le trou du bloc si … alors. Dans les modèles, la question verte distingue la comparaison d’un capteur bleu clair.",
+        "Dans Contrôle (orange), le bloc stop possède un menu : choisis tout. Il arrête les scripts de tous les personnages. Un simple message ne suffit pas à terminer une partie. Le drapeau relancera les scripts : garde mettre score à 0 et aller à (-100, 0) avant la boucle."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "3 : Deux tests pour terminer",
+      "shortSteps": [
+        "Garde la pile du chat déjà construite. Dans sa boucle, après le si de contact et avant attendre 0.03 secondes, ajoute les deux si du modèle.",
+        "Dans chaque si, place le message dire … pendant 2 secondes puis stop tout. Les conditions vertes se construisent avec Opérateurs et les blocs ovales score / abscisse x.",
+        "Teste 3 contacts pour gagner, puis relance et pars à gauche pour perdre. Après chaque fin, le drapeau doit remettre score à 0 et le chat au départ."
+      ],
+      "paragraphs": [
+        "Le modèle montre seulement les deux ajouts à placer dans la boucle existante. Ne crée pas une deuxième boucle ni une deuxième pile de drapeau. Les tests de touches, le contact et son retour au départ restent en place.",
+        "Teste la victoire après le contact : le troisième point est déjà ajouté. Le retour à (-100, 0) n’est pas une défaite puisque -100 est plus grand que -180. Choisis stop tout, pas stop ce script.",
+        "Avec un point par contact, score passe exactement par 3. Si tu avais essayé 2 points par contact, remets 1 avant ce modèle : 0, 2, 4 ne rencontre jamais 3. On adaptera les règles autonomes en gardant des valeurs atteignables."
+      ],
+      "visualScript": {
+        "caption": "Ajouts dans la boucle du chat : après le contact",
+        "note": "Deux blocs si à insérer, pas une nouvelle pile. Les actions indentées appartiennent à leur si.",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle + Opérateurs",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "value": "score"
+                  },
+                  " = ",
+                  {
+                    "value": "3"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "explanation": "À trois points, on annonce la victoire puis on arrête tout.",
+            "children": [
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Gagné !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "stop ",
+                  {
+                    "choice": "tout"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle + Opérateurs",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "value": "abscisse x"
+                  },
+                  " < ",
+                  {
+                    "value": "-180"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "explanation": "À gauche de la limite, on annonce la défaite puis on arrête tout.",
+            "children": [
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Perdu !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "stop ",
+                  {
+                    "choice": "tout"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "À insérer dans la boucle existante, après le si de contact :\nsi <score = 3> alors\n  dire Gagné ! pendant 2 secondes\n  stop tout\nsi <abscisse x < -180> alors\n  dire Perdu ! pendant 2 secondes\n  stop tout"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : tester les deux fins",
+      "intro": "Une règle est prête seulement si tu l’as testée.",
+      "items": [
+        {
+          "id": "victoire",
+          "text": "Touche Cible trois fois. Vérifie le message Gagné et l’arrêt des déplacements après le message.",
+          "hint": "Le test score = 3 est dans la boucle après le contact ; stop tout est dans le si."
+        },
+        {
+          "id": "defaite",
+          "text": "Relance. Sans toucher Cible, maintiens gauche jusqu’à dépasser la limite. Vérifie Perdu et l’arrêt.",
+          "hint": "À x = -180, le test est encore faux ; il devient vrai juste après, vers la gauche."
+        },
+        {
+          "id": "recommencer",
+          "text": "Relance après chaque fin : vérifie score = 0 et Chat en (-100, 0). Sauvegarde ta version.",
+          "hint": "La remise à zéro et la position de départ restent avant la boucle de drapeau."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : change une règle",
+      "intro": "Essaie avant d’ouvrir l’indice. Une modification à la fois.",
+      "items": [
+        {
+          "id": "seuil",
+          "text": "Demande cinq contacts pour gagner. Prédis quand la partie s’arrêtera puis vérifie.",
+          "hint": "Garde 1 point par contact et compare score à 5."
+        },
+        {
+          "id": "limite",
+          "text": "Fais perdre plus près du départ : choisis une limite entre -180 et -100. Explique pourquoi le départ reste autorisé.",
+          "hint": "Par exemple -150 : au départ -100 < -150 est faux, mais -151 < -150 est vrai."
+        },
+        {
+          "id": "preuve",
+          "text": "Sans nommer les blocs, explique ce qui fait gagner, perdre et recommencer. Teste deux nouvelles parties.",
+          "hint": "Décris les événements du jeu et montre ensuite où ton programme applique chaque règle."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : une règle impossible ?",
+      "intro": "Seulement si les deux fins et le redémarrage sont compris. Travaille dans une copie.",
+      "items": [
+        {
+          "id": "saut",
+          "text": "Avec victoire à 3, fais gagner 2 points par contact. Prédis le problème, teste puis corrige sans nouvelle propriété.",
+          "hint": "Depuis 0, le score fait 2, 4, 6 : jamais 3. Remets un point par contact ou choisis une victoire à 4."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer la différence entre compter un contact et tester une fin de partie.",
+    "Prédire le résultat de score = 3 et de abscisse x < -180, notamment à la limite.",
+    "Tester victoire, défaite et deux redémarrages avec score et position réinitialisés.",
+    "Modifier une règle atteignable et expliquer son effet, sans recopier seulement le modèle."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "guide",
+      "label": "Retester les fins et le nouveau départ"
+    },
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "guide",
+      "label": "Revoir les points et la remise à zéro"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "bonus",
+      "label": "Comprendre un seuil impossible"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-mini-jeu",
+      "label": "Assembler ton premier mini-jeu",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Savoir tester les deux fins et recommencer ; sinon reprendre les tests guidés."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire décider et tester une victoire, une défaite et un redémarrage, sans ajouter de vies ni de chronomètre.",
+    "entryDiagnosis": [
+      "Demander deux contacts puis un redémarrage : score attendu 1, 2, 0.",
+      "Faire montrer ce qui est au départ, dans la boucle et dans le si de contact.",
+      "Demander vers où va le chat quand X diminue. Reprendre le prérequis fragile avant les comparaisons."
+    ],
+    "preparation": [
+      "Ouvrir une copie du programme Score, avec Cible immobile à (80, 0), Chat au départ (-100, 0) et 1 point par contact.",
+      "Afficher le compteur score. Préparer Opérateurs (= et <), le bloc ovale abscisse x (position horizontale du personnage) et stop tout.",
+      "Ne pas remplacer le modèle par le jeu complet partagé : il comporte des règles supplémentaires. Mettre Scratch en français via Settings → Language si nécessaire."
+    ],
+    "why": "Une fin de partie est une règle testée par le programme ; un message seul ne bloque pas les actions.",
+    "discoverySpeech": [
+      "« Le compteur sait combien tu as touché de cibles. Maintenant, à quel nombre veux-tu gagner ? »",
+      "« Le bloc vert pose une question. Il ne donne pas de point et ne déplace pas le chat. »",
+      "« Annoncer Gagné, ce n’est pas encore arrêter. Que se passe-t-il si je continue à appuyer ? »",
+      "« Le drapeau est une nouvelle partie : qu’est-ce qu’il faut remettre au départ ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-fin-partie",
+        "blockId": "exemple",
+        "label": "Deux tests de fin"
+      },
+      "comments": [
+        "Insérer les deux si dans la boucle existante, après le contact ; ne pas ajouter de boucle concurrente.",
+        "Victoire : score = 3, dire Gagné 2 secondes, stop tout. Défaite : abscisse x < -180, dire Perdu 2 secondes, stop tout. Abscisse x est le nom du bloc Scratch qui donne la position horizontale.",
+        "À -180, le test strict est faux. Avec un pas de -3 depuis -100, on passe de -178 à -181 : la défaite est réellement atteignable.",
+        "Le contact remet Chat à -100 avant le test de victoire ; ce départ ne déclenche pas la défaite. Le drapeau remet score à 0 et la position au départ."
+      ]
+    },
+    "questions": [
+      {
+        "question": "À -180 exactement, a-t-on perdu ?",
+        "answer": "Non : < veut dire strictement plus petit. À -181 oui ; à -100 non."
+      },
+      {
+        "question": "Pourquoi garder un point par contact pour gagner à 3 ?",
+        "answer": "Le compteur doit atteindre 3. En ajoutant 2 depuis 0, il passe de 2 à 4 et ne sera jamais égal à 3."
+      },
+      {
+        "question": "Dire Gagné suffit-il à arrêter ?",
+        "answer": "Non. Après le message, stop tout arrête les scripts. Sans lui, la boucle continue."
+      },
+      {
+        "question": "Comment savoir que recommencer fonctionne ?",
+        "answer": "Après victoire et défaite, relancer puis vérifier position initiale, score zéro et déplacements possibles."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "guide",
+      "label": "Tester les deux fins"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "autonomie",
+      "label": "Changer une règle et expliquer"
+    },
+    "differentiation": [
+      "CE2 : faire gagner à 3, puis traiter la limite gauche séparément ; lire les valeurs négatives avec une ligne de nombres si nécessaire.",
+      "Ne pas exiger le bonus pour accéder au projet. Fournir le modèle de la base si sa reconstruction bloque, puis distinguer cette aide de la compréhension des règles de fin.",
+      "Pour les plus autonomes : demander une prédiction à -180 et -181 puis masquer le modèle pour changer le seuil."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Gagné s’affiche mais le jeu continue.",
+        "helps": [
+          "Attendre la fin du message puis appuyer à droite.",
+          "Chercher stop dans le si de victoire.",
+          "Comparer son menu : tout ou ce script.",
+          "Ajouter stop tout après le message, dans le si, puis tester."
+        ]
+      },
+      {
+        "symptom": "Le jeu perd immédiatement.",
+        "helps": [
+          "Observer X au départ.",
+          "Vérifier l’ordre des deux valeurs dans <.",
+          "Comparer abscisse x < -180 avec -180 < abscisse x : ce n’est pas la même question.",
+          "Glisser l’ovale abscisse x à gauche, écrire -180 à droite et garder le départ à -100 avant la boucle."
+        ]
+      },
+      {
+        "symptom": "La nouvelle partie garde les points.",
+        "helps": [
+          "Relancer après une victoire et lire score.",
+          "Repérer mettre score à 0.",
+          "Comparer la remise à zéro avant la boucle avec l’ajout au contact.",
+          "Replacer la remise à zéro sous le drapeau puis retester après les deux fins."
+        ]
+      }
+    ],
+    "notes": "Distinguer réussite autonome, avec modèle et avec aide dans les remarques existantes. Une reproduction correcte ne prouve pas la compréhension : demander une prédiction et une modification. Aucun acquis automatique ni rythme imposé.",
+    "quickConductor": [
+      "Vérifier score et retour au départ.",
+      "Faire verbaliser gagner, perdre, recommencer.",
+      "Construire une comparaison puis placer les tests.",
+      "Tester victoire, défaite et nouvelle partie.",
+      "Choisir consolidation, modification autonome ou projet selon les acquis."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "domainId": "web",
+  "title": "Rendre les textes lisibles",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Choisir une police, une taille, un interligne et un alignement adaptés à la lecture.",
+  "skillIds": [
+    "css.fonts"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer un titre principal et un sous-titre."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer un paragraphe et retrouver ses balises."
+    },
+    {
+      "skillId": "css.selectors",
+      "expectation": "Relier class=\"carte\" dans HTML au sélecteur .carte dans CSS."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Lire une déclaration et distinguer sélecteur, propriété et valeur."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir relier une classe HTML à une règle CSS. Si tu hésites, reprends Classes et couleurs CSS puis utilise Retour dans le navigateur. La couleur n’est pas l’objectif ici : conserve un texte sombre sur un fond clair.",
+      "moduleLink": {
+        "text": "Classes et couleurs CSS",
+        "moduleId": "css-classes-couleurs"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Aider à lire, pas seulement décorer",
+      "paragraphs": [
+        "Résultat attendu : un titre bien repérable et deux paragraphes faciles à lire. Tu modifieras un réglage à la fois et expliqueras la différence.",
+        "Ouvre un nouveau Pen : le code HTML va dans HTML, les règles dans CSS. Ne copie pas les noms des panneaux dans le code. En local, utilise une copie de ton projet avec sa feuille CSS déjà reliée : extrait HTML dans body, règles dans le fichier CSS. Si cette liaison est nouvelle pour toi, retrouve Relier une feuille de style depuis le parcours dans le fil d’Ariane.",
+        "Compare les effets en gardant les mêmes mots pendant les premiers essais."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "notions",
+      "title": "2 : Quatre réglages différents",
+      "paragraphs": [
+        "font-family choisit la famille de caractères. sans-serif demande une police sans empattements disponible sur l’appareil ; serif en demande une avec de petites terminaisons. Le dessin exact peut varier selon l’ordinateur. Aucun téléchargement de police n’est nécessaire.",
+        "font-size règle la taille des caractères. Ici px signifie pixel CSS, une unité de taille à l’écran : 18px donne des lettres plus grandes que 12px. N’ajoute pas d’espace entre 18 et px.",
+        "line-height règle la hauteur des lignes. Avec 1.5 sans unité, chaque ligne occupe une hauteur égale à 1,5 fois la taille du texte : à 18px cela fait 27px. Cela aère les lignes à l’intérieur d’un même paragraphe, pas l’espace entre deux paragraphes.",
+        "text-align aligne le texte dans la largeur disponible de son élément : left à gauche, center au centre, right à droite. Centrer les mots ne centre pas la boîte qui les contient.",
+        "Pour du français, un paragraphe long aligné à gauche est un bon point de départ. Un titre court peut être centré. Les nombres de l’exemple sont des choix à comparer, pas une règle universelle de bonne lecture."
+      ],
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Même texte, autre interligne",
+        "intro": "Seul line-height change. Observe l’espace entre les lignes, sans modifier la taille des lettres.",
+        "variants": [
+          {
+            "label": "Lignes serrées",
+            "html": "<p class=\"lecture\">Observer demande de prendre son temps. Je regarde les formes, je compare les détails et je note ce qui change. Puis je relis mes observations pour pouvoir les expliquer.</p>",
+            "code": ".lecture {\n  font-size: 18px;\n  line-height: 1;\n}",
+            "feedback": "La taille des lettres reste à 18px, mais les lignes sont rapprochées.",
+            "css": ".lecture{font-size:18px;line-height:1}"
+          },
+          {
+            "label": "Lignes plus espacées",
+            "html": "<p class=\"lecture\">Observer demande de prendre son temps. Je regarde les formes, je compare les détails et je note ce qui change. Puis je relis mes observations pour pouvoir les expliquer.</p>",
+            "code": ".lecture {\n  font-size: 18px;\n  line-height: 1.5;\n}",
+            "feedback": "L’interligne augmente. La taille des lettres et le texte n’ont pas changé.",
+            "css": ".lecture{font-size:18px;line-height:1.5}"
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "html",
+      "title": "HTML : Deux classes, deux rôles",
+      "paragraphs": [
+        "Les deux paragraphes partagent lecture : une règle pourra améliorer les deux. Le titre garde sa classe titre."
+      ],
+      "code": "<h1 class=\"titre\">Le carnet des découvertes</h1>\n<p class=\"lecture\">Observer demande de prendre son temps. Je regarde les formes, je compare les détails et je note ce qui change. Puis je relis mes observations pour pouvoir les expliquer avec mes propres mots.</p>\n<p class=\"lecture\">Un petit détail peut donner une nouvelle idée. Je garde une phrase claire pour raconter ce que j’ai remarqué et une autre pour poser ma prochaine question.</p>"
+    },
+    {
+      "type": "lesson",
+      "id": "css",
+      "title": "CSS : Un point de départ lisible",
+      "paragraphs": [
+        "Copie les règles, puis observe avant de modifier. N’ajoute pas de balises <style> dans le panneau CSS ou le fichier CSS.",
+        "Ces propriétés peuvent se transmettre d’un parent à ses enfants : on parle d’héritage. Ici on les place directement sur les éléments ciblés pour voir les essais simplement ; changer .lecture ne doit pas changer le h1."
+      ],
+      "code": ".titre {\n  font-family: sans-serif;\n  font-size: 28px;\n  line-height: 1.2;\n  text-align: center;\n}\n.lecture {\n  font-family: sans-serif;\n  font-size: 18px;\n  line-height: 1.5;\n  text-align: left;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Comparer un réglage à la fois",
+      "intro": "Après chaque essai, observe puis rétablis le réglage indiqué.",
+      "items": [
+        {
+          "id": "taille",
+          "text": "Dans .lecture seulement, compare font-size: 12px puis 18px. Garde 18px. Décris ce qui change et ce qui reste identique."
+        },
+        {
+          "id": "lignes",
+          "text": "Réduis la largeur de l’aperçu CodePen ou de la fenêtre jusqu’à avoir au moins trois lignes dans un paragraphe. Compare line-height: 1 puis 1.5 ; garde 1.5.",
+          "hints": [
+            "Le réglage agit entre les lignes d’un même paragraphe.",
+            "Si tout tient sur une ligne, rétrécis l’aperçu plutôt que d’ajouter des <br>.",
+            "Ne change ni la taille ni les mots pendant cette comparaison.",
+            "Avec 18px, les hauteurs de ligne sont 18px puis 27px. Le second essai laisse davantage d’air entre les lignes."
+          ]
+        },
+        {
+          "id": "famille",
+          "text": "Compare serif puis sans-serif dans .lecture. Choisis celle que tu trouves la plus lisible et justifie sans parler de taille."
+        },
+        {
+          "id": "alignement",
+          "text": "Dans .titre, compare left, center et right. Remets center. Vérifie que les paragraphes gardent leur alignement à gauche."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Une note facile à lire",
+      "intro": "Écris tes propres textes : un titre et deux paragraphes de plusieurs phrases. Essaie avant les indices.",
+      "items": [
+        {
+          "id": "nouveaux-textes",
+          "text": "Conserve les deux classes ou crée de nouveaux noms cohérents dans HTML et CSS. N’invente pas de nouvelle propriété."
+        },
+        {
+          "id": "regler",
+          "text": "Rends le titre plus grand que les paragraphes. Choisis une famille, puis un interligne qui laisse respirer les lignes des paragraphes.",
+          "hints": [
+            "Sépare les choix du titre et des paragraphes.",
+            "Vérifie que les deux paragraphes ont la même classe.",
+            "Taille des lettres et hauteur des lignes sont deux réglages différents.",
+            "Exemple de choix possible : titre 28px, paragraphes 18px et line-height: 1.5 ; ces valeurs ne sont pas la seule solution."
+          ]
+        },
+        {
+          "id": "sans-nom",
+          "text": "Sans changer la taille des lettres, donne davantage d’air entre les lignes des deux paragraphes, mais pas du titre. Explique quel réglage tu as choisi et pourquoi.",
+          "hints": [
+            "Repère ce qui sépare les lignes dans un paragraphe.",
+            "La taille des lettres doit rester constante.",
+            "Compare font-size et line-height.",
+            "Modifie seulement line-height dans .lecture, par exemple de 1.5 à 1.7 ; ne change pas font-size ni .titre."
+          ]
+        },
+        {
+          "id": "lecture",
+          "text": "Garde les paragraphes alignés à gauche ; choisis l’alignement du titre. Ajoute un troisième paragraphe de même style sans écrire de nouvelle règle CSS."
+        },
+        {
+          "id": "verifier-largeur",
+          "text": "Compare l’aperçu large et étroit. Lis quelques phrases : tous les textes restent présents, sans forcer une minuscule taille pour les faire tenir."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-1",
+          "text": "Je distingue taille des lettres et hauteur des lignes."
+        },
+        {
+          "id": "verifier-2",
+          "text": "Un changement de .lecture atteint tous les paragraphes de cette classe, pas le titre."
+        },
+        {
+          "id": "verifier-3",
+          "text": "Je sais expliquer pourquoi j’ai choisi ces réglages après comparaison."
+        },
+        {
+          "id": "verifier-4",
+          "text": "Mon titre reste repérable et mes paragraphes restent lisibles dans un aperçu plus étroit."
+        },
+        {
+          "id": "verifier-5",
+          "text": "Je ne confonds pas aligner le texte et placer sa boîte."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Consolidation : Pourquoi les lignes sont-elles serrées ?",
+      "paragraphs": [
+        "Dans une copie, remplace seulement la règle .lecture par celle-ci. Les deux déclarations sont valides : c’est le choix des valeurs qu’il faut discuter."
+      ],
+      "code": ".lecture {\n  font-family: sans-serif;\n  font-size: 24px;\n  line-height: 0.8;\n  text-align: left;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Réparer sans tout changer",
+      "intro": "Fais tenir un paragraphe sur plusieurs lignes.",
+      "items": [
+        {
+          "id": "interligne",
+          "text": "Conserve la taille 24px et augmente seulement l’espace entre les lignes. Explique pourquoi agrandir encore les lettres n’est pas la bonne première réparation.",
+          "hints": [
+            "Lis la propriété qui parle des lignes.",
+            "0.8 donne une ligne moins haute que la taille du texte.",
+            "À taille constante, compare 0.8 puis 1.5.",
+            "Garde font-size: 24px et essaie line-height: 1.5. Les lettres ont la même taille, mais les lignes ont plus de place."
+          ]
+        },
+        {
+          "id": "expliquer",
+          "text": "Explique la différence entre une déclaration invalide et un réglage valide mais difficile à lire."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus-detail",
+      "title": "Bonus facultatif : Deux ambiances, même lecture",
+      "blocks": [
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Deux versions sans nouvelles propriétés",
+          "intro": "Si tu expliques les quatre réglages, fais une copie de ton Pen ou de ton projet.",
+          "items": [
+            {
+              "id": "comparer",
+              "text": "Garde les mêmes textes. Dans une version, utilise serif et un titre à gauche ; dans l’autre, sans-serif et un titre centré. Garde des paragraphes suffisamment grands, aérés et alignés à gauche."
+            },
+            {
+              "id": "argumenter-bonus",
+              "text": "Compare les deux versions à largeur identique. Justifie ton choix de lecture plutôt que de déclarer qu’une police est toujours meilleure."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Associer famille, taille, interligne et alignement à leurs effets distincts.",
+    "Aérer un paragraphe sur consigne sans nom de propriété, sans modifier la taille des lettres.",
+    "Réutiliser la même classe sur un nouveau paragraphe sans recopier la règle.",
+    "Justifier un choix à partir d’une comparaison large/étroite, au-delà d’une copie de l’exemple."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-textes-lisibles",
+      "label": "Réparer un interligne serré",
+      "blockId": "panne"
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre le ciblage par classe",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle CSS : sélecteur, propriété et valeur."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-feuille-style",
+      "label": "Relier la feuille si tu travailles dans des fichiers",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Retrouver head et body."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Lire le chemin d’un fichier."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle CSS simple."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "css-textes-lisibles",
+      "label": "Comparer deux ambiances de lecture",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.fonts",
+          "expectation": "Expliquer les quatre réglages et les modifier séparément."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-boites-espacements",
+      "label": "Distinguer l’espace intérieur et extérieur",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class=\"carte\" dans HTML au sélecteur .carte dans CSS."
+        },
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent direct d’un élément et fermer les conteneurs au bon endroit."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-parent-enfants",
+      "label": "Reprendre les regroupements avant les boîtes",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire choisir et expliquer des réglages de lecture, en distinguant lettres, lignes et alignement du texte ; observer un transfert sans nom de propriété.",
+    "entryDiagnosis": [
+      "Montrer class=\"lecture\" et demander la règle qui la cible : attendu .lecture. Reprendre C2 si le point ou le lien ne sont pas compris.",
+      "Demander de changer une valeur dans une déclaration simple. Ne pas demander de deviner font-size avant son explication.",
+      "Vérifier que l’élève retrouve les panneaux ou la feuille réellement chargée ; dissocier manipulation et notions."
+    ],
+    "preparation": [
+      "Utiliser un nouveau Pen ou une copie avec CSS relié ; exemple sombre sur fond clair et sans police externe.",
+      "Rétrécir l’aperçu à environ 360px pour voir plusieurs lignes. Ne pas demander de balises br pour simuler les retours.",
+      "Préparer la comparaison 18px/27px et la panne 24px avec line-height 0.8."
+    ],
+    "why": "Un style se juge aussi par la facilité de lecture. Modifier une seule variable permet d’expliquer son effet plutôt que d’obtenir un résultat par hasard.",
+    "discoverySpeech": [
+      "« La famille est le dessin des caractères ; la taille est leur grandeur. On peut changer l’une sans changer l’autre. »",
+      "« Les lettres peuvent garder 18px pendant que les lignes prennent plus de place. line-height: 1.5 leur donne 27px de hauteur : observons plusieurs lignes pour voir la différence. »",
+      "« text-align aligne les mots dans leur zone. Il ne déplace pas la zone elle-même. Centrer un titre court et lire un long paragraphe sont deux usages différents. »",
+      "« Nous n’allons pas chercher une valeur magique. Nous comparons, lisons, puis expliquons un choix que nous pouvons modifier. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-textes-lisibles",
+        "label": "Lire les quatre réglages",
+        "blockId": "css"
+      },
+      "comments": [
+        "Lire la classe et chaque déclaration avant la copie.",
+        "Avec .lecture à 18px, comparer line-height 1 et 1.5 sans autre modification ; attendu 18px puis 27px de hauteur de ligne.",
+        "Faire ajouter un troisième p class=\"lecture\" : il reçoit les mêmes réglages sans nouvelle règle.",
+        "L’héritage est signalé, pas une nouvelle mission : une règle sur un parent peut expliquer un effet inattendu sur ses enfants."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Comment aérer les lignes sans agrandir les lettres ?",
+        "answer": "Augmenter line-height en gardant font-size. Pour 18px, 1.5 donne 27px, 1.7 donne 30,6px."
+      },
+      {
+        "question": "Pourquoi l’essai semble ne rien faire ?",
+        "answer": "Peut-être que le paragraphe tient sur une ligne. Rétrécir l’aperçu pour observer plusieurs lignes, puis vérifier le ciblage."
+      },
+      {
+        "question": "text-align: center centre-t-il la boîte du titre ?",
+        "answer": "Non, il aligne le texte au centre dans la largeur disponible de cette boîte. Le placement de la boîte est une autre question."
+      },
+      {
+        "question": "Pourquoi les deux paragraphes changent-ils ensemble ?",
+        "answer": "Ils portent la même classe lecture ciblée par .lecture. Le titre a une autre classe."
+      },
+      {
+        "question": "serif est-il toujours moins lisible ?",
+        "answer": "Non. Le contexte, la taille et l’interligne comptent. On demande une comparaison justifiée, pas une interdiction de famille."
+      },
+      {
+        "question": "Pourquoi sans-serif n’a-t-il pas exactement le même dessin partout ?",
+        "answer": "C’est une famille générique ; le navigateur choisit une police disponible sur l’appareil. Aucune police externe n’est chargée."
+      },
+      {
+        "question": "0.8 est-il une faute de syntaxe ?",
+        "answer": "Non. C’est un multiplicateur valide mais très serré ici : 19,2px de ligne pour du texte de 24px. Il faut corriger le choix pour cet usage."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "css-textes-lisibles",
+      "label": "Comparer les réglages",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "css-textes-lisibles",
+      "label": "Composer et expliquer sa note",
+      "blockId": "mission"
+    },
+    "differentiation": [
+      "Aider à rétrécir l’aperçu sans nommer la propriété à choisir dans le transfert.",
+      "Si le ciblage est fragile, limiter à un paragraphe puis en ajouter un deuxième partageant la classe.",
+      "Si l’élève maîtrise déjà ces choix, demander directement la consigne sans nom de propriété, puis la comparaison facultative ; aucune répétition imposée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La taille augmente alors qu’on veut seulement aérer les lignes.",
+        "helps": [
+          "Reformuler : garder la taille des lettres.",
+          "Comparer les rôles de font-size et line-height.",
+          "Rétablir la taille initiale et ne changer que line-height ; demander de prédire l’effet."
+        ]
+      },
+      {
+        "symptom": "Aucun changement sur un paragraphe.",
+        "helps": [
+          "Vérifier la classe et le point du sélecteur.",
+          "Comparer 18px avec une écriture comme 18 px et vérifier les accolades.",
+          "En local, prouver d’abord le chargement de la feuille ; ne pas déclarer la notion incomprise pour un fichier non enregistré."
+        ]
+      },
+      {
+        "symptom": "Le titre centré est pris pour une boîte déplacée.",
+        "helps": [
+          "Demander ce qui a bougé : les mots ou toute une carte ?",
+          "Comparer left et right sur le même h1.",
+          "Expliquer que la boîte garde sa place et que les mots s’alignent dans sa largeur."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution possible du transfert : .lecture { font-size: 18px; line-height: 1.7; } avec les autres déclarations conservées. Le h1 ne change pas.",
+      "Pour la panne : garder 24px, passer line-height à 1.5, soit 36px. Valider le raisonnement et la comparaison, pas un nombre unique.",
+      "Le px CSS est une unité de mise en page, pas forcément un pixel matériel. Le zoom reste possible ; ne pas exiger que tous les textes tiennent sans retour à la ligne.",
+      "Observer réussite autonome, avec modèle ou avec aide ; distinguer saisie/zoom/gestion des panneaux de compréhension. Le suivi reste manuel.",
+      "La compétence css.fonts décrit ces réglages, pas toutes les propriétés typographiques. Les espacements autour des boîtes viendront ensuite."
+    ],
+    "quickConductor": [
+      "Vérifier le ciblage par classe et le panneau CSS.",
+      "Expliquer les quatre réglages avec l’exemple.",
+      "Comparer un changement à la fois, sur plusieurs lignes.",
+      "Donner le transfert sans nom de propriété et ajouter un paragraphe.",
+      "Consolider l’interligne ou proposer le bonus selon l’explication.",
+      "Orienter vers les boîtes si regroupements et classes sont compris."
+    ],
+    "references": [
+      {
+        "title": "MDN : Fondamentaux du style de texte",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Fundamentals"
+      },
+      {
+        "title": "MDN : line-height",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/line-height"
+      },
+      {
+        "title": "MDN : text-align",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-align"
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "domainId": "web",
+  "title": "Débutants",
+  "theme": "debutants",
+  "objective": "Structurer et styliser des pages HTML, gérer les fichiers et les images, puis construire un mini-site local avec une feuille CSS commune.",
+  "moduleIds": [
+    "html-titres-paragraphes",
+    "html-listes",
+    "html-liens",
+    "html-revision",
+    "html-images",
+    "css-classes-couleurs",
+    "html-mini-page",
+    "html-document",
+    "html-fichiers-chemins",
+    "css-feuille-style",
+    "html-parent-enfants",
+    "html-zones",
+    "css-textes-lisibles",
+    "css-boites-espacements",
+    "css-dimensions-images",
+    "web-carte-personnelle",
+    "html-multipage",
+    "web-mini-site"
+  ],
+  "chapters": [
+    {
+      "id": "bases-html",
+      "title": "Construire les bases en HTML",
+      "description": "Créer des titres, des paragraphes, des listes et des liens, puis les réutiliser sans modèle.",
+      "moduleIds": [
+        "html-titres-paragraphes",
+        "html-listes",
+        "html-liens",
+        "html-revision"
+      ]
+    },
+    {
+      "id": "page-personnalisee",
+      "title": "Enrichir et personnaliser ta page",
+      "description": "Ajouter des images et des couleurs, puis assembler ta mini-page.",
+      "moduleIds": [
+        "html-images",
+        "css-classes-couleurs",
+        "html-mini-page"
+      ]
+    },
+    {
+      "id": "organisation-page",
+      "title": "Organiser tes fichiers et ta page",
+      "description": "Préparer un document HTML, relier tes fichiers et repérer les groupes et les zones de la page.",
+      "moduleIds": [
+        "html-document",
+        "html-fichiers-chemins",
+        "css-feuille-style",
+        "html-parent-enfants",
+        "html-zones"
+      ]
+    },
+    {
+      "id": "mise-en-forme",
+      "title": "Soigner la mise en forme",
+      "description": "Rendre les textes lisibles, régler les espacements et les images, puis créer ta carte personnelle.",
+      "moduleIds": [
+        "css-textes-lisibles",
+        "css-boites-espacements",
+        "css-dimensions-images",
+        "web-carte-personnelle"
+      ]
+    },
+    {
+      "id": "mini-site",
+      "title": "Relier tes pages dans un mini-site",
+      "description": "Créer plusieurs pages reliées et construire ton mini-site local avec une feuille CSS commune.",
+      "moduleIds": [
+        "html-multipage",
+        "web-mini-site"
+      ]
+    }
+  ]
+}

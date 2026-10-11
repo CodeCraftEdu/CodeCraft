@@ -1,0 +1,240 @@
+{
+  "domainId": "jeux-video",
+  "title": "Placer mes personnages et mes objets",
+  "type": "lesson",
+  "theme": "fondations",
+  "showTool": false,
+  "objective": "Créer plusieurs exemplaires d’un objet et prévoir ce qui change pour un seul ou pour tous.",
+  "skillIds": [
+    "gdevelop.instances"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "gdevelop.workspace",
+      "expectation": "Rouvrir son projet et essayer la scène."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Rouvre ton projet et vérifie le personnage dans la petite pièce. Nous y préparons les objets à trouver. Garde les images près du fichier ; si elles manquent, demande une aide ciblée. Si tu viens de Déplacer mon personnage, conserve son comportement. Si tu arrives directement ici, un personnage immobile suffit : le déplacement n’est pas nécessaire pour comprendre cette leçon."
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Un objet, plusieurs exemplaires",
+      "paragraphs": [
+        "Crée un seul Sprite nommé Jeton avec une animation contenant images/jeton.png. Place trois exemplaires espacés dans le cadre visible de la scène. Ne crée pas Jeton2 ou Jeton3 : regarde la liste, puis compte les jetons dans la pièce.",
+        "Chaque exemplaire placé est une instance. L’objet définit leur dessin commun ; les instances ont leurs propres positions. Prévois : si tu déplaces un seul jeton dans la scène, lesquels garderont leur place ? Essaie ce déplacement puis vérifie dans l’aperçu.",
+        "Ferme l’aperçu. Prévois maintenant ce qui changera si tu modifies le dessin de l’objet Jeton. Dans sa définition, remplace l’image existante par images/jeton-alternatif.png ; n’ajoute ni animation ni nouvel objet. Relance : les trois dessins changent, mais les positions restent les mêmes.",
+        "Tu as agi à deux endroits différents : la position d’un exemplaire dans la scène, puis l’image commune dans la définition de l’objet. Montre lequel tu choisirais pour changer une seule place ou tous les dessins."
+      ],
+      "illustration": {
+        "src": "images/gdevelop-instances.svg",
+        "alt": "Une définition Jeton fournit trois exemplaires : leurs dessins sont communs, leurs positions peuvent être différentes. Les nombres du schéma sont seulement des exemples.",
+        "caption": "Un dessin commun, des positions individuelles. Les coordonnées du schéma ne sont pas des placements imposés."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "reperes",
+      "title": "2 - Prévoir avec X et Y",
+      "paragraphs": [
+        "Avec la caméra par défaut, X augmente vers la droite et Y vers le bas. Dans Scratch, Y augmentait vers le haut. Ne change ni caméra ni zoom du jeu pour cette comparaison.",
+        "Sélectionne un seul jeton et lis son X. Augmente un peu cette valeur, sans changer Y : prévois le sens puis vérifie dans un aperçu neuf. Fais ensuite varier seulement Y et prévois à nouveau. Choisis des valeurs qui gardent le jeton dans le cadre visible."
+      ],
+      "illustration": {
+        "src": "images/gdevelop-coordonnees.svg",
+        "alt": "Dans GDevelop avec la caméra par défaut, X augmente vers la droite et Y vers le bas. Changer X d’une instance la déplace horizontalement, changer Y la déplace verticalement.",
+        "caption": "Les coordonnées sont les propriétés de l’instance sélectionnée, pas un programme de mouvement."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - un seul ou tous ?",
+      "items": [
+        {
+          "id": "gd02-trois",
+          "text": "Montre un objet Jeton dans la liste et trois exemplaires dans la pièce. Sans rien modifier, indique où agir pour changer une seule position et où agir pour changer leurs trois dessins.",
+          "hint": "Trois placements depuis le même objet suffisent. La liste contient Personnage et Jeton, pas un objet différent pour chaque jeton."
+        },
+        {
+          "id": "gd02-image",
+          "text": "Le professeur a commencé un changement d’image commune. Termine le remplacement par l’autre image du kit, annonce quels jetons changeront puis vérifie. Explique pourquoi leurs positions restent identiques.",
+          "hint": "Ouvre la définition de Jeton et remplace l’image existante par celle du kit qui n’est pas utilisée. Le même objet fournit le dessin des trois exemplaires."
+        },
+        {
+          "id": "gd02-position",
+          "text": "Choisis un jeton. Augmente seulement son X, prévois puis vérifie. Fais ensuite varier seulement Y. Explique le sens et montre les jetons qui n’ont pas bougé.",
+          "hint": "Observe les propriétés de l’instance sélectionnée et garde-la dans le cadre. Si plusieurs sont sélectionnées, clique dans le vide et choisis un seul jeton."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - prépare les objets à trouver",
+      "items": [
+        {
+          "id": "gd02-carre",
+          "text": "Ajoute un quatrième exemplaire du même objet Jeton et choisis un arrangement pour ta future collecte. Laisse-les visibles et espacés. Prévois leur disposition puis vérifie, sans créer quatre objets différents.",
+          "hint": "Tu peux placer les exemplaires à la souris ou utiliser leurs propriétés. Aucun carré ni coordonnées exactes ne sont imposés ; la liste garde un seul objet Jeton."
+        },
+        {
+          "id": "gd02-un-seul",
+          "text": "Choisis un jeton à déplacer, sans toucher aux autres. Annonce ce qui doit rester identique, choisis ses nouvelles X et Y puis vérifie. Montre où tu changerais le dessin des quatre jetons et enregistre.",
+          "hint": "Sélectionne l’exemplaire dans la scène pour sa position. Le dessin partagé se modifie dans la définition de Jeton ; ne mélange pas ces deux endroits."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - retirer puis replacer",
+      "items": [
+        {
+          "id": "gd02-retirer",
+          "text": "Retire une instance depuis la scène, sans supprimer l’objet Jeton dans la liste. Replace ensuite un exemplaire à cet endroit et vérifie le résultat.",
+          "hint": "Supprimer l’instance sélectionnée retire un seul placement. Supprimer l’objet dans la liste n’a pas le même effet : ne le fais pas pour cet essai."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer un objet et plusieurs instances placées dans la scène.",
+    "Prévoir le sens d’un changement de X ou Y, puis déplacer une seule instance.",
+    "Expliquer pourquoi changer l’image de l’objet modifie tous ses exemplaires sans déplacer leurs positions."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "gdevelop-objets",
+      "blockId": "guide",
+      "label": "Comparer changement local et commun"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "gdevelop-objets",
+      "blockId": "bonus",
+      "label": "Retirer une instance"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "gdevelop-evenements",
+      "label": "Quand ceci arrive, fais cela",
+      "prerequisiteSkills": [
+        {
+          "skillId": "gdevelop.instances",
+          "expectation": "Placer et nommer les objets sans confondre leur définition et leurs instances."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Construire la distinction objet/instance par deux modifications contrastées : une position locale et une image commune.",
+    "entryDiagnosis": [
+      "Faire rouvrir le projet GD01 et vérifier l’image du pion.",
+      "Demander ce qui était modifié dans l’éditeur et ce qui était observé dans l’aperçu."
+    ],
+    "preparation": [
+      "Recette moteur à faire : confirmer propriétés X/Y, remplacement d’une image unique et suppression locale. Ne pas annoncer une validation GDevelop sur la base des tests du site.",
+      "Préparer jeton.png et jeton-alternatif.png dans le même dossier images. Garder caméra et taille des instances par défaut.",
+      "Si le projet précédent manque, reconstruire le pion depuis GD01 avec le kit ; aucun projet préfabriqué non testé à importer.",
+      "Si GD04 a déjà été étudié, conserver le comportement de Personnage sans en faire un prérequis caché. Les coordonnées du schéma sont des exemples, pas une grille à recopier."
+    ],
+    "why": "Cette distinction prépare les futures conditions et actions sur objets sans introduire prématurément sélection d’instances, variables ou création dynamique.",
+    "discoverySpeech": [
+      "Notre pièce contient des objets à trouver. Regardons un seul objet Jeton et ses trois exemplaires. Prévois ce qui se passera si je ne change que la place de celui-ci.",
+      "Maintenant je change le dessin dans la définition commune. Avant l’aperçu, lesquels changeront ? Retrouve ce qui est commun et ce qui est propre à un exemplaire.",
+      "Les nombres permettent de choisir une place. X augmente à droite, Y vers le bas. Essaie une seule coordonnée et explique le résultat, puis prépare ton propre arrangement."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "gdevelop-objets",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Commencer par le contraste position d’une instance / image de l’objet, avant les nombres X/Y.",
+        "Placer librement trois exemplaires espacés ; les valeurs du schéma illustrent des positions différentes, pas une activité de géométrie.",
+        "Modéliser le raisonnement et un remplacement complet, puis proposer un remplacement partiel. Pour le transfert, donner les contraintes de visibilité/espacement, pas chaque coordonnée."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Combien d’objets Jeton pour trois jetons visibles ?",
+        "answer": "Une seule définition Jeton et trois instances dans la scène."
+      },
+      {
+        "question": "Y passe de 150 à 220 : dans quel sens ?",
+        "answer": "Vers le bas avec la caméra par défaut ; demander une vérification."
+      },
+      {
+        "question": "Changer l’image de Jeton déplace-t-il les trois instances ?",
+        "answer": "Non. Leur image commune change ; leurs X et Y ne changent pas."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "gdevelop-objets",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "gdevelop-objets",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "En cas de difficulté de sélection, accompagner le premier clic, puis faire choisir seul l’instance suivante.",
+      "Pour aller plus loin, proposer le retrait et replacement d’une instance, pas une collision ni un inventaire."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Trois objets différents ont été créés",
+        "helps": [
+          "Demander de compter les noms dans la liste.",
+          "Comparer la liste au schéma objet/instances.",
+          "Montrer qu’un objet peut être glissé plusieurs fois.",
+          "Sur une copie sauvegardée, reconstruire trois instances de Jeton ; faire refaire un placement seul."
+        ]
+      },
+      {
+        "symptom": "Tous les jetons se déplacent ou le sens est mal prévu",
+        "helps": [
+          "Demander combien d’instances sont sélectionnées.",
+          "Isoler une sélection et ne changer qu’un nombre.",
+          "Reprendre le schéma X vers la droite, Y vers le bas.",
+          "Faire X = 400 puis 440 sur une seule instance, tester ; ensuite faire varier Y et laisser expliquer."
+        ]
+      },
+      {
+        "symptom": "L’image alternative ne remplace pas le dessin",
+        "helps": [
+          "Comparer les positions et les dessins, sans tout modifier.",
+          "Vérifier l’objet édité : Jeton, pas Personnage.",
+          "Compter animations et images : une seule de chaque.",
+          "Remplacer l’unique image existante par jeton-alternatif.png, puis relancer et comparer les trois instances."
+        ]
+      }
+    ],
+    "notes": "Observer prévision, explication du lieu où agir et transfert, pas fidélité à des coordonnées. Distinguer aide de sélection et confusion objet/instance. Le déplacement du personnage peut être conservé s’il a été étudié, sans être ajouté secrètement.",
+    "quickConductor": [
+      "Compter une définition et trois exemplaires.",
+      "Prévoir puis comparer place individuelle et dessin commun.",
+      "Compléter une modification puis tester un X et un Y.",
+      "Choisir quatre placements et modifier une instance sans déplacer les autres."
+    ],
+    "references": [
+      {
+        "title": "GDevelop : objets et instances",
+        "url": "https://wiki.gdevelop.io/gdevelop5/objects/"
+      },
+      {
+        "title": "GDevelop : concepts de base",
+        "url": "https://wiki.gdevelop.io/gdevelop5/tutorials/basic-game-making-concepts/"
+      }
+    ]
+  }
+}

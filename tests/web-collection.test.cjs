@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const context = { window: {}, URLSearchParams };
 const root = path.join(__dirname, '..');
-for (const name of ['lesson-data.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, name), 'utf8'), context);
+for (const name of ['generated/catalog.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, name), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;
 const id = 'web-collection-cartes', project = data.modules[id];
 const block = name => ui.blocks(project.blocks).find(b => b.id === name);

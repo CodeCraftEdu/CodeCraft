@@ -1,0 +1,249 @@
+{
+  "domainId": "python",
+  "title": "Variables et valeurs",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Conserver une information sous un nom et réutiliser sa valeur.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.variables"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Lancer un fichier enregistré."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher du texte et prévoir l’ordre de plusieurs instructions. Sinon, reprendre Afficher des messages."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir afficher du texte et prévoir l’ordre des instructions. Sinon, reprends Afficher des messages. Enregistre tes essais, puis crée variables.py sans remplacer tes autres fichiers. Écris les instructions dans l’éditeur et exécute le fichier entier.",
+      "moduleLink": {
+        "moduleId": "python-affichage",
+        "text": "Revoir l’affichage et l’ordre"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Un nom et une valeur",
+      "paragraphs": [
+        "personnage est le nom de la variable ; \"Luna\" est sa valeur textuelle. Le signe = affecte la valeur de droite au nom de gauche. Ce n’est pas une question ni une égalité mathématique.",
+        "Sans guillemets, personnage demande la valeur associée à ce nom. Avec guillemets, \"personnage\" est simplement le texte personnage.",
+        "Prédis les deux messages, puis exécute le fichier entier."
+      ],
+      "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")"
+    },
+    {
+      "type": "lesson",
+      "id": "changer",
+      "title": "2 - La valeur peut changer",
+      "paragraphs": [
+        "Chaque instruction utilise la valeur disponible à cet instant. Le deuxième = remplace la valeur associée au nom personnage. Il ne modifie pas un message déjà affiché.",
+        "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas print comme nom de variable."
+      ],
+      "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - changer la valeur",
+      "items": [
+        {
+          "id": "comparer-nom-texte",
+          "text": "Exécute le premier exemple. Explique pourquoi les deux messages sont différents.",
+          "hint": "La valeur est Luna ; le nom écrit entre guillemets reste le texte personnage."
+        },
+        {
+          "id": "remplacer-valeur",
+          "text": "Change Luna par un autre prénom fictif, sans changer le nom de la variable. Prédis puis teste.",
+          "hint": "Le premier résultat change ; le texte \"personnage\" ne change pas."
+        },
+        {
+          "id": "predire-remplacement",
+          "text": "Enregistre variables.py, puis crée remplacement.py pour le deuxième exemple. Garde le premier fichier, annonce les deux résultats et exécute le nouveau fichier.",
+          "hint": "Lis de haut en bas : la valeur est d’abord Luna, puis Milo. Tes deux fichiers permettent de comparer les exemples."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - deux informations",
+      "intro": "Enregistre ton essai actuel, puis crée personnage.py. Garde variables.py et remplacement.py ; essaie sans recopier le modèle.",
+      "items": [
+        {
+          "id": "deux-variables",
+          "text": "Crée deux variables textuelles avec des noms de ton choix et affiche leurs valeurs.",
+          "hint": "Une instruction d’affectation pour chaque information ; puis un print pour chaque variable, sans guillemets autour de son nom."
+        },
+        {
+          "id": "modifier-une-valeur",
+          "text": "Après les premiers affichages, change une seule valeur et affiche-la à nouveau. Prédis ce qui changera.",
+          "hint": "Garde le même nom et affecte-lui un nouveau texte. Le premier affichage reste présent ; seul le suivant utilise la nouvelle valeur."
+        },
+        {
+          "id": "test-propre",
+          "text": "Enregistre personnage.py. Clique sur Arrêter / redémarrer puis exécute le fichier entier : vérifie qu’il fonctionne sans les essais précédents.",
+          "hint": "Le fichier doit définir lui-même chaque variable avant de l’utiliser. Le redémarrage permet de vérifier qu’un ancien essai ne cachait pas un oubli."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "erreur",
+      "title": "Pour consolider - un nom incohérent",
+      "paragraphs": [
+        "Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque NameError parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."
+      ],
+      "code": "compagnon = \"chat\"\nprint(animal)"
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - une valeur réutilisée",
+      "items": [
+        {
+          "id": "reutiliser-valeur",
+          "text": "Affiche la même variable à trois endroits dans ton fichier. Change sa valeur de départ et prédis les trois résultats avant de relancer.",
+          "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs print."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer un nom de variable et ce même nom entre guillemets.",
+    "Prédire les affichages avant et après un remplacement de valeur.",
+    "Créer et réutiliser deux variables personnelles dans un fichier qui fonctionne après redémarrage."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-variables",
+      "blockId": "erreur",
+      "label": "Repérer une variable inconnue"
+    },
+    {
+      "moduleId": "python-affichage",
+      "blockId": "guide",
+      "label": "Revoir print et les guillemets"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-variables",
+      "blockId": "bonus",
+      "label": "Réutiliser une valeur"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-saisie",
+      "label": "Poser une question",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.variables",
+          "expectation": "Créer une variable et expliquer la valeur utilisée ; sinon reprendre les deux informations."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Comprendre l’affectation et la valeur au moment de l’exécution ; ne pas confondre nom, texte et égalité.",
+    "entryDiagnosis": [
+      "Faire expliquer print et l’ordre de deux lignes ; reprendre Afficher des messages si nécessaire.",
+      "Vérifier que les instructions sont écrites dans le fichier, pas uniquement dans la console."
+    ],
+    "preparation": [
+      "Prévoir variables.py et remplacement.py pour conserver les deux exemples ; ouvrir éventuellement Affichage → Variables.",
+      "Redémarrer avant le test de variable inconnue et le test autonome propre ; ne pas nommer les fichiers comme des bibliothèques Python."
+    ],
+    "why": "Une valeur nommée peut être remplacée et réutilisée ; cela prépare la réponse fournie par l’utilisateur.",
+    "discoverySpeech": [
+      "« Sans guillemets, Python cherche la valeur liée au nom. Entre guillemets, il garde le texte tel quel. »",
+      "« = veut dire : associe cette valeur à ce nom. Ce n’est pas une égalité à résoudre. »",
+      "« Suivons les lignes : quelle valeur est disponible au moment de chaque print ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-variables",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Résultats attendus : Luna, puis personnage. Faire expliquer les deux, pas seulement constater la différence.",
+        "Dans le deuxième modèle : Luna puis Milo. Le remplacement ne change pas rétroactivement les sorties.",
+        "La vue Variables illustre la valeur courante ; elle ne montre pas automatiquement toutes les anciennes valeurs."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Faut-il renommer la variable pour changer sa valeur ?",
+        "answer": "Non, une nouvelle affectation au même nom remplace sa valeur."
+      },
+      {
+        "question": "Pourquoi les deux print du deuxième exemple affichent-ils des prénoms différents ?",
+        "answer": "La valeur est remplacée entre les deux instructions : Luna puis Milo."
+      },
+      {
+        "question": "Pourquoi le test propre est-il important ?",
+        "answer": "Il vérifie que le fichier définit lui-même les variables nécessaires au lieu de dépendre d’un ancien essai en console."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-variables",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-variables",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Commencer avec une variable et accompagner la lecture ligne par ligne.",
+      "Faire prédire les changements et produire deux variables sans modèle pour distinguer copie et compréhension.",
+      "La vue Variables est une aide, pas une obligation ni un nouveau système de suivi."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le nom est affiché au lieu de la valeur.",
+        "helps": [
+          "Faire lire le résultat souhaité.",
+          "Regarder les guillemets autour du nom.",
+          "Comparer print(personnage) et print(\"personnage\").",
+          "Retirer les guillemets autour du nom uniquement, puis faire un autre exemple sans aide."
+        ]
+      },
+      {
+        "symptom": "NameError ou résultat dépendant d’un ancien essai.",
+        "helps": [
+          "Lire le nom indiqué dans l’erreur.",
+          "Chercher son affectation avant l’affichage.",
+          "Comparer orthographe et majuscules puis redémarrer la console.",
+          "Corriger le fichier et relancer entièrement ; ne pas masquer la faute en définissant la variable dans la console."
+        ]
+      }
+    ],
+    "notes": "Observer prédiction, explication et création séparément. Une affectation copiée n’est pas une validation automatique de python.variables.",
+    "quickConductor": [
+      "Vérifier affichage et ordre.",
+      "Comparer nom sans guillemets et texte entre guillemets.",
+      "Suivre le remplacement d’une valeur.",
+      "Créer deux informations sans modèle puis tester après redémarrage.",
+      "Choisir reprise ou saisie textuelle selon la compréhension."
+    ],
+    "references": [
+      {
+        "title": "Python - variables et premières valeurs",
+        "url": "https://docs.python.org/fr/3/tutorial/introduction.html"
+      }
+    ]
+  }
+}

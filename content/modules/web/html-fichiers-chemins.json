@@ -1,0 +1,449 @@
+{
+  "domainId": "web",
+  "title": "Fichiers et chemins",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Organiser les ressources d’une page et écrire des chemins relatifs qui fonctionnent.",
+  "skillIds": [
+    "html.paths"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.links",
+      "expectation": "Distinguer le texte cliquable de sa destination href."
+    },
+    {
+      "skillId": "html.images",
+      "expectation": "Distinguer src et alt et remplacer une image."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Le navigateur doit retrouver un fichier",
+      "paragraphs": [
+        "Tu vas afficher un dessin enregistré dans un dossier et créer un lien qui ouvre ce même dessin. Le résultat attendu est une image visible et un lien qui mène au bon fichier.",
+        "Un fichier contient des données ; un dossier sert à ranger des fichiers. Une extension comme `.html` ou `.png` fait partie du nom et indique un type de fichier. Le dessin fourni est une image PNG.",
+        "Ouvre ton dossier atelier-web dans ton éditeur de texte et garde le navigateur à côté pour tester les chemins.",
+        "Dans CodePen, écrire images/carre-bleu.png ne donne pas accès à un dossier de ton ordinateur. Ici, les essais se font dans tes fichiers locaux. Sans accès aux fichiers, tu peux raisonner sur l’arbre, mais l’essai de chargement restera à faire dans cet environnement."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "ressource",
+      "title": "Récupère le dessin fourni",
+      "tone": "neutral",
+      "text": "Dans Images HTML, télécharge le carré bleu avec « Télécharger l’image ». Le fichier s’appelle `carre-bleu.png`. Reviens ensuite à ces consignes avec le bouton Retour du navigateur.",
+      "moduleLink": {
+        "text": "Images HTML",
+        "moduleId": "html-images"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "arbre",
+      "title": "2 : Ton dossier de départ",
+      "paragraphs": [
+        "Si tu n’as pas encore de dossier de travail, crée atelier-web, ouvre-le dans VS Code avec Fichier → Ouvrir le dossier, puis crée un fichier nommé index.html. Son contenu complet est fourni plus bas. Tu n’as pas besoin d’avoir fait le cours précédent pour disposer de ce cadre.",
+        "Crée un dossier images à côté de index.html dans atelier-web. Place le fichier téléchargé carre-bleu.png dans images. Vérifie son nom exact, y compris le tiret et l’extension.",
+        "Si le téléchargement reste dans Téléchargements, la page ne le trouvera pas avec le chemin demandé. Déplace ou copie le fichier dans images. Ne modifie pas le dessin lui-même.",
+        "L’arbre ci-dessous décrit les dossiers et fichiers, pas le HTML à copier. Les lignes décalées se trouvent à l’intérieur du dossier au-dessus."
+      ],
+      "code": "atelier-web/\n├── index.html\n└── images/\n    └── carre-bleu.png"
+    },
+    {
+      "type": "lesson",
+      "id": "chemin",
+      "title": "3 : Lire un chemin relatif",
+      "paragraphs": [
+        "Dans ce document, un chemin relatif part du dossier qui contient index.html. images/carre-bleu.png signifie : entrer dans images, puis prendre carre-bleu.png.",
+        "On utilise / pour séparer les dossiers dans le chemin HTML, même sous Windows. Ne copie pas le chemin complet de ton ordinateur : il ne désignerait pas la même chose sur un autre poste.",
+        "Garde les mêmes lettres, majuscules/minuscules et extensions que les fichiers. Certains systèmes tolèrent une différence de casse, d’autres non. Utilise les noms simples de l’exemple.",
+        "Un chemin ne déplace pas le fichier : il indique où le chercher. Si tu renommes ou déplaces le fichier, les références qui le désignent doivent être adaptées.",
+        "Dans src, le navigateur charge l’image pour l’afficher. Dans href d’un lien a, il attend le clic pour ouvrir la destination. Ici, les deux chemins désignent volontairement le même dessin ; le texte du lien et alt ne sont pas des chemins."
+      ],
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Pars du fichier HTML pour retrouver l’image",
+        "intro": "Dans ce dossier représenté, index.html se trouve à côté du dossier images.",
+        "variants": [
+          {
+            "label": "Le bon chemin",
+            "html": "<pre>atelier/\n├── index.html\n├── style.css\n└── images/\n    └── forme.png</pre><p>index.html → images → forme.png</p>",
+            "code": "<img src=\"images/forme.png\" alt=\"Une forme\">",
+            "feedback": "Entre dans images, puis retrouve forme.png. Les noms et extensions doivent correspondre.",
+            "css": ""
+          },
+          {
+            "label": "Un dossier oublié",
+            "html": "<pre>atelier/\n├── index.html\n├── style.css\n└── images/\n    └── forme.png</pre><p>index.html → forme.png : aucun fichier à cet endroit</p>",
+            "code": "<img src=\"forme.png\" alt=\"Une forme\">",
+            "feedback": "Ce chemin cherche forme.png à côté d’index.html, alors que le dessin est dans images.",
+            "css": ""
+          }
+        ],
+        "note": "Cette vue représente les fichiers : elle ne lit ni ne crée de dossier sur ton ordinateur. Fais ensuite le test avec tes fichiers réels."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "Le fichier index.html",
+      "paragraphs": [
+        "Copie ce cadre dans ton fichier d’exercice si tu n’en as pas encore. Si tu connais déjà le document complet, tu peux insérer seulement le contenu entre body et /body dans ton cadre existant.",
+        "head contient ici les réglages et le titre d’onglet ; body contient les éléments visibles. Pour comprendre ce cadre en détail, retrouve Structure d’un document HTML depuis le parcours dans le fil d’Ariane.",
+        "Observe la même adresse dans src et href. Le h1, le paragraphe, le lien et l’image utilisent des notions déjà rencontrées. alt décrit le dessin, tandis que le texte du lien annonce ce qui s’ouvrira."
+      ],
+      "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mes ressources</title>\n</head>\n<body>\n  <h1>Une forme à observer</h1>\n  <p>Mon dessin est rangé dans le dossier images.</p>\n  <img src=\"images/carre-bleu.png\" alt=\"Un carré bleu\">\n  <p><a href=\"images/carre-bleu.png\">Ouvrir le dessin du carré</a></p>\n</body>\n</html>"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Suivre le chemin",
+      "intro": "Enregistre index.html puis ouvre-le dans le navigateur.",
+      "items": [
+        {
+          "id": "verifier-dossiers",
+          "text": "Compare tes fichiers avec l’arbre. Vérifie que le dessin est bien dans images, pas simplement visible dans les téléchargements.",
+          "hints": [
+            "Regarde l’emplacement réel du fichier.",
+            "index.html et images doivent être dans le même dossier atelier-web.",
+            "Compare les niveaux de l’arbre.",
+            "Place carre-bleu.png dans images puis garde le chemin images/carre-bleu.png dans HTML."
+          ]
+        },
+        {
+          "id": "verifier-image",
+          "text": "Vérifie que le carré s’affiche. Si ce n’est pas le cas, suis le chemin mot par mot depuis index.html."
+        },
+        {
+          "id": "verifier-lien",
+          "text": "Clique sur Ouvrir le dessin du carré : le navigateur doit afficher le dessin seul. Reviens à la page avec le bouton Retour."
+        },
+        {
+          "id": "dire-chemin",
+          "text": "Explique le chemin avec tes mots en montrant le dossier de départ, le dossier images et le fichier."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Renommer sans perdre la ressource",
+      "intro": "Garde le dossier images. Tu vas changer un nom, pas le dessin.",
+      "items": [
+        {
+          "id": "renommer",
+          "text": "Renomme le fichier carre-bleu.png en forme.png dans ton dossier. Avant d’actualiser la page, prédis ce qui ne fonctionnera plus."
+        },
+        {
+          "id": "adapter",
+          "text": "Adapte le code pour que l’image s’affiche de nouveau et que le lien ouvre le fichier renommé. Ne modifie ni le texte visible du lien ni alt, car le dessin reste le même.",
+          "hints": [
+            "Repère les deux références vers l’ancien nom.",
+            "L’image et le lien ont chacun leur propre chemin.",
+            "Compare src et href avec le nom forme.png dans le dossier images.",
+            "Remplace images/carre-bleu.png par images/forme.png dans src et dans href. Enregistre, actualise et teste le clic."
+          ]
+        },
+        {
+          "id": "expliquer-transfert",
+          "text": "Explique pourquoi corriger uniquement l’image n’aurait pas réparé le lien."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-exactitude",
+          "text": "Les noms de dossiers, fichiers et extensions correspondent exactement au code."
+        },
+        {
+          "id": "verifier-affichage",
+          "text": "L’image apparaît après enregistrement et actualisation."
+        },
+        {
+          "id": "verifier-clic",
+          "text": "Le lien ouvre bien le dessin, y compris après renommage."
+        },
+        {
+          "id": "verifier-explication",
+          "text": "Je peux retrouver le fichier depuis le dossier de index.html et distinguer chemin, alt et texte du lien."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Consolidation : Image absente, quelle cause ?",
+      "intro": "Utilise maintenant ton fichier images/forme.png. Crée une erreur volontaire puis répare-la.",
+      "items": [
+        {
+          "id": "fichier-absent",
+          "text": "Remplace uniquement src par forme.png. L’image ne se charge plus. Explique où ce chemin cherche le dessin, puis répare-le.",
+          "hints": [
+            "Regarde le dossier qui contient index.html.",
+            "Le chemin sans dossier cherche forme.png à côté de index.html.",
+            "Compare avec l’arbre : le dessin est dans images.",
+            "Rétablis images/forme.png dans src ; ne déplace pas le dessin pour masquer l’erreur de chemin."
+          ]
+        },
+        {
+          "id": "diagnostic-ressource",
+          "text": "Si le chemin paraît correct mais que l’image reste absente, ouvre directement le fichier depuis l’explorateur. S’il ne s’ouvre pas non plus, vérifie le téléchargement avant d’accuser le HTML."
+        },
+        {
+          "id": "expliquer-erreur",
+          "text": "Explique la différence entre un fichier absent et un chemin qui cherche au mauvais endroit."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "bonus-explication",
+      "title": "Bonus : Un niveau de dossier supplémentaire",
+      "paragraphs": [
+        "Facultatif : un chemin peut traverser plusieurs dossiers en les séparant par /. Dans media/images/forme.png, on entre d’abord dans media, puis images, puis on ouvre forme.png.",
+        "Pour essayer sans perdre ton travail, fais une copie de ton dossier atelier-web avec son contenu. Dans cette copie, crée media puis déplace images à l’intérieur. Garde index.html à la racine."
+      ],
+      "code": "atelier-web-copie/\n├── index.html\n└── media/\n    └── images/\n        └── forme.png"
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Adapte les deux références",
+      "intro": "Ce bonus n’est pas obligatoire pour continuer vers une feuille de style.",
+      "items": [
+        {
+          "id": "bonus-chemins",
+          "text": "Dans la copie du projet, adapte le chemin de l’image et celui du lien, puis vérifie les deux.",
+          "hints": [
+            "Pars du dossier de index.html.",
+            "Traverse chaque dossier dans l’ordre.",
+            "Compare avec l’arbre du bonus.",
+            "Utilise media/images/forme.png dans src et href."
+          ]
+        },
+        {
+          "id": "bonus-explication",
+          "text": "Explique le nouveau chemin sans montrer d’abord le code. Garde le projet de base pour l’activité suivante."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Reconstituer un chemin relatif à partir du dossier du document HTML et de l’emplacement réel de la ressource.",
+    "Adapter src et href après un renommage sans confondre leurs rôles ni modifier inutilement alt.",
+    "Tester le chargement et le clic séparément ; expliquer pourquoi une seule référence corrigée ne suffit pas.",
+    "Distinguer fichier absent, fichier illisible et mauvais chemin, avec le niveau d’aide observé."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-fichiers-chemins",
+      "blockId": "reparer",
+      "label": "Retrouver l’origine d’une image absente"
+    },
+    {
+      "moduleId": "html-document",
+      "label": "Comprendre le cadre du fichier si nécessaire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre dans une petite page."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-images",
+      "blockId": "depannage",
+      "label": "Reprendre src et alt"
+    },
+    {
+      "moduleId": "html-liens",
+      "label": "Reprendre texte et destination du lien"
+    },
+    {
+      "moduleId": "css-decouverte",
+      "label": "Préparer la suite CSS si une règle reste difficile",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre dans une petite page."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-fichiers-chemins",
+      "blockId": "bonus-explication",
+      "label": "Essayer un dossier supplémentaire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.paths",
+          "expectation": "Savoir retrouver une ressource dans un sous-dossier."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-feuille-style",
+      "label": "Relier une feuille de style : si document, chemins et règle CSS sont compris",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body dans un document complet."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Relier un chemin relatif à un fichier réellement présent."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle CSS et modifier une couleur ; reprendre Découvrir le CSS si nécessaire."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire raisonner sur l’emplacement réel d’une ressource et modifier ses références, au lieu d’essayer des noms au hasard.",
+    "entryDiagnosis": [
+      "Demander à quoi servent href, src et alt. Attendu : destination du lien, source de l’image, texte alternatif.",
+      "Faire montrer index.html et un dossier dans l’explorateur. Si l’action de déplacement est difficile, l’accompagner en laissant l’élève annoncer le chemin.",
+      "Vérifier le document complet ou fournir le cadre. Ce cours ne doit pas supposer qu’un fichier cadre copié est déjà compris."
+    ],
+    "preparation": [
+      "Télécharger le carré PNG depuis Images HTML, sans dépendance à un site d’images externe. Vérifier que le fichier s’ouvre directement.",
+      "Préparer un dossier de travail ou sa copie. Vérifier le nom complet : éviter carre-bleu (1).png ou une extension ajoutée par erreur.",
+      "Faire les essais avec de vrais fichiers locaux. Le panneau HTML de CodePen ne charge pas automatiquement un dossier personnel images."
+    ],
+    "why": "Le code indique où chercher, il ne transporte pas un fichier local. Le lien entre rangement et référence est nécessaire pour des images et, ensuite, une feuille de style.",
+    "discoverySpeech": [
+      "« Nous partons du dossier de index.html. Le premier mot images nous fait entrer dans un dossier, le deuxième nom nous donne le fichier. Montre le trajet avant de taper. »",
+      "« src demande d’afficher le dessin ; href attend notre clic pour l’ouvrir. Deux utilisations peuvent pointer vers la même ressource. »",
+      "« Si je renomme le fichier, les mots du code ne changent pas tout seuls. Que faudra-t-il adapter ? Prédis le résultat avant d’actualiser. »",
+      "« Un dessin absent ne prouve pas une erreur HTML : cherchons d’abord si le fichier existe à l’endroit indiqué. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-fichiers-chemins",
+        "blockId": "exemple",
+        "label": "Une ressource chargée et ouverte par un lien"
+      },
+      "comments": [
+        "Afficher l’arbre puis suivre images/carre-bleu.png depuis index.html. Dire le trajet avant la saisie.",
+        "Comparer les valeurs de src et href, puis alt et le texte visible du lien. La description et le texte ne sont pas des adresses.",
+        "Ouvrir le dessin par le lien puis revenir à la page. Cela teste deux usages, pas seulement le rendu de img."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi carre-bleu.png seul ne fonctionne-t-il pas dans l’arbre de départ ?",
+        "answer": "Il serait cherché à côté de index.html, alors que le fichier est rangé dans images."
+      },
+      {
+        "question": "Après renommage, pourquoi le lien est-il encore cassé alors que l’image apparaît ?",
+        "answer": "src et href sont deux références indépendantes. La seconde pointe encore vers l’ancien nom."
+      },
+      {
+        "question": "Le dessin n’a pas changé : faut-il changer alt quand on renomme le fichier ?",
+        "answer": "Non : le chemin change, pas l’information donnée par l’image. Garder un alt adapté au dessin."
+      },
+      {
+        "question": "Pourquoi ne pas copier le chemin complet de mon ordinateur ?",
+        "answer": "Ce chemin décrit un emplacement sur ce poste. Le chemin relatif décrit l’organisation du projet et reste cohérent si le dossier complet est déplacé."
+      },
+      {
+        "question": "Le fichier ne s’ouvre pas même depuis l’explorateur. Est-ce une faute dans src ?",
+        "answer": "Pas nécessairement : vérifier la présence et la validité du fichier téléchargé avant de corriger le HTML."
+      },
+      {
+        "question": "Pourquoi respecter les majuscules alors que cela marche parfois sur mon poste ?",
+        "answer": "Les environnements ne traitent pas tous la casse de la même façon. Utiliser exactement le nom réel évite un problème lors d’un changement d’environnement."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-fichiers-chemins",
+      "blockId": "guide",
+      "label": "Parcourir le dossier et tester les deux usages"
+    },
+    "independentActivity": {
+      "moduleId": "html-fichiers-chemins",
+      "blockId": "mission",
+      "label": "Renommer et réparer les deux références"
+    },
+    "differentiation": [
+      "Aider au déplacement ou au renommage si nécessaire, puis laisser l’élève dicter le chemin et choisir src/href.",
+      "Si le raisonnement est fragile, partir d’un seul sous-dossier et tracer le trajet sur l’arbre. Le bonus à deux niveaux reste facultatif.",
+      "Pour vérifier le transfert, donner un nom de fichier nouveau et demander quelles références changent sans nommer les attributs."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le fichier téléchargé n’est pas au bon endroit.",
+        "helps": [
+          "Ouvrir son emplacement réel.",
+          "Comparer avec le dossier images du projet.",
+          "Relire l’arbre, pas seulement l’adresse écrite.",
+          "Déplacer/copier le PNG dans images puis vérifier son nom complet."
+        ]
+      },
+      {
+        "symptom": "Le chemin perd le nom du dossier.",
+        "helps": [
+          "Faire partir le trajet de index.html.",
+          "Montrer que le dessin est un niveau plus bas.",
+          "Comparer forme.png et images/forme.png.",
+          "Rétablir le dossier dans le chemin puis tester."
+        ]
+      },
+      {
+        "symptom": "Le chemin est bon dans src mais pas dans href.",
+        "helps": [
+          "Tester séparément affichage et clic.",
+          "Retrouver les deux anciennes références.",
+          "Comparer leur valeur avec le nom du fichier.",
+          "Mettre images/forme.png dans les deux, puis refaire les deux tests."
+        ]
+      }
+    ],
+    "notes": [
+      "Correction de mission : après renommage, src et href valent images/forme.png ; alt reste Un carré bleu. Le texte du lien peut rester identique.",
+      "Correction de consolidation : forme.png seul cherche au mauvais niveau ; rétablir images/forme.png. Correction du bonus : media/images/forme.png dans les deux attributs.",
+      "Les chemins s’appliquent ici au document sans élément base. Ne pas introduire bases d’URL, chemins racine ou remontées de dossiers pour résoudre cet exercice simple.",
+      "Observer autonome/avec modèle/avec aide ; séparer maîtrise du chemin et manipulation du système de fichiers. Aucun nouveau dispositif de suivi.",
+      "Avant la feuille de style, vérifier head/body et une règle CSS. Proposer les reprises correspondantes sans imposer le bonus ni recommencer le parcours.",
+      "Aucune navigation multipage n’est enseignée ici : le lien ouvre une ressource image. Les ressources et noms sont génériques, sans donnée personnelle."
+    ],
+    "quickConductor": [
+      "Vérifier liens/images et accès aux dossiers.",
+      "Télécharger le dessin et construire l’arbre.",
+      "Faire lire le trajet puis tester image et lien.",
+      "Renommer le fichier, prédire puis réparer les deux références.",
+      "Consolider une cause précise, ou proposer le bonus de dossier.",
+      "Vérifier les prérequis CSS avant la suite et noter le niveau d’aide."
+    ],
+    "references": [
+      {
+        "title": "MDN : Manipuler des fichiers",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
+      },
+      {
+        "title": "MDN : Résolution des références relatives",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references"
+      }
+    ]
+  }
+}

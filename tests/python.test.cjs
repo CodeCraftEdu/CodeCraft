@@ -7,7 +7,7 @@ const { spawnSync } = require('node:child_process');
 const model = require('../teacher-model.js');
 const root = path.join(__dirname, '..');
 const context = { window: {}, URLSearchParams };
-for (const file of ['lesson-data.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
+for (const file of ['generated/catalog.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;
 const ids = ['python-thonny', 'python-affichage', 'python-variables', 'python-saisie', 'python-conversation', 'python-calculs', 'python-erreurs', 'python-conditions', 'python-elif', 'python-aventure', 'python-for', 'python-while', 'python-compteurs', 'python-hasard', 'python-nombre-mystere', 'python-listes', 'python-texte', 'python-fonctions', 'python-retour', 'python-quiz'];
 const block = (id, name) => data.modules[id].blocks.find(b => b.id === name);
@@ -496,7 +496,7 @@ test('Python : manipulation explicite et aucune validation ni écriture privée 
   assert.equal(diagram.filename, 'bonjour.py');
   assert.equal(Array.from(diagram.codeParts, p => p.text).join(''), block('python-thonny', 'exemple').code);
   assert.equal(diagram.output, 'Bonjour !');
-  const diagramRenderer = fs.readFileSync(path.join(root, 'app.js'), 'utf8').split('function createCodeDiagram(config) {')[1].split('function createLesson')[0];
+  const diagramRenderer = require('./helpers/student-source.cjs').split('function createCodeDiagram(config) {')[1].split('function createLesson')[0];
   assert(!/innerHTML|createElement\(['"]button/.test(diagramRenderer));
   assert(!/File →|View →|This computer|Stop\/Restart|\(Shell\)|\(Run,/.test(JSON.stringify(data.modules['python-thonny'])));
   assert.equal(data.modules['python-thonny'].prerequisitesInContent, true);

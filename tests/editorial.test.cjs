@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA;
 const blocks = list => list.flatMap(b => [b, ...blocks(b.blocks || [])]);
 const studentTexts = Object.values(data.modules).flatMap(m => blocks(m.blocks)).flatMap(b =>

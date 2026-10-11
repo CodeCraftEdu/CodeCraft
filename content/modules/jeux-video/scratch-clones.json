@@ -1,0 +1,412 @@
+{
+  "domainId": "jeux-video",
+  "title": "Créer plusieurs personnages avec des clones",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Créer des copies temporaires d’un sprite, les placer et comprendre leur disparition.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.clones",
+    "scratch.loops",
+    "scratch.coordinates"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Choisir un sprite et conserver une copie de son projet."
+    },
+    {
+      "skillId": "scratch.coordinates",
+      "expectation": "Placer un sprite avec aller à x/y et comprendre ajouter à x."
+    },
+    {
+      "skillId": "scratch.loops",
+      "expectation": "Utiliser répéter un nombre de fois ; sinon reprendre Répéter des actions."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Un modèle, plusieurs copies",
+      "paragraphs": [
+        "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau. Dans ce projet neuf, supprime le chat, puis choisis le sprite Star dans la bibliothèque. Dans le champ Taille sous la scène, mets 40 pour que plusieurs étoiles tiennent côte à côte. Tout le code suivant appartient à Star.",
+        "Dupliquer un sprite crée un autre personnage dans la liste. Un clone est différent : c’est une copie temporaire créée pendant l’exécution. Il n’ajoute pas une nouvelle vignette dans la liste des sprites et utilise le code du modèle.",
+        "Dans Apparence (violet), cacher rend le modèle invisible, sans arrêter son code ; montrer rend une copie visible. Dans Contrôle (orange), créer un clone de moi-même copie le sprite à sa position actuelle. Le clone hérite aussi de sa visibilité : comme notre modèle sera caché, il faudra montrer chaque clone.",
+        "Quand je commence comme un clone lance une pile uniquement pour la nouvelle copie. Supprimer ce clone la détruit, contrairement à cacher. Le modèle original reste disponible pour fabriquer d’autres copies."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Trois étoiles temporaires",
+      "shortSteps": [
+        "Sur Star, construis la pile de drapeau : cacher, aller à (-120, 0), puis répéter 3 fois la création et le déplacement de 80.",
+        "À côté, construis quand je commence comme un clone → montrer → attendre 2 secondes → supprimer ce clone.",
+        "Lance le drapeau : trois étoiles apparaissent à -120, -40 et 40, puis disparaissent après environ deux secondes."
+      ],
+      "paragraphs": [
+        "Dans la boucle du modèle, crée d’abord la copie, puis déplace le modèle. Inverser ces deux actions change les positions obtenues.",
+        "Les copies ne suivent pas les déplacements suivants du modèle : chacune garde sa propre position. À la fin de la boucle, le modèle est à 120 mais reste invisible.",
+        "Les deux piles appartiennent au même sprite Star. Ne mets pas créer un clone dans la pile qui démarre les clones : chacun fabriquerait de nouvelles copies.",
+        "Relancer le drapeau supprime les anciens clones avant de recommencer. Sauvegarde ton essai depuis Fichier ou avec ton compte personnel."
+      ],
+      "visualScript": {
+        "caption": "Dans Star : une fabrique et une vie de copie",
+        "note": "Le modèle caché crée trois copies. Chaque copie lance sa propre pile orange.",
+        "stacks": [
+          {
+            "caption": "Le modèle original",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Démarrer une nouvelle série."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "cacher"
+                ],
+                "explanation": "Le modèle travaille sans être affiché."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-120"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Position de la première copie."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter ",
+                  {
+                    "value": "3"
+                  },
+                  " fois"
+                ],
+                "explanation": "Trois créations, pas une boucle infinie.",
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "créer un clone de ",
+                      {
+                        "choice": "moi-même"
+                      }
+                    ],
+                    "explanation": "Copier à la position actuelle."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "80"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "Déplacer le modèle pour la prochaine copie."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "caption": "Chaque clone",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "quand je commence comme un clone"
+                ],
+                "explanation": "Cette pile appartient aux copies."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "montrer"
+                ],
+                "explanation": "La copie était cachée comme son modèle."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Laisser le temps de la voir."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "supprimer ce clone"
+                ],
+                "explanation": "Retirer cette copie, pas le modèle."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "Dans Star : modèle :\nquand le drapeau vert est cliqué\n  cacher\n  aller à x: -120 y: 0\n  répéter 3 fois\n    créer un clone de moi-même\n    ajouter 80 à x\n\nDans Star : copies :\nquand je commence comme un clone\n  montrer\n  attendre 2 secondes\n  supprimer ce clone"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Observer avant de modifier",
+      "items": [
+        {
+          "id": "compter",
+          "text": "Lance : compte trois étoiles visibles, mais une seule vignette de sprite sous la scène.",
+          "hint": "Le modèle est caché ; les trois étoiles visibles sont ses clones."
+        },
+        {
+          "id": "position",
+          "text": "Explique pourquoi la deuxième étoile est en x = -40. Montre le bloc qui prépare sa position.",
+          "hint": "Le modèle passe de -120 à -40 avec ajouter 80 à x, après la première création."
+        },
+        {
+          "id": "disparition",
+          "text": "Dans la pile des clones, change la pause à 4 secondes. Prédis ce qui change, puis relance.",
+          "hint": "La quantité et les positions ne changent pas. Seule la durée de vie change."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : quatre copies bien espacées",
+      "items": [
+        {
+          "id": "quatre",
+          "text": "Pars de ton essai : fais quatre copies, depuis -120, avec un déplacement de 60 entre les créations. Essaie avant de rouvrir le modèle.",
+          "hint": "Change la répétition à 4 et le déplacement à 60 dans le modèle, pas dans la pile des clones."
+        },
+        {
+          "id": "predire",
+          "text": "Annonce les quatre positions avant de lancer. Teste et vérifie que toutes les copies sont visibles.",
+          "hint": "Les positions sont -120, -60, 0 et 60. Le modèle finit à 120, caché."
+        },
+        {
+          "id": "distinguer",
+          "text": "Explique ce qui lance le modèle et ce qui lance chaque copie. Relance avant leur disparition : aucune ancienne copie ne doit s’accumuler."
+        },
+        {
+          "id": "conserver",
+          "text": "Sauvegarde ta version. Savoir reproduire la pile n’est pas la même chose que savoir expliquer les positions et la disparition."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Bonus facultatif : ramasser les étoiles",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "ramasser",
+          "title": "Une étoile, un point",
+          "paragraphs": [
+            "Prérequis : savoir créer une variable globale et ajouter un point ; sinon laisse ce bonus de côté et reprends Compter et mémoriser.",
+            "Travaille dans une copie. Crée score pour tous les sprites. Au tout début de la pile de drapeau, mets score à 0. Garde le modèle caché et les créations.",
+            "Dans la pile quand je commence comme un clone, garde montrer mais retire attendre et supprimer ce clone : les étoiles doivent rester jusqu’au clic.",
+            "Ajoute dans Star une nouvelle pile Événements : quand ce sprite est cliqué → ajouter 1 à score → supprimer ce clone. Le clic lance le code de la copie touchée. Le modèle caché ne peut pas être cliqué.",
+            "Teste : chaque étoile disparaît au clic et vaut exactement un point. La suppression empêche de recliquer la même étoile. Le drapeau remet le score à zéro et recrée les copies."
+          ],
+          "code": "Au début de la pile du drapeau : mettre score à 0\n\nquand je commence comme un clone\n  montrer\n\nquand ce sprite est cliqué\n  ajouter 1 à score\n  supprimer ce clone"
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer une copie temporaire d’un sprite dupliqué dans la liste.",
+    "Expliquer pourquoi le modèle est caché et les clones montrés.",
+    "Prédire les positions de plusieurs copies et adapter la boucle.",
+    "Faire disparaître les clones sans supprimer le modèle ; distinguer copie du modèle et explication autonome."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-clones",
+      "blockId": "guide",
+      "label": "Observer trois copies et leur disparition"
+    },
+    {
+      "moduleId": "scratch-boucles",
+      "blockId": "exemple",
+      "label": "Reprendre la répétition"
+    },
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "exemple",
+      "label": "Revoir X et Y"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-clones",
+      "blockId": "bonus",
+      "label": "Ramasser les copies avec un score",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Créer score, le remettre à zéro et ajouter un point."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-temps-difficulte",
+      "label": "Limiter une partie dans le temps",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Comprendre la remise à zéro et le changement d’une variable ; reprise dans Compter et mémoriser."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Comprendre une condition ; reprise dans Faire réagir le jeu."
+        },
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Comprendre stop tout et le redémarrage au drapeau ; sinon reprendre Gagner, perdre et recommencer."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Distinguer original, copie temporaire et script de démarrage d’un clone avant un bonus à points.",
+    "entryDiagnosis": [
+      "Faire placer le sprite en (-120, 0) et prédire -40 après +80.",
+      "Faire expliquer répéter 3 fois. Reprendre les coordonnées ou boucles si nécessaire ; Mes blocs n’est pas requis."
+    ],
+    "preparation": [
+      "Faire sauvegarder le travail précédent avant Fichier → Nouveau. Projet neuf, sprite Star seul, taille 40 dans le champ sous la scène.",
+      "Deux piles dans Star : fabrique au drapeau et comportement des copies. Aucun projet partagé ni fichier de départ nécessaire."
+    ],
+    "why": "Un modèle peut fabriquer plusieurs éléments qui vivent séparément sans créer à la main un sprite pour chacun.",
+    "discoverySpeech": [
+      "« Notre original est une fabrique cachée. Chaque étoile visible est une copie temporaire. »",
+      "« Je copie d’abord à cette position, puis je prépare la place suivante. »",
+      "« La copie hérite du modèle caché : elle doit se montrer elle-même. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-clones",
+        "blockId": "exemple",
+        "label": "Trois créations et trois vies"
+      },
+      "comments": [
+        "Fabrique : cacher, départ -120, répéter 3 fois créer puis +80. Positions : -120, -40, 40 ; original final 120 caché.",
+        "Copies : montrer, attendre 2 s, supprimer. Les pauses commencent à la création de chaque clone ; elles sont presque simultanées, pas trois pauses consécutives du modèle.",
+        "Quatre copies avec un pas de 60 : -120, -60, 0, 60. Demander une prédiction avant de montrer la correction."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi une seule vignette alors que trois étoiles sont visibles ?",
+        "answer": "La vignette représente le sprite modèle. Les clones sont temporaires, pas des sprites dupliqués dans la liste."
+      },
+      {
+        "question": "Pourquoi montrer est-il nécessaire ?",
+        "answer": "Les clones héritent de la visibilité du modèle caché."
+      },
+      {
+        "question": "Que change créer après le déplacement ?",
+        "answer": "Les positions deviennent -40, 40 et 120 au lieu de -120, -40 et 40."
+      },
+      {
+        "question": "Cacher et supprimer ce clone sont-ils équivalents ?",
+        "answer": "Non : cacher laisse la copie exister ; supprimer la détruit. Le modèle reste intact."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-clones",
+      "blockId": "guide",
+      "label": "Compter, prédire et prolonger la durée"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-clones",
+      "blockId": "autonomie",
+      "label": "Quatre copies sans modèle"
+    },
+    "differentiation": [
+      "CE2 : construire les deux piles ensemble, puis changer un seul nombre et raconter l’effet.",
+      "Plus autonome : prédire les positions avant les essais ; expliquer la différence avec une duplication.",
+      "Bonus à points seulement si les variables sont comprises. Aucun rythme imposé."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Aucune copie visible.",
+        "helps": [
+          "Lancer le drapeau puis regarder avant deux secondes.",
+          "Vérifier que Star est sélectionné.",
+          "Chercher montrer sous quand je commence comme un clone.",
+          "Ajouter montrer dans cette pile, puisque le modèle est caché."
+        ]
+      },
+      {
+        "symptom": "Toutes les copies se superposent.",
+        "helps": [
+          "Observer une étoile puis compter les créations dans le code.",
+          "Repérer le déplacement du modèle.",
+          "Vérifier qu’ajouter 80 à x est dans la boucle après créer.",
+          "Mettre créer puis ajouter à x dans répéter, pas dans la pile des clones."
+        ]
+      },
+      {
+        "symptom": "Les copies se multiplient sans contrôle.",
+        "helps": [
+          "Arrêter avec le bouton rouge.",
+          "Chercher toutes les créations.",
+          "Repérer une création dans quand je commence comme un clone.",
+          "Retirer cette création : seul le modèle au drapeau doit fabriquer les trois clones."
+        ]
+      }
+    ],
+    "notes": "Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes. Un score du bonus ne valide pas la compétence ; demander une explication et une modification prédite.",
+    "quickConductor": [
+      "Vérifier boucle et coordonnées.",
+      "Montrer modèle caché et copie visible.",
+      "Assembler et tester trois copies.",
+      "Prédire quatre positions puis essayer.",
+      "Choisir reprise ou bonus variables et sauvegarder."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

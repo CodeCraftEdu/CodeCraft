@@ -1,0 +1,78 @@
+{
+  "domainId": "python",
+  "title": "Premiers pas avec Python",
+  "theme": "fondations",
+  "objective": "Partir de zéro, créer des programmes interactifs, manipuler des listes et du texte, puis réutiliser des fonctions pour construire un quiz avec Thonny.",
+  "moduleIds": [
+    "python-thonny",
+    "python-affichage",
+    "python-variables",
+    "python-saisie",
+    "python-conversation",
+    "python-calculs",
+    "python-erreurs",
+    "python-conditions",
+    "python-elif",
+    "python-aventure",
+    "python-for",
+    "python-while",
+    "python-compteurs",
+    "python-hasard",
+    "python-nombre-mystere",
+    "python-listes",
+    "python-texte",
+    "python-fonctions",
+    "python-retour",
+    "python-quiz"
+  ],
+  "chapters": [
+    {
+      "id": "premiers-programmes",
+      "title": "Créer tes premiers programmes",
+      "description": "Prendre en main Thonny, afficher des messages et construire une conversation interactive.",
+      "moduleIds": [
+        "python-thonny",
+        "python-affichage",
+        "python-variables",
+        "python-saisie",
+        "python-conversation"
+      ]
+    },
+    {
+      "id": "calculs-choix",
+      "title": "Calculer et faire des choix",
+      "description": "Utiliser des nombres, comprendre une erreur et programmer une aventure à choix.",
+      "moduleIds": [
+        "python-calculs",
+        "python-erreurs",
+        "python-conditions",
+        "python-elif",
+        "python-aventure"
+      ]
+    },
+    {
+      "id": "boucles-hasard",
+      "title": "Répéter et jouer avec le hasard",
+      "description": "Découvrir les boucles, compter les essais et créer un jeu de nombre mystère.",
+      "moduleIds": [
+        "python-for",
+        "python-while",
+        "python-compteurs",
+        "python-hasard",
+        "python-nombre-mystere"
+      ]
+    },
+    {
+      "id": "donnees-fonctions",
+      "title": "Organiser ton code et créer un quiz",
+      "description": "Manipuler des listes et du texte, réutiliser des fonctions et assembler ton quiz personnalisable.",
+      "moduleIds": [
+        "python-listes",
+        "python-texte",
+        "python-fonctions",
+        "python-retour",
+        "python-quiz"
+      ]
+    }
+  ]
+}

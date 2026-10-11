@@ -1,0 +1,274 @@
+{
+  "domainId": "python",
+  "title": "Faire un choix",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Construire un choix à deux issues et tester chaque branche.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.conditions"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer et relancer le fichier entier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher un message."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Définir une variable avant son utilisation."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Conserver une réponse de input."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Utiliser une valeur numérique."
+    },
+    {
+      "skillId": "python.conversion",
+      "expectation": "Convertir une réponse entière."
+    },
+    {
+      "skillId": "python.debugging",
+      "expectation": "Lire la ligne signalée et retester une correction ; sinon reprendre Comprendre et corriger une erreur."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir afficher une variable numérique, convertir une réponse entière et relire une erreur après un essai. Sinon, reprends le point concerné. Enregistre tes essais précédents et crée choix.py sans les effacer. Commence avec une valeur fixe : la question viendra ensuite.",
+      "moduleLink": {
+        "moduleId": "python-erreurs",
+        "text": "Revoir le diagnostic des erreurs"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "comparer",
+      "title": "1 - Une comparaison, deux réponses",
+      "paragraphs": [
+        ">= signifie supérieur ou égal. points >= 10 est vrai pour 10 et 12, faux pour 9. Python affiche True pour vrai et False pour faux.",
+        "> signifie strictement supérieur et < strictement inférieur. == compare deux valeurs : points == 10 demande si elles sont égales. Un seul = affecte une valeur à une variable ; il ne fait pas une comparaison."
+      ],
+      "code": "points = 10\nprint(points >= 10)\nprint(points > 10)\nprint(points == 10)"
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 - Choisir une seule branche",
+      "paragraphs": [
+        "if signifie si : le premier message s’affiche si la comparaison est vraie. else signifie sinon : son message s’affiche si elle est fausse. Une seule des deux branches s’exécute.",
+        "Chaque ligne if ou else se termine par deux-points. Les instructions de sa branche commencent quatre espaces plus loin : c’est l’indentation. else est aligné avec if. Thonny peut ajouter les espaces après les deux-points ; vérifie leur alignement.",
+        "La dernière ligne revient au même alignement que if : elle est hors des branches et s’exécute dans les deux cas. Avec points = 10, attends Passage ouvert puis Fin du test."
+      ],
+      "code": "points = 10\nif points >= 10:\n    print(\"Passage ouvert\")\nelse:\n    print(\"Encore quelques points\")\nprint(\"Fin du test\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - vérifier la frontière",
+      "items": [
+        {
+          "id": "trois-cas",
+          "text": "Prédis puis teste le modèle avec 9, 10 et 11. Pour chaque essai, indique la branche choisie et le message qui s’affiche toujours.",
+          "hint": "9 choisit else ; 10 et 11 choisissent if. Fin du test s’affiche dans les trois cas."
+        },
+        {
+          "id": "strict",
+          "text": "Remplace >= par > et reteste 10. Explique ce qui change, puis restaure >=.",
+          "hint": "10 n’est pas strictement supérieur à 10 : avec >, il choisit else."
+        },
+        {
+          "id": "alignement",
+          "text": "Montre les deux-points, les lignes indentées et la ligne hors des branches. Explique le rôle de chacun.",
+          "hint": "Les espaces ne sont pas une décoration : ils indiquent les instructions appartenant à chaque branche."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "saisie",
+      "title": "3 - Le choix dépend d’une réponse",
+      "paragraphs": [
+        "Enregistre choix.py, puis utilise Enregistrer sous pour créer choix_saisie.py et conserver le modèle à valeur fixe. Dans cette copie, remplace seulement points = 10 par les deux lignes ci-dessous, au début du fichier, sans indentation. Garde ensuite le même if/else et le print final : on modifie seulement l’origine des points.",
+        "Réponds avec un entier écrit en chiffres, sans unité ni décimale. La conversion a lieu avant la comparaison. Une entrée comme dix provoque toujours ValueError : if/else ne protège pas cette conversion.",
+        "Teste 9, 10 et 11 en relançant pour chaque réponse. Une seule exécution ne prouve pas que les deux branches fonctionnent."
+      ],
+      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - ouvrir un coffre",
+      "intro": "Enregistre choix_saisie.py puis crée coffre.py. Conserve tes deux modèles. Le coffre s’ouvre à partir de 5 clés ; essaie sans recopier la décision complète.",
+      "items": [
+        {
+          "id": "coffre-question",
+          "text": "Demande un nombre entier de clés, conserve-le comme nombre et affiche Coffre ouvert s’il y en a au moins 5, sinon Pas assez de clés.",
+          "hint": "Après input et int, compare avec >= 5. Chaque branche contient son propre print indenté."
+        },
+        {
+          "id": "coffre-tests",
+          "text": "Prédis puis teste 4, 5 et 6. Ajoute un message Fin qui s’affiche toujours après le choix.",
+          "hint": "4 ne suffit pas ; 5 et 6 ouvrent le coffre. Le dernier print doit être aligné avec if, pas avec le print d’une branche."
+        },
+        {
+          "id": "coffre-modifier",
+          "text": "Change le seuil à 8 et choisis trois nouveaux tests : en dessous, exactement au seuil, au-dessus. Explique le rôle de la comparaison et des espaces.",
+          "hint": "Teste 7, 8 et 9. Le cas exactement au seuil vérifie la différence entre > et >=."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - comparer du texte",
+      "items": [
+        {
+          "id": "mot-cle",
+          "text": "Dans un nouveau fichier, demande un mot. Affiche Bienvenue si la réponse est exactement étoile, sinon Mot différent. Teste étoile, Etoile et lune.",
+          "hint": "input suffit pour du texte, sans int. Compare la variable à \"étoile\" avec ==. Les majuscules et les accents comptent."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Pour la suite",
+      "text": "Si tu sais construire les deux branches et tester la frontière sans recopier tout le modèle, tu peux ajouter plusieurs possibilités. Sinon, consolide les tests et l’indentation. Finir cette page ne valide pas automatiquement tes compétences."
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer = et ==, et expliquer la frontière de >=.",
+    "Construire un if/else avec deux-points et indentation cohérente.",
+    "Tester les deux branches et la valeur exactement au seuil.",
+    "Modifier le seuil et distinguer une instruction de branche d’une instruction exécutée toujours."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-conditions",
+      "blockId": "guide",
+      "label": "Reprendre les branches et la frontière"
+    },
+    {
+      "moduleId": "python-erreurs",
+      "blockId": "guide",
+      "label": "Relire une erreur"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-conditions",
+      "blockId": "bonus",
+      "label": "Comparer un mot exact"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-elif",
+      "label": "Plusieurs possibilités",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.conditions",
+          "expectation": "Construire if/else et tester les deux branches ; sinon reprendre le coffre."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Comprendre le choix exclusif entre deux branches, leur structure et la nécessité de tester la frontière.",
+    "entryDiagnosis": [
+      "Faire utiliser une variable numérique et expliquer int sur une réponse entière.",
+      "Faire relancer après modification et lire un message d’erreur ; proposer une reprise ciblée si nécessaire."
+    ],
+    "preparation": [
+      "Prévoir choix.py à valeur fixe, choix_saisie.py pour sa copie interactive, puis coffre.py pour l’autonomie ; conserver les trois fichiers.",
+      "Tester 9, 10 et 11 ; prévoir les deux sorties et le message commun.",
+      "Pas de elif, condition composée, boucle ni exception capturée dans ce module."
+    ],
+    "why": "Une même suite d’instructions peut choisir une action en fonction d’une information.",
+    "discoverySpeech": [
+      "« Est-ce que 10 suffit si la règle dit au moins 10 ? »",
+      "« if et else proposent deux issues ; un essai n’en choisit qu’une. »",
+      "« Les espaces indiquent à quelle branche appartient une instruction. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-conditions",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Avec 10, attendre Passage ouvert et Fin du test.",
+        "Faire prévoir 9 puis 11 ; tester le seuil lui-même, pas seulement les extrêmes.",
+        "Distinguer les print indentés du message commun avant d’ajouter une saisie."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Les deux messages des branches s’affichent-ils pour 10 ?",
+        "answer": "Non : seule la branche if s’exécute, puis le message commun hors des branches."
+      },
+      {
+        "question": "Pourquoi tester exactement 10 ?",
+        "answer": "Pour vérifier que le seuil est inclus par >= et comprendre la différence avec >."
+      },
+      {
+        "question": "Le choix protège-t-il une réponse dix ?",
+        "answer": "Non : int échoue avant que la comparaison soit exécutée."
+      },
+      {
+        "question": "Quelle différence entre = et == ?",
+        "answer": "= affecte une valeur ; == compare deux valeurs."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-conditions",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-conditions",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Rester sur une valeur fixe avant d’ajouter input.",
+      "Aider à l’indentation mais faire expliquer l’appartenance des lignes.",
+      "Demander un nouveau seuil sans modèle ; proposer ensuite une égalité textuelle."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’alignement ou le seuil ne correspond pas à l’intention.",
+        "helps": [
+          "Demander la branche attendue pour la valeur testée.",
+          "Vérifier la comparaison et les deux-points.",
+          "Repérer les quatre espaces des branches et l’alignement de else.",
+          "Corriger une cause puis retester en dessous, au seuil et au-dessus."
+        ]
+      }
+    ],
+    "notes": "Une branche jamais testée peut contenir une erreur d’exécution. Une erreur de syntaxe peut empêcher tout le fichier de démarrer. Évaluer explication et transfert séparément des aides à la frappe ; aucun statut automatique.",
+    "quickConductor": [
+      "Vérifier les acquis numériques.",
+      "Lire des comparaisons.",
+      "Construire deux branches et un message commun.",
+      "Tester les trois valeurs puis une saisie.",
+      "Créer le coffre et modifier son seuil."
+    ],
+    "references": [
+      {
+        "title": "Python - if",
+        "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#if-statements"
+      }
+    ]
+  }
+}

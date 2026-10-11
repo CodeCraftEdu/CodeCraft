@@ -1,0 +1,364 @@
+{
+  "domainId": "web",
+  "title": "Ma collection de cartes",
+  "type": "project",
+  "theme": "avances",
+  "objective": "Créer une collection personnelle, choisir sa disposition et expliquer ses changements à différentes largeurs.",
+  "skillIds": [
+    "html.structure",
+    "css.selectors",
+    "css.flexbox"
+  ],
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.structure",
+      "expectation": "Identifier le parent commun et les enfants directs d’une collection."
+    },
+    {
+      "skillId": "css.selectors",
+      "expectation": "Relier les classes HTML aux règles CSS."
+    },
+    {
+      "skillId": "css.flexbox",
+      "expectation": "Choisir le parent Flexbox et expliquer direction, axes, écart et retour à la ligne."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Travaille sur une copie de ta collection après Flexbox, ou retrouve la base dans Préparer un projet de cartes. Conserve le HTML et le CSS dans deux fichiers texte, puis ouvre-les dans leurs panneaux CodePen. Tu peux garder l’apparence fournie.",
+      "moduleLink": {
+        "moduleId": "web-projet-cartes",
+        "text": "Préparer un projet de cartes"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "projet",
+      "title": "Une collection qui te ressemble",
+      "paragraphs": [
+        "Choisis un thème : lieux imaginaires, jeux inventés, idées d’activités ou objets fictifs. N’utilise pas de renseignements personnels. Adapte ton projet existant au lieu de recopier le cours : si quatre cartes sont déjà présentes, garde leur structure et change leurs contenus.",
+        "Chaque carte présente un titre et un paragraphe différents. Pour le départ, réunis quatre cartes dans un même parent et utilise une classe commune pour les cartes. Prévois une disposition en ligne qui peut revenir à la ligne quand la place manque.",
+        "Le résultat n’a pas besoin de ressembler au site CodeCraft. L’apparence du cours peut rester inchangée ; ce sont la structure, tes choix de disposition et leurs effets que tu vas montrer."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "plan",
+      "title": "1 : Prévois le résultat",
+      "intro": "Avant de modifier le code, prépare un plan court avec tes mots.",
+      "items": [
+        {
+          "id": "choisir-contenus",
+          "text": "Note le thème et les quatre titres. Prévois un texte différent par carte ; donne à l’une d’elles un paragraphe plus long, avec des mots ordinaires."
+        },
+        {
+          "id": "prevoir-disposition",
+          "text": "Décris la disposition en ligne, l’écart et la répartition souhaités. Prévois ce qui pourrait changer quand l’aperçu devient plus étroit.",
+          "hints": [
+            "Décris ce que tu veux voir, sans commencer par une liste de propriétés.",
+            "Distingue l’écart entre deux cartes et la place libre autour du groupe.",
+            "Repère le parent qui les contient toutes.",
+            "Reprends les étapes direction, gap, répartition et wrap de Flexbox ; choisis ensuite ton propre résultat."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "exigences",
+      "title": "Le cahier des charges",
+      "items": [
+        {
+          "text": "Quatre cartes au départ, avec des titres et des paragraphes différents."
+        },
+        {
+          "text": "Un parent commun et une classe commune aux cartes."
+        },
+        {
+          "text": "Une disposition en ligne, un écart choisi et un retour à la ligne lorsque la place manque."
+        },
+        {
+          "text": "Contenus lisibles à deux largeurs et choix expliqués avec les aides utilisées."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "realisation",
+      "title": "2 : Réalise et compare",
+      "intro": "Essaie avant l’indice. Modifie une propriété à la fois pour reconnaître son effet ; aucun modèle complet de projet n’est donné.",
+      "items": [
+        {
+          "id": "adapter-structure",
+          "text": "Adapte tes quatre cartes. Montre leur parent commun et vérifie les fermetures ; conserve l’ordre choisi dans le HTML.",
+          "hints": [
+            "Repère ce qui appartient à une carte et ce qui appartient au groupe.",
+            "Les titres et paragraphes restent dans leur propre carte.",
+            "La classe de chaque carte doit correspondre à la règle commune.",
+            "Compare avec Parent et enfants ; déplace seulement l’élément mal placé avant de reprendre tes contenus."
+          ]
+        },
+        {
+          "id": "choisir-reglages",
+          "text": "Réalise le plan en choisissant les réglages du parent. Compare deux répartitions et deux écarts, puis conserve ceux que tu peux justifier.",
+          "hints": [
+            "Quels éléments veux-tu organiser ensemble ?",
+            "Cherche leur parent et sa règle CSS.",
+            "Sépare direction, écart, répartition et retour à la ligne ; observe une modification à la fois.",
+            "Reprends un essai de Flexbox qui concerne ta difficulté, puis reviens à ton plan sans recopier toute sa solution."
+          ]
+        },
+        {
+          "id": "comparer-alignement",
+          "text": "Dans un aperçu assez large, place deux cartes de hauteurs différentes sur la même ligne. Compare leur alignement au début puis au centre sur l’autre axe ; explique et conserve ton choix.",
+          "hints": [
+            "Le paragraphe plus long peut rendre une carte plus haute.",
+            "Observe les bords hauts et bas des cartes sur une même ligne.",
+            "En ligne, l’axe transversal est vertical dans ces exemples.",
+            "Compare align-items: flex-start puis center sur le parent. Si tu ne vois rien, vérifie qu’il y a plusieurs cartes sur la ligne et des hauteurs différentes."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "verification",
+      "title": "3 : Mets ta collection à l’épreuve",
+      "intro": "Note pour chaque essai ce que tu prévoyais, ce que tu observes et ce que tu corriges. Conserve le HTML et le CSS finaux.",
+      "items": [
+        {
+          "id": "tester-largeurs",
+          "text": "Compare un aperçu large puis étroit, par exemple autour de 700 puis 300 px disponibles si ton écran le permet. Compte les lignes et vérifie les textes et l’ordre. Aucun nombre exact de cartes par ligne n’est imposé.",
+          "hints": [
+            "Réduis progressivement la largeur de l’aperçu, pas seulement celle de la page de cours.",
+            "Compare avec ton plan ; indique les deux largeurs réellement testées.",
+            "Vérifie flex-wrap, la direction et les dimensions de l’apparence conservée.",
+            "Avec row et wrap, les cartes qui ne tiennent plus passent à une autre ligne. Si une carte seule dépasse, sa largeur doit aussi être revue : wrap ne répare pas tout."
+          ]
+        },
+        {
+          "id": "ajouter-carte",
+          "text": "Prévois l’effet puis ajoute une cinquième carte avec un nouveau titre et paragraphe, sans lui créer une règle CSS individuelle. Compare aux deux largeurs et explique pourquoi les règles existantes s’appliquent.",
+          "hints": [
+            "Garde les quatre cartes précédentes.",
+            "La nouvelle carte appartient au même parent.",
+            "Elle porte la même classe que les autres cartes.",
+            "Ajoute un enfant au groupe puis vérifie la règle commune ; change son texte, pas toute la structure du projet."
+          ]
+        },
+        {
+          "id": "allonger-texte",
+          "text": "Ajoute temporairement une phrase à un paragraphe avec des mots ordinaires. Vérifie que tout le texte reste visible et observe la hauteur et l’alignement. Ne masque pas le débordement ; conserve ou retire la phrase après comparaison."
+        },
+        {
+          "id": "presenter",
+          "text": "Montre le code et les deux aperçus. Explique le parent, deux choix de disposition et le comportement après l’ajout de la carte. Précise les indices, modèles ou aides utilisés ; des cases cochées ne prouvent pas la compréhension."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "transfert",
+      "title": "4 : Change de disposition",
+      "intro": "Conserve le projet final, puis travaille sur une copie pour cette variante. Essaie sans regarder les exemples du cours.",
+      "items": [
+        {
+          "id": "colonne-centree",
+          "text": "Dispose les cartes en colonne et centre-les horizontalement dans leur parent. Compare au projet en ligne : explique les deux axes et annule seulement le centrage pour montrer son effet.",
+          "hints": [
+            "Quels sont le sens de la collection et le sens du centrage demandé ?",
+            "En colonne, l’axe principal est vertical et l’autre axe est horizontal dans nos exemples.",
+            "Le parent doit être plus large qu’une carte pour rendre le centrage visible.",
+            "Sur le parent, compare flex-direction: column et align-items: center avec align-items: flex-start ; ne centre pas seulement le texte."
+          ]
+        },
+        {
+          "id": "expliquer-variante",
+          "text": "Explique quels réglages tu as conservés, changés ou retirés. La variante et le projet principal restent deux essais distincts ; note l’aide reçue si nécessaire."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Facultatif : Une autre collection",
+      "blocks": [
+        {
+          "type": "tasks",
+          "id": "autre-collection",
+          "title": "Transfère sur un autre thème",
+          "intro": "Pour aller plus loin, essaie une autre collection.",
+          "items": [
+            {
+              "id": "autre-theme",
+              "text": "Dans un nouveau Pen, organise une autre collection avec des contenus et un nombre de cartes différents. Choisis les réglages sans recopier tout le CSS de ton projet ; réutilise seulement l’apparence fournie si nécessaire. Explique ce qui fonctionne aussi dans ce nouveau contexte."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Personnaliser les cartes et expliquer leur parent commun, leurs enfants directs et la règle partagée.",
+    "Choisir et justifier la disposition, les écarts et l’alignement après comparaison des effets.",
+    "Tester deux largeurs, ajouter une carte sans règle individuelle et expliquer le retour à la ligne sans cacher le contenu.",
+    "Passer à une colonne centrée horizontalement, expliquer les axes et préciser les aides utilisées."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-parent-enfants",
+      "blockId": "reparer",
+      "label": "Revoir les regroupements"
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Revoir classes et sélecteurs"
+    },
+    {
+      "moduleId": "css-flexbox",
+      "blockId": "reparer",
+      "label": "Revoir le parent et les axes"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "web-collection-cartes",
+      "blockId": "autre-collection",
+      "label": "Organiser une autre collection"
+    }
+  ],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Observer un réinvestissement autonome de la structure, des sélecteurs et de Flexbox sur une collection personnalisée, sans confondre copie d’apparence et maîtrise.",
+    "entryDiagnosis": [
+      "Faire montrer le parent et ses enfants directs, puis relier une classe à une règle. Un support absent appelle la préparation, pas un verdict d’incompréhension.",
+      "Demander pourquoi la collection change de lignes et comment les axes changent en column. Si l’explication manque, reprendre une activité ciblée de Flexbox.",
+      "Faire lire un titre et un paragraphe de la base ; accompagner leur écriture si nécessaire, sans imposer document complet, images ou fichiers locaux."
+    ],
+    "preparation": [
+      "Prévoir une copie du projet et sauvegarder le travail précédent : HTML et CSS dans deux fichiers texte. Vérifier les panneaux CodePen et l’aperçu sans imposer de compte.",
+      "Réutiliser l’apparence fournie dans Flexbox, avec cartes de 160px et marge à zéro si nécessaire. Garder le parent limité à la place disponible et une hauteur de carte laissée au contenu ; supprimer une hauteur fixe héritée qui cache le texte.",
+      "Prévoir deux largeurs réellement disponibles. Les exemples 700 et 300 px sont des repères, pas des conditions liées au matériel.",
+      "Pour l’alignement en row, utiliser des cartes de hauteurs différentes sur une même ligne. Pour le transfert en column, laisser de la largeur libre autour d’une carte."
+    ],
+    "why": "Un projet doit faire choisir et vérifier plutôt que refaire une recette. Ajouter du contenu et changer la direction distinguent un rendu reproduit d’une règle comprise.",
+    "discoverySpeech": [
+      "« Quelle disposition veux-tu obtenir, et que prévoit ton plan quand la place diminue ? »",
+      "« Montre ce que ton réglage change réellement ; annule-le un instant pour comparer. »",
+      "« Une cinquième carte doit-elle recevoir une nouvelle règle, et pourquoi ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-flexbox",
+        "blockId": "mission",
+        "label": "Mise en pratique Flexbox existante"
+      },
+      "comments": [
+        "Le support et les essais du cours restent disponibles comme reprise ; ne pas afficher leur solution complète avant le premier essai du projet.",
+        "Demander une prédiction, observer une modification et faire expliquer avant une aide supplémentaire.",
+        "Le projet n’impose ni couleurs nouvelles, ni images, ni nouvelle propriété d’apparence."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Quel élément porte les réglages de disposition ?",
+        "answer": "Le parent commun aux cartes. Les h2 et p restent des descendants à l’intérieur de chaque carte."
+      },
+      {
+        "question": "Quelle différence entre gap et justify-content ?",
+        "answer": "gap réserve un écart entre éléments ; justify-content répartit l’espace libre sur l’axe principal, ligne par ligne. Les deux peuvent se cumuler."
+      },
+      {
+        "question": "Pourquoi une répartition peut-elle sembler sans effet ?",
+        "answer": "Il faut de l’espace libre ; vérifier la ligne, la largeur, la direction et le parent avant de conclure à une erreur."
+      },
+      {
+        "question": "Pourquoi la cinquième carte reprend-elle les règles ?",
+        "answer": "Elle porte la classe commune et devient un enfant du même parent Flexbox. Aucune règle individuelle n’est nécessaire."
+      },
+      {
+        "question": "Wrap règle-t-il tous les débordements ?",
+        "answer": "Non. Une carte elle-même trop large ou un contenu insécable peut dépasser. Observer les dimensions sans cacher le contenu ni introduire une nouvelle propriété non enseignée."
+      },
+      {
+        "question": "En colonne, comment obtenir un centrage horizontal ?",
+        "answer": "Dans nos exemples, flex-direction: column rend l’axe principal vertical ; align-items: center centre sur l’axe transversal horizontal. Le parent doit laisser de la largeur libre."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "web-collection-cartes",
+      "blockId": "realisation",
+      "label": "Un choix de disposition expliqué",
+      "itemId": "choisir-reglages"
+    },
+    "independentActivity": {
+      "moduleId": "web-collection-cartes",
+      "blockId": "transfert",
+      "label": "Colonne centrée sans recette",
+      "itemId": "colonne-centree"
+    },
+    "differentiation": [
+      "Accompagner une modification après un essai observé ; proposer Parent et enfants, Classes ou Flexbox selon la difficulté, pas un parcours entier.",
+      "Conserver l’apparence fournie et réduire l’écriture des textes si nécessaire. Le contenu reste personnalisé ; aucune difficulté motrice n’est assimilée à une difficulté de raisonnement.",
+      "Distinguer réussite autonome, avec modèle ou avec aide. Le bonus n’est pas un préalable et un rendu esthétique n’est pas un critère de maîtrise."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La disposition ou le style ne concerne pas la nouvelle carte.",
+        "helps": [
+          "Faire montrer les quatre cartes anciennes et le nouvel élément.",
+          "Repérer la fermeture du groupe et la classe de la nouvelle carte.",
+          "Comparer parent direct et sélecteur avec une carte qui fonctionne.",
+          "Déplacer seulement le nouvel élément dans le groupe ou corriger sa classe, puis expliquer pourquoi la règle commune agit."
+        ]
+      },
+      {
+        "symptom": "Le centrage vise le texte ou le mauvais axe.",
+        "helps": [
+          "Faire décrire ce qui doit être centré : cartes ou texte.",
+          "Demander la direction actuelle et les deux axes.",
+          "Comparer la largeur du parent et celle d’une carte ; laisser de l’espace libre.",
+          "Sur la copie en column, tester align-items: center puis flex-start sur le parent et justifier le déplacement horizontal."
+        ]
+      },
+      {
+        "symptom": "Le retour à la ligne ou la lisibilité semble échouer.",
+        "helps": [
+          "Observer le nombre de lignes et désigner précisément le contenu qui dépasse.",
+          "Vérifier parent, row/wrap et dimensions de la base sans changer plusieurs propriétés.",
+          "Comparer une carte seule à la place disponible ; vérifier une hauteur fixe héritée et utiliser des mots ordinaires.",
+          "Revenir si nécessaire à l’apparence du cours (cartes de 160px, parent limité à la place disponible), puis tester wrap et l’allongement du texte sans overflow caché ; expliquer la cause et noter l’aide."
+        ]
+      }
+    ],
+    "notes": [
+      "Le suivi reste manuel. Aucun acquis automatique n’est déduit d’une checklist, d’une ouverture de page ou d’une copie du modèle.",
+      "Observer structure, sélecteurs et Flexbox sur modification expliquée. Les couleurs, bordures, dimensions ou le responsive complet ne sont pas validés par la copie du CSS d’apparence.",
+      "Le nombre de cartes par ligne dépend des largeurs et des écarts : ne pas imposer une répartition exacte ni une égalité de toutes les hauteurs.",
+      "align-items agit dans chaque ligne ; ne pas introduire align-content, flex-grow, media queries, Grid, JavaScript ou publication dans ce projet.",
+      "Conserver les repères des activités Flexbox historiques. La mission devient une mise en pratique ; le nouveau projet est le transfert personnel, pas une seconde recette."
+    ],
+    "quickConductor": [
+      "Vérifier le support et conserver les deux codes.",
+      "Observer le plan avant les modifications.",
+      "Faire réaliser et justifier un choix à la fois.",
+      "Tester les deux largeurs, l’ajout et le texte plus long.",
+      "Donner la consigne colonne/centrage sans nommer de propriété.",
+      "Noter explications et aides reçues ; choisir manuellement une reprise si nécessaire."
+    ],
+    "references": [
+      {
+        "title": "MDN : align-items",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-items"
+      },
+      {
+        "title": "MDN : flex-wrap",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap"
+      }
+    ]
+  }
+}

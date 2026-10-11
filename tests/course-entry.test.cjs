@@ -4,11 +4,11 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
-const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const app = require('./helpers/student-source.cjs');
 const context = { window: {}, history: { replaceState(...args) { context.redirect = args[2]; } },
   renderModule(...args) { context.rendered = args; } };
 vm.createContext(context);
-vm.runInContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+vm.runInContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
 context.data = context.window.CODECRAFT_DATA;
 vm.runInContext(app.slice(app.indexOf('  const moduleUrl ='), app.indexOf('  const domainUrl =')), context);
 vm.runInContext(app.slice(app.indexOf('  function renderPathway('), app.indexOf('  function support(')), context);

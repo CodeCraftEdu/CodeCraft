@@ -1,0 +1,323 @@
+{
+  "domainId": "python",
+  "title": "Renvoyer un résultat",
+  "type": "lesson",
+  "theme": "fondations",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
+  "skillIds": [
+    "python.return"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.functions",
+      "expectation": "Définir une fonction et fournir des arguments."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Conserver puis réutiliser une valeur."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Expliquer une addition."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Suivre les deux issues de if/else."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Enregistre les essais précédents et crée resultat.py. Il faut distinguer définition, appel et paramètres ; sinon, reprends Définir et appeler une fonction. Les exemples utilisent des nombres fixes.",
+      "moduleLink": {
+        "moduleId": "python-fonctions",
+        "text": "Définir et appeler une fonction"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Renvoyer puis utiliser",
+      "paragraphs": [
+        "return renvoie une valeur à l'endroit qui a appelé la fonction et termine cet appel. Ici, l'appel ajouter_bonus(3) renvoie 5 : points conserve cette valeur, puis le programme l'affiche et l'utilise dans une addition.",
+        "bonus est créé dans le corps. Le résultat est renvoyé, pas la variable elle-même. Un return n'arrête pas tout le fichier : les lignes après l'appel continuent."
+      ],
+      "code": "def ajouter_bonus(nombre):\n    bonus = 2\n    return nombre + bonus\n\npoints = ajouter_bonus(3)\nprint(points)\nprint(points + 1)"
+    },
+    {
+      "type": "lesson",
+      "id": "afficher-ou-retourner",
+      "title": "2 - Afficher ne suffit pas à renvoyer",
+      "paragraphs": [
+        "Dans afficher_resultat.py, compare cette fonction au premier modèle. print montre 5, mais la fonction ne contient pas return. Son résultat renvoyé est None, qui indique ici l'absence de valeur utile renvoyée. resultat conserve None, pas 5.",
+        "Prévois les deux affichages : 5 puis None. Pour conserver un nombre, remplace le print du corps par return nombre + 2 ; le print extérieur affichera alors 5. Ce n'est pas une conversion de None."
+      ],
+      "code": "def montrer_bonus(nombre):\n    print(nombre + 2)\n\nresultat = montrer_bonus(3)\nprint(resultat)"
+    },
+    {
+      "type": "lesson",
+      "id": "local",
+      "title": "3 - Des noms locaux à chaque appel",
+      "paragraphs": [
+        "Dans noms_locaux.py, nombre reçoit 4 lors de l'appel. resultat_local est créé dans le corps : ces noms sont locaux à cet appel. La valeur renvoyée est conservée à l'extérieur dans resultat_exterieur. Les affichages donnent 8 puis 100.",
+        "Dans une copie diagnostic_local.py, ajoute print(resultat_local) après les affichages : NameError est attendu car ce nom n'a pas été défini à l'extérieur. Le résultat utilisable est déjà dans resultat_exterieur ; utilise ce nom pour corriger. Relance le fichier entier dans une console propre.",
+        "Reviens à noms_locaux.py. Après avoir expliqué les noms distincts, renomme valeur_exterieure en nombre sur sa ligne de définition et dans le dernier print, sans changer la fonction. Prévois puis vérifie 8 et 100 : le paramètre nombre reçoit 4, mais la variable extérieure nombre garde 100. Un même nom peut désigner deux variables différentes selon l'endroit."
+      ],
+      "code": "valeur_exterieure = 100\n\ndef doubler(nombre):\n    resultat_local = nombre + nombre\n    return resultat_local\n\nresultat_exterieur = doubler(4)\nprint(resultat_exterieur)\nprint(valeur_exterieure)"
+    },
+    {
+      "type": "lesson",
+      "id": "deux-issues",
+      "title": "4 - Un résultat dans les deux issues",
+      "paragraphs": [
+        "Dans point_fixe.py, la fonction compare deux textes fournis à ses paramètres. Chaque branche renvoie un entier : 1 si les textes sont égaux, 0 sinon. Les textes sont donnés directement aux appels, sans saisie.",
+        "Le return choisi termine l'appel ; les print extérieurs montrent les valeurs renvoyées. Sans return dans une issue, cet appel renverrait None. Les trois appels vérifient juste, faux et vide."
+      ],
+      "code": "def attribuer_point(reponse, attendue):\n    if reponse == attendue:\n        return 1\n    else:\n        return 0\n\nprint(attribuer_point(\"tour\", \"tour\"))\nprint(attribuer_point(\"lune\", \"tour\"))\nprint(attribuer_point(\"\", \"tour\"))"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Vérifie les résultats",
+      "intro": "Réutilise les fichiers de découverte ; garde les diagnostics dans des copies.",
+      "items": [
+        {
+          "id": "deux-resultats",
+          "text": "Dans resultat.py, conserve deux appels pour 3 puis 0 dans deux variables différentes. Prévois puis affiche leurs valeurs et leur somme.",
+          "hint": "Chaque appel renvoie un résultat indépendant : 5 puis 2."
+        },
+        {
+          "id": "comparer-print-return",
+          "text": "Dans une copie d'afficher_resultat.py, remplace le print du corps par return. Compare les affichages et ce qui est conservé.",
+          "hint": "Le print extérieur doit rester ; le résultat n'est plus None."
+        },
+        {
+          "id": "tester-issues",
+          "text": "Change les textes des appels dans point_fixe.py et teste deux textes égaux, différents et vides. Explique les valeurs renvoyées.",
+          "hint": "Deux textes vides sont égaux ; le cas vide comparé à tour reste faux."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - créer et réutiliser des résultats",
+      "intro": "Crée mon_calcul.py sans recopier tout le premier fichier. Puis crée mon_point.py pour appliquer une règle personnelle.",
+      "items": [
+        {
+          "id": "calcul-personnel",
+          "text": "Définis une fonction qui ajoute ton bonus fixe à un nombre reçu. Renvoie le résultat sans l'afficher dans le corps ; conserve deux appels et affiche leur somme.",
+          "hint": "Les affichages et les variables de résultats sont hors de la fonction."
+        },
+        {
+          "id": "tester-zero",
+          "text": "Prévois et teste un nombre positif puis zéro. Explique le rôle de l'entrée et de la valeur renvoyée.",
+          "hint": "Zéro reste une entrée valide ; on ne le confond pas avec un appel absent."
+        },
+        {
+          "id": "modifier-bonus",
+          "text": "Enregistre puis crée mon_calcul_variante.py avec Enregistrer sous, avec un autre bonus. Prévois les deux résultats et leur somme. Montre les noms définis dans le corps et ceux définis à l'extérieur, puis explique comment le résultat passe de l'un à l'autre.",
+          "hint": "Le bonus local est recréé pour chaque appel ; garde la version de départ."
+        },
+        {
+          "id": "regle-personnelle",
+          "text": "Dans mon_point.py, crée une fonction à deux paramètres : une proposition textuelle et une réponse attendue. Choisis tes propres mots. Renvoie 1 si les textes sont égaux, 0 sinon, sans afficher dans la fonction. Conserve puis affiche les résultats de trois appels : égal, différent et vide face à une réponse attendue non vide.",
+          "hint": "Prévois 1, 0 et 0 ; la comparaison utilise les paramètres, pas un mot fixé dans le corps."
+        },
+        {
+          "id": "transfert-regle",
+          "text": "Change uniquement la réponse attendue dans les appels, sans modifier la définition. Prévois puis teste la nouvelle réponse, l'ancienne et vide. Explique pourquoi chaque branche doit renvoyer un nombre.",
+          "hint": "Le nouveau mot est accepté ; l'ancien, s'il est différent, est refusé. Le résultat se conserve hors du corps."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - préparer du texte",
+      "intro": "Si strip et lower sont compris, utilise une copie preparation.py.",
+      "items": [
+        {
+          "id": "retour-texte",
+          "text": "Définis une fonction à un paramètre qui prépare un texte avec strip puis lower et renvoie le résultat. Garde le texte original et affiche original/résultat pour \"  TOUR  \" puis vide.",
+          "hint": "Conserve les transformations en deux étapes ; la fonction ne demande pas input."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer un affichage print du résultat renvoyé par return, y compris None sans retour utile.",
+    "Conserver deux résultats et les réutiliser hors de la fonction.",
+    "Identifier les paramètres et noms locaux, retrouver le résultat conservé à l'extérieur et expliquer la comparaison de deux noms identiques.",
+    "Créer et tester personnellement une fonction à deux issues, puis modifier un calcul et une réponse attendue avec prévision."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-fonctions",
+      "blockId": "guide",
+      "label": "Revoir les appels"
+    },
+    {
+      "moduleId": "python-retour",
+      "blockId": "guide",
+      "label": "Revoir les résultats"
+    },
+    {
+      "moduleId": "python-erreurs",
+      "blockId": "guide",
+      "label": "Relire un nom inconnu"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-retour",
+      "blockId": "bonus",
+      "label": "Renvoyer du texte préparé",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.text",
+          "expectation": "Conserver strip et lower."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-quiz",
+      "label": "Créer un quiz personnalisable",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.return",
+          "expectation": "Conserver un nombre sur chaque issue."
+        },
+        {
+          "skillId": "python.text",
+          "expectation": "Annoncer et tester une règle de texte."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
+    "entryDiagnosis": [
+      "Définir une fonction et fournir des arguments.",
+      "Conserver puis réutiliser une valeur.",
+      "Expliquer une addition.",
+      "Suivre les deux issues de if/else."
+    ],
+    "preparation": [
+      "Créer les fichiers annoncés dans Thonny ; sauvegarder le travail précédent et conserver les variantes importantes avec Enregistrer sous.",
+      "Relancer le fichier entier : ne pas dépendre des définitions ou variables restées dans une ancienne console.",
+      "Observer une prédiction avant de montrer l'indice ; distinguer aide aux fichiers/clavier et aide au raisonnement."
+    ],
+    "why": "Réutiliser une règle comprise puis vérifier ce qu'elle reçoit, fait et renvoie plutôt que recopier un programme.",
+    "discoverySpeech": [
+      "« Où la fonction est-elle définie et où est-elle appelée ? »",
+      "« Quelle valeur entre dans cet appel, et que se passe-t-il ensuite ? »",
+      "« Prévois un résultat, exécute puis explique une modification. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-retour",
+        "blockId": "exemple",
+        "label": "Exemple ou cahier des charges"
+      },
+      "comments": [
+        "Prédire la valeur renvoyée, l'affichage puis le calcul extérieur.",
+        "Comparer print et return sans présenter None comme un résultat numérique.",
+        "Montrer les noms distincts et le résultat conservé avant de comparer un même nom dans deux endroits. Isoler le NameError dans une copie."
+      ]
+    },
+    "questions": [
+      {
+        "question": "return arrête-t-il le fichier ?",
+        "answer": "Il termine l'appel courant ; le programme reprend après l'appel."
+      },
+      {
+        "question": "Que conserve points dans le premier modèle ?",
+        "answer": "5, valeur renvoyée pour l'entrée 3."
+      },
+      {
+        "question": "Pourquoi None après la fonction d'affichage ?",
+        "answer": "Sans return avec une valeur, cet appel renvoie None ; print a affiché sans fournir ce nombre au programme."
+      },
+      {
+        "question": "Que devient le nombre extérieur après avoir renommé valeur_exterieure en nombre ?",
+        "answer": "Il reste à 100 ; le paramètre nombre reçoit 4 pour l'appel et le retour vaut 8, conservé dans resultat_exterieur."
+      },
+      {
+        "question": "Pourquoi print(resultat_local) à l'extérieur échoue-t-il ?",
+        "answer": "Ce nom est défini dans le corps, pas à l'extérieur. Le retour a été conservé dans resultat_exterieur ; ce nom permet d'utiliser sa valeur."
+      },
+      {
+        "question": "Pourquoi return 0 dans l'issue fausse ?",
+        "answer": "Le programme reçoit ainsi un nombre même lorsque la comparaison est fausse ; il ne reçoit pas None."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-retour",
+      "blockId": "guide",
+      "label": "Essais accompagnés"
+    },
+    "independentActivity": {
+      "moduleId": "python-retour",
+      "blockId": "autonomie",
+      "label": "Création et transfert autonomes"
+    },
+    "differentiation": [
+      "Reprendre une seule notion fragile sans exiger un bonus ni un projet antérieur entièrement terminé.",
+      "Commencer avec des noms distincts et une affectation explicite du retour ; comparer les noms identiques seulement après explication. Réserver les copies aux diagnostics et variantes.",
+      "Distinguer réussite autonome, avec modèle ou avec aide ; ne pas conclure à la maîtrise sur le seul rendu."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La définition est confondue avec l'appel ou le bloc n'est pas exécuté.",
+        "helps": [
+          "Faire lire le fichier de haut en bas.",
+          "Repérer def, deux-points et indentation.",
+          "Chercher l'appel séparé après la définition.",
+          "Ajouter ou déplacer uniquement l'appel, relancer le fichier entier et expliquer l'ordre."
+        ]
+      },
+      {
+        "symptom": "Les arguments ne correspondent pas aux paramètres.",
+        "helps": [
+          "Repérer les valeurs données à l'appel.",
+          "Comparer nombre et ordre aux paramètres.",
+          "Lire le message d'erreur ou les affichages inversés.",
+          "Corriger un appel, puis tester deux valeurs différentes sans changer la définition."
+        ]
+      },
+      {
+        "symptom": "Affichage, résultat ou nom local sont confondus.",
+        "helps": [
+          "Montrer la ligne qui affiche et celle qui conserve.",
+          "Suivre un appel et son retour vers le programme.",
+          "Vérifier return sur chaque issue et les noms utilisés hors du bloc.",
+          "Conserver le résultat dans une variable extérieure ; ne pas chercher à utiliser directement un nom local. Retester et expliquer."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel : ni ouverture ni case cochée ne valide un acquis. Observer conservation et réutilisation des résultats, noms locaux et deux issues avec retour explicite. Pas de saisie ou global dans le socle ; le bonus texte est facultatif.",
+    "quickConductor": [
+      "Vérifier les prérequis et sauvegarder.",
+      "Lire un exemple ou le cahier des charges.",
+      "Prédire puis tester les deux issues ou plusieurs appels.",
+      "Faire créer le calcul personnel puis une règle textuelle à deux issues, sans dicter le corps ; observer leurs modifications et tests.",
+      "Noter les tests, explications et aides ; choisir manuellement une reprise."
+    ],
+    "references": [
+      {
+        "title": "Python - fonctions",
+        "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+      }
+    ]
+  }
+}

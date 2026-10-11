@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
-const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const app = require('./helpers/student-source.cjs');
 const source = app.slice(app.indexOf('  function codeTokens('), app.indexOf('  function createCode('));
 const tokenize = vm.runInNewContext(source + '\ncodeTokens;');
 
@@ -36,7 +36,7 @@ test('CSS, Python et JavaScript : repères de syntaxe, chaînes et commentaires 
 
 test('Catalogue complet : coloration sans modifier le code ni exécuter les exemples', () => {
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
   let count = 0;
   const visit = value => {
     if (!value || typeof value !== 'object') return;
@@ -53,16 +53,16 @@ test('Catalogue complet : coloration sans modifier le code ni exécuter les exem
 });
 
 test('Blocs de code : hauteur libre, lignes longues contenues et nom de fichier explicite', () => {
-  const css = fs.readFileSync(path.join(root, 'pedagogy.css'), 'utf8');
+  const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'pedagogy.css'));
   assert.match(css, /\.web-comparison \.code-block \{[^}]*max-height: none/);
   assert.doesNotMatch(css, /\.web-comparison \.code-block \{[^}]*max-height: \d/);
-  const lowpoly = fs.readFileSync(path.join(root, 'student-lowpoly.css'), 'utf8');
+  const lowpoly = require('./helpers/style-source.cjs').readStyle(path.join(root, 'student-lowpoly.css'));
   const rule = lowpoly.match(/body\.student-lowpoly :is\(\.web-comparison, \.flex-display-demo, \.flex-property-demo\) \.code-block \{([^}]*)\}/)[1];
   assert.match(rule, /white-space: pre-wrap/);
   assert.match(rule, /overflow-wrap: anywhere/);
   assert.match(rule, /max-height: none/);
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
   const demo = context.window.CODECRAFT_DATA.modules['html-document'].blocks.find(b => b.id === 'comprendre').demonstration;
   assert.equal(demo.codeLabel, 'index.html');
   assert(demo.variants.every(v => v.code.endsWith('</html>')));
@@ -112,6 +112,6 @@ test('Cadre commun : en-tête de fichier pour les exemples et nom adapté au lan
     assert.equal(editor.children[1].tag, 'pre');
     assert.equal(text(editor.children[1].children[0]), code);
   }
-  const css = fs.readFileSync(path.join(root, 'student-lowpoly.css'), 'utf8');
+  const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'student-lowpoly.css'));
   assert.match(css, /:is\(\.code-editor, \.web-comparison__source,[^}]*border-bottom: 5px solid color-mix/s);
 });

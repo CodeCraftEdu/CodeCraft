@@ -1,2 +1,5 @@
 # Les espaces privés et leurs copies ne doivent jamais être versionnés.
 espace-codecraft*.json
+node_modules/
+.qa-*.log
+browser-artifacts/

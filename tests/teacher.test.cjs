@@ -316,7 +316,7 @@ test('IndexedDB : la seule valeur écrite est le handle', async () => {
   f.env.indexedDB = { open() {
     const request = {};
     queueMicrotask(() => {
-      request.result = { close() {}, transaction(name, mode) {
+      request.result = { close() {}, transaction(name, _mode) {
         assert.equal(name, 'handles');
         const tx = { objectStore() { return {
           put(value, key) { assert.equal(value, f.handle); records.set(key, value); return {}; },
@@ -462,7 +462,7 @@ test('interface : annuler un sélecteur conserve les changements en mémoire', a
 });
 test('archive autonome : contenu teacher identique, styles embarqués, pas de script distant', () => {
   const archive = fs.readFileSync(path.join(root, 'prof-conducteur-historique.html'), 'utf8');
-  const data = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), data);
+  const data = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), data);
   const inline = [...archive.matchAll(/<script>([\s\S]*?)<\/script>/g)][0][1];
   const copy = { window: {} }; vm.runInNewContext(inline, copy);
   assert.equal(JSON.stringify(copy.window.CODECRAFT_DATA.teacher), JSON.stringify(data.window.CODECRAFT_DATA.teacher));

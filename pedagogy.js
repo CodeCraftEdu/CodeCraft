@@ -91,38 +91,52 @@
     }
     return el;
   }
+  function publicImageAddress(path) {
+    const address = new URL(path, window.location.href);
+    const host = address.hostname.replace(/\.$/, '');
+    if (address.protocol !== 'https:' || !host.includes('.') || /^[\d.]+$/.test(host) || host.includes(':') ||
+        /(?:^|\.)(?:localhost|local|internal|test|invalid)$/.test(host)) return '';
+    return address.href;
+  }
   function resource(module, resourceId) {
     const entry = module.resources?.find(r => r.id === resourceId);
     if (!entry) return node('p', 'Ressource indisponible.');
     const el = panel(entry.title);
+    el.classList.add('image-resource');
     const image = node('img'); image.src = entry.path; image.alt = entry.alt;
     image.width = 160; image.height = 120;
-    const status = node('p', 'Chargement de la ressource…'); status.setAttribute('role', 'status');
-    image.addEventListener('load', () => { status.textContent = 'Ressource disponible.'; });
-    image.addEventListener('error', () => { status.textContent = 'Le fichier n’est pas disponible ici. Essaie la version CodePen ci-dessous ; cette indisponibilité n’est pas une faute dans ton exercice.'; });
-    const download = node('a', 'Télécharger pour un projet local'); download.href = entry.path; download.download = entry.id + '.svg';
-    const source = node('section', undefined, 'image-source');
-    source.append(node('h3', 'La source à copier dans src'),
-      node('p', 'Cette source contient le dessin SVG sous forme de texte. Le début `data:image/svg+xml,` indique au navigateur qu’il reçoit directement une image SVG ; les codes comme `%3C` représentent les caractères du dessin, ici `<`.'),
-      node('p', 'Dans cet exemple, elle permet d’afficher le dessin dans CodePen sans héberger un fichier image. Le navigateur décode le texte et affiche l’image. Copie la source entière entre les guillemets de `src=""`.'));
-    const details = node('details');
-    details.append(node('summary', 'Voir la source encodée (copie manuelle)'));
-    let pre;
-    if (window.CodeCraftCreateCode) pre = window.CodeCraftCreateCode(entry.codepenSrc, 'image.svg');
-    else {
-      pre = node('pre', undefined, 'code-block');
-      pre.append(node('code', entry.codepenSrc));
+    const status = node('p'); status.setAttribute('role', 'status'); status.hidden = true;
+    image.addEventListener('load', () => { status.hidden = true; });
+    image.addEventListener('error', () => { status.hidden = false; status.textContent = 'Image indisponible.'; });
+    const address = publicImageAddress(entry.path);
+    const download = node('a', 'Télécharger l’image', 'button button--secondary'); download.href = entry.path; download.download = entry.id + '.png';
+    const code = (text, label) => {
+      if (window.CodeCraftCreateCode) return window.CodeCraftCreateCode(text, label);
+      const pre = node('pre', undefined, 'code-block');
+      pre.append(node('code', text));
+      return pre;
+    };
+    el.append(image, status);
+    if (address) {
+      const source = node('div', undefined, 'image-source');
+      source.append(node('p', 'Colle le lien de l’image dans `src`.'));
+      const details = node('details');
+      details.append(node('summary', 'Voir l’adresse de l’image'), code(address, 'Adresse de l’image'));
+      const copy = node('button', 'Copier le lien', 'button button--secondary'); copy.type = 'button';
+      copy.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(address); status.hidden = false; status.textContent = 'Lien copié.'; }
+        catch { details.open = true; status.hidden = false; status.textContent = 'Copie l’adresse ci-dessous.'; }
+      });
+      source.append(copy, details);
+      el.append(source);
     }
-    details.append(pre);
-    const copy = node('button', 'Copier uniquement la source', 'button button--secondary'); copy.type = 'button';
-    copy.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(entry.codepenSrc); status.textContent = 'Source copiée. Colle-la entière entre les guillemets de src, puis rédige toi-même alt.'; }
-      catch { details.open = true; status.textContent = 'Copie manuelle : sélectionne toute la source ci-dessous, copie-la puis colle-la entre les guillemets de src.'; }
-    });
-    source.append(copy, details);
-    const alternative = node('section', undefined, 'image-alternative');
-    alternative.append(node('h3', 'Le texte alternatif à écrire dans alt'), node('p', 'Observe l’image. Rédige une courte description entre les guillemets de `alt=""`. Cet attribut décrit l’image, tandis que `src` fournit le dessin.'));
-    el.append(image, status, download, source, alternative);
+    const local = node('div', undefined, 'image-source');
+    local.append(download, node('p', 'Place le fichier dans le dossier `images`, à côté de `index.html`.'));
+    const filename = entry.id + '.png';
+    local.append(code('mon-projet/\n├── index.html\n└── images/\n    └── ' + filename, 'Arborescence'),
+      code('<img src="images/' + filename + '" alt="">', 'index.html'));
+    const alternative = node('p', 'Dans `alt`, décris la forme et sa couleur.', 'image-alternative');
+    el.append(local, alternative);
     return el;
   }
   function scratchProject(module, teacher = false) {

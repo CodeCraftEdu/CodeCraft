@@ -1,0 +1,251 @@
+{
+  "domainId": "robotique",
+  "title": "Avancer, tourner, arrêter",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Construire un trajet court avec un arrêt explicite, puis modifier un seul réglage et comparer les essais.",
+  "tool": {
+    "label": "Ouvrir MakeCode micro:bit",
+    "url": "https://makecode.microbit.org/"
+  },
+  "skillIds": [
+    "robotique.sequence",
+    "robotique.attente",
+    "robotique.moteurs"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.sequence",
+      "expectation": "Lire une suite d’actions dans l’ordre avec aide."
+    },
+    {
+      "skillId": "robotique.evenement",
+      "expectation": "Reconnaître le lancement A/B du projet Mes-images avant de changer de déclencheur."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Garde Mes-images sauvegardé à part. Télécharge le départ ci-dessous, puis à l’accueil MakeCode choisis Importer → Importer un fichier et sélectionne ce .hex. Nomme ton projet Mon-trajet."
+    },
+    {
+      "type": "lesson",
+      "id": "base",
+      "title": "1 - Une base préparée, sans mouvement caché",
+      "paragraphs": [
+        "Le départ fournit le modèle robot elecfreaks cutebot, trois aides désactivées, une pause de préparation de 2000 ms et un arrêt final. Lance-le : le robot doit rester immobile. Il ne suit pas automatiquement la ligne dessinée.",
+        "Dans ce projet, on start (au démarrage) lance les actions une seule fois, de haut en bas. A et B ne pilotent aucun moteur. La pause de préparation laisse la scène se charger ; elle ne fait pas avancer le robot.",
+        "Garde les réglages préparés et l’arrêt. Tu vas insérer tes commandes de déplacement juste après la pause et avant robot motor stop (arrêter les moteurs). Ne copie pas les événements d’affichage de Mes-images."
+      ],
+      "downloads": [
+        {
+          "label": "Télécharger le départ Mon-trajet (.hex)",
+          "path": "resources/robotique/makecode/RB06-Mon-trajet-depart.hex",
+          "filename": "RB06-Mon-trajet-depart.hex"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "avancer",
+      "title": "2 - Avancer puis s’arrêter",
+      "paragraphs": [
+        "Dans Robot, prends robot motor steer : direction 0, puissance 50 %, durée 1500 ms. Si la durée est cachée, le petit + du bloc permet d’afficher ce réglage. Place cette commande après la pause de préparation et avant l’arrêt déjà fourni.",
+        "0 signifie ici avancer droit. 1500 ms correspond à une seconde et demie. La durée permet de passer ensuite à l’action suivante : ne la confonds pas avec une commande d’arrêt. C’est robot motor stop qui termine le mouvement.",
+        "Prévois puis lance : préparation, avance, arrêt. Attends après l’arrivée pour vérifier que le robot reste immobile. La puissance est un réglage des moteurs, pas une vitesse mesurée ni une distance exacte à obtenir."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "essai-visible",
+      "title": "Observer un essai complet",
+      "text": "Garde MakeCode et le robot visibles pendant le trajet, sans changer d’onglet. Agrandis la simulation si la scène est trop petite. Attends son chargement avant de relancer. Si le déplacement n’est pas cohérent d’un essai à l’autre, arrête et demande au professeur de vérifier le simulateur : ne change pas plusieurs blocs pour compenser un problème d’affichage."
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - prouver l’arrêt",
+      "items": [
+        {
+          "id": "rb06-avance",
+          "text": "Lis la séquence, annonce le moment du départ puis teste l’avance et l’arrêt. Montre le bloc qui garantit l’immobilité finale.",
+          "hint": "L’arrêt était déjà dans la base : ajoute l’avance avant lui, pas un second arrêt ailleurs."
+        },
+        {
+          "id": "rb06-relance",
+          "text": "Refais le même essai depuis le même départ et la même orientation. Explique pourquoi le robot ne recommence pas tout seul.",
+          "hint": "Il n’y a pas de boucle dans le programme. Avec cette scène, Restart rejoue depuis le départ observé ; vérifie la position avant le mouvement. Si elle diffère, arrête la simulation et demande de l’aide avant de comparer."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "tourner",
+      "title": "3 - Ajouter un virage",
+      "paragraphs": [
+        "Insère un deuxième robot motor steer entre l’avance et l’arrêt : direction 50, puissance 50 %, durée 600 ms. Il fait tourner pendant un temps court. Garde les réglages de la première avance.",
+        "Prévois l’ordre : avancer, tourner, arrêter. Rejoue depuis le même départ et observe le changement d’orientation puis l’immobilité. Nous ne promettons pas un virage de 90° : regarde ce que cette simulation produit.",
+        "Sur ce schéma seulement : préparer → avancer → tourner → [dernière action manquante]. Quelle action manque pour finir immobile ? Ne retire pas l’arrêt de ton projet pour chercher la réponse."
+      ],
+      "illustration": {
+        "src": "images/robotique-trajet-reference.jpg",
+        "alt": "Référence MakeCode réimportée : modèle préparé, pause de 2000 ms, avance direction 0 à 50 % pendant 1500 ms, virage direction 50 à 50 % pendant 600 ms et arrêt final.",
+        "caption": "Capture du programme complet essayé. Les réglages de préparation restent fournis ; seules les deux commandes de déplacement sont à construire."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - commencer le virage plus près du départ",
+      "intro": "Exporte d’abord Mon-trajet. Importe cette sauvegarde comme copie, nomme-la Mon-trajet-perso et conserve le fichier principal intact. Garde puissance, direction et durée du virage ainsi que l’arrêt final.",
+      "items": [
+        {
+          "id": "rb06-proposer",
+          "text": "Propose une modification pour commencer le virage plus près du départ que dans le modèle. Annonce ton résultat avant d’ouvrir l’indice, puis change un seul réglage.",
+          "hint": "Quelle action se produit avant le virage ? Cherche sa durée : une avance plus courte permet de tourner plus tôt. Choisis une durée positive, sans changer la puissance."
+        },
+        {
+          "id": "rb06-comparer",
+          "text": "Compare au modèle depuis le même départ et la même orientation. Rejoue ta version deux fois et vérifie l’arrêt. Montre le réglage changé et explique l’effet.",
+          "hint": "Ne compare pas des départs différents. Si le robot n’est pas au bon endroit, arrête la simulation et reprends avec le professeur."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver tes deux trajets",
+      "text": "Exporte la version personnelle sous son nom distinct et garde aussi le fichier principal. Avec une aide si nécessaire, réimporte une sauvegarde et vérifie son programme puis son trajet. La liste des projets du navigateur ne remplace pas ces fichiers : l’enregistrement automatique peut être indisponible. Ne publie pas de données personnelles et ne branche pas de matériel pour sauvegarder."
+    }
+  ],
+  "masteryCriteria": [
+    "Je montre le lancement au démarrage, distinct des appuis A/B.",
+    "Je lis avancer → tourner → arrêter et vérifie l’immobilité finale.",
+    "Je prévois une modification unique, compare des départs identiques et explique mon résultat.",
+    "Je conserve le principal et la copie personnelle avec une aide adaptée."
+  ],
+  "teacherGuide": {
+    "objective": "Construire une séquence moteur unique et sûre, puis faire raisonner sur une durée avant l’essai, sans capteur ni angle exact.",
+    "entryDiagnosis": [
+      "Faire lire une séquence et distinguer le lancement A/B de Mes-images du lancement au démarrage.",
+      "La navigation et l’import peuvent être accompagnés ; une difficulté de fichier ne vaut pas difficulté de raisonnement."
+    ],
+    "preparation": [
+      "Recette professeur MakeCode du 9 octobre 2026 : extension Microsoft microbit-robot, modèle elecfreaks cutebot, trois aides OFF (line following, speed smoothing, sensor and motor display). Documentation consultée : extension bêta, version affichée 2.7.4 ; édition MakeCode 9.0.12. Aucun logiciel installé ni matériel.",
+      "Départ .hex réimporté : initialisation, aides OFF, pause 2000 ms, arrêt, aucun mouvement. Référence complète .hex exportée et réimportée avec ses blocs et le simulateur fonctionnel. La pause facilite le chargement de la scène ; ne pas en déduire une garantie sur toute connexion.",
+      "Valeurs retenues pour la scène essayée : avance direction 0 / puissance 50 / durée 1500 ms ; virage direction 50 / puissance 50 / durée 600 ms ; arrêt final. Un seul mode steer et une seule pile on start. La référence complète a avancé, changé d’orientation puis fini immobile.",
+      "Deux lancements de la référence ont montré le retour au départ lors de Restart. Vérifier ce comportement et le point de départ dans le navigateur réel avant distribution ; ne pas exiger une remise manuelle à une orientation inconnue. Aucune promesse de cm ou d’angle.",
+      "L’import et les exports ont été très lents par moments ; une alerte a annoncé l’auto-sauvegarde indisponible dans le navigateur intégré. Les fichiers externes sont obligatoires. Accès élève, langue, reprise de copies et fonctionnement en cours restent à vérifier.",
+      "Ne pas donner la référence complète comme départ. Le socle minimal est avancer/arrêter ; virage et défi accompagnés. La comparaison facultative de puissance reste différée jusqu’à son propre essai, et n’est pas un exercice élève requis."
+    ],
+    "why": "L’arrêt fourni évite d’utiliser un mouvement incontrôlé comme diagnostic. Modifier un seul réglage donne une comparaison interprétable.",
+    "discoverySpeech": [
+      "« La base prépare le modèle et l’arrête. Que faut-il ajouter avant cet arrêt pour le déplacer ? »",
+      "« Les boutons ne commandent pas ce projet : montre ce qui le lance. »",
+      "« Le temps écoulé permet de passer au bloc suivant ; quel bloc termine vraiment le mouvement ? »",
+      "« Nous voulons tourner plus tôt. Que proposes-tu de changer, sans toucher aux autres réglages ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-trajet",
+        "blockId": "avancer"
+      },
+      "comments": [
+        "Montrer l’arrêt existant avant toute insertion et lire le lancement unique.",
+        "Faire prévoir puis observer une avance et une immobilité durable ; le virage vient ensuite.",
+        "Les nombres sont des réglages de cette scène simulée, pas des caractéristiques garanties d’un robot physique."
+      ]
+    },
+    "questions": [
+      {
+        "question": "A ou B lance-t-il le trajet ?",
+        "answer": "Non. La pile on start s’exécute au démarrage, après préparation."
+      },
+      {
+        "question": "Pourquoi garder motor stop ?",
+        "answer": "La commande temporisée permet de poursuivre la séquence mais ne remplace pas l’ordre d’arrêt."
+      },
+      {
+        "question": "Qu’attendre après la fin ?",
+        "answer": "Le robot reste immobile ; aucune boucle ne rejoue le trajet."
+      },
+      {
+        "question": "Pourquoi garder le même départ ?",
+        "answer": "Sinon on confond l’effet du réglage avec un changement de position ou d’orientation."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-trajet",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-trajet",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Si l’import ralentit, fournir la base déjà ouverte, laisser prévoir et expliquer ; conserver essais et sauvegarde accompagnée.",
+      "Si nécessaire, terminer sur avancer/arrêter et noter virage ou défi non réalisés.",
+      "Pour le défi : demander la proposition, puis relire l’ordre, puis seulement suggérer la durée. Noter si la stratégie a été donnée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le robot reste immobile",
+        "helps": [
+          "Vérifier la scène chargée et l’initialisation fournie.",
+          "Chercher le déplacement placé après l’arrêt, une puissance nulle ou une durée non positive.",
+          "Revenir à la référence ; une panne du simulateur n’est pas une erreur pédagogique de l’élève."
+        ]
+      },
+      {
+        "symptom": "Le robot continue ou recommence",
+        "helps": [
+          "Arrêter la simulation avant intervention.",
+          "Vérifier l’arrêt final et chercher des commandes concurrentes ou une pile forever."
+        ]
+      },
+      {
+        "symptom": "Les essais ne sont pas comparables",
+        "helps": [
+          "Comparer départ et orientation avant le mouvement.",
+          "Vérifier qu’un seul réglage a changé."
+        ]
+      },
+      {
+        "symptom": "Le projet n’est plus dans l’accueil",
+        "helps": [
+          "Retrouver le fichier exporté, pas seulement la liste locale.",
+          "Accompagner Importer un fichier et vérifier le nom puis les blocs."
+        ]
+      }
+    ],
+    "notes": "Pas de décision selon obstacle, variable, suivi de ligne, radio, télécommande ni second mode moteur. Le schéma partiel est lu sans supprimer l’arrêt. En arrière-plan, certains essais ont donné peu de mouvement ; après affichage du navigateur, deux relances de la référence minimale ont montré avance et arrêt depuis le même départ. Cela suggère un effet de l’affichage, sans diagnostic certain : garder MakeCode visible pendant l’essai et refaire la recette dans le navigateur de cours. La démonstration facultative de puissance n’a pas encore sa recette. L’extension reste non confirmée par KidnKod ; essais professeur et efficacité en classe sont distincts.",
+    "quickConductor": [
+      "Importer le départ et constater l’immobilité ; distinguer les déclencheurs.",
+      "Insérer l’avance avant l’arrêt, prévoir puis tester.",
+      "Ajouter le virage et lire le schéma partiel sans casser le programme.",
+      "Sauvegarder le principal ; laisser proposer une copie personnelle et comparer deux essais.",
+      "Exporter, reprendre avec aide et noter ce qui reste à vérifier en classe."
+    ],
+    "references": [
+      {
+        "title": "Départ élève : Mon-trajet (.hex)",
+        "url": "resources/robotique/makecode/RB06-Mon-trajet-depart.hex"
+      },
+      {
+        "title": "Référence professeur : avancer, arrêter (.hex)",
+        "url": "resources/robotique/makecode/RB06-Avancer-arreter-reference.hex"
+      },
+      {
+        "title": "Référence professeur : avancer, tourner, arrêter (.hex)",
+        "url": "resources/robotique/makecode/RB06-Trajet-reference.hex"
+      },
+      {
+        "title": "Extension Microsoft microbit-robot",
+        "url": "https://makecode.microbit.org/pkg/microsoft/microbit-robot"
+      }
+    ]
+  }
+}

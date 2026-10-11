@@ -1,0 +1,237 @@
+{
+  "domainId": "python",
+  "title": "Afficher des messages",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Afficher plusieurs messages et prévoir leur ordre.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.output"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Ouvrir, enregistrer et exécuter un fichier dans Thonny. Sinon, reprendre Premiers pas avec Thonny."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir créer, enregistrer et exécuter un fichier dans Thonny. Sinon, reprends Premiers pas avec Thonny. Enregistre ton travail précédent, puis crée messages.py sans remplacer les autres fichiers.",
+      "moduleLink": {
+        "moduleId": "python-thonny",
+        "text": "Revoir les fichiers dans Thonny"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Du texte, une instruction par ligne",
+      "paragraphs": [
+        "print affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.",
+        "Python exécute ces instructions de haut en bas. Chaque print de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.",
+        "Avant d’exécuter, annonce quelle phrase apparaîtra en premier."
+      ],
+      "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - trois messages",
+      "items": [
+        {
+          "id": "afficher-modele",
+          "text": "Écris et exécute les deux instructions du modèle dans messages.py.",
+          "hint": "N’écris pas le résultat ni >>> dans l’éditeur. Utilise les guillemets droits du clavier, pas les guillemets courbes d’un traitement de texte."
+        },
+        {
+          "id": "personnaliser-textes",
+          "text": "Modifie les deux messages sans retirer leurs guillemets.",
+          "hint": "Change seulement le texte à l’intérieur des guillemets."
+        },
+        {
+          "id": "troisieme-instruction",
+          "text": "Ajoute une troisième instruction pour afficher une phrase de fin.",
+          "hint": "Une nouvelle ligne avec print, des parenthèses et du texte entre guillemets."
+        },
+        {
+          "id": "inverser-ordre",
+          "text": "Inverse les deux premières instructions. Prédis le résultat, puis exécute et explique la différence.",
+          "hint": "Déplace les lignes entières ; changer les phrases n’est pas la même chose que changer l’ordre."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - une présentation sans modèle",
+      "intro": "Enregistre messages.py. Crée presentation.py ; essaie sans ouvrir l’indice.",
+      "items": [
+        {
+          "id": "presentation-personnelle",
+          "text": "Affiche une présentation de trois lignes sur un personnage ou un sujet de ton choix, avec tes propres phrases.",
+          "hint": "Chaque phrase peut avoir son propre print. Tu n’as pas besoin de variable ni de question pour ce module."
+        },
+        {
+          "id": "prediction-personnelle",
+          "text": "Explique l’ordre avant d’exécuter, puis déplace une instruction pour vérifier ta prédiction.",
+          "hint": "Python suit ici les lignes de haut en bas."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "erreur",
+      "title": "Pour consolider - une faute à repérer",
+      "paragraphs": [
+        "Cette ligne est volontairement incorrecte : il manque un guillemet droit. Une erreur indique que Python ne peut pas exécuter cette instruction telle quelle, pas que ton idée est mauvaise. Compare les paires de guillemets et de parenthèses, corrige puis relance.",
+        "Une phrase différente de celle attendue n’est pas forcément une erreur Python : le programme peut fonctionner mais ne pas réaliser ta consigne."
+      ],
+      "code": "print(\"Bonjour !)"
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - un dessin en texte",
+      "items": [
+        {
+          "id": "dessin-texte",
+          "text": "Avec plusieurs print, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.",
+          "hint": "Chaque ligne du dessin est un texte entre guillemets. Évite les antislashs pour cet essai : aucune nouvelle notation n’est nécessaire."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Produire plusieurs lignes personnelles sans recopier les phrases du modèle.",
+    "Prédire et expliquer l’effet d’une inversion des instructions.",
+    "Repérer un guillemet manquant et expliquer le rôle des guillemets et parenthèses."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-affichage",
+      "blockId": "erreur",
+      "label": "Repérer une faute simple"
+    },
+    {
+      "moduleId": "python-thonny",
+      "blockId": "guide",
+      "label": "Reprendre les manipulations de Thonny"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-affichage",
+      "blockId": "bonus",
+      "label": "Composer un dessin en texte"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-variables",
+      "label": "Variables et valeurs",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.output",
+          "expectation": "Savoir afficher du texte et expliquer son ordre ; sinon reprendre les trois messages."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire comprendre l’affichage et la séquence, pas seulement obtenir trois lignes copiées.",
+    "entryDiagnosis": [
+      "Faire ouvrir un fichier et exécuter une instruction ; reprendre Thonny si cela bloque.",
+      "Demander où apparaîtra le message et distinguer aide à la saisie et compréhension."
+    ],
+    "preparation": [
+      "Ouvrir messages.py neuf et conserver bonjour.py.",
+      "Prévoir le modèle, sa version inversée et la faute volontaire ; aucun autre exemple n’est erroné.",
+      "Faire vérifier guillemets droits et parenthèses sur le clavier utilisé."
+    ],
+    "why": "L’ordre d’exécution permettra ensuite de comprendre les changements de variables et les questions.",
+    "discoverySpeech": [
+      "« Les guillemets entourent le message ; les parenthèses entourent ce qu’on demande d’afficher. »",
+      "« Lis les lignes de haut en bas et prédis ce qui apparaîtra. »",
+      "« Un programme qui tourne peut quand même ne pas afficher ce que tu voulais : comparons à la consigne. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-affichage",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Résultat attendu : Bienvenue ! puis Voici mon premier programme., sur deux lignes.",
+        "Inverser les instructions doit inverser les résultats, sans autre changement.",
+        "Une phrase écrite toute seule dans un fichier n’est pas un remplacement de print ; travailler dans l’éditeur, pas uniquement la console."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Les guillemets sont-ils affichés ?",
+        "answer": "Non, ils délimitent le texte dans le code."
+      },
+      {
+        "question": "Que change l’inversion des deux instructions ?",
+        "answer": "L’ordre des messages, car ces instructions s’exécutent de haut en bas."
+      },
+      {
+        "question": "Un programme sans erreur affiche-t-il forcément le résultat souhaité ?",
+        "answer": "Non. Il faut encore comparer le résultat à la consigne et à la prédiction."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-affichage",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-affichage",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Faire réussir une ligne puis deux, sans imposer immédiatement trois lignes à saisir.",
+      "Demander à l’élève à l’aise de prédire l’inversion avant le test et de réparer sans le modèle.",
+      "Ne pas introduire variables, boucles ou caractères échappés dans le bonus."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "SyntaxError après la saisie.",
+        "helps": [
+          "Faire lire la ligne signalée.",
+          "Cibler guillemets droits et parenthèses.",
+          "Comparer au modèle ou à la faute volontaire.",
+          "Corriger un signe puis exécuter avant d’ajouter d’autres lignes."
+        ]
+      },
+      {
+        "symptom": "La présentation fonctionne mais l’ordre est inexpliqué.",
+        "helps": [
+          "Faire lire les résultats.",
+          "Pointer la première instruction.",
+          "Faire prédire un échange de deux lignes.",
+          "Déplacer puis tester et demander une nouvelle prédiction sans aide."
+        ]
+      }
+    ],
+    "notes": "Noter séparément reproduction avec modèle, prédiction et création autonome. Une faute de clavier ne suffit pas à conclure à une incompréhension.",
+    "quickConductor": [
+      "Vérifier l’exécution dans l’éditeur.",
+      "Expliquer print, guillemets et ordre.",
+      "Personnaliser puis inverser les messages.",
+      "Faire créer trois phrases sans modèle.",
+      "Réparer une faute ; proposer reprise ou variables."
+    ],
+    "references": [
+      {
+        "title": "Python - print",
+        "url": "https://docs.python.org/fr/3/library/functions.html#print"
+      }
+    ]
+  }
+}

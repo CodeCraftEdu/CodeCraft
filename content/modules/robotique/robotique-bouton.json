@@ -1,0 +1,199 @@
+{
+  "domainId": "robotique",
+  "title": "Le bouton donne une information",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Repérer l’entrée bouton et observer comment son état change pendant un appui et un relâchement.",
+  "tool": {
+    "label": "Ouvrir le départ bouton à relier",
+    "url": "https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"
+  },
+  "skillIds": [
+    "robotique.entree"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.circuit",
+      "expectation": "Repérer la LED externe et conserver sa résistance."
+    },
+    {
+      "skillId": "robotique.sortie",
+      "expectation": "Obtenir LOW et HIGH sur la sortie 8 avec une aide si nécessaire."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Retrouve Mon-signal et montre la LED externe et sa sortie 8. Garde ce projet intact. Avec le professeur, copie le départ bouton et nomme ta copie Mon-bouton. Elle contient déjà le montage de la LED et presque tout celui du bouton ; elle ne contient pas encore sa règle de réaction. Si l’accès ou la copie bloque, demande une aide avant de modifier le projet."
+    },
+    {
+      "type": "lesson",
+      "id": "entree-sortie",
+      "title": "1 - Lire n’est pas commander",
+      "paragraphs": [
+        "Le bouton est une entrée : la carte peut lire son état. La LED est une sortie : une commande du programme peut l’allumer ou l’éteindre. Dans ce montage, appuyer sur le bouton ne commande pas directement la LED.",
+        "La résistance de la LED reste en place. Une autre résistance, de 10 kΩ, aide l’entrée à avoir un état défini au repos. Tu n’as pas à calculer sa valeur : repère les deux résistances et ne les retire pas."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "relier",
+      "title": "2 - Compléter le fil de lecture",
+      "paragraphs": [
+        "Utilise Stop Simulation avant de changer un fil. Dans le départ à relier, il manque seulement la connexion entre D2 sur la carte et Terminal 2a du bouton. Repère ces noms avec le professeur avant de relier les deux bornes. Ne choisis pas une patte seulement parce qu’elle est à gauche ou à droite.",
+        "Les fils vers 5 V et GND et les deux résistances sont déjà présents. Ne les change pas. Tant que D2 n’est pas reliée, on ne peut pas interpréter sa lecture. Si la manipulation bloque, le professeur peut fournir la base préconnectée : le raisonnement reste le même.",
+        "Le programme de départ éteint D8 dans on start ; forever est vide. La LED ne réagit donc pas encore au bouton : c’est normal. Nous construirons cette réaction dans la prochaine leçon."
+      ],
+      "illustration": {
+        "src": "images/robotique-bouton-entree.svg",
+        "alt": "Schéma de connexions : 5 V vers Terminal 1a du bouton ; Terminal 2a vers D2, fil à compléter ; Terminal 2b vers résistance 10 kΩ puis GND. Les bornes 2a et 2b sont du même côté du contact.",
+        "caption": "Schéma de connexion, pas une capture ni une position physique des bornes. Le montage de la LED reste inchangé."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - repérer et relier",
+      "items": [
+        {
+          "id": "rb03-reperer",
+          "text": "Montre le bouton lu, la LED commandée, D2 et D8. Explique quelle broche sert à lire et laquelle sert à commander.",
+          "hint": "D2 reçoit l’information du bouton ; D8 commande la LED externe."
+        },
+        {
+          "id": "rb03-fil",
+          "text": "Simulation arrêtée, repère Terminal 2a avec le professeur, puis complète uniquement son fil vers D2. Fais vérifier la connexion avant de lancer.",
+          "hint": "Les bornes sont nommées dans le composant. Ne retire aucun fil ni aucune résistance ; utilise la base préconnectée avec une aide si nécessaire."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "observer",
+      "title": "3 - Observer l’information, sans construire un nouveau programme",
+      "paragraphs": [
+        "Observe la démonstration du professeur. Il affiche la lecture de D2 dans le moniteur série : 0 au repos, 1 pendant l’appui, puis 0 au relâchement. Le moniteur sert seulement à rendre l’information visible ; tu n’as pas à programmer cet affichage.",
+        "Dans notre montage, la lecture 0 se nomme aussi LOW : bouton relâché. La lecture 1 se nomme aussi HIGH : bouton appuyé. Ces noms décrivent ici l’information lue sur D2. Commander HIGH ou LOW sur D8 est une autre opération, qui agit sur la LED.",
+        "Pour maintenir le bouton simulé, le professeur garde le bouton de souris enfoncé sur son centre puis le relâche. Observe un maintien, pas seulement un clic très bref. Pendant le maintien, plusieurs lectures peuvent rester à 1 : lire de nouveau ne veut pas dire que le bouton a été pressé de nouveau."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - prévoir trois états",
+      "items": [
+        {
+          "id": "rb03-etats",
+          "text": "Avant la démonstration, prévois les lectures au repos, pendant un maintien et après le relâchement. Observe cette suite deux fois et compare à ta prévision.",
+          "hint": "Avec ce montage : 0, puis plusieurs 1 pendant le maintien, puis 0."
+        },
+        {
+          "id": "rb03-explication",
+          "text": "Montre ce qui change quand on relâche. La LED de ton départ doit-elle déjà suivre cette information ? Explique avec ce que contient son programme.",
+          "hint": "L’information d’entrée change, mais le départ ne contient pas encore la règle qui commande D8 selon D2."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver ton départ",
+      "text": "Arrête la simulation et vérifie le nom Mon-bouton. Attends la fin de l’enregistrement, retrouve cette copie dans tes circuits et rouvre-la avec une aide si nécessaire. Conserve Mon-signal séparément. La prochaine leçon utilisera ce départ relié, sans reconstruire les fils."
+    }
+  ],
+  "masteryCriteria": [
+    "Je montre l’entrée bouton et la sortie LED.",
+    "Je repère D2 pour lire et D8 pour commander.",
+    "Je prévois puis décris repos, maintien et relâchement.",
+    "Je distingue une information lue d’une réaction encore à programmer."
+  ],
+  "teacherGuide": {
+    "objective": "Faire distinguer entrée et sortie avant d’introduire la condition ; obtenir un départ relié préservé.",
+    "entryDiagnosis": [
+      "Faire montrer la LED externe et obtenir LOW/HIGH sur D8 avec aide. Résoudre la sortie avant d’ajouter l’entrée."
+    ],
+    "preparation": [
+      "Vérifier ouverture, copie, enregistrement et reprise avec l’accès élève réel : ces essais restent à faire. Ne pas travailler sur le compte professeur.",
+      "Le départ à relier manque seulement de D2 vers Terminal 2a. La base préconnectée fournit le même circuit si la manipulation bloque. Les deux ont on start LOW sur D8 et forever vide.",
+      "Diagnostic réservé à la démonstration : on start LOW sur D8 ; forever affiche read digital pin 2 via print to serial monitor avec newline. Tester 0 → 1 → 0 avant le cours. Aucun affichage série à construire par l’élève.",
+      "Maintien souris essayé ; accès clavier et observation continue d’un maintien prolongé restent à vérifier. Ne pas prescrire Shift-clic."
+    ],
+    "why": "Observer l’entrée séparément empêche de déduire sa lecture du seul comportement de la LED.",
+    "discoverySpeech": [
+      "« Quel élément donne une information ? Quel élément reçoit une commande ? »",
+      "« Pendant le maintien, la carte peut lire plusieurs fois le même état. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-bouton",
+        "blockId": "observer"
+      },
+      "comments": [
+        "Montrer le diagnostic préparé sans ouvrir un nouveau projet élève. Le moniteur n’est pas un nouvel objectif.",
+        "Prévision avant geste, puis observation deux fois. Ne pas interpréter une entrée D2 encore déconnectée."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi la LED du départ ne suit-elle pas le bouton ?",
+        "answer": "La lecture et la commande sont distinctes ; sa règle n’est pas construite."
+      },
+      {
+        "question": "Les deux résistances ont-elles le même rôle ?",
+        "answer": "Celle de la LED limite le courant ; celle de l’entrée donne une référence au repos. Aucun calcul ni terme pull-down exigé."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-bouton",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-bouton",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Réaliser les gestes de câblage ou fournir la base préconnectée ; laisser la prévision et l’explication à l’élève.",
+      "Faire expliquer une série de 1 pendant un maintien, sans introduire événement, compteur ou variable."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La lecture ne change pas",
+        "helps": [
+          "Vérifier le maintien simulé, puis D2 et les bornes nommées.",
+          "Comparer au diagnostic vérifié ; réparer la base avec le professeur, pas par des modifications logicielles au hasard."
+        ]
+      },
+      {
+        "symptom": "L’élève attend une réaction de la LED",
+        "helps": [
+          "Distinguer diagnostic professeur et départ élève.",
+          "Montrer on start LOW et forever vide ; annoncer la règle de la prochaine leçon."
+        ]
+      }
+    ],
+    "notes": "Adaptation autonome de RB03. Partage par lien confirmé ; essais techniques sur compte professeur, pas validation en classe. Voir docs/recette-tinkercad-bouton.md. Noter les aides de geste séparément de celles de raisonnement ; aucune validation automatique.",
+    "quickConductor": [
+      "Vérifier sortie et préserver Mon-signal.",
+      "Copier le départ, repérer entrée/sortie et compléter D2.",
+      "Prévoir puis observer le diagnostic 0 / 1 / 0 deux fois.",
+      "Faire expliquer pourquoi le départ ne réagit pas encore ; conserver Mon-bouton."
+    ],
+    "references": [
+      {
+        "title": "Départ à relier : sans solution",
+        "url": "https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"
+      },
+      {
+        "title": "Base préconnectée : sans solution",
+        "url": "https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"
+      },
+      {
+        "title": "Diagnostic de lecture : démonstration professeur",
+        "url": "https://www.tinkercad.com/things/0HMEwEsJtNV-codecraft-bouton-diagnostic-de-lecture"
+      }
+    ]
+  }
+}

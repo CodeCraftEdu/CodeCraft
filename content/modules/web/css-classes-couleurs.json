@@ -1,0 +1,498 @@
+{
+  "domainId": "web",
+  "title": "Classes et couleurs CSS",
+  "type": "lesson",
+  "objective": "Relier une classe HTML à un sélecteur CSS pour changer la couleur du texte.",
+  "skillIds": [
+    "css.selectors",
+    "css.colors"
+  ],
+  "theme": "debutants",
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise-css",
+      "title": "Avant de commencer : Comprends-tu une règle ?",
+      "tone": "neutral",
+      "text": "Dans p { color: blue; }, peux-tu montrer la cible, la propriété et la valeur, puis changer seulement le fond avec background-color ? Si tu hésites, ouvre Découvrir le CSS et reviens ici ensuite. Si tu sais déjà l’expliquer, continue sans refaire ce cours.",
+      "moduleLink": {
+        "text": "Découvrir le CSS",
+        "moduleId": "css-decouverte"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "classe-html",
+      "title": "1 : Donner une classe en HTML",
+      "paragraphs": [
+        "Sache créer un titre et un paragraphe, et expliquer une règle CSS simple. Tu peux utiliser un nouveau CodePen : commencer sans anciennes règles rend les résultats plus faciles à comprendre.",
+        "Le HTML décrit le contenu. Le CSS permet de changer son apparence, par exemple la couleur du texte.",
+        "Dans le panneau HTML de CodePen, l’attribut class donne un nom de groupe à un élément. Ici, le titre appartient à la classe titre.",
+        "Résultat attendu : un titre et deux paragraphes dont tu peux changer les couleurs par groupes. Une classe sert à choisir un groupe précis, au lieu de viser tous les éléments portant la même balise."
+      ],
+      "code": "<h1 class=\"titre\">Mon site</h1>"
+    },
+    {
+      "type": "lesson",
+      "id": "selecteur-css",
+      "title": "2 : Retrouver cette classe en CSS",
+      "paragraphs": [
+        "Dans le panneau CSS de CodePen, écris la règle ci-dessous. Ne la mets pas dans le panneau HTML.",
+        "Le sélecteur .titre choisit les éléments dont la classe est titre. Le point se met dans le CSS, pas dans la valeur de class en HTML. Les deux noms doivent correspondre exactement.",
+        "Les accolades { et } entourent les instructions. color change la couleur du texte ; blue signifie bleu. Les deux-points séparent la propriété de sa valeur, et le point-virgule termine l’instruction.",
+        "Plusieurs éléments peuvent partager la même classe : ils recevront tous la même couleur."
+      ],
+      "code": ".titre {\n  color: blue;\n}",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Une classe choisit un groupe",
+        "intro": "Les deux paragraphes partagent info. Compare un sélecteur qui correspond et un nom différent.",
+        "variants": [
+          {
+            "label": "La classe correspond",
+            "html": "<p class=\"info\">Premier message</p><p class=\"info\">Deuxième message</p>",
+            "code": "HTML : class=\"info\"\n\nCSS :\n.info { color: green; }",
+            "feedback": "Les deux éléments qui partagent info deviennent verts.",
+            "css": ".info{color:green}"
+          },
+          {
+            "label": "Le nom ne correspond pas",
+            "html": "<p class=\"info\">Premier message</p><p class=\"info\">Deuxième message</p>",
+            "code": "HTML : class=\"info\"\n\nCSS :\n.infos { color: green; }",
+            "feedback": "infos ne correspond pas à info : cette règle ne sélectionne aucun des deux paragraphes.",
+            "css": ".infos{color:green}"
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Un titre en couleur",
+      "items": [
+        {
+          "id": "html",
+          "text": "Dans HTML, crée le titre de l’exemple avec class=\"titre\"."
+        },
+        {
+          "id": "css",
+          "text": "Dans CSS, ajoute la règle .titre de l’exemple. Vérifie que le titre devient bleu.",
+          "hint": "Vérifie le point devant titre dans le CSS et l’absence de point dans class=\"titre\"."
+        },
+        {
+          "id": "rouge",
+          "text": "Remplace blue par red dans le CSS. Vérifie que le texte devient rouge."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi de jouer : Relier HTML et CSS",
+      "intro": "Essaie d’abord seul. Les noms de couleurs CSS utilisés ici sont en anglais : green signifie vert, orange signifie orange.",
+      "items": [
+        {
+          "id": "paragraphe",
+          "text": "Ajoute un paragraphe avec la classe texte. Écris sa règle CSS pour le rendre vert.",
+          "hints": [
+            "Regarde la classe attribuée au paragraphe.",
+            "Son nom doit être le même dans le sélecteur, avec un point seulement dans CSS.",
+            "Compare class=\"titre\" et .titre dans l’exemple.",
+            "Utilise class=\"texte\" puis .texte { color: green; }. Vérifie ce paragraphe avant d’en ajouter un autre."
+          ]
+        },
+        {
+          "id": "partager",
+          "text": "Ajoute un deuxième paragraphe avec la même classe texte. Vérifie que les deux paragraphes sont verts."
+        },
+        {
+          "id": "couleur",
+          "text": "Change la couleur de la classe texte en orange. Vérifie que les deux paragraphes changent, mais pas le titre."
+        },
+        {
+          "id": "renommer",
+          "text": "Renomme la classe titre en vedette dans le HTML et adapte le sélecteur CSS pour conserver sa couleur.",
+          "hints": [
+            "Compare le nom dans HTML et celui dans CSS.",
+            "Changer seulement un des deux rompt la correspondance.",
+            "Le point appartient au sélecteur, pas au nom dans class.",
+            "Remplace titre par vedette dans class, et .titre par .vedette dans la règle."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "defi",
+      "title": "Petit défi : Deux classes, deux couleurs",
+      "intro": "Crée une nouvelle petite page avec un titre et deux paragraphes. Essaie sans regarder les exemples.",
+      "items": [
+        {
+          "id": "defi-classes",
+          "text": "Choisis une classe pour le titre et une autre classe commune aux deux paragraphes."
+        },
+        {
+          "id": "defi-couleurs",
+          "text": "Écris les deux règles CSS : le titre doit avoir une couleur différente des paragraphes.",
+          "hint": "Chaque règle commence par un point suivi du nom de la classe. Utilise color entre accolades."
+        },
+        {
+          "id": "defi-verifier",
+          "text": "Vérifie les couleurs, puis explique pourquoi modifier une seule règle change les deux paragraphes."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "fond",
+      "title": "Réutiliser aussi un fond",
+      "paragraphs": [
+        "Si tu as compris le ciblage, ajoute un fond aux paragraphes qui partagent texte. background-color règle leur fond ; color règle les lettres. Cette règle remplace ta règle .texte actuelle.",
+        "Le fond peut occuper plus de place que les mots : il colore la zone de chaque paragraphe, pas seulement ses lettres. black signifie noir et lightyellow jaune clair. Tu peux choisir des couleurs, mais garde les lettres bien lisibles."
+      ],
+      "code": ".texte {\n  color: black;\n  background-color: lightyellow;\n}"
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-ciblage",
+          "text": "Le titre et les paragraphes correspondent aux bonnes règles."
+        },
+        {
+          "id": "verifier-groupe",
+          "text": "Changer une règle modifie tous les éléments portant cette classe."
+        },
+        {
+          "id": "verifier-renommage",
+          "text": "Après renommage, la classe HTML et le sélecteur correspondent encore."
+        },
+        {
+          "id": "verifier-explication",
+          "text": "Je peux prévoir quels éléments changeront avant de modifier une règle."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Consolidation : Un groupe qui ne change pas",
+      "paragraphs": [
+        "Teste les deux extraits suivants dans un nouvel essai. Le premier va dans HTML, le second dans CSS. Les deux textes devraient devenir verts : cherche pourquoi un seul change."
+      ],
+      "code": "<p class=\"info\">Premier message</p>\n<p class=\"infos\">Deuxième message</p>"
+    },
+    {
+      "type": "lesson",
+      "id": "panne-css",
+      "title": "CSS de cet essai",
+      "paragraphs": [],
+      "code": ".info {\n  color: green;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Répare la correspondance",
+      "intro": "Cherche avant d’ouvrir les aides. Répare seulement ce qui ne correspond pas.",
+      "items": [
+        {
+          "id": "reparer-groupe",
+          "text": "Fais appartenir les deux paragraphes au même groupe info, puis vérifie qu’une seule règle les change tous les deux.",
+          "hints": [
+            "Compare les deux attributs class.",
+            "Les noms info et infos sont différents.",
+            "Compare chacun des noms avec .info.",
+            "Remplace class=\"infos\" par class=\"info\" dans le deuxième paragraphe. La règle CSS reste inchangée."
+          ]
+        },
+        {
+          "id": "reparer-justifier",
+          "text": "Explique pourquoi ajouter une deuxième règle n’était pas nécessaire pour cette consigne."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : Deux variantes visuelles",
+      "intro": "Facultatif : utilise uniquement des classes et des couleurs. Tu peux garder le même HTML et changer ses classes.",
+      "items": [
+        {
+          "id": "bonus-variantes",
+          "text": "Crée deux paragraphes avec class=\"calme\" et class=\"fort\". Donne au premier des lettres noires sur fond blanc, au second des lettres blanches sur fond navy (bleu très foncé).",
+          "hints": [
+            "Prévois une règle pour chaque classe.",
+            "Réutilise color et background-color.",
+            "Compare avec la règle .texte du cours.",
+            "Écris .calme { color: black; background-color: white; } et .fort { color: white; background-color: navy; }."
+          ]
+        },
+        {
+          "id": "bonus-transfert",
+          "text": "Change seulement la classe du premier paragraphe en fort. Prédis puis vérifie son apparence, sans modifier ses mots ni ajouter de règle."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "local",
+      "tone": "neutral",
+      "title": "Avec VS Code",
+      "text": "Tu peux réutiliser le squelette de Découvrir le CSS : les balises restent dans body et tes règles dans style. Enregistre le fichier puis actualise le navigateur. Le squelette fourni suffit ; aucune feuille externe n’est nécessaire ici.",
+      "moduleLink": {
+        "text": "Découvrir le CSS",
+        "moduleId": "css-decouverte"
+      }
+    }
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer et modifier un titre."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer et modifier un paragraphe."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+    }
+  ],
+  "masteryCriteria": [
+    "Relier un attribut class à son sélecteur CSS, sans mettre le point dans le nom HTML.",
+    "Modifier une seule règle et prédire tous les éléments concernés.",
+    "Renommer une classe des deux côtés puis réparer une différence de nom en expliquant son effet.",
+    "Transférer un style à un nouvel élément avec une classe existante ; distinguer copie et choix expliqué."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-decouverte",
+      "label": "Reprendre une règle CSS avant les classes si nécessaire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "blockId": "reparer",
+      "label": "Réparer la correspondance HTML/CSS"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre la création des textes si nécessaire"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "css-classes-couleurs",
+      "blockId": "bonus",
+      "label": "Créer deux variantes",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class au sélecteur .classe et réutiliser une classe sur plusieurs éléments."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-mini-page",
+      "label": "Réinvestir les bases dans la mini-page HTML",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer des titres et sous-titres."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer plusieurs paragraphes."
+        },
+        {
+          "skillId": "html.lists",
+          "expectation": "Créer une liste."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Créer un lien et modifier sa destination."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une image et rédiger alt."
+        }
+      ]
+    },
+    {
+      "moduleId": "web-affiche-numerique",
+      "label": "Créer une affiche : si règles et classes sont comprises",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class au sélecteur .classe et réutiliser une classe sur plusieurs éléments."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire comprendre qu’une classe associe des éléments à un style réutilisable. Observer ciblage, renommage et transfert plutôt que la seule couleur obtenue.",
+    "entryDiagnosis": [
+      "Demander de modifier un titre et un paragraphe. Si les balises restent fragiles, proposer une reprise HTML ou une aide de saisie distincte.",
+      "Présenter p { color: blue; }. Attendu : p choisit les paragraphes, color est la propriété, blue la valeur. Demander ensuite de changer le fond sans modifier les lettres.",
+      "Si l’explication ou le choix de propriété manque, proposer Découvrir le CSS puis revenir ici. Ne pas imposer ce détour à un élève qui sait faire."
+    ],
+    "preparation": [
+      "Utiliser un CodePen vierge ou enlever les anciennes règles de cet essai pour éviter des résultats dus à un style précédent.",
+      "En local, le squelette de Découvrir le CSS suffit. Aider à enregistrer/actualiser sans confondre cette manipulation avec le ciblage.",
+      "Rendre les extraits visibles et les noms de couleurs disponibles ; aucune démonstration par partage d’écran n’est nécessaire."
+    ],
+    "why": "Les classes permettent de choisir quels éléments partagent une apparence sans recopier la même règle pour chacun.",
+    "discoverySpeech": [
+      "« Une règle p vise tous les paragraphes. Mais si je veux donner une apparence à un groupe seulement, comment le reconnaître ? Nous allons lui donner un nom avec class. »",
+      "« Ici class est l’attribut HTML, titre est le nom choisi. Dans CSS, le point de .titre annonce que nous cherchons cette classe. Je ne mets pas ce point dans class. »",
+      "« Ajoutons deux paragraphes avec le même nom de classe. Je change une seule couleur : avant de regarder, lesquels vont changer ? »",
+      "« Je renomme titre en vedette. Le nom n’est pas magique : les deux côtés doivent encore correspondre. Quelle ligne faut-il adapter ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-classes-couleurs",
+        "blockId": "selecteur-css",
+        "label": "Relier la classe à sa règle"
+      },
+      "comments": [
+        "Montrer class=\"titre\" dans l’extrait HTML précédent puis .titre ici. color et blue gardent les rôles de propriété et valeur.",
+        "Ajouter class=\"texte\" à deux paragraphes ; écrire une seule règle .texte { color: green; }. Les deux changent.",
+        "Renommer un seul côté provisoirement, constater la perte du style, puis rétablir la correspondance. Cela explique le rôle du nom, pas seulement celui du point."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Est-ce que titre est un mot réservé pour les titres ?",
+        "answer": "Non. C’est un nom choisi. Avec class=\"vedette\" et .vedette, la règle fonctionne aussi."
+      },
+      {
+        "question": "Peut-on donner la même classe à deux paragraphes ?",
+        "answer": "Oui, tous deux recevront les déclarations de la règle correspondante."
+      },
+      {
+        "question": "Pourquoi le deuxième texte de la consolidation reste-t-il sans la couleur voulue ?",
+        "answer": "Il porte infos, alors que le sélecteur est .info. Enlever le s dans son class satisfait le groupe demandé."
+      },
+      {
+        "question": "Pourquoi n’écrit-on pas class=\".titre\" ?",
+        "answer": "Le point fait partie de la syntaxe du sélecteur CSS. Le nom HTML attendu est titre, sans point."
+      },
+      {
+        "question": "Dois-je créer une nouvelle règle pour ajouter un troisième texte au même groupe ?",
+        "answer": "Non : lui donner la classe existante suffit. Demander de le montrer, puis d’expliquer."
+      },
+      {
+        "question": "Le texte devient difficile à lire sur le fond choisi. Ai-je raté les classes ?",
+        "answer": "Pas forcément. Vérifier séparément le ciblage et le choix lisible des couleurs ; proposer noir/blanc ou blanc/navy."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "css-classes-couleurs",
+      "blockId": "guide",
+      "label": "Un titre en couleur"
+    },
+    "independentActivity": {
+      "moduleId": "css-classes-couleurs",
+      "blockId": "defi",
+      "label": "Deux classes, deux couleurs"
+    },
+    "differentiation": [
+      "Laisser un modèle de syntaxe si nécessaire, mais demander à l’élève de choisir quelle classe partager. Ne pas confondre support de mémoire et choix de ciblage.",
+      "Pour observer le transfert, demander un troisième paragraphe de même apparence sans nouvelle règle.",
+      "Si le point est compris mais la couleur échoue, cibler la déclaration ; si la règle est comprise mais un seul élément change, comparer les noms."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les noms HTML et CSS diffèrent.",
+        "helps": [
+          "Faire désigner les éléments à regrouper.",
+          "Comparer lettre par lettre les noms.",
+          "Utiliser le petit exemple titre/.titre.",
+          "Aligner les noms, puis demander un renommage différent sans aide."
+        ]
+      },
+      {
+        "symptom": "Toutes les phrases changent alors qu’un groupe seulement était demandé.",
+        "helps": [
+          "Regarder le début de la règle.",
+          "Le sélecteur p choisit toutes les balises p, pas une classe particulière.",
+          "Comparer p et .texte.",
+          "Utiliser .texte et attribuer cette classe aux seuls éléments concernés."
+        ]
+      },
+      {
+        "symptom": "L’élève recopie une règle par paragraphe.",
+        "helps": [
+          "Demander quels éléments doivent partager leur style.",
+          "Repérer leur classe commune.",
+          "Observer une seule règle avec deux éléments.",
+          "Faire ajouter un troisième élément avec cette classe sans nouvelle règle."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution possible du défi : un h1 class=\"vedette\", deux p class=\"texte\", puis .vedette { color: purple; } et .texte { color: darkgreen; }. D’autres noms/couleurs conviennent si le ciblage est expliqué.",
+      "Solution du bonus : .calme { color: black; background-color: white; } et .fort { color: white; background-color: navy; }. Donner fort au premier paragraphe suffit à transférer le style.",
+      "Observer réussite autonome, avec modèle ou avec aide ; séparer la manipulation du clavier de la compréhension. Aucun nouveau statut ni validation automatique.",
+      "Si règle et ciblage sont compris, proposer le défi HTML seulement avec ses prérequis, ou l’affiche. Une difficulté isolée appelle la consolidation correspondante, pas le parcours entier.",
+      "Les couleurs orange/vert des essais sont des observations ; pour une production lisible, revoir le couple texte/fond. Le bonus est facultatif."
+    ],
+    "quickConductor": [
+      "Vérifier lecture de règle ; proposer C1 uniquement si nécessaire.",
+      "Expliquer class et le point du sélecteur.",
+      "Modifier ensemble une classe partagée.",
+      "Lancer le défi et demander le transfert à un troisième élément.",
+      "Consolider la correspondance ou proposer les variantes.",
+      "Choisir une suite selon les prérequis ; noter manuellement les observations."
+    ],
+    "references": [
+      {
+        "title": "MDN : Sélecteurs de classe",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Class_selectors"
+      },
+      {
+        "title": "MDN : Découvrir la syntaxe CSS",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS"
+      },
+      {
+        "title": "MDN : color",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color"
+      },
+      {
+        "title": "MDN : background-color",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-color"
+      }
+    ]
+  }
+}

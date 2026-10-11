@@ -6,7 +6,7 @@ const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA;
 
 test('RB01 conserve la leçon complète après retrait de l’essai visuel', () => {
@@ -17,7 +17,7 @@ test('RB01 conserve la leçon complète après retrait de l’essai visuel', () 
   assert.match(data.modules['robotique-lumiere'].blocks.find(b => b.id === 'atelier').paragraphs.join(' '), /Tinker this.*enseignant/);
   const blocks = data.modules['robotique-lumiere'].blocks;
   for (const id of ['observer', 'commander', 'guide', 'autonomie']) assert.ok(blocks.some(b => b.id === id));
-  const css = fs.readFileSync(path.join(root, 'student-lowpoly.css'), 'utf8');
+  const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'student-lowpoly.css'));
   assert.doesNotMatch(css, /robotique-lesson-ambience|preparation-steps/);
   assert.match(css, /data-domain="robotique"[^\n]+--domain-canvas: #eaf0ec/);
   assert.doesNotMatch(css, /data-lesson-id/);

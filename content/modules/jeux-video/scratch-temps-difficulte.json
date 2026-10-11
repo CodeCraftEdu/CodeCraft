@@ -1,0 +1,493 @@
+{
+  "domainId": "jeux-video",
+  "title": "Gérer le temps et la difficulté",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Limiter la durée d’une partie et comparer une difficulté en changeant un réglage à la fois.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.time",
+    "scratch.variables",
+    "scratch.conditions",
+    "scratch.game-rules"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Créer une variable pour tous les sprites, remettre à zéro et ajouter un point ; sinon reprendre Compter et mémoriser."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Utiliser si … alors ; sinon reprendre Faire réagir le jeu."
+    },
+    {
+      "skillId": "scratch.game-rules",
+      "expectation": "Comprendre stop tout et le redémarrage au drapeau ; sinon reprendre Gagner, perdre et recommencer."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Dix secondes pour cliquer",
+      "paragraphs": [
+        "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau, puis garde le chat. Cet essai est un petit défi de clics, pas encore un jeu complet. Il ne nécessite ni clones ni ancien projet. Tout le code est placé dans le chat.",
+        "Dans Variables, crée score et duree pour tous les sprites. Score compte les clics, duree contient la durée autorisée en secondes. Garde score affiché.",
+        "Dans Capteurs (bleu clair), le bloc ovale chronomètre donne le temps écoulé. Glisse cet ovale dans une case : ne tape pas le mot chronomètre au clavier. Réinitialiser le chronomètre repart de zéro pour tout le projet. On le fait une seule fois au début de la partie, pas à chaque clic.",
+        "Dans Opérateurs (vert), < compare deux nombres : chronomètre < duree signifie qu’il reste du temps. > signifie strictement supérieur : chronomètre > duree devient vrai juste après la limite. Glisse les ovales chronomètre et duree dans les deux cases de ces comparaisons.",
+        "Dans Contrôle, attendre jusqu’à ce que attend que sa condition soit vraie. Dans Apparence, mettre la taille à 100 % de la taille initiale retrouve la taille de départ ; 50 % donnera un chat plus petit."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Démarrer, compter et terminer",
+      "shortSteps": [
+        "Construis la pile de drapeau : score = 0, duree = 10, position (0, 0), taille 100 %, puis réinitialiser le chronomètre.",
+        "Ajoute attendre jusqu’à ce que chronomètre > duree, dire Terminé ! pendant 2 secondes, puis stop tout.",
+        "À côté, construis quand ce sprite est cliqué → si chronomètre < duree alors ajouter 1 à score. Lance et clique sur le chat."
+      ],
+      "paragraphs": [
+        "Quand ce sprite est cliqué est un événement jaune : il démarre une pile pour chaque clic sur le chat. Ajouter 1 doit rester à l’intérieur du si.",
+        "Pendant les dix premières secondes, les clics donnent des points. À dix secondes exactement, chronomètre < duree est faux : les clics ne comptent plus, même pendant le message final de deux secondes.",
+        "Le message apparaît dès que le temps dépasse dix secondes, puis stop tout arrête les scripts. Le chronomètre de Scratch peut continuer à avancer : c’est le score qui reste bloqué. Au drapeau suivant, score et chronomètre repartent de zéro.",
+        "Si tu coches chronomètre dans Capteurs, sa valeur s’affiche sur la scène pour observer les essais. Le temps concerne tout le projet, pas un chronomètre différent par sprite."
+      ],
+      "visualScript": {
+        "caption": "Dans le chat : une partie et des clics autorisés",
+        "note": "Les comparaisons sont des blocs verts ; chronomètre et duree sont des valeurs glissées dans leurs cases.",
+        "stacks": [
+          {
+            "caption": "Démarrer puis terminer",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Une nouvelle partie."
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Effacer les anciens points."
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "duree"
+                  },
+                  " à ",
+                  {
+                    "value": "10"
+                  }
+                ],
+                "explanation": "La limite choisie pour cet essai."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "0"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Retrouver le centre."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "mettre la taille à ",
+                  {
+                    "value": "100"
+                  },
+                  " % de la taille initiale"
+                ],
+                "explanation": "Retrouver une taille connue."
+              },
+              {
+                "category": "sensing",
+                "label": "Capteurs",
+                "parts": [
+                  "réinitialiser le chronomètre"
+                ],
+                "explanation": "Le départ du temps, une seule fois."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre jusqu’à ce que ",
+                  {
+                    "condition": [
+                      {
+                        "value": "chronomètre"
+                      },
+                      " > ",
+                      {
+                        "value": "duree"
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "explanation": "Attendre la fin du temps."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Terminé !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Les points sont déjà bloqués par la condition de clic."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "stop ",
+                  {
+                    "choice": "tout"
+                  }
+                ],
+                "explanation": "Arrêter les scripts de la partie."
+              }
+            ]
+          },
+          {
+            "caption": "Un clic pendant le temps autorisé",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand ce sprite est cliqué"
+                ],
+                "explanation": "Le clic sur le chat déclenche cette pile."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "value": "chronomètre"
+                      },
+                      " < ",
+                      {
+                        "value": "duree"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "explanation": "Ne compter que les clics avant la limite.",
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "1"
+                      },
+                      " à ",
+                      {
+                        "choice": "score"
+                      }
+                    ],
+                    "explanation": "Un clic autorisé vaut un point."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "quand le drapeau vert est cliqué\n  mettre score à 0\n  mettre duree à 10\n  aller à x: 0 y: 0\n  mettre la taille à 100 % de la taille initiale\n  réinitialiser le chronomètre\n  attendre jusqu’à ce que <chronomètre > duree>\n  dire Terminé ! pendant 2 secondes\n  stop tout\n\nquand ce sprite est cliqué\n  si <chronomètre < duree> alors\n    ajouter 1 à score"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Vérifier la limite",
+      "items": [
+        {
+          "id": "cliquer",
+          "text": "Lance, clique plusieurs fois sur le chat, puis continue pendant Terminé ! : les points ne doivent plus augmenter.",
+          "hint": "La condition du clic bloque le score avant que stop tout soit exécuté."
+        },
+        {
+          "id": "relancer",
+          "text": "Relance le drapeau. Vérifie score = 0, le chat au centre et une nouvelle durée complète.",
+          "hint": "Cherche les remises à zéro au début de la pile, pas dans celle du clic."
+        },
+        {
+          "id": "expliquer",
+          "text": "Montre ce qui mesure le temps, ce qui fixe la limite et ce qui autorise un point. Explique sans simplement relire les blocs."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Comparer deux difficultés",
+      "intro": "Change un seul réglage par essai pour comprendre son effet, sans imposer un score à atteindre.",
+      "items": [
+        {
+          "id": "temps",
+          "text": "Dans la pile de départ, passe duree de 10 à 15, teste, puis à 5 et teste. Prédis ce qui change sans toucher la taille.",
+          "hint": "Il y a plus ou moins de temps pour cliquer ; un clic vaut toujours un point."
+        },
+        {
+          "id": "taille",
+          "text": "Remets duree à 10. Dans la même pile, passe la taille de 100 à 50 %. Compare en relançant entre les essais.",
+          "hint": "Le chat est plus petit, mais le temps reste identique. Le réglage de la pile remplace la taille au lancement."
+        },
+        {
+          "id": "choisir",
+          "text": "Choisis une version facile et une version plus difficile. Explique les réglages choisis et vérifie pour chacune que le score s’arrête à la limite."
+        },
+        {
+          "id": "sauver",
+          "text": "Sauvegarde ton essai. Un bon score ne prouve pas à lui seul que tu comprends le chronomètre ou les conditions."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Bonus facultatif : plus difficile en cours de partie",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "progressif",
+          "title": "Une cible qui rétrécit",
+          "paragraphs": [
+            "Seulement si le temps, les conditions et les piles parallèles sont compris : travaille dans une copie avec duree = 10 et taille = 100 au départ.",
+            "Ajoute une troisième pile dans le chat : drapeau → attendre 5 secondes → si chronomètre < duree alors mettre la taille à 50 % de la taille initiale. Ne remets ni score ni chronomètre à zéro dans cette pile.",
+            "Pendant les cinq premières secondes, la cible est grande ; ensuite elle rétrécit si la partie continue. La limite reste dix secondes. Relancer doit retrouver la grande taille grâce à la première pile.",
+            "Essaie duree = 4 : la condition empêche le rétrécissement après la fin du temps. Explique pourquoi avant de tester."
+          ],
+          "code": "quand le drapeau vert est cliqué\n  attendre 5 secondes\n  si <chronomètre < duree> alors\n    mettre la taille à 50 % de la taille initiale"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Consolider avant de poursuivre",
+      "paragraphs": [
+        "Tu peux réutiliser une limite de temps dans un jeu que tu comprends déjà, mais ce transfert est facultatif. Déboguer son jeu propose ensuite une méthode pour chercher les erreurs. Reprends les essais ci-dessus si le score continue après la limite ou si le redémarrage ne fonctionne pas."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer temps mesuré et durée autorisée.",
+    "Réinitialiser au départ sans prolonger la partie à chaque clic.",
+    "Bloquer les points à la limite et expliquer la condition, au-delà de la reproduction du modèle.",
+    "Comparer deux réglages de difficulté en changeant une seule valeur, puis vérifier le redémarrage."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-temps-difficulte",
+      "blockId": "guide",
+      "label": "Revoir la limite et la remise à zéro"
+    },
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "exemple",
+      "label": "Reprendre le score"
+    },
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "exemple",
+      "label": "Reprendre une condition"
+    },
+    {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "exemple",
+      "label": "Revoir arrêt et reprise"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-temps-difficulte",
+      "blockId": "bonus",
+      "label": "Changer la difficulté pendant la partie",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.time",
+          "expectation": "Expliquer la limite et le redémarrage."
+        },
+        {
+          "skillId": "scratch.events",
+          "expectation": "Comprendre que deux piles de drapeau peuvent avancer en parallèle."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-debogage",
+      "label": "Chercher et corriger une erreur",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.sequence",
+          "expectation": "Lire une pile dans l’ordre."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Comprendre le score et la remise à zéro ; reprendre Compter et mémoriser si nécessaire."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Comprendre une comparaison ; reprendre Faire réagir le jeu si nécessaire."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Mesurer une partie, bloquer les actions à la limite et comparer un seul paramètre de difficulté à la fois.",
+    "entryDiagnosis": [
+      "Demander de remettre score à zéro et d’ajouter un point.",
+      "Faire expliquer une condition si et stop tout. Reprendre variables, réactions ou fin de partie si nécessaire ; les clones ne sont pas requis."
+    ],
+    "preparation": [
+      "Faire sauvegarder le travail précédent avant Fichier → Nouveau. Projet neuf avec le chat, variables score et duree pour tous les sprites.",
+      "Prévoir une cible fixe au centre. Afficher le chronomètre pour observer la limite si utile ; aucune base partagée nécessaire."
+    ],
+    "why": "Une durée et une taille sont des règles testables : changer une valeur à la fois permet d’expliquer ce qui rend l’essai plus difficile.",
+    "discoverySpeech": [
+      "« Le chronomètre mesure. Duree indique notre limite. Ce ne sont pas la même chose. »",
+      "« Un clic n’a pas le droit de remettre le temps à zéro, sinon on ne finirait jamais. »",
+      "« Même pendant le message final, la condition refuse les points. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-temps-difficulte",
+        "blockId": "exemple",
+        "label": "Un temps limité et un score protégé"
+      },
+      "comments": [
+        "Départ : score 0, duree 10, position 0/0, taille 100, reset du chronomètre. Fin : attendre chrono > duree, message 2 s, stop tout.",
+        "Clic : si chrono < duree, ajouter 1. À 10 exactement, cette condition est fausse ; le message attend le premier instant supérieur à 10. Pas de point pendant sa pause.",
+        "Stop tout arrête les scripts, pas nécessairement la valeur du chronomètre. Évaluer le score figé et le nouveau départ, pas un affichage de temps figé.",
+        "Bonus : troisième pile drapeau, attente 5 s, condition chrono < duree puis taille 50. Avec duree 4, le test est faux ; le message de fin n’autorise pas de rétrécissement."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Quel bloc mesure, quelle valeur fixe la limite ?",
+        "answer": "Chronomètre mesure ; la variable duree contient la limite choisie."
+      },
+      {
+        "question": "Pourquoi ne pas réinitialiser à chaque clic ?",
+        "answer": "Cela repousserait sans cesse la fin et ne mesurerait plus la durée de la partie."
+      },
+      {
+        "question": "Le clic à dix secondes exactement compte-t-il ?",
+        "answer": "Non : 10 < 10 est faux. La fin affichée arrive juste après, lorsque 10 est dépassé."
+      },
+      {
+        "question": "Pourquoi ne pas changer taille et durée ensemble pour comparer ?",
+        "answer": "On ne saurait pas quelle modification explique la différence. On teste une valeur à la fois."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-temps-difficulte",
+      "blockId": "guide",
+      "label": "Observer le score pendant la fin"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-temps-difficulte",
+      "blockId": "autonomie",
+      "label": "Comparer durée puis taille"
+    },
+    "differentiation": [
+      "CE2 : assembler avec le modèle puis changer seulement duree ; faire raconter avant/après.",
+      "Élève autonome : justifier les deux comparaisons et tester les clics pendant le message final.",
+      "Le score obtenu n’est pas un niveau de compréhension. Bonus parallèle seulement après maîtrise du test simple."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La partie ne se termine jamais.",
+        "helps": [
+          "Afficher et observer le chronomètre.",
+          "Chercher ses réinitialisations.",
+          "Vérifier que les cases de la comparaison contiennent des ovales et non des mots tapés.",
+          "Garder un seul reset au départ et glisser chronomètre et duree dans chrono > duree."
+        ]
+      },
+      {
+        "symptom": "Les points continuent pendant Terminé !.",
+        "helps": [
+          "Cliquer pendant le message pour confirmer.",
+          "Observer la pile du clic.",
+          "Vérifier que ajouter 1 est dans le si, pas dessous.",
+          "Encadrer l’ajout avec si chronomètre < duree alors."
+        ]
+      },
+      {
+        "symptom": "La difficulté choisie disparaît au drapeau.",
+        "helps": [
+          "Relancer et observer la taille et la durée.",
+          "Repérer les réglages dans la pile de départ.",
+          "Comparer le champ Taille sous la scène et le bloc du programme.",
+          "Modifier les valeurs de cette pile, qui réinitialise chaque partie, puis relancer."
+        ]
+      }
+    ],
+    "notes": "Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes. Demander une prédiction, l’explication de la limite et un test de reprise ; ni le score ni les cases ne valident automatiquement une compétence.",
+    "quickConductor": [
+      "Vérifier variables et condition.",
+      "Présenter mesure et limite.",
+      "Construire les deux piles et tester pendant le message.",
+      "Comparer durée puis taille.",
+      "Choisir reprise ou difficulté progressive et sauvegarder."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

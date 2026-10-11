@@ -1,0 +1,438 @@
+{
+  "domainId": "web",
+  "title": "Mini-page HTML complète",
+  "type": "challenge",
+  "objective": "Réaliser une page complète sans indices.",
+  "skillIds": [
+    "html.headings",
+    "html.text",
+    "html.lists",
+    "html.links",
+    "html.images"
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "defi",
+      "title": "Défi autonome",
+      "paragraphs": [
+        "Crée une mini-page complète sur un sujet de ton choix. Essaie de ne regarder aucun indice. Utilise la checklist pour vérifier que rien ne manque.",
+        "Résultat attendu : une page lisible sur un sujet de ton choix, où les liens fonctionnent et les images sont décrites. Tu réutilises les notions déjà apprises ; aucun CSS n’est demandé.",
+        "Travaille sans IA et essaie sans modèle. Le parcours accessible dans le fil d’Ariane permet de retrouver la leçon d’une notion qui bloque ; reviens ensuite à ton propre défi, sans recopier une page complète.",
+        "Dans CodePen, utilise HTML ; CSS et JS peuvent rester vides. Pour les images, les ressources du module Images restent disponibles : copie uniquement l’adresse de l’image dans src et rédige toi-même alt.",
+        "Tu peux améliorer une page déjà commencée. Vérifie alors chaque exigence et fais aussi une modification nouvelle pour montrer ce que tu comprends."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "preparer",
+      "title": "Prépare ton défi",
+      "intro": "Cette préparation ne donne pas la solution HTML. Elle t’aide à organiser ton travail.",
+      "items": [
+        {
+          "id": "choisir-sujet",
+          "text": "Choisis un sujet sans donnée personnelle. Écris en quelques mots ce que tes rubriques vont raconter."
+        },
+        {
+          "id": "prevoir-contenu",
+          "text": "Repère dans la checklist les textes à écrire, les liens à choisir et les images à insérer. Réalise une rubrique à la fois."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "ressources-images",
+      "title": "Besoin d’une source d’image ?",
+      "tone": "neutral",
+      "text": "Ouvre Images HTML pour utiliser les deux dessins fournis. Ils fonctionnent dans CodePen sans chercher une image sur un autre site. Tu peux choisir un sujet autour des formes pour les réutiliser.",
+      "moduleLink": {
+        "text": "Images HTML",
+        "moduleId": "html-images"
+      }
+    },
+    {
+      "type": "checklist",
+      "id": "exigences",
+      "title": "Ta page doit contenir",
+      "items": [
+        {
+          "id": "titre-principal",
+          "text": "Un titre principal h1."
+        },
+        {
+          "id": "niveaux-titres",
+          "text": "Deux sous-titres h2 pour deux parties de même importance."
+        },
+        {
+          "id": "paragraphes",
+          "text": "Au moins 3 paragraphes."
+        },
+        {
+          "id": "liste",
+          "text": "Une liste."
+        },
+        {
+          "id": "liens",
+          "text": "2 liens."
+        },
+        {
+          "id": "images",
+          "text": "2 images."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "fermeture-balises",
+          "text": "Les balises qui entourent un contenu sont correctement fermées. La balise img n’a pas de balise fermante."
+        },
+        {
+          "id": "liens-fonctionnels",
+          "text": "Les liens fonctionnent."
+        },
+        {
+          "id": "images-visibles",
+          "text": "Les images s’affichent."
+        },
+        {
+          "id": "alt-adapte",
+          "text": "Chaque image possède un alt adapté."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "comprehension",
+      "title": "Montre que tu peux modifier ta page",
+      "intro": "Après la checklist, essaie ces changements sans regarder de solution.",
+      "items": [
+        {
+          "id": "changer-destination",
+          "text": "Change la destination d’un lien sans modifier son texte visible. Teste-le et explique quelle partie tu as modifiée."
+        },
+        {
+          "id": "changer-image",
+          "text": "Remplace une image, puis adapte son texte alternatif. Explique ce qui est source et ce qui est description."
+        },
+        {
+          "id": "ajouter-element",
+          "text": "Ajoute un élément à la liste à l’endroit voulu, puis explique comment tu sais qu’il appartient à cette liste."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : Une nouvelle rubrique",
+      "intro": "Facultatif, avec les mêmes notions seulement. La page HTML peut être réussie sans ce bonus et sans CSS.",
+      "items": [
+        {
+          "id": "rubrique-supplementaire",
+          "text": "Ajoute une rubrique sur un autre aspect de ton sujet, avec un sous-titre et un paragraphe. Choisis un lien ou une image utile si tu veux l’illustrer."
+        },
+        {
+          "id": "verifier-rubrique",
+          "text": "Reprends les vérifications pour cette rubrique. Explique comment elle se rattache à ton titre principal."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "local",
+      "title": "Avec VS Code : Cadre de fichier fourni",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "squelette-local",
+          "title": "Cadre vide, pas une solution du défi",
+          "paragraphs": [
+            "Crée index.html, colle ce cadre, puis place ton propre contenu entre <body> et </body>, à la place du commentaire. Enregistre et ouvre le fichier dans ton navigateur ; actualise-le après chaque enregistrement.",
+            "Le commentaire entre <!-- et --> est une indication, pas un texte visible. head contient des réglages ; title donne le titre de l’onglet, pas le h1 à créer dans la page. body reçoit le contenu visible. Tu peux garder ce cadre tel quel.",
+            "Pour une image locale, utilise un fichier dont tu connais le chemin, ou l’adresse de l’image fournie dans Images. Dans CodePen, n’utilise pas ce cadre : le panneau HTML reçoit seulement le contenu du défi."
+          ],
+          "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Ma mini-page</title>\n</head>\n<body>\n  <!-- Écris ici le contenu de ton défi. -->\n</body>\n</html>"
+        }
+      ]
+    }
+  ],
+  "theme": "debutants",
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer et modifier un titre."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer et modifier un paragraphe."
+    },
+    {
+      "skillId": "html.headings",
+      "expectation": "Utiliser aussi des sous-titres, par exemple h2."
+    },
+    {
+      "skillId": "html.lists",
+      "expectation": "Placer les éléments li dans une liste ul."
+    },
+    {
+      "skillId": "html.links",
+      "expectation": "Distinguer destination href et texte cliquable."
+    },
+    {
+      "skillId": "html.images",
+      "expectation": "Insérer/remplacer une image avec src et rédiger alt."
+    }
+  ],
+  "masteryCriteria": [
+    "Construire une page respectant toutes les exigences HTML et vérifier réellement ses liens et images.",
+    "Expliquer la place des sous-titres et des éléments de liste, pas seulement compter les balises.",
+    "Modifier séparément le texte d’un lien et sa destination ; remplacer une image avec un alt adapté.",
+    "Identifier une difficulté et reprendre uniquement la notion concernée. Distinguer réussite autonome, avec modèle ou avec aide."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre les titres et paragraphes"
+    },
+    {
+      "moduleId": "html-listes",
+      "label": "Reprendre la liste et ses éléments"
+    },
+    {
+      "moduleId": "html-liens",
+      "label": "Reprendre texte et destination des liens"
+    },
+    {
+      "moduleId": "html-images",
+      "blockId": "depannage",
+      "label": "Réparer source et texte alternatif"
+    },
+    {
+      "moduleId": "html-images",
+      "blockId": "ressource-carre",
+      "label": "Retrouver les sources d’images fournies"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-mini-page",
+      "blockId": "bonus",
+      "label": "Ajouter une rubrique avec les notions déjà maîtrisées",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        },
+        {
+          "skillId": "html.headings",
+          "expectation": "Utiliser aussi des sous-titres, par exemple h2."
+        },
+        {
+          "skillId": "html.lists",
+          "expectation": "Placer les éléments li dans une liste ul."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer destination href et texte cliquable."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer/remplacer une image avec src et rédiger alt."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-decouverte",
+      "label": "Découvrir le CSS si les règles sont encore nouvelles",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre ou continuer les classes si la règle simple est comprise",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        }
+      ]
+    },
+    {
+      "moduleId": "web-affiche-numerique",
+      "label": "Mon affiche numérique : prolongement CSS facultatif",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class au sélecteur .classe et réutiliser une classe sur plusieurs éléments."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Observer un réinvestissement HTML complet sans modèle de page à recopier, puis une modification expliquée. Le CSS ne fait pas partie des critères de ce défi.",
+    "entryDiagnosis": [
+      "Faire expliquer ce que l’élève prévoit pour le titre, les rubriques et la liste. Si une seule notion manque, proposer son lien de reprise, pas tout le parcours.",
+      "Faire distinguer texte/destination d’un lien et source/description d’une image avant de lancer le défi sans modèle.",
+      "Vérifier les manipulations de collage de source. Une aide technique ne préjuge pas de la compréhension de src/alt."
+    ],
+    "preparation": [
+      "Rendre la checklist accessible. Aucun partage d’écran professeur nécessaire : toutes les exigences sont sur la page.",
+      "Garder les deux ressources Images accessibles et vérifier leur chargement. En CodePen, seule leur source est copiée ; alt est rédigé par l’élève.",
+      "En local, fournir le cadre vide ; son emploi n’est pas une validation des futurs modules de structure et chemins."
+    ],
+    "why": "Assembler plusieurs notions oblige à choisir les bons éléments selon le contenu, à les vérifier et à expliquer leurs rôles dans une page personnelle.",
+    "discoverySpeech": [
+      "« Tu connais les pièces de cette page. Cette fois, tu choisis un sujet et tu les assembles sans recopier une page entière. La checklist dit ce qui doit être présent, pas comment écrire la solution. »",
+      "« Si tu hésites sur une pièce, reprends seulement son cours. Une aide sur une liste ne veut pas dire que tu dois refaire tous tes titres. »",
+      "« Une fois la page affichée, nous allons changer une destination et une image. Ce qui m’intéresse est que tu saches retrouver la bonne partie du code et expliquer ton changement. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-mini-page",
+        "blockId": "exigences",
+        "label": "Lire le cahier des charges"
+      },
+      "comments": [
+        "Exemple de démarche, pas de solution : pour une page sur les formes, prévoir un titre, des rubriques et des ressources avant d’écrire les balises.",
+        "Faire associer chaque exigence à un rôle : h1 annonce le sujet, les sous-titres organisent les rubriques, les paragraphes développent.",
+        "Ne pas livrer une page prête à copier. La preuve attendue comprend une modification nouvelle, même si l’élève repart d’un travail existant."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Ai-je besoin de CSS pour réussir ?",
+        "answer": "Non. Les six exigences sont HTML. La personnalisation CSS est un prolongement séparé."
+      },
+      {
+        "question": "Puis-je utiliser ma page déjà commencée ?",
+        "answer": "Oui. Vérifier toutes les exigences et demander les modifications de compréhension pour distinguer réutilisation et simple présentation d’un ancien travail."
+      },
+      {
+        "question": "Comment sais-tu que ton nouveau li est dans la bonne liste ?",
+        "answer": "Il est placé entre l’ouverture et la fermeture du ul visé, et son rendu apparaît dans cette liste."
+      },
+      {
+        "question": "Le lien a le bon texte : est-ce suffisant ?",
+        "answer": "Non. Tester aussi sa destination href ; le texte visible ne prouve pas l’adresse."
+      },
+      {
+        "question": "Faut-il fermer img comme p ?",
+        "answer": "Non. img n’entoure pas de contenu et n’a pas de balise fermante. p, a et les éléments qui entourent du contenu doivent être fermés correctement."
+      },
+      {
+        "question": "Je bloque sur une image, faut-il recommencer toute la page ?",
+        "answer": "Non. Conserver le reste, vérifier source/alt avec la consolidation Images, puis reprendre le défi."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-mini-page",
+      "blockId": "preparer",
+      "label": "Organiser les exigences sans donner la solution"
+    },
+    "independentActivity": {
+      "moduleId": "html-mini-page",
+      "blockId": "defi",
+      "label": "Réaliser puis vérifier sa page"
+    },
+    "differentiation": [
+      "Si une notion manque, proposer sa reprise ciblée puis un nouvel essai sans modèle. Préserver les exigences du défi plutôt que les supprimer silencieusement.",
+      "Autoriser le squelette local ou l’aide au collage et observer séparément la production HTML.",
+      "Pour un élève autonome, demander un changement sans citer l’attribut attendu, puis le bonus s’il le souhaite."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Une exigence est cochée mais absente ou non fonctionnelle.",
+        "helps": [
+          "Relire une exigence précise.",
+          "Faire montrer la partie correspondante dans le rendu et le code.",
+          "Comparer avec le cours de cette seule notion.",
+          "Faire corriger puis tester de nouveau, sans valider automatiquement la compétence."
+        ]
+      },
+      {
+        "symptom": "Le texte du lien change mais pas sa destination.",
+        "helps": [
+          "Faire cliquer le lien.",
+          "Demander quelle partie contient l’adresse.",
+          "Reprendre la distinction texte/href.",
+          "Modifier href seulement, garder le texte, puis retester."
+        ]
+      },
+      {
+        "symptom": "L’image est remplacée mais sa description n’est plus adaptée.",
+        "helps": [
+          "Faire décrire l’image actuelle.",
+          "Comparer cette description avec alt.",
+          "Revoir src et alt dans Images.",
+          "Rédiger un nouvel alt ; ne pas copier une balise complète depuis la ressource."
+        ]
+      }
+    ],
+    "notes": [
+      "Pas de solution HTML complète publiée dans ce défi. Pour la correction, vérifier : un h1, deux h2 pour des parties de même importance, trois p au moins, un ul/li, deux a avec destinations testées, deux img avec sources et alt utiles.",
+      "Solution attendue du transfert : changer href sans toucher au texte du a ; remplacer la valeur de src et réécrire alt ; insérer un nouveau li à l’intérieur du ul. Le sujet et les mots restent libres.",
+      "Observer et noter si utile autonome/avec modèle/avec aide dans la remarque existante, sans nouvel outil. Une case cochée ne vaut pas acquisition.",
+      "Si le noyau HTML est compris, proposer C1, C2 ou l’affiche selon les acquis CSS. Aucun passage obligé par un bonus. Structure d’un document HTML et Fichiers et chemins sont désormais accessibles pour poursuivre avec des fichiers locaux.",
+      "Le même défi reste exigeant et réutilisable dans Fondations et Débutants ; un changement de parcours n’oblige pas à refaire un défi déjà compris."
+    ],
+    "quickConductor": [
+      "Vérifier les prérequis et le collage des ressources.",
+      "Faire préparer les rubriques et lire la checklist.",
+      "Laisser réaliser sans modèle, avec reprises ciblées.",
+      "Tester les liens et les images.",
+      "Demander destination changée, image remplacée et élément ajouté à la liste.",
+      "Décider de la suite HTML/CSS et relever séparément les aides."
+    ],
+    "references": [
+      {
+        "title": "MDN : Élément img",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
+      },
+      {
+        "title": "HTML Standard : Sémantique des éléments",
+        "url": "https://html.spec.whatwg.org/multipage/semantics.html"
+      },
+      {
+        "title": "HTML Standard : Élément style",
+        "url": "https://html.spec.whatwg.org/multipage/semantics.html#the-style-element"
+      }
+    ]
+  }
+}

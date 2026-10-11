@@ -1,0 +1,491 @@
+{
+  "scratchProjectId": "chat-cible",
+  "domainId": "jeux-video",
+  "title": "Faire réagir le jeu",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Tester une condition pour déplacer le chat et réagir à un contact.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.conditions",
+    "scratch.contacts"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.loops",
+      "expectation": "Utiliser une boucle continue et l’arrêter : reprendre Répéter des actions."
+    },
+    {
+      "skillId": "scratch.coordinates",
+      "expectation": "Modifier X et revenir à une position : reprendre Piloter un personnage."
+    },
+    {
+      "skillId": "scratch.keyboard",
+      "expectation": "Reconnaître les flèches du clavier."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Un chat et une cible",
+      "paragraphs": [
+        "Sauvegarde ton projet actuel avant de commencer. Ouvre ensuite le projet de départ proposé au-dessus : le chat et la souris nommée Cible sont prêts, sans scripts. Tu peux aussi choisir Fichier → Nouveau pour ne pas mélanger les anciennes commandes, sans supprimer ton travail précédent. Le chat reste le joueur.",
+        "Avec le projet de départ, garde la souris Cible : n’ajoute pas de deuxième cible. Si tu pars d’un projet vide, clique en bas à droite sur Choisir un sprite et prends Ball dans la bibliothèque. Sélectionne sa miniature puis, dans le champ du nom sous la scène, renomme-le Cible.",
+        "Avec Cible sélectionnée, règle x à 80 et y à 0 dans ses champs sous la scène. La cible reste immobile : on ne lui ajoute pas de code.",
+        "Sélectionne à nouveau la miniature du chat : toute la programmation ci-dessous appartient au chat. Le chat démarre à x = -100, y = 0 ; la cible est assez éloignée pour qu’ils ne se touchent pas au départ."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Besoin de revoir les déplacements ?",
+      "text": "Reprends Piloter un personnage si X/Y ou le retour au départ te semblent difficiles. Ne recopie pas ses anciennes piles de touches dans cet essai : nous les remplaçons par des tests dans une boucle.",
+      "moduleLink": {
+        "moduleId": "scratch-pilotage",
+        "text": "Piloter un personnage"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "condition",
+      "title": "2 : Une question qui peut être vraie ou fausse",
+      "paragraphs": [
+        "Dans Contrôle (orange), « si … alors » possède un emplacement de condition et un creux pour les actions. Si la condition est vraie, les actions à l’intérieur s’exécutent. Si elle est fausse, on les saute et on continue la pile.",
+        "Dans Capteurs (bleu clair), « touche espace pressée ? » pose une question. Son menu permet de choisir flèche droite ou gauche. Place ce bloc dans l’emplacement de condition du si.",
+        "Contrairement à l’événement « quand la touche … est pressée », ce capteur ne démarre pas de pile. Il vérifie si une touche est maintenue à cet instant. La boucle permet de reposer la question.",
+        "Le capteur « touche le … ? » se trouve aussi dans Capteurs. Choisis Cible dans son menu : la condition devient vraie quand le chat touche ce sprite.",
+        "Dans les modèles, les encadrés bleu clair sont les conditions à placer dans les si. Les actions indentées restent à l’intérieur. « Fin du bloc » repère seulement le bas du creux ; aucun bloc de ce nom n’est à chercher."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "3 : Maintenir une touche, toucher la cible",
+      "paragraphs": [
+        "Les tests droite et gauche sont deux si séparés, l’un après l’autre. Appuyer sur les deux touches ensemble peut annuler les déplacements ; teste d’abord une touche à la fois.",
+        "La pause de 0.03 seconde est dans la boucle, après les si ; elle ralentit la vérification. Les touches doivent rester accessibles au clavier : clique d’abord sur la scène.",
+        "Au contact, le message dure une seconde puis le chat retourne au départ. Ce retour le sépare de la cible : la réaction ne se répète pas simplement parce qu’il reste collé dessus.",
+        "Aucun mur n’est programmé : le chat peut aller trop loin à gauche. Reviens avec droite ou relance le drapeau ; on n’essaie pas encore de construire un labyrinthe complet."
+      ],
+      "shortSteps": [
+        "Sur le chat, assemble une seule pile au drapeau. Place les deux si de touches et le si de contact à l’intérieur de la boucle.",
+        "Pour les conditions, prends les blocs dans Capteurs puis choisis droite, gauche ou Cible. Pour chaque action, retrouve sa catégorie.",
+        "Clique sur la scène. Maintiens droite pour rejoindre la cible : le chat parle puis revient à gauche. Teste aussi gauche ; le bouton rouge arrête l’essai."
+      ],
+      "visualScript": {
+        "caption": "3 : Maintenir une touche, toucher la cible",
+        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le drapeau démarre la pile."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "-100"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ],
+            "explanation": "Au départ, le chat est à gauche de la cible."
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter indéfiniment"
+            ],
+            "explanation": "La boucle vérifie à nouveau touches et contact.",
+            "children": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche droite"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "explanation": "Si la touche est maintenue, on change X.",
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "3"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "Le chat va à droite."
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche gauche"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "explanation": "Si la touche est maintenue, on change X.",
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-3"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "Le chat va à gauche."
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche le ",
+                      {
+                        "choice": "Cible"
+                      },
+                      " ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "explanation": "Un contact déclenche seulement les blocs à l’intérieur.",
+                "children": [
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": "Touché !"
+                      },
+                      " pendant ",
+                      {
+                        "value": "1"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Le message est visible pendant la durée indiquée."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-100"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ],
+                    "explanation": "Au départ, le chat est à gauche de la cible."
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.03"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Une pause ralentit les essais."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "quand le drapeau vert est cliqué\n  aller à x: -100 y: 0\n  répéter indéfiniment\n    si <touche flèche droite pressée ?> alors\n      ajouter 3 à x\n    si <touche flèche gauche pressée ?> alors\n      ajouter -3 à x\n    si <touche le Cible ?> alors\n      dire Touché ! pendant 1 secondes\n      aller à x: -100 y: 0\n    attendre 0.03 secondes"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : observer vrai et faux",
+      "intro": "Avant le test, dis si la condition devrait être vraie.",
+      "items": [
+        {
+          "id": "immobile",
+          "text": "Lance sans toucher aux flèches. Vérifie que le chat reste au départ.",
+          "hint": "Les conditions de touches sont fausses ; les déplacements sont sautés."
+        },
+        {
+          "id": "maintenir",
+          "text": "Maintiens droite, puis relâche. Explique pourquoi le chat s’arrête.",
+          "hint": "La boucle continue, mais le capteur devient faux au relâchement."
+        },
+        {
+          "id": "contact",
+          "text": "Va jusqu’à la cible. Vérifie un message puis le retour à gauche.",
+          "hint": "Le si de contact contient les deux actions dans cet ordre."
+        },
+        {
+          "id": "absence",
+          "text": "Relance puis reste loin de la cible. Le chat doit-il dire Touché ? Explique et teste.",
+          "hint": "Non : le contact est faux."
+        },
+        {
+          "id": "sauver",
+          "text": "Télécharge le projet .sb3 pour pouvoir le reprendre dans le module du score.",
+          "hint": "Garde la version avec le chat, Cible et cette pile."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : change une règle",
+      "intro": "Tu peux garder ton programme ; fais les choix toi-même.",
+      "items": [
+        {
+          "id": "touche",
+          "text": "Remplace la commande droite par la touche d. Prédis et teste quelle touche fonctionne désormais.",
+          "hint": "Change seulement le menu du capteur, pas l’événement au drapeau."
+        },
+        {
+          "id": "message",
+          "text": "Choisis un autre message au contact, sans le déclencher quand le chat est loin.",
+          "hint": "Le message doit rester dans le si de contact."
+        },
+        {
+          "id": "cible",
+          "text": "Déplace Cible à x = 120, y = 0. Rejoins-la et explique si le code doit changer.",
+          "hint": "Le capteur teste le contact avec le sprite, pas une coordonnée écrite en dur."
+        },
+        {
+          "id": "comprendre",
+          "text": "Demande à quelqu’un de choisir une situation avec ou sans contact. Annonce les actions attendues, puis teste.",
+          "hint": "Réussir n’est pas seulement recopier : explique quelle condition est vraie."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : ajouter haut et bas",
+      "intro": "Si X/Y et les si sont compris.",
+      "items": [
+        {
+          "id": "vertical",
+          "text": "Ajoute deux si pour les touches haut et bas, en changeant Y de 3 et -3.",
+          "hint": "Place-les dans la même boucle, avant la pause ; un si par touche."
+        },
+        {
+          "id": "nouvelle-cible",
+          "text": "Pour ce bonus, sélectionne successivement le chat et Cible et mets leur champ Taille sous la scène à 100. Place Cible à x = 80, y = 120. Relance pour que le chat soit à y = 0, puis avance vers elle sans monter : vérifie l’absence de contact. Monte ensuite pour la rejoindre et explique la différence.",
+          "hint": "À ces tailles, la cible est assez haut pour ne pas toucher le chat resté à y = 0. Droite change seulement X ; haut change Y. Le contact dépend des dessins, pas seulement de leurs centres."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer un événement qui démarre une pile et un capteur qui répond vrai/faux.",
+    "Prévoir quelles actions sont exécutées ou sautées dans un si.",
+    "Expliquer pourquoi une touche relâchée arrête le déplacement malgré la boucle active.",
+    "Tester une réaction au contact et une absence de réaction loin de la cible."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "guide",
+      "label": "Tester une condition à la fois"
+    },
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "position",
+      "label": "Revoir X/Y"
+    },
+    {
+      "moduleId": "scratch-boucles",
+      "blockId": "continue",
+      "label": "Revoir la boucle continue"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "bonus",
+      "label": "Commander aussi le déplacement vertical",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.coordinates",
+          "expectation": "Choisir Y et son signe pour monter ou descendre."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "preparer",
+      "label": "Compter les contacts",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.contacts",
+          "expectation": "Reconstruire et expliquer la réaction à Cible ; reprendre les essais guidés si nécessaire."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Tester une condition pour déplacer le chat et réagir à un contact.",
+    "entryDiagnosis": [
+      "Utiliser une boucle continue et l’arrêter : reprendre Répéter des actions.",
+      "Modifier X et revenir à une position : reprendre Piloter un personnage.",
+      "Reconnaître les flèches du clavier."
+    ],
+    "preparation": [
+      "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
+      "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
+      "Sauvegarder le projet précédent, puis ouvrir la base sans scripts ou choisir Fichier → Nouveau. Garder Chat et la souris Cible sans ajouter de deuxième cible ; depuis un projet vide, Ball renommé Cible convient aussi. Conserver ensuite une copie de ce programme pour les modules Score, Fin de partie et Mini-jeu : ne pas repartir d’une base vide à chaque suite."
+    ],
+    "why": "Les règles d’un jeu sont des tests : une action n’arrive que dans certaines situations.",
+    "discoverySpeech": [
+      "« Ce capteur répond à une question. Il ne démarre pas la pile : le drapeau le fait. »",
+      "« La boucle repose la question. Si la réponse est fausse, que fait-on des actions dans ce si ? »",
+      "« Nous renvoyons le chat à gauche après le contact : il ne reste pas collé à la cible. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-reactions",
+        "blockId": "exemple",
+        "label": "Modèle commenté"
+      },
+      "comments": [
+        "Sans touche, le chat reste à (-100, 0). Une touche maintenue déplace le chat ; relâchée, elle ne déclenche plus le déplacement, même si la boucle continue.",
+        "Au contact : dire Touché ! pendant 1 seconde puis revenir à (-100, 0). Le message suspend cette pile pendant sa durée : elle ne vérifie pas les touches en parallèle durant cette pause. Le retour sépare les sprites et évite de répéter le même contact.",
+        "Les creux contiennent les actions du si ; fin du bloc n’est pas un bloc Scratch. Bonus vertical : Taille 100 pour Chat et Cible, cible (80, 120). Tester d’abord le trajet horizontal à Y = 0 sans contact, puis la montée. Les dimensions des costumes comptent pour le contact."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi le chat s’arrête-t-il quand on relâche droite ?",
+        "answer": "La boucle continue mais le capteur de touche devient faux."
+      },
+      {
+        "question": "Si le contact est faux, le message se produit-il ?",
+        "answer": "Non ; les blocs dans ce si sont sautés."
+      },
+      {
+        "question": "Faut-il modifier la condition quand la cible passe de x=80 à x=120 ?",
+        "answer": "Non : elle teste le sprite Cible, pas une coordonnée."
+      },
+      {
+        "question": "Pourquoi ne pas garder les anciennes piles flèche droite/gauche ?",
+        "answer": "Elles ajouteraient des déplacements à ceux de la boucle et rendraient l’essai confus."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-reactions",
+      "blockId": "guide",
+      "label": "Tests guidés"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-reactions",
+      "blockId": "autonomie",
+      "label": "Modifier sans modèle"
+    },
+    "differentiation": [
+      "Pour un CE2 : une manipulation à la fois, faire montrer la place avant de nommer les termes ; lire la consigne si nécessaire.",
+      "Pour un élève plus autonome : masquer le modèle, demander une prédiction et une modification justifiée avant le bonus.",
+      "Reprendre le prérequis fragile. Aucun nombre de séances imposé, aucune validation par consultation ou case cochée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le chat ne réagit pas aux touches.",
+        "helps": [
+          "Cliquer sur la scène pour donner le focus.",
+          "Vérifier le capteur et sa touche choisie.",
+          "Comparer événement de touche et capteur dans le si.",
+          "Tester un seul si avec le chat sélectionné."
+        ]
+      },
+      {
+        "symptom": "Le contact ne déclenche pas le message.",
+        "helps": [
+          "Vérifier les positions et le rapprochement visuel.",
+          "Lire le nom du sprite dans le menu du capteur.",
+          "Comparer Cible et pointeur de souris ou bord.",
+          "Choisir Cible et vérifier que le message est dans le si."
+        ]
+      },
+      {
+        "symptom": "Le chat bouge trop vite ou réagit deux fois.",
+        "helps": [
+          "Repérer toutes les piles sur le chat.",
+          "Chercher les anciennes piles de touches.",
+          "Sauvegarder le projet avec ses anciens scripts avant de changer d’essai.",
+          "Ouvrir la base sans scripts ou Fichier → Nouveau, reconstruire uniquement la pile de Réactions et vérifier la pause. Ne pas supprimer le travail précédent."
+        ]
+      }
+    ],
+    "notes": "La mise en place de Cible peut être accompagnée ; évaluer séparément le raisonnement vrai/faux. Pas de score exigé dans ce module. Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes ; aucun nouveau dispositif de suivi.",
+    "quickConductor": [
+      "Vérifier les prérequis par une question et un petit essai.",
+      "Préparer la base minimale puis repérer les creux des blocs.",
+      "Assembler et prédire le résultat du modèle.",
+      "Faire les tests avec et sans la situation déclenchante.",
+      "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      },
+      {
+        "title": "Scratch : projets de départ officiels",
+        "url": "https://scratch.mit.edu/help/starter_projects/"
+      }
+    ]
+  }
+}

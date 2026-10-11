@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "catalog": {
+    "site": "catalog/site.json",
+    "scratchProjects": "resources/scratch-projects.json",
+    "moduleTypes": "catalog/module-types.json",
+    "domains": "catalog/domains.json",
+    "skills": "catalog/skills.json",
+    "aliases": "catalog/aliases.json",
+    "teacher": "teacher/historical-conductor.json"
+  },
+  "modules": [
+    {
+      "id": "robotique-lumiere",
+      "file": "modules/robotique/robotique-lumiere.json"
+    },
+    {
+      "id": "robotique-signal",
+      "file": "modules/robotique/robotique-signal.json"
+    },
+    {
+      "id": "robotique-bouton",
+      "file": "modules/robotique/robotique-bouton.json"
+    },
+    {
+      "id": "robotique-decision",
+      "file": "modules/robotique/robotique-decision.json"
+    },
+    {
+      "id": "robotique-microbit",
+      "file": "modules/robotique/robotique-microbit.json"
+    },
+    {
+      "id": "robotique-trajet",
+      "file": "modules/robotique/robotique-trajet.json"
+    },
+    {
+      "id": "robotique-distance",
+      "file": "modules/robotique/robotique-distance.json"
+    },
+    {
+      "id": "robotique-obstacle",
+      "file": "modules/robotique/robotique-obstacle.json"
+    },
+    {
+      "id": "robotique-mission",
+      "file": "modules/robotique/robotique-mission.json"
+    },
+    {
+      "id": "robotique-tests",
+      "file": "modules/robotique/robotique-tests.json"
+    },
+    {
+      "id": "gdevelop-projet",
+      "file": "modules/jeux-video/gdevelop-projet.json"
+    },
+    {
+      "id": "gdevelop-deplacement",
+      "file": "modules/jeux-video/gdevelop-deplacement.json"
+    },
+    {
+      "id": "gdevelop-objets",
+      "file": "modules/jeux-video/gdevelop-objets.json"
+    },
+    {
+      "id": "gdevelop-evenements",
+      "file": "modules/jeux-video/gdevelop-evenements.json"
+    },
+    {
+      "id": "python-thonny",
+      "file": "modules/python/python-thonny.json"
+    },
+    {
+      "id": "python-affichage",
+      "file": "modules/python/python-affichage.json"
+    },
+    {
+      "id": "python-variables",
+      "file": "modules/python/python-variables.json"
+    },
+    {
+      "id": "python-saisie",
+      "file": "modules/python/python-saisie.json"
+    },
+    {
+      "id": "python-conversation",
+      "file": "modules/python/python-conversation.json"
+    },
+    {
+      "id": "python-calculs",
+      "file": "modules/python/python-calculs.json"
+    },
+    {
+      "id": "python-erreurs",
+      "file": "modules/python/python-erreurs.json"
+    },
+    {
+      "id": "python-conditions",
+      "file": "modules/python/python-conditions.json"
+    },
+    {
+      "id": "python-elif",
+      "file": "modules/python/python-elif.json"
+    },
+    {
+      "id": "python-aventure",
+      "file": "modules/python/python-aventure.json"
+    },
+    {
+      "id": "python-for",
+      "file": "modules/python/python-for.json"
+    },
+    {
+      "id": "python-while",
+      "file": "modules/python/python-while.json"
+    },
+    {
+      "id": "python-compteurs",
+      "file": "modules/python/python-compteurs.json"
+    },
+    {
+      "id": "python-fonctions",
+      "file": "modules/python/python-fonctions.json"
+    },
+    {
+      "id": "python-retour",
+      "file": "modules/python/python-retour.json"
+    },
+    {
+      "id": "python-quiz",
+      "file": "modules/python/python-quiz.json"
+    },
+    {
+      "id": "python-listes",
+      "file": "modules/python/python-listes.json"
+    },
+    {
+      "id": "python-texte",
+      "file": "modules/python/python-texte.json"
+    },
+    {
+      "id": "python-hasard",
+      "file": "modules/python/python-hasard.json"
+    },
+    {
+      "id": "python-nombre-mystere",
+      "file": "modules/python/python-nombre-mystere.json"
+    },
+    {
+      "id": "scratch-boucles",
+      "file": "modules/jeux-video/scratch-boucles.json"
+    },
+    {
+      "id": "scratch-reactions",
+      "file": "modules/jeux-video/scratch-reactions.json"
+    },
+    {
+      "id": "scratch-clones",
+      "file": "modules/jeux-video/scratch-clones.json"
+    },
+    {
+      "id": "scratch-temps-difficulte",
+      "file": "modules/jeux-video/scratch-temps-difficulte.json"
+    },
+    {
+      "id": "scratch-debogage",
+      "file": "modules/jeux-video/scratch-debogage.json"
+    },
+    {
+      "id": "scratch-projet-personnel",
+      "file": "modules/jeux-video/scratch-projet-personnel.json"
+    },
+    {
+      "id": "scratch-coordination",
+      "file": "modules/jeux-video/scratch-coordination.json"
+    },
+    {
+      "id": "scratch-blocs-personnalises",
+      "file": "modules/jeux-video/scratch-blocs-personnalises.json"
+    },
+    {
+      "id": "scratch-fin-partie",
+      "file": "modules/jeux-video/scratch-fin-partie.json"
+    },
+    {
+      "id": "scratch-mini-jeu",
+      "file": "modules/jeux-video/scratch-mini-jeu.json"
+    },
+    {
+      "id": "scratch-variables",
+      "file": "modules/jeux-video/scratch-variables.json"
+    },
+    {
+      "id": "scratch-decouverte",
+      "file": "modules/jeux-video/scratch-decouverte.json"
+    },
+    {
+      "id": "scratch-actions",
+      "file": "modules/jeux-video/scratch-actions.json"
+    },
+    {
+      "id": "scratch-pilotage",
+      "file": "modules/jeux-video/scratch-pilotage.json"
+    },
+    {
+      "id": "html-multipage",
+      "file": "modules/web/html-multipage.json"
+    },
+    {
+      "id": "web-mini-site",
+      "file": "modules/web/web-mini-site.json"
+    },
+    {
+      "id": "css-dimensions-images",
+      "file": "modules/web/css-dimensions-images.json"
+    },
+    {
+      "id": "web-carte-personnelle",
+      "file": "modules/web/web-carte-personnelle.json"
+    },
+    {
+      "id": "html-zones",
+      "file": "modules/web/html-zones.json"
+    },
+    {
+      "id": "css-textes-lisibles",
+      "file": "modules/web/css-textes-lisibles.json"
+    },
+    {
+      "id": "css-boites-espacements",
+      "file": "modules/web/css-boites-espacements.json"
+    },
+    {
+      "id": "html-titres-paragraphes",
+      "file": "modules/web/html-titres-paragraphes.json"
+    },
+    {
+      "id": "html-mini-page-fondations",
+      "file": "modules/web/html-mini-page-fondations.json"
+    },
+    {
+      "id": "html-listes",
+      "file": "modules/web/html-listes.json"
+    },
+    {
+      "id": "html-liens",
+      "file": "modules/web/html-liens.json"
+    },
+    {
+      "id": "html-revision",
+      "file": "modules/web/html-revision.json"
+    },
+    {
+      "id": "html-images",
+      "file": "modules/web/html-images.json"
+    },
+    {
+      "id": "css-classes-couleurs",
+      "file": "modules/web/css-classes-couleurs.json"
+    },
+    {
+      "id": "html-mini-page",
+      "file": "modules/web/html-mini-page.json"
+    },
+    {
+      "id": "css-decouverte",
+      "file": "modules/web/css-decouverte.json"
+    },
+    {
+      "id": "web-affiche-numerique",
+      "file": "modules/web/web-affiche-numerique.json"
+    },
+    {
+      "id": "html-document",
+      "file": "modules/web/html-document.json"
+    },
+    {
+      "id": "html-fichiers-chemins",
+      "file": "modules/web/html-fichiers-chemins.json"
+    },
+    {
+      "id": "css-feuille-style",
+      "file": "modules/web/css-feuille-style.json"
+    },
+    {
+      "id": "web-projet-cartes",
+      "file": "modules/web/web-projet-cartes.json"
+    },
+    {
+      "id": "html-parent-enfants",
+      "file": "modules/web/html-parent-enfants.json"
+    },
+    {
+      "id": "web-collection-cartes",
+      "file": "modules/web/web-collection-cartes.json"
+    },
+    {
+      "id": "css-flexbox",
+      "file": "modules/web/css-flexbox.json"
+    }
+  ],
+  "pathways": [
+    {
+      "id": "robotique-debutants",
+      "file": "pathways/robotique-debutants.json"
+    },
+    {
+      "id": "gdevelop-debutants",
+      "file": "pathways/gdevelop-debutants.json"
+    },
+    {
+      "id": "python-debutants",
+      "file": "pathways/python-debutants.json"
+    },
+    {
+      "id": "scratch-debutants",
+      "file": "pathways/scratch-debutants.json"
+    },
+    {
+      "id": "web-fondations",
+      "file": "pathways/web-fondations.json"
+    },
+    {
+      "id": "web-debutants",
+      "file": "pathways/web-debutants.json"
+    },
+    {
+      "id": "web-avances",
+      "file": "pathways/web-avances.json"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 # CodeCraft
 
-Mini-site pédagogique statique, sans framework, dépendance, backend ni étape de build.
+Mini-site pédagogique statique, sans framework ni backend. Le navigateur charge le catalogue généré et des modules ES natifs. Ajv valide les contenus et ESLint vérifie le JavaScript ; ces outils de développement ne sont pas chargés par les pages.
+
+Pour intervenir dans le dépôt : [carte du projet](docs/carte-projet.md), [index des documents](docs/README.md), [organisation des contenus](docs/organisation-contenus.md) et [vérifications de développement](docs/verification-developpement.md).
 
 Le [cadrage pédagogique et la roadmap](docs/roadmap-pedagogique.md) centralisent les décisions HTML/CSS puis JavaScript, les correspondances avec le catalogue existant, les exigences de qualité et l’état des lots réalisés. Les contenus prévus y sont distingués des modules déjà disponibles et des essais professeur restant à confirmer.
 
@@ -8,7 +10,7 @@ Le [cadrage pédagogique et la roadmap](docs/roadmap-pedagogique.md) centralisen
 
 Les recettes utilisateur reportées sont consignées dans [Vérifications manuelles en attente](docs/verifications-manuelles-en-attente.md), notamment pour Python dans Thonny et la revue des dernières leçons.
 
-Ouvrir `index.html` directement dans un navigateur, ou lancer un serveur statique local à la racine du dossier :
+Lancer un serveur statique local à la racine du dossier pour charger les modules JavaScript :
 
 ```bash
 python -m http.server 8000
@@ -40,9 +42,21 @@ Un bloc `lesson` peut définir une `illustration` locale `{ src, alt, caption }`
 
 La direction artistique low-poly est isolée dans `student-lowpoly.css`, chargée uniquement par `index.html` avec la classe `student-lowpoly`. Les couleurs des parcours et les formes pédagogiques Scratch sont conservées. Les styles historiques restent intacts et `visual-trial.css` est conservé comme référence des essais, sans être chargé. L’espace professeur ne reçoit pas la nouvelle feuille de style. Voir [les principes visuels](docs/direction-visuelle.md).
 
-Les 62 modules élèves partagent le modèle de leçon validé : navigation CodeCraft + fil d’Ariane complet, bandeau clair fondu vers le paysage du domaine, préparation regroupée, lecture allégée, activités distinguées et critères visibles dans « Les essentiels ». Les couleurs suivent le domaine et le parcours réellement choisi. La fin conserve seulement les voisins du parcours ; les orientations pédagogiques restent dans les guides professeur. Le lien Thonny est limité à l’installation, dans la première leçon.
+Les 72 modules élèves partagent le modèle de leçon validé : navigation CodeCraft + fil d’Ariane complet, bandeau clair fondu vers le paysage du domaine, préparation regroupée, lecture allégée, activités distinguées et critères visibles dans « Les essentiels ». Les couleurs suivent le domaine et le parcours réellement choisi. La fin conserve seulement les voisins du parcours ; les orientations pédagogiques restent dans les guides professeur. Le lien Thonny est limité à l’installation, dans la première leçon.
 
-Le catalogue se trouve dans `lesson-data.js` :
+Les sources du catalogue se trouvent dans `content/`. Chaque module est un fichier JSON dans `content/modules/<domaine>/`, avec ses exercices, ressources, démonstrations et son guide professeur. Les parcours sont dans `content/pathways/` et les registres communs dans `content/catalog/`.
+
+Installer les outils avec `npm ci`. Après modification d’un contenu :
+
+```bash
+node scripts/build-catalog.cjs
+npm test
+npm run test:browser
+```
+
+`generated/catalog.js` est la sortie pour le site statique. Ce fichier est versionné pour permettre l’hébergement direct, mais ne doit jamais être édité à la main. `node scripts/build-catalog.cjs --check` vérifie sa synchronisation avec les sources sans écrire de fichier. Les mêmes commandes sont disponibles avec `npm run build:content`, `npm run check:content` et `npm test`, après installation des outils avec `npm ci`.
+
+Voir [l’organisation des contenus](docs/organisation-contenus.md) pour les fichiers à modifier, l’ajout d’un module, les validations et la reprise dans Next.js. Le manifeste `content/manifest.json` conserve explicitement l’ordre des registres de modules et parcours. La structure du catalogue consommé par l’application reste la suivante :
 
 - `domains` décrit les domaines et leurs parcours ; avec un seul domaine, l'accueil affiche directement ses parcours et diagnostics.
 - `skills` définit les compétences internes, sans référentiel externe.
@@ -65,7 +79,7 @@ Le deuxième lot utilise les éléments déjà fournis par Scratch : le chat et 
 
 Fondations suit : Titres et paragraphes → Listes → Mini-page des fondations → Liens → Images → Mini-page HTML complète → Découvrir le CSS → Classes et couleurs → Mon affiche numérique. Les modules partagés existent une seule fois. Débutants conserve son départ : Titres et paragraphes → Listes → Liens → Révision HTML → Images → Classes et couleurs → Mini-page HTML complète, puis poursuit avec Structure d’un document HTML → Fichiers et chemins → Relier une feuille de style → Parent et enfants → Organiser une page en zones → Rendre les textes lisibles → Boîtes et espacements → Dimensions et images dans une carte → Ma carte personnelle → Relier plusieurs pages → Mon mini-site. Découvrir le CSS est une reprise accessible avant les classes ou la feuille externe, avec retour possible par la navigation du navigateur ; l’affiche reste un prolongement facultatif proposé depuis la mini-page. Ces détours ne créent pas de faux précédent/suivant dans un parcours qui ne les contient pas. Avancés suit Préparer un projet de cartes → Parent et enfants → Flexbox → Ma collection de cartes. Parent et enfants est partagé avec Débutants ; sa transition propose désormais les zones HTML ou Flexbox selon les prérequis.
 
-Les blocs conservent leurs types `lesson`, `tasks`, `checklist`, `callout` et `details`. Révision HTML possède ses propres exercices de révision, indépendants des blocs des autres modules. Le type existant `reference` (`moduleId`, `blockId`) est utilisé uniquement pour réafficher les cartes de ressources image du module Images dans Dimensions, le projet Carte et Mon mini-site. Les fichiers SVG, sources encodées et contrôles de copie restent définis une seule fois ; aucun exercice de Révision n’est recouplé aux cours. Conserver des identifiants de tâches uniques dans chaque module.
+Les blocs conservent leurs types `lesson`, `tasks`, `checklist`, `callout` et `details`. Révision HTML possède ses propres exercices de révision, indépendants des blocs des autres modules. Le type existant `reference` (`moduleId`, `blockId`) est utilisé uniquement pour réafficher les cartes de ressources image du module Images dans Dimensions, le projet Carte et Mon mini-site. Les fichiers PNG et contrôles de copie du lien restent définis une seule fois ; aucun exercice de Révision n’est recouplé aux cours. Conserver des identifiants de tâches uniques dans chaque module.
 
 Pour ajouter un contenu, ajouter un module au catalogue et référencer son identifiant dans le parcours voulu. Pour un diagnostic, utiliser `diagnosticModuleIds` du domaine. Ne pas renommer les identifiants existants : ils servent aux liens partagés. Aucun changement de séance hebdomadaire n'est nécessaire. L'ajout de nouveaux contenus nécessite toujours une publication des fichiers statiques.
 
@@ -99,7 +113,7 @@ Les quatorze modules de la roadmap Scratch sont implémentés. Chaque module est
 
 `scratch-projet-personnel` est un projet autonome, différent du premier mini-jeu guidé : plan limité, version minimale, notice, tests et deux parties complètes. La poursuite réutilise facultativement la base `chat-cible` existante ; les clics demandent le module temps, le labyrinthe un projet déjà compris (aucun nouveau cours sur les murs). Clones, messages et blocs personnalisés restent des extensions facultatives avec prérequis explicites. Aucune nouvelle compétence, ressource distante ou modification du format privé n’est nécessaire. Le guide est accessible sur `prof.html#guide/scratch-projet-personnel`. Le projet terminé ne valide pas toutes les compétences et n’impose pas de passage à un autre outil.
 
-Les projets restent sur le compte Scratch du professeur : aucun `.sb3` n’est hébergé dans le site. `lesson-data.js`, dans `scratchProjects`, centralise deux URLs publiques par projet : `starterUrl` (base élève) et `demoUrl` (démonstration dans les guides professeur). Aucun bouton élève n’apparaît sans URL valide ; les consignes existantes restent utilisables.
+Les projets restent sur le compte Scratch du professeur : aucun `.sb3` n’est hébergé dans le site. `content/resources/scratch-projects.json` centralise deux URLs publiques par projet : `starterUrl` (base élève) et `demoUrl` (démonstration dans les guides professeur). Aucun bouton élève n’apparaît sans URL valide ; les consignes existantes restent utilisables.
 
 Projets complets partagés sur `CodeCraftEdu` :
 
@@ -117,7 +131,7 @@ L’élève ouvre la base dans un nouvel onglet, utilise Voir à l’intérieur 
 
 ### Relations pédagogiques et guides
 
-Dix-sept modules renseignent les métadonnées facultatives suivantes dans `lesson-data.js` : Images HTML, Parent et enfants, Flexbox, Mini-page HTML complète, Découvrir le CSS, Classes et couleurs CSS, Mon affiche numérique, Structure d’un document HTML, Fichiers et chemins, Relier une feuille de style, Organiser une page en zones, Rendre les textes lisibles, Boîtes et espacements, Dimensions et images dans une carte, Ma carte personnelle, Relier plusieurs pages et Mon mini-site. Les autres modules restent lisibles ; une absence de prérequis signifie « non détaillés », jamais « acquis ».
+Dix-sept modules renseignent les métadonnées facultatives suivantes dans leurs fichiers de `content/modules/web/` : Images HTML, Parent et enfants, Flexbox, Mini-page HTML complète, Découvrir le CSS, Classes et couleurs CSS, Mon affiche numérique, Structure d’un document HTML, Fichiers et chemins, Relier une feuille de style, Organiser une page en zones, Rendre les textes lisibles, Boîtes et espacements, Dimensions et images dans une carte, Ma carte personnelle, Relier plusieurs pages et Mon mini-site. Les autres modules restent lisibles ; une absence de prérequis signifie « non détaillés », jamais « acquis ».
 
 | Champ | Contrat |
 | --- | --- |
@@ -136,7 +150,7 @@ Les guides sont accessibles dans `prof.html`, dans « Guides professeur par modu
 
 Le lot HTML complet/premiers styles a ajouté les guides `prof.html#guide/html-mini-page`, `prof.html#guide/css-decouverte`, `prof.html#guide/css-classes-couleurs` et `prof.html#guide/web-affiche-numerique`. Ses routes élèves sont `#module/css-decouverte` et `#module/web-affiche-numerique`. Le défi HTML garde son type `challenge`, ses exigences et son ID ; l’affiche est un `project` distinct, sans CSS avancé obligatoire. Les cadres locaux fournis restent une aide, pas une validation des compétences de fichiers ou de feuille externe.
 
-Le lot fichiers ajoute les modules `html-document`, `html-fichiers-chemins` et `css-feuille-style`, et leurs guides sur `prof.html#guide/<id>`. Leurs exercices se réalisent dans des fichiers locaux avec un éditeur et un navigateur : CodePen ne reproduit pas la manipulation du cadre, des dossiers et du chargement d’une feuille externe. Le carré SVG du module Images est réutilisé, sans nouvel asset ni service distant. Trois compétences indépendantes sont ajoutées : `html.document`, `html.paths`, `css.stylesheets`. Les douze anciennes gardent leur sens ; le format privé reste inchangé. Sans entrée de progression, ces compétences restent À voir ; aucun acquis ni mapping externe n’est déduit ou créé.
+Le lot fichiers ajoute les modules `html-document`, `html-fichiers-chemins` et `css-feuille-style`, et leurs guides sur `prof.html#guide/<id>`. Leurs exercices se réalisent dans des fichiers locaux avec un éditeur et un navigateur : CodePen ne reproduit pas la manipulation du cadre, des dossiers et du chargement d’une feuille externe. Le carré PNG du module Images est réutilisé. Trois compétences indépendantes sont ajoutées : `html.document`, `html.paths`, `css.stylesheets`. Les douze anciennes gardent leur sens ; le format privé reste inchangé. Sans entrée de progression, ces compétences restent À voir ; aucun acquis ni mapping externe n’est déduit ou créé.
 
 Le lot zones/lisibilité/espacements ajoute `html-zones`, `css-textes-lisibles` et `css-boites-espacements`, avec leurs guides `prof.html#guide/<id>`. Les exercices fonctionnent dans CodePen ou dans une copie de projet local avec feuille déjà reliée. `html.landmarks` et `css.fonts` complètent les compétences sans modifier les anciennes. `css.spacing` et `css.borders` sont réutilisées ; le guide précise que la bordure simple ne valide pas les arrondis également inclus dans `css.borders`. Le suivi reste manuel, sans changement de format privé. Les tests Chrome vérifient l’arbre HTML, l’interligne à taille constante et les distances padding/margin/bordure réelles.
 
@@ -144,7 +158,7 @@ Le lot carte ajoute `css-dimensions-images` (cours) et `web-carte-personnelle` (
 
 Le lot multipage ajoute `html-multipage` (« Relier plusieurs pages », cours) et `web-mini-site` (« Mon mini-site », projet), à la suite de Carte dans Débutants, avec leurs guides `prof.html#guide/<id>`. Deux fichiers locaux et des liens relatifs suffisent au cours ; le projet réinvestit une feuille CSS commune, les images et la lisibilité. La troisième page reste un bonus, sans Flexbox ni publication obligatoire. La nouvelle compétence `html.navigation` ne reprend aucun acquis automatiquement depuis `html.links` ou `html.paths` ; aucune migration du fichier privé ni correspondance externe n’est ajoutée.
 
-Les SVG originaux de `assets/exercices/` sont des ressources pédagogiques créées pour CodeCraft, pas des assets tiers. Pour un projet local, les conserver dans cette arborescence à côté de la page HTML. Le code CodePen utilise une adresse `data:image/svg+xml,...` embarquant le même dessin : il est utilisable avant publication et sans serveur d’images. Le bouton « Copier uniquement la source » copie cette adresse entière à coller entre les guillemets de `src` ; l’élève rédige lui-même `alt`. La source encodée reste repliée et peut être ouverte pour une copie manuelle. Le test vérifie que les sources embarquées correspondent aux fichiers. Toute modification des dessins doit mettre à jour leur `codepenSrc` dans le catalogue. Aucune indisponibilité de ressource n’est présentée comme une faute de l’élève.
+Les images PNG de `assets/exercices/` sont des ressources pédagogiques créées pour CodeCraft. Les premières activités enseignent deux sources : une adresse d’image en ligne et un chemin relatif dans le projet. Le bouton « Copier le lien » construit l’adresse complète depuis le site courant et apparaît uniquement pour une adresse HTTPS avec un nom de domaine non local. En localhost, par adresse IP ou en ouverture directe du fichier, la carte propose le téléchargement et le chemin local, sans afficher ni copier une adresse locale. Pour les exercices CodePen, le site doit être hébergé en HTTPS et accessible publiquement ; une adresse localhost reste locale à la machine. Le bouton de téléchargement fournit le fichier PNG à placer dans `images/`, à côté de `index.html`. La carte montre l’arborescence et un exemple de chemin. L’élève rédige lui-même `alt`. Les sources encodées et le code SVG ne sont plus utilisés dans ces activités.
 
 Vérifications : `node --test tests/pedagogy.test.cjs`, puis `node tests/student-catalog.cjs` pour les parcours, guides et exemples dans Chrome isolé. Les tests professeur existants couvrent toujours le format privé et les opérations de suivi.
 

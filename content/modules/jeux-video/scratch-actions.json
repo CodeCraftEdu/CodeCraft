@@ -1,0 +1,343 @@
+{
+  "domainId": "jeux-video",
+  "title": "Déclencher et enchaîner des actions",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Construire une courte séquence, prévoir son ordre et la déclencher.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.events",
+    "scratch.sequence"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Sélectionner le sprite, assembler des blocs et conserver un .sb3. Sinon, reprendre Prendre en main Scratch."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant de commencer",
+      "text": "Sauvegarde ton projet actuel, puis choisis Fichier → Nouveau pour cet essai avec le chat. Ton travail précédent reste dans sa sauvegarde. Si tu hésites pour retrouver les zones ou conserver ton travail, reprends Prendre en main Scratch.",
+      "moduleLink": {
+        "moduleId": "scratch-decouverte",
+        "text": "Prendre en main Scratch"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "notions",
+      "title": "1 : Un départ et un ordre",
+      "paragraphs": [
+        "Un événement est ce qui déclenche le script. « quand le drapeau vert est cliqué » démarre les blocs attachés dessous lorsque tu cliques sur le drapeau.",
+        "Les blocs d’une même pile s’exécutent de haut en bas. Des blocs posés à côté, sans être accrochés, ne font pas partie de cette pile.",
+        "Dans Apparence, catégorie violette, « dire Bonjour ! pendant 2 secondes » affiche une bulle puis attend la durée indiquée. Tu peux modifier le message et la durée.",
+        "Dans Contrôle, catégorie orange, « attendre 1 secondes » fait une pause avant la suite. Dans Mouvement, « avancer de 10 pas » déplace le sprite selon sa direction.",
+        "Relancer ce script ne remet pas le chat à sa position initiale : il avancera encore. Le retour au départ sera expliqué dans Piloter un personnage."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Assemble cette petite scène",
+      "paragraphs": [
+        "Sélectionne le chat du projet neuf préparé au début. Il n’a pas d’ancienne pile : tu peux construire cet essai sans supprimer ton travail précédent. Reste dans ce projet pour modifier les messages, l’ordre et la pause.",
+        "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous. Ce modèle se lit ; il ne se colle pas comme du code texte.",
+        "Avant de cliquer sur le drapeau, annonce ce que fera le chat en premier, puis en dernier. Observe ensuite les deux déplacements et la pause."
+      ],
+      "shortSteps": [
+        "Sélectionne le chat du projet neuf préparé au début. Construis une seule pile au drapeau ; garde ce projet pour les modifications guidées.",
+        "Assemble ces blocs, puis choisis les messages et nombres du modèle.",
+        "Annonce la première et la dernière action. Clique sur le drapeau, puis compare avec ta prédiction."
+      ],
+      "visualScript": {
+        "caption": "Une pile : les actions de haut en bas",
+        "note": "Assemble ces blocs dans Scratch. Le modèle n’est pas interactif.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le drapeau démarre cette pile."
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": [
+              "dire ",
+              {
+                "value": "Bonjour !"
+              },
+              " pendant ",
+              {
+                "value": "2"
+              },
+              " secondes"
+            ],
+            "explanation": "Le chat parle pendant 2 secondes avant la suite."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "avancer de ",
+              {
+                "value": "30"
+              },
+              " pas"
+            ],
+            "explanation": "Premier déplacement de 30 pas."
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "attendre ",
+              {
+                "value": "1"
+              },
+              " secondes"
+            ],
+            "explanation": "Une pause d’une seconde."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "avancer de ",
+              {
+                "value": "30"
+              },
+              " pas"
+            ],
+            "explanation": "Deuxième déplacement de 30 pas."
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": [
+              "dire ",
+              {
+                "value": "À bientôt !"
+              },
+              " pendant ",
+              {
+                "value": "2"
+              },
+              " secondes"
+            ],
+            "explanation": "Le dernier message termine la scène."
+          }
+        ]
+      },
+      "code": "Événements : quand le drapeau vert est cliqué\n  Apparence : dire Bonjour ! pendant 2 secondes\n  Mouvement : avancer de 30 pas\n  Contrôle : attendre 1 secondes\n  Mouvement : avancer de 30 pas\n  Apparence : dire À bientôt ! pendant 2 secondes"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : change l’histoire",
+      "intro": "Un seul changement à la fois : prédis, teste, explique.",
+      "items": [
+        {
+          "id": "assembler",
+          "text": "Construis et lance la pile proposée.",
+          "hint": "Vérifie que chaque bloc s’accroche au précédent, sans espace."
+        },
+        {
+          "id": "texte",
+          "text": "Change les deux messages, sans déplacer les blocs.",
+          "hint": "Les cases blanches du bloc violet contiennent le texte."
+        },
+        {
+          "id": "ordre",
+          "text": "Place le premier message après le premier déplacement. Prédis puis teste la différence.",
+          "hint": "Détache d’abord la suite sous le premier message en prenant le premier déplacement : les blocs suivants viennent avec lui. Isole ensuite le message du drapeau. Raccroche la suite sous le drapeau, puis glisse le message entre le premier déplacement et la pause. Vérifie : drapeau → déplacement → premier message → pause → second déplacement → dernier message."
+        },
+        {
+          "id": "pause",
+          "text": "Change la pause de 1 à 3 secondes. Observe ce qui reste inchangé.",
+          "hint": "La pause change le temps entre les actions ; pas la distance."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi : une scène sans modèle",
+      "intro": "Sauvegarde ton exercice guidé, puis choisis Fichier → Nouveau. Dans ce projet neuf avec le chat, crée ta scène avec les blocs connus. Ton premier essai reste conservé et ne se lance pas en même temps. Essaie avant l’indice.",
+      "items": [
+        {
+          "id": "scene-personnelle",
+          "text": "Au drapeau : affiche un message, déplace le chat, fais une pause, puis affiche un autre message.",
+          "hint": "Tu connais déjà les quatre types de blocs nécessaires. Choisis toi-même les valeurs."
+        },
+        {
+          "id": "prediction",
+          "text": "Explique l’ordre avant de lancer, puis déplace un bloc pour changer l’histoire.",
+          "hint": "Changer seulement un message ne change pas l’ordre des actions."
+        },
+        {
+          "id": "sauver",
+          "text": "Teste deux fois, explique pourquoi le chat ne revient pas au départ, puis télécharge ton .sb3.",
+          "hint": "Les déplacements s’ajoutent ; aucun bloc de ce script ne réinitialise la position."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : déclencher autrement",
+      "intro": "Aucune boucle nécessaire.",
+      "items": [
+        {
+          "id": "espace",
+          "text": "Dans une copie de ta pile, remplace le départ par Événements → « quand la touche espace est pressée ». Clique sur la scène et appuie sur espace.",
+          "hint": "Choisis espace dans le menu du bloc jaune. Utilise une copie, sans supprimer ton essai sauvegardé."
+        },
+        {
+          "id": "comparer",
+          "text": "Explique ce qui déclenche chacune des deux piles.",
+          "hint": "Le départ change, mais l’ordre interne reste celui des blocs."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer l’événement de départ des actions.",
+    "Prédire l’ordre et expliquer un changement observé après avoir déplacé un bloc.",
+    "Créer une courte séquence personnelle sans recopier toute la pile."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "guide",
+      "label": "Reprendre un changement à la fois"
+    },
+    {
+      "moduleId": "scratch-decouverte",
+      "blockId": "conserver",
+      "label": "Retrouver la sauvegarde locale"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "bonus",
+      "label": "Déclencher avec une touche"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "position",
+      "label": "Piloter un personnage : comprendre le départ et l’ordre des blocs"
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Construire une courte séquence, prévoir son ordre et la déclencher.",
+    "entryDiagnosis": [
+      "Sélectionner le sprite, assembler des blocs et conserver un .sb3. Sinon, reprendre Prendre en main Scratch."
+    ],
+    "preparation": [
+      "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
+      "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
+      "Utiliser le chat fourni par Scratch. Sauvegarder puis choisir Fichier → Nouveau au début et avant la scène autonome ; conserver le même projet pour les modifications guidées et le bonus d’événement. Ne pas supprimer le travail précédent."
+    ],
+    "why": "Comprendre l’ordre d’une pile prépare aux règles de jeu et évite de traiter les blocs comme une recette à recopier.",
+    "discoverySpeech": [
+      "« Avant de lancer, raconte-moi la scène de haut en bas. »",
+      "« Si je déplace cette phrase après le mouvement, qu’est-ce qui changera ? »",
+      "« Attendre laisse passer du temps ; avancer change la position. Ce sont deux choses différentes. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-actions",
+        "blockId": "exemple",
+        "label": "Lire et assembler l’exemple"
+      },
+      "comments": [
+        "Les lignes sont un modèle de blocs, pas du texte à coller. Construire l’exemple dans un projet neuf ; garder ce projet pour les modifications guidées.",
+        "Pour déplacer seulement le premier message : détacher la suite en prenant le premier déplacement, isoler le message, raccrocher la suite au drapeau puis insérer le message entre premier déplacement et pause. Ordre attendu : déplacement → premier message → pause → second déplacement → dernier message.",
+        "Faire prédire puis observer : le chat bouge maintenant avant de parler. Avant la scène autonome, sauvegarder puis Fichier → Nouveau pour éviter deux piles de drapeau concurrentes."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Un bloc posé à côté s’exécute-t-il avec la pile ?",
+        "answer": "Non, il doit être attaché ou avoir son propre événement."
+      },
+      {
+        "question": "Pourquoi le chat avance-t-il encore au deuxième départ ?",
+        "answer": "Le script ajoute un déplacement ; il n’a aucun retour au départ."
+      },
+      {
+        "question": "Quels blocs font attendre, et où est la pause entre les deux déplacements ?",
+        "answer": "Chaque dire … pendant attend la durée du message. Le bloc attendre ajoute une pause entre les deux déplacements ; dans le modèle initial, le premier déplacement sépare le premier message de cette pause."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-actions",
+      "blockId": "guide",
+      "label": "Essais guidés"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-actions",
+      "blockId": "autonomie",
+      "label": "Essai sans modèle"
+    },
+    "differentiation": [
+      "Pour un CE2 débutant : une consigne à la fois, lire les termes si nécessaire, faire montrer avant de demander d’écrire ou de calculer.",
+      "Pour un élève à l’aise : demander une prédiction et une modification sans modèle, puis le bonus. Ne pas imposer un nombre de séances.",
+      "Reprendre le prérequis manquant ; aucun accès au module ni case cochée ne constitue un acquis."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Tout part deux fois ou dans un ordre inattendu.",
+        "helps": [
+          "Repérer combien de départs au drapeau existent.",
+          "Comparer les piles présentes au modèle de cet essai.",
+          "Sauvegarder ce projet pour conserver toutes les piles, puis choisir Fichier → Nouveau.",
+          "Reconstruire uniquement la pile de l’activité en cours et commenter son ordre ; ne pas supprimer les anciens essais."
+        ]
+      },
+      {
+        "symptom": "La pause n’a pas l’effet attendu.",
+        "helps": [
+          "Faire lire le nombre et l’emplacement du bloc attendre.",
+          "Comparer une durée de message et une pause entre mouvements.",
+          "Tester avec une pause de trois secondes.",
+          "Remettre la pause entre les deux déplacements et faire prédire."
+        ]
+      }
+    ],
+    "notes": "Distinguer copie correcte et ordre compris : déplacer un bloc puis demander une prédiction. Ne pas introduire de boucle ou de variable pour rallonger le programme.",
+    "quickConductor": [
+      "Vérifier les repères ou prérequis.",
+      "Faire assembler l’exemple et prédire son résultat.",
+      "Changer une chose, tester et expliquer.",
+      "Proposer la mission autonome ; distinguer réussite autonome, avec modèle ou avec aide.",
+      "Sauvegarder le .sb3 ; choisir reprise ou suite selon la compréhension."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels officiels",
+        "url": "https://scratch.mit.edu/ideas"
+      },
+      {
+        "title": "Scratch : projets de départ officiels",
+        "url": "https://scratch.mit.edu/help/starter_projects/"
+      }
+    ]
+  }
+}

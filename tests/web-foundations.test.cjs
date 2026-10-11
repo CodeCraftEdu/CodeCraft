@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = { window: {}, URLSearchParams };
-for (const file of ['lesson-data.js', 'pedagogy.js']) {
+for (const file of ['generated/catalog.js', 'pedagogy.js']) {
   vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 }
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;

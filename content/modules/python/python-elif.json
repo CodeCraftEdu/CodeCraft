@@ -1,0 +1,277 @@
+{
+  "domainId": "python",
+  "title": "Plusieurs possibilités",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Ordonner plusieurs conditions et vérifier quelle issue est choisie.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.branches"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer et relancer un fichier .py."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher et lire les résultats."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Définir une valeur avant de la comparer."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Conserver une réponse de input."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Comparer des nombres."
+    },
+    {
+      "skillId": "python.conversion",
+      "expectation": "Convertir une réponse entière."
+    },
+    {
+      "skillId": "python.debugging",
+      "expectation": "Lire une erreur et retester sa correction."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Construire if/else et tester le seuil ; sinon reprendre Faire un choix."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir construire un if/else, comparer des nombres et tester les deux branches. Pour la saisie, il faut aussi savoir convertir un entier. Enregistre choix.py et crée possibilites.py sans effacer tes anciens fichiers.",
+      "moduleLink": {
+        "moduleId": "python-conditions",
+        "text": "Revoir le choix à deux issues"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Ajouter une autre condition",
+      "paragraphs": [
+        "elif signifie sinon si. Si la condition du if est fausse, Python teste celle du elif. Si aucune condition n’est vraie, il exécute else. Les mots if, elif et else sont alignés ; chaque branche commence quatre espaces plus loin et chaque en-tête se termine par deux-points.",
+        "Python choisit seulement la première condition vraie de cette chaîne. Avec 10 points, les deux comparaisons seraient vraies, mais seule la première branche est exécutée : on lit Grand passage, puis Fin du choix.",
+        "Ici, 10 ou plus ouvre le grand passage ; de 5 à 9 ouvre le petit passage ; moins de 5 fait patienter. La dernière ligne non indentée s’exécute dans tous les cas."
+      ],
+      "code": "points = 10\nif points >= 10:\n    print(\"Grand passage\")\nelif points >= 5:\n    print(\"Petit passage\")\nelse:\n    print(\"Patienter\")\nprint(\"Fin du choix\")"
+    },
+    {
+      "type": "lesson",
+      "id": "ordre",
+      "title": "2 - L’ordre change la décision",
+      "paragraphs": [
+        "Crée ordre_conditions.py pour ce modèle volontairement mal ordonné. Prédis ce qu’il affiche avec 12, puis exécute-le. Compare le résultat au grand passage attendu pour cette valeur et cherche ce qui empêche de le choisir.",
+        "Après ton essai, vérifie si un premier test couvre déjà tous les cas du suivant. L’ordre des seuils n’est pas une règle universelle : il doit correspondre aux issues attendues."
+      ],
+      "code": "points = 12\nif points >= 5:\n    print(\"Petit passage\")\nelif points >= 10:\n    print(\"Grand passage\")\nelse:\n    print(\"Patienter\")"
+    },
+    {
+      "type": "lesson",
+      "id": "independants",
+      "title": "3 - Deux if ne font pas une chaîne",
+      "paragraphs": [
+        "Crée conditions_independantes.py pour conserver ce troisième modèle. Les deux if sont indépendants. Python teste chacun, même si le premier est vrai. Avec 12, les deux messages s’affichent.",
+        "Choisis une chaîne if/elif/else quand les issues doivent être exclusives. Des if indépendants conviennent lorsque plusieurs actions peuvent se produire ensemble. Le mot else se rattache au if ou à la chaîne qui le précède, pas à tous les if du fichier."
+      ],
+      "code": "points = 12\nif points >= 10:\n    print(\"Grand passage\")\nif points >= 5:\n    print(\"Petit passage\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - deux frontières",
+      "items": [
+        {
+          "id": "frontieres",
+          "text": "Sur le premier modèle, prédis puis teste 4, 5, 9 et 10. Une seule issue doit s’afficher à chaque essai, suivie de Fin du choix.",
+          "hint": "4 : Patienter ; 5 et 9 : Petit passage ; 10 : Grand passage. Relance après chaque modification."
+        },
+        {
+          "id": "corriger-ordre",
+          "text": "Teste le modèle mal ordonné avec 12, puis corrige l’ordre des conditions en gardant chaque message associé à son seuil. Reteste 4, 5 et 10.",
+          "hint": "Avec 12, le premier test >= 5 est déjà vrai : la branche >= 10 n’est donc pas choisie. Déplace la condition et sa branche ensemble ; >= 10 doit précéder >= 5 pour cette règle."
+        },
+        {
+          "id": "comparer-if",
+          "text": "Compare le modèle à deux if et la chaîne avec 12. Explique pourquoi l’un affiche deux issues et l’autre une seule.",
+          "hint": "Deux if font deux décisions indépendantes. Dans la chaîne, Python ne choisit que la première condition vraie."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "saisie",
+      "title": "4 - Choisir avec une réponse",
+      "paragraphs": [
+        "Rouvre possibilites.py et utilise Fichier → Enregistrer sous pour créer possibilites_saisie.py. Dans cette copie, remplace points = 10 par ces deux lignes au début du fichier, sans indentation, puis garde la chaîne et le message final. Demande un entier écrit en chiffres, sans unité ni décimale.",
+        "Teste 4, 5, 9 et 10 en répondant dans la console. elif ne protège pas la conversion : une réponse comme dix provoque ValueError avant le choix. Arrête puis relance pour un nouvel essai."
+      ],
+      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - trois coffres",
+      "intro": "Enregistre possibilites_saisie.py puis crée coffres.py sans remplacer les autres essais. Écris ta propre décision avant d’ouvrir l’indice.",
+      "items": [
+        {
+          "id": "coffres-regle",
+          "text": "Demande un nombre entier de clés. Affiche Coffre doré à partir de 8, Coffre argenté de 3 à 7, sinon Aucun coffre. Une seule issue doit s’afficher.",
+          "hint": "Convertis la réponse, puis teste >= 8 avant >= 3. else couvre les valeurs restantes ; aucun deuxième test de borne n’est nécessaire ici."
+        },
+        {
+          "id": "coffres-tests",
+          "text": "Prédis puis teste 2, 3, 7 et 8. Change ensuite le seuil doré à 10 et choisis de nouveaux tests autour de cette frontière.",
+          "hint": "Aux seuils initiaux : aucun, argenté, argenté, doré. Après modification, 9 doit rester argenté et 10 devenir doré."
+        },
+        {
+          "id": "expliquer-chaine",
+          "text": "Explique pourquoi 8 ne déclenche pas deux coffres et pourquoi inverser les tests changerait le résultat.",
+          "hint": "Le premier test vrai sélectionne la branche et écarte les autres branches de la chaîne."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - une quatrième issue",
+      "items": [
+        {
+          "id": "quatre-issues",
+          "text": "Dans un nouveau fichier, ajoute un coffre de bronze de 1 à 2 clés. Garde argenté à partir de 3, doré à partir de 8 et aucun coffre pour moins de 1. Teste 0, 1, 2, 3, 7 et 8.",
+          "hint": "Une chaîne peut contenir plusieurs elif : ajoute le test >= 1 après >= 3, avant else."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer le rôle de elif et la sélection de la première condition vraie.",
+    "Ordonner des seuils qui se recouvrent et tester les deux frontières.",
+    "Distinguer une chaîne exclusive de plusieurs if indépendants.",
+    "Construire une décision personnelle, modifier un seuil et choisir les tests correspondants."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-elif",
+      "blockId": "guide",
+      "label": "Revoir ordre et frontières"
+    },
+    {
+      "moduleId": "python-conditions",
+      "blockId": "guide",
+      "label": "Reprendre if/else"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-elif",
+      "blockId": "bonus",
+      "label": "Ajouter une quatrième issue"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-aventure",
+      "label": "Une aventure à choix",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.branches",
+          "expectation": "Construire et tester trois issues exclusives ; sinon reprendre les coffres."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Enseigner la sélection exclusive et l’ordre des tests sans introduire de conditions composées.",
+    "entryDiagnosis": [
+      "Faire écrire un if/else et prévoir la branche au seuil.",
+      "Faire convertir une réponse entière avant de passer à la variante interactive."
+    ],
+    "preparation": [
+      "Conserver choix.py et créer possibilites.py, ordre_conditions.py et conditions_independantes.py. Pour la saisie, enregistrer une copie du premier modèle sous possibilites_saisie.py.",
+      "Préparer 4, 5, 9 et 10, puis comparer la chaîne au modèle mal ordonné et aux if indépendants.",
+      "Aucune boucle, imbrication ou bibliothèque nécessaire ; la saisie numérique reste limitée aux entiers."
+    ],
+    "why": "Plusieurs conditions vraies ne doivent pas toujours déclencher plusieurs actions.",
+    "discoverySpeech": [
+      "« Pour 10, les deux seuils sont atteints : quelle issue doit gagner ? »",
+      "« Dans une chaîne, la première condition vraie choisit une seule branche. »",
+      "« Deux if indépendants peuvent exécuter deux actions : comparons les sorties. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-elif",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "10 donne Grand passage puis Fin du choix, pas Petit passage.",
+        "Faire prédire les quatre essais avant de changer la valeur.",
+        "Expliquer l’exclusion par la chaîne, pas par une prétendue fausseté du test >= 5 pour 10."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi ne lit-on pas Petit passage pour 10 ?",
+        "answer": "Le premier test vrai a déjà sélectionné Grand passage ; Python ne choisit pas une seconde branche."
+      },
+      {
+        "question": "Pourquoi >= 5 avant >= 10 empêche-t-il le grand passage ?",
+        "answer": "Tous les nombres au moins égaux à 10 satisfont déjà le premier test >= 5."
+      },
+      {
+        "question": "Quelle différence avec deux if ?",
+        "answer": "Ils sont testés indépendamment ; les deux actions peuvent s’exécuter."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-elif",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-elif",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Garder une valeur fixe jusqu’à compréhension des trois issues.",
+      "Faire tracer oralement un essai en repérant la première condition vraie.",
+      "Demander de nouveaux seuils ou une quatrième issue, sans imposer le bonus."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Une branche est inaccessible ou deux coffres s’affichent.",
+        "helps": [
+          "Demander le résultat attendu pour la valeur saisie.",
+          "Faire suivre les tests dans leur ordre réel.",
+          "Comparer les seuils et repérer if indépendant ou elif.",
+          "Corriger une cause puis retester chaque frontière en expliquant l’issue choisie."
+        ]
+      }
+    ],
+    "notes": "Ne pas transformer cette activité en bornes doubles avec and. Évaluer le transfert, pas seulement le modèle recopié ; aucune acquisition automatique.",
+    "quickConductor": [
+      "Diagnostiquer if/else.",
+      "Lire une chaîne à trois issues.",
+      "Faire prédire puis tester l’ordre incorrect avant d’en expliquer la cause ; comparer ensuite les if indépendants.",
+      "Tester les frontières puis une saisie.",
+      "Construire les coffres et modifier un seuil."
+    ],
+    "references": [
+      {
+        "title": "Python - if et elif",
+        "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#if-statements"
+      }
+    ]
+  }
+}

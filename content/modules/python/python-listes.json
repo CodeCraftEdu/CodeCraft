@@ -1,0 +1,293 @@
+{
+  "domainId": "python",
+  "title": "Regrouper des valeurs dans une liste",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Conserver plusieurs valeurs, consulter une position, parcourir et compléter une liste.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.lists"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, enregistrer et relancer un fichier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher et lire une valeur."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Conserver une valeur dans une variable."
+    },
+    {
+      "skillId": "python.for",
+      "expectation": "Suivre les passages et le bloc d'un for."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir afficher une variable et suivre un for. Crée inventaire.py et fais-le évoluer pendant les étapes ; enregistre avant chaque copie. Ni hasard ni while n'est nécessaire ici. Le bonus seul utilise input.",
+      "moduleLink": {
+        "moduleId": "python-for",
+        "text": "Revoir les répétitions"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Plusieurs valeurs, une liste",
+      "paragraphs": [
+        "Les crochets entourent la liste ; les virgules séparent ses éléments. Ici, chaque élément est du texte entre guillemets. La variable objets conserve cette liste ordonnée. Deux éléments peuvent avoir la même valeur.",
+        "print(objets) affiche la liste complète, avec ses crochets et guillemets. objets[0] consulte un seul élément : l'indice 0 désigne la première position. Son affichage donne carte, sans les crochets de la liste."
+      ],
+      "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nprint(objets)\nprint(objets[0])"
+    },
+    {
+      "type": "lesson",
+      "id": "indices",
+      "title": "2 - Position et nombre d'éléments",
+      "paragraphs": [
+        "Dans inventaire.py, ajoute print(objets[1]) puis print(objets[2]). Prévois corde puis lampe. Pour trois éléments, les indices sont 0, 1 et 2 : on commence à zéro.",
+        "Ajoute print(len(objets)). len donne le nombre d'éléments : 3, pas le dernier indice. Les parenthèses appellent len sur la liste ; les crochets consultent une position. Un indice 3 n'existe pas dans cette liste."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "parcours",
+      "title": "3 - Parcourir les valeurs",
+      "paragraphs": [
+        "Enregistre inventaire.py puis crée parcours_liste.py. for peut parcourir directement une liste : objet reçoit successivement carte, corde et lampe, pas les indices 0, 1 et 2. Le nom de cette variable est libre ; il est ici distinct de objets.",
+        "Le print indenté s'exécute pour chaque élément. Fin, sans indentation, s'affiche une fois après la boucle. Prévois l'ordre avant de lancer."
+      ],
+      "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nfor objet in objets:\n    print(\"Objet :\", objet)\nprint(\"Fin\")"
+    },
+    {
+      "type": "lesson",
+      "id": "ajout",
+      "title": "4 - Ajouter à la fin",
+      "paragraphs": [
+        "Continue dans parcours_liste.py. Après Fin, ajoute les lignes ci-dessous, puis un second parcours. objets.append(\"boussole\") ajoute une valeur à la fin de la liste existante. Le point appelle une méthode de cette liste ; les parenthèses contiennent la valeur à ajouter.",
+        "Prévois quatre éléments, dans l'ordre carte, corde, lampe, boussole. L'appel append occupe sa propre ligne : n'écris ni objets = objets.append(...) ni print(objets.append(...)). C'est la liste modifiée que tu affiches ensuite. Chaque relance recrée la liste initiale avant cet ajout."
+      ],
+      "code": "objets.append(\"boussole\")\nprint(objets)\nprint(len(objets))"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Vérifier tes essais",
+      "items": [
+        {
+          "id": "positions-liste",
+          "text": "Dans inventaire.py, montre la liste complète, ses trois positions et sa longueur. Explique pourquoi 3 est la longueur mais pas un indice utilisable ici.",
+          "hint": "Trois positions : 0, 1 et 2. len compte les éléments, il ne donne pas la dernière position."
+        },
+        {
+          "id": "parcours-ajout",
+          "text": "Dans parcours_liste.py, compare les deux parcours autour de l'ajout. Repère le moment où la liste change et explique la valeur reçue par objet à chaque passage.",
+          "hint": "Le premier parcours a trois passages ; le second en a quatre. append est entre eux et ajoute à la fin."
+        },
+        {
+          "id": "vide-liste",
+          "text": "Enregistre puis crée collection_vide.py avec Enregistrer sous. Garde seulement une liste objets = [], son affichage, len et un for suivi de Fin ; retire les consultations d'indice et l'ajout. Prévois puis vérifie le résultat.",
+          "hint": "[] contient zéro élément : len vaut 0, for ne fait aucun passage, mais Fin s'affiche. Aucun élément à l'indice 0."
+        },
+        {
+          "id": "diagnostic-indice",
+          "text": "Dans diagnostic_indice.py, définis trois éléments puis affiche objets[3]. Lis l'erreur, choisis une position existante et reteste. Garde les autres fichiers.",
+          "hint": "IndexError signale ici une position inexistante. Corrige l'indice en 0, 1 ou 2 ; il ne s'agit pas d'un nom de variable inconnu."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - ta collection",
+      "intro": "Crée ma_collection.py avec tes propres valeurs et messages. Fais évoluer ce fichier ; essaie avant les indices et conserve les exemples.",
+      "items": [
+        {
+          "id": "collection-personnelle",
+          "text": "Choisis trois éléments textuels. Affiche leur nombre, puis chaque élément avec un for. Consulte aussi le premier et le troisième. Prévois longueur, positions et ordre avant d'exécuter.",
+          "hint": "Une liste entre crochets, len pour le nombre, indices 0 et 2 pour ces positions ; for reçoit directement les valeurs."
+        },
+        {
+          "id": "collection-complete",
+          "text": "Ajoute un quatrième élément avec append après le premier parcours, puis affiche le nouveau nombre et refais le parcours. Explique ce qui change, sans réécrire la liste de départ.",
+          "hint": "Place l'ajout avant le second bilan, hors du premier for. La nouvelle valeur arrive à la fin."
+        },
+        {
+          "id": "collection-modifiee",
+          "text": "Enregistre puis crée ma_collection_modifiee.py avec Enregistrer sous. Change une valeur dans la définition initiale. Prévois et vérifie son effet sur les positions, le nombre et les deux parcours. Explique aussi pourquoi collection_vide.py fait zéro passage.",
+          "hint": "Remplacer une valeur ne change pas le nombre d'éléments. Garde la première version pour comparer ; une liste vide ne fournit aucune valeur à for."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - compléter par une réponse",
+      "items": [
+        {
+          "id": "collection-reponse",
+          "text": "Dans collection_saisie.py, demande un élément avec input, ajoute la réponse à une liste fixe et affiche le bilan. Relance avec une autre réponse : retrouve-t-on la précédente ?",
+          "hint": "Conserve la réponse dans une variable, puis appelle append avec cette variable. Chaque lancement recrée la liste fixe ; ce programme ne sauvegarde pas de données sur disque."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Créer une liste personnelle et distinguer élément, liste complète et longueur.",
+    "Expliquer l'indice zéro, consulter une position existante et reconnaître un IndexError.",
+    "Parcourir les valeurs dans l'ordre et expliquer zéro passage pour une liste vide.",
+    "Ajouter à la fin avec append, prédire le nouveau bilan et tester une modification personnelle."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-listes",
+      "blockId": "guide",
+      "label": "Revoir positions, parcours et ajout"
+    },
+    {
+      "moduleId": "python-variables",
+      "blockId": "guide",
+      "label": "Revoir les variables"
+    },
+    {
+      "moduleId": "python-for",
+      "blockId": "guide",
+      "label": "Revoir le bloc répété"
+    },
+    {
+      "moduleId": "python-erreurs",
+      "blockId": "guide",
+      "label": "Revoir la lecture d'une erreur"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-listes",
+      "blockId": "bonus",
+      "label": "Ajouter une réponse",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.input",
+          "expectation": "Conserver la réponse d'input ; sinon reprendre Poser une question."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-texte",
+      "label": "Explorer et préparer du texte",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.lists",
+          "expectation": "Distinguer longueur, position et parcours ; sinon reprendre les essais de liste."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Passer d'une valeur à une collection ordonnée sans confondre position, longueur et valeur parcourue.",
+    "entryDiagnosis": [
+      "Faire afficher une variable et suivre un for existant.",
+      "Ne pas exiger que le nombre mystère ou ses bonus soient terminés."
+    ],
+    "preparation": [
+      "Faire évoluer inventaire.py puis parcours_liste.py ; vérifier les essais dans ces fichiers sans les recopier.",
+      "Réserver les copies aux cas vide, au diagnostic et au transfert personnel. Le bonus seul utilise input."
+    ],
+    "why": "Une liste rassemble plusieurs valeurs qu'un programme peut consulter et parcourir.",
+    "discoverySpeech": [
+      "« Qu'affiche la liste entière ? Et une seule position ? »",
+      "« Pourquoi la première position porte-t-elle zéro ? »",
+      "« for reçoit-il une position ou une valeur ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-listes",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Expliquer crochets de définition et de consultation avant la pratique.",
+        "Le texte seul n'a pas les crochets de la représentation de liste.",
+        "Montrer longueur et positions avec trois éléments, sans range(len)."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Quels indices existent pour trois éléments ?",
+        "answer": "0, 1 et 2 ; len vaut 3, ce n'est pas un indice disponible."
+      },
+      {
+        "question": "Que reçoit objet dans for objet in objets ?",
+        "answer": "Chaque valeur de la liste, successivement et dans l'ordre."
+      },
+      {
+        "question": "Que fait for sur [] ?",
+        "answer": "Zéro passage ; le code après le bloc s'exécute quand même."
+      },
+      {
+        "question": "Faut-il affecter le résultat d'append à objets ?",
+        "answer": "Non : append modifie la liste existante ; appeler la méthode seule puis afficher la liste."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-listes",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-listes",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Séparer liste complète, position et longueur si nécessaire.",
+      "Reprendre le parcours avant l'ajout ; ne pas imposer plusieurs nouveautés dans le même essai.",
+      "Réserver input au bonus et distinguer aide clavier et compréhension."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "IndexError ou confusion entre indice et longueur.",
+        "helps": [
+          "Lire la dernière ligne de l'erreur.",
+          "Compter les éléments de la liste active.",
+          "Écrire leurs positions à partir de zéro.",
+          "Choisir une position existante puis retester ; ne pas consulter une liste vide."
+        ]
+      },
+      {
+        "symptom": "La liste disparaît après append ou l'ajout se répète dans for.",
+        "helps": [
+          "Repérer la ligne qui change la liste.",
+          "Vérifier l'indentation et le nombre d'appels.",
+          "Chercher une affectation objets = objets.append(...).",
+          "Appeler append seul une fois hors du parcours, puis afficher objets et len(objets)."
+        ]
+      }
+    ],
+    "notes": "Pas de gestion d'exception, alias, copie de liste ou compréhension. Enregistrer sous copie le fichier, pas une liste à l'exécution. Validation manuelle sur explication et transfert.",
+    "quickConductor": [
+      "Diagnostiquer variables et for.",
+      "Observer liste et positions.",
+      "Distinguer len et indice.",
+      "Parcourir puis ajouter.",
+      "Vérifier vide et diagnostic.",
+      "Créer et modifier une collection personnelle."
+    ],
+    "references": [
+      {
+        "title": "Python - listes",
+        "url": "https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists"
+      }
+    ]
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "domainId": "web",
+  "title": "Révision HTML",
+  "type": "practice",
+  "objective": "Reconstruire seul une page avec les notions déjà apprises.",
+  "skillIds": [
+    "html.headings",
+    "html.text",
+    "html.lists",
+    "html.links"
+  ],
+  "blocks": [
+    {
+      "id": "preparer",
+      "type": "callout",
+      "tone": "neutral",
+      "title": "Avant de commencer",
+      "text": "Réutilise titres, paragraphes, listes et liens. Conserve ton essai précédent dans un fichier texte, puis ouvre une nouvelle page HTML dans CodePen. Le socle ne demande ni image ni CSS. Essaie avant les indices ; note ensuite ceux que tu as utilisés."
+    },
+    {
+      "type": "lesson",
+      "id": "consigne",
+      "title": "Mission autonome : Révision",
+      "paragraphs": [
+        "Choisis un nouveau sujet et construis une page contenant un h1, deux parties de même importance annoncées par deux h2, deux paragraphes, une liste de trois éléments et un lien utile.",
+        "Les étapes suivantes précisent le résultat attendu. Les exemples de syntaxe restent des aides à ouvrir seulement après ton premier essai ; une page copiée n’est pas un essai autonome."
+      ]
+    },
+    {
+      "id": "revision-html-titres-paragraphes",
+      "type": "tasks",
+      "title": "Titres et paragraphes : Révision",
+      "items": [
+        {
+          "id": "titres",
+          "text": "Crée un h1 puis deux h2 pour deux parties de même importance. Le niveau indique leur rôle, pas la taille souhaitée.",
+          "hint": "Les deux parties sont au même niveau : elles ont chacune un h2. h3 servirait à une sous-partie, non demandée ici.",
+          "syntax": "<h1>Mon sujet</h1>\n<h2>Première partie</h2>\n<h2>Deuxième partie</h2>"
+        },
+        {
+          "id": "deux-p",
+          "text": "Crée deux paragraphes distincts, avec chacun ses balises p et /p ; place-les sous les parties correspondantes.",
+          "hint": "Chaque paragraphe utilise la même balise.",
+          "syntax": "<p>Mon paragraphe</p>"
+        }
+      ]
+    },
+    {
+      "id": "revision-html-listes",
+      "type": "tasks",
+      "title": "Liste : Révision",
+      "items": [
+        {
+          "id": "liste",
+          "text": "Créer une liste de trois éléments.",
+          "hint": "La liste utilise ul et chaque élément utilise li.",
+          "syntax": "<ul>\n  <li>Élément 1</li>\n  <li>Élément 2</li>\n  <li>Élément 3</li>\n</ul>"
+        }
+      ]
+    },
+    {
+      "id": "revision-html-liens",
+      "type": "tasks",
+      "title": "Créer un lien",
+      "items": [
+        {
+          "id": "lien",
+          "text": "Crée un lien vers un site public avec une adresse complète https:// et un texte qui annonce sa destination. Prévois puis teste son ouverture.",
+          "hint": "La destination est dans href, le texte visible entre a et /a. Compare l’adresse obtenue à celle prévue. Un blocage de l’aperçu ou du réseau n’est pas automatiquement une erreur HTML.",
+          "syntax": "<a href=\"https://example.com\">Visiter le site</a>"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "title": "Bonus facultatifs",
+      "intro": "Garde d’abord une copie de ta page. Choisis une extension seulement si le socle est prêt ; aucun bonus n’est nécessaire pour continuer.",
+      "items": [
+        {
+          "id": "bonus-section",
+          "text": "Ajoute une troisième partie de même importance avec un h2 et un paragraphe."
+        },
+        {
+          "id": "bonus-liste",
+          "text": "Ajoute une deuxième liste sur un autre sujet."
+        },
+        {
+          "id": "bonus-lien",
+          "text": "Ajoute un deuxième lien vers un autre site public, avec un texte explicite, puis teste sa destination."
+        },
+        {
+          "id": "bonus-hierarchie",
+          "text": "Si ton contenu a une vraie sous-partie, ajoute un h3 sous un h2 et explique cette relation. N’ajoute pas des niveaux seulement pour varier les tailles."
+        },
+        {
+          "id": "bonus-verification",
+          "text": "Relis tout ton HTML et corrige les erreurs que tu trouves."
+        }
+      ],
+      "id": "approfondissement"
+    },
+    {
+      "type": "tasks",
+      "title": "Teste et explique ta page",
+      "id": "pause",
+      "intro": "Compare le résultat visible avec le code, puis garde la page et une courte note des tests et aides utilisés.",
+      "items": [
+        {
+          "id": "verifier-page",
+          "text": "Repère les deux h2, les deux p et les trois li dans ul ; vérifie leurs fermetures. Explique l’organisation sans te limiter à leur apparence.",
+          "hint": "Un aperçu satisfaisant ne suffit pas : le navigateur peut réparer des erreurs de balises."
+        },
+        {
+          "id": "tester-lien",
+          "text": "Teste le lien et compare sa destination à href. Si le test est bloqué, décris le blocage au lieu d’affirmer que le lien fonctionne.",
+          "hint": "Le texte du lien et l’adresse sont deux choses différentes. Une limite réseau ou d’aperçu demande un autre test, pas une modification au hasard."
+        },
+        {
+          "id": "modifier-page",
+          "text": "Change un paragraphe et ajoute un li sans remplacer les autres. Vérifie le résultat et explique ce que tu as modifié."
+        }
+      ]
+    }
+  ],
+  "theme": "debutants",
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Choisir h1 pour le titre principal et h2 pour une partie."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Délimiter un paragraphe avec p et /p."
+    },
+    {
+      "skillId": "html.lists",
+      "expectation": "Placer chaque li à l’intérieur de ul."
+    },
+    {
+      "skillId": "html.links",
+      "expectation": "Distinguer le texte d’un lien de sa destination href."
+    }
+  ],
+  "masteryCriteria": [
+    "Reconstruire une page réunissant titres, paragraphes, liste et lien sur un nouveau sujet ; préciser les modèles, indices ou aides utilisés.",
+    "Justifier deux h2 de même niveau et vérifier dans le code les deux p et les trois li placés dans ul.",
+    "Prévoir puis tester la destination du lien ; distinguer href, texte visible et éventuel blocage de l’environnement.",
+    "Modifier une partie de la page sans perdre les autres, puis expliquer l’effet obtenu et conserver le résultat."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-liens",
+      "blockId": "autonome",
+      "label": "Reprendre texte et destination du lien"
+    },
+    {
+      "moduleId": "html-mini-page-fondations",
+      "blockId": "defi",
+      "label": "Reprendre une mini-page sans lien"
+    }
+  ],
+  "bonusActivities": [],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Reconstruire seul une page avec les notions déjà apprises.",
+    "entryDiagnosis": [
+      "Faire rappeler les quatre familles de notions sans donner une page complète.",
+      "Demander comment conserver l’essai précédent et distinguer un lien visible d’un lien testé."
+    ],
+    "preparation": [
+      "Prévoir la sauvegarde du travail précédent et vérifier les zones utiles de CodePen sans imposer de compte.",
+      "Tester l’accès et l’aperçu ; distinguer une difficulté de l’environnement d’une difficulté de compréhension."
+    ],
+    "why": "Vérifier le réinvestissement conjoint des notions HTML dans une page personnelle, avec des essais de modification et un test réel de destination.",
+    "discoverySpeech": [
+      "« Les deux parties ont la même importance : elles ont deux h2. »",
+      "« Teste ce que tu peux tester ; décris un blocage au lieu d’inventer un résultat. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-revision",
+        "blockId": "revision-html-titres-paragraphes"
+      },
+      "comments": [
+        "Les exemples de syntaxe sont des aides repliées : relever leur usage après le premier essai.",
+        "Le bloc de tests vient après la construction ; accompagner le diagnostic sans réaliser toute la page.",
+        "Ne pas imposer h3, images, CSS ni bonus au socle."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi deux h2 plutôt qu’un h2 et un h3 ?",
+        "answer": "Les deux parties demandées sont de même importance ; h3 annoncerait une sous-partie."
+      },
+      {
+        "question": "Comment reconnaître deux paragraphes ?",
+        "answer": "Par deux éléments p distincts dans le code et leur contenu dans l’aperçu."
+      },
+      {
+        "question": "Où placer le nouvel élément de liste ?",
+        "answer": "Dans un nouveau li avant /ul sans remplacer les autres."
+      },
+      {
+        "question": "Que faut-il prévoir avant d’ouvrir le lien ?",
+        "answer": "La destination annoncée par son texte et l’adresse écrite dans href."
+      },
+      {
+        "question": "Que conclure si l’aperçu bloque le site distant ?",
+        "answer": "Le test est limité ; ce blocage ne prouve ni une erreur HTML ni un lien fonctionnel."
+      },
+      {
+        "question": "Comment apprécier l’autonomie ?",
+        "answer": "Observer les choix, explications et modifications sur le nouveau sujet, avec une trace des modèles, indices et aides."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-revision",
+      "blockId": "pause"
+    },
+    "independentActivity": {
+      "moduleId": "html-revision",
+      "blockId": "consigne"
+    },
+    "differentiation": [
+      "Observer un premier essai avant de fournir une aide ; accompagner les gestes sans faire les choix à la place de l’élève.",
+      "Demander une explication et une modification limitée plutôt qu’une copie de tout le modèle.",
+      "Distinguer réussite autonome, avec modèle ou avec aide ; conserver les indices de compréhension et les difficultés."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les niveaux de titres remplacent la mise en forme.",
+        "helps": [
+          "Faire décrire les deux parties.",
+          "Demander si l’une appartient à l’autre.",
+          "Comparer h2 de même niveau et h3 sous-partie.",
+          "Faire corriger les deux titres et justifier leur relation."
+        ]
+      },
+      {
+        "symptom": "Le lien est considéré testé parce qu’il est visible.",
+        "helps": [
+          "Demander la destination attendue.",
+          "Repérer href et le libellé.",
+          "Faire comparer l’adresse après un test autorisé ; noter toute limite réseau.",
+          "Faire créer ou modifier un lien puis refaire la comparaison sans guidage."
+        ]
+      },
+      {
+        "symptom": "Une modification détruit le reste de la page.",
+        "helps": [
+          "Retrouver la copie de l’essai.",
+          "Localiser le seul élément à changer.",
+          "Limiter l’édition au contenu d’un p ou à un li supplémentaire.",
+          "Faire une autre modification autonome puis vérifier que les autres éléments restent présents."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Aucun acquis n’est déduit de la checklist, de l’ouverture d’un module ou du code copié. Noter les aides utilisées et décider d’une reprise selon les observations, sans verdict automatique d’orientation.",
+    "quickConductor": [
+      "Préserver l’essai et repérer le cahier des charges.",
+      "Observer les choix lors de la construction ou de l’adaptation.",
+      "Comparer code, aperçu et résultat des tests.",
+      "Faire modifier un élément puis expliquer l’effet.",
+      "Conserver le résultat et les aides utilisées ; proposer une reprise ciblée si nécessaire."
+    ],
+    "references": [
+      {
+        "title": "WHATWG : Titres",
+        "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
+      },
+      {
+        "title": "WHATWG : Lien",
+        "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element"
+      }
+    ]
+  }
+}

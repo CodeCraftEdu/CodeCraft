@@ -1,0 +1,355 @@
+{
+  "domainId": "python",
+  "title": "Mon quiz personnalisable",
+  "type": "project",
+  "theme": "fondations",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "objective": "Créer trois questions réutilisant une fonction, une règle de réponse et un score expliqué.",
+  "skillIds": [
+    "python.functions",
+    "python.return",
+    "python.input",
+    "python.text",
+    "python.conditions",
+    "python.accumulation"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.functions",
+      "expectation": "Fournir deux arguments à une fonction."
+    },
+    {
+      "skillId": "python.return",
+      "expectation": "Conserver un entier renvoyé sur les deux issues."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Saisir une réponse dans la console."
+    },
+    {
+      "skillId": "python.text",
+      "expectation": "Préparer la réponse avec strip et lower."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Comparer deux textes avec if/else."
+    },
+    {
+      "skillId": "python.accumulation",
+      "expectation": "Initialiser et actualiser un total."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Enregistre tes autres fichiers et crée quiz.py, sans les remplacer. Il faut pouvoir fournir deux arguments, conserver un résultat, préparer un texte et cumuler des points ; si nécessaire, reprends Renvoyer un résultat. Le score repart à zéro à chaque lancement.",
+      "moduleLink": {
+        "moduleId": "python-retour",
+        "text": "Renvoyer un résultat"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "contrat",
+      "title": "Un quiz personnel, une règle claire",
+      "paragraphs": [
+        "Choisis un thème et trois questions avec une réponse courte chacune, sans renseignements personnels. Définis une seule fonction poser_question(question, attendue) : les arguments donnent le texte à demander et la réponse attendue.",
+        "Dans le corps, input(question) renvoie le texte saisi. Conserve-le dans une variable locale reponse, puis conserve les résultats de strip et de lower dans deux autres variables. Compare le texte préparé à attendue, donnée en minuscules sans espace aux bords : renvoie 1 s'il correspond, 0 sinon.",
+        "La règle tolère les majuscules et les espaces aux bords, pas les fautes, accents différents ni espaces au milieu. Une réponse vide est refusée car tes réponses attendues sont non vides.",
+        "Initialise le score à zéro dans le programme, hors de la fonction et avant les appels. Chaque appel renvoie des points que tu ajoutes au score. Trois appels posent trois questions ; après le dernier ajout, affiche les points sur 3."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "plan",
+      "title": "1 - Prépare les questions",
+      "intro": "Note ton plan avant de coder.",
+      "items": [
+        {
+          "id": "choisir-questions",
+          "text": "Écris tes trois questions et leurs réponses attendues, simples et non vides, en minuscules sans espace aux bords. Annonce la règle de saisie à la personne qui joue.",
+          "hint": "Ne mélange pas correction orthographique et préparation de la casse."
+        },
+        {
+          "id": "prevoir-tests",
+          "text": "Prévois une réponse correcte, une fausse, une vide et des variantes de casse/bords pour une de tes questions.",
+          "hint": "Écris les résultats attendus avant de lancer."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "2 - Une question avant le score",
+      "intro": "Fais évoluer quiz.py : une fonction et un appel de test d'abord, puis un programme qui compte ses points.",
+      "items": [
+        {
+          "id": "fonction-question",
+          "text": "Reprends ta comparaison à deux paramètres de mon_point.py. Adapte sa définition en poser_question(question, attendue) : le premier paramètre contient maintenant la question à afficher, et non la réponse du joueur. Garde attendue comme second paramètre.",
+          "hint": "Avant, reponse venait du premier argument. Maintenant, question vient du premier argument et reponse sera créée dans le corps grâce à la saisie."
+        },
+        {
+          "id": "saisie-locale",
+          "text": "Avant la comparaison, pose la question reçue et conserve le texte saisi dans reponse. Fais un premier essai avec une comparaison exacte, sans préparation du texte. Appelle une seule fois la fonction et conserve le résultat avant de l'afficher.",
+          "hint": "Utilise reponse = input(question). Compare reponse à attendue ; chaque branche doit renvoyer 1 ou 0. Le premier argument est le texte de la question, le second la réponse attendue."
+        },
+        {
+          "id": "preparer-reponse",
+          "text": "Ajoute strip puis lower en deux étapes avant la comparaison. Compare désormais le texte préparé à attendue. Prévois les valeurs intermédiaires pour une réponse avec des majuscules et des espaces aux bords.",
+          "hint": "Conserve reponse.strip() dans sans_bords, puis sans_bords.lower() dans normalisee. La comparaison porte sur normalisee, pas sur reponse."
+        },
+        {
+          "id": "verifier-question",
+          "text": "Relance la question avec la bonne réponse, une mauvaise, vide, des majuscules et des espaces aux bords. Prévois les résultats et explique les deux arguments, la réponse locale et l'entier renvoyé.",
+          "hint": "Le résultat est un nombre ; un affichage juste/faux ne remplace pas return."
+        },
+        {
+          "id": "debut-score",
+          "text": "Enregistre la version de test. Remplace ensuite la partie située après la définition par : score = 0, un seul appel conservé dans points, score = score + points, puis affichage du score. Ne conserve pas un ancien appel de test en plus. Relance avec juste puis faux : attends 1 puis 0.",
+          "hint": "L'initialisation précède l'appel ; une seule question doit être posée par lancement à cette étape."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "3 - Ton quiz de trois questions",
+      "intro": "Continue dans quiz.py avec tes textes ; essaie sans regarder un programme complet.",
+      "items": [
+        {
+          "id": "trois-appels",
+          "text": "Pars de ton programme qui compte une question. Garde son premier appel et son addition ; ajoute deux appels avec leurs additions pour atteindre exactement trois questions. Affiche le bilan sur 3 après le dernier ajout.",
+          "hint": "Compte les appels présents hors de la définition : trois, pas trois nouveaux appels ajoutés au premier. score = 0 reste une seule fois avant eux."
+        },
+        {
+          "id": "tester-parties",
+          "text": "Teste trois réponses justes, trois fausses puis un mélange avec une réponse vide. Prévois et vérifie les scores 3, 0 et celui du mélange. Note les aides utilisées.",
+          "hint": "Le total ajoute les trois résultats 1 ou 0, y compris le premier et le dernier."
+        },
+        {
+          "id": "modifier-question",
+          "text": "Enregistre puis crée quiz_variante.py. Change une question et sa réponse attendue. Teste la nouvelle réponse, l'ancienne et les autres questions ; mets à jour tout message de correction éventuel.",
+          "hint": "Le texte demandé et attendue sont deux arguments distincts. Une ancienne réponse différente doit être refusée."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "presentation",
+      "title": "4 - Montre et explique",
+      "intro": "Les essais et l'explication comptent ensemble, pas les cases cochées.",
+      "items": [
+        {
+          "id": "expliquer-score",
+          "text": "Montre les paramètres, les variables locales, le retour et le total extérieur. Explique pourquoi deux parties relancées ne partagent pas leur score.",
+          "hint": "Chaque lancement réexécute score = 0 ; aucune donnée n'est enregistrée."
+        },
+        {
+          "id": "limites-quiz",
+          "text": "Explique quelles différences la règle tolère et refuse. Présente une modification personnelle et ses tests, en précisant modèles, indices ou aide reçue.",
+          "hint": "strip/lower ne corrigent ni fautes ni espaces internes ; les limites sont annoncées."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - une quatrième question",
+      "intro": "Facultatif ; conserve le quiz sur 3.",
+      "items": [
+        {
+          "id": "quatrieme-question",
+          "text": "Dans une copie quiz_quatre.py, ajoute une question avec un nouvel appel, sans recopier la définition. Actualise les points après cet appel et le bilan sur 4 ; teste quatre justes puis une fausse.",
+          "hint": "Change le nombre total annoncé, pas la valeur d'un point."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus-message",
+      "title": "Bonus - un retour au joueur",
+      "intro": "Facultatif et indépendant de la quatrième question ; tu peux garder ton quiz sur 3.",
+      "items": [
+        {
+          "id": "retour-joueur",
+          "text": "Si tu souhaites un message juste/faux, ajoute-le dans chaque branche avant le return correspondant. Reteste les scores pour vérifier que l'affichage n'a pas remplacé le résultat renvoyé.",
+          "hint": "return termine l'appel : un message placé après lui dans la même branche ne sera pas affiché."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Créer des questions personnelles et annoncer une règle de réponse testée, y compris vide.",
+    "Réutiliser une fonction à deux paramètres et renvoyer 1 ou 0 sur chaque issue.",
+    "Conserver et cumuler les résultats hors de la fonction sans réinitialiser le score entre les questions.",
+    "Modifier une question, retester les scores et expliquer variables locales, limites et aides utilisées."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-fonctions",
+      "blockId": "guide",
+      "label": "Revoir les paramètres"
+    },
+    {
+      "moduleId": "python-retour",
+      "blockId": "guide",
+      "label": "Revoir les résultats"
+    },
+    {
+      "moduleId": "python-texte",
+      "blockId": "guide",
+      "label": "Revoir les réponses préparées"
+    },
+    {
+      "moduleId": "python-compteurs",
+      "blockId": "guide",
+      "label": "Revoir un total"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-quiz",
+      "blockId": "bonus",
+      "label": "Ajouter une question"
+    },
+    {
+      "moduleId": "python-quiz",
+      "blockId": "bonus-message",
+      "label": "Afficher un retour au joueur"
+    }
+  ],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Créer trois questions réutilisant une fonction, une règle de réponse et un score expliqué.",
+    "entryDiagnosis": [
+      "Fournir deux arguments à une fonction.",
+      "Conserver un entier renvoyé sur les deux issues.",
+      "Saisir une réponse dans la console.",
+      "Préparer la réponse avec strip et lower.",
+      "Comparer deux textes avec if/else.",
+      "Initialiser et actualiser un total."
+    ],
+    "preparation": [
+      "Créer les fichiers annoncés dans Thonny ; sauvegarder le travail précédent et conserver les variantes importantes avec Enregistrer sous.",
+      "Relancer le fichier entier : ne pas dépendre des définitions ou variables restées dans une ancienne console.",
+      "Observer une prédiction avant de montrer l'indice ; distinguer aide aux fichiers/clavier et aide au raisonnement."
+    ],
+    "why": "Réutiliser une règle comprise puis vérifier ce qu'elle reçoit, fait et renvoie plutôt que recopier un programme.",
+    "discoverySpeech": [
+      "« Où la fonction est-elle définie et où est-elle appelée ? »",
+      "« Quelle valeur entre dans cet appel, et que se passe-t-il ensuite ? »",
+      "« Prévois un résultat, exécute puis explique une modification. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-quiz",
+        "blockId": "contrat",
+        "label": "Exemple ou cahier des charges"
+      },
+      "comments": [
+        "Lire le cahier des charges, puis faire annoncer les trois questions et la règle.",
+        "Faire fonctionner une seule question avant d'ajouter le score et les trois appels.",
+        "Ne pas publier de solution complète ; noter les tests, les modifications et les aides reçues."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi trois appels mais une définition ?",
+        "answer": "La même règle est réutilisée avec des arguments différents ; le corps n'est pas recopié."
+      },
+      {
+        "question": "Que reçoit attendue ?",
+        "answer": "La réponse attendue donnée comme second argument, en minuscules sans espace aux bords."
+      },
+      {
+        "question": "Pourquoi préparer reponse et non seulement l'afficher ?",
+        "answer": "Le programme compare le résultat conservé de strip puis lower à attendue."
+      },
+      {
+        "question": "Où initialise-t-on le score ?",
+        "answer": "Une seule fois hors de la fonction, avant le premier appel."
+      },
+      {
+        "question": "Que se passe-t-il avec juste, faux, vide ?",
+        "answer": "Les retours sont 1, 0, 0 si les réponses attendues sont non vides ; le total vaut 1."
+      },
+      {
+        "question": "Le projet valide-t-il automatiquement listes et hasard ?",
+        "answer": "Non. Son socle n'utilise ni liste ni hasard ; il vérifie des explications et modifications ciblées, manuellement."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-quiz",
+      "blockId": "guide",
+      "label": "Essais accompagnés"
+    },
+    "independentActivity": {
+      "moduleId": "python-quiz",
+      "blockId": "autonomie",
+      "label": "Création et transfert autonomes"
+    },
+    "differentiation": [
+      "Reprendre une seule notion fragile sans exiger un bonus ni un projet antérieur entièrement terminé.",
+      "Accompagner séparément changement du premier paramètre, saisie locale, préparation du texte et cumul. Faire expliquer chaque étape ; ne pas ajouter les trois questions tant que l'appel isolé ne renvoie pas 1 et 0.",
+      "Distinguer réussite autonome, avec modèle ou avec aide ; ne pas conclure à la maîtrise sur le seul rendu."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La question et la réponse saisie sont confondues lors de l'adaptation.",
+        "helps": [
+          "Faire nommer les deux arguments : texte de la question et réponse attendue.",
+          "Repérer où reponse est créée à l'intérieur de la fonction.",
+          "Comparer la saisie à attendue, puis faire suivre reponse, sans_bords et normalisee.",
+          "Le premier paramètre question est utilisé par input ; la réponse n'est plus un argument fourni à cet appel. Tester deux réponses avec la même question."
+        ]
+      },
+      {
+        "symptom": "Les arguments ne correspondent pas aux paramètres.",
+        "helps": [
+          "Repérer les valeurs données à l'appel.",
+          "Comparer nombre et ordre aux paramètres.",
+          "Lire le message d'erreur ou les affichages inversés.",
+          "Corriger un appel, puis tester deux valeurs différentes sans changer la définition."
+        ]
+      },
+      {
+        "symptom": "Affichage, résultat ou nom local sont confondus.",
+        "helps": [
+          "Montrer la ligne qui affiche et celle qui conserve.",
+          "Suivre un appel et son retour vers le programme.",
+          "Vérifier return sur chaque issue et les noms utilisés hors du bloc.",
+          "Conserver le résultat dans une variable extérieure ; ne pas chercher à utiliser directement un nom local. Retester et expliquer."
+        ]
+      },
+      {
+        "symptom": "Le score reste à 1, recommence ou oublie une question.",
+        "helps": [
+          "Faire noter les trois résultats attendus.",
+          "Repérer l'initialisation et chaque addition.",
+          "Compter les appels hors de la définition : un pendant le guidé, puis exactement trois. Supprimer l'ancien appel de diagnostic ; vérifier l'initialisation avant eux et une addition après chacun.",
+          "Garder le total hors de la fonction ; tester 3 justes, 0 juste et un mélange, puis relancer pour vérifier le nouveau départ."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Aucun acquis automatique sur ouverture, copie ou case cochée. Pas de dictionnaires, liste de listes, zip, global, récursion, argument par défaut ou exception cachée. Les fonctions utilisent des valeurs simples. Ce projet n'évalue pas toutes les compétences Python par sa seule réussite.",
+    "quickConductor": [
+      "Vérifier les prérequis et sauvegarder.",
+      "Lire un exemple ou le cahier des charges.",
+      "Vérifier comparaison exacte puis préparation textuelle et retours ; remplacer le programme de test par un appel compté.",
+      "Ajouter deux appels, prédire et tester les scores, puis modifier une question et vérifier nouvelle et ancienne réponse.",
+      "Noter les tests, explications et aides ; choisir manuellement une reprise."
+    ],
+    "references": [
+      {
+        "title": "Python - fonctions",
+        "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+      }
+    ]
+  }
+}

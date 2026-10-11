@@ -1,0 +1,488 @@
+{
+  "domainId": "web",
+  "title": "Mon affiche numérique",
+  "type": "project",
+  "theme": "fondations",
+  "objective": "Créer une petite affiche HTML et personnaliser ses textes et ses fonds avec des classes CSS.",
+  "skillIds": [
+    "html.headings",
+    "html.text",
+    "css.selectors",
+    "css.colors"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer et modifier un titre."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer et modifier un paragraphe."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+    },
+    {
+      "skillId": "css.selectors",
+      "expectation": "Relier class au sélecteur .classe et réutiliser une classe sur plusieurs éléments."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "projet",
+      "title": "Ton projet : Une affiche qui transmet un message",
+      "paragraphs": [
+        "Crée une affiche sur une activité imaginaire, une idée ou une passion, sans information personnelle. Une affiche doit faire comprendre son sujet et donner quelques informations utiles.",
+        "Résultat attendu : un titre, au moins deux paragraphes et deux groupes de styles lisibles. Les couleurs servent à distinguer le titre et les informations ; tu n’as pas besoin de décoration supplémentaire.",
+        "Tu peux partir d’une page existante ou d’un essai neuf. Le but est de décider quels éléments partagent un style et d’expliquer tes choix, pas de recopier une affiche terminée.",
+        "Dans CodePen, écris le contenu dans HTML et les règles dans CSS."
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "cahier-charges",
+      "title": "Cahier des charges",
+      "items": [
+        {
+          "id": "objectif-titre",
+          "text": "Un h1 annonce le sujet de mon affiche."
+        },
+        {
+          "id": "objectif-textes",
+          "text": "Au moins deux paragraphes donnent des informations compréhensibles."
+        },
+        {
+          "id": "objectif-classes",
+          "text": "Deux classes différentes distinguent titre et informations ; les deux paragraphes partagent une classe."
+        },
+        {
+          "id": "objectif-styles",
+          "text": "Mes règles choisissent les couleurs du texte et du fond. Au moins deux groupes ont une apparence différente et lisible."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple-html",
+      "title": "Petit exemple à comprendre : Pas l’affiche finale",
+      "paragraphs": [
+        "Cet essai montre le lien entre contenu et style. annonce désigne ici le titre et information le paragraphe. Ces noms sont choisis : ils n’ont pas de pouvoir particulier.",
+        "Tu peux tester cet extrait dans HTML, puis celui qui suit dans CSS avant de préparer ton propre sujet. Ajoute un second p portant information pour prédire ce qu’il recevra."
+      ],
+      "code": "<h1 class=\"annonce\">Atelier découverte</h1>\n<p class=\"information\">Une idée à essayer.</p>"
+    },
+    {
+      "type": "lesson",
+      "id": "exemple-css",
+      "title": "CSS : Deux groupes lisibles",
+      "paragraphs": [
+        ".annonce choisit les éléments dont class vaut annonce ; .information choisit ceux portant information.",
+        "color donne la couleur des lettres, background-color celle de leur fond. white signifie blanc, navy bleu très foncé, black noir et lightyellow jaune clair.",
+        "Le fond des paragraphes peut être plus large que leurs mots : il appartient à chaque élément. L’affiche peut rester très simple ; aucune mise en page nouvelle n’est demandée."
+      ],
+      "code": ".annonce {\n  color: white;\n  background-color: navy;\n}\n\n.information {\n  color: black;\n  background-color: lightyellow;\n}",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Deux groupes, deux rôles visuels",
+        "intro": "Le petit exemple reste le même. Compare la présentation neutre et les couleurs des deux classes.",
+        "variants": [
+          {
+            "label": "Sans couleurs personnalisées",
+            "html": "<h1 class=\"annonce\">Atelier découverte</h1><p class=\"information\">Une idée à essayer.</p>",
+            "code": ".annonce {\n  color: black;\n  background-color: white;\n}\n.information {\n  color: black;\n  background-color: white;\n}",
+            "feedback": "Le titre et le paragraphe existent déjà : le CSS ne crée pas leur contenu.",
+            "css": ".annonce,.information{color:black;background-color:white}"
+          },
+          {
+            "label": "Deux groupes lisibles",
+            "html": "<h1 class=\"annonce\">Atelier découverte</h1><p class=\"information\">Une idée à essayer.</p>",
+            "code": ".annonce {\n  color: white;\n  background-color: navy;\n}\n.information {\n  color: black;\n  background-color: lightyellow;\n}",
+            "feedback": "annonce et information reçoivent des styles différents. Les lettres restent lisibles sur chaque fond.",
+            "css": ".annonce{color:white;background-color:navy}.information{color:black;background-color:lightyellow}"
+          }
+        ],
+        "note": "Cet exemple montre le ciblage des classes, pas une affiche finale. Choisis ton propre message et tes couleurs, puis vérifie leur lisibilité."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "preparer",
+      "title": "Préparer puis essayer",
+      "intro": "Tu peux utiliser l’essai comme aide, mais ton affiche finale doit porter ton propre message.",
+      "items": [
+        {
+          "id": "choisir-message",
+          "text": "Choisis ton sujet, ton titre et deux informations à transmettre. Écris ces textes avant de choisir tes couleurs."
+        },
+        {
+          "id": "essayer-groupe",
+          "text": "Dans le petit exemple, ajoute un deuxième paragraphe avec la même classe. Change une couleur de cette classe. Observe les deux paragraphes.",
+          "hints": [
+            "Regarde le class du premier paragraphe.",
+            "Le nouveau paragraphe peut partager ce même nom.",
+            "Une seule règle peut servir aux deux.",
+            "Ajoute un p class=\"information\", puis modifie color dans .information. Les deux paragraphes doivent changer."
+          ]
+        },
+        {
+          "id": "choisir-palette",
+          "text": "Choisis un couple texte/fond facile à lire pour chaque groupe. Tu peux garder les couleurs proposées ; le choix artistique ne mesure pas ta compréhension du code."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "realisation",
+      "title": "Réalise ton affiche",
+      "intro": "Crée ton propre contenu, ou transforme une page que tu possèdes déjà. Essaie sans recopier toute la solution d’exemple.",
+      "items": [
+        {
+          "id": "ecrire-contenu",
+          "text": "Écris ton h1 et au moins deux paragraphes. Relis le message : quelqu’un doit pouvoir comprendre le sujet sans explication orale."
+        },
+        {
+          "id": "attribuer-classes",
+          "text": "Choisis une classe pour le titre et une autre, commune aux paragraphes. Les noms peuvent être différents de l’exemple.",
+          "hints": [
+            "Repère les éléments qui doivent partager une apparence.",
+            "Ils peuvent porter le même nom dans class.",
+            "Compare le lien annonce/.annonce de l’exemple.",
+            "Ajoute class à ton h1 et à tes p ; utilise le même nom pour les p. Écris ensuite les sélecteurs correspondants, avec le point dans CSS seulement."
+          ]
+        },
+        {
+          "id": "personnaliser",
+          "text": "Écris les deux règles CSS pour changer les lettres et les fonds. Vérifie que le bon groupe change.",
+          "hints": [
+            "Commence par une seule règle.",
+            "Distingue le texte à colorer de son fond.",
+            "Relis color et background-color dans l’exemple.",
+            "Ajoute ces deux propriétés entre accolades, avec : et ;. Puis teste l’autre classe."
+          ]
+        },
+        {
+          "id": "adapter",
+          "text": "Fais une modification personnelle : change une phrase et un couple de couleurs. Explique quel langage tu utilises pour chacun de ces changements."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie puis présente ton travail",
+      "items": [
+        {
+          "id": "verifier-message",
+          "text": "Le sujet et les deux informations se comprennent en lisant la page."
+        },
+        {
+          "id": "verifier-html",
+          "text": "Mon titre et mes paragraphes ont des balises correctement ouvertes et fermées."
+        },
+        {
+          "id": "verifier-regles",
+          "text": "Les classes HTML et les sélecteurs CSS correspondent ; une règle commune agit sur les deux paragraphes."
+        },
+        {
+          "id": "verifier-lecture",
+          "text": "Les lettres restent faciles à lire sur chaque fond."
+        },
+        {
+          "id": "verifier-explication",
+          "text": "Je peux expliquer une modification de contenu et une modification de style."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "transfert",
+      "title": "Un dernier changement sans modèle",
+      "intro": "Cette petite demande vérifie un choix, pas seulement la reproduction d’un résultat.",
+      "items": [
+        {
+          "id": "nouvelle-information",
+          "text": "Ajoute une troisième information ayant exactement le style des deux premières, sans ajouter de règle CSS. Prédis puis vérifie le résultat."
+        },
+        {
+          "id": "montrer-regle",
+          "text": "Change le fond des trois informations en gardant leurs lettres identiques. Montre la règle responsable et explique ton choix."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Consolidation : Retrouver la cause",
+      "intro": "Conserve ta page. Choisis seulement l’essai correspondant à ta difficulté.",
+      "items": [
+        {
+          "id": "correspondance",
+          "text": "Si un seul paragraphe ne reçoit pas le style commun, compare les class des paragraphes et le sélecteur. Corrige le nom différent.",
+          "hints": [
+            "Commence par le paragraphe qui ne change pas.",
+            "Compare son class avec celui qui fonctionne.",
+            "Les noms doivent correspondre au même sélecteur.",
+            "Rétablis le même nom de classe sur les paragraphes et vérifie ; inutile d’ajouter une règle par phrase."
+          ]
+        },
+        {
+          "id": "fond-lettres",
+          "text": "Si tu changes les lettres alors que tu veux changer le fond, garde le même sélecteur et retrouve la bonne déclaration.",
+          "hints": [
+            "Montre les lettres et la zone derrière.",
+            "Deux propriétés différentes règlent ces parties.",
+            "Compare color et background-color.",
+            "Garde color et modifie background-color uniquement, puis reteste."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : Une seconde ambiance",
+      "intro": "Facultatif, sans nouvelle notion et sans changer le message.",
+      "items": [
+        {
+          "id": "autre-ambiance",
+          "text": "Note tes couples de couleurs, puis essaie une autre ambiance avec les mêmes deux classes. Par exemple, inverse blanc et navy. Garde une version lisible."
+        },
+        {
+          "id": "comparer-ambiances",
+          "text": "Explique ce qui a changé et ce qui est resté identique. Choisis ta version préférée sans refaire le HTML."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "local",
+      "tone": "neutral",
+      "title": "Avec VS Code",
+      "text": "Utilise le cadre fourni dans Découvrir le CSS : place ton contenu dans body et les règles dans style. Enregistre puis actualise le navigateur. Tu n’as pas besoin de créer une feuille externe pour cette affiche.",
+      "moduleLink": {
+        "text": "Découvrir le CSS",
+        "moduleId": "css-decouverte"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Et ensuite ?",
+      "paragraphs": [
+        "Si tu sais réaliser et expliquer les changements avec peu ou pas d’aide, tu peux continuer dans Débutants à partir du premier besoin restant. Tu n’as pas à refaire les compétences déjà comprises.",
+        "Présente ton affiche et explique tes choix de classes et de couleurs. Reprends la leçon correspondante pour les réglages qui te posent encore problème.",
+        "Si tu n’as pas encore réalisé la mini-page HTML complète, retrouve-la dans le parcours depuis le fil d’Ariane lorsque titres, listes, liens et images sont compris. Pour poursuivre dans Débutants sans tout refaire, choisis Structure d’un document HTML si tu sais déjà expliquer ton HTML, tes classes et tes couleurs."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Produire un message personnel compréhensible avec titre et paragraphes, indépendamment du choix décoratif.",
+    "Organiser deux groupes avec des classes et réutiliser une règle commune aux paragraphes.",
+    "Changer séparément contenu, couleur de lettres et fond, en expliquant le rôle de HTML et CSS.",
+    "Ajouter une information avec un style existant sans nouvelle règle ; réussir un changement demandé sans nom de propriété donné."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "web-affiche-numerique",
+      "blockId": "reparer",
+      "label": "Réparer seulement le ciblage ou la déclaration"
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "blockId": "reparer",
+      "label": "Reprendre les correspondances de classes"
+    },
+    {
+      "moduleId": "css-decouverte",
+      "blockId": "reparer",
+      "label": "Reprendre la lecture d’une règle"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre titre et paragraphes"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "web-affiche-numerique",
+      "blockId": "bonus",
+      "label": "Comparer deux ambiances avec les mêmes notions",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-mini-page",
+      "label": "Compléter le noyau HTML si ce défi reste à faire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer et modifier un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer et modifier un paragraphe."
+        },
+        {
+          "skillId": "html.headings",
+          "expectation": "Utiliser aussi des sous-titres, par exemple h2."
+        },
+        {
+          "skillId": "html.lists",
+          "expectation": "Placer les éléments li dans une liste ul."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer destination href et texte cliquable."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer/remplacer une image avec src et rédiger alt."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire réaliser une petite production personnelle en réutilisant HTML, classes et couleurs. L’élève doit pouvoir modifier son affiche sur demande, pas seulement présenter un rendu copié.",
+    "entryDiagnosis": [
+      "Demander un h1 et un p, puis une phrase expliquant le rôle de HTML et CSS.",
+      "Présenter une classe sur deux paragraphes : demander de prédire le résultat d’une modification de leur règle commune.",
+      "Demander de changer un fond sans toucher aux lettres. Si cette distinction manque, proposer C1 ; si le nom de classe manque, proposer C2."
+    ],
+    "preparation": [
+      "Préparer un CodePen ou un fichier local avec le cadre fourni. Aucune image, aucun lien, aucun compte supplémentaire ni publication ne sont requis pour cette affiche.",
+      "Garder les noms de couleurs à portée de main. Les deux palettes fournies permettent de se concentrer sur le code.",
+      "Vérifier que l’élève retrouve son panneau CSS ou la zone style. Aider à cette manipulation séparément du choix des règles."
+    ],
+    "why": "Un petit projet réunit message, ciblage et style. Les choix et modifications donnent des indices de compréhension sans exiger une décoration avancée.",
+    "discoverySpeech": [
+      "« Ton affiche doit transmettre une idée à quelqu’un qui la lit sans t’entendre. Choisis d’abord ce que tu veux dire ; les couleurs viendront ensuite. »",
+      "« Nous avons deux groupes : le titre et les informations. Avec deux règles, nous pouvons garder une apparence cohérente quand nous ajoutons une phrase. »",
+      "« Tu peux garder ma palette. Ce n’est pas un concours de décoration. Je veux surtout que tu saches retrouver et expliquer la règle qui agit. »",
+      "« Pour finir, ajoute une information de même style sans écrire de nouvelle règle, puis change seulement le fond du groupe. Prédis ce qui va se passer. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "web-affiche-numerique",
+        "blockId": "exemple-css",
+        "label": "Deux groupes et deux couples de couleurs"
+      },
+      "comments": [
+        "Associer .annonce au h1 et .information au p de l’extrait précédent. Les noms sont choisis, pas réservés.",
+        "Faire ajouter le second p pendant l’essai accompagné. Une règle commune agit sur les deux, sans répétition de CSS.",
+        "L’exemple a volontairement un seul paragraphe au départ et ne constitue pas l’affiche finale. La production exige son propre message et au moins deux informations."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Dois-je ajouter une image pour que ce soit une affiche ?",
+        "answer": "Non. Ici le message et les styles suffisent. Une illustration éventuelle ne remplace aucun critère HTML/CSS et ne doit pas devenir un prérequis caché."
+      },
+      {
+        "question": "Pourquoi deux paragraphes avec le même class changent-ils ensemble ?",
+        "answer": "Ils correspondent au même sélecteur de classe ; la même règle leur est appliquée."
+      },
+      {
+        "question": "Puis-je garder les couleurs de l’exemple ?",
+        "answer": "Oui. Demander toutefois une modification expliquée pour observer le choix de la bonne règle."
+      },
+      {
+        "question": "Comment ajouter une information sans nouvelle règle ?",
+        "answer": "Créer un p avec la classe des informations existantes. Il reçoit le style du groupe."
+      },
+      {
+        "question": "Si ma phrase est fausse, dois-je la corriger dans CSS ?",
+        "answer": "Non. Les mots sont dans HTML ; CSS change leur présentation."
+      },
+      {
+        "question": "J’ai un joli résultat : est-ce automatiquement acquis ?",
+        "answer": "Non. Demander une modification et une explication, puis distinguer autonomie, modèle et aide."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "web-affiche-numerique",
+      "blockId": "preparer",
+      "label": "Préparer le message et essayer une classe commune"
+    },
+    "independentActivity": {
+      "moduleId": "web-affiche-numerique",
+      "blockId": "realisation",
+      "label": "Réaliser son affiche"
+    },
+    "differentiation": [
+      "Proposer des noms de couleurs ou aider au collage sans décider à la place de l’élève quelle règle doit changer.",
+      "Conserver la même exigence de ciblage pour une affiche simple ; ne pas exiger une mise en page non apprise.",
+      "Un élève autonome peut comparer les ambiances. Un élève bloqué reprend seulement class ou propriété, puis revient à sa production."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Une règle par paragraphe rend les changements incohérents.",
+        "helps": [
+          "Faire identifier le groupe d’informations.",
+          "Comparer leurs noms de classe.",
+          "Revoir la règle commune de l’exemple.",
+          "Utiliser la même classe pour les informations puis demander d’en ajouter une troisième sans règle supplémentaire."
+        ]
+      },
+      {
+        "symptom": "La personnalisation masque les lettres.",
+        "helps": [
+          "Faire lire la phrase sur le fond.",
+          "Comparer couleur des lettres et du fond.",
+          "Revenir à un couple fourni lisible.",
+          "Tester noir/blanc ou blanc/navy, puis conserver un changement de couleur distinct et expliqué."
+        ]
+      },
+      {
+        "symptom": "Le rendu est copié mais la modification demandée bloque.",
+        "helps": [
+          "Demander quelle partie du rendu doit changer.",
+          "Faire retrouver son élément HTML puis sa classe.",
+          "Comparer le rôle des deux déclarations.",
+          "Accompagner un essai, puis proposer une nouvelle modification sans nommer la propriété."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution minimale possible : h1 class=\"annonce\", deux p class=\"information\", avec les deux règles de l’exemple. Les mots doivent former un message personnel ; d’autres noms et couleurs sont acceptés.",
+      "Transfert attendu : ajouter un troisième p class=\"information\", puis modifier seulement background-color dans .information. color reste inchangé. L’élève doit expliquer pourquoi les trois changent.",
+      "Observer réussite autonome, avec modèle ou avec aide ; ne pas confondre le goût graphique, l’orthographe, la manipulation et la compréhension des règles.",
+      "L’affiche est le jalon de première personnalisation de Fondations et un prolongement facultatif de Débutants. Le noyau HTML complet reste un autre défi.",
+      "Si les choix sont expliqués, orienter vers le premier besoin restant dans Débutants ; si une notion manque, proposer sa consolidation ciblée. Ne pas transformer le bonus en passage obligé.",
+      "Le suivi reste manuel avec ses statuts existants. Le projet, sa checklist et sa consultation ne produisent aucune validation."
+    ],
+    "quickConductor": [
+      "Vérifier règles, classes et modification indépendante du fond.",
+      "Faire choisir le message et lire le cahier des charges.",
+      "Essayer une classe commune puis lancer la réalisation autonome.",
+      "Vérifier lisibilité, ciblage et présence des textes.",
+      "Demander la troisième information puis le changement de fond.",
+      "Consolider ou poursuivre selon l’observation, sans bonus obligatoire."
+    ],
+    "references": [
+      {
+        "title": "MDN : Sélecteurs de classe",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Class_selectors"
+      },
+      {
+        "title": "MDN : color",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color"
+      },
+      {
+        "title": "MDN : background-color",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-color"
+      },
+      {
+        "title": "MDN : Découvrir la syntaxe CSS",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS"
+      }
+    ]
+  }
+}

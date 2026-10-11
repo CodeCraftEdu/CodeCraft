@@ -1,0 +1,410 @@
+{
+  "domainId": "web",
+  "title": "Parent et enfants",
+  "type": "lesson",
+  "objective": "Identifier le parent direct, les descendants et les éléments frères pour organiser une collection de cartes.",
+  "skillIds": [
+    "html.structure"
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "cours",
+      "title": "Parent et enfants",
+      "paragraphs": [
+        "En HTML, on peut placer un élément à l’intérieur d’un autre. L’élément qui l’entoure immédiatement est son parent. L’élément placé juste à l’intérieur est son enfant direct.",
+        "Observe les balises ouvrantes et fermantes : elles permettent de voir qui contient quoi. Les espaces au début des lignes rendent cette structure plus facile à lire.",
+        "Dans les explications, .cartes désigne l’élément qui porte class=\"cartes\" et .carte désigne un élément qui porte class=\"carte\". Le point ne s’écrit pas dans l’attribut class.",
+        "Une div est un conteneur qui peut regrouper d’autres éléments. Aucun CSS n’est nécessaire ici : les noms de classes servent à repérer les conteneurs.",
+        "L’indentation (les espaces au début des lignes) facilite la lecture, mais ce sont les balises ouvrantes et fermantes qui définissent l’imbrication. Déplacer seulement les espaces ne change pas le parent."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "Observe ces deux cartes",
+      "code": "<div class=\"cartes\">\n  <div class=\"carte\">\n    <h2>La forêt</h2>\n    <p>Un endroit pour se promener.</p>\n  </div>\n  <div class=\"carte\">\n    <h2>La montagne</h2>\n    <p>Un endroit pour admirer le paysage.</p>\n  </div>\n</div>"
+    },
+    {
+      "type": "lesson",
+      "id": "relations",
+      "title": "Qui est le parent de qui ?",
+      "paragraphs": [
+        "Le conteneur .cartes est le parent des deux .carte : les .carte sont ses enfants directs.",
+        "Dans chaque .carte, le h2 et le p sont les enfants directs de cette .carte.",
+        "Les h2 et les p sont aussi à l’intérieur de .cartes, mais ils ne sont pas ses enfants directs : il y a une .carte entre les deux.",
+        "Un même élément peut donc être un enfant et un parent : chaque .carte est enfant de .cartes, et parent de son h2 et de son p.",
+        "Un descendant est un élément situé à l’intérieur, à n’importe quelle profondeur. Les h2 et p sont donc des descendants de .cartes, sans être ses enfants directs.",
+        "Des éléments frères ont le même parent : les deux .carte sont sœurs ; le h2 et le p d’une même carte sont frères. Les h2 de deux cartes différentes ne sont pas frères."
+      ],
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Quel groupe regardes-tu ?",
+        "intro": "Compare le parent de toute la collection et le parent du contenu d’une carte.",
+        "variants": [
+          {
+            "label": "La collection .cartes",
+            "html": "<div style=\"border:3px solid #467e81;padding:12px\"><strong>.cartes</strong><div style=\"border:1px solid gray;padding:8px;margin-top:8px\">.carte : Forêt</div><div style=\"border:1px solid gray;padding:8px;margin-top:8px\">.carte : Montagne</div></div>",
+            "code": ".cartes\n├── .carte\n└── .carte",
+            "feedback": "Les deux cartes sont les enfants directs de .cartes. Le cadre coloré indique le groupe observé.",
+            "css": ""
+          },
+          {
+            "label": "Une seule .carte",
+            "html": "<div style=\"border:3px solid #467e81;padding:12px\"><strong>.carte</strong><h2>Forêt</h2><p>Une promenade.</p></div>",
+            "code": ".carte\n├── h2\n└── p",
+            "feedback": "h2 et p sont les enfants directs de cette carte, pas de la collection. Les cadres servent au repérage, pas de modèle de style.",
+            "css": ""
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "arborescence",
+      "title": "La structure sous forme d’arbre",
+      "paragraphs": [
+        "Chaque décalage vers la droite descend d’un niveau. Les deux .carte sont au même niveau ; les titres et paragraphes sont un niveau plus bas."
+      ],
+      "code": ".cartes\n├── .carte\n│   ├── h2\n│   └── p\n└── .carte\n    ├── h2\n    └── p"
+    },
+    {
+      "type": "tasks",
+      "id": "observation",
+      "title": "À toi d’observer",
+      "intro": "Réponds avec tes mots avant d’ouvrir chaque indice. Tu peux ensuite comparer ta réponse avec la correction.",
+      "items": [
+        {
+          "id": "parent-cartes",
+          "text": "Quel est le parent des .carte ?",
+          "hint": "Correction : leur parent est le conteneur .cartes, qui les entoure directement."
+        },
+        {
+          "id": "enfants-directs",
+          "text": "Quels sont les enfants directs de .cartes ?",
+          "hint": "Correction : les deux éléments .carte. Aucun autre élément ne se trouve entre eux et .cartes."
+        },
+        {
+          "id": "titre-direct",
+          "text": "Le h2 est-il un enfant direct de .cartes ?",
+          "hint": "Correction : non. Son parent direct est une .carte. Le h2 est à l’intérieur de .cartes, mais un niveau plus bas que ses enfants directs."
+        },
+        {
+          "id": "parent-paragraphe",
+          "text": "Quel est le parent du p ?",
+          "hint": "Correction : c’est la .carte qui contient ce paragraphe. Chaque p a sa propre carte comme parent."
+        },
+        {
+          "id": "freres",
+          "text": "Les deux h2 de cartes différentes sont-ils frères ?",
+          "hints": [
+            "Cherche le parent direct de chaque h2.",
+            "Ils n’ont pas le même parent : chacun appartient à sa carte.",
+            "Compare les deux branches de l’arbre.",
+            "Entoure un h2 et son p : ce sont eux qui partagent le même parent."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "codepen",
+      "title": "Dans CodePen : Ajoute une troisième carte",
+      "intro": "Clique sur « Ouvrir CodePen » et travaille dans la zone HTML. Aucun CSS n’est nécessaire pour cet exercice.",
+      "items": [
+        {
+          "id": "copier-structure",
+          "text": "Conserve ton HTML et ton CSS dans deux fichiers texte. Dans un nouveau Pen, recopie l’exemple des deux cartes dans la zone HTML ; garde ton projet précédent intact."
+        },
+        {
+          "id": "troisieme-carte",
+          "text": "Ajoute une troisième .carte avec un h2 et un p, à côté des deux autres dans le même conteneur .cartes.",
+          "hint": "Ajoute le nouveau bloc après la fermeture de la deuxième .carte et avant la dernière fermeture de .cartes. Ne le place pas à l’intérieur d’une autre carte."
+        },
+        {
+          "id": "identifier-parent",
+          "text": "Identifie mentalement le parent de ta nouvelle carte, puis le parent de son titre et de son paragraphe.",
+          "hint": "Correction : la troisième .carte a pour parent .cartes. Son h2 et son p ont pour parent cette troisième .carte."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "defi",
+      "title": "Mini-défi : Construis une galerie",
+      "intro": "Sans recopier l’exemple, crée une nouvelle structure sous la précédente. Les noms galerie et photo sont seulement des noms de classes : tu n’as pas besoin d’ajouter d’images.",
+      "items": [
+        {
+          "id": "galerie",
+          "text": "Crée un conteneur div avec la classe galerie."
+        },
+        {
+          "id": "photos",
+          "text": "Place trois div avec la classe photo directement à l’intérieur de .galerie."
+        },
+        {
+          "id": "contenu-photos",
+          "text": "Ajoute un titre h2 ou un paragraphe p dans chacune des trois .photo."
+        },
+        {
+          "id": "verifier-galerie",
+          "text": "Vérifie que .galerie a trois enfants directs .photo, et que chaque titre ou paragraphe a une .photo comme parent."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Consolidation : Une carte au mauvais endroit",
+      "intro": "Dans ton exemple, déplace volontairement la troisième carte à l’intérieur de la deuxième. Observe l’arbre que cela produit, puis répare.",
+      "items": [
+        {
+          "id": "reparer-carte",
+          "text": "Rends les trois .carte à nouveau sœurs, directement à l’intérieur de .cartes.",
+          "hints": [
+            "Repère les ouvertures et fermetures de la deuxième carte.",
+            "La troisième carte doit commencer après la fermeture de la deuxième.",
+            "L’arbre de départ montre deux branches. Ta troisième carte doit ajouter une troisième branche au même niveau.",
+            "Coupe le bloc complet de la troisième carte puis colle-le avant la fermeture de .cartes, hors de la deuxième carte."
+          ]
+        },
+        {
+          "id": "expliquer-reparation",
+          "text": "Explique pourquoi ajouter des espaces au début des lignes n’aurait pas suffi à changer le parent."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "regroupements",
+      "title": "Bonus : Un groupe dans une carte",
+      "intro": "Repars de tes cartes correctement placées.",
+      "items": [
+        {
+          "id": "groupe-interne",
+          "text": "Dans une carte, entoure le h2 et le p d’une nouvelle div portant class=\"description\"."
+        },
+        {
+          "id": "parents-internes",
+          "text": "Nomme le parent direct du h2, celui de .description et celui de .carte.",
+          "hints": [
+            "Suis un niveau à la fois.",
+            "Le h2 est dans .description, qui est dans .carte.",
+            "Compare avec la syntaxe repliée.",
+            "Lis de l’intérieur vers l’extérieur : description → carte → cartes."
+          ],
+          "syntax": "<div class=\"cartes\">\n  <div class=\"carte\">\n    <div class=\"description\">\n      <h2>La forêt</h2>\n      <p>Un lieu à explorer.</p>\n    </div>\n  </div>\n</div>"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "transition",
+      "title": "Et ensuite ?",
+      "paragraphs": [
+        "Si tu peux expliquer le parent direct et ses enfants, tu peux organiser une page en zones selon leur rôle. Si tu comprends aussi les classes CSS, tu peux explorer comment Flexbox organise les enfants d’un parent. Dans Débutants, la suite est Organiser une page en zones ; dans Avancés, c’est Flexbox. Utilise la navigation de ton parcours et reprends seulement la notion qui bloque."
+      ]
+    }
+  ],
+  "theme": "avances",
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.text",
+      "expectation": "Reconnaître une balise ouvrante et fermante dans un petit extrait."
+    },
+    {
+      "skillId": "html.headings",
+      "expectation": "Repérer les titres présents à l’intérieur d’une carte."
+    }
+  ],
+  "masteryCriteria": [
+    "Montrer le conteneur commun à plusieurs cartes et nommer ses enfants directs.",
+    "Distinguer un enfant direct d’un descendant et reconnaître deux éléments frères.",
+    "Ajouter une carte à l’intérieur du bon conteneur et expliquer sa position grâce aux balises."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-parent-enfants",
+      "blockId": "reparer",
+      "label": "Réparer une carte mal placée"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre titres et paragraphes avant les classes si nécessaire"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-parent-enfants",
+      "blockId": "regroupements",
+      "label": "Créer un regroupement dans une carte"
+    },
+    {
+      "moduleId": "html-parent-enfants",
+      "blockId": "defi",
+      "label": "Construire une galerie sans modèle"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-zones",
+      "label": "Organiser une page en zones si les regroupements sont compris",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        },
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent direct d’un élément et fermer les conteneurs au bon endroit."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-flexbox",
+      "label": "Flexbox : si structure et sélecteurs sont compris",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent et les enfants directs."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class au sélecteur CSS et modifier une déclaration."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre classes et sélecteurs avant Flexbox si nécessaire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Savoir créer un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Savoir créer un paragraphe."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire lire l’imbrication HTML puis modifier une collection sans confondre parent direct, descendant et frère. La position doit pouvoir être expliquée à partir des balises.",
+    "entryDiagnosis": [
+      "Faire retrouver les ouvertures et fermetures d’un h2 et d’un p.",
+      "Présenter deux éléments regroupés dans une div : demander ce qui les entoure immédiatement. Accepter une description simple avant le vocabulaire.",
+      "Ne pas demander de CSS. Les noms de classes servent ici de repères dans le HTML."
+    ],
+    "preparation": [
+      "Ouvrir l’exemple des deux cartes et son arborescence côte à côte si possible.",
+      "Préparer une zone HTML de CodePen vide, sans CSS : la relation est structurelle, pas visuelle.",
+      "Avoir le code de l’exemple disponible pour qu’une difficulté de copie ne bloque pas l’observation."
+    ],
+    "why": "Lire les regroupements permet de structurer une page en zones et, ensuite, d’organiser les enfants directs d’un conteneur avec Flexbox. L’élève doit savoir quels éléments le conteneur regroupe réellement.",
+    "discoverySpeech": [
+      "« Quelle boîte entoure les deux cartes ? Cherchons son ouverture et sa fermeture. »",
+      "« Chaque carte contient aussi un titre et un paragraphe : elle est enfant du grand conteneur et parent de son propre contenu. »",
+      "« Les espaces au début des lignes nous aident à lire. Mais déplacer les espaces ne déplace pas une carte : il faut déplacer ses balises et son contenu. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-parent-enfants",
+        "blockId": "exemple",
+        "label": "Deux cartes dans un conteneur"
+      },
+      "comments": [
+        "Suivre l’ouverture de .cartes jusqu’à sa fermeture, puis faire de même pour chaque .carte.",
+        "Comparer avec l’arborescence : un niveau correspond à une relation parent/enfant direct.",
+        "Les deux cartes sont sœurs. Le h2 est descendant du grand conteneur, mais son parent direct est une carte."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Les h2 sont-ils des enfants directs de .cartes ?",
+        "answer": "Non, les .carte se trouvent entre les deux niveaux."
+      },
+      {
+        "question": "Le h2 et le p d’une même carte sont-ils frères ?",
+        "answer": "Oui, ils partagent le même parent direct."
+      },
+      {
+        "question": "Deux h2 dans des cartes différentes sont-ils frères ?",
+        "answer": "Non, leurs parents sont différents."
+      },
+      {
+        "question": "Une troisième carte placée après la fermeture de .cartes appartient-elle au groupe ?",
+        "answer": "Non : elle doit être à l’intérieur du conteneur."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-parent-enfants",
+      "blockId": "codepen",
+      "label": "Ajouter une troisième carte et expliquer sa place"
+    },
+    "independentActivity": {
+      "moduleId": "html-parent-enfants",
+      "blockId": "defi",
+      "label": "Créer une galerie de trois éléments"
+    },
+    "differentiation": [
+      "Si la lecture est fragile, faire repérer une paire de balises à la fois et accompagner le déplacement du bloc complet.",
+      "Si l’élève réussit, demander le regroupement interne proposé en bonus puis une nouvelle arborescence. Le passage à Flexbox dépend de cette compréhension, pas de la rapidité."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La troisième carte est à l’intérieur de la deuxième.",
+        "helps": [
+          "Faire compter les enfants directs du grand conteneur.",
+          "Cibler la fermeture de la deuxième carte.",
+          "Comparer avec l’arbre initial à deux branches : la troisième carte ajoute une troisième branche au même niveau.",
+          "Déplacer le bloc complet après cette fermeture, en restant à l’intérieur de .cartes."
+        ]
+      },
+      {
+        "symptom": "L’élève confond indentation et imbrication.",
+        "helps": [
+          "Demander quelle balise contient l’élément.",
+          "Cibler les ouvertures et fermetures, pas les espaces.",
+          "Comparer deux extraits identiques avec des indentations différentes.",
+          "Remettre une indentation lisible après avoir expliqué les mêmes relations."
+        ]
+      },
+      {
+        "symptom": "Tous les éléments à l’intérieur sont appelés enfants directs.",
+        "helps": [
+          "Demander quel élément entoure immédiatement le titre.",
+          "Cibler le niveau intermédiaire .carte.",
+          "Comparer au chemin .cartes → .carte → h2.",
+          "Faire nommer parent direct puis ancêtre, un niveau à la fois."
+        ]
+      }
+    ],
+    "notes": [
+      "Une div est ici un conteneur générique. Le mot frère désigne des éléments de même parent, sans impliquer le même type de balise.",
+      "La validation porte sur identifier, ajouter et expliquer. Une page visuellement correcte peut cacher une imbrication différente.",
+      "Le bonus de regroupement interne prépare la distinction utile à Flexbox, sans exiger de nouvelle propriété CSS.",
+      "Pour la suite Flexbox, vérifier aussi les sélecteurs CSS. S’ils restent fragiles, reprendre Classes et couleurs ; si nécessaire, reprendre d’abord titres et paragraphes. Les liens restent ouverts.",
+      "Distinguer une réparation autonome, faite avec modèle ou accompagnée, dans l’observation ou la remarque existante ; aucune acquisition n’est déduite de la checklist."
+    ],
+    "quickConductor": [
+      "Faire lire les deux cartes et repérer les paires de balises.",
+      "Mettre en correspondance HTML et arborescence.",
+      "Poser les questions enfant direct/descendant/frères.",
+      "Accompagner l’ajout d’une carte, puis demander la galerie seul.",
+      "Si nécessaire, réparer le mauvais conteneur ; sinon proposer un regroupement interne.",
+      "Faire expliquer la position d’une carte ; conseiller Flexbox lorsque cette relation est comprise et les sélecteurs repérés."
+    ],
+    "references": [
+      {
+        "title": "MDN : Structure arborescente du document",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
+      }
+    ]
+  }
+}

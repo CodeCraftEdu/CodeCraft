@@ -1,0 +1,41 @@
+/* L'accueil a sa propre identité ; les univers restent distincts. */
+body.student-lowpoly.student-home {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 85% 0, #f1dacb 0, transparent 45rem), linear-gradient(155deg, #e1d9eb 0, #eee9df 32rem, #f3efe6 70rem);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body.student-lowpoly .home-header {
+  min-height: 220px; gap: 18px; padding: 26px 38px;
+  border: 0; border-bottom: 4px solid #756385; box-shadow: none;
+  background-image: linear-gradient(90deg, #36294dc4 0, #36294d70 42%, transparent 72%), url('images/codecraft-horizon.svg');
+  background-size: cover; background-position: center;
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+}
+body.student-lowpoly .home-header::after { display: none; }
+body.student-lowpoly .home-logo { width: 86px; height: 86px; align-self: center; }
+body.student-lowpoly .home-header__copy { max-width: 34rem; }
+body.student-lowpoly .home-header .brand { color: #fff7e6; font-size: clamp(2.5rem, 5vw, 3.5rem); letter-spacing: -.045em; text-shadow: 0 2px 0 #49375d; }
+body.student-lowpoly .home-header .brand:focus-visible { outline: 3px solid #f6d996; outline-offset: 5px; }
+body.student-lowpoly .home-header .home-eyebrow { color: #f2d5b3; }
+body.student-lowpoly .home-header .home-intro { color: #f3e7ef; }
+body.student-lowpoly .brand { color: #412b57; text-shadow: none; }
+body.student-lowpoly .home-eyebrow { color: #765b89; }
+body.student-lowpoly .home-choice { color: #51425e; }
+body.student-lowpoly .page-header--compact .brand { border: 0; background: none; box-shadow: none; padding: .25rem 0; color: #49375d; letter-spacing: -.045em; text-shadow: 0 1px 0 #c9bfcf; }
+body.student-lowpoly .page-header--compact .brand:focus-visible { outline: 2px solid var(--route); outline-offset: 5px; }
+body.student-lowpoly .domain-banner {
+  display: flex; align-items: center; min-height: 140px; padding: 24px 30px;
+  color: #fff7e6; font-size: clamp(1.9rem, 4vw, 2.5rem); text-shadow: 0 2px 0 #302d354d;
+  background-image: linear-gradient(90deg, #203453b3, #20345330 38%, transparent 72%), url('images/banner-python.svg');
+  background-size: cover; background-position: center; background-repeat: no-repeat; background-color: var(--route-dark);
+  border-bottom: 4px solid var(--route-dark);
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+}
+body.student-lowpoly[data-domain="jeux-video"] .domain-banner { background-image: linear-gradient(90deg, #613f55b3, #613f5530 38%, transparent 72%), url('images/banner-game.svg'); }
+body.student-lowpoly[data-domain="web"] .domain-banner { background-image: linear-gradient(90deg, #284e49b3, #284e4930 38%, transparent 72%), url('images/banner-web.svg'); }
+body.student-lowpoly[data-domain="robotique"] .domain-banner { background-image: linear-gradient(90deg, #1b394fb8, #1b394f30 42%, transparent 72%), url('images/banner-robotique.svg'); }
+body.student-lowpoly .home-domain--game { --card-accent: #a55d27; }
+body.student-lowpoly .home-domain--web { --card-accent: #4f8045; }
+body.student-lowpoly .home-domain--python { --card-accent: #3f69c6; }
+body.student-lowpoly .home-domain--robotique { --card-accent: #467e81; }

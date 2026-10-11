@@ -1,0 +1,7 @@
+{
+  "fondations": "parcours/web-fondations",
+  "debutants": "parcours/web-debutants",
+  "avances": "parcours/web-avances",
+  "rattrapage": "domaine/web",
+  "module/diagnostic-web": "domaine/web"
+}

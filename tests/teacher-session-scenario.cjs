@@ -49,7 +49,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   const historicalName = session.roster.find(item => item.studentId === a).name;
   assert.equal(await evaluate('document.getElementById("session-advanced").open'), false);
   const longTail = Array.from({length: 24}, (_, index) => 'Consigne longue conservée ' + (index + 1) + '.').join('\n');
-  const cleanQuickConductor = '14:00–14:10 — TOUS — **Accueil**\nOuvrir CodeCraft.\nConsigne libre conservée.\n\n14:10–14:30 — LYNA + IMRAN — Mini-page\nCréer un `h1`.\n\n14:30–14:50 — INES + ELIAS — Images\nimg / src / alt.\n' + longTail + '\nConclusion après la dernière plage conservée.';
+  const cleanQuickConductor = '14:00-14:10 — TOUS — **Accueil**\nOuvrir CodeCraft.\nConsigne libre conservée.\n\n14:10-14:30 — LYNA + IMRAN — Mini-page\nCréer un `h1`.\n\n14:30–14:50 — INES + ELIAS — Images\nimg / src / alt.\n' + longTail + '\nConclusion après la dernière plage conservée.';
   let quickConductor = cleanQuickConductor;
   const detailedPreparation = '# Objectifs\n\nPréparer **deux groupes** et utiliser `CodePen`.\n\n- Vérifier les projets\n- Préparer les liens\n\n---\n\n## Exemple\n\n```html\n<section>Code affiché</section>\n```\n\n<img src=x onerror="window.markdownInjected=true">\n\n' + Array.from({length: 12}, (_, index) => 'Paragraphe détaillé ' + (index + 1)).join('\n');
   await click('#edit-quick-conductor');
@@ -132,7 +132,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await evaluate('window.confirm=()=>true'); await click('.session-slot:last-child [data-remove-slot]'); await saved();
   assert.equal(JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots.length, 3);
   await click('#finish-session'); await saved();
-  let document = JSON.parse(await evaluate('readTestFile()'));
+  const document = JSON.parse(await evaluate('readTestFile()'));
   assert.deepEqual(document.progress, initial.progress); assert.deepEqual(document.frameworkProgress, initial.frameworkProgress);
   session = document.sessions[0];
   // Un changement de classe/référentiel et d’élève n’altère pas l’historique.
@@ -150,10 +150,10 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   assert.equal(await evaluate('document.querySelector(".session-slot > summary").tabIndex'), 0);
   await evaluate('window.dispatchEvent(new Event("beforeprint"))');
   const printed = await evaluate('document.getElementById("session-print").textContent');
-  assert(printed.includes('Conducteur rapide')); assert(printed.includes('14:10–14:30')); assert(printed.includes('Mini-page'));
+  assert(printed.includes('Conducteur rapide')); assert(printed.includes('14:10-14:30')); assert(printed.includes('Mini-page'));
   assert(!printed.includes('**Accueil**')); assert(!printed.includes('## Conducteur rapide')); assert(!printed.includes('```text'));
   assert(printed.includes('Accueil')); assert(printed.includes('Conclusion après la dernière plage conservée.'));
-  assert(printed.includes('Conducteur structuré')); assert(printed.includes('14:00–14:10')); assert(printed.includes('Nom actuel modifié')); assert(printed.includes('Instruction fictive 3'));
+  assert(printed.includes('Conducteur structuré')); assert(printed.includes('14:00-14:10')); assert(printed.includes('Nom actuel modifié')); assert(printed.includes('Instruction fictive 3'));
   for (const forbidden of ['PRÉPARATION DÉTAILLÉE LIGNE', 'REMARQUE PRIVÉE ÉLÈVE', 'NOTE PRIVÉE DE SÉANCE', 'Remarque fictive', 'workspaceId']) assert(!printed.includes(forbidden), forbidden);
   await call('Emulation.setEmulatedMedia', { media: 'print' });
   assert.equal(await evaluate('getComputedStyle(document.getElementById("main-content")).display'), 'none');

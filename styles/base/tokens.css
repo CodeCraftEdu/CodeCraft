@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light;
+  --ink: #292a23;
+  --muted: #625f54;
+  --paper: #fffdf5;
+  --canvas: #e8e2d2;
+  --line: #8d8675;
+  --stone: #464b47;
+  --earth: #5d4634;
+  --wood: #7a5b3d;
+  --grass: #547b42;
+  --route: #3f69c6;
+  --route-dark: #29498f;
+  --route-soft: #e4ebfb;
+  --focus: #f3b51b;
+  --stop-bg: #fff0d6;
+  --stop-line: #a94b2f;
+  --success-bg: #e5f2d9;
+  --success-line: #3f743d;
+  --radius: 5px;
+  --block-shadow: 7px 7px 0 #383128;
+}
+
+body[data-route="fondations"] {
+  --route: #3f69c6;
+  --route-dark: #29498f;
+  --route-soft: #e4ebfb;
+}
+
+body[data-route="debutants"] {
+  --route: #4f8045;
+  --route-dark: #355d31;
+  --route-soft: #e4efdd;
+}
+
+body[data-route="avances"] {
+  --route: #7653a5;
+  --route-dark: #543879;
+  --route-soft: #eee5f7;
+}
+
+body[data-route="rattrapage"] {
+  --route: #b7652c;
+  --route-dark: #82451e;
+  --route-soft: #f7e6d6;
+}

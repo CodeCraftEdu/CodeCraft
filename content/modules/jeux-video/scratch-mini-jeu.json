@@ -1,0 +1,346 @@
+{
+  "domainId": "jeux-video",
+  "title": "Mon premier mini-jeu",
+  "type": "project",
+  "theme": "fondations",
+  "objective": "Assembler et expliquer un petit jeu jouable avec déplacement, contact, score et fin de partie.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "scratchProjectId": "chat-cible",
+  "scratchProjectContinuation": true,
+  "skillIds": [
+    "scratch.keyboard",
+    "scratch.coordinates",
+    "scratch.loops",
+    "scratch.contacts",
+    "scratch.variables",
+    "scratch.game-rules"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.keyboard",
+      "expectation": "Déplacer le personnage à droite et à gauche."
+    },
+    {
+      "skillId": "scratch.contacts",
+      "expectation": "Déclencher une action au contact et séparer les personnages ensuite."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Compter les contacts et remettre score à 0 au départ."
+    },
+    {
+      "skillId": "scratch.game-rules",
+      "expectation": "Tester victoire, défaite et redémarrage : reprendre Gagner, perdre et recommencer si nécessaire."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 : Choisis ton petit jeu",
+      "paragraphs": [
+        "Reprends une copie de ton programme Gagner, perdre et recommencer. Tu peux garder le chat et la souris : aucun nouveau dessin n’est obligatoire. Si tu n’as plus ta copie, reconstruis les modèles des modules Score et Fin de partie ; ils restent accessibles.",
+        "Choisis une histoire en une phrase : par exemple, le chat rapporte trois objets sans aller trop loin à gauche. Ce n’est qu’une idée : tu peux inventer la tienne avec les mêmes règles.",
+        "Écris ou dis tes quatre règles avant de coder : quelles touches déplacent, ce qui donne un point, ce qui fait gagner, ce qui fait perdre. Le drapeau recommence la partie.",
+        "Pour ce premier projet, garde le déplacement horizontal, la cible fixe et un point par contact. Choisis un seuil entier de 3 à 5 (3, 4 ou 5) et une limite gauche entre -180 et -120. Le départ reste (-100, 0) et la cible (80, 0) : les règles sont atteignables."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Une fin de partie reste difficile ?",
+      "text": "Reprends Gagner, perdre et recommencer pour tester les règles avant de les personnaliser.",
+      "moduleLink": {
+        "moduleId": "scratch-fin-partie",
+        "text": "Gagner, perdre et recommencer"
+      }
+    },
+    {
+      "type": "checklist",
+      "id": "guide",
+      "title": "2 : Les éléments de ton jeu",
+      "items": [
+        {
+          "id": "joueur",
+          "text": "Un personnage contrôlé avec droite et gauche."
+        },
+        {
+          "id": "contact",
+          "text": "Une cible fixe : un contact donne un point et le personnage retourne au départ."
+        },
+        {
+          "id": "compteur",
+          "text": "Un score visible, sans point gagné loin de la cible."
+        },
+        {
+          "id": "victoire",
+          "text": "Une victoire atteignable qui affiche un message puis arrête tout."
+        },
+        {
+          "id": "defaite",
+          "text": "Une défaite testable en allant trop à gauche, avec message puis arrêt."
+        },
+        {
+          "id": "reset",
+          "text": "Le drapeau remet score à 0 et le personnage au départ pour rejouer."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "3 : Personnalise et fais jouer",
+      "intro": "Essaie sans rouvrir les modèles ; une aide reste possible. Tu n’as pas besoin de nouvelles notions.",
+      "items": [
+        {
+          "id": "regles",
+          "text": "Choisis d’abord un seuil entier de victoire : 3, 4 ou 5 contacts. Prédis, change seulement ce seuil et teste une victoire. Ensuite choisis une limite gauche entre -180 et -120, prédis, modifie seulement la limite et teste une défaite après un nouveau drapeau.",
+          "hint": "Garde un point par contact. Teste chaque changement séparément : le départ -100 doit rester à droite de la limite."
+        },
+        {
+          "id": "messages",
+          "text": "Écris tes propres messages de victoire et de défaite, adaptés à ton histoire.",
+          "hint": "Change seulement le texte de dire … pendant 2 secondes. Garde stop tout après chaque message."
+        },
+        {
+          "id": "consigne",
+          "text": "Ajoute les commandes et les règles dans les instructions de la page Scratch, ou dans un petit texte conservé à côté du fichier.",
+          "hint": "Écris comment bouger, gagner, perdre et recommencer. La publication n’est pas obligatoire."
+        },
+        {
+          "id": "testeur",
+          "text": "Fais jouer quelqu’un avec tes instructions. Si tu es seul, teste le jeu en suivant ces instructions sans lire le code.",
+          "hint": "Teste un joueur qui gagne et un joueur qui perd, pas seulement un chemin heureux."
+        },
+        {
+          "id": "sauver",
+          "text": "Conserve ta version : sauvegarde sur ton propre compte ou télécharge un nouveau .sb3.",
+          "hint": "Ne modifie pas le compte du professeur. Un ancien téléchargement ne se met pas à jour."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "intro": "Teste chaque point sur ton jeu.",
+      "items": [
+        {
+          "id": "sans-contact",
+          "text": "Ne bouge pas : aucun point ne s’ajoute et la partie n’est pas perdue au départ.",
+          "hint": "Le départ est hors du contact et du côté autorisé de la limite."
+        },
+        {
+          "id": "gagner",
+          "text": "Gagne avec le nombre annoncé de contacts. Après le message, les touches ne déplacent plus le personnage."
+        },
+        {
+          "id": "perdre",
+          "text": "Relance puis perds en passant la limite. Après le message, les touches ne déplacent plus le personnage."
+        },
+        {
+          "id": "rejouer",
+          "text": "Relance après chaque fin. Vérifie deux parties avec score zéro et position initiale."
+        },
+        {
+          "id": "comprendre",
+          "text": "Sans regarder le modèle, montre les règles dans ton code et explique ce qui changerait avec un autre seuil."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus facultatif : ton univers",
+      "intro": "Seulement quand les règles fonctionnent. Sauvegarde d’abord une copie.",
+      "items": [
+        {
+          "id": "decor",
+          "text": "Choisis un autre décor dans la bibliothèque Scratch et vérifie que les personnages restent visibles.",
+          "hint": "Clique sur Choisir un arrière-plan en bas à droite. Un décor ne change pas les règles de contact."
+        },
+        {
+          "id": "costume",
+          "text": "Si tu sais déjà changer de costume, personnalise le personnage puis reteste le départ et le contact.",
+          "hint": "Reprends les essais de costumes dans Répéter des actions si nécessaire. La taille du dessin peut changer le moment du contact."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Un premier jalon, pas une course",
+      "paragraphs": [
+        "Un jeu court qui fonctionne et que tu sais expliquer vaut mieux qu’un grand jeu recopié. Si une règle reste fragile, reprends le module correspondant. Pour explorer une autre façon d’organiser des actions, ouvre Coordonner plusieurs personnages : ses prérequis sont les événements et l’ordre d’une pile, pas un jeu validé automatiquement."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer les commandes et les règles du jeu sans lire une solution.",
+    "Montrer un point par contact, sans gain spontané ni répétition du même contact.",
+    "Faire tester deux fins atteignables et le redémarrage après chacune.",
+    "Modifier une règle et prédire son effet ; préciser les aides utilisées plutôt que confondre copie et compréhension."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-mini-jeu",
+      "blockId": "verification",
+      "label": "Retester une partie complète"
+    },
+    {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "guide",
+      "label": "Revoir les deux fins et le redémarrage"
+    },
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "guide",
+      "label": "Revoir le score"
+    },
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "guide",
+      "label": "Revoir le contact"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-mini-jeu",
+      "blockId": "bonus",
+      "label": "Personnaliser sans changer les règles",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Avoir testé les deux fins et le nouveau départ."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-coordination",
+      "label": "Explorer les messages entre personnages",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.events",
+          "expectation": "Savoir déclencher une pile : reprendre Déclencher et enchaîner des actions si nécessaire."
+        },
+        {
+          "skillId": "scratch.sequence",
+          "expectation": "Comprendre l’ordre des actions et leur durée."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Observer le transfert des notions dans un petit jeu personnel : aucune notion nouvelle obligatoire ni vitesse imposée.",
+    "entryDiagnosis": [
+      "Demander une victoire, une défaite et un redémarrage sur le programme précédent.",
+      "Faire expliquer un point par contact et la place de mettre score à 0.",
+      "Si une règle est fragile, reprendre son module ; l’accès au projet n’atteste pas un acquis."
+    ],
+    "preparation": [
+      "Garder une copie du programme précédent, pas une base sans code ni le jeu complet aléatoire.",
+      "Prévoir les modèles Score et Fin de partie comme aides, sans les imposer à l’élève autonome.",
+      "Mettre Scratch en français. Compte élève facultatif ; sauvegarde locale possible. Aucun nom d’élève ni fichier privé à publier."
+    ],
+    "why": "Un projet jalon montre si l’élève peut combiner des notions et expliquer une règle au-delà d’une reproduction bloc par bloc.",
+    "discoverySpeech": [
+      "« Tu connais les pièces. Choisis maintenant les règles d’un jeu court que quelqu’un d’autre pourra comprendre. »",
+      "« Tu peux garder les dessins. Ce qui compte ici, c’est un jeu qui fonctionne et que tu sais expliquer. »",
+      "« Avant d’essayer, qu’attends-tu quand je touche trois fois la cible ? Et quand je pars trop à gauche ? »",
+      "« Tu peux demander une aide. On distinguera ce que tu sais refaire seul et ce qui a encore besoin d’un modèle. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-mini-jeu",
+        "blockId": "exemple",
+        "label": "Choisir des règles atteignables"
+      },
+      "comments": [
+        "L’histoire proposée n’est pas une solution à recopier ; garder un terrain horizontal simple.",
+        "Le socle attendu vient des modules précédents : drapeau → score 0 et départ ; boucle → touches, contact avec point et séparation, tests de fin.",
+        "Un seuil entier 3, 4 ou 5 est atteignable avec un point par contact. Changer et tester d’abord ce seuil, puis la limite de défaite. Une limite entre -180 et -120 ne condamne pas le départ -100."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi ne pas faire un point à chaque tour de boucle ?",
+        "answer": "Les points seraient gagnés sans action du joueur. L’ajout doit rester dans le si de contact."
+      },
+      {
+        "question": "Comment un autre joueur sait-il qu’il peut recommencer ?",
+        "answer": "Les instructions disent d’utiliser le drapeau ; ce drapeau réinitialise score et position."
+      },
+      {
+        "question": "Changer le décor prouve-t-il que le jeu est compris ?",
+        "answer": "Non. Demander une explication, une prédiction et une modification de règle, puis tester."
+      },
+      {
+        "question": "Quel changement peux-tu faire sans recopier tout le modèle ?",
+        "answer": "Par exemple passer la victoire de 3 à 5, prévoir cinq contacts, modifier la comparaison puis vérifier."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-mini-jeu",
+      "blockId": "guide",
+      "label": "Vérifier le socle du jeu"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-mini-jeu",
+      "blockId": "autonomie",
+      "label": "Choisir, modifier, faire jouer"
+    },
+    "differentiation": [
+      "CE2 : faire choisir une règle à la fois ; accepter une formulation orale et écrire les instructions avec l’élève si la lecture limite le travail.",
+      "Pour les plus grands : masquer les modèles et demander au testeur de suivre les instructions, puis justifier une correction.",
+      "Pas de nouvelle fonctionnalité pour aller vite : proposer le bonus visuel seulement après les tests. La publication n’est jamais obligatoire."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’élève personnalise mais ne peut expliquer ses règles.",
+        "helps": [
+          "Lui faire jouer une partie.",
+          "Demander ce qui provoque un point puis une victoire.",
+          "Faire retrouver seulement le si concerné, pas toute la pile.",
+          "Faire changer un seuil et prédire avant de tester."
+        ]
+      },
+      {
+        "symptom": "La défaite arrive dès le départ.",
+        "helps": [
+          "Lire la position et la limite choisies.",
+          "Repérer l’ordre dans la comparaison <.",
+          "Vérifier que -100 est plus grand que la limite entre -180 et -120.",
+          "Corriger une seule valeur ou l’ordre des entrées puis retester."
+        ]
+      },
+      {
+        "symptom": "Le jeu n’est pas rejouable.",
+        "helps": [
+          "Faire une deuxième partie après chacune des fins.",
+          "Observer score et position au drapeau.",
+          "Comparer avec les deux réinitialisations avant la boucle.",
+          "Restaurer le départ et score zéro puis tester deux nouvelles parties."
+        ]
+      }
+    ],
+    "notes": "Projet jalon : observer transfert et explication. Relever réussite autonome, avec modèle ou avec aide dans les remarques existantes ; ne pas créer de nouveau suivi ni valider automatiquement les skills. Les cases, le score et le partage du projet ne certifient rien.",
+    "quickConductor": [
+      "Vérifier le jeu précédent.",
+      "Faire choisir une histoire et quatre règles.",
+      "Personnaliser et tester un seuil entier, puis modifier et tester séparément la limite ; personnaliser les messages.",
+      "Faire tester victoire, défaite et deux départs.",
+      "Demander une prédiction et une explication, puis choisir reprise ou bonus."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

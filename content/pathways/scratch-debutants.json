@@ -1,0 +1,66 @@
+{
+  "domainId": "jeux-video",
+  "title": "Premiers pas avec Scratch",
+  "theme": "fondations",
+  "objective": "Découvrir les blocs, créer des actions et piloter un personnage avant de construire ses premiers jeux.",
+  "moduleIds": [
+    "scratch-decouverte",
+    "scratch-actions",
+    "scratch-pilotage",
+    "scratch-boucles",
+    "scratch-reactions",
+    "scratch-variables",
+    "scratch-fin-partie",
+    "scratch-mini-jeu",
+    "scratch-coordination",
+    "scratch-blocs-personnalises",
+    "scratch-clones",
+    "scratch-temps-difficulte",
+    "scratch-debogage",
+    "scratch-projet-personnel"
+  ],
+  "chapters": [
+    {
+      "id": "premieres-actions",
+      "title": "Prendre les commandes",
+      "description": "Découvrir Scratch, assembler des actions et piloter ton personnage.",
+      "moduleIds": [
+        "scratch-decouverte",
+        "scratch-actions",
+        "scratch-pilotage"
+      ]
+    },
+    {
+      "id": "premier-jeu",
+      "title": "Construire ton premier jeu",
+      "description": "Répéter des actions, réagir aux événements et utiliser des variables pour créer une partie complète.",
+      "moduleIds": [
+        "scratch-boucles",
+        "scratch-reactions",
+        "scratch-variables",
+        "scratch-fin-partie",
+        "scratch-mini-jeu"
+      ]
+    },
+    {
+      "id": "jeu-enrichi",
+      "title": "Enrichir et organiser ton jeu",
+      "description": "Coordonner les personnages, réutiliser des blocs et ajouter des clones, du temps et de la difficulté.",
+      "moduleIds": [
+        "scratch-coordination",
+        "scratch-blocs-personnalises",
+        "scratch-clones",
+        "scratch-temps-difficulte"
+      ]
+    },
+    {
+      "id": "projet-personnel",
+      "title": "Corriger et créer ton propre projet",
+      "description": "Chercher les causes d'un problème, tester tes corrections et réaliser un projet personnel.",
+      "moduleIds": [
+        "scratch-debogage",
+        "scratch-projet-personnel"
+      ]
+    }
+  ]
+}

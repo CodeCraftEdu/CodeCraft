@@ -1,0 +1,750 @@
+{
+  "domainId": "web",
+  "title": "Ma carte personnelle",
+  "type": "project",
+  "theme": "debutants",
+  "objective": "Concevoir, réaliser et vérifier une carte illustrée en réutilisant tes acquis HTML et CSS.",
+  "skillIds": [
+    "html.headings",
+    "html.text",
+    "html.images",
+    "html.structure",
+    "css.selectors",
+    "css.colors",
+    "css.fonts",
+    "css.spacing",
+    "css.sizing"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer un titre principal adapté au sujet."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer des paragraphes et retrouver leurs balises."
+    },
+    {
+      "skillId": "html.structure",
+      "expectation": "Repérer la carte parent et l’image à l’intérieur."
+    },
+    {
+      "skillId": "html.images",
+      "expectation": "Insérer une source dans src et rédiger un alt adapté."
+    },
+    {
+      "skillId": "css.selectors",
+      "expectation": "Relier les classes HTML aux règles CSS."
+    },
+    {
+      "skillId": "css.spacing",
+      "expectation": "Distinguer padding et margin et lire une bordure simple."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Choisir une couleur de texte lisible sur son fond."
+    },
+    {
+      "skillId": "css.fonts",
+      "expectation": "Régler la taille du texte et l’interligne."
+    },
+    {
+      "skillId": "css.sizing",
+      "expectation": "Adapter la largeur d’une carte et préserver les proportions de son image."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant le projet",
+      "text": "Le projet réutilise des notions déjà expliquées. Si tu ne sais pas encore adapter la carte et son image, reprends Dimensions et images dans une carte, puis reviens avec Retour dans le navigateur. Retrouve les autres leçons depuis le parcours dans le fil d’Ariane : tu n’as pas à tout refaire.",
+      "moduleLink": {
+        "text": "Dimensions et images dans une carte",
+        "moduleId": "css-dimensions-images"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "intention",
+      "title": "1 : Une création personnelle, sans données personnelles",
+      "paragraphs": [
+        "Crée une carte qui présente une idée, un lieu imaginaire, une activité ou un objet inventé. Personnel signifie que tu fais tes choix : ne mets ni nom complet, ni photo de toi, ni adresse, ni autre information privée.",
+        "Résultat attendu : une seule carte illustrée, avec un titre, deux courts paragraphes et une présentation lisible. Elle tient dans les largeurs que tu testes, sans déformer son image.",
+        "Ce n’est ni une course ni un concours de décoration. Tu peux garder des couleurs simples et utiliser le dessin fourni. Ce qui compte : choisir, expliquer et modifier ton code.",
+        "Concentre-toi sur le contenu de ta carte, ses couleurs et ses espacements."
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "cahier-charges",
+      "title": "Cahier des charges : Ce que ta carte doit contenir",
+      "items": [
+        {
+          "id": "exigence-1",
+          "text": "Un conteneur avec une classe CSS, qui regroupe tout le contenu de la carte."
+        },
+        {
+          "id": "exigence-2",
+          "text": "Un h1 qui présente clairement ton thème, à l’intérieur du conteneur."
+        },
+        {
+          "id": "exigence-3",
+          "text": "Deux courts paragraphes sur ce thème, avec un style commun grâce à une classe réutilisée."
+        },
+        {
+          "id": "exigence-4",
+          "text": "Une image chargée, avec une classe pour ses dimensions et un alt que tu rédiges pour la décrire."
+        },
+        {
+          "id": "exigence-5",
+          "text": "Un texte lisible sur son fond, une taille et un interligne choisis pour lire facilement."
+        },
+        {
+          "id": "exigence-6",
+          "text": "De l’espace entre le contenu et le bord de la carte ; une bordure simple est facultative."
+        },
+        {
+          "id": "exigence-7",
+          "text": "Une largeur de carte choisie, limitée à l’espace disponible, et une image qui garde ses proportions."
+        },
+        {
+          "id": "exigence-8",
+          "text": "Une vérification dans un aperçu large puis plus étroit, et une modification expliquée sans recopier une solution complète."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "organisation",
+      "title": "2 : Choisir ton environnement",
+      "paragraphs": [
+        "Dans CodePen : crée un nouveau Pen, avec le contenu dans HTML et les règles dans CSS. Tu peux aussi partir d’une copie de ton exercice Dimensions, mais il faudra changer le contenu, ajouter le second paragraphe et justifier tes choix.",
+        "En local : fais une copie de ton dossier HTML/CSS. Garde le cadre complet, sa ligne link et les fichiers associés ; remplace le contenu de body et adapte la feuille. Enregistre les deux fichiers et actualise index.html. La gestion des fichiers n’est pas une nouvelle exigence si tu choisis CodePen.",
+        "Les cours restent consultables : essayer seul ne signifie pas rester bloqué sans aide. Note simplement ce que tu as repris et ce que tu as pu faire sans modèle."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "preparer",
+      "title": "Préparer le message avant de coder",
+      "intro": "Pas besoin de dessiner une maquette détaillée.",
+      "items": [
+        {
+          "id": "choisir-theme",
+          "text": "Choisis un thème et écris les mots du titre, puis deux phrases ou petits paragraphes qui vont ensemble."
+        },
+        {
+          "id": "choisir-image",
+          "text": "Choisis le dessin fourni ou une image déjà disponible dans tes fichiers d’exercice et autorisée à être utilisée. Le dessin générique suffit : aucune recherche sur Internet n’est demandée."
+        },
+        {
+          "id": "planifier",
+          "text": "Explique le regroupement prévu : la carte est parent du titre, des paragraphes et de l’image. Choisis des noms de classes compréhensibles."
+        },
+        {
+          "id": "petit-essai",
+          "text": "Si tu pars d’une copie de Dimensions, change seulement la largeur souhaitée et prédis l’effet sur l’image. Si ce test bloque, reprends ce réglage avant de construire le reste."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "ressource-intro",
+      "title": "Une illustration disponible sans recherche",
+      "paragraphs": [
+        "Tu peux choisir un thème comme « Un signal orange » avec ce dessin. Dans CodePen, copie le lien de l’image dans `src`. Décris ensuite le dessin dans `alt`.",
+        "En local, télécharge le dessin dans images à côté de index.html et utilise images/cercle-orange.png. Pour le carré ou une aide à la source, le cours Dimensions et le module Images restent accessibles dans les reprises.",
+        "Tu n’as pas besoin d’inventer un nouveau chemin si la source que tu utilisais fonctionne déjà. Rédige toutefois alt pour l’image réellement présente."
+      ]
+    },
+    {
+      "type": "reference",
+      "id": "source-image",
+      "moduleId": "html-images",
+      "blockId": "ressource-cercle"
+    },
+    {
+      "type": "tasks",
+      "id": "realisation",
+      "title": "3 : Réaliser ta carte",
+      "intro": "Essaie chaque étape avant d’ouvrir son indice. Aucun code complet de projet n’est fourni ici.",
+      "items": [
+        {
+          "id": "assembler",
+          "text": "Crée le conteneur et place le titre, les deux paragraphes et l’image à l’intérieur. Vérifie les fermetures avant de passer au style.",
+          "hints": [
+            "Repère l’ouverture et la fermeture du conteneur.",
+            "Les quatre éléments sont ses enfants directs ; img n’a pas de balise fermante.",
+            "Le deuxième paragraphe doit rester avant la fermeture du conteneur.",
+            "Reprends l’exemple Parent et enfants si l’imbrication reste floue, puis reviens avec tes propres textes."
+          ]
+        },
+        {
+          "id": "cibler",
+          "text": "Relie tes classes aux règles CSS. Donne la même classe aux deux paragraphes pour pouvoir régler leur texte ensemble.",
+          "hints": [
+            "Compare chaque attribut class à son sélecteur.",
+            "Le point appartient au sélecteur CSS, pas au nom écrit dans class.",
+            "Deux paragraphes peuvent partager une classe.",
+            "Reprends Classes et couleurs seulement si tu ne retrouves pas la règle qui les sélectionne."
+          ]
+        },
+        {
+          "id": "lire",
+          "text": "Choisis des couleurs contrastées et une taille/interligne lisibles. Tu peux garder du texte noir sur blanc. Le titre doit rester repérable.",
+          "hints": [
+            "Lis réellement les deux paragraphes.",
+            "Ne change qu’un réglage à la fois.",
+            "Une couleur du fond et la couleur des lettres sont deux choix distincts.",
+            "Reprends le cours Rendre les textes lisibles pour comparer taille et interligne, sans recopier tous les styles."
+          ]
+        },
+        {
+          "id": "espacer",
+          "text": "Laisse respirer le contenu à l’intérieur de la carte. Ajoute une bordure simple seulement si elle sert ta présentation.",
+          "hints": [
+            "Localise l’espace qui manque par rapport au bord.",
+            "Ne confonds pas marge extérieure et espace intérieur.",
+            "Une bordure n’est pas nécessaire pour appliquer un padding.",
+            "Reprends Boîtes et espacements si tu ne sais pas choisir entre padding et margin."
+          ]
+        },
+        {
+          "id": "dimensionner",
+          "text": "Choisis la largeur souhaitée et garde une limite pour l’aperçu étroit. Adapte ton image en conservant sa forme ; laisse la carte grandir avec le texte.",
+          "hints": [
+            "Vérifie quelle règle cible la carte et quelle règle cible l’image.",
+            "La largeur du contenu exclut l’espace intérieur et la bordure.",
+            "Une hauteur arbitraire peut écraser l’image.",
+            "Retourne à Dimensions pour vérifier les règles de largeur, leur limite et la hauteur automatique ; ajuste tes propres classes."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "verifier",
+      "title": "4 : Vérifier puis expliquer",
+      "intro": "Le résultat visuel et l’explication comptent ensemble.",
+      "items": [
+        {
+          "id": "check-contenu",
+          "text": "Relis le cahier des charges : titre, deux paragraphes, conteneur, image et alt. Corrige sans ajouter d’informations personnelles."
+        },
+        {
+          "id": "check-largeurs",
+          "text": "Élargis l’aperçu au-delà de 400px puis rétrécis-le autour de 260px. La bordure droite de la carte et l’image restent visibles sans défilement horizontal dans ces essais."
+        },
+        {
+          "id": "check-forme",
+          "text": "Vérifie la forme de l’image aux deux largeurs : un cercle reste rond, un carré reste carré. Une image absente demande d’abord un contrôle de src."
+        },
+        {
+          "id": "check-texte",
+          "text": "Ajoute temporairement une phrase avec des mots ordinaires. Le texte et la carte doivent grandir en hauteur ; ne cache pas les mots qui dépassent."
+        },
+        {
+          "id": "check-transfert",
+          "text": "Sans changer le nombre de paragraphes ni agrandir les lettres, donne davantage d’air entre leurs lignes. Puis rends la carte un peu moins large sans déformer son image. Explique les règles choisies."
+        },
+        {
+          "id": "check-presentation",
+          "text": "Présente brièvement ton thème et une décision HTML puis une décision CSS. Dis aussi quelle aide tu as utilisée. Si tu es en cours, montre le résultat au professeur ; seul, compare aux critères puis choisis ta reprise ou ta suite."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "consolider",
+      "title": "Consolidation : Reprendre seulement le point fragile",
+      "intro": "N’efface pas tout le projet. Garde une copie et choisis le symptôme qui correspond.",
+      "items": [
+        {
+          "id": "source-absente",
+          "text": "L’image est absente : vérifie le lien ou le chemin dans `src`, puis la description dans `alt`. Reprends Images si tu ne distingues pas ces rôles.",
+          "hints": [
+            "Le problème peut être le chargement, pas la taille.",
+            "Compare src au fichier ou à la source copiée.",
+            "Ne colle pas la description dans l’adresse.",
+            "Utilise la reprise Images au bas du module et reviens à ta carte après un essai réussi."
+          ]
+        },
+        {
+          "id": "dessin-deforme",
+          "text": "L’image s’affiche mais sa forme est écrasée : repère une hauteur imposée et reviens à la consolidation de Dimensions.",
+          "hints": [
+            "Compare forme d’origine et forme affichée.",
+            "Une largeur adaptée n’empêche pas une hauteur incorrecte.",
+            "Teste une hauteur automatique sans modifier src.",
+            "Utilise le lien vers la panne du cercle ovale ; rapporte ensuite la correction à ta propre classe d’image."
+          ]
+        },
+        {
+          "id": "texte-serre",
+          "text": "Les lignes se serrent, ou le texte colle au bord : distingue l’interligne de l’espace intérieur avant de choisir la reprise.",
+          "hints": [
+            "Pointe l’endroit précis où il manque de l’air.",
+            "Entre les lignes d’un paragraphe : interligne ; autour du contenu : padding.",
+            "Changer la taille des lettres ou la marge extérieure ne répond pas toujours au besoin.",
+            "Choisis le cours Lisibilité ou Boîtes, fais un seul essai puis reviens à ta carte."
+          ]
+        },
+        {
+          "id": "carte-large",
+          "text": "La carte dépasse : vérifie sa largeur, sa limite et ce qui est compris dans cette largeur. Reprends Dimensions, sans ajouter de règle pour cacher le contenu."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus-detail",
+      "title": "Bonus facultatif : Deux cartes, deux usages",
+      "blocks": [
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Comparer sans nouvelle mise en page",
+          "intro": "À faire seulement si tu peux déjà expliquer ton projet.",
+          "items": [
+            {
+              "id": "copie",
+              "text": "Fais deux copies de ton Pen ou dossier. Garde les mêmes textes et la même image."
+            },
+            {
+              "id": "variantes",
+              "text": "Dans une version, choisis une carte plus compacte ; dans l’autre, plus large et plus aérée. Ne change que les largeurs, espacements et réglages de texte déjà appris."
+            },
+            {
+              "id": "justifier",
+              "text": "Compare à une même largeur d’aperçu, puis teste les deux à une largeur plus étroite. Justifie l’usage de chaque version. Tu n’as pas à les placer côte à côte ni à apprendre Flexbox pour ce bonus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Après cette carte",
+      "text": "Si tu peux modifier et expliquer ta carte avec peu d’aide, conserve-la comme point de départ. Relier plusieurs pages puis Mon mini-site permettent de poursuivre avec des fichiers locaux si leurs prérequis sont compris. Tu peux aussi approfondir ta carte ou explorer Flexbox selon les besoins. Ce projet ne valide rien automatiquement : l’orientation reste un choix pédagogique."
+    }
+  ],
+  "masteryCriteria": [
+    "Assembler une carte cohérente et expliquer les relations parent/enfants sans se limiter à une copie.",
+    "Remplacer ou insérer une image et rédiger un alt pertinent ; distinguer l’aide au collage de la compréhension.",
+    "Réutiliser une classe sur deux paragraphes, choisir lisibilité et espace intérieur, puis expliquer l’effet d’un changement.",
+    "Vérifier carte et image dans deux largeurs d’aperçu et corriger un défaut ciblé.",
+    "Réussir les demandes de transfert sans nom de propriété ou préciser le modèle/l’aide nécessaires.",
+    "Présenter ses choix et ses vérifications ; ni le nombre de cases cochées ni le seul rendu ne prouvent l’acquisition."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "web-carte-personnelle",
+      "label": "Identifier le seul point à reprendre",
+      "blockId": "consolider"
+    },
+    {
+      "moduleId": "html-parent-enfants",
+      "label": "Reprendre le regroupement",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Repérer un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Reconnaître les balises d’un paragraphe."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-images",
+      "label": "Reprendre source et texte alternatif",
+      "blockId": "depannage",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.text",
+          "expectation": "Reconnaître une balise et modifier un extrait."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre les classes",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle simple."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-textes-lisibles",
+      "label": "Reprendre l’interligne",
+      "blockId": "panne",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.selectors",
+          "expectation": "Cibler une classe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-boites-espacements",
+      "label": "Reprendre l’espace intérieur",
+      "blockId": "panne",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer le parent du contenu."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Cibler une classe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Distinguer texte et fond."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-dimensions-images",
+      "label": "Réparer la déformation ou le dépassement",
+      "blockId": "panne",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer la carte parent et l’image à l’intérieur."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une source dans src et rédiger un alt adapté."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer padding et margin et lire une bordure simple."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-feuille-style",
+      "label": "Si le CSS local n’agit pas",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Lire un chemin relatif."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle simple."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "web-carte-personnelle",
+      "label": "Comparer deux présentations avec les acquis",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal adapté au sujet."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer des paragraphes et retrouver leurs balises."
+        },
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer la carte parent et l’image à l’intérieur."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une source dans src et rédiger un alt adapté."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer padding et margin et lire une bordure simple."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Choisir une couleur de texte lisible sur son fond."
+        },
+        {
+          "skillId": "css.fonts",
+          "expectation": "Régler la taille du texte et l’interligne."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Adapter la largeur d’une carte et préserver les proportions de son image."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-multipage",
+      "label": "Relier plusieurs pages avec des fichiers locaux",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body et enregistrer un document HTML complet."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-flexbox",
+      "label": "Explorer une collection si les cartes et leurs prérequis sont compris",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent et ses enfants directs."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes aux règles."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer les espaces des cartes."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Lire une largeur et distinguer la carte de son contenu."
+        }
+      ]
+    },
+    {
+      "moduleId": "web-carte-personnelle",
+      "label": "Approfondir la même carte sans nouvelle notion",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal adapté au sujet."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer des paragraphes et retrouver leurs balises."
+        },
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer la carte parent et l’image à l’intérieur."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une source dans src et rédiger un alt adapté."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer padding et margin et lire une bordure simple."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Choisir une couleur de texte lisible sur son fond."
+        },
+        {
+          "skillId": "css.fonts",
+          "expectation": "Régler la taille du texte et l’interligne."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Adapter la largeur d’une carte et préserver les proportions de son image."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Observer la mobilisation et le transfert d’acquis HTML/CSS dans une production choisie, sans confondre résultat copié, autonomie, rapidité et qualité graphique.",
+    "entryDiagnosis": [
+      "Faire expliquer src/alt, la classe du conteneur et le parent de l’image. Proposer une reprise ciblée si un élément manque.",
+      "Demander comment changer l’air entre les lignes, puis l’air entre texte et bordure : attendu line-height puis padding, pas le même réglage.",
+      "Demander une modification de largeur qui garde l’image proportionnée. Une réussite accompagnée signale le niveau d’aide, pas une interdiction d’accéder au projet.",
+      "Vérifier l’accès aux deux panneaux ou à la feuille locale ; ne pas confondre une difficulté de fichier avec les compétences de présentation."
+    ],
+    "preparation": [
+      "Garder le cahier des charges et les reprises visibles. Le cercle fourni suffit : ne pas ajouter une recherche d’image comme travail préalable.",
+      "Préparer un nouveau Pen ou une copie du projet précédent. Aucune publication, photo personnelle, adresse ni identité d’élève dans le contenu.",
+      "Préparer deux largeurs d’aperçu et une demande de modification. Les consignes essentielles sont écrites ; le partage d’écran reste facultatif."
+    ],
+    "why": "Le jalon réunit des notions déjà travaillées pour observer des choix, une vérification et une adaptation. Il ne constitue pas une certification automatique ni une fin de séance imposée.",
+    "discoverySpeech": [
+      "« Personnel veut dire que tu choisis le message et la présentation, pas que tu dois écrire des informations sur toi. Un objet inventé ou un dessin suffit. »",
+      "« Lis d’abord ce que ta carte doit contenir. Nous n’allons pas apprendre de nouvelles propriétés pour la décorer ; nous allons réutiliser ce que tu sais et repérer une reprise utile si nécessaire. »",
+      "« Tu peux partir d’une copie de ton exercice. Ensuite, change le message, ajoute les éléments demandés et explique quelle règle répond à ton intention. Copier seul n’est pas notre critère. »",
+      "« Nous vérifierons large, étroit et avec un peu plus de texte. Puis je te demanderai un changement sans nommer la propriété pour voir ce que tu choisis. »",
+      "« Si une chose bloque, on garde le projet et on reprend seulement cette chose. Le bonus n’est pas une obligation et terminer vite n’est pas le but. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-dimensions-images",
+        "label": "Rappel ciblé : largeur de la carte et de l’image",
+        "blockId": "css"
+      },
+      "comments": [
+        "Cet exemple est celui du cours préalable, pas une solution complète du projet. Lire les deux cibles puis cacher le modèle pour une modification.",
+        "Si le projet démarre d’une copie, remplacer les textes, choisir un h1, ajouter le second paragraphe et une classe commune ; ne pas accepter l’exemple inchangé comme projet terminé.",
+        "Faire vérifier le chargement et alt avant de discuter taille ou esthétique."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Doit-on inventer un thème très original ?",
+        "answer": "Non. Un thème simple ou fictif convient. On observe les choix de code et la capacité de les expliquer, pas l’inspiration littéraire."
+      },
+      {
+        "question": "Peut-on garder l’image et les couleurs fournies ?",
+        "answer": "Oui. Demander tout de même de décrire le dessin dans alt et de réaliser une modification expliquée ; ne pas évaluer une recherche d’assets."
+      },
+      {
+        "question": "Comment aérer seulement les lignes des paragraphes ?",
+        "answer": "Modifier line-height dans la règle de leur classe commune en gardant font-size et les autres classes inchangés."
+      },
+      {
+        "question": "Comment éloigner le texte du bord sans changer l’interligne ?",
+        "answer": "Modifier padding sur le conteneur. L’interligne agit à l’intérieur des paragraphes ; margin agit dehors."
+      },
+      {
+        "question": "Comment rétrécir la carte sans écraser l’image ?",
+        "answer": "Changer la largeur souhaitée de la carte en gardant sa limite et border-box ; l’image conserve width 100% et height auto, ou la variante naturelle expliquée dans le cours."
+      },
+      {
+        "question": "Une image qui déborde impose-t-elle Flexbox ?",
+        "answer": "Non. Vérifier ses dimensions et celles du parent. La carte unique ne demande aucune organisation en rangée."
+      },
+      {
+        "question": "Le projet impose-t-il un fichier local ?",
+        "answer": "Non. CodePen convient. Si l’élève choisit les fichiers, observer la liaison et les chemins séparément, avec les reprises existantes."
+      },
+      {
+        "question": "Un résultat conforme suffit-il à déclarer toutes les compétences Acquis ?",
+        "answer": "Non. Demander des explications et un transfert, distinguer le niveau d’aide par compétence et décider manuellement. Aucun objectif externe n’est validé par ce projet."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "web-carte-personnelle",
+      "label": "Préparer ses choix et vérifier un réglage",
+      "blockId": "preparer"
+    },
+    "independentActivity": {
+      "moduleId": "web-carte-personnelle",
+      "label": "Réaliser la carte",
+      "blockId": "realisation"
+    },
+    "differentiation": [
+      "Faire choisir entre deux thèmes simples si la page blanche bloque ; aider à la saisie ou au collage sans choisir toutes les règles.",
+      "Si la carte est réalisée avec modèle, demander ensuite un changement différent sans modèle. Ne pas faire refaire tous les modules pour une seule hésitation.",
+      "Un élève autonome peut comparer deux versions. Ne pas ajouter arrondis, survol ou Flexbox comme obligation pour l’occuper.",
+      "Évaluer le fond HTML/CSS séparément de l’orthographe, du goût graphique et de l’aisance au clavier."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’élève recopie le cours mais ne sait pas modifier la carte.",
+        "helps": [
+          "Demander quelle partie doit changer.",
+          "Faire retrouver son élément HTML et sa classe.",
+          "Proposer un premier changement accompagné puis un deuxième sans nom de propriété ; noter la distinction d’aide."
+        ]
+      },
+      {
+        "symptom": "Les deux paragraphes demandent deux règles identiques.",
+        "helps": [
+          "Demander ce qu’ils ont en commun.",
+          "Comparer leurs attributs class.",
+          "Réutiliser une classe puis modifier une seule déclaration pour observer les deux effets."
+        ]
+      },
+      {
+        "symptom": "La présentation manque d’air mais toutes les valeurs changent à la fois.",
+        "helps": [
+          "Faire pointer entre lignes, intérieur du bord ou extérieur de la carte.",
+          "Choisir une seule propriété à tester.",
+          "Utiliser la consolidation Lisibilité ou Boîtes puis revenir à la production."
+        ]
+      },
+      {
+        "symptom": "L’image charge mal ou se déforme.",
+        "helps": [
+          "Distinguer absence, forme écrasée et dépassement.",
+          "Vérifier src pour l’absence, hauteur pour la déformation, parent/limite pour le dépassement.",
+          "Utiliser la reprise correspondante, conserver le reste du projet et demander une explication après réparation."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution possible, non imposée : div class=\"carte\" contenant h1 class=\"titre\", img class=\"illustration\" et deux p class=\"lecture\". Source du cercle et alt descriptif rédigé ; les textes portent sur un signal imaginaire.",
+      "Réglages possibles : .carte avec width 320px, max-width 100%, box-sizing border-box, padding 16px, fond blanc et texte noir ; .illustration avec width 100% et height auto. Une bordure de 2px est facultative. .lecture : font-size 18px, line-height 1.5 et font-family sans-serif ; .titre : font-size 28px. D’autres choix justifiés conviennent.",
+      "Transfert : passer line-height de la classe lecture à 1.7 sans changer 18px ; réduire width de la carte à 280px en conservant limite et proportions. Vérifier le résultat et l’explication, pas une valeur exacte universelle.",
+      "Le squelette du cours de dimensions peut servir d’aide, mais le projet doit comporter le titre choisi, deux textes cohérents et une classe commune. Ne pas confondre une base fournie et une réalisation autonome.",
+      "Observer réussite autonome, avec modèle ou avec aide pour chaque compétence. Noter séparément l’aide à la manipulation ; aucun nouveau statut ou dispositif de suivi n’est créé.",
+      "Pas d’acquisition globale du projet ni de calcul de référentiel. La bordure facultative ne permet pas de conclure sur border-radius ; ce projet n’ajoute pas css.borders à ses compétences cibles.",
+      "Vers Flexbox : vérifier parent/enfants, classes, espacements et dimensions ; le module fournit un départ pour la collection, aucune obligation d’avoir déjà fait un mini-site. Si ces bases manquent, choisir la reprise ciblée.",
+      "Relier plusieurs pages puis Mon mini-site sont disponibles. Vérifier document complet, fichiers/chemins et liens avant le cours multipage, puis les prérequis CSS du projet. Ce jalon ne devient pas un passage obligé avant Flexbox."
+    ],
+    "quickConductor": [
+      "Diagnostiquer les bases et les manipulations sans refaire tout le parcours.",
+      "Lire le cahier des charges, choisir un thème non personnel et une source disponible.",
+      "Lancer la réalisation, proposer seulement les aides utiles.",
+      "Vérifier contenu, largeur, image, lisibilité et texte ajouté.",
+      "Demander le transfert sans nom de propriété puis une explication de choix.",
+      "Décider manuellement consolidation, comparaison facultative ou suite selon les acquis."
+    ],
+    "references": [
+      {
+        "title": "MDN : L’élément img",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
+      },
+      {
+        "title": "MDN : Dimensions en CSS",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing"
+      },
+      {
+        "title": "MDN : Le modèle de boîte",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model"
+      },
+      {
+        "title": "MDN : line-height",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/line-height"
+      }
+    ]
+  }
+}

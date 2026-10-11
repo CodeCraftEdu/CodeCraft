@@ -1,0 +1,74 @@
+# Documents du projet
+
+Pour localiser un fichier, commencer par [la carte du projet](carte-projet.md). Le catalogue `content/` décrit les cours effectivement disponibles ; un document de lot peut décrire une ancienne étape.
+
+## Références actuelles
+
+Ces documents guident les modifications et les vérifications. Les règles éditoriales s’appliquent à tous les parcours.
+
+- [carte-projet.md](carte-projet.md)
+- [organisation-contenus.md](organisation-contenus.md)
+- [regles-editoriales.md](regles-editoriales.md)
+- [verification-developpement.md](verification-developpement.md)
+- [navigation-parcours.md](navigation-parcours.md)
+- [direction-visuelle.md](direction-visuelle.md)
+- [fonds-parcours.md](fonds-parcours.md)
+- [protocoles-verifications-manuelles.md](protocoles-verifications-manuelles.md)
+- [verifications-manuelles-en-attente.md](verifications-manuelles-en-attente.md)
+- [partage-tinkercad.md](partage-tinkercad.md)
+
+## Cadrage et évolutions prévues
+
+Ces documents distinguent les lots réalisés, les propositions et les recettes restant à confirmer. Leur mention d’un module ne signifie pas nécessairement qu’il est publié.
+
+- [cartographie-python.md](cartographie-python.md)
+- [roadmap-gdevelop.md](roadmap-gdevelop.md)
+- [roadmap-pedagogique.md](roadmap-pedagogique.md)
+- [roadmap-python.md](roadmap-python.md)
+- [roadmap-robotique-kidnkod.md](roadmap-robotique-kidnkod.md)
+
+## Historique des lots et recettes
+
+Les fichiers suivants conservent les décisions, revues et supports de séance. Ils ne définissent pas les chemins de fichiers actuels ni les commandes de validation. Les anciennes mentions de `lesson-data.js` correspondent désormais à `content/` pour l’édition et `generated/catalog.js` pour le navigateur. Conserver leurs liens pour la traçabilité ; mettre les nouvelles règles communes dans les références actuelles.
+
+- [bilan-robotique-preparation.md](bilan-robotique-preparation.md)
+- [integration-robotique-bouton.md](integration-robotique-bouton.md)
+- [integration-robotique-capteurs.md](integration-robotique-capteurs.md)
+- [integration-robotique-missions.md](integration-robotique-missions.md)
+- [integration-robotique-signal.md](integration-robotique-signal.md)
+- [recette-makecode-capteurs.md](recette-makecode-capteurs.md)
+- [recette-makecode-robot.md](recette-makecode-robot.md)
+- [recette-tinkercad-bouton.md](recette-tinkercad-bouton.md)
+- [recette-tinkercad-premiere-lumiere.md](recette-tinkercad-premiere-lumiere.md)
+- [recette-tinkercad-signal.md](recette-tinkercad-signal.md)
+- [revue-pedagogique-gdevelop.md](revue-pedagogique-gdevelop.md)
+- [revue-pedagogique-python.md](revue-pedagogique-python.md)
+- [revue-pedagogique-web.md](revue-pedagogique-web.md)
+- [revue-textes-eleve-robotique.md](revue-textes-eleve-robotique.md)
+- [robotique-seance-1-eleve.md](robotique-seance-1-eleve.md)
+- [robotique-seance-1-professeur.md](robotique-seance-1-professeur.md)
+- [robotique-seance-2-eleve.md](robotique-seance-2-eleve.md)
+- [robotique-seance-2-professeur.md](robotique-seance-2-professeur.md)
+- [robotique-seance-3-eleve.md](robotique-seance-3-eleve.md)
+- [robotique-seance-3-professeur.md](robotique-seance-3-professeur.md)
+- [robotique-seance-4-eleve.md](robotique-seance-4-eleve.md)
+- [robotique-seance-4-professeur.md](robotique-seance-4-professeur.md)
+- [robotique-seance-5-eleve.md](robotique-seance-5-eleve.md)
+- [robotique-seance-5-professeur.md](robotique-seance-5-professeur.md)
+- [specification-gdevelop-gd04.md](specification-gdevelop-gd04.md)
+- [specification-gdevelop-lot-1.md](specification-gdevelop-lot-1.md)
+- [specification-python-lot-2.md](specification-python-lot-2.md)
+- [specification-python-lot-3.md](specification-python-lot-3.md)
+- [specification-python-lot-4.md](specification-python-lot-4.md)
+- [specification-python-lot-5.md](specification-python-lot-5.md)
+- [specification-python-lot-6.md](specification-python-lot-6.md)
+- [specification-python-lot-7.md](specification-python-lot-7.md)
+- [specification-robotique-rb09-rb10.md](specification-robotique-rb09-rb10.md)
+- [specification-robotique-seance-1.md](specification-robotique-seance-1.md)
+- [specification-robotique-seance-2.md](specification-robotique-seance-2.md)
+- [specification-robotique-seance-3.md](specification-robotique-seance-3.md)
+- [specification-robotique-seance-4.md](specification-robotique-seance-4.md)
+- [specification-robotique-seance-5.md](specification-robotique-seance-5.md)
+- [specification-web-collection.md](specification-web-collection.md)
+
+Les pièces de recette robotique complémentaires se trouvent dans `recettes-robotique/`. Les scénarios navigateur datés sont décrits dans [tests/archive](../tests/archive/README.md).

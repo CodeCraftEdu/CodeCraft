@@ -1,0 +1,515 @@
+{
+  "scratchProjectId": "chat-cible",
+  "scratchProjectContinuation": true,
+  "domainId": "jeux-video",
+  "title": "Compter et mémoriser",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Créer un score, l’augmenter lors d’un contact et le remettre à zéro au départ.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.variables"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.contacts",
+      "expectation": "Faire réagir le chat au contact de Cible : reprendre Faire réagir le jeu."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Comprendre les actions à l’intérieur d’un si."
+    },
+    {
+      "skillId": "scratch.loops",
+      "expectation": "Repérer ce qui se répète et ce qui se fait une fois au départ."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Retrouve ou reconstruis la base",
+      "paragraphs": [
+        "Ouvre une copie de ton .sb3 de Faire réagir le jeu, sans créer un projet vide : nous prolongeons le programme. Si tu n’as pas ce fichier, ouvre Faire réagir le jeu avec le lien ci-dessous pour construire les sprites et la pile, tester les contacts et sauvegarder. Reviens ensuite dans Compter et mémoriser avec cette base prête avant d’ajouter le score.",
+        "La base attendue : un chat à gauche, un sprite nommé exactement Cible à x = 80, y = 0, une boucle de déplacement droite/gauche et un retour à x = -100, y = 0 au contact.",
+        "Si tu avais remplacé une touche ou déplacé Cible, tu peux garder ces choix, à condition de savoir expliquer et tester les contacts. Le modèle ci-dessous repart de droite/gauche et de Cible à (80, 0)."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "La base n’est pas encore prête ?",
+      "text": "Ouvre Faire réagir le jeu pour créer les sprites et les commandes ; ce module reste accessible même sans projet précédent.",
+      "moduleLink": {
+        "moduleId": "scratch-reactions",
+        "text": "Faire réagir le jeu"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "notions",
+      "title": "2 : Une boîte qui garde un nombre",
+      "paragraphs": [
+        "Une variable est une valeur mémorisée qui peut changer. Ici, score garde le nombre de cibles touchées.",
+        "Dans Variables (orange foncé), clique sur Créer une variable. Nomme-la score et choisis Pour tous les sprites. Coche la case à côté de score pour afficher le compteur sur la scène.",
+        "« Mettre score à 0 » remplace la valeur : c’est notre remise à zéro. « Ajouter 1 à score » augmente la valeur actuelle : 0 devient 1, puis 2 au contact suivant.",
+        "Le menu de chaque bloc Variables doit sélectionner score. Créer la variable ne donne pas encore de points : il faut écrire quand elle change.",
+        "La remise à zéro va avant la boucle : une fois par nouveau départ. L’ajout de point va dans le si de contact : pas à chaque tour de boucle."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "3 : Un point par contact",
+      "paragraphs": [
+        "Le retour du chat à gauche sépare les sprites après chaque point. Sans ce retour, un contact qui dure peut donner plusieurs points au fil des tours de boucle.",
+        "Ne mets pas score à 0 dans la boucle : elle effacerait sans cesse les points. Ne mets pas ajouter 1 hors du si : tu gagnerais des points sans toucher la cible.",
+        "Les anciens blocs droite/gauche et la pause restent inchangés. Nous ajoutons seulement la mémoire du score ; pas encore de fin de partie, de vies ni de chronomètre."
+      ],
+      "shortSteps": [
+        "Crée score et affiche son compteur, puis ajoute les deux blocs orange foncé à la pile du chat.",
+        "Mets score à 0 juste après le drapeau, hors de la boucle. Mets « ajouter 1 à score » dans le si de contact, avant le message et le retour.",
+        "Lance, touche la cible deux fois : le score doit afficher 2. Relance le drapeau : il revient à 0."
+      ],
+      "visualScript": {
+        "caption": "3 : Un point par contact",
+        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le drapeau démarre la pile."
+          },
+          {
+            "category": "variables",
+            "label": "Variables",
+            "parts": [
+              "mettre ",
+              {
+                "choice": "score"
+              },
+              " à ",
+              {
+                "value": "0"
+              }
+            ],
+            "explanation": "Une remise à zéro, au départ et hors de la boucle."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "-100"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ],
+            "explanation": "Au départ, le chat est à gauche de la cible."
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter indéfiniment"
+            ],
+            "explanation": "La boucle vérifie à nouveau touches et contact.",
+            "children": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche droite"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "explanation": "Si la touche est maintenue, on change X.",
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "3"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "Le chat va à droite."
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche gauche"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "explanation": "Si la touche est maintenue, on change X.",
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-3"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "Le chat va à gauche."
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche le ",
+                      {
+                        "choice": "Cible"
+                      },
+                      " ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "explanation": "Un contact déclenche seulement les blocs à l’intérieur.",
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "1"
+                      },
+                      " à ",
+                      {
+                        "choice": "score"
+                      }
+                    ],
+                    "explanation": "Le compteur gagne un point."
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": "Touché !"
+                      },
+                      " pendant ",
+                      {
+                        "value": "1"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Le message est visible pendant la durée indiquée."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-100"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ],
+                    "explanation": "Au départ, le chat est à gauche de la cible."
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.03"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Une pause ralentit les essais."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "quand le drapeau vert est cliqué\n  mettre score à 0\n  aller à x: -100 y: 0\n  répéter indéfiniment\n    si <touche flèche droite pressée ?> alors\n      ajouter 3 à x\n    si <touche flèche gauche pressée ?> alors\n      ajouter -3 à x\n    si <touche le Cible ?> alors\n      ajouter 1 à score\n      dire Touché ! pendant 1 secondes\n      aller à x: -100 y: 0\n    attendre 0.03 secondes"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : vérifier le compteur",
+      "intro": "Teste les règles du score, pas seulement son affichage.",
+      "items": [
+        {
+          "id": "zero",
+          "text": "Au drapeau, vérifie score = 0. Attends sans bouger : il doit rester à 0.",
+          "hint": "La remise à zéro est hors de la boucle ; l’ajout est dans le si de contact."
+        },
+        {
+          "id": "deux",
+          "text": "Touche la cible deux fois. Vérifie 1 puis 2.",
+          "hint": "Le chat repart à gauche entre les contacts."
+        },
+        {
+          "id": "sans-contact",
+          "text": "Reste loin de Cible quelques secondes. Le score doit rester identique.",
+          "hint": "Aucun contact, aucun point."
+        },
+        {
+          "id": "reset",
+          "text": "Relance au drapeau et explique pourquoi le score revient à 0.",
+          "hint": "Le bloc mettre remplace l’ancienne valeur."
+        },
+        {
+          "id": "sauver",
+          "text": "Télécharge une nouvelle version .sb3, distincte si tu veux garder l’essai sans score.",
+          "hint": "Un fichier téléchargé précédemment ne se met pas à jour tout seul."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : choisis ta règle de points",
+      "intro": "Change seulement la règle de score, puis explique.",
+      "items": [
+        {
+          "id": "points",
+          "text": "Fais gagner 2 points par contact. Avant de tester, prédis le score après trois contacts.",
+          "hint": "Changer ajouter 1 en ajouter 2 ; après trois contacts depuis 0, on attend 6."
+        },
+        {
+          "id": "depart",
+          "text": "Choisis un score de départ de 5. Prédis la valeur après un contact avec ta règle actuelle.",
+          "hint": "Mettre remplace la valeur au départ ; ajouter part de cette valeur."
+        },
+        {
+          "id": "restaurer",
+          "text": "Remets le départ à 0 et un point par contact. Vérifie sans regarder le modèle.",
+          "hint": "Ne confonds pas mettre et ajouter."
+        },
+        {
+          "id": "expliquer",
+          "text": "Montre où tu placerais chaque bloc et explique pourquoi avant de le déplacer.",
+          "hint": "Au départ hors boucle : mettre. Au contact dans le si : ajouter."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : diagnostiquer un score étrange",
+      "intro": "Travaille dans une copie et restaure le programme après chaque essai.",
+      "items": [
+        {
+          "id": "erreur-reset",
+          "text": "Déplace mettre score à 0 dans la boucle. Prédis, observe puis corrige.",
+          "hint": "La remise à zéro devient répétée. Ramène-la avant la boucle."
+        },
+        {
+          "id": "erreur-points",
+          "text": "Déplace ajouter 1 à score hors du si mais dans la boucle. Prédis, observe puis corrige.",
+          "hint": "Les points augmentent sans contact. Replace l’ajout dans le si."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Et ensuite ?",
+      "paragraphs": [
+        "Tu sais maintenant compter une action du jeu. Continue avec Gagner, perdre et recommencer si tu sais expliquer le score et sa remise à zéro. Sinon, reprends les tests du compteur avant d’ajouter une fin de partie."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Créer et afficher une variable puis distinguer mettre et ajouter.",
+    "Prévoir une valeur après plusieurs contacts et expliquer le calcul, avec aide au calcul si nécessaire.",
+    "Montrer pourquoi la remise à zéro est hors de la boucle et l’ajout dans le si.",
+    "Tester qu’aucun point n’est attribué sans contact et qu’un nouveau départ remet à zéro."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "guide",
+      "label": "Vérifier zéro, contacts et nouveau départ"
+    },
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "guide",
+      "label": "Revoir la condition de contact"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "bonus",
+      "label": "Comprendre deux erreurs de placement"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-fin-partie",
+      "label": "Décider quand la partie se termine",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Savoir compter un point par contact et remettre à zéro ; sinon refaire les tests guidés du compteur."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Créer un score, l’augmenter lors d’un contact et le remettre à zéro au départ.",
+    "entryDiagnosis": [
+      "Faire réagir le chat au contact de Cible : reprendre Faire réagir le jeu.",
+      "Comprendre les actions à l’intérieur d’un si.",
+      "Repérer ce qui se répète et ce qui se fait une fois au départ."
+    ],
+    "preparation": [
+      "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
+      "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
+      "Reprendre le programme de contact réalisé avec Chat et Cible. La base partagée sans scripts ne remplace pas ce prérequis. Aucun fichier privé ni image à fournir."
+    ],
+    "why": "Une variable permet de garder le résultat des actions de la partie.",
+    "discoverySpeech": [
+      "« Mettre remplace ce qui est dans la boîte ; ajouter part de ce qui y est déjà. »",
+      "« Où faut-il remettre à zéro : à chaque tour ou seulement quand on démarre ? »",
+      "« Les points doivent arriver parce qu’on touche la cible, pas simplement parce que la boucle tourne. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-variables",
+        "blockId": "exemple",
+        "label": "Modèle commenté"
+      },
+      "comments": [
+        "Conserver la pile de contact : mettre score à 0 avant la boucle et ajouter 1 dans le si, avant le message et le retour. Ne pas recopier une deuxième pile de drapeau.",
+        "Résultats attendus : drapeau → 0 ; premier contact → 1 ; deuxième contact → 2. Sans contact, la valeur reste inchangée. Le retour au départ sépare les sprites et évite plusieurs points pour un contact prolongé.",
+        "Un nouveau drapeau remet score à 0. Avec 2 points par contact, trois contacts depuis zéro donnent 6 ; depuis 5, un contact donne 7. Rétablir ensuite zéro et un point. Aider le calcul séparément de l’explication des blocs."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Depuis zéro, trois contacts à deux points donnent combien ?",
+        "answer": "6. Aider le calcul si nécessaire tout en évaluant le placement des blocs séparément."
+      },
+      {
+        "question": "Modifier une pause devrait-il modifier les points par contact ?",
+        "answer": "Non, si le chat est séparé de la cible après le contact."
+      },
+      {
+        "question": "Pourquoi ne pas créer un score qui se remet à zéro dans chaque tour ?",
+        "answer": "La mémoire serait effacée continuellement."
+      },
+      {
+        "question": "Mettre score à 1 signifie-t-il gagner un point ?",
+        "answer": "Non : cela remplace le score par 1 ; ajouter 1 l’augmente."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-variables",
+      "blockId": "guide",
+      "label": "Tests guidés"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-variables",
+      "blockId": "autonomie",
+      "label": "Modifier sans modèle"
+    },
+    "differentiation": [
+      "Pour un CE2 : une manipulation à la fois, faire montrer la place avant de nommer les termes ; lire la consigne si nécessaire.",
+      "Pour un élève plus autonome : masquer le modèle, demander une prédiction et une modification justifiée avant le bonus.",
+      "Reprendre le prérequis fragile. Aucun nombre de séances imposé, aucune validation par consultation ou case cochée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le score reste ou revient toujours à zéro.",
+        "helps": [
+          "Observer un contact puis la valeur affichée.",
+          "Chercher où se trouve mettre score à 0.",
+          "Comparer un départ hors boucle et un bloc dans la boucle.",
+          "Déplacer seulement la remise à zéro avant la boucle."
+        ]
+      },
+      {
+        "symptom": "Le score augmente sans toucher la cible.",
+        "helps": [
+          "Lancer sans appuyer et observer.",
+          "Repérer ajouter dans ou hors du si.",
+          "Comparer avec la condition de contact.",
+          "Replacer l’ajout dans le si puis retester loin de la cible."
+        ]
+      },
+      {
+        "symptom": "Le score n’est pas affiché.",
+        "helps": [
+          "Regarder la catégorie Variables.",
+          "Vérifier que score existe et que sa case est cochée.",
+          "Comparer affichage de la variable et blocs qui la modifient.",
+          "Cocher score sans ajouter de nouveau compteur."
+        ]
+      }
+    ],
+    "notes": "Observer prédiction, test sans contact et nouveau départ. Ne pas transformer le score du jeu en validation de compétence CodeCraft. Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes ; aucun nouveau dispositif de suivi.",
+    "quickConductor": [
+      "Vérifier les prérequis par une question et un petit essai.",
+      "Préparer la base minimale puis repérer les creux des blocs.",
+      "Assembler et prédire le résultat du modèle.",
+      "Faire les tests avec et sans la situation déclenchante.",
+      "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      },
+      {
+        "title": "Scratch : projets de départ officiels",
+        "url": "https://scratch.mit.edu/help/starter_projects/"
+      }
+    ]
+  }
+}

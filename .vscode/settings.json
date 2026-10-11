@@ -1,0 +1,12 @@
+{
+  "json.schemas": [
+    { "fileMatch": ["/content/manifest.json"], "url": "../schemas/manifest.schema.json" },
+    { "fileMatch": ["/content/modules/**/*.json"], "url": "../schemas/module.schema.json" },
+    { "fileMatch": ["/content/pathways/*.json"], "url": "../schemas/pathway.schema.json" },
+    { "fileMatch": ["/content/catalog/site.json"], "url": "../schemas/site.schema.json" },
+    { "fileMatch": ["/content/catalog/aliases.json"], "url": "../schemas/aliases.schema.json" },
+    { "fileMatch": ["/content/catalog/module-types.json"], "url": "../schemas/module-types.schema.json" },
+    { "fileMatch": ["/content/catalog/domains.json", "/content/catalog/skills.json", "/content/resources/*.json"], "url": "../schemas/registry.schema.json" },
+    { "fileMatch": ["/content/teacher/*.json"], "url": "../schemas/teacher.schema.json" }
+  ]
+}

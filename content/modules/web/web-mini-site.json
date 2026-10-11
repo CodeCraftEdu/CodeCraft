@@ -1,0 +1,789 @@
+{
+  "domainId": "web",
+  "title": "Mon mini-site",
+  "type": "project",
+  "theme": "debutants",
+  "objective": "Réaliser deux pages reliées avec une feuille CSS commune, puis vérifier navigation, images et lisibilité.",
+  "skillIds": [
+    "html.document",
+    "html.navigation",
+    "html.links",
+    "html.paths",
+    "html.images",
+    "css.stylesheets",
+    "css.selectors",
+    "css.colors",
+    "css.fonts",
+    "css.spacing",
+    "css.sizing"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.document",
+      "expectation": "Repérer head et body et enregistrer un document HTML complet."
+    },
+    {
+      "skillId": "html.paths",
+      "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+    },
+    {
+      "skillId": "html.links",
+      "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+    },
+    {
+      "skillId": "html.navigation",
+      "expectation": "Tester aller/retour et entrée directe entre deux fichiers."
+    },
+    {
+      "skillId": "html.images",
+      "expectation": "Utiliser un fichier image et rédiger son alt."
+    },
+    {
+      "skillId": "css.stylesheets",
+      "expectation": "Relier un fichier CSS et prouver son chargement."
+    },
+    {
+      "skillId": "css.selectors",
+      "expectation": "Réutiliser une classe pour un même rôle."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Choisir texte et fond lisibles."
+    },
+    {
+      "skillId": "css.fonts",
+      "expectation": "Régler taille et interligne."
+    },
+    {
+      "skillId": "css.spacing",
+      "expectation": "Distinguer espace intérieur et extérieur."
+    },
+    {
+      "skillId": "css.sizing",
+      "expectation": "Garder une image proportionnée dans son conteneur."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant le projet",
+      "text": "Ce projet se réalise avec de vrais fichiers locaux. Si les liens entre pages ne sont pas encore clairs, reprends Relier plusieurs pages puis reviens ici. Si seule une autre notion bloque, retrouve sa leçon depuis le parcours dans le fil d’Ariane sans tout recommencer. Ni Flexbox ni publication ne sont nécessaires.",
+      "moduleLink": {
+        "text": "Relier plusieurs pages",
+        "moduleId": "html-multipage"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "intention",
+      "title": "1 : Un petit site, pas deux copies de la même page",
+      "paragraphs": [
+        "Choisis un thème libre et non personnel : par exemple un petit musée de formes, un lieu imaginaire ou un carnet d’idées. Ne publie aucune identité, adresse, photo personnelle ou donnée d’élève.",
+        "L’accueil présente le thème et indique où aller. La seconde page apporte un contenu différent. Deux pages suffisent ; une troisième est un bonus facultatif.",
+        "Le résultat doit fonctionner depuis n’importe quelle page, garder des styles cohérents et afficher au moins une image. Le projet réutilise les notions apprises : le but est de décider, vérifier et expliquer, pas d’ajouter des effets.",
+        "Travaille dans une copie de tes fichiers ou un nouveau dossier pour garder tes réalisations précédentes. Utilise ton éditeur de texte et ton navigateur."
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "cahier-charges",
+      "title": "Cahier des charges",
+      "items": [
+        {
+          "id": "exigence-1",
+          "text": "Deux fichiers HTML complets dans le même dossier, avec un accueil index.html et une seconde page au nom simple choisi."
+        },
+        {
+          "id": "exigence-2",
+          "text": "Un title distinct pour chaque onglet et un h1 qui annonce le contenu de chaque page."
+        },
+        {
+          "id": "exigence-3",
+          "text": "Au moins un paragraphe pertinent sur chaque page, avec des contenus différents."
+        },
+        {
+          "id": "exigence-4",
+          "text": "Une navigation nav présente sur les deux pages, avec les mêmes destinations et le même ordre ; un retour Accueil fonctionne depuis la seconde page."
+        },
+        {
+          "id": "exigence-5",
+          "text": "Un seul fichier style.css commun, relié dans head de chaque document ; des classes réutilisées pour des rôles comparables."
+        },
+        {
+          "id": "exigence-6",
+          "text": "Un style lisible et cohérent : texte/fond contrastés, taille/interligne et espace intérieur choisis."
+        },
+        {
+          "id": "exigence-7",
+          "text": "Au moins une image présente dans le dossier images, affichée avec un alt adapté et sans déformation."
+        },
+        {
+          "id": "exigence-8",
+          "text": "Une vérification de toutes les destinations, de la feuille commune et des images, depuis chaque page et à une largeur plus étroite."
+        },
+        {
+          "id": "exigence-9",
+          "text": "Une modification de style commun et une réparation expliquées ; une troisième page reste facultative."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "dossier",
+      "title": "2 : Préparer l’organisation",
+      "paragraphs": [
+        "Tu peux garder index.html et idees.html de l’exercice précédent, dans une copie. L’arbre ci-dessous est un exemple d’organisation : adapte le nom de ta seconde page et celui de l’image.",
+        "Les deux HTML et style.css restent voisins. Les dessins sont rangés dans images. Conserver cette organisation limite les nouveaux chemins à comprendre : chaque HTML peut utiliser href=\"style.css\" et src=\"images/carre-bleu.png\".",
+        "Vérifie les extensions et les noms exacts. On ne place pas les deux pages HTML dans style.css ; ce fichier reçoit seulement les règles CSS. Pas besoin de serveur ni de mise en ligne pour ces liens et fichiers."
+      ],
+      "code": "mon-mini-site/\n├── index.html\n├── idees.html\n├── style.css\n└── images/\n    └── carre-bleu.png"
+    },
+    {
+      "type": "lesson",
+      "id": "liaison",
+      "title": "3 : Une feuille pour les deux documents",
+      "paragraphs": [
+        "Dans head de CHAQUE page, relie le même fichier style.css. Cette ligne est un rappel de Relier une feuille de style ; elle n’est pas un lien cliquable à placer dans le menu.",
+        "Si tu pars d’une copie qui utilisait un autre fichier CSS, garde une copie de sauvegarde puis remplace son ancienne liaison par celle vers la feuille commune. Ne conserve pas une deuxième feuille ou un ancien bloc style qui masquerait tes essais."
+      ],
+      "code": "<link rel=\"stylesheet\" href=\"style.css\">"
+    },
+    {
+      "type": "lesson",
+      "id": "partage",
+      "title": "Un petit essai pour prouver le partage",
+      "paragraphs": [
+        "Avant la réalisation complète, donne class=\"titre\" au h1 de chacune des deux pages et ajoute cette règle dans l’unique style.css. Ouvre les deux documents : leurs titres doivent être bleu marine.",
+        "Change navy en darkgreen uniquement dans style.css, enregistre puis actualise CHACUNE des pages. Si les deux titres changent, tu as une preuve que cette règle commune agit sur les deux.",
+        "Le fichier commun est relu lors du chargement ou de l’actualisation de chaque page ; une page déjà ouverte ne se met pas à jour toute seule pendant la saisie.",
+        "CSS partage les règles d’apparence, pas le contenu HTML. Modifier le menu dans un fichier ne modifie donc pas automatiquement l’autre. Ne crée pas style-accueil.css et style-idees.css pour reproduire les mêmes règles."
+      ],
+      "code": ".titre {\n  color: navy;\n}",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Une règle commune, deux pages",
+        "intro": "Compare deux valeurs dans la même feuille. Les contenus restent différents, les deux titres partagent titre.",
+        "variants": [
+          {
+            "label": "style.css : navy",
+            "html": "<h1 class=\"titre\">Mon carnet</h1><p>Page d’accueil représentée.</p><hr><h1 class=\"titre\">Mes idées</h1><p>Seconde page représentée.</p>",
+            "code": ".titre {\n  color: navy;\n}",
+            "feedback": "La même règle peut agir sur les deux documents reliés à style.css.",
+            "css": ".titre{color:navy}"
+          },
+          {
+            "label": "style.css : darkgreen",
+            "html": "<h1 class=\"titre\">Mon carnet</h1><p>Page d’accueil représentée.</p><hr><h1 class=\"titre\">Mes idées</h1><p>Seconde page représentée.</p>",
+            "code": ".titre {\n  color: darkgreen;\n}",
+            "feedback": "Dans ton projet, enregistre la feuille puis actualise chacune des deux pages. Une page déjà ouverte ne s’actualise pas toute seule.",
+            "css": ".titre{color:darkgreen}"
+          }
+        ],
+        "note": "Les deux pages sont représentées dans un seul aperçu pour comparer. Il ne charge pas tes fichiers et ne fournit pas le code d’un mini-site terminé."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "preparer",
+      "title": "Préparer avant de remplir les pages",
+      "intro": "Tu peux réutiliser le cadre complet du cours précédent, mais pas conserver deux contenus identiques.",
+      "items": [
+        {
+          "id": "message",
+          "text": "Écris le rôle de chaque page : ce que l’accueil présente et ce que la seconde page apporte. Choisis les mots du menu."
+        },
+        {
+          "id": "fichiers",
+          "text": "Crée ou copie tes deux HTML, puis crée style.css et le dossier images. Vérifie que tu travailles dans la bonne copie."
+        },
+        {
+          "id": "menus",
+          "text": "Teste d’abord les liens entre les deux pages sans te préoccuper des couleurs. Les menus doivent être utilisables depuis une ouverture directe."
+        },
+        {
+          "id": "css-partage",
+          "text": "Réalise le petit essai de couleur commune ci-dessus. Si une page ne change pas, vérifie sa liaison et la classe de son titre avant de recopier la règle ailleurs."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "ressource-intro",
+      "title": "Une image disponible pour ton site local",
+      "paragraphs": [
+        "Tu peux utiliser le carré fourni pour un thème de formes ou le remplacer par un fichier d’exercice déjà disponible. Aucun téléchargement d’image personnelle ni recherche Internet n’est requis.",
+        "Dans la ressource ci-dessous, choisis Télécharger l’image et place carre-bleu.png dans ton dossier images. Le chemin de l’image sera `images/carre-bleu.png`.",
+        "Dans le HTML de la page illustrée, utilise une balise img avec src=\"images/carre-bleu.png\", une classe pour son style et un alt que tu rédiges pour décrire le dessin. Réutilise les réglages de proportions du cours Dimensions.",
+        "Si la même image sert sur deux pages voisines, les deux src peuvent viser le même fichier : inutile de le dupliquer. Ne déplace pas les ressources d’un autre projet ; copie-les ou télécharge-les dans celui-ci."
+      ]
+    },
+    {
+      "type": "reference",
+      "id": "source-image",
+      "moduleId": "html-images",
+      "blockId": "ressource-carre"
+    },
+    {
+      "type": "tasks",
+      "id": "realisation",
+      "title": "4 : Réaliser ton mini-site",
+      "intro": "Essaie avant d’ouvrir les aides. Les cours restent accessibles ; aucune solution complète du projet n’est fournie.",
+      "items": [
+        {
+          "id": "contenus",
+          "text": "Rédige les deux pages : title et h1 distincts, puis un contenu qui correspond au rôle choisi. Dans chaque nav, garde les mêmes textes de liens et destinations.",
+          "hints": [
+            "Sépare les mots de la page et les noms des fichiers.",
+            "Un visiteur doit comprendre la destination avant de cliquer.",
+            "Le title est dans head ; le h1 et les liens sont dans body.",
+            "Reprends le cadre du cours multipage si nécessaire, puis écris des contenus différents et reteste le menu."
+          ]
+        },
+        {
+          "id": "styles",
+          "text": "Dans style.css, règle la présentation commune de tes titres et paragraphes avec des classes cohérentes. Choisis une lecture facile ; noir sur blanc convient.",
+          "hints": [
+            "Choisis un nom de classe par rôle utile.",
+            "Compare les classes présentes dans les deux HTML.",
+            "Une règle peut servir dans plusieurs pages si chaque page charge le fichier.",
+            "Reprends l’essai .titre et applique le même raisonnement aux paragraphes ; évite de recopier une règle identique pour chaque page."
+          ]
+        },
+        {
+          "id": "image",
+          "text": "Ajoute ton image sur au moins une page. Rédige alt, vérifie le chemin et conserve ses proportions en adaptant sa largeur.",
+          "hints": [
+            "Vérifie d’abord que l’image se charge.",
+            "Le chemin est lu depuis le fichier HTML.",
+            "Une image chargée mais écrasée est un problème de dimensions, pas de src.",
+            "Utilise Images pour la source/alt, ou Dimensions pour width et height auto ; ne cache pas le problème avec une hauteur choisie au hasard."
+          ]
+        },
+        {
+          "id": "espace",
+          "text": "Aère les contenus et teste une largeur plus étroite. Tu peux réutiliser une carte ou un conteneur déjà construit ; aucune nouvelle mise en page n’est imposée.",
+          "hints": [
+            "Localise l’espace manquant.",
+            "L’air entre lignes et l’air autour du contenu ne se règlent pas de la même façon.",
+            "Un conteneur trop large peut dépasser même si son image lui obéit.",
+            "Reprends Lisibilité, Boîtes ou Dimensions selon le seul point fragile."
+          ]
+        },
+        {
+          "id": "identite",
+          "text": "Vérifie que les pages se reconnaissent comme un même site sans avoir le même texte. Des couleurs, classes et liens cohérents suffisent."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "verifier",
+      "title": "5 : Vérifier comme un visiteur",
+      "intro": "Enregistre tous les fichiers. Tester seulement index.html ne suffit pas.",
+      "items": [
+        {
+          "id": "toutes-destinations",
+          "text": "Depuis index.html, clique sur chaque lien ; recommence depuis la seconde page. Vérifie le nom du fichier, le titre visible et le contenu atteint."
+        },
+        {
+          "id": "entree-directe",
+          "text": "Ouvre la seconde page directement depuis le dossier, puis retrouve l’accueil par son menu, sans utiliser Retour."
+        },
+        {
+          "id": "preuve-css",
+          "text": "Change temporairement une couleur ou un réglage de texte dans une règle commune, sans modifier les HTML. Actualise chaque page et explique pourquoi le résultat change aux deux endroits."
+        },
+        {
+          "id": "controle-images",
+          "text": "Sur chaque page illustrée, vérifie que l’image charge, garde sa forme et possède un alt pertinent. Un texte alternatif ne dispense pas de réparer une image absente."
+        },
+        {
+          "id": "largeur",
+          "text": "Compare chaque page dans une fenêtre large puis plus étroite. Les textes et images doivent rester accessibles ; ne diminue pas tout le texte pour cacher un dépassement."
+        },
+        {
+          "id": "transfert",
+          "text": "Sans agrandir les lettres, donne davantage d’air entre les lignes des paragraphes sur les DEUX pages en changeant une seule déclaration commune. Explique où tu as travaillé."
+        },
+        {
+          "id": "presenter",
+          "text": "Présente le rôle des pages, un trajet de navigation et une décision CSS. Dis ce que tu as réalisé seul, avec modèle ou avec aide. Si tu es en cours, montre ton résultat au professeur ; sinon utilise ces vérifications pour choisir une reprise."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "consolider",
+      "title": "Consolidation : Trois causes à ne pas mélanger",
+      "intro": "Fais ces essais dans une copie du dossier. Répare chaque panne avant la suivante.",
+      "items": [
+        {
+          "id": "lien-casse",
+          "text": "Dans le menu de l’accueil, remplace temporairement le href de la seconde page par absent.html. Observe le lien cassé, puis corrige uniquement la destination.",
+          "hints": [
+            "Le texte cliquable peut être correct malgré une mauvaise adresse.",
+            "Compare href au nom réel du second fichier.",
+            "Ne renomme pas le title pour réparer un chemin.",
+            "Rétablis le vrai nom dans href, enregistre puis rouvre l’accueil et teste le lien."
+          ]
+        },
+        {
+          "id": "feuille-absente",
+          "text": "Dans head de la seconde page seulement, remplace href=\"style.css\" par href=\"absent.css\". Observe que cette page perd les règles de la feuille, alors que l’accueil les garde. Répare la liaison.",
+          "hints": [
+            "La navigation peut fonctionner même sans le style.",
+            "Compare les deux link.",
+            "La feuille existe ; une page demande un autre nom.",
+            "Rétablis href=\"style.css\", enregistre puis actualise cette page. Ne duplique pas le CSS dans le HTML."
+          ]
+        },
+        {
+          "id": "classe-absente",
+          "text": "Avec les bonnes liaisons, change temporairement class=\"titre\" en class=\"autre\" sur un seul h1. Le reste du style doit encore agir : explique puis corrige la classe.",
+          "hints": [
+            "La feuille peut être chargée même si un titre n’est pas ciblé.",
+            "Compare sélecteur et attribut class.",
+            "Regarde si les paragraphes gardent leur style.",
+            "Remets la classe attendue ou adapte consciemment une règle ; une nouvelle copie du fichier CSS ne résoudrait pas le ciblage."
+          ]
+        },
+        {
+          "id": "image-absente",
+          "text": "Si seule une image manque, vérifie son src et son fichier plutôt que les liens du menu ou link. Explique le rôle des trois adresses."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus-detail",
+      "title": "Bonus facultatif : Une troisième page cohérente",
+      "blocks": [
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Prolonger le même site",
+          "intro": "Seulement si tu peux déjà expliquer et modifier les deux pages.",
+          "items": [
+            {
+              "id": "troisieme",
+              "text": "Crée une troisième page dans le même dossier, avec un title, un h1 et un contenu propres. Réutilise le cadre et la feuille commune ; une copie de HTML doit être adaptée."
+            },
+            {
+              "id": "menus-trois",
+              "text": "Ajoute sa destination dans les trois menus, dans le même ordre. Garde le lien Accueil et les destinations précédentes."
+            },
+            {
+              "id": "controle-trois",
+              "text": "Teste tous les liens depuis chacune des trois pages et prouve qu’une modification de style.css atteint les trois après actualisation. Ne crée pas une feuille CSS supplémentaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Après ce jalon",
+      "text": "Conserve ton dossier complet : HTML, CSS et images vont ensemble. Ce projet reste local ; aucune publication n’est demandée. Une suite ou une consolidation se choisit selon les acquis, pas parce que toutes les cases sont cochées. Le multipage n’est pas un passage obligé avant Flexbox ou JavaScript ; aucun module JavaScript n’est encore proposé ici."
+    }
+  ],
+  "masteryCriteria": [
+    "Concevoir deux pages aux rôles distincts et une navigation explicite, vérifiée depuis chaque entrée.",
+    "Relier la même feuille aux deux documents et prouver un changement commun sans modifier leurs HTML.",
+    "Utiliser des fichiers images et des chemins corrects, avec texte alternatif et proportions adaptés.",
+    "Différencier fichier destination absent, feuille non chargée, sélecteur incorrect et image absente.",
+    "Justifier les choix puis réaliser une modification commune sans nom de propriété, en précisant le niveau d’aide.",
+    "Vérifier réellement les fichiers ; le projet, l’apparence et la checklist ne déclenchent aucune acquisition automatique."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "web-mini-site",
+      "label": "Séparer les causes et réparer",
+      "blockId": "consolider"
+    },
+    {
+      "moduleId": "html-multipage",
+      "label": "Reprendre les liens entre documents",
+      "blockId": "panne",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body et enregistrer un document HTML complet."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-feuille-style",
+      "label": "Reprendre chargement et sélecteur",
+      "blockId": "reparer",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head/body."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Lire un chemin."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle simple."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-images",
+      "label": "Reprendre src et alt",
+      "blockId": "depannage",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.text",
+          "expectation": "Modifier un extrait HTML."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-fichiers-chemins",
+      "label": "Reprendre le rangement des ressources",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.links",
+          "expectation": "Lire href."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Distinguer src et alt."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-textes-lisibles",
+      "label": "Reprendre l’interligne",
+      "blockId": "panne",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.selectors",
+          "expectation": "Cibler une classe."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-dimensions-images",
+      "label": "Réparer proportions ou dépassement",
+      "blockId": "panne",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer la carte parent et l’image à l’intérieur."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une source dans src et rédiger un alt adapté."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer padding et margin et lire une bordure simple."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "web-mini-site",
+      "label": "Ajouter une troisième page sans dupliquer les styles",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body et enregistrer un document HTML complet."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+        },
+        {
+          "skillId": "html.navigation",
+          "expectation": "Tester aller/retour et entrée directe entre deux fichiers."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Utiliser un fichier image et rédiger son alt."
+        },
+        {
+          "skillId": "css.stylesheets",
+          "expectation": "Relier un fichier CSS et prouver son chargement."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Réutiliser une classe pour un même rôle."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Choisir texte et fond lisibles."
+        },
+        {
+          "skillId": "css.fonts",
+          "expectation": "Régler taille et interligne."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer espace intérieur et extérieur."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Garder une image proportionnée dans son conteneur."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-flexbox",
+      "label": "Explorer Flexbox si les bases de mise en page sont comprises",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier parents et enfants directs."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier classe et règle."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer espaces intérieur et extérieur."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Lire la largeur d’une carte et de son contenu."
+        }
+      ]
+    },
+    {
+      "moduleId": "web-mini-site",
+      "label": "Approfondir le même site selon tes besoins",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body et enregistrer un document HTML complet."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+        },
+        {
+          "skillId": "html.navigation",
+          "expectation": "Tester aller/retour et entrée directe entre deux fichiers."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Utiliser un fichier image et rédiger son alt."
+        },
+        {
+          "skillId": "css.stylesheets",
+          "expectation": "Relier un fichier CSS et prouver son chargement."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Réutiliser une classe pour un même rôle."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Choisir texte et fond lisibles."
+        },
+        {
+          "skillId": "css.fonts",
+          "expectation": "Régler taille et interligne."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer espace intérieur et extérieur."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Garder une image proportionnée dans son conteneur."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire organiser et vérifier un petit ensemble de pages avec des styles communs, puis observer une réparation et un transfert sans introduire une nouvelle mise en page.",
+    "entryDiagnosis": [
+      "Faire ouvrir une deuxième page directement puis revenir à l’accueil par son menu. Attendu : navigation indépendante de l’historique.",
+      "Demander de prouver qu’un fichier CSS agit : changer une déclaration, enregistrer, actualiser. Si cette preuve manque, reprendre C3.",
+      "Faire expliquer href du menu, href de link et src de l’image. Accepter une explication simple des trois rôles avant le vocabulaire.",
+      "Vérifier classes, image proportionnée et distinction interligne/padding. Le projet ne doit pas devenir un apprentissage forcé de tous les prérequis en même temps."
+    ],
+    "preparation": [
+      "Copie du dossier multipage ou nouveau dossier ; un seul style.css voisin des deux HTML, images dans images.",
+      "Garder la ressource téléchargeable et les liens de reprise accessibles. Pas d’image personnelle ni de recherche externe obligatoire.",
+      "Préparer une fenêtre large et une plus étroite ; pas de serveur, de publication, de compte ni d’extension requis.",
+      "Préparer les trois pannes dans une copie, une à la fois ; ne pas casser la réalisation que l’élève souhaite conserver."
+    ],
+    "why": "Le partage d’une feuille donne une apparence cohérente et rend un changement vérifiable sur plusieurs pages. L’élève apprend aussi à distinguer les adresses et les causes d’une panne.",
+    "discoverySpeech": [
+      "« Notre accueil et notre deuxième page ont des contenus différents, mais des repères communs. Le menu dit où aller ; le style aide à reconnaître le même site. »",
+      "« Les deux documents peuvent lire le même fichier CSS. Nous allons le prouver en changeant une seule règle, puis en actualisant les deux pages. »",
+      "« Attention : partager le CSS ne partage pas le menu HTML. Si tu changes une destination, il faudra encore vérifier chaque menu. »",
+      "« Si une page s’ouvre sans couleurs, ce n’est pas forcément un lien de navigation cassé. Si une image manque, ce n’est pas forcément le CSS. Cherchons quelle adresse ou quel sélecteur fait le travail. »",
+      "« Deux pages bien vérifiées suffisent. La troisième est une possibilité, pas une obligation pour aller plus vite vers une autre notion. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "web-mini-site",
+        "label": "Prouver une règle commune",
+        "blockId": "partage"
+      },
+      "comments": [
+        "Ajouter la liaison dans head des deux documents et class=\"titre\" aux deux h1 avant de demander l’effet de .titre.",
+        "Passer navy à darkgreen seulement dans style.css, enregistrer puis recharger chaque page. Ne pas confondre actualisation et modification automatique en direct.",
+        "Tester la panne de liaison sur la seconde page puis celle de classe : dans la seconde panne, les autres règles continuent d’agir."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Faut-il un CSS différent pour chaque page ?",
+        "answer": "Non pour ce projet : les deux documents lient le même style.css et partagent des classes pour des rôles comparables."
+      },
+      {
+        "question": "Pourquoi une page déjà ouverte garde-t-elle l’ancien style ?",
+        "answer": "Après enregistrement, il faut l’actualiser pour qu’elle recharge la feuille. L’exercice ne dispose pas d’un outil de rafraîchissement automatique."
+      },
+      {
+        "question": "Le menu change-t-il partout si je modifie un HTML ?",
+        "answer": "Non. La feuille partage les styles, pas les éléments HTML. Les menus restent à contrôler dans chaque document."
+      },
+      {
+        "question": "Les liens fonctionnent mais une page a perdu son style : que vérifier ?",
+        "answer": "Son link dans head, le chemin exact vers style.css et l’enregistrement. Ne pas modifier les destinations du menu pour réparer la feuille."
+      },
+      {
+        "question": "Un seul titre perd la couleur, mais les paragraphes restent stylés : que vérifier ?",
+        "answer": "La classe du titre et le sélecteur. La feuille est probablement chargée puisque les autres règles agissent ; comparer avant de changer le chemin."
+      },
+      {
+        "question": "Quel chemin utilise l’image rangée dans images ?",
+        "answer": "Depuis ces HTML voisins, images/nom-du-fichier.svg. Le src est relatif à la page qui contient img, pas au dossier où l’on imagine le dessin."
+      },
+      {
+        "question": "Comment aérer les paragraphes de deux pages sans agrandir les lettres ?",
+        "answer": "Changer line-height dans la règle de leur classe commune, garder font-size puis enregistrer et actualiser les deux pages."
+      },
+      {
+        "question": "Trois pages sont-elles obligatoires pour valider ?",
+        "answer": "Non. Deux suffisent au cahier des charges ; on observe explications, tests et transfert avec leur niveau d’aide. Rien n’est validé automatiquement."
+      },
+      {
+        "question": "Faut-il publier le mini-site pour qu’il fonctionne ?",
+        "answer": "Non. Ces fichiers HTML/CSS et images fonctionnent localement. La publication est hors du lot, et l’ordinateur doit conserver le dossier complet."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "web-mini-site",
+      "label": "Planifier et prouver la feuille commune",
+      "blockId": "preparer"
+    },
+    "independentActivity": {
+      "moduleId": "web-mini-site",
+      "label": "Réaliser les pages et vérifier",
+      "blockId": "realisation"
+    },
+    "differentiation": [
+      "Aider à gérer les copies, extensions ou téléchargements sans choisir toutes les destinations. Noter séparément manipulation et compréhension.",
+      "Si une seule notion manque, garder la production et utiliser la reprise correspondante. Une belle page copiée ne justifie pas un acquis global.",
+      "Un élève maîtrisant la navigation peut commencer par le partage CSS et les pannes, puis produire ses contenus ; aucune répétition de durée fixe.",
+      "La troisième page n’introduit que du réinvestissement. Ne pas ajouter effets, JavaScript ou publication comme obligation."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Deux CSS identiques deviennent différents par accident.",
+        "helps": [
+          "Faire montrer les link des deux pages.",
+          "Demander quel fichier contient réellement la règle commune.",
+          "Dans une copie, rassembler les règles utiles dans style.css et relier ce seul fichier ; retester une modification commune sans jeter les originaux."
+        ]
+      },
+      {
+        "symptom": "Une page charge mais n’est pas stylée.",
+        "helps": [
+          "Vérifier le fichier demandé dans link et le fichier réellement enregistré.",
+          "Comparer la classe du titre si les autres règles agissent.",
+          "Réparer la liaison OU le ciblage selon le constat, pas les deux au hasard."
+        ]
+      },
+      {
+        "symptom": "Le menu ou une image manque après changement de nom.",
+        "helps": [
+          "Lire l’adresse concernée : href du a, href du link ou src du img.",
+          "Comparer depuis le document qui la contient.",
+          "Réparer le nom exact puis tester toutes les pages qui le référencent."
+        ]
+      },
+      {
+        "symptom": "Les couleurs réussies masquent une compréhension fragile.",
+        "helps": [
+          "Demander un changement sans nom de propriété.",
+          "Faire expliquer pourquoi les deux pages doivent être actualisées.",
+          "Accompagner un premier essai puis proposer un autre changement sans modèle ; noter le niveau d’aide."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution possible, non imposée : index.html présente un musée de formes ; idees.html explique un dessin. Chaque page possède son title, un h1 class=\"titre\", un nav à deux liens et un p class=\"lecture\". La seconde ajoute img class=\"illustration\" avec le carré local et un alt descriptif.",
+      "Dans les deux head : link rel=\"stylesheet\" href=\"style.css\". Exemple de styles communs : .titre { color: navy; font-size: 28px; }, .lecture { font-size: 18px; line-height: 1.5; }. Un conteneur .page peut reprendre width: 640px, max-width: 100%, box-sizing: border-box et padding: 16px ; .illustration reprend width: 100% et height: auto. Ces nombres ne sont pas une solution universelle à imposer.",
+      "Transfert attendu : line-height 1.5→1.7 dans l’unique règle .lecture, sans changer 18px ni les HTML ; les deux pages reflètent la modification après actualisation.",
+      "Pannes : rétablir le vrai nom de la seconde page dans a ; rétablir style.css dans link ; rétablir titre dans class. Pour une image absente, vérifier src et le fichier, pas le menu.",
+      "Observer réussite autonome, avec modèle ou avec aide par compétence. Orthographe, goût graphique, aisance de fichier et compréhension ne sont pas la même chose. Ne pas déduire de validation officielle ou d’acquis global d’un projet terminé.",
+      "Les zones header/main/footer peuvent être réinvesties si comprises, sans devenir une exigence cachée de ce petit projet. Aucun CSS avancé, arrondi, Flexbox ou effet au survol n’est obligatoire.",
+      "Vers Flexbox : vérifier regroupements, classes, espaces et dimensions. Le multipage reste un approfondissement utile, pas un seuil obligatoire pour Flexbox ou JavaScript. Les modules JavaScript restent à créer."
+    ],
+    "quickConductor": [
+      "Vérifier navigation, fichiers, classes et liaison CSS.",
+      "Faire choisir deux rôles de page et lire le cahier des charges.",
+      "Prouver la feuille commune par un essai simple.",
+      "Laisser réaliser puis tester toutes les entrées, images et largeur.",
+      "Donner le transfert puis une panne ciblée ; demander l’explication.",
+      "Noter les acquis manuellement, consolider ou proposer le bonus selon les besoins."
+    ],
+    "references": [
+      {
+        "title": "MDN : Créer des liens",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links"
+      },
+      {
+        "title": "MDN : link et feuille externe",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link"
+      },
+      {
+        "title": "MDN : Fichiers et chemins",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
+      }
+    ]
+  }
+}

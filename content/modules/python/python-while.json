@@ -1,0 +1,281 @@
+{
+  "domainId": "python",
+  "title": "Répéter tant que",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Actualiser une condition de répétition et vérifier comment la boucle s’arrête.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.while"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, conserver et relancer un fichier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher et prévoir l’ordre des résultats."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Définir et réutiliser une valeur."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Poser une question et répondre dans la console."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Comparer avec == ou < et indenter un bloc."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Additionner 1 à une valeur numérique pour la variante à borne fixe."
+    },
+    {
+      "skillId": "python.for",
+      "expectation": "Prévoir les passages d’une répétition connue."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir comparer, répondre à input et repérer un bloc répété. Pour le modèle numérique, il faut aussi savoir additionner 1. Enregistre tes essais puis crée encore.py. Avant de lancer, repère Arrêter / redémarrer : interromps un programme qui ne finit pas avant de le modifier.",
+      "moduleLink": {
+        "moduleId": "python-for",
+        "text": "Revoir une répétition connue"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Tester avant chaque passage",
+      "paragraphs": [
+        "while signifie tant que. Avant chaque passage, Python teste la condition : si elle est vraie, il exécute le bloc ; sinon, il continue après la boucle. Contrairement à if, il revient tester après le bloc.",
+        "La première question donne une valeur à reponse avant le premier test. Dans le bloc, une nouvelle question actualise cette valeur : le test suivant peut alors devenir faux.",
+        "Ici, seul oui permet un tour. Tout autre texte arrête, même Oui ou oui suivi d’un espace. Ce n’est pas une correction automatique des réponses ; un premier non donne zéro passage."
+      ],
+      "code": "reponse = input(\"Continuer ? oui pour continuer : \")\nwhile reponse == \"oui\":\n    print(\"Un nouveau tour\")\n    reponse = input(\"Continuer ? oui pour continuer : \")\nprint(\"Fin\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - suivre les essais",
+      "items": [
+        {
+          "id": "arret-immediat",
+          "text": "Prédis puis teste non dès la première question. Explique pourquoi Fin apparaît sans nouveau tour.",
+          "hint": "La condition est fausse dès le premier test ; le bloc ne s’exécute pas."
+        },
+        {
+          "id": "plusieurs-tours",
+          "text": "Relance avec oui puis non, puis avec oui, oui, non. Annonce le nombre de tours avant chaque essai et repère la nouvelle saisie.",
+          "hint": "Un puis deux tours. La question du bloc actualise reponse avant le prochain test."
+        },
+        {
+          "id": "sans-mise-a-jour",
+          "text": "Sans exécuter une version incorrecte, imagine que la nouvelle saisie du bloc est supprimée. Avec un premier oui, explique pourquoi la condition resterait vraie.",
+          "hint": "reponse garderait oui. Arrêter / redémarrer interrompt une répétition involontaire ; l’absence de nouvelle saisie n’est pas à tester en lançant cette panne."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "numerique",
+      "title": "2 - Faire évoluer une valeur",
+      "paragraphs": [
+        "Enregistre encore.py puis crée while_tours.py. tour commence à 1 ; tant que tour < 4, on l’affiche puis on l’augmente.",
+        "Dans tour = tour + 1, Python lit l’ancienne valeur à droite, ajoute 1, puis conserve le résultat sous le même nom. Ce n’est pas une égalité mathématique. La mise à jour dans le bloc permet d’atteindre l’arrêt.",
+        "Prédis puis teste : 1, 2, 3 puis Fin. Avec tour initialisé à 4 ou 5, il n’y a aucun passage. Restaure ensuite tour = 1."
+      ],
+      "code": "tour = 1\nwhile tour < 4:\n    print(\"Tour\", tour)\n    tour = tour + 1\nprint(\"Fin\")"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - choisir la continuation",
+      "intro": "Enregistre encore.py et while_tours.py puis crée repetition_personnelle.py. Essaie avant les indices ; garde les modèles.",
+      "items": [
+        {
+          "id": "mot-personnel",
+          "text": "Choisis ton mot de continuation et un message personnel. Pose une première question, répète le message tant que la réponse correspond au mot, puis redemande à chaque passage.",
+          "hint": "Initialise la réponse avant while ; actualise-la dans le bloc. Le print final reste hors de la boucle."
+        },
+        {
+          "id": "tests-personnels",
+          "text": "Prédis puis teste un arrêt immédiat et deux accords suivis d’un arrêt. Explique la ligne qui permet à la condition de changer.",
+          "hint": "Le premier essai ne produit aucun tour ; le second en produit deux. Chaque saisie remplace la réponse précédente."
+        },
+        {
+          "id": "renommer-mot",
+          "text": "Enregistre puis renomme le mot accepté dans les deux questions et dans la comparaison. Teste le nouveau mot puis l’ancien ; l’ancien doit maintenant arrêter.",
+          "hint": "La question initiale et celle répétée doivent annoncer le même mot que celui comparé."
+        },
+        {
+          "id": "borne-personnelle",
+          "text": "Enregistre ton fichier. Rouvre while_tours.py puis crée borne_personnelle.py avec Enregistrer sous. Garde tour = 1, choisis une autre borne pour produire cinq tours et prédis la dernière valeur. Teste aussi un départ exactement à ta borne puis au-dessus.",
+          "hint": "La borne doit être 6 pour afficher 1 à 5. Avec un départ à 6 ou à 7, aucun tour ; Fin s’affiche. Vérifie que l’addition de 1 reste dans le bloc."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - une autre progression",
+      "items": [
+        {
+          "id": "autre-depart",
+          "text": "Dans un nouveau fichier, pars de 2 et augmente de 2 tant que la valeur est inférieure à 8. Prédis puis vérifie les valeurs et explique pourquoi la boucle finit.",
+          "hint": "Les valeurs affichées sont 2, 4, 6 ; la mise à jour atteint 8 et le test devient faux. Aucun compte à rebours nécessaire."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer le test préalable et répété, y compris zéro passage.",
+    "Construire une répétition textuelle avec saisie actualisée et arrêt vérifié.",
+    "Modifier une borne numérique et tester départ inférieur, égal et supérieur.",
+    "Expliquer le rôle de la mise à jour et distinguer attente de input et répétition sans fin."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-while",
+      "blockId": "guide",
+      "label": "Revoir test, nouvelle saisie et arrêt"
+    },
+    {
+      "moduleId": "python-saisie",
+      "blockId": "guide",
+      "label": "Revoir la réponse dans la console"
+    },
+    {
+      "moduleId": "python-conditions",
+      "blockId": "guide",
+      "label": "Revoir comparaison et bloc"
+    },
+    {
+      "moduleId": "python-for",
+      "blockId": "guide",
+      "label": "Revoir une répétition connue"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-while",
+      "blockId": "bonus",
+      "label": "Changer le départ et la progression"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-compteurs",
+      "label": "Compter et calculer un score",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.variables",
+          "expectation": "Lire l’ancienne valeur et réaffecter le résultat d’une addition ; sinon reprendre le modèle numérique."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire expliquer l’arrêt par actualisation, pas par mémorisation d’un modèle.",
+    "entryDiagnosis": [
+      "Faire prévoir une comparaison textuelle et montrer où répondre.",
+      "Faire lire une boucle for et prévoir une addition de 1 avant le modèle numérique."
+    ],
+    "preparation": [
+      "Préparer encore.py, while_tours.py, repetition_personnelle.py et borne_personnelle.py.",
+      "Repérer l’arrêt dans Thonny. Aucune boucle intentionnellement infinie à lancer."
+    ],
+    "why": "Le nombre de tours peut dépendre de réponses inconnues avant le lancement.",
+    "discoverySpeech": [
+      "« Que se passe-t-il si le premier test est faux ? »",
+      "« Quelle ligne permet au prochain test de changer ? »",
+      "« Une attente de réponse est-elle une panne ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-while",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "La première question précède while.",
+        "Une question dans le bloc actualise la réponse.",
+        "Toute réponse autre que oui termine ; pas de normalisation ni de saisie protégée."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi faut-il une réponse avant while ?",
+        "answer": "La comparaison doit utiliser une variable déjà définie."
+      },
+      {
+        "question": "Pourquoi redemander dans le bloc ?",
+        "answer": "Pour actualiser la réponse ; sans cela, un premier oui resterait vrai."
+      },
+      {
+        "question": "Avec tour = 4 et tour < 4, combien de passages ?",
+        "answer": "Zéro : la condition est fausse avant le premier passage."
+      },
+      {
+        "question": "Pourquoi tour = tour + 1 fait-il évoluer la valeur ?",
+        "answer": "La droite utilise l’ancienne valeur, puis l’affectation conserve le résultat augmenté."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-while",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-while",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Suivre zéro puis un passage avant plusieurs.",
+      "Aider à la frappe sans choisir le test ni l’emplacement de la nouvelle saisie.",
+      "Ne pas imposer le bonus ; faire modifier la borne du transfert numérique."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le programme attend ou répète sans fin.",
+        "helps": [
+          "Demander ce qui est attendu : réponse ou nouveau tour.",
+          "Si la répétition ne finit pas, interrompre avant de modifier.",
+          "Repérer la première valeur, le test et la nouvelle saisie ou addition dans le bloc.",
+          "Corriger l’actualisation puis tester une sortie immédiate et plusieurs passages."
+        ]
+      },
+      {
+        "symptom": "La variante numérique a un tour de trop.",
+        "helps": [
+          "Faire annoncer les valeurs attendues.",
+          "Repérer la comparaison et l’ordre affichage/mise à jour.",
+          "Suivre la dernière valeur affichée puis celle qui rend le test faux.",
+          "Changer une borne et retester départ inférieur, égal et supérieur."
+        ]
+      }
+    ],
+    "notes": "Ne pas faire exécuter un modèle sans mise à jour. Évaluer prédiction et modification autonome, pas les seules cases.",
+    "quickConductor": [
+      "Repérer interruption et console.",
+      "Prédire les séquences textuelles.",
+      "Comparer if et while.",
+      "Lire puis modifier une boucle numérique.",
+      "Construire la continuation personnelle et vérifier ses deux questions."
+    ],
+    "references": [
+      {
+        "title": "Python - while",
+        "url": "https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement"
+      }
+    ]
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "domainId": "web",
+  "title": "Mini-page des fondations",
+  "type": "challenge",
+  "objective": "Réutiliser seul les premières bases du HTML.",
+  "skillIds": [
+    "html.headings",
+    "html.text",
+    "html.lists"
+  ],
+  "blocks": [
+    {
+      "id": "preparer",
+      "type": "callout",
+      "tone": "neutral",
+      "title": "Avant de commencer",
+      "text": "Réutilise les titres, paragraphes et listes déjà travaillés. Garde ton ancien code dans un fichier texte, puis ouvre un nouvel essai dans la zone HTML de CodePen."
+    },
+    {
+      "id": "defi",
+      "type": "tasks",
+      "title": "Crée ta mini-page sans modèle",
+      "intro": "Choisis un nouveau sujet et construis ta page sans recopier une page complète. Les exigences ci-dessous sont ton cahier des charges, pas un modèle. Après un premier essai, ouvre seulement l’indice utile et garde une trace de l’aide reçue.",
+      "items": [
+        {
+          "id": "titre-principal",
+          "text": "Crée un h1 pour le titre principal de ta page.",
+          "hint": "Place ton titre entre la balise ouvrante h1 et sa balise fermante."
+        },
+        {
+          "id": "sous-titre",
+          "text": "Ajoute un h2 pour annoncer une partie de ta page ; choisis-le pour son rôle, pas pour sa taille.",
+          "hint": "Un sous-titre utilise ici h2. Pense à ouvrir puis à fermer cette balise."
+        },
+        {
+          "id": "deux-paragraphes",
+          "text": "Écris deux paragraphes sur ton sujet.",
+          "hint": "Chaque paragraphe a sa propre balise p ouvrante et fermante."
+        },
+        {
+          "id": "liste",
+          "text": "Crée une liste contenant au moins trois éléments.",
+          "hint": "La liste utilise ul. À l’intérieur, chaque élément utilise li. Vérifie que tes trois éléments sont bien dans la même liste."
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "type": "checklist",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "titres-visibles",
+          "text": "Dans le code, je repère h1 pour le titre principal et h2 pour une partie ; leur texte annonce le contenu."
+        },
+        {
+          "id": "paragraphes-presents",
+          "text": "Je vois deux paragraphes dans l’aperçu et deux éléments p distincts dans le code."
+        },
+        {
+          "id": "trois-elements",
+          "text": "Je compte au moins trois éléments dans l’aperçu et autant de li à l’intérieur de ul."
+        },
+        {
+          "id": "balises",
+          "text": "Je vérifie les ouvertures et fermetures dans le code, même si l’aperçu paraît correct."
+        },
+        {
+          "id": "modifier-expliquer",
+          "text": "Je change un paragraphe et ajoute un li avant /ul sans perdre les éléments précédents ; j’explique les changements."
+        }
+      ]
+    },
+    {
+      "id": "bonus",
+      "type": "callout",
+      "presentation": "compact",
+      "title": "Pour réessayer (facultatif)",
+      "text": "Conserve ta page et essaie un autre sujet en réutilisant ce que tu as appris."
+    }
+  ],
+  "theme": "fondations",
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Choisir h1 pour le titre principal et h2 pour une partie."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Délimiter un paragraphe avec p et /p."
+    },
+    {
+      "skillId": "html.lists",
+      "expectation": "Placer chaque li à l’intérieur de ul."
+    }
+  ],
+  "masteryCriteria": [
+    "Construire une mini-page sur un nouveau sujet à partir d’un cahier des charges, sans recopier une page complète ; préciser les aides utilisées.",
+    "Justifier le rôle du h1 et du h2 et écrire deux paragraphes délimités séparément.",
+    "Créer une liste d’au moins trois li à l’intérieur de ul et comparer code et aperçu.",
+    "Modifier un paragraphe et ajouter un élément sans perdre le travail précédent, puis expliquer ce qui a changé."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-titres-paragraphes",
+      "blockId": "autonome",
+      "label": "Reprendre titres et paragraphes"
+    },
+    {
+      "moduleId": "html-listes",
+      "blockId": "defi",
+      "label": "Reprendre la construction d’une liste"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-mini-page-fondations",
+      "blockId": "bonus",
+      "label": "Réessayer sur un nouveau sujet"
+    }
+  ],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Réutiliser seul les premières bases du HTML.",
+    "entryDiagnosis": [
+      "Faire expliquer h1, h2, p et ul/li sur un essai antérieur sans considérer sa simple présence comme un acquis.",
+      "Vérifier que l’élève peut retrouver et conserver son HTML ; proposer la reprise ciblée en cas de difficulté."
+    ],
+    "preparation": [
+      "Prévoir la sauvegarde du travail précédent et vérifier les zones utiles de CodePen sans imposer de compte.",
+      "Tester l’accès et l’aperçu ; distinguer une difficulté de l’environnement d’une difficulté de compréhension."
+    ],
+    "why": "Observer le réinvestissement de trois notions sur un nouveau sujet sans transformer une checklist en verdict d’orientation.",
+    "discoverySpeech": [
+      "« Le cahier des charges donne un résultat à construire, pas du code à recopier. »",
+      "« On compare le code et l’aperçu, puis on explique une modification. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-mini-page-fondations",
+        "blockId": "defi"
+      },
+      "comments": [
+        "Ne pas fournir d’emblée un modèle complet : le défi sert à observer le transfert.",
+        "Une aide de syntaxe ou un geste de clavier peut être nécessaire ; noter précisément l’aide.",
+        "La vérification peut être accompagnée après le premier essai ; elle n’efface pas les difficultés observées."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi utiliser h1 ici ?",
+        "answer": "Il annonce le titre principal de cette petite page."
+      },
+      {
+        "question": "Pourquoi le h2 ?",
+        "answer": "Il annonce une partie du sujet, pas une taille de texte."
+      },
+      {
+        "question": "Qu’est-ce qui fait deux paragraphes ?",
+        "answer": "Deux éléments p distincts, pas seulement deux lignes de saisie."
+      },
+      {
+        "question": "Où sont les trois li ?",
+        "answer": "À l’intérieur du même ul, chacun délimité séparément."
+      },
+      {
+        "question": "Un aperçu correct prouve-t-il les fermetures ?",
+        "answer": "Non : on inspecte aussi le code, que le navigateur peut avoir réparé."
+      },
+      {
+        "question": "Que montre la modification finale ?",
+        "answer": "Que l’élève peut modifier un p et ajouter un li en conservant le reste ; relever les aides utilisées."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-mini-page-fondations",
+      "blockId": "verification"
+    },
+    "independentActivity": {
+      "moduleId": "html-mini-page-fondations",
+      "blockId": "defi"
+    },
+    "differentiation": [
+      "Observer un premier essai avant de fournir une aide ; accompagner les gestes sans faire les choix à la place de l’élève.",
+      "Demander une explication et une modification limitée plutôt qu’une copie de tout le modèle.",
+      "Distinguer réussite autonome, avec modèle ou avec aide ; conserver les indices de compréhension et les difficultés."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le défi est une copie de la page précédente.",
+        "helps": [
+          "Demander quelles décisions l’élève a prises.",
+          "Proposer un autre sujet sans montrer de code.",
+          "Faire construire un paragraphe puis un li avec un indice limité si nécessaire.",
+          "Retirer l’indice et demander un autre élément ; noter la différence entre copie et transfert."
+        ]
+      },
+      {
+        "symptom": "Les titres sont choisis pour leur taille.",
+        "helps": [
+          "Faire nommer le sujet et la partie.",
+          "Demander si les textes ont le même rôle.",
+          "Rappeler h1 principal et h2 partie sur cette page.",
+          "Faire réorganiser un titre puis justifier son rôle sans modèle."
+        ]
+      },
+      {
+        "symptom": "L’aperçu masque une erreur de liste.",
+        "helps": [
+          "Compter les éléments visibles.",
+          "Faire repérer ul et /ul dans le code.",
+          "Comparer chaque li à ces bornes.",
+          "Faire corriger un élément puis en ajouter un autre seul."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Aucun acquis n’est déduit de la checklist, de l’ouverture d’un module ou du code copié. Noter les aides utilisées et décider d’une reprise selon les observations, sans verdict automatique d’orientation.",
+    "quickConductor": [
+      "Préserver l’essai et repérer le cahier des charges.",
+      "Observer les choix lors de la construction ou de l’adaptation.",
+      "Comparer code, aperçu et résultat des tests.",
+      "Faire modifier un élément puis expliquer l’effet.",
+      "Conserver le résultat et les aides utilisées ; proposer une reprise ciblée si nécessaire."
+    ],
+    "references": [
+      {
+        "title": "WHATWG : Titres",
+        "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
+      },
+      {
+        "title": "WHATWG : Liste",
+        "url": "https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element"
+      }
+    ]
+  }
+}

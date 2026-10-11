@@ -1,70 +1,10 @@
-/* Test d’intégration Chrome isolé. Sélecteurs simulés ; vrais handles OPFS,
- * flux File System Access, IndexedDB et téléchargements du navigateur.
- * Aucun accès au Drive ni aux fichiers personnels. */
+// Native file pickers are simulated; OPFS, IndexedDB and streams are real.
 const fs = require('node:fs');
 const path = require('node:path');
-const os = require('node:os');
-const http = require('node:http');
-const { spawn } = require('node:child_process');
 const assert = require('node:assert/strict');
-const root = path.join(__dirname, '..');
-const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-(async () => {
-  const allowed = new Set(['prof.html', 'prof-conducteur-historique.html', 'styles.css', 'teacher.css', 'lesson-data.js', 'pedagogy.js', 'teacher-guides.js', 'teacher-model.js', 'teacher-file-access.js', 'teacher-sessions.js', 'teacher-classroom.js', 'teacher-app.js', 'index.html', 'app.js', 'assets/exercices/carre-bleu.svg', 'assets/exercices/cercle-orange.svg']);
-  allowed.add('pedagogy.css');
-  const server = http.createServer((req, res) => {
-    const name = new URL(req.url, 'http://localhost').pathname.slice(1);
-    if (!allowed.has(name)) { res.writeHead(404); res.end(); return; }
-    res.setHeader('Content-Type', name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.js') ? 'text/javascript; charset=utf-8' : name.endsWith('.css') ? 'text/css; charset=utf-8' : 'text/html; charset=utf-8');
-    res.end(fs.readFileSync(path.join(root, name)));
-  });
-  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-  const base = 'http://127.0.0.1:' + server.address().port + '/';
-  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-teacher-qa-'));
-  const profile = path.join(directory, 'profile');
-  const executable = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-  const chrome = spawn(executable, ['--headless=new', '--disable-gpu', '--no-first-run', '--disable-background-networking', '--remote-debugging-port=0', '--user-data-dir=' + profile, 'about:blank'], { windowsHide: true, stdio: 'ignore' });
-  let ws;
-  let launchError;
-  chrome.on('error', error => { launchError = error; });
-  try {
-    const portFile = path.join(profile, 'DevToolsActivePort');
-    for (let i = 0; i < 100 && !fs.existsSync(portFile) && !launchError; i++) await pause(100);
-    if (launchError) throw launchError;
-    const port = fs.readFileSync(portFile, 'utf8').split('\n')[0];
-    const targets = await (await fetch('http://127.0.0.1:' + port + '/json')).json();
-    ws = new WebSocket(targets.find(t => t.type === 'page').webSocketDebuggerUrl);
-    await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
-    let seq = 0;
-    const pending = new Map(), errors = [];
-    ws.onmessage = event => {
-      const message = JSON.parse(event.data);
-      if (message.id) {
-        const request = pending.get(message.id); pending.delete(message.id);
-        message.error ? request.reject(new Error(JSON.stringify(message.error))) : request.resolve(message.result);
-      }
-      if (message.method === 'Runtime.exceptionThrown') errors.push(message.params);
-    };
-    const call = (method, params = {}) => new Promise((resolve, reject) => {
-      const id = ++seq; pending.set(id, { resolve, reject }); ws.send(JSON.stringify({ id, method, params }));
-    });
-    const evaluate = async expression => {
-      const result = await call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
-      if (result.exceptionDetails) throw new Error(JSON.stringify(result.exceptionDetails));
-      return result.result.value;
-    };
-    const wait = async expression => {
-      for (let i = 0; i < 100; i++) {
-        try { if (await evaluate(expression)) return; }
-        catch (error) {
-          const text = String(error);
-          if (!text.includes('NotFoundError') && !text.includes('NotReadableError')) throw error;
-        }
-        await pause(50);
-      }
-      throw new Error('Timeout: ' + expression + '\n' + await evaluate('document.body.innerText'));
-    };
-    await call('Runtime.enable'); await call('Page.enable');
+const { withBrowser } = require('./helpers/browser.cjs');
+withBrowser(async ({ call, evaluate, wait: poll, origin: base, profile: directory, errors, pause }) => {
+    const wait = expression => poll(expression, { transient: ['NotFoundError', 'NotReadableError'] });
     await call('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: directory });
     await call('Page.addScriptToEvaluateOnNewDocument', { source: `
       window.testFile = async () => (await navigator.storage.getDirectory()).getFileHandle('espace-codecraft.json', {create:true});
@@ -168,13 +108,10 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
     await call('Page.navigate', { url: base + 'prof-conducteur-historique.html' });
     await wait('document.querySelectorAll(".teacher-slot").length === 9');
     await call('Page.navigate', { url: base + 'index.html' });
-    await wait('document.querySelectorAll(".route-card").length === 3');
+    await wait('document.querySelectorAll(".route-card").length === 4');
     assert.equal(errors.length, 0, JSON.stringify(errors));
     console.log('PASS Chrome : suivi, séances, présences, créneaux, snapshots, impression/PDF, rechargement ; flux OPFS, IndexedDB, secours, conflits, responsive, archive et accueil élève.');
     console.log('Sélecteurs natifs simulés : les permissions OS et Google Drive restent à tester manuellement.');
     console.log('Captures et profil isolé : ' + directory);
-    await call('Browser.close');
-  } finally {
-    if (ws) ws.close(); chrome.kill(); server.close();
-  }
-})().catch(error => { console.error(error); process.exitCode = 1; });
+
+}).catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,0 +1,298 @@
+{
+  "domainId": "python",
+  "title": "Nombres et calculs",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Calculer avec des nombres, puis convertir une réponse en entier.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.numbers",
+    "python.conversion"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer et exécuter un fichier .py."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher une valeur avec print."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Définir et réutiliser une variable."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Poser une question et conserver sa réponse ; sinon reprendre Poser une question."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir exécuter un fichier, afficher une variable et réutiliser une réponse de input. Si tu hésites sur un point, reprends le module correspondant. Enregistre tes anciens programmes et crée calculs.py sans les effacer. Commence par des nombres fixes : la question viendra ensuite.",
+      "moduleLink": {
+        "moduleId": "python-variables",
+        "text": "Revoir les variables"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Nombre ou texte ?",
+      "paragraphs": [
+        "12 est un nombre. \"12\" est du texte : les guillemets changent la façon dont Python utilise la valeur, même si print les affiche de manière semblable.",
+        "Avec deux nombres, + additionne. Avec deux textes, + les colle : \"12\" + \"3\" donne le texte 123, pas le nombre 15. Prédis les trois lignes avant d’exécuter le modèle."
+      ],
+      "code": "print(12 + 3)\nprint(\"12\" + \"3\")\nprint(\"12 + 3\")"
+    },
+    {
+      "type": "lesson",
+      "id": "operations",
+      "title": "2 - Calculer et conserver",
+      "paragraphs": [
+        "Avec des nombres, + additionne. Le calcul à droite de = est effectué, puis son résultat devient la valeur de total.",
+        "Dans print, le nom sans guillemets utilise cette valeur. Prédis le total avant d’exécuter : changer points suffit pour calculer un autre résultat."
+      ],
+      "code": "points = 4\nbonus = 3\ntotal = points + bonus\nprint(\"Total :\", total)"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - prévoir les résultats",
+      "items": [
+        {
+          "id": "texte-nombre",
+          "text": "Prédis puis exécute les trois lignes du premier modèle. Explique pourquoi elles ne donnent pas le même résultat.",
+          "hint": "Tu dois lire 15, 123 et 12 + 3. Les deux dernières lignes travaillent avec du texte."
+        },
+        {
+          "id": "modifier-total",
+          "text": "Exécute le deuxième modèle, puis change points à 10. Prédis le nouveau total avant de relancer.",
+          "hint": "La ligne total utilise la valeur de points ; le nouveau total est 13."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conversion",
+      "title": "3 - Une réponse utilisable dans un calcul",
+      "paragraphs": [
+        "Un entier est un nombre sans partie décimale, comme 0, 5 ou -2. input fournit du texte : int transforme le texte \"12\" en entier 12. On conserve d’abord la réponse, puis on la convertit ; les deux étapes sont visibles.",
+        "Réponds avec un entier écrit en chiffres, sans unité, virgule ni point. Le programme n’accepte pas cinq, 5 pièces ou 2.5 : int provoque une ValueError et arrête cet essai. Ce modèle n’est pas une saisie protégée ; le module suivant apprend à lire cette erreur."
+      ],
+      "code": "reponse = input(\"Combien de pièces ? Entier uniquement : \")\npieces = int(reponse)\ntotal = pieces + 2\nprint(\"Avec le bonus :\", total)"
+    },
+    {
+      "type": "tasks",
+      "id": "saisie",
+      "title": "Teste la conversion",
+      "items": [
+        {
+          "id": "deux-entiers",
+          "text": "Teste le modèle avec 5 puis avec 0. Prédis chaque total et montre où le texte devient un entier.",
+          "hint": "Les totaux sont 7 et 2. int(reponse) effectue la conversion ; input seul ne le fait pas."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - un total de points",
+      "intro": "Enregistre calculs.py puis crée points.py. Essaie sans recopier le modèle complet.",
+      "items": [
+        {
+          "id": "total-personnel",
+          "text": "Demande un nombre entier de points, ajoute un bonus fixe de 4 et affiche le total. La question doit annoncer le format attendu.",
+          "hint": "Conserve le texte de input, transforme-le avec int, puis additionne 4 à la valeur numérique. Utilise des noms adaptés aux points."
+        },
+        {
+          "id": "preuve-calcul",
+          "text": "Teste avec 3 puis 10, et modifie le bonus à 1. Explique la différence entre la réponse textuelle et le nombre utilisé.",
+          "hint": "Avec le bonus 4, attends 7 et 14. Avec le bonus 1, attends 4 et 11. Relance pour chaque test."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - deux valeurs numériques",
+      "items": [
+        {
+          "id": "deux-valeurs",
+          "text": "Dans un nouveau fichier, demande deux entiers et affiche leur somme. Teste 2 et 7, puis 0 et 4.",
+          "hint": "Deux noms distincts, deux input et deux conversions int. Additionne les nombres, pas les textes."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "exploration",
+      "title": "Pour explorer - autres opérations et écritures",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "autres-operations",
+          "title": "Soustraire, multiplier, diviser",
+          "paragraphs": [
+            "Cette exploration est facultative : l’addition et la conversion suffisent pour continuer le parcours. Crée operations.py sans remplacer calculs.py.",
+            "- soustrait, * multiplie et / divise. Prédis puis teste ces trois lignes : tu dois lire 6, 16 et 4.0. La division donne ici une écriture décimale ; ne divise pas par zéro."
+          ],
+          "code": "print(8 - 2)\nprint(8 * 2)\nprint(8 / 2)"
+        },
+        {
+          "type": "lesson",
+          "id": "priorites",
+          "title": "Grouper un calcul",
+          "paragraphs": [
+            "La multiplication et la division passent avant l’addition et la soustraction. Des parenthèses donnent la priorité à un groupe. Prédis puis compare les deux résultats : 20 et 14."
+          ],
+          "code": "print((2 + 3) * 4)\nprint(2 + 3 * 4)"
+        },
+        {
+          "type": "lesson",
+          "id": "ecriture-courte",
+          "title": "Réunir saisie et conversion",
+          "paragraphs": [
+            "Après avoir compris les deux étapes séparées, int(input(...)) peut les réunir. Il convertit le résultat de input, pas le texte de la question. Cette écriture ne protège toujours pas des entrées invalides.",
+            "Dans un fichier distinct, teste 5 : la valeur numérique affichée doit être 5. La forme en deux lignes reste tout aussi correcte."
+          ],
+          "code": "pieces = int(input(\"Pièces, entier uniquement : \"))\nprint(pieces)"
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer 12 et le texte \"12\" et prévoir une addition numérique.",
+    "Conserver et modifier un résultat dans une variable numérique.",
+    "Convertir une réponse attendue en entier et expliquer la limite de ce format.",
+    "Créer un calcul personnel et le vérifier avec plusieurs entrées sans recopier tout le modèle."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-calculs",
+      "blockId": "guide",
+      "label": "Revoir nombre, texte et addition"
+    },
+    {
+      "moduleId": "python-calculs",
+      "blockId": "saisie",
+      "label": "Reprendre la conversion"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-calculs",
+      "blockId": "bonus",
+      "label": "Additionner deux réponses"
+    },
+    {
+      "moduleId": "python-calculs",
+      "blockId": "exploration",
+      "label": "Explorer d’autres opérations et écritures"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-erreurs",
+      "label": "Comprendre et corriger une erreur",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.conversion",
+          "expectation": "Expliquer pourquoi int attend un entier écrit en chiffres ; sinon reprendre la conversion."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Passer du texte aux valeurs numériques sans faire de la conversion un prérequis caché.",
+    "entryDiagnosis": [
+      "Faire créer une variable et afficher sa valeur sans guillemets autour du nom.",
+      "Faire poser une question et réutiliser la réponse. Reprendre la saisie si cette étape demande encore un modèle complet."
+    ],
+    "preparation": [
+      "Créer calculs.py et conserver les fichiers précédents.",
+      "Tester les modèles avec 5 et 0 ; réserver la saisie aux entiers.",
+      "Noyau : nombre/texte, addition, variable numérique et conversion séparée. Les autres opérations, priorités et écritures sont dans l’exploration facultative ; aucune boucle ou exception capturée nécessaire."
+    ],
+    "why": "Une réponse affichable n’est pas forcément une valeur calculable.",
+    "discoverySpeech": [
+      "« Que vont afficher 12 + 3 et deux textes collés ? »",
+      "« Le résultat du calcul devient une valeur que la variable conserve. »",
+      "« input fournit du texte ; int le convertit si ce texte représente un entier. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-calculs",
+        "blockId": "conversion"
+      },
+      "comments": [
+        "Avec 5, attendre un total de 7 ; avec 0, attendre 2.",
+        "Faire repérer les deux variables et la conversion séparée ; ne pas imposer la forme imbriquée pour valider le socle.",
+        "Ne pas masquer une réponse invalide : annoncer ValueError, puis réserver sa lecture au module suivant."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi deux textes 12 et 3 donnent-ils 123 avec + ?",
+        "answer": "Les guillemets en font des textes ; + les colle au lieu de les additionner."
+      },
+      {
+        "question": "À quelle ligne la réponse devient-elle numérique ?",
+        "answer": "pieces = int(reponse) transforme le texte attendu en entier."
+      },
+      {
+        "question": "Peut-on répondre 2.5 à ce modèle ?",
+        "answer": "Non : le texte 2.5 n’est pas accepté par int. On demande un entier, pas un décimal."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-calculs",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-calculs",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Séparer les calculs fixes et la conversion en deux temps si nécessaire.",
+      "Accompagner la frappe mais demander une prédiction avant chaque essai.",
+      "Pour le transfert, changer le contexte et le bonus ; proposer ensuite deux valeurs saisies."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le total colle des chiffres ou la conversion échoue.",
+        "helps": [
+          "Comparer la réponse au total attendu.",
+          "Repérer input puis int dans le fichier.",
+          "Vérifier que la saisie représente un entier sans unité.",
+          "Corriger une conversion ou la réponse de test, relancer et demander une explication."
+        ]
+      }
+    ],
+    "notes": "Évaluer séparément calcul numérique et conversion. Une réponse invalide ne doit pas conduire à introduire try/except avant son module. Les cases ne valident rien automatiquement.",
+    "quickConductor": [
+      "Diagnostiquer variables et saisie.",
+      "Comparer texte et nombres.",
+      "Calculer avec des valeurs fixes.",
+      "Convertir deux réponses entières.",
+      "Créer un total personnel, tester et expliquer."
+    ],
+    "references": [
+      {
+        "title": "Python - nombres",
+        "url": "https://docs.python.org/fr/3/tutorial/introduction.html#numbers"
+      },
+      {
+        "title": "Python - int",
+        "url": "https://docs.python.org/fr/3/library/functions.html#int"
+      }
+    ]
+  }
+}

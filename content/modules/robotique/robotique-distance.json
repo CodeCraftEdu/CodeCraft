@@ -1,0 +1,223 @@
+{
+  "domainId": "robotique",
+  "title": "Lire une distance",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir MakeCode micro:bit",
+    "url": "https://makecode.microbit.org/"
+  },
+  "objective": "Observer une distance robot immobile et distinguer la mesure reçue de la limite choisie.",
+  "skillIds": [
+    "robotique.distance"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.entree",
+      "expectation": "Distinguer une information reçue et une action commandée."
+    },
+    {
+      "skillId": "robotique.moteurs",
+      "expectation": "Repérer l’arrêt du robot et arrêter la simulation avant une intervention."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Garde tes trajets précédents. Aujourd’hui, le robot reste immobile : nous observons seulement son capteur de distance. Il faut pouvoir montrer une entrée et l’arrêt des moteurs ; sinon, reprends ces repères avec le professeur. Aucun matériel à brancher."
+    },
+    {
+      "type": "callout",
+      "id": "recette",
+      "title": "Bien lire la distance",
+      "text": "Repère l’obstacle devant le capteur avec le professeur, puis regarde les nouvelles mesures. Si le nombre paraît étrange, vérifiez la position et l’orientation du robot avant de comparer les distances."
+    },
+    {
+      "type": "lesson",
+      "id": "base",
+      "title": "1 - Ouvrir le projet d’observation",
+      "paragraphs": [
+        "Télécharge le fichier ci-dessous. Dans l’accueil MakeCode, utilise Importer → Importer un fichier, puis choisis ce fichier .hex. Reste en Blocs et nomme ta copie Ma-distance. Ce fichier contient aussi le programme : tu n’as pas à installer une extension ni à écrire en JavaScript.",
+        "La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom distance_cm. N’ajoute aucune commande d’avance, de virage ou de bouton.",
+        "Le bloc répéter tant que vrai (while true) est déjà préparé : ici, il sert à relire sans fin. Garde-le et la petite pause. Il ne fait pas bouger le robot."
+      ],
+      "downloads": [
+        {
+          "label": "Télécharger le projet d’observation RB07 (.hex)",
+          "path": "resources/robotique/makecode/RB07-Ma-distance-observation.hex",
+          "filename": "RB07-Ma-distance-observation.hex"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "observer",
+      "title": "2 - Lire l’information reçue",
+      "paragraphs": [
+        "Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data : Simulator). Repère les nouvelles lignes distance_cm : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.",
+        "Observe la démonstration du professeur avec deux situations préparées et une cible devant le capteur. Avant chaque essai, prévois quelle situation donnera la mesure la plus petite. Note les deux lectures et montre celle qui correspond à la cible la plus proche.",
+        "Le robot et sa cible peuvent rester immobiles : relire ne fait pas forcément changer le nombre. Une lecture absente ou étrange est à vérifier avec le professeur ; elle ne signifie pas automatiquement que la voie est libre. Garde le robot et les données visibles. Avec ce programme d’observation sans avance, garde la simulation active pour glisser le robot immobile ; arrête-la pour modifier le programme."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - comparer deux mesures",
+      "items": [
+        {
+          "id": "rb07-source",
+          "text": "Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne distance_cm et explique d’où vient le nombre.",
+          "hint": "Le capteur fournit l’information. Le bloc d’écriture permet seulement de la voir dans les données."
+        },
+        {
+          "id": "rb07-comparer",
+          "text": "Prévois puis compare deux situations vérifiées par le professeur. Note leurs mesures et explique laquelle correspond à la cible la plus proche.",
+          "hint": "Compare les nouvelles lignes de chaque essai, pas d’anciennes données. Si une cible n’est pas détectée, ne compare pas cette valeur comme une distance fiable."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "limite",
+      "title": "3 - La mesure et notre limite",
+      "paragraphs": [
+        "Le capteur fournit une distance ; nous pouvons choisir une limite pour décider plus tard. Ce sont deux rôles différents. Déplacer la cible peut changer la mesure. Changer notre limite ne déplace pas la cible.",
+        "Voici un tableau pour réfléchir, pas des mesures à reproduire exactement dans le simulateur. La question est : distance plus petite que 20 ? Avec 30, la réponse est non ; avec 15, oui ; avec exactement 20, non. Le signe < signifie strictement plus petit que.",
+        "Nous ne commandons pas encore les moteurs. Dans la prochaine leçon, oui demandera Arrêter et non demandera Avancer. Les nombres du tableau ne garantissent pas un arrêt sûr sur du matériel."
+      ],
+      "illustration": {
+        "src": "images/robotique-distance-limite.svg",
+        "alt": "Tableau de raisonnement : distance 30 cm, 15 cm et 20 cm ; limite choisie 20 cm ; distance strictement inférieure à 20 : non, oui, non.",
+        "caption": "Exercice de lecture : égal à 20 n’est pas plus petit que 20. Tu n’as pas besoin de placer le robot exactement à ces distances."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - distinguer les deux nombres",
+      "items": [
+        {
+          "id": "rb07-role",
+          "text": "Sans déplacer de robot, explique ce qui change si nous gardons une mesure de 18 cm et choisissons une limite de 20, puis de 25 cm. La mesure vient-elle de notre choix ?",
+          "hint": "La distance donnée reste 18. Seule notre limite change. Montre le rôle de chaque nombre avant de calculer une action."
+        },
+        {
+          "id": "rb07-egalite",
+          "text": "Avec une limite de 20, réponds à la question distance < 20 pour 19, 20 et 21. Explique le cas égal sans chercher un placement au centimètre près.",
+          "hint": "19 est plus petit ; 20 est égal ; 21 est plus grand. Le signe < exclut l’égalité."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver ton observation",
+      "text": "Arrête la simulation. Exporte Ma-distance avec Enregistrer le projet ou Télécharger et garde le fichier hors du navigateur. Avec une aide si nécessaire, réimporte-le et retrouve les blocs. Relance la simulation pour obtenir de nouvelles lectures : le fichier conserve le programme, pas les mesures précédentes ni la position du robot. La liste locale ne remplace pas cette sauvegarde."
+    }
+  ],
+  "masteryCriteria": [
+    "Je montre le capteur et lis une mesure dans les données.",
+    "Je distingue une distance reçue d’une limite choisie.",
+    "Je lis < pour inférieur, égal et supérieur, sans confondre le tableau avec un essai réel."
+  ],
+  "teacherGuide": {
+    "objective": "Découvrir la mesure sans mouvement ni première variable ; réserver l’action moteur et le réglage nommé à RB08.",
+    "entryDiagnosis": [
+      "Faire montrer une entrée, une sortie et l’arrêt. Accompagner l’import sans en faire une preuve de compréhension.",
+      "Aucune connaissance des variables ou de l’unité physique au-delà d’une lecture de cm n’est requise."
+    ],
+    "preparation": [
+      "Statut : intégré pour préparation, recette pratique incomplète. Le projet d’observation ne contient aucun mouvement, événement A/B, détecteur de ligne ou variable. Modèle CuteBot et aides OFF fournis ; lecture numérique répétée et arrêt initial.",
+      "Contrôler deux placements immobiles avec une cible réellement détectée, orientation et vue des données. Le geste souris, la reprise de ces placements et le comportement sans cible restent à vérifier : protocoles R10 et R14. Ne pas utiliser le virage temporisé du diagnostic antérieur comme procédure élève.",
+      "Une valeur 40 a été affichée au départ de la recette ; ce n’est ni une portée maximale démontrée ni une preuve d’espace libre. Fournir des observations valides ou reporter la manipulation. Le tableau logique reste utilisable, mais ne remplace pas la preuve sensorielle.",
+      "Préparer accès élève, libellés français, import/export et écran suffisamment large. Le modèle du navigateur intégré ne prouve pas l’accès de cours ; pas de matériel réel ni compte obligatoire annoncé."
+    ],
+    "why": "Séparer information reçue et choix humain évite de faire croire que le capteur contient notre seuil ou qu’une mesure commande les moteurs toute seule.",
+    "discoverySpeech": [
+      "« Le robot ne bouge pas. Quelle information pouvons-nous observer ? »",
+      "« Ce nombre vient-il du capteur ou de notre choix ? »",
+      "« Nous choisissons 20 comme limite pour réfléchir. Cela déplace-t-il l’obstacle ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-distance",
+        "blockId": "observer"
+      },
+      "comments": [
+        "Prévoir puis observer deux lectures valides robot immobile. Fournir les gestes de placement après recette.",
+        "Serial write value est un moyen d’observation fourni, pas un chapitre sur les communications série.",
+        "Ne pas annoncer une scène essayée si seul le tableau est utilisé ; distinguer observation et raisonnement."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Une lecture répétée doit-elle changer ?",
+        "answer": "Non : une scène immobile peut fournir le même nombre plusieurs fois."
+      },
+      {
+        "question": "20 < 20 ?",
+        "answer": "Non, l’égalité n’est pas strictement inférieure."
+      },
+      {
+        "question": "Changer la limite change-t-il la distance ?",
+        "answer": "Non : la limite est choisie, la distance est reçue du capteur."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-distance",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-distance",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Lire les cm avec l’élève et lui laisser désigner la mesure la plus petite.",
+      "Faire verbaliser les deux rôles avant <. L’autonomie finale porte sur le tableau, pas sur un placement non vérifié."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La mesure ne change pas ou paraît étrange",
+        "helps": [
+          "Vérifier que l’on lit de nouvelles lignes.",
+          "Repérer l’orientation du capteur et une cible dans sa visée.",
+          "Comparer avec une scène professeur validée.",
+          "Si le support n’est pas fiable, suspendre l’essai plutôt qu’inventer une interprétation de 0 ou 40."
+        ]
+      },
+      {
+        "symptom": "Mesure et limite sont confondues",
+        "helps": [
+          "Montrer la ligne reçue et une limite écrite séparément.",
+          "Garder la limite et comparer deux mesures.",
+          "Garder une mesure donnée et changer la limite sur papier.",
+          "Faire expliquer qui fournit chaque nombre."
+        ]
+      }
+    ],
+    "notes": "Le conducteur atelier reste dans les documents ; cette leçon n’impose ni durée ni rythme. Ne pas cocher un acquis parce que le fichier a été importé. Les capteurs de ligne restent hors périmètre.",
+    "quickConductor": [
+      "Importer le projet immobile et conserver les trajets.",
+      "Faire prévoir, lire puis comparer deux observations valides.",
+      "Séparer mesure et limite ; travailler l’égalité sur tableau.",
+      "Faire expliquer puis sauvegarder avec aide si besoin."
+    ],
+    "references": [
+      {
+        "title": "Observation immobile RB07 (.hex)",
+        "url": "resources/robotique/makecode/RB07-Ma-distance-observation.hex"
+      },
+      {
+        "title": "Extension Microsoft microbit-robot : documentation",
+        "url": "https://makecode.microbit.org/pkg/microsoft/microbit-robot"
+      },
+      {
+        "title": "Recette et réserves RB07/RB08",
+        "url": "docs/integration-robotique-capteurs.md"
+      }
+    ]
+  }
+}

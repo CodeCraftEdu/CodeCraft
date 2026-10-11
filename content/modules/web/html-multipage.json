@@ -1,0 +1,571 @@
+{
+  "domainId": "web",
+  "title": "Relier plusieurs pages",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Relier des fichiers HTML, prévoir le retour et vérifier les destinations de chaque lien.",
+  "skillIds": [
+    "html.navigation"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.document",
+      "expectation": "Repérer head et body et enregistrer un document HTML complet."
+    },
+    {
+      "skillId": "html.paths",
+      "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+    },
+    {
+      "skillId": "html.links",
+      "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "environnement",
+      "title": "Ici, on travaille avec des fichiers",
+      "text": "Pour ce cours, travaille avec des fichiers dans un éditeur comme VS Code et ouvre-les dans ton navigateur. Tu peux retrouver la création d’un fichier dans Structure d’un document HTML.",
+      "moduleLink": {
+        "moduleId": "html-document",
+        "text": "Structure d’un document HTML"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Deux pages, deux fichiers",
+      "paragraphs": [
+        "Résultat attendu : tu peux aller de l’accueil à une page de découvertes, puis revenir par un lien présent sur la page, sans dépendre du bouton Retour du navigateur.",
+        "Crée un NOUVEAU dossier mini-navigation, pour garder tes exercices précédents. Dans ton éditeur, crée puis enregistre deux fichiers distincts avec les noms ci-dessous. Affiche les extensions dans l’explorateur si nécessaire : decouvertes.html.txt n’est pas le fichier demandé.",
+        "Les noms de fichiers sont ici en minuscules, sans espace ni accent. Respecte exactement leur écriture, même si ton ordinateur tolère parfois des différences de majuscules. Le texte visible peut, lui, avoir des accents.",
+        "Chaque fichier possède son propre document complet, son title pour l’onglet et son h1 visible. Ne colle pas les deux documents à la suite dans un même fichier. Travaille sans IA."
+      ],
+      "code": "mini-navigation/\n├── index.html\n└── decouvertes.html"
+    },
+    {
+      "type": "lesson",
+      "id": "liens",
+      "title": "2 : Une destination depuis la page actuelle",
+      "paragraphs": [
+        "Dans href, decouvertes.html désigne ici un fichier situé dans le même dossier que la page contenant le lien. Le navigateur cherche la destination depuis cette page, pas depuis ton éditeur.",
+        "Le texte Découvertes annonce la destination ; modifier seulement ce texte ne change pas le fichier ouvert. Pour revenir, href=\"index.html\" vise le fichier d’accueil.",
+        "N’écris pas le chemin complet de ton ordinateur ni un / au début : nous utilisons des fichiers voisins avec leurs noms et extensions. Un chemin relatif reste valable si le dossier complet est déplacé en conservant cette organisation.",
+        "Cliquer charge l’autre document. Un lien ne crée pas un fichier, ne recopie pas son contenu et ne fabrique pas automatiquement un lien de retour : il faut écrire celui-ci sur la deuxième page."
+      ],
+      "code": "<a href=\"decouvertes.html\">Découvertes</a>",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Deux pages : faire l’aller et le retour",
+        "intro": "Change la page représentée pour lire le lien nécessaire à chaque trajet.",
+        "variants": [
+          {
+            "label": "Depuis index.html",
+            "html": "<p>Page représentée : index.html</p><h1>Mon carnet</h1><p>Trajet : index.html → decouvertes.html</p>",
+            "code": "<a href=\"decouvertes.html\">Découvertes</a>",
+            "feedback": "Depuis l’accueil, ce lien cherche le fichier voisin decouvertes.html.",
+            "css": ""
+          },
+          {
+            "label": "Depuis decouvertes.html",
+            "html": "<p>Page représentée : decouvertes.html</p><h1>Mes découvertes</h1><p>Trajet : decouvertes.html → index.html</p>",
+            "code": "<a href=\"index.html\">Accueil</a>",
+            "feedback": "Le lien de retour doit être écrit dans la deuxième page : le premier lien ne le crée pas automatiquement.",
+            "css": ""
+          }
+        ],
+        "note": "Le sélecteur simule le trajet, sans ouvrir de fichiers. Pour prouver que ta navigation fonctionne, fais l’aller et le retour avec les vrais liens de ton mini-site."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "navigation",
+      "title": "3 : Retrouver les mêmes choix",
+      "paragraphs": [
+        "nav regroupe les principaux liens de navigation. C’est un conteneur HTML qui s’ouvre et se ferme ; les liens sont placés à l’intérieur. Il ne crée pas de boutons ni de mise en page automatiquement.",
+        "Dans notre petite navigation, les deux pages proposent Accueil et Découvertes dans le même ordre. Un lien vers la page déjà affichée est possible ; il la recharge simplement.",
+        "Le menu est écrit dans chaque fichier HTML. Une modification de ce menu dans un fichier ne se recopie pas toute seule dans l’autre. Nous vérifierons les deux.",
+        "La disposition proposée est volontairement simple : aucun CSS n’est nécessaire pour apprendre à passer d’un fichier à l’autre."
+      ],
+      "code": "<nav>\n  <a href=\"index.html\">Accueil</a>\n  <a href=\"decouvertes.html\">Découvertes</a>\n</nav>"
+    },
+    {
+      "type": "lesson",
+      "id": "accueil",
+      "title": "index.html : Le document d’accueil",
+      "paragraphs": [
+        "Copie uniquement ce document dans index.html, puis enregistre. Son titre d’onglet et son titre visible permettront de reconnaître la page."
+      ],
+      "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Accueil du carnet</title>\n</head>\n<body>\n  <h1>Mon carnet</h1>\n  <nav>\n    <a href=\"index.html\">Accueil</a>\n    <a href=\"decouvertes.html\">Découvertes</a>\n  </nav>\n  <p>Bienvenue dans mon carnet de découvertes.</p>\n</body>\n</html>"
+    },
+    {
+      "type": "lesson",
+      "id": "seconde",
+      "title": "decouvertes.html : Le deuxième document",
+      "paragraphs": [
+        "Copie ce document dans decouvertes.html, pas à la suite du précédent. Enregistre aussi ce fichier."
+      ],
+      "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Découvertes du carnet</title>\n</head>\n<body>\n  <h1>Mes découvertes</h1>\n  <nav>\n    <a href=\"index.html\">Accueil</a>\n    <a href=\"decouvertes.html\">Découvertes</a>\n  </nav>\n  <p>Je compare des formes et je note mes idées.</p>\n</body>\n</html>"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Faire l’aller et le retour",
+      "intro": "Ouvre index.html depuis ton dossier dans un navigateur. Si le double-clic ouvre l’éditeur, utilise Ouvrir avec et choisis ton navigateur.",
+      "items": [
+        {
+          "id": "aller",
+          "text": "Clique sur Découvertes dans la page. Vérifie le nom decouvertes.html dans la barre d’adresse, le titre de l’onglet et le h1 Mes découvertes."
+        },
+        {
+          "id": "retour",
+          "text": "Clique sur Accueil dans la deuxième page. Vérifie que tu retrouves index.html et Mon carnet, sans utiliser le bouton Retour du navigateur."
+        },
+        {
+          "id": "direct",
+          "text": "Ferme cet onglet de test ou ouvre un nouvel onglet, puis ouvre directement decouvertes.html depuis le dossier. Utilise son lien Accueil : il doit fonctionner sans historique préalable."
+        },
+        {
+          "id": "texte-lien",
+          "text": "Dans les deux fichiers, remplace seulement le texte visible Découvertes par Mes idées, sans toucher à href. Enregistre, actualise et vérifie que le lien ouvre toujours decouvertes.html.",
+          "hints": [
+            "Repère ce qui se trouve entre <a> et </a>.",
+            "Ce sont les mots du lien, pas l’adresse.",
+            "Compare les guillemets de href au texte visible.",
+            "Change seulement les mots, garde href=\"decouvertes.html\" dans les deux menus."
+          ]
+        },
+        {
+          "id": "expliquer",
+          "text": "Explique pourquoi la deuxième page a besoin de son propre lien de retour et pourquoi changer le titre ne renomme pas le fichier."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Renommer sans perdre les chemins",
+      "intro": "Travaille dans une copie du dossier mini-navigation. Essaie avant d’ouvrir les indices.",
+      "items": [
+        {
+          "id": "renommer",
+          "text": "Renomme decouvertes.html en idees.html dans le dossier de copie, en gardant index.html. Ne modifie pas encore les liens."
+        },
+        {
+          "id": "predire",
+          "text": "Avant de cliquer, prédis ce qui arrivera à l’ancien lien. Ouvre index.html de la copie et observe : l’ancien nom ne désigne plus un fichier présent."
+        },
+        {
+          "id": "reparer-menus",
+          "text": "Répare les destinations nécessaires dans les DEUX menus, sans recréer un fichier vide avec l’ancien nom. Conserve le lien Accueil.",
+          "hints": [
+            "Ouvre les deux documents dans l’éditeur.",
+            "Recherche l’ancien nom dans les attributs href.",
+            "Un menu peut encore pointer vers l’ancien fichier même si l’autre a été corrigé.",
+            "Dans index.html et idees.html, remplace href=\"decouvertes.html\" par href=\"idees.html\". Garde href=\"index.html\"."
+          ]
+        },
+        {
+          "id": "nouveau-contenu",
+          "text": "Choisis un autre sujet pour la deuxième page. Modifie son title, son h1 et son paragraphe ; donne au lien un texte qui annonce ce sujet dans les deux menus."
+        },
+        {
+          "id": "parcours-complet",
+          "text": "Teste tous les liens depuis chaque page, puis ouvre idees.html directement et reviens à l’accueil par son lien. Explique la différence entre nom de fichier, titre de l’onglet et texte du lien."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-1",
+          "text": "Chaque page est un fichier HTML complet et enregistré ; les deux noms sont distincts."
+        },
+        {
+          "id": "verifier-2",
+          "text": "Le menu apparaît dans les deux pages, dans le même ordre, avec des textes compréhensibles."
+        },
+        {
+          "id": "verifier-3",
+          "text": "Chaque href désigne le bon fichier, avec son nom exact et son extension."
+        },
+        {
+          "id": "verifier-4",
+          "text": "Je peux aller, revenir et démarrer depuis la deuxième page sans dépendre de l’historique."
+        },
+        {
+          "id": "verifier-5",
+          "text": "Après le renommage, j’ai contrôlé les liens dans tous les fichiers concernés."
+        },
+        {
+          "id": "verifier-6",
+          "text": "Je peux expliquer une réparation sans seulement recopier l’exemple."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Consolidation : Un lien visible, mais une destination absente",
+      "paragraphs": [
+        "Dans une copie de ta version réparée, remplace seulement le lien vers idees.html de index.html par celui-ci. Le texte reste correct ; l’adresse comporte une faute.",
+        "Teste le lien. Selon le navigateur, une page d’erreur ou une indication de fichier introuvable apparaît. Pour réparer, reviens à l’éditeur et au fichier ; une erreur de navigation n’a pas supprimé ton travail."
+      ],
+      "code": "<a href=\"idee.html\">Mes idées</a>"
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Réparer en cherchant la cause",
+      "intro": "Ne change pas au hasard le titre ou le texte du lien.",
+      "items": [
+        {
+          "id": "corriger-fichier",
+          "text": "Compare href au fichier réellement présent. Corrige uniquement la référence, enregistre puis rouvre index.html et reteste.",
+          "hints": [
+            "Regarde les noms dans ton dossier.",
+            "Une lettre manque dans l’adresse.",
+            "Compare idee.html et idees.html.",
+            "Rétablis href=\"idees.html\". Changer Mes idées n’aurait pas corrigé la destination."
+          ]
+        },
+        {
+          "id": "retour-manquant",
+          "text": "Dans une autre copie, enlève le lien Accueil de idees.html. Ouvre cette page directement, constate l’absence de retour dans la page puis rétablis-le.",
+          "hints": [
+            "Le bouton Retour du navigateur n’est pas le menu du site.",
+            "La page peut être la première visitée.",
+            "Vise index.html, qui est au même niveau.",
+            "Ajoute <a href=\"index.html\">Accueil</a> dans nav de idees.html."
+          ]
+        },
+        {
+          "id": "diagnostic",
+          "text": "Explique la différence entre un lien vers un fichier absent et l’absence de lien de retour. Dans le premier cas, le lien existe mais sa destination ne convient pas ; dans le second, l’action manque dans la page."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus-detail",
+      "title": "Bonus facultatif : Une troisième destination",
+      "blocks": [
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Ajouter une page sans modifier l’organisation des dossiers",
+          "intro": "Si les deux pages fonctionnent et que tu peux expliquer les liens, fais une nouvelle copie du dossier.",
+          "items": [
+            {
+              "id": "troisieme",
+              "text": "Crée observations.html dans le même dossier en copiant le cadre d’une page existante. Change title, h1 et paragraphe ; ne garde pas un deuxième accueil déguisé."
+            },
+            {
+              "id": "ajouter-menu",
+              "text": "Ajoute un lien Observations vers ce fichier dans les trois menus, en conservant Accueil et le lien vers idees.html.",
+              "hints": [
+                "Le nouveau fichier est voisin des deux autres.",
+                "Le nouveau lien doit aussi exister dans la nouvelle page.",
+                "Vérifie chaque nav séparément.",
+                "Ajoute <a href=\"observations.html\">Observations</a> dans les trois nav, dans le même ordre."
+              ]
+            },
+            {
+              "id": "tester-trois",
+              "text": "Depuis chacune des trois pages, teste toutes les destinations, puis ouvre observations.html directement. Aucun passage par l’accueil ne doit être nécessaire pour retrouver les autres pages."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Créer deux documents distincts et relier leurs fichiers avec des chemins relatifs corrects.",
+    "Prévoir un retour qui fonctionne même quand la deuxième page est ouverte directement.",
+    "Modifier le texte d’un lien sans changer sa destination, puis réparer un renommage dans les menus concernés.",
+    "Différencier contenu, titre et nom de fichier ; vérifier les destinations au lieu de juger seulement l’apparence du menu.",
+    "Expliquer une réparation ou un transfert sans modèle ; la troisième page est facultative."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-multipage",
+      "label": "Réparer destination et retour",
+      "blockId": "panne"
+    },
+    {
+      "moduleId": "html-liens",
+      "label": "Reprendre texte et destination",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Reconnaître un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-fichiers-chemins",
+      "label": "Reprendre noms et chemins",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.links",
+          "expectation": "Reconnaître un lien et href."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Distinguer src et alt dans les exercices de cette reprise."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-document",
+      "label": "Reprendre le document complet",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-multipage",
+      "label": "Ajouter une troisième destination",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.navigation",
+          "expectation": "Expliquer et tester l’aller/retour entre deux pages."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "web-mini-site",
+      "label": "Construire un mini-site avec un style commun",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body et enregistrer un document HTML complet."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Retrouver un fichier à partir d’un chemin relatif."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer l’adresse href et le texte visible d’un lien."
+        },
+        {
+          "skillId": "html.navigation",
+          "expectation": "Tester les menus des pages, y compris en ouverture directe."
+        },
+        {
+          "skillId": "css.stylesheets",
+          "expectation": "Relier une feuille et vérifier son chargement."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Réutiliser des classes."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une image avec un alt adapté."
+        },
+        {
+          "skillId": "css.fonts",
+          "expectation": "Choisir des textes lisibles."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Choisir l’espace intérieur."
+        },
+        {
+          "skillId": "css.sizing",
+          "expectation": "Adapter une image et son conteneur sans déformer."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration de couleur et choisir un contraste lisible."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-feuille-style",
+      "label": "Reprendre la liaison CSS avant le projet",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Lire un chemin relatif."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration simple."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire construire et vérifier une navigation entre documents, puis réparer un renommage en distinguant destination, libellé, contenu et historique du navigateur.",
+    "entryDiagnosis": [
+      "Demander de montrer deux fichiers voisins et de lire un href relatif. Si la distinction fichier/dossier manque, reprendre Fichiers et chemins.",
+      "Faire expliquer texte du lien et destination, puis retrouver head/body et title/h1. Reprendre la notion précise si nécessaire.",
+      "Vérifier que l’élève sait enregistrer deux fichiers distincts ou peut être aidé pour cette manipulation. Un Pen unique ne permet pas d’attester cet essai multipage."
+    ],
+    "preparation": [
+      "Nouveau dossier de travail hors de tout projet important ; éditeur et navigateur, extensions visibles si nécessaire.",
+      "Préparer les deux documents fournis et une copie pour le renommage. Aucun serveur, compte ou publication requis.",
+      "Les consignes et sources restent consultables sans partage d’écran. Prévoir une aide à Ouvrir avec si le double-clic lance l’éditeur."
+    ],
+    "why": "Un visiteur peut entrer par n’importe quelle page. Une navigation compréhensible doit fonctionner sans connaître son historique ni les chemins techniques du dossier.",
+    "discoverySpeech": [
+      "« Cette fois, chaque page vit dans son propre fichier. Le lien indique au navigateur quel autre document ouvrir ; il ne le crée pas pour nous. »",
+      "« Le texte du lien annonce le voyage. href donne la destination. Changeons seulement les mots et vérifions que nous arrivons au même endroit. »",
+      "« Le bouton Retour dépend de ce que tu as visité. Notre lien Accueil appartient à la page : il doit fonctionner même si tu commences ici. »",
+      "« Nous écrivons le menu dans chaque fichier. Si nous renommons une destination, il faut vérifier toutes les références qui la nomment ; corriger une seule page ne met pas les autres à jour. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-multipage",
+        "label": "Lire le document d’accueil et ses liens",
+        "blockId": "accueil"
+      },
+      "comments": [
+        "Pointer title, h1 et les deux href sans confondre leurs rôles.",
+        "Le nav est un regroupement de liens, pas un mécanisme de création automatique de pages. La présentation sans CSS convient.",
+        "Ouvrir le deuxième document par le lien, puis directement depuis le dossier ; demander le retour par le menu.",
+        "Le menu identique dans les deux fichiers est une répétition volontaire de ce petit site statique, pas une inclusion automatique."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Le lien crée-t-il decouvertes.html ?",
+        "answer": "Non. Le fichier doit être créé et enregistré séparément ; href donne seulement où le trouver."
+      },
+      {
+        "question": "Pourquoi écrire index.html pour revenir ?",
+        "answer": "Dans cet exemple, le document d’accueil est un fichier voisin qui porte exactement ce nom."
+      },
+      {
+        "question": "Changer Découvertes en Mes idées renomme-t-il le fichier ?",
+        "answer": "Non. Le texte cliquable change, pas href ni le nom du fichier. Le titre de l’onglet et le h1 sont encore deux autres textes."
+      },
+      {
+        "question": "Pourquoi ne pas se contenter du bouton Retour ?",
+        "answer": "La deuxième page peut avoir été ouverte directement, sans accueil dans l’historique. Son menu doit permettre le retour indépendamment."
+      },
+      {
+        "question": "Après un renommage, quels fichiers vérifier ?",
+        "answer": "Tous ceux qui contiennent un href vers l’ancien nom, y compris le fichier renommé si son menu contient ce lien. Ici index.html et idees.html."
+      },
+      {
+        "question": "Un menu identique se met-il à jour partout quand j’en modifie un ?",
+        "answer": "Non. Le HTML des deux documents est indépendant. Il faut enregistrer et vérifier chaque menu."
+      },
+      {
+        "question": "Pourquoi éviter C:\\\\... et /decouvertes.html ?",
+        "answer": "Le premier dépend de l’ordinateur ; le second ne demande pas simplement un fichier voisin. Pour cet exercice, garder le nom relatif decouvertes.html, sans chemin absolu ni slash initial."
+      },
+      {
+        "question": "Doit-on apprendre CSS avant de réussir ?",
+        "answer": "Non. Des liens reconnaissables avec l’apparence du navigateur suffisent. La feuille commune intervient dans le projet suivant."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-multipage",
+      "label": "Tester l’aller et le retour",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "html-multipage",
+      "label": "Renommer et réparer les menus",
+      "blockId": "mission"
+    },
+    "differentiation": [
+      "Aider à créer/enregistrer les fichiers sans dicter la destination. Distinguer difficulté d’éditeur et compréhension du lien.",
+      "Si deux fichiers sont déjà prêts, faire directement le test sans historique puis le renommage, sans copie obligatoire.",
+      "La troisième page est un bonus, pas une condition de poursuite. Ne pas ajouter sous-dossiers, ancres ou publication pour occuper un élève rapide."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Deux documents collés dans le même fichier.",
+        "helps": [
+          "Demander combien de fichiers existent réellement.",
+          "Ouvrir chaque onglet de l’éditeur et vérifier son nom.",
+          "Conserver un seul cadre complet par fichier, puis modifier le deuxième h1 pour prouver que ce sont deux documents."
+        ]
+      },
+      {
+        "symptom": "Lien visible mais fichier introuvable.",
+        "helps": [
+          "Lire le href et le dossier côte à côte.",
+          "Comparer nom, extension et emplacement, pas les couleurs du lien.",
+          "Rétablir le nom relatif exact, enregistrer, puis rouvrir la page source ; vérifier aussi que l’on teste la bonne copie."
+        ]
+      },
+      {
+        "symptom": "Aller réussi, retour impossible.",
+        "helps": [
+          "Ouvrir la deuxième page directement.",
+          "Chercher un lien Accueil dans son nav.",
+          "Ajouter le href vers index.html ; faire retester sans utiliser l’historique."
+        ]
+      },
+      {
+        "symptom": "Un seul menu réparé après renommage.",
+        "helps": [
+          "Demander où l’ancien nom est encore écrit.",
+          "Inspecter nav dans les deux fichiers.",
+          "Remplacer les deux références puis tester chaque lien de chaque page."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution de mission : idees.html remplace decouvertes.html ; les deux menus contiennent index.html et idees.html. Le title, h1 et texte visible sont adaptés au thème, sans obligation de correspondre exactement au nom technique.",
+      "Consolidation : corriger idee.html en idees.html ; restaurer séparément le lien Accueil dans la page secondaire. Ne pas recréer un faux fichier pour masquer la faute.",
+      "Bonus : observations.html possède un document complet et le même menu à trois destinations que les autres pages. Chaque destination doit être testée depuis chaque page.",
+      "Observer réussite autonome, avec modèle ou avec aide. Une copie fonctionnelle n’est pas une preuve suffisante : demander un changement de nom et une explication.",
+      "La compétence html.navigation est distincte de html.links et html.paths. Aucun report d’acquisition ni validation automatique de référentiel ; le suivi manuel existant suffit.",
+      "Avant Mon mini-site, vérifier aussi CSS externe, classes et image lisible. Proposer les reprises nécessaires ; le multipage ne conditionne pas l’entrée dans Flexbox ou JavaScript."
+    ],
+    "quickConductor": [
+      "Diagnostiquer document, href et fichiers voisins.",
+      "Créer/enregistrer les deux pages et expliquer le menu.",
+      "Tester aller, retour puis entrée directe sur la deuxième page.",
+      "Faire modifier les mots puis renommer la destination.",
+      "Consolider la cause exacte ou proposer la troisième page.",
+      "Décider d’une reprise CSS ou du projet selon les acquis, sans rythme imposé."
+    ],
+    "references": [
+      {
+        "title": "MDN : Créer des liens",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links"
+      },
+      {
+        "title": "MDN : Manipuler les fichiers",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
+      },
+      {
+        "title": "MDN : nav",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav"
+      }
+    ]
+  }
+}

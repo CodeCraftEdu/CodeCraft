@@ -1,0 +1,397 @@
+{
+  "domainId": "jeux-video",
+  "title": "Coordonner plusieurs personnages",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Faire communiquer des personnages avec des messages pour organiser une courte scène.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "scratchProjectId": "carte-animee",
+  "skillIds": [
+    "scratch.messages",
+    "scratch.events",
+    "scratch.sequence"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Sélectionner le bon personnage et conserver sa propre copie."
+    },
+    {
+      "skillId": "scratch.events",
+      "expectation": "Déclencher une pile au drapeau."
+    },
+    {
+      "skillId": "scratch.sequence",
+      "expectation": "Assembler dire pendant … secondes et comprendre l’ordre d’une pile : reprendre Déclencher et enchaîner des actions."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Deux personnages, deux programmes",
+      "paragraphs": [
+        "Sauvegarde ton travail précédent avant d’ouvrir le projet de départ Carte animée proposé au-dessus, puis garde ta copie de cette base. Pico et Tera sont prêts, sans code. Pour ce premier essai, laisse Giga de côté : il n’a aucun rôle à programmer.",
+        "Sans la base partagée, après la sauvegarde, choisis Fichier → Nouveau : supprime le chat avec la corbeille de sa miniature, ajoute Pico et Tera depuis Choisir un sprite. Place Pico en x = -150, y = -50 et Tera en x = 150, y = -50 avec leurs champs sous la scène.",
+        "Quand tu sélectionnes la miniature de Pico, tu écris pour Pico. Quand tu sélectionnes Tera, tu écris pour Tera. Une pile de Pico ne se déplace pas automatiquement dans Tera.",
+        "Nous voulons ce dialogue : Pico dit Bonjour, Tera répond Salut, puis Pico termine. Deux piles au drapeau démarreraient en même temps : un message permettra de choisir quand Tera parle."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "L’ordre des actions reste difficile ?",
+      "text": "Reprends Déclencher et enchaîner des actions pour comparer le drapeau et les actions qui se suivent.",
+      "moduleLink": {
+        "moduleId": "scratch-actions",
+        "text": "Déclencher et enchaîner des actions"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "messages",
+      "title": "2 : Envoyer un signal, pas une bulle",
+      "paragraphs": [
+        "Dans Événements (jaune), prends envoyer à tous … et attendre. Ouvre son menu, choisis Nouveau message et nomme-le reponse. C’est le nom d’un signal dans le programme : ce texte ne s’affiche pas dans une bulle.",
+        "Dans Tera, prends quand je reçois … dans Événements et sélectionne le même message reponse. Les actions placées sous ce bloc se lancent quand le signal arrive, pas au drapeau.",
+        "Envoyer à tous … et attendre lance les piles qui reçoivent ce message et attend qu’elles soient terminées avant de poursuivre. Envoyer à tous … sans attendre les lance aussi, mais l’expéditeur poursuit immédiatement.",
+        "Un message est reçu par tous les personnages qui ont une pile correspondante. Ici, seul Tera reçoit reponse. Garde une réception courte, sans boucle infinie : sinon Pico attendrait sans fin."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "3 : Un dialogue dans le bon ordre",
+      "shortSteps": [
+        "Dans Pico, assemble le drapeau, Bonjour pendant 2 secondes, envoyer reponse et attendre, puis À bientôt pendant 2 secondes.",
+        "Dans Tera, assemble quand je reçois reponse puis Salut pendant 2 secondes. Ne mets pas de drapeau sur cette réponse.",
+        "Lance le drapeau : Bonjour → Salut → À bientôt. Relance : le même ordre doit recommencer."
+      ],
+      "paragraphs": [
+        "Les deux piles du modèle appartiennent à deux personnages différents : sélectionne la bonne miniature avant de construire.",
+        "Dans Apparence (violet), dire … pendant … secondes garde la bulle visible puis laisse passer à l’action suivante. Une attente fixe copiée sur Tera serait fragile si on changeait la durée du Bonjour ; le message part après sa fin.",
+        "Modifie Bonjour pour durer 4 secondes : Tera doit toujours répondre après, sans changer de délai chez Tera."
+      ],
+      "visualScript": {
+        "caption": "Deux personnages : un signal reponse",
+        "note": "Modèles à construire sur les deux sprites. Aucun éditeur interactif ici.",
+        "stacks": [
+          {
+            "caption": "Pico : lance le dialogue",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Pico démarre au drapeau."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Bonjour !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Pico parle avant d’envoyer le signal."
+              },
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "envoyer à tous ",
+                  {
+                    "choice": "reponse"
+                  },
+                  " et attendre"
+                ],
+                "explanation": "Tera reçoit le signal ; Pico attend la fin de sa pile."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "À bientôt !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Pico reprend après la réponse."
+              }
+            ]
+          },
+          {
+            "caption": "Tera : répond au signal",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "reponse"
+                  }
+                ],
+                "explanation": "Cette pile démarre au message, pas au drapeau."
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Salut !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ],
+                "explanation": "La pile termine après les deux secondes."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "Pico :\nquand le drapeau vert est cliqué\n  dire Bonjour ! pendant 2 secondes\n  envoyer à tous reponse et attendre\n  dire À bientôt ! pendant 2 secondes\n\nTera :\nquand je reçois reponse\n  dire Salut ! pendant 2 secondes"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : vérifier le passage de parole",
+      "items": [
+        {
+          "id": "ordre",
+          "text": "Lance le dialogue puis relance-le : vérifie Bonjour, Salut, À bientôt dans cet ordre.",
+          "hint": "Le signal part après Bonjour et Pico attend que la réception finisse."
+        },
+        {
+          "id": "duree",
+          "text": "Fais durer Bonjour 4 secondes. Prédis quand Tera répond, puis teste.",
+          "hint": "Tera attend le message, pas un délai fixé depuis le drapeau."
+        },
+        {
+          "id": "comparer",
+          "text": "Dans une copie, remplace envoyer et attendre par envoyer sans attendre. Observe les deux dernières bulles, puis restaure.",
+          "hint": "Salut et À bientôt peuvent apparaître en même temps. Sans attendre ne veut pas dire sans envoyer."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : un autre échange",
+      "intro": "Sauvegarde ton premier dialogue pour le conserver. Ouvre ensuite une nouvelle copie de la base Carte animée sans code, ou choisis Fichier → Nouveau et ajoute Pico et Tera comme au début. Construis ce nouvel échange dans un projet distinct : ne supprime pas les piles de ton premier dialogue. Change l’histoire sans inventer de nouveau mécanisme.",
+      "items": [
+        {
+          "id": "inverser",
+          "text": "Fais commencer Tera, répondre Pico, puis terminer Tera. Essaie avant d’ouvrir l’indice.",
+          "hint": "L’expéditeur porte la pile du drapeau ; l’autre porte quand je reçois. Garde le même message dans les deux menus et pas d’ancienne pile concurrente."
+        },
+        {
+          "id": "textes",
+          "text": "Écris trois nouvelles répliques et change une durée. Explique pourquoi la réponse arrive toujours au bon moment.",
+          "hint": "Le signal est envoyé à la fin de la première réplique et l’expéditeur attend la fin du receveur."
+        },
+        {
+          "id": "sauver",
+          "text": "Teste deux lancements puis sauvegarde ta copie sur ton compte ou sur ton ordinateur."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Bonus facultatif : une scène suivante",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "decors",
+          "title": "Un décor appartient à la scène",
+          "paragraphs": [
+            "Un costume change l’apparence d’un personnage ; un arrière-plan change le décor de toute la scène. Sélectionne la miniature Scène en bas à droite, puis l’onglet Arrière-plans. Choisis deux décors dans la bibliothèque si nécessaire et renomme-les Depart et Suite dans le champ de nom de cet onglet.",
+            "Sur la scène, ajoute une pile au drapeau avec basculer sur l’arrière-plan Depart, dans Apparence. Cette pile remet le décor au départ à chaque lancement.",
+            "À la fin de la pile du personnage qui lance le dialogue, après sa dernière réplique, ajoute basculer sur l’arrière-plan Suite depuis Apparence. Ce changement vient après la réponse grâce à envoyer et attendre. Il n’envoie pas de message à lui seul.",
+            "Teste le décor suivant puis relance : Depart doit revenir. Ce bonus n’est pas nécessaire pour poursuivre. Si tu ajoutes plus tard Giga à un message, toutes les réceptions de ce message démarrent ensemble : ce n’est pas un troisième tour de parole automatique."
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer un message interne et une bulle de dialogue.",
+    "Placer émission et réception sur les bons personnages avec le même signal.",
+    "Prédire l’effet de envoyer avec ou sans attendre, puis tester.",
+    "Inverser les rôles ou changer la durée sans bricoler un délai sur le receveur."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-coordination",
+      "blockId": "guide",
+      "label": "Revoir le passage de parole"
+    },
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "guide",
+      "label": "Revoir l’ordre d’une pile"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-coordination",
+      "blockId": "bonus",
+      "label": "Passer à un autre décor après le dialogue",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.messages",
+          "expectation": "Comprendre quand la réception termine et savoir relancer le dialogue."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-blocs-personnalises",
+      "label": "Organiser ton code avec Mes blocs",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.sequence",
+          "expectation": "Identifier des actions à réutiliser dans plusieurs endroits."
+        },
+        {
+          "skillId": "scratch.coordinates",
+          "expectation": "Placer un sprite avec aller à x/y et comprendre ajouter à x ; sinon reprendre Piloter un personnage."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Coordonner deux sprites par un signal, sans confondre synchronisation et délais copiés.",
+    "entryDiagnosis": [
+      "Faire sélectionner Pico puis Tera et vérifier à qui appartient une pile.",
+      "Demander ce qui se passe avec deux drapeaux : les deux piles démarrent, elles ne s’attendent pas.",
+      "Faire modifier la durée d’un dire pendant avant de présenter les messages."
+    ],
+    "preparation": [
+      "Faire sauvegarder le travail précédent avant d’ouvrir une copie de la base Carte animée sans scripts : Pico et Tera suffisent, Giga reste sans code.",
+      "Sans base : après sauvegarde, choisir Fichier → Nouveau, ajouter les deux sprites et placer leurs centres en (-150, -50) et (150, -50).",
+      "Pour l’inversion autonome, conserver le premier dialogue sauvegardé et construire la nouvelle version dans une nouvelle copie de la base sans code, ou un projet neuf avec Pico et Tera.",
+      "La démonstration partagée montre un résultat plus riche, pas la solution du nouveau dialogue. Aucun compte ni publication obligatoire."
+    ],
+    "why": "Les personnages ont des programmes séparés. Un signal relie leurs actions sans supposer une durée fixe chez le receveur.",
+    "discoverySpeech": [
+      "« Pico a fini de parler. Comment prévenir Tera maintenant, même si on allonge sa phrase ? »",
+      "« Le message est un signal entre programmes, pas le texte de la bulle. »",
+      "« Avec et attendre, Pico laisse Tera finir sa pile avant de continuer la sienne. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-coordination",
+        "blockId": "exemple",
+        "label": "Deux piles, deux personnages"
+      },
+      "comments": [
+        "Solution : Pico drapeau → Bonjour 2 s → envoyer reponse et attendre → À bientôt 2 s ; Tera réception reponse → Salut 2 s.",
+        "Ordre attendu : Bonjour entre 0 et 2 s, Salut entre 2 et 4 s, À bientôt entre 4 et 6 s. Si Bonjour dure 4 s, la réponse commence à 4 s sans toucher Tera.",
+        "Sans attendre, Salut et À bientôt commencent après Bonjour et peuvent se chevaucher. Avec plusieurs receveurs, leurs piles commencent ensemble et l’expéditeur attend leur fin à toutes."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Le mot reponse apparaît-il dans une bulle ?",
+        "answer": "Non : c’est le signal choisi dans les menus. Le bloc dire affiche la bulle."
+      },
+      {
+        "question": "Si Bonjour dure plus longtemps, faut-il ajouter une attente dans Tera ?",
+        "answer": "Non. Le signal est envoyé seulement après la première réplique."
+      },
+      {
+        "question": "Deux personnages reçoivent le même signal : parlent-ils l’un après l’autre ?",
+        "answer": "Non, leurs réceptions commencent ensemble. Un autre signal ou un enchaînement distinct serait nécessaire pour les faire parler à tour de rôle."
+      },
+      {
+        "question": "Pourquoi une réception avec une boucle infinie bloquerait-elle Pico ?",
+        "answer": "Envoyer et attendre attend sa fin ; cette pile ne se termine jamais."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-coordination",
+      "blockId": "guide",
+      "label": "Observer et comparer les envois"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-coordination",
+      "blockId": "autonomie",
+      "label": "Inverser les rôles"
+    },
+    "differentiation": [
+      "CE2 : deux sprites seulement, lire les trois répliques ensemble et montrer les miniatures avant chaque assemblage.",
+      "Plus autonome : masquer le modèle, inverser les rôles puis expliquer sans nommer les blocs.",
+      "Le décor et Giga restent facultatifs. Reprendre événements/séquences si nécessaire, sans imposer un nombre de séances."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Tera ne répond pas.",
+        "helps": [
+          "Observer la miniature sélectionnée.",
+          "Comparer les menus du message dans Pico et Tera.",
+          "Vérifier que Salut est sous quand je reçois, pas détaché.",
+          "Choisir reponse dans les deux menus puis tester un envoi."
+        ]
+      },
+      {
+        "symptom": "Les dernières bulles se chevauchent.",
+        "helps": [
+          "Faire lire l’ordre attendu.",
+          "Regarder le bloc d’envoi.",
+          "Comparer envoyer à tous et envoyer à tous et attendre.",
+          "Remplacer seulement l’envoi puis retester avec Bonjour à 4 secondes."
+        ]
+      },
+      {
+        "symptom": "Le dialogue se mélange après inversion.",
+        "helps": [
+          "Tester un seul drapeau.",
+          "Compter les anciennes piles de drapeau et de réception.",
+          "Comparer avec une émission et une réception seulement.",
+          "Sauvegarder le premier dialogue sans supprimer ses piles, puis construire les deux rôles inversés dans une nouvelle copie de la base sans code, ou un projet neuf avec Pico et Tera."
+        ]
+      }
+    ],
+    "notes": "Distinguer reproduction et compréhension par le changement de durée et l’inversion. Noter autonomie, modèle ou aide dans les remarques existantes ; aucun acquis automatique. Les messages ne sont pas les communications réseau ni les données privées.",
+    "quickConductor": [
+      "Vérifier sélection et ordre d’une pile.",
+      "Construire émission et réception.",
+      "Tester avec une durée différente.",
+      "Comparer avec/sans attendre puis inverser les rôles.",
+      "Proposer reprise ou décor facultatif et sauvegarder."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

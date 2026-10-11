@@ -1,0 +1,206 @@
+{
+  "robotique.circuit": {
+    "title": "Repérer un circuit complet, sa LED et sa résistance"
+  },
+  "robotique.sortie": {
+    "title": "Relier une commande de sortie à un effet observé sur le circuit"
+  },
+  "robotique.sequence": {
+    "title": "Lire et construire une suite de commandes de circuit"
+  },
+  "robotique.attente": {
+    "title": "Prévoir et modifier la durée d’un état pendant une attente"
+  },
+  "robotique.boucle": {
+    "title": "Repérer et expliquer la répétition d’un cycle de commandes"
+  },
+  "robotique.entree": {
+    "title": "Distinguer une entrée lue et une sortie commandée"
+  },
+  "robotique.condition": {
+    "title": "Prévoir et expliquer les deux cas d’une décision répétée"
+  },
+  "robotique.evenement": {
+    "title": "Relier un appui ponctuel à une action et expliquer ce qui reste affiché"
+  },
+  "robotique.moteurs": {
+    "title": "Commander un trajet temporisé, conserver un arrêt explicite et comparer un réglage"
+  },
+  "robotique.distance": {
+    "title": "Lire une distance reçue et la distinguer d’une limite choisie"
+  },
+  "robotique.reglage": {
+    "title": "Initialiser et utiliser une variable comme réglage d’une décision"
+  },
+  "robotique.mission": {
+    "title": "Choisir une mission observable et justifier un réglage"
+  },
+  "robotique.tests": {
+    "title": "Prévoir, comparer des essais et expliquer une conclusion avec ses limites"
+  },
+  "gdevelop.workspace": {
+    "title": "Créer, prévisualiser et retrouver un projet GDevelop local"
+  },
+  "gdevelop.instances": {
+    "title": "Distinguer objet et instances et modifier leurs positions"
+  },
+  "gdevelop.events": {
+    "title": "Relier condition et action et tester les deux états d’une interaction"
+  },
+  "gdevelop.movement": {
+    "title": "Régler et tester un déplacement fourni par un comportement"
+  },
+  "python.workspace": {
+    "title": "Créer, enregistrer et exécuter un programme Python"
+  },
+  "python.output": {
+    "title": "Afficher des messages et expliquer leur ordre"
+  },
+  "python.variables": {
+    "title": "Conserver et réutiliser des valeurs dans des variables"
+  },
+  "python.input": {
+    "title": "Demander et utiliser une réponse textuelle"
+  },
+  "python.numbers": {
+    "title": "Calculer et conserver des valeurs numériques"
+  },
+  "python.conversion": {
+    "title": "Convertir une réponse attendue en entier"
+  },
+  "python.debugging": {
+    "title": "Diagnostiquer une erreur et vérifier sa correction"
+  },
+  "python.conditions": {
+    "title": "Construire et tester un choix à deux issues"
+  },
+  "python.branches": {
+    "title": "Ordonner et tester plusieurs issues avec elif"
+  },
+  "python.for": {
+    "title": "Prévoir et modifier une répétition avec for/range"
+  },
+  "python.while": {
+    "title": "Expliquer et actualiser une répétition conditionnelle"
+  },
+  "python.accumulation": {
+    "title": "Initialiser et actualiser un compteur ou un total"
+  },
+  "python.random": {
+    "title": "Importer random et distinguer tirage conservé et nouveaux appels"
+  },
+  "python.lists": {
+    "title": "Créer, consulter, parcourir et compléter une liste"
+  },
+  "python.text": {
+    "title": "Observer et transformer du texte selon une règle explicite"
+  },
+  "python.functions": {
+    "title": "Définir, appeler et réutiliser une fonction avec des paramètres"
+  },
+  "python.return": {
+    "title": "Renvoyer et réutiliser un résultat en distinguant les noms locaux"
+  },
+  "scratch.clones": {
+    "title": "Créer et gérer des copies temporaires d’un personnage"
+  },
+  "scratch.time": {
+    "title": "Mesurer et limiter le temps d’une partie"
+  },
+  "scratch.debugging": {
+    "title": "Observer, expliquer et corriger une erreur dans un programme"
+  },
+  "scratch.messages": {
+    "title": "Coordonner des personnages avec des messages"
+  },
+  "scratch.custom-blocks": {
+    "title": "Créer et réutiliser un bloc personnalisé"
+  },
+  "scratch.game-rules": {
+    "title": "Définir une fin de partie et recommencer proprement"
+  },
+  "scratch.loops": {
+    "title": "Répéter des actions avec une boucle"
+  },
+  "scratch.conditions": {
+    "title": "Tester une condition et choisir une action"
+  },
+  "scratch.contacts": {
+    "title": "Détecter un contact et faire réagir le jeu"
+  },
+  "scratch.variables": {
+    "title": "Mémoriser et modifier une valeur avec une variable"
+  },
+  "scratch.workspace": {
+    "title": "Se repérer dans Scratch et conserver son projet"
+  },
+  "scratch.events": {
+    "title": "Déclencher un programme avec un événement"
+  },
+  "scratch.sequence": {
+    "title": "Ordonner des actions et observer leur résultat"
+  },
+  "scratch.coordinates": {
+    "title": "Repérer et modifier la position X/Y"
+  },
+  "scratch.keyboard": {
+    "title": "Piloter un personnage au clavier"
+  },
+  "html.headings": {
+    "title": "Créer et organiser des titres"
+  },
+  "html.text": {
+    "title": "Créer des paragraphes"
+  },
+  "html.lists": {
+    "title": "Créer des listes"
+  },
+  "html.links": {
+    "title": "Créer des liens"
+  },
+  "html.images": {
+    "title": "Insérer et décrire des images"
+  },
+  "html.structure": {
+    "title": "Identifier la structure HTML, les parents et les enfants"
+  },
+  "css.selectors": {
+    "title": "Créer et utiliser des classes CSS"
+  },
+  "css.colors": {
+    "title": "Changer les couleurs"
+  },
+  "css.spacing": {
+    "title": "Utiliser margin et padding"
+  },
+  "css.borders": {
+    "title": "Utiliser les bordures et border-radius"
+  },
+  "css.hover": {
+    "title": "Créer un effet au survol"
+  },
+  "css.flexbox": {
+    "title": "Organiser des éléments avec Flexbox"
+  },
+  "html.document": {
+    "title": "Créer la structure complète d’un document HTML"
+  },
+  "html.paths": {
+    "title": "Organiser les fichiers et utiliser des chemins relatifs"
+  },
+  "css.stylesheets": {
+    "title": "Relier et vérifier une feuille de style externe"
+  },
+  "html.landmarks": {
+    "title": "Organiser une page en zones HTML selon leur rôle"
+  },
+  "css.fonts": {
+    "title": "Régler la police, la taille, l’interligne et l’alignement du texte"
+  },
+  "css.sizing": {
+    "title": "Régler la largeur d’une carte et préserver les proportions d’une image"
+  },
+  "html.navigation": {
+    "title": "Relier des pages HTML et vérifier leur navigation"
+  }
+}

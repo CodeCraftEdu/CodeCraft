@@ -4,9 +4,9 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
-const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const app = require('./helpers/student-source.cjs');
 const catalog = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), catalog);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), catalog);
 const data = catalog.window.CODECRAFT_DATA;
 
 function render(sequence, sequenceId, currentId, wide = false) {
@@ -108,7 +108,7 @@ test('étapes existantes conservées, sortie du cours et aucun parcours choisi a
   assert.match(app, /main\.classList\.remove\('site-shell--course'\)/);
   assert.match(app, /containing\.length === 1 \? containing\[0\] : null/);
   assert.match(app, /if \(sequence\) \{\s*const sequenceId/);
-  const css = fs.readFileSync(path.join(root, 'student-lowpoly.css'), 'utf8');
+  const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'student-lowpoly.css'));
   assert.match(css, /position: sticky; top: 20px/);
   assert.match(css, /course-sidebar__contents\[hidden\] \{ display: none/);
   assert.match(css, /@media print \{\s*body.student-lowpoly .course-sidebar \{ display: none/);

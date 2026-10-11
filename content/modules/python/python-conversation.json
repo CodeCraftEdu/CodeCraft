@@ -1,0 +1,295 @@
+{
+  "domainId": "python",
+  "title": "Une conversation interactive",
+  "type": "project",
+  "theme": "fondations",
+  "objective": "Assembler affichage, variables et questions dans un programme personnel.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.workspace",
+    "python.output",
+    "python.variables",
+    "python.input"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, conserver et relancer un fichier .py."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher des messages dans l’ordre choisi."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Conserver plusieurs informations sous des noms différents."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Poser une question et afficher sa réponse. Sinon, reprendre Poser une question."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir créer un fichier, afficher un message et conserver puis réutiliser une réponse dans une variable. Sinon, reprends Poser une question. Enregistre les exercices précédents puis crée conversation.py : ne les efface pas. Choisis un thème et des réponses fictifs, sans renseignement personnel.",
+      "moduleLink": {
+        "moduleId": "python-saisie",
+        "text": "Revoir la saisie"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "plan",
+      "title": "1 - Prépare ton petit dialogue",
+      "paragraphs": [
+        "Imagine un message d’accueil, trois questions et les phrases finales qui utiliseront les réponses. Par exemple : choisir un pseudo fictif, un lieu imaginaire et une activité. Tu peux inventer un autre thème.",
+        "Tout le monde suit le même ordre de questions : pas de choix conditionnel, calcul ni boucle dans ce projet. Le programme est interactif parce que ses messages utilisent les réponses saisies.",
+        "Écris d’abord une version avec une question. Teste-la, puis ajoute une question à la fois. Une version courte qui fonctionne est un bon point de départ."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Préparation accompagnée - une première réponse",
+      "intro": "Si nécessaire, commence ici avant d’assembler le projet. Les indices sont des rappels séparés, pas une solution complète.",
+      "items": [
+        {
+          "id": "accueil-minimal",
+          "text": "Affiche ton message d’accueil.",
+          "hint": "Utilise print avec ton texte entre guillemets et entre parenthèses."
+        },
+        {
+          "id": "question-minimale",
+          "text": "Pose une première question et conserve sa réponse.",
+          "hint": "Choisis un nom de variable, puis = et input avec ta question entre guillemets et parenthèses."
+        },
+        {
+          "id": "reponse-minimale",
+          "text": "Affiche un message qui utilise cette réponse, puis teste avec deux réponses différentes.",
+          "hint": "Dans print, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "2 - Construis ta conversation",
+      "intro": "Continue dans conversation.py. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.",
+      "items": [
+        {
+          "id": "accueil-projet",
+          "text": "Affiche un message d’accueil adapté à ton thème.",
+          "hint": "Ce message peut être du texte fixe ; les réponses ne sont pas encore connues."
+        },
+        {
+          "id": "trois-questions",
+          "text": "Pose au moins trois questions et garde leurs réponses dans trois variables différentes.",
+          "hint": "Une ligne avec input pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente."
+        },
+        {
+          "id": "trois-reponses",
+          "text": "Après les questions, réutilise chacune des trois réponses dans tes messages finaux.",
+          "hint": "Tu peux faire plusieurs print. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets."
+        },
+        {
+          "id": "sauvegarder-projet",
+          "text": "Enregistre conversation.py dans ton dossier de programmes.",
+          "hint": "Conserve les fichiers des modules précédents. Une modification doit être enregistrée pour rester après fermeture."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "verification",
+      "title": "3 - Vérifie ton travail",
+      "items": [
+        {
+          "id": "tester-deux-dialogues",
+          "text": "Arrête / redémarre, puis exécute deux fois avec trois réponses différentes. Les messages finaux doivent utiliser les réponses du nouvel essai.",
+          "hint": "Ne remplace pas les réponses par du texte fixé dans le code. Le fichier doit définir toutes ses variables sans ancien essai en console."
+        },
+        {
+          "id": "retrouver-dialogue",
+          "text": "Après enregistrement, ferme puis rouvre le fichier et teste-le à nouveau.",
+          "hint": "Retrouve conversation.py dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme."
+        },
+        {
+          "id": "expliquer-dialogue",
+          "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Enregistre, puis utilise Enregistrer sous pour créer conversation_modifiee.py. Dans cette copie, renomme une variable et tous ses usages ; teste avec de nouvelles réponses.",
+          "hint": "Choisis un nom distinct des deux autres. Change le nom à gauche de = et dans chaque print qui l’utilise. La question peut rester identique ; conserve conversation.py."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - enrichir sans nouvelle notion",
+      "items": [
+        {
+          "id": "quatrieme-question",
+          "text": "Ajoute une quatrième question et utilise sa réponse dans un nouveau message final.",
+          "hint": "Une nouvelle variable, un input et un print : aucune condition ou boucle n’est nécessaire."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Et après ?",
+      "text": "Si tu sais expliquer et modifier ta conversation avec peu ou pas d’aide, tu peux passer aux nombres et calculs. Sinon, reprends une question ou une variable. Terminer le projet ne valide pas automatiquement tes compétences ; en cours, choisis la suite avec le professeur."
+    }
+  ],
+  "masteryCriteria": [
+    "Créer un dialogue personnel avec trois réponses réellement conservées et réutilisées.",
+    "Expliquer l’ordre, les attentes et la différence entre texte fixe et valeur saisie.",
+    "Renommer une variable et ses usages dans une copie conservée, puis tester de nouvelles réponses après redémarrage.",
+    "Retrouver le fichier sauvegardé ; distinguer réussite autonome, avec modèle ou avec aide pour chaque compétence."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-conversation",
+      "blockId": "guide",
+      "label": "Repartir d’une seule question"
+    },
+    {
+      "moduleId": "python-saisie",
+      "blockId": "guide",
+      "label": "Revoir la saisie dans la console"
+    },
+    {
+      "moduleId": "python-variables",
+      "blockId": "changer",
+      "label": "Revoir les valeurs et leur remplacement"
+    },
+    {
+      "moduleId": "python-affichage",
+      "blockId": "guide",
+      "label": "Revoir affichage et ordre"
+    },
+    {
+      "moduleId": "python-thonny",
+      "blockId": "guide",
+      "label": "Retrouver les fichiers"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-conversation",
+      "blockId": "bonus",
+      "label": "Ajouter une quatrième question"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-calculs",
+      "label": "Nombres et calculs",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.input",
+          "expectation": "Conserver et afficher une réponse dans une variable ; sinon reprendre Poser une question."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Vérifier l’assemblage des premières notions dans un projet personnel, sans supposer une acquisition parce qu’un dialogue a été exécuté.",
+    "entryDiagnosis": [
+      "Demander une question et un affichage de sa réponse sans modèle ; choisir une reprise ciblée si nécessaire.",
+      "Vérifier les noms distincts de variables et l’enregistrement, séparément de l’aide au clavier."
+    ],
+    "preparation": [
+      "Conserver les fichiers précédents et créer conversation.py ; aucun projet externe n’est requis.",
+      "Préparer des thèmes fictifs et des réponses de test différentes ; ne pas demander de donnée personnelle.",
+      "Le projet n’a volontairement pas de solution complète : s’appuyer sur les rappels des modules 2 à 4 et l’étape à une question."
+    ],
+    "why": "Assembler plusieurs notions révèle les écarts entre reproduire un exemple et construire un programme qui utilise réellement ses entrées.",
+    "discoverySpeech": [
+      "« Choisis trois questions : que feras-tu de chacune des réponses ? »",
+      "« Nous construisons une petite version qui fonctionne, puis nous ajoutons une question à la fois. »",
+      "« Si je donne de nouvelles réponses, tes phrases finales doivent les utiliser sans modifier le programme. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-conversation",
+        "blockId": "plan"
+      },
+      "comments": [
+        "Commenter le plan, pas fournir un programme complet à recopier : accueil, trois saisies distinctes, sorties qui réutilisent chaque valeur.",
+        "Si nécessaire, accompagner une seule question puis laisser ajouter les suivantes.",
+        "Attendu : deux exécutions avec des réponses différentes donnent des messages finaux différents ; aucun if, calcul ou boucle requis."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Quelle ligne changer pour modifier une question sans changer l’utilisation de sa réponse ?",
+        "answer": "Modifier le texte entre guillemets dans input, en conservant le nom de variable utilisé ensuite."
+      },
+      {
+        "question": "Pourquoi conserver les trois réponses sous des noms différents ?",
+        "answer": "Réaffecter le même nom remplacerait sa valeur ; on perdrait l’accès aux premières réponses sous ce nom."
+      },
+      {
+        "question": "Le dialogue qui fonctionne suffit-il à prouver que tu comprends ?",
+        "answer": "Non : il faut expliquer les attentes et valeurs, puis réussir une modification ou une nouvelle question sans recopier toute la solution."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-conversation",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-conversation",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Consolider une question puis deux avant d’en viser trois ; ne pas imposer une durée ni retirer l’accès au projet.",
+      "Pour un élève à l’aise, demander une quatrième question avec nouvelle variable et sortie, sans modèle.",
+      "Évaluer workspace, output, variables et input séparément ; accompagner la saisie ou l’enregistrement sans annuler une compréhension démontrée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les trois messages affichent seulement la dernière réponse.",
+        "helps": [
+          "Faire comparer les réponses saisies aux sorties.",
+          "Repérer les noms à gauche des trois affectations.",
+          "Montrer que le même nom est remplacé ; comparer à trois noms distincts.",
+          "Renommer les variables et leurs usages ensemble, puis retester deux dialogues."
+        ]
+      },
+      {
+        "symptom": "Le dialogue ne varie pas ou échoue après redémarrage.",
+        "helps": [
+          "Faire un test avec des réponses très différentes.",
+          "Chercher du texte fixe à la place d’une variable ou une affectation manquante.",
+          "Comparer à l’exercice à une question ; vérifier l’ordre des définitions.",
+          "Corriger une utilisation puis exécuter le fichier entier après Arrêter / redémarrer ; demander une modification autonome."
+        ]
+      }
+    ],
+    "notes": "Observer reproduction, compréhension, transfert et aides nécessaires, sans nouveau dispositif de suivi. Seul le professeur attribue manuellement un statut ; le projet ne valide jamais automatiquement ses quatre compétences.",
+    "quickConductor": [
+      "Vérifier les premières notions et proposer une reprise ciblée.",
+      "Faire choisir un thème fictif et un plan.",
+      "Tester une question puis ajouter les autres.",
+      "Tester deux dialogues après redémarrage.",
+      "Faire renommer une variable et ses usages dans conversation_modifiee.py ; vérifier le transfert avant de choisir la suite."
+    ],
+    "references": [
+      {
+        "title": "Python - input",
+        "url": "https://docs.python.org/fr/3/library/functions.html#input"
+      },
+      {
+        "title": "Thonny - variables et exécution pas à pas",
+        "url": "https://thonny.org/"
+      }
+    ]
+  }
+}

@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = {window:{}};
-vm.runInNewContext(fs.readFileSync(path.join(root,'lesson-data.js'),'utf8'),context);
+vm.runInNewContext(fs.readFileSync(path.join(root,'generated/catalog.js'),'utf8'),context);
 const data = context.window.CODECRAFT_DATA;
 const examples = data.pathways['web-debutants'].moduleIds.map(id=>({id,
   demo:data.modules[id].blocks.find(b=>b.demonstration?.type==='web-comparison')?.demonstration})).filter(e=>e.demo);
@@ -20,7 +20,7 @@ class Node {
 }
 const nodes=n=>[n,...n.children.filter(x=>x instanceof Node).flatMap(nodes)];
 const text=n=>typeof n==='string'?n:n.textContent+n.children.map(text).join('');
-const app=fs.readFileSync(path.join(root,'app.js'),'utf8');
+const app=require('./helpers/student-source.cjs');
 const fn=app.slice(app.indexOf('  function createWebComparison('),app.indexOf('  function createScratchScript('));
 const syntax=app.slice(app.indexOf('  function codeTokens('),app.indexOf('  function createCode('));
 const render=vm.runInNewContext(syntax+fn+'\ncreateWebComparison;',{element:(tag,cls,text)=>new Node(tag,cls,text),demoCleanups:[]});
@@ -70,8 +70,24 @@ test('Web : aucun comparateur de conseils sur les projets autonomes, consignes e
   assert.match(examples.find(e=>e.id==='html-multipage').demo.note,/simule.*vrais liens/);
   assert.match(examples.find(e=>e.id==='css-feuille-style').demo.note,/simulée.*fichiers/);
   assert.match(examples.find(e=>e.id==='html-fichiers-chemins').demo.note,/ne lit ni ne crée/);
-  assert.match(examples.find(e=>e.id==='html-images').demo.note,/représente une image absente/);
+  assert.equal(examples.find(e=>e.id==='html-images').demo.note,'');
   assert.match(examples.find(e=>e.id==='css-boites-espacements').demo.note,/margin: 0/);
+});
+
+test('Images : aperçu avec une vraie image disponible ou cassée, sans description de substitution',()=>{
+  const demo=data.modules['html-images'].blocks.find(b=>b.demonstration).demonstration;
+  const [available,missing]=demo.variants;
+  assert.match(available.html,/^<img\b[^>]*src="assets\/exercices\/cercle-orange\.png"/);
+  assert(fs.existsSync(path.join(root,'assets/exercices/cercle-orange.png')));
+  assert.match(missing.html,/^<img\b[^>]*src="assets\/exercices\/fichier-absent\.png"/);
+  assert(!fs.existsSync(path.join(root,'assets/exercices/fichier-absent.png')));
+  for(const variant of demo.variants) {
+    assert.match(variant.html,/alt="Un cercle orange"/);
+    assert.doesNotMatch(variant.html,/<div|<br|Texte alternatif|Image indisponible/);
+    assert(!variant.label.includes('représentation'));
+  }
+  const frame=nodes(render(demo)).find(n=>n.tag==='iframe');
+  assert.match(frame.srcdoc,/img-src 'self' data:/);
 });
 
 test('Document HTML : title et h1 changent séparément, avec un code complet et un onglet hors de body',()=>{
@@ -126,7 +142,7 @@ test('Web : code avant aperçu, coloration sans altérer le texte et hauteur ada
     if(demo.variants[0].code.includes('<p>')) assert(nodes(code).some(n=>n.cls==='syntax-token--tag'));
     assert(!frame.attrs.sandbox.includes('allow-scripts'));
   }
-  const css=fs.readFileSync(path.join(root,'student-lowpoly.css'),'utf8');
+  const css=require('./helpers/style-source.cjs').readStyle(path.join(root,'student-lowpoly.css'));
   assert.match(css,/web-comparison__layout[^\n]*grid-template-columns: minmax\(0, 1fr\)/);
   assert.match(css,/web-code-token--string[^\n]*#f2d862/);
 });

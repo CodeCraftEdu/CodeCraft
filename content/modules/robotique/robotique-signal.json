@@ -1,0 +1,228 @@
+{
+  "domainId": "robotique",
+  "title": "Programmer un signal",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir le circuit de départ",
+    "url": "https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"
+  },
+  "objective": "Faire clignoter une LED, expliquer son état pendant les attentes et choisir son rythme.",
+  "skillIds": [
+    "robotique.sequence",
+    "robotique.attente",
+    "robotique.boucle"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.circuit",
+      "expectation": "Repérer la LED externe et garder un chemin complet avec sa résistance."
+    },
+    {
+      "skillId": "robotique.sortie",
+      "expectation": "Obtenir LOW puis HIGH sur la même sortie sans changer les fils."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut pouvoir obtenir LOW (éteinte) puis HIGH (allumée) sur la LED externe sans changer les fils. Si cela bloque, reprends Ma première lumière avec une aide. Conserve ce premier projet : crée une copie nommée Mon-signal. Tu peux aussi copier le circuit de départ ci-dessous. Travaille dans Code, en mode Blocks, simulation arrêtée. Garde la sortie 8, les fils et la résistance."
+    },
+    {
+      "type": "lesson",
+      "id": "lire-cycle",
+      "title": "1 - L’attente garde le dernier état",
+      "paragraphs": [
+        "Voici un cycle : allumer la LED, attendre une seconde, l’éteindre, attendre une seconde. Pendant la première attente, elle reste allumée. L’attente ne l’éteint pas : c’est la commande LOW qui le fait.",
+        "Après la deuxième attente, le cycle recommence. Avant d’essayer, montre quand la LED s’éteint et où les actions reprennent. Le retour au début représente la répétition ; ce n’est pas une cinquième action à chercher."
+      ],
+      "illustration": {
+        "src": "images/robotique-cycle.svg",
+        "alt": "Dans forever, quatre actions : sortie 8 HIGH, attente 1 seconde, sortie 8 LOW, attente 1 seconde. Une flèche ramène au début. La LED reste allumée pendant la première attente et éteinte pendant la deuxième.",
+        "caption": "Schéma de lecture du cycle : les quatre actions sont placées dans forever."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "construire",
+      "title": "2 - Construire les quatre actions",
+      "paragraphs": [
+        "Dans Control, prends forever (répéter sans fin). Place les quatre actions à l’intérieur, dans cet ordre : set pin 8 to HIGH ; wait 1 secs ; set pin 8 to LOW ; wait 1 secs. Les commandes set pin sont dans Output et wait dans Control. Vérifie secs (secondes), pas une autre unité.",
+        "Ta copie possède déjà set pin 8 to LOW dans on start. Déplace ce bloc dans forever pour l’utiliser comme troisième action. Ajoute les trois autres. Laisse on start vide : aucune deuxième commande ni deuxième cycle ne doit rester à côté du modèle.",
+        "Lance Start Simulation et observe au moins trois cycles sur la LED externe. Dans forever, la fin ramène à la première action tant que la simulation tourne. Pour changer un bloc, utilise Stop Simulation, modifie, puis relance. Si les quatre actions étaient seulement dans on start, elles ne seraient exécutées qu’une fois : après la dernière attente, la LED resterait éteinte."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - lire, prévoir, observer",
+      "items": [
+        {
+          "id": "rb02-cycle",
+          "text": "Construis le cycle 1 seconde allumée / 1 seconde éteinte. Avant de lancer, montre les deux commandes, les deux attentes et le retour au début. Observe au moins trois cycles et compare à ta prévision.",
+          "hint": "Vérifie une seule pile dans forever : HIGH, wait 1 secs, LOW, wait 1 secs. Les deux commandes visent la sortie 8."
+        },
+        {
+          "id": "rb02-etat-attente",
+          "text": "Montre l’attente pendant laquelle la LED est allumée, puis celle pendant laquelle elle est éteinte. Explique ce qui commande le changement d’état.",
+          "hint": "Remonte à l’action juste avant chaque attente. HIGH allume ; LOW éteint. wait conserve cet état pendant la durée choisie."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "completer",
+      "title": "Compléter - l’action manquante",
+      "intro": "Garde Mon-signal intact. Simulation arrêtée, fais une copie nommée Signal-a-completer et retire seulement set pin 8 to LOW de forever. Les deux attentes restent présentes.",
+      "items": [
+        {
+          "id": "rb02-manquante",
+          "text": "Prévois ce que fera cette copie sans la commande d’extinction. Essaie, arrête, puis ajoute l’action manquante entre les deux attentes. Prévois et vérifie le résultat corrigé.",
+          "hint": "Sans LOW, les attentes ne changent pas l’état : la LED reste allumée. Pour retrouver le cycle, ajoute set pin 8 to LOW après la première attente et avant la seconde."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - deux secondes allumée",
+      "intro": "Reviens à Mon-signal : une seconde allumée et une seconde éteinte. Ne change ni les fils ni les commandes de sortie.",
+      "items": [
+        {
+          "id": "rb02-duree",
+          "text": "Obtiens deux secondes allumée puis une seconde éteinte, en répétition. Montre d’abord l’unique attente à modifier et prévois le résultat. Change-la, observe au moins trois cycles et explique pourquoi le temps éteint reste identique.",
+          "hint": "L’attente qui suit HIGH fixe le temps allumé. Passe seulement sa valeur de 1 à 2 ; garde l’attente après LOW à 1."
+        },
+        {
+          "id": "rb02-transfert",
+          "text": "Sans modifier encore ton programme, montre ce qu’il faudrait changer pour obtenir une seconde allumée et deux secondes éteinte. Explique les deux réglages.",
+          "hint": "Le projet est maintenant à 2 / 1. Pour obtenir 1 / 2, remets à 1 l’attente après HIGH et passe à 2 celle après LOW."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - ton rythme",
+      "intro": "Ce bonus est facultatif. Tu peux poursuivre sans le faire.",
+      "items": [
+        {
+          "id": "rb02-rythme",
+          "text": "Choisis un autre rythme avec des durées entre 1 et 3 secondes. Annonce-le, change une seule attente à la fois et vérifie après chaque changement. Explique quelle durée correspond à chaque état.",
+          "hint": "Pars du programme actuel. Choisis d’abord le temps allumé ou le temps éteint, retrouve l’attente qui le règle, puis change seulement cette valeur."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver ton signal",
+      "text": "Arrête la simulation et vérifie le nom Mon-signal. Attends la fin de l’enregistrement, retourne à la liste de tes circuits, retrouve ce projet et ouvre-le de nouveau. Relance : retrouve-t-il le rythme que tu as choisi ? Si tu ne le retrouves pas, demande une aide avant de créer un nouveau circuit."
+    }
+  ],
+  "masteryCriteria": [
+    "Je lis les quatre actions et montre où le cycle recommence.",
+    "J’explique pourquoi la LED garde son état pendant une attente.",
+    "Je prévois puis vérifie l’effet d’une durée modifiée, sans changer les fils.",
+    "Je retrouve et relance mon signal enregistré."
+  ],
+  "teacherGuide": {
+    "objective": "Faire distinguer commande d’état, attente et répétition, puis observer une modification de durée justifiée par l’élève.",
+    "entryDiagnosis": [
+      "Faire prévoir puis obtenir LOW et HIGH sur la LED externe. Résoudre une difficulté de sortie ou de montage avant d’ajouter les attentes.",
+      "Faire créer une copie de la première lumière ; distinguer aide d’accès et compréhension du programme."
+    ],
+    "preparation": [
+      "Réutiliser le départ partagé de Ma première lumière : D8, résistance 220 Ω, LED externe, GND. Il contient on start avec set pin 8 to LOW ; ce bloc est déplacé dans forever pendant la construction.",
+      "La référence privée 1 s / 1 s est préparée ; les blocs du défi 2 s / 1 s et de la variante sans extinction ont été essayés successivement. Préparer une copie pour la démonstration sans LOW si nécessaire. Clic droit sur LOW puis Delete Block conserve la seconde attente ; ne pas utiliser l’annulation générale du circuit. Les libellés sont set pin, HIGH/LOW, wait … secs et forever.",
+      "Vérifier l’accès, la copie et la reprise avec l’accès élève réel. Aucun compte personnel n’est imposé par le cours : organiser l’accès avec l’enseignant si la connexion bloque."
+    ],
+    "why": "Une LED copiée qui clignote ne prouve pas que l’élève distingue l’état conservé pendant l’attente et le retour au début du cycle.",
+    "discoverySpeech": [
+      "Après HIGH, que fait la LED pendant wait ? Quelle action demande ensuite l’extinction ?",
+      "Ces quatre actions sont dans forever. Où va-t-on après la dernière attente ?",
+      "Quelle attente faut-il allonger pour garder la lumière allumée plus longtemps, sans changer le temps éteint ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-signal",
+        "blockId": "construire"
+      },
+      "comments": [
+        "Construire avec les élèves, sans distribuer d’emblée la référence complète. Déplacer LOW depuis on start ; garder une seule pile dans forever.",
+        "Faire lire et prévoir avant l’essai, puis observer trois cycles sur la LED externe. Ne pas utiliser le voyant intégré comme preuve.",
+        "on start exécute une fois ; forever répète. Montrer le conteneur réel, sans inventer une instruction Recommencer."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Est-ce wait qui éteint la lumière ?",
+        "answer": "Non. La LED reste dans le dernier état commandé ; LOW demande l’extinction."
+      },
+      {
+        "question": "Que se passe-t-il sans LOW entre les attentes ?",
+        "answer": "HIGH garde la LED allumée ; les deux attentes ne la font pas changer d’état."
+      },
+      {
+        "question": "Le projet est à 2 s allumée / 1 s éteinte. Pour obtenir 1 s / 2 s ?",
+        "answer": "Remettre à 1 l’attente après HIGH et passer à 2 celle après LOW. Ce transfert nécessite deux valeurs à changer, contrairement au défi précédent."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-signal",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-signal",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Lire les consignes ensemble ou aider à glisser un bloc ; laisser l’élève indiquer l’ordre, prévoir et expliquer.",
+      "Si la construction bloque, fournir les quatre actions disposées et faire choisir leur ordre ou compléter LOW sur la copie professeur.",
+      "Pour aller plus loin, proposer un autre rythme avec une valeur à la fois ; aucun composant supplémentaire ni variable nécessaire."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La LED ne clignote pas ou une autre lumière change",
+        "helps": [
+          "Revenir aux deux états fixes ; repérer la LED externe et la sortie 8.",
+          "Vérifier les quatre actions dans forever, les deux attentes en secondes et la présence de LOW.",
+          "Vérifier qu’une ancienne pile n’est pas restée à côté ou dans on start."
+        ]
+      },
+      {
+        "symptom": "La mauvaise durée est allongée",
+        "helps": [
+          "Faire montrer l’action précédant chaque attente.",
+          "Revenir à 1 / 1, prévoir puis modifier seulement l’attente après HIGH.",
+          "Observer trois cycles et faire expliquer l’état conservé."
+        ]
+      },
+      {
+        "symptom": "L’élève modifie le mauvais projet",
+        "helps": [
+          "Vérifier le nom : Mon-signal pour le défi, Signal-a-completer pour l’action manquante.",
+          "Retrouver la copie conservée plutôt que reconstruire tous les fils."
+        ]
+      }
+    ],
+    "notes": "Adaptation autonome de RB02 déjà revue dans les supports de séance 1. Les variantes de blocs 1 / 1, 2 / 1 et le retrait de LOW ont été essayés sur une référence professeur privée ; voir docs/recette-tinkercad-signal.md pour les limites. La copie et la reprise avec l’accès élève réel restent à vérifier. Le contexte de stage et sa durée ne sont pas imposés aux élèves. La question de transfert 1 / 2 est orale et ne crée pas une seconde mission obligatoire. Aucune compétence n’est validée par le clignotement ou les cases cochées.",
+    "quickConductor": [
+      "Reprendre les deux états et créer Mon-signal.",
+      "Lire le cycle et associer chaque attente à l’état précédent.",
+      "Construire dans forever et observer trois cycles.",
+      "Compléter LOW sur une copie, puis revenir au projet intact.",
+      "Prévoir et réaliser 2 / 1 ; proposer oralement 1 / 2 sans indice initial.",
+      "Retrouver et relancer le signal ; noter l’aide reçue et l’explication."
+    ],
+    "references": [
+      {
+        "title": "Circuit de départ partagé : à copier",
+        "url": "https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"
+      }
+    ]
+  }
+}

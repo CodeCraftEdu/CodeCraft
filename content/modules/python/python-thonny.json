@@ -1,0 +1,256 @@
+{
+  "domainId": "python",
+  "title": "Premiers pas avec Thonny",
+  "type": "lesson",
+  "theme": "fondations",
+  "presentation": "workshop",
+  "objective": "Créer, enregistrer, exécuter et retrouver un programme Python.",
+  "tool": {
+    "label": "Télécharger Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.workspace"
+  ],
+  "prerequisiteSkills": [],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Ouvre Thonny et garde CodeCraft à côté. Pour l’installer, utilise le bouton Télécharger Thonny et choisis la version adaptée à ton ordinateur."
+    },
+    {
+      "type": "lesson",
+      "id": "reperes",
+      "title": "1 - Où écrire et où lire ?",
+      "paragraphs": [
+        "Dans l’éditeur, en haut, tu écris les instructions du programme. Dans la console, en bas, tu lis les résultats. Si elle est masquée, utilise Affichage → Console.",
+        "Exécuter (triangle vert) lance le fichier ouvert dans l’éditeur. Arrêter / redémarrer (carré rouge) interrompt un programme et remet la console à zéro. La disposition peut varier : le schéma sert de repère.",
+        "Si tu vois >>> dans la console, cela signifie que Python attend une instruction. Ce symbole est affiché automatiquement : ne le recopie pas dans ton fichier. Pour ces activités, écris le code dans l’éditeur."
+      ],
+      "codeDiagram": {
+        "filename": "bonjour.py",
+        "codeParts": [
+          {
+            "text": "print",
+            "kind": "function"
+          },
+          {
+            "text": "("
+          },
+          {
+            "text": "\"Bonjour !\"",
+            "kind": "string"
+          },
+          {
+            "text": ")"
+          }
+        ],
+        "output": "Bonjour !",
+        "note": "Après une modification du code, exécute à nouveau pour actualiser le résultat."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 - Ton premier fichier",
+      "paragraphs": [
+        "Choisis Fichier → Nouveau. Dans l’éditeur vide, écris la ligne ci-dessous avec des guillemets droits et les deux parenthèses. print affiche le message placé entre guillemets ; tu le découvriras plus en détail ensuite.",
+        "Choisis Fichier → Enregistrer sous, crée ou choisis un dossier pour tes programmes, puis nomme le fichier bonjour.py. .py indique un fichier Python. Si Thonny demande où enregistrer, choisis Cet ordinateur.",
+        "Clique sur Exécuter, ou utilise F5. Dans la console, tu dois lire Bonjour ! : le message affiché est le résultat, pas une nouvelle instruction à recopier."
+      ],
+      "code": "print(\"Bonjour !\")",
+      "actionSteps": [
+        {
+          "title": "Écrire",
+          "paragraphIndex": 0,
+          "showCode": true
+        },
+        {
+          "title": "Enregistrer",
+          "paragraphIndex": 1
+        },
+        {
+          "title": "Exécuter",
+          "paragraphIndex": 2,
+          "output": "Bonjour !"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - écrire, lancer, retrouver",
+      "items": [
+        {
+          "id": "premier-fichier",
+          "text": "Crée bonjour.py, écris le modèle et exécute-le.",
+          "hint": "Écris dans l’éditeur du haut. Si la ligne échoue, compare les guillemets et parenthèses. Demande de l’aide pour l’installation ou le clavier si nécessaire."
+        },
+        {
+          "id": "modifier-message",
+          "text": "Remplace Bonjour ! par un autre message. Enregistre avec Ctrl+S (Cmd+S sur Mac), puis exécute à nouveau.",
+          "hint": "Modifie seulement le texte entre guillemets. Modifier le fichier n’exécute pas automatiquement le nouveau code."
+        },
+        {
+          "id": "rouvrir-fichier",
+          "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver bonjour.py et le relancer.",
+          "hint": "Note le dossier choisi. Un onglet fermé n’efface pas un fichier enregistré. Ne ferme pas sans enregistrer tes modifications."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - créer et retrouver un fichier",
+      "intro": "Essaie sans démonstration. Garde bonjour.py : tu vas créer un autre fichier, pas le remplacer.",
+      "items": [
+        {
+          "id": "retrouver-seul",
+          "text": "Crée accueil.py avec un message de ton choix, enregistre-le dans ton dossier et exécute-le. Ferme ensuite son onglet, rouvre le fichier et relance-le.",
+          "hint": "Fichier → Nouveau, puis Enregistrer sous avec un autre nom. Après sauvegarde, Ouvrir retrouve le fichier ; Exécuter lance ses instructions."
+        },
+        {
+          "id": "distinguer-zones",
+          "text": "Montre où se trouve ton code et où apparaît son résultat. Explique ce qu’il faut faire après une modification.",
+          "hint": "Éditeur → instructions ; console → résultat ; enregistrer puis exécuter."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - garder deux essais",
+      "items": [
+        {
+          "id": "deuxieme-fichier",
+          "text": "Ouvre bonjour.py et accueil.py. Avant de lancer chacun, repère son nom dans l’onglet et prédis le message affiché. Modifie seulement accueil.py et vérifie que bonjour.py garde son message.",
+          "hint": "Le fichier actif est celui dont l’onglet est sélectionné. Enregistre ta modification ; deux fichiers différents conservent deux programmes distincts."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer le code dans l’éditeur du résultat dans la console.",
+    "Modifier un message, enregistrer et relancer sans recopier toute la ligne.",
+    "Créer et nommer un nouveau fichier sans remplacer le précédent, puis l’enregistrer, le retrouver et le relancer ; distinguer les aides reçues de l’autonomie."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-thonny",
+      "blockId": "guide",
+      "label": "Reprendre l’enregistrement et la réouverture"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-thonny",
+      "blockId": "bonus",
+      "label": "Conserver deux fichiers"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-affichage",
+      "label": "Afficher des messages",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.workspace",
+          "expectation": "Créer, enregistrer et relancer un fichier sans remplacer le précédent ; sinon reprendre l’activité autonome Thonny."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Installer des repères fiables avant d’évaluer du code. Aucun acquis en programmation n’est supposé.",
+    "entryDiagnosis": [
+      "Faire montrer où écrire et où lire, sans supposer que l’élève connaît ces zones.",
+      "Observer les besoins d’aide au clavier, à la lecture et à l’enregistrement, séparément du raisonnement."
+    ],
+    "preparation": [
+      "Installer Thonny depuis le site officiel selon le système ; sélectionner l’interpréteur Python local, pas MicroPython.",
+      "Vérifier que la console est visible, que Exécuter et Arrêter / redémarrer fonctionnent et que le dossier choisi est accessible.",
+      "Tester le modèle dans un nouveau fichier. Aucun terminal, compte, extension ou package n’est requis ; accompagner l’installation si nécessaire."
+    ],
+    "why": "L’élève doit savoir retrouver et lancer son travail avant de pouvoir avancer sans démonstration permanente.",
+    "discoverySpeech": [
+      "« L’éditeur contient tes instructions. La console montre ce qui se passe quand elles sont exécutées. »",
+      "« Modifier une ligne ne la lance pas. Enregistre puis exécute pour voir la différence. »",
+      "« Le fichier sauvegardé reste sur ton ordinateur même si tu fermes son onglet. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-thonny",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Lire la ligne sans détailler toutes les notions : print affiche le texte. Ne pas faire saisir >>>.",
+        "Faire choisir puis retrouver le dossier et le fichier ; fermer seulement après enregistrement.",
+        "Montrer Arrêter / redémarrer sans imposer une boucle pour l’illustrer. Le schéma est générique ; pointer les contrôles réels de la version installée."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Où modifies-tu le programme ?",
+        "answer": "Dans l’éditeur, pas dans le résultat affiché dans la console."
+      },
+      {
+        "question": "Le résultat change-t-il dès que tu modifies le code ?",
+        "answer": "Non : il faut exécuter à nouveau. Enregistrer conserve la modification dans le fichier."
+      },
+      {
+        "question": "Comment retrouver le programme après fermeture ?",
+        "answer": "Ouvrir le fichier .py dans le dossier où il a été enregistré."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-thonny",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-thonny",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Lire une consigne à la fois et accompagner le choix du dossier sans conclure que la notion Python est incomprise.",
+      "Demander de créer, nommer puis retrouver accueil.py sans démonstration ; relever séparément les aides au clavier et aux fichiers.",
+      "Pour un élève à l’aise, comparer les deux onglets dans le bonus ; pas de temps imposé."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le message n’apparaît pas ou seul >>> est visible.",
+        "helps": [
+          "Faire montrer les deux zones.",
+          "Vérifier le fichier actif et le clic Exécuter.",
+          "Comparer la ligne au modèle : guillemets droits et parenthèses.",
+          "Accompagner une correction, relancer puis laisser l’élève modifier le message."
+        ]
+      },
+      {
+        "symptom": "Le fichier semble perdu.",
+        "helps": [
+          "Demander où il a été enregistré.",
+          "Regarder Fichier → Ouvrir et le dossier choisi.",
+          "Distinguer fermer un onglet, enregistrer et supprimer un fichier.",
+          "Accompagner la réouverture puis faire refaire seul avec le deuxième fichier."
+        ]
+      }
+    ],
+    "notes": "Distinguer réussite autonome, avec modèle ou avec aide. Une installation ou un enregistrement accompagné ne prouve pas l’autonomie ; aucune case ne valide une compétence.",
+    "quickConductor": [
+      "Repérer éditeur, console et commandes.",
+      "Écrire, enregistrer, exécuter le premier message.",
+      "Modifier puis retrouver le fichier sauvegardé.",
+      "Faire créer, nommer et retrouver accueil.py sans démonstration ; comparer les onglets en bonus.",
+      "Choisir consolidation ou Afficher des messages selon les repères observés."
+    ],
+    "references": [
+      {
+        "title": "Thonny - site officiel et fonctionnalités",
+        "url": "https://thonny.org/"
+      }
+    ]
+  }
+}

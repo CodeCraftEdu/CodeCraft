@@ -1,0 +1,285 @@
+{
+  "domainId": "robotique",
+  "title": "S’arrêter devant un obstacle",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir MakeCode micro:bit",
+    "url": "https://makecode.microbit.org/"
+  },
+  "objective": "Construire une décision répétée Avancer/Arrêter, puis nommer sa limite avec la variable seuil.",
+  "skillIds": [
+    "robotique.condition",
+    "robotique.reglage"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.distance",
+      "expectation": "Lire une distance et la distinguer d’une limite choisie."
+    },
+    {
+      "skillId": "robotique.condition",
+      "expectation": "Lire les deux branches si/sinon sur le bouton, avec aide si nécessaire."
+    },
+    {
+      "skillId": "robotique.moteurs",
+      "expectation": "Identifier l’avance et l’arrêt ; arrêter la simulation avant intervention."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Retrouve la différence entre mesure et limite et les deux cas du bouton. Conserve Ma-distance et tes trajets : utilise une nouvelle base Mon-obstacle-fixe. Nous construisons d’abord la règle avec un nombre, puis seulement sa copie avec une variable."
+    },
+    {
+      "type": "callout",
+      "id": "recette",
+      "title": "Préparer ton essai",
+      "text": "Avec le professeur, repère le départ et l’obstacle devant le robot. Si le robot tourne, manque l’obstacle ou le touche, arrête la simulation et demande de l’aide. Vérifie le placement et les blocs avant de changer un nombre."
+    },
+    {
+      "type": "lesson",
+      "id": "base",
+      "title": "1 - Une base sans ancien trajet",
+      "paragraphs": [
+        "Télécharge puis importe le départ ci-dessous dans MakeCode, comme dans Lire une distance. Nomme-le Mon-obstacle-fixe. La base prépare le robot et l’arrête ; elle lit la distance mais ne contient ni décision sur la distance ni avance. N’utilise pas le trajet temporisé précédent.",
+        "Une seule pile au démarrage prépare le robot, puis attend l’appui sur A en affichant la distance. Cette attente est déjà fournie : ne la reconstruis pas. La seconde répétition tant que vrai (while true), après cette attente, recevra notre décision. N’ajoute aucun événement moteur A/B ni programme moteur à côté.",
+        "Démarre la simulation avec ▶ sans appuyer sur A : les moteurs restent arrêtés et les mesures sont actives. Avec le professeur, glisse le robot face à la cible et relève une mesure stable. Appuie ensuite sur A pour lancer la règle, sans arrêter la simulation entre placement et appui. Le départ sans décision reste immobile même après A.",
+        "La courte pause de 100 ms entre lectures est fournie ; elle ne détermine pas une longueur de trajet. Après une relance ou une modification du programme, recommence ▶, placement, mesure, puis A. Après A, ne déplace plus le robot : arrête la simulation avant toute intervention. Maintiens A environ une seconde puis relâche : un clic trop bref peut manquer une consultation. Un autre appui sur A ne lance pas de boucle supplémentaire."
+      ],
+      "downloads": [
+        {
+          "label": "Télécharger le départ RB08 sans décision (.hex)",
+          "path": "resources/robotique/makecode/RB08-Mon-obstacle-depart.hex",
+          "filename": "RB08-Mon-obstacle-depart.hex"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "construire",
+      "title": "2 - Une question, deux actions",
+      "paragraphs": [
+        "Avec le professeur, prends si… alors… sinon (if… then… else) dans Logique. Place-le dans la seconde boucle fournie, après la boucle d’attente de A, avant l’écriture des données et la pause. Dans la comparaison <, place robot obstacle distance (cm), de Robot, à gauche et la limite fixe à droite.",
+        "Pour cette règle, choisis une limite de 20. Dans alors, place robot motor stop. Dans sinon, place robot motor steer, direction 0, puissance 25 %, sans durée. La règle se lit : distance < 20 ? Oui → Arrêter ; non → Avancer. Garde ces réglages pendant tes premiers essais.",
+        "N’ajoute pas la durée de 1500 ms du trajet : une longue attente retarderait la prochaine décision. Le programme relit, choisit, attend brièvement, puis relit. Une nouvelle consultation peut choisir encore la même action. Les deux branches ne doivent pas s’alterner automatiquement.",
+        "Sur le tableau seulement, 19 < 20 demande Arrêter ; 20 < 20 et 21 < 20 sont faux, donc demandent Avancer. Ne cherche pas à placer le robot exactement à 20 cm pour démontrer cette égalité."
+      ],
+      "illustration": {
+        "src": "images/robotique-obstacle-regle.svg",
+        "alt": "Règle répétée : lire la distance, comparer distance < limite, oui arrêter, sinon avancer, puis revenir à une nouvelle lecture.",
+        "caption": "La même question est posée à chaque nouvelle lecture de distance."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - observer une nouvelle décision",
+      "items": [
+        {
+          "id": "rb08-prevoir",
+          "text": "Lis les deux branches. Prévois l’action depuis une situation éloignée, puis depuis une situation proche préparées par le professeur.",
+          "hint": "Lis la mesure réelle et compare-la à la limite. Une scène proche doit donner une mesure valide inférieure à la limite."
+        },
+        {
+          "id": "rb08-approche",
+          "text": "Après placement et mesure stable, appuie sur A depuis le départ éloigné vérifié, puis observe l’avance puis l’arrêt avant contact dans la même exécution. Explique pourquoi le robot peut décider de s’arrêter sans relance.",
+          "hint": "Sa mesure est relue pendant l’avance. Deux essais séparés ne prouvent pas à eux seuls cette réévaluation. Si le départ n’est pas fiable, reporte cet essai avec le professeur."
+        },
+        {
+          "id": "rb08-proche",
+          "text": "Dans la scène proche vérifiée, appuie sur A puis constate le maintien de l’arrêt. Montre la branche choisie, puis arrête la simulation avant toute intervention.",
+          "hint": "L’arrêt initial de la base ne suffit pas comme preuve : il faut expliquer la condition et vérifier la règle en fonctionnement."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "seuil",
+      "title": "3 - Donner un nom à notre limite",
+      "paragraphs": [
+        "Exporte Mon-obstacle-fixe avant de continuer. Importe cette sauvegarde comme copie et nomme-la Mon-robot-prudent. Avec le professeur, crée une seule variable nommée seuil dans Variables.",
+        "Place définir seuil à 20 (set seuil to 20) au démarrage, après la préparation et l’arrêt du robot, avant la boucle qui attend A. Dans la comparaison distance < 20 de la seconde boucle, après cette attente, remplace seulement le nombre de droite par le bloc seuil. Ne remplace pas la lecture du capteur.",
+        "Montre les deux endroits : ici nous donnons la valeur ; là nous l’utilisons. seuil conserve notre réglage. Il ne reçoit pas automatiquement la distance et ne change pas tout seul quand le robot avance.",
+        "Prévois le résultat avec la même valeur 20, puis compare les deux versions depuis une scène identique vérifiée. Nous nommons la même limite : la règle attendue reste la même, sans promettre un arrêt au centimètre près."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reglage",
+      "title": "Essai accompagné - changer seulement le seuil",
+      "intro": "Le professeur te propose deux réglages pour cet essai. Garde le même obstacle, le même départ et la même orientation : tu vas observer l’effet d’un seul changement.",
+      "items": [
+        {
+          "id": "rb08-valeur",
+          "text": "Avant de modifier le projet, compare sur papier une distance de 23 à seuil = 20 puis seuil = 25. Prévois les deux actions avec le professeur.",
+          "hint": "23 < 20 est faux : Avancer. 23 < 25 est vrai : Arrêter. La mesure est identique ; seule la limite a changé."
+        },
+        {
+          "id": "rb08-essai",
+          "text": "Change uniquement la valeur initiale de seuil pour celle proposée par le professeur. Garde scène, puissance et règle ; relance depuis le même départ, compare l’arrêt et note le réglage conservé.",
+          "hint": "La relance redonne sa valeur initiale à seuil. Si le départ diffère ou que le robot est déjà proche, tu ne peux pas attribuer la différence au seul réglage."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - expliquer le réglage",
+      "items": [
+        {
+          "id": "rb08-expliquer",
+          "text": "Montre où seuil reçoit sa valeur et où elle est utilisée. Explique ce qui change si robot et obstacle restent immobiles mais que nous changeons seulement la valeur initiale.",
+          "hint": "Nous changeons la limite choisie, pas la mesure du capteur. Le nombre plus grand ne rend pas le robot plus rapide."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver les deux versions",
+      "text": "Arrête la simulation et exporte Mon-robot-prudent sous son nom distinct, sans remplacer Mon-obstacle-fixe. Réimporte une sauvegarde avec une aide si nécessaire et retrouve la valeur initiale et la comparaison. La règle peut redemander Avancer si la mesure devient éloignée : ce n’est pas un arrêt mémorisé ni une sécurité physique. Le projet personnel viendra dans la suite du parcours."
+    }
+  ],
+  "masteryCriteria": [
+    "J’explique les deux branches et l’égalité avec <.",
+    "Je montre la mesure relue et distingue un arrêt après approche de deux essais séparés.",
+    "Je montre l’initialisation de seuil et son utilisation, sans le confondre avec la distance.",
+    "Je compare un seul réglage sur des scènes identiques et conserve les deux versions avec une aide adaptée."
+  ],
+  "teacherGuide": {
+    "objective": "Faire comprendre la règle fixe complète, sa réévaluation, puis introduire une seule variable comme limite nommée, avec modification accompagnée.",
+    "entryDiagnosis": [
+      "Faire distinguer mesure reçue et limite choisie, lire si/sinon et montrer motor stop. Fournir les manipulations si nécessaire.",
+      "Ne pas exiger une connaissance préalable des variables ; cette première initialisation et son utilisation sont accompagnées."
+    ],
+    "preparation": [
+      "Statut : intégré pour préparation, recette pratique incomplète. Départ sans if sur la distance ni motor steer ; une seule pile on start, attente fournie de A avec mesure active, puis boucle de travail. A libère cette attente une seule fois, sans événement moteur parallèle. Pas de virage A, suivi de ligne, affichage d’assistance ou second contrôleur moteur.",
+      "Références fixe et seuil réservées au professeur. Paramètres de préparation : direction 0, puissance 25, limite 20, courte pause 100 ms, aucune durée moteur. Essais du 10 octobre avec attente de A : fixe 20 et variable 20 observés depuis 26 jusqu’à 18 ; proche 7 immobile après A confirmé pour le fixe. Les variantes 15/25 et leurs réserves sont documentées dans l’intégration missions. Les placements identiques, répétitions et contrôles de cours restent à vérifier.",
+      "Avant distribution : protocoles R10-R12 et R14. Préparer une scène loin donnant une avance puis arrêt avant contact, une scène proche donnant un arrêt immédiat, deux relances comparables et la seconde valeur. Conserver les observations déjà effectuées ; compléter les comparaisons à placements identiques et les contrôles de cours avant distribution.",
+      "Séparer égalité sur tableau et essai réel. Une valeur sans cible n’est pas une voie libre démontrée. En cas de contact, de mesure douteuse ou de départ déjà proche, arrêter et vérifier le support ; ne pas introduire filtrage, variable distance ou nouveau chapitre en urgence.",
+      "La répétition while true reste fournie et lue comme relire sans fin ; l’élève ne doit pas reconstruire cette préparation. Prioriser les deux cas fixes puis seuil initialisé/utilisé à valeur identique. Reporter la modification si nécessaire ; aucune mission autonome supplémentaire.",
+      "Préserver copie fixe et copie prudente, exporter hors navigateur, vérifier accès élève et reprise. Aucun matériel réel, aucune publication de compte élève ni programme texte à saisir."
+    ],
+    "why": "La substitution à valeur identique donne du sens à la variable avant la modification ; des scènes identiques permettent ensuite d’attribuer l’effet à un seul réglage.",
+    "discoverySpeech": [
+      "« Le trajet d’avant ne doit plus commander les moteurs. Qui décide maintenant ? »",
+      "« La mesure diminue pendant l’avance. Pourquoi pouvons-nous choisir une nouvelle action sans relancer ? »",
+      "« Avec seuil égal à 20, nous donnons un nom au même réglage. Montre les deux endroits. »",
+      "« À mesure identique, une limite plus grande peut demander l’arrêt plus tôt. Elle ne change pas la puissance. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-obstacle",
+        "blockId": "construire"
+      },
+      "comments": [
+        "Construire si et sinon ensemble dans la répétition fournie. Montrer la seconde boucle après l’attente de A et l’absence de durée bloquante.",
+        "La console et la comparaison relisent le capteur séparément : ne pas présenter la trace comme une paire atomique mesure/action.",
+        "Ne pas donner une référence complète comme départ. L’ancien diagnostic technique A/B reste hors fiche élève."
+      ]
+    },
+    "questions": [
+      {
+        "question": "20 < 20 demande quelle action ?",
+        "answer": "Sinon, donc Avancer. L’égalité est traitée sur tableau."
+      },
+      {
+        "question": "La boucle doit-elle alterner Avancer et Arrêter ?",
+        "answer": "Non : elle choisit selon la nouvelle mesure, parfois la même action."
+      },
+      {
+        "question": "seuil reçoit-il la distance ?",
+        "answer": "Non, sa valeur est choisie au démarrage ; le capteur fournit la mesure à gauche de <."
+      },
+      {
+        "question": "Pourquoi relancer après un changement initial ?",
+        "answer": "Pour exécuter de nouveau le bloc qui donne la valeur à seuil."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-obstacle",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-obstacle",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Lire la question et les deux branches avant l’assemblage. Un arrêt initial seul ne prouve pas la condition.",
+      "Faire pointer affectation et utilisation de seuil avec aide. Noter introduit avec aide ou à reprendre, pas maîtrisé automatiquement.",
+      "Si la recette bloque, travailler la trace sur papier et noter la manipulation non faite ; ne pas considérer l’observation réelle acquise."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le robot ne s’arrête pas avant contact",
+        "helps": [
+          "Arrêter immédiatement la simulation.",
+          "Vérifier visée et mesure valide avec la référence immobile.",
+          "Vérifier <, branches, absence de durée moteur et aides OFF.",
+          "Reprendre la recette professeur avant de proposer d’autres seuils."
+        ]
+      },
+      {
+        "symptom": "Le résultat change en remplaçant 20 par seuil",
+        "helps": [
+          "Comparer la valeur initiale à l’ancien nombre.",
+          "Vérifier l’affectation avant la répétition.",
+          "Montrer seuil à droite et la mesure à gauche, dans la seconde boucle après l’attente de A.",
+          "Comparer départs et autres réglages avant d’attribuer l’écart à la variable."
+        ]
+      },
+      {
+        "symptom": "La nouvelle valeur n’a pas d’effet",
+        "helps": [
+          "Montrer le bloc modifié.",
+          "Vérifier que la comparaison utilise réellement seuil.",
+          "Relancer après changement de l’initialisation.",
+          "Comparer une même scène valide et non un départ déjà proche."
+        ]
+      },
+      {
+        "symptom": "Des mouvements inattendus apparaissent",
+        "helps": [
+          "Arrêter avant intervention.",
+          "Chercher un ancien trajet ou un événement A/B moteur.",
+          "Vérifier trois aides OFF et un seul contrôleur.",
+          "Repartir d’une copie du départ fourni plutôt que modifier plusieurs programmes."
+        ]
+      }
+    ],
+    "notes": "Pas de recul, évitement, ligne, radio, vitesse variable ou arrêt mémorisé. Retour à une mesure éloignée dans la même exécution facultatif après recette ; jamais déplacer un robot en mouvement. Les pages RB09/RB10 sont intégrées en préparation ; leurs scènes restent à valider. Si l’essai de changement du seuil est reporté, utiliser la reprise ciblée de RB09 avant le choix personnel.",
+    "quickConductor": [
+      "Importer le départ immobile et lire la préparation fournie.",
+      "Prévoir puis construire les deux branches fixes.",
+      "Observer l’approche sans relance et la scène proche après recette.",
+      "Préserver fixe ; introduire seuil puis comparer à valeur identique.",
+      "Changer une seule valeur avec aide si possible ; expliquer et exporter les deux copies."
+    ],
+    "references": [
+      {
+        "title": "Départ RB08 sans décision (.hex)",
+        "url": "resources/robotique/makecode/RB08-Mon-obstacle-depart.hex"
+      },
+      {
+        "title": "Référence professeur : limite fixe (.hex)",
+        "url": "resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"
+      },
+      {
+        "title": "Référence professeur : seuil (.hex)",
+        "url": "resources/robotique/makecode/RB08-Robot-prudent-reference.hex"
+      },
+      {
+        "title": "Recette et réserves RB07/RB08",
+        "url": "docs/integration-robotique-capteurs.md"
+      },
+      {
+        "title": "Extension Microsoft microbit-robot",
+        "url": "https://makecode.microbit.org/pkg/microsoft/microbit-robot"
+      }
+    ]
+  }
+}

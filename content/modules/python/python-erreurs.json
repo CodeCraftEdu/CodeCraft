@@ -1,0 +1,284 @@
+{
+  "domainId": "python",
+  "title": "Comprendre et corriger une erreur",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Lire un message d’erreur et vérifier une correction ciblée.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.debugging"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Enregistrer et relancer le fichier entier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Lire les sorties de print."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Distinguer un nom de variable et sa valeur."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Répondre dans la console."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Prévoir un calcul simple."
+    },
+    {
+      "skillId": "python.conversion",
+      "expectation": "Convertir une réponse entière ; sinon reprendre Nombres et calculs."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir relancer un fichier, utiliser une variable, prévoir une addition et convertir une réponse entière. Sinon, reprends Nombres et calculs. Les exemples incorrects sont volontaires : utilise un fichier distinct pour chacun, sans effacer tes programmes précédents.",
+      "moduleLink": {
+        "moduleId": "python-calculs",
+        "text": "Revoir nombres et calculs"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Lire avant de modifier",
+      "paragraphs": [
+        "Crée diagnostic_nom.py pour ce premier exemple. Ce modèle est volontairement incorrect : la dernière ligne devrait afficher 7, mais le nom utilisé ne correspond pas au nom défini. Exécute-le pour observer le message.",
+        "Dans la console, lis la dernière ligne du message : NameError indique qu’un nom n’est pas défini. Repère ensuite le numéro de ligne et le nom du fichier signalés, puis regarde cette ligne dans l’éditeur. Le numéro dépend de ton propre fichier.",
+        "La ligne signalée indique où Python a rencontré le problème ; sa cause peut être plus haut. Compare les noms, corrige seulement celui qui est incohérent, puis relance le fichier entier. Ne recopie pas le message d’erreur dans l’éditeur."
+      ],
+      "code": "points = 5\nbonus = 2\nprint(point + bonus)"
+    },
+    {
+      "type": "lesson",
+      "id": "syntaxe",
+      "title": "2 - Une instruction impossible à lire",
+      "paragraphs": [
+        "Enregistre ton premier essai, puis crée diagnostic_syntaxe.py. Ce modèle incorrect produit une SyntaxError : il manque un guillemet fermant. Python ne peut pas lire l’instruction et n’exécute pas le fichier.",
+        "Regarde les guillemets et les parenthèses par paires. L’indicateur dans le message aide à chercher, mais ne promet pas de pointer exactement le caractère manquant. Corrige une cause et reteste."
+      ],
+      "code": "print(\"Bonjour !)"
+    },
+    {
+      "type": "lesson",
+      "id": "conversion",
+      "title": "3 - Une valeur non convertible",
+      "paragraphs": [
+        "Enregistre tes essais et crée diagnostic_conversion.py. Ce modèle est correct pour une réponse entière. Essaie 5, puis relance avec cinq : la conversion produit une ValueError. Le texte fourni ne représente pas l’entier attendu.",
+        "Avec cette entrée invalide, la ligne après int n’est pas exécutée. Pour vérifier le diagnostic, relance avec 5 : le résultat doit être 7. Les mots exacts du message peuvent varier selon la version de Python.",
+        "Lire l’erreur n’est pas la gérer : ce programme s’arrête toujours pour une mauvaise entrée. Nous n’ajoutons pas encore de nouvelle tentative ni de try/except."
+      ],
+      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)\nprint(points + 2)"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - une cause à la fois",
+      "items": [
+        {
+          "id": "nom-incoherent",
+          "text": "Dans diagnostic_nom.py, teste le modèle NameError, repère la ligne et corrige le nom. Vérifie que le résultat devient 7.",
+          "hint": "points est défini, point ne l’est pas. La correction ne demande pas de nouvelle variable."
+        },
+        {
+          "id": "guillemet-manquant",
+          "text": "Dans diagnostic_syntaxe.py, corrige le modèle SyntaxError. Explique ce qui manquait et vérifie le message Bonjour !.",
+          "hint": "Le texte doit se terminer par un guillemet avant la parenthèse fermante."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "resultat",
+      "title": "4 - Sans message d’erreur, mais faux",
+      "paragraphs": [
+        "Crée diagnostic_resultat.py et garde tes essais précédents. L’objectif est d’ajouter un bonus de 2 aux 5 points, donc d’afficher 7. Le signe - soustrait : ce modèle fait une soustraction au lieu de l’addition demandée. Prévois le résultat puis corrige le signe.",
+        "Une exécution sans erreur n’est pas une preuve de réussite. Compare toujours la sortie au résultat attendu, puis teste une autre valeur après la correction."
+      ],
+      "code": "points = 5\nbonus = 2\nprint(points - bonus)"
+    },
+    {
+      "type": "lesson",
+      "id": "mission",
+      "title": "Un programme à diagnostiquer",
+      "paragraphs": [
+        "Dans correction.py, l’objectif est d’ajouter 3 à 10, puis d’afficher la valeur de message. Ce modèle contient volontairement deux défauts. Prédis ce qui devrait s’afficher selon l’objectif avant de le tester."
+      ],
+      "code": "print(10 - 3)\nmessage = \"Bonjour\"\nprint(mesage)"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - retrouver l’intention",
+      "intro": "Crée correction.py pour le modèle à diagnostiquer. Conserve les fichiers des exemples guidés ; essaie avant les indices.",
+      "items": [
+        {
+          "id": "deux-defauts",
+          "text": "Saisis les trois lignes du modèle à diagnostiquer. Annonce les résultats attendus selon l’objectif, puis exécute le fichier.",
+          "hint": "Selon la consigne, tu attends 13 puis Bonjour. Compare ces attentes à la sortie et au message d’erreur."
+        },
+        {
+          "id": "diagnostic-correction",
+          "text": "Repère le message d’erreur et corrige sa cause. Compare ensuite la première sortie à l’objectif et corrige l’autre défaut. Relance après chaque changement.",
+          "hint": "Compare le nom défini au nom utilisé, puis vérifie si le calcul ajoute réellement 3."
+        },
+        {
+          "id": "retour-test",
+          "text": "Remplace 10 par 4, prédis le nouveau résultat et vérifie-le. Explique pourquoi le premier calcul faux n’a pas produit de message d’erreur.",
+          "hint": "Une soustraction est une instruction valide même lorsqu’elle ne correspond pas à l’objectif."
+        },
+        {
+          "id": "diagnostic-saisie",
+          "text": "Rouvre diagnostic_conversion.py. Choisis une réponse qui fait échouer ce programme et une autre qui le fait réussir. Avant les essais, prédis ce qui se passera ; puis explique la ligne concernée, la cause et le résultat de l’essai réussi.",
+          "hint": "Observe le format demandé par la question et le rôle de chaque ligne. Relance pour chaque réponse ; lire une erreur ne signifie pas l’intercepter."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - expliquer une correction",
+      "items": [
+        {
+          "id": "journal",
+          "text": "Sur un exemple déjà testé, note le résultat attendu, le symptôme, la cause, la correction et un test qui la vérifie. Explique-les sans ouvrir l’indice.",
+          "hint": "Distingue le nom de l’erreur et sa cause précise dans ce programme. Une correction doit être suivie d’un nouvel essai."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Repérer le fichier, la ligne et la catégorie d’une erreur sans recopier le message.",
+    "Relier NameError, SyntaxError et ValueError à une cause précise sur les exemples enseignés.",
+    "Corriger une cause à la fois puis relancer un test pertinent.",
+    "Détecter un résultat faux même sans exception et expliquer la correction."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-erreurs",
+      "blockId": "guide",
+      "label": "Revoir noms et syntaxe"
+    },
+    {
+      "moduleId": "python-erreurs",
+      "blockId": "conversion",
+      "label": "Revoir une saisie non convertible"
+    },
+    {
+      "moduleId": "python-calculs",
+      "blockId": "conversion",
+      "label": "Revoir le format entier"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-erreurs",
+      "blockId": "bonus",
+      "label": "Expliquer une correction"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-conditions",
+      "label": "Faire un choix",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.debugging",
+          "expectation": "Lire une erreur et vérifier la correction ; sinon reprendre les diagnostics."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Installer une méthode de diagnostic, sans confondre correction du code et gestion d’une entrée invalide.",
+    "entryDiagnosis": [
+      "Faire prévoir 5 + 2 et expliquer int sur la réponse 5.",
+      "Vérifier que l’élève relance le bon fichier après modification."
+    ],
+    "preparation": [
+      "Prévoir diagnostic_nom.py, diagnostic_syntaxe.py, diagnostic_conversion.py et diagnostic_resultat.py pour conserver les exemples séparément, puis correction.py pour l’autonomie.",
+      "Tester les trois catégories d’erreur ; le numéro de ligne dépend du fichier réel.",
+      "Prévoir un calcul valide mais contraire à l’objectif ; ne pas introduire try/except."
+    ],
+    "why": "Une erreur est une information à relier à une intention, pas un signal pour réécrire tout le programme.",
+    "discoverySpeech": [
+      "« Qu’espérais-tu lire ? Qu’as-tu réellement obtenu ? »",
+      "« Lis la dernière ligne puis retrouve la ligne du fichier signalée. »",
+      "« Change une cause, relance et vérifie : un résultat sans exception peut rester faux. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-erreurs",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Le modèle échoue volontairement sur point ; la variable définie est points.",
+        "Après correction, le résultat attendu est 7.",
+        "Faire décrire la cause avant de fournir une correction ; la ligne signalée est un point de départ."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Une SyntaxError et une NameError arrivent-elles au même moment ?",
+        "answer": "Une erreur de syntaxe empêche la lecture du fichier ; une NameError apparaît lorsque l’exécution utilise un nom non défini."
+      },
+      {
+        "question": "Faut-il modifier int si cinq provoque ValueError ?",
+        "answer": "Pas pour ce modèle qui demande un entier en chiffres. Tester 5 vérifie le diagnostic ; accepter les mots demanderait un autre traitement."
+      },
+      {
+        "question": "L’absence d’erreur prouve-t-elle que le résultat est bon ?",
+        "answer": "Non : il faut comparer la sortie à l’objectif et à une prédiction."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-erreurs",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-erreurs",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Commencer par un nom incohérent avant de comparer les catégories.",
+      "Aider à lire le message sans dicter la correction.",
+      "Demander une nouvelle valeur de test et une explication sans indice."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’élève change plusieurs lignes au hasard.",
+        "helps": [
+          "Demander le résultat attendu.",
+          "Faire lire la dernière ligne et retrouver le fichier signalé.",
+          "Isoler une cause et formuler une correction avant de la saisir.",
+          "Tester cette seule correction puis comparer la sortie à l’objectif."
+        ]
+      }
+    ],
+    "notes": "Évaluer la démarche et le transfert, pas la mémorisation de messages exacts. Une erreur d’exécution peut survenir après des sorties déjà produites. La robustesse des entrées reste pour plus tard.",
+    "quickConductor": [
+      "Faire prévoir la sortie.",
+      "Lire et corriger un nom.",
+      "Comparer syntaxe et conversion dans des fichiers distincts.",
+      "Chercher un résultat faux sans exception.",
+      "Corriger deux défauts successifs puis faire choisir et expliquer un essai de saisie invalide et un essai valide sans dicter la cause."
+    ],
+    "references": [
+      {
+        "title": "Python - erreurs et exceptions",
+        "url": "https://docs.python.org/fr/3/tutorial/errors.html"
+      }
+    ]
+  }
+}

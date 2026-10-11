@@ -348,7 +348,7 @@
     return true;
   }
   function deleteStudent(doc, studentId, currentClassId = '') {
-    const student = find(doc.students, studentId, 'Élève');
+    find(doc.students, studentId, 'Élève');
     if (currentClassId) find(doc.classes, currentClassId, 'Classe');
     const blockingMemberships = doc.memberships.filter(item =>
       item.studentId === studentId && item.classId !== currentClassId

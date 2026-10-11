@@ -1,0 +1,253 @@
+{
+  "domainId": "jeux-video",
+  "title": "Déplacer mon personnage",
+  "type": "lesson",
+  "theme": "fondations",
+  "showTool": false,
+  "objective": "Piloter ton personnage avec les flèches et choisir une vitesse adaptée à ton trajet.",
+  "skillIds": [
+    "gdevelop.movement"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "gdevelop.workspace",
+      "expectation": "Retrouver le personnage, essayer la scène et enregistrer son projet."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Rouvre le projet de Mon premier projet GDevelop, avec Personnage visible, et enregistre. Place son départ loin des bords. Un comportement est un fonctionnement fourni par GDevelop : tu vas l’ajouter au personnage, sans écrire encore tes propres événements. Si tu as déjà ajouté des jetons ou un message, garde-les ; nous ne changeons que Personnage."
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Donner des commandes au personnage",
+      "paragraphs": [
+        "Ouvre l’éditeur de l’objet Personnage, puis sa partie comportements. Ajoute le comportement de déplacement vu du dessus (Top-Down Movement). Le professeur peut t’aider à retrouver ce choix si les libellés diffèrent ; n’ajoute pas un déplacement de plateformes ou un moteur physique.",
+        "Garde les contrôles standards aux flèches et désactive la rotation de l’objet pour que son image reste droite. Avec une aide si nécessaire, désactive aussi les diagonales : nous essayons d’abord une direction à la fois. Laisse les autres paramètres au réglage de départ accompagné ; tu n’as pas à apprendre toute la liste avant de jouer.",
+        "Prévois ce qui se passera si tu maintiens la flèche droite puis la relâches. Lance un aperçu neuf, clique dedans pour lui donner le clavier, fais un court trajet à droite puis reviens à gauche. Essaie ensuite haut et bas séparément, en relâchant entre les essais. Laisse le personnage s’arrêter avant de repartir ; ne l’amène pas au bord.",
+        "Montre où le comportement est ajouté. Les flèches fonctionnent grâce au pilotage qu’il fournit, même si tu n’as ajouté aucun événement de déplacement. Ce n’est pas la même chose que déplacer le personnage à la souris dans l’éditeur : ici, tu le pilotes pendant l’aperçu."
+      ],
+      "illustration": {
+        "src": "images/gdevelop-deplacement.svg",
+        "alt": "L’objet Personnage reçoit un comportement de déplacement fourni qui utilise les quatre flèches. Dans l’aperçu, les flèches pilotent le personnage ; dans l’éditeur, on choisit sa place de départ.",
+        "caption": "Schéma, pas une capture de GDevelop. Le comportement fournit le pilotage ; nous n’écrivons pas encore les événements de déplacement."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "vitesse",
+      "title": "2 - Une vitesse qui te convient",
+      "paragraphs": [
+        "Ferme l’aperçu et retrouve la vitesse maximale dans le comportement de Personnage. C’est une limite de rapidité, pas une position. Le départ et l’arrêt peuvent être progressifs : pour cette leçon, garde les réglages d’accélération et de décélération accompagnés, sans les changer pendant la comparaison.",
+        "Avec le professeur, essaie deux vitesses positives sur le même petit trajet horizontal, depuis le même départ central. 120 puis 240 sont des valeurs de départ à confirmer dans votre version, pas des valeurs à recopier obligatoirement. Avant le second essai, prévois ce qui changera : ne modifie que la vitesse maximale, puis relance un aperçu neuf.",
+        "Compare ce que tu observes et essaie de t’arrêter près de la même zone. Plus rapide peut faciliter l’exploration ; moins rapide peut faciliter la précision. Si tu ne vois aucune différence, demande une aide pour choisir deux réglages comparables : n’invente pas un résultat. Doubler une limite ne veut pas dire que chaque petit trajet sera immédiatement deux fois plus rapide.",
+        "Un aperçu neuf repart du placement préparé dans la scène. Si le personnage est sorti de l’écran, ferme l’aperçu et relance depuis un départ central avec des essais plus courts. Nous n’avons pas encore construit de murs qui le bloquent."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Adaptation guidée - viser plus facilement",
+      "items": [
+        {
+          "id": "gd04-reglage",
+          "text": "Avec le réglage rapide essayé, tu voudrais explorer une conduite plus lente pour viser un endroit. Garde les mêmes commandes et la même orientation. Trouve le réglage à modifier, prévois son effet, puis essaie ton choix.",
+          "hint": "Cherche ce qui influence la rapidité : la vitesse maximale vue dans l’exemple. Choisis une valeur positive plus basse ; ne change ni l’angle, ni l’accélération, ni la place de départ."
+        },
+        {
+          "id": "gd04-verifier",
+          "text": "Repars du même placement et vise le même endroit. Explique la différence réellement observée. Conserve ton réglage ou ajuste-le puis reteste, et enregistre ton choix.",
+          "hint": "Un seul paramètre change à la fois. Tu n’as pas à revenir à une valeur prescrite : indique quel réglage t’aide et ce que tu as vérifié."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - un aller et un retour",
+      "intro": "La scène peut rester vide : aucune cible à créer, aucun décor ni coordonnées à calculer. Choisis une zone à l’œil ou indique-la sur un croquis.",
+      "items": [
+        {
+          "id": "gd04-trajet",
+          "text": "Place le départ au centre dans l’éditeur. Choisis une zone loin des bords, par exemple un peu plus haut et à droite. Annonce un trajet avec un changement de direction, rejoins la zone puis reviens près du centre. Relâche les flèches pour t’arrêter à l’aller et au retour.",
+          "hint": "Une direction à la fois suffit : tu peux aller à droite puis en haut, et revenir par le trajet inverse. Vise une zone, pas un pixel exact ; relance un aperçu neuf si tu sors du cadre."
+        },
+        {
+          "id": "gd04-choix",
+          "text": "Choisis une vitesse adaptée à ton trajet et explique pourquoi. Si elle ne te convient pas, change seulement ce réglage et reteste. Enregistre, ferme puis rouvre le projet une fois : vérifie que les flèches et ta vitesse sont conservées.",
+          "hint": "Garde jeu.json et images ensemble. L’aperçu ne sauvegarde pas la dernière position jouée comme nouveau départ : tu retrouves le placement de la scène et les réglages enregistrés."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - essayer les diagonales",
+      "items": [
+        {
+          "id": "gd04-diagonales",
+          "text": "Sur une copie complète de ton dossier, active les diagonales dans le comportement, sans changer la rotation ni la vitesse. Essaie deux flèches voisines ensemble. Compare à la version à quatre directions et explique laquelle tu choisirais ; garde l’original intact.",
+          "hint": "Droite et haut ensemble permettent d’essayer une diagonale. Compare les deux versions avant de conclure : ne change qu’une option, sans ajouter de touches personnalisées ni d’événement."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Retrouver le comportement qui pilote Personnage avec les flèches.",
+    "Tester les directions et expliquer ce qui se passe quand on relâche.",
+    "Changer seulement la vitesse maximale, prévoir puis expliquer son choix après essai.",
+    "Retrouver le déplacement choisi dans son projet enregistré."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "gdevelop-deplacement",
+      "blockId": "guide",
+      "label": "Adapter une vitesse et retester"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "gdevelop-deplacement",
+      "blockId": "bonus",
+      "label": "Comparer quatre et huit directions"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "gdevelop-objets",
+      "label": "Placer mes personnages et mes objets",
+      "prerequisiteSkills": [
+        {
+          "skillId": "gdevelop.workspace",
+          "expectation": "Retrouver son projet et essayer la scène ; le déplacement reste un contexte, pas un prérequis pour distinguer les instances."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Obtenir tôt un personnage pilotable, distinguer comportement fourni et événements écrits, puis faire adapter une vitesse avec prévision et vérification.",
+    "entryDiagnosis": [
+      "Faire retrouver le personnage de GD01 et montrer scène/aperçu. Aider aux fichiers si nécessaire ; aucun événement, X/Y ou instances multiples requis.",
+      "Si l’élève a déjà GD02/GD03, conserver ses jetons et son message. Le comportement doit être ajouté uniquement à Personnage."
+    ],
+    "preparation": [
+      "Recette GDevelop non effectuée : relever version, menus français, noms des options et valeurs de départ. Aucun test CodeCraft ne valide le déplacement moteur.",
+      "Reprendre le projet GD01 et le kit existant, un personnage visible au centre, caméra fixe. 800 × 450 est un cadre conseillé, pas un prérequis ; pas de JSON préfabriqué non testé.",
+      "Préparer/accompagner les réglages de référence : flèches standards actives, rotation et diagonales désactivées, accélération/décélération positives permettant une conduite accessible. Ces deux derniers paramètres ne sont pas des acquis exigés.",
+      "Avant publication comme cours prêt à utiliser, tester deux vitesses sur le même trajet et depuis le même départ, autres paramètres constants. 120/240 sont provisoires. Relever cadre, valeurs et observations ; si la différence n’est pas perceptible sans sortir de l’écran, ajuster la référence puis refaire les deux essais.",
+      "Vérifier aperçu neuf, relâchement/arrêt, sauvegarde/réouverture, copie du bonus et maintien des règles GD03 si elles existent. Installation du moteur ou compte : accord distinct, pas implicite."
+    ],
+    "why": "Le projet et l’aperçu de GD01 suffisent pour apprendre ce pilotage fourni. Le résultat jouable donne ensuite un contexte aux objets de GD02 et aux règles de GD03 ; aucune supériorité universelle de cet ordre n’est revendiquée.",
+    "discoverySpeech": [
+      "Nous retrouvons ton personnage. Un comportement fourni par GDevelop sait lire les flèches et le déplacer : nous allons l’ajouter, pas le laisser caché dans une démonstration.",
+      "Prévois le résultat de droite puis du relâchement. Essayons avant de parcourir tous les réglages. Tu pilotes dans l’aperçu ; déplacer à la souris dans l’éditeur choisit seulement le départ.",
+      "Une vitesse plus grande est-elle toujours plus facile ? Comparons un seul réglage sur le même trajet, puis choisis celui qui te convient et explique ton essai."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "gdevelop-deplacement",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Ajouter le comportement sur le personnage initial immobile. Accompagner quatre directions sans rotation ; obtenir un résultat pilotable avant les paramètres détaillés.",
+        "Vitesse comparée ensuite dans le bloc Une vitesse qui te convient : mêmes départ/trajet, une seule valeur modifiée. Ne pas transformer accélération/décélération en cours de physique.",
+        "L’adaptation guidée n’est pas un modèle partiel : le modèle fonctionne, l’élève choisit un changement. Ne pas refaire la démonstration intégrale ni inventer une difficulté de précision si elle n’est pas observée."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi les flèches fonctionnent-elles sans événements de déplacement ajoutés ?",
+        "answer": "Le comportement fournit ce pilotage. Faire montrer où il est attaché ; cela ne signifie pas qu’aucune logique ne tourne dans le moteur."
+      },
+      {
+        "question": "Changer la vitesse maximale change-t-il le départ ?",
+        "answer": "Non, le départ est le placement préparé dans l’éditeur. Comparer avec un aperçu neuf depuis le même placement."
+      },
+      {
+        "question": "Que se passe-t-il quand tu relâches ?",
+        "answer": "Observer le ralentissement puis l’arrêt selon les réglages. Ne pas exiger la réponse instantanément si le personnage glisse un peu."
+      },
+      {
+        "question": "Comment sais-tu que ta nouvelle vitesse convient ?",
+        "answer": "L’élève montre un trajet comparable, explique l’effet observé et sa décision. Une valeur recopiée seule ne prouve pas le choix."
+      },
+      {
+        "question": "Le bord de l’écran bloque-t-il déjà le personnage ?",
+        "answer": "Non : aucun mur ou confinement n’a été enseigné. Fermer/relancer permet de repartir ; les murs seront étudiés plus tard."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "gdevelop-deplacement",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "gdevelop-deplacement",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Reprendre droite/gauche, puis haut/bas. Proposer deux valeurs testées et accompagner la recherche du champ ; garder prévision, décision et explication à l’élève.",
+      "La mission part du centre, vise une zone à l’œil puis revient avec un changement de direction. Aucun nouvel objet, décor, pixel exact ou temps record requis.",
+      "Élève rapide : bonus diagonales sur copie, pas collisions, nouvelles touches ou caméra introduites discrètement."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les flèches ne font rien",
+        "helps": [
+          "Demander quelle fenêtre reçoit le clavier et quel résultat est attendu.",
+          "Cliquer dans l’aperçu, essayer une flèche et comparer scène/aperçu.",
+          "Vérifier que le comportement est sur Personnage et que les contrôles standards sont actifs.",
+          "Contrôler les valeurs positives avec aide puis relancer un aperçu neuf ; ne pas ajouter des événements pour masquer le problème."
+        ]
+      },
+      {
+        "symptom": "L’image tourne ou le personnage glisse",
+        "helps": [
+          "Faire distinguer orientation de l’image et mouvement observé.",
+          "Chercher l’option de rotation et la désactiver, puis retester.",
+          "Observer après relâchement : une décélération peut produire un arrêt progressif, pas une panne.",
+          "Si la conduite est impraticable, ajuster les paramètres de référence avec le professeur et les relever ; ne pas imposer ces nouveaux paramètres comme acquis GD04."
+        ]
+      },
+      {
+        "symptom": "Le personnage sort du cadre",
+        "helps": [
+          "Demander où se trouvait le départ et combien de temps la flèche a été maintenue.",
+          "Fermer l’aperçu et repartir d’un placement central.",
+          "Faire des trajets plus courts ou choisir une vitesse moindre, en changeant une seule chose par essai.",
+          "Faire aller à une zone proche et revenir ; ne pas ajouter de mur, confinement ou caméra cachés pour réussir GD04."
+        ]
+      },
+      {
+        "symptom": "La comparaison de vitesse ne montre rien",
+        "helps": [
+          "Demander ce qui était attendu et ce qui a réellement été observé.",
+          "Reprendre les mêmes départ et trajet dans deux aperçus neufs.",
+          "Vérifier que seule la vitesse maximale change et que l’élève observe le bon personnage.",
+          "Si la différence reste peu visible, revoir la référence technique puis refaire les deux essais ; ne pas demander de réciter plus rapide sans observation."
+        ]
+      }
+    ],
+    "notes": "Suivi manuel et aides relevées séparément : pointer le comportement, prévoir, adapter puis expliquer le trajet. Une case cochée ou une capture du site ne valide ni le moteur ni un acquis. La recette moteur reste en attente. Garder source et images ; aucune reconstruction complète ou répétition de sauvegardes pour remplir la leçon.",
+    "quickConductor": [
+      "Retrouver le projet et accompagner l’ajout du comportement.",
+      "Prévoir puis piloter quatre directions avant les paramètres détaillés.",
+      "Comparer deux vitesses testées, adapter un réglage et expliquer le résultat.",
+      "Choisir centre → zone → centre, retester le choix et vérifier une réouverture."
+    ],
+    "references": [
+      {
+        "title": "GDevelop : comportement de déplacement vu du dessus",
+        "url": "https://wiki.gdevelop.io/gdevelop5/behaviors/topdown/"
+      },
+      {
+        "title": "GDevelop : aperçu",
+        "url": "https://wiki.gdevelop.io/gdevelop5/interface/preview/"
+      }
+    ]
+  }
+}

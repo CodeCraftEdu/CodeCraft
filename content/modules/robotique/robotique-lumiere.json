@@ -1,0 +1,194 @@
+{
+  "domainId": "robotique",
+  "title": "Ma première lumière",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir le circuit de départ",
+    "url": "https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"
+  },
+  "objective": "Découvrir comment un programme peut éteindre et allumer une petite lumière à l’écran.",
+  "skillIds": [
+    "robotique.circuit",
+    "robotique.sortie"
+  ],
+  "prerequisiteSkills": [],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Ta première mission : allumer une petite lumière",
+      "text": "Avant de piloter un robot, tu vas découvrir comment un programme commande une lumière. Tout se passe sur l’écran : tu n’as rien à acheter ni à brancher. Nous utiliserons Tinkercad, un atelier virtuel où tu peux essayer un circuit électrique. Un circuit, c’est un ensemble de composants reliés pour laisser passer le courant. Ouvre l’atelier avec le lien ci-dessous pour découvrir le montage."
+    },
+    {
+      "type": "lesson",
+      "id": "atelier",
+      "title": "Préparer ton atelier",
+      "paragraphs": [
+        "Le lien ouvre Tinkercad dans un autre onglet. Garde cette page de cours ouverte pour retrouver les consignes. Si une connexion est demandée, appelle ton enseignant : il t’aide à utiliser l’accès prévu pour toi.",
+        "Le montage proposé est un modèle. Pour travailler dessus sans le modifier pour les autres, crée ta propre copie : cherche Tinker this (ou Copier et modifier). Si tu ne trouves pas ce bouton ou si la copie ne fonctionne pas, demande à ton enseignant de t’aider.",
+        "Nomme ta copie Ma première lumière. Tu peux maintenant explorer le montage. Laisse la simulation arrêtée : nous regarderons d’abord les éléments et les fils avant de faire un essai."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "observer",
+      "title": "Découvrir le chemin de la lumière",
+      "paragraphs": [
+        "Cherche la petite lumière placée à côté de la grande carte. Elle s’appelle une LED : c’est elle que nous allons allumer, pas les petits voyants déjà présents sur la carte. La carte recevra notre programme et commandera cette lumière.",
+        "Repère les fils qui relient les éléments. Le petit composant placé sur le chemin s’appelle une résistance : il aide à protéger la LED en limitant le courant. Garde-le dans le montage.",
+        "Le circuit de départ est déjà complet. Simulation arrêtée, repère le 8 sur la carte et suis les connexions jusqu’à la résistance, puis à la LED. Continue de l’autre côté de la LED jusqu’à GND sur la carte : c’est le retour du circuit. Le dessin ci-dessous montre ce chemin, pas la disposition exacte des composants dans l’atelier.",
+        "Sans retirer de fil, imagine qu’une connexion manque sur ce chemin : le courant pourrait-il encore le parcourir ? Explique pourquoi les éléments doivent rester reliés. Pour cette première mission, ne change ni les fils, ni la résistance, ni le sens de la LED : tu vas agir uniquement sur le programme.",
+        "Un circuit qui ne s’allume pas n’est pas forcément une erreur de programme. Si tu as modifié le montage par accident, repars d’une nouvelle copie du circuit de départ plutôt que de changer plusieurs connexions au hasard."
+      ],
+      "illustration": {
+        "src": "images/robotique-lumiere-montage.svg",
+        "alt": "Schéma simplifié d’un chemin complet : sortie 8 de la carte, résistance de 220 ohms, LED puis retour à GND sur la carte. Les positions ne représentent pas les vraies bornes.",
+        "caption": "Suis le chemin : sortie 8 → résistance → LED → GND. Ce schéma explique les connexions, pas la disposition exacte du montage. Garde le sens de la LED et les fils du circuit de départ."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "commander",
+      "title": "Donner une commande à la lumière",
+      "paragraphs": [
+        "Le montage a été vérifié ? Ouvre maintenant le panneau Code. C’est là que se trouve le programme. Garde le mode Blocks : les instructions y sont représentées par des blocs à assembler, comme des pièces de puzzle. Si tu ne vois pas les blocs, demande à ton enseignant de t’aider à retrouver ce mode.",
+        "La carte peut envoyer une commande à la sortie reliée à la LED externe. Dans notre modèle, c’est la sortie 8. Montre-la sur le circuit et retrouve le 8 dans le bloc set pin 8 to LOW, placé dans on start (au démarrage).",
+        "LOW correspond ici à Éteindre. Prévois ce qui se passe, puis lance la simulation : elle fait fonctionner le circuit virtuel pour que tu puisses observer le résultat. Regarde la LED externe. Arrête la simulation, remplace seulement LOW par HIGH (Allumer) et essaie de nouveau. Ne retire ni la résistance ni les fils pour obtenir le changement.",
+        "Une LED déjà allumée ne prouve pas que ta commande fonctionne : compare les deux états sur le même montage. Si rien ne change, vérifie d’abord quelle lumière tu regardes, puis demande de l’aide pour comparer la sortie du programme aux connexions."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - prévoir et vérifier",
+      "items": [
+        {
+          "id": "rb01-reperer",
+          "text": "Repère la LED externe et la résistance. Simulation arrêtée, suis le chemin de la sortie 8 jusqu’à GND et explique ce qui se passerait si une connexion manquait, sans retirer de fil.",
+          "hint": "Suis les connexions : sortie 8, résistance, LED, puis retour à GND. Une connexion manquante interrompt ce chemin. Conserve le montage de départ complet."
+        },
+        {
+          "id": "rb01-deux-etats",
+          "text": "Sur le même circuit, prévois puis teste Éteindre et Allumer. Montre la commande changée et l’effet observé sur la LED externe.",
+          "hint": "Arrête la simulation avant de modifier. Vérifie que le programme commande la sortie réellement reliée à cette LED, puis relance."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - prouver que la commande agit",
+      "items": [
+        {
+          "id": "rb01-preuve",
+          "text": "Sans changer les fils, choisis un état à obtenir, annonce-le, modifie la commande et teste. Montre ensuite comment obtenir l’autre état et explique pourquoi la LED change.",
+          "hint": "Ne change qu’une chose à la fois : la commande de la sortie. Compare ce que tu as prévu et ce que tu observes."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Je reconnais la LED externe, la résistance et un chemin complet.",
+    "Je suis les connexions de la sortie 8 à GND et explique pourquoi le chemin doit rester complet.",
+    "Je montre la même sortie sur le montage et dans la commande préparée.",
+    "Je prévois puis vérifie deux états différents sans changer le montage de départ."
+  ],
+  "teacherGuide": {
+    "objective": "Faire suivre et expliquer le chemin du circuit complet, puis distinguer montage et commande par deux états sur une LED externe protégée par une résistance. La fiche élève ne demande pas de modifier le câblage.",
+    "entryDiagnosis": [
+      "Aucune expérience préalable en électronique ou avec Scratch n’est exigée. Faire montrer un objet, suivre un fil et formuler une prévision simple.",
+      "Distinguer une difficulté de manipulation de souris d’une difficulté à expliquer le circuit."
+    ],
+    "preparation": [
+      "Circuit de départ créé et essayé le 8 octobre 2026 sur le compte professeur : Arduino Uno R3, sortie D8, résistance 220 Ω en série, LED externe rouge, retour GND. Le partage par lien est activé, sans référencement dans la galerie publique. La création et la reprise d’une copie depuis un compte élève restent à vérifier dans le contexte réel.",
+      "Dans Blocks, on start contient seulement set pin 8 to LOW. Essais séparés vérifiés sur le même câblage : LOW laisse la LED éteinte ; HIGH l’allume. Arrêter la simulation avant chaque changement puis relancer. Le modèle est sauvegardé sur LOW, sans attente ni clignotement.",
+      "Préparer une copie de démonstration pour l’essai du fil manquant. Dans la copie personnelle de l’élève, simulation arrêtée, repérer et noter les deux bornes d’une seule connexion sur le montage complet, puis l’ouvrir pour la remise accompagnée. Garder résistance, polarité et autres fils ; vérifier avant relance. Cette nouvelle manipulation et la création/reprise avec l’accès élève réel restent à vérifier selon R01. Le départ partagé reste complet ; ne pas donner un lien d’invitation à modifier l’original.",
+      "Cette leçon est indépendante d’un calendrier de stage. Le conducteur KidnKod en cinq séances reste dans les documents de préparation, pas dans la fiche élève."
+    ],
+    "why": "Une commande n’a de sens que si l’élève peut relier le programme à un effet visible et distinguer une panne de circuit d’un choix de commande.",
+    "discoverySpeech": [
+      "Voici une lumière et son chemin. Suis les connexions de la sortie 8 à GND. Si un fil manquait, que prévois-tu ? Garde le montage complet pour essayer les commandes.",
+      "Quelle lumière regardons-nous ? Montre la LED externe et la sortie qui la commande.",
+      "Prévois Éteindre puis Allumer sur le même montage. Qu’est-ce qui change dans le programme, et qu’est-ce qui ne change pas dans les fils ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-lumiere",
+        "blockId": "commander"
+      },
+      "comments": [
+        "Montrer les deux états sur la même LED externe ; ne pas s’appuyer sur le voyant intégré à la carte.",
+        "Arrêter la simulation avant une modification. Vérifier le câblage et les commandes dans l’outil réel avant la séance.",
+        "La découverte du clignotement, des durées et de la répétition appartient au module suivant, pas à cette première preuve de commande."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi garder la résistance ?",
+        "answer": "Elle aide à limiter le courant et à protéger le montage ; ce n’est pas un réglage de durée."
+      },
+      {
+        "question": "Une LED allumée prouve-t-elle que notre commande fonctionne ?",
+        "answer": "Non. Il faut observer deux états différents obtenus par la commande sur le même circuit."
+      },
+      {
+        "question": "Pourquoi rien ne change malgré le programme ?",
+        "answer": "La sortie commandée peut ne pas correspondre à celle reliée à la LED, ou le chemin peut être incomplet. On vérifie progressivement."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-lumiere",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-lumiere",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Si la manipulation bloque, préparer le circuit et accompagner le clic ; laisser à l’élève la prévision et l’explication.",
+      "Si l’élève est à l’aise, lui demander d’anticiper l’état avant chaque relance, sans introduire déjà les attentes."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La LED externe ne change pas d’état",
+        "helps": [
+          "Faire identifier précisément la lumière observée.",
+          "Comparer sortie de la commande et sortie câblée.",
+          "Suivre le chemin et vérifier la résistance et la polarité sur le montage vérifié.",
+          "Revenir à la copie de départ plutôt que modifier plusieurs éléments à la fois."
+        ]
+      },
+      {
+        "symptom": "Le voyant de la carte change, pas la LED externe",
+        "helps": [
+          "Faire montrer les deux lumières.",
+          "Vérifier quel programme et quelle sortie commandent la LED externe.",
+          "Relancer avec le montage de départ validé."
+        ]
+      }
+    ],
+    "notes": "Le montage, les deux états fixes et les blocs de la première leçon ont été essayés sur le compte professeur. Le départ est partagé par lien et rattaché à la page élève ; la copie et sa reprise avec un accès élève restent à vérifier. Le prototype de clignotement reste privé et constitue une référence distincte pour la suite. Voir docs/recette-tinkercad-premiere-lumiere.md pour les limites de la vérification.",
+    "quickConductor": [
+      "Repérer la LED externe et la résistance sur le circuit complet.",
+      "Simulation arrêtée, suivre les connexions de la sortie 8 à GND et prévoir l’effet d’un fil manquant sans modifier le montage.",
+      "Associer sortie câblée et sortie commandée ; prévoir puis tester Éteindre et Allumer.",
+      "Faire expliquer le chemin et la preuve de commande avec aide graduée si besoin. L’ancienne manipulation du fil manquant reste une variante accompagnée facultative, pas un préalable à la fiche élève."
+    ],
+    "references": [
+      {
+        "title": "Départ Ma première lumière : à copier, accessible par lien",
+        "url": "https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"
+      },
+      {
+        "title": "Prototype professeur : clignotement 3 s / 3 s, privé",
+        "url": "https://www.tinkercad.com/things/kUxQEjpMKHl-codecraft-robotique-01-allumer-une-led"
+      },
+      {
+        "title": "Tinkercad : site officiel",
+        "url": "https://www.tinkercad.com/"
+      }
+    ]
+  }
+}

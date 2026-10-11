@@ -1,0 +1,471 @@
+{
+  "scratchProjectId": "chat-cible",
+  "domainId": "jeux-video",
+  "title": "Piloter un personnage",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.coordinates",
+    "scratch.keyboard",
+    "scratch.events"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Sélectionner le bon sprite et sauvegarder son projet."
+    },
+    {
+      "skillId": "scratch.events",
+      "expectation": "Expliquer ce qui déclenche une pile ; reprendre Déclencher et enchaîner des actions en cas d’hésitation."
+    },
+    {
+      "skillId": "scratch.sequence",
+      "expectation": "Lire une pile de haut en bas."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant de commencer",
+      "text": "Sauvegarde ton projet actuel, puis choisis Fichier → Nouveau et garde le chat. Tu conserves ton ancien travail et aucune ancienne commande ne perturbe cet essai. Tu peux aussi ouvrir la base facultative sans scripts proposée en haut. Si les événements et l’ordre des blocs sont encore difficiles, reprends Déclencher et enchaîner des actions.",
+      "moduleLink": {
+        "moduleId": "scratch-actions",
+        "text": "Déclencher et enchaîner des actions"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "position",
+      "title": "1 : Où est le personnage ?",
+      "paragraphs": [
+        "Sous la scène, sélectionne le chat. Les valeurs x et y indiquent sa position : x repère gauche/droite, y repère bas/haut. Au centre, x = 0 et y = 0.",
+        "Quand x augmente, le chat va à droite ; quand x diminue, il va à gauche. Quand y augmente, il monte ; quand y diminue, il descend. Un nombre négatif comme -10 permet ici d’aller dans le sens opposé.",
+        "La scène va de -240 à 240 horizontalement et de -180 à 180 verticalement. Pour cet essai, reste près du centre : un sprite peut dépasser du cadre.",
+        "Dans Mouvement, « aller à x: 0 y: 0 » fixe une position précise. Place-le sous le départ au drapeau : chaque nouveau départ remettra le chat au centre."
+      ],
+      "shortSteps": [
+        "Sélectionne le chat : les valeurs x et y sont sous la scène.",
+        "X indique gauche/droite ; Y indique bas/haut. Observe les directions ci-dessous.",
+        "Dans Mouvement, prends « aller à x: 0 y: 0 ». Accroche-le sous le départ au drapeau et teste le retour au centre."
+      ],
+      "coordinateDiagram": {
+        "caption": "X et Y : quatre directions depuis le centre",
+        "up": "↑ Haut · Y augmente (+)",
+        "left": "← Gauche · X diminue (−)",
+        "center": "Centre\nx = 0 · y = 0",
+        "right": "Droite → · X augmente (+)",
+        "down": "↓ Bas · Y diminue (−)",
+        "note": "X change horizontalement. Y change verticalement. Par exemple : ajouter −10 à Y fait descendre."
+      },
+      "visualScript": {
+        "caption": "Le drapeau remet au centre",
+        "note": "Aller à fixe une position. Ajouter un déplacement est une autre action.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le drapeau démarre cette pile."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "0"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ],
+            "explanation": "Le chat revient au centre, quelle que soit sa position précédente."
+          }
+        ]
+      },
+      "code": "Événements : quand le drapeau vert est cliqué\n  Mouvement : aller à x: 0 y: 0"
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Quatre touches, quatre petites piles",
+      "paragraphs": [
+        "Dans Événements, « quand la touche espace est pressée » possède un menu : choisis flèche droite, gauche, haut ou bas. Chaque pile ci-dessous possède son propre départ.",
+        "Dans Mouvement, « ajouter 10 à x » change seulement x ; « ajouter 10 à y » change seulement y. Modifie le nombre pour écrire -10 lorsque nécessaire.",
+        "Garde aussi la pile au drapeau de la partie 1. Les quatre piles de touches sont séparées, pas accrochées sous le drapeau.",
+        "Clique sur la scène pour qu’elle reçoive le clavier, puis appuie brièvement sur une flèche. Le modèle montre des déplacements par touches ; on ne cherche pas encore un mouvement continu avec une touche maintenue. Aucune boucle ni collision nécessaire."
+      ],
+      "shortSteps": [
+        "Dans Événements, prends le bloc « quand la touche espace est pressée » : son menu permet de choisir chaque flèche.",
+        "Crée quatre piles séparées comme ci-dessous. Dans Mouvement, prends « ajouter 10 à x » ou « ajouter 10 à y », puis change le signe si nécessaire.",
+        "Garde le retour au centre au drapeau. Clique sur la scène et teste chaque flèche par une pression brève : pas encore de mouvement continu."
+      ],
+      "visualScript": {
+        "caption": "Quatre piles séparées, une par flèche",
+        "note": "Garde aussi la pile au drapeau. Clique sur la scène puis presse brièvement une flèche.",
+        "stacks": [
+          {
+            "caption": "Flèche droite",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand la touche ",
+                  {
+                    "choice": "flèche droite"
+                  },
+                  " est pressée"
+                ],
+                "explanation": "Le menu de ce bloc choisit la touche."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "10"
+                  },
+                  " à x"
+                ],
+                "explanation": "X augmente : vers la droite."
+              }
+            ]
+          },
+          {
+            "caption": "Flèche gauche",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand la touche ",
+                  {
+                    "choice": "flèche gauche"
+                  },
+                  " est pressée"
+                ],
+                "explanation": "Le menu de ce bloc choisit la touche."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "-10"
+                  },
+                  " à x"
+                ],
+                "explanation": "X diminue : vers la gauche."
+              }
+            ]
+          },
+          {
+            "caption": "Flèche haut",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand la touche ",
+                  {
+                    "choice": "flèche haut"
+                  },
+                  " est pressée"
+                ],
+                "explanation": "Le menu de ce bloc choisit la touche."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "10"
+                  },
+                  " à y"
+                ],
+                "explanation": "Y augmente : vers le haut."
+              }
+            ]
+          },
+          {
+            "caption": "Flèche bas",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand la touche ",
+                  {
+                    "choice": "flèche bas"
+                  },
+                  " est pressée"
+                ],
+                "explanation": "Le menu de ce bloc choisit la touche."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "-10"
+                  },
+                  " à y"
+                ],
+                "explanation": "Y diminue : vers le bas."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "Événements : quand la touche flèche droite est pressée\n  Mouvement : ajouter 10 à x\n\nÉvénements : quand la touche flèche gauche est pressée\n  Mouvement : ajouter -10 à x\n\nÉvénements : quand la touche flèche haut est pressée\n  Mouvement : ajouter 10 à y\n\nÉvénements : quand la touche flèche bas est pressée\n  Mouvement : ajouter -10 à y"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : essaie les commandes",
+      "intro": "Prédis la direction avant chaque essai.",
+      "items": [
+        {
+          "id": "depart",
+          "text": "Construis la pile de retour au centre et clique sur le drapeau.",
+          "hint": "Utilise aller à x/y, pas ajouter à x/y : fixer une position n’est pas ajouter un déplacement."
+        },
+        {
+          "id": "horizontal",
+          "text": "Construis les piles droite et gauche. Fais une pression brève à droite, puis à gauche.",
+          "hint": "Les deux piles changent x avec des nombres opposés."
+        },
+        {
+          "id": "vertical",
+          "text": "Construis les piles haut et bas. Teste séparément chaque direction.",
+          "hint": "Les deux piles changent y, pas x."
+        },
+        {
+          "id": "retour",
+          "text": "Éloigne le chat, puis clique sur le drapeau. Vérifie le retour à x = 0, y = 0.",
+          "hint": "Le drapeau déclenche le bloc aller à, quel que soit l’endroit atteint."
+        },
+        {
+          "id": "sauver",
+          "text": "Télécharge ton projet de commandes au format .sb3.",
+          "hint": "Fichier → Sauvegarder sur votre ordinateur."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : choisis et explique",
+      "intro": "Garde ton projet sauvegardé. Essaie avant de lire les indices.",
+      "items": [
+        {
+          "id": "nouveau-depart",
+          "text": "Choisis un nouveau départ proche du centre, différent de (0, 0), et modifie seulement la pile au drapeau.",
+          "hint": "Par exemple x = -60, y = 40. Le point exact t’appartient."
+        },
+        {
+          "id": "nouveau-pas",
+          "text": "Choisis une autre distance pour les touches. Garde la même distance à droite/gauche et à haut/bas.",
+          "hint": "Les nombres de chaque paire ont la même taille mais des signes opposés."
+        },
+        {
+          "id": "verifier",
+          "text": "Prédis ce qu’afficheront x et y après une touche droite depuis le départ ; teste et explique.",
+          "hint": "Seul x doit changer. Exemple : x = -60, ajouter 10 donne -50."
+        },
+        {
+          "id": "comprehension",
+          "text": "Sans regarder le modèle : choisis le bloc et le signe pour aller vers le bas. Puis explique pourquoi le drapeau ramène toujours au même point.",
+          "hint": "Descendre change y avec un nombre négatif ; aller à fixe x et y."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : un retour par touche",
+      "intro": "Seulement si les quatre commandes sont comprises.",
+      "items": [
+        {
+          "id": "reset",
+          "text": "Ajoute une pile qui remet le chat au départ quand tu presses espace, puis teste depuis deux positions différentes.",
+          "hint": "Utilise l’événement espace et le même aller à x/y que dans la pile au drapeau."
+        },
+        {
+          "id": "expliquer",
+          "text": "Explique pourquoi cette commande fonctionne depuis plusieurs endroits.",
+          "hint": "Elle fixe une position ; elle ne fait pas un déplacement relatif."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Pour continuer",
+      "paragraphs": [
+        "Tu as une base pour piloter un personnage. Continue avec Répéter des actions lorsque tu sais expliquer tes commandes, ou consolide-les si tu hésites. Une case cochée ne valide pas une compétence."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Choisir x ou y et le signe à partir d’une direction demandée sans modèle.",
+    "Distinguer ajouter un déplacement et fixer une position.",
+    "Expliquer et tester le retour au départ depuis deux positions.",
+    "Modifier ses commandes et prévoir les coordonnées, avec aide sur le calcul si nécessaire."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "guide",
+      "label": "Reprendre une direction à la fois"
+    },
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "notions",
+      "label": "Revoir les événements"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "bonus",
+      "label": "Créer une touche de retour au départ"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-boucles",
+      "blockId": "notions",
+      "label": "Répéter des actions : savoir lire une pile et utiliser une pause"
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Déplacer un personnage avec les flèches et le remettre à une position de départ.",
+    "entryDiagnosis": [
+      "Sélectionner le bon sprite et sauvegarder son projet.",
+      "Expliquer ce qui déclenche une pile ; reprendre Déclencher et enchaîner des actions en cas d’hésitation.",
+      "Lire une pile de haut en bas."
+    ],
+    "preparation": [
+      "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
+      "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
+      "Sauvegarder le travail actuel puis choisir Fichier → Nouveau, ou ouvrir la base chat/cible sans scripts. Ne pas reprendre une ancienne scène avec ses piles. Garder ensuite ce projet pour les quatre commandes, la mission autonome de modification et le bonus : cinq piles de base, puis éventuellement le retour par espace. La cible de la base peut rester de côté."
+    ],
+    "why": "Un déplacement contrôlé et un départ reproductible constituent une base de jeu ; la compréhension des directions précède les collisions.",
+    "discoverySpeech": [
+      "« X suit gauche et droite ; Y suit bas et haut. Montrons chaque direction sur la scène. »",
+      "« Ajouter change la position depuis où tu es ; aller à choisit une position précise. »",
+      "« Le drapeau démarre notre retour au départ. Les flèches ont chacune leur propre événement. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-pilotage",
+        "blockId": "exemple",
+        "label": "Lire et assembler l’exemple"
+      },
+      "comments": [
+        "Les lignes sont un modèle textuel de blocs, pas un programme à coller.",
+        "Faire retrouver la catégorie puis le bloc ; laisser l’élève assembler.",
+        "Demander une prédiction, lancer, comparer et expliquer."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pour aller à gauche, quelle coordonnée et quel signe ?",
+        "answer": "X, avec une valeur négative."
+      },
+      {
+        "question": "Après une touche droite, Y doit-il changer ?",
+        "answer": "Non : la commande change seulement X."
+      },
+      {
+        "question": "Pourquoi le drapeau fonctionne-t-il depuis deux endroits différents ?",
+        "answer": "Aller à fixe la même position plutôt que d’ajouter un déplacement."
+      },
+      {
+        "question": "X vaut -60 ; ajouter 10 donne quoi ?",
+        "answer": "-50. Autoriser une aide au calcul et observer séparément le choix de l’axe et du sens."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-pilotage",
+      "blockId": "guide",
+      "label": "Essais guidés"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-pilotage",
+      "blockId": "autonomie",
+      "label": "Essai sans modèle"
+    },
+    "differentiation": [
+      "Pour un CE2 débutant : une consigne à la fois, lire les termes si nécessaire, faire montrer avant de demander d’écrire ou de calculer.",
+      "Pour un élève à l’aise : demander une prédiction et une modification sans modèle, puis le bonus. Ne pas imposer un nombre de séances.",
+      "Reprendre le prérequis manquant ; aucun accès au module ni case cochée ne constitue un acquis."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les flèches n’agissent pas.",
+        "helps": [
+          "Cliquer sur la scène pour donner le focus.",
+          "Vérifier le menu de touche du bloc jaune.",
+          "Comparer le sprite sélectionné et celui qui doit bouger.",
+          "Tester une seule pile avec une pression brève."
+        ]
+      },
+      {
+        "symptom": "Le chat descend avec la flèche haut.",
+        "helps": [
+          "Faire montrer l’axe vertical.",
+          "Repérer le signe du nombre dans ajouter à y.",
+          "Comparer +10 et -10 séparément.",
+          "Corriger la paire haut/bas puis demander une nouvelle prédiction."
+        ]
+      },
+      {
+        "symptom": "Le drapeau ajoute un déplacement au lieu de revenir.",
+        "helps": [
+          "Relancer depuis deux positions.",
+          "Repérer ajouter versus aller à.",
+          "Comparer les coordonnées après chaque essai.",
+          "Remplacer uniquement le bloc de départ par aller à x/y."
+        ]
+      }
+    ],
+    "notes": "La réussite avec modèle ne suffit pas : demander une direction sans nommer X/Y. Distinguer autonomie, modèle ou aide dans les remarques existantes, sans nouveau suivi. Une difficulté avec les nombres négatifs peut être accompagnée sans invalider toute compréhension des événements.",
+    "quickConductor": [
+      "Vérifier les repères ou prérequis.",
+      "Faire assembler l’exemple et prédire son résultat.",
+      "Changer une chose, tester et expliquer.",
+      "Proposer la mission autonome ; distinguer réussite autonome, avec modèle ou avec aide.",
+      "Sauvegarder le .sb3 ; choisir reprise ou suite selon la compréhension."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels officiels",
+        "url": "https://scratch.mit.edu/ideas"
+      },
+      {
+        "title": "Scratch : projets de départ officiels",
+        "url": "https://scratch.mit.edu/help/starter_projects/"
+      }
+    ]
+  }
+}

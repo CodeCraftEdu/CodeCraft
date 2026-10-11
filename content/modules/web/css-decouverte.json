@@ -1,0 +1,433 @@
+{
+  "domainId": "web",
+  "title": "Découvrir le CSS",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Lire une règle CSS et changer la couleur du texte et du fond.",
+  "skillIds": [
+    "css.colors"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer et modifier un titre."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer et modifier un paragraphe."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "demarrer",
+      "title": "1 : Contenu et apparence",
+      "paragraphs": [
+        "Tu vas obtenir un titre bleu sur fond blanc et deux paragraphes noirs sur fond jaune clair. Puis tu changeras leur apparence sans changer leurs mots.",
+        "Le HTML décrit le contenu : titre, paragraphe… Le CSS règle son apparence. Le navigateur applique déjà une présentation par défaut ; tu peux la modifier avec tes règles.",
+        "Travaille dans un nouveau CodePen pour éviter des règles anciennes. Copie le premier extrait dans HTML et le second dans CSS. Le panneau JS reste vide. Travaille sans IA ; tu peux utiliser les indices du cours.",
+        "Si tu travailles avec VS Code et des fichiers, utilise le squelette facultatif en bas de ce module. Il ne faut pas savoir créer une feuille CSS externe pour faire cette activité."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "html",
+      "title": "HTML : Le contenu de départ",
+      "paragraphs": [
+        "Un titre et deux paragraphes : observe les trois éléments avant de leur donner des couleurs."
+      ],
+      "code": "<h1>Mon atelier</h1>\n<p>Je découvre le CSS.</p>\n<p>Je peux changer l’apparence.</p>"
+    },
+    {
+      "type": "lesson",
+      "id": "regle",
+      "title": "CSS : Lire une règle",
+      "paragraphs": [
+        "h1 est le sélecteur : il choisit les éléments h1 de la page. Ici, il y en a un. On écrit h1 sans les chevrons du HTML.",
+        "Entre les accolades { et }, chaque déclaration indique une propriété et sa valeur. Dans color: blue;, color est la propriété et blue la valeur. Les deux-points séparent les deux ; termine chaque déclaration par un point-virgule.",
+        "color règle la couleur des lettres. background-color règle le fond de l’élément sélectionné, pas forcément celui de toute la page. Ici, un bloc de fond peut être plus large que les mots.",
+        "blue signifie bleu, white blanc. Les mots de couleur CSS de ces exemples sont en anglais."
+      ],
+      "code": "h1 {\n  color: blue;\n  background-color: white;\n}",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Le même titre, une couleur différente",
+        "intro": "Le HTML reste identique. Change seulement la valeur de color dans la règle h1.",
+        "variants": [
+          {
+            "label": "color: blue",
+            "html": "<h1>Mon atelier</h1><p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>",
+            "code": "h1 {\n  color: blue;\n  background-color: white;\n}",
+            "feedback": "Le titre est bleu. La règle h1 ne sélectionne pas les paragraphes.",
+            "css": "h1{color:blue;background-color:white}"
+          },
+          {
+            "label": "color: darkgreen",
+            "html": "<h1>Mon atelier</h1><p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>",
+            "code": "h1 {\n  color: darkgreen;\n  background-color: white;\n}",
+            "feedback": "Seule la couleur du titre change. Son texte et le fond restent identiques.",
+            "css": "h1{color:darkgreen;background-color:white}"
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "paragraphes",
+      "title": "Une règle pour tous les paragraphes",
+      "paragraphs": [
+        "Ajoute cette deuxième règle après la première dans CSS. Le sélecteur p choisit tous les paragraphes de la page : les deux changent ensemble.",
+        "black signifie noir et lightyellow jaune clair. Les règles sont séparées ; celle de p ne remplace pas celle de h1."
+      ],
+      "code": "p {\n  color: black;\n  background-color: lightyellow;\n}",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Les lettres ou le fond ?",
+        "intro": "Compare deux fonds pour les mêmes paragraphes. La couleur de leurs lettres reste noire.",
+        "variants": [
+          {
+            "label": "Fond blanc",
+            "html": "<p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>",
+            "code": "p {\n  color: black;\n  background-color: white;\n}",
+            "feedback": "Les lettres sont noires sur fond blanc. La règle p agit sur les deux paragraphes.",
+            "css": "p{color:black;background-color:white}"
+          },
+          {
+            "label": "Fond jaune clair",
+            "html": "<p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>",
+            "code": "p {\n  color: black;\n  background-color: lightyellow;\n}",
+            "feedback": "background-color change le fond de chaque paragraphe, pas la couleur de ses lettres.",
+            "css": "p{color:black;background-color:lightyellow}"
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Changer une chose à la fois",
+      "intro": "Garde les mots du HTML identiques pendant ces essais.",
+      "items": [
+        {
+          "id": "copier",
+          "text": "Place les trois extraits dans les panneaux indiqués. Vérifie les couleurs du titre et des deux paragraphes.",
+          "hints": [
+            "Regarde les étiquettes HTML et CSS.",
+            "Les balises vont dans HTML ; les règles avec accolades vont dans CSS.",
+            "Compare les sélecteurs h1 et p et la ponctuation.",
+            "Recopie une règle à la fois dans CSS puis vérifie l’aperçu."
+          ]
+        },
+        {
+          "id": "changer-texte",
+          "text": "Dans la règle h1, remplace blue par purple (violet). Qu’est-ce qui change ?"
+        },
+        {
+          "id": "changer-fond",
+          "text": "Dans la règle p, remplace lightyellow par white. Le texte reste-t-il noir ?"
+        },
+        {
+          "id": "expliquer",
+          "text": "Montre le sélecteur, la propriété et la valeur qui ont modifié le fond. Explique pourquoi les deux paragraphes changent ensemble."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Choisir les bonnes règles",
+      "intro": "Crée un nouveau titre et deux paragraphes sur un autre sujet. Essaie avant d’ouvrir les indices.",
+      "items": [
+        {
+          "id": "mission-titre",
+          "text": "Rends seulement le titre vert foncé sur fond blanc. Tu peux utiliser darkgreen et white.",
+          "hints": [
+            "Quel élément veux-tu modifier ?",
+            "Les mots du titre restent dans HTML ; son apparence se règle dans CSS.",
+            "Compare le rôle des deux propriétés du cours.",
+            "Dans la règle h1, écris color: darkgreen; et background-color: white; entre accolades."
+          ]
+        },
+        {
+          "id": "mission-paragraphes",
+          "text": "Donne aux deux paragraphes un texte noir sur fond jaune clair, sans changer les couleurs du titre.",
+          "hints": [
+            "Repère les deux balises p.",
+            "Un seul sélecteur peut les choisir toutes les deux.",
+            "Compare avec la règle p, pas avec h1.",
+            "Écris une règle p avec color: black; et background-color: lightyellow;."
+          ]
+        },
+        {
+          "id": "mission-transfert",
+          "text": "Ajoute un troisième paragraphe. Avant de regarder l’aperçu, prédis son apparence et explique pourquoi tu n’as pas besoin d’une nouvelle règle."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-texte",
+          "text": "Les mots sont restés dans HTML et les règles dans CSS."
+        },
+        {
+          "id": "verifier-couleurs",
+          "text": "Le titre et les paragraphes ont les couleurs demandées."
+        },
+        {
+          "id": "verifier-regle",
+          "text": "Je peux montrer le sélecteur, une propriété et sa valeur."
+        },
+        {
+          "id": "verifier-fond",
+          "text": "Je peux changer seulement un fond, sans changer la couleur des lettres."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Consolidation : Une règle à réparer",
+      "intro": "Dans un essai séparé, copie dans HTML <p>Texte à réparer</p> et dans CSS : p { color = blue; background-color: white; }. Le texte devrait devenir bleu, mais la déclaration de couleur est incorrecte.",
+      "items": [
+        {
+          "id": "reparer-declaration",
+          "text": "Repère puis corrige l’erreur. Explique la différence entre l’écriture incorrecte et celle qui fonctionne.",
+          "hints": [
+            "Regarde la ponctuation après color.",
+            "Une déclaration sépare propriété et valeur par un signe précis.",
+            "Compare avec color: blue; dans le cours.",
+            "Remplace = par : ; garde le point-virgule. La règle devient p { color: blue; background-color: white; }."
+          ]
+        },
+        {
+          "id": "reparer-cible",
+          "text": "La couleur fonctionne. Remplace maintenant p par h1 dans CSS, sans changer le HTML. Pourquoi le paragraphe n’est-il plus bleu ? Rétablis la bonne cible.",
+          "hints": [
+            "Cherche un h1 dans cet extrait HTML.",
+            "La règle doit choisir un élément qui existe.",
+            "Compare le nom de balise avec le sélecteur.",
+            "Remets p : cette règle vise le paragraphe. Un sélecteur sans élément correspondant ne colore rien."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : Deux ambiances",
+      "intro": "Ce bonus est facultatif. Utilise seulement les propriétés déjà expliquées.",
+      "items": [
+        {
+          "id": "deux-ambiances",
+          "text": "Essaie des lettres noires sur fond blanc, puis des lettres blanches sur fond navy (bleu très foncé). Garde les mêmes textes. Choisis une ambiance dont les lettres restent faciles à lire."
+        },
+        {
+          "id": "changer-mots",
+          "text": "Change ensuite uniquement une phrase dans HTML. Vérifie que son style reste le même et explique le rôle de chaque langage."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "projet-local",
+      "title": "Avec VS Code : Squelette facultatif fourni",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "squelette-local",
+          "title": "Un fichier prêt à accueillir tes essais",
+          "paragraphs": [
+            "Crée un fichier index.html dans ton dossier de travail, colle ce squelette, puis enregistre-le. Ouvre ce fichier dans un navigateur. Après chaque modification, enregistre dans VS Code puis actualise le navigateur.",
+            "Le texte entre <!-- et --> et celui entre /* et */ sont des commentaires : des indications invisibles dans la page. Colle le HTML à la place du commentaire dans body, et le CSS à la place du commentaire dans style. Garde les autres lignes.",
+            "head contient ici les réglages du document ; title donne le titre de l’onglet. body accueille ce qui est visible. style accueille les règles CSS dans cet exemple fourni. Tu n’as pas à reconstruire ce cadre de mémoire.",
+            "Dans CodePen, n’utilise pas ce squelette complet : les panneaux HTML et CSS prennent en charge ce cadre pour toi. Le chargement d’un fichier CSS séparé sera une autre activité."
+          ],
+          "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mes essais CSS</title>\n  <style>\n    /* Colle les règles CSS ici. */\n  </style>\n</head>\n<body>\n  <!-- Colle le contenu HTML ici. -->\n</body>\n</html>"
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer une modification de mots en HTML d’une modification d’apparence en CSS.",
+    "Identifier sélecteur, propriété et valeur dans une règle simple, puis modifier la déclaration demandée.",
+    "Changer un fond sans changer les lettres ; prédire le style d’un nouveau paragraphe.",
+    "Expliquer une correction de ponctuation ou de cible, au-delà de la reproduction du modèle."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-decouverte",
+      "blockId": "reparer",
+      "label": "Réparer une règle et sa cible"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre titre et paragraphe si nécessaire"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "css-decouverte",
+      "blockId": "bonus",
+      "label": "Comparer deux ambiances",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Continuer ou retourner à Classes et couleurs CSS",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.colors",
+          "expectation": "Expliquer une règle CSS simple : élément ciblé, propriété et valeur ; distinguer couleur du texte et du fond."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire lire une règle et choisir une modification de texte ou de fond. La copie sert de départ ; l’explication et le transfert servent à observer la compréhension.",
+    "entryDiagnosis": [
+      "Faire créer ou modifier un h1 et un p. Attendu : texte entre les balises, sans casser leur structure. Si nécessaire, proposer la reprise HTML ciblée.",
+      "Présenter h1 { color: blue; }. Demander ce qui est choisi et ce qui est changé. Si l’élève explique déjà et modifie correctement une règle, proposer directement Classes et couleurs.",
+      "Demander de montrer les panneaux HTML et CSS. Une difficulté de clic, de clavier ou de collage appelle une aide de manipulation, pas une conclusion sur les acquis CSS."
+    ],
+    "preparation": [
+      "Ouvrir un CodePen vierge ; les snippets HTML et CSS sont visibles dans le module, aucun écran du professeur indispensable.",
+      "En VS Code, fournir le squelette repliable et vérifier enregistrement/actualisation avant d’observer le CSS. Ne pas évaluer head/body ou le lien vers une feuille externe ici.",
+      "Garder les couleurs fournies disponibles. Ne pas exiger de mémoriser leurs noms en anglais."
+    ],
+    "why": "Séparer le contenu de sa présentation permet de modifier une apparence sans réécrire les mots, puis de partager une règle entre plusieurs éléments.",
+    "discoverySpeech": [
+      "« Lis le titre : ses mots viennent du HTML. Si nous voulons les rendre violets sans changer ce qu’ils disent, nous allons agir dans CSS. »",
+      "« Dans h1 { color: blue; }, h1 est notre sélecteur : qui choisit-on ? color est la propriété : que change-t-on ? blue est la valeur : quel choix fait-on ? Les accolades regroupent les déclarations. »",
+      "« Maintenant, voici background-color. Ce n’est pas la couleur des lettres, mais le fond de l’élément. Je change une seule valeur : prédis le résultat avant de regarder. »",
+      "« La règle p choisit tous nos paragraphes. Ajoutons-en un : faut-il recopier le CSS ? Pourquoi ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-decouverte",
+        "blockId": "regle",
+        "label": "La règle du titre"
+      },
+      "comments": [
+        "Montrer h1 dans l’extrait HTML puis dans la règle ; pas de chevrons dans le sélecteur.",
+        "Changer seulement color: blue en color: purple et observer les lettres. Puis utiliser la règle p pour modifier un fond indépendamment.",
+        "Prononcer le vocabulaire en montrant chaque partie : sélecteur, déclaration, propriété, valeur. Ne pas appeler toute la règle « la propriété »."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Le fond est jaune mais les mots doivent rester noirs. Que modifies-tu ?",
+        "answer": "background-color dans la règle ciblée ; garder color: black. Faire montrer la déclaration, sans exiger sa récitation."
+      },
+      {
+        "question": "Pourquoi mon troisième paragraphe reçoit-il déjà une couleur ?",
+        "answer": "Le sélecteur p correspond à tous les éléments p, y compris celui ajouté après."
+      },
+      {
+        "question": "Pourquoi les titres sont-ils grands alors que je n’ai écrit aucun CSS ?",
+        "answer": "Le navigateur fournit des styles par défaut. Nos règles peuvent modifier cette présentation."
+      },
+      {
+        "question": "Faut-il retenir les noms de toutes les couleurs ?",
+        "answer": "Non. Fournir les valeurs et vérifier que l’élève choisit la bonne propriété et la bonne cible."
+      },
+      {
+        "question": "Pourquoi le fond dépasse-t-il la longueur des mots ?",
+        "answer": "Il peint la zone de l’élément, pas seulement les lettres. Les paragraphes de l’exemple occupent une ligne de largeur disponible ; les dimensions seront étudiées plus tard."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "css-decouverte",
+      "blockId": "guide",
+      "label": "Modifier une seule déclaration"
+    },
+    "independentActivity": {
+      "moduleId": "css-decouverte",
+      "blockId": "mission",
+      "label": "Changer une apparence et prédire"
+    },
+    "differentiation": [
+      "Donner le HTML si la saisie prend toute l’attention ; observer séparément la capacité à choisir une règle et une valeur.",
+      "Après un essai réussi, demander une modification sans nommer color ou background-color. Si seule la copie fonctionne, reprendre la comparaison ciblée.",
+      "Un élève déjà à l’aise peut passer à C2 ; le bonus ambiances n’est pas obligatoire."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le CSS apparaît comme du texte dans la page.",
+        "helps": [
+          "Montrer où le texte a été collé.",
+          "Identifier le panneau HTML et le panneau CSS.",
+          "Comparer les étiquettes des extraits.",
+          "Déplacer la règle dans CSS ; en local, entre les balises style du squelette."
+        ]
+      },
+      {
+        "symptom": "Une déclaration ne produit rien.",
+        "helps": [
+          "Vérifier que le sélecteur correspond à un élément.",
+          "Regarder : et ;, puis les accolades.",
+          "Comparer la déclaration avec color: blue;.",
+          "Pour la consolidation, remplacer = par : et garder p comme cible."
+        ]
+      },
+      {
+        "symptom": "L’élève change les lettres au lieu du fond.",
+        "helps": [
+          "Demander de montrer ce qui devait changer.",
+          "Distinguer lettres et zone derrière.",
+          "Comparer les deux lignes de la règle.",
+          "Modifier background-color seulement, puis faire un second essai sans aide."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution de mission : h1 { color: darkgreen; background-color: white; } puis p { color: black; background-color: lightyellow; }. Le troisième p reçoit la même règle.",
+      "Observer réussite autonome, avec modèle ou avec aide. Distinguer aide à la manipulation et choix de déclaration. Utiliser la remarque existante si utile, sans nouvel état de suivi.",
+      "Seule css.colors est associée ici. La découverte d’un sélecteur de balise ne prouve pas la maîtrise des classes de css.selectors.",
+      "Pour poursuivre : l’élève doit choisir la cible et distinguer texte/fond. Sinon, reprendre seulement la consolidation concernée. Les liens restent ouverts.",
+      "La syntaxe locale est un support fourni, pas un cours C3 anticipé. Aucun HTML supplémentaire n’est à mémoriser pour réussir les objectifs CSS."
+    ],
+    "quickConductor": [
+      "Vérifier titres/paragraphes et environnement.",
+      "Présenter cible, propriété et valeur avec une règle.",
+      "Faire modifier texte puis fond séparément.",
+      "Lancer la mission et demander une prédiction pour le troisième paragraphe.",
+      "Consolider si nécessaire ; sinon, proposer C2 sans imposer le bonus.",
+      "Observer le niveau d’aide et décider manuellement des acquis."
+    ],
+    "references": [
+      {
+        "title": "MDN : Découvrir la syntaxe CSS",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS"
+      },
+      {
+        "title": "MDN : Sélecteurs de type",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Type_selectors"
+      },
+      {
+        "title": "MDN : color",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color"
+      },
+      {
+        "title": "MDN : background-color",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-color"
+      },
+      {
+        "title": "HTML Standard : Élément style",
+        "url": "https://html.spec.whatwg.org/multipage/semantics.html#the-style-element"
+      }
+    ]
+  }
+}

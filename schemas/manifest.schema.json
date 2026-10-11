@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "catalog": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scratchProjects": {
+          "type": "string",
+          "minLength": 1
+        },
+        "moduleTypes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domains": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skills": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "string",
+          "minLength": 1
+        },
+        "teacher": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "site",
+        "scratchProjects",
+        "moduleTypes",
+        "domains",
+        "skills",
+        "aliases",
+        "teacher"
+      ],
+      "additionalProperties": false
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "file"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "pathways": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "file"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "catalog",
+    "modules",
+    "pathways"
+  ],
+  "additionalProperties": false
+}

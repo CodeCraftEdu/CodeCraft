@@ -1,0 +1,314 @@
+{
+  "domainId": "python",
+  "title": "Une aventure à choix",
+  "type": "project",
+  "theme": "fondations",
+  "objective": "Créer une scène interactive avec trois destinations et une issue pour un choix inconnu.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.workspace",
+    "python.output",
+    "python.variables",
+    "python.input",
+    "python.conditions",
+    "python.branches",
+    "python.debugging"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, conserver et relancer un fichier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher des messages dans l’ordre voulu."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Conserver plusieurs réponses sous des noms distincts."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Poser une question et réutiliser sa réponse textuelle."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Comparer une valeur avec == et indenter les branches."
+    },
+    {
+      "skillId": "python.branches",
+      "expectation": "Construire une chaîne exclusive ; sinon reprendre Plusieurs possibilités."
+    },
+    {
+      "skillId": "python.debugging",
+      "expectation": "Comparer la sortie attendue à la sortie réelle et corriger une cause."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir conserver une réponse textuelle, comparer avec == et construire if/elif/else. Sinon, reprends Plusieurs possibilités. Enregistre tes essais et crée aventure.py sans effacer les autres fichiers. Choisis un univers fictif : aucun renseignement personnel n’est nécessaire.",
+      "moduleLink": {
+        "moduleId": "python-elif",
+        "text": "Revoir plusieurs issues"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "plan",
+      "title": "1 - Une scène, trois destinations",
+      "paragraphs": [
+        "Imagine un accueil, un pseudo fictif et trois lieux accessibles depuis la même scène. Choisis des mots simples à saisir, par exemple tour, jardin et grotte. Prévois un message différent pour chaque destination.",
+        "Le programme pose une seule question de destination, puis raconte une issue. Ce n’est pas encore une aventure à plusieurs décisions successives : pas de boucle ou de conditions imbriquées nécessaires.",
+        "Prévois aussi ce qui s’affiche si le mot ne correspond à aucun lieu. Le programme doit expliquer les choix possibles et se terminer ; il ne repose pas automatiquement la question."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "texte",
+      "title": "2 - Un choix textuel exact",
+      "paragraphs": [
+        "Pour du texte, compare la réponse à un mot entre guillemets avec ==. Ne convertis pas le lieu avec int : ce n’est pas un nombre.",
+        "La comparaison est exacte : tour, Tour et tour suivi d’un espace sont trois textes différents. Écris les mots acceptés dans la question pour guider la saisie. Ce projet ne corrige pas automatiquement les majuscules ou les espaces.",
+        "Tu peux ajouter deux elif après le premier if, puis un else pour le mot inconnu. Comme dans le module précédent, les en-têtes sont alignés et les messages de branche sont indentés."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Préparation accompagnée - une destination",
+      "items": [
+        {
+          "id": "une-question",
+          "text": "Affiche un accueil et demande un lieu en annonçant tour comme choix accepté. Conserve la réponse dans une variable.",
+          "hint": "Utilise print pour l’accueil, puis une variable affectée au résultat de input. Ne mets pas la réponse dans le fichier."
+        },
+        {
+          "id": "une-issue",
+          "text": "Avec if/else, affiche un événement si la réponse est exactement tour, sinon un message indiquant que le lieu est inconnu.",
+          "hint": "Compare ta variable à \"tour\" avec ==. Le else ne doit pas faire entrer dans un lieu non choisi."
+        },
+        {
+          "id": "deux-essais",
+          "text": "Prédis puis teste tour et lune. Explique quelle branche a été choisie.",
+          "hint": "Un essai reconnaît le lieu ; l’autre utilise else. Relance pour chaque réponse."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "3 - Construis ton aventure",
+      "intro": "Enregistre le premier essai, puis crée mon_aventure.py pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.",
+      "items": [
+        {
+          "id": "accueil-pseudo",
+          "text": "Affiche un accueil, demande un pseudo fictif et réutilise-le dans un message. Garde cette réponse distincte du choix de destination.",
+          "hint": "Deux informations nécessitent deux noms de variables différents. print peut afficher un texte et une variable séparés par une virgule."
+        },
+        {
+          "id": "trois-lieux",
+          "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne if/elif/elif/else : un événement propre à chaque lieu, puis un message utile pour tout autre mot.",
+          "hint": "Trois comparaisons exactes avec == ; else conseille les mots acceptés. Une seule issue doit s’afficher par essai."
+        },
+        {
+          "id": "fin-commune",
+          "text": "Ajoute un message de fin qui s’affiche après le choix, quelle que soit la destination.",
+          "hint": "Aligne ce print avec if, pas avec les messages des branches."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "verification",
+      "title": "4 - Vérifie chaque route",
+      "items": [
+        {
+          "id": "quatre-routes",
+          "text": "Prédis puis teste les trois mots acceptés et un mot inconnu. Note pour chaque essai le mot saisi et l’unique événement attendu. Vérifie aussi le message de fin.",
+          "hint": "Ne teste pas seulement ton lieu préféré. Utilise un nouveau pseudo pour vérifier qu’il vient réellement de la saisie."
+        },
+        {
+          "id": "casse-espace",
+          "text": "Teste un mot accepté avec une majuscule, puis avec un espace ajouté. Vérifie que le message pour lieu inconnu s’affiche et explique pourquoi.",
+          "hint": "L’égalité textuelle est exacte : on n’utilise ici aucun traitement automatique des réponses."
+        },
+        {
+          "id": "modifier-route",
+          "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par else. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.",
+          "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de else doit annoncer les choix à jour, sans l’ancien mot."
+        },
+        {
+          "id": "retrouver-projet",
+          "text": "Enregistre, ferme et rouvre le fichier. Relance-le et explique l’origine de chaque réponse et le choix des branches.",
+          "hint": "Le fichier conserve les instructions, pas les réponses de la précédente exécution. Toutes les variables nécessaires doivent être définies dans le fichier."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - une destination supplémentaire",
+      "items": [
+        {
+          "id": "quatrieme-lieu",
+          "text": "Ajoute une quatrième destination annoncée dans la question et une branche elif avant else. Teste les quatre destinations et un mot inconnu.",
+          "hint": "Garde else en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Pour la suite",
+      "text": "Explique les routes de ton aventure et essaie de modifier un choix. Ensuite, tu découvriras comment répéter des actions avec des boucles."
+    }
+  ],
+  "masteryCriteria": [
+    "Créer une scène personnelle avec trois destinations réellement choisies par la saisie.",
+    "Conserver le pseudo et le lieu dans des variables distinctes, sans conversion numérique du lieu.",
+    "Tester les trois routes et une entrée inconnue ; expliquer l’égalité exacte et l’issue exclusive.",
+    "Modifier une destination sans casser les autres et retrouver le programme enregistré.",
+    "Distinguer reproduction, compréhension et transfert pour chaque compétence réinvestie."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-aventure",
+      "blockId": "guide",
+      "label": "Repartir d’une destination"
+    },
+    {
+      "moduleId": "python-elif",
+      "blockId": "guide",
+      "label": "Revoir les issues exclusives"
+    },
+    {
+      "moduleId": "python-saisie",
+      "blockId": "guide",
+      "label": "Revoir la réponse textuelle"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-aventure",
+      "blockId": "bonus",
+      "label": "Ajouter une destination"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-for",
+      "label": "Répéter un nombre de fois",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.conditions",
+          "expectation": "Repérer le bloc indenté et les instructions après ; sinon reprendre Faire un choix."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Observer le transfert des premières notions dans une scène interactive originale, sans fournir un jeu complet à recopier.",
+    "entryDiagnosis": [
+      "Faire comparer une réponse textuelle à un mot avec ==.",
+      "Faire expliquer une chaîne à trois issues et son else ; consolider ce point avant de multiplier les routes."
+    ],
+    "preparation": [
+      "Conserver les fichiers précédents et créer aventure.py, puis mon_aventure.py.",
+      "Préparer trois mots de test et une entrée inconnue ; annoncer des mots simples, sans données personnelles.",
+      "Pas de solution complète publiée, int, normalisation de texte, boucle ou condition imbriquée dans ce projet."
+    ],
+    "why": "Une histoire interactive permet de vérifier si une réponse déclenche réellement l’issue prévue.",
+    "discoverySpeech": [
+      "« Quels mots peut-on saisir et que se passe-t-il pour chacun ? »",
+      "« Quelle réponse donner si le lieu n’existe pas ? »",
+      "« Testons toutes les routes, puis changeons une destination sans casser les autres. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-aventure",
+        "blockId": "plan"
+      },
+      "comments": [
+        "Le plan décrit une scène à trois issues, pas un arbre de décisions imbriquées.",
+        "Accompagner un lieu si nécessaire, puis laisser construire les autres sans modèle complet.",
+        "Chaque test affiche une seule issue, puis le message de fin, y compris pour un choix inconnu."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi ne pas utiliser int sur le lieu ?",
+        "answer": "La réponse attendue est textuelle ; on compare le mot avec == sans conversion."
+      },
+      {
+        "question": "Que doit produire un mot inconnu ?",
+        "answer": "Le message de else, puis la fin commune ; aucune destination valide ni nouvelle question automatique."
+      },
+      {
+        "question": "Renommer uniquement le mot dans la question suffit-il ?",
+        "answer": "Non : il faut aussi modifier la comparaison et tout rappel des choix dans else. Tester le nouveau mot, l’ancien, les autres routes et un mot inconnu ; le rappel ne doit plus annoncer l’ancien mot."
+      },
+      {
+        "question": "La scène qui fonctionne prouve-t-elle tous les acquis ?",
+        "answer": "Non : demander explication, tests de toutes les routes et modification autonome ; noter séparément les aides reçues."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-aventure",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-aventure",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Construire une route avec aide puis passer à trois routes progressivement.",
+      "Aider au clavier sans donner le choix de comparaison ni la structure complète.",
+      "Proposer un quatrième lieu seulement après les tests et le transfert."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Une route n’est pas reconnue ou plusieurs événements s’affichent.",
+        "helps": [
+          "Comparer le mot réellement saisi au mot annoncé.",
+          "Vérifier les mots entre guillemets, leur casse et les espaces.",
+          "Repérer les elif, l’alignement et l’indentation des messages.",
+          "Corriger une cause, tester cette route et les autres, puis demander une modification autonome."
+        ]
+      },
+      {
+        "symptom": "Le pseudo remplace la destination ou le projet dépend d’un ancien essai.",
+        "helps": [
+          "Relancer avec un pseudo et un lieu très différents.",
+          "Repérer les noms à gauche des deux saisies.",
+          "Vérifier les noms distincts et leurs usages dans les affichages et comparaisons.",
+          "Corriger puis relancer le fichier entier après redémarrage ; vérifier la sauvegarde et la réouverture."
+        ]
+      }
+    ],
+    "notes": "Évaluer les compétences séparément. Ce projet n’exige ni calcul ni conversion ; il ne valide pas ces compétences. Les cases et routes consultées ne constituent pas une preuve d’acquisition.",
+    "quickConductor": [
+      "Diagnostiquer comparaison textuelle et elif.",
+      "Préparer les trois lieux et l’issue inconnue.",
+      "Accompagner une route si nécessaire.",
+      "Construire et tester la scène personnelle.",
+      "Modifier une route et le rappel de else, tester aussi un mot inconnu, puis rouvrir le fichier et choisir une reprise ou un bonus."
+    ],
+    "references": [
+      {
+        "title": "Python - décisions",
+        "url": "https://docs.python.org/fr/3/tutorial/controlflow.html#if-statements"
+      },
+      {
+        "title": "Python - input",
+        "url": "https://docs.python.org/fr/3/library/functions.html#input"
+      }
+    ]
+  }
+}

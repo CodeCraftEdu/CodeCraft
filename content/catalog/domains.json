@@ -1,0 +1,41 @@
+{
+  "python": {
+    "title": "Python",
+    "homeDescription": "Écris tes premiers programmes, pose des questions et construis tes propres projets avec Thonny.",
+    "homeTag": "PYTHON · THONNY",
+    "pathwayIds": [
+      "python-debutants"
+    ],
+    "diagnosticModuleIds": []
+  },
+  "jeux-video": {
+    "title": "Jeu vidéo",
+    "homeDescription": "Crée tes premiers jeux avec Scratch, puis explore GDevelop pour donner vie à de nouveaux projets.",
+    "homeTag": "SCRATCH · GDEVELOP",
+    "pathwayIds": [
+      "scratch-debutants",
+      "gdevelop-debutants"
+    ],
+    "diagnosticModuleIds": []
+  },
+  "web": {
+    "title": "Web",
+    "homeDescription": "Construis tes premières pages et apprends à les mettre en forme avec HTML et CSS.",
+    "homeTag": "HTML · CSS",
+    "pathwayIds": [
+      "web-fondations",
+      "web-debutants",
+      "web-avances"
+    ],
+    "diagnosticModuleIds": []
+  },
+  "robotique": {
+    "title": "Robotique",
+    "homeDescription": "Commande des circuits virtuels, puis imagine les réactions d’un robot avec des capteurs.",
+    "homeTag": "CIRCUITS · ROBOTS",
+    "pathwayIds": [
+      "robotique-debutants"
+    ],
+    "diagnosticModuleIds": []
+  }
+}

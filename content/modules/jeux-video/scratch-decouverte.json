@@ -1,0 +1,273 @@
+{
+  "domainId": "jeux-video",
+  "title": "Prendre en main Scratch",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Repérer les zones de Scratch, lancer une action et conserver son projet.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.workspace"
+  ],
+  "prerequisiteSkills": [],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "reperes",
+      "title": "1 : Ton atelier de jeu",
+      "paragraphs": [
+        "Clique sur Ouvrir Scratch et garde CodeCraft ouvert à côté. À la fin de l’essai, tu enregistreras ton projet sur ton ordinateur.",
+        "Si Scratch est en anglais, clique sur le globe en haut et choisis Français. Ferme le tutoriel qui masque l’éditeur si nécessaire. Nous gardons le chat déjà présent.",
+        "La scène est la zone où tu vois le résultat. Un sprite est un personnage ou un objet du projet : le chat est notre premier sprite. Clique sur sa miniature sous la scène pour le sélectionner.",
+        "L’onglet Code affiche les catégories de blocs à gauche et la zone de programmation au centre. Fais glisser un bloc vers cette zone pour donner une instruction au sprite sélectionné. Un script est un ensemble de blocs accrochés."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Une première action",
+      "paragraphs": [
+        "Dans la catégorie bleue Mouvement, glisse « avancer de 10 pas » au centre. Clique directement sur ce bloc : le chat avance un peu. Clique une deuxième fois pour observer un nouveau déplacement.",
+        "Dans la catégorie jaune Événements, prends « quand le drapeau vert est cliqué ». Accroche le bloc bleu juste dessous : rapproche-le jusqu’à voir qu’ils s’emboîtent.",
+        "Clique maintenant sur le drapeau vert au-dessus de la scène : le script démarre. Le bouton rouge voisin sert à arrêter les scripts en cours. Ce petit script finit vite : si rien ne tourne encore, arrêter ne change rien.",
+        "Assemble les deux blocs comme sur le modèle ci-dessous. C’est un repère visuel : retrouve les vrais blocs dans Scratch, puis teste avec le drapeau."
+      ],
+      "visualScript": {
+        "caption": "Deux blocs accrochés : un seul script",
+        "note": "Modèle à reproduire dans Scratch, pas un éditeur interactif.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le départ : un clic sur le drapeau lance la pile."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "avancer de ",
+              {
+                "value": "10"
+              },
+              " pas"
+            ],
+            "explanation": "L’action : le chat avance de 10 pas."
+          }
+        ]
+      },
+      "shortSteps": [
+        "Cherche le départ dans Événements (jaune) et « avancer de 10 pas » dans Mouvement (bleu).",
+        "Accroche le bloc bleu sous le bloc jaune, comme sur le modèle.",
+        "Clique sur le drapeau vert au-dessus de la scène : observe le chat. Le bouton rouge arrête les scripts en cours."
+      ],
+      "code": "Événements : quand le drapeau vert est cliqué\n  Mouvement : avancer de 10 pas"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : repérer et essayer",
+      "intro": "Avance une étape à la fois.",
+      "items": [
+        {
+          "id": "scene",
+          "text": "Montre la scène, puis sélectionne la miniature du chat.",
+          "hint": "La scène montre le résultat. La miniature choisit le sprite dont tu modifies le code."
+        },
+        {
+          "id": "bloc",
+          "text": "Assemble les deux blocs de l’exemple, puis clique sur le drapeau vert.",
+          "hint": "Le bloc jaune doit toucher le bloc bleu. Le drapeau est au-dessus de la scène."
+        },
+        {
+          "id": "changer",
+          "text": "Remplace 10 par 30 dans le bloc bleu. Prédis ce qui change, puis teste.",
+          "hint": "Le nombre indique la distance. Ce n’est pas la vitesse ni le nombre de clics."
+        },
+        {
+          "id": "expliquer",
+          "text": "Explique avec tes mots où tu écris les instructions et où tu vois leur résultat.",
+          "hint": "La zone Code contient les blocs ; la scène montre ce qu’ils font."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "3 : Sauvegarder sans compte",
+      "paragraphs": [
+        "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer premier-essai.sb3.",
+        "Le téléchargement garde l’état du projet à ce moment-là. Après de nouvelles modifications, télécharge une nouvelle version : ne suppose pas que l’ancien fichier a changé.",
+        "Pour rouvrir : dans Scratch, choisis Fichier → Charger depuis votre ordinateur et sélectionne ton .sb3. Attention : charger remplace le projet ouvert. Sauvegarde d’abord ton travail actuel si tu veux le garder.",
+        "N’utilise pas ton nom complet ou d’autres informations personnelles dans le titre. Il n’est pas nécessaire de partager le projet en ligne."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : retrouve ton atelier",
+      "intro": "Replie ou remonte moins souvent vers les exemples. Tu peux utiliser un indice si tu bloques.",
+      "items": [
+        {
+          "id": "reouvrir",
+          "text": "Télécharge ton projet, puis recharge ce fichier. Vérifie que tes deux blocs sont encore présents.",
+          "hint": "Sauvegarde avant de charger. Un fichier .sb3 contient le projet, pas seulement une image."
+        },
+        {
+          "id": "autonome",
+          "text": "Sans regarder le modèle, montre le sprite sélectionné, la zone de code, le drapeau et le bouton d’arrêt.",
+          "hint": "Essaie de les montrer avant de relire la partie 1."
+        },
+        {
+          "id": "preuve",
+          "text": "Relance ton script et explique pourquoi cliquer sur le drapeau le démarre.",
+          "hint": "Le bloc Événements indique ce qui déclenche le script."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : un autre essai",
+      "intro": "Seulement si les repères sont clairs.",
+      "items": [
+        {
+          "id": "distance",
+          "text": "Teste 5 puis 40 pas. Explique quelle valeur déplace le chat le plus loin, puis sauvegarde.",
+          "hint": "Tu changes seulement le nombre du bloc Mouvement."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Retrouver la scène, le sprite sélectionné et sa zone de code sans modèle.",
+    "Modifier un nombre et prévoir l’effet, plutôt que seulement recopier.",
+    "Télécharger puis recharger un .sb3 et retrouver le script."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-decouverte",
+      "blockId": "guide",
+      "label": "Reprendre les repères et la première action"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-decouverte",
+      "blockId": "bonus",
+      "label": "Comparer deux distances"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "exemple",
+      "label": "Enchaîner des actions : savoir retrouver les blocs et sauvegarder son projet"
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Repérer les zones de Scratch, lancer une action et conserver son projet.",
+    "entryDiagnosis": [
+      "Demander de montrer la scène et de déplacer un bloc, sans supposer une expérience antérieure.",
+      "Observer la lecture et la manipulation ; lire la consigne à voix haute si nécessaire sans donner la solution."
+    ],
+    "preparation": [
+      "Ouvrir l’éditeur Scratch en français et CodeCraft dans deux onglets.",
+      "Prévoir un emplacement pour les .sb3 ; aucun compte ni partage public requis.",
+      "Utiliser le chat fourni par Scratch : aucun projet privé ni asset à préparer pour ce lot."
+    ],
+    "why": "Se repérer et récupérer son travail permet de créer ensuite sans dépendre du compte ou de la démonstration du professeur.",
+    "discoverySpeech": [
+      "« La scène montre ce que ton jeu fait ; les blocs disent ce qu’il doit faire. »",
+      "« Clique sur le bloc bleu. Maintenant, comment le drapeau pourrait-il déclencher cette action ? »",
+      "« Nous gardons le projet dans un fichier : fermer l’onglet ne doit pas nous faire perdre notre travail. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-decouverte",
+        "blockId": "exemple",
+        "label": "Lire et assembler l’exemple"
+      },
+      "comments": [
+        "Les lignes sont un modèle textuel de blocs, pas un programme à coller.",
+        "Faire retrouver la catégorie puis le bloc ; laisser l’élève assembler.",
+        "Demander une prédiction, lancer, comparer et expliquer."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Le code de quel sprite modifies-tu ?",
+        "answer": "Celui dont la miniature est sélectionnée."
+      },
+      {
+        "question": "30 pas veut-il dire 30 secondes ?",
+        "answer": "Non, c’est une distance de déplacement."
+      },
+      {
+        "question": "Le fichier téléchargé change-t-il tout seul après une modification ?",
+        "answer": "Non : il faut enregistrer une nouvelle version."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-decouverte",
+      "blockId": "guide",
+      "label": "Essais guidés"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-decouverte",
+      "blockId": "autonomie",
+      "label": "Essai sans modèle"
+    },
+    "differentiation": [
+      "Pour un CE2 débutant : une consigne à la fois, lire les termes si nécessaire, faire montrer avant de demander d’écrire ou de calculer.",
+      "Pour un élève à l’aise : demander une prédiction et une modification sans modèle, puis le bonus. Ne pas imposer un nombre de séances.",
+      "Reprendre le prérequis manquant ; aucun accès au module ni case cochée ne constitue un acquis."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le chat ne bouge pas au drapeau.",
+        "helps": [
+          "Faire cliquer directement le bloc bleu.",
+          "Vérifier le sprite sélectionné.",
+          "Comparer une pile attachée et deux blocs isolés.",
+          "Raccrocher le bloc Mouvement sous l’événement puis retester."
+        ]
+      },
+      {
+        "symptom": "Le projet semble perdu.",
+        "helps": [
+          "Chercher le fichier .sb3 dans les téléchargements.",
+          "Distinguer télécharger un fichier et garder l’onglet ouvert.",
+          "Faire charger une copie connue après sauvegarde du projet actuel.",
+          "Accompagner le choix du fichier sans évaluer cela comme un problème de logique."
+        ]
+      }
+    ],
+    "notes": "Noter séparément le repérage, la manipulation de la souris et l’explication. Un téléchargement accompagné ne prouve pas la sauvegarde autonome.",
+    "quickConductor": [
+      "Vérifier les repères ou prérequis.",
+      "Faire assembler l’exemple et prédire son résultat.",
+      "Changer une chose, tester et expliquer.",
+      "Proposer la mission autonome ; distinguer réussite autonome, avec modèle ou avec aide.",
+      "Sauvegarder le .sb3 ; choisir reprise ou suite selon la compréhension."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels officiels",
+        "url": "https://scratch.mit.edu/ideas"
+      },
+      {
+        "title": "Scratch : projets de départ officiels",
+        "url": "https://scratch.mit.edu/help/starter_projects/"
+      }
+    ]
+  }
+}

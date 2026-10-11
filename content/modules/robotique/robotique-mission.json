@@ -1,0 +1,245 @@
+{
+  "domainId": "robotique",
+  "title": "Ma mission de robot",
+  "type": "project",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir MakeCode micro:bit",
+    "url": "https://makecode.microbit.org/"
+  },
+  "objective": "Choisir une mission, justifier ton réglage et observer un premier résultat.",
+  "skillIds": [
+    "robotique.mission",
+    "robotique.reglage"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.distance",
+      "expectation": "Distinguer une mesure reçue et une limite choisie."
+    },
+    {
+      "skillId": "robotique.condition",
+      "expectation": "Montrer les deux branches de la règle répétée."
+    },
+    {
+      "skillId": "robotique.reglage",
+      "expectation": "Retrouver où seuil reçoit sa valeur et où elle est utilisée, avec aide si nécessaire."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Retrouve Mon-robot-prudent et sa règle : distance < seuil ? Oui → Arrêter ; non → Avancer. Montre où seuil reçoit sa valeur et où elle est utilisée. Si tu hésites, reprends ce point avec le professeur ; inutile de reconstruire tout le robot."
+    },
+    {
+      "type": "callout",
+      "id": "recette",
+      "title": "Choisir ton terrain d’essai",
+      "text": "Le professeur te propose les situations et les réglages pour ta mission. Repère le départ et l’obstacle avant de lancer. Note séparément ce que tu prévois et ce que tu observes ; si tu n’as pas fait un essai, écris « non testé »."
+    },
+    {
+      "type": "lesson",
+      "id": "copie",
+      "title": "1 - Garder ton projet et ta trace",
+      "paragraphs": [
+        "Exporte Mon-robot-prudent et garde ce fichier intact. Réimporte-le comme copie, puis nomme celle-ci Ma-mission-robot. Si ton projet manque, demande au professeur une base de reprise : tu retrouveras la règle déjà étudiée, pas un nouveau programme à recopier.",
+        "Télécharge la fiche commune ci-dessous et ouvre-la dans ton navigateur pour l’imprimer, ou utilise-la comme modèle sur papier. Une phrase de mission et quelques mots prévu / observé suffisent ; tu peux aussi dicter au professeur. Garde la même fiche et le même projet pour la prochaine leçon. Aucun nom complet n’est demandé."
+      ],
+      "downloads": [
+        {
+          "label": "Fiche commune : ma mission et mes essais (HTML imprimable)",
+          "path": "resources/robotique/fiche-mission-robot.html",
+          "filename": "fiche-mission-robot.html"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reprise-seuil",
+      "title": "Si tu n’as pas encore essayé un autre seuil",
+      "intro": "Fais cette reprise avec le professeur si le changement de réglage a été reporté dans S’arrêter devant un obstacle, ou si son effet reste difficile à expliquer. Si tu l’as déjà essayé et expliqué, passe à la référence.",
+      "items": [
+        {
+          "id": "rb09-reprise-papier",
+          "text": "Sur papier, garde une mesure de 23 et prévois l’action avec seuil = 20, puis seuil = 25. Explique quel nombre est choisi et lequel vient du capteur.",
+          "hint": "23 < 20 est faux : Avancer ; 23 < 25 est vrai : Arrêter. Seule la limite choisie change dans cet exercice."
+        },
+        {
+          "id": "rb09-reprise-essai",
+          "text": "Dans ta copie, montre l’initialisation et l’emploi de seuil. Le professeur propose deux valeurs vérifiées : prévois puis compare leur effet depuis la même scène, avec la même puissance. Retrouve ensuite le réglage conservé et explique le résultat avant de choisir ta mission.",
+          "hint": "Change seulement la valeur initiale, puis relance depuis le départ vérifié. Les nombres du papier ne sont pas des valeurs de simulation garanties. Si cet essai reste impossible, note non testé et reprends-le avec le professeur avant le choix personnel."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Observer la référence avant de choisir",
+      "intro": "Le professeur montre Reference-arret dans la scène A : départ éloigné, obstacle devant, avance puis arrêt avant contact. Il conserve son réglage.",
+      "items": [
+        {
+          "id": "rb09-reference",
+          "text": "Repère l’espace qui reste devant l’obstacle à l’arrêt : c’est la marge. Explique ce que voudrait dire une marge plus grande ou plus petite.",
+          "hint": "Plus grande : le robot reste plus loin de l’obstacle. Plus petite : il s’arrête plus près, mais toujours avant contact. Il ne s’agit pas de rouler plus vite."
+        },
+        {
+          "id": "rb09-regle",
+          "text": "Dans ton projet intact, montre la mesure, la question et les deux actions possibles. Où se trouve le réglage choisi ?",
+          "hint": "Le capteur donne la distance. seuil reçoit notre valeur au démarrage et sert à la comparaison. Ne supprime aucun bloc pour faire cette lecture."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "choisir",
+      "title": "2 - Une mission que l’on peut observer",
+      "paragraphs": [
+        "Ton robot peut être livreur, explorateur ou robot de secours. Ce thème donne une raison à ton choix ; il n’ajoute pas de livraison, de labyrinthe ou de nouvelle commande.",
+        "Choisis une mission disponible après vérification du professeur : prudente, avancer puis s’arrêter avec une marge plus grande que la référence ; approche, avancer puis s’arrêter avec une marge plus petite, toujours avant contact.",
+        "Approche n’est pas une course vers l’obstacle ni une recherche du plus petit seuil possible. Utilise seulement les valeurs vérifiées pour ta mission. Si le robot touche l’obstacle ou réagit autrement que prévu, arrête et vérifie avec le professeur avant de recommencer.",
+        "Écris une phrase : Mon robot est un… ; sa mission est de s’arrêter avec une marge… Explique ton choix à l’oral. Choisis une valeur de seuil autorisée et prévois son effet avant un indice. Tu peux garder une valeur pertinente de ton projet précédent : changer un nombre n’est pas obligatoire.",
+        "Montre la valeur donnée à seuil avant la boucle d’attente de A et son emploi à droite de < dans la seconde boucle. Garde puissance, préparation, règle et courte pause identiques. Le nombre ne modifie pas la mesure reçue et ne change pas tout seul pendant l’avance."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - un premier résultat dans A",
+      "intro": "Après ta prévision, le professeur prépare les mêmes départ, orientation, obstacle et puissance que pour la référence. Après relance, laisse la simulation active sans appuyer sur A : les moteurs restent arrêtés pour le placement et la lecture. Appuie ensuite sur A sans relance intermédiaire ; ne déplace jamais un robot en mouvement.",
+      "items": [
+        {
+          "id": "rb09-prevision",
+          "text": "Note ou dis ce que tu prévois dans A. Lance ta copie et observe l’avance puis l’arrêt avant contact dans une seule exécution.",
+          "hint": "Si le robot reste arrêté dès le départ, ce n’est pas la réussite de cette mission. Si la scène ou la mesure paraît étrange, arrête et vérifie avec le professeur avant de toucher au seuil."
+        },
+        {
+          "id": "rb09-resultat",
+          "text": "Compare la marge à celle de la référence. Note quelques mots dans premier essai A et explique si ce premier résultat correspond à ton objectif.",
+          "hint": "Garde des conditions égales. Si elles ont changé, la différence ne prouve pas l’effet du réglage. Modifie seulement si nécessaire, après diagnostic, et reteste."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Garder ce premier résultat",
+      "text": "Arrête et exporte Ma-mission-robot sous son nom, sans remplacer l’original. Garde la fiche et la valeur choisie. Tu as un premier résultat, pas encore une mission vérifiée partout : la suite confirmera A et testera B/C. Si l’essai n’a pas pu être réalisé, note non testé et conserve ta préparation."
+    }
+  ],
+  "masteryCriteria": [
+    "Je formule une mission observable, pas seulement un thème.",
+    "Je justifie mon réglage et montre où il est donné et utilisé.",
+    "Je confronte une première prévision au résultat A, ou identifie l’essai non réalisé.",
+    "Je conserve mon original, ma copie et la même fiche pour la suite."
+  ],
+  "teacherGuide": {
+    "objective": "Passer d’un réglage guidé à un objectif personnel, une prévision et un premier résultat, sans nouvelle mécanique.",
+    "entryDiagnosis": [
+      "Faire pointer mesure, comparaison, deux actions et seuil dans le projet intact.",
+      "Demander si l’essai de changement guidé RB08 a été réalisé et expliqué. Sinon, utiliser reprise-seuil avant la référence et le choix personnel : papier, pointage, puis essai accompagné sur deux valeurs vérifiées. Une prévision sur papier seule ne valide pas cet essai.",
+      "Distinguer aide de manipulation et besoin de reprise conceptuelle ; aucun acquis automatique."
+    ],
+    "preparation": [
+      "Recette pratique incomplète : essais du 10 octobre documentés, R10-R12/R14 et R15 restent partiels. Approche à 15 : départ 26 puis arrêt 13 devant chaque rectangle, proche 7 immobile après A confirmé. Prudente à 25 : autre rectangle depuis 26, arrêt 22-23 ; proche 7 immobile après relâchement de A confirmé par l’utilisateur. Référence 20 : arrêt 18 avec attente de A ; 17 provient d’une version antérieure. Valeurs ponctuelles, aucune plage ni distance exacte garantie.",
+      "Préparer Reference-arret à partir du fixe RB08, avec limite conservée ; noter scène A, orientation, obstacle, puissance et mesures. Montrer son arrêt avant le choix.",
+      "Confirmer la comparaison des missions à conditions égales avant le cours ; ne pas inventer une plage numérique ni proposer approche si elle échoue dans la scène utilisée.",
+      "Prévoir la fiche commune et une base de reprise variable RB08 si le projet manque. Ce programme complet reprend un prérequis, il n’est pas un départ sans solution.",
+      "Les copies professeur 15/25 ont été exportées et réimportées avec réglages retrouvés. Accès élève et téléchargement/ouverture locale/impression de la fiche restent à vérifier ; pas de compte ou partage public imposé."
+    ],
+    "why": "Le choix porte sur une contrainte observable et sa justification, pas sur l’habillage du robot. Un programme identique peut être pertinent si l’élève explique son choix et le vérifie.",
+    "discoverySpeech": [
+      "Voici la marge laissée par notre référence. Quel objectif aimerais-tu donner à ton robot ?",
+      "Tu choisiras ton réglage dans les possibilités vérifiées, puis tu prévois avant d’essayer. Nous ne cherchons jamais le contact."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-mission",
+        "blockId": "guide"
+      },
+      "comments": [
+        "Démonstration courte de A avant mission ; ne pas donner le sens du changement ni la valeur solution.",
+        "La comparaison exige mêmes conditions. Une capture de programme n’atteste pas la scène."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Un robot déjà arrêté au départ réussit-il la mission A ?",
+        "answer": "Non : A demande une avance puis un arrêt. Cet arrêt initial est utile dans B, pas suffisant pour A."
+      },
+      {
+        "question": "Faut-il forcément modifier le nombre ?",
+        "answer": "Non, si le réglage répond à l’objectif ; demander justification et essai."
+      },
+      {
+        "question": "Une valeur plus grande rend-elle le robot plus rapide ?",
+        "answer": "Non : seuil règle la comparaison, pas la puissance ni la mesure."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-mission",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-mission",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Question → pointage → deux valeurs admissibles → démonstration si nécessaire, sans supprimer la prévision personnelle.",
+      "Une phrase et quelques mots suffisent sur la fiche ; justification orale et dictée possibles. Garder détails techniques et aides dans le relevé professeur.",
+      "Élève rapide : préciser la conclusion ou refaire A, pas ajouter une nouvelle variable. Si placement bloqué, préparation non testée explicitement."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le thème ne donne aucun objectif observable",
+        "helps": [
+          "Faire montrer la marge de référence.",
+          "Demander ce qui doit être différent à l’arrêt.",
+          "Proposer les deux contraintes vérifiées.",
+          "Faire reformuler sans ajouter de mécanique."
+        ]
+      },
+      {
+        "symptom": "L’arrêt semble différent mais le départ a changé",
+        "helps": [
+          "Arrêter la simulation.",
+          "Comparer captures et orientation.",
+          "Rétablir les conditions vérifiées sans changer le seuil.",
+          "Retester et limiter la conclusion aux observations comparables."
+        ]
+      }
+    ],
+    "notes": "Premier essai A en RB09, confirmation et B/C en RB10. Pas de panne imposée, seuil minimal, radio, ligne, recul ou navigation. Le réglage virtuel n’est pas une sécurité matérielle.",
+    "quickConductor": [
+      "Retrouver les repères et préserver le projet.",
+      "Si le changement guidé RB08 manque ou reste fragile, faire la reprise ciblée avant le choix personnel.",
+      "Montrer la référence A puis laisser choisir la mission.",
+      "Faire justifier et prévoir le seul réglage.",
+      "Observer un premier A, conserver trace et export."
+    ],
+    "references": [
+      {
+        "title": "Fiche commune imprimable",
+        "url": "resources/robotique/fiche-mission-robot.html"
+      },
+      {
+        "title": "Base de reprise professeur : règle avec seuil (.hex)",
+        "url": "resources/robotique/makecode/RB08-Robot-prudent-reference.hex"
+      },
+      {
+        "title": "Référence fixe professeur (.hex)",
+        "url": "resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"
+      },
+      {
+        "title": "Scènes de mission : préparation et réserves",
+        "url": "docs/integration-robotique-missions.md"
+      },
+      {
+        "title": "Protocole R15",
+        "url": "docs/protocoles-verifications-manuelles.md"
+      }
+    ]
+  }
+}

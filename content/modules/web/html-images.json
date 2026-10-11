@@ -1,0 +1,432 @@
+{
+  "domainId": "web",
+  "title": "Images HTML",
+  "type": "lesson",
+  "objective": "Insérer une image, distinguer src et alt, remplacer l’image et commencer à diagnostiquer une image absente.",
+  "skillIds": [
+    "html.images",
+    "html.links"
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "cours",
+      "title": "1 : Une source et un texte alternatif : exemple explicatif",
+      "paragraphs": [
+        "img insère une image. src indique sa source ; alt donne un texte qui transmet l’information utile apportée par l’image dans cette page.",
+        "Le texte alternatif aide notamment les personnes qui utilisent un lecteur d’écran et peut remplacer une image absente. Ce n’est pas une légende visible sous l’image.",
+        "Une image montrant une forme à reconnaître peut avoir alt=\"Un carré bleu\". Après remplacement par un cercle orange, cette description doit changer.",
+        "Contrairement à p ou a, img n’entoure pas de contenu : elle n’a pas de balise de fermeture.",
+        "Dans cet exemple, le fichier `carre-bleu.png` est rangé dans le dossier `images`, à côté de la page HTML."
+      ],
+      "code": "<img src=\"images/carre-bleu.png\" alt=\"Un carré bleu\">",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "L’image et sa description",
+        "intro": "Compare une image disponible et une source indisponible. La description reste utile dans les deux cas.",
+        "variants": [
+          {
+            "label": "Image disponible",
+            "html": "<img class=\"illustration\" src=\"assets/exercices/cercle-orange.png\" alt=\"Un cercle orange\">",
+            "code": "<img src=\"images/cercle-orange.png\"\n     alt=\"Un cercle orange\">",
+            "feedback": "Le dessin apparaît. alt décrit son information utile ; ce n’est pas une légende visible.",
+            "css": ""
+          },
+          {
+            "label": "Source indisponible",
+            "html": "<img src=\"assets/exercices/fichier-absent.png\" alt=\"Un cercle orange\">",
+            "code": "<img src=\"images/fichier-absent.png\"\n     alt=\"Un cercle orange\">",
+            "feedback": "L’image ne se charge pas. Le navigateur affiche le texte de `alt`. Vérifie le chemin dans `src` pour retrouver l’image.",
+            "css": ""
+          }
+        ],
+        "note": ""
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "ressources-intro",
+      "title": "2 : Choisis la bonne source",
+      "paragraphs": [
+        "Une image peut venir d’un site : `src` contient alors son adresse complète. Dans CodePen, utilise le lien d’une image en ligne.",
+        "Une image peut aussi être un fichier de ton projet. Télécharge le dessin et place-le dans le dossier `images`, à côté de `index.html`. Écris son chemin dans `src`, par exemple `images/carre-bleu.png`.",
+        "Les deux images PNG ci-dessous sont fournies par CodeCraft. Choisis leur lien ou télécharge leur fichier pour ton projet."
+      ]
+    },
+    {
+      "type": "resource",
+      "id": "ressource-carre",
+      "title": "Image de départ : carré bleu",
+      "resourceId": "carre-bleu"
+    },
+    {
+      "type": "resource",
+      "id": "ressource-cercle",
+      "title": "Image de remplacement : cercle orange",
+      "resourceId": "cercle-orange"
+    },
+    {
+      "type": "tasks",
+      "id": "exercices",
+      "title": "3 : Exercice guidé",
+      "intro": "Dans HTML sur CodePen, commence avec <img src=\"\" alt=\"\">. Remplis d’abord src, puis rédige toi-même alt. Avance une étape à la fois.",
+      "items": [
+        {
+          "id": "premiere-image",
+          "text": "Clique sur « Copier le lien » du carré bleu. Colle l’adresse dans `src` et observe l’image dans l’aperçu.",
+          "hints": [
+            "Repère src et ses deux guillemets.",
+            "Place le curseur entre ces guillemets ; ne colle pas une balise img complète à cet endroit.",
+            "Compare la structure avec l’exemple explicatif : src contient la source, alt contiendra ton texte.",
+            "Recopie uniquement la source avec le bouton puis colle-la entre les guillemets de src. Écris ensuite ta description dans alt."
+          ]
+        },
+        {
+          "id": "modifier-alt",
+          "text": "Décris la forme et sa couleur avec tes mots dans alt. Observe que ce texte ne devient pas une légende."
+        },
+        {
+          "id": "modifier-image",
+          "text": "Copie le lien du cercle orange dans `src`. Adapte ensuite `alt` à la nouvelle image.",
+          "hints": [
+            "Regarde d’abord ce qui a changé dans l’image.",
+            "Change le contenu des guillemets de src, puis ceux de alt.",
+            "Compare le dessin affiché avec les mots que tu as écrits dans alt.",
+            "Remplace un attribut à la fois et vérifie le résultat après chaque changement."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "aide-fondations",
+      "title": "Besoin d’un squelette titre/paragraphe ? : Fondations ou autre parcours",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "squelette",
+          "title": "Une petite page à compléter",
+          "paragraphs": [
+            "Si tu ne sais pas encore créer un titre et un paragraphe, utilise ce squelette fourni. Le titre et le texte sont déjà prêts : leur création n’est pas nécessaire pour travailler les images.",
+            "Sous le carré bleu, clique sur « Copier le lien ». Colle l’adresse dans `src` et décris l’image dans `alt`. Tu peux ensuite personnaliser les textes.",
+            "Observe comment src et alt changent le résultat dans l’aperçu."
+          ],
+          "code": "<h1>Mes formes</h1>\n<p>Voici une forme que je reconnais.</p>\n<img src=\"\" alt=\"\">"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "4 : Mission autonome",
+      "intro": "Présente une forme avec un titre, un paragraphe et une image. Si tu ne sais pas encore créer les textes, utilise le squelette repliable juste au-dessus. Tu peux réussir la partie images avec ce support. Si ces bases sont maîtrisées, commence sans squelette.",
+      "items": [
+        {
+          "id": "image-section",
+          "text": "Crée un titre et un paragraphe, ou conserve ceux du squelette fourni pour te concentrer sur l’image."
+        },
+        {
+          "id": "mission-image",
+          "text": "Place le lien ou le chemin du dessin choisi dans `src`, puis décris l’image dans `alt`."
+        },
+        {
+          "id": "mission-remplacer",
+          "text": "Remplace l’image et vérifie que son texte alternatif reste adapté."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "depannage",
+      "title": "Consolidation : Une image absente",
+      "intro": "Teste volontairement une erreur, puis corrige-la. Utilise les deux ressources disponibles au-dessus.",
+      "items": [
+        {
+          "id": "source-incorrecte",
+          "text": "Remplace temporairement src par image-introuvable.png. Observe, puis rétablis une source fournie.",
+          "hints": [
+            "Observe l’image absente et relis src.",
+            "Un nom de fichier seul ne suffit pas si ce fichier n’existe pas à cet endroit.",
+            "Compare src avec la source obtenue par « Copier le lien ».",
+            "Rétablis le lien ou le chemin correct dans `src`, puis recharge l’aperçu."
+          ]
+        },
+        {
+          "id": "attributs-inverses",
+          "text": "Répare cet extrait : <img src=\"Un carré bleu\" alt=\"images/carre-bleu.png\">. Dans CodePen, utilise le lien du carré.",
+          "hints": [
+            "Quel attribut doit contenir la description ?",
+            "src attend la source, alt attend le texte alternatif.",
+            "Compare avec le premier exemple commenté.",
+            "Copie la source du carré dans src avec le bouton dédié, puis rédige la description dans alt. Teste le résultat."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus-presentation",
+      "title": "Bonus : Deuxième présentation illustrée",
+      "intro": "Si ta première présentation fonctionne, ajoute une autre présentation. Si tu ne connais pas h2, le titre et le paragraphe sont fournis dans l’indice : utilise-les sans devoir maîtriser une nouvelle balise.",
+      "items": [
+        {
+          "id": "deuxieme-image",
+          "text": "Ajoute une deuxième présentation avec titre, paragraphe et image. Utilise les textes fournis dans l’indice si nécessaire, puis remplis src et rédige alt.",
+          "hint": "Tu peux recopier le h2 et le p ci-dessous tels quels. Ton objectif ici reste l’image et sa description.",
+          "syntax": "<h2>Une autre forme</h2>\n<p>Voici une deuxième forme à observer.</p>\n<img src=\"\" alt=\"\">"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus-lien",
+      "title": "Bonus : Une image cliquable",
+      "intro": "Seulement si tu sais déjà créer un lien avec a et href. Sinon, tu peux passer ce bonus et revenir après Liens HTML.",
+      "items": [
+        {
+          "id": "image-lien",
+          "text": "Transforme une image en lien vers https://example.com. Vérifie la destination et adapte alt pour annoncer le lien.",
+          "hints": [
+            "Repère l’image et le lien qui doit l’entourer.",
+            "L’image remplace le texte cliquable entre <a> et </a>.",
+            "Compare avec la syntaxe repliée ci-dessous.",
+            "Entoure img de <a href=\"https://example.com\"> et </a>. Dans le modèle, colle l’adresse de l’image dans src et rédige toi-même alt pour annoncer la destination du lien. Teste le clic."
+          ],
+          "syntax": "<a href=\"https://example.com\">\n  <img src=\"\" alt=\"\">\n</a>"
+        }
+      ]
+    }
+  ],
+  "theme": "debutants",
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.text",
+      "expectation": "Reconnaître une balise et modifier le texte d’un petit extrait HTML."
+    }
+  ],
+  "masteryCriteria": [
+    "Insérer une image à partir d’une source fournie, sans ajouter </img>.",
+    "Expliquer que src désigne la source et que alt transmet l’information utile de l’image.",
+    "Remplacer la source puis adapter alt au nouveau contenu.",
+    "Face à une image absente, vérifier la source et les guillemets avant de conclure à une faute HTML.",
+    "Distinguer la réussite sur src et alt de l’aide reçue pour créer les titres, paragraphes ou manipuler le copier-coller."
+  ],
+  "resources": [
+    {
+      "id": "carre-bleu",
+      "title": "Le carré bleu",
+      "path": "assets/exercices/carre-bleu.png",
+      "alt": "Un carré bleu"
+    },
+    {
+      "id": "cercle-orange",
+      "title": "Le cercle orange",
+      "path": "assets/exercices/cercle-orange.png",
+      "alt": "Un cercle orange"
+    }
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-images",
+      "blockId": "depannage",
+      "label": "Réparer une source ou des attributs"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre titres et paragraphes si nécessaire"
+    },
+    {
+      "moduleId": "html-listes",
+      "label": "Reprendre les listes avant la mini-page si nécessaire"
+    },
+    {
+      "moduleId": "html-liens",
+      "label": "Reprendre les liens avant la mini-page ou le bonus cliquable"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-images",
+      "blockId": "bonus-presentation",
+      "label": "Ajouter une deuxième présentation"
+    },
+    {
+      "moduleId": "html-images",
+      "blockId": "bonus-lien",
+      "label": "Rendre une image cliquable",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.links",
+          "expectation": "Savoir créer un lien et distinguer href de son texte."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-mini-page",
+      "label": "Mini-page HTML : si les bases nécessaires sont maîtrisées",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Savoir créer un titre principal et des sous-titres."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Savoir écrire plusieurs paragraphes."
+        },
+        {
+          "skillId": "html.lists",
+          "expectation": "Savoir créer une liste."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Savoir créer des liens."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Savoir insérer une image et adapter alt."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Classes et couleurs : si titres et paragraphes sont maîtrisés",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Savoir créer un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Savoir créer un paragraphe."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire distinguer le fichier ou la source à charger de l’information textuelle qui remplace l’image. Observer l’élève remplacer une image et expliquer son choix de texte alternatif.",
+    "entryDiagnosis": [
+      "Présenter <p>Bonjour</p> : demander de modifier seulement Bonjour et d’identifier la balise. Attendu : le texte change, les balises restent intactes.",
+      "Demander de montrer les guillemets dans un extrait HTML. Si la manipulation est fragile, proposer le squelette plutôt que d’ajouter une difficulté de saisie.",
+      "Les liens ne sont pas un prérequis d’entrée. Les vérifier uniquement avant de proposer le bonus image cliquable.",
+      "Vérifier si titres et paragraphes peuvent être produits seuls. Sinon, fournir le squelette : ce n’est pas un obstacle à l’apprentissage des images. Fournir également h2 dans le bonus si nécessaire."
+    ],
+    "preparation": [
+      "Ouvrir CodePen sur un projet vide et vérifier l’accès à la zone HTML.",
+      "Ouvrir les deux images PNG de la section Ressources. Le bouton « Copier le lien » fournit leur adresse sur le site. Pour CodePen, utiliser une version du site hébergée en HTTPS et accessible publiquement.",
+      "Pour un projet local, télécharger les deux PNG dans le dossier images, à côté de index.html, avec la même arborescence que dans l’exemple. Un chemin local ne fonctionne pas dans CodePen.",
+      "Si un fichier manque ou si un service est indisponible, fournir à nouveau la ressource : ne pas traiter la panne comme une erreur de l’élève."
+    ],
+    "why": "Une page doit transmettre son contenu même lorsque l’image n’est pas perçue. Séparer src et alt évite de confondre adresse, description et légende.",
+    "discoverySpeech": [
+      "« Voici une forme que nous voulons présenter. L’image n’est pas écrite entre deux balises : img indique où la trouver. »",
+      "« Dans src, nous mettons sa source. Dans alt, nous écrivons l’information que quelqu’un doit comprendre s’il ne voit pas l’image. »",
+      "« Si je remplace le carré par un cercle, que dois-je vérifier en plus de la source ? Essayons puis décrivons le résultat. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-images",
+        "blockId": "cours",
+        "label": "Exemple minimal"
+      },
+      "comments": [
+        "Lire chaque attribut séparément : src est le chemin du dessin ; alt donne ici sa forme et sa couleur.",
+        "L’extrait court explique la structure et utilise un chemin local. Pour CodePen, partir de <img src=\"\" alt=\"\">, copier uniquement la source, la coller entière dans src sans la retaper ni la modifier, puis laisser l’élève rédiger alt.",
+        "Il n’existe pas de </img>. Ne pas présenter alt comme une légende ou une infobulle."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Que contient src ?",
+        "answer": "Une source que le navigateur peut charger, pas la description."
+      },
+      {
+        "question": "Si le carré devient un cercle, que faut-il adapter ?",
+        "answer": "La source et le texte alternatif, selon l’information utile."
+      },
+      {
+        "question": "Pourquoi alt ne s’affiche-t-il pas sous l’image ?",
+        "answer": "C’est un remplacement textuel accessible, pas une légende visible."
+      },
+      {
+        "question": "Une image absente prouve-t-elle une faute HTML ?",
+        "answer": "Non : vérifier aussi la disponibilité du fichier, la source et l’accès au service."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-images",
+      "blockId": "exercices",
+      "label": "Copier, décrire, remplacer"
+    },
+    "independentActivity": {
+      "moduleId": "html-images",
+      "blockId": "mission",
+      "label": "Présenter une forme avec titre, paragraphe et image"
+    },
+    "differentiation": [
+      "Si nécessaire, fournir le squelette avec les titres et paragraphes déjà écrits. Accompagner la sélection puis le collage de l’adresse de l’image ; laisser l’élève choisir et écrire alt.",
+      "Si les bases HTML sont maîtrisées, demander une présentation sans squelette puis le remplacement autonome de la source et de alt. Le niveau d’aide dépend des besoins observés, pas du nom du parcours."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La description a été écrite dans src.",
+        "helps": [
+          "Demander quel attribut doit charger quelque chose.",
+          "Cibler la différence source/texte.",
+          "Comparer avec l’exemple minimal.",
+          "Remettre une source fournie dans src, puis faire écrire alt par l’élève."
+        ]
+      },
+      {
+        "symptom": "L’image a changé mais alt décrit encore l’ancienne.",
+        "helps": [
+          "Faire décrire l’image actuelle à voix haute.",
+          "Cibler la valeur de alt.",
+          "Comparer les descriptions des deux dessins.",
+          "Faire remplacer le texte puis relire l’ensemble."
+        ]
+      },
+      {
+        "symptom": "L’adresse est incomplète ou l’image est indisponible.",
+        "helps": [
+          "Observer si le dessin s’affiche dans le module.",
+          "Vérifier que src contient uniquement l’adresse de l’image, entre ses guillemets.",
+          "Comparer avec la source accessible par le bouton ou le panneau de copie manuelle.",
+          "Recopier uniquement la source avec le bouton, sans modification. Si elle échoue aussi, vérifier la ressource ou l’environnement avant d’attribuer l’échec au code."
+        ]
+      }
+    ],
+    "notes": [
+      "Le texte alternatif dépend du contexte, pas seulement des pixels. Dans un exercice sur les formes, leur forme et leur couleur sont utiles.",
+      "Une image purement décorative peut avoir alt=\"\" : les lecteurs d’écran peuvent alors l’ignorer. Ne pas omettre l’attribut et ne pas rendre une image informative muette.",
+      "Pour une image qui sert de lien, le texte alternatif doit annoncer sa fonction ou sa destination ; faire formuler ce texte par l’élève dans le bonus.",
+      "Observer la réussite avec le niveau d’aide reçu. Aucune case ni consultation ne vaut acquisition ; décider manuellement dans le suivi professeur.",
+      "Évaluer séparément l’insertion, la distinction src/alt et le remplacement. Une aide pour h1, h2, p ou le copier-coller ne suffit pas à conclure à une difficulté sur les images.",
+      "Lors de l’observation, distinguer réussite autonome, avec modèle ou avec aide, en utilisant si utile la remarque pédagogique existante. Aucun nouveau statut ni validation automatique."
+    ],
+    "quickConductor": [
+      "Vérifier modification d’une balise et manipulation des guillemets.",
+      "Présenter source et texte alternatif sur une image visible.",
+      "Accompagner le collage de l’adresse de l’image dans src sans modification, puis laisser rédiger alt et remplacer le dessin.",
+      "Lancer la présentation autonome ; garder les consignes écrites accessibles.",
+      "En cas de difficulté : consolidation src/alt ; si réussite : deuxième présentation, puis image cliquable si les liens sont maîtrisés.",
+      "Observer insertion, explication et diagnostic ; décider de la suite à partir du travail.",
+      "Avant une suite, vérifier ses prérequis affichés ; proposer les reprises ciblées si nécessaire. Distinguer la compréhension des images des autres aides reçues."
+    ],
+    "references": [
+      {
+        "title": "MDN : Élément img",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
+      },
+      {
+        "title": "W3C WAI : Images décoratives",
+        "url": "https://www.w3.org/WAI/tutorials/images/decorative/"
+      },
+      {
+        "title": "MDN : Adresses data:",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data"
+      }
+    ]
+  }
+}

@@ -1,0 +1,484 @@
+{
+  "domainId": "web",
+  "title": "Organiser une page en zones",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Choisir des zones HTML selon le rôle de leur contenu et les imbriquer correctement.",
+  "skillIds": [
+    "html.landmarks"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer un titre principal et un sous-titre."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer un paragraphe et retrouver ses balises."
+    },
+    {
+      "skillId": "html.structure",
+      "expectation": "Identifier le parent direct d’un élément et fermer les conteneurs au bon endroit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant de commencer",
+      "text": "Tu dois pouvoir retrouver le parent direct d’un titre ou d’un paragraphe. Si tu hésites, reprends Parent et enfants, puis reviens ici avec Retour dans ton navigateur. Aucun CSS n’est nécessaire.",
+      "moduleLink": {
+        "text": "Parent et enfants",
+        "moduleId": "html-parent-enfants"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Donner un rôle aux regroupements",
+      "paragraphs": [
+        "Résultat attendu : une petite page avec une introduction, son contenu principal et une information finale. Tu sauras dire pourquoi chaque contenu est à cet endroit, même sans couleur.",
+        "Une div regroupe des éléments sans préciser leur rôle. Certaines balises permettent d’indiquer ce que contient le regroupement : c’est le sens du contenu, pas sa décoration.",
+        "Pour cet exercice, utilise un nouveau Pen : colle l’extrait dans HTML et laisse CSS vide. En local, garde ton document complet et remplace uniquement l’intérieur de body par l’extrait ; ne colle pas un deuxième body. Enregistre puis actualise."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "roles",
+      "title": "2 : Trois zones pour cette page",
+      "paragraphs": [
+        "header présente ici la page : son titre et une courte introduction. Ce n’est pas head : head contient les informations du document, alors que ce header est un élément affiché dans body.",
+        "main contient le sujet principal de la page. Dans cet exercice, utilise un seul main ; place-le après header, pas à l’intérieur de header.",
+        "footer contient ici une information de fin sur la page. Ce n’est pas une commande pour coller le texte en bas de la fenêtre.",
+        "Ces balises s’ouvrent et se ferment comme p. Tu places les titres et paragraphes entre leurs balises. Elles donnent des repères utiles, notamment aux technologies d’assistance, mais ne créent ni colonnes ni couleurs toutes seules."
+      ],
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Des zones avec des rôles",
+        "intro": "Explore les trois zones. Les couleurs servent uniquement à les repérer.",
+        "variants": [
+          {
+            "label": "header : introduction",
+            "html": "<header style=\"background:#e1ebfc;padding:12px\"><h1>Le carnet nature</h1><p>Introduction du site.</p></header><main><p>Le sujet principal vient ensuite.</p></main><footer><p>Information finale.</p></footer>",
+            "code": "<header>\n  <h1>Le carnet nature</h1>\n  <p>Introduction du site.</p>\n</header>",
+            "feedback": "header regroupe ici l’introduction. Il ne crée pas cette couleur automatiquement.",
+            "css": ""
+          },
+          {
+            "label": "main : contenu principal",
+            "html": "<header><p>Introduction du site.</p></header><main style=\"background:#e7f0e4;padding:12px\"><h2>Les arbres</h2><p>Je compare les feuilles.</p></main><footer><p>Information finale.</p></footer>",
+            "code": "<main>\n  <h2>Les arbres</h2>\n  <p>Je compare les feuilles.</p>\n</main>",
+            "feedback": "main contient le contenu principal de cette page.",
+            "css": ""
+          },
+          {
+            "label": "footer : information finale",
+            "html": "<header><p>Introduction du site.</p></header><main><p>Le sujet principal.</p></main><footer style=\"background:#faeddc;padding:12px\"><p>Un carnet de découvertes.</p></footer>",
+            "code": "<footer>\n  <p>Un carnet de découvertes.</p>\n</footer>",
+            "feedback": "footer regroupe ici l’information finale. Les zones donnent des rôles, pas une disposition automatique.",
+            "css": ""
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "Exemple : Introduction, sujet, information finale",
+      "paragraphs": [
+        "Lis les fermetures : header, main et footer sont au même niveau. Le h2 est enfant de main ; le h1 est enfant de header. Les espaces en début de ligne rendent l’imbrication plus facile à lire."
+      ],
+      "code": "<header>\n  <h1>Le carnet nature</h1>\n  <p>Des idées pour observer dehors.</p>\n</header>\n<main>\n  <h2>Observer les arbres</h2>\n  <p>Je compare les formes des feuilles.</p>\n</main>\n<footer>\n  <p>Un carnet pour partager mes découvertes.</p>\n</footer>"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Repérer les rôles",
+      "intro": "Utilise l’exemple, puis change une seule chose à la fois.",
+      "items": [
+        {
+          "id": "copier",
+          "text": "Colle l’exemple dans HTML. Repère dans l’aperçu le titre, le sujet principal et la phrase finale."
+        },
+        {
+          "id": "adapter",
+          "text": "Change le nom du carnet dans h1 et sa présentation dans le p de header, sans déplacer les balises."
+        },
+        {
+          "id": "expliquer",
+          "text": "Montre le parent direct du h2, puis celui de la dernière phrase. Explique leur rôle, pas seulement leur position.",
+          "hints": [
+            "Repère les balises qui entourent chaque élément.",
+            "Distingue le début de la page de son sujet principal.",
+            "Regarde les ouvertures ET les fermetures.",
+            "Le h2 est dans main ; la dernière phrase est dans footer. header présente la page."
+          ]
+        },
+        {
+          "id": "pas-style",
+          "text": "Explique pourquoi la page n’a pas automatiquement un grand bandeau coloré. Ne rajoute pas de CSS pour réussir cet exercice."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "sections",
+      "title": "3 : Plusieurs sujets dans le contenu principal",
+      "paragraphs": [
+        "Si main contient plusieurs parties sur des thèmes différents, section regroupe un de ces thèmes. Donne généralement un titre à chaque section pour annoncer son sujet.",
+        "Dans cette variante, remplace le main de l’exemple par celui ci-dessous ; garde header et footer. N’ajoute pas un deuxième main.",
+        "Les deux section sont enfants directs de main. Chaque h2 est enfant de sa section et descendant de main. Tu n’as pas besoin de section autour de chaque phrase ni uniquement pour changer une couleur."
+      ],
+      "code": "<main>\n  <section>\n    <h2>Observer les arbres</h2>\n    <p>Je compare les formes des feuilles.</p>\n  </section>\n  <section>\n    <h2>Observer les oiseaux</h2>\n    <p>Je reconnais quelques chants.</p>\n  </section>\n</main>"
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Un carnet sur un autre thème",
+      "intro": "Essaie avant d’ouvrir les indices. Pars d’une zone HTML vide ou remanie ton exemple sans en copier les textes.",
+      "items": [
+        {
+          "id": "creer-zones",
+          "text": "Crée une page sur un thème de ton choix avec une introduction (h1 et p), le contenu principal et une courte information de fin.",
+          "hints": [
+            "Choisis d’abord le rôle des trois regroupements.",
+            "Tu connais header, main et footer.",
+            "Vérifie que chaque conteneur est fermé avant le suivant.",
+            "Utilise header pour h1/p, un seul main pour le sujet et footer pour l’information finale ; écris tes propres textes."
+          ]
+        },
+        {
+          "id": "deux-themes",
+          "text": "Dans le contenu principal, crée deux parties thématiques. Chacune doit contenir un h2 et un paragraphe. Choisis et ferme les conteneurs nécessaires.",
+          "hints": [
+            "Repère les deux thèmes que tu annonces.",
+            "Chaque thème est un regroupement à l’intérieur de main.",
+            "Évite un main dans chaque partie.",
+            "Crée deux section sœurs à l’intérieur du même main, chacune avec son h2 et son p."
+          ]
+        },
+        {
+          "id": "transferer",
+          "text": "Ajoute une troisième partie sur un autre sujet. Explique son parent direct et pourquoi tu ne la places pas dans l’introduction."
+        },
+        {
+          "id": "argumenter",
+          "text": "Explique tes choix sans lire l’exemple. Une page qui s’affiche ne prouve pas à elle seule que les contenus sont bien regroupés."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-1",
+          "text": "Un seul main contient les parties du sujet principal."
+        },
+        {
+          "id": "verifier-2",
+          "text": "header présente la page et footer donne une information finale pertinente."
+        },
+        {
+          "id": "verifier-3",
+          "text": "Chaque section a un thème identifiable et un titre."
+        },
+        {
+          "id": "verifier-4",
+          "text": "Je peux retrouver les parents directs en suivant les ouvertures et fermetures."
+        },
+        {
+          "id": "verifier-5",
+          "text": "J’explique le rôle des zones sans m’appuyer seulement sur leur apparence."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Consolidation : Tout dans l’introduction ?",
+      "paragraphs": [
+        "Cette page s’affiche, mais son contenu principal est rangé dans header. Lis l’extrait avant de corriger ; ne cherche pas un effet CSS."
+      ],
+      "code": "<header>\n  <h1>Mon carnet</h1>\n  <main>\n    <h2>Les arbres</h2>\n    <p>Je compare les feuilles.</p>\n  </main>\n</header>\n<footer>\n  <p>Un carnet de découvertes.</p>\n</footer>"
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Réparer le regroupement",
+      "intro": "Dans une copie de ton Pen ou de ton fichier, essaie le code ci-dessus.",
+      "items": [
+        {
+          "id": "sortir-main",
+          "text": "Fais de header, main et footer trois zones sœurs, sans supprimer les textes.",
+          "hints": [
+            "Suis où header commence et se termine.",
+            "main doit sortir de header.",
+            "Compare la position de </header> et de <main>.",
+            "Déplace </header> juste après le h1 et avant <main>. Supprime son ancienne occurrence après </main>."
+          ]
+        },
+        {
+          "id": "expliquer-reparation",
+          "text": "Explique pourquoi déplacer cette fermeture change le parent de main même si la page reste presque identique visuellement."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus-navigation",
+      "title": "Bonus facultatif : Un groupe de liens de navigation",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "nav-explication",
+          "title": "nav : seulement si tu proposes une navigation",
+          "paragraphs": [
+            "Prérequis de ce bonus : savoir créer un lien avec a/href. Si ce n’est pas encore clair, laisse ce bonus de côté ; les trois zones et les sections suffisent.",
+            "nav regroupe les principaux liens pour se déplacer entre des pages ou des parties. Un lien isolé dans un paragraphe ne demande pas automatiquement nav.",
+            "Cet exemple fait une petite navigation vers deux ressources externes. Colle-la après </header> et avant <main> dans une copie ; aucun fichier supplémentaire ni lien interne avec # n’est nécessaire. Les noms visibles expliquent les destinations."
+          ],
+          "code": "<nav>\n  <a href=\"https://developer.mozilla.org/fr/\">Documentation Web</a>\n  <a href=\"https://www.w3.org/\">Standards du Web</a>\n</nav>"
+        },
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Tester la navigation",
+          "intro": "Ce bonus n’est pas obligatoire pour poursuivre.",
+          "items": [
+            {
+              "id": "tester-nav",
+              "text": "Ouvre les deux liens pour vérifier leurs destinations, puis reviens à ton aperçu avec Retour dans le navigateur."
+            },
+            {
+              "id": "expliquer-nav",
+              "text": "Explique pourquoi ces liens sont regroupés dans nav et pourquoi une simple phrase de présentation n’y a pas sa place."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Choisir header, main et footer à partir du rôle des contenus, pas seulement reproduire leur ordre.",
+    "Ajouter une section thématique et expliquer son parent ainsi que celui de son titre.",
+    "Réparer une mauvaise imbrication sans supprimer le contenu et expliquer pourquoi l’apparence ne suffit pas.",
+    "Distinguer head de header ; ne pas attribuer à ces balises un effet de mise en page automatique."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-zones",
+      "label": "Réparer l’emplacement du contenu principal",
+      "blockId": "panne"
+    },
+    {
+      "moduleId": "html-parent-enfants",
+      "label": "Reprendre parents directs et fermetures",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-document",
+      "label": "Distinguer head et contenu de body",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-zones",
+      "label": "Regrouper des liens de navigation",
+      "blockId": "bonus-navigation",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent direct d’un élément et fermer les conteneurs au bon endroit."
+        },
+        {
+          "skillId": "html.links",
+          "expectation": "Créer un lien et expliquer href."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-textes-lisibles",
+      "label": "Rendre les textes lisibles si tu sais cibler une classe",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class=\"carte\" dans HTML au sélecteur .carte dans CSS."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration CSS et modifier une valeur."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre les classes si nécessaire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle CSS : sélecteur, propriété et valeur."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire choisir des regroupements sémantiques à partir du contenu et transférer le raisonnement parent/enfants sans confondre structure et apparence.",
+    "entryDiagnosis": [
+      "Faire entourer mentalement le parent du h2 dans l’exemple initial. Attendu : main, pas header ni body directement.",
+      "Faire expliquer la différence entre titre principal et sous-titre. Proposer une reprise ciblée si nécessaire.",
+      "Demander ce que signifie déplacer une balise fermante. Si l’élève répond seulement « ça change la couleur », reprendre Parent et enfants."
+    ],
+    "preparation": [
+      "Nouveau Pen avec CSS vide, ou copie d’un document local dont seul body sera modifié.",
+      "Garder l’exemple, la variante à deux sections et la panne accessibles par leurs liens ; aucune consigne essentielle ne dépend d’un partage d’écran.",
+      "Préparer un thème alternatif fictif, sans nom d’élève ni donnée personnelle."
+    ],
+    "why": "Les regroupements deviennent des repères de sens. Une structure lisible dans le code et pour les outils d’assistance reste utile même sans décoration.",
+    "discoverySpeech": [
+      "« Nous savons mettre des éléments dans une boîte. Nous allons maintenant donner un rôle à certaines boîtes : présenter la page, porter son sujet, donner une information finale. »",
+      "« Lisons header comme introduction de cette page. main porte le sujet principal ; footer termine avec une information sur la page. Ce sont des choix de sens, pas des commandes de couleur ou de position. »",
+      "« head et header se ressemblent à l’écrit. head décrit le document ; notre header est dans body et son titre s’affiche. Montre lequel contient les mots visibles. »",
+      "« Dans main, deux sujets méritent deux sections. Je ferme la première avant d’ouvrir la suivante : ce sont des sœurs, pas une section cachée dans l’autre. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-zones",
+        "label": "Lire les trois zones",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Lire chaque ouverture avec sa fermeture, puis pointer les contenus enfants.",
+        "Remplacer main par la variante section, sans le dupliquer. Faire prédire le parent du deuxième h2.",
+        "Ne pas colorer les zones pour en faire le seul indice ; demander ensuite de justifier à partir des textes."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi un seul main dans cet exercice ?",
+        "answer": "Il rassemble le sujet principal unique de cette page. Les thèmes de ce sujet se répartissent en sections, pas en plusieurs main visibles."
+      },
+      {
+        "question": "header et head sont-ils la même chose ?",
+        "answer": "Non. head contient les métadonnées du document ; le header de cet exercice est dans body et présente un contenu visible."
+      },
+      {
+        "question": "footer sera-t-il collé en bas de l’écran ?",
+        "answer": "Non. Sans règle de placement, il suit le contenu dans la page. Le nom indique ici une information de fin, pas une position fixe."
+      },
+      {
+        "question": "Dans la variante, quel est le parent du h2 ?",
+        "answer": "Sa section ; main est un ancêtre. Les deux section ont main pour parent commun."
+      },
+      {
+        "question": "Faut-il une section pour colorer un paragraphe ?",
+        "answer": "Non. Une section correspond à un thème de contenu ; une classe permet de cibler une apparence sans inventer de thème."
+      },
+      {
+        "question": "Une page sans couleurs peut-elle être bien structurée ?",
+        "answer": "Oui. La structure indique les rôles et relations, même si l’apparence change peu."
+      },
+      {
+        "question": "Tous les liens doivent-ils être dans nav ?",
+        "answer": "Non. nav convient à un ensemble de liens de navigation ; un lien au milieu d’un texte peut y rester."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-zones",
+      "label": "Repérer et modifier les zones",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "html-zones",
+      "label": "Concevoir un autre carnet",
+      "blockId": "mission"
+    },
+    "differentiation": [
+      "Aider à sélectionner/coller le code sans donner la réponse sur les parents. L’aide au clavier n’est pas une erreur de compréhension.",
+      "Si l’imbrication est fragile, garder header/main/footer avec un seul sujet, puis ajouter les sections après explication.",
+      "Pour un élève à l’aise : troisième section et bonus nav, seulement si a/href sont connus. Ne pas imposer CSS ou liens pour le noyau."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "main reste enfant de header.",
+        "helps": [
+          "Demander de suivre l’ouverture de header jusqu’à sa fermeture.",
+          "Faire comparer la position de </header> et de <main>.",
+          "Dans la panne, déplacer </header> après h1 : main devient frère de header. Faire expliquer ce qui a changé."
+        ]
+      },
+      {
+        "symptom": "Un main par thème ou des sections imbriquées involontairement.",
+        "helps": [
+          "Demander quel est le sujet global et quelles sont ses parties.",
+          "Compter les main et suivre les fermetures section.",
+          "Garder un main et fermer chaque section avant la suivante ; faire ajouter une troisième sœur sans modèle."
+        ]
+      },
+      {
+        "symptom": "L’élève attend une mise en page automatique.",
+        "helps": [
+          "Comparer contenu et règles CSS : ici aucune règle n’est fournie.",
+          "Demander de décrire le rôle plutôt que la couleur de chaque zone.",
+          "Dire explicitement que footer ne signifie pas position fixe et que header n’est pas une décoration."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution de mission possible : header(h1,p), main(section(h2,p), section(h2,p), section(h2,p)), footer(p). Les textes et le nombre de parties ne sont pas un gabarit universel.",
+      "Solution de la panne : </header> doit précéder <main>. Le navigateur peut afficher un contenu mal regroupé ; ne pas évaluer uniquement l’aperçu.",
+      "Dans ce module, header/footer désignent les zones de la page. Leurs autres usages dans des contenus autonomes sont hors périmètre ; ne pas enseigner qu’ils doivent toujours être uniques dans tout HTML.",
+      "Observer choix justifié, modification et réparation. Distinguer réussite autonome, avec modèle ou avec aide dans le suivi existant ; les cases ne valident rien.",
+      "Vers la lisibilité : vérifier les classes et une règle simple. Si elles manquent, prendre la reprise C2 ; aucun bonus nav n’est requis."
+    ],
+    "quickConductor": [
+      "Diagnostiquer le parent et les fermetures.",
+      "Expliquer les trois rôles et head/header avec l’exemple sans CSS.",
+      "Faire modifier puis créer deux sections thématiques.",
+      "Observer une troisième partie et la justification sans modèle.",
+      "Faire réparer la panne si nécessaire ; proposer nav selon les acquis.",
+      "Décider manuellement d’une reprise ou de la suite, sans durée imposée."
+    ],
+    "references": [
+      {
+        "title": "MDN : Structurer un document",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents"
+      },
+      {
+        "title": "MDN : L’élément main",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main"
+      }
+    ]
+  }
+}

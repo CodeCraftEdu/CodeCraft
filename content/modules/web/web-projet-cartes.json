@@ -1,0 +1,278 @@
+{
+  "domainId": "web",
+  "title": "Préparer un projet de cartes",
+  "type": "practice",
+  "objective": "Préparer et vérifier une base de trois cartes pour travailler ensuite leur structure et leur disposition.",
+  "skillIds": [
+    "html.structure",
+    "css.selectors",
+    "css.borders",
+    "css.spacing",
+    "css.hover"
+  ],
+  "blocks": [
+    {
+      "id": "preparer",
+      "type": "callout",
+      "tone": "neutral",
+      "title": "Avant de commencer",
+      "text": "Utilise ton projet ou la base fournie. Conserve ton HTML et ton CSS dans deux fichiers texte, puis ouvre les zones HTML et CSS de CodePen."
+    },
+    {
+      "type": "tasks",
+      "title": "1 : Choisis ta base de travail",
+      "intro": "Si tu as déjà plusieurs cartes, garde une copie puis vérifie-les avec les repères ci-dessous. Sinon, ouvre la base de départ et copie le HTML et le CSS dans leurs zones respectives. Il est normal que les cartes soient empilées à ce stade.",
+      "items": [
+        {
+          "id": "retrouver-projet",
+          "text": "Ouvre ta page de cartes si tu en as une ; sinon, ouvre un nouveau CodePen et utilise la base de départ ci-dessous."
+        }
+      ],
+      "id": "projet"
+    },
+    {
+      "type": "details",
+      "title": "Créer une base de départ si tu n’as pas de cartes",
+      "blocks": [
+        {
+          "type": "lesson",
+          "title": "HTML de départ",
+          "code": "<div class=\"cartes\">\n  <div class=\"carte\">\n    <h2>Carte 1</h2>\n    <p>Premier contenu.</p>\n  </div>\n\n  <div class=\"carte\">\n    <h2>Carte 2</h2>\n    <p>Deuxième contenu.</p>\n  </div>\n\n  <div class=\"carte\">\n    <h2>Carte 3</h2>\n    <p>Troisième contenu.</p>\n  </div>\n</div>",
+          "paragraphs": [
+            "Copie ce code dans la zone HTML. class=\"cartes\" nomme le groupe extérieur ; chaque class=\"carte\" nomme une carte contenant un h2 et un p. Le point de .carte appartient au sélecteur CSS, pas au nom écrit dans class.",
+            "Personnalise les trois titres et leurs paragraphes pour les distinguer. N’ajoute pas encore de règles Flexbox."
+          ],
+          "id": "base-html"
+        },
+        {
+          "type": "lesson",
+          "title": "CSS de départ",
+          "code": ".cartes {\n  max-width: 800px;\n  margin: 20px auto;\n}\n\n.carte {\n  border: 2px solid #24324a;\n  padding: 20px;\n  margin: 10px;\n  border-radius: 12px;\n}\n\n.carte:hover {\n  background-color: #eeeeee;\n}",
+          "paragraphs": [
+            "Copie ce code dans la zone CSS. Les cartes restent les unes sous les autres : on prépare leur contenu et leur apparence, pas encore leur disposition.",
+            "La règle .carte s’applique à chaque élément de cette classe. .carte:hover change le fond pendant le survol à la souris ; un écran tactile peut ne pas reproduire ce comportement."
+          ],
+          "id": "base-css"
+        }
+      ],
+      "id": "secours"
+    },
+    {
+      "type": "lesson",
+      "id": "role-checklist",
+      "title": "Comprendre les repères de la base",
+      "paragraphs": [
+        "Dans le HTML, le groupe .cartes entoure trois .carte distinctes ; chaque carte contient son titre et son paragraphe. Vérifie les ouvertures et fermetures des div, pas seulement l’aperçu.",
+        "Dans le CSS, border dessine la bordure ; padding écarte le contenu de cette bordure, à l’intérieur ; margin laisse de l’espace à l’extérieur ; border-radius arrondit les coins.",
+        "La checklist vérifie la présence de ces éléments, pas leur maîtrise. Si tu as copié la base, indique-le ; les manipulations qui suivent permettent de commencer à expliquer son fonctionnement."
+      ]
+    },
+    {
+      "type": "checklist",
+      "title": "2 : Vérifie ta base de cartes",
+      "items": [
+        {
+          "id": "html-structure",
+          "text": "Je repère un groupe .cartes qui contient trois .carte distinctes et je vérifie les fermetures des div."
+        },
+        {
+          "id": "classes",
+          "text": "Dans le HTML, class=\"carte\" correspond au sélecteur .carte du CSS ; je ne confonds pas carte et cartes."
+        },
+        {
+          "id": "trois-cartes",
+          "text": "Je compte trois cartes aux titres et paragraphes personnalisés dans le code et dans l’aperçu."
+        },
+        {
+          "id": "bordures",
+          "text": "Je repère border dans .carte et je vois une bordure autour de chacune."
+        },
+        {
+          "id": "padding",
+          "text": "Je repère padding : l’espace entre le contenu et la bordure est à l’intérieur de la carte."
+        },
+        {
+          "id": "margin",
+          "text": "Je repère margin : l’espace est à l’extérieur de la carte."
+        },
+        {
+          "id": "radius",
+          "text": "Je repère border-radius et j’observe les coins arrondis."
+        },
+        {
+          "id": "hover",
+          "text": "Je repère .carte:hover ; je teste le fond au survol si une souris est disponible. Sur tactile, je signale la limite du test."
+        }
+      ],
+      "id": "verification"
+    },
+    {
+      "type": "tasks",
+      "title": "Manipule une propriété à la fois",
+      "id": "pause",
+      "intro": "Travaille sur une copie et note la valeur de départ pour pouvoir la rétablir.",
+      "items": [
+        {
+          "id": "tester-padding",
+          "text": "Dans .carte, change seulement padding de 20px à 40px. Compare l’espace intérieur puis rétablis 20px.",
+          "hint": "Observe la distance entre le texte et sa bordure, pas l’espace extérieur entre les cartes."
+        },
+        {
+          "id": "tester-margin",
+          "text": "Change seulement margin de 10px à 25px. Compare l’espace extérieur puis rétablis 10px.",
+          "hint": "Garde padding inchangé : on compare une seule propriété à la fois."
+        },
+        {
+          "id": "adapter-carte",
+          "text": "Sans recopier toute la base, ajoute une quatrième carte dans le groupe .cartes. Donne-lui un titre et un paragraphe différents et explique pourquoi la règle .carte s’applique aussi à elle.",
+          "hint": "Ajoute un élément de classe carte avant la fermeture du groupe cartes. Vérifie les div et le résultat."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "transition",
+      "title": "Et ensuite ?",
+      "paragraphs": [
+        "Si tu repères le groupe et ses cartes et que les tests précédents sont faits, conserve le HTML et le CSS. Tu pourras réutiliser cette base pour travailler Parent et enfants, puis Flexbox.",
+        "Garde le HTML et le CSS de tes cartes pour les prochains essais sur Parent et enfants, puis Flexbox."
+      ]
+    }
+  ],
+  "theme": "avances",
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [],
+  "masteryCriteria": [
+    "Préparer et conserver une base de trois cartes personnalisées, en indiquant si elle vient du modèle ou d’un projet personnel.",
+    "Repérer le groupe cartes, les éléments de classe carte et la règle .carte qui s’applique à chacun.",
+    "Comparer padding et margin en modifiant une seule valeur à la fois, puis rétablir les valeurs de départ.",
+    "Ajouter une quatrième carte dans le groupe sans recopier toute la base et expliquer le style obtenu ; préciser les aides utilisées."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-boites-espacements",
+      "label": "Reprendre les espaces intérieur et extérieur"
+    }
+  ],
+  "bonusActivities": [],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Préparer et vérifier une base de trois cartes pour travailler ensuite leur structure et leur disposition.",
+    "entryDiagnosis": [
+      "Demander si l’élève dispose d’un projet ou doit utiliser la base fournie ; accepter les deux entrées.",
+      "Observer les repères HTML/CSS et proposer un accompagnement sans exiger Flexbox ni un projet précédent."
+    ],
+    "preparation": [
+      "Prévoir la sauvegarde du travail précédent et vérifier les zones utiles de CodePen sans imposer de compte.",
+      "Tester l’accès et l’aperçu ; distinguer une difficulté de l’environnement d’une difficulté de compréhension."
+    ],
+    "why": "Préparer un support stable pour Parent et enfants puis Flexbox, sans assimiler la copie du code de secours à une maîtrise globale du CSS.",
+    "discoverySpeech": [
+      "« Une base copiée est utilisable ; elle ne dit pas encore ce que tu sais expliquer. »",
+      "« Change une seule propriété, compare, puis remets la valeur de départ. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "web-projet-cartes",
+        "blockId": "base-html"
+      },
+      "comments": [
+        "Le HTML de départ regroupe trois cartes ; faire montrer les ouvertures et fermetures des div.",
+        "Le CSS de secours reste disponible dans le même bloc : nom de classe HTML sans point, sélecteur CSS avec point.",
+        "max-width et margin auto sont fournis pour l’apparence de la base, pas évalués ici ; ne pas ajouter Flexbox.",
+        "Le survol est testé avec une souris si disponible, sans pénaliser une limite tactile."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Quelle différence entre cartes et carte ?",
+        "answer": "cartes nomme le groupe extérieur ; carte nomme chaque élément auquel la règle .carte s’applique."
+      },
+      {
+        "question": "Où écrit-on le point de .carte ?",
+        "answer": "Dans le sélecteur CSS ; la valeur HTML est class=\"carte\"."
+      },
+      {
+        "question": "Que compare le test de padding ?",
+        "answer": "L’espace intérieur entre contenu et bordure ; margin reste inchangé."
+      },
+      {
+        "question": "Que compare le test de margin ?",
+        "answer": "L’espace extérieur ; padding reste inchangé. On ne déduit pas une distance exacte des marges verticales."
+      },
+      {
+        "question": "Pourquoi la quatrième carte a-t-elle le même style ?",
+        "answer": "Elle porte la classe carte, donc la même règle CSS s’applique aussi à elle."
+      },
+      {
+        "question": "Que prouve la checklist ou le survol ?",
+        "answer": "La présence des éléments et le comportement testé, pas la maîtrise de toutes les propriétés ; sur tactile le test du survol peut être limité."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "web-projet-cartes",
+      "blockId": "pause"
+    },
+    "independentActivity": {
+      "moduleId": "web-projet-cartes",
+      "blockId": "pause",
+      "itemId": "adapter-carte"
+    },
+    "differentiation": [
+      "Observer un premier essai avant de fournir une aide ; accompagner les gestes sans faire les choix à la place de l’élève.",
+      "Demander une explication et une modification limitée plutôt qu’une copie de tout le modèle.",
+      "Distinguer réussite autonome, avec modèle ou avec aide ; conserver les indices de compréhension et les difficultés."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le nom de classe et le sélecteur ne correspondent pas.",
+        "helps": [
+          "Faire repérer la classe HTML et la règle CSS.",
+          "Comparer carte et cartes caractère par caractère.",
+          "Rappeler que le point appartient au sélecteur CSS, pas à la valeur de class.",
+          "Corriger un nom puis ajouter une carte et expliquer son style."
+        ]
+      },
+      {
+        "symptom": "Padding et margin sont confondus.",
+        "helps": [
+          "Faire montrer le contenu et la bordure.",
+          "Changer seulement padding puis revenir à la valeur initiale.",
+          "Changer seulement margin et comparer l’espace extérieur.",
+          "Faire expliquer la différence sans imposer une distance exacte entre les cartes."
+        ]
+      },
+      {
+        "symptom": "La quatrième carte est placée hors du groupe.",
+        "helps": [
+          "Faire compter les cartes dans le code.",
+          "Repérer l’ouverture et la fermeture du groupe cartes.",
+          "Comparer la place des trois cartes puis déplacer le nouvel élément avant la fermeture du groupe.",
+          "Faire ajouter un contenu différent et justifier la structure sans recopier toute la base."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Aucun acquis n’est déduit de la checklist, de l’ouverture d’un module ou du code copié. Noter les aides utilisées et décider d’une reprise selon les observations, sans verdict automatique d’orientation.",
+    "quickConductor": [
+      "Préserver l’essai et repérer le cahier des charges.",
+      "Observer les choix lors de la construction ou de l’adaptation.",
+      "Comparer code, aperçu et résultat des tests.",
+      "Faire modifier un élément puis expliquer l’effet.",
+      "Conserver le résultat et les aides utilisées ; proposer une reprise ciblée si nécessaire."
+    ],
+    "references": [
+      {
+        "title": "MDN : Padding",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/padding"
+      },
+      {
+        "title": "MDN : Margin",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/margin"
+      },
+      {
+        "title": "MDN : Survol",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
+      }
+    ]
+  }
+}

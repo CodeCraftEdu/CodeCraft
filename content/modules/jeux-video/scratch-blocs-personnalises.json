@@ -1,0 +1,484 @@
+{
+  "domainId": "jeux-video",
+  "title": "Créer ses propres blocs",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Donner un nom à des actions réutilisables, puis les appeler sans recopier leur code.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.custom-blocks",
+    "scratch.sequence",
+    "scratch.coordinates"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.sequence",
+      "expectation": "Comprendre l’ordre des actions d’une pile."
+    },
+    {
+      "skillId": "scratch.coordinates",
+      "expectation": "Placer un personnage avec aller à x/y et le déplacer horizontalement."
+    },
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Sélectionner le sprite qui possède le code et conserver une copie."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "preparer",
+      "title": "1 : Une action que tu répètes",
+      "paragraphs": [
+        "Sauvegarde ton travail précédent avant de choisir Fichier → Nouveau, puis garde le chat. Ce petit essai ne demande ni score ni jeu précédent. Sélectionne le chat : tout le code de ce module lui appartient.",
+        "Nous allons nommer l’action qui remet le chat en x = -100, y = 0 : retour au départ. Ce nom décrit une action ; ce n’est pas une nouvelle variable ni un message.",
+        "Un bloc personnalisé contient une recette. Créer sa définition ne la lance pas automatiquement au drapeau. Pour l’utiliser dans ton programme, place le bloc portant son nom dans une pile : c’est l’appel. Dans Scratch, Mes blocs appartient au sprite sélectionné, pas automatiquement à tous les sprites."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "creer",
+      "title": "2 : Définir la recette",
+      "paragraphs": [
+        "Dans Mes blocs (rose), clique sur Créer un bloc. Écris retour au départ et valide avec OK. Ne coche pas Exécuter sans rafraîchissement d’écran : ce réglage n’est pas nécessaire ici.",
+        "Un bloc définir retour au départ apparaît dans la zone de code. Accroche sous lui aller à x: -100 y: 0, trouvé dans Mouvement. Ne lui ajoute pas un drapeau : définir est le début de cette recette.",
+        "Le bloc retour au départ est maintenant disponible dans Mes blocs. Chaque fois qu’il est appelé sur ce sprite, Scratch exécute les actions sous définir, puis reprend la pile qui l’a appelé."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "3 : Appeler la même recette deux fois",
+      "shortSteps": [
+        "Construis définir retour au départ → aller à (-100, 0).",
+        "À côté, construis drapeau → retour au départ → ajouter 60 à x → attendre 1 seconde → retour au départ.",
+        "Lance : le chat part à gauche, avance vers -40, puis revient à -100. La définition n’est écrite qu’une seule fois."
+      ],
+      "paragraphs": [
+        "Les deux piles sont dans le chat. Les blocs roses d’appel portent seulement retour au départ, pas définir.",
+        "Ajouter 60 à x donne -40 depuis -100, sans dépendre de la direction du costume. La pause d’une seconde permet de voir le déplacement avant le second retour.",
+        "Change seulement X dans la définition, de -100 à -150. Les deux appels utiliseront cette nouvelle valeur : le chat passera par -90 avant de revenir à -150. Remets ensuite -100."
+      ],
+      "visualScript": {
+        "caption": "Une définition, deux appels : dans le même sprite",
+        "note": "La recette n’est pas une pile de drapeau. Les appels réutilisent sa définition.",
+        "stacks": [
+          {
+            "caption": "La recette",
+            "blocks": [
+              {
+                "category": "custom",
+                "label": "Mes blocs",
+                "parts": [
+                  "définir retour au départ"
+                ],
+                "explanation": "Donner un nom aux actions, sans les lancer au drapeau."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-100"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "L’action de la recette."
+              }
+            ]
+          },
+          {
+            "caption": "Les appels",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Cette pile démarre réellement au drapeau."
+              },
+              {
+                "category": "custom",
+                "label": "Mes blocs",
+                "parts": [
+                  "retour au départ"
+                ],
+                "explanation": "Premier appel : placer au départ."
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "60"
+                  },
+                  " à x"
+                ],
+                "explanation": "Modifier X après le premier appel."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "1"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Voir la position intermédiaire."
+              },
+              {
+                "category": "custom",
+                "label": "Mes blocs",
+                "parts": [
+                  "retour au départ"
+                ],
+                "explanation": "Second appel, sans recopier aller à x/y."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "Dans le chat : définition :\ndéfinir retour au départ\n  aller à x: -100 y: 0\n\nDans le chat : utilisation :\nquand le drapeau vert est cliqué\n  retour au départ\n  ajouter 60 à x\n  attendre 1 secondes\n  retour au départ"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : une modification, deux effets",
+      "items": [
+        {
+          "id": "tester",
+          "text": "Teste les deux appels. Compte une seule définition et deux blocs retour au départ.",
+          "hint": "Définir n’est pas un appel : il indique où la recette commence."
+        },
+        {
+          "id": "changer",
+          "text": "Dans la définition, change le départ à -150. Prédis la position intermédiaire puis teste. Remets -100.",
+          "hint": "Le déplacement de +60 donne -90 depuis -150. Les deux appels reviennent à -150."
+        },
+        {
+          "id": "expliquer",
+          "text": "Explique pourquoi tu n’as changé qu’un seul bloc aller à x/y, alors que le retour est utilisé deux fois."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : ta propre recette",
+      "intro": "Réutilise uniquement des actions déjà connues.",
+      "items": [
+        {
+          "id": "recette",
+          "text": "Crée un bloc saluer qui dit ton message pendant 1 seconde puis ajoute 20 à x.",
+          "hint": "Créer un bloc saluer, puis accrocher les deux actions sous définir saluer."
+        },
+        {
+          "id": "appels",
+          "text": "Dans une nouvelle pile, au clic sur la touche espace, appelle d’abord retour au départ, puis saluer deux fois. Chaque essai commence ainsi en (-100, 0). Laisse la pile du drapeau terminer avant de tester avec espace.",
+          "hint": "Quand la touche espace est pressée se trouve dans Événements. Accroche retour au départ avant les deux appels saluer : depuis -100, +20 puis +20 mènent à -60."
+        },
+        {
+          "id": "predire",
+          "text": "Avant de changer la recette, prédis l’effet de +30 à la place de +20. Modifie une seule définition puis appuie sur espace : retour au départ remet le chat à -100 avant les deux appels.",
+          "hint": "Depuis -100, deux déplacements de 30 mènent à -40. Les deux appels utilisent la recette modifiée."
+        },
+        {
+          "id": "sauver",
+          "text": "Sauvegarde. Si ton mini-jeu fonctionne déjà, tu peux remplacer ses deux retours au départ par des appels, sans changer ses règles.",
+          "hint": "Cette reprise du jeu est facultative. Crée la définition dans Chat et garde score = 0 séparé au drapeau : un contact ne doit pas effacer les points."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Bonus facultatif : une distance au choix",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "parametre",
+          "title": "Un paramètre donne une valeur à chaque appel",
+          "paragraphs": [
+            "Quand les définitions et appels sont compris, crée un autre bloc nommé deplacer. Dans la fenêtre Créer un bloc, ajoute une entrée nombre ou texte, nomme-la distance, puis valide. Garde le réglage sans rafraîchissement décoché.",
+            "Sous définir deplacer (distance), ajoute le bloc Mouvement ajouter … à x. Glisse le petit ovale distance du bloc définir dans sa case numérique. N’écris pas le mot distance au clavier : il faut utiliser le reporter du paramètre.",
+            "Travaille dans une copie. Retire l’ancienne pile de drapeau de l’essai simple, mais garde définir retour au départ. Une seule pile de drapeau doit piloter ce test : deux piles qui déplacent le même chat en même temps mélangeraient les résultats.",
+            "Dans une nouvelle pile de drapeau, appelle retour au départ puis deplacer (20), attendre 1 seconde, deplacer (50). Chaque appel fournit sa propre distance : depuis -100, tu passes à -80 puis -30.",
+            "Distance n’est pas une variable globale à créer : c’est une entrée disponible dans cette définition. Ne mets pas retour au départ dans deplacer, sinon chaque appel effacerait le déplacement précédent. Essaie ensuite 10 et 30 et prédis la position finale."
+          ],
+          "visualScript": {
+            "caption": "Dans le chat : une distance différente à chaque appel",
+            "note": "Bonus : la case distance reçoit la valeur donnée à chaque appel. Les ovales du modèle représentent les valeurs, pas des menus.",
+            "stacks": [
+              {
+                "caption": "La définition avec entrée",
+                "blocks": [
+                  {
+                    "category": "custom",
+                    "label": "Mes blocs",
+                    "parts": [
+                      "définir deplacer ",
+                      {
+                        "value": "distance"
+                      }
+                    ],
+                    "explanation": "Distance est l’entrée de cette recette."
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "distance"
+                      },
+                      " à x"
+                    ],
+                    "explanation": "Glisser l’ovale distance de la définition dans cette case."
+                  }
+                ]
+              },
+              {
+                "caption": "Deux valeurs fournies",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ],
+                    "explanation": "Départ de l’essai bonus."
+                  },
+                  {
+                    "category": "custom",
+                    "label": "Mes blocs",
+                    "parts": [
+                      "retour au départ"
+                    ],
+                    "explanation": "Partir de -100 avant les deux déplacements."
+                  },
+                  {
+                    "category": "custom",
+                    "label": "Mes blocs",
+                    "parts": [
+                      "deplacer ",
+                      {
+                        "value": "20"
+                      }
+                    ],
+                    "explanation": "Premier appel : +20."
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "1"
+                      },
+                      " secondes"
+                    ],
+                    "explanation": "Observer -80."
+                  },
+                  {
+                    "category": "custom",
+                    "label": "Mes blocs",
+                    "parts": [
+                      "deplacer ",
+                      {
+                        "value": "50"
+                      }
+                    ],
+                    "explanation": "Second appel : +50 depuis la position actuelle, donc -30."
+                  }
+                ]
+              }
+            ]
+          },
+          "code": "définir deplacer (distance)\n  ajouter (distance) à x\n\nquand le drapeau vert est cliqué\n  retour au départ\n  deplacer (20)\n  attendre 1 secondes\n  deplacer (50)"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Et ensuite ?",
+      "paragraphs": [
+        "Garde une recette simple que tu sais expliquer. Les paramètres sont un bonus, pas une obligation pour poursuivre. Tu peux ensuite découvrir les clones si tu sais placer un sprite et répéter des actions. Sinon, reprends ces bases avant de continuer."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer définir une recette et appeler son bloc.",
+    "Utiliser deux appels de la même définition sans recopier ses actions.",
+    "Prédire l’effet d’une modification unique sur les deux appels.",
+    "Expliquer à quel sprite appartient la définition et, si le bonus est travaillé, d’où vient la valeur du paramètre."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-blocs-personnalises",
+      "blockId": "guide",
+      "label": "Comparer définition et appels"
+    },
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "exemple",
+      "label": "Revoir l’ordre d’une pile"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-blocs-personnalises",
+      "blockId": "bonus",
+      "label": "Donner une distance différente à chaque appel",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.custom-blocks",
+          "expectation": "Savoir créer une définition et utiliser ses appels avant d’ajouter une entrée."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-clones",
+      "label": "Créer des copies temporaires",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Comprendre une répétition finie ; sinon reprendre Répéter des actions."
+        },
+        {
+          "skillId": "scratch.coordinates",
+          "expectation": "Placer un sprite puis ajouter à x ; sinon reprendre Piloter un personnage."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Factoriser une action dans un bloc propre au sprite ; travailler définition et appels avant un paramètre facultatif.",
+    "entryDiagnosis": [
+      "Demander un placement en (-100, 0) puis ajouter 60 à x et prédire -40.",
+      "Faire repérer une suite d’actions qu’on pourrait nommer.",
+      "Vérifier le sprite sélectionné ; aucun score ni message n’est requis pour l’essai minimal."
+    ],
+    "preparation": [
+      "Faire sauvegarder le travail précédent avant Fichier → Nouveau, puis garder le chat pour cet essai indépendant.",
+      "Préparer Mes blocs → Créer un bloc. Laisser le réglage sans rafraîchissement décoché.",
+      "Pour le bonus, désactiver l’ancienne pile de drapeau de démonstration dans la copie : une seule pile de test doit repositionner le chat."
+    ],
+    "why": "Une recette nommée évite de recopier et permet de changer une action une fois pour tous ses appels.",
+    "discoverySpeech": [
+      "« Écrire une recette ne fait pas le plat. L’appel demande d’exécuter la recette. »",
+      "« Si je change le départ dans la définition, combien d’appels seront affectés ? »",
+      "« Ce bloc appartient à ce personnage ; ce n’est pas un signal envoyé aux autres. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-blocs-personnalises",
+        "blockId": "exemple",
+        "label": "Définition et deux appels"
+      },
+      "comments": [
+        "Définition : retour au départ → aller à (-100, 0). Utilisation : drapeau → retour → ajouter 60 à x → attendre 1 s → retour.",
+        "Positions attendues : -100, -40 pendant une seconde, puis -100. Si la définition passe à -150, on observe -150, -90, -150.",
+        "Activité autonome : espace → retour au départ → saluer → saluer, avec le retour remis à (-100, 0). Deux déplacements de 20 terminent à -60 ; deux déplacements de 30 terminent à -40. Chaque pression repart de -100. Attendre la fin de la pile du drapeau avant espace pour éviter deux déplacements concurrents.",
+        "Dans le mini-jeu, remplacer seulement les retours de position par un appel. Ne pas mettre score à 0 dans cette recette : le retour au contact ne doit pas supprimer les points."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Définir lance-t-il la recette au drapeau ?",
+        "answer": "Non. Il faut un appel sous un événement ou dans une pile exécutée."
+      },
+      {
+        "question": "Deux appels demandent-ils deux définitions ?",
+        "answer": "Non : une définition est réutilisée par les deux appels."
+      },
+      {
+        "question": "Pourquoi Tera ne trouve-t-il pas automatiquement le bloc créé dans Pico ?",
+        "answer": "Les blocs personnalisés appartiennent au sprite où ils sont définis. Un message est le mécanisme vu pour coordonner des sprites."
+      },
+      {
+        "question": "Bonus : deplacer 20 puis deplacer 50 depuis -100 donne quoi ?",
+        "answer": "-80 puis -30. Chaque appel fournit la valeur de distance ; on ne revient pas au départ entre eux."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-blocs-personnalises",
+      "blockId": "guide",
+      "label": "Une modification, deux effets"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-blocs-personnalises",
+      "blockId": "autonomie",
+      "label": "Créer et réutiliser saluer"
+    },
+    "differentiation": [
+      "CE2 : garder une recette avec une action et deux appels ; faire compter les appels et pointer la seule définition.",
+      "Élève autonome : créer saluer sans modèle puis justifier les positions après deux appels.",
+      "Paramètre facultatif seulement après distinction définition/appel. Aucun rythme imposé ni obligation de refactoriser tout le jeu."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le bloc est défini mais rien ne se passe.",
+        "helps": [
+          "Lancer le drapeau et observer.",
+          "Chercher un appel sous un événement.",
+          "Comparer le bloc définir et le petit bloc portant seulement le nom.",
+          "Ajouter un appel dans la pile de drapeau, pas un autre définir."
+        ]
+      },
+      {
+        "symptom": "Le déplacement bonus ne cumule pas.",
+        "helps": [
+          "Tester +20 puis +50 depuis -100.",
+          "Regarder si deplacer contient un retour au départ.",
+          "Comparer ajouter à x et aller à x/y.",
+          "Garder seulement ajouter distance à x dans deplacer, et un retour avant les appels."
+        ]
+      },
+      {
+        "symptom": "Le paramètre agit comme zéro.",
+        "helps": [
+          "Regarder la case du bloc ajouter à x.",
+          "Vérifier si distance a été tapé comme texte.",
+          "Comparer avec l’ovale distance disponible sur définir.",
+          "Glisser cet ovale dans la case, donner 20 à l’appel et retester."
+        ]
+      }
+    ],
+    "notes": "Observer une modification de définition et la prédiction des deux appels pour distinguer compréhension et copie. Consigner autonomie, modèle ou aide dans les remarques existantes sans nouveau dispositif. Ne pas déduire que le paramètre est acquis quand seuls les appels simples le sont.",
+    "quickConductor": [
+      "Vérifier position et ordre.",
+      "Nommer une recette et distinguer l’appel.",
+      "Tester deux appels et une modification unique.",
+      "Créer saluer sans modèle.",
+      "Choisir reprise, transfert au jeu ou paramètre facultatif puis sauvegarder."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

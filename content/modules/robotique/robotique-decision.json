@@ -1,0 +1,241 @@
+{
+  "domainId": "robotique",
+  "title": "Choisir entre deux actions",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Commander la LED selon l’état du bouton, expliquer les deux cas et créer une version opposée.",
+  "tool": {
+    "label": "Ouvrir la base bouton préconnectée",
+    "url": "https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"
+  },
+  "skillIds": [
+    "robotique.condition",
+    "robotique.boucle"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.entree",
+      "expectation": "Distinguer D2 lu et D8 commandé ; reconnaître repos et maintien."
+    },
+    {
+      "skillId": "robotique.boucle",
+      "expectation": "Repérer que forever recommence tant que la simulation tourne."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Reprends Mon-bouton relié et montre D2, D8 et les deux états de l’entrée. Si cela bloque, reprends Le bouton donne une information avec une aide. Ne change pas les fils. Si tu n’as plus ta copie, utilise la base préconnectée avec le professeur et nomme la copie Mon-bouton. Garde Mon-signal intact : son clignotement ne doit pas rester dans cette règle."
+    },
+    {
+      "type": "lesson",
+      "id": "partiel",
+      "title": "Avant les blocs - choisir le cas manquant",
+      "paragraphs": [
+        "Nous voulons une lumière allumée pendant l’appui et éteinte au repos. Sur ce schéma de lecture : si le bouton est appuyé maintenant → Allumer ; sinon → [action à choisir] ; puis consulter de nouveau. Quelle action proposes-tu dans sinon ? Explique avant de regarder l’indice.",
+        "Ne supprime rien dans un projet existant. Cette question prépare la construction : après l’assemblage, un appui puis un relâchement permettront de vérifier ton choix."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "completer",
+      "title": "Proposer avant de construire",
+      "items": [
+        {
+          "id": "rb04-sinon",
+          "text": "Nomme l’action du cas sinon et explique ce que tu devrais observer après avoir appuyé puis relâché. Tu vérifieras cette prévision dans l’exercice guidé.",
+          "hint": "Sinon devra commander LOW sur D8. Après l’appui, la LED doit s’éteindre au relâchement ; une LED déjà éteinte au départ ne suffit pas à vérifier ce cas."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "regle",
+      "title": "1 - Une question, deux cas",
+      "paragraphs": [
+        "Notre question est : le bouton est-il appuyé maintenant ? Si oui, allumer la LED ; sinon, l’éteindre. Prévois les résultats au repos, pendant l’appui et après le relâchement.",
+        "Sinon ne veut pas dire après avoir allumé. À chaque consultation, une seule branche est choisie selon la lecture actuelle. Ensuite, le programme consulte de nouveau le bouton. S’il est toujours maintenu, la même action reste choisie : la répétition ne crée pas un clignotement."
+      ],
+      "illustration": {
+        "src": "images/robotique-bouton-decision.svg",
+        "alt": "Quatre consultations : relâché, non, éteindre ; maintenu, oui, allumer ; toujours maintenu, oui, allumer ; relâché, non, éteindre.",
+        "caption": "Trace de lecture : les lignes sont des consultations successives, pas quatre blocs à recopier."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "construire",
+      "title": "2 - Construire la décision répétée",
+      "paragraphs": [
+        "Simulation arrêtée, ouvre Code en mode Blocks. Dans Control, prends if then else et place-le dans forever. Dans Math, utilise la comparaison =. Mets read digital pin (Input), réglé sur 2, à gauche et HIGH à droite : read digital pin 2 = HIGH. La lecture HIGH vaut 1 et correspond à l’appui dans notre montage ; LOW vaut 0 et correspond au relâchement.",
+        "Dans le cas then, place set pin 8 to HIGH (Output). Dans le cas else, place set pin 8 to LOW. Déplace le LOW du départ depuis on start dans else ; laisse on start vide. Lire HIGH sur D2 permet de poser la question ; commander HIGH sur D8 demande l’allumage. Les deux commandes visent D8, la lecture vise D2.",
+        "Garde seulement cette règle dans forever : pas de wait ni d’ancienne pile de clignotement. Lance Start Simulation. Maintiens le bouton simulé avec la souris puis relâche ; recommence. Pour modifier, utilise Stop Simulation."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - prévoir, essayer, expliquer",
+      "items": [
+        {
+          "id": "rb04-etats",
+          "text": "Annonce l’état attendu de la LED au repos, pendant un maintien et après le relâchement. Construis la règle puis observe ces trois états deux fois.",
+          "hint": "Éteinte, allumée, éteinte. Vérifie les deux branches ensemble ; un seul essai au repos ne suffit pas."
+        },
+        {
+          "id": "rb04-repetition",
+          "text": "Montre la question, les deux actions et ce qui recommence. Pendant un maintien plus long, la LED doit-elle clignoter ? Explique avec tes blocs.",
+          "hint": "forever relit D2 ; tant que D2 vaut HIGH, la même branche commande HIGH sur D8. Aucune attente de clignotement n’est présente."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - une lumière qui prévient au repos",
+      "intro": "Simulation arrêtée, copie Mon-bouton en Mon-bouton-inverse. Garde le principal intact. Dans la nouvelle version, nous voulons allumée au repos, éteinte pendant l’appui, puis allumée au relâchement. Le montage ne change pas.",
+      "items": [
+        {
+          "id": "rb04-inverse",
+          "text": "Propose une modification avant d’ouvrir l’indice. Prévois les trois résultats, modifie le programme de la copie, puis teste cette suite deux fois. Montre ce que tu as changé.",
+          "hint": "Tu peux garder la même question et échanger les actions : then LOW sur D8, else HIGH sur D8."
+        },
+        {
+          "id": "rb04-comparer",
+          "text": "Compare les deux versions : qu’est-ce qui reste identique dans l’entrée, la question et les fils ? Qu’est-ce qui change dans les sorties commandées ?",
+          "hint": "D2 et la condition restent identiques ; les deux conséquences sont opposées. Retrouve le principal sans l’écraser."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - un essai pour un camarade",
+      "intro": "Facultatif, sans nouveau composant ni compteur.",
+      "items": [
+        {
+          "id": "rb04-camarade",
+          "text": "Propose repos, maintien plus long, relâchement, nouvel appui. Fais prévoir les résultats de ta version par un camarade ou le professeur, puis vérifiez sans changer le programme.",
+          "hint": "Annonce d’abord quelle version est ouverte ; montre ensuite la branche correspondant à chaque lecture."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver les deux versions",
+      "text": "Arrête la simulation et attends l’enregistrement. Retrouve Mon-bouton, relance et vérifie la règle principale. Garde aussi Mon-bouton-inverse avec son nom distinct et rouvre-le. Si tu ne retrouves pas une copie, demande une aide avant de recommencer. Mon-signal reste conservé séparément."
+    }
+  ],
+  "masteryCriteria": [
+    "Je distingue la question testée des commandes de sortie.",
+    "J’explique les deux cas, y compris le relâchement après l’appui.",
+    "Je montre pourquoi la consultation recommence sans faire clignoter la LED.",
+    "Je prévois puis teste les trois états dans mes deux versions."
+  ],
+  "teacherGuide": {
+    "objective": "Faire construire et expliquer une décision à deux branches répétée, puis transférer vers le résultat opposé.",
+    "entryDiagnosis": [
+      "Faire montrer D2, D8 et les états lus au diagnostic. Reprendre RB03 si la lecture est confondue avec l’effet sur la LED.",
+      "Faire repérer forever ; aider aux gestes sans fournir les réponses au défi."
+    ],
+    "preparation": [
+      "Utiliser Mon-bouton relié ou une copie de la base préconnectée sans solution. Ne pas distribuer la référence complète comme départ.",
+      "Référence : forever contient if read digital pin 2 = HIGH, then set pin 8 to HIGH, else set pin 8 to LOW. on start vide ; aucun délai ni commande concurrente.",
+      "Référence inversée : même question, then LOW et else HIGH. Tester repos → maintien prolongé → relâchement deux fois avec observation continue avant distribution.",
+      "Les références sont partagées par lien. L’accès, la duplication, l’enregistrement et la reprise sur compte élève restent à vérifier."
+    ],
+    "why": "Tester après un appui permet de distinguer une vraie branche sinon d’une LED simplement éteinte au démarrage.",
+    "discoverySpeech": [
+      "« Sinon est l’autre cas, pas une action qui arrive plus tard. »",
+      "« Toujours maintenu : pourquoi la même branche reste-t-elle choisie ? »",
+      "« Dans la copie, nous voulons le résultat opposé. Que proposes-tu avant de modifier ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-decision",
+        "blockId": "construire"
+      },
+      "comments": [
+        "Assembler les deux branches ensemble dans forever. Ne pas essayer HIGH seul comme preuve de la condition.",
+        "Lire la trace, notamment toujours maintenu. Faire distinguer lecture D2 et commande D8.",
+        "Retirer LOW de on start et tout ancien clignotement de la copie, sans toucher Mon-signal."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Que manque-t-il sur le schéma partiel ?",
+        "answer": "LOW sur D8 dans sinon. Vérifier dans le principal intact après appui puis relâchement."
+      },
+      {
+        "question": "Faut-il modifier les fils pour le résultat opposé ?",
+        "answer": "Non. Conserver la question et échanger les conséquences est une solution ; ne la donner qu’en indice."
+      },
+      {
+        "question": "Un maintien prolongé doit-il faire clignoter ?",
+        "answer": "Non. Chaque lecture maintenue sélectionne la même commande, sans cycle HIGH/attente/LOW/attente."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-decision",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-decision",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Aider au placement des blocs ; laisser prévoir les trois états et désigner les branches.",
+      "Pour le défi : relire les résultats voulus, puis suggérer de garder la question, puis seulement demander les actions. Noter si la stratégie a été donnée.",
+      "Accepter une autre proposition correcte discutée, sans imposer nouvelle notion ou câblage. Le bonus n’est pas requis pour poursuivre."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La LED clignote seule",
+        "helps": [
+          "Chercher anciennes actions et wait dans la copie.",
+          "Garder seulement la règle, aucune autre commande de D8."
+        ]
+      },
+      {
+        "symptom": "La LED reste allumée après relâchement",
+        "helps": [
+          "Observer d’abord D2 ; si l’entrée change, vérifier else LOW et forever.",
+          "Ne pas ajouter LOW en dehors de la condition pour compenser une branche manquante."
+        ]
+      },
+      {
+        "symptom": "Les copies sont confondues",
+        "helps": [
+          "Vérifier le nom avant chaque modification.",
+          "Retrouver le principal intact, puis la copie inversée ; conserver Mon-signal."
+        ]
+      }
+    ],
+    "notes": "Adaptation autonome de RB04 à partir de la revue documentaire et des essais professeur. Aucun compteur, événement d’appui, bascule mémorisée, rebond ou C++ ajouté. Les cases ne valident pas la maîtrise. Voir docs/recette-tinkercad-bouton.md pour les limites techniques et les tests élèves différés.",
+    "quickConductor": [
+      "Reprendre le départ relié ; relier 0/LOW et 1/HIGH aux états observés sur D2.",
+      "Faire proposer le cas sinon sur schéma avant de montrer la règle complète.",
+      "Lire la trace, construire deux branches dans forever puis vérifier la prévision dans les trois états deux fois.",
+      "Créer la copie opposée, laisser proposer avant indices, essayer et expliquer.",
+      "Retrouver les deux versions ; noter les aides et la compréhension."
+    ],
+    "references": [
+      {
+        "title": "Base préconnectée : départ sans solution",
+        "url": "https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"
+      },
+      {
+        "title": "Référence professeur : si / sinon",
+        "url": "https://www.tinkercad.com/things/ed9JYU40iMH-codecraft-bouton-reference-si-sinon"
+      },
+      {
+        "title": "Référence professeur : résultat opposé",
+        "url": "https://www.tinkercad.com/things/d1QIg2g5Q82-codecraft-bouton-reference-inversee"
+      }
+    ]
+  }
+}

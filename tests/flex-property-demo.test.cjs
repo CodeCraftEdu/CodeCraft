@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
 const configs = context.window.CODECRAFT_DATA.modules['css-flexbox'].blocks
   .filter(b => b.demonstration?.type === 'flex-property').map(b => b.demonstration);
 class Node {
@@ -19,7 +19,7 @@ class Node {
   addEventListener(name, fn) { this.events[name] = fn; }
 }
 const element = (tag, cls, text) => new Node(tag, cls, text);
-const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const source = require('./helpers/student-source.cjs');
 const fn = source.slice(source.indexOf('  function createFlexPropertyDemo('), source.indexOf('  function createScratchScript('));
 const syntax = source.slice(source.indexOf('  function codeTokens('), source.indexOf('  function createCode('));
 const render = vm.runInNewContext(syntax + fn + '\ncreateFlexPropertyDemo;', { element });
@@ -63,7 +63,7 @@ test('Flexbox : wrap explicite les dimensions et l’alignement des lignes, sans
   const cards = nodes(demo).find(n => n.cls === 'flex-property-demo__cards');
   assert.equal(cards.style.alignContent, 'flex-start');
   assert.equal(cards.style.width, '260px');
-  const css = fs.readFileSync(path.join(root, 'pedagogy.css'), 'utf8');
+  const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'pedagogy.css'));
   assert.match(css, /\.flex-property-demo__viewport \{ overflow-x: auto/);
   assert.match(css, /\.flex-property-demo__card \{[^}]*flex: 0 0 auto/);
 });

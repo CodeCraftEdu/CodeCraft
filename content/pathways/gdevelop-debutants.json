@@ -1,0 +1,28 @@
+{
+  "domainId": "jeux-video",
+  "title": "Mes premiers jeux avec GDevelop",
+  "theme": "fondations",
+  "objective": "Après Scratch, retrouver son projet, piloter un personnage, placer des objets et construire une première interaction clavier. Quatre premières leçons disponibles ; le parcours sera complété par lots.",
+  "moduleIds": [
+    "gdevelop-projet",
+    "gdevelop-deplacement",
+    "gdevelop-objets",
+    "gdevelop-evenements"
+  ],
+  "stages": [
+    {
+      "id": "prendre-commandes",
+      "title": "Prendre les commandes",
+      "description": "Créer ton projet, piloter ton personnage et préparer tes premières interactions.",
+      "moduleIds": [
+        "gdevelop-projet",
+        "gdevelop-deplacement",
+        "gdevelop-objets",
+        "gdevelop-evenements"
+      ],
+      "pause": "Projet de fin d’étape : Ma scène explorable, dans la dernière leçon. Un point de pause après une modification personnelle expliquée et testée.",
+      "projectBlockId": "autonomie"
+    }
+  ],
+  "nextStageLabel": "Ensuite : Explorer et ramasser : à venir."
+}

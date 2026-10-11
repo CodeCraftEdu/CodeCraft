@@ -1,0 +1,294 @@
+{
+  "domainId": "python",
+  "title": "Définir et appeler une fonction",
+  "type": "lesson",
+  "theme": "fondations",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "objective": "Regrouper des instructions, appeler une fonction et réutiliser son bloc avec des paramètres.",
+  "skillIds": [
+    "python.functions"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, enregistrer et exécuter un fichier entier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Lire l'ordre des affichages."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Distinguer nom et valeur."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Enregistre tes essais précédents et crée fonctions.py dans Thonny, sans les remplacer. Il faut pouvoir expliquer un affichage et une variable ; sinon, reprends Variables et valeurs. Fais évoluer ce fichier pendant la découverte et les essais guidés.",
+      "moduleLink": {
+        "moduleId": "python-variables",
+        "text": "Variables et valeurs"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Définir n'est pas appeler",
+      "paragraphs": [
+        "def définit un bloc réutilisable. annoncer est le nom choisi ; les parenthèses sont vides ici, les deux-points annoncent le corps indenté. Les deux instructions du corps ne s'exécutent pas au moment où cette définition est rencontrée.",
+        "annoncer() appelle la fonction : ses deux messages s'affichent dans l'ordre, puis le programme reprend après l'appel. Ici, Préparation s'affiche avant ces messages, puis Fin. Les lignes non indentées sont hors du corps.",
+        "Prévois les affichages, puis ajoute un second appel avant Fin : les deux instructions sont réutilisées sans les recopier. Change ensuite un message dans le corps et vérifie qu'il change lors des deux appels.",
+        "Retire provisoirement les appels, sans supprimer la définition : les messages du corps ne s'affichent plus. Restaure ensuite un appel. Relance toujours le fichier entier, avec la définition avant son premier appel."
+      ],
+      "code": "def annoncer():\n    print(\"Prépare ton matériel\")\n    print(\"Départ de la visite\")\n\nprint(\"Préparation\")\nannoncer()\nprint(\"Fin\")"
+    },
+    {
+      "type": "lesson",
+      "id": "parametre",
+      "title": "2 - Une valeur différente à chaque appel",
+      "paragraphs": [
+        "Dans fonctions.py, remplace la version précédente par ce modèle après avoir terminé ses essais. nom est un paramètre : il reçoit la valeur fournie entre les parenthèses à chaque appel. Dans saluer(\"Nova\"), \"Nova\" est l'argument ; ce n'est pas le nom du paramètre.",
+        "Le corps est écrit une seule fois mais s'exécute deux fois avec des valeurs différentes. Modifier un argument ne demande pas de recopier ou de modifier le corps."
+      ],
+      "code": "def saluer(nom):\n    print(\"Bonjour\", nom)\n\nsaluer(\"Nova\")\nsaluer(\"Orion\")"
+    },
+    {
+      "type": "lesson",
+      "id": "deux-parametres",
+      "title": "3 - Deux paramètres, un ordre",
+      "paragraphs": [
+        "Fais évoluer fonctions.py vers ce modèle. Les virgules séparent les deux paramètres puis les deux arguments. Le premier argument donne nom, le second donne role ; l'ordre compte.",
+        "Prévois les deux phrases. Inverse provisoirement les arguments du premier appel, explique le résultat puis restaure leur ordre. Un argument manquant ou en trop provoque ici TypeError ; corrige l'appel, pas le nombre de messages."
+      ],
+      "code": "def presenter(nom, role):\n    print(nom, \"est\", role)\n\npresenter(\"Nova\", \"pilote\")\npresenter(\"Orion\", \"guide\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Vérifie tes appels",
+      "intro": "Continue avec presenter dans fonctions.py. Garde seulement le diagnostic incorrect dans une copie.",
+      "items": [
+        {
+          "id": "double-appel",
+          "text": "Ajoute un troisième appel de presenter avec un autre nom et un autre rôle. Prévois les trois phrases puis explique pourquoi le corps est exécuté trois fois.",
+          "hint": "Trois appels séparés, pas trois copies du print du corps."
+        },
+        {
+          "id": "changer-argument",
+          "text": "Change seulement le premier argument du premier appel. Vérifie que les deux autres messages ne changent pas.",
+          "hint": "Chaque appel donne une nouvelle valeur au paramètre."
+        },
+        {
+          "id": "argument-manquant",
+          "text": "Enregistre fonctions.py puis crée diagnostic_appel.py avec Enregistrer sous. Enlève le second argument du premier appel de presenter. Lis TypeError, corrige puis relance le fichier entier.",
+          "hint": "L'appel doit fournir deux arguments dans ce modèle."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - une fonction personnelle",
+      "intro": "Crée ma_presentation.py avec des noms et rôles fictifs. Essaie sans recopier le modèle entier.",
+      "items": [
+        {
+          "id": "fonction-personnelle",
+          "text": "Définis une fonction à deux paramètres qui affiche deux messages de ton choix, dont au moins un utilise les deux valeurs reçues. Appelle-la pour trois couples de valeurs différents.",
+          "hint": "Sépare le corps unique et les trois appels."
+        },
+        {
+          "id": "modifier-corps",
+          "text": "Modifie un mot fixe dans le corps. Prévois quels messages changent puis teste. Modifie ensuite un seul argument et compare.",
+          "hint": "Une modification du corps agit à chaque appel ; un argument concerne cet appel."
+        },
+        {
+          "id": "expliquer-appels",
+          "text": "Montre une définition, un appel, un paramètre et un argument ; explique l'ordre sans parler de trois fonctions différentes.",
+          "hint": "La même fonction est réutilisée."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - appeler pendant un parcours",
+      "intro": "Seulement si listes et for sont compris ; garde la version précédente.",
+      "items": [
+        {
+          "id": "parcours-fonction",
+          "text": "Dans une copie, reprends la petite fonction saluer de la découverte. Définis une liste de trois noms fictifs et parcours-la avec for pour appeler saluer sur chaque valeur. Explique où sont la définition, la boucle et les appels.",
+          "hint": "La définition est avant la boucle ; l'appel est dans le bloc for."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer la définition d'une fonction de ses appels et prévoir leur ordre.",
+    "Repérer le corps indenté et revenir au programme après l'appel.",
+    "Expliquer paramètre, argument et ordre de deux valeurs fournies.",
+    "Créer des appels personnels et tester une modification du corps puis d'un argument."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-variables",
+      "blockId": "guide",
+      "label": "Revoir les valeurs"
+    },
+    {
+      "moduleId": "python-fonctions",
+      "blockId": "guide",
+      "label": "Revoir les appels"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-fonctions",
+      "blockId": "bonus",
+      "label": "Appeler pendant un parcours",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.for",
+          "expectation": "Suivre un for."
+        },
+        {
+          "skillId": "python.lists",
+          "expectation": "Parcourir les valeurs d'une liste."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-retour",
+      "label": "Renvoyer un résultat",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.functions",
+          "expectation": "Distinguer définition, appels et paramètres."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Regrouper des instructions, appeler une fonction et réutiliser son bloc avec des paramètres.",
+    "entryDiagnosis": [
+      "Créer, enregistrer et exécuter un fichier entier.",
+      "Lire l'ordre des affichages.",
+      "Distinguer nom et valeur."
+    ],
+    "preparation": [
+      "Prévoir fonctions.py, qui évolue de la découverte aux essais guidés ; conserver le fichier précédent du parcours. Réserver diagnostic_appel.py au diagnostic et ma_presentation.py à la création autonome.",
+      "Relancer le fichier entier : ne pas dépendre des définitions ou variables restées dans une ancienne console.",
+      "Observer une prédiction avant de montrer l'indice ; distinguer aide aux fichiers/clavier et aide au raisonnement."
+    ],
+    "why": "Écrire un bloc une fois, le réutiliser lors de plusieurs appels et modifier tous ces usages en changeant un seul corps.",
+    "discoverySpeech": [
+      "« Où la fonction est-elle définie et où est-elle appelée ? »",
+      "« Quelle valeur entre dans cet appel, et que se passe-t-il ensuite ? »",
+      "« Prévois un résultat, exécute puis explique une modification. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-fonctions",
+        "blockId": "exemple",
+        "label": "Exemple ou cahier des charges"
+      },
+      "comments": [
+        "Faire prévoir les affichages avant de lancer le fichier entier.",
+        "Faire appeler deux fois le corps de deux instructions, puis modifier un message une seule fois ; distinguer réutilisation et duplication.",
+        "Introduire un paramètre puis deux, et faire expliquer l'ordre des arguments."
+      ]
+    },
+    "questions": [
+      {
+        "question": "La définition seule affiche-t-elle le message ?",
+        "answer": "Non, son corps sera exécuté lors d'un appel."
+      },
+      {
+        "question": "Deux appels créent-ils deux définitions ?",
+        "answer": "Non, ils exécutent deux fois le même corps."
+      },
+      {
+        "question": "Quelle différence entre nom et \"Nova\" ?",
+        "answer": "nom est le paramètre ; \"Nova\" est la valeur argument fournie lors d'un appel."
+      },
+      {
+        "question": "Pourquoi l'ordre compte-t-il ici ?",
+        "answer": "Les arguments positionnels sont associés dans l'ordre aux paramètres."
+      },
+      {
+        "question": "Que change un mot fixe du corps ?",
+        "answer": "Tous les appels utilisent la nouvelle version du corps."
+      },
+      {
+        "question": "Faut-il return pour afficher une phrase ?",
+        "answer": "Non. Ce module utilise print dans le corps ; les valeurs renvoyées sont la prochaine leçon."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-fonctions",
+      "blockId": "guide",
+      "label": "Essais accompagnés"
+    },
+    "independentActivity": {
+      "moduleId": "python-fonctions",
+      "blockId": "autonomie",
+      "label": "Création et transfert autonomes"
+    },
+    "differentiation": [
+      "Reprendre une seule notion fragile sans exiger un bonus ni un projet antérieur entièrement terminé.",
+      "Faire évoluer le même fichier pour le guidé ; réserver les copies aux variantes et diagnostics.",
+      "Distinguer réussite autonome, avec modèle ou avec aide ; ne pas conclure à la maîtrise sur le seul rendu."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La définition est confondue avec l'appel ou le bloc n'est pas exécuté.",
+        "helps": [
+          "Faire lire le fichier de haut en bas.",
+          "Repérer def, deux-points et indentation.",
+          "Chercher l'appel séparé après la définition.",
+          "Ajouter ou déplacer uniquement l'appel, relancer le fichier entier et expliquer l'ordre."
+        ]
+      },
+      {
+        "symptom": "Les arguments ne correspondent pas aux paramètres.",
+        "helps": [
+          "Repérer les valeurs données à l'appel.",
+          "Comparer nombre et ordre aux paramètres.",
+          "Lire le message d'erreur ou les affichages inversés.",
+          "Corriger un appel, puis tester deux valeurs différentes sans changer la définition."
+        ]
+      },
+      {
+        "symptom": "Le corps et la suite du programme sont mal séparés.",
+        "helps": [
+          "Repérer les lignes qui appartiennent à la fonction.",
+          "Comparer leur indentation avec les appels.",
+          "Vérifier les deux-points et le retour à la marge des appels.",
+          "Corriger l'indentation sans recopier le bloc ; prédire et tester deux appels."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel : ni ouverture ni case cochée ne valide un acquis. Ce module distingue définition, appel et paramètres ; return et les noms locaux seront enseignés dans le suivant. Le bonus avec liste et for est facultatif.",
+    "quickConductor": [
+      "Vérifier les prérequis et sauvegarder.",
+      "Lire et prédire les deux instructions du premier corps.",
+      "Comparer définition seule, un appel et deux appels ; faire évoluer vers un puis deux paramètres.",
+      "Faire créer et modifier une variante personnelle.",
+      "Noter les tests, explications et aides ; choisir manuellement une reprise."
+    ],
+    "references": [
+      {
+        "title": "Python - fonctions",
+        "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+      }
+    ]
+  }
+}

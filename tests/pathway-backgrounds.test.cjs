@@ -1,11 +1,10 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.join(__dirname, '..');
-const css = fs.readFileSync(path.join(root, 'student-lowpoly.css'), 'utf8');
-const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'student-lowpoly.css'));
+const app = require('./helpers/student-source.cjs');
 
 test('lecture neutre et accents conservés après rééquilibrage des parcours', () => {
   assert.match(css, /--lesson-ink: var\(--ink\);/);

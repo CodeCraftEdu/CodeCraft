@@ -1,12 +1,5 @@
-// Fixture de recette non publiée : pas de solution complète dans le projet élève.
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const os = require('node:os');
-const path = require('node:path');
-const http = require('node:http');
-const { execFile } = require('node:child_process');
-const { promisify } = require('node:util');
-const run = promisify(execFile);
+const { withBrowser } = require('./helpers/browser.cjs');
 const fixture = `<!doctype html><html lang="fr"><meta charset="utf-8"><title>Recette collection</title>
 <style>body{margin:0}.cartes{display:flex;flex-direction:row;gap:20px;justify-content:flex-start;align-items:center;flex-wrap:wrap;width:520px;max-width:100%}.carte{box-sizing:border-box;width:160px;min-width:160px;margin:0;padding:12px;border:2px solid #52634a;background:#f5f2e8}</style>
 <div class="cartes"><div class="carte"><h2>A</h2><p>Un texte court.</p></div><div class="carte"><h2>B</h2><p>Un texte plus long avec des mots ordinaires pour observer une hauteur différente sur la même ligne de cartes.</p></div><div class="carte"><h2>C</h2><p>Un autre texte.</p></div><div class="carte"><h2>D</h2><p>Une quatrième idée.</p></div></div>
@@ -38,30 +31,11 @@ addEventListener('load',()=>{try {
 }catch(error){document.querySelector('#result').textContent='COLLECTION_ERROR: '+error.message}});
 </script></html>`;
 
-(async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-collection-'));
-  const profile = path.join(temp, 'profile');
-  const server = http.createServer((req, res) => { res.setHeader('Content-Type', 'text/html; charset=utf-8'); res.end(fixture); });
-  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-  try {
-    const { stdout } = await run('C:/Program Files/Google/Chrome/Application/chrome.exe', [
-      '--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
-      '--user-data-dir=' + profile, '--window-size=900,1100', '--virtual-time-budget=1500', '--dump-dom',
-      'http://127.0.0.1:' + server.address().port
-    ], { windowsHide: true, timeout: 30000, maxBuffer: 2000000 });
-    const result = stdout.match(/<pre id="result">([^<]*)<\/pre>/)?.[1];
-    assert.equal(result, 'COLLECTION_OK');
-    console.log('OK : parent, alignement row, cinquième carte, wrap 520/300, texte visible et axes en column.');
-  } finally {
-    await new Promise(resolve => server.close(resolve));
-    assert.equal(path.dirname(path.resolve(profile)), path.resolve(temp));
-    assert.equal(path.basename(profile), 'profile');
-    try { fs.rmSync(profile, { recursive: true, force: true, maxRetries: 20, retryDelay: 100 }); }
-    catch (error) {
-      if (!['EPERM', 'EBUSY'].includes(error.code)) throw error;
-      await run('powershell.exe', ['-NoProfile', '-Command', 'Remove-Item -LiteralPath $env:CODECRAFT_COLLECTION_PROFILE -Recurse -Force -ErrorAction Stop'],
-        { windowsHide: true, timeout: 15000, env: { ...process.env, CODECRAFT_COLLECTION_PROFILE: profile } });
-    }
-    fs.rmdirSync(temp);
-  }
-})().catch(error => { console.error(error); process.exitCode = 1; });
+
+withBrowser(async ({ call, evaluate, wait, origin, screenshot }) => {
+  await call('Page.navigate', { url: origin + 'fixture.html' });
+  await wait('!!document.getElementById("result")?.textContent');
+  assert.equal(await evaluate('document.getElementById("result").textContent'), 'COLLECTION_OK');
+  await screenshot('web-collection');
+  console.log('Collection checks passed: alignment, new card, wrapping, overflow and axes.');
+}, { fixtures: { 'fixture.html': fixture } }).catch(error => { console.error(error); process.exitCode = 1; });

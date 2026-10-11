@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const zlib = require('node:zlib');
 const root = path.resolve(__dirname, '..'), context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(root, 'pedagogy.js'), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA;
 const ids = ['gdevelop-projet', 'gdevelop-deplacement', 'gdevelop-objets', 'gdevelop-evenements'];

@@ -6,16 +6,16 @@ const vm = require('node:vm');
 const model = require('../teacher-model.js');
 const root = path.join(__dirname, '..');
 const context = { window: {}, URLSearchParams };
-for (const file of ['lesson-data.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
+for (const file of ['generated/catalog.js', 'pedagogy.js']) vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA, ui = context.window.CodeCraftPedagogy;
 
 test('textes du site : aucun tiret long dans les sources publiées', () => {
-  const folders = [root, path.join(root, 'images'), path.join(root, 'assets'), path.join(root, 'resources')];
+  const folders = [root, path.join(root, 'images'), path.join(root, 'assets'), path.join(root, 'resources'), path.join(root, 'content'), path.join(root, 'generated')];
   function check(folder, recursive) {
     for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
       const file = path.join(folder, entry.name);
       if (entry.isDirectory() && recursive) check(file, true);
-      else if (entry.isFile() && /\.(?:js|html|svg|txt|css)$/.test(entry.name)) {
+      else if (entry.isFile() && /\.(?:js|html|svg|txt|css|json)$/.test(entry.name)) {
         assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /[\u2013\u2014]/, path.relative(root, file));
       }
     }
@@ -23,17 +23,53 @@ test('textes du site : aucun tiret long dans les sources publiées', () => {
   folders.forEach((folder, index) => check(folder, index !== 0));
 });
 
-test('source encodée : dessin embarqué, décodage et usage CodePen expliqués', () => {
+test('images débutant : lien et chemin local, sans source encodée', () => {
   const source = fs.readFileSync(path.join(root, 'pedagogy.js'), 'utf8');
-  assert(source.includes('Cette source contient le dessin SVG sous forme de texte.'));
-  assert(source.includes('`data:image/svg+xml,`'));
-  assert(source.includes('`%3C`'));
-  assert(source.includes('dans CodePen sans héberger un fichier image'));
-  assert(source.includes('Le navigateur décode le texte et affiche l’image.'));
+  assert(source.includes('Colle le lien de l’image dans `src`.'));
+  assert(source.includes('Place le fichier dans le dossier `images`'));
+  assert(source.includes('publicImageAddress(entry.path)'));
+  assert(source.includes('mon-projet/\\n├── index.html\\n└── images/'));
+  assert.doesNotMatch(source, /data:image|source encodée|codepenSrc/);
+  assert.doesNotMatch(JSON.stringify(data.modules['html-images']), /data:image|encodée|\.svg/);
+});
+
+test('ressources images : aucun lien local copiable, adresse HTTPS publiée et repli de copie', async () => {
+  const source = fs.readFileSync(path.join(root, 'pedagogy.js'), 'utf8');
+  const body = source.slice(source.indexOf('  function publicImageAddress('), source.indexOf('  function scratchProject('));
+  const fake = (tag, text, cls) => ({ tag, text, cls, children: [], events: {}, classList: { add() {} },
+    append(...children) { this.children.push(...children); }, setAttribute() {},
+    addEventListener(type, callback) { this.events[type] = callback; } });
+  const all = node => [node, ...node.children.flatMap(all)];
+  const render = (href, clipboard) => vm.runInNewContext('(function () {' + body + '; return resource; })()', {
+    URL, node: fake, panel: title => fake('section', title), window: { location: { href } }, navigator: { clipboard }
+  })(data.modules['html-images'], 'cercle-orange');
+  for (const href of ['http://localhost:8000/', 'https://localhost/', 'https://dev.localhost./',
+    'https://127.0.0.1/', 'https://192.168.1.8/', 'https://[::1]/', 'file:///atelier/index.html',
+    'https://atelier.local/', 'http://codecraft.example.org/']) {
+    const nodes = all(render(href));
+    assert.equal(nodes.filter(n => n.tag === 'button').length, 0, href);
+    assert.equal(nodes.filter(n => n.tag === 'details').length, 0, href);
+    assert(nodes.some(n => n.download === 'cercle-orange.png'), href);
+    assert(nodes.some(n => n.tag === 'code' && n.text.includes('images/cercle-orange.png')), href);
+    assert(!nodes.some(n => n.tag === 'code' && /localhost|127\.0\.0\.1/.test(n.text)), href);
+    assert(!nodes.some(n => /version en ligne|Ressource disponible/.test(n.text || '')), href);
+    assert.equal(nodes.find(n => n.tag === 'p' && n.hidden).hidden, true);
+  }
+  let copied;
+  const nodes = all(render('https://codecraft.example.org/CodeCraft/index.html#module/html-images', {
+    writeText: async text => { copied = text; }
+  }));
+  const button = nodes.find(n => n.tag === 'button');
+  await button.events.click();
+  assert.equal(copied, 'https://codecraft.example.org/CodeCraft/assets/exercices/cercle-orange.png');
+  assert(nodes.some(n => n.tag === 'code' && n.text === copied));
+  const fallback = all(render('https://codecraft.example.org/', { writeText: async () => { throw new Error('refus'); } }));
+  await fallback.find(n => n.tag === 'button').events.click();
+  assert.equal(fallback.find(n => n.tag === 'details').open, true);
 });
 
 test('fin de module : encarts génériques supprimés, consignes spécifiques conservées', () => {
-  const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  const source = require('./helpers/student-source.cjs');
   const start = source.indexOf('  function support(item) {');
   const end = source.indexOf('  function renderModule(', start);
   const fake = (tag, className, text) => ({ tag, className, text, children: [], append(...children) { this.children.push(...children); } });
@@ -213,6 +249,7 @@ test('débogage Scratch : erreurs reproductibles, corrections et reprise', () =>
   // Simulation des opérations fournies, pas exécution du moteur Scratch.
   for (const initial of [-90, 0, 40]) {
     let wrong = initial + move;
+    assert.equal(wrong - initial, move);
     wrong = origin;
     assert.equal(wrong, 0);
     const repaired = origin + move;
@@ -364,7 +401,7 @@ test('lot 4 Scratch : signal attendu, recettes réutilisées et paramètre facul
   assert.equal(initial + calls.reduce((x,b) => x + Number(b.parts[1].value), 0), -30);
   assert(data.modules['scratch-mini-jeu'].nextSteps.some(r => r.moduleId === 'scratch-coordination'));
   assert(coordination.nextSteps.some(r => r.moduleId === 'scratch-blocs-personnalises'));
-  const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  const app = require('./helpers/student-source.cjs');
   assert(!app.includes('scratchLanguageHelp'));
   assert(!app.includes('Scratch est en anglais ?'));
   assert(app.includes("'custom'"));
@@ -477,12 +514,14 @@ test('adresses d’activités : contexte conservé seulement si compatible, anci
   assert(ui.target({ moduleId: 'html-images', blockId: 'squelette' }));
 });
 
-test('ressources CodePen : dessins embarqués identiques aux SVG du dépôt', () => {
+test('ressources images : fichiers PNG de 160 × 120 disponibles localement', () => {
   for (const r of data.modules['html-images'].resources) {
-    assert(r.codepenSrc.startsWith('data:image/svg+xml,'));
-    const svg = fs.readFileSync(path.join(root, r.path), 'utf8').trim();
-    assert.equal(decodeURIComponent(r.codepenSrc.split(',')[1]), svg);
-    assert(!/<script|onload=|https?:\/\/(?!www.w3.org)/i.test(svg));
+    assert(r.path.endsWith('.png'));
+    assert.equal(r.codepenSrc, undefined);
+    const png = fs.readFileSync(path.join(root, r.path));
+    assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    assert.equal(png.readUInt32BE(16), 160);
+    assert.equal(png.readUInt32BE(20), 120);
   }
 });
 

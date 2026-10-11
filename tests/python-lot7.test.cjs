@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { spawnSync } = require('node:child_process');
 const sandbox = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'lesson-data.js'), 'utf8'), sandbox);
+vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'generated/catalog.js'), 'utf8'), sandbox);
 const data = sandbox.window.CODECRAFT_DATA;
 const ids = ['python-fonctions', 'python-retour', 'python-quiz'];
 const block = (id, name) => data.modules[id].blocks.find(b => b.id === name);
@@ -124,7 +124,7 @@ test('Python revue 7 : fichiers limités et transfert autonome des deux branches
 });
 
 // Solution originale réservée à la recette. Aucun programme complet du quiz
-// n'est publié dans lesson-data.js. Pas de donnée ou acquis privé écrit.
+// n'est publié dans generated/catalog.js. Pas de donnée ou acquis privé écrit.
 const quiz = [
   'def poser_question(question, attendue):',
   '    reponse = input(question)',

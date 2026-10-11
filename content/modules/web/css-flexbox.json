@@ -1,0 +1,721 @@
+{
+  "domainId": "web",
+  "title": "Flexbox",
+  "type": "lesson",
+  "objective": "Organiser plusieurs éléments avec Flexbox et contrôler leur espacement et leur alignement.",
+  "skillIds": [
+    "css.flexbox"
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "prerequis",
+      "tone": "neutral",
+      "title": "Avant de commencer",
+      "moduleLink": {
+        "text": "Préparer un projet de cartes",
+        "moduleId": "web-projet-cartes"
+      },
+      "text": "Pour suivre ce module, prépare un conteneur .cartes contenant au moins trois éléments .carte. Si tu ne disposes pas encore de cette structure, commence par le module « Préparer un projet de cartes », accessible depuis l’accueil dans le parcours Avancés. Reviens ensuite ici avec ta base prête."
+    },
+    {
+      "type": "lesson",
+      "id": "apparence",
+      "title": "Base fournie : Apparence et espace d’observation",
+      "paragraphs": [
+        "Si tu arrives avec uniquement du HTML, voici le CSS nécessaire pour le diagnostic et les essais. Copie-le avant les questions suivantes.",
+        "Retrouve le projet conservé avant l’exercice Parent et enfants. Garde son HTML avec au moins trois cartes et conserve son HTML et son CSS dans deux fichiers texte. Dans une copie du projet, remplace le CSS de départ par la base ci-dessous ; ajoute ensuite les propriétés apprises dans la règle .cartes existante.",
+        "Les bordures, couleurs, tailles et espaces intérieurs ci-dessous servent uniquement à rendre les cartes et leur conteneur visibles. min-height donne au conteneur de la place pour observer l’alignement. min-width évite que les cartes deviennent trop étroites.",
+        "Tu n’as pas besoin de savoir recréer cette apparence pour commencer Flexbox. Copier ce CSS ne prouve pas que tu maîtrises ces propriétés. La marge des cartes est mise à zéro pour mieux observer gap.",
+        "Dans ce module, tu apprends à manipuler display, flex-direction, gap, justify-content, align-items et flex-wrap."
+      ],
+      "code": ".cartes {\n  max-width: 900px;\n  min-height: 420px;\n  border: 2px dashed #52634a;\n}\n\n.carte {\n  box-sizing: border-box;\n  width: 160px;\n  min-width: 160px;\n  margin: 0;\n  padding: 12px;\n  border: 2px solid #52634a;\n  border-radius: 8px;\n  background-color: #f5f2e8;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "diagnostic",
+      "title": "Diagnostic d’entrée : Que sais-tu expliquer ?",
+      "intro": "Utilise le code de départ fourni juste au-dessus pour répondre. Si ton projet n’avait pas encore de CSS, copie d’abord cette base : un code absent n’est pas un sélecteur non compris.",
+      "items": [
+        {
+          "id": "diag-parent",
+          "text": "Montre le conteneur commun aux trois cartes et ses enfants directs."
+        },
+        {
+          "id": "diag-classe",
+          "text": "Dans la base fournie, retrouve la règle .cartes. Explique son lien avec class=\"cartes\" dans le HTML. Si le code est présent mais que tu ne sais pas expliquer ce lien, reprends Classes et couleurs CSS."
+        },
+        {
+          "id": "diag-espaces",
+          "text": "Repère les espaces présents dans le code de départ. Sais-tu lesquels sont à l’intérieur des cartes ou autour ? Si tu hésites, signale-le : tu peux utiliser la base fournie sans prétendre maîtriser ces propriétés."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "cours",
+      "title": "1 : Activer Flexbox sur le parent",
+      "paragraphs": [
+        "Le conteneur .cartes contient les éléments .carte. Ajoute display: flex dans sa règle CSS. Ses enfants directs deviennent les éléments organisés par Flexbox.",
+        "Les h2 et p à l’intérieur d’une carte ne deviennent pas les enfants directs de .cartes. Mettre display: flex sur .carte organiserait le contenu de chaque carte, pas les cartes entre elles."
+      ],
+      "code": ".cartes {\n  display: flex;\n}",
+      "demonstration": {
+        "type": "flex-display",
+        "title": "Observe : Active Flexbox",
+        "intro": "Choisis le mode d’affichage du parent. Observe les cartes et la valeur qui change dans le code, puis reviens au premier choix pour comparer.",
+        "controlLabel": "Affichage du parent",
+        "previewLabel": ".cartes : le parent des trois cartes",
+        "codeLabel": "Règle appliquée au parent",
+        "cards": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "value": "block",
+            "label": "block : Sans Flexbox",
+            "feedback": "Sans Flexbox : les trois cartes de cet exemple sont empilées."
+          },
+          {
+            "value": "flex",
+            "label": "flex : Avec Flexbox",
+            "feedback": "Avec Flexbox : les mêmes cartes se placent côte à côte, dans le même ordre A, B, C."
+          }
+        ],
+        "note": "Seule la propriété display du parent .cartes change, pas celle des enfants .carte. Les tailles, couleurs et marges de cette démonstration restent fixes ; le code affiche uniquement la règle que tu modifies."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "axes",
+      "title": "2 : Direction et axes",
+      "paragraphs": [
+        "Ajoute flex-direction: row au parent. Dans nos exemples en français, les cartes se suivent sur une ligne de gauche à droite : c’est l’axe principal. L’axe transversal lui est perpendiculaire.",
+        "Remplace row par column : les cartes se suivent maintenant de haut en bas. L’axe principal devient vertical et l’axe transversal horizontal. Puis reviens à row.",
+        "Les mots horizontal et vertical décrivent nos exemples avec une écriture horizontale. Retiens surtout : la direction choisie définit l’axe principal ; l’autre axe est perpendiculaire."
+      ],
+      "code": ".cartes {\n  display: flex;\n  flex-direction: row;\n}",
+      "demonstration": {
+        "type": "flex-property",
+        "property": "flex-direction",
+        "title": "Change le sens des cartes",
+        "intro": "Passe de row à column. Les mêmes cartes restent dans l’ordre A, B, C ; c’est leur direction qui change.",
+        "cards": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "value": "row",
+            "feedback": "En row, l’axe principal va de gauche à droite dans cet exemple."
+          },
+          {
+            "value": "column",
+            "feedback": "En column, l’axe principal va de haut en bas. L’axe transversal devient horizontal."
+          }
+        ],
+        "note": "Seule flex-direction change. Les flèches indiquent les axes dans cet exemple en français ; elles ne sont pas des éléments à ajouter au CSS."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "espacement",
+      "title": "3 : Régler gap",
+      "paragraphs": [
+        "Ajoute gap: 20px au parent. gap règle les gouttières entre les cartes ; il n’ajoute pas de marge extérieure autour de la collection.",
+        "Teste 5px, 20px puis 30px. En column, l’écart suit la colonne. Avec plusieurs lignes, cette valeur s’applique aussi entre les lignes."
+      ],
+      "code": ".cartes {\n  display: flex;\n  gap: 20px;\n}",
+      "demonstration": {
+        "type": "flex-property",
+        "property": "gap",
+        "title": "Vois l’écart se former",
+        "intro": "Compare trois écarts entre les mêmes cartes. Regarde aussi le bord gauche : gap ne crée pas d’espace autour du groupe.",
+        "cards": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "value": "0px",
+            "feedback": "Sans gap, les bordures des cartes se touchent."
+          },
+          {
+            "value": "12px",
+            "feedback": "Un écart de 12 pixels sépare les cartes, sans ajouter de marge extérieure."
+          },
+          {
+            "value": "24px",
+            "feedback": "L’écart passe à 24 pixels. La première carte reste au début du conteneur."
+          }
+        ],
+        "note": "Seul gap change. Les cartes n’ont aucune marge ; leur largeur et leur direction restent fixes."
+      }
+    },
+    {
+      "type": "lesson",
+      "title": "4 : Répartir avec justify-content",
+      "paragraphs": [
+        "justify-content répartit l’espace libre sur l’axe principal. Avec row dans notre exemple, il agit horizontalement ; avec column, verticalement.",
+        "S’il ne reste pas de place libre, changer la répartition peut avoir peu ou pas d’effet. Pour tester en column, tu peux donner plus de hauteur au conteneur en changeant temporairement min-height: 420px en min-height: 800px.",
+        "flex-start regroupe au début, flex-end à la fin, center au centre. space-between répartit l’espace libre entre les éléments ; space-around en met autour de chacun ; space-evenly crée des intervalles de répartition égaux, bords compris.",
+        "Un gap reste présent : les valeurs de répartition peuvent ajouter de l’espace entre les cartes. Teste une valeur à la fois."
+      ],
+      "code": ".cartes {\n  display: flex;\n  gap: 20px;\n  justify-content: flex-start;\n}",
+      "valuesTitle": "Valeurs de justify-content à tester",
+      "values": [
+        "flex-start",
+        "flex-end",
+        "center",
+        "space-between",
+        "space-around",
+        "space-evenly"
+      ],
+      "id": "repartition",
+      "demonstration": {
+        "type": "flex-property",
+        "property": "justify-content",
+        "title": "Répartis l’espace libre",
+        "intro": "Choisis une répartition. Observe l’espace libre au début, à la fin et entre les cartes : leur largeur ne change pas.",
+        "cards": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "value": "flex-start",
+            "feedback": "Les cartes sont regroupées au début de l’axe principal."
+          },
+          {
+            "value": "center",
+            "feedback": "Le groupe est centré sur l’axe principal."
+          },
+          {
+            "value": "flex-end",
+            "feedback": "Les cartes sont regroupées à la fin de l’axe principal."
+          },
+          {
+            "value": "space-between",
+            "feedback": "L’espace libre est ajouté entre les cartes, pas aux extrémités."
+          },
+          {
+            "value": "space-around",
+            "feedback": "L’espace libre est réparti autour de chaque carte. Les parts aux bords sont plus petites que celles entre deux cartes."
+          },
+          {
+            "value": "space-evenly",
+            "feedback": "Les parts d’espace libre sont égales, bords compris. L’écart fixe de gap s’ajoute encore entre les cartes."
+          }
+        ],
+        "note": "Seul justify-content change. La direction reste row et gap reste à 12px. Si l’aperçu est trop étroit, il reste moins d’espace à répartir."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "alignement",
+      "title": "5 : Aligner avec align-items",
+      "paragraphs": [
+        "align-items place les cartes sur l’axe transversal : verticalement en row, horizontalement en column dans nos exemples.",
+        "Teste flex-start, center puis flex-end. Dans notre conteneur plus haut que les cartes, observe leur placement. La valeur initiale stretch peut étirer les cartes sur cet axe si leur taille le permet.",
+        "Reviens à row. Essaie justify-content: center et align-items: center ensemble : l’un agit sur l’axe principal, l’autre sur l’axe transversal."
+      ],
+      "code": ".cartes {\n  display: flex;\n  flex-direction: row;\n  gap: 20px;\n  justify-content: center;\n  align-items: center;\n}",
+      "demonstration": {
+        "type": "flex-property",
+        "property": "align-items",
+        "title": "Aligne des cartes de tailles différentes",
+        "intro": "Ici, la direction reste row. Change l’alignement vertical et compare le haut et le bas des cartes.",
+        "cards": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "value": "flex-start",
+            "feedback": "Les cartes partent du haut du conteneur, sur l’axe transversal."
+          },
+          {
+            "value": "center",
+            "feedback": "Chaque carte est centrée verticalement, même si leurs hauteurs diffèrent."
+          },
+          {
+            "value": "flex-end",
+            "feedback": "Le bas des cartes rejoint le bas du conteneur."
+          },
+          {
+            "value": "stretch",
+            "feedback": "Les cartes s’étirent sur la hauteur disponible : elles n’ont pas de hauteur fixe."
+          }
+        ],
+        "note": "Seul align-items change. Les cartes ont des hauteurs minimales différentes pour rendre l’effet visible ; justify-content reste à flex-start."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "retour-ligne",
+      "title": "6 : Autoriser plusieurs lignes",
+      "paragraphs": [
+        "Par défaut, flex-wrap vaut nowrap : les cartes restent sur une seule ligne. Elles peuvent se rétrécir si leurs dimensions le permettent, ou déborder si elles ne tiennent pas.",
+        "En row, réduis la largeur de l’aperçu. Ajoute flex-wrap: wrap : les cartes peuvent passer à la ligne suivante. Notre min-width fourni rend ce changement facile à observer.",
+        "Chaque ligne est répartie séparément par justify-content. Cette observation est une première adaptation à l’espace disponible, pas une maîtrise complète du responsive."
+      ],
+      "code": ".cartes {\n  display: flex;\n  flex-direction: row;\n  gap: 20px;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}",
+      "demonstration": {
+        "type": "flex-property",
+        "property": "flex-wrap",
+        "title": "Quand toutes les cartes ne tiennent plus",
+        "intro": "Six cartes partagent un parent étroit. Compare une seule ligne qui déborde et plusieurs lignes dans le même espace.",
+        "cards": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "options": [
+          {
+            "value": "nowrap",
+            "feedback": "Les six cartes restent sur une seule ligne et dépassent la bordure du parent. Fais défiler l’aperçu horizontalement pour voir la suite."
+          },
+          {
+            "value": "wrap",
+            "feedback": "Les cartes passent à la ligne pour rester dans le parent. À la largeur prévue, tu vois deux lignes de trois cartes."
+          }
+        ],
+        "note": "Seul flex-wrap change. Ce petit exemple utilise un parent de 260px maximum, des cartes de 64px qui ne rétrécissent pas, gap: 12px et align-content: flex-start pour regrouper les lignes en haut. Ce ne sont pas les dimensions de ton exercice."
+      }
+    },
+    {
+      "type": "tasks",
+      "title": "Mise en pratique : Organiser une collection",
+      "intro": "Utilise trois cartes avec un titre et un paragraphe. Procède par essais ; explique tes choix avec tes mots.",
+      "items": [
+        {
+          "id": "cote-a-cote",
+          "text": "Place les trois cartes côte à côte avec Flexbox.",
+          "hint": "display: flex doit être placé sur le parent des cartes.",
+          "syntax": ".cartes {\n  display: flex;\n}"
+        },
+        {
+          "id": "gap",
+          "text": "Ajoute un espace régulier entre les cartes avec gap.",
+          "hint": "Essaie par exemple 10px, 20px puis 30px.",
+          "syntax": ".cartes {\n  display: flex;\n  gap: 20px;\n}"
+        },
+        {
+          "id": "justify-center",
+          "text": "Centre les cartes avec justify-content."
+        },
+        {
+          "id": "tester-justify",
+          "text": "Teste au moins trois valeurs différentes de justify-content."
+        },
+        {
+          "id": "choisir-justify",
+          "text": "Choisis la valeur qui convient le mieux à ton projet."
+        },
+        {
+          "id": "ameliorer-cartes",
+          "text": "Facultatif : personnalise les textes et, avec les propriétés d’apparence que tu connais déjà, le design des cartes. Tu peux garder toute l’apparence fournie."
+        },
+        {
+          "id": "mission-direction",
+          "text": "Passe la collection en colonne puis remets-la en ligne. Explique ce qui change pour l’axe principal."
+        },
+        {
+          "id": "mission-aligner",
+          "text": "Aligne les cartes au centre sur l’axe transversal, puis au début."
+        },
+        {
+          "id": "mission-wrap",
+          "text": "Réduis l’aperçu et autorise le retour à la ligne. Explique au moins deux réglages que tu as choisis."
+        }
+      ],
+      "id": "mission"
+    },
+    {
+      "type": "lesson",
+      "id": "reglages-observation",
+      "title": "Réglages de départ pour vérifier et comparer",
+      "paragraphs": [
+        "Après la mission, utilise ces réglages pour la vérification de compréhension et le bonus à six cartes. Remplace les valeurs correspondantes dans tes règles existantes ; conserve le reste du CSS d’apparence.",
+        "Le conteneur reçoit une largeur de 520px, limitée à l’espace disponible par max-width: 100%. Chaque carte reste large de 160px. Avec un écart de 20px, trois cartes tiennent sur une ligne de 520px ; six demandent plus de place.",
+        "Pour comparer nettement, agrandis l’aperçu jusqu’à avoir au moins 524px disponibles (bordure comprise). Dans un aperçu plus étroit, moins de cartes tiendront par ligne. Pour la vérification à trois cartes en colonne, cette largeur laisse un espace visible de chaque côté lors du centrage."
+      ],
+      "code": ".cartes {\n  display: flex;\n  width: 520px;\n  max-width: 100%;\n  flex-direction: row;\n  gap: 20px;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: nowrap;\n}\n\n.carte {\n  box-sizing: border-box;\n  width: 160px;\n  min-width: 160px;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "comprehension",
+      "title": "Vérifie ta compréhension : Choisis les réglages",
+      "intro": "Garde trois cartes. Utilise les réglages de départ fournis juste avant cette activité. Essaie d’abord sans regarder les exemples de solution ; explique ensuite ce que tu as changé.",
+      "items": [
+        {
+          "id": "consigne-sans-propriete",
+          "text": "Mets les cartes en colonne, puis centre-les horizontalement dans leur conteneur. Explique tes choix et montre ce qui change quand tu annules seulement le centrage.",
+          "hints": [
+            "Repère le sens dans lequel les cartes se suivent et le sens dans lequel tu veux les centrer.",
+            "Une fois les cartes en colonne, le centrage horizontal concerne l’autre axe.",
+            "Compare avec les étapes « Direction et axes » et « Aligner avec align-items ».",
+            "Change flex-direction en column et align-items en center sur .cartes. Avec flex-start à la place de center, observe le déplacement horizontal."
+          ]
+        },
+        {
+          "id": "expliquer-axes",
+          "text": "Explique avec tes mots quel axe suit la colonne et quel axe permet ici le centrage horizontal."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Consolidation : Retrouver le bon élément et le bon axe",
+      "intro": "Prends le temps de comparer avant de corriger.",
+      "items": [
+        {
+          "id": "mauvais-parent",
+          "text": "Imagine que display: flex a été mis sur .carte uniquement. Corrige pour organiser la collection.",
+          "hints": [
+            "Quels éléments veux-tu déplacer ensemble ?",
+            "Leur parent commun doit porter display: flex.",
+            "Compare avec l’étape 1.",
+            "Retire display: flex de .carte et ajoute-le dans la règle .cartes. Vérifie les trois cartes."
+          ]
+        },
+        {
+          "id": "mauvais-axe",
+          "text": "En column, tu veux centrer horizontalement les cartes mais justify-content: center ne le fait pas. Corrige.",
+          "hints": [
+            "Repère la direction et les deux axes.",
+            "En column, l’axe horizontal est transversal.",
+            "Compare avec l’étape align-items.",
+            "Ajoute align-items: center au parent, puis compare avant et après."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "title": "Bonus : Étendre la collection",
+      "intro": "Quand tu sais expliquer tes réglages, passe à six cartes et utilise à nouveau les réglages de départ fournis au-dessus. Ils remettent les cartes en ligne avant la comparaison.",
+      "items": [
+        {
+          "id": "six-cartes",
+          "text": "Duplique trois cartes pour en obtenir six au total. Utilise le conteneur de 520px, les cartes de 160px et gap: 20px du code fourni."
+        },
+        {
+          "id": "tester-largeur",
+          "text": "Avec flex-wrap: nowrap, observe les six cartes sur une seule ligne : elles dépassent du conteneur. Explique pourquoi 520px ne suffisent pas."
+        },
+        {
+          "id": "wrap",
+          "text": "Change uniquement flex-wrap de nowrap à wrap. À 520px de largeur disponible dans le conteneur, observe deux lignes de trois cartes. Repasse à nowrap puis à wrap et explique la différence.",
+          "hint": "Conserve flex-direction: row, les dimensions et gap. Compare le nombre de lignes et le débordement.",
+          "syntax": ".cartes {\n  flex-wrap: wrap;\n}"
+        },
+        {
+          "id": "finaliser",
+          "text": "Finalise les textes et, si tu les connais déjà, les couleurs, espacements et effets hover. Aucune nouvelle propriété d’apparence n’est exigée."
+        }
+      ],
+      "id": "defi"
+    },
+    {
+      "type": "tasks",
+      "id": "navigation",
+      "title": "Bonus : Une petite navigation",
+      "intro": "Réutilise Flexbox dans un autre contexte. Si tu ne connais pas encore les liens, les éléments restent de simples textes ; tu n’as pas besoin d’ajouter de lien.",
+      "items": [
+        {
+          "id": "menu-html",
+          "text": "Crée un conteneur div class=\"navigation\" contenant trois paragraphes : Accueil, Activités et Contact."
+        },
+        {
+          "id": "menu-css",
+          "text": "Utilise .navigation comme sélecteur CSS. Place ses trois enfants en ligne, espace-les et choisis leur répartition.",
+          "hints": [
+            "Repère les trois enfants du même parent.",
+            "Le sélecteur doit correspondre à class=\"navigation\".",
+            "Compare avec .cartes en remplaçant seulement le nom du sélecteur.",
+            "Ajoute display: flex, puis gap et justify-content, en testant après chaque ajout."
+          ]
+        },
+        {
+          "id": "menu-wrap",
+          "text": "Autorise leur retour à la ligne et réduis l’aperçu. Explique ce que tu as réutilisé."
+        }
+      ]
+    }
+  ],
+  "theme": "avances",
+  "bonus": "Réutilise les réglages dans la petite navigation proposée en bonus, ou organise une deuxième collection de cartes. Ces activités ne valident pas automatiquement tes compétences.",
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.structure",
+      "expectation": "Identifier le parent et les enfants directs d’une collection."
+    },
+    {
+      "skillId": "css.selectors",
+      "expectation": "Relier une classe HTML au bon sélecteur CSS et modifier une déclaration."
+    }
+  ],
+  "masteryCriteria": [
+    "Placer display: flex sur le conteneur commun et expliquer quels enfants il organise.",
+    "Expliquer au moins deux réglages parmi direction, gap, répartition et alignement.",
+    "À partir de « Mets les cartes en colonne, puis centre-les horizontalement », choisir les réglages et expliquer les deux axes.",
+    "Observer une largeur réduite et autoriser le retour à la ligne lorsque les cartes ne tiennent plus."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-flexbox",
+      "blockId": "reparer",
+      "label": "Corriger le parent ou l’axe"
+    },
+    {
+      "moduleId": "html-parent-enfants",
+      "blockId": "reparer",
+      "label": "Revoir les regroupements"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre titres et paragraphes avant les classes si nécessaire"
+    },
+    {
+      "moduleId": "css-boites-espacements",
+      "label": "Reprendre les espaces autour et dans les cartes si nécessaire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Identifier le parent et le contenu d’une carte."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier une classe HTML à sa règle."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Distinguer texte et fond."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-dimensions-images",
+      "label": "Reprendre les largeurs et proportions si les dimensions fournies restent floues",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer la carte parent et l’image à l’intérieur."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une source dans src et rédiger un alt adapté."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer padding et margin et lire une bordure simple."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "css-flexbox",
+      "blockId": "navigation",
+      "label": "Réutiliser Flexbox dans une navigation"
+    },
+    {
+      "moduleId": "css-flexbox",
+      "blockId": "defi",
+      "label": "Étendre la collection"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "web-collection-cartes",
+      "label": "Créer et tester une collection personnelle",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer le parent des cartes."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier la classe HTML au sélecteur CSS."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre les sélecteurs en cas de doute",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Savoir créer un titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Savoir créer un paragraphe."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Amener l’élève à choisir le bon parent, raisonner sur les axes et régler une collection de cartes. Évaluer une modification expliquée, pas la copie d’un rendu.",
+    "entryDiagnosis": [
+      "Demander de montrer le parent commun et ses enfants directs. Si l’élève hésite, utiliser la consolidation de Parent et enfants.",
+      "Fournir d’abord la base CSS, puis demander pourquoi .cartes cible class=\"cartes\". Un fichier sans CSS signifie code absent, pas incompréhension. Si l’extrait est présent mais que le lien n’est pas expliqué, reprendre Classes et couleurs CSS.",
+      "Faire repérer padding, margin et les autres styles fournis, sans en déduire une maîtrise. Une hésitation sur l’apparence n’interdit pas l’expérimentation de Flexbox.",
+      "Faire distinguer l’espace intérieur d’une carte de l’espace entre plusieurs cartes ; expliquer de nouveau gap pendant le cours."
+    ],
+    "preparation": [
+      "Ouvrir une collection de trois cartes ; le module de préparation fournit le HTML si nécessaire.",
+      "Utiliser la base d’apparence proposée dans Flexbox : elle réserve de l’espace dans le parent et une largeur minimale aux cartes, afin que les effets soient observables.",
+      "Garder l’aperçu redimensionnable. Pour tester la répartition en column, donner suffisamment de hauteur au conteneur : sans espace libre, le changement peut être imperceptible.",
+      "Ne pas cumuler plusieurs anciennes règles contradictoires : remplacer le CSS de départ puis enrichir la même règle .cartes.",
+      "Pour vérifier la compréhension, utiliser les réglages d’observation avec trois cartes et un aperçu d’au moins 524px. Le code démarre en row avec align-items: flex-start. Le conteneur de 520px et les cartes de 160px évitent de masquer l’effet du centrage.",
+      "Pour le bonus, repartir des mêmes réglages avec six cartes. nowrap fait déborder la ligne ; wrap donne deux lignes de trois cartes lorsque la largeur intérieure du conteneur est de 520px."
+    ],
+    "why": "Une règle portée par le parent organise la collection et continue à agir lorsqu’on ajoute une carte. Les axes permettent de comprendre les réglages dans plusieurs dispositions.",
+    "discoverySpeech": [
+      "« Nous voulons organiser ces trois cartes ensemble. Qui les contient toutes ? C’est à ce parent que nous allons donner la règle. »",
+      "« Quand je passe de row à column, le sens principal change. Quel réglage doit suivre cet axe ? »",
+      "« gap réserve un écart. justify-content répartit l’espace libre sur l’axe principal ; align-items agit sur l’autre axe. Testons un réglage à la fois. »",
+      "« Quand la largeur diminue, que deviennent les cartes ? Autorisons plusieurs lignes et observons. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-flexbox",
+        "blockId": "alignement",
+        "label": "Régler les deux axes"
+      },
+      "comments": [
+        "Faire identifier chaque propriété et le sélecteur du parent avant de copier.",
+        "Comparer row et column. Dans nos exemples à écriture horizontale, l’axe principal passe de l’horizontale à la verticale.",
+        "La hauteur minimale fournie rend align-items visible en row. L’étirement initial n’est pas la même chose qu’un centrage.",
+        "Afficher ensuite le bloc flex-wrap : une seule propriété supplémentaire autorise plusieurs lignes."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi pas display: flex sur .carte ?",
+        "answer": "Cela organise le contenu de chaque carte, pas les trois cartes comme enfants de .cartes."
+      },
+      {
+        "question": "justify-content centre-t-il toujours horizontalement ?",
+        "answer": "Non. Il suit l’axe principal défini par flex-direction ; en column dans notre exemple, il agit verticalement."
+      },
+      {
+        "question": "Quel réglage centre horizontalement les cartes en column ?",
+        "answer": "align-items: center, car cet axe est alors transversal."
+      },
+      {
+        "question": "Pourquoi justify-content semble-t-il parfois ne rien changer ?",
+        "answer": "Il faut de l’espace libre à répartir ; vérifier aussi le bon parent et l’axe."
+      },
+      {
+        "question": "Pourquoi la collection change-t-elle à largeur réduite ?",
+        "answer": "La place disponible diminue ; avec wrap, les cartes qui ne tiennent plus peuvent passer à une autre ligne."
+      },
+      {
+        "question": "Mets les cartes en colonne, puis centre-les horizontalement. Quels réglages choisis-tu, et pourquoi ?",
+        "answer": "Sur .cartes, flex-direction: column fait suivre l’axe principal vertical aux cartes ; align-items: center les centre sur l’axe transversal horizontal. Le conteneur de 520px et les cartes de 160px rendent le déplacement visible. justify-content: center agirait verticalement dans cette disposition, pas horizontalement."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "css-flexbox",
+      "blockId": "cours",
+      "label": "Activer sur le parent, puis expérimenter les étapes 2 à 6"
+    },
+    "independentActivity": {
+      "moduleId": "css-flexbox",
+      "blockId": "mission",
+      "label": "Mise en pratique : Collection de cartes"
+    },
+    "differentiation": [
+      "Si les regroupements ou classes sont fragiles, revenir à la notion concernée sans imposer de durée. Fournir l’apparence puis accompagner un seul réglage.",
+      "Si les réglages sont expliqués, proposer les six cartes ou la navigation. Garder une consigne nouvelle à la fois et faire prédire le résultat avant de tester."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le mauvais élément reçoit display: flex.",
+        "helps": [
+          "Faire désigner les éléments à organiser ensemble.",
+          "Chercher leur parent commun dans le HTML.",
+          "Comparer avec l’exemple de .cartes.",
+          "Déplacer la déclaration vers le parent et vérifier les enfants concernés."
+        ]
+      },
+      {
+        "symptom": "Le centrage vise le mauvais axe.",
+        "helps": [
+          "Demander la valeur actuelle de flex-direction.",
+          "Faire nommer l’axe principal et l’axe transversal.",
+          "Comparer les essais row/column.",
+          "Choisir justify-content ou align-items, modifier seulement cette propriété puis observer."
+        ]
+      },
+      {
+        "symptom": "L’effet est invisible ou le retour à la ligne ne se produit pas.",
+        "helps": [
+          "Observer la place disponible et les dimensions.",
+          "Vérifier l’espace libre, nowrap/wrap et la largeur minimale fournie.",
+          "Comparer avec la base d’apparence et l’étape 6.",
+          "Réduire progressivement l’aperçu avec wrap actif ; si la carte elle-même est trop large, constater le débordement sans conclure que wrap suffit à tout résoudre."
+        ]
+      },
+      {
+        "symptom": "La consigne de vérification ne produit pas le centrage attendu.",
+        "helps": [
+          "Demander si les cartes sont réellement en colonne.",
+          "Vérifier que le réglage est sur .cartes, et que les cartes de 160px ont de la place dans le conteneur de 520px.",
+          "Si justify-content: center a été choisi, faire identifier son axe vertical en column.",
+          "Solution attendue sur .cartes : flex-direction: column; align-items: center;. Comparer avec align-items: flex-start pour voir le déplacement horizontal."
+        ]
+      }
+    ],
+    "notes": [
+      "Le CSS fourni pour l’apparence ne constitue pas un acquis. Les compétences de bordures, tailles ou survol ne sont pas validées par la copie.",
+      "gap et la répartition d’espace libre peuvent se cumuler. Sur plusieurs lignes, justify-content agit sur chaque ligne ; ne pas introduire ici la gestion avancée de toutes les lignes.",
+      "Les directions des axes dépendent aussi du mode d’écriture. Les observations horizontal/vertical du cours se rapportent à ses exemples.",
+      "flex-wrap est une première observation de l’adaptation à la largeur, pas une validation complète du responsive.",
+      "Le bonus navigation utilise des paragraphes comme libellés : aucun lien ni nouvelle compétence HTML n’est obligatoire.",
+      "Après la mission, donner la consigne de l’activité « Vérifie ta compréhension » sans nommer de propriété. Observer avant de proposer les aides.",
+      "Distinguer réussite autonome, avec modèle ou avec aide dans l’observation ou la remarque pédagogique existante. Ne pas ajouter de statut et ne pas conclure à l’acquisition sur la seule reproduction du rendu.",
+      "Pour les six cartes, comparer à dimensions identiques : 6 × 160px + 5 × 20px = 1060px, donc plus que 520px. Avec wrap, chaque ligne de trois utilise 3 × 160px + 2 × 20px = 520px."
+    ],
+    "quickConductor": [
+      "Fournir la base d’apparence avant de questionner les sélecteurs ; identifier ce qui est fourni et ce qui sera manipulé.",
+      "Diagnostiquer regroupements, sélecteurs et espaces à partir de ce code ; distinguer code absent et sélecteur non compris.",
+      "Activer Flexbox sur le parent et nommer les enfants concernés.",
+      "Tester direction, gap, répartition et alignement, une propriété à la fois.",
+      "Lancer la mission : trois cartes, écarts, alignement et fenêtre réduite.",
+      "Donner la consigne sans propriété : cartes en colonne puis centrées horizontalement. Faire expliquer les axes ; distinguer autonomie, modèle ou aide. Ensuite, consolider si nécessaire ou comparer six cartes avec et sans retour à la ligne.",
+      "Demander une modification à partir d’une consigne et l’explication de deux réglages ; renseigner manuellement le suivi selon l’observation."
+    ],
+    "references": [
+      {
+        "title": "MDN : Notions fondamentales de Flexbox",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts"
+      },
+      {
+        "title": "MDN : align-items",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-items"
+      },
+      {
+        "title": "MDN : Apprendre Flexbox",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox"
+      }
+    ]
+  }
+}

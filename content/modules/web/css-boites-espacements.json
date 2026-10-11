@@ -1,0 +1,550 @@
+{
+  "domainId": "web",
+  "title": "Boîtes et espacements",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Distinguer contenu, espace intérieur, bordure et espace extérieur pour aérer une carte.",
+  "skillIds": [
+    "css.spacing",
+    "css.borders"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "css.selectors",
+      "expectation": "Relier class=\"carte\" dans HTML au sélecteur .carte dans CSS."
+    },
+    {
+      "skillId": "html.structure",
+      "expectation": "Identifier le parent direct d’un élément et fermer les conteneurs au bon endroit."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Distinguer la couleur du texte et celle du fond dans une règle."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Avant de commencer",
+      "text": "Il faut repérer le conteneur d’une carte et relier ses classes au CSS. Si le parent direct reste flou, reprends Parent et enfants. Retrouve Classes et couleurs depuis le parcours dans le fil d’Ariane si nécessaire. Tu n’as besoin ni de Flexbox ni d’images pour cet exercice.",
+      "moduleLink": {
+        "text": "Parent et enfants",
+        "moduleId": "html-parent-enfants"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Une boîte autour du contenu",
+      "paragraphs": [
+        "Résultat attendu : deux cartes dont le texte ne touche pas la bordure et qui sont séparées du cadre extérieur. Tu sauras changer l’espace du bon côté de la bordure.",
+        "Ouvre un nouveau Pen, puis utilise HTML et CSS séparément. En local, travaille dans une copie avec une feuille déjà reliée : extrait HTML dans body, règles dans le fichier CSS, puis enregistre et actualise. Le cours de liaison est accessible dans les reprises si nécessaire.",
+        "Une boîte contient du contenu, par exemple un titre et un paragraphe. Autour du contenu viennent le padding (espace intérieur), la border (bordure) et la margin (espace extérieur). Les mots anglais sont les noms utilisés en CSS."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "couches",
+      "title": "2 : De l’intérieur vers l’extérieur",
+      "paragraphs": [
+        "padding éloigne le contenu de sa bordure. Le fond de la boîte remplit aussi cet espace intérieur.",
+        "border trace ici une ligne autour du contenu et du padding. border: 2px solid navy signifie une épaisseur de 2 pixels CSS, un trait continu (solid) et la couleur bleu marine (navy). Épaisseur, style du trait et couleur ont chacun leur rôle.",
+        "margin crée de l’espace à l’extérieur de la bordure. Cet espace est transparent : on voit le fond du parent, pas le fond blanc de la carte.",
+        "Avec une seule valeur, padding: 16px et margin: 12px règlent les quatre côtés. px signifie pixel CSS, une unité de taille ; 0 peut s’écrire sans unité. Nous n’avons pas besoin de régler chaque côté séparément ici.",
+        "Les titres et paragraphes ont souvent leurs propres marges par défaut. Dans cet exercice, .titre et .texte ont margin: 0 pour les enlever et observer uniquement les espaces de .carte. Ce réglage de démonstration n’est pas une obligation pour toutes tes pages."
+      ],
+      "code": "contenu : titre et paragraphe\n→ padding : espace intérieur\n→ border : ligne de bordure\n→ margin : espace extérieur",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Espace dedans ou dehors ?",
+        "intro": "Le fond gris montre le parent. Compare la distance du texte à la bordure et celle de la carte au parent.",
+        "variants": [
+          {
+            "label": "Sans espace",
+            "html": "<div class=\"atelier\"><div class=\"carte\"><h2>Observer</h2><p>Je compare les formes.</p></div></div>",
+            "code": ".carte {\n  padding: 0;\n  margin: 0;\n}",
+            "feedback": "Le contenu touche presque la bordure. La carte reste au bord de son parent.",
+            "css": ".atelier{border:2px solid gray;background:lightgray}.carte{border:2px solid navy;background:white}.carte h2,.carte p{margin:0}.carte{padding:0;margin:0}"
+          },
+          {
+            "label": "padding : espace intérieur",
+            "html": "<div class=\"atelier\"><div class=\"carte\"><h2>Observer</h2><p>Je compare les formes.</p></div></div>",
+            "code": ".carte {\n  padding: 16px;\n  margin: 0;\n}",
+            "feedback": "Le texte s’éloigne de la bordure, à l’intérieur de la carte.",
+            "css": ".atelier{border:2px solid gray;background:lightgray}.carte{border:2px solid navy;background:white}.carte h2,.carte p{margin:0}.carte{padding:16px;margin:0}"
+          },
+          {
+            "label": "margin : espace extérieur",
+            "html": "<div class=\"atelier\"><div class=\"carte\"><h2>Observer</h2><p>Je compare les formes.</p></div></div>",
+            "code": ".carte {\n  padding: 0;\n  margin: 16px;\n}",
+            "feedback": "La carte s’éloigne du bord gris. À l’intérieur, le texte reste près de sa propre bordure.",
+            "css": ".atelier{border:2px solid gray;background:lightgray}.carte{border:2px solid navy;background:white}.carte h2,.carte p{margin:0}.carte{padding:0;margin:16px}"
+          }
+        ],
+        "note": "Les titres et paragraphes de cet exemple ont margin: 0 pour isoler le réglage de la carte. Le CSS d’apparence est fixe."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "html",
+      "title": "HTML : Deux cartes dans un atelier",
+      "paragraphs": [
+        "Les deux .carte sont enfants directs de .atelier. Le h2 et le p de chaque carte sont ses enfants. Les classes titre et texte servent ici à retirer leurs marges par défaut."
+      ],
+      "code": "<div class=\"atelier\">\n  <div class=\"carte\">\n    <h2 class=\"titre\">Observer</h2>\n    <p class=\"texte\">Je prends le temps de regarder.</p>\n  </div>\n  <div class=\"carte\">\n    <h2 class=\"titre\">Raconter</h2>\n    <p class=\"texte\">Je décris ce que j’ai remarqué.</p>\n  </div>\n</div>"
+    },
+    {
+      "type": "lesson",
+      "id": "css",
+      "title": "CSS : Voir les deux sortes d’espace",
+      "paragraphs": [
+        "Le cadre gris de .atelier permet de repérer le parent. Dans chaque carte, le fond blanc continue jusqu’à sa bordure bleue. Dehors, on voit le gris du parent.",
+        "Observe surtout le côté gauche de la première carte : la distance entre le cadre gris et la bordure bleue montre sa marge ; la distance entre la bordure bleue et les mots montre son padding.",
+        "Les cartes s’empilent naturellement, sans Flexbox. Leurs marges verticales peuvent se regrouper au lieu de s’additionner : deux marges de 12px ne donnent pas forcément 24px entre les cartes. Pour la première comparaison, mesure visuellement à gauche, pas entre les deux cartes."
+      ],
+      "code": ".atelier {\n  background-color: lightgray;\n  border: 2px solid gray;\n}\n.carte {\n  background-color: white;\n  border: 2px solid navy;\n  padding: 16px;\n  margin: 12px;\n}\n.titre {\n  margin: 0;\n}\n.texte {\n  margin: 0;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Changer un seul espace",
+      "intro": "Garde les mots et l’épaisseur des bordures pendant les comparaisons.",
+      "items": [
+        {
+          "id": "observer",
+          "text": "Copie les deux extraits. Repère le contenu, l’espace blanc, la bordure bleue et l’espace gris à gauche d’une carte."
+        },
+        {
+          "id": "interieur",
+          "text": "Dans .carte, compare padding: 0 puis padding: 24px. Garde margin: 12px. Explique de quel côté de la bordure l’espace change.",
+          "hints": [
+            "Regarde les mots par rapport à la ligne bleue.",
+            "Le padding est à l’intérieur.",
+            "Compare le blanc entre les mots et la bordure.",
+            "À padding: 24px, les mots sont plus éloignés de la bordure. Rétablis ensuite padding: 16px."
+          ]
+        },
+        {
+          "id": "exterieur",
+          "text": "Avec padding: 16px, compare margin: 0 puis margin: 24px. Observe l’espace gris à gauche de la bordure, puis remets margin: 12px."
+        },
+        {
+          "id": "bordure",
+          "text": "Compare border: 2px solid navy puis border: 6px solid navy. Explique pourquoi un trait plus épais n’est pas une marge. Remets 2px."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Choisir l’espace utile",
+      "intro": "Essaie sans lire les noms de propriétés dans les indices. Garde une copie de ton départ.",
+      "items": [
+        {
+          "id": "contenu-propre",
+          "text": "Garde les deux cartes et remplace leurs textes par deux conseils de ton choix."
+        },
+        {
+          "id": "sans-nom-interieur",
+          "text": "Les mots sont trop près de la bordure : donne-leur plus d’air, sans augmenter l’espace gris extérieur ni l’épaisseur de la ligne.",
+          "hints": [
+            "Repère le côté de la bordure où se trouvent les mots.",
+            "La modification concerne l’intérieur.",
+            "Compare les rôles de padding et margin.",
+            "Augmente seulement padding dans .carte, par exemple de 16px à 24px. Garde margin et border."
+          ]
+        },
+        {
+          "id": "sans-nom-exterieur",
+          "text": "Les cartes sont trop près du cadre de l’atelier : éloigne leurs bordures du cadre, sans changer l’air entre les mots et leur propre bordure.",
+          "hints": [
+            "Regarde l’espace entre deux bordures, à gauche.",
+            "Cet espace est extérieur à la carte.",
+            "Le fond gris vient du parent.",
+            "Augmente margin dans .carte, par exemple de 12px à 24px. Ne change pas padding ni border."
+          ]
+        },
+        {
+          "id": "troisieme",
+          "text": "Ajoute une troisième carte avec un titre et un paragraphe. Réutilise les classes carte, titre et texte sans ajouter de règle CSS."
+        },
+        {
+          "id": "expliquer",
+          "text": "Explique les deux réglages précédents et prédis l’effet si tu remets seulement l’espace intérieur à zéro."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-1",
+          "text": "Je distingue l’intérieur et l’extérieur de la bordure."
+        },
+        {
+          "id": "verifier-2",
+          "text": "Je peux éloigner les mots sans changer la marge extérieure."
+        },
+        {
+          "id": "verifier-3",
+          "text": "Je peux éloigner la carte du cadre sans changer son padding."
+        },
+        {
+          "id": "verifier-4",
+          "text": "La nouvelle carte reçoit le style grâce aux classes réutilisées."
+        },
+        {
+          "id": "verifier-5",
+          "text": "Je sais que les marges verticales ne s’additionnent pas toujours."
+        },
+        {
+          "id": "verifier-6",
+          "text": "Je peux expliquer mes choix sans seulement réciter le code."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Consolidation : Beaucoup d’espace, mais du mauvais côté",
+      "paragraphs": [
+        "Dans une copie, remplace seulement la règle .carte par celle-ci ; garde le HTML, le cadre et les marges à zéro des titres et paragraphes."
+      ],
+      "code": ".carte {\n  background-color: white;\n  border: 2px solid navy;\n  padding: 0;\n  margin: 32px;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Réparer une carte trop serrée",
+      "intro": "Les mots touchent presque la bordure malgré le grand espace autour.",
+      "items": [
+        {
+          "id": "corriger",
+          "text": "Redonne de l’air aux mots sans agrandir encore l’espace extérieur. Explique pourquoi augmenter margin ne corrige pas ce problème.",
+          "hints": [
+            "Pointe l’espace manquant à l’intérieur de la ligne.",
+            "La marge est déjà grande, mais elle est dehors.",
+            "Compare padding: 0 et margin: 32px.",
+            "Essaie padding: 16px en gardant margin: 32px. Ensuite seulement, réduis la marge si tu souhaites moins d’espace extérieur."
+          ]
+        },
+        {
+          "id": "distinguer",
+          "text": "Si le texte reste décalé avec padding: 0, vérifie les marges de .titre et .texte : un enfant peut avoir sa propre marge. Explique quel élément porte chaque règle."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus-detail",
+      "title": "Bonus facultatif : Compact ou aéré ?",
+      "blocks": [
+        {
+          "type": "tasks",
+          "id": "bonus",
+          "title": "Deux versions avec les mêmes textes",
+          "intro": "Si tu sais distinguer les deux espaces, fais deux copies de ton Pen ou de ton projet.",
+          "items": [
+            {
+              "id": "compact",
+              "text": "Dans la première, essaie padding: 8px et margin: 8px sur .carte, en gardant les bordures à 2px."
+            },
+            {
+              "id": "aere",
+              "text": "Dans la seconde, essaie padding: 24px et margin: 20px. Garde exactement les mêmes textes et la même taille de caractères."
+            },
+            {
+              "id": "choisir",
+              "text": "Compare à largeur identique et explique deux différences : l’espace dans la carte et celui autour. Choisis une version selon l’usage, sans dire que plus d’espace est toujours mieux."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Garder une base pour la suite",
+      "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Si l’espace intérieur/extérieur reste flou, refais un essai en ne changeant que padding ou margin. Le bonus n’est pas obligatoire."
+    }
+  ],
+  "masteryCriteria": [
+    "Choisir padding ou margin à partir d’un besoin décrit sans nom de propriété.",
+    "Identifier le contenu, le padding, la bordure et la marge dans l’exemple ; expliquer quel fond est visible.",
+    "Réparer un manque d’espace intérieur sans augmenter inutilement l’espace extérieur.",
+    "Réutiliser les classes sur une troisième carte et expliquer le résultat.",
+    "Lire les trois valeurs d’une bordure simple ; les arrondis ne sont ni enseignés ni réputés acquis ici."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-boites-espacements",
+      "label": "Réparer un espace placé du mauvais côté",
+      "blockId": "panne"
+    },
+    {
+      "moduleId": "html-parent-enfants",
+      "label": "Reprendre le parent et les enfants",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre les règles par classe",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle CSS : sélecteur, propriété et valeur."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-feuille-style",
+      "label": "Reprendre la liaison CSS dans un projet local",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.document",
+          "expectation": "Repérer head et body."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Lire un chemin relatif."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration simple."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "css-boites-espacements",
+      "label": "Comparer une version compacte et une version aérée",
+      "blockId": "bonus-detail",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.spacing",
+          "expectation": "Modifier séparément les espaces intérieur et extérieur."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "css-dimensions-images",
+      "label": "Adapter la largeur et l’image de ta carte si les prérequis sont compris",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.structure",
+          "expectation": "Repérer la carte parent et l’image à l’intérieur."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Insérer une source dans src et rédiger un alt adapté."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier les classes HTML aux règles CSS."
+        },
+        {
+          "skillId": "css.spacing",
+          "expectation": "Distinguer padding et margin et lire une bordure simple."
+        }
+      ]
+    },
+    {
+      "moduleId": "web-affiche-numerique",
+      "label": "Réinvestir facultativement dans une affiche",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre principal et un sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises."
+        },
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class=\"carte\" dans HTML au sélecteur .carte dans CSS."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Changer le texte et le fond avec une règle CSS."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-textes-lisibles",
+      "label": "Reprendre la lisibilité si les mots restent difficiles à lire",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.selectors",
+          "expectation": "Relier class=\"carte\" dans HTML au sélecteur .carte dans CSS."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une déclaration et modifier une valeur."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire choisir padding ou margin selon le problème observé, lire une bordure et distinguer les espaces du parent et des enfants.",
+    "entryDiagnosis": [
+      "Faire montrer les enfants directs de .atelier puis de .carte. Attendu : cartes, puis titre/paragraphe ; reprendre H7 si nécessaire.",
+      "Demander quelle règle agit sur les deux cartes : .carte grâce à class=\"carte\". Reprendre les classes si la relation manque.",
+      "Demander quel fond apparaîtra derrière la carte ; ne pas présumer padding/margin connus parce qu’ils existaient dans un code fourni."
+    ],
+    "preparation": [
+      "Nouveau Pen ou copie de projet avec CSS chargé, sans autres règles qui masquent l’observation.",
+      "Garder le cadre parent avec sa bordure et les marges du h2/p à zéro pour isoler la comparaison ; commencer par le côté gauche.",
+      "Préparer les deux règles de comparaison et la panne ; ne pas ajouter largeur, hauteur, Flexbox ou arrondis."
+    ],
+    "why": "Une carte peut avoir beaucoup de vide à l’extérieur tout en serrant son texte. Choisir l’espace utile évite de changer des nombres au hasard.",
+    "discoverySpeech": [
+      "« Suivons le chemin depuis les mots : contenu, espace intérieur, ligne de bordure, puis espace extérieur. Le côté de la ligne compte plus que la quantité de vide. »",
+      "« Le padding garde le fond blanc de la carte. La marge est dehors, transparente : ici elle laisse voir le gris de l’atelier. »",
+      "« border: 2px solid navy décrit une épaisseur, un trait continu et une couleur. Épaissir ce trait ne revient pas à ajouter de l’air aux mots. »",
+      "« Nous remettons les marges des titres et paragraphes à zéro uniquement pour voir les espaces de leur parent. Dans d’autres pages, les enfants peuvent aussi avoir des marges. »",
+      "« Changeons un seul nombre et prédisons l’effet à gauche. Entre deux cartes, les marges verticales peuvent se regrouper : nous ne les additionnons pas automatiquement. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-boites-espacements",
+        "label": "Observer les couches dans le CSS",
+        "blockId": "css"
+      },
+      "comments": [
+        "Pointer .atelier, .carte et les enfants dans le HTML avant de lire les règles.",
+        "À gauche, de l’intérieur du cadre parent à la bordure bleue : margin 12px. De l’intérieur de la bordure bleue au début de la boîte du texte : padding 16px. L’épaisseur propre de la bordure ajoute 2px si l’on mesure depuis son bord extérieur.",
+        "Modifier padding seul de 16 à 24 : le retrait de la carte par rapport au cadre reste identique ; son contenu se décale de 8px.",
+        "Modifier margin seule de 12 à 24 : la carte se décale de 12px à gauche ; son padding reste constant. Ne pas promettre une largeur ou une hauteur extérieure inchangée."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Les mots touchent la bordure : quelle propriété choisir ?",
+        "answer": "padding, l’espace intérieur. Augmenter margin ne fait qu’éloigner la carte de l’extérieur."
+      },
+      {
+        "question": "La carte touche presque le cadre parent : que modifier ?",
+        "answer": "margin sur .carte, sans changer son padding si l’air autour du texte convient."
+      },
+      {
+        "question": "Pourquoi la marge est-elle grise ?",
+        "answer": "Elle est transparente ; on voit le fond lightgray du parent .atelier. Ce n’est pas une couleur propre à margin."
+      },
+      {
+        "question": "Que signifient les trois valeurs de border ?",
+        "answer": "2px : épaisseur ; solid : trait continu ; navy : couleur bleu marine. Une couleur seule ne suffit pas à rendre un trait visible par défaut."
+      },
+      {
+        "question": "Deux marges verticales de 12px donnent-elles toujours 24px ?",
+        "answer": "Non. Ici, les marges verticales des cartes empilées peuvent fusionner en 12px. Les comparaisons de base portent sur le côté gauche ; le calcul complet de fusion n’est pas exigé."
+      },
+      {
+        "question": "Pourquoi retirer les marges des titres et paragraphes ?",
+        "answer": "Pour isoler les espaces du parent .carte. Sinon les marges par défaut des enfants pourraient être prises pour son padding."
+      },
+      {
+        "question": "Pourquoi la troisième carte reçoit-elle le style ?",
+        "answer": "Elle porte les mêmes classes. Inutile de recopier les règles pour chaque exemplaire."
+      },
+      {
+        "question": "Sait-on déjà utiliser border-radius ?",
+        "answer": "Non. Une bordure simple et des angles arrondis sont deux observations différentes. Ce module n’enseigne pas border-radius."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "css-boites-espacements",
+      "label": "Comparer les trois réglages",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "css-boites-espacements",
+      "label": "Aérer au bon endroit sans nom de propriété",
+      "blockId": "mission"
+    },
+    "differentiation": [
+      "Faire pointer les deux côtés d’une bordure avant toute saisie ; proposer une seule carte si le repérage est fragile.",
+      "Aider à copier et à ouvrir les panneaux sans décider de la propriété. Faire verbaliser la prédiction avant de regarder le résultat.",
+      "L’élève déjà à l’aise peut faire directement les deux consignes sans nom de propriété et ajouter une carte ; le bonus compare des usages, pas un volume de travail obligatoire."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La marge augmente mais le texte reste collé.",
+        "helps": [
+          "Demander de pointer l’espace qui manque.",
+          "Faire distinguer les zones blanche et grise.",
+          "Dans la panne, mettre padding: 16px tout en conservant d’abord margin: 32px ; vérifier avant un second changement."
+        ]
+      },
+      {
+        "symptom": "Les mesures verticales semblent fausses.",
+        "helps": [
+          "Vérifier si l’élève additionne les marges de deux cartes.",
+          "Observer d’abord à gauche comme demandé.",
+          "Expliquer que les marges verticales peuvent fusionner ; ne pas ajouter un dispositif Flexbox pour cacher la difficulté."
+        ]
+      },
+      {
+        "symptom": "L’espace des enfants est confondu avec celui de la carte.",
+        "helps": [
+          "Pointer quel sélecteur porte la déclaration.",
+          "Vérifier les classes titre et texte ainsi que leurs margin: 0.",
+          "Comparer la règle du parent à celle de l’enfant ; rétablir le départ de démonstration avant de retester."
+        ]
+      }
+    ],
+    "notes": [
+      "Solutions possibles : padding 24px pour la demande intérieure, puis margin 24px pour la demande extérieure. D’autres valeurs sont recevables si l’élève change le bon espace et explique.",
+      "Consolidation : garder d’abord margin 32px et augmenter padding de 0 à 16px. Corriger une variable à la fois établit la cause.",
+      "La compétence css.spacing peut être observée ici. css.borders garde son libellé existant incluant border-radius : ce cours n’en couvre que la bordure simple. Noter cette couverture partielle ; ne pas marquer toute la compétence Acquis uniquement sur cet exercice.",
+      "Observer réussite autonome, avec modèle ou avec aide ; distinguer gestion de l’éditeur et compréhension. Aucun nouvel état, calcul ou mécanisme de suivi n’est ajouté.",
+      "Dimensions et images dans une carte puis Ma carte personnelle sont disponibles. Vérifier aussi src/alt avant de poursuivre ; une bordure fournie ne suffit toujours pas à valider les arrondis.",
+      "Réinvestir dans l’affiche est facultatif ; ne pas exiger de refaire son cahier des charges si l’élève sait déjà transférer les espacements."
+    ],
+    "quickConductor": [
+      "Vérifier regroupements et ciblage par classe.",
+      "Présenter les quatre couches, les couleurs témoins et les marges des enfants.",
+      "Comparer padding, margin et border séparément.",
+      "Donner les deux consignes sans nom de propriété puis ajouter une carte.",
+      "Consolider l’intérieur/extérieur ou comparer compact/aéré.",
+      "Noter manuellement ce qui est compris et l’aide apportée ; distinguer bordure et arrondis."
+    ],
+    "references": [
+      {
+        "title": "MDN : Le modèle de boîte",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model"
+      },
+      {
+        "title": "MDN : Fusion des marges",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing"
+      },
+      {
+        "title": "MDN : border",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/border"
+      }
+    ]
+  }
+}

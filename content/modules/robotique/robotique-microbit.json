@@ -1,0 +1,180 @@
+{
+  "domainId": "robotique",
+  "title": "Retrouver les repères sur micro:bit",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Déclencher deux images avec les boutons de la carte virtuelle et expliquer pourquoi elles restent affichées.",
+  "tool": {
+    "label": "Ouvrir MakeCode micro:bit",
+    "url": "https://makecode.microbit.org/"
+  },
+  "skillIds": [
+    "robotique.entree",
+    "robotique.evenement"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.entree",
+      "expectation": "Montrer une entrée et une sortie sur le bouton-LED ; une aide de manipulation suffit."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Nous changeons de carte et de site, pas de projet Tinkercad à importer. Ouvre MakeCode, crée un Nouveau projet nommé Mes-images et garde le mode Blocs. Tout se passe à l’écran, sans matériel ni connexion à un compte. Le professeur peut aider à trouver les boutons et les blocs ; ne visite pas toutes les catégories."
+    },
+    {
+      "type": "lesson",
+      "id": "reperer",
+      "title": "1 - Une entrée, un programme, une sortie",
+      "paragraphs": [
+        "Repère les boutons A et B de la carte dans le simulateur. Ce sont nos entrées. Les petites lumières de l’écran forment les images : c’est notre sortie.",
+        "Le programme sera constitué de deux événements : lorsque le bouton A est pressé, et lorsque le bouton B est pressé. En anglais : on button A pressed et on button B pressed, dans Input (Entrées). Place un bloc show icon (montrer une icône), de Basic (Base), à l’intérieur de chacun.",
+        "Choisis un cœur pour A et un carré pour B. Aucun bloc d’affichage dans toujours : il ne doit pas y avoir un autre programme qui change l’écran en même temps."
+      ],
+      "illustration": {
+        "src": "images/robotique-microbit-reference.jpg",
+        "alt": "MakeCode montre deux piles : A affiche un cœur et B affiche un carré. La carte affiche le cœur après A.",
+        "caption": "Capture de la référence essayée. Les libellés de cette interface sont en anglais ; les mêmes événements existent dans l’interface française."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "declencher",
+      "title": "2 - Déclencher n’est pas maintenir",
+      "paragraphs": [
+        "Avant de cliquer, prévois l’image obtenue avec A. Clique brièvement sur A puis relâche. Attends sans toucher aucun bouton : l’image reste. Ensuite clique sur B et observe le changement.",
+        "Le premier appui a déclenché l’affichage. Rien dans ce programme n’efface l’image après le relâchement. Ce n’est pas la règle bouton-LED qui relisait l’état du bouton et commandait aussi Éteindre au repos.",
+        "La carte seule n’est pas encore un robot roulant. Nous garderons Mes-images séparément du futur projet de trajet."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - prévoir trois observations",
+      "items": [
+        {
+          "id": "rb05-a-attente",
+          "text": "Prévois puis teste A, une attente sans autre appui, puis B. Montre les deux événements et explique les trois résultats.",
+          "hint": "Chaque bouton déclenche son affichage. Cherche si une autre commande demande d’effacer l’image après l’appui."
+        },
+        {
+          "id": "rb05-comparer",
+          "text": "Explique une différence avec la LED commandée pendant l’appui dans Tinkercad.",
+          "hint": "L’ancien programme consultait le bouton dans une boucle avec deux cas. Ici, l’événement déclenche une action ponctuelle."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - choisir tes deux images",
+      "items": [
+        {
+          "id": "rb05-images",
+          "text": "Choisis deux autres images différentes. Annonce ce que feront A puis B, change seulement les icônes, teste et explique l’image conservée sans nouvel appui.",
+          "hint": "Garde les deux événements séparés et remplace l’icône à l’intérieur de chacun, sans ajouter une boucle d’affichage."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Conserver Mes-images",
+      "text": "Vérifie le nom du projet. Utilise l’icône de sauvegarde à côté du nom pour télécharger le fichier .hex : ce fichier conserve aussi le programme, pas seulement un dessin. Avec de l’aide, retrouve-le puis utilise l’accueil MakeCode → Importer → Importer un fichier. Rouvre-le et teste A puis B. Ne compte pas uniquement sur l’enregistrement du navigateur : il peut être indisponible ou effacé. Tu n’as ni carte à brancher ni projet à publier."
+    }
+  ],
+  "masteryCriteria": [
+    "Je montre les entrées A/B et l’écran de sortie.",
+    "Je prévois A, l’attente sans appui et B, puis explique l’image conservée.",
+    "Je modifie deux images et retrouve ma sauvegarde avec une aide adaptée."
+  ],
+  "teacherGuide": {
+    "objective": "Transférer entrée/programme/sortie vers micro:bit et distinguer événement ponctuel et lecture répétée, sans détour par les moteurs.",
+    "entryDiagnosis": [
+      "Faire retrouver bouton → programme → LED ; aider à naviguer si nécessaire.",
+      "Ne pas exiger la reconstruction autonome du circuit ni une définition formelle d’événement."
+    ],
+    "preparation": [
+      "Référence A cœur / B carré essayée dans MakeCode le 9 octobre 2026. Clic bref et relâchement fonctionnent ; cœur conservé sans nouvel appui puis remplacé par le carré. Deux événements, aucun forever d’affichage.",
+      "Référence téléchargeable dans resources/robotique/makecode/RB05-Mes-images-reference.hex. L’élève construit dans un nouveau projet ; ne pas donner la référence complète comme départ.",
+      "Libellés observés en anglais. L’accès et les menus français dans le navigateur élève restent à vérifier. Aucune carte physique ni publication requise.",
+      "La sauvegarde automatique a signalé une indisponibilité dans le navigateur intégré. Exiger une copie exportée et accompagner la réimportation ; la recette du fichier RB05 avec un accès élève reste à faire."
+    ],
+    "why": "Une image qui persiste permet de distinguer une action déclenchée du maintien d’un état, avant le changement de lancement du trajet.",
+    "discoverySpeech": [
+      "« Nous retrouvons une entrée et une sortie sur une autre carte. »",
+      "« Que vois-tu après A, puis si nous ne touchons plus rien ? Quelle commande efface l’image ? »",
+      "« Nous conserverons ce projet séparément : les boutons ne commanderont pas automatiquement le futur robot. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-microbit",
+        "blockId": "declencher"
+      },
+      "comments": [
+        "Faire prévoir avant chaque geste ; deux images statiques seulement.",
+        "Comparer explicitement avec la lecture D2 répétée, sans expérience de maintien prolongé.",
+        "Ne pas introduire bascule mémorisée, variable ou robot dans cette micro-activité."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi le cœur reste-t-il après le relâchement ?",
+        "answer": "Il a été affiché et aucune commande ne l’efface ensuite."
+      },
+      {
+        "question": "La carte est-elle déjà un robot qui roule ?",
+        "answer": "Non. Cette activité utilise seulement les boutons et l’écran de la carte virtuelle."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-microbit",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-microbit",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Accompagner le placement des blocs, mais laisser prévoir les images.",
+      "Garder cette transition courte ; les moteurs seront étudiés dans un projet distinct."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’image change toute seule",
+        "helps": [
+          "Chercher un affichage dans forever ou une autre pile.",
+          "Garder seulement les deux événements."
+        ]
+      },
+      {
+        "symptom": "L’appui ne produit rien",
+        "helps": [
+          "Vérifier que la simulation tourne et que l’icône est à l’intérieur de l’événement.",
+          "Cliquer brièvement puis relâcher le bon bouton simulé."
+        ]
+      }
+    ],
+    "notes": "Les cases sont des repères, pas une validation automatique. Sauvegarde, langue et gestes dans le navigateur de cours restent à vérifier ; ne pas mélanger ce projet et l’affichage du robot.",
+    "quickConductor": [
+      "Repérer entrées et sortie sans visite exhaustive.",
+      "Construire deux événements et faire prévoir A / attente / B.",
+      "Choisir deux images personnelles et expliquer la persistance.",
+      "Exporter puis retrouver le fichier avec aide."
+    ],
+    "references": [
+      {
+        "title": "Référence professeur : Mes-images (.hex)",
+        "url": "resources/robotique/makecode/RB05-Mes-images-reference.hex"
+      },
+      {
+        "title": "Événement de bouton : documentation MakeCode",
+        "url": "https://makecode.microbit.org/reference/input/on-button-pressed"
+      }
+    ]
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "domainId": "python",
+  "title": "Tirer un nombre au hasard",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Importer random, conserver un tirage et expliquer ses valeurs possibles.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.random"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, conserver et relancer un fichier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher et lire les résultats."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Conserver et réutiliser une valeur numérique."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Lire une valeur entière."
+    },
+    {
+      "skillId": "python.for",
+      "expectation": "Prévoir les passages de for/range ; sinon reprendre les tours."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir afficher une variable numérique et suivre un for. Enregistre tes essais et crée tirage.py. Ne nomme pas ton fichier random.py ni une variable random : ces noms peuvent masquer le module utilisé. random fait partie de Python ; aucun package à installer.",
+      "moduleLink": {
+        "moduleId": "python-for",
+        "text": "Revoir les tours et leurs valeurs"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Importer et tirer",
+      "paragraphs": [
+        "import random rend accessible le module random de la bibliothèque standard. Dans random.randint, le point désigne une fonction de ce module ; les parenthèses appellent cette fonction. On utilise une fonction existante, sans apprendre encore à en définir une.",
+        "random.randint(1, 6) fournit un entier de 1 à 6, bornes comprises. La variable nombre conserve le résultat de cet appel ; print l’affiche.",
+        "Attention à la différence : range(1, 6) fournit les valeurs de 1 à 5, tandis que randint(1, 6) peut aussi donner 6. Avant le lancement, annonce les valeurs possibles, pas un résultat exact."
+      ],
+      "code": "import random\nnombre = random.randint(1, 6)\nprint(\"Nombre :\", nombre)"
+    },
+    {
+      "type": "lesson",
+      "id": "relance",
+      "title": "2 - Nouveau tirage ne veut pas dire résultat différent",
+      "paragraphs": [
+        "Relance tirage.py plusieurs fois. Chaque exécution fait un nouvel appel, mais deux résultats consécutifs peuvent être identiques.",
+        "Quelques essais ne garantissent pas de voir toutes les valeurs ou les deux bornes. Un résultat doit rester dans la plage annoncée ; ne corrige pas le code seulement parce qu’une valeur se répète."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "3 - Un tirage, plusieurs affichages",
+      "paragraphs": [
+        "Enregistre tirage.py puis crée valeur_conservee.py. Le tirage est avant for : il a lieu une fois, puis les trois passages utilisent la même valeur.",
+        "Annonce ce qui est garanti avant d’exécuter : les trois affichages sont identiques dans cette exécution, même si tu ne connais pas leur valeur."
+      ],
+      "code": "import random\nnombre = random.randint(1, 6)\nfor tour in range(3):\n    print(nombre)"
+    },
+    {
+      "type": "lesson",
+      "id": "renouveler",
+      "title": "4 - Un nouveau tirage à chaque tour",
+      "paragraphs": [
+        "Enregistre valeur_conservee.py puis crée nouveaux_tirages.py. Le tirage est maintenant dans le bloc : chaque passage appelle randint, puis affiche la valeur obtenue.",
+        "Les trois résultats peuvent différer, mais aussi se répéter. C’est le nombre d’appels et leur emplacement qui changent, pas une obligation d’obtenir trois valeurs différentes."
+      ],
+      "code": "import random\nfor tour in range(3):\n    nombre = random.randint(1, 6)\n    print(nombre)"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - garanties et appels",
+      "items": [
+        {
+          "id": "bornes-hasard",
+          "text": "Dans tirage.py, montre l’import, les bornes et la variable résultat. Compare les valeurs possibles de randint(1, 6) à celles de range(1, 6).",
+          "hint": "randint inclut 6 ; range l’exclut. Un tirage est un entier, pas toute la suite."
+        },
+        {
+          "id": "valeur-unique",
+          "text": "Enregistre puis crée tirage_fixe.py avec Enregistrer sous. Remplace les bornes par randint(4, 4), prédis puis teste plusieurs fois.",
+          "hint": "La seule valeur possible est 4. Le programme appelle quand même randint."
+        },
+        {
+          "id": "appels",
+          "text": "Compare valeur_conservee.py et nouveaux_tirages.py. Montre combien de fois la ligne du tirage est exécutée et explique les répétitions possibles des résultats.",
+          "hint": "Un appel avant for contre trois appels dans for ; des appels différents peuvent produire la même valeur."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - ton intervalle",
+      "intro": "Enregistre les exemples puis crée mon_tirage.py. Choisis tes messages et essaie avant les indices ; garde tous les fichiers.",
+      "items": [
+        {
+          "id": "plage-personnelle",
+          "text": "Choisis une plage positive, par exemple 3 à 9. Tire une fois et réutilise le nombre dans deux messages personnels. Annonce les valeurs possibles et repère la ligne qui tire.",
+          "hint": "Un appel à randint conserve la valeur dans une variable. Les deux print réutilisent son nom sans refaire le tirage."
+        },
+        {
+          "id": "trois-appels",
+          "text": "Enregistre puis crée mon_tirage_repetition.py avec Enregistrer sous. Fais trois tirages successifs et explique ce que tu as déplacé. Trois nombres différents ne sont pas exigés.",
+          "hint": "Le tirage doit appartenir au bloc répété. Vérifie l’emplacement, pas seulement les sorties."
+        },
+        {
+          "id": "modifier-plage",
+          "text": "Change les bornes, annonce les nouvelles possibilités puis teste. Dans une copie nommée mon_tirage_fixe.py, réduis la plage à une seule valeur et vérifie ta prédiction.",
+          "hint": "Des bornes égales donnent toujours cette valeur. Garde mon_tirage.py et sa plage initiale."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - réagir au tirage",
+      "items": [
+        {
+          "id": "tirage-seuil",
+          "text": "Dans un nouveau fichier, fais cinq tirages de 1 à 6. À chaque tour, affiche un message si le nombre obtenu vaut au moins 4. Montre que la comparaison utilise le tirage conservé.",
+          "hint": "Un tirage dans for, puis un if sur la variable. Ne refais pas un tirage dans le test ; reprends les conditions si nécessaire."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer import, l’appel random.randint et la variable résultat.",
+    "Distinguer les bornes incluses de randint de la fin exclue de range.",
+    "Réutiliser un tirage conservé et distinguer affichages répétés et nouveaux appels.",
+    "Modifier une plage, vérifier une valeur unique et expliquer pourquoi deux tirages peuvent être identiques."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-hasard",
+      "blockId": "guide",
+      "label": "Revoir bornes et appels"
+    },
+    {
+      "moduleId": "python-variables",
+      "blockId": "guide",
+      "label": "Revoir la valeur conservée"
+    },
+    {
+      "moduleId": "python-for",
+      "blockId": "guide",
+      "label": "Revoir les bornes de range"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-hasard",
+      "blockId": "bonus",
+      "label": "Réagir à chaque tirage",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.conditions",
+          "expectation": "Construire un test et repérer son bloc ; sinon reprendre Faire un choix."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-nombre-mystere",
+      "label": "Trouver le nombre mystère",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.random",
+          "expectation": "Conserver un tirage et expliquer ses bornes ; sinon reprendre ton intervalle."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Introduire une bibliothèque standard et distinguer un tirage conservé de nouveaux appels.",
+    "entryDiagnosis": [
+      "Faire afficher une variable fixe et prévoir les valeurs d’un range.",
+      "Demander les possibilités plutôt que deviner une sortie aléatoire."
+    ],
+    "preparation": [
+      "Utiliser tirage.py, jamais random.py ; éviter une variable nommée random.",
+      "Conserver valeur_conservee.py, nouveaux_tirages.py et les copies à valeur unique. Aucun package supplémentaire."
+    ],
+    "why": "Un programme peut choisir une valeur sans qu’elle soit fixée dans son code.",
+    "discoverySpeech": [
+      "« Quelles valeurs sont possibles ? »",
+      "« Combien de fois cette ligne est-elle exécutée ? »",
+      "« Deux résultats identiques prouvent-ils qu’il n’y a pas eu de nouveau tirage ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-hasard",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Import avant usage ; fonction existante appelée avec deux bornes.",
+        "randint inclut les deux bornes, contrairement à la fin de range.",
+        "Ne pas exiger une sortie différente à chaque relance."
+      ]
+    },
+    "questions": [
+      {
+        "question": "randint(1, 6) peut-il donner 6 ?",
+        "answer": "Oui ; les deux bornes sont incluses."
+      },
+      {
+        "question": "Pourquoi trois print de la même variable donnent-ils la même valeur ?",
+        "answer": "Ils réutilisent un tirage conservé, sans nouvel appel."
+      },
+      {
+        "question": "Trois appels doivent-ils donner trois valeurs distinctes ?",
+        "answer": "Non : chaque appel peut retrouver une valeur déjà obtenue."
+      },
+      {
+        "question": "Faut-il installer random ?",
+        "answer": "Non, il appartient à la bibliothèque standard de Python."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-hasard",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-hasard",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Commencer par un seul tirage affiché.",
+      "Comparer ensuite les deux emplacements de la ligne dans des fichiers distincts.",
+      "Réserver la réaction conditionnelle au bonus."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "random n’est pas accessible ou n’a pas randint.",
+        "helps": [
+          "Repérer le fichier actif et lire le message.",
+          "Vérifier import random avant usage.",
+          "Chercher un fichier random.py ou une variable random qui masque le module.",
+          "Renommer le fichier ou la variable, enregistrer et redémarrer avant de retester ; ne pas installer un package au hasard."
+        ]
+      },
+      {
+        "symptom": "L’élève attend des résultats tous différents.",
+        "helps": [
+          "Demander la garantie réellement annoncée.",
+          "Compter les appels en suivant le bloc.",
+          "Distinguer nouvelle opération et résultat nécessairement nouveau.",
+          "Tester une plage à valeur unique puis expliquer un exemple personnel sans imposer de diversité."
+        ]
+      }
+    ],
+    "notes": "Le contrôle technique des appels ne demande pas d’enseigner seed. Aides, prédictions et modifications évaluées séparément ; aucun acquis automatique.",
+    "quickConductor": [
+      "Diagnostiquer variables et range.",
+      "Importer et tirer.",
+      "Comparer les bornes.",
+      "Comparer un appel et trois appels.",
+      "Créer, modifier et expliquer l’intervalle personnel."
+    ],
+    "references": [
+      {
+        "title": "Python - random.randint",
+        "url": "https://docs.python.org/fr/3/library/random.html#random.randint"
+      }
+    ]
+  }
+}

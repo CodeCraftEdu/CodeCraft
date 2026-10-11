@@ -1,0 +1,399 @@
+{
+  "domainId": "web",
+  "title": "Structure d’un document HTML",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Organiser un document HTML complet et distinguer le titre de l’onglet du titre visible.",
+  "skillIds": [
+    "html.document"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.headings",
+      "expectation": "Créer un titre dans une petite page."
+    },
+    {
+      "skillId": "html.text",
+      "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Du contenu à un fichier complet",
+      "paragraphs": [
+        "Tu as déjà assemblé une petite page avec un titre et du texte. Tu vas maintenant créer son cadre complet dans un fichier : le résultat sera une page visible dans le navigateur avec un nom dans son onglet.",
+        "Dans CodePen, tu as écrit le contenu de la page. Ici, tu vas créer un fichier HTML complet et l’ouvrir dans ton navigateur.",
+        "Pour les essais, ouvre VS Code ou ton éditeur de texte, puis garde un navigateur à côté.",
+        "Écris toi-même le code, puis enregistre le fichier pour observer le résultat."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "comprendre",
+      "title": "Les principaux éléments du document",
+      "paragraphs": [
+        "<!doctype html> se place au début du fichier et indique au navigateur qu’il s’agit d’un document HTML moderne.",
+        "<html> entoure le document. L’attribut `lang=\"fr\"` indique que sa langue principale est le français.",
+        "<head> rassemble les informations destinées au navigateur. <body> contient le contenu visible de la page.",
+        "<title>, dans <head>, donne son nom à l’onglet du navigateur. <h1>, dans <body>, affiche le titre principal de la page. Le titre de l’onglet et celui de la page peuvent être différents : chacun se modifie séparément.",
+        "<meta charset=\"utf-8\"> permet au navigateur de lire correctement les caractères, notamment les accents.",
+        "Les espaces au début des lignes rendent le code plus facile à lire. Les balises délimitent les éléments du document."
+      ],
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Deux titres, deux endroits",
+        "intro": "Pars de la version « Départ ». Compare ensuite chaque modification au départ : title nomme l’onglet ; h1 est le titre que tu lis dans la page.",
+        "variants": [
+          {
+            "label": "Départ",
+            "html": "<h1>Ma page locale</h1><p>Je construis une page HTML.</p>",
+            "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mon carnet</title>\n</head>\n<body>\n  <h1>Ma page locale</h1>\n  <p>Je construis une page HTML.</p>\n</body>\n</html>",
+            "feedback": "Dans head, title donne « Mon carnet » à l’onglet. Dans body, h1 affiche « Ma page locale » dans la page. Ces deux textes peuvent être différents.",
+            "css": "",
+            "tabTitle": "Mon carnet"
+          },
+          {
+            "label": "Changer seulement title",
+            "html": "<h1>Ma page locale</h1><p>Je construis une page HTML.</p>",
+            "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Carnet nature</title>\n</head>\n<body>\n  <h1>Ma page locale</h1>\n  <p>Je construis une page HTML.</p>\n</body>\n</html>",
+            "feedback": "Seul le texte de title a changé : l’onglet indique maintenant « Carnet nature ». Le h1 reste « Ma page locale » et le contenu de la page ne change pas.",
+            "css": "",
+            "tabTitle": "Carnet nature"
+          },
+          {
+            "label": "Changer seulement h1",
+            "html": "<h1>Mes découvertes</h1><p>Je construis une page HTML.</p>",
+            "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mon carnet</title>\n</head>\n<body>\n  <h1>Mes découvertes</h1>\n  <p>Je construis une page HTML.</p>\n</body>\n</html>",
+            "feedback": "Par rapport au départ, seul le texte de h1 a changé : la page affiche « Mes découvertes ». Le title reste « Mon carnet », donc l’onglet garde ce nom.",
+            "css": "",
+            "tabTitle": "Mon carnet"
+          }
+        ],
+        "note": "",
+        "codeLabel": "index.html"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "Le fichier index.html de départ",
+      "paragraphs": [
+        "Lis d’abord le code : prédis le texte de l’onglet et le titre visible. Copie ensuite ce document entier dans le fichier de l’exercice."
+      ],
+      "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mon carnet</title>\n</head>\n<body>\n  <h1>Ma page locale</h1>\n  <p>Je construis un document HTML.</p>\n</body>\n</html>"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Créer, enregistrer, observer",
+      "intro": "Utilise un nouveau dossier pour ne pas écraser une page existante.",
+      "items": [
+        {
+          "id": "creer-dossier",
+          "text": "Crée un dossier nommé atelier-web. Dans VS Code, utilise Fichier → Ouvrir le dossier, puis choisis ce dossier."
+        },
+        {
+          "id": "creer-fichier",
+          "text": "Dans la liste de fichiers de VS Code, crée index.html, colle le document de départ puis enregistre avec Ctrl+S (Cmd+S sur Mac).",
+          "hints": [
+            "Regarde le nom du fichier dans la liste, pas seulement le titre du navigateur.",
+            "Le fichier doit se terminer par .html, pas par .html.txt.",
+            "Compare index.html avec le nom demandé.",
+            "Si nécessaire, renomme le fichier avec son extension complète ; conserve son contenu, puis enregistre."
+          ]
+        },
+        {
+          "id": "ouvrir-fichier",
+          "text": "Ouvre index.html dans Chrome ou Edge depuis l’explorateur de fichiers : clic droit → Ouvrir avec → ton navigateur si le double-clic ouvre l’éditeur. Vérifie l’onglet et le h1."
+        },
+        {
+          "id": "modifier-onglet",
+          "text": "Remplace uniquement Mon carnet dans title par Carnet des idées. Enregistre, puis actualise le navigateur. Le titre visible a-t-il changé ?"
+        },
+        {
+          "id": "modifier-page",
+          "text": "Remplace ensuite uniquement Ma page locale dans h1 par Mes découvertes. Enregistre et actualise. Vérifie que le nom de l’onglet reste Carnet des idées."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Deux titres, deux rôles",
+      "intro": "Pars d’une copie de ton cadre, ou remplace seulement le contenu de body par ta petite page déjà réalisée. Ne place pas un second document complet dans body.",
+      "items": [
+        {
+          "id": "mission-onglet",
+          "text": "Choisis un nom court pour l’onglet et un titre visible différent sur le même sujet. Place chacun au bon endroit.",
+          "hints": [
+            "Cherche la partie qui contient les informations du document et celle du contenu visible.",
+            "title et h1 n’ont pas le même rôle.",
+            "Compare <head> et <body> dans l’exemple.",
+            "Place title dans head et h1 dans body. Enregistre et vérifie les deux endroits du navigateur."
+          ]
+        },
+        {
+          "id": "mission-texte",
+          "text": "Ajoute deux paragraphes dans le contenu visible sans modifier le nom de l’onglet."
+        },
+        {
+          "id": "mission-transfert",
+          "text": "Sans regarder le modèle, change seulement le nom de l’onglet. Explique pourquoi les mots de ta page sont restés identiques."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton document",
+      "items": [
+        {
+          "id": "verifier-cadre",
+          "text": "Le document possède un head et un body dans html."
+        },
+        {
+          "id": "verifier-titres",
+          "text": "Le nom de l’onglet vient de title ; le titre visible vient de h1."
+        },
+        {
+          "id": "verifier-contenu",
+          "text": "Les paragraphes sont dans body et les balises qui entourent du contenu sont fermées."
+        },
+        {
+          "id": "verifier-fichier",
+          "text": "J’ai enregistré le bon fichier et actualisé la page ouverte dans le navigateur."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Consolidation : Les titres ont été inversés",
+      "paragraphs": [
+        "Le code ci-dessous est lisible par le navigateur, mais il ne répond pas à la demande : l’onglet doit annoncer Carnet et la page doit afficher Les volcans. Corrige les deux textes sans déplacer les balises ni réécrire le document."
+      ],
+      "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Les volcans</title>\n</head>\n<body>\n  <h1>Carnet</h1>\n  <p>Des montagnes particulières.</p>\n</body>\n</html>"
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Explique ta correction",
+      "intro": "Cherche avant de révéler une aide.",
+      "items": [
+        {
+          "id": "corriger-titres",
+          "text": "Corrige l’extrait pour obtenir l’onglet Carnet et le titre visible Les volcans.",
+          "hints": [
+            "Regarde title et h1.",
+            "Le texte de l’onglet ne vient pas de h1.",
+            "Compare avec le premier document.",
+            "Écris Carnet entre title et /title, puis Les volcans entre h1 et /h1. Enregistre et actualise."
+          ]
+        },
+        {
+          "id": "corriger-fichier",
+          "text": "Si aucun changement n’apparaît, vérifie l’enregistrement, le fichier ouvert et l’actualisation avant de changer d’autres balises."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : Ajouter une rubrique",
+      "intro": "Facultatif : si tu sais utiliser un h2 et un paragraphe, ajoute une rubrique au contenu visible. Sinon, reprends les niveaux de titres avant ce bonus.",
+      "items": [
+        {
+          "id": "bonus-rubrique",
+          "text": "Ajoute un sous-titre h2 et un paragraphe dans body, sans toucher au head."
+        },
+        {
+          "id": "bonus-expliquer",
+          "text": "Montre où commence et où se termine le contenu de body, puis explique ce qui reste dans head."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Repérer head et body dans un document complet et expliquer leurs rôles avec ses mots.",
+    "Modifier title sans modifier h1, puis faire l’inverse.",
+    "Insérer un contenu visible dans body sans dupliquer le cadre du document.",
+    "Distinguer une erreur de code d’un fichier non enregistré ou d’un autre fichier ouvert."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-document",
+      "blockId": "reparer",
+      "label": "Réparer la confusion title/h1"
+    },
+    {
+      "moduleId": "html-titres-paragraphes",
+      "label": "Reprendre titres et paragraphes"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "html-document",
+      "blockId": "bonus",
+      "label": "Ajouter une rubrique au bon endroit",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Utiliser un h2 comme sous-titre."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-fichiers-chemins",
+      "label": "Organiser les fichiers et retrouver les images",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer le texte cliquable de sa destination href."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Distinguer src et alt et remplacer une image."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire identifier le cadre réel d’une page hors CodePen et distinguer métadonnées du document et contenu affiché, avec modification indépendante de title et h1.",
+    "entryDiagnosis": [
+      "Demander de retrouver le h1 et un paragraphe dans une petite page déjà faite. Attendu : les balises sont repérées, leur texte peut être changé.",
+      "Demander ce que CodePen reçoit dans son panneau HTML. Ne pas supposer que l’élève connaît déjà head/body parce qu’une ancienne activité fournissait un squelette.",
+      "Vérifier ouvrir un dossier, créer un fichier et enregistrer. Fournir une aide au clavier ou au fichier sans conclure à une difficulté HTML."
+    ],
+    "preparation": [
+      "Préparer un dossier neuf ou une copie de travail ; ne pas écraser un projet personnel.",
+      "Vérifier la présence d’un éditeur de texte et d’un navigateur. Aucun module complémentaire ni serveur n’est requis pour ces extraits.",
+      "Garder l’exemple affiché sur CodeCraft. Si le poste ne permet pas les fichiers, dissocier le repérage sur le code de l’essai pratique encore à réaliser."
+    ],
+    "why": "CodePen masque une partie du cadre du document. Comprendre ce cadre permet de savoir où placer les informations du navigateur et le contenu visible dans un projet local.",
+    "discoverySpeech": [
+      "« Jusqu’ici, tu écrivais surtout ce qu’on voit dans la page. CodePen préparait le document autour. Voici maintenant ce document entier. »",
+      "« head contient les informations qui accompagnent la page. body contient notre contenu visible. Le mot head n’est pas le titre que l’on voit en haut de la page. »",
+      "« Regarde title et h1. Je vais changer le nom de l’onglet sans toucher au titre visible. Quelle ligne choisirais-tu ? Vérifions après enregistrement. »",
+      "« Copier le cadre aide à démarrer. Ce qui m’intéresse ensuite, c’est de te voir placer un nouveau paragraphe et choisir seul le bon titre à modifier. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-document",
+        "blockId": "exemple",
+        "label": "Comparer le document et le navigateur"
+      },
+      "comments": [
+        "Lire le cadre de haut en bas ; expliquer doctype, html/lang, head, meta/charset, title et body sans exiger leur récitation.",
+        "Faire prédire Mon carnet dans l’onglet et Ma page locale dans la page avant l’ouverture.",
+        "Changer un seul texte à la fois, enregistrer et actualiser ; ne pas interpréter une page inchangée comme une preuve d’incompréhension sans vérifier le fichier."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Si le h1 change, le nom de l’onglet change-t-il aussi ?",
+        "answer": "Non : le titre d’onglet vient de title. Faire changer un seul des deux pour le démontrer."
+      },
+      {
+        "question": "Où faut-il ajouter un paragraphe visible ?",
+        "answer": "Dans body, avant sa balise fermante. Pas dans head et pas après le document."
+      },
+      {
+        "question": "Est-ce que head est un titre affiché en haut de la page ?",
+        "answer": "Non. C’est la partie des informations du document ; h1 est le titre principal de son contenu visible."
+      },
+      {
+        "question": "Pourquoi y avait-il déjà une page dans CodePen sans ce cadre ?",
+        "answer": "Le panneau reçoit habituellement le contenu de body ; CodePen construit le cadre. Cela ne prouve pas que l’élève sait l’organiser dans un fichier."
+      },
+      {
+        "question": "Faut-il une balise fermante pour meta ou doctype ?",
+        "answer": "Non. meta est un élément sans contenu et doctype une déclaration ; conserver les lignes fournies."
+      },
+      {
+        "question": "Le rendu paraît bon : le code est-il forcément bien organisé ?",
+        "answer": "Non, le navigateur peut corriger certaines erreurs de structure. Relire aussi le fichier source plutôt que juger seulement son apparence."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-document",
+      "blockId": "guide",
+      "label": "Créer puis modifier séparément les deux titres"
+    },
+    "independentActivity": {
+      "moduleId": "html-document",
+      "blockId": "mission",
+      "label": "Organiser sa petite page"
+    },
+    "differentiation": [
+      "Fournir le fichier si la création prend toute l’attention ; distinguer cette aide du choix de title/body.",
+      "Laisser le cadre disponible comme aide-mémoire et demander une modification sans citer de balise.",
+      "Si les rôles sont compris, poursuivre ; ne pas imposer la copie répétée du document ni le bonus."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le texte de l’onglet a été écrit dans h1.",
+        "helps": [
+          "Faire montrer l’endroit qui devait changer.",
+          "Chercher title et h1.",
+          "Comparer les deux résultats de l’exemple.",
+          "Corriger title, puis proposer un autre changement indépendant."
+        ]
+      },
+      {
+        "symptom": "Aucun changement après la modification.",
+        "helps": [
+          "Vérifier le fichier réellement ouvert.",
+          "Regarder si le fichier a été enregistré.",
+          "Comparer son chemin avec celui du navigateur.",
+          "Enregistrer puis actualiser ce même fichier ; ne pas réécrire tout le HTML."
+        ]
+      },
+      {
+        "symptom": "Un document complet a été collé dans body.",
+        "helps": [
+          "Faire compter les balises html/head/body.",
+          "Repérer le cadre extérieur déjà présent.",
+          "Comparer avec l’exemple qui n’a qu’un cadre.",
+          "Conserver un seul document et déplacer seulement le contenu visible dans son body."
+        ]
+      }
+    ],
+    "notes": [
+      "Correction de la consolidation : title contient Carnet ; h1 contient Les volcans. Le reste peut rester identique.",
+      "Réponse attendue de la mission : un cadre complet unique, deux textes de titres distincts et deux p dans body. Le thème reste libre.",
+      "La compétence html.document est indépendante de html.structure (parents/enfants) : ne pas reporter une acquisition existante automatiquement.",
+      "Observer réussite autonome, avec modèle ou avec aide ; séparer manipulation/enregistrement et choix du bon élément. Utiliser la remarque existante si utile.",
+      "Avant Fichiers et chemins, vérifier liens et images ; une difficulté sur une seule notion appelle sa reprise ciblée. Aucun rythme de séance imposé."
+    ],
+    "quickConductor": [
+      "Vérifier petite page HTML et accès aux fichiers.",
+      "Montrer le cadre et faire prédire onglet/contenu.",
+      "Créer le fichier et modifier title puis h1.",
+      "Lancer la mission avec cadre disponible si nécessaire.",
+      "Demander une modification sans nommer la balise.",
+      "Consolider ou poursuivre selon les prérequis ; observer le niveau d’aide."
+    ],
+    "references": [
+      {
+        "title": "MDN : Le head et les métadonnées du document",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Webpage_metadata"
+      },
+      {
+        "title": "HTML Standard : Élément title",
+        "url": "https://html.spec.whatwg.org/multipage/semantics.html#the-title-element"
+      },
+      {
+        "title": "MDN : Manipuler des fichiers",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
+      }
+    ]
+  }
+}

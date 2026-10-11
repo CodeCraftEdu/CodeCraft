@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
-const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const app = require('./helpers/student-source.cjs');
 class Node {
   constructor(tag) { this.tag = tag; this.children = []; this.textContent = ''; }
   append(...children) { this.children.push(...children); }
@@ -42,13 +42,13 @@ test('Code en ligne : exemples inertes, blocs de code et titres inchangés', () 
 
 test('Document HTML : balises et attributs identifiables dans la leçon', () => {
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
   const module = context.window.CODECRAFT_DATA.modules['html-document'];
   const prose = module.blocks.flatMap(b => b.paragraphs || []).join(' ');
   assert.match(prose, /<html> entoure le document/);
   assert(prose.includes('`lang="fr"`'));
   assert(prose.includes('<head>') && prose.includes('<body>'));
-  const css = fs.readFileSync(path.join(root, 'pedagogy.css'), 'utf8');
+  const css = require('./helpers/style-source.cjs').readStyle(path.join(root, 'pedagogy.css'));
   assert.match(css, /\.inline-code\s*\{/);
   assert.match(css, /box-decoration-break: clone/);
 });

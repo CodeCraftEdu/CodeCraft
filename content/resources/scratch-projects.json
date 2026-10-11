@@ -1,0 +1,21 @@
+{
+  "chat-cible": {
+    "title": "Un chat et une cible",
+    "starterUrl": "https://scratch.mit.edu/projects/1388027652/",
+    "demoUrl": "https://scratch.mit.edu/projects/1388025424/",
+    "studentInstructions": "Cette base prépare seulement les personnages : suis les étapes du module pour construire le programme. Clique sur Voir à l’intérieur. Si tu es connecté à ton compte Scratch, clique sur Remix pour conserver ta propre version. Sans compte, utilise Fichier → Sauvegarder sur votre ordinateur pour conserver ton travail. Ne travaille pas sur le compte du professeur.",
+    "teacherInstructions": "La base partagée contient Chat sans script en x = -100, y = 0, et une souris nommée Cible sans script en x = 80, y = 0. Ne pas ajouter une deuxième cible. Depuis un projet vide, Ball renommé Cible reste une alternative. Piloter un personnage utilise seulement le chat ; laisse la cible de côté. Pour Compter et mémoriser, conserve le programme réalisé dans Faire réagir le jeu : ne repars pas de la base vide. La démonstration complète Le chat et la souris utilise des événements clavier séparés, une cible aléatoire et un son ; ce sont des différences à expliquer, pas des prérequis cachés ni une solution exacte des modules. Montrer le résultat sans demander de recopier tout son code."
+  },
+  "labyrinthe": {
+    "title": "Labyrinthe",
+    "starterUrl": "https://scratch.mit.edu/projects/1388027832/",
+    "demoUrl": "https://scratch.mit.edu/projects/1388025497/"
+  },
+  "carte-animee": {
+    "title": "Carte animée",
+    "starterUrl": "https://scratch.mit.edu/projects/1388027889/",
+    "demoUrl": "https://scratch.mit.edu/projects/1388025602/",
+    "studentInstructions": "Ouvre la base puis Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur. Pico et Tera sont déjà présents, sans scripts. Giga et les décors supplémentaires peuvent rester de côté pour le premier dialogue : ne recopie pas le projet terminé.",
+    "teacherInstructions": "La base Carte animée fournit les personnages et décors, sans scripts. Le module propose un nouveau dialogue minimal entre Pico et Tera, pas une reproduction de la démonstration complète. Celle-ci utilise des délais et des changements d’arrière-plan : elle illustre un résultat possible, pas une solution exacte aux messages. Giga sert seulement à une extension facultative."
+  }
+}

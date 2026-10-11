@@ -1,0 +1,400 @@
+{
+  "domainId": "jeux-video",
+  "title": "Répéter des actions",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Choisir une répétition limitée ou continue et expliquer ce qui se répète.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.loops"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Assembler des blocs et sauvegarder un .sb3 : reprendre Prendre en main Scratch si nécessaire."
+    },
+    {
+      "skillId": "scratch.sequence",
+      "expectation": "Lire une pile dans l’ordre et utiliser une pause : reprendre Déclencher et enchaîner des actions."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "notions",
+      "title": "1 : Au lieu de recopier",
+      "paragraphs": [
+        "Une boucle exécute plusieurs fois les blocs placés à l’intérieur. Dans Contrôle (orange), « répéter 10 fois » possède un nombre modifiable et un creux pour y accrocher les actions. Sur nos modèles, « fin du bloc » repère le bas du creux : ce n’est pas un bloc à ajouter dans Scratch.",
+        "« Répéter 4 fois » fait quatre tours puis continue après la boucle. Un bloc placé après la boucle se fait une seule fois, pas à chaque tour.",
+        "« Répéter indéfiniment » continue jusqu’à l’arrêt du projet. Le bouton rouge au-dessus de la scène arrête la boucle. Une action après cette boucle ne sera pas atteinte dans cette pile."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Quatre petits déplacements",
+      "paragraphs": [
+        "Le chat du projet neuf regarde à droite : avancer de 20 pas le déplace vers la droite. Nous ne changeons pas sa direction dans cet essai.",
+        "Les quatre déplacements de 20 pas donnent au total 80 pas. Tu peux compter quatre mouvements ; une difficulté de calcul ne t’empêche pas de comprendre les quatre tours.",
+        "Le message Fini est APRÈS la boucle. La pause de 0.3 secondes est DANS la boucle pour séparer les mouvements. Scratch utilise un point dans ce nombre décimal."
+      ],
+      "shortSteps": [
+        "Sauvegarde ton projet actuel, puis choisis Fichier → Nouveau. Garde le chat et glisse-le vers le centre : ton précédent essai reste dans sa sauvegarde.",
+        "Dans Contrôle, prends « répéter 10 fois », change 10 en 4 et place les deux actions dans son creux, comme ci-dessous.",
+        "Prédis combien de déplacements tu verras. Lance au drapeau, observe, puis replace le chat au centre avant de recommencer."
+      ],
+      "visualScript": {
+        "caption": "2 : Quatre petits déplacements",
+        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le drapeau démarre la pile."
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter ",
+              {
+                "value": "4"
+              },
+              " fois"
+            ],
+            "explanation": "Quatre tours : seules les actions dans le creux sont répétées.",
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "avancer de ",
+                  {
+                    "value": "20"
+                  },
+                  " pas"
+                ],
+                "explanation": "Un déplacement à chaque tour."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.3"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Une pause ralentit les essais."
+              }
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": [
+              "dire ",
+              {
+                "value": "Fini !"
+              },
+              " pendant ",
+              {
+                "value": "1"
+              },
+              " secondes"
+            ],
+            "explanation": "Le message est visible pendant la durée indiquée."
+          }
+        ]
+      },
+      "code": "quand le drapeau vert est cliqué\n  répéter 4 fois\n    avancer de 20 pas\n    attendre 0.3 secondes\n  dire Fini ! pendant 1 secondes"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "À toi : change la répétition",
+      "intro": "Change une seule chose et prédis avant de tester.",
+      "items": [
+        {
+          "id": "quatre",
+          "text": "Assemble l’exemple. Vérifie quatre déplacements puis un seul message Fini.",
+          "hint": "Avancer et attendre sont dans le creux orange ; dire Fini vient après."
+        },
+        {
+          "id": "deux",
+          "text": "Change 4 en 2. Replace le chat au centre, teste et explique ce qui change.",
+          "hint": "On fait deux tours. La distance par tour reste 20 pas."
+        },
+        {
+          "id": "ordre",
+          "text": "Place le message Fini à l’intérieur de la boucle. Teste, puis remets-le après.",
+          "hint": "À l’intérieur, il apparaît à chaque tour. Après, une seule fois."
+        },
+        {
+          "id": "sauvegarder",
+          "text": "Télécharge ton essai en .sb3.",
+          "hint": "Fichier → Sauvegarder sur votre ordinateur."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "continue",
+      "title": "3 : Répéter jusqu’à l’arrêt",
+      "paragraphs": [
+        "Un costume est une apparence du même sprite. Dans l’onglet Costumes, le chat de départ possède deux costumes : ce modèle passe de l’un à l’autre, puis recommence.",
+        "Sans pause, les changements sont trop rapides pour être bien observés. Attendre 0.5 secondes rend chaque apparence visible. La pause ne termine pas la boucle."
+      ],
+      "shortSteps": [
+        "Sauvegarde l’essai précédent, puis choisis Fichier → Nouveau. Garde le chat : tu crées cette animation sans supprimer les blocs du premier essai.",
+        "Dans Apparence (violet), prends « costume suivant » ; place-le et une pause dans « répéter indéfiniment » (Contrôle).",
+        "Lance : les costumes alternent. Clique sur le bouton rouge pour arrêter."
+      ],
+      "visualScript": {
+        "caption": "3 : Répéter jusqu’à l’arrêt",
+        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le drapeau démarre la pile."
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter indéfiniment"
+            ],
+            "explanation": "Cette boucle reste active jusqu’à l’arrêt.",
+            "children": [
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "costume suivant"
+                ],
+                "explanation": "Passer à l’apparence suivante du chat."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.5"
+                  },
+                  " secondes"
+                ],
+                "explanation": "Une pause ralentit les essais."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "quand le drapeau vert est cliqué\n  répéter indéfiniment\n    costume suivant\n    attendre 0.5 secondes"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans modèle : choisis la bonne boucle",
+      "intro": "Sauvegarde ton animation actuelle, puis choisis Fichier → Nouveau. Dans ce projet neuf avec le chat, crée une petite animation avec les blocs connus : aucune ancienne boucle ne tournera en même temps.",
+      "items": [
+        {
+          "id": "trois",
+          "text": "Fais changer le chat de costume exactement trois fois, avec une pause entre chaque changement.",
+          "hint": "Utilise une répétition limitée à trois tours."
+        },
+        {
+          "id": "fin",
+          "text": "Ajoute un message qui apparaît seulement quand les trois changements sont terminés.",
+          "hint": "Il se place après la boucle, hors du creux."
+        },
+        {
+          "id": "continu",
+          "text": "Dans une copie, fais continuer les changements jusqu’au bouton rouge. Explique quelle boucle tu choisis.",
+          "hint": "Répéter indéfiniment ; garder une pause."
+        },
+        {
+          "id": "expliquer",
+          "text": "Montre ce qui se répète et ce qui ne se répète pas, puis sauvegarde.",
+          "hint": "La place à l’intérieur ou après la boucle change le résultat."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus : deux réglages, deux effets",
+      "intro": "Utilise seulement les notions déjà expliquées.",
+      "items": [
+        {
+          "id": "rythme",
+          "text": "Compare une pause de 0.2 puis 0.8 seconde avec la même répétition limitée.",
+          "hint": "Le rythme change, pas le nombre de tours."
+        },
+        {
+          "id": "compter",
+          "text": "Change ensuite le nombre de tours sans changer la pause. Explique la différence.",
+          "hint": "Le nombre de changements varie, pas la pause par tour."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Choisir une boucle limitée ou continue à partir du résultat demandé.",
+    "Montrer quels blocs sont à l’intérieur, puis prévoir le nombre d’actions.",
+    "Expliquer la différence entre une action dans la boucle et après elle.",
+    "Arrêter une boucle continue et expliquer le rôle de la pause."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-boucles",
+      "blockId": "guide",
+      "label": "Comparer deux et quatre tours"
+    },
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "notions",
+      "label": "Revoir l’ordre et les pauses"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-boucles",
+      "blockId": "bonus",
+      "label": "Distinguer rythme et nombre de tours"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "preparer",
+      "label": "Faire réagir le jeu",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.coordinates",
+          "expectation": "Savoir changer X/Y et revenir à une position : sinon reprendre Piloter un personnage."
+        },
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Savoir placer des actions dans une boucle continue."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Choisir une répétition limitée ou continue et expliquer ce qui se répète.",
+    "entryDiagnosis": [
+      "Assembler des blocs et sauvegarder un .sb3 : reprendre Prendre en main Scratch si nécessaire.",
+      "Lire une pile dans l’ordre et utiliser une pause : reprendre Déclencher et enchaîner des actions."
+    ],
+    "preparation": [
+      "Ouvrir Scratch en français et CodeCraft ; sauvegarde locale .sb3 sans compte ni publication obligatoire.",
+      "Lire les consignes visibles et le modèle, puis utiliser les explications repliées si nécessaire.",
+      "Sauvegarder puis choisir Fichier → Nouveau au début, avant l’animation continue et avant la mission autonome. Ne pas supprimer les essais précédents. Garder le même projet pour les petites modifications du même exercice ; le chat possède deux costumes déjà fournis."
+    ],
+    "why": "Une boucle exprime une répétition sans recopier les mêmes actions.",
+    "discoverySpeech": [
+      "« Qu’est-ce qui doit se refaire : toute la pile ou seulement les blocs dans le creux ? »",
+      "« Quatre tours : prédis ce que nous verrons. Où placer le message de fin pour le voir une seule fois ? »",
+      "« Indéfiniment veut dire jusqu’à l’arrêt, pas un très grand nombre écrit dans une case. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-boucles",
+        "blockId": "exemple",
+        "label": "Modèle commenté"
+      },
+      "comments": [
+        "Quatre tours : quatre déplacements de 20 pas et quatre pauses de 0.3 seconde, puis un seul message Fini !. Le total est 80 pas ; replacer le chat au centre avant de comparer.",
+        "Deux tours : deux déplacements et deux pauses, soit 40 pas. Le nombre de tours change, pas la distance ni la pause par tour.",
+        "Le message dans la boucle revient à chaque tour ; après la boucle limitée, il apparaît une fois. Après une boucle infinie, il n’est pas atteint. La mention visuelle fin du bloc repère le creux, pas un bloc Scratch supplémentaire."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Avec quatre tours et un mouvement par tour, combien de mouvements ?",
+        "answer": "Quatre ; le total est 80 pas si chaque mouvement fait 20 pas."
+      },
+      {
+        "question": "Pourquoi le message se répète-t-il lorsqu’il est dans la boucle ?",
+        "answer": "Il fait partie des actions refaites à chaque tour."
+      },
+      {
+        "question": "Une action après répéter indéfiniment sera-t-elle atteinte ?",
+        "answer": "Non, cette boucle ne termine pas normalement ; arrêter le projet n’exécute pas la suite."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-boucles",
+      "blockId": "guide",
+      "label": "Tests guidés"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-boucles",
+      "blockId": "autonomie",
+      "label": "Modifier sans modèle"
+    },
+    "differentiation": [
+      "Pour un CE2 : une manipulation à la fois, faire montrer la place avant de nommer les termes ; lire la consigne si nécessaire.",
+      "Pour un élève plus autonome : masquer le modèle, demander une prédiction et une modification justifiée avant le bonus.",
+      "Reprendre le prérequis fragile. Aucun nombre de séances imposé, aucune validation par consultation ou case cochée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Une seule action semble se répéter.",
+        "helps": [
+          "Faire suivre le creux orange du doigt.",
+          "Repérer si avancer et attendre sont vraiment à l’intérieur.",
+          "Comparer un bloc dans et après la boucle.",
+          "Raccrocher uniquement le bloc mal placé puis retester."
+        ]
+      },
+      {
+        "symptom": "L’animation semble figée ou trop rapide.",
+        "helps": [
+          "Vérifier que le chat possède deux costumes.",
+          "Repérer la pause dans le creux.",
+          "Comparer sans pause et avec 0.5 seconde.",
+          "Ajouter la pause et faire compter les changements."
+        ]
+      }
+    ],
+    "notes": "Le calcul 4 × 20 est un appui, pas un prérequis mathématique à valider ici. Le déplacement relatif nécessite de replacer le chat avant chaque comparaison. Distinguer réussite autonome, avec modèle ou avec aide dans les remarques existantes ; aucun nouveau dispositif de suivi.",
+    "quickConductor": [
+      "Vérifier les prérequis par une question et un petit essai.",
+      "Préparer la base minimale puis repérer les creux des blocs.",
+      "Assembler et prédire le résultat du modèle.",
+      "Comparer quatre puis deux tours ; déplacer le message dans puis après la boucle et expliquer le résultat.",
+      "Proposer la modification autonome, choisir reprise ou bonus puis télécharger le .sb3."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      },
+      {
+        "title": "Scratch : projets de départ officiels",
+        "url": "https://scratch.mit.edu/help/starter_projects/"
+      }
+    ]
+  }
+}

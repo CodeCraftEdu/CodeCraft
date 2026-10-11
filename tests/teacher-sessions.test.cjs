@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../lesson-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../generated/catalog.js'), 'utf8'), context);
 const catalog = context.window.CODECRAFT_DATA;
 function setup() {
   const doc = model.create('test');

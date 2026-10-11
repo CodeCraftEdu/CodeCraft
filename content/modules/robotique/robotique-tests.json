@@ -1,0 +1,222 @@
+{
+  "domainId": "robotique",
+  "title": "Tester, expliquer, améliorer",
+  "type": "lesson",
+  "theme": "fondations",
+  "finalPathwayAction": "Revenir au parcours",
+  "tool": {
+    "label": "Ouvrir MakeCode micro:bit",
+    "url": "https://makecode.microbit.org/"
+  },
+  "objective": "Vérifier ta mission dans plusieurs situations, expliquer les résultats et améliorer seulement si nécessaire.",
+  "skillIds": [
+    "robotique.tests",
+    "robotique.condition"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "robotique.mission",
+      "expectation": "Retrouver mission, réglage, copie et premier résultat A, ou signaler l’essai non effectué."
+    },
+    {
+      "skillId": "robotique.reglage",
+      "expectation": "Montrer la valeur réellement initialisée et son emploi."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Reprends Ma-mission-robot et la même fiche : mission, valeur et premier résultat A. Ne crée pas un projet par essai. Si A n’a pas été réalisé, commence par cet essai accompagné ; il ne devient pas une confirmation fictive."
+    },
+    {
+      "type": "callout",
+      "id": "recette",
+      "title": "Prévoir, essayer, comparer",
+      "text": "Prépare chaque situation avec le professeur et lis la mesure avant de lancer. Annonce ce que fera ton robot, puis compare avec le résultat. Si tu ne peux pas lancer la simulation, garde ta prévision et note « non testé » à la place du résultat."
+    },
+    {
+      "type": "lesson",
+      "id": "situations",
+      "title": "1 - Trois situations à prévoir",
+      "paragraphs": [
+        "A : même départ éloigné, même orientation et même obstacle que pour le premier essai et Reference-arret. Garde ton réglage. Retrouve ta prévision et ton premier résultat avant de confirmer ; le professeur remontre la référence si nécessaire.",
+        "B : l’obstacle est proche dès le départ, sans contact. Le professeur t’aide à lire une mesure valide. Compare-la à ton seuil et propose ce que fera le robot avant de lancer.",
+        "C : l’obstacle est à une autre position et le départ reste éloigné. Garde ton réglage. Prévois l’action au départ, puis ce qui pourrait changer pendant le déplacement, en expliquant avec la règle.",
+        "Dans les données de chaque situation, note quelques mots de prévision avant de regarder le résultat ou l’indice. Une autre position vérifie le comportement ailleurs ; comparer la marge à Reference-arret dans C demanderait une nouvelle comparaison dans cette scène. L’égalité se réfléchit sur le tableau, pas avec un placement au centimètre près."
+      ],
+      "downloads": [
+        {
+          "label": "Retrouver la même fiche commune (HTML imprimable)",
+          "path": "resources/robotique/fiche-mission-robot.html",
+          "filename": "fiche-mission-robot.html"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Essais accompagnés - confirmer puis varier la scène",
+      "intro": "Prévois chaque résultat juste avant l’essai et explique-le avec la mesure et ton seuil. Le professeur prépare les scènes validées. Après relance, place le robot pendant l’attente de A, simulation active et moteurs arrêtés. Lis la mesure puis appuie sur A sans relance intermédiaire ; ne déplace jamais un robot en mouvement.",
+      "items": [
+        {
+          "id": "rb10-a",
+          "text": "Reprends A depuis le départ connu. Compare au premier résultat et à ta prévision, puis note la confirmation sur la même ligne de fiche.",
+          "hint": "Départ, orientation, obstacle, puissance et réglage doivent correspondre. Si le premier résultat manque, note premier essai et ne prétends pas avoir confirmé."
+        },
+        {
+          "id": "rb10-b",
+          "text": "À partir de la mesure au départ de B, prévois l’action et la branche choisie. Lance, observe pendant quelques secondes, puis compare le résultat à ta prévision.",
+          "hint": "Une mesure valide inférieure à seuil choisit Arrêter ; le robot doit rester immobile. L’arrêt initial technique seul ne suffit pas : explique la règle en fonctionnement."
+        },
+        {
+          "id": "rb10-c",
+          "text": "Dans C, prévois ce que fera le robot au départ puis au cours de l’essai. Teste avec le même réglage et note prévu / observé. Explique le rôle d’une nouvelle lecture.",
+          "hint": "Depuis la scène éloignée vérifiée, on attend avance puis arrêt avant contact dans la même exécution. Deux lancements séparés ne démontrent pas cette nouvelle décision. Cet essai ne prouve pas que le robot évitera tous les obstacles partout."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "diagnostic",
+      "title": "2 - Comprendre avant de modifier",
+      "paragraphs": [
+        "Compare ta prévision au résultat observé et explique les écarts éventuels.",
+        "Si le résultat surprend, arrête et vérifie avec le professeur la scène, la mesure reçue, la valeur réellement donnée à seuil, les deux branches et une éventuelle commande moteur concurrente. Une mesure absente ou étrange ne signifie pas automatiquement voie libre.",
+        "Choisis une seule correction pertinente et prévois son effet. Reteste ; si tu changes le programme ou son réglage, reprends A/B/C avant de conclure. Les valeurs restent parmi celles vérifiées pour la mission. Ne réduis pas le seuil au hasard pour te rapprocher du contact."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - montrer ta mission et ses preuves",
+      "items": [
+        {
+          "id": "rb10-expliquer",
+          "text": "Présente le capteur, la question et les deux actions commandées aux moteurs. Explique ton choix conservé ou modifié et montre un essai qui soutient ta conclusion.",
+          "hint": "Le capteur fournit l’entrée ; les moteurs sont les sorties commandées. Avancer et Arrêter sont les deux actions possibles. Tu peux parler ; cite aussi les aides reçues et ce qui était préparé."
+        },
+        {
+          "id": "rb10-limites",
+          "text": "Explique ce que tes essais montrent et ce qui reste non vérifié. Si un essai a échoué ou manque, indique-le avec une piste précise.",
+          "hint": "A compare une marge ; B vérifie l’arrêt au départ proche ; C vérifie un autre placement. Un résultat expliqué n’est pas automatiquement une réussite technique."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "conserver",
+      "title": "Retrouver ton projet après le parcours",
+      "text": "Arrête la simulation, exporte ton projet final et garde l’original. Réimporte le fichier et retrouve nom, valeur et règle, avec aide si besoin. Conserve la fiche et les essais à reprendre. Ton robot peut repartir si la distance devient grande : ce n’est pas un arrêt mémorisé ni une sécurité sur matériel réel."
+    }
+  ],
+  "masteryCriteria": [
+    "Je distingue ce que j’avais prévu et ce que j’observe.",
+    "Je compare A dans des conditions égales et explique les rôles différents de B/C.",
+    "J’explique la nouvelle décision pendant une même approche.",
+    "Je diagnostique avant de changer, conserve une preuve et retrouve mon projet ; je signale les essais manquants."
+  ],
+  "teacherGuide": {
+    "objective": "Faire conduire et expliquer des essais comparables ; corriger seulement si nécessaire et distinguer preuve, réussite technique et acquisition.",
+    "entryDiagnosis": [
+      "Retrouver copie, mission, réglage et premier A. Si absent, faire le premier essai avant de parler de confirmation.",
+      "Demander l’attendu de chaque situation avant la manipulation ; une prévision erronée reste une information utile."
+    ],
+    "preparation": [
+      "Recette pratique incomplète : R15 reste partiel. Approche 15 : deux cibles depuis 26, arrêt 13 ; proche 7 immobile après A confirmé. Prudente 25 : autre cible depuis 26, arrêt 22-23 ; proche 7 immobile après relâchement de A confirmé par l’utilisateur (capture bf3b1891). Copies 15/25 réimportées. Comparaisons équitables, répétitions, accès élève et fiche imprimée restent à vérifier.",
+      "A identique à RB09 ; B doit demander arrêt pour toutes les valeurs autorisées, C permettre avance puis arrêt. Après relance, placer pendant l’attente de A, simulation active et moteurs arrêtés ; relever la mesure puis appuyer sur A sans relance intermédiaire.",
+      "Garder référence fixe et puissance, trace commune et export de reprise ; ni nouveau programme par scène ni nouvelle variable.",
+      "Conserver les preuves techniques dans la fiche professeur des scènes ; ne pas surcharger la fiche élève. Ne pas transformer les arrêts observés en distances exactes garanties ni redemander les premiers essais approche déjà réalisés."
+    ],
+    "why": "Le test apprend à limiter une conclusion à ses preuves. C élargit la vérification sans prouver une navigation générale ; un code conforme n’a pas à être changé pour être considéré comme travaillé.",
+    "discoverySpeech": [
+      "Tu as un premier résultat. Vérifions qu’il se retrouve, puis changeons la situation sans changer ton réglage.",
+      "Un résultat inattendu nous invite à vérifier avant de modifier. Dire ce qui manque est plus juste que prétendre avoir tout testé."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "robotique-tests",
+        "blockId": "situations"
+      },
+      "comments": [
+        "Confirmation A puis prévision personnelle juste avant B/C ; recueillir mesure, seuil et action proposée avant d’ouvrir les indices. Attendus professeur : B arrêt et immobilité ; C avance puis arrêt avant contact. Conserver la trace RB09.",
+        "A/C : transition dans la même exécution. La console relit séparément de la condition, pas trace atomique mesure/action.",
+        "Une capture seule ne prouve pas la répétabilité ou l’immobilité maintenue."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Que vérifie B que A ne montrait pas au départ ?",
+        "answer": "La décision Arrêter quand la mesure est déjà proche au lancement."
+      },
+      {
+        "question": "C prouve-t-il une marge plus petite que la référence ?",
+        "answer": "Non, sauf comparaison supplémentaire dans C ; le socle y vérifie avance puis arrêt."
+      },
+      {
+        "question": "Faut-il changer un programme qui convient ?",
+        "answer": "Non ; conserver, justifier et montrer les preuves. Après une modification pertinente, refaire A/B/C."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "robotique-tests",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "robotique-tests",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Dicter prévu/observé ou expliquer oralement ; recueillir séparément aide de souris et raisonnement.",
+      "Aider à identifier une seule anomalie, sans fournir d’emblée plusieurs changements.",
+      "Approfondir par répétition ou portée d’une conclusion, sans bonus de mécanique ni compétition."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’élève conclut pour toutes les scènes à partir de A",
+        "helps": [
+          "Faire nommer le résultat de A.",
+          "Demander ce que change B.",
+          "Prévoir C avant de lancer.",
+          "Reformuler la conclusion avec ses limites."
+        ]
+      },
+      {
+        "symptom": "Plusieurs réglages changent après un résultat inattendu",
+        "helps": [
+          "Arrêter et préserver la version.",
+          "Vérifier d’abord scène et mesure.",
+          "Identifier une seule correction justifiée.",
+          "Prévoir, retester puis reprendre A/B/C avant conclusion."
+        ]
+      }
+    ],
+    "notes": "Observer l’explication individuelle, pas seulement une démonstration collective. Aucun acquis automatique, partage public, vidéo ou nom complet demandé. Réserve pratique maintenue tant que les scènes ne sont pas validées.",
+    "quickConductor": [
+      "Retrouver premier résultat et copie.",
+      "Confirmer A puis prévoir et essayer B/C.",
+      "Diagnostiquer/corriger si besoin, reprendre les essais après changement.",
+      "Faire présenter preuve et limites, exporter puis réimporter."
+    ],
+    "references": [
+      {
+        "title": "Fiche commune imprimable",
+        "url": "resources/robotique/fiche-mission-robot.html"
+      },
+      {
+        "title": "Scènes de mission : préparation et réserves",
+        "url": "docs/integration-robotique-missions.md"
+      },
+      {
+        "title": "Protocoles R15 et observation R13",
+        "url": "docs/protocoles-verifications-manuelles.md"
+      },
+      {
+        "title": "Référence fixe professeur (.hex)",
+        "url": "resources/robotique/makecode/RB08-Obstacle-fixe-reference.hex"
+      }
+    ]
+  }
+}

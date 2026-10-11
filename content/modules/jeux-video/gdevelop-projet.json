@@ -1,0 +1,239 @@
+{
+  "domainId": "jeux-video",
+  "title": "Mon premier projet GDevelop",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Placer un personnage, essayer la scène et retrouver son projet après fermeture.",
+  "tool": {
+    "label": "Télécharger GDevelop : site officiel",
+    "url": "https://gdevelop.io/download"
+  },
+  "skillIds": [
+    "gdevelop.workspace"
+  ],
+  "prerequisiteSkills": [],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Ouvre GDevelop en français et garde CodeCraft à côté. Aujourd’hui, tu vas placer un personnage dans une petite pièce, puis enregistrer ton projet."
+    },
+    {
+      "type": "lesson",
+      "id": "kit",
+      "title": "1 - Ton matériel de départ",
+      "paragraphs": [
+        "Télécharge puis extrais le kit dans ton dossier de travail, avec le professeur si nécessaire. Appelle le dossier mon-premier-jeu. Ne travaille pas dans le ZIP : les images doivent être accessibles dans le dossier extrait.",
+        "Le kit fournit le personnage et les futurs objets à trouver, pas un jeu terminé. Garde le dossier images avec ton projet ; la notice explique les fichiers si tu en as besoin."
+      ],
+      "downloads": [
+        {
+          "label": "Télécharger le kit de départ (ZIP)",
+          "path": "resources/gdevelop/kit-depart.zip",
+          "filename": "kit-codecraft-gdevelop.zip"
+        },
+        {
+          "label": "Télécharger la notice du kit",
+          "path": "resources/gdevelop/kit/NOTICE.txt",
+          "filename": "NOTICE.txt"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 - Du projet à l’aperçu",
+      "paragraphs": [
+        "Crée un projet vide enregistré localement dans mon-premier-jeu, à côté du dossier images, puis une scène nommée Jeu. Le professeur peut t’aider à trouver ces commandes si l’interface diffère ; ne choisis ni modèle de jeu ni création de compte. Le fichier de travail proposé s’appelle jeu.json.",
+        "Ajoute un objet Sprite nommé Personnage. Dans son éditeur, crée une animation contenant une seule image : images/personnage.png. Ici, « animation » est le rangement de l’image dans GDevelop ; nous n’animons pas encore le pion.",
+        "Glisse un exemplaire de Personnage dans le cadre visible de Jeu, sans le coller au bord. Prévois ce que montrera l’aperçu, puis lance-le. Le pion visible et immobile est le résultat attendu. Ferme l’aperçu : tu retrouves la scène que tu peux modifier."
+      ],
+      "illustration": {
+        "src": "images/gdevelop-projet.svg",
+        "alt": "Le projet contient la scène Jeu et le dossier images. Un objet Personnage est placé dans Jeu, puis visible dans l’aperçu.",
+        "caption": "Projet → scène à modifier → aperçu à essayer. L’aperçu ne remplace pas le fichier de travail."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - voir puis retrouver",
+      "items": [
+        {
+          "id": "gd01-visible",
+          "text": "Avec le professeur, place le personnage et lance l’aperçu. Montre où tu prépares sa position et où tu observes le résultat.",
+          "hint": "Si la liste contient Personnage mais que l’aperçu est vide, reviens à la scène et glisse un exemplaire de cet objet à l’intérieur du cadre visible."
+        },
+        {
+          "id": "gd01-position",
+          "text": "Avant de déplacer le pion dans l’éditeur, annonce où il apparaîtra. Ferme l’aperçu, change sa position, relance un aperçu neuf et compare à ta prévision.",
+          "hint": "Une fenêtre d’aperçu déjà ouverte n’est pas ton éditeur. Ferme-la puis relance un nouvel aperçu après la modification."
+        },
+        {
+          "id": "gd01-reouvrir",
+          "text": "Enregistre cette position. Montre le dossier et le fichier que tu devras ouvrir pour retrouver ton travail ; garde les images à côté.",
+          "hint": "Utilise Fichier → Enregistrer, puis l’ouverture d’un projet local. Ne déplace pas jeu.json seul : laisse le dossier images à côté."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - une position choisie",
+      "items": [
+        {
+          "id": "gd01-autonome",
+          "text": "Choisis le point de départ de ton explorateur dans le cadre visible. Prévois son emplacement, modifie la scène puis enregistre. Ferme le projet et rouvre le bon fichier : vérifie dans un aperçu neuf la position ET l’image conservées.",
+          "hint": "Travaille toujours sur jeu.json dans ton dossier. Une image manquante ou une ancienne position est un problème à observer, pas une raison de tout recréer."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - garder une copie",
+      "items": [
+        {
+          "id": "gd01-copie",
+          "text": "Après sauvegarde et fermeture, copie tout le dossier mon-premier-jeu sous un autre nom. Ouvre jeu.json de la copie et teste l’image. Garde l’original intact.",
+          "hint": "La copie doit contenir jeu.json ET images. Le titre de la fenêtre peut être identique : vérifie le chemin du fichier ouvert avant de modifier la copie."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer la scène à modifier et l’aperçu à essayer.",
+    "Placer un exemplaire de Personnage et vérifier sa position dans un nouvel aperçu.",
+    "Enregistrer et rouvrir le bon projet avec son image et sa dernière position."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "gdevelop-projet",
+      "blockId": "guide",
+      "label": "Retrouver le personnage après fermeture"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "gdevelop-projet",
+      "blockId": "bonus",
+      "label": "Conserver une copie complète"
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "gdevelop-deplacement",
+      "label": "Déplacer mon personnage",
+      "prerequisiteSkills": [
+        {
+          "skillId": "gdevelop.workspace",
+          "expectation": "Retrouver le personnage et lancer son aperçu."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Obtenir un premier résultat visible puis prouver la réouverture d’un projet local, sans confondre aperçu et source.",
+    "entryDiagnosis": [
+      "Faire montrer un projet Scratch sauvegardé et expliquer la différence entre modifier et lancer. Une aide locale suffit si la sauvegarde n’est pas autonome.",
+      "Ne pas exiger les quatorze modules Scratch : score, clones et messages ne sont pas nécessaires ici."
+    ],
+    "preparation": [
+      "Recette dans GDevelop encore à effectuer : relever version et menus français, vérifier création vide locale sans compte, import et réouverture. Les tests CodeCraft ne valident pas le moteur.",
+      "Extraire le kit, vérifier les trois PNG ; préparer un dossier de travail accessible. Garder une copie intacte, sans fabriquer un fichier JSON à importer non testé.",
+      "Garder la résolution par défaut si le cadre est visible ; 800 × 450 est une possibilité de démonstration, pas un prérequis. Aider au premier import, sans prendre tout le projet en main.",
+      "Les fichiers et le premier import peuvent être préparés/accompagnés. Ne pas évaluer la logique à partir de l’extraction du ZIP. Une seule réouverture complète est exigée dans l’activité autonome ; la copie reste un bonus."
+    ],
+    "why": "Le premier obstacle est retrouver son travail, pas programmer. Le résultat visible doit précéder les explications détaillées sur les fichiers.",
+    "discoverySpeech": [
+      "Nous préparons une petite pièce à explorer. Aujourd’hui, le personnage apparaît ; il n’a pas encore de commande de déplacement. Dans quelle fenêtre pouvons-nous choisir sa place ?",
+      "Je place un exemplaire dans la scène. Prévois ce que nous verrons avant de lancer l’aperçu. Une fois fermé, nous pouvons changer la place : est-ce la même chose que programmer un mouvement ?",
+      "Tu choisis maintenant ton point de départ. Enregistrer puis rouvrir vérifie que ta décision est conservée avec l’image. Je peux aider à retrouver le dossier ; c’est toi qui annonces et vérifies le résultat."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "gdevelop-projet",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "Montrer seulement scène, objet et aperçu ; un Sprite avec une image. L’animation de rangement n’enseigne pas une animation visuelle.",
+        "Faire prévoir puis obtenir le résultat visible avant de développer les détails de fichiers. Modifier une place, relancer et comparer.",
+        "Accompagner création locale/import si nécessaire, puis laisser le choix et le test à l’élève. Menus/version et réouverture restent à essayer dans le moteur."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi mon objet dans la liste n’apparaît-il pas ?",
+        "answer": "Il faut en placer un exemplaire dans la scène, à l’intérieur du cadre visible."
+      },
+      {
+        "question": "Si je déplace le pion dans l’éditeur, ai-je programmé son déplacement ?",
+        "answer": "Non : on change la position préparée. Aucun événement ne le déplace pendant le jeu."
+      },
+      {
+        "question": "Que doit contenir la copie du projet ?",
+        "answer": "Le fichier source et ses ressources ; vérifier concrètement la réouverture et l’aperçu de la copie."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "gdevelop-projet",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "gdevelop-projet",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Si l’interface bloque, accompagner la création et l’import ; laisser l’élève placer, prévoir et vérifier.",
+      "Si l’élève est autonome, proposer la copie complète plutôt qu’un nouveau concept de jeu."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Personnage existe mais l’aperçu reste vide",
+        "helps": [
+          "Demander où le pion devrait apparaître.",
+          "Comparer la liste des objets et la scène.",
+          "Vérifier le cadre visible et le placement d’un exemplaire.",
+          "Montrer le glisser-déposer, puis laisser l’élève placer et relancer."
+        ]
+      },
+      {
+        "symptom": "L’image manque après réouverture",
+        "helps": [
+          "Faire retrouver le chemin de jeu.json.",
+          "Faire chercher le dossier images à côté.",
+          "Comparer le dossier utilisé à l’extraction initiale du kit.",
+          "Réimporter personnage.png depuis le bon dossier, enregistrer et retester la réouverture."
+        ]
+      },
+      {
+        "symptom": "L’ancienne position reste visible",
+        "helps": [
+          "Demander ce qui a été modifié et dans quelle fenêtre.",
+          "Fermer puis relancer l’aperçu.",
+          "Vérifier la sauvegarde et le chemin du fichier rouvert.",
+          "Déplacer ensemble un pion, enregistrer puis faire refaire seul le cycle complet."
+        ]
+      }
+    ],
+    "notes": "Distinguer aide fichiers/lecture/interface, réalisation avec modèle et décision autonome. Une réouverture probante suffit ici, pas plusieurs cycles identiques. La suite GD04 ajoute le déplacement fourni par un comportement ; ne pas le préinstaller sans explication dans cette première leçon.",
+    "quickConductor": [
+      "Préparer/accompagner le dossier sans visite exhaustive.",
+      "Placer un personnage, prévoir et regarder l’aperçu.",
+      "Changer sa place, prévoir et comparer.",
+      "Laisser choisir le départ, sauvegarder et effectuer une réouverture probante."
+    ],
+    "references": [
+      {
+        "title": "GDevelop : interface",
+        "url": "https://wiki.gdevelop.io/gdevelop5/interface/"
+      },
+      {
+        "title": "GDevelop : Sprite",
+        "url": "https://wiki.gdevelop.io/gdevelop5/objects/sprite/"
+      }
+    ]
+  }
+}

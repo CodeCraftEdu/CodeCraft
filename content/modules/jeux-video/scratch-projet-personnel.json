@@ -1,0 +1,438 @@
+{
+  "domainId": "jeux-video",
+  "title": "Mon projet personnel",
+  "type": "project",
+  "theme": "fondations",
+  "objective": "Concevoir un petit jeu avec des notions comprises, le tester et expliquer ses choix.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "scratchProjectId": "chat-cible",
+  "skillIds": [
+    "scratch.workspace",
+    "scratch.events",
+    "scratch.conditions",
+    "scratch.variables",
+    "scratch.game-rules",
+    "scratch.debugging"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Sélectionner le bon sprite et conserver une copie de son travail."
+    },
+    {
+      "skillId": "scratch.events",
+      "expectation": "Démarrer et piloter ses actions avec les événements choisis."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Expliquer les conditions utilisées pour les règles ; reprendre Faire réagir le jeu si nécessaire."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Comprendre son score et sa remise à zéro ; reprendre Compter et mémoriser si nécessaire."
+    },
+    {
+      "skillId": "scratch.game-rules",
+      "expectation": "Construire une fin et un redémarrage ; reprendre Gagner, perdre et recommencer si nécessaire."
+    },
+    {
+      "skillId": "scratch.debugging",
+      "expectation": "Comparer attendu et observé, puis tester une modification à la fois ; reprendre Déboguer son jeu si nécessaire."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 : Un petit jeu à toi",
+      "paragraphs": [
+        "Choisis une idée que tu peux expliquer en une phrase. Ce projet ne demande pas d’utiliser tout Scratch : choisis seulement des notions que tu comprends. Tu peux demander une aide, puis reprendre une étape seul.",
+        "Sauvegarde ton travail actuel avant de changer de projet. Tu peux ensuite choisir Fichier → Nouveau, créer une copie personnelle de ton mini-jeu ou ouvrir la base chat/cible proposée en haut. Cette base est facultative : elle fournit des personnages sans scripts, pas un jeu terminé. Avec ton compte, utilise Remix pour la base partagée ; sans compte, conserve un fichier depuis Fichier → Sauvegarder sur votre ordinateur. Si tu reprends ton mini-jeu, garde son original et travaille dans une copie sous un autre nom.",
+        "Un plan possible, pas une solution à recopier : un personnage se déplace à droite et à gauche, touche une cible fixe pour gagner un point et retourne au départ. Trois points font gagner ; le drapeau remet tout au départ. Personnalise l’histoire et les règles, pas seulement le titre.",
+        "Commence par une petite version qui se lance, se joue, se termine et recommence."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "choix-poursuite",
+      "title": "Option : une poursuite simple",
+      "text": "Déplace un personnage vers une cible fixe, compte les contacts et choisis une victoire atteignable. Prérequis : touches, positions et contacts. Reprends Mon premier mini-jeu si ces règles sont encore difficiles. La cible aléatoire de certaines démonstrations n’est pas demandée.",
+      "moduleLink": {
+        "moduleId": "scratch-mini-jeu",
+        "text": "Mon premier mini-jeu"
+      }
+    },
+    {
+      "type": "callout",
+      "id": "choix-clics",
+      "title": "Option : des clics chronométrés",
+      "text": "Clique sur une cible pendant un temps limité, compte les points et termine la partie quand le temps est écoulé. Prérequis supplémentaire : chronomètre et condition qui bloque les points. Reprends Gérer le temps et la difficulté avant de choisir cette option si nécessaire.",
+      "moduleLink": {
+        "moduleId": "scratch-temps-difficulte",
+        "text": "Gérer le temps et la difficulté"
+      }
+    },
+    {
+      "type": "callout",
+      "id": "choix-labyrinthe",
+      "title": "Option : un labyrinthe que tu connais déjà",
+      "text": "Choisis cette option seulement si tu possèdes déjà un labyrinthe et sais expliquer ses déplacements, ses murs et le retour au départ. Travaille dans une copie. Ce projet n’enseigne pas de nouvelles règles de murs. Sinon, commence par la poursuite avec Mon premier mini-jeu ; un labyrinthe n’est pas nécessaire pour réussir ce projet.",
+      "moduleLink": {
+        "moduleId": "scratch-mini-jeu",
+        "text": "Mon premier mini-jeu"
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "plan",
+      "title": "2 : Prépare ton plan avant de coder",
+      "intro": "Tu peux l’écrire dans un petit document ou le dire à quelqu’un. Quelques phrases suffisent.",
+      "items": [
+        {
+          "id": "idee",
+          "text": "Décris le but en une phrase et choisis un nom pour ton jeu.",
+          "hint": "Par exemple : ramasser trois objets, ou obtenir des points en cliquant avant la fin du temps."
+        },
+        {
+          "id": "commandes",
+          "text": "Choisis les commandes : quelles touches ou quels clics ? Dis quelle action produit chacune."
+        },
+        {
+          "id": "regles",
+          "text": "Décris ce qui donne un point, ce qui termine la partie et ce que le drapeau remet à zéro. Une victoire OU une fin au temps suffit ; une défaite supplémentaire n’est pas obligatoire."
+        },
+        {
+          "id": "limite",
+          "text": "Choisis seulement une mécanique principale. Pour chaque notion encore inconnue, enlève-la du premier plan ou ouvre sa reprise avant de l’utiliser."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "guide",
+      "title": "3 : Construis une version minimale",
+      "items": [
+        {
+          "id": "demarrer",
+          "text": "Un drapeau qui remet le score, les positions et les autres valeurs utilisées au départ."
+        },
+        {
+          "id": "jouer",
+          "text": "Une commande qui permet vraiment d’agir, avec une cible ou un but accessible."
+        },
+        {
+          "id": "compter",
+          "text": "Un score lisible qui compte uniquement les actions prévues, sans points gratuits ni doublons."
+        },
+        {
+          "id": "finir",
+          "text": "Une fin atteignable et annoncée clairement. Après la fin, aucune action ne change encore le résultat."
+        },
+        {
+          "id": "reprendre",
+          "text": "Un nouveau drapeau permet de rejouer depuis l’état initial."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "4 : Construis, teste, explique",
+      "intro": "Construis une étape puis teste-la, plutôt que tout programmer avant le premier essai. Il n’y a pas de solution complète à recopier ici ; les cours restent accessibles plus bas.",
+      "items": [
+        {
+          "id": "copie",
+          "text": "Crée ta version de travail et conserve un premier fichier ou remix sous un nom reconnaissable. Ne modifie pas l’original d’un autre projet."
+        },
+        {
+          "id": "premier-test",
+          "text": "Teste le départ et les commandes avant d’ajouter le score. Corrige ce qui bloque, une modification à la fois.",
+          "hint": "Si rien ne démarre, vérifie le sprite sélectionné, le bon événement et les blocs accrochés."
+        },
+        {
+          "id": "points-fin",
+          "text": "Ajoute le score puis la fin prévue. Teste les points sans atteindre la fin, puis atteins-la. Vérifie que les actions ne modifient plus le résultat après la fin.",
+          "hint": "Pour les clics au temps, protège l’ajout du point par une condition de temps : stop tout seul n’empêche pas un nouvel événement de clic."
+        },
+        {
+          "id": "notice",
+          "text": "Écris une petite notice : but, commandes, fin et redémarrage. Mets-la dans les instructions Scratch si tu utilises ton compte, ou dans un texte à côté du fichier."
+        },
+        {
+          "id": "faire-jouer",
+          "text": "Fais jouer quelqu’un avec cette notice. Si tu es seul, suis-la sans lire le code. Note un problème concret ou une amélioration utile."
+        },
+        {
+          "id": "justifier",
+          "text": "Montre une règle dans ton code, explique pourquoi elle fonctionne puis prédis l’effet d’un petit changement. Teste ce changement dans une copie.",
+          "hint": "Change un seuil ou une durée déjà compris, pas plusieurs réglages à la fois. Une réussite avec modèle et une explication autonome sont deux observations différentes."
+        },
+        {
+          "id": "sauver",
+          "text": "Sauvegarde la version finale et rouvre le fichier ou le remix pour vérifier que tu retrouves ton travail. Un ancien téléchargement ne se met pas à jour tout seul."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "5 : Vérifie ton jeu",
+      "items": [
+        {
+          "id": "notice-test",
+          "text": "Les commandes et le but correspondent à la notice ; le jeu est jouable sans explication orale indispensable."
+        },
+        {
+          "id": "sans-action",
+          "text": "Sans action du joueur, pas de points injustifiés. Si le temps fait partie des règles, la partie peut se terminer sans clic."
+        },
+        {
+          "id": "un-point",
+          "text": "Une action prévue donne le bon nombre de points : un contact prolongé ne donne pas une victoire instantanée."
+        },
+        {
+          "id": "fin-test",
+          "text": "La fin annoncée est atteignable et le score reste inchangé après elle."
+        },
+        {
+          "id": "deux-parties",
+          "text": "Deux parties complètes fonctionnent, avec remise à zéro et retour au départ entre elles."
+        },
+        {
+          "id": "preuve-test",
+          "text": "Tu peux expliquer une règle, une difficulté rencontrée et le test qui a confirmé une correction."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Bonus facultatif : une seule extension",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "extension",
+          "title": "Améliorer sans casser la base",
+          "paragraphs": [
+            "Sauvegarde une copie de la version jouable. Choisis une seule extension dont tu maîtrises déjà les prérequis ; tu peux aussi simplement améliorer la notice ou choisir un décor de la bibliothèque Scratch.",
+            "Si tu comprends les messages : ajoute un court échange entre deux personnages avec Coordonner plusieurs personnages. Si tu comprends les clones et les variables : ajoute des objets à ramasser avec Créer plusieurs personnages avec des clones.",
+            "Si tu comprends définition et appels : organise une action répétée avec Créer ses propres blocs. Si tu comprends le chronomètre : compare deux difficultés avec Gérer le temps et la difficulté.",
+            "Ces options ne sont pas une liste à compléter. Laisse de côté celles que tu ne comprends pas encore. Après l’extension, refais les tests de points, fin et redémarrage. Si elle casse la base, reviens à ta copie et cherche une seule cause."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Et après ce projet ?",
+      "paragraphs": [
+        "Présente ton jeu, explique son programme et choisis une amélioration. Tu peux ensuite essayer une nouvelle idée de même taille."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Choisir des règles réalisables avec les notions comprises et expliquer son plan.",
+    "Construire une version jouable avec score, fin et redémarrage, sans solution intégrale fournie.",
+    "Tester les limites et deux parties, identifier une panne et justifier sa correction.",
+    "Expliquer une règle et prédire un changement, en distinguant autonomie, modèle ou aide ; une décoration ou un score élevé ne prouve pas la compréhension."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-mini-jeu",
+      "blockId": "guide",
+      "label": "Reprendre un jeu horizontal simple"
+    },
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "exemple",
+      "label": "Revoir les déplacements au clavier"
+    },
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "exemple",
+      "label": "Revoir le score et sa remise à zéro"
+    },
+    {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "exemple",
+      "label": "Revoir fin et reprise"
+    },
+    {
+      "moduleId": "scratch-debogage",
+      "blockId": "autonomie",
+      "label": "Chercher une panne avec méthode"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-projet-personnel",
+      "blockId": "bonus",
+      "label": "Choisir une seule extension dans une copie"
+    },
+    {
+      "moduleId": "scratch-coordination",
+      "blockId": "exemple",
+      "label": "Revoir un échange par messages",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.messages",
+          "expectation": "Expliquer émission, réception et ordre de l’échange."
+        }
+      ]
+    },
+    {
+      "moduleId": "scratch-clones",
+      "blockId": "bonus",
+      "label": "Revoir des copies à ramasser",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.clones",
+          "expectation": "Distinguer modèle et copies et supprimer une copie."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Ajouter un point et remettre score à zéro."
+        }
+      ]
+    },
+    {
+      "moduleId": "scratch-blocs-personnalises",
+      "blockId": "guide",
+      "label": "Revoir définition et appels",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.custom-blocks",
+          "expectation": "Comprendre la définition réutilisée par chaque appel."
+        }
+      ]
+    },
+    {
+      "moduleId": "scratch-temps-difficulte",
+      "blockId": "autonomie",
+      "label": "Comparer deux difficultés",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.time",
+          "expectation": "Comprendre le chronomètre, la limite et le nouveau départ."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Accompagner un projet personnel limité, observer les choix et la compréhension sans imposer toutes les notions du parcours.",
+    "entryDiagnosis": [
+      "Demander une idée en une phrase et faire nommer les notions déjà comprises. Choisir une mécanique principale.",
+      "Vérifier score, condition de fin et remise à zéro. Une réussite au mini-jeu avec aide ne prouve pas leur maîtrise autonome.",
+      "Pour les clics, vérifier le chronomètre ; pour un labyrinthe, vérifier les murs déjà enseignés dans son projet. Sinon proposer la poursuite connue. Ni clones, messages ni Mes blocs obligatoires."
+    ],
+    "preparation": [
+      "Faire sauvegarder le travail actuel avant de choisir Fichier → Nouveau, une copie personnelle du mini-jeu ou la base chat/cible facultative. Conserver l’original du mini-jeu et travailler sous un autre nom ; la base fournit des sprites sans scripts. La démonstration complète n’est pas une solution à recopier.",
+      "Préparer un endroit où noter le plan et la notice, plus une sauvegarde locale ou un remix personnel. Pas de compte élève obligatoire.",
+      "Ne pas demander la base Labyrinthe à un débutant sans cours sur les murs. Utiliser un labyrinthe existant seulement si l’élève en explique déjà les règles."
+    ],
+    "why": "Un projet limité permet de choisir, relier et expliquer des règles plutôt que reproduire toutes les fonctionnalités d’un modèle.",
+    "discoverySpeech": [
+      "« Ton idée doit tenir en une phrase. Quelle est la plus petite version qu’on peut vraiment jouer ? »",
+      "« D’abord les règles qui fonctionnent, ensuite un bonus. »",
+      "« Tu n’as pas besoin de montrer tous les blocs appris. Choisis ceux qui servent ton jeu. »",
+      "« Montre-moi pourquoi cette règle fonctionne, pas seulement un jeu qui marche. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-projet-personnel",
+        "blockId": "exemple",
+        "label": "Un plan, pas une solution complète"
+      },
+      "comments": [
+        "Exemple de plan : déplacement horizontal, cible fixe, un point par contact avec séparation, victoire à trois et reset au drapeau. Réutiliser les cours si nécessaire ; ne pas livrer un programme final complet.",
+        "Variante clics : score zéro, durée connue, réinitialisation du chrono, points protégés par chrono < duree, message de fin et reprise. Un nouvel événement clic peut repartir après stop tout : la condition reste nécessaire.",
+        "Labyrinthe : seulement un projet déjà compris ; les murs et leur comportement ne doivent pas devenir un prérequis caché. Une fin atteignable suffit, pas obligation de victoire et défaite ni d’extension."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Quelle est la première version jouable ?",
+        "answer": "Une commande, un but, des points, une fin et une reprise. Les niveaux, décor travaillé et extensions attendent."
+      },
+      {
+        "question": "Comment prouver qu’un point n’est pas donné plusieurs fois ?",
+        "answer": "Tester une action isolée puis un contact prolongé. Le score doit correspondre à la règle annoncée, sans incréments gratuits."
+      },
+      {
+        "question": "Que vérifier après la fin ?",
+        "answer": "Que les actions ne changent plus le résultat, puis qu’un nouveau drapeau rétablit toutes les valeurs utiles."
+      },
+      {
+        "question": "Faut-il utiliser des clones et des messages ?",
+        "answer": "Non. Ils sont facultatifs, utiles seulement si l’élève en comprend le rôle et si son projet en a besoin."
+      },
+      {
+        "question": "Comment distinguer copie et compréhension ?",
+        "answer": "Demander d’expliquer une règle, prédire une modification puis la tester, en notant l’aide utilisée."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-projet-personnel",
+      "blockId": "guide",
+      "label": "Réduire le plan à une version minimale"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-projet-personnel",
+      "blockId": "autonomie",
+      "label": "Construire, faire jouer et justifier"
+    },
+    "differentiation": [
+      "CE2 : plan oral, une commande simple, un score et une fin ; base chat/cible ou reprise du mini-jeu si utile. Faire une étape puis tester.",
+      "Élève autonome : choix des règles, notice compréhensible, tests de limites et explication sans modèle.",
+      "Les reprises ne demandent pas de refaire tout le parcours. La réalisation peut prendre plusieurs moments, sans séance datée ni vitesse de groupe imposée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le projet est trop grand pour démarrer.",
+        "helps": [
+          "Demander le but en une phrase.",
+          "Choisir la seule action centrale du joueur.",
+          "Séparer indispensable et bonus.",
+          "Revenir à une commande, un score et une fin connus ; différer niveaux, clones ou autres extensions."
+        ]
+      },
+      {
+        "symptom": "Le score change encore après la fin.",
+        "helps": [
+          "Faire agir le joueur après le message final.",
+          "Repérer tous les endroits qui ajoutent un point.",
+          "Comparer la règle de fin et la condition qui autorise ces ajouts.",
+          "Pour les clics au temps, protéger chaque ajout avec chrono < duree puis tester pendant et après le message."
+        ]
+      },
+      {
+        "symptom": "Une seule partie fonctionne.",
+        "helps": [
+          "Relancer et comparer au premier départ.",
+          "Lister score, positions et valeurs utilisées.",
+          "Repérer celles qui ne sont pas réinitialisées.",
+          "Rétablir leurs valeurs au drapeau ; pour le temps remettre aussi le chronomètre à zéro, puis faire deux parties."
+        ]
+      }
+    ],
+    "notes": "Observer séparément les compétences utilisées. Ne pas déclarer tous les acquis du parcours à partir d’un projet terminé. Utiliser les remarques existantes pour autonomie, modèle ou aide ; aucun nouveau dispositif de suivi. Décoration et performance du joueur ne remplacent pas l’explication.",
+    "quickConductor": [
+      "Choisir une idée limitée et vérifier ses prérequis.",
+      "Énoncer commandes, score, fin et reprise.",
+      "Construire puis tester chaque étape.",
+      "Faire jouer et demander une prédiction justifiée.",
+      "Vérifier deux parties, sauvegarder puis choisir reprise ou une extension."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

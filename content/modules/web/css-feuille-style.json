@@ -1,0 +1,501 @@
+{
+  "domainId": "web",
+  "title": "Relier une feuille de style",
+  "type": "lesson",
+  "theme": "debutants",
+  "objective": "Relier un fichier CSS à une page HTML et vérifier que ses règles sont bien chargées.",
+  "skillIds": [
+    "css.stylesheets"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.document",
+      "expectation": "Repérer head et body dans un document complet."
+    },
+    {
+      "skillId": "html.paths",
+      "expectation": "Relier un chemin relatif à un fichier réellement présent."
+    },
+    {
+      "skillId": "css.colors",
+      "expectation": "Lire une règle CSS et modifier une couleur ; reprendre Découvrir le CSS si nécessaire."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "prerequis-css",
+      "title": "Avant de commencer : La règle CSS",
+      "tone": "neutral",
+      "text": "Tu dois pouvoir expliquer h1 { color: blue; } et modifier sa couleur. Si tu hésites encore entre sélecteur, propriété et valeur, reprends Découvrir le CSS puis utilise Retour dans ton navigateur pour revenir ici. Retrouve les leçons du document et des chemins depuis le parcours dans le fil d’Ariane si nécessaire.",
+      "moduleLink": {
+        "text": "Découvrir le CSS",
+        "moduleId": "css-decouverte"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "1 : Deux fichiers, deux rôles",
+      "paragraphs": [
+        "Tu vas obtenir un titre bleu dont la couleur est définie dans un fichier style.css séparé. Puis tu modifieras ce fichier et vérifieras que la page suit bien le changement.",
+        "Le fichier index.html conserve le contenu et son cadre. Le fichier style.css contient seulement les règles CSS, sans balises HTML. Une feuille externe est un fichier séparé de la page, pas forcément un fichier sur Internet.",
+        "CodePen relie son panneau CSS à l’aperçu pour toi. Les essais de ce module se font avec de vrais fichiers locaux dans un éditeur comme VS Code. Tu n’as pas à coller link dans le panneau HTML de CodePen ni à téléverser un fichier.",
+        "Crée un dossier atelier-style pour garder tes exercices précédents. Ouvre-le dans ton éditeur de texte."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "liaison",
+      "title": "2 : La ligne qui relie HTML et CSS",
+      "paragraphs": [
+        "Ajoute cette ligne dans head du document. link indique une ressource liée ; rel=\"stylesheet\" précise qu’il s’agit d’une feuille de style. href donne le chemin vers le fichier CSS.",
+        "Ici style.css est dans le même dossier que index.html, donc son nom suffit. Ne l’écris pas styles.css : le nom doit être exactement celui du fichier créé.",
+        "link ne produit pas un lien cliquable dans la page, contrairement à a. Elle n’entoure pas de contenu et n’a pas de balise fermante.",
+        "Le navigateur doit trouver le fichier ET une règle correspondant aux éléments HTML. Un bon chemin ne corrige pas une règle qui cible un élément absent."
+      ],
+      "code": "<link rel=\"stylesheet\" href=\"style.css\">",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Une page reliée à sa feuille",
+        "intro": "Le contenu HTML reste identique. Compare l’absence de liaison et la feuille reliée.",
+        "variants": [
+          {
+            "label": "Sans liaison à style.css",
+            "html": "<h1>Une page reliée</h1><p>Le contenu existe déjà.</p>",
+            "code": "Dans head : aucune ligne link\n\nstyle.css contient :\nh1 { color: blue; }",
+            "feedback": "Le fichier CSS peut exister sans agir sur la page : il faut le relier.",
+            "css": ""
+          },
+          {
+            "label": "Avec la liaison",
+            "html": "<h1>Une page reliée</h1><p>Le contenu existe déjà.</p>",
+            "code": "Dans head :\n<link rel=\"stylesheet\" href=\"style.css\">\n\nDans style.css :\nh1 { color: blue; }",
+            "feedback": "La feuille reliée applique la couleur au titre. Après une modification, enregistre puis actualise ta vraie page.",
+            "css": "h1{color:blue}"
+          }
+        ],
+        "note": "La liaison est simulée dans cet aperçu isolé. Dans ton projet local, elle dépend réellement du chemin et des fichiers enregistrés."
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "arbre",
+      "title": "Le dossier de cet exercice",
+      "paragraphs": [
+        "Crée les deux fichiers dans atelier-style. Vérifie les extensions .html et .css : un fichier style.css.txt n’est pas celui demandé."
+      ],
+      "code": "atelier-style/\n├── index.html\n└── style.css"
+    },
+    {
+      "type": "lesson",
+      "id": "html",
+      "title": "index.html : Le document complet",
+      "paragraphs": [
+        "Copie ce document dans index.html. Repère link dans head et h1 dans body. Cet essai ne contient aucun ancien bloc style : ainsi, le résultat dépend du fichier CSS externe."
+      ],
+      "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Mon premier style externe</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <h1>Une page reliée</h1>\n  <p>Le contenu et son style sont dans deux fichiers.</p>\n</body>\n</html>"
+    },
+    {
+      "type": "lesson",
+      "id": "css",
+      "title": "style.css : Seulement des règles",
+      "paragraphs": [
+        "Copie cette règle dans style.css. N’ajoute ni <style>, ni </style>, ni cadre HTML dans ce fichier. Le sélecteur h1 et color ont le même sens que dans le panneau CSS de CodePen."
+      ],
+      "code": "h1 {\n  color: blue;\n}"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé : Prouver que la feuille est chargée",
+      "intro": "Enregistre les deux fichiers. Ouvre index.html dans le navigateur, pas style.css.",
+      "items": [
+        {
+          "id": "observer",
+          "text": "Vérifie que le h1 est bleu. La présence du nom style.css dans le dossier ne suffit pas : son effet doit être visible."
+        },
+        {
+          "id": "modifier-css",
+          "text": "Dans style.css seulement, remplace blue par purple (violet). Enregistre ce fichier puis actualise index.html dans le navigateur."
+        },
+        {
+          "id": "expliquer-liaison",
+          "text": "Explique pourquoi la couleur a changé sans modifier les mots dans index.html. Montre le chemin qui permet au navigateur de retrouver le CSS."
+        },
+        {
+          "id": "verifier-erreur",
+          "text": "Si le titre ne change pas, vérifie d’abord enregistrement et chemin, puis le sélecteur et la déclaration. Utilise la consolidation si nécessaire.",
+          "hints": [
+            "Vérifie que tu regardes le bon index.html.",
+            "Compare le nom du CSS à href dans link.",
+            "Compare ensuite la règle avec le h1 présent.",
+            "Rétablis rel=\"stylesheet\", href=\"style.css\" et h1 { color: purple; }, puis enregistre les deux fichiers et actualise."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Mission autonome : Retrouver la bonne feuille",
+      "intro": "Après l’essai violet, fais une modification de nom, puis une nouvelle règle. Essaie avant d’ouvrir les aides.",
+      "items": [
+        {
+          "id": "renommer-feuille",
+          "text": "Renomme style.css en theme.css dans ton dossier. Avant d’actualiser la page, prédis pourquoi le style va disparaître."
+        },
+        {
+          "id": "reparer-liaison",
+          "text": "Rétablis le style en modifiant uniquement la référence dans HTML, pas les règles de couleur.",
+          "hints": [
+            "Cherche la ligne qui désigne l’ancien fichier.",
+            "Le contenu de theme.css n’a pas changé.",
+            "Compare le nom réel avec href dans link.",
+            "Remplace href=\"style.css\" par href=\"theme.css\" ; garde rel=\"stylesheet\". Enregistre index.html puis actualise."
+          ]
+        },
+        {
+          "id": "regle-paragraphe",
+          "text": "Dans theme.css, ajoute une règle pour rendre le paragraphe vert foncé (darkgreen). Prédis quel élément changera, puis vérifie.",
+          "hints": [
+            "Le paragraphe est un p dans HTML.",
+            "Écris une deuxième règle à côté de celle du h1, pas à l’intérieur.",
+            "Reprends la syntaxe sélecteur, accolades, propriété et valeur.",
+            "Ajoute p { color: darkgreen; } dans theme.css, enregistre puis actualise."
+          ]
+        },
+        {
+          "id": "expliquer-preuve",
+          "text": "Montre comment tu peux prouver que c’est theme.css qui est utilisé : modifie une couleur dans ce fichier, sans changer le HTML."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "id": "verification",
+      "title": "Vérifie ton travail",
+      "items": [
+        {
+          "id": "verifier-separation",
+          "text": "Mon HTML et mon CSS sont dans deux fichiers distincts ; le CSS ne contient pas de balises style."
+        },
+        {
+          "id": "verifier-link",
+          "text": "link se trouve dans head, avec rel=\"stylesheet\" et le chemin exact du fichier."
+        },
+        {
+          "id": "verifier-changement",
+          "text": "Une modification enregistrée dans le CSS apparaît après actualisation du HTML."
+        },
+        {
+          "id": "verifier-explication",
+          "text": "Je distingue le rôle du chemin de celui du sélecteur et de la déclaration."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Consolidation : Chemin ou règle ?",
+      "intro": "Pars de ta version avec theme.css et les règles h1 et p. Fais les deux essais séparément, en réparant le premier avant le second.",
+      "items": [
+        {
+          "id": "mauvais-fichier",
+          "text": "Dans link, remplace temporairement theme.css par absent.css. Observe que les couleurs de la feuille disparaissent. Corrige seulement le chemin.",
+          "hints": [
+            "Le fichier demandé existe-t-il dans le dossier ?",
+            "Un chemin incorrect empêche de charger toute cette feuille.",
+            "Compare absent.css avec le nom réel.",
+            "Rétablis href=\"theme.css\" puis enregistre et actualise."
+          ]
+        },
+        {
+          "id": "mauvais-selecteur",
+          "text": "Garde le bon chemin. Dans le CSS, remplace seulement le sélecteur h1 par h2. Le titre n’est plus coloré, mais le paragraphe l’est encore. Explique, puis répare.",
+          "hints": [
+            "Vérifie quels éléments existent dans body.",
+            "La feuille est chargée : la règle p agit encore.",
+            "Le h2 n’existe pas dans cet exemple ; sa règle ne choisit pas le h1.",
+            "Remets h1 comme sélecteur. Le chemin n’avait pas besoin d’être changé."
+          ]
+        },
+        {
+          "id": "distinguer-causes",
+          "text": "Explique la différence entre une feuille introuvable et une règle qui ne sélectionne pas le bon élément."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "bonus-explication",
+      "title": "Bonus : Ranger le CSS dans un dossier",
+      "paragraphs": [
+        "Facultatif : fais une copie du projet. Crée un dossier css à côté de index.html puis déplace theme.css dedans.",
+        "Depuis index.html, le chemin devient css/theme.css : même raisonnement qu’avec les images. Les règles dans le fichier CSS ne changent pas. Adapte seulement href dans link.",
+        "Ce rangement est un essai, pas une obligation pour réussir le module."
+      ],
+      "code": "atelier-style-copie/\n├── index.html\n└── css/\n    └── theme.css"
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Vérifie ce nouvel emplacement",
+      "intro": "Travaille dans la copie et garde la version de base.",
+      "items": [
+        {
+          "id": "bonus-deplacer",
+          "text": "Adapte le chemin vers la feuille déplacée, puis vérifie les couleurs du titre et du paragraphe.",
+          "hints": [
+            "Pars du dossier de index.html.",
+            "Entre dans le dossier css avant le nom du fichier.",
+            "Compare avec l’arbre du bonus.",
+            "Utilise <link rel=\"stylesheet\" href=\"css/theme.css\"> dans head."
+          ]
+        },
+        {
+          "id": "bonus-predire",
+          "text": "Explique pourquoi le déplacement du fichier ne change pas les sélecteurs h1 et p à l’intérieur."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Relier une feuille externe avec link dans head en expliquant rel et href.",
+    "Garder le CSS sans balises HTML et prouver le chargement par une modification enregistrée.",
+    "Adapter le chemin après renommage ou déplacement sans modifier inutilement les règles.",
+    "Distinguer fichier non chargé et sélecteur incorrect à partir d’un essai concret, au-delà d’une copie fonctionnelle."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "css-feuille-style",
+      "blockId": "reparer",
+      "label": "Distinguer chemin et sélecteur"
+    },
+    {
+      "moduleId": "html-document",
+      "label": "Reprendre head et body",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre dans une petite page."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+        }
+      ]
+    },
+    {
+      "moduleId": "html-fichiers-chemins",
+      "label": "Reprendre les chemins relatifs",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.links",
+          "expectation": "Distinguer le texte cliquable de sa destination href."
+        },
+        {
+          "skillId": "html.images",
+          "expectation": "Distinguer src et alt et remplacer une image."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-decouverte",
+      "label": "Reprendre la lecture d’une règle",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre dans une petite page."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+        }
+      ]
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "css-feuille-style",
+      "blockId": "bonus-explication",
+      "label": "Ranger la feuille dans un sous-dossier",
+      "prerequisiteSkills": [
+        {
+          "skillId": "css.stylesheets",
+          "expectation": "Relier une feuille et prouver son chargement."
+        },
+        {
+          "skillId": "html.paths",
+          "expectation": "Lire un chemin vers un sous-dossier."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "html-parent-enfants",
+      "label": "Continuer avec Parent et enfants si l’assemblage HTML est compris",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre dans une petite page."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+        }
+      ]
+    },
+    {
+      "moduleId": "css-classes-couleurs",
+      "label": "Reprendre les classes si tu ne sais pas encore cibler un groupe",
+      "prerequisiteSkills": [
+        {
+          "skillId": "html.headings",
+          "expectation": "Créer un titre dans une petite page."
+        },
+        {
+          "skillId": "html.text",
+          "expectation": "Créer un paragraphe et retrouver ses balises dans le code."
+        },
+        {
+          "skillId": "css.colors",
+          "expectation": "Lire une règle CSS et distinguer texte et fond."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire établir et vérifier une liaison HTML/CSS, puis diagnostiquer une ressource introuvable sans la confondre avec une règle inefficace.",
+    "entryDiagnosis": [
+      "Demander de retrouver head et body. Si le cadre est seulement copié, reprendre Structure d’un document HTML.",
+      "Présenter un fichier rangé dans un sous-dossier et demander son chemin depuis index.html. Reprendre Fichiers et chemins si nécessaire.",
+      "Faire lire h1 { color: blue; } : attendu, cible h1, propriété color et valeur blue. Reprendre Découvrir le CSS si la règle n’est pas comprise ; les classes ne sont pas requises dans ce premier exemple."
+    ],
+    "preparation": [
+      "Créer un nouveau dossier ou une copie ; éviter un ancien style interne qui masquerait la preuve de chargement externe.",
+      "Vérifier que l’élève peut enregistrer deux fichiers et actualiser le navigateur sur index.html. Pas de serveur ni extension nécessaire.",
+      "Préparer les deux extraits visibles ; ne pas demander un partage d’écran pour accéder à une consigne indispensable."
+    ],
+    "why": "Séparer les règles et le contenu rend le rôle de chaque fichier explicite. Savoir prouver le chargement évite de corriger au hasard une page qui n’utilise pas le bon CSS.",
+    "discoverySpeech": [
+      "« Dans CodePen, les panneaux sont reliés pour toi. Ici, nous devons dire au navigateur où trouver les règles. La ligne link dans head est cette indication. »",
+      "« rel lui dit quel type de ressource nous relions ; href lui dit où elle se trouve. Cette ligne n’est pas un bouton ni un lien à cliquer dans la page. »",
+      "« Pour prouver que ce fichier agit, changeons seulement sa couleur de titre, enregistrons et actualisons. L’existence du fichier ne suffit pas comme preuve. »",
+      "« Une feuille introuvable et une règle qui vise h2 au lieu de h1 ne sont pas le même problème. Observons ce qui continue de fonctionner avant de corriger. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "css-feuille-style",
+        "blockId": "html",
+        "label": "Localiser la liaison dans le document"
+      },
+      "comments": [
+        "Pointer link dans head et lire rel/href séparément ; montrer les deux fichiers réels.",
+        "Le h1 n’a pas besoin d’une classe pour correspondre à la règle h1 de ce module. Ne pas ajouter de prérequis de ciblage par classe.",
+        "Faire passer blue à purple dans le fichier CSS, pas dans le HTML. Enregistrer puis actualiser pour observer la liaison."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Ouvre-t-on style.css pour voir la page ?",
+        "answer": "Non, on ouvre index.html. Le navigateur charge la feuille référencée pour présenter ce document."
+      },
+      {
+        "question": "Faut-il mettre <style> dans le fichier .css ?",
+        "answer": "Non. Le fichier externe contient seulement les règles ; les balises style appartiennent à une autre façon d’intégrer du CSS dans HTML."
+      },
+      {
+        "question": "Pourquoi le style disparaît-il après avoir renommé le fichier ?",
+        "answer": "La référence HTML utilise encore l’ancien nom. Corriger href, pas les règles de couleur."
+      },
+      {
+        "question": "Le paragraphe reste vert mais le titre perd sa couleur : le CSS est-il forcément introuvable ?",
+        "answer": "Non. La règle du paragraphe agit : dans notre essai, la feuille est chargée et le sélecteur h2 ne correspond pas au h1. Rétablir h1."
+      },
+      {
+        "question": "Un a href vers le fichier CSS remplacerait-il link ?",
+        "answer": "Non : a créerait un lien cliquable. link avec rel=\"stylesheet\" indique au navigateur d’utiliser les règles pour le document."
+      },
+      {
+        "question": "Le fichier existe et rien ne change. Que vérifier en premier ?",
+        "answer": "Le fichier réellement ouvert, l’enregistrement, l’actualisation et le chemin. Ensuite seulement la correspondance du sélecteur et la déclaration."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "css-feuille-style",
+      "blockId": "guide",
+      "label": "Prouver le chargement par un changement de couleur"
+    },
+    "independentActivity": {
+      "moduleId": "css-feuille-style",
+      "blockId": "mission",
+      "label": "Renommer puis enrichir la feuille"
+    },
+    "differentiation": [
+      "Aider à créer/enregistrer les deux fichiers sans choisir à la place de l’élève le chemin à adapter.",
+      "Si la règle est déjà maîtrisée, consacrer l’effort à la liaison et au diagnostic. Le bonus de dossier ne devient pas un prérequis obligatoire.",
+      "Après réussite avec le modèle, demander un nouveau nom de feuille et une preuve de chargement sans citer href ou color."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le fichier est nommé style.css.txt ou styles.css.",
+        "helps": [
+          "Afficher le nom complet dans l’éditeur ou l’explorateur.",
+          "Comparer ce nom avec href.",
+          "Reprendre l’arbre des deux fichiers.",
+          "Rendre le nom et la référence identiques ; vérifier aussi rel=\"stylesheet\"."
+        ]
+      },
+      {
+        "symptom": "Les balises style ont été copiées dans le CSS externe.",
+        "helps": [
+          "Ouvrir le fichier CSS.",
+          "Séparer balises HTML et règles.",
+          "Comparer l’extrait style.css avec le document HTML.",
+          "Garder seulement h1 { color: blue; } ou la couleur choisie dans le fichier externe."
+        ]
+      },
+      {
+        "symptom": "L’élève change le chemin pour réparer un mauvais sélecteur.",
+        "helps": [
+          "Vérifier si une autre règle fonctionne encore.",
+          "Repérer le h1 du HTML et le h2 de l’essai.",
+          "Comparer le cas absent.css avec le cas h2.",
+          "Rétablir le sélecteur h1 sans toucher au chemin correct."
+        ]
+      }
+    ],
+    "notes": [
+      "Solution de mission : après renommage, link utilise href=\"theme.css\" avec rel=\"stylesheet\" ; la feuille garde h1 { color: purple; } et ajoute p { color: darkgreen; }. Une autre couleur d’essai est acceptable si le changement est expliqué.",
+      "Consolidation : absent.css coupe cette feuille ; h2 laisse la règle p fonctionner. Bonus : href=\"css/theme.css\" après déplacement, sans modifier les règles.",
+      "Observer réussite autonome, avec modèle ou avec aide. Séparer manipulation de fichiers, compréhension du chemin et lecture d’une règle.",
+      "La nouvelle compétence css.stylesheets ne modifie pas le sens ni les anciennes validations de css.selectors ou css.colors. Pas de validation automatique par chargement réussi.",
+      "Le futur partage d’une feuille entre plusieurs pages n’est pas réalisé ici. Pas de publication, de framework ou de serveur nécessaire pour ces exercices.",
+      "Pour poursuivre, proposer Parent et enfants ou une reprise des classes selon les acquis ; garder les liens ouverts et le professeur responsable de l’orientation."
+    ],
+    "quickConductor": [
+      "Vérifier cadre HTML, chemins et règle simple.",
+      "Créer les deux fichiers et expliquer link/rel/href.",
+      "Prouver le chargement par une couleur modifiée.",
+      "Faire renommer la feuille et rétablir la liaison.",
+      "Comparer feuille absente et mauvais sélecteur.",
+      "Proposer reprise, bonus ou suite ; relever séparément les aides."
+    ],
+    "references": [
+      {
+        "title": "MDN : Élément link",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link"
+      },
+      {
+        "title": "MDN : Relier le CSS au document",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Getting_started"
+      },
+      {
+        "title": "MDN : Résolution des références relatives",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references"
+      }
+    ]
+  }
+}

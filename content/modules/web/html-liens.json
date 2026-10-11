@@ -1,0 +1,237 @@
+{
+  "domainId": "web",
+  "title": "Liens HTML",
+  "type": "lesson",
+  "objective": "Créer un lien vers un site.",
+  "skillIds": [
+    "html.links"
+  ],
+  "blocks": [
+    {
+      "id": "preparer",
+      "type": "callout",
+      "title": "Avant de commencer",
+      "text": "Repère la balise ouvrante, le texte et la fermeture ; retrouve ces repères dans Titres et paragraphes au besoin. Ouvre la zone HTML et l’aperçu de CodePen. Pour garder ton travail, copie ton code dans un fichier texte avant de fermer l’onglet ou de commencer un autre essai.",
+      "moduleLink": {
+        "moduleId": "html-titres-paragraphes",
+        "text": "Titres et paragraphes"
+      }
+    },
+    {
+      "id": "cours",
+      "type": "lesson",
+      "title": "Comprendre un lien HTML",
+      "paragraphs": [
+        "La balise <a> crée un lien cliquable.",
+        "L’attribut href indique l’adresse vers laquelle le lien mène. L’adresse entre guillemets est la destination.",
+        "Le texte entre <a> et </a> est le texte visible et cliquable. Dans l’exemple, c’est « Visiter le site ».",
+        "Pour un site externe, copie une adresse complète qui commence par https:// dans href, entre guillemets droits. Évite un texte vague comme « Clique ici » : annonce plutôt la destination.",
+        "Teste le lien depuis l’aperçu et compare l’adresse obtenue à celle prévue. Si l’aperçu bloque l’ouverture, essaie d’ouvrir le lien dans un nouvel onglet depuis son menu contextuel. Un blocage du site ou du réseau n’est pas forcément une erreur HTML ; demande de l’aide si nécessaire."
+      ],
+      "code": "<a href=\"https://example.com\">Visiter le site</a>",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Le texte du lien n’est pas sa destination",
+        "intro": "Change la version et repère ce qui change dans le code : le texte ou href.",
+        "variants": [
+          {
+            "label": "Texte : Visiter le site",
+            "html": "<p><u>Visiter le site</u></p><p>Destination : https://example.com</p>",
+            "code": "<a href=\"https://example.com\">Visiter le site</a>",
+            "feedback": "Le texte visible annonce le lien. href contient une autre information : sa destination.",
+            "css": ""
+          },
+          {
+            "label": "Texte : Découvrir un exemple",
+            "html": "<p><u>Découvrir un exemple</u></p><p>Destination : https://example.com</p>",
+            "code": "<a href=\"https://example.com\">Découvrir un exemple</a>",
+            "feedback": "Le texte change, mais la destination reste exactement la même.",
+            "css": ""
+          }
+        ],
+        "note": "Les liens sont représentés, pas ouverts dans cette démonstration. Teste les vrais liens depuis ton projet."
+      }
+    },
+    {
+      "id": "exercices",
+      "type": "tasks",
+      "title": "À toi de jouer avec les liens",
+      "intro": "Travaille dans la zone HTML de CodePen. Essaie chaque étape avant d’ouvrir son indice.",
+      "items": [
+        {
+          "id": "lien-exemple",
+          "text": "Reproduis le lien d’exemple, prévois sa destination puis teste-le depuis l’aperçu.",
+          "hint": "La balise ouvrante contient href et l’adresse. Ajoute ensuite le texte visible puis la balise fermante.",
+          "syntax": "<a href=\"https://example.com\">Visiter le site</a>"
+        },
+        {
+          "id": "texte-lien",
+          "text": "Modifie uniquement le texte visible du lien. Teste-le et vérifie que la destination reste https://example.com.",
+          "hint": "Change le texte entre <a> et </a>, sans toucher à l’adresse entre guillemets."
+        },
+        {
+          "id": "adresse-lien",
+          "text": "Remplace href par https://www.wikipedia.org. Avant le clic, annonce la destination ; teste le lien et vérifie l’adresse. Adapte ensuite le texte visible pour annoncer cette destination.",
+          "hint": "Remplace la destination dans href. Conserve les guillemets autour de la nouvelle adresse."
+        },
+        {
+          "id": "deuxieme-lien",
+          "text": "Crée un deuxième lien avec une autre adresse complète et un autre texte. Essaie sans regarder l’exemple, puis teste sa destination.",
+          "hint": "Choisis une nouvelle destination et un texte qui annonce le site. Écris une nouvelle balise a avec son href et sa fermeture.",
+          "syntax": "<a href=\"https://www.wikipedia.org\">Découvrir Wikipédia</a>"
+        }
+      ]
+    },
+    {
+      "id": "autonome",
+      "type": "tasks",
+      "title": "À toi : annoncer et vérifier une destination",
+      "intro": "Garde tes premiers liens. Choisis un site public connu ou utilise https://example.com ; aucun compte ni donnée personnelle n’est nécessaire.",
+      "items": [
+        {
+          "id": "lien-autonome",
+          "text": "Sans recopier le modèle, ajoute un lien dont le texte annonce le site choisi. Prévois sa destination, teste-le et compare l’adresse obtenue.",
+          "hint": "Le texte est entre a et /a ; l’adresse complète est dans href, entre guillemets."
+        },
+        {
+          "id": "expliquer-lien",
+          "text": "Montre le texte visible et href dans ton code. Explique lequel changer pour renommer le lien sans changer sa destination.",
+          "hint": "Le libellé et la destination sont deux parties différentes. Précise si l’ouverture a été bloquée par l’aperçu ou le réseau."
+        }
+      ]
+    }
+  ],
+  "theme": "debutants",
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.text",
+      "expectation": "Repérer un texte entre une balise ouvrante et sa fermeture ; sinon reprendre Titres et paragraphes."
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer la destination écrite dans href du texte visible placé entre a et /a.",
+    "Changer uniquement le texte du lien et vérifier que sa destination reste la même, puis changer href séparément.",
+    "Créer un autre lien avec une adresse complète et un texte qui annonce sa destination, puis tester son ouverture.",
+    "Comparer la destination prévue, le code et le résultat du test ; ne pas confondre un blocage de l’aperçu ou du réseau avec une erreur HTML."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-liens",
+      "blockId": "exercices",
+      "label": "Reprendre l’exercice guidé"
+    }
+  ],
+  "bonusActivities": [],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Créer un lien vers un site.",
+    "entryDiagnosis": [
+      "Faire repérer ouverture, texte et fermeture sur un paragraphe connu ; proposer une reprise si ces repères manquent.",
+      "Vérifier que le travail précédent est conservé avant d’ajouter ou de modifier des éléments."
+    ],
+    "preparation": [
+      "Vérifier l’accès à CodePen et la présence de la zone HTML et de l’aperçu ; ne pas imposer de compte.",
+      "Prévoir la copie du HTML dans un fichier texte accessible pour préserver les essais.",
+      "Tester l’exemple et distinguer les contraintes du réseau ou de l’environnement de la compréhension du HTML."
+    ],
+    "why": "Séparer l’annonce du lien et sa destination, puis vérifier la navigation avant les exercices de réinvestissement et les futurs fichiers locaux.",
+    "discoverySpeech": [
+      "« Le texte annonce où aller ; href contient l’adresse réellement utilisée. »",
+      "« On change une seule partie à la fois, puis on teste ce qui a changé. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-liens",
+        "blockId": "cours"
+      },
+      "comments": [
+        "Faire lire la balise ouvrante avec href puis le texte entre a et /a.",
+        "Ne pas introduire les chemins locaux, target ou les attributs de sécurité comme prérequis.",
+        "Prévoir le résultat avant le clic et distinguer un problème de réseau ou d’aperçu d’une erreur de code."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Où se trouve la destination ?",
+        "answer": "Dans la valeur de href, entre guillemets dans la balise ouvrante a."
+      },
+      {
+        "question": "Où se trouve le texte visible ?",
+        "answer": "Entre la balise ouvrante a et la fermeture /a."
+      },
+      {
+        "question": "Renommer le texte change-t-il le site visité ?",
+        "answer": "Non : la destination reste dans href."
+      },
+      {
+        "question": "Peut-on écrire uniquement le nom du site dans href ?",
+        "answer": "Pour cet exercice de lien externe, on copie une adresse complète qui commence par https://."
+      },
+      {
+        "question": "Comment vérifier un lien ?",
+        "answer": "Prévoir la destination, tester le lien depuis l’aperçu et comparer l’adresse obtenue. Si l’aperçu bloque, essayer l’ouverture dans un nouvel onglet."
+      },
+      {
+        "question": "Un lien bloqué signifie-t-il forcément que href est faux ?",
+        "answer": "Non : le site distant, l’aperçu ou le réseau peut bloquer l’ouverture. On vérifie le code et on signale la limite avant de conclure."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-liens",
+      "blockId": "exercices"
+    },
+    "independentActivity": {
+      "moduleId": "html-liens",
+      "blockId": "autonome"
+    },
+    "differentiation": [
+      "Lire une consigne à la fois et accompagner les gestes de clavier sans faire le raisonnement à la place de l’élève.",
+      "Demander une modification puis un exemple sur un autre sujet ; proposer l’indice seulement après un premier essai.",
+      "Noter réussite autonome, avec modèle ou avec aide. Un résultat visible ou une case cochée ne suffit pas à conclure à la maîtrise."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le lien affiche l’adresse mais mène ailleurs.",
+        "helps": [
+          "Faire montrer le texte visible et l’adresse dans href.",
+          "Demander quelle partie fixe la destination.",
+          "Faire modifier uniquement le texte, puis uniquement href.",
+          "Faire créer un deuxième lien et prévoir la destination avant le test."
+        ]
+      },
+      {
+        "symptom": "L’adresse ouvre une mauvaise page ou reste sur CodePen.",
+        "helps": [
+          "Lire la valeur de href, pas seulement le libellé.",
+          "Vérifier l’adresse complète, les guillemets droits et la fermeture de a.",
+          "Comparer au lien connu vers https://example.com.",
+          "Tester une correction ; si le réseau bloque aussi le lien connu, ne pas attribuer le blocage à l’élève."
+        ]
+      },
+      {
+        "symptom": "L’aperçu bloque un site distant.",
+        "helps": [
+          "Vérifier d’abord que href est la destination attendue.",
+          "Essayer l’ouverture du lien dans un nouvel onglet depuis l’aperçu.",
+          "Distinguer le contexte CodePen, la connexion et le code HTML.",
+          "Reporter le test distant si nécessaire ; demander l’explication de texte/href et noter cette limite d’observation."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Distinguer reproduction, compréhension, transfert et aides réellement utilisées. Aucun délai, score ou validation automatique n’est ajouté.",
+    "quickConductor": [
+      "Repérer la zone HTML et préserver le travail précédent.",
+      "Lire et expliquer les parties de l’exemple.",
+      "Modifier une seule partie à la fois et comparer code et aperçu.",
+      "Créer un autre exemple sans recopier le modèle.",
+      "Faire expliquer les essentiels et décider de la reprise selon les observations, sans validation automatique."
+    ],
+    "references": [
+      {
+        "title": "WHATWG : Liens et attribut href",
+        "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element"
+      }
+    ]
+  }
+}

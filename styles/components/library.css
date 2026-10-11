@@ -1,0 +1,219 @@
+.site-shell {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 64px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.page-header--compact {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.home-title {
+  margin: 0;
+  font: inherit;
+}
+
+.brand {
+  display: inline-block;
+  color: var(--ink);
+  font-size: clamp(2.25rem, 6vw, 3.85rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+  text-shadow: 3px 3px 0 rgba(122, 91, 61, 0.22);
+}
+
+.page-header--compact .brand {
+  padding: 7px 11px;
+  border: 3px solid var(--ink);
+  background: #f5edda;
+  box-shadow: 4px 4px 0 var(--earth);
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  text-shadow: none;
+}
+
+.site-subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.route-card {
+  --card-accent: #3f69c6;
+  min-height: 156px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px 28px;
+  border: 4px solid #37352d;
+  border-top: 11px solid var(--card-accent);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--block-shadow);
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.route-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 #383128;
+}
+
+.route-card--debutants { --card-accent: #4f8045; }
+.route-card--avances { --card-accent: #7653a5; }
+.route-card--rattrapage { --card-accent: #b7652c; }
+
+.route-card-title {
+  font-size: clamp(1.65rem, 4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.route-card-description {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.lesson-page,
+.teacher-page {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.lesson-intro {
+  position: relative;
+  margin-bottom: 20px;
+  padding: clamp(22px, 4vw, 30px);
+  border: 4px solid var(--route);
+  border-radius: var(--radius);
+  background: var(--stone);
+  box-shadow: var(--block-shadow);
+  color: white;
+  overflow: hidden;
+}
+
+body[data-route] .lesson-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 24px;
+  align-items: end;
+}
+
+body[data-route] .lesson-intro .eyebrow,
+body[data-route] .lesson-intro .lesson-title,
+body[data-route] .lesson-intro .route-location,
+body[data-route] .lesson-intro .objective-label {
+  grid-column: 1 / -1;
+}
+
+body[data-route] .lesson-intro .objective {
+  grid-column: 1;
+  grid-row: 5;
+  margin-bottom: 0;
+}
+
+body[data-route] .lesson-intro > .button {
+  grid-column: 2;
+  grid-row: 5;
+}
+
+.lesson-intro::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  background: var(--route);
+  box-shadow: -16px 16px 0 var(--route), -32px 0 0 var(--route);
+  opacity: 0.9;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: #f1eadc;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.lesson-title {
+  margin: 0;
+  max-width: calc(100% - 70px);
+  font-size: clamp(1.9rem, 6vw, 2.85rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-shadow: 3px 3px 0 #252824;
+}
+
+.route-location {
+  margin: 7px 0 0;
+  color: #f4efe2;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.objective-label {
+  margin: 17px 0 4px;
+  color: #f1eadc;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.objective {
+  margin: 0 0 18px;
+  font-size: 1.08rem;
+}
+
+.button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  border: 3px solid #25271f;
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 #25271f;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.button--primary {
+  background: var(--route);
+  color: white;
+}
+
+.button--primary:hover {
+  background: var(--route-dark);
+}
+
+.button--secondary {
+  border-color: var(--line);
+  background: white;
+  color: var(--ink);
+}
+
+.button--secondary:hover {
+  border-color: var(--route-dark);
+  color: var(--route-dark);
+}

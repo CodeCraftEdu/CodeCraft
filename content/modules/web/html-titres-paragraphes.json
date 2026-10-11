@@ -1,0 +1,264 @@
+{
+  "domainId": "web",
+  "title": "Titres et paragraphes",
+  "type": "lesson",
+  "objective": "Créer et modifier des titres et des paragraphes en HTML.",
+  "skillIds": [
+    "html.headings",
+    "html.text"
+  ],
+  "blocks": [
+    {
+      "id": "preparer",
+      "type": "callout",
+      "title": "Avant de commencer",
+      "text": "Ouvre CodePen et repère la zone HTML et l’aperçu. Écris dans HTML. Pour garder ton travail, copie ton code dans un fichier texte avant de fermer l’onglet ou de commencer un autre essai."
+    },
+    {
+      "id": "cours",
+      "type": "lesson",
+      "title": "Du texte entre des balises",
+      "paragraphs": [
+        "Dans <p>Bonjour</p>, <p> ouvre un paragraphe, Bonjour est son texte et </p> le ferme. Le slash / marque ici la fermeture ; le nom p reste le même.",
+        "Les balises donnent un rôle au texte. Dans cet exercice, h1 annonce le titre principal et p un paragraphe. L’aperçu affiche le contenu, pas les balises.",
+        "Une nouvelle ligne dans le code ne crée pas un deuxième paragraphe : il faut un autre élément p. Même si l’aperçu paraît correct, vérifie les balises dans le code : le navigateur peut réparer certaines erreurs."
+      ],
+      "code": "<h1>Mon site</h1>\n<p>Bienvenue sur ma page.</p>",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Du code au texte visible",
+        "intro": "Compare un seul paragraphe et deux éléments distincts. Un retour à la ligne dans le code ne suffit pas.",
+        "variants": [
+          {
+            "label": "Un seul paragraphe",
+            "html": "<p>Bonjour. Bienvenue.</p>",
+            "code": "<p>Bonjour.\nBienvenue.</p>",
+            "feedback": "Le navigateur affiche un seul paragraphe, même si le code occupe deux lignes.",
+            "css": ""
+          },
+          {
+            "label": "Deux paragraphes",
+            "html": "<p>Bonjour.</p><p>Bienvenue.</p>",
+            "code": "<p>Bonjour.</p>\n<p>Bienvenue.</p>",
+            "feedback": "Deux éléments p créent deux paragraphes séparés.",
+            "css": ""
+          },
+          {
+            "label": "Un titre et un paragraphe",
+            "html": "<h1>Bonjour</h1><p>Bienvenue.</p>",
+            "code": "<h1>Bonjour</h1>\n<p>Bienvenue.</p>",
+            "feedback": "h1 donne au premier texte le rôle de titre principal. Ce n’est pas seulement un choix de taille.",
+            "css": ""
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "tasks",
+      "title": "Exercice guidé : Titre et paragraphe",
+      "items": [
+        {
+          "id": "html-codepen",
+          "text": "Clique sur « Ouvrir CodePen », puis repère la zone HTML."
+        },
+        {
+          "id": "premier-h1",
+          "text": "Tape <h1>Mon site</h1>.",
+          "code": true
+        },
+        {
+          "id": "modifier-titre",
+          "text": "Change seulement le texte « Mon site ». Garde les balises <h1> et </h1>."
+        },
+        {
+          "id": "premier-p",
+          "text": "Ajoute <p>Bienvenue sur ma page.</p>.",
+          "code": true
+        },
+        {
+          "id": "modifier-p",
+          "text": "Change seulement le texte du paragraphe."
+        },
+        {
+          "id": "deuxieme-p",
+          "text": "Ajoute maintenant un deuxième paragraphe sans recopier l'exemple.",
+          "hint": "Un paragraphe commence par <p> et se termine par </p>.",
+          "syntax": "<p>Mon deuxième paragraphe</p>"
+        }
+      ],
+      "id": "guide"
+    },
+    {
+      "id": "niveaux-titres",
+      "type": "lesson",
+      "title": "Les niveaux de titres",
+      "paragraphs": [
+        "Dans cette petite page, h1 est le titre principal. Les titres h2 annoncent ses grandes parties ; deux parties de même importance utilisent le même niveau.",
+        "Un h3 peut annoncer une sous-partie d’un h2. Les niveaux vont jusqu’à h6, mais tu n’as pas besoin de tous les utiliser ici.",
+        "Choisis le niveau pour l’organisation du contenu, pas pour obtenir un texte plus grand ou plus petit. La présentation sera travaillée avec CSS."
+      ],
+      "code": "<h1>Mes loisirs</h1>\n<h2>Jeux</h2>\n<p>J’aime les jeux de réflexion.</p>\n<h2>Sport</h2>\n<p>Je pratique le vélo.</p>"
+    },
+    {
+      "id": "autonome",
+      "type": "tasks",
+      "title": "À toi de jouer : sans modèle",
+      "intro": "Choisis un nouveau sujet pour ta page. Essaie de créer les éléments suivants sans recopier l’exercice guidé. Fais un premier essai avant d’ouvrir les indices.",
+      "items": [
+        {
+          "id": "titre-autonome",
+          "text": "Crée un titre principal pour présenter ton sujet.",
+          "hint": "Le titre principal utilise h1. Écris ton texte entre la balise ouvrante et la balise fermante.",
+          "syntax": "<h1>Mon sujet</h1>"
+        },
+        {
+          "id": "sous-titres-autonomes",
+          "text": "Crée deux titres h2 pour deux parties de même importance.",
+          "hint": "Choisis les niveaux de titres qui correspondent à l’organisation de ta page. Deux parties de même importance peuvent utiliser h2.",
+          "syntax": "<h2>Première partie</h2>\n<h2>Deuxième partie</h2>"
+        },
+        {
+          "id": "paragraphes-autonomes",
+          "text": "Crée deux paragraphes pour développer ton sujet.",
+          "hint": "Chaque paragraphe possède sa propre balise p ouvrante et fermante.",
+          "syntax": "<p>Mon premier paragraphe.</p>\n<p>Mon deuxième paragraphe.</p>"
+        },
+        {
+          "id": "verifier-structure",
+          "text": "Compare ton code et l’aperçu : montre les deux parties, les deux paragraphes et leurs balises. Explique pourquoi les deux parties utilisent h2.",
+          "hint": "Repère h1, les deux h2 puis chaque p et sa fermeture. Un résultat visible ne remplace pas la lecture du code."
+        }
+      ]
+    }
+  ],
+  "theme": "fondations",
+  "bonus": "Conserve d’abord ton HTML dans un fichier texte. Dans un nouvel essai CodePen, refais seulement un titre et un paragraphe sans regarder les exemples, puis compare les deux codes. Ce bonus n’est pas nécessaire pour continuer.",
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [],
+  "masteryCriteria": [
+    "Repérer les balises ouvrante et fermante, puis modifier seulement le texte qu’elles entourent.",
+    "Organiser la page avec un titre principal h1 et des titres h2 pour deux parties de même importance, sans choisir le niveau pour sa taille.",
+    "Créer deux paragraphes distincts et vérifier leurs balises dans le code, pas seulement l’apparence de l’aperçu.",
+    "Créer une nouvelle petite page sur un autre sujet puis expliquer son organisation ; préciser les indices ou aides utilisés."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-titres-paragraphes",
+      "blockId": "guide",
+      "label": "Reprendre l’exercice guidé"
+    }
+  ],
+  "bonusActivities": [],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Créer et modifier des titres et des paragraphes en HTML.",
+    "entryDiagnosis": [
+      "Faire montrer la zone de saisie et l’aperçu ; accompagner le clavier et la lecture sans les confondre avec une notion HTML.",
+      "Ne supposer aucune connaissance des balises."
+    ],
+    "preparation": [
+      "Vérifier l’accès à CodePen et la présence de la zone HTML et de l’aperçu ; ne pas imposer de compte.",
+      "Prévoir la copie du HTML dans un fichier texte accessible pour préserver les essais.",
+      "Tester l’exemple et distinguer les contraintes du réseau ou de l’environnement de la compréhension du HTML."
+    ],
+    "why": "Distinguer la structure du contenu de son apparence avant les listes, liens et premières règles CSS.",
+    "discoverySpeech": [
+      "« Les balises indiquent le rôle du texte. Le texte est entre l’ouverture et la fermeture. »",
+      "« Ici h1 présente la page ; deux h2 annoncent deux parties de même importance. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-titres-paragraphes",
+        "blockId": "niveaux-titres"
+      },
+      "comments": [
+        "Faire identifier le texte, les ouvertures et les fermetures avant la saisie.",
+        "Lire h1 puis h2 comme une organisation ; ne pas présenter les six niveaux comme un catalogue de tailles.",
+        "Comparer le code et l’aperçu, puis conserver le premier essai avant le transfert."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Que contient <p>Bonjour</p> ?",
+        "answer": "Une balise ouvrante p, le texte Bonjour et une balise fermante /p."
+      },
+      {
+        "question": "Où changer le message sans changer son rôle ?",
+        "answer": "Dans le texte entre les balises ; on garde p et /p."
+      },
+      {
+        "question": "Deux parties de même importance demandent-elles h2 puis h3 ?",
+        "answer": "Non : ici elles ont chacune un h2. h3 annoncerait une sous-partie."
+      },
+      {
+        "question": "Pourquoi ne pas choisir h4 pour avoir un petit titre ?",
+        "answer": "Le niveau décrit l’organisation du contenu, pas une taille à sélectionner. La présentation sera traitée avec CSS."
+      },
+      {
+        "question": "Une nouvelle ligne dans le code crée-t-elle un deuxième paragraphe ?",
+        "answer": "Non : on crée un autre élément p avec ses balises."
+      },
+      {
+        "question": "Un aperçu qui semble correct prouve-t-il que les balises sont correctes ?",
+        "answer": "Non : le navigateur peut réparer certaines erreurs. Il faut aussi lire le code."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-titres-paragraphes",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "html-titres-paragraphes",
+      "blockId": "autonome"
+    },
+    "differentiation": [
+      "Lire une consigne à la fois et accompagner les gestes de clavier sans faire le raisonnement à la place de l’élève.",
+      "Demander une modification puis un exemple sur un autre sujet ; proposer l’indice seulement après un premier essai.",
+      "Noter réussite autonome, avec modèle ou avec aide. Un résultat visible ou une case cochée ne suffit pas à conclure à la maîtrise."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les balises apparaissent comme du texte ou rien ne s’affiche.",
+        "helps": [
+          "Faire montrer la zone HTML et l’aperçu.",
+          "Vérifier que le HTML n’est pas saisi dans CSS ou dans le texte de l’aperçu.",
+          "Comparer un seul p ouvrant et fermant au modèle.",
+          "Accompagner une correction puis demander une nouvelle phrase sans modèle."
+        ]
+      },
+      {
+        "symptom": "Les titres utilisent h2, h4 et h6 pour changer leur taille.",
+        "helps": [
+          "Faire nommer les parties de la page.",
+          "Demander lesquelles ont la même importance.",
+          "Comparer les deux parties avec deux h2 ; distinguer une éventuelle sous-partie.",
+          "Faire réorganiser un autre sujet sans imposer de CSS."
+        ]
+      },
+      {
+        "symptom": "Le rendu paraît correct malgré une balise mal fermée.",
+        "helps": [
+          "Faire montrer la balise ouvrante et sa fermeture dans le code.",
+          "Repérer le slash de fermeture et le nom de balise.",
+          "Comparer h1 avec /h1 ou p avec /p, sans dépendre du rendu corrigé par le navigateur.",
+          "Laisser corriger puis créer un autre élément."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Distinguer reproduction, compréhension, transfert et aides réellement utilisées. Aucun délai, score ou validation automatique n’est ajouté.",
+    "quickConductor": [
+      "Repérer la zone HTML et préserver le travail précédent.",
+      "Lire et expliquer les parties de l’exemple.",
+      "Modifier une seule partie à la fois et comparer code et aperçu.",
+      "Créer un autre exemple sans recopier le modèle.",
+      "Faire expliquer les essentiels et décider de la reprise selon les observations, sans validation automatique."
+    ],
+    "references": [
+      {
+        "title": "WHATWG : Niveaux de titres",
+        "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
+      }
+    ]
+  }
+}

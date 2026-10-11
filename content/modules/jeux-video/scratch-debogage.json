@@ -1,0 +1,521 @@
+{
+  "domainId": "jeux-video",
+  "title": "Déboguer son jeu",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Comparer le résultat attendu au résultat observé, puis corriger une erreur et vérifier la reprise.",
+  "tool": {
+    "label": "Ouvrir Scratch",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "skillIds": [
+    "scratch.debugging",
+    "scratch.events",
+    "scratch.sequence",
+    "scratch.variables",
+    "scratch.conditions"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.events",
+      "expectation": "Lancer une pile avec un événement ; sinon reprendre Déclencher et enchaîner des actions."
+    },
+    {
+      "skillId": "scratch.sequence",
+      "expectation": "Lire les actions de haut en bas."
+    },
+    {
+      "skillId": "scratch.coordinates",
+      "expectation": "Comprendre aller à x/y et ajouter à x ; sinon reprendre Piloter un personnage."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Créer score et ajouter un point ; sinon reprendre Compter et mémoriser avant les défis de score."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Comprendre si et une comparaison ; sinon reprendre Faire réagir le jeu avant le défi de seuil."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "methode",
+      "title": "1 : Une erreur, une enquête",
+      "paragraphs": [
+        "Un bug est une différence entre ce que tu veux obtenir et ce que fait ton programme. Il ne signifie pas que tout est raté. Sauvegarde ton travail actuel avant de choisir Fichier → Nouveau, puis garde le chat. Nous allons réparer de petits scripts dans ce projet neuf : aucun jeu partagé n’est nécessaire.",
+        "Dis d’abord : Je veux que… Puis décris : Quand je fais…, j’observe… Lance toujours de la même façon pour comparer. Choisis une piste, change une seule chose et reteste. Si elle ne résout pas le problème, remets la version précédente avant d’essayer autre chose.",
+        "Vérifie le sprite sélectionné, l’événement qui lance la pile, les blocs accrochés, leur ordre, puis les conditions et les valeurs. Un bloc détaché ne fait pas partie de la pile. Cliquer directement sur une pile teste ses actions, mais ne prouve pas que le drapeau la lance.",
+        "Après une correction, refais le test qui échouait, puis recommence la partie. La solution doit fonctionner aussi au redémarrage. Garde une copie avant d’enquêter dans un grand jeu."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "2 : Le chat revient au mauvais endroit",
+      "shortSteps": [
+        "Dans un projet neuf, construis exactement la pile volontairement incorrecte ci-dessous, sur le chat.",
+        "Résultat voulu : au drapeau, partir de (0, 0) puis finir en (40, 0). Lance et observe les champs X/Y sous la scène.",
+        "Explique quel bloc efface le déplacement. Change uniquement l’ordre des deux actions, puis lance deux fois pour vérifier."
+      ],
+      "paragraphs": [
+        "Ajouter 40 à x déplace depuis la position actuelle. Aller à x: 0 y: 0 fixe une position et remplace le déplacement précédent. Les actions sont exécutées de haut en bas.",
+        "Dans ce modèle incorrect, la dernière action remet toujours le chat au centre. La position finale est (0, 0), même s’il a bougé brièvement. Lis X/Y : le mouvement peut être trop rapide pour le voir.",
+        "Essaie avant d’ouvrir l’indice. Il n’est pas nécessaire d’ajouter un nouveau bloc ou une pause."
+      ],
+      "visualScript": {
+        "caption": "À réparer : ordre volontairement incorrect",
+        "note": "C’est un problème à résoudre, pas la solution. Lis X/Y après le lancement.",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ],
+            "explanation": "Le test démarre au drapeau."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "ajouter ",
+              {
+                "value": "40"
+              },
+              " à x"
+            ],
+            "explanation": "Déplacement avant le placement dans cette version incorrecte."
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "0"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ],
+            "explanation": "Cette action remplace la position obtenue juste avant."
+          }
+        ]
+      },
+      "code": "Version volontairement incorrecte :\nquand le drapeau vert est cliqué\n  ajouter 40 à x\n  aller à x: 0 y: 0"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Réparer et expliquer",
+      "items": [
+        {
+          "id": "observation",
+          "text": "Annonce la position voulue et celle observée. Indique le dernier bloc exécuté."
+        },
+        {
+          "id": "ordre",
+          "text": "Répare uniquement l’ordre. Vérifie la position (40, 0) après deux lancements.",
+          "hint": "Il faut d’abord aller à (0, 0), puis ajouter 40 à x. Sinon le placement efface le déplacement."
+        },
+        {
+          "id": "evenement",
+          "text": "Dans une copie de l’essai réparé, remplace le drapeau par quand la touche espace est pressée (Événements). Teste le drapeau puis espace. Est-ce un bug si le drapeau ne lance plus cette pile ?",
+          "hint": "Non : elle attend maintenant espace. Un événement différent explique un lancement différent, sans erreur dans les actions."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "score",
+      "title": "3 : Un score qui reste à un",
+      "paragraphs": [
+        "Enregistre le premier essai, puis crée un autre projet neuf avec le chat pour ne pas mélanger les scripts. Crée score pour tous les sprites dans Variables et garde son affichage coché.",
+        "Construis les deux piles ci-dessous. Quand ce sprite est cliqué, dans Événements, lance une pile à chaque clic sur le chat. La pile du clic est volontairement incorrecte : après trois clics, score devrait compter 1, 2, 3, mais reste à 1.",
+        "Mettre score à 0 remplace la valeur ; ajouter 1 à score augmente la valeur actuelle. Compare quand ces actions doivent être exécutées : au départ ou à chaque clic ?",
+        "Répare maintenant ce premier problème, avant de passer au seuil. Lance le drapeau, vérifie score = 0, puis clique trois fois : le score doit afficher 1, 2, 3. Essaie avant d’ouvrir l’indice de l’enquête sur le score plus bas. Garde ce même projet pour l’exercice suivant."
+      ],
+      "visualScript": {
+        "caption": "À réparer : la remise à zéro est répétée",
+        "note": "Deux piles dans le même chat. Cherche celle qui efface les points à chaque clic.",
+        "stacks": [
+          {
+            "caption": "Le départ",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ],
+                "explanation": "Le début de la partie."
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "La remise à zéro est utile au départ."
+              }
+            ]
+          },
+          {
+            "caption": "Le clic : version incorrecte",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand ce sprite est cliqué"
+                ],
+                "explanation": "Cette pile repart à chaque clic."
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ],
+                "explanation": "Cette action efface les points précédents."
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "1"
+                  },
+                  " à ",
+                  {
+                    "choice": "score"
+                  }
+                ],
+                "explanation": "Ajouter un point après les avoir effacés."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "Pile de départ :\nquand le drapeau vert est cliqué\n  mettre score à 0\n\nPile volontairement incorrecte :\nquand ce sprite est cliqué\n  mettre score à 0\n  ajouter 1 à score"
+    },
+    {
+      "type": "lesson",
+      "id": "seuil",
+      "title": "4 : Un message qui arrive trop tard",
+      "paragraphs": [
+        "Après avoir réparé le score, ajoute si … alors sous ajouter 1 dans la pile du clic. Place la comparaison verte score > 3 dans la condition et dire Gagné ! pendant 1 seconde à l’intérieur du si.",
+        "Prends > dans Opérateurs. Glisse l’ovale score de Variables dans sa première case et écris 3 dans l’autre. Ne tape pas le mot score comme du texte. > signifie strictement plus grand : 3 > 3 est faux, 4 > 3 est vrai.",
+        "Résultat voulu : afficher Gagné ! dès le troisième clic, pas seulement au quatrième. Avant chaque test, lance le drapeau et vérifie score = 0. Clique ensuite une fois à la fois et observe le score et le message. Ce test vérifie uniquement le seuil du message : il ne termine pas une partie. Corrige le nombre comparé sans changer la valeur d’un point."
+      ],
+      "visualScript": {
+        "caption": "À réparer : le seuil arrive un point trop tard",
+        "note": "Sous ajouter 1 dans le clic réparé. Le nombre comparé est volontairement incorrect.",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "value": "score"
+                  },
+                  " > ",
+                  {
+                    "value": "3"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "explanation": "Est-ce vrai lorsque score vaut exactement trois ?",
+            "children": [
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Gagné !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "1"
+                  },
+                  " seconde"
+                ],
+                "explanation": "Le message dépend du test, sans arrêter le jeu."
+              }
+            ]
+          }
+        ]
+      },
+      "code": "À ajouter sous ajouter 1 à score :\nsi <score > 3> alors\n  dire Gagné ! pendant 1 seconde\n\nSeuil volontairement incorrect pour gagner dès 3 points."
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Sans solution : deux enquêtes",
+      "intro": "Essaie avant les indices : attendu, observé, une piste, une modification, nouveau test.",
+      "items": [
+        {
+          "id": "score-fixe",
+          "text": "Répare le score qui reste à 1 avant de passer au seuil. Lance le drapeau, vérifie score = 0, puis teste trois clics : 1, 2, 3. Relance le drapeau : 0, puis le premier clic doit donner 1.",
+          "hint": "Garde mettre score à 0 uniquement au drapeau. Retire cette remise à zéro du clic, mais garde ajouter 1."
+        },
+        {
+          "id": "seuil-trois",
+          "text": "Répare le seuil. Avant chaque test, lance le drapeau et vérifie score = 0. Clique une fois à la fois : aucun Gagné ! aux clics 1 et 2, puis Gagné ! au clic 3. Change seulement le nombre de la comparaison.",
+          "hint": "Score > 2 est vrai à partir de 3. Il reste vrai aux clics suivants : nous n’avons pas demandé un arrêt ou un message unique."
+        },
+        {
+          "id": "preuve",
+          "text": "Explique pourquoi chaque ancienne version échouait. Cite un test qui prouve ta correction, puis sauvegarde."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "bonus",
+      "title": "Bonus facultatif : enquêter dans ton jeu",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "transfert",
+          "title": "Une panne à la fois",
+          "paragraphs": [
+            "Prérequis : avoir un jeu dont tu comprends les événements et les règles. Sinon, les petits essais suffisent.",
+            "Dans une copie, choisis un comportement à vérifier : démarrage, commande, score ou fin. Décris le résultat attendu, puis teste. S’il y a un problème, change une seule chose à la fois.",
+            "Si tout fonctionne, déplace volontairement une remise à zéro dans le mauvais événement ou change un seuil déjà compris. Prédis la panne, constate-la puis restaure la version correcte. N’utilise pas une notion inconnue.",
+            "Explique la cause, pas seulement le jeu réparé. Vérifie un lancement complet et un redémarrage."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite",
+      "title": "Garder la méthode",
+      "paragraphs": [
+        "Une erreur ne demande pas forcément de recommencer tout le projet. Garde la méthode : attendu, observé, une piste, un test. Mon projet personnel te permet ensuite de choisir un petit jeu avec les notions que tu comprends. Tu peux aussi consolider ton mini-jeu existant avant ce jalon."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Décrire précisément attendu et observé.",
+    "Expliquer une erreur d’ordre, d’événement, de remise à zéro ou de seuil.",
+    "Changer une seule chose puis vérifier le test initial et un redémarrage.",
+    "Résoudre une panne sans recopier sa correction ; distinguer réussite autonome, avec indice ou avec aide."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-debogage",
+      "blockId": "guide",
+      "label": "Reprendre l’enquête sur l’ordre"
+    },
+    {
+      "moduleId": "scratch-actions",
+      "blockId": "exemple",
+      "label": "Revoir événements et ordre"
+    },
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "exemple",
+      "label": "Revoir la remise à zéro"
+    },
+    {
+      "moduleId": "scratch-reactions",
+      "blockId": "exemple",
+      "label": "Revoir les conditions"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "scratch-debogage",
+      "blockId": "bonus",
+      "label": "Appliquer la méthode à ton jeu",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Comprendre les règles du jeu testé et son redémarrage."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "scratch-projet-personnel",
+      "label": "Concevoir ton petit jeu",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Comprendre score et remise à zéro ; reprendre Compter et mémoriser si nécessaire."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Comprendre les conditions choisies pour les règles."
+        },
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Comprendre fin et reprise ; reprendre Gagner, perdre et recommencer si nécessaire."
+        }
+      ]
+    },
+    {
+      "moduleId": "scratch-mini-jeu",
+      "label": "Consolider ton premier mini-jeu",
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Comprendre score et remise à zéro."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Comprendre contacts et conditions."
+        },
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Comprendre victoire, défaite et reprise ; utiliser les reprises du projet si nécessaire."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Faire expliquer une panne et sa cause, puis vérifier une correction au lieu de changer des blocs au hasard.",
+    "entryDiagnosis": [
+      "Faire expliquer aller à x/y et ajouter à x, puis lire une pile de haut en bas.",
+      "Vérifier score et si avant les défis correspondants. Ni clones ni chronomètre nécessaires."
+    ],
+    "preparation": [
+      "Faire sauvegarder le travail actuel avant Fichier → Nouveau : garder le chat pour l’ordre. Sauvegarder cet essai avant un second projet neuf pour le score, puis garder ce second projet pour le seuil. Aucun fichier partagé requis.",
+      "Préparer les versions incorrectes sans les corriger avant l’observation. Afficher X/Y et score."
+    ],
+    "why": "Trouver une cause précise et refaire un test rend la correction réutilisable.",
+    "discoverySpeech": [
+      "« Avant de toucher aux blocs, dis ce que tu voulais et ce que tu as observé. »",
+      "« Quel est le dernier bloc qui change cette valeur ? »",
+      "« Une seule modification : sinon on ne saura pas ce qui a réparé le problème. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-debogage",
+        "blockId": "exemple",
+        "label": "Une position effacée"
+      },
+      "comments": [
+        "Incorrect : +40 puis aller à 0/0, résultat final 0/0. Correct : aller à 0/0 puis +40, résultat 40/0 après chaque drapeau. Une pause rend le mouvement visible mais ne répare pas la position finale.",
+        "Score : remise à zéro uniquement au drapeau ; clic → ajouter 1. Faire résoudre cette enquête et vérifier 0, 1, 2, 3 avant d’ajouter le seuil dans le même projet.",
+        "Seuil : sous ajouter, si score > 2 alors dire Gagné ! 1 s. Avant chaque comparaison, lancer le drapeau et vérifier score = 0, puis cliquer une fois à la fois. Le test est faux à 1 et 2, vrai à 3 et ensuite ; aucun arrêt ni message unique demandé.",
+        "Le modèle visuel contient volontairement les erreurs. Ne pas le présenter comme une solution à recopier définitivement."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi finir à zéro ?",
+        "answer": "Le dernier aller à 0/0 remplace le déplacement précédent."
+      },
+      {
+        "question": "Une pile avec événement espace doit-elle démarrer au drapeau ?",
+        "answer": "Non. Elle attend espace ; cela ne rend pas ses actions incorrectes."
+      },
+      {
+        "question": "Pourquoi le score reste-t-il à un ?",
+        "answer": "Chaque clic efface les points avant d’en ajouter un. Remettre à zéro appartient au départ."
+      },
+      {
+        "question": "Pourquoi score > 3 ne gagne-t-il pas dès trois points ?",
+        "answer": "3 > 3 est faux. Score > 2 devient vrai à 3 sans changer le gain d’un point."
+      },
+      {
+        "question": "Que vérifier après la réparation ?",
+        "answer": "Le test qui échouait, puis le redémarrage. Demander aussi l’explication de la cause."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-debogage",
+      "blockId": "guide",
+      "label": "Observer et réparer l’ordre"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-debogage",
+      "blockId": "autonomie",
+      "label": "Réparer score et seuil"
+    },
+    "differentiation": [
+      "CE2 : une panne à la fois ; pointer le bloc responsable et raconter avant/après. Consolider l’ordre avant le score si nécessaire.",
+      "Plus autonome : annoncer piste et test avant de modifier ; transférer ensuite à une copie de son jeu.",
+      "Aucun bonus obligatoire ni rythme imposé : reprendre seulement la notion qui bloque."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Plusieurs modifications au hasard.",
+        "helps": [
+          "Demander attendu et observé.",
+          "Pointer la dernière action qui change la valeur.",
+          "Choisir une seule piste et prédire son effet.",
+          "Restaurer la version initiale puis déplacer seulement les deux actions."
+        ]
+      },
+      {
+        "symptom": "Le score échoue au redémarrage.",
+        "helps": [
+          "Faire un nouveau drapeau puis un clic.",
+          "Chercher toutes les remises à zéro.",
+          "Distinguer le départ et le clic.",
+          "Garder la remise à zéro uniquement au drapeau, puis tester 0, 1, 2, 3 et un nouveau départ."
+        ]
+      },
+      {
+        "symptom": "Le message arrive encore au quatrième point.",
+        "helps": [
+          "Lire le score lors du message.",
+          "Lire le signe et le nombre comparé.",
+          "Demander si 3 est strictement supérieur à 3.",
+          "Comparer à 2 puis vérifier les clics 1, 2 et 3 depuis zéro."
+        ]
+      }
+    ],
+    "notes": "Noter autonomie, modèle/indice ou aide dans les remarques existantes. Un jeu réparé sans explication, une visite ou des cases cochées ne valent pas acquisition automatique.",
+    "quickConductor": [
+      "Vérifier les bases utiles.",
+      "Faire dire attendu et observé.",
+      "Réparer l’ordre et tester deux départs.",
+      "Résoudre score puis seuil selon les acquis.",
+      "Expliquer la cause et choisir reprise ou transfert."
+    ],
+    "references": [
+      {
+        "title": "Scratch : idées et tutoriels",
+        "url": "https://scratch.mit.edu/ideas"
+      }
+    ]
+  }
+}

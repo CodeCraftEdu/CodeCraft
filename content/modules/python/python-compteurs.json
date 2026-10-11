@@ -1,0 +1,306 @@
+{
+  "domainId": "python",
+  "title": "Compter et calculer un score",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Initialiser et actualiser un compteur ou un score au bon endroit.",
+  "prerequisitesInContent": true,
+  "tool": {
+    "label": "Site officiel de Thonny",
+    "url": "https://thonny.org/"
+  },
+  "skillIds": [
+    "python.accumulation"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "python.workspace",
+      "expectation": "Créer, conserver et relancer un fichier."
+    },
+    {
+      "skillId": "python.output",
+      "expectation": "Afficher et prévoir l’ordre des résultats."
+    },
+    {
+      "skillId": "python.variables",
+      "expectation": "Définir et réutiliser une valeur."
+    },
+    {
+      "skillId": "python.numbers",
+      "expectation": "Additionner des valeurs numériques ; sinon reprendre Nombres et calculs."
+    },
+    {
+      "skillId": "python.input",
+      "expectation": "Conserver une réponse textuelle."
+    },
+    {
+      "skillId": "python.conditions",
+      "expectation": "Comparer une réponse et indenter une branche."
+    },
+    {
+      "skillId": "python.for",
+      "expectation": "Construire une répétition à nombre connu."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Il faut savoir additionner, utiliser for/range et comparer une réponse textuelle. Prédis points = 2 puis points = points + 3 : on obtient 5. Sinon, reprends l’addition. Enregistre tes essais et crée total.py. while et la conversion ne sont pas nécessaires au socle de ce module.",
+      "moduleLink": {
+        "moduleId": "python-calculs",
+        "text": "Revoir nombre et addition"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "exemple",
+      "title": "1 - Garder le total entre les tours",
+      "paragraphs": [
+        "score = 0 initialise la valeur avant la boucle, une seule fois. À chaque passage, score = score + 2 lit l’ancienne valeur, ajoute 2 et conserve le nouveau résultat.",
+        "Les valeurs après les passages sont 2, 4, 6, 8. Prédis le bilan. Le print après la boucle affiche le résultat final une seule fois.",
+        "Pour observer les valeurs, ajoute provisoirement print(score) après la mise à jour dans le bloc ; teste puis retire cet affichage. score = 2 remplacerait toujours la valeur par 2, sans accumuler."
+      ],
+      "code": "score = 0\nfor tour in range(4):\n    score = score + 2\nprint(\"Score :\", score)"
+    },
+    {
+      "type": "lesson",
+      "id": "compteur",
+      "title": "2 - Compter des événements",
+      "paragraphs": [
+        "Enregistre total.py puis crée compteur.py. Ici, une augmentation de 1 compte les passages. Dans le modèle précédent, une augmentation de 2 additionnait les gains.",
+        "Compteur et score sont ici deux usages de variables numériques, pas deux types différents de Python. L’initialisation reste avant la boucle ; le bilan vient après."
+      ],
+      "code": "passages = 0\nfor tour in range(3):\n    passages = passages + 1\nprint(\"Passages :\", passages)"
+    },
+    {
+      "type": "lesson",
+      "id": "branche",
+      "title": "3 - Une décision dans chaque tour",
+      "paragraphs": [
+        "Enregistre compteur.py puis crée decisions.py. Un if peut se trouver dans un for : à chaque tour, la question est posée puis sa réponse est comparée.",
+        "Les instructions du tour ont quatre espaces. L’instruction de la branche en a huit : elle appartient au if, lui-même dans le for. Fin n’a pas d’espace au début et vient après tous les tours. Ce n’est pas une boucle à l’intérieur d’une boucle.",
+        "Teste oui, non, oui. On lit deux Trouvé puis une seule Fin ; un tour sans oui a bien lieu mais ne produit pas Trouvé. La comparaison textuelle reste exacte."
+      ],
+      "code": "for tour in range(3):\n    reponse = input(\"Objet trouvé ? oui pour confirmer : \")\n    if reponse == \"oui\":\n        print(\"Trouvé\")\nprint(\"Fin\")"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Exercice guidé - réussites puis score",
+      "items": [
+        {
+          "id": "total-valeurs",
+          "text": "Dans total.py, prédis puis teste le total après quatre gains de 2. Remplace provisoirement score = score + 2 par score = 2, compare les résultats puis restaure l’accumulation.",
+          "hint": "Le total devient 8 avec l’accumulation, mais reste 2 avec l’affectation constante."
+        },
+        {
+          "id": "compter-reussites",
+          "text": "Enregistre decisions.py puis crée collecte.py avec Enregistrer sous. Ajoute une variable reussites initialisée à 0 avant for. Augmente-la de 1 seulement pour oui, puis affiche son bilan après les trois tours.",
+          "hint": "Place la mise à jour dans la branche à huit espaces. L’initialisation et le bilan ne sont pas dans le bloc."
+        },
+        {
+          "id": "tester-reussites",
+          "text": "Prédis puis teste non, non, non ; oui, oui, oui ; oui, non, oui. Explique pourquoi les trois tours ne donnent pas forcément trois réussites.",
+          "hint": "Les nombres de réussites sont 0, 3, 2. La comparaison décide si le compteur augmente."
+        },
+        {
+          "id": "ajouter-score",
+          "text": "Enregistre collecte.py puis crée collecte_score.py avec Enregistrer sous. Garde le compteur de réussites et ajoute un score initialisé à 0, augmenté de 2 seulement lors d’une réussite. Reteste la séquence mixte.",
+          "hint": "Deux variables suffisent : réussites et score. Pour oui, non, oui, attends 2 réussites et 4 points ; pas besoin d’un compteur de tous les tours."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "À toi - ton score",
+      "intro": "Enregistre collecte.py et collecte_score.py, puis crée mon_score.py. Choisis tes messages et ton mot accepté ; essaie sans recopier la solution complète.",
+      "items": [
+        {
+          "id": "score-personnel",
+          "text": "Prévois quatre tours avec une question personnelle annonçant un mot accepté. Compte les réponses qui correspondent et donne 3 points à chacune ; tout autre texte rapporte zéro. Affiche réussites et score après la boucle.",
+          "hint": "Initialise les deux valeurs avant for ; actualise-les dans la branche concernée. input donne du texte : aucune conversion nécessaire."
+        },
+        {
+          "id": "tests-score",
+          "text": "Prédis puis teste quatre refus, quatre accords et deux accords/deux refus. Note réussites et score attendus, puis explique les valeurs obtenues.",
+          "hint": "Les couples attendus sont 0 et 0, 4 et 12, 2 et 6. Ne compte pas seulement la dernière réponse."
+        },
+        {
+          "id": "modifier-gain",
+          "text": "Enregistre, passe le gain de 3 à 2 et choisis un nouveau test mixte. Prédis les deux bilans. Explique pourquoi l’initialisation n’est pas répétée à chaque tour.",
+          "hint": "Changer le gain modifie le score, pas le nombre de réussites. Réinitialiser dans la boucle ferait perdre le total précédent."
+        },
+        {
+          "id": "retrouver-score",
+          "text": "Enregistre, ferme puis rouvre mon_score.py. Relance dans un état propre et explique les lignes à zéro, quatre et huit espaces.",
+          "hint": "Le fichier doit définir lui-même ses variables. Arrêter / redémarrer avant la relance permet de vérifier qu’un ancien essai ne cachait pas un oubli."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "bonus",
+      "title": "Bonus - un score avec continuation",
+      "items": [
+        {
+          "id": "score-while",
+          "text": "Dans score_while.py, réutilise la continuation textuelle du module Répéter tant que. Compte les tours acceptés et ajoute 2 points par accord. Prédis puis teste un arrêt immédiat et deux accords suivis d’un arrêt.",
+          "hint": "Reprends python-while si nécessaire. Initialise les valeurs avant la boucle, actualise-les dans le bloc et redemande la réponse. Attends 0 tour/0 point puis 2 tours/4 points."
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer l’ancienne valeur à droite de = et le résultat conservé.",
+    "Initialiser avant la boucle, actualiser dans la branche concernée et afficher après.",
+    "Distinguer passages, réussites et score sur une séquence mixte.",
+    "Créer un score personnel, modifier le gain et retester dans un fichier autonome."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "python-compteurs",
+      "blockId": "guide",
+      "label": "Revoir accumulation et réussites"
+    },
+    {
+      "moduleId": "python-calculs",
+      "blockId": "operations",
+      "label": "Revoir addition et variable numérique"
+    },
+    {
+      "moduleId": "python-for",
+      "blockId": "guide",
+      "label": "Revoir les tours"
+    },
+    {
+      "moduleId": "python-conditions",
+      "blockId": "guide",
+      "label": "Revoir une branche"
+    }
+  ],
+  "bonusActivities": [
+    {
+      "moduleId": "python-compteurs",
+      "blockId": "bonus",
+      "label": "Compter avec une continuation",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.while",
+          "expectation": "Actualiser une réponse et vérifier l’arrêt ; sinon reprendre Répéter tant que."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    {
+      "moduleId": "python-hasard",
+      "label": "Tirer un nombre au hasard",
+      "prerequisiteSkills": [
+        {
+          "skillId": "python.variables",
+          "expectation": "Conserver une valeur et expliquer ses usages ; sinon reprendre les variables."
+        }
+      ]
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Enseigner l’accumulation et l’emplacement des mises à jour avec deux valeurs finales seulement.",
+    "entryDiagnosis": [
+      "Faire prévoir 2 puis une addition de 3 réaffectée au même nom.",
+      "Faire montrer un bloc for et une comparaison textuelle ; while n’est pas un prérequis du socle."
+    ],
+    "preparation": [
+      "Créer total.py, compteur.py, decisions.py puis collecte.py et collecte_score.py ; mon_score.py est personnel.",
+      "Commencer par un seul compteur de réussites ; ajouter ensuite le score. Pas de conversion, hasard ou liste."
+    ],
+    "why": "Une valeur conservée entre les tours permet un bilan de plusieurs événements.",
+    "discoverySpeech": [
+      "« Quelle valeur reste après chaque passage ? »",
+      "« Ce tour a-t-il eu lieu sans réussite ? »",
+      "« Où faut-il ajouter les points et où lire le bilan ? »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "python-compteurs",
+        "blockId": "exemple"
+      },
+      "comments": [
+        "La valeur est initialisée une fois.",
+        "Suivre 2, 4, 6, 8 puis comparer avec une affectation constante.",
+        "Enseigner les deux niveaux d’indentation dans decisions.py avant collecte.py."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi ne pas mettre score = 0 dans la boucle ?",
+        "answer": "Chaque tour effacerait le score des tours précédents."
+      },
+      {
+        "question": "Pourquoi un refus ne rapporte-t-il pas de point ?",
+        "answer": "La mise à jour appartient à la branche réservée au mot accepté."
+      },
+      {
+        "question": "Après deux réussites à 3 points, que valent le compteur et le score ?",
+        "answer": "On conserve 2 réussites et un total de 6 points : deux usages numériques distincts."
+      },
+      {
+        "question": "Pourquoi changer le gain ne change-t-il pas les réussites ?",
+        "answer": "Le compteur augmente de 1 par accord ; seul le score utilise le gain."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "python-compteurs",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "python-compteurs",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Faire compter les réussites avant d’ajouter le score.",
+      "Suivre oralement une réussite, un refus, une réussite.",
+      "Réserver la variante while au bonus après diagnostic de son arrêt."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le total ne conserve que le dernier tour.",
+        "helps": [
+          "Faire annoncer le bilan attendu sur une séquence mixte.",
+          "Repérer l’initialisation et les affectations dans le bloc.",
+          "Comparer réinitialisation, affectation constante et ancienne valeur plus gain.",
+          "Déplacer l’initialisation ou corriger l’accumulation puis retester plusieurs séquences."
+        ]
+      },
+      {
+        "symptom": "Un refus rapporte des points ou le bilan se répète.",
+        "helps": [
+          "Comparer le test réel au mot annoncé.",
+          "Repérer les niveaux zéro, quatre et huit espaces.",
+          "Vérifier que les mises à jour sont dans if et le bilan hors de for.",
+          "Corriger un alignement puis tester tous les refus, tous les accords et une séquence mixte."
+        ]
+      }
+    ],
+    "notes": "Ne pas déduire l’acquisition de while ou de conversion de ce score textuel. Distinguer aides, explication et transfert ; aucun statut automatique.",
+    "quickConductor": [
+      "Diagnostiquer addition et bloc.",
+      "Lire l’accumulation et le compteur.",
+      "Enseigner if dans for.",
+      "Compter les réussites puis ajouter le score.",
+      "Construire, tester et modifier le score personnel."
+    ],
+    "references": [
+      {
+        "title": "Python - affectation",
+        "url": "https://docs.python.org/fr/3/reference/simple_stmts.html#assignment-statements"
+      },
+      {
+        "title": "Python - contrôle de flux",
+        "url": "https://docs.python.org/fr/3/tutorial/controlflow.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "domainId": "web",
+  "title": "Listes HTML",
+  "type": "lesson",
+  "objective": "Créer et modifier une liste HTML.",
+  "skillIds": [
+    "html.lists"
+  ],
+  "blocks": [
+    {
+      "id": "preparer",
+      "type": "callout",
+      "title": "Avant de commencer",
+      "text": "Repère la balise ouvrante, le texte et la fermeture ; retrouve ces repères dans Titres et paragraphes au besoin. Ouvre la zone HTML et l’aperçu de CodePen. Pour garder ton travail, copie ton code dans un fichier texte avant de fermer l’onglet ou de commencer un autre essai.",
+      "moduleLink": {
+        "moduleId": "html-titres-paragraphes",
+        "text": "Titres et paragraphes"
+      }
+    },
+    {
+      "id": "cours",
+      "type": "lesson",
+      "title": "Comprendre une liste HTML",
+      "paragraphs": [
+        "Une liste non ordonnée utilise la balise <ul>. Elle permet de regrouper des éléments sans les numéroter.",
+        "Chaque élément de la liste utilise une balise <li>.",
+        "Les éléments <li> sont placés à l’intérieur du <ul>, entre sa balise ouvrante et sa balise fermante.",
+        "Les retours à la ligne et l’indentation aident à lire le code, mais ne créent pas les éléments. Vérifie chaque li dans ul, pas seulement les puces visibles dans l’aperçu."
+      ],
+      "code": "<ul>\n  <li>Jeux</li>\n  <li>Sport</li>\n  <li>Musique</li>\n</ul>",
+      "demonstration": {
+        "type": "web-comparison",
+        "title": "Une liste se construit avec des éléments",
+        "intro": "Compare une ligne de texte et une vraie liste de trois éléments.",
+        "variants": [
+          {
+            "label": "Du texte dans un paragraphe",
+            "html": "<p>Jeux, sport, musique.</p>",
+            "code": "<p>Jeux, sport, musique.</p>",
+            "feedback": "Des mots séparés par des virgules ne créent pas une liste HTML.",
+            "css": ""
+          },
+          {
+            "label": "Trois éléments dans ul",
+            "html": "<ul><li>Jeux</li><li>Sport</li><li>Musique</li></ul>",
+            "code": "<ul>\n  <li>Jeux</li>\n  <li>Sport</li>\n  <li>Musique</li>\n</ul>",
+            "feedback": "ul regroupe la liste. Chaque li crée un élément ; l’indentation rend le code plus facile à lire.",
+            "css": ""
+          }
+        ],
+        "note": "Compare les versions, puis fais tes propres essais dans ton projet."
+      }
+    },
+    {
+      "type": "tasks",
+      "title": "Exercice guidé : Après les titres et paragraphes",
+      "items": [
+        {
+          "id": "liste-trois",
+          "text": "Crée une liste avec trois éléments.",
+          "hint": "La liste utilise <ul>. Chaque élément utilise <li>.",
+          "syntax": "<ul>\n  <li>Jeux</li>\n  <li>Sport</li>\n  <li>Musique</li>\n</ul>"
+        },
+        {
+          "id": "modifier-li",
+          "text": "Remplace les trois éléments par trois choses que tu aimes."
+        },
+        {
+          "id": "quatrieme-li",
+          "text": "Ajoute seul un quatrième li avant </ul>. Vérifie que l’aperçu contient quatre éléments et que les trois premiers sont conservés.",
+          "hint": "Regarde comment sont écrits les trois autres éléments."
+        }
+      ],
+      "id": "guide",
+      "intro": "Garde tes titres et paragraphes. Ajoute la liste après leur dernière balise fermante, sans effacer le travail précédent."
+    },
+    {
+      "id": "defi",
+      "type": "tasks",
+      "title": "Petit défi autonome",
+      "items": [
+        {
+          "id": "nouvelle-liste",
+          "text": "Crée une nouvelle liste sur un autre sujet avec au moins quatre éléments, sans regarder l’exemple sauf si tu bloques."
+        },
+        {
+          "id": "expliquer-liste",
+          "text": "Montre où chaque liste commence et finit, puis compte ses li dans le code et ses éléments dans l’aperçu. Explique la différence entre ul et li.",
+          "hint": "Chaque ul possède sa fermeture ; chaque élément utilise son propre li à l’intérieur."
+        }
+      ],
+      "intro": "Conserve la première liste. Ajoute une seconde liste, sur un autre sujet, après sa fermeture."
+    }
+  ],
+  "theme": "fondations",
+  "prerequisitesInContent": true,
+  "prerequisiteSkills": [
+    {
+      "skillId": "html.text",
+      "expectation": "Repérer un texte entre une balise ouvrante et sa fermeture ; sinon reprendre Titres et paragraphes."
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer le rôle de ul et de li : la liste regroupe des éléments, chacun écrit dans son propre li.",
+    "Placer les éléments li à l’intérieur de ul et vérifier les ouvertures et fermetures dans le code.",
+    "Modifier un élément et en ajouter un autre sans remplacer ni perdre les éléments précédents.",
+    "Créer une seconde liste sur un autre sujet sans recopier tout le modèle, puis expliquer sa structure et les aides utilisées."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "html-listes",
+      "blockId": "guide",
+      "label": "Reprendre l’exercice guidé"
+    }
+  ],
+  "bonusActivities": [],
+  "nextSteps": [],
+  "teacherGuide": {
+    "objective": "Créer et modifier une liste HTML.",
+    "entryDiagnosis": [
+      "Faire repérer ouverture, texte et fermeture sur un paragraphe connu ; proposer une reprise si ces repères manquent.",
+      "Vérifier que le travail précédent est conservé avant d’ajouter ou de modifier des éléments."
+    ],
+    "preparation": [
+      "Vérifier l’accès à CodePen et la présence de la zone HTML et de l’aperçu ; ne pas imposer de compte.",
+      "Prévoir la copie du HTML dans un fichier texte accessible pour préserver les essais.",
+      "Tester l’exemple et distinguer les contraintes du réseau ou de l’environnement de la compréhension du HTML."
+    ],
+    "why": "Comprendre le regroupement d’éléments avant de réutiliser une liste dans une mini-page ; la hiérarchie des titres n’est pas un prérequis caché.",
+    "discoverySpeech": [
+      "« ul délimite la liste ; chaque li délimite un de ses éléments. »",
+      "« On ajoute le nouvel élément à l’intérieur de la liste, sans effacer les anciens. »"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "html-listes",
+        "blockId": "cours"
+      },
+      "comments": [
+        "Faire suivre les bornes ul et /ul puis repérer les trois li.",
+        "L’indentation aide à lire la structure ; elle ne crée pas les éléments.",
+        "Ne pas ajouter de listes imbriquées ou ordonnées au socle de cette séance."
+      ]
+    },
+    "questions": [
+      {
+        "question": "À quoi sert ul ?",
+        "answer": "À regrouper les éléments d’une liste dont l’ordre n’est pas essentiel au sens."
+      },
+      {
+        "question": "À quoi sert li ?",
+        "answer": "À délimiter un élément de la liste."
+      },
+      {
+        "question": "Où ajouter le quatrième élément ?",
+        "answer": "Dans un nouveau li placé avant la fermeture /ul."
+      },
+      {
+        "question": "Quatre lignes de texte font-elles quatre éléments ?",
+        "answer": "Non : les quatre éléments doivent être délimités par quatre li."
+      },
+      {
+        "question": "Que change l’ajout d’un li ?",
+        "answer": "Il ajoute un élément à la liste ; les autres éléments restent présents."
+      },
+      {
+        "question": "Des puces visibles prouvent-elles toute la structure ?",
+        "answer": "Non : on vérifie aussi que les li sont dans ul et que le code est correctement délimité."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "html-listes",
+      "blockId": "guide"
+    },
+    "independentActivity": {
+      "moduleId": "html-listes",
+      "blockId": "defi"
+    },
+    "differentiation": [
+      "Lire une consigne à la fois et accompagner les gestes de clavier sans faire le raisonnement à la place de l’élève.",
+      "Demander une modification puis un exemple sur un autre sujet ; proposer l’indice seulement après un premier essai.",
+      "Noter réussite autonome, avec modèle ou avec aide. Un résultat visible ou une case cochée ne suffit pas à conclure à la maîtrise."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le nouvel élément est hors de la liste.",
+        "helps": [
+          "Faire montrer où la liste commence et finit.",
+          "Repérer /ul et le nouveau li.",
+          "Comparer l’indentation et les positions au modèle.",
+          "Déplacer un seul li puis faire ajouter un autre élément seul."
+        ]
+      },
+      {
+        "symptom": "Plusieurs lignes sont réunies dans un seul élément.",
+        "helps": [
+          "Demander de compter les éléments dans l’aperçu.",
+          "Compter les li dans le code.",
+          "Comparer une ligne de texte et un élément li.",
+          "Faire écrire deux li distincts puis expliquer le changement."
+        ]
+      },
+      {
+        "symptom": "L’élève ne peut créer qu’une copie du modèle.",
+        "helps": [
+          "Faire nommer le rôle de ul et de li.",
+          "Proposer un nouveau sujet et un seul élément pour démarrer.",
+          "Donner seulement la structure d’un li si nécessaire.",
+          "Retirer le modèle et demander un autre élément ; noter l’aide réellement utilisée."
+        ]
+      }
+    ],
+    "notes": "Le suivi reste manuel. Distinguer reproduction, compréhension, transfert et aides réellement utilisées. Aucun délai, score ou validation automatique n’est ajouté.",
+    "quickConductor": [
+      "Repérer la zone HTML et préserver le travail précédent.",
+      "Lire et expliquer les parties de l’exemple.",
+      "Modifier une seule partie à la fois et comparer code et aperçu.",
+      "Créer un autre exemple sans recopier le modèle.",
+      "Faire expliquer les essentiels et décider de la reprise selon les observations, sans validation automatique."
+    ],
+    "references": [
+      {
+        "title": "WHATWG : Liste non ordonnée et éléments de liste",
+        "url": "https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element"
+      }
+    ]
+  }
+}

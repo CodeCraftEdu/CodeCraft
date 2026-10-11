@@ -1,0 +1,907 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "orientation": {
+      "type": "object",
+      "properties": {
+        "moduleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blockId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prerequisiteSkills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "skillId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expectation": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "skillId",
+              "expectation"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "moduleId",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "resource": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "path",
+        "alt"
+      ],
+      "additionalProperties": false
+    },
+    "teacherGuide": {
+      "type": "object",
+      "properties": {
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entryDiagnosis": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preparation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "why": {
+          "type": "string"
+        },
+        "discoverySpeech": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "type": "object"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "accompaniedActivity": {
+          "type": "object"
+        },
+        "independentActivity": {
+          "type": "object"
+        },
+        "differentiation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commonErrors": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "quickConductor": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "objective"
+      ],
+      "additionalProperties": false
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hint": {
+          "type": "string"
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "code": {
+          "type": "boolean"
+        },
+        "syntax": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "variant": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "html": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "feedback": {
+          "type": "string"
+        },
+        "css": {
+          "type": "string"
+        },
+        "tabTitle": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "html",
+        "code",
+        "feedback"
+      ],
+      "additionalProperties": false
+    },
+    "option": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "feedback": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "value",
+        "feedback"
+      ],
+      "additionalProperties": false
+    },
+    "demonstration": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "web-comparison",
+            "flex-display",
+            "flex-property"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string"
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/variant"
+          },
+          "minItems": 1
+        },
+        "note": {
+          "type": "string"
+        },
+        "codeLabel": {
+          "type": "string"
+        },
+        "controlLabel": {
+          "type": "string"
+        },
+        "previewLabel": {
+          "type": "string"
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/option"
+          },
+          "minItems": 1
+        },
+        "property": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "title",
+        "intro"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "web-comparison"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "variants"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "flex-display",
+                  "flex-property"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "cards",
+              "options"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "flex-property"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "property"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "flex-display"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "controlLabel",
+              "previewLabel"
+            ]
+          }
+        }
+      ]
+    },
+    "block": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "callout",
+            "lesson",
+            "tasks",
+            "details",
+            "checklist",
+            "reference",
+            "resource"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string"
+        },
+        "paragraphs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "illustration": {
+          "type": "object"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        },
+        "intro": {
+          "type": "string"
+        },
+        "downloads": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "filename": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "label",
+              "path",
+              "filename"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "valuesTitle": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "codeDiagram": {
+          "type": "object"
+        },
+        "code": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "actionSteps": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "moduleLink": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "moduleId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "text",
+            "moduleId"
+          ],
+          "additionalProperties": false
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        },
+        "shortSteps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "visualScript": {
+          "type": "object"
+        },
+        "coordinateDiagram": {
+          "type": "object"
+        },
+        "demonstration": {
+          "$ref": "#/$defs/demonstration"
+        },
+        "moduleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blockId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tone": {
+          "type": "string"
+        },
+        "presentation": {
+          "type": "string"
+        },
+        "resourceId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "lesson",
+                  "tasks",
+                  "checklist",
+                  "callout",
+                  "details"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "id",
+              "title"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "tasks",
+                  "checklist"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "items"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "tasks"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/item"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "details"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "blocks"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "callout"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "text"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "reference"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "moduleId",
+              "blockId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "resource"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "resourceId"
+            ]
+          }
+        }
+      ]
+    },
+    "module": {
+      "type": "object",
+      "properties": {
+        "domainId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "theme": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skillIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "prerequisiteSkills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "skillId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expectation": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "skillId",
+              "expectation"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "prerequisitesInContent": {
+          "type": "boolean"
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        },
+        "masteryCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "teacherGuide": {
+          "$ref": "#/$defs/teacherGuide"
+        },
+        "finalPathwayAction": {
+          "type": "string"
+        },
+        "consolidation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/orientation"
+          }
+        },
+        "bonusActivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/orientation"
+          }
+        },
+        "nextSteps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/orientation"
+          }
+        },
+        "showTool": {
+          "type": "boolean"
+        },
+        "presentation": {
+          "type": "string"
+        },
+        "scratchProjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scratchProjectContinuation": {
+          "type": "boolean"
+        },
+        "bonus": {
+          "type": "string"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resource"
+          }
+        },
+        "stuck": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "title",
+            "steps"
+          ],
+          "additionalProperties": false
+        },
+        "tool": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "label",
+            "url"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "domainId",
+        "title",
+        "type",
+        "objective",
+        "skillIds",
+        "blocks"
+      ],
+      "additionalProperties": false
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "moduleIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "upcoming": {
+          "type": "boolean"
+        },
+        "pause": {
+          "type": "string"
+        },
+        "endMessage": {
+          "type": "string"
+        },
+        "projectBlockId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "title",
+        "moduleIds"
+      ],
+      "additionalProperties": false
+    },
+    "pathway": {
+      "type": "object",
+      "properties": {
+        "domainId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "theme": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "moduleIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/group"
+          }
+        },
+        "nextStageLabel": {
+          "type": "string"
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/group"
+          }
+        }
+      },
+      "required": [
+        "domainId",
+        "title",
+        "theme",
+        "objective",
+        "moduleIds"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
