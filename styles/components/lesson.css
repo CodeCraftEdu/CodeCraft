@@ -84,7 +84,7 @@
 
 code,
 .code-block {
-  font-family: Consolas, "Courier New", monospace;
+  font-family: Consolas, 'Courier New', monospace;
 }
 
 .hint {
@@ -125,17 +125,19 @@ code,
   border-radius: 0;
   background: transparent;
 }
-.hint > .syntax + .syntax { border-top: 1px solid var(--line); }
+.hint > .syntax + .syntax {
+  border-top: 1px solid var(--line);
+}
 .hint > .syntax > summary {
   min-height: 36px;
   padding: 6px 0;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 .hint > .syntax > p {
   margin: 0;
   padding: 0 0 10px 14px;
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
@@ -213,7 +215,7 @@ code,
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px 28px;
-  font-family: Consolas, "Courier New", monospace;
+  font-family: Consolas, 'Courier New', monospace;
 }
 
 .support-grid {
@@ -231,7 +233,7 @@ code,
 }
 
 .support-card .section-title::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 13px;
   height: 13px;

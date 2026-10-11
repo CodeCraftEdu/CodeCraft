@@ -19,16 +19,35 @@ if (data && main) {
     node.href = href;
     return node;
   };
-  const blocks = createBlockRenderer({ data, pedagogy, checks: new Set(), ...text, ...code, link, ...routes, demonstrations });
-  const { navigate } = createRouter({ data, pedagogy, main, demoCleanups, ...text, link, ...blocks, routes });
+  const blocks = createBlockRenderer({
+    data,
+    pedagogy,
+    checks: new Set(),
+    ...text,
+    ...code,
+    link,
+    ...routes,
+    demonstrations,
+  });
+  const { navigate } = createRouter({
+    data,
+    pedagogy,
+    main,
+    demoCleanups,
+    ...text,
+    link,
+    ...blocks,
+    routes,
+  });
   window.CodeCraftInlineText = text.appendInlineText;
   window.CodeCraftHighlightCode = code.highlightCode;
   window.CodeCraftCreateCode = code.createCode;
-  document.querySelector('.skip-link').addEventListener('click', event => {
+  document.querySelector('.skip-link').addEventListener('click', (event) => {
     event.preventDefault();
     main.focus();
   });
-  if (location.hash === '#main-content') history.replaceState(null, '', location.pathname + location.search);
+  if (location.hash === '#main-content')
+    history.replaceState(null, '', location.pathname + location.search);
   window.addEventListener('hashchange', navigate);
   navigate();
 }

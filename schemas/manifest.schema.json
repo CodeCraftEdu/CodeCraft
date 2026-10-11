@@ -62,10 +62,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "id",
-          "file"
-        ],
+        "required": ["id", "file"],
         "additionalProperties": false
       }
     },
@@ -83,19 +80,11 @@
             "minLength": 1
           }
         },
-        "required": [
-          "id",
-          "file"
-        ],
+        "required": ["id", "file"],
         "additionalProperties": false
       }
     }
   },
-  "required": [
-    "schemaVersion",
-    "catalog",
-    "modules",
-    "pathways"
-  ],
+  "required": ["schemaVersion", "catalog", "modules", "pathways"],
   "additionalProperties": false
 }

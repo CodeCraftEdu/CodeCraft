@@ -8,11 +8,7 @@
     "label": "Ouvrir Scratch",
     "url": "https://scratch.mit.edu/projects/editor/"
   },
-  "skillIds": [
-    "scratch.custom-blocks",
-    "scratch.sequence",
-    "scratch.coordinates"
-  ],
+  "skillIds": ["scratch.custom-blocks", "scratch.sequence", "scratch.coordinates"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.sequence",
@@ -72,9 +68,7 @@
               {
                 "category": "custom",
                 "label": "Mes blocs",
-                "parts": [
-                  "définir retour au départ"
-                ],
+                "parts": ["définir retour au départ"],
                 "explanation": "Donner un nom aux actions, sans les lancer au drapeau."
               },
               {
@@ -112,9 +106,7 @@
               {
                 "category": "custom",
                 "label": "Mes blocs",
-                "parts": [
-                  "retour au départ"
-                ],
+                "parts": ["retour au départ"],
                 "explanation": "Premier appel : placer au départ."
               },
               {
@@ -144,9 +136,7 @@
               {
                 "category": "custom",
                 "label": "Mes blocs",
-                "parts": [
-                  "retour au départ"
-                ],
+                "parts": ["retour au départ"],
                 "explanation": "Second appel, sans recopier aller à x/y."
               }
             ]
@@ -270,9 +260,7 @@
                   {
                     "category": "custom",
                     "label": "Mes blocs",
-                    "parts": [
-                      "retour au départ"
-                    ],
+                    "parts": ["retour au départ"],
                     "explanation": "Partir de -100 avant les deux déplacements."
                   },
                   {

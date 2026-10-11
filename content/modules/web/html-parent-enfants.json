@@ -3,9 +3,7 @@
   "title": "Parent et enfants",
   "type": "lesson",
   "objective": "Identifier le parent direct, les descendants et les éléments frères pour organiser une collection de cartes.",
-  "skillIds": [
-    "html.structure"
-  ],
+  "skillIds": ["html.structure"],
   "blocks": [
     {
       "type": "lesson",

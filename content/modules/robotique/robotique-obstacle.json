@@ -8,10 +8,7 @@
     "url": "https://makecode.microbit.org/"
   },
   "objective": "Construire une décision répétée Avancer/Arrêter, puis nommer sa limite avec la variable seuil.",
-  "skillIds": [
-    "robotique.condition",
-    "robotique.reglage"
-  ],
+  "skillIds": ["robotique.condition", "robotique.reglage"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.distance",

@@ -10,11 +10,7 @@
   },
   "scratchProjectId": "chat-cible",
   "scratchProjectContinuation": true,
-  "skillIds": [
-    "scratch.game-rules",
-    "scratch.conditions",
-    "scratch.variables"
-  ],
+  "skillIds": ["scratch.game-rules", "scratch.conditions", "scratch.variables"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.variables",

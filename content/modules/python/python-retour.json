@@ -9,9 +9,7 @@
     "url": "https://thonny.org/"
   },
   "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
-  "skillIds": [
-    "python.return"
-  ],
+  "skillIds": ["python.return"],
   "prerequisiteSkills": [
     {
       "skillId": "python.functions",

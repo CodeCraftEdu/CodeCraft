@@ -30,18 +30,12 @@
                 "minLength": 1
               }
             },
-            "required": [
-              "skillId",
-              "expectation"
-            ],
+            "required": ["skillId", "expectation"],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "moduleId",
-        "label"
-      ],
+      "required": ["moduleId", "label"],
       "additionalProperties": false
     },
     "resource": {
@@ -63,12 +57,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "id",
-        "title",
-        "path",
-        "alt"
-      ],
+      "required": ["id", "title", "path", "alt"],
       "additionalProperties": false
     },
     "teacherGuide": {
@@ -100,19 +89,19 @@
           }
         },
         "example": {
-          "type": "object"
+          "$ref": "#/$defs/guideExample"
         },
         "questions": {
           "type": "array",
           "items": {
-            "type": "object"
+            "$ref": "#/$defs/guideQuestion"
           }
         },
         "accompaniedActivity": {
-          "type": "object"
+          "$ref": "#/$defs/target"
         },
         "independentActivity": {
-          "type": "object"
+          "$ref": "#/$defs/target"
         },
         "differentiation": {
           "type": "array",
@@ -123,7 +112,7 @@
         "commonErrors": {
           "type": "array",
           "items": {
-            "type": "object"
+            "$ref": "#/$defs/guideError"
           }
         },
         "notes": {
@@ -148,13 +137,11 @@
         "references": {
           "type": "array",
           "items": {
-            "type": "object"
+            "$ref": "#/$defs/guideReference"
           }
         }
       },
-      "required": [
-        "objective"
-      ],
+      "required": ["objective"],
       "additionalProperties": false
     },
     "item": {
@@ -184,9 +171,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "text"
-      ],
+      "required": ["text"],
       "additionalProperties": false
     },
     "variant": {
@@ -212,12 +197,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "label",
-        "html",
-        "code",
-        "feedback"
-      ],
+      "required": ["label", "html", "code", "feedback"],
       "additionalProperties": false
     },
     "option": {
@@ -235,21 +215,14 @@
           "minLength": 1
         }
       },
-      "required": [
-        "value",
-        "feedback"
-      ],
+      "required": ["value", "feedback"],
       "additionalProperties": false
     },
     "demonstration": {
       "type": "object",
       "properties": {
         "type": {
-          "enum": [
-            "web-comparison",
-            "flex-display",
-            "flex-property"
-          ]
+          "enum": ["web-comparison", "flex-display", "flex-property"]
         },
         "title": {
           "type": "string",
@@ -294,11 +267,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "type",
-        "title",
-        "intro"
-      ],
+      "required": ["type", "title", "intro"],
       "additionalProperties": false,
       "allOf": [
         {
@@ -310,27 +279,19 @@
             }
           },
           "then": {
-            "required": [
-              "variants"
-            ]
+            "required": ["variants"]
           }
         },
         {
           "if": {
             "properties": {
               "type": {
-                "enum": [
-                  "flex-display",
-                  "flex-property"
-                ]
+                "enum": ["flex-display", "flex-property"]
               }
             }
           },
           "then": {
-            "required": [
-              "cards",
-              "options"
-            ]
+            "required": ["cards", "options"]
           }
         },
         {
@@ -342,9 +303,7 @@
             }
           },
           "then": {
-            "required": [
-              "property"
-            ]
+            "required": ["property"]
           }
         },
         {
@@ -356,10 +315,7 @@
             }
           },
           "then": {
-            "required": [
-              "controlLabel",
-              "previewLabel"
-            ]
+            "required": ["controlLabel", "previewLabel"]
           }
         }
       ]
@@ -368,15 +324,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "enum": [
-            "callout",
-            "lesson",
-            "tasks",
-            "details",
-            "checklist",
-            "reference",
-            "resource"
-          ]
+          "enum": ["callout", "lesson", "tasks", "details", "checklist", "reference", "resource"]
         },
         "id": {
           "type": "string",
@@ -396,7 +344,7 @@
           }
         },
         "illustration": {
-          "type": "object"
+          "$ref": "#/$defs/illustration"
         },
         "items": {
           "type": "array",
@@ -425,11 +373,7 @@
                 "minLength": 1
               }
             },
-            "required": [
-              "label",
-              "path",
-              "filename"
-            ],
+            "required": ["label", "path", "filename"],
             "additionalProperties": false
           }
         },
@@ -443,7 +387,7 @@
           }
         },
         "codeDiagram": {
-          "type": "object"
+          "$ref": "#/$defs/codeDiagram"
         },
         "code": {
           "type": "string"
@@ -454,7 +398,7 @@
         "actionSteps": {
           "type": "array",
           "items": {
-            "type": "object"
+            "$ref": "#/$defs/actionStep"
           }
         },
         "moduleLink": {
@@ -469,10 +413,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "text",
-            "moduleId"
-          ],
+          "required": ["text", "moduleId"],
           "additionalProperties": false
         },
         "blocks": {
@@ -488,10 +429,10 @@
           }
         },
         "visualScript": {
-          "type": "object"
+          "$ref": "#/$defs/visualScript"
         },
         "coordinateDiagram": {
-          "type": "object"
+          "$ref": "#/$defs/coordinateDiagram"
         },
         "demonstration": {
           "$ref": "#/$defs/demonstration"
@@ -515,47 +456,31 @@
           "minLength": 1
         }
       },
-      "required": [
-        "type"
-      ],
+      "required": ["type"],
       "additionalProperties": false,
       "allOf": [
         {
           "if": {
             "properties": {
               "type": {
-                "enum": [
-                  "lesson",
-                  "tasks",
-                  "checklist",
-                  "callout",
-                  "details"
-                ]
+                "enum": ["lesson", "tasks", "checklist", "callout", "details"]
               }
             }
           },
           "then": {
-            "required": [
-              "id",
-              "title"
-            ]
+            "required": ["id", "title"]
           }
         },
         {
           "if": {
             "properties": {
               "type": {
-                "enum": [
-                  "tasks",
-                  "checklist"
-                ]
+                "enum": ["tasks", "checklist"]
               }
             }
           },
           "then": {
-            "required": [
-              "items"
-            ]
+            "required": ["items"]
           }
         },
         {
@@ -577,9 +502,7 @@
                     },
                     {
                       "type": "object",
-                      "required": [
-                        "id"
-                      ]
+                      "required": ["id"]
                     }
                   ]
                 }
@@ -596,9 +519,7 @@
             }
           },
           "then": {
-            "required": [
-              "blocks"
-            ]
+            "required": ["blocks"]
           }
         },
         {
@@ -610,9 +531,7 @@
             }
           },
           "then": {
-            "required": [
-              "text"
-            ]
+            "required": ["text"]
           }
         },
         {
@@ -624,10 +543,7 @@
             }
           },
           "then": {
-            "required": [
-              "moduleId",
-              "blockId"
-            ]
+            "required": ["moduleId", "blockId"]
           }
         },
         {
@@ -639,9 +555,7 @@
             }
           },
           "then": {
-            "required": [
-              "resourceId"
-            ]
+            "required": ["resourceId"]
           }
         }
       ]
@@ -691,10 +605,7 @@
                 "minLength": 1
               }
             },
-            "required": [
-              "skillId",
-              "expectation"
-            ],
+            "required": ["skillId", "expectation"],
             "additionalProperties": false
           }
         },
@@ -773,10 +684,7 @@
               }
             }
           },
-          "required": [
-            "title",
-            "steps"
-          ],
+          "required": ["title", "steps"],
           "additionalProperties": false
         },
         "tool": {
@@ -791,21 +699,11 @@
               "minLength": 1
             }
           },
-          "required": [
-            "label",
-            "url"
-          ],
+          "required": ["label", "url"],
           "additionalProperties": false
         }
       },
-      "required": [
-        "domainId",
-        "title",
-        "type",
-        "objective",
-        "skillIds",
-        "blocks"
-      ],
+      "required": ["domainId", "title", "type", "objective", "skillIds", "blocks"],
       "additionalProperties": false
     },
     "group": {
@@ -844,10 +742,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "title",
-        "moduleIds"
-      ],
+      "required": ["title", "moduleIds"],
       "additionalProperties": false
     },
     "pathway": {
@@ -894,14 +789,341 @@
           }
         }
       },
-      "required": [
-        "domainId",
-        "title",
-        "theme",
-        "objective",
-        "moduleIds"
-      ],
+      "required": ["domainId", "title", "theme", "objective", "moduleIds"],
       "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "moduleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blockId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itemId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["moduleId"],
+      "additionalProperties": false
+    },
+    "guideExample": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["target", "comments"],
+      "additionalProperties": false
+    },
+    "guideQuestion": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["question", "answer"],
+      "additionalProperties": false
+    },
+    "guideError": {
+      "type": "object",
+      "properties": {
+        "symptom": {
+          "type": "string",
+          "minLength": 1
+        },
+        "helps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["symptom", "helps"],
+      "additionalProperties": false
+    },
+    "guideReference": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["title", "url"],
+      "additionalProperties": false
+    },
+    "illustration": {
+      "type": "object",
+      "properties": {
+        "src": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alt": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      },
+      "required": ["src", "alt"],
+      "additionalProperties": false
+    },
+    "codePart": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "function",
+            "string",
+            "keyword",
+            "number",
+            "comment",
+            "operator",
+            "tag",
+            "attribute"
+          ]
+        }
+      },
+      "required": ["text"],
+      "additionalProperties": false
+    },
+    "codeDiagram": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "codeParts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/codePart"
+          }
+        },
+        "output": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": ["filename", "codeParts", "output"],
+      "additionalProperties": false
+    },
+    "actionStep": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "paragraphIndex": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "showCode": {
+          "type": "boolean"
+        },
+        "output": {
+          "type": "string"
+        }
+      },
+      "required": ["title", "paragraphIndex"],
+      "additionalProperties": false
+    },
+    "coordinateDiagram": {
+      "type": "object",
+      "properties": {
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        },
+        "center": {
+          "type": "string",
+          "minLength": 1
+        },
+        "up": {
+          "type": "string",
+          "minLength": 1
+        },
+        "down": {
+          "type": "string",
+          "minLength": 1
+        },
+        "left": {
+          "type": "string",
+          "minLength": 1
+        },
+        "right": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": ["caption", "center", "up", "down", "left", "right"],
+      "additionalProperties": false
+    },
+    "scratchPart": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "flag": {
+              "const": true
+            }
+          },
+          "required": ["flag"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": ["value"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "choice": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": ["choice"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "condition": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/scratchPart"
+              }
+            },
+            "operator": {
+              "type": "boolean"
+            }
+          },
+          "required": ["condition"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "scratchBlock": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "enum": ["events", "motion", "looks", "control", "sensing", "variables", "custom"]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scratchPart"
+          }
+        },
+        "explanation": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scratchBlock"
+          }
+        }
+      },
+      "required": ["category", "label", "parts"],
+      "additionalProperties": false
+    },
+    "scratchStack": {
+      "type": "object",
+      "properties": {
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scratchBlock"
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": ["caption", "blocks"],
+      "additionalProperties": false
+    },
+    "visualScript": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/scratchStack"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "caption": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stacks": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/scratchStack"
+              }
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": ["caption", "stacks"],
+          "additionalProperties": false
+        }
+      ]
     }
   }
 }

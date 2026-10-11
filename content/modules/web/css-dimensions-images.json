@@ -4,10 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Régler la largeur d’une carte et adapter son image sans la déformer ni la faire dépasser.",
-  "skillIds": [
-    "css.sizing",
-    "html.images"
-  ],
+  "skillIds": ["css.sizing", "html.images"],
   "prerequisiteSkills": [
     {
       "skillId": "html.structure",

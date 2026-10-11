@@ -28,22 +28,13 @@
       "id": "bases-html",
       "title": "Construire les bases en HTML",
       "description": "Créer des titres, des paragraphes, des listes et des liens, puis les réutiliser sans modèle.",
-      "moduleIds": [
-        "html-titres-paragraphes",
-        "html-listes",
-        "html-liens",
-        "html-revision"
-      ]
+      "moduleIds": ["html-titres-paragraphes", "html-listes", "html-liens", "html-revision"]
     },
     {
       "id": "page-personnalisee",
       "title": "Enrichir et personnaliser ta page",
       "description": "Ajouter des images et des couleurs, puis assembler ta mini-page.",
-      "moduleIds": [
-        "html-images",
-        "css-classes-couleurs",
-        "html-mini-page"
-      ]
+      "moduleIds": ["html-images", "css-classes-couleurs", "html-mini-page"]
     },
     {
       "id": "organisation-page",
@@ -72,10 +63,7 @@
       "id": "mini-site",
       "title": "Relier tes pages dans un mini-site",
       "description": "Créer plusieurs pages reliées et construire ton mini-site local avec une feuille CSS commune.",
-      "moduleIds": [
-        "html-multipage",
-        "web-mini-site"
-      ]
+      "moduleIds": ["html-multipage", "web-mini-site"]
     }
   ]
 }

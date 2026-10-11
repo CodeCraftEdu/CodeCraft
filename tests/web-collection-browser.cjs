@@ -31,11 +31,16 @@ addEventListener('load',()=>{try {
 }catch(error){document.querySelector('#result').textContent='COLLECTION_ERROR: '+error.message}});
 </script></html>`;
 
-
-withBrowser(async ({ call, evaluate, wait, origin, screenshot }) => {
-  await call('Page.navigate', { url: origin + 'fixture.html' });
-  await wait('!!document.getElementById("result")?.textContent');
-  assert.equal(await evaluate('document.getElementById("result").textContent'), 'COLLECTION_OK');
-  await screenshot('web-collection');
-  console.log('Collection checks passed: alignment, new card, wrapping, overflow and axes.');
-}, { fixtures: { 'fixture.html': fixture } }).catch(error => { console.error(error); process.exitCode = 1; });
+withBrowser(
+  async ({ call, evaluate, wait, origin, screenshot }) => {
+    await call('Page.navigate', { url: origin + 'fixture.html' });
+    await wait('!!document.getElementById("result")?.textContent');
+    assert.equal(await evaluate('document.getElementById("result").textContent'), 'COLLECTION_OK');
+    await screenshot('web-collection');
+    console.log('Collection checks passed: alignment, new card, wrapping, overflow and axes.');
+  },
+  { fixtures: { 'fixture.html': fixture } },
+).catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

@@ -3,13 +3,7 @@
   "title": "Mini-page HTML complète",
   "type": "challenge",
   "objective": "Réaliser une page complète sans indices.",
-  "skillIds": [
-    "html.headings",
-    "html.text",
-    "html.lists",
-    "html.links",
-    "html.images"
-  ],
+  "skillIds": ["html.headings", "html.text", "html.lists", "html.links", "html.images"],
   "blocks": [
     {
       "type": "lesson",

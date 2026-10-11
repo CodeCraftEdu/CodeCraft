@@ -8,9 +8,7 @@
     "label": "Ouvrir Scratch",
     "url": "https://scratch.mit.edu/projects/editor/"
   },
-  "skillIds": [
-    "scratch.loops"
-  ],
+  "skillIds": ["scratch.loops"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.workspace",
@@ -180,17 +178,13 @@
           {
             "category": "control",
             "label": "Contrôle",
-            "parts": [
-              "répéter indéfiniment"
-            ],
+            "parts": ["répéter indéfiniment"],
             "explanation": "Cette boucle reste active jusqu’à l’arrêt.",
             "children": [
               {
                 "category": "looks",
                 "label": "Apparence",
-                "parts": [
-                  "costume suivant"
-                ],
+                "parts": ["costume suivant"],
                 "explanation": "Passer à l’apparence suivante du chat."
               },
               {

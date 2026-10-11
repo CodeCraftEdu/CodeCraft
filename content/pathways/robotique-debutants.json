@@ -31,30 +31,21 @@
       "id": "piloter-robot",
       "title": "Piloter un robot",
       "description": "Découvre les boutons et l’écran de micro:bit, puis fais avancer, tourner et arrêter ton robot.",
-      "moduleIds": [
-        "robotique-microbit",
-        "robotique-trajet"
-      ],
+      "moduleIds": ["robotique-microbit", "robotique-trajet"],
       "pause": "Avant de continuer : peux-tu expliquer ce qui lance ton trajet, montrer l’arrêt et retrouver ton projet sauvegardé ?"
     },
     {
       "id": "decider-capteur",
       "title": "Décider avec un capteur",
       "description": "Lis la distance d’un obstacle et construis une règle pour que ton robot avance ou s’arrête.",
-      "moduleIds": [
-        "robotique-distance",
-        "robotique-obstacle"
-      ],
+      "moduleIds": ["robotique-distance", "robotique-obstacle"],
       "pause": "Avant de continuer : peux-tu distinguer la distance mesurée de la limite choisie et expliquer quand ton robot avance ou s’arrête ? Garde tes deux versions."
     },
     {
       "id": "realiser-mission",
       "title": "Réaliser sa mission",
       "description": "Choisis la mission de ton robot, essaie ton réglage dans plusieurs situations et présente tes résultats.",
-      "moduleIds": [
-        "robotique-mission",
-        "robotique-tests"
-      ],
+      "moduleIds": ["robotique-mission", "robotique-tests"],
       "pause": "Pour faire le bilan : présente ta mission, explique ton réglage et montre ce que tu as observé pendant les essais.",
       "endMessage": "Garde ton projet et ta fiche d’essais : tu pourras retrouver ton robot, expliquer ses réactions et montrer ta mission."
     }

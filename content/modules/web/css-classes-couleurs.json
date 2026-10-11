@@ -3,10 +3,7 @@
   "title": "Classes et couleurs CSS",
   "type": "lesson",
   "objective": "Relier une classe HTML à un sélecteur CSS pour changer la couleur du texte.",
-  "skillIds": [
-    "css.selectors",
-    "css.colors"
-  ],
+  "skillIds": ["css.selectors", "css.colors"],
   "theme": "debutants",
   "blocks": [
     {

@@ -3,10 +3,7 @@
   "title": "Images HTML",
   "type": "lesson",
   "objective": "Insérer une image, distinguer src et alt, remplacer l’image et commencer à diagnostiquer une image absente.",
-  "skillIds": [
-    "html.images",
-    "html.links"
-  ],
+  "skillIds": ["html.images", "html.links"],
   "blocks": [
     {
       "type": "lesson",

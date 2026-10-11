@@ -3,13 +3,7 @@
   "title": "Préparer un projet de cartes",
   "type": "practice",
   "objective": "Préparer et vérifier une base de trois cartes pour travailler ensuite leur structure et leur disposition.",
-  "skillIds": [
-    "html.structure",
-    "css.selectors",
-    "css.borders",
-    "css.spacing",
-    "css.hover"
-  ],
+  "skillIds": ["html.structure", "css.selectors", "css.borders", "css.spacing", "css.hover"],
   "blocks": [
     {
       "id": "preparer",

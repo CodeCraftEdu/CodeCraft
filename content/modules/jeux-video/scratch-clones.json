@@ -8,11 +8,7 @@
     "label": "Ouvrir Scratch",
     "url": "https://scratch.mit.edu/projects/editor/"
   },
-  "skillIds": [
-    "scratch.clones",
-    "scratch.loops",
-    "scratch.coordinates"
-  ],
+  "skillIds": ["scratch.clones", "scratch.loops", "scratch.coordinates"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.workspace",
@@ -76,9 +72,7 @@
               {
                 "category": "looks",
                 "label": "Apparence",
-                "parts": [
-                  "cacher"
-                ],
+                "parts": ["cacher"],
                 "explanation": "Le modèle travaille sans être affiché."
               },
               {
@@ -141,17 +135,13 @@
               {
                 "category": "control",
                 "label": "Contrôle",
-                "parts": [
-                  "quand je commence comme un clone"
-                ],
+                "parts": ["quand je commence comme un clone"],
                 "explanation": "Cette pile appartient aux copies."
               },
               {
                 "category": "looks",
                 "label": "Apparence",
-                "parts": [
-                  "montrer"
-                ],
+                "parts": ["montrer"],
                 "explanation": "La copie était cachée comme son modèle."
               },
               {
@@ -169,9 +159,7 @@
               {
                 "category": "control",
                 "label": "Contrôle",
-                "parts": [
-                  "supprimer ce clone"
-                ],
+                "parts": ["supprimer ce clone"],
                 "explanation": "Retirer cette copie, pas le modèle."
               }
             ]

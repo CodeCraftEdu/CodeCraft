@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Choisir des zones HTML selon le rôle de leur contenu et les imbriquer correctement.",
-  "skillIds": [
-    "html.landmarks"
-  ],
+  "skillIds": ["html.landmarks"],
   "prerequisiteSkills": [
     {
       "skillId": "html.headings",

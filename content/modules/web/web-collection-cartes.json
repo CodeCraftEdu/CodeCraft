@@ -4,11 +4,7 @@
   "type": "project",
   "theme": "avances",
   "objective": "Créer une collection personnelle, choisir sa disposition et expliquer ses changements à différentes largeurs.",
-  "skillIds": [
-    "html.structure",
-    "css.selectors",
-    "css.flexbox"
-  ],
+  "skillIds": ["html.structure", "css.selectors", "css.flexbox"],
   "prerequisitesInContent": true,
   "prerequisiteSkills": [
     {

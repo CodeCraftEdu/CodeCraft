@@ -5,31 +5,38 @@
   const node = (tag, text, cls) => {
     const el = document.createElement(tag);
     if (text !== undefined) {
-      if (['p', 'li'].includes(tag) && window.CodeCraftInlineText) window.CodeCraftInlineText(el, text);
+      if (['p', 'li'].includes(tag) && window.CodeCraftInlineText)
+        window.CodeCraftInlineText(el, text);
       else el.textContent = text;
     }
     if (cls) el.className = cls;
     return el;
   };
-  function blocks(items) { return items.flatMap(block => [block, ...blocks(block.blocks || [])]); }
+  function blocks(items) {
+    return items.flatMap((block) => [block, ...blocks(block.blocks || [])]);
+  }
   function target(ref) {
     const module = data.modules[ref.moduleId];
-    const block = ref.blockId && module ? blocks(module.blocks).find(b => b.id === ref.blockId) : null;
-    const item = ref.itemId && block ? (block.items || []).find(i => i.id === ref.itemId) : null;
-    return module && (!ref.blockId || block) && (!ref.itemId || item) ? { module, block, item } : null;
+    const block =
+      ref.blockId && module ? blocks(module.blocks).find((b) => b.id === ref.blockId) : null;
+    const item = ref.itemId && block ? (block.items || []).find((i) => i.id === ref.itemId) : null;
+    return module && (!ref.blockId || block) && (!ref.itemId || item)
+      ? { module, block, item }
+      : null;
   }
   function url(ref, pathwayId) {
     const params = new URLSearchParams();
     // Un renvoi hors du parcours ne doit pas transporter son contexte de navigation.
     // Les identifiants d'activité/tâche restent indépendants du titre affiché.
-    if (data.pathways[pathwayId]?.moduleIds.includes(ref.moduleId)) params.set('parcours', pathwayId);
+    if (data.pathways[pathwayId]?.moduleIds.includes(ref.moduleId))
+      params.set('parcours', pathwayId);
     if (ref.blockId) params.set('activite', ref.blockId);
     if (ref.itemId) params.set('tache', ref.itemId);
     return '#module/' + encodeURIComponent(ref.moduleId) + (params.size ? '?' + params : '');
   }
   function list(texts, ordered = false) {
     const el = node(ordered ? 'ol' : 'ul');
-    texts.forEach(text => el.append(node('li', text)));
+    texts.forEach((text) => el.append(node('li', text)));
     return el;
   }
   function panel(title, tag = 'section') {
@@ -40,11 +47,28 @@
   function prerequisites(module) {
     const el = panel('Avant de commencer : repères');
     if (module.prerequisiteSkills === undefined) {
-      el.append(node('p', 'Les prérequis ne sont pas encore détaillés pour ce module. Cela ne signifie pas qu’ils sont acquis.'));
+      el.append(
+        node(
+          'p',
+          'Les prérequis ne sont pas encore détaillés pour ce module. Cela ne signifie pas qu’ils sont acquis.',
+        ),
+      );
     } else {
-      el.append(list(module.prerequisiteSkills.map(p => data.skills[p.skillId].title + ' : ' + p.expectation)));
+      el.append(
+        list(
+          module.prerequisiteSkills.map(
+            (p) => data.skills[p.skillId].title + ' : ' + p.expectation,
+          ),
+        ),
+      );
     }
-    el.append(node('p', 'Ces repères aident à choisir ton activité. Le module reste accessible ; aucune compétence n’est validée par son ouverture ou par une case cochée.', 'section-intro'));
+    el.append(
+      node(
+        'p',
+        'Ces repères aident à choisir ton activité. Le module reste accessible ; aucune compétence n’est validée par son ouverture ou par une case cochée.',
+        'section-intro',
+      ),
+    );
     return el;
   }
   function criteria(module) {
@@ -55,61 +79,112 @@
   }
   function relationList(refs, pathwayId, teacher = false) {
     const el = node('ul', undefined, 'pedagogy-links');
-    refs.forEach(ref => {
+    refs.forEach((ref) => {
       const row = node('li');
       const resolved = target(ref);
-      if (!resolved) { row.append(node('span', 'Ressource momentanément indisponible.')); el.append(row); return; }
-      const anchor = node('a', ref.label || resolved.item?.text || resolved.block?.title || resolved.module.title);
+      if (!resolved) {
+        row.append(node('span', 'Ressource momentanément indisponible.'));
+        el.append(row);
+        return;
+      }
+      const anchor = node(
+        'a',
+        ref.label || resolved.item?.text || resolved.block?.title || resolved.module.title,
+      );
       anchor.href = (teacher ? 'index.html' : '') + url(ref, pathwayId);
-      if (teacher) { anchor.target = '_blank'; anchor.rel = 'noopener'; }
+      if (teacher) {
+        anchor.target = '_blank';
+        anchor.rel = 'noopener';
+      }
       row.append(anchor);
-      if (ref.prerequisiteSkills?.length) row.append(node('p', 'Pour cette activité seulement : ' + ref.prerequisiteSkills.map(p => p.expectation).join(' ')));
+      if (ref.prerequisiteSkills?.length)
+        row.append(
+          node(
+            'p',
+            'Pour cette activité seulement : ' +
+              ref.prerequisiteSkills.map((p) => p.expectation).join(' '),
+          ),
+        );
       el.append(row);
     });
     return el;
   }
   function orientations(module, pathwayId, teacher = false) {
-    const entries = [['consolidation', 'Pour consolider'], ['bonusActivities', 'Bonus possibles'], ['nextSteps', 'Suites conseillées']];
+    const entries = [
+      ['consolidation', 'Pour consolider'],
+      ['bonusActivities', 'Bonus possibles'],
+      ['nextSteps', 'Suites conseillées'],
+    ];
     if (!entries.some(([key]) => module[key]?.length)) return null;
     const el = panel('Choisir la suite');
     if (!teacher && module.presentation === 'workshop') {
       el.classList.add('pedagogy-choices');
-      el.append(node('p', 'Reprends si tu hésites, ou choisis la suite quand tu sais expliquer ton travail.'));
+      el.append(
+        node(
+          'p',
+          'Reprends si tu hésites, ou choisis la suite quand tu sais expliquer ton travail.',
+        ),
+      );
       const grid = node('div', undefined, 'pedagogy-choices__grid');
       const labels = { consolidation: 'Consolider', nextSteps: 'Continuer' };
-      for (const [key] of entries) if (key !== 'bonusActivities' && module[key]?.length) {
-        const choice = node('section', undefined, 'pedagogy-choice pedagogy-choice--' + key);
-        choice.append(node('h3', labels[key]), relationList(module[key], pathwayId));
-        grid.append(choice);
-      }
+      for (const [key] of entries)
+        if (key !== 'bonusActivities' && module[key]?.length) {
+          const choice = node('section', undefined, 'pedagogy-choice pedagogy-choice--' + key);
+          choice.append(node('h3', labels[key]), relationList(module[key], pathwayId));
+          grid.append(choice);
+        }
       el.append(grid);
       return el;
     }
-    el.append(node('p', 'Reprends une activité si tu hésites ; choisis un bonus ou une suite lorsque tu sais expliquer ton travail. Ces propositions ne fixent ni durée ni rythme.'));
-    for (const [key, title] of entries) if (module[key]?.length) {
-      el.append(node('h3', title), relationList(module[key], pathwayId, teacher));
-    }
+    el.append(
+      node(
+        'p',
+        'Reprends une activité si tu hésites ; choisis un bonus ou une suite lorsque tu sais expliquer ton travail. Ces propositions ne fixent ni durée ni rythme.',
+      ),
+    );
+    for (const [key, title] of entries)
+      if (module[key]?.length) {
+        el.append(node('h3', title), relationList(module[key], pathwayId, teacher));
+      }
     return el;
   }
   function publicImageAddress(path) {
     const address = new URL(path, window.location.href);
     const host = address.hostname.replace(/\.$/, '');
-    if (address.protocol !== 'https:' || !host.includes('.') || /^[\d.]+$/.test(host) || host.includes(':') ||
-        /(?:^|\.)(?:localhost|local|internal|test|invalid)$/.test(host)) return '';
+    if (
+      address.protocol !== 'https:' ||
+      !host.includes('.') ||
+      /^[\d.]+$/.test(host) ||
+      host.includes(':') ||
+      /(?:^|\.)(?:localhost|local|internal|test|invalid)$/.test(host)
+    )
+      return '';
     return address.href;
   }
   function resource(module, resourceId) {
-    const entry = module.resources?.find(r => r.id === resourceId);
+    const entry = module.resources?.find((r) => r.id === resourceId);
     if (!entry) return node('p', 'Ressource indisponible.');
     const el = panel(entry.title);
     el.classList.add('image-resource');
-    const image = node('img'); image.src = entry.path; image.alt = entry.alt;
-    image.width = 160; image.height = 120;
-    const status = node('p'); status.setAttribute('role', 'status'); status.hidden = true;
-    image.addEventListener('load', () => { status.hidden = true; });
-    image.addEventListener('error', () => { status.hidden = false; status.textContent = 'Image indisponible.'; });
+    const image = node('img');
+    image.src = entry.path;
+    image.alt = entry.alt;
+    image.width = 160;
+    image.height = 120;
+    const status = node('p');
+    status.setAttribute('role', 'status');
+    status.hidden = true;
+    image.addEventListener('load', () => {
+      status.hidden = true;
+    });
+    image.addEventListener('error', () => {
+      status.hidden = false;
+      status.textContent = 'Image indisponible.';
+    });
     const address = publicImageAddress(entry.path);
-    const download = node('a', 'Télécharger l’image', 'button button--secondary'); download.href = entry.path; download.download = entry.id + '.png';
+    const download = node('a', 'Télécharger l’image', 'button button--secondary');
+    download.href = entry.path;
+    download.download = entry.id + '.png';
     const code = (text, label) => {
       if (window.CodeCraftCreateCode) return window.CodeCraftCreateCode(text, label);
       const pre = node('pre', undefined, 'code-block');
@@ -121,42 +196,74 @@
       const source = node('div', undefined, 'image-source');
       source.append(node('p', 'Colle le lien de l’image dans `src`.'));
       const details = node('details');
-      details.append(node('summary', 'Voir l’adresse de l’image'), code(address, 'Adresse de l’image'));
-      const copy = node('button', 'Copier le lien', 'button button--secondary'); copy.type = 'button';
+      details.append(
+        node('summary', 'Voir l’adresse de l’image'),
+        code(address, 'Adresse de l’image'),
+      );
+      const copy = node('button', 'Copier le lien', 'button button--secondary');
+      copy.type = 'button';
       copy.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(address); status.hidden = false; status.textContent = 'Lien copié.'; }
-        catch { details.open = true; status.hidden = false; status.textContent = 'Copie l’adresse ci-dessous.'; }
+        try {
+          await navigator.clipboard.writeText(address);
+          status.hidden = false;
+          status.textContent = 'Lien copié.';
+        } catch {
+          details.open = true;
+          status.hidden = false;
+          status.textContent = 'Copie l’adresse ci-dessous.';
+        }
       });
       source.append(copy, details);
       el.append(source);
     }
     const local = node('div', undefined, 'image-source');
-    local.append(download, node('p', 'Place le fichier dans le dossier `images`, à côté de `index.html`.'));
+    local.append(
+      download,
+      node('p', 'Place le fichier dans le dossier `images`, à côté de `index.html`.'),
+    );
     const filename = entry.id + '.png';
-    local.append(code('mon-projet/\n├── index.html\n└── images/\n    └── ' + filename, 'Arborescence'),
-      code('<img src="images/' + filename + '" alt="">', 'index.html'));
-    const alternative = node('p', 'Dans `alt`, décris la forme et sa couleur.', 'image-alternative');
+    local.append(
+      code('mon-projet/\n├── index.html\n└── images/\n    └── ' + filename, 'Arborescence'),
+      code('<img src="images/' + filename + '" alt="">', 'index.html'),
+    );
+    const alternative = node(
+      'p',
+      'Dans `alt`, décris la forme et sa couleur.',
+      'image-alternative',
+    );
     el.append(local, alternative);
     return el;
   }
   function scratchProject(module, teacher = false) {
     const project = data.scratchProjects?.[module.scratchProjectId];
     if (!project) return null;
-    const valid = value => typeof value === 'string' && /^https:\/\/scratch\.mit\.edu\/projects\/[1-9]\d*\/?$/.test(value);
+    const valid = (value) =>
+      typeof value === 'string' &&
+      /^https:\/\/scratch\.mit\.edu\/projects\/[1-9]\d*\/?$/.test(value);
     const starter = !module.scratchProjectContinuation && valid(project.starterUrl);
     const demo = teacher && valid(project.demoUrl);
     if (!teacher && !starter) return null;
-    const el = panel(teacher ? 'Projet Scratch : ressources de cours' : 'Projet de départ : ' + project.title);
+    const el = panel(
+      teacher ? 'Projet Scratch : ressources de cours' : 'Projet de départ : ' + project.title,
+    );
     el.classList.add(teacher ? 'teacher-guide-section' : 'content-card');
     function button(label, href) {
       const anchor = node('a', label, 'button button--secondary');
-      anchor.href = href; anchor.target = '_blank'; anchor.rel = 'noopener noreferrer';
+      anchor.href = href;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
       el.append(anchor);
     }
     if (starter) button('Ouvrir le projet de départ', project.starterUrl);
     if (demo) button('Voir la démonstration complète', project.demoUrl);
     if (teacher) {
-      if (!valid(project.starterUrl)) el.append(node('p', 'Lien du projet de départ non renseigné : utiliser les consignes de création du module.'));
+      if (!valid(project.starterUrl))
+        el.append(
+          node(
+            'p',
+            'Lien du projet de départ non renseigné : utiliser les consignes de création du module.',
+          ),
+        );
       if (!valid(project.demoUrl)) el.append(node('p', 'Lien de démonstration non renseigné.'));
       el.append(node('p', project.teacherInstructions));
     } else el.append(node('p', project.studentInstructions));
@@ -166,13 +273,35 @@
   function pathwayStage(moduleId, pathway) {
     if (!pathway?.moduleIds.includes(moduleId)) return null;
     const stages = pathway.stages || [];
-    const index = stages.findIndex(stage => stage.moduleIds.includes(moduleId));
+    const index = stages.findIndex((stage) => stage.moduleIds.includes(moduleId));
     if (index < 0) return null;
     const stage = stages[index];
     // Les modules futurs ne comptent pas dans « Module X sur Y » ni dans la fin d'étape.
-    const moduleIds = stage.moduleIds.filter(id => pathway.moduleIds.includes(id) && data.modules[id]);
+    const moduleIds = stage.moduleIds.filter(
+      (id) => pathway.moduleIds.includes(id) && data.modules[id],
+    );
     const position = moduleIds.indexOf(moduleId);
-    return { stage, number: index + 1, position: position + 1, total: moduleIds.length, isLast: position === moduleIds.length - 1 };
+    return {
+      stage,
+      number: index + 1,
+      position: position + 1,
+      total: moduleIds.length,
+      isLast: position === moduleIds.length - 1,
+    };
   }
-  window.CodeCraftPedagogy = { node, blocks, target, url, list, panel, prerequisites, criteria, relationList, orientations, resource, scratchProject, pathwayStage };
+  window.CodeCraftPedagogy = {
+    node,
+    blocks,
+    target,
+    url,
+    list,
+    panel,
+    prerequisites,
+    criteria,
+    relationList,
+    orientations,
+    resource,
+    scratchProject,
+    pathwayStage,
+  };
 })();

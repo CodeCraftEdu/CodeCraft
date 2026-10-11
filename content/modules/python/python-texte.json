@@ -9,9 +9,7 @@
     "label": "Site officiel de Thonny",
     "url": "https://thonny.org/"
   },
-  "skillIds": [
-    "python.text"
-  ],
+  "skillIds": ["python.text"],
   "prerequisiteSkills": [
     {
       "skillId": "python.workspace",

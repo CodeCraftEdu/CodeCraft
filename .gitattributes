@@ -1,5 +1,5 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+* text=auto eol=lf
 
 # Keep the downloadable kit's source bytes identical to its ZIP on Windows too.
 resources/gdevelop/kit/*.txt text eol=lf

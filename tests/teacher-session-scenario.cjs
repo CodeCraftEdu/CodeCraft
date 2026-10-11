@@ -3,107 +3,297 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 module.exports = async ({ evaluate, wait, call, directory }) => {
-  const click = selector => evaluate('document.querySelector(' + JSON.stringify(selector) + ').click()');
-  const input = (selector, value, event = 'input') => evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.value=${JSON.stringify(value)};e.dispatchEvent(new Event(${JSON.stringify(event)},{bubbles:true}));})()`);
-  const saved = () => wait('document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
+  const click = (selector) =>
+    evaluate('document.querySelector(' + JSON.stringify(selector) + ').click()');
+  const input = (selector, value, event = 'input') =>
+    evaluate(
+      `(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.value=${JSON.stringify(value)};e.dispatchEvent(new Event(${JSON.stringify(event)},{bubbles:true}));})()`,
+    );
+  const saved = () =>
+    wait(
+      'document.getElementById("save-state").textContent === "Enregistré dans le fichier local"',
+    );
   for (const name of ['Fictif B', 'Fictif C']) {
     await input('#new-student-name', name);
-    await evaluate('document.querySelector(".teacher-add-student").requestSubmit()'); await saved();
+    await evaluate('document.querySelector(".teacher-add-student").requestSubmit()');
+    await saved();
   }
   const initial = JSON.parse(await evaluate('readTestFile()'));
   assert.equal(await evaluate('document.getElementById("student-pathway").value'), '');
   const initialStudent = initial.students[0];
   await click('[data-student-id="' + initialStudent.id + '"]');
   await evaluate('window.confirm=()=>true');
-  await click('#remove-student-from-class'); await saved();
+  await click('#remove-student-from-class');
+  await saved();
   const removed = JSON.parse(await evaluate('readTestFile()'));
   assert.equal(removed.students.length, initial.students.length);
-  assert(removed.students.some(item => item.id === initialStudent.id));
-  assert(!removed.memberships.some(item => item.classId === initial.classes[0].id && item.studentId === initialStudent.id));
+  assert(removed.students.some((item) => item.id === initialStudent.id));
+  assert(
+    !removed.memberships.some(
+      (item) => item.classId === initial.classes[0].id && item.studentId === initialStudent.id,
+    ),
+  );
   assert.equal(JSON.stringify(removed.progress), JSON.stringify(initial.progress));
-  assert.equal(JSON.stringify(removed.frameworkProgress), JSON.stringify(initial.frameworkProgress));
-  assert.equal(await evaluate('document.querySelector(' + JSON.stringify('#existing-student-select option[value="' + initialStudent.id + '"]') + ').textContent'), initialStudent.name);
+  assert.equal(
+    JSON.stringify(removed.frameworkProgress),
+    JSON.stringify(initial.frameworkProgress),
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector(' +
+        JSON.stringify('#existing-student-select option[value="' + initialStudent.id + '"]') +
+        ').textContent',
+    ),
+    initialStudent.name,
+  );
   await input('#new-student-name', initialStudent.name);
   await evaluate('document.querySelector(".teacher-add-student").requestSubmit()');
-  assert.equal(await evaluate('document.querySelector(".teacher-duplicate-warning").hidden'), false);
-  assert.equal(await evaluate('document.querySelector(' + JSON.stringify('[data-existing-student-id="' + initialStudent.id + '"]') + ').textContent'), 'Rattacher la fiche existante');
-  assert.equal(JSON.parse(await evaluate('readTestFile()')).students.length, initial.students.length);
+  assert.equal(
+    await evaluate('document.querySelector(".teacher-duplicate-warning").hidden'),
+    false,
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector(' +
+        JSON.stringify('[data-existing-student-id="' + initialStudent.id + '"]') +
+        ').textContent',
+    ),
+    'Rattacher la fiche existante',
+  );
+  assert.equal(
+    JSON.parse(await evaluate('readTestFile()')).students.length,
+    initial.students.length,
+  );
   await input('#existing-student-select', initialStudent.id, 'change');
-  await evaluate('document.querySelector(".teacher-add-existing").requestSubmit()'); await saved();
+  await evaluate('document.querySelector(".teacher-add-existing").requestSubmit()');
+  await saved();
   const reattached = JSON.parse(await evaluate('readTestFile()'));
   assert.equal(reattached.students.length, initial.students.length);
-  assert.equal(reattached.memberships.filter(item => item.classId === initial.classes[0].id && item.studentId === initialStudent.id).length, 1);
-  assert(!Object.hasOwn(reattached.memberships.find(item => item.classId === initial.classes[0].id && item.studentId === initialStudent.id), 'pathwayId'));
+  assert.equal(
+    reattached.memberships.filter(
+      (item) => item.classId === initial.classes[0].id && item.studentId === initialStudent.id,
+    ).length,
+    1,
+  );
+  assert(
+    !Object.hasOwn(
+      reattached.memberships.find(
+        (item) => item.classId === initial.classes[0].id && item.studentId === initialStudent.id,
+      ),
+      'pathwayId',
+    ),
+  );
   assert.equal(JSON.stringify(reattached.progress), JSON.stringify(initial.progress));
-  assert.equal(JSON.stringify(reattached.frameworkProgress), JSON.stringify(initial.frameworkProgress));
-  await input('#student-pathway', 'web-debutants', 'change'); await saved();
-  assert.equal(JSON.parse(await evaluate('readTestFile()')).memberships.find(item => item.studentId === initialStudent.id).pathwayId, 'web-debutants');
+  assert.equal(
+    JSON.stringify(reattached.frameworkProgress),
+    JSON.stringify(initial.frameworkProgress),
+  );
+  await input('#student-pathway', 'web-debutants', 'change');
+  await saved();
+  assert.equal(
+    JSON.parse(await evaluate('readTestFile()')).memberships.find(
+      (item) => item.studentId === initialStudent.id,
+    ).pathwayId,
+    'web-debutants',
+  );
   await click('#view-sessions');
   await input('#new-session-title', 'Séance fictive <HTML>');
   await input('#new-session-date', '2026-10-04', 'change');
-  await evaluate('document.getElementById("new-session-form").requestSubmit()'); await saved();
+  await evaluate('document.getElementById("new-session-form").requestSubmit()');
+  await saved();
   let session = JSON.parse(await evaluate('readTestFile()')).sessions[0];
-  assert.equal(session.roster.length, 3); assert(session.attendance.every(item => item.status === 'unknown'));
+  assert.equal(session.roster.length, 3);
+  assert(session.attendance.every((item) => item.status === 'unknown'));
   const a = initialStudent.id;
-  const [b, c] = session.roster.map(item => item.studentId).filter(id => id !== a);
-  const historicalName = session.roster.find(item => item.studentId === a).name;
+  const [b, c] = session.roster.map((item) => item.studentId).filter((id) => id !== a);
+  const historicalName = session.roster.find((item) => item.studentId === a).name;
   assert.equal(await evaluate('document.getElementById("session-advanced").open'), false);
-  const longTail = Array.from({length: 24}, (_, index) => 'Consigne longue conservée ' + (index + 1) + '.').join('\n');
-  const cleanQuickConductor = '14:00-14:10 — TOUS — **Accueil**\nOuvrir CodeCraft.\nConsigne libre conservée.\n\n14:10-14:30 — LYNA + IMRAN — Mini-page\nCréer un `h1`.\n\n14:30–14:50 — INES + ELIAS — Images\nimg / src / alt.\n' + longTail + '\nConclusion après la dernière plage conservée.';
+  const longTail = Array.from(
+    { length: 24 },
+    (_, index) => 'Consigne longue conservée ' + (index + 1) + '.',
+  ).join('\n');
+  const cleanQuickConductor =
+    '14:00-14:10 — TOUS — **Accueil**\nOuvrir CodeCraft.\nConsigne libre conservée.\n\n14:10-14:30 — LYNA + IMRAN — Mini-page\nCréer un `h1`.\n\n14:30–14:50 — INES + ELIAS — Images\nimg / src / alt.\n' +
+    longTail +
+    '\nConclusion après la dernière plage conservée.';
   let quickConductor = cleanQuickConductor;
-  const detailedPreparation = '# Objectifs\n\nPréparer **deux groupes** et utiliser `CodePen`.\n\n- Vérifier les projets\n- Préparer les liens\n\n---\n\n## Exemple\n\n```html\n<section>Code affiché</section>\n```\n\n<img src=x onerror="window.markdownInjected=true">\n\n' + Array.from({length: 12}, (_, index) => 'Paragraphe détaillé ' + (index + 1)).join('\n');
+  const detailedPreparation =
+    '# Objectifs\n\nPréparer **deux groupes** et utiliser `CodePen`.\n\n- Vérifier les projets\n- Préparer les liens\n\n---\n\n## Exemple\n\n```html\n<section>Code affiché</section>\n```\n\n<img src=x onerror="window.markdownInjected=true">\n\n' +
+    Array.from({ length: 12 }, (_, index) => 'Paragraphe détaillé ' + (index + 1)).join('\n');
   await click('#edit-quick-conductor');
   await input('#session-quick-conductor', quickConductor);
   await click('#finish-quick-conductor');
-  assert.equal(await evaluate('document.querySelectorAll(".quick-render--preview .quick-slot").length'), 3);
-  assert((await evaluate('document.querySelector(".quick-render--preview").textContent')).includes('Consigne libre conservée.'));
-  assert((await evaluate('document.querySelector(".quick-render--preview").textContent')).includes('Conclusion après la dernière plage conservée.'));
-  assert.equal(await evaluate('document.querySelector(".quick-render--preview strong").textContent'), 'Accueil');
+  assert.equal(
+    await evaluate('document.querySelectorAll(".quick-render--preview .quick-slot").length'),
+    3,
+  );
+  assert(
+    (await evaluate('document.querySelector(".quick-render--preview").textContent')).includes(
+      'Consigne libre conservée.',
+    ),
+  );
+  assert(
+    (await evaluate('document.querySelector(".quick-render--preview").textContent')).includes(
+      'Conclusion après la dernière plage conservée.',
+    ),
+  );
+  assert.equal(
+    await evaluate('document.querySelector(".quick-render--preview strong").textContent'),
+    'Accueil',
+  );
   // Une enveloppe Markdown copiée est ignorée dans la vue uniquement.
   quickConductor = '## Conducteur rapide\n\n```text\n' + cleanQuickConductor + '\n```';
-  await click('#edit-quick-conductor'); await input('#session-quick-conductor', quickConductor); await click('#finish-quick-conductor');
-  const wrappedPreview = await evaluate('document.querySelector(".quick-render--preview").textContent');
-  assert.equal(await evaluate('document.querySelectorAll(".quick-render--preview .quick-slot").length'), 3);
-  assert(!wrappedPreview.includes('## Conducteur rapide')); assert(!wrappedPreview.includes('```text')); assert(!wrappedPreview.includes('```'));
+  await click('#edit-quick-conductor');
+  await input('#session-quick-conductor', quickConductor);
+  await click('#finish-quick-conductor');
+  const wrappedPreview = await evaluate(
+    'document.querySelector(".quick-render--preview").textContent',
+  );
+  assert.equal(
+    await evaluate('document.querySelectorAll(".quick-render--preview .quick-slot").length'),
+    3,
+  );
+  assert(!wrappedPreview.includes('## Conducteur rapide'));
+  assert(!wrappedPreview.includes('```text'));
+  assert(!wrappedPreview.includes('```'));
   assert(wrappedPreview.includes('Conclusion après la dernière plage conservée.'));
-  assert.equal(await evaluate('document.getElementById("session-detailed-preparation").open'), false);
+  assert.equal(
+    await evaluate('document.getElementById("session-detailed-preparation").open'),
+    false,
+  );
   await evaluate('document.getElementById("session-detailed-preparation").open=true');
   await click('#edit-detailed-preparation');
   await input('#session-detailed-preparation-text', detailedPreparation);
   await click('#finish-detailed-preparation');
-  assert.equal(await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader h3").textContent'), 'Objectifs');
-  assert.equal(await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader strong").textContent'), 'deux groupes');
-  assert.equal(await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader pre code").textContent'), '<section>Code affiché</section>');
-  assert.equal(await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader hr") !== null'), true);
-  assert.equal(await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader img")'), null);
-  assert((await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader").textContent')).includes('<img src=x onerror="window.markdownInjected=true">'));
+  assert.equal(
+    await evaluate(
+      'document.querySelector("#session-detailed-preparation .markdown-reader h3").textContent',
+    ),
+    'Objectifs',
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector("#session-detailed-preparation .markdown-reader strong").textContent',
+    ),
+    'deux groupes',
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector("#session-detailed-preparation .markdown-reader pre code").textContent',
+    ),
+    '<section>Code affiché</section>',
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector("#session-detailed-preparation .markdown-reader hr") !== null',
+    ),
+    true,
+  );
+  assert.equal(
+    await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader img")'),
+    null,
+  );
+  assert(
+    (
+      await evaluate(
+        'document.querySelector("#session-detailed-preparation .markdown-reader").textContent',
+      )
+    ).includes('<img src=x onerror="window.markdownInjected=true">'),
+  );
   assert.equal(await evaluate('window.markdownInjected'), undefined);
-  assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + a + '"]') + ').textContent')).includes('Parcours actuel dans cette classe : Débutants'));
-  assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + b + '"]') + ').textContent')).includes('Non renseigné'));
-  await click('#mark-all-present'); await saved();
-  assert((JSON.parse(await evaluate('readTestFile()')).sessions[0].attendance).every(item => item.status === 'present'));
+  assert(
+    (
+      await evaluate(
+        'document.querySelector(' +
+          JSON.stringify('[data-preparation-student-id="' + a + '"]') +
+          ').textContent',
+      )
+    ).includes('Parcours actuel dans cette classe : Débutants'),
+  );
+  assert(
+    (
+      await evaluate(
+        'document.querySelector(' +
+          JSON.stringify('[data-preparation-student-id="' + b + '"]') +
+          ').textContent',
+      )
+    ).includes('Non renseigné'),
+  );
+  await click('#mark-all-present');
+  await saved();
+  assert(
+    JSON.parse(await evaluate('readTestFile()')).sessions[0].attendance.every(
+      (item) => item.status === 'present',
+    ),
+  );
   await input('#attendance-' + b, 'absent', 'change');
   await input('#session-start-time', '14:00', 'change');
   const returnScroll = await evaluate('window.scrollY');
   await click('#open-conductor-mode');
   assert.equal(await evaluate('document.getElementById("main-content").inert'), true);
-  assert.equal(await evaluate('getComputedStyle(document.getElementById("conductor-mode")).overflowY'), 'visible');
-  assert.equal(await evaluate('getComputedStyle(document.getElementById("main-content")).display'), 'none');
-  assert.equal(await evaluate('document.querySelectorAll("#conductor-mode .quick-slot").length'), 3);
-  assert((await evaluate('document.getElementById("conductor-mode").textContent')).includes('Consigne libre conservée.'));
-  assert((await evaluate('document.getElementById("conductor-mode").textContent')).includes('Conclusion après la dernière plage conservée.'));
-  assert((await evaluate('document.querySelector(".conductor-mode-meta").textContent')).includes('Départ 14:00'));
+  assert.equal(
+    await evaluate('getComputedStyle(document.getElementById("conductor-mode")).overflowY'),
+    'visible',
+  );
+  assert.equal(
+    await evaluate('getComputedStyle(document.getElementById("main-content")).display'),
+    'none',
+  );
+  assert.equal(
+    await evaluate('document.querySelectorAll("#conductor-mode .quick-slot").length'),
+    3,
+  );
+  assert(
+    (await evaluate('document.getElementById("conductor-mode").textContent')).includes(
+      'Consigne libre conservée.',
+    ),
+  );
+  assert(
+    (await evaluate('document.getElementById("conductor-mode").textContent')).includes(
+      'Conclusion après la dernière plage conservée.',
+    ),
+  );
+  assert(
+    (await evaluate('document.querySelector(".conductor-mode-meta").textContent')).includes(
+      'Départ 14:00',
+    ),
+  );
   assert.equal(await evaluate('document.documentElement.scrollHeight > innerHeight'), true);
   await evaluate('window.scrollTo(0, document.documentElement.scrollHeight)');
   assert.equal(await evaluate('window.scrollY > 0'), true);
-  assert.equal(await evaluate('document.getElementById("close-conductor-mode").getBoundingClientRect().top >= 0'), true);
-  assert.equal(await evaluate('document.getElementById("print-conductor-mode").getBoundingClientRect().top >= 0'), true);
-  assert.equal(await evaluate('document.querySelector("#conductor-mode .quick-slot:last-child .quick-instructions p:last-child").getBoundingClientRect().bottom <= innerHeight'), true);
-  fs.writeFileSync(path.join(directory, 'conductor-mode.png'), Buffer.from((await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false })).data, 'base64'));
+  assert.equal(
+    await evaluate(
+      'document.getElementById("close-conductor-mode").getBoundingClientRect().top >= 0',
+    ),
+    true,
+  );
+  assert.equal(
+    await evaluate(
+      'document.getElementById("print-conductor-mode").getBoundingClientRect().top >= 0',
+    ),
+    true,
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector("#conductor-mode .quick-slot:last-child .quick-instructions p:last-child").getBoundingClientRect().bottom <= innerHeight',
+    ),
+    true,
+  );
+  fs.writeFileSync(
+    path.join(directory, 'conductor-mode.png'),
+    Buffer.from(
+      (await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false })).data,
+      'base64',
+    ),
+  );
   await evaluate('window.modePrintCalls=0;window.print=()=>{window.modePrintCalls++}');
   await click('#print-conductor-mode');
   assert.equal(await evaluate('window.modePrintCalls'), 1);
-  assert((await evaluate('document.getElementById("session-print").textContent')).includes('LYNA + IMRAN'));
+  assert(
+    (await evaluate('document.getElementById("session-print").textContent')).includes(
+      'LYNA + IMRAN',
+    ),
+  );
   await click('#close-conductor-mode');
   assert.equal(await evaluate('document.getElementById("conductor-mode")'), null);
   assert.equal(await evaluate('document.getElementById("main-content").inert'), false);
@@ -112,133 +302,297 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await click('[data-choice="session-modules"][data-value="html-images"]');
   await click('[data-choice="session-objectives"]');
   for (let i = 0; i < 3; i++) {
-    await click('#add-slot'); await saved();
-    const slot = (JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots)[i];
+    await click('#add-slot');
+    await saved();
+    const slot = JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots[i];
     await input('#slot-title-' + slot.id, 'Groupe ' + (i + 1));
     await input('#slot-instructions-' + slot.id, 'Instruction fictive ' + (i + 1));
-    await click('[data-slot-id="' + slot.id + '"] [data-choice="slot-students"][data-value="' + [a, b, c][i] + '"]');
-    await input('#slot-pathway-' + slot.id, ['web-fondations', 'web-debutants', 'web-avances'][i], 'change');
+    await click(
+      '[data-slot-id="' +
+        slot.id +
+        '"] [data-choice="slot-students"][data-value="' +
+        [a, b, c][i] +
+        '"]',
+    );
+    await input(
+      '#slot-pathway-' + slot.id,
+      ['web-fondations', 'web-debutants', 'web-avances'][i],
+      'change',
+    );
     await click('[data-slot-id="' + slot.id + '"] [data-choice="slot-modules"]');
   }
   await input('#session-notes', 'NOTE PRIVÉE DE SÉANCE');
-  await input('#session-reminders', 'Rappel imprimé'); await saved();
+  await input('#session-reminders', 'Rappel imprimé');
+  await saved();
   session = JSON.parse(await evaluate('readTestFile()')).sessions[0];
-  const ids = session.conductor.slots.map(item => item.id);
-  await click('[data-slot-id="' + ids[2] + '"] [data-move="-1"]'); await saved();
-  assert.deepEqual(JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots.map(item => item.id), [ids[0], ids[2], ids[1]]);
-  await evaluate('window.confirm=()=>false'); await click('[data-remove-slot]'); await saved();
+  const ids = session.conductor.slots.map((item) => item.id);
+  await click('[data-slot-id="' + ids[2] + '"] [data-move="-1"]');
+  await saved();
+  assert.deepEqual(
+    JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots.map((item) => item.id),
+    [ids[0], ids[2], ids[1]],
+  );
+  await evaluate('window.confirm=()=>false');
+  await click('[data-remove-slot]');
+  await saved();
   assert.equal(JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots.length, 3);
-  await click('#add-slot'); await saved();
-  await evaluate('window.confirm=()=>true'); await click('.session-slot:last-child [data-remove-slot]'); await saved();
+  await click('#add-slot');
+  await saved();
+  await evaluate('window.confirm=()=>true');
+  await click('.session-slot:last-child [data-remove-slot]');
+  await saved();
   assert.equal(JSON.parse(await evaluate('readTestFile()')).sessions[0].conductor.slots.length, 3);
-  await click('#finish-session'); await saved();
+  await click('#finish-session');
+  await saved();
   const document = JSON.parse(await evaluate('readTestFile()'));
-  assert.deepEqual(document.progress, initial.progress); assert.deepEqual(document.frameworkProgress, initial.frameworkProgress);
+  assert.deepEqual(document.progress, initial.progress);
+  assert.deepEqual(document.frameworkProgress, initial.frameworkProgress);
   session = document.sessions[0];
   // Un changement de classe/référentiel et d’élève n’altère pas l’historique.
   await click('#view-students');
   await click('[data-student-id="' + a + '"]');
   await input('#student-name', 'Nom actuel modifié', 'change');
   await input('#student-note', 'REMARQUE PRIVÉE ÉLÈVE');
-  await input('#student-pathway', 'web-avances', 'change'); await saved();
-  await input('#class-framework', '', 'change'); await saved();
+  await input('#student-pathway', 'web-avances', 'change');
+  await saved();
+  await input('#class-framework', '', 'change');
+  await saved();
   await click('#view-sessions');
-  assert((await evaluate('document.querySelector(' + JSON.stringify('[data-preparation-student-id="' + a + '"]') + ').textContent')).includes('Parcours actuel dans cette classe : Avancés'));
-  assert.equal(await evaluate('document.getElementById("session-title").value'), 'Séance fictive <HTML>');
-  assert.equal(await evaluate('document.querySelectorAll("[data-choice=session-objectives]").length'), 1);
+  assert(
+    (
+      await evaluate(
+        'document.querySelector(' +
+          JSON.stringify('[data-preparation-student-id="' + a + '"]') +
+          ').textContent',
+      )
+    ).includes('Parcours actuel dans cette classe : Avancés'),
+  );
+  assert.equal(
+    await evaluate('document.getElementById("session-title").value'),
+    'Séance fictive <HTML>',
+  );
+  assert.equal(
+    await evaluate('document.querySelectorAll("[data-choice=session-objectives]").length'),
+    1,
+  );
   assert.deepEqual(JSON.parse(await evaluate('readTestFile()')).sessions[0], session);
   assert.equal(await evaluate('document.querySelector(".session-slot > summary").tabIndex'), 0);
   await evaluate('window.dispatchEvent(new Event("beforeprint"))');
   const printed = await evaluate('document.getElementById("session-print").textContent');
-  assert(printed.includes('Conducteur rapide')); assert(printed.includes('14:10-14:30')); assert(printed.includes('Mini-page'));
-  assert(!printed.includes('**Accueil**')); assert(!printed.includes('## Conducteur rapide')); assert(!printed.includes('```text'));
-  assert(printed.includes('Accueil')); assert(printed.includes('Conclusion après la dernière plage conservée.'));
-  assert(printed.includes('Conducteur structuré')); assert(printed.includes('14:00-14:10')); assert(printed.includes('Nom actuel modifié')); assert(printed.includes('Instruction fictive 3'));
-  for (const forbidden of ['PRÉPARATION DÉTAILLÉE LIGNE', 'REMARQUE PRIVÉE ÉLÈVE', 'NOTE PRIVÉE DE SÉANCE', 'Remarque fictive', 'workspaceId']) assert(!printed.includes(forbidden), forbidden);
+  assert(printed.includes('Conducteur rapide'));
+  assert(printed.includes('14:10-14:30'));
+  assert(printed.includes('Mini-page'));
+  assert(!printed.includes('**Accueil**'));
+  assert(!printed.includes('## Conducteur rapide'));
+  assert(!printed.includes('```text'));
+  assert(printed.includes('Accueil'));
+  assert(printed.includes('Conclusion après la dernière plage conservée.'));
+  assert(printed.includes('Conducteur structuré'));
+  assert(printed.includes('14:00-14:10'));
+  assert(printed.includes('Nom actuel modifié'));
+  assert(printed.includes('Instruction fictive 3'));
+  for (const forbidden of [
+    'PRÉPARATION DÉTAILLÉE LIGNE',
+    'REMARQUE PRIVÉE ÉLÈVE',
+    'NOTE PRIVÉE DE SÉANCE',
+    'Remarque fictive',
+    'workspaceId',
+  ])
+    assert(!printed.includes(forbidden), forbidden);
   await call('Emulation.setEmulatedMedia', { media: 'print' });
-  assert.equal(await evaluate('getComputedStyle(document.getElementById("main-content")).display'), 'none');
-  assert.equal(await evaluate('getComputedStyle(document.getElementById("session-print")).display'), 'block');
-  fs.writeFileSync(path.join(directory, 'session-print.png'), Buffer.from((await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data, 'base64'));
-  const pdf = Buffer.from((await call('Page.printToPDF', { preferCSSPageSize: true, displayHeaderFooter: false })).data, 'base64');
-  assert.equal(pdf.subarray(0, 4).toString(), '%PDF'); assert(pdf.length > 1000);
+  assert.equal(
+    await evaluate('getComputedStyle(document.getElementById("main-content")).display'),
+    'none',
+  );
+  assert.equal(
+    await evaluate('getComputedStyle(document.getElementById("session-print")).display'),
+    'block',
+  );
+  fs.writeFileSync(
+    path.join(directory, 'session-print.png'),
+    Buffer.from(
+      (await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data,
+      'base64',
+    ),
+  );
+  const pdf = Buffer.from(
+    (await call('Page.printToPDF', { preferCSSPageSize: true, displayHeaderFooter: false })).data,
+    'base64',
+  );
+  assert.equal(pdf.subarray(0, 4).toString(), '%PDF');
+  assert(pdf.length > 1000);
   fs.writeFileSync(path.join(directory, 'conductor-fictif.pdf'), pdf);
   await call('Emulation.setEmulatedMedia', { media: 'screen' });
   await evaluate('window.sessionTestReloadMarker = true');
   await call('Page.reload');
-  await wait('!window.sessionTestReloadMarker && document.readyState === "complete" && !!document.getElementById("view-sessions") && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
-  await click('#view-sessions'); await click('[data-session-id]');
+  await wait(
+    '!window.sessionTestReloadMarker && document.readyState === "complete" && !!document.getElementById("view-sessions") && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"',
+  );
+  await click('#view-sessions');
+  await click('[data-session-id]');
   assert.equal(await evaluate('document.querySelectorAll(".session-slot").length'), 3);
-  assert.equal(await evaluate('document.getElementById("session-quick-conductor").value'), quickConductor);
-  assert.equal(await evaluate('document.getElementById("session-detailed-preparation-text").value'), detailedPreparation);
-  assert.equal(await evaluate('document.querySelectorAll(".quick-render--preview .quick-slot").length'), 3);
-  assert.equal(await evaluate('document.querySelector("#session-detailed-preparation .markdown-reader h3").textContent'), 'Objectifs');
-  assert.equal(await evaluate('document.getElementById("session-notes").value'), 'NOTE PRIVÉE DE SÉANCE');
+  assert.equal(
+    await evaluate('document.getElementById("session-quick-conductor").value'),
+    quickConductor,
+  );
+  assert.equal(
+    await evaluate('document.getElementById("session-detailed-preparation-text").value'),
+    detailedPreparation,
+  );
+  assert.equal(
+    await evaluate('document.querySelectorAll(".quick-render--preview .quick-slot").length'),
+    3,
+  );
+  assert.equal(
+    await evaluate(
+      'document.querySelector("#session-detailed-preparation .markdown-reader h3").textContent',
+    ),
+    'Objectifs',
+  );
+  assert.equal(
+    await evaluate('document.getElementById("session-notes").value'),
+    'NOTE PRIVÉE DE SÉANCE',
+  );
   assert.deepEqual(JSON.parse(await evaluate('readTestFile()')).sessions[0], session);
-  await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
-  assert(await evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Débordement séances mobile');
-  fs.writeFileSync(path.join(directory, 'session-mobile.png'), Buffer.from((await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data, 'base64'));
-  await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
-  fs.writeFileSync(path.join(directory, 'session-desktop.png'), Buffer.from((await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data, 'base64'));
+  await call('Emulation.setDeviceMetricsOverride', {
+    width: 390,
+    height: 844,
+    deviceScaleFactor: 1,
+    mobile: true,
+  });
+  assert(
+    await evaluate('document.documentElement.scrollWidth <= innerWidth'),
+    'Débordement séances mobile',
+  );
+  fs.writeFileSync(
+    path.join(directory, 'session-mobile.png'),
+    Buffer.from(
+      (await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data,
+      'base64',
+    ),
+  );
+  await call('Emulation.setDeviceMetricsOverride', {
+    width: 1280,
+    height: 900,
+    deviceScaleFactor: 1,
+    mobile: false,
+  });
+  fs.writeFileSync(
+    path.join(directory, 'session-desktop.png'),
+    Buffer.from(
+      (await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data,
+      'base64',
+    ),
+  );
   await click('#view-students');
   await click('[data-student-id="' + a + '"]');
   assert.equal(await evaluate('document.getElementById("student-pathway").value'), 'web-avances');
-  await input('#student-pathway', '', 'change'); await saved();
+  await input('#student-pathway', '', 'change');
+  await saved();
   assert(!Object.hasOwn(JSON.parse(await evaluate('readTestFile()')).memberships[0], 'pathwayId'));
   const historicalSession = JSON.parse(await evaluate('readTestFile()')).sessions[0];
   // Une autre classe bloque avant la confirmation et explique précisément pourquoi.
   await input('#new-class-name', 'Autre classe fictive');
-  await evaluate('document.querySelector(".teacher-inline-form").requestSubmit()'); await saved();
-  const secondClassId = JSON.parse(await evaluate('readTestFile()')).classes.find(item => item.name === 'Autre classe fictive').id;
+  await evaluate('document.querySelector(".teacher-inline-form").requestSubmit()');
+  await saved();
+  const secondClassId = JSON.parse(await evaluate('readTestFile()')).classes.find(
+    (item) => item.name === 'Autre classe fictive',
+  ).id;
   await input('#existing-student-select', a, 'change');
-  await evaluate('document.querySelector(".teacher-add-existing").requestSubmit()'); await saved();
+  await evaluate('document.querySelector(".teacher-add-existing").requestSubmit()');
+  await saved();
   await input('#class-select', initial.classes[0].id, 'change');
   await click('[data-student-id="' + a + '"]');
-  await evaluate('window.deleteConfirmCalls=0;window.confirm=()=>{window.deleteConfirmCalls++;return true}');
+  await evaluate(
+    'window.deleteConfirmCalls=0;window.confirm=()=>{window.deleteConfirmCalls++;return true}',
+  );
   await click('#delete-student-permanently');
   assert.equal(await evaluate('window.deleteConfirmCalls'), 0);
-  assert((await evaluate('document.querySelector("#classroom > .teacher-error").textContent')).includes('Autre classe fictive'));
-  assert(JSON.parse(await evaluate('readTestFile()')).students.some(item => item.id === a));
+  assert(
+    (await evaluate('document.querySelector("#classroom > .teacher-error").textContent')).includes(
+      'Autre classe fictive',
+    ),
+  );
+  assert(JSON.parse(await evaluate('readTestFile()')).students.some((item) => item.id === a));
   // Après retrait de l’autre classe, la classe courante restante ne bloque plus la suppression.
   await input('#class-select', secondClassId, 'change');
   await click('[data-student-id="' + a + '"]');
   await evaluate('window.confirm=()=>true');
-  await click('#remove-student-from-class'); await saved();
+  await click('#remove-student-from-class');
+  await saved();
   await input('#class-select', initial.classes[0].id, 'change');
   await click('[data-student-id="' + a + '"]');
-  await click('#delete-student-permanently'); await saved();
+  await click('#delete-student-permanently');
+  await saved();
   let afterDeletion = JSON.parse(await evaluate('readTestFile()'));
-  assert(!afterDeletion.memberships.some(item => item.studentId === a));
-  assert(!afterDeletion.students.some(item => item.id === a));
-  assert(!afterDeletion.progress.some(item => item.studentId === a));
-  assert(!afterDeletion.frameworkProgress.some(item => item.studentId === a));
+  assert(!afterDeletion.memberships.some((item) => item.studentId === a));
+  assert(!afterDeletion.students.some((item) => item.id === a));
+  assert(!afterDeletion.progress.some((item) => item.studentId === a));
+  assert(!afterDeletion.frameworkProgress.some((item) => item.studentId === a));
   assert.deepEqual(afterDeletion.sessions[0], historicalSession);
-  assert.equal(await evaluate('document.querySelector(' + JSON.stringify('[data-student-id="' + a + '"]') + ')'), null);
-  assert.notEqual(await evaluate('document.querySelector(".teacher-profile h3").textContent'), 'Nom actuel modifié');
-  await evaluate('window.studentDeletionReloadMarker=true'); await call('Page.reload');
-  await wait('!window.studentDeletionReloadMarker && document.readyState === "complete" && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
+  assert.equal(
+    await evaluate(
+      'document.querySelector(' + JSON.stringify('[data-student-id="' + a + '"]') + ')',
+    ),
+    null,
+  );
+  assert.notEqual(
+    await evaluate('document.querySelector(".teacher-profile h3").textContent'),
+    'Nom actuel modifié',
+  );
+  await evaluate('window.studentDeletionReloadMarker=true');
+  await call('Page.reload');
+  await wait(
+    '!window.studentDeletionReloadMarker && document.readyState === "complete" && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"',
+  );
   afterDeletion = JSON.parse(await evaluate('readTestFile()'));
-  assert(!afterDeletion.students.some(item => item.id === a)); assert.deepEqual(afterDeletion.sessions[0], historicalSession);
-  await click('#view-sessions'); await click('[data-session-id]');
-  assert((await evaluate('document.querySelector(".session-slot > summary").textContent')).includes(historicalName));
+  assert(!afterDeletion.students.some((item) => item.id === a));
+  assert.deepEqual(afterDeletion.sessions[0], historicalSession);
+  await click('#view-sessions');
+  await click('[data-session-id]');
+  assert(
+    (await evaluate('document.querySelector(".session-slot > summary").textContent')).includes(
+      historicalName,
+    ),
+  );
   await evaluate('window.dispatchEvent(new Event("beforeprint"))');
-  assert((await evaluate('document.getElementById("session-print").textContent')).includes(historicalName));
+  assert(
+    (await evaluate('document.getElementById("session-print").textContent')).includes(
+      historicalName,
+    ),
+  );
   await click('#view-students');
   await evaluate('window.dispatchEvent(new Event("beforeprint"))');
-  assert(!(await evaluate('document.getElementById("session-print").textContent')).includes('Instruction fictive'));
+  assert(
+    !(await evaluate('document.getElementById("session-print").textContent')).includes(
+      'Instruction fictive',
+    ),
+  );
   // Une classe avec historique est protégée avant confirmation.
-  await evaluate('window.classDeleteConfirmCalls=0;window.confirm=()=>{window.classDeleteConfirmCalls++;return true}');
+  await evaluate(
+    'window.classDeleteConfirmCalls=0;window.confirm=()=>{window.classDeleteConfirmCalls++;return true}',
+  );
   await click('#delete-class');
   assert.equal(await evaluate('window.classDeleteConfirmCalls'), 0);
-  assert((await evaluate('document.querySelector("#classroom > .teacher-error").textContent')).includes('séance historique'));
+  assert(
+    (await evaluate('document.querySelector("#classroom > .teacher-error").textContent')).includes(
+      'séance historique',
+    ),
+  );
   // Une classe sans séance peut être supprimée ; les autres données restent disponibles.
   await input('#class-select', secondClassId, 'change');
-  await evaluate('window.confirm=()=>true'); await click('#delete-class'); await saved();
+  await evaluate('window.confirm=()=>true');
+  await click('#delete-class');
+  await saved();
   let afterClassDeletion = JSON.parse(await evaluate('readTestFile()'));
-  assert(!afterClassDeletion.classes.some(item => item.id === secondClassId));
-  assert(afterClassDeletion.classes.some(item => item.id === initial.classes[0].id));
-  assert(!afterClassDeletion.memberships.some(item => item.classId === secondClassId));
-  await evaluate('window.classDeletionReloadMarker=true'); await call('Page.reload');
-  await wait('!window.classDeletionReloadMarker && document.readyState === "complete" && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"');
+  assert(!afterClassDeletion.classes.some((item) => item.id === secondClassId));
+  assert(afterClassDeletion.classes.some((item) => item.id === initial.classes[0].id));
+  assert(!afterClassDeletion.memberships.some((item) => item.classId === secondClassId));
+  await evaluate('window.classDeletionReloadMarker=true');
+  await call('Page.reload');
+  await wait(
+    '!window.classDeletionReloadMarker && document.readyState === "complete" && document.getElementById("save-state").textContent === "Enregistré dans le fichier local"',
+  );
   afterClassDeletion = JSON.parse(await evaluate('readTestFile()'));
-  assert(!afterClassDeletion.classes.some(item => item.id === secondClassId));
+  assert(!afterClassDeletion.classes.some((item) => item.id === secondClassId));
 };

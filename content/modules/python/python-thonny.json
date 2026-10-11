@@ -9,9 +9,7 @@
     "label": "Télécharger Thonny",
     "url": "https://thonny.org/"
   },
-  "skillIds": [
-    "python.workspace"
-  ],
+  "skillIds": ["python.workspace"],
   "prerequisiteSkills": [],
   "prerequisitesInContent": true,
   "blocks": [

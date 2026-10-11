@@ -8,10 +8,7 @@
     "url": "https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"
   },
   "objective": "Découvrir comment un programme peut éteindre et allumer une petite lumière à l’écran.",
-  "skillIds": [
-    "robotique.circuit",
-    "robotique.sortie"
-  ],
+  "skillIds": ["robotique.circuit", "robotique.sortie"],
   "prerequisiteSkills": [],
   "prerequisitesInContent": true,
   "blocks": [

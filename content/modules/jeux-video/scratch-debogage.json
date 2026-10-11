@@ -183,9 +183,7 @@
               {
                 "category": "events",
                 "label": "Événements",
-                "parts": [
-                  "quand ce sprite est cliqué"
-                ],
+                "parts": ["quand ce sprite est cliqué"],
                 "explanation": "Cette pile repart à chaque clic."
               },
               {

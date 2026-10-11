@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "fondations",
   "objective": "Lire une règle CSS et changer la couleur du texte et du fond.",
-  "skillIds": [
-    "css.colors"
-  ],
+  "skillIds": ["css.colors"],
   "prerequisiteSkills": [
     {
       "skillId": "html.headings",

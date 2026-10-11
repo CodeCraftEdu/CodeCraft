@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Organiser un document HTML complet et distinguer le titre de l’onglet du titre visible.",
-  "skillIds": [
-    "html.document"
-  ],
+  "skillIds": ["html.document"],
   "prerequisiteSkills": [
     {
       "skillId": "html.headings",

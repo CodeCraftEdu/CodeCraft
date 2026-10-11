@@ -2,12 +2,24 @@
   'use strict';
   const model = window.CodeCraftTeacherModel;
   const files = window.CodeCraftTeacherFiles.createFileAccess();
-  const byId = id => document.getElementById(id);
-  const ui = Object.fromEntries([
-    'create-space', 'open-space', 'reopen-space', 'save-space', 'reload-space',
-    'download-space', 'workspace-label', 'save-state', 'file-details',
-    'operation-error', 'storage-notice', 'validation-warnings', 'compatibility'
-  ].map(id => [id, byId(id)]));
+  const byId = (id) => document.getElementById(id);
+  const ui = Object.fromEntries(
+    [
+      'create-space',
+      'open-space',
+      'reopen-space',
+      'save-space',
+      'reload-space',
+      'download-space',
+      'workspace-label',
+      'save-state',
+      'file-details',
+      'operation-error',
+      'storage-notice',
+      'validation-warnings',
+      'compatibility',
+    ].map((id) => [id, byId(id)]),
+  );
   let current = null;
   let connection = null;
   let lastSaved = null;
@@ -28,18 +40,30 @@
   function render() {
     let state = 'Aucun Espace CodeCraft ouvert';
     if (current) {
-      state = writing ? 'Enregistrement…' : failure ? 'Erreur de sauvegarde' :
-        dirty() ? 'Modifications non enregistrées' : 'Enregistré dans le fichier local';
+      state = writing
+        ? 'Enregistrement…'
+        : failure
+          ? 'Erreur de sauvegarde'
+          : dirty()
+            ? 'Modifications non enregistrées'
+            : 'Enregistré dans le fichier local';
     }
     ui['save-state'].textContent = state;
     ui['save-state'].dataset.state = failure ? 'error' : dirty() ? 'pending' : 'idle';
-    ui['file-details'].textContent = connection ?
-      connection.name + (lastSaved ? ' · révision enregistrée : ' + lastSaved.revision : ' · aucune écriture confirmée') +
-      (dirty() ? ' · changements en mémoire non enregistrés' : ' · dernière écriture : ' + lastSaved.updatedAt) :
-      'Aucun fichier sélectionné.';
-    for (const id of ['create-space', 'open-space']) ui[id].disabled = !files.supported() || busy || writing;
-    ui['reopen-space'].textContent = permissionRequired ?
-      'Autoriser l’accès à l’Espace CodeCraft' : 'Rouvrir le dernier fichier';
+    ui['file-details'].textContent = connection
+      ? connection.name +
+        (lastSaved
+          ? ' · révision enregistrée : ' + lastSaved.revision
+          : ' · aucune écriture confirmée') +
+        (dirty()
+          ? ' · changements en mémoire non enregistrés'
+          : ' · dernière écriture : ' + lastSaved.updatedAt)
+      : 'Aucun fichier sélectionné.';
+    for (const id of ['create-space', 'open-space'])
+      ui[id].disabled = !files.supported() || busy || writing;
+    ui['reopen-space'].textContent = permissionRequired
+      ? 'Autoriser l’accès à l’Espace CodeCraft'
+      : 'Rouvrir le dernier fichier';
     ui['reopen-space'].disabled = !files.supported() || !remembered || busy || writing;
     ui['workspace-label'].disabled = !current || busy;
     if (classroom) classroom.setDisabled(!current || busy);
@@ -60,9 +84,15 @@
     remembered = connection.handle;
     try {
       await files.remember(remembered);
-      message('storage-notice', 'Seul l’accès au fichier est mémorisé dans ce navigateur, pas son contenu.');
+      message(
+        'storage-notice',
+        'Seul l’accès au fichier est mémorisé dans ce navigateur, pas son contenu.',
+      );
     } catch {
-      message('storage-notice', 'Le fichier reste utilisable, mais son accès ne peut pas être mémorisé. Sélectionne-le à nouveau à la prochaine ouverture.');
+      message(
+        'storage-notice',
+        'Le fichier reste utilisable, mais son accès ne peut pas être mémorisé. Sélectionne-le à nouveau à la prochaine ouverture.',
+      );
     }
   }
   async function save(manual = false) {
@@ -87,7 +117,12 @@
       await remember();
     } catch (error) {
       failure = true;
-      message('operation-error', 'Sauvegarde non confirmée. ' + error.message + ' Les changements restent seulement en mémoire ; télécharge une copie de secours avant de quitter.');
+      message(
+        'operation-error',
+        'Sauvegarde non confirmée. ' +
+          error.message +
+          ' Les changements restent seulement en mémoire ; télécharge une copie de secours avant de quitter.',
+      );
     } finally {
       writing = false;
       render();
@@ -101,7 +136,13 @@
   }
   async function select(kind) {
     if (busy || writing) return;
-    if (dirty() && !window.confirm('Des modifications ne sont pas enregistrées. Télécharge une copie de secours si nécessaire. Continuer abandonnera ces modifications uniquement si un autre document est chargé.')) return;
+    if (
+      dirty() &&
+      !window.confirm(
+        'Des modifications ne sont pas enregistrées. Télécharge une copie de secours si nécessaire. Continuer abandonnera ces modifications uniquement si un autre document est chargé.',
+      )
+    )
+      return;
     selected = true;
     clearTimeout(timer);
     busy = true;
@@ -109,18 +150,25 @@
     render();
     try {
       // Les sélecteurs et demandes de permission sont lancés depuis l’action utilisateur.
-      const next = kind === 'create' ? await files.create() : kind === 'open' ? await files.open() :
-        kind === 'resume' ? await files.resume(remembered) :
-          await files.reconnect(kind === 'reload' ? connection.handle : remembered);
-      const parsed = kind === 'create' ?
-        { document: model.create(crypto.randomUUID()), warnings: [] } :
-        model.parse(next.text, window.CODECRAFT_DATA);
+      const next =
+        kind === 'create'
+          ? await files.create()
+          : kind === 'open'
+            ? await files.open()
+            : kind === 'resume'
+              ? await files.resume(remembered)
+              : await files.reconnect(kind === 'reload' ? connection.handle : remembered);
+      const parsed =
+        kind === 'create'
+          ? { document: model.create(crypto.randomUUID()), warnings: [] }
+          : model.parse(next.text, window.CODECRAFT_DATA);
       // Aucun remplacement de l’état courant avant validation complète du nouveau document.
       connection = next;
       current = parsed.document;
       generation = kind === 'create' ? 1 : 0;
       savedGeneration = 0;
-      lastSaved = kind === 'create' ? null : { revision: current.revision, updatedAt: current.updatedAt };
+      lastSaved =
+        kind === 'create' ? null : { revision: current.revision, updatedAt: current.updatedAt };
       failure = false;
       permissionRequired = false;
       ui['workspace-label'].value = current.metadata.label;
@@ -132,11 +180,15 @@
     } catch (error) {
       if (error.code === 'permission-required') {
         permissionRequired = true;
-        message('storage-notice', 'Le dernier fichier est mémorisé. Autorise son accès pour l’ouvrir.');
+        message(
+          'storage-notice',
+          'Le dernier fichier est mémorisé. Autorise son accès pour l’ouvrir.',
+        );
       } else if (error.name !== 'AbortError') {
-        const text = kind === 'resume' ?
-          'Réouverture automatique impossible. Le dernier fichier est introuvable ou inaccessible. Tu peux choisir un autre fichier.' :
-          'Ouverture impossible. ' + error.message;
+        const text =
+          kind === 'resume'
+            ? 'Réouverture automatique impossible. Le dernier fichier est introuvable ou inaccessible. Tu peux choisir un autre fichier.'
+            : 'Ouverture impossible. ' + error.message;
         message('operation-error', text);
       }
     } finally {
@@ -145,15 +197,19 @@
       schedule();
     }
   }
-  const classroom = window.CodeCraftTeacherClassroom ? window.CodeCraftTeacherClassroom.create({
-    root: byId('classroom'), model, catalog: window.CODECRAFT_DATA,
-    changed(immediate) {
-      generation += 1;
-      render();
-      if (immediate && !failure && !busy) save();
-      else schedule();
-    }
-  }) : null;
+  const classroom = window.CodeCraftTeacherClassroom
+    ? window.CodeCraftTeacherClassroom.create({
+        root: byId('classroom'),
+        model,
+        catalog: window.CODECRAFT_DATA,
+        changed(immediate) {
+          generation += 1;
+          render();
+          if (immediate && !failure && !busy) save();
+          else schedule();
+        },
+      })
+    : null;
   ui['create-space'].addEventListener('click', () => select('create'));
   ui['open-space'].addEventListener('click', () => select('open'));
   ui['reopen-space'].addEventListener('click', () => select('reopen'));
@@ -170,24 +226,40 @@
     try {
       // Une copie de secours n’incrémente pas la révision du fichier principal ni son état de sauvegarde.
       files.download(model.serialize(current));
-    } catch (error) { message('operation-error', 'Copie de secours impossible. ' + error.message); }
+    } catch (error) {
+      message('operation-error', 'Copie de secours impossible. ' + error.message);
+    }
   });
-  document.querySelector('.skip-link').addEventListener('click', event => {
+  document.querySelector('.skip-link').addEventListener('click', (event) => {
     event.preventDefault();
     byId('main-content').focus();
   });
-  window.addEventListener('beforeunload', event => {
-    if (dirty() || writing) { event.preventDefault(); event.returnValue = ''; }
+  window.addEventListener('beforeunload', (event) => {
+    if (dirty() || writing) {
+      event.preventDefault();
+      event.returnValue = '';
+    }
   });
   if (!files.supported()) {
-    message('compatibility', 'L’accès direct au fichier nécessite Chrome ou Edge sur ordinateur et une page HTTPS ou localhost. Aucune donnée n’est enregistrée dans ce mode.');
+    message(
+      'compatibility',
+      'L’accès direct au fichier nécessite Chrome ou Edge sur ordinateur et une page HTTPS ou localhost. Aucune donnée n’est enregistrée dans ce mode.',
+    );
   } else {
-    files.recall().then(async handle => {
-      if (selected) return;
-      remembered = handle || null;
-      render();
-      if (remembered) await select('resume');
-    }).catch(() => message('storage-notice', 'Réouverture mémorisée indisponible : utilise « Ouvrir un Espace CodeCraft ».'));
+    files
+      .recall()
+      .then(async (handle) => {
+        if (selected) return;
+        remembered = handle || null;
+        render();
+        if (remembered) await select('resume');
+      })
+      .catch(() =>
+        message(
+          'storage-notice',
+          'Réouverture mémorisée indisponible : utilise « Ouvrir un Espace CodeCraft ».',
+        ),
+      );
   }
   render();
 })();

@@ -19,31 +19,19 @@
       "id": "texte-html",
       "title": "Créer une première page HTML",
       "description": "Écrire des titres, des paragraphes et des listes, puis les réunir dans une mini-page.",
-      "moduleIds": [
-        "html-titres-paragraphes",
-        "html-listes",
-        "html-mini-page-fondations"
-      ]
+      "moduleIds": ["html-titres-paragraphes", "html-listes", "html-mini-page-fondations"]
     },
     {
       "id": "liens-images",
       "title": "Ajouter des liens et des images",
       "description": "Enrichir ta page avec des liens et des images, puis assembler une nouvelle mini-page.",
-      "moduleIds": [
-        "html-liens",
-        "html-images",
-        "html-mini-page"
-      ]
+      "moduleIds": ["html-liens", "html-images", "html-mini-page"]
     },
     {
       "id": "premiers-styles",
       "title": "Donner du style avec le CSS",
       "description": "Découvrir les règles CSS, les classes et les couleurs pour créer ton affiche numérique.",
-      "moduleIds": [
-        "css-decouverte",
-        "css-classes-couleurs",
-        "web-affiche-numerique"
-      ]
+      "moduleIds": ["css-decouverte", "css-classes-couleurs", "web-affiche-numerique"]
     }
   ]
 }

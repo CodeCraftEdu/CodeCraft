@@ -1,0 +1,9 @@
+# Generated output and locked dependency metadata
+generated/
+package-lock.json
+# Historical snapshots and teaching downloads keep their original bytes
+tests/archive/
+resources/
+# Local output is also excluded by .gitignore
+node_modules/
+browser-artifacts/

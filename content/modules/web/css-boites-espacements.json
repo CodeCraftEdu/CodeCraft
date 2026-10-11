@@ -4,10 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Distinguer contenu, espace intérieur, bordure et espace extérieur pour aérer une carte.",
-  "skillIds": [
-    "css.spacing",
-    "css.borders"
-  ],
+  "skillIds": ["css.spacing", "css.borders"],
   "prerequisiteSkills": [
     {
       "skillId": "css.selectors",

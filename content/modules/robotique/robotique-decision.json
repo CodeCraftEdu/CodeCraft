@@ -8,10 +8,7 @@
     "label": "Ouvrir la base bouton préconnectée",
     "url": "https://www.tinkercad.com/things/5Vadi6a5zpK-codecraft-bouton-depart-eleve-preconnecte"
   },
-  "skillIds": [
-    "robotique.condition",
-    "robotique.boucle"
-  ],
+  "skillIds": ["robotique.condition", "robotique.boucle"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.entree",

@@ -5,9 +5,7 @@
   "theme": "fondations",
   "showTool": false,
   "objective": "Faire apparaître un indice pendant une touche maintenue et expliquer les deux règles qui contrôlent sa visibilité.",
-  "skillIds": [
-    "gdevelop.events"
-  ],
+  "skillIds": ["gdevelop.events"],
   "prerequisiteSkills": [
     {
       "skillId": "gdevelop.instances",

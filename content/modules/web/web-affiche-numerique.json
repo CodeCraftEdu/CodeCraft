@@ -4,12 +4,7 @@
   "type": "project",
   "theme": "fondations",
   "objective": "Créer une petite affiche HTML et personnaliser ses textes et ses fonds avec des classes CSS.",
-  "skillIds": [
-    "html.headings",
-    "html.text",
-    "css.selectors",
-    "css.colors"
-  ],
+  "skillIds": ["html.headings", "html.text", "css.selectors", "css.colors"],
   "prerequisiteSkills": [
     {
       "skillId": "html.headings",

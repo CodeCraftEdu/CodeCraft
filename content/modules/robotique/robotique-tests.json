@@ -9,10 +9,7 @@
     "url": "https://makecode.microbit.org/"
   },
   "objective": "Vérifier ta mission dans plusieurs situations, expliquer les résultats et améliorer seulement si nécessaire.",
-  "skillIds": [
-    "robotique.tests",
-    "robotique.condition"
-  ],
+  "skillIds": ["robotique.tests", "robotique.condition"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.mission",

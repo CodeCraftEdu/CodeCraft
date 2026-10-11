@@ -10,13 +10,18 @@ Le [cadrage pédagogique et la roadmap](docs/roadmap-pedagogique.md) centralisen
 
 Les recettes utilisateur reportées sont consignées dans [Vérifications manuelles en attente](docs/verifications-manuelles-en-attente.md), notamment pour Python dans Thonny et la revue des dernières leçons.
 
-Lancer un serveur statique local à la racine du dossier pour charger les modules JavaScript :
+Installer les outils, puis lancer l’aperçu surveillé à la racine du dossier :
 
 ```bash
-python -m http.server 8000
+npm ci
+npm run dev
 ```
 
 Puis ouvrir <http://localhost:8000>.
+
+Les modifications des contenus régénèrent le catalogue, puis rechargent l’aperçu. Un contenu invalide affiche son erreur ; le dernier catalogue valide reste disponible jusqu’à correction. Les modifications HTML, CSS, JavaScript et images rechargent aussi la page. Le script de rechargement est ajouté à la réponse locale, sans modifier les pages publiées. Pour un autre port : `npm run dev -- --port 8001`.
+
+Pendant une modification, utiliser par exemple `npm run check:target -- web` ou `npm run check:target -- prof`. Avant livraison, utiliser `npm run check`. Les captures et rapports navigateur sont accessibles dans `browser-artifacts/index.html`. Voir [les profils et leurs limites](docs/verification-developpement.md).
 
 L’espace professeur est disponible sur `prof.html`. Le conducteur initial reste consultable dans `prof-conducteur-historique.html`.
 

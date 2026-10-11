@@ -9,9 +9,7 @@
     "url": "https://thonny.org/"
   },
   "objective": "Regrouper des instructions, appeler une fonction et réutiliser son bloc avec des paramètres.",
-  "skillIds": [
-    "python.functions"
-  ],
+  "skillIds": ["python.functions"],
   "prerequisiteSkills": [
     {
       "skillId": "python.workspace",

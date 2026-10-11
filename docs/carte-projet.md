@@ -14,7 +14,9 @@ CodeCraft est un site statique. Les contenus JSON, le rendu navigateur et les ou
 | Aperçus HTML/CSS et schémas Scratch/Python | `src/student/demonstrations.mjs` |
 | Affichage des blocs et des activités | `src/student/blocks.mjs` |
 | Construction des adresses | `src/student/routes.mjs` |
-| Navigation, pages et sommaire | `src/student/router.mjs` |
+| Navigation et pages | `src/student/router.mjs` |
+| Sommaire du parcours et événements de largeur | `src/student/course-navigation.mjs` |
+| Aide et prolongements propres à un module | `src/student/support.mjs` |
 | Ressources et panneaux pédagogiques partagés | `pedagogy.js` |
 | Guides professeur | `teacher-guides.js` |
 | Données privées, fichiers et séances | `teacher-model.js`, `teacher-file-access.js`, `teacher-sessions.js`, `teacher-classroom.js` |
@@ -24,6 +26,9 @@ CodeCraft est un site statique. Les contenus JSON, le rendu navigateur et les ou
 | Aspect élève low-poly | `styles/themes/lowpoly/` |
 | Assemblage des contenus | `scripts/build-catalog.cjs`, `scripts/catalog/` |
 | Vérifications | `tests/`, [recette navigateur](verification-developpement.md) |
+| Serveur local, génération surveillée et rechargement | `scripts/dev.cjs`, `scripts/lib/public-files.cjs` |
+| Choix des tests par responsabilité | `scripts/check-target.cjs`, `scripts/lib/test-targets.cjs` |
+| Rapports d’échec et index des captures | `scripts/lib/browser-report.cjs`, `tests/helpers/browser.cjs` |
 
 ## Rendu et dépendances
 

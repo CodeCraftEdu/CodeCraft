@@ -9,11 +9,7 @@
     "url": "https://scratch.mit.edu/projects/editor/"
   },
   "scratchProjectId": "carte-animee",
-  "skillIds": [
-    "scratch.messages",
-    "scratch.events",
-    "scratch.sequence"
-  ],
+  "skillIds": ["scratch.messages", "scratch.events", "scratch.sequence"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.workspace",

@@ -1,6 +1,6 @@
 /* Entry point. Keep import order: later rules intentionally override earlier rules. */
-@import url("styles/base/tokens.css");
-@import url("styles/base/document.css");
-@import url("styles/components/library.css");
-@import url("styles/components/lesson.css");
-@import url("styles/components/responsive.css");
+@import url('styles/base/tokens.css');
+@import url('styles/base/document.css');
+@import url('styles/components/library.css');
+@import url('styles/components/lesson.css');
+@import url('styles/components/responsive.css');

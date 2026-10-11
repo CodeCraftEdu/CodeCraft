@@ -66,7 +66,9 @@
   background: var(--paper);
   box-shadow: var(--block-shadow);
   text-decoration: none;
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
 }
 
 .route-card:hover {
@@ -74,9 +76,15 @@
   box-shadow: 10px 10px 0 #383128;
 }
 
-.route-card--debutants { --card-accent: #4f8045; }
-.route-card--avances { --card-accent: #7653a5; }
-.route-card--rattrapage { --card-accent: #b7652c; }
+.route-card--debutants {
+  --card-accent: #4f8045;
+}
+.route-card--avances {
+  --card-accent: #7653a5;
+}
+.route-card--rattrapage {
+  --card-accent: #b7652c;
+}
 
 .route-card-title {
   font-size: clamp(1.65rem, 4vw, 2.2rem);
@@ -135,14 +143,16 @@ body[data-route] .lesson-intro > .button {
 }
 
 .lesson-intro::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 12px;
   right: 12px;
   width: 12px;
   height: 12px;
   background: var(--route);
-  box-shadow: -16px 16px 0 var(--route), -32px 0 0 var(--route);
+  box-shadow:
+    -16px 16px 0 var(--route),
+    -32px 0 0 var(--route);
   opacity: 0.9;
 }
 

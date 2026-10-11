@@ -1,6 +1,6 @@
 /* Entry point. Keep import order: later rules intentionally override earlier rules. */
-@import url("styles/themes/lowpoly/palette-demos.css");
-@import url("styles/themes/lowpoly/home.css");
-@import url("styles/themes/lowpoly/library.css");
-@import url("styles/themes/lowpoly/lesson.css");
-@import url("styles/themes/lowpoly/navigation.css");
+@import url('styles/themes/lowpoly/palette-demos.css');
+@import url('styles/themes/lowpoly/home.css');
+@import url('styles/themes/lowpoly/library.css');
+@import url('styles/themes/lowpoly/lesson.css');
+@import url('styles/themes/lowpoly/navigation.css');

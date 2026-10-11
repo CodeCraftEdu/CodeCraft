@@ -7,7 +7,15 @@ export default [
     files: ['**/*.{js,mjs,cjs}'],
     rules: {
       ...js.configs.recommended.rules,
-      'no-unused-vars': ['error', { args: 'after-used', caughtErrors: 'none', varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+      'no-unused-vars': [
+        'error',
+        {
+          args: 'after-used',
+          caughtErrors: 'none',
+          varsIgnorePattern: '^_',
+          argsIgnorePattern: '^_',
+        },
+      ],
       'no-var': 'error',
       'prefer-const': 'error',
     },

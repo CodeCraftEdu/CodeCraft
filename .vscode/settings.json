@@ -1,12 +1,48 @@
 {
+  "[javascript][json][jsonc][css][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
   "json.schemas": [
-    { "fileMatch": ["/content/manifest.json"], "url": "../schemas/manifest.schema.json" },
-    { "fileMatch": ["/content/modules/**/*.json"], "url": "../schemas/module.schema.json" },
-    { "fileMatch": ["/content/pathways/*.json"], "url": "../schemas/pathway.schema.json" },
-    { "fileMatch": ["/content/catalog/site.json"], "url": "../schemas/site.schema.json" },
-    { "fileMatch": ["/content/catalog/aliases.json"], "url": "../schemas/aliases.schema.json" },
-    { "fileMatch": ["/content/catalog/module-types.json"], "url": "../schemas/module-types.schema.json" },
-    { "fileMatch": ["/content/catalog/domains.json", "/content/catalog/skills.json", "/content/resources/*.json"], "url": "../schemas/registry.schema.json" },
-    { "fileMatch": ["/content/teacher/*.json"], "url": "../schemas/teacher.schema.json" }
+    {
+      "fileMatch": ["/content/manifest.json"],
+      "url": "../schemas/manifest.schema.json"
+    },
+    {
+      "fileMatch": ["/content/modules/**/*.json"],
+      "url": "../schemas/module.schema.json"
+    },
+    {
+      "fileMatch": ["/content/pathways/*.json"],
+      "url": "../schemas/pathway.schema.json"
+    },
+    {
+      "fileMatch": ["/content/catalog/site.json"],
+      "url": "../schemas/site.schema.json"
+    },
+    {
+      "fileMatch": ["/content/catalog/aliases.json"],
+      "url": "../schemas/aliases.schema.json"
+    },
+    {
+      "fileMatch": ["/content/catalog/module-types.json"],
+      "url": "../schemas/module-types.schema.json"
+    },
+    {
+      "fileMatch": ["/content/teacher/*.json"],
+      "url": "../schemas/teacher.schema.json"
+    },
+    {
+      "fileMatch": ["/content/catalog/domains.json"],
+      "url": "../schemas/domains.schema.json"
+    },
+    {
+      "fileMatch": ["/content/catalog/skills.json"],
+      "url": "../schemas/skills.schema.json"
+    },
+    {
+      "fileMatch": ["/content/resources/scratch-projects.json"],
+      "url": "../schemas/scratch-projects.schema.json"
+    }
   ]
 }

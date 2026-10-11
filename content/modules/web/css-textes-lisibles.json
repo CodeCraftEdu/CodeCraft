@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Choisir une police, une taille, un interligne et un alignement adaptés à la lecture.",
-  "skillIds": [
-    "css.fonts"
-  ],
+  "skillIds": ["css.fonts"],
   "prerequisiteSkills": [
     {
       "skillId": "html.headings",

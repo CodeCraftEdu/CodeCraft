@@ -10,9 +10,7 @@
     "label": "Ouvrir Scratch",
     "url": "https://scratch.mit.edu/projects/editor/"
   },
-  "skillIds": [
-    "scratch.variables"
-  ],
+  "skillIds": ["scratch.variables"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.contacts",
@@ -123,9 +121,7 @@
           {
             "category": "control",
             "label": "Contrôle",
-            "parts": [
-              "répéter indéfiniment"
-            ],
+            "parts": ["répéter indéfiniment"],
             "explanation": "La boucle vérifie à nouveau touches et contact.",
             "children": [
               {

@@ -3,10 +3,7 @@
   "title": "Titres et paragraphes",
   "type": "lesson",
   "objective": "Créer et modifier des titres et des paragraphes en HTML.",
-  "skillIds": [
-    "html.headings",
-    "html.text"
-  ],
+  "skillIds": ["html.headings", "html.text"],
   "blocks": [
     {
       "id": "preparer",

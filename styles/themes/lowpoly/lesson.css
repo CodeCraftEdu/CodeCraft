@@ -1,150 +1,538 @@
 /* Modèle commun des leçons : palette de parcours, paysage de domaine. */
-body.student-lowpoly[data-lesson-layout="standard"] .page-header--compact { display: flex; align-items: center; justify-content: space-between; gap: 12px 28px; width: min(820px, 100%); margin: 0 auto 22px; }
-body.student-lowpoly[data-lesson-layout="standard"] .page-header--compact .brand { flex-shrink: 0; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-breadcrumbs { align-items: center; gap: 8px 20px; margin: 0; min-width: 0; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-breadcrumbs__list { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px; list-style: none; padding: 0; margin: 0; font-size: .875rem; line-height: 1.5; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-breadcrumbs__list li + li::before { content: '›'; margin-right: 9px; color: #7c7a89; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-breadcrumbs__current { color: var(--muted); }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-text-link { display: inline-block; padding: 8px 0; color: var(--route-dark); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--route) 35%, transparent); text-underline-offset: 4px; font-weight: 600; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-text-link:hover { color: var(--route); text-decoration-color: currentColor; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-text-link:focus-visible { outline: 2px solid var(--route); outline-offset: 4px; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-tool-link { min-height: 44px; display: inline-flex; align-items: center; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro {
-  display: block; padding: 22px 28px; min-height: 0; color: var(--lesson-ink);
+body.student-lowpoly[data-lesson-layout='standard'] .page-header--compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 28px;
+  width: min(820px, 100%);
+  margin: 0 auto 22px;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .page-header--compact .brand {
+  flex-shrink: 0;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-breadcrumbs {
+  align-items: center;
+  gap: 8px 20px;
+  margin: 0;
+  min-width: 0;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 9px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-breadcrumbs__list li + li::before {
+  content: '›';
+  margin-right: 9px;
+  color: #7c7a89;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-breadcrumbs__current {
+  color: var(--muted);
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-text-link {
+  display: inline-block;
+  padding: 8px 0;
+  color: var(--route-dark);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--route) 35%, transparent);
+  text-underline-offset: 4px;
+  font-weight: 600;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-text-link:hover {
+  color: var(--route);
+  text-decoration-color: currentColor;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-text-link:focus-visible {
+  outline: 2px solid var(--route);
+  outline-offset: 4px;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-tool-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro {
+  display: block;
+  padding: 22px 28px;
+  min-height: 0;
+  color: var(--lesson-ink);
   border-bottom: 4px solid var(--lesson-edge);
   background: linear-gradient(110deg, var(--lesson-hero-start), var(--lesson-hero-end));
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro::before {
-  content: ''; position: absolute; inset: 0 0 0 auto; width: 52%;
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 52%;
   background: var(--lesson-scene) right center / auto 100% no-repeat;
   filter: var(--lesson-scene-filter);
-  mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / .04) 12%, rgb(0 0 0 / .16) 26%, rgb(0 0 0 / .38) 42%, rgb(0 0 0 / .66) 58%, rgb(0 0 0 / .88) 73%, rgb(0 0 0 / .98) 86%, #000 100%);
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(0 0 0 / 0.04) 12%,
+    rgb(0 0 0 / 0.16) 26%,
+    rgb(0 0 0 / 0.38) 42%,
+    rgb(0 0 0 / 0.66) 58%,
+    rgb(0 0 0 / 0.88) 73%,
+    rgb(0 0 0 / 0.98) 86%,
+    #000 100%
+  );
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro > * { position: relative; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro .lesson-title { max-width: 66%; margin: 0 0 12px; font-size: clamp(1.65rem, 3.5vw, 2.3rem); color: var(--lesson-ink); }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro .objective-label { display: none; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro .objective { max-width: 62%; margin: 0; color: var(--lesson-muted); line-height: 1.6; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-preparation {
-  padding: 18px 24px; color: var(--lesson-muted); background: var(--lesson-panel);
-  border: 0; border-left: 3px solid var(--lesson-edge); border-bottom: 2px solid var(--lesson-line);
-  border-radius: 0; box-shadow: none;
-  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro > * {
+  position: relative;
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-preparation .section-title { margin: 0 0 8px; font-size: 1.1rem; line-height: 1.4; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-preparation p { margin: 0 0 8px; }
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro .lesson-title {
+  max-width: 66%;
+  margin: 0 0 12px;
+  font-size: clamp(1.65rem, 3.5vw, 2.3rem);
+  color: var(--lesson-ink);
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro .objective-label {
+  display: none;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro .objective {
+  max-width: 62%;
+  margin: 0;
+  color: var(--lesson-muted);
+  line-height: 1.6;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-preparation {
+  padding: 18px 24px;
+  color: var(--lesson-muted);
+  background: var(--lesson-panel);
+  border: 0;
+  border-left: 3px solid var(--lesson-edge);
+  border-bottom: 2px solid var(--lesson-line);
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 8px
+  );
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-preparation .section-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-preparation p {
+  margin: 0 0 8px;
+}
 /* Découverte calme ; pratique signalée par une petite facette, sans icône ajoutée. */
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-card--reading {
-  border: 0; border-bottom: 1px solid var(--lesson-line); border-radius: 0;
-  background: var(--paper); box-shadow: none;
-  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-card--reading {
+  border: 0;
+  border-bottom: 1px solid var(--lesson-line);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: none;
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 8px
+  );
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-card--practice {
-  background: var(--paper); border: 1px solid var(--line); border-left: 2px solid var(--lesson-edge); box-shadow: 0 3px 0 color-mix(in srgb, var(--route) 12%, var(--line));
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-card--practice {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--lesson-edge);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--route) 12%, var(--line));
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-card--practice > .section-title {
-  position: relative; padding-left: 20px;
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-card--practice > .section-title {
+  position: relative;
+  padding-left: 20px;
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-card--practice > .section-title::before {
-  content: ''; position: absolute; left: 0; top: .08em; width: 8px; height: .95em;
+body.student-lowpoly[data-lesson-layout='standard']
+  .lesson-card--practice
+  > .section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.08em;
+  width: 8px;
+  height: 0.95em;
   background: linear-gradient(135deg, var(--lesson-edge) 0 45%, var(--route) 45%);
   clip-path: polygon(35% 0, 100% 0, 100% 75%, 65% 100%, 0 100%, 0 25%);
 }
-body.student-lowpoly[data-lesson-layout="standard"] .module-navigation--lesson { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 18px; }
-body.student-lowpoly[data-lesson-layout="standard"] .module-navigation--lesson .button { min-height: 64px; padding: 12px 16px; text-align: center; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint {
-  position: relative; margin: 22px 0; padding: 22px 28px;
-  color: var(--ink); background: var(--lesson-panel); border-bottom: 3px solid var(--lesson-edge);
-  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+body.student-lowpoly[data-lesson-layout='standard'] .module-navigation--lesson {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint::before {
-  content: ''; position: absolute; inset: 0 auto 0 0; width: 6px;
+body.student-lowpoly[data-lesson-layout='standard'] .module-navigation--lesson .button {
+  min-height: 64px;
+  padding: 12px 16px;
+  text-align: center;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint {
+  position: relative;
+  margin: 22px 0;
+  padding: 22px 28px;
+  color: var(--ink);
+  background: var(--lesson-panel);
+  border-bottom: 3px solid var(--lesson-edge);
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
   background: linear-gradient(150deg, var(--lesson-edge) 0 24px, var(--lesson-line) 24px);
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__title { margin: 0 0 12px; color: var(--ink); font-size: 1.1rem; line-height: 1.4; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__list li { position: relative; margin: 0; padding-left: 19px; line-height: 1.5; }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__list li::before {
-  content: ''; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px;
-  transform: rotate(45deg); background: var(--route);
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint__title {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint__list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint__list li {
+  position: relative;
+  margin: 0;
+  padding-left: 19px;
+  line-height: 1.5;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint__list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: var(--route);
 }
 @media (max-width: 700px) {
-  body.student-lowpoly[data-lesson-layout="standard"] .page-header--compact { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+  body.student-lowpoly[data-lesson-layout='standard'] .page-header--compact {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
 }
 @media (max-width: 600px) {
-  body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro { padding: 22px 22px 68px; min-height: 0; }
-  body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro::before { inset: auto 0 0; width: 100%; height: 48px; background: var(--lesson-scene) right bottom / cover no-repeat; mask-image: linear-gradient(180deg, transparent, #000 65%); }
-  body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro .lesson-title,
-  body.student-lowpoly[data-lesson-layout="standard"] .lesson-intro .objective { max-width: 100%; }
-  body.student-lowpoly[data-lesson-layout="standard"] .module-navigation--lesson { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  body.student-lowpoly[data-lesson-layout="standard"] .module-navigation--lesson .button { width: 100%; grid-column: 1; }
-  body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint { padding: 20px 22px; }
+  body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro {
+    padding: 22px 22px 68px;
+    min-height: 0;
+  }
+  body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro::before {
+    inset: auto 0 0;
+    width: 100%;
+    height: 48px;
+    background: var(--lesson-scene) right bottom / cover no-repeat;
+    mask-image: linear-gradient(180deg, transparent, #000 65%);
+  }
+  body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro .lesson-title,
+  body.student-lowpoly[data-lesson-layout='standard'] .lesson-intro .objective {
+    max-width: 100%;
+  }
+  body.student-lowpoly[data-lesson-layout='standard'] .module-navigation--lesson {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  body.student-lowpoly[data-lesson-layout='standard'] .module-navigation--lesson .button {
+    width: 100%;
+    grid-column: 1;
+  }
+  body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint {
+    padding: 20px 22px;
+  }
 }
 @media (min-width: 601px) {
-  body.student-lowpoly[data-lesson-layout="standard"] .module-navigation__previous { grid-column: 1; }
-  body.student-lowpoly[data-lesson-layout="standard"] .module-navigation__next { grid-column: 2; }
+  body.student-lowpoly[data-lesson-layout='standard'] .module-navigation__previous {
+    grid-column: 1;
+  }
+  body.student-lowpoly[data-lesson-layout='standard'] .module-navigation__next {
+    grid-column: 2;
+  }
 }
-body.student-lowpoly .lesson-title { max-width: 100%; text-shadow: none; line-height: 1.12; }
+body.student-lowpoly .lesson-title {
+  max-width: 100%;
+  text-shadow: none;
+  line-height: 1.12;
+}
 body.student-lowpoly[data-route] .lesson-intro .objective,
-body.student-lowpoly[data-route] .lesson-intro > .button { grid-row: 3; }
-body.student-lowpoly .button { border: 0; border-bottom: 4px solid var(--line); border-radius: 0; box-shadow: none; clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px); }
+body.student-lowpoly[data-route] .lesson-intro > .button {
+  grid-row: 3;
+}
+body.student-lowpoly .button {
+  border: 0;
+  border-bottom: 4px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: polygon(
+    9px 0,
+    calc(100% - 9px) 0,
+    100% 9px,
+    100% calc(100% - 9px),
+    calc(100% - 9px) 100%,
+    9px 100%,
+    0 calc(100% - 9px),
+    0 9px
+  );
+}
 body.student-lowpoly .button--primary {
   border-bottom-color: var(--route-dark);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--route) 70%, white) 0 12px, var(--route) 12px calc(100% - 12px), var(--route-dark) calc(100% - 12px));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--route) 70%, white) 0 12px,
+    var(--route) 12px calc(100% - 12px),
+    var(--route-dark) calc(100% - 12px)
+  );
 }
-body.student-lowpoly .button--primary:hover { background: var(--route-dark); }
+body.student-lowpoly .button--primary:hover {
+  background: var(--route-dark);
+}
 body.student-lowpoly .button--secondary {
   border-bottom-color: color-mix(in srgb, var(--route) 30%, #c2b9c7);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--route) 18%, white) 0 12px, #fffcf6 12px calc(100% - 12px), var(--route-soft) calc(100% - 12px));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--route) 18%, white) 0 12px,
+    #fffcf6 12px calc(100% - 12px),
+    var(--route-soft) calc(100% - 12px)
+  );
 }
-body.student-lowpoly .button:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #f2c75c; }
+body.student-lowpoly .button:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 4px #f2c75c;
+}
 
 /* Lecture : pierre claire, encadrements légers, aucune texture derrière le texte. */
 body.student-lowpoly .content-card,
 body.student-lowpoly .callout,
 body.student-lowpoly .support-card {
-  border: 1px solid var(--line); border-left: 3px solid var(--route); border-radius: 2px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--route);
+  border-radius: 2px;
   background: linear-gradient(135deg, var(--route-soft) 0 12px, var(--paper) 12px);
   box-shadow: 0 3px 0 #d7d0d7;
 }
-body.student-lowpoly .callout--neutral { background: #f2f1f6; }
-body.student-lowpoly[data-lesson-layout="standard"] .callout--neutral { background: var(--lesson-panel); }
-body.student-lowpoly .callout--stop { border-color: #b78c5b; border-left-color: #a66a28; background: #fff3df; }
-body.student-lowpoly .support-card--stuck { background: #fff2e1; }
-body.student-lowpoly .support-card--done { background: #eef4e7; }
-body.student-lowpoly .support-card .section-title::before { display: none; }
-body.student-lowpoly .task-item, body.student-lowpoly .check-item { border-top-width: 1px; border-top-color: #ded6de; }
-body.student-lowpoly .task-item { padding-block: 10px; }
-body.student-lowpoly .task-item:first-child { padding-top: 0; }
-body.student-lowpoly .task-item:last-child { padding-bottom: 0; }
-body.student-lowpoly .task-list .task-label { min-height: 30px; }
-body.student-lowpoly .task-item > .hint { margin-top: 2px; }
-body.student-lowpoly .hint { border: 0; border-left: 2px solid var(--route); border-radius: 0; background: transparent; }
-body.student-lowpoly .hint > summary { min-height: 44px; padding: .65rem .8rem; font-size: .95rem; font-weight: 600; }
-body.student-lowpoly .task-item > .hint > summary { padding-block: .4rem; }
-body.student-lowpoly .task-item > .hint > p { padding-bottom: 8px; }
-body.student-lowpoly .task-item > .hint .syntax { margin-block: 0; }
-body.student-lowpoly .hint > summary:hover { background: var(--route-soft); }
-body.student-lowpoly .hint[open] { background: transparent; }
-body.student-lowpoly .hint > .syntax { border: 0; background: transparent; }
-body.student-lowpoly .hint > .syntax + .syntax { border-top: 1px solid var(--line); }
-body.student-lowpoly .syntax { border-width: 1px; }
-body.student-lowpoly .code-block { border: 1px solid #3b3c34; border-radius: 0; background: #25271f; color: #f5f5ef; padding: .7rem .6rem; font-size: .95rem; line-height: 1.5; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px); }
-body.student-lowpoly .disclosure-body .content-card { background: var(--paper); border: 0; box-shadow: none; }
-body.student-lowpoly .scratch-script, body.student-lowpoly .scratch-scripts { border: 1px solid var(--line); background: color-mix(in srgb, var(--route) 4%, var(--paper)); border-radius: 2px; }
+body.student-lowpoly .callout--neutral {
+  background: #f2f1f6;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .callout--neutral {
+  background: var(--lesson-panel);
+}
+body.student-lowpoly .callout--stop {
+  border-color: #b78c5b;
+  border-left-color: #a66a28;
+  background: #fff3df;
+}
+body.student-lowpoly .support-card--stuck {
+  background: #fff2e1;
+}
+body.student-lowpoly .support-card--done {
+  background: #eef4e7;
+}
+body.student-lowpoly .support-card .section-title::before {
+  display: none;
+}
+body.student-lowpoly .task-item,
+body.student-lowpoly .check-item {
+  border-top-width: 1px;
+  border-top-color: #ded6de;
+}
+body.student-lowpoly .task-item {
+  padding-block: 10px;
+}
+body.student-lowpoly .task-item:first-child {
+  padding-top: 0;
+}
+body.student-lowpoly .task-item:last-child {
+  padding-bottom: 0;
+}
+body.student-lowpoly .task-list .task-label {
+  min-height: 30px;
+}
+body.student-lowpoly .task-item > .hint {
+  margin-top: 2px;
+}
+body.student-lowpoly .hint {
+  border: 0;
+  border-left: 2px solid var(--route);
+  border-radius: 0;
+  background: transparent;
+}
+body.student-lowpoly .hint > summary {
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+body.student-lowpoly .task-item > .hint > summary {
+  padding-block: 0.4rem;
+}
+body.student-lowpoly .task-item > .hint > p {
+  padding-bottom: 8px;
+}
+body.student-lowpoly .task-item > .hint .syntax {
+  margin-block: 0;
+}
+body.student-lowpoly .hint > summary:hover {
+  background: var(--route-soft);
+}
+body.student-lowpoly .hint[open] {
+  background: transparent;
+}
+body.student-lowpoly .hint > .syntax {
+  border: 0;
+  background: transparent;
+}
+body.student-lowpoly .hint > .syntax + .syntax {
+  border-top: 1px solid var(--line);
+}
+body.student-lowpoly .syntax {
+  border-width: 1px;
+}
+body.student-lowpoly .code-block {
+  border: 1px solid #3b3c34;
+  border-radius: 0;
+  background: #25271f;
+  color: #f5f5ef;
+  padding: 0.7rem 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 8px
+  );
+}
+body.student-lowpoly .disclosure-body .content-card {
+  background: var(--paper);
+  border: 0;
+  box-shadow: none;
+}
+body.student-lowpoly .scratch-script,
+body.student-lowpoly .scratch-scripts {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--route) 4%, var(--paper));
+  border-radius: 2px;
+}
 /* Les couleurs et silhouettes pédagogiques des vrais blocs Scratch sont conservées. */
 
 /* Schéma code/console : même géométrie que l'essai, palette propre au parcours. */
-body.student-lowpoly .code-diagram__editor, body.student-lowpoly .code-diagram__console {
-  border: 0; border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2); border-radius: 0; box-shadow: none;
-  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+body.student-lowpoly .code-diagram__editor,
+body.student-lowpoly .code-diagram__console {
+  border: 0;
+  border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2);
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
 }
-body.student-lowpoly .code-diagram__editor { background: color-mix(in srgb, var(--route-dark) 25%, #25212e); }
-body.student-lowpoly .code-diagram__editor .code-diagram__header { padding: .8rem 1.15rem; background: linear-gradient(135deg, var(--route) 0 24px, var(--route-dark) 24px calc(100% - 24px), color-mix(in srgb, var(--route-dark) 80%, black) calc(100% - 24px)); border-bottom: 1px solid color-mix(in srgb, var(--route) 65%, white); }
-body.student-lowpoly .code-diagram__file { border-color: color-mix(in srgb, var(--route) 50%, white); background: color-mix(in srgb, var(--route-dark) 60%, #25212e); }
-body.student-lowpoly .code-diagram__console { background: #fffcf7; }
-body.student-lowpoly .code-diagram__console .code-diagram__header { color: var(--route-dark); border-bottom: 1px solid var(--line); background: linear-gradient(135deg, color-mix(in srgb, var(--route) 22%, white) 0 24px, var(--route-soft) 24px calc(100% - 24px), color-mix(in srgb, var(--route) 28%, white) calc(100% - 24px)); }
-body.student-lowpoly .code-diagram__result { color: var(--ink); }
-body.student-lowpoly .pedagogy-choice { background: #fffcf6; border: 1px solid var(--line); }
-body.student-lowpoly .pedagogy-choice--nextSteps { background: var(--route-soft); border-top: 4px solid var(--route); }
-body.student-lowpoly .pedagogy-choice--nextSteps a { display: block; padding: .75rem 1rem; color: white; border: 0; border-bottom: 4px solid var(--route-dark); box-shadow: none; background: linear-gradient(135deg, color-mix(in srgb, var(--route) 70%, white) 0 12px, var(--route) 12px calc(100% - 12px), var(--route-dark) calc(100% - 12px)); clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px); }
-body.student-lowpoly .pedagogy-choice--nextSteps a:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #f2c75c; }
+body.student-lowpoly .code-diagram__editor {
+  background: color-mix(in srgb, var(--route-dark) 25%, #25212e);
+}
+body.student-lowpoly .code-diagram__editor .code-diagram__header {
+  padding: 0.8rem 1.15rem;
+  background: linear-gradient(
+    135deg,
+    var(--route) 0 24px,
+    var(--route-dark) 24px calc(100% - 24px),
+    color-mix(in srgb, var(--route-dark) 80%, black) calc(100% - 24px)
+  );
+  border-bottom: 1px solid color-mix(in srgb, var(--route) 65%, white);
+}
+body.student-lowpoly .code-diagram__file {
+  border-color: color-mix(in srgb, var(--route) 50%, white);
+  background: color-mix(in srgb, var(--route-dark) 60%, #25212e);
+}
+body.student-lowpoly .code-diagram__console {
+  background: #fffcf7;
+}
+body.student-lowpoly .code-diagram__console .code-diagram__header {
+  color: var(--route-dark);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--route) 22%, white) 0 24px,
+    var(--route-soft) 24px calc(100% - 24px),
+    color-mix(in srgb, var(--route) 28%, white) calc(100% - 24px)
+  );
+}
+body.student-lowpoly .code-diagram__result {
+  color: var(--ink);
+}
+body.student-lowpoly .pedagogy-choice {
+  background: #fffcf6;
+  border: 1px solid var(--line);
+}
+body.student-lowpoly .pedagogy-choice--nextSteps {
+  background: var(--route-soft);
+  border-top: 4px solid var(--route);
+}
+body.student-lowpoly .pedagogy-choice--nextSteps a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: white;
+  border: 0;
+  border-bottom: 4px solid var(--route-dark);
+  box-shadow: none;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--route) 70%, white) 0 12px,
+    var(--route) 12px calc(100% - 12px),
+    var(--route-dark) calc(100% - 12px)
+  );
+  clip-path: polygon(
+    9px 0,
+    calc(100% - 9px) 0,
+    100% 9px,
+    100% calc(100% - 9px),
+    calc(100% - 9px) 100%,
+    9px 100%,
+    0 calc(100% - 9px),
+    0 9px
+  );
+}
+body.student-lowpoly .pedagogy-choice--nextSteps a:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 4px #f2c75c;
+}

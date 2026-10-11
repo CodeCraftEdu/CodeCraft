@@ -8,10 +8,7 @@
     "label": "Ouvrir MakeCode micro:bit",
     "url": "https://makecode.microbit.org/"
   },
-  "skillIds": [
-    "robotique.entree",
-    "robotique.evenement"
-  ],
+  "skillIds": ["robotique.entree", "robotique.evenement"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.entree",

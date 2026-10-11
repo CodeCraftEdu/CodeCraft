@@ -8,11 +8,7 @@
     "url": "https://www.tinkercad.com/things/d5FVvQDz9b4-codecraft-ma-premiere-lumiere-depart-eleve"
   },
   "objective": "Faire clignoter une LED, expliquer son état pendant les attentes et choisir son rythme.",
-  "skillIds": [
-    "robotique.sequence",
-    "robotique.attente",
-    "robotique.boucle"
-  ],
+  "skillIds": ["robotique.sequence", "robotique.attente", "robotique.boucle"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.circuit",

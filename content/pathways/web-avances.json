@@ -3,10 +3,5 @@
   "title": "Avancés",
   "theme": "avances",
   "objective": "Comprendre la structure parent/enfants, utiliser Flexbox puis créer et tester une collection personnelle de cartes.",
-  "moduleIds": [
-    "web-projet-cartes",
-    "html-parent-enfants",
-    "css-flexbox",
-    "web-collection-cartes"
-  ]
+  "moduleIds": ["web-projet-cartes", "html-parent-enfants", "css-flexbox", "web-collection-cartes"]
 }

@@ -3,9 +3,7 @@
   "title": "Flexbox",
   "type": "lesson",
   "objective": "Organiser plusieurs éléments avec Flexbox et contrôler leur espacement et leur alignement.",
-  "skillIds": [
-    "css.flexbox"
-  ],
+  "skillIds": ["css.flexbox"],
   "blocks": [
     {
       "type": "callout",
@@ -67,11 +65,7 @@
         "controlLabel": "Affichage du parent",
         "previewLabel": ".cartes : le parent des trois cartes",
         "codeLabel": "Règle appliquée au parent",
-        "cards": [
-          "A",
-          "B",
-          "C"
-        ],
+        "cards": ["A", "B", "C"],
         "options": [
           {
             "value": "block",
@@ -102,11 +96,7 @@
         "property": "flex-direction",
         "title": "Change le sens des cartes",
         "intro": "Passe de row à column. Les mêmes cartes restent dans l’ordre A, B, C ; c’est leur direction qui change.",
-        "cards": [
-          "A",
-          "B",
-          "C"
-        ],
+        "cards": ["A", "B", "C"],
         "options": [
           {
             "value": "row",
@@ -134,11 +124,7 @@
         "property": "gap",
         "title": "Vois l’écart se former",
         "intro": "Compare trois écarts entre les mêmes cartes. Regarde aussi le bord gauche : gap ne crée pas d’espace autour du groupe.",
-        "cards": [
-          "A",
-          "B",
-          "C"
-        ],
+        "cards": ["A", "B", "C"],
         "options": [
           {
             "value": "0px",
@@ -181,11 +167,7 @@
         "property": "justify-content",
         "title": "Répartis l’espace libre",
         "intro": "Choisis une répartition. Observe l’espace libre au début, à la fin et entre les cartes : leur largeur ne change pas.",
-        "cards": [
-          "A",
-          "B",
-          "C"
-        ],
+        "cards": ["A", "B", "C"],
         "options": [
           {
             "value": "flex-start",
@@ -230,11 +212,7 @@
         "property": "align-items",
         "title": "Aligne des cartes de tailles différentes",
         "intro": "Ici, la direction reste row. Change l’alignement vertical et compare le haut et le bas des cartes.",
-        "cards": [
-          "A",
-          "B",
-          "C"
-        ],
+        "cards": ["A", "B", "C"],
         "options": [
           {
             "value": "flex-start",
@@ -271,14 +249,7 @@
         "property": "flex-wrap",
         "title": "Quand toutes les cartes ne tiennent plus",
         "intro": "Six cartes partagent un parent étroit. Compare une seule ligne qui déborde et plusieurs lignes dans le même espace.",
-        "cards": [
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F"
-        ],
+        "cards": ["A", "B", "C", "D", "E", "F"],
         "options": [
           {
             "value": "nowrap",

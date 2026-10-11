@@ -84,10 +84,7 @@
             "Vérifier que les deux balises sont produites sans regarder.",
             "Noter : acquis, à consolider ou pas encore acquis."
           ],
-          "say": [
-            "Fais-moi un titre tout seul.",
-            "Maintenant un paragraphe."
-          ]
+          "say": ["Fais-moi un titre tout seul.", "Maintenant un paragraphe."]
         },
         {
           "title": "Débutants",
@@ -96,10 +93,7 @@
             "Valider s’ils savent expliquer grossièrement les attributs et produire une image.",
             "Noter : acquis, à consolider ou pas encore acquis."
           ],
-          "say": [
-            "À quoi sert src ?",
-            "À quoi sert alt ?"
-          ]
+          "say": ["À quoi sert src ?", "À quoi sert alt ?"]
         }
       ]
     },
@@ -111,16 +105,12 @@
         "Une seule réussite montrée par élève.",
         "Pas de présentation de cinq minutes."
       ],
-      "say": [
-        "Montre simplement une chose nouvelle que tu as réussie aujourd’hui."
-      ]
+      "say": ["Montre simplement une chose nouvelle que tu as réussie aujourd’hui."]
     },
     {
       "time": "88-90",
       "title": "Conclusion",
-      "items": [
-        "Rappeler le fonctionnement par parcours et l’objectif d’autonomie."
-      ],
+      "items": ["Rappeler le fonctionnement par parcours et l’objectif d’autonomie."],
       "say": [
         "Aujourd’hui chacun a avancé sur son propre parcours. C’est comme ça qu’on va fonctionner : quand je travaille avec un groupe, les autres continuent leurs missions.",
         "Le but est que vous deveniez progressivement capables d’avancer sans attendre constamment une consigne orale."
@@ -153,11 +143,7 @@
   "notes": {
     "title": "Notes professeur",
     "description": "Après le cours, attribuer un seul état par notion observée.",
-    "states": [
-      "Acquis",
-      "À consolider",
-      "Pas encore acquis"
-    ]
+    "states": ["Acquis", "À consolider", "Pas encore acquis"]
   },
   "studentLinkLabel": "Ouvrir l'espace élèves"
 }

@@ -8,10 +8,7 @@
     "url": "https://makecode.microbit.org/"
   },
   "objective": "Choisir une mission, justifier ton réglage et observer un premier résultat.",
-  "skillIds": [
-    "robotique.mission",
-    "robotique.reglage"
-  ],
+  "skillIds": ["robotique.mission", "robotique.reglage"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.distance",

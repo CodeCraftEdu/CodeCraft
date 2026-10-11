@@ -8,9 +8,7 @@
     "label": "Télécharger GDevelop : site officiel",
     "url": "https://gdevelop.io/download"
   },
-  "skillIds": [
-    "gdevelop.workspace"
-  ],
+  "skillIds": ["gdevelop.workspace"],
   "prerequisiteSkills": [],
   "prerequisitesInContent": true,
   "blocks": [

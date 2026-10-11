@@ -31,11 +31,6 @@
       "minLength": 1
     }
   },
-  "required": [
-    "name",
-    "homeIntro",
-    "codepenUrl",
-    "codepenLabel"
-  ],
+  "required": ["name", "homeIntro", "codepenUrl", "codepenLabel"],
   "additionalProperties": false
 }

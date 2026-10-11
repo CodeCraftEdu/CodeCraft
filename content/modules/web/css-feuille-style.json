@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Relier un fichier CSS à une page HTML et vérifier que ses règles sont bien chargées.",
-  "skillIds": [
-    "css.stylesheets"
-  ],
+  "skillIds": ["css.stylesheets"],
   "prerequisiteSkills": [
     {
       "skillId": "html.document",

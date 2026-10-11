@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Relier des fichiers HTML, prévoir le retour et vérifier les destinations de chaque lien.",
-  "skillIds": [
-    "html.navigation"
-  ],
+  "skillIds": ["html.navigation"],
   "prerequisiteSkills": [
     {
       "skillId": "html.document",

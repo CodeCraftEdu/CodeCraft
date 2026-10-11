@@ -24,11 +24,7 @@
       "id": "premieres-actions",
       "title": "Prendre les commandes",
       "description": "Découvrir Scratch, assembler des actions et piloter ton personnage.",
-      "moduleIds": [
-        "scratch-decouverte",
-        "scratch-actions",
-        "scratch-pilotage"
-      ]
+      "moduleIds": ["scratch-decouverte", "scratch-actions", "scratch-pilotage"]
     },
     {
       "id": "premier-jeu",
@@ -57,10 +53,7 @@
       "id": "projet-personnel",
       "title": "Corriger et créer ton propre projet",
       "description": "Chercher les causes d'un problème, tester tes corrections et réaliser un projet personnel.",
-      "moduleIds": [
-        "scratch-debogage",
-        "scratch-projet-personnel"
-      ]
+      "moduleIds": ["scratch-debogage", "scratch-projet-personnel"]
     }
   ]
 }

@@ -23,11 +23,20 @@ test('catalogue : fichiers sources et sortie navigateur strictement identiques, 
 });
 
 test('génération : indépendante du dossier courant, sans exécution des exemples HTML', () => {
-  const result = execFileSync(process.execPath, [path.join(root, 'scripts/build-catalog.cjs'), '--check'], {
-    cwd: os.tmpdir(), encoding: 'utf8', windowsHide: true
-  });
+  const result = execFileSync(
+    process.execPath,
+    [path.join(root, 'scripts/build-catalog.cjs'), '--check'],
+    {
+      cwd: os.tmpdir(),
+      encoding: 'utf8',
+      windowsHide: true,
+    },
+  );
   assert.match(result, /Catalogue checked/);
-  const source = browserSource({ sample: '</script>\u2028\u2029', code: '  <img src="image.png">\n' });
+  const source = browserSource({
+    sample: '</script>\u2028\u2029',
+    code: '  <img src="image.png">\n',
+  });
   assert(!source.includes('</script>'));
   const sandbox = { window: {} };
   vm.runInNewContext(source, sandbox);
@@ -37,13 +46,34 @@ test('génération : indépendante du dossier courant, sans exécution des exemp
 
 test('validation : références de parcours, compétences, activités et ressources cassées refusées', () => {
   const mutations = [
-    data => { data.pathways['web-debutants'].moduleIds.push('missing-module'); },
-    data => { data.modules['html-images'].skillIds.push('missing.skill'); },
-    data => { data.modules['html-images'].nextSteps.push({ moduleId: 'html-images', blockId: 'missing-block' }); },
-    data => { data.modules['html-images'].nextSteps.push({ moduleId: 'html-images', blockId: 'exercices', itemId: 'missing-item' }); },
-    data => { data.modules['html-images'].resources = []; },
-    data => { data.aliases.broken = 'module/missing-module'; },
-    data => { data.pathways['web-debutants'].moduleIds.push('python-thonny'); }
+    (data) => {
+      data.pathways['web-debutants'].moduleIds.push('missing-module');
+    },
+    (data) => {
+      data.modules['html-images'].skillIds.push('missing.skill');
+    },
+    (data) => {
+      data.modules['html-images'].nextSteps.push({
+        moduleId: 'html-images',
+        blockId: 'missing-block',
+      });
+    },
+    (data) => {
+      data.modules['html-images'].nextSteps.push({
+        moduleId: 'html-images',
+        blockId: 'exercices',
+        itemId: 'missing-item',
+      });
+    },
+    (data) => {
+      data.modules['html-images'].resources = [];
+    },
+    (data) => {
+      data.aliases.broken = 'module/missing-module';
+    },
+    (data) => {
+      data.pathways['web-debutants'].moduleIds.push('python-thonny');
+    },
   ];
   for (const mutate of mutations) {
     const data = loadCatalog();
@@ -58,18 +88,21 @@ test('validation : identifiants d’activités et tâches dupliqués refusés', 
   module.blocks.push(structuredClone(module.blocks[0]));
   assert.throws(() => validateCatalog(data), /duplicate block/);
   module.blocks.pop();
-  const tasks = module.blocks.find(block => block.type === 'tasks');
+  const tasks = module.blocks.find((block) => block.type === 'tasks');
   tasks.items.push(structuredClone(tasks.items[0]));
   assert.throws(() => validateCatalog(data), /duplicate item/);
 });
 
-test('chargement : doublons du manifeste, fichiers oubliés et chemins hors contenu refusés', t => {
+test('chargement : doublons du manifeste, fichiers oubliés et chemins hors contenu refusés', (t) => {
   const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-content-test-'));
   assert.equal(path.dirname(temporaryRoot), path.resolve(os.tmpdir()));
   t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
   fs.cpSync(defaultContentRoot, temporaryRoot, { recursive: true });
   const manifestFile = path.join(temporaryRoot, 'manifest.json');
   const original = fs.readFileSync(manifestFile, 'utf8');
+  fs.writeFileSync(manifestFile, '{');
+  assert.throws(() => loadCatalog(temporaryRoot), /manifest\.json:/);
+  fs.writeFileSync(manifestFile, original);
   const manifest = JSON.parse(original);
   manifest.modules.push(manifest.modules[0]);
   fs.writeFileSync(manifestFile, JSON.stringify(manifest));

@@ -3,9 +3,7 @@
   "title": "Listes HTML",
   "type": "lesson",
   "objective": "Créer et modifier une liste HTML.",
-  "skillIds": [
-    "html.lists"
-  ],
+  "skillIds": ["html.lists"],
   "blocks": [
     {
       "id": "preparer",

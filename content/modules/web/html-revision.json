@@ -3,12 +3,7 @@
   "title": "Révision HTML",
   "type": "practice",
   "objective": "Reconstruire seul une page avec les notions déjà apprises.",
-  "skillIds": [
-    "html.headings",
-    "html.text",
-    "html.lists",
-    "html.links"
-  ],
+  "skillIds": ["html.headings", "html.text", "html.lists", "html.links"],
   "blocks": [
     {
       "id": "preparer",

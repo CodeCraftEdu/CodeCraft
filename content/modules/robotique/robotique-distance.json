@@ -8,9 +8,7 @@
     "url": "https://makecode.microbit.org/"
   },
   "objective": "Observer une distance robot immobile et distinguer la mesure reçue de la limite choisie.",
-  "skillIds": [
-    "robotique.distance"
-  ],
+  "skillIds": ["robotique.distance"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.entree",

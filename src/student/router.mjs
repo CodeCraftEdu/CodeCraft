@@ -1,6 +1,21 @@
-export function createRouter({ data, pedagogy, main, demoCleanups, element, studentTitle, setInlineText, link, createBlock, routes }) {
+import { createCourseNavigation } from './course-navigation.mjs';
+import { createSupportPanel } from './support.mjs';
+
+export function createRouter({
+  data,
+  pedagogy,
+  main,
+  demoCleanups,
+  element,
+  studentTitle,
+  setInlineText,
+  link,
+  createBlock,
+  routes,
+}) {
   const { moduleUrl, pathwayStartUrl, singlePathway, domainEntryUrl, domainUrl } = routes;
-  const own = (collection, id) => Object.prototype.hasOwnProperty.call(collection, id) ? collection[id] : null;
+  const own = (collection, id) =>
+    Object.prototype.hasOwnProperty.call(collection, id) ? collection[id] : null;
   let disposeCourseNavigation = null;
 
   function start(title, theme, compact = true, domainId = null) {
@@ -25,8 +40,7 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
       const copy = element('div', 'home-header__copy');
       const heading = element('h1', 'home-title');
       heading.append(brand);
-      copy.append(heading,
-        element('p', 'home-intro', data.site.homeIntro));
+      copy.append(heading, element('p', 'home-intro', data.site.homeIntro));
       header.append(copy);
     }
     main.append(header);
@@ -46,11 +60,13 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
     if (!home) main.append(element('h1', 'library-heading domain-banner', domain.title));
     const navigation = element('nav', 'route-grid');
     navigation.setAttribute('aria-label', 'Choisir un parcours');
-    domain.pathwayIds.forEach(pathwayId => {
+    domain.pathwayIds.forEach((pathwayId) => {
       const pathway = data.pathways[pathwayId];
-      navigation.append(card(pathway.title, pathway.objective, pathwayStartUrl(pathwayId), pathway.theme));
+      navigation.append(
+        card(pathway.title, pathway.objective, pathwayStartUrl(pathwayId), pathway.theme),
+      );
     });
-    (domain.diagnosticModuleIds || []).forEach(moduleId => {
+    (domain.diagnosticModuleIds || []).forEach((moduleId) => {
       const item = data.modules[moduleId];
       navigation.append(card(item.title, item.objective, moduleUrl(moduleId), item.theme));
     });
@@ -68,28 +84,42 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
       'jeux-video': { name: 'game', tag: 'Scratch' },
       python: { name: 'python', tag: 'Thonny' },
       web: { name: 'web', tag: 'HTML · CSS' },
-      robotique: { name: 'robotique', tag: 'Circuits virtuels' }
+      robotique: { name: 'robotique', tag: 'Circuits virtuels' },
     };
-    domains.forEach(id => {
+    domains.forEach((id) => {
       const domain = data.domains[id];
       const visual = homeVisuals[id] || homeVisuals.web;
-      const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', domainEntryUrl(id));
+      const entry = card(
+        domain.title,
+        domain.homeDescription || 'Découvrir les parcours',
+        domainEntryUrl(id),
+      );
       entry.classList.add('home-domain', 'home-domain--' + visual.name);
       const top = element('span', 'home-domain__top');
       top.setAttribute('aria-hidden', 'true');
       const scene = element('img', 'home-domain__scene');
       scene.src = 'images/home-' + visual.name + '.svg';
       scene.alt = '';
-      scene.width = 400; scene.height = 108;
+      scene.width = 400;
+      scene.height = 108;
       top.append(scene);
       const pictogram = element('img', 'home-domain__pictogram');
       pictogram.src = scene.src.replace('/home-', '/home-icon-');
       pictogram.alt = '';
-      pictogram.width = 40; pictogram.height = 30;
+      pictogram.width = 40;
+      pictogram.height = 30;
       top.append(pictogram);
       entry.prepend(top);
-      entry.querySelector('.route-card-title').after(element('span', 'home-domain__tag', visual.tag));
-      entry.append(element('span', 'home-domain__action', singlePathway(domain) ? 'Commencer le parcours →' : 'Choisir un parcours →'));
+      entry
+        .querySelector('.route-card-title')
+        .after(element('span', 'home-domain__tag', visual.tag));
+      entry.append(
+        element(
+          'span',
+          'home-domain__action',
+          singlePathway(domain) ? 'Commencer le parcours →' : 'Choisir un parcours →',
+        ),
+      );
       navigation.append(entry);
     });
     main.append(navigation);
@@ -101,7 +131,11 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
     header.append(element('h2', 'objective-label', 'Objectif'));
     header.append(element('p', 'objective', objective));
     if (codepen) {
-      const button = link(tool ? tool.label : data.site.codepenLabel, tool ? tool.url : data.site.codepenUrl, 'button button--primary');
+      const button = link(
+        tool ? tool.label : data.site.codepenLabel,
+        tool ? tool.url : data.site.codepenUrl,
+        'button button--primary',
+      );
       button.target = '_blank';
       button.rel = 'noopener noreferrer';
       header.append(button);
@@ -116,34 +150,18 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
     renderModule(pathway.moduleIds[0], id);
   }
 
-  function support(item) {
-    // Aucun encart générique : conserver uniquement les consignes propres au module.
-    if (!item.stuck && !item.bonus) return null;
-    const grid = element('section', 'support-grid');
-    if (item.stuck) {
-      const stuck = element('div', 'support-card support-card--stuck');
-      stuck.append(element('h2', 'section-title', item.stuck.title));
-      const routine = element('ol', 'routine-list');
-      item.stuck.steps.forEach(step => routine.append(element('li', '', step)));
-      stuck.append(routine);
-      grid.append(stuck);
-    }
-    if (item.bonus) {
-      const done = element('div', 'support-card support-card--done');
-      done.append(element('h2', 'section-title', item.stuck ? "J’ai fini" : 'Vérification et suite'));
-      done.append(element('p', '', item.bonus));
-      grid.append(done);
-    }
-    return grid;
-  }
-
   function renderModule(id, requestedPathway) {
     const item = data.modules[id];
     const candidate = own(data.pathways, requestedPathway);
     // Une URL partagée peut contenir un contexte périmé : ne conserver que celui
     // qui appartient réellement au module pour le fil d'Ariane et la navigation.
-    const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
-    const containing = Object.values(data.pathways).filter(value => value.domainId === item.domainId && value.moduleIds.includes(id));
+    const pathway =
+      candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id)
+        ? candidate
+        : null;
+    const containing = Object.values(data.pathways).filter(
+      (value) => value.domainId === item.domainId && value.moduleIds.includes(id),
+    );
     // Une entrée directe peut retrouver son étape, mais pas choisir arbitrairement
     // entre plusieurs parcours contenant la même leçon.
     const sequence = pathway || (containing.length === 1 ? containing[0] : null);
@@ -158,7 +176,9 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
       back.classList.add('lesson-breadcrumbs');
       const trail = element('ol', 'lesson-breadcrumbs__list');
       const domain = element('li');
-      domain.append(link(data.domains[item.domainId].title, domainUrl(item.domainId), 'lesson-text-link'));
+      domain.append(
+        link(data.domains[item.domainId].title, domainUrl(item.domainId), 'lesson-text-link'),
+      );
       trail.append(domain);
       if (pathway) {
         const parent = element('li');
@@ -173,15 +193,32 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
     main.querySelector('.page-header--compact').append(back);
     if (stagePosition) {
       const { stage, number, position, total } = stagePosition;
-      article.append(element('p', 'lesson-stage-location', 'Étape ' + number + ' · ' + stage.title + (stage.upcoming ? ' : Leçon disponible' : ' : Module ' + position + ' sur ' + total)));
+      article.append(
+        element(
+          'p',
+          'lesson-stage-location',
+          'Étape ' +
+            number +
+            ' · ' +
+            stage.title +
+            (stage.upcoming ? ' : Leçon disponible' : ' : Module ' + position + ' sur ' + total),
+        ),
+      );
     }
     article.append(intro(item.title, item.objective));
     // Le téléchargement de Thonny n'est utile qu'à l'installation. Scratch et
     // CodePen restent accessibles là où ils constituent l'environnement de travail.
-    const showTool = item.showTool !== false && (Boolean(item.tool) || item.domainId === 'jeux-video' || id === 'python-thonny' ||
-      item.domainId === 'web');
-    const preparationBlock = item.blocks.find(block => block.type === 'callout' &&
-      (block.id === 'preparer' || block.title.startsWith('Avant de commencer')));
+    const showTool =
+      item.showTool !== false &&
+      (Boolean(item.tool) ||
+        item.domainId === 'jeux-video' ||
+        id === 'python-thonny' ||
+        item.domainId === 'web');
+    const preparationBlock = item.blocks.find(
+      (block) =>
+        block.type === 'callout' &&
+        (block.id === 'preparer' || block.title.startsWith('Avant de commencer')),
+    );
     let preparation = null;
     if (preparationBlock) {
       preparation = createBlock(preparationBlock, id);
@@ -190,7 +227,9 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
         const prerequisites = pedagogy.prerequisites(item);
         const list = prerequisites.querySelector('ul');
         if (list?.childElementCount) {
-          [...list.children].forEach((row, index) => { setInlineText(row, item.prerequisiteSkills[index].expectation); });
+          [...list.children].forEach((row, index) => {
+            setInlineText(row, item.prerequisiteSkills[index].expectation);
+          });
           preparation.append(list);
         }
       }
@@ -198,21 +237,33 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
     } else if (!item.prerequisitesInContent) {
       preparation = pedagogy.prerequisites(item);
       preparation.classList.add('lesson-preparation');
-      preparation.querySelector('.section-title').textContent = item.prerequisiteSkills?.length === 0 ? 'Pour travailler' : 'Avant de commencer';
+      preparation.querySelector('.section-title').textContent =
+        item.prerequisiteSkills?.length === 0 ? 'Pour travailler' : 'Avant de commencer';
       preparation.querySelector('.section-intro').remove();
       const list = preparation.querySelector('ul');
       if (list) {
-        [...list.children].forEach((row, index) => { setInlineText(row, item.prerequisiteSkills[index].expectation); });
+        [...list.children].forEach((row, index) => {
+          setInlineText(row, item.prerequisiteSkills[index].expectation);
+        });
         if (!list.childElementCount) list.remove();
       }
       article.append(preparation);
     }
-    const toolLink = showTool ? link(item.tool?.label || data.site.codepenLabel,
-      item.tool?.url || data.site.codepenUrl, 'lesson-text-link lesson-tool-link') : null;
-    if (toolLink) { toolLink.append(' ↗'); toolLink.target = '_blank'; toolLink.rel = 'noopener noreferrer'; }
+    const toolLink = showTool
+      ? link(
+          item.tool?.label || data.site.codepenLabel,
+          item.tool?.url || data.site.codepenUrl,
+          'lesson-text-link lesson-tool-link',
+        )
+      : null;
+    if (toolLink) {
+      toolLink.append(' ↗');
+      toolLink.target = '_blank';
+      toolLink.rel = 'noopener noreferrer';
+    }
     const scratchProject = pedagogy.scratchProject(item);
     if (scratchProject) article.append(scratchProject);
-    item.blocks.forEach(block => {
+    item.blocks.forEach((block) => {
       if (block === preparationBlock) return;
       const rendered = createBlock(block, id);
       article.append(rendered);
@@ -222,8 +273,7 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
         const illustration = preparation.querySelector('.lesson-illustration');
         if (illustration) illustration.before(toolLink);
         else preparation.append(toolLink);
-      }
-      else article.querySelector('.lesson-intro').after(toolLink);
+      } else article.querySelector('.lesson-intro').after(toolLink);
     }
     let criteria;
     if (item.masteryCriteria?.length) {
@@ -234,93 +284,74 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
       const heading = element('h2', 'lesson-checkpoint__title', 'Les essentiels');
       heading.id = 'lesson-checkpoint-title';
       const points = element('ul', 'lesson-checkpoint__list');
-      item.masteryCriteria.forEach(text => points.append(element('li', '', text)));
+      item.masteryCriteria.forEach((text) => points.append(element('li', '', text)));
       criteria.append(heading, points);
     }
     // Les orientations restent dans les données et le guide professeur.
-    const specificSupport = support(item);
+    const specificSupport = createSupportPanel(item, element);
     if (specificSupport) article.append(specificSupport);
     if (criteria) article.append(criteria);
-    if (stagePosition?.isLast && !stagePosition.stage.upcoming) article.append(element('p', 'lesson-stage-pause', stagePosition.stage.endMessage || ('Fin de l’étape ' + stagePosition.number + (stagePosition.stage.projectBlockId ? ' : conserve ton mini-projet : tu pourras le reprendre à la prochaine étape.' : ' : un bon moment pour faire une pause et reprendre ton projet avec une modification personnelle.'))));
+    if (stagePosition?.isLast && !stagePosition.stage.upcoming)
+      article.append(
+        element(
+          'p',
+          'lesson-stage-pause',
+          stagePosition.stage.endMessage ||
+            'Fin de l’étape ' +
+              stagePosition.number +
+              (stagePosition.stage.projectBlockId
+                ? ' : conserve ton mini-projet : tu pourras le reprendre à la prochaine étape.'
+                : ' : un bon moment pour faire une pause et reprendre ton projet avec une modification personnelle.'),
+        ),
+      );
     const navigation = element('nav', 'module-navigation module-navigation--lesson');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
     if (sequence) {
       const position = sequence.moduleIds.indexOf(id);
-      const previous = sequence.moduleIds[position-1];
-      const next = sequence.moduleIds[position+1];
+      const previous = sequence.moduleIds[position - 1];
+      const next = sequence.moduleIds[position + 1];
       const context = pathway ? requestedPathway : null;
-      if (previous) navigation.append(link('←\u00a0' + data.modules[previous].title, moduleUrl(previous, context), 'button button--secondary module-navigation__previous'));
-      if (next) navigation.append(link(data.modules[next].title + '\u00a0→', moduleUrl(next, context), 'button button--primary module-navigation__next'));
-      else if (pathway && item.finalPathwayAction) navigation.append(link(item.finalPathwayAction, '#parcours/' + encodeURIComponent(requestedPathway), 'button button--primary module-navigation__next'));
+      if (previous)
+        navigation.append(
+          link(
+            '←\u00a0' + data.modules[previous].title,
+            moduleUrl(previous, context),
+            'button button--secondary module-navigation__previous',
+          ),
+        );
+      if (next)
+        navigation.append(
+          link(
+            data.modules[next].title + '\u00a0→',
+            moduleUrl(next, context),
+            'button button--primary module-navigation__next',
+          ),
+        );
+      else if (pathway && item.finalPathwayAction)
+        navigation.append(
+          link(
+            item.finalPathwayAction,
+            '#parcours/' + encodeURIComponent(requestedPathway),
+            'button button--primary module-navigation__next',
+          ),
+        );
     }
     if (navigation.childElementCount) article.append(navigation);
     if (sequence) {
-      const sequenceId = Object.keys(data.pathways).find(key => data.pathways[key] === sequence);
+      const sequenceId = Object.keys(data.pathways).find((key) => data.pathways[key] === sequence);
       main.classList.add('site-shell--course');
       const layout = element('div', 'course-layout');
-      layout.append(courseNavigation(sequence, sequenceId, id), article);
+      const navigation = createCourseNavigation(sequence, sequenceId, id, {
+        data,
+        element,
+        link,
+        moduleUrl,
+        studentTitle,
+      });
+      disposeCourseNavigation = navigation.dispose;
+      layout.append(navigation.node, article);
       main.append(layout);
     } else main.append(article);
-  }
-
-  function courseNavigation(sequence, sequenceId, currentId) {
-    const sidebar = element('aside', 'course-sidebar');
-    const toggle = element('button', 'course-sidebar__toggle', 'Dans ce parcours');
-    toggle.type = 'button';
-    toggle.setAttribute('aria-controls', 'course-contents');
-    const contents = element('nav', 'course-sidebar__contents');
-    contents.id = 'course-contents';
-    contents.setAttribute('aria-label', 'Sommaire du parcours');
-    const overview = element('details', 'course-sidebar__overview');
-    overview.append(element('summary', '', 'Objectif du parcours'), element('p', '', sequence.objective));
-    contents.append(overview);
-    const grouped = new Set();
-    function addModules(ids, title) {
-      if (!ids.length) return;
-      const group = element('div', 'course-sidebar__group');
-      if (title) group.append(element('h2', 'course-sidebar__group-title', title));
-      const list = element('ol', 'course-sidebar__list');
-      ids.forEach(moduleId => {
-        grouped.add(moduleId);
-        const row = element('li');
-        const entry = link('', moduleUrl(moduleId, sequenceId), 'course-sidebar__link');
-        entry.append(element('span', '', studentTitle(data.modules[moduleId].title)));
-        if (moduleId === currentId) entry.setAttribute('aria-current', 'page');
-        row.append(entry);
-        list.append(row);
-      });
-      group.append(list);
-      contents.append(group);
-    }
-    (sequence.chapters || sequence.stages || []).forEach((stage, index) => {
-      addModules(sequence.moduleIds.filter(moduleId => stage.moduleIds.includes(moduleId) && !grouped.has(moduleId)),
-        (sequence.chapters ? 'Partie ' + (index + 1) + ' · ' : '') + stage.title);
-    });
-    addModules(sequence.moduleIds.filter(moduleId => !grouped.has(moduleId)));
-    sidebar.append(toggle, contents);
-    const desktop = window.matchMedia('(min-width: 1200px)');
-    let expanded = false;
-    function sync() {
-      contents.hidden = !desktop.matches && !expanded;
-      toggle.setAttribute('aria-expanded', String(!contents.hidden));
-    }
-    toggle.addEventListener('click', () => { expanded = !expanded; sync(); });
-    desktop.addEventListener('change', sync);
-    disposeCourseNavigation = () => desktop.removeEventListener('change', sync);
-    sync();
-    // Garder la leçon active dans la fenêtre du sommaire sans déplacer le cours.
-    if (desktop.matches) requestAnimationFrame(() => {
-      if (!contents.isConnected) return;
-      const active = contents.querySelector('[aria-current="page"]');
-      if (active) {
-        const bounds = contents.getBoundingClientRect();
-        const current = active.getBoundingClientRect();
-        if (current.bottom > bounds.bottom || current.top < bounds.top) {
-          contents.scrollTop += current.top - bounds.top - contents.clientHeight / 2;
-        }
-      }
-    });
-    return sidebar;
   }
 
   function notFound() {
@@ -338,30 +369,40 @@ export function createRouter({ data, pedagogy, main, demoCleanups, element, stud
         history.replaceState(null, '', '#' + hash);
       }
       const separator = hash.indexOf('?');
-      const route = separator < 0 ? hash : hash.slice(0,separator);
-      const query = new URLSearchParams(separator < 0 ? '' : hash.slice(separator+1));
+      const route = separator < 0 ? hash : hash.slice(0, separator);
+      const query = new URLSearchParams(separator < 0 ? '' : hash.slice(separator + 1));
       const segments = route.split('/').map(decodeURIComponent);
-      const [kind,id] = segments;
+      const [kind, id] = segments;
       if (!route) renderHome();
       else if (segments.length !== 2) notFound();
-      else if (kind === 'domaine' && own(data.domains,id)) renderDomain(id);
-      else if (kind === 'parcours' && own(data.pathways,id)) renderPathway(id);
-      else if (kind === 'module' && own(data.modules,id)) renderModule(id,query.get('parcours'));
+      else if (kind === 'domaine' && own(data.domains, id)) renderDomain(id);
+      else if (kind === 'parcours' && own(data.pathways, id)) renderPathway(id);
+      else if (kind === 'module' && own(data.modules, id)) renderModule(id, query.get('parcours'));
       else notFound();
     } catch (error) {
-      console.error('Impossible d’afficher ce contenu.',error);
+      console.error('Impossible d’afficher ce contenu.', error);
       notFound();
     }
-    main.focus({preventScroll:true});
+    main.focus({ preventScroll: true });
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
-    const activity = [...main.querySelectorAll('[data-activity-id]')].find(el => el.dataset.activityId === params.get('activite'));
-    const target = activity && ([...activity.querySelectorAll('[data-task-id]')].find(el => el.dataset.taskId === params.get('tache')) || activity);
+    const activity = [...main.querySelectorAll('[data-activity-id]')].find(
+      (el) => el.dataset.activityId === params.get('activite'),
+    );
+    const target =
+      activity &&
+      ([...activity.querySelectorAll('[data-task-id]')].find(
+        (el) => el.dataset.taskId === params.get('tache'),
+      ) ||
+        activity);
     if (target) {
       // Un lien vers une tâche imbriquée doit ouvrir ses encarts repliés avant
       // le focus et le défilement ; une tâche absente revient au bloc trouvé.
-      for (let el = target; el && el !== main; el = el.parentElement) if (el.tagName === 'DETAILS') el.open = true;
-      target.tabIndex = -1; target.focus({ preventScroll: true }); target.scrollIntoView({ block: 'start' });
-    } else window.scrollTo({top:0,behavior:'auto'});
+      for (let el = target; el && el !== main; el = el.parentElement)
+        if (el.tagName === 'DETAILS') el.open = true;
+      target.tabIndex = -1;
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start' });
+    } else window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
   return { navigate };

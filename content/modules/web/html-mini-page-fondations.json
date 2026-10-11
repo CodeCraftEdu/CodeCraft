@@ -3,11 +3,7 @@
   "title": "Mini-page des fondations",
   "type": "challenge",
   "objective": "Réutiliser seul les premières bases du HTML.",
-  "skillIds": [
-    "html.headings",
-    "html.text",
-    "html.lists"
-  ],
+  "skillIds": ["html.headings", "html.text", "html.lists"],
   "blocks": [
     {
       "id": "preparer",

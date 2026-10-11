@@ -3,9 +3,7 @@
   "title": "Liens HTML",
   "type": "lesson",
   "objective": "Créer un lien vers un site.",
-  "skillIds": [
-    "html.links"
-  ],
+  "skillIds": ["html.links"],
   "blocks": [
     {
       "id": "preparer",

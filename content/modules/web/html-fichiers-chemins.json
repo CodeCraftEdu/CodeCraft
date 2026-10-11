@@ -4,9 +4,7 @@
   "type": "lesson",
   "theme": "debutants",
   "objective": "Organiser les ressources d’une page et écrire des chemins relatifs qui fonctionnent.",
-  "skillIds": [
-    "html.paths"
-  ],
+  "skillIds": ["html.paths"],
   "prerequisiteSkills": [
     {
       "skillId": "html.links",

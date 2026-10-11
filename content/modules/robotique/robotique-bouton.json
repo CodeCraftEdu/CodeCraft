@@ -8,9 +8,7 @@
     "label": "Ouvrir le départ bouton à relier",
     "url": "https://www.tinkercad.com/things/fgtbRtaPp9X-codecraft-bouton-depart-eleve-a-relier"
   },
-  "skillIds": [
-    "robotique.entree"
-  ],
+  "skillIds": ["robotique.entree"],
   "prerequisiteSkills": [
     {
       "skillId": "robotique.circuit",

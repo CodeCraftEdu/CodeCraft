@@ -8,12 +8,7 @@
     "label": "Ouvrir Scratch",
     "url": "https://scratch.mit.edu/projects/editor/"
   },
-  "skillIds": [
-    "scratch.time",
-    "scratch.variables",
-    "scratch.conditions",
-    "scratch.game-rules"
-  ],
+  "skillIds": ["scratch.time", "scratch.variables", "scratch.conditions", "scratch.game-rules"],
   "prerequisiteSkills": [
     {
       "skillId": "scratch.variables",
@@ -135,9 +130,7 @@
               {
                 "category": "sensing",
                 "label": "Capteurs",
-                "parts": [
-                  "réinitialiser le chronomètre"
-                ],
+                "parts": ["réinitialiser le chronomètre"],
                 "explanation": "Le départ du temps, une seule fois."
               },
               {
@@ -195,9 +188,7 @@
               {
                 "category": "events",
                 "label": "Événements",
-                "parts": [
-                  "quand ce sprite est cliqué"
-                ],
+                "parts": ["quand ce sprite est cliqué"],
                 "explanation": "Le clic sur le chat déclenche cette pile."
               },
               {
