@@ -2,7 +2,7 @@
 
 Séance 4 du stage robotique KidnKod : RB07 + RB08, deux heures avec pause. [Spécification](specification-robotique-seance-4.md), [fiche élève](robotique-seance-4-eleve.md).
 
-**Recette partielle, pas séance prête à animer.** La [recette technique](recette-makecode-capteurs.md) et [l’intégration RB07/RB08](integration-robotique-capteurs.md) distinguent essais historiques et nouveaux départs/références. Des fichiers exécutables et une observation numérique existent ; les scènes répétables, gestes de placement et essais avec le nouveau lancement restent à vérifier. Ce conducteur conserve le format atelier ; les pages et leurs guides génériques sont séparés.
+**Recette partielle, pas séance prête à animer.** La [recette technique](recette-makecode-capteurs.md) et [l’intégration RB07/RB08](integration-robotique-capteurs.md) distinguent essais historiques et nouveaux départs/références. Le 10 octobre, le lancement après placement et appui sur A a été utilisé : fixe 20 et variable 20 observés depuis 26 jusqu’à 18 ; proche 7 immobile après A confirmé pour le fixe. Les variantes 15/25 et leurs réserves sont documentées dans la [préparation des missions](integration-robotique-missions.md). Restent les comparaisons à placements identiques, les répétitions et les contrôles d’accès et de reprise en cours. Ce conducteur conserve le format atelier ; les pages et leurs guides génériques sont séparés.
 
 ## Entrée et objectif
 
@@ -15,8 +15,8 @@ Séparer quatre acquisitions : mesure reçue ; limite fixe choisie ; décision c
 - Diagnostic professeur avec robot immobile et lecture numérique précise, sans projet supplémentaire élève ni affichage lent concurrent. Préparer plusieurs mesures valides.
 - Base `Mon-obstacle-fixe`, même modèle que le jour 3, initialisation et arrêt accompagnés, sans ancien trajet ni événement moteur. Vérifier que la règle répétée ne démarre pas avant la préparation du robot.
 - Règle complète `<` avec deux branches, lecture directe et faible puissance fixe, sans commande temporisée longue qui retarderait la décision. Définir la cadence après essais.
-- Scènes permettant une avance initiale puis un arrêt avant contact pendant la même exécution ; procédure de reprise simulation arrêtée. Vérifier séparément si le retour à une mesure éloignée dans cette même exécution est possible ; ce retour reste complémentaire et n'exige pas de déplacer le robot en mouvement.
-- Tableau de lecture avec égalité : les 20 cm de la fiche sont fictifs, pas le seuil de simulation annoncé. Ne pas exiger de fabriquer une mesure exactement égale dans l’interface.
+- Scènes permettant une avance initiale puis un arrêt avant contact pendant la même exécution ; procédure de reprise : relancer, placer pendant l’attente de A (simulation active, moteurs arrêtés), lire la mesure puis appuyer sur A sans relance intermédiaire. Vérifier séparément si le retour à une mesure éloignée dans cette même exécution est possible ; ce retour reste complémentaire et n'exige pas de déplacer le robot en mouvement.
+- Tableau de lecture avec égalité : les distances proposées sont des cas de raisonnement. La limite 20 est aussi utilisée dans les références de simulation essayées ; cela ne garantit ni une mesure de départ ni un arrêt exactement à 20 cm. Ne pas exiger de fabriquer l’égalité dans l’interface.
 - Référence avec limite fixe et copie `Mon-robot-prudent` : `seuil` initialisé au démarrage, puis utilisé dans la même comparaison. Aucune variable technique supplémentaire à enseigner.
 - Réglages de référence visibles et seconde valeur vérifiée pour une modification guidée : avance initiale puis arrêt différent avant contact. Sauvegarde externe et procédure de reprise si l’élève a perdu le projet. Pas de nouvelle installation ni de compte requis par ces documents.
 
@@ -97,4 +97,4 @@ Faire montrer entrée/mesure, limite, deux branches, répétition, initialisatio
 
 Préserver le modèle fixe et conserver `Mon-robot-prudent` avec la valeur retenue lors du travail accompagné et une sauvegarde récupérable. Signaler ce qui reste à reprendre, surtout la variable et la réévaluation. Le jour 5 réinvestira ce projet avec une mission choisie : l’élève pourra conserver un réglage pertinent s’il le justifie et le vérifie.
 
-Revue transversale appliquée aux trois supports : première variable davantage accompagnée, défi personnel réservé au jour 5 et fiche élève allégée. La [séance 5](specification-robotique-seance-5.md) est rédigée et corrigée après revue. La préparation et les essais techniques restent différés.
+Revue transversale appliquée aux trois supports : première variable davantage accompagnée, défi personnel réservé au jour 5 et fiche élève allégée. La [séance 5](specification-robotique-seance-5.md) est rédigée et corrigée après revue. Les essais partiels du 10 octobre sont consignés ; poursuivre les vérifications encore ouvertes dans le [registre manuel](verifications-manuelles-en-attente.md) avant distribution.

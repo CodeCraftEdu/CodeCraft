@@ -17,6 +17,8 @@
   }
   function url(ref, pathwayId) {
     const params = new URLSearchParams();
+    // Un renvoi hors du parcours ne doit pas transporter son contexte de navigation.
+    // Les identifiants d'activité/tâche restent indépendants du titre affiché.
     if (data.pathways[pathwayId]?.moduleIds.includes(ref.moduleId)) params.set('parcours', pathwayId);
     if (ref.blockId) params.set('activite', ref.blockId);
     if (ref.itemId) params.set('tache', ref.itemId);
@@ -143,6 +145,7 @@
     const index = stages.findIndex(stage => stage.moduleIds.includes(moduleId));
     if (index < 0) return null;
     const stage = stages[index];
+    // Les modules futurs ne comptent pas dans « Module X sur Y » ni dans la fin d'étape.
     const moduleIds = stage.moduleIds.filter(id => pathway.moduleIds.includes(id) && data.modules[id]);
     const position = moduleIds.indexOf(moduleId);
     return { stage, number: index + 1, position: position + 1, total: moduleIds.length, isLast: position === moduleIds.length - 1 };

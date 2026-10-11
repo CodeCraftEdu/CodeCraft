@@ -9,6 +9,86 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'lesson-data.js'), 'utf8'), context);
 const data = context.window.CODECRAFT_DATA;
 
+test('RB01 conserve la leçon complète après retrait de l’essai visuel', () => {
+  const preparation = data.modules['robotique-lumiere'].blocks.find(b => b.id === 'preparer');
+  assert.equal(preparation.steps, undefined);
+  assert.match(preparation.text, /mission|programme commande une lumière/);
+  assert.doesNotMatch(preparation.text, /Tinker this|connexion|copie|LED|Blocks/);
+  assert.match(data.modules['robotique-lumiere'].blocks.find(b => b.id === 'atelier').paragraphs.join(' '), /Tinker this.*enseignant/);
+  const blocks = data.modules['robotique-lumiere'].blocks;
+  for (const id of ['observer', 'commander', 'guide', 'autonomie']) assert.ok(blocks.some(b => b.id === id));
+  const css = fs.readFileSync(path.join(root, 'student-lowpoly.css'), 'utf8');
+  assert.doesNotMatch(css, /robotique-lesson-ambience|preparation-steps/);
+  assert.match(css, /data-domain="robotique"[^\n]+--domain-canvas: #eaf0ec/);
+  assert.doesNotMatch(css, /data-lesson-id/);
+});
+
+test('RB01 introduit mission, outil, montage puis programmation dans cet ordre', () => {
+  const lesson = data.modules['robotique-lumiere'];
+  assert.deepEqual(Array.from(lesson.blocks.slice(0, 4), b => b.id), ['preparer', 'atelier', 'observer', 'commander']);
+  assert.doesNotMatch(lesson.objective, /LED|Blocks|Tinker/);
+  assert.match(lesson.blocks[0].text, /Tinkercad, un atelier virtuel/);
+  assert.match(lesson.blocks[2].paragraphs.join(' '), /s’appelle une LED/);
+  assert.match(lesson.blocks[3].paragraphs.join(' '), /panneau Code.*mode Blocks/);
+  assert.match(lesson.blocks[3].paragraphs.join(' '), /LOW.*HIGH/);
+});
+
+test('RB01 : un schéma utile et accessible, sans manipulation dépendant du professeur', () => {
+  const blocks = data.modules['robotique-lumiere'].blocks;
+  assert.equal(blocks.find(block => block.id === 'preparer').illustration, undefined);
+  for (const id of ['observer']) {
+    const config = blocks.find(block => block.id === id).illustration;
+    assert.ok(config.alt.length > 40 && config.caption.length > 40);
+    const svg = fs.readFileSync(path.join(root, config.src), 'utf8');
+    assert.match(svg, /viewBox="0 0 800 /);
+    assert.match(svg, /<title id="title">/);
+    assert.match(svg, /<desc id="desc">/);
+    assert.doesNotMatch(svg, /<script|(?:href|src)="https?:\/\//);
+  }
+  const observer = blocks.find(block => block.id === 'observer');
+  assert.match(observer.illustration.caption, /pas la disposition exacte.*sens de la LED/);
+  assert.doesNotMatch(JSON.stringify(observer), /enseignant|professeur/);
+  assert.match(observer.paragraphs.join(' '), /déjà complet.*Sans retirer de fil/);
+  assert.doesNotMatch(JSON.stringify(blocks.find(block => block.id === 'guide')), /enseignant|professeur|complète.*connexion/);
+  const svg = fs.readFileSync(path.join(root, 'images/robotique-lumiere-montage.svg'), 'utf8');
+  assert.match(svg, /220 Ω/);
+  assert.match(svg, /GND/);
+  assert.doesNotMatch(svg, /enseignant|professeur/);
+});
+
+test('les textes élève robotique ne contiennent pas le suivi interne de préparation', () => {
+  const pathway = data.pathways['robotique-debutants'];
+  const internal = /en préparation|recette pratique|recette de placement|diagnostic professeur|essais professeur|avant utilisation|avant le cours|aides identifiées|compétence automatiquement/i;
+  // Les réserves de recette restent dans teacherGuide ; ne contrôler que la vue élève.
+  for (const id of pathway.moduleIds) {
+    const module = data.modules[id];
+    assert.doesNotMatch(JSON.stringify({title: module.title, objective: module.objective,
+      blocks: module.blocks, masteryCriteria: module.masteryCriteria}), internal, id);
+    assert.ok(module.teacherGuide, id);
+  }
+  assert.doesNotMatch(JSON.stringify(pathway), internal);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, 'resources/robotique/fiche-mission-robot.html'), 'utf8'), internal);
+  for (const id of ['robotique-distance', 'robotique-obstacle', 'robotique-mission', 'robotique-tests']) {
+    assert.match(JSON.stringify(data.modules[id].teacherGuide.preparation), /recette pratique incomplète/i);
+  }
+});
+
+test('RB08 sépare placement immobile et lancement sans donner la décision au départ', () => {
+  const lesson = data.modules['robotique-obstacle'];
+  const base = lesson.blocks.find(b => b.id === 'base').paragraphs.join(' ');
+  assert.match(base, /attend l’appui sur A/);
+  assert.match(base, /sans arrêter la simulation entre placement et appui/);
+  assert.match(base, /départ sans décision reste immobile même après A/);
+  assert.match(base, /seconde répétition/);
+  assert.doesNotMatch(base, /attend 2000|aucun appui A\/B/);
+  const observation = data.modules['robotique-distance'].blocks.find(b => b.id === 'observer').paragraphs.join(' ');
+  assert.match(observation, /garde la simulation active pour glisser le robot immobile/);
+  for (const id of ['robotique-mission', 'robotique-tests']) {
+    assert.doesNotMatch(JSON.stringify(data.modules[id].blocks), /Arrête.*avant tout placement|Arrête avant tout placement/);
+    assert.match(JSON.stringify(data.modules[id].blocks), /sans appuyer sur A|attente de A|attente du bouton A/);
+  }
+});
+
 test('la robotique mène à un parcours publié sans module fantôme', () => {
   const domain = data.domains.robotique;
   const pathway = data.pathways['robotique-debutants'];
@@ -21,10 +101,10 @@ test('la robotique mène à un parcours publié sans module fantôme', () => {
   assert.deepEqual(Array.from(pathway.stages[1].moduleIds), Array.from(pathway.moduleIds.slice(4, 6)));
   assert.ok(pathway.stages[1].pause);
   assert.deepEqual(Array.from(pathway.stages[2].moduleIds), Array.from(pathway.moduleIds.slice(6, 8)));
-  assert.match(pathway.stages[2].description, /en préparation/);
+  assert.match(pathway.stages[2].description, /distance|obstacle/);
   assert.deepEqual(Array.from(pathway.stages[3].moduleIds), Array.from(pathway.moduleIds.slice(8)));
-  assert.match(pathway.stages[3].description, /en préparation/);
-  assert.match(pathway.stages[3].endMessage, /essais non réalisés/);
+  assert.match(pathway.stages[3].description, /mission/);
+  assert.match(pathway.stages[3].endMessage, /ton projet/);
   assert.equal(pathway.stages[3].upcoming, undefined);
 });
 
@@ -40,7 +120,7 @@ test('RB09/RB10 réinvestissent la règle, partagent une fiche et gardent les r�
       assert.equal(ref.moduleId, id);
       assert.ok(m.blocks.some(b => b.id === ref.blockId));
     }
-    assert.match(m.blocks.find(b => b.id === 'recette').text, /restent à v[ée]rifier|restent à valider/);
+    assert.match(m.blocks.find(b => b.id === 'recette').text, /professeur/);
     assert.match(m.teacherGuide.preparation.join(' '), /Recette pratique incomplète/);
     assert.doesNotMatch(JSON.stringify(m.blocks), /KidnKod|séance [1-5]|Capteurs-recette/);
     const downloads = m.blocks.flatMap(b => Array.from(b.downloads || []));
@@ -67,7 +147,40 @@ test('RB09/RB10 réinvestissent la règle, partagent une fiche et gardent les r�
   assert.match(sheet, /Premier essai RB09/);
   assert.match(sheet, /Confirmation RB10/);
   assert.match(sheet, /non testé/);
+  assert.match(sheet, /simulation active sans appuyer sur le bouton A/);
+  assert.match(sheet, /arrête la simulation avant toute intervention/);
+  assert.match(sheet, /Le bouton A n’est pas la situation A/);
+  assert.doesNotMatch(sheet, /Arrête avant tout placement/);
   assert.doesNotMatch(sheet, /localStorage|fetch\(|<form|<input/);
+});
+
+test('les guides de mission conservent les preuves récentes sans annoncer une validation complète', () => {
+  for (const id of ['robotique-mission', 'robotique-tests']) {
+    const preparation = data.modules[id].teacherGuide.preparation.join(' ');
+    assert.match(preparation, /Recette pratique incomplète/);
+    assert.match(preparation, /13/);
+    assert.match(preparation, /22–23/);
+    assert.match(preparation, /réimport/);
+    assert.match(preparation, /conditions égales|équitables/);
+    assert.match(preparation, /impression|imprimée/);
+  }
+  for (const filename of ['RB09-Mission-prudente-seuil-25.hex', 'RB09-Mission-approche-seuil-15.hex']) {
+    const file = path.join(root, 'docs/recettes-robotique', filename);
+    assert.ok(fs.statSync(file).size > 1000, filename);
+    const hex = fs.readFileSync(file, 'utf8').trim();
+    const records = hex.split(/\r?\n/).filter(line => line.trim());
+    assert.ok(records.every(line => /^:[0-9A-Fa-f]+$/.test(line)), filename);
+    for (const record of records) {
+      const bytes = Buffer.from(record.slice(1), 'hex');
+      assert.equal(bytes.length, bytes[0] + 5, filename);
+      assert.equal([...bytes].reduce((sum, byte) => sum + byte, 0) % 256, 0, filename);
+    }
+    assert.ok(hex.endsWith(':00000001FF'), filename);
+    // Ces contrôles de fichier ne remplacent pas le réimport et les essais du simulateur.
+    const studentDownloads = ['robotique-mission', 'robotique-tests'].flatMap(id =>
+      data.modules[id].blocks.flatMap(block => Array.from(block.downloads || [])));
+    assert.ok(studentDownloads.every(resource => !resource.path.includes(filename)));
+  }
 });
 
 test('RB07 et RB08 séparent mesure, règle fixe et première variable sans validation pratique implicite', () => {
@@ -81,7 +194,7 @@ test('RB07 et RB08 séparent mesure, règle fixe et première variable sans vali
       assert.equal(ref.moduleId, id);
       assert.ok(lesson.blocks.some(b => b.id === ref.blockId));
     }
-    assert.match(lesson.blocks.find(b => b.id === 'recette').text, /reste.*vérifier|reste.*valider/);
+    assert.match(lesson.blocks.find(b => b.id === 'recette').text, /professeur/);
     assert.match(lesson.teacherGuide.preparation.join(' '), /recette pratique incomplète/);
     assert.doesNotMatch(JSON.stringify(lesson.blocks), /KidnKod|séance [1-5]|demain|Capteurs-recette/);
     for (const block of lesson.blocks) {
@@ -102,8 +215,9 @@ test('RB07 et RB08 séparent mesure, règle fixe et première variable sans vali
   const obstacle = data.modules['robotique-obstacle'];
   assert.match(obstacle.blocks.find(b => b.id === 'construire').paragraphs.join(' '), /sans durée/);
   assert.ok(obstacle.blocks.findIndex(b => b.id === 'guide') < obstacle.blocks.findIndex(b => b.id === 'seuil'));
-  assert.match(obstacle.blocks.find(b => b.id === 'seuil').paragraphs.join(' '), /avant la répétition/);
-  assert.match(obstacle.blocks.find(b => b.id === 'reglage').intro, /remise au départ vérifiés/);
+  assert.match(obstacle.blocks.find(b => b.id === 'seuil').paragraphs.join(' '), /avant la boucle qui attend A/);
+  assert.match(obstacle.blocks.find(b => b.id === 'seuil').paragraphs.join(' '), /comparaison distance < 20 de la seconde boucle/);
+  assert.match(obstacle.blocks.find(b => b.id === 'reglage').intro, /même obstacle, le même départ et la même orientation/);
   for (const name of ['RB07-Ma-distance-observation.hex', 'RB08-Mon-obstacle-depart.hex', 'RB08-Obstacle-fixe-reference.hex', 'RB08-Robot-prudent-reference.hex']) {
     const file = path.join(root, 'resources/robotique/makecode', name);
     assert.ok(fs.statSync(file).size > 1000);

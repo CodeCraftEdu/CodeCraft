@@ -40,11 +40,11 @@ Schéma de lecture : **lire la distance → comparer à la limite → Arrêter o
 
 **Je prévois :** que fera le robot s’il commence loin de l’obstacle ? Et s’il commence près ?
 
-**Je fais :** construis les deux cas avec le professeur. Garde la préparation du robot au début. Essaie les positions prévues, avec la limite donnée pour la simulation.
+**Je fais :** construis les deux cas avec le professeur dans la seconde boucle, après la boucle qui attend A. Garde la préparation du robot au début. Essaie les positions prévues, avec la limite donnée pour la simulation.
 
 **Je vérifie :** depuis le départ éloigné, le robot avance puis s’arrête avant l’obstacle, sans relance entre les deux. Depuis le départ proche, la règle commande Arrêter. Montre les actions correspondantes.
 
-Nous relisons la situation, comme le bouton au jour 2. Arrête la simulation avant de replacer le robot. Si le résultat te surprend, demande une aide avant de modifier les réglages.
+Nous relisons la situation, comme le bouton au jour 2. Pour chaque essai, démarre avec ▶ sans appuyer sur A. Pendant l’attente fournie, la simulation reste active et les moteurs sont arrêtés : place le robot avec le professeur et lis une mesure stable. Maintiens ensuite le bouton A à l’écran environ une seconde puis relâche, sans arrêter ni relancer entre le placement et cet appui. Après A, arrête la simulation avant toute intervention, puis recommence cette préparation pour l’essai suivant. Si le résultat te surprend, demande une aide avant de modifier les réglages.
 
 ## 4 — Nommer le réglage
 
@@ -52,7 +52,7 @@ Conserve `Mon-obstacle-fixe` et crée la copie `Mon-robot-prudent` avec le profe
 
 **Je prévois :** si nous donnons seulement un nom à la même limite, le comportement changera-t-il ?
 
-**Je fais :** au démarrage, donne à `seuil` la valeur de la limite. Dans la comparaison, utilise `seuil` à la place du nombre. Reprends la même scène et relance.
+**Je fais :** au démarrage, après la préparation et l’arrêt du robot, donne à `seuil` la valeur de la limite avant la boucle qui attend A. Dans la comparaison de la seconde boucle, après cette attente, utilise `seuil` à la place du nombre. Relance puis reprends la même scène pendant l’attente de A, avant de lancer la règle.
 
 **Je vérifie :** la règle reste la même. Montre où `seuil` reçoit sa valeur et où elle est utilisée.
 

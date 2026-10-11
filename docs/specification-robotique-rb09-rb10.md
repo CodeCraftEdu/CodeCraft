@@ -48,7 +48,7 @@ Objectif : « Tester ta mission dans plusieurs situations, expliquer les résult
 | B — obstacle proche, sans contact au départ | Même réglage personnel ; mesure proche valide pour toutes les valeurs autorisées | Branche Arrêter et immobilité maintenue ; cet arrêt initial ne prouve pas la réussite de A |
 | C — autre position d’obstacle, départ encore éloigné | Même réglage, sans l’ajuster pour réussir C | Avance puis arrêt dans une autre scène ; pas de comparaison relative à la référence sans refaire cette comparaison |
 
-Trois situations ne signifient pas trois lancements : A comprend référence et projet ; une correction exige un nouvel essai. Observer avance puis arrêt dans **la même exécution** en A/C. Arrêter avant tout placement, jamais déplacer le robot en mouvement. Égalité traitée sur tableau, pas par placement exact.
+Trois situations ne signifient pas trois lancements : A comprend référence et projet ; une correction exige un nouvel essai. Observer avance puis arrêt dans **la même exécution** en A/C. Après relance, placer pendant l’attente du bouton A, simulation active et moteurs arrêtés ; lire la mesure puis appuyer sur A sans relance intermédiaire. Après A, arrêter avant toute intervention, jamais déplacer le robot en mouvement. Égalité traitée sur tableau, pas par placement exact.
 
 Prévoir → essayer → noter → comparer → conclure. Si un résultat surprend : vérifier scène, mesure valide, valeur effectivement initialisée, commandes concurrentes et règle avant de modifier. Changer un seul élément pertinent puis retester. Si le programme change, reprendre A/B/C avant conclusion finale. Ne pas imposer d’erreur ou de correction à un projet conforme.
 

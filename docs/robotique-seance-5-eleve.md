@@ -43,7 +43,9 @@ La distance vient du capteur. `seuil` est la limite que tu choisis : ce n’est 
 
 **Premier résultat — RB09 :** après ta prévision, lance ton projet dans A, dans les mêmes conditions que la référence : départ, orientation, obstacle et puissance. Note ou explique ce que tu observes. Sauvegarde ta copie avant une pause ; ce premier résultat ne suffit pas à valider toute la mission.
 
-**Confirmation et autres situations — RB10 :** retrouve ton projet et la même fiche. Reprends A depuis le départ connu, avec le même réglage ; le professeur remontre la référence si nécessaire. Prévois puis essaie B, ensuite C. Arrête toujours la simulation avant de déplacer le robot ou l’obstacle.
+**Confirmation et autres situations — RB10 :** retrouve ton projet et la même fiche. Reprends la situation A depuis le départ connu, avec le même réglage ; le professeur remontre la référence si nécessaire. Prévois puis essaie B, ensuite C.
+
+Pour chaque essai, démarre avec ▶ sans appuyer sur le bouton A. Pendant l’attente fournie, garde la simulation active et les moteurs arrêtés : place le robot avec le professeur et relève une mesure stable. Maintiens ensuite le bouton A à l’écran environ une seconde puis relâche, sans arrêt ni relance intermédiaire. Après cet appui, arrête la simulation avant toute intervention sur le robot ou l’obstacle ; recommence la préparation pour l’essai suivant. Le bouton A n’est pas la situation A du tableau.
 
 **Je vérifie :** compare chaque observation à ta prévision :
 

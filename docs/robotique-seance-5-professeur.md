@@ -2,15 +2,29 @@
 
 Séance 5 : RB09 + RB10, 120 minutes avec pause. [Spécification](specification-robotique-seance-5.md), [fiche élève](robotique-seance-5-eleve.md).
 
-**Non essayé dans MakeCode.** Ce guide prépare l’animation, sans attester une recette technique ou fournir un projet exécutable. Reprendre les vérifications différées du [jour 4](robotique-seance-4-professeur.md).
+**Recette technique partielle effectuée le 10 octobre dans MakeCode.** Les observations ci-dessous ne valident ni une séance élève ni la sécurité matérielle. Reprendre seulement les contrôles encore ouverts du jour 4 et de [R15](integration-robotique-missions.md).
+
+## Résultats de préparation — 10 octobre
+
+| Projet / limite | Arrêt observé | Preuve disponible |
+| --- | --- | --- |
+| Référence fixe 20 | 17–18 cm | 17 dans l’ancienne version automatique ; 18 également confirmé avec attente de A |
+| Approche, seuil 15 | 13 cm | Départ 26 puis A devant chaque rectangle ; proche 7 immobile après A confirmé |
+| Prudente, seuil 25 | 22–23 cm | Autre rectangle : départ 26 puis A confirmé, plusieurs résultats rapportés ; proche 7 immobile après relâchement de A confirmé par l’utilisateur |
+
+Ce sont des valeurs ponctuelles essayées, pas une plage continue autorisée ni des distances d’arrêt garanties. L’effet attendu du seuil est observé, mais les comparaisons ne prouvent pas des placements strictement identiques. La cause exacte de l’écart 22/23 n’est pas établie. La règle `< seuil` commande l’arrêt à une consultation ; ne pas demander un arrêt exactement au seuil, le contact ou le seuil minimal.
+
+Procédure commune : CuteBot, trois aides OFF, direction 0, puissance 25, consultation 100 ms, pile unique fournie avec attente de A. Après chaque relance/import, démarrer sans A, placer le robot immobile face à la cible, relever la mesure, puis maintenir **le bouton A à l’écran** environ une seconde sans relance intermédiaire. Après A, arrêter avant intervention. Le bouton A n’est pas la situation A du tableau ; le HEX ne sauvegarde ni scène ni résultats.
+
+Copies professeur [prudente 25](recettes-robotique/RB09-Mission-prudente-seuil-25.hex) et [approche 15](recettes-robotique/RB09-Mission-approche-seuil-15.hex) exportées et réimportées avec nom/blocs/réglages retrouvés. Ne pas redemander les trois premiers essais approche comme s’ils n’avaient pas été faits. Restent comparaison/répétition à conditions égales, accès élèves et téléchargement/ouverture locale/impression de la fiche. Ces archives de recette ne remplacent pas le choix et l’explication de l’élève.
 
 ## Préparation différée
 
 - Même robot, configuration, initialisation et règle répétée que le jour 4 ; puissance faible fixe et absence de commande concurrente.
 - Préparer une référence professeur unique `Reference-arret`, issue de `Mon-obstacle-fixe`. Garder sa limite fixe pendant la séance et noter sur une fiche visible : limite, puissance, départ, orientation et obstacle de la scène A. Ce nom ne désigne pas le projet personnel du jour 4 ; aucune copie de référence supplémentaire à ouvrir par l’élève.
 - Projet personnel duplicable et base de reprise équivalente si un élève a perdu son projet.
-- Plages de `seuil` vérifiées pour les deux missions dans la scène A : arrêt plus loin que `Reference-arret` ou arrêt plus près, avec avance initiale et arrêt avant contact. Un réglage pertinent du jour 4 peut être conservé. Si la seconde mission ne fonctionne pas, préparer une autre contrainte observable réalisable et adapter la fiche élève avant le cours ; ne pas annoncer une distance physique exacte.
-- Trois situations : A pour la comparaison, B avec obstacle proche sans contact initial, C avec obstacle à une autre position et départ éloigné. Choisir B pour obtenir Arrêter avec tous les réglages proposés, et C pour permettre une avance puis un arrêt avant contact avec ces mêmes réglages. Vérifier mesures valides et remise au départ simulation arrêtée.
+- Valeurs ponctuelles 15 et 25 essayées ; comparaison équitable à confirmer dans la scène A de cours, sans plage continue annoncée. Un réglage pertinent du jour 4 peut être conservé. Si une mission échoue dans cette scène, revoir le support avant de la proposer ; ne pas annoncer une distance physique exacte.
+- Trois situations : A pour la comparaison, B avec obstacle proche sans contact initial, C avec obstacle à une autre position et départ éloigné. Choisir B pour obtenir Arrêter avec tous les réglages proposés, et C pour permettre une avance puis un arrêt avant contact avec ces mêmes réglages. Vérifier mesures valides et remise au départ pendant l’attente de A, simulation active et moteurs arrêtés ; lire la mesure puis presser A sans relance intermédiaire.
 - Schéma de règle déjà présent sur la fiche élève, à compléter sans toucher au programme intact ; référence visible après la tentative.
 - Sauvegarde et reprise réellement vérifiées. Aucun compte, partage public ou enregistrement vidéo n’est imposé par la séance.
 - Effectif connu avant de répartir les 25 minutes de présentation ; pas de dépendance à des salles de visioconférence séparées.
@@ -74,4 +88,4 @@ La sauvegarde finale ne remplace pas le premier enregistrement avant la pause. F
 
 Faire nommer une notion comprise et une envie de projet futur. Le stage constitue une découverte simulée, pas une validation de sécurité physique ou une maîtrise autonome complète.
 
-Revues pédagogique et transversale appliquées : trois situations essentielles, référence nommée, portée de chaque essai précisée et conservation d’un réglage pertinent autorisée. La préparation des projets et les essais techniques restent différés à la demande de l’utilisateur.
+Revues pédagogique et transversale appliquées : trois situations essentielles, référence nommée, portée de chaque essai précisée et conservation d’un réglage pertinent autorisée. Les copies professeur 15/25 sont exportées et réimportées ; les observations du 10 octobre et leurs limites figurent en début de guide. Poursuivre les comparaisons à conditions égales, les répétitions et les contrôles d’accès et de fiche recensés dans le [registre manuel](verifications-manuelles-en-attente.md).

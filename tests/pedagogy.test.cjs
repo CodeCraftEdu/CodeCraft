@@ -347,9 +347,10 @@ test('lot 4 Scratch : signal attendu, recettes réutilisées et paramètre facul
   assert(app.includes("'custom'"));
 });
 
-test('prototype Flexbox : une seule démonstration, sans nouveau module ni progression', () => {
-  const demos=Object.entries(data.modules).flatMap(([id,m])=>ui.blocks(m.blocks).filter(b=>b.demonstration).map(b=>({id,block:b})));
-  assert.equal(demos.length,1);
+test('Flexbox : six démonstrations ciblées, sans nouveau module ni progression', () => {
+  const demos=Object.entries(data.modules).flatMap(([id,m])=>ui.blocks(m.blocks).filter(b=>b.demonstration?.type.startsWith('flex-')).map(b=>({id,block:b})));
+  assert.equal(demos.length,6);
+  assert(demos.every(d=>d.id==='css-flexbox'));
   assert.equal(demos[0].id,'css-flexbox');
   assert.equal(demos[0].block.id,'cours');
   const demo=demos[0].block.demonstration;
@@ -359,6 +360,12 @@ test('prototype Flexbox : une seule démonstration, sans nouveau module ni progr
   for(const key of ['title','intro','controlLabel','previewLabel','codeLabel','note']) assert(demo[key].trim());
   assert(demo.options.every(o=>o.label && o.feedback));
   assert.equal(demos[0].block.code,'.cartes {\n  display: flex;\n}');
+  assert.deepEqual(Array.from(demos.slice(1),d=>d.block.demonstration.property),['flex-direction','gap','justify-content','align-items','flex-wrap']);
+  for (const {block} of demos.slice(1)) {
+    assert.equal(block.demonstration.type,'flex-property');
+    assert(block.demonstration.options.every(o=>o.value && o.feedback));
+    assert(block.demonstration.note.includes('Seul'));
+  }
 });
 
 test('lot 2 Scratch : imbrication, conditions et score placés dans le bon contexte', () => {

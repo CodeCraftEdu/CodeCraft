@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 270" role="img" aria-labelledby="title desc">
+  <title id="title">Une même lumière, deux états</title>
+  <desc id="desc">À gauche, une LED rouge éteinte. À droite, la même LED allumée, entourée de rayons lumineux. Le programme change, pas le montage.</desc>
+  <rect width="800" height="270" rx="16" fill="#f0f5f2"/>
+  <rect x="20" y="20" width="365" height="230" rx="12" fill="#fffdf7"/>
+  <rect x="415" y="20" width="365" height="230" rx="12" fill="#fffdf7"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#285363">
+    <text x="202" y="58" font-size="24" font-weight="bold">Éteinte</text>
+    <text x="598" y="58" font-size="24" font-weight="bold">Allumée</text>
+    <text x="202" y="224" font-size="18">La lumière ne brille pas.</text>
+    <text x="598" y="224" font-size="18">La lumière brille !</text>
+  </g>
+  <g stroke="#8a9395" stroke-width="6" fill="none"><path d="M191 160v32m22-32v32M587 160v32m22-32v32"/></g>
+  <path d="M175 153v-32a27 27 0 0 1 54 0v32z" fill="#a96b69" stroke="#704849" stroke-width="3"/>
+  <rect x="169" y="153" width="66" height="10" rx="4" fill="#704849"/>
+  <circle cx="598" cy="130" r="61" fill="#ffe7ba"/>
+  <path d="M571 153v-32a27 27 0 0 1 54 0v32z" fill="#ef6554" stroke="#ac3f36" stroke-width="3"/>
+  <rect x="565" y="153" width="66" height="10" rx="4" fill="#ac3f36"/>
+  <path d="M582 128v-7a16 16 0 0 1 10-15" stroke="#fff5d8" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <g stroke="#d49238" stroke-width="4" stroke-linecap="round"><path d="M598 77v-7m-49 29-8-5m106 5 8-5m-115 38h-9m124 0h9"/></g>
+</svg>

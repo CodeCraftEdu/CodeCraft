@@ -2,7 +2,7 @@
 
 ## Statut
 
-Deux leçons et deux guides ajoutés au site pour **préparation**, pas pour distribution immédiate en cours. L’étape capteur indique sa recette pratique incomplète ; chaque leçon porte un avertissement visible. La roadmap reste à dix modules : huit intégrés, RB09/RB10 encore documentaires. Aucun acquis automatique, aucun commit ni partage public MakeCode.
+Deux leçons et deux guides ajoutés au site pour **préparation**, pas pour distribution immédiate en cours. L’étape capteur indique sa recette pratique incomplète ; chaque leçon porte un avertissement visible. La roadmap compte dix modules désormais intégrés, RB09/RB10 compris, avec recette pratique encore incomplète. Aucun acquis automatique ; aucun partage public MakeCode réalisé pour cette adaptation.
 
 Accès : `index.html#module/robotique-distance?parcours=robotique-debutants`, `index.html#module/robotique-obstacle?parcours=robotique-debutants` ; guides `prof.html#guide/robotique-distance` et `prof.html#guide/robotique-obstacle`.
 
@@ -22,7 +22,7 @@ Les HEX sont exportés depuis l’interface MakeCode, après saisie professeur e
 | Fichier | Usage | Contenu |
 | --- | --- | --- |
 | RB07-Ma-distance-observation.hex | Élève / démonstration RB07 | Préparation CuteBot, trois aides OFF, arrêt, pause 2000 ms, lecture série toutes les 500 ms ; aucun mouvement |
-| RB08-Mon-obstacle-depart.hex | Départ élève RB08 | Même base, lecture toutes les 100 ms ; aucune condition, aucun motor steer, aucune variable |
+| RB08-Mon-obstacle-depart.hex | Départ élève RB08 | Arrêt, attente de A avec lecture 100 ms, puis lecture seule ; aucune décision sur la distance, aucun motor steer, aucune variable |
 | RB08-Obstacle-fixe-reference.hex | Professeur uniquement | Base + règle distance < 20, arrêt / direction 0 puissance 25 sans durée, pause 100 ms |
 | RB08-Robot-prudent-reference.hex | Professeur uniquement | Même règle avec seuil initialisé à 20 avant répétition et utilisé à droite de < |
 
@@ -40,4 +40,12 @@ La préparation par virage temporisé donnait 28 puis 17 après réimport : elle
 
 Si le placement fiable manque : conserver les pages en préparation, travailler éventuellement le tableau logique avec l’élève et marquer la manipulation capteur non réalisée. Ne pas annoncer l’acquisition de l’observation réelle. Aucun modèle physique n’est testé, aucun seuil de sécurité garanti.
 
-Suite autorisée : finir ces vérifications et conserver leurs preuves. RB09/RB10 exigent un lot distinct de ressources, pages et recette ; leur contenu n’est pas ajouté par cette intégration.
+Suite autorisée : finir ces vérifications et conserver leurs preuves. RB09/RB10 ont depuis été intégrés en préparation ; leur recette R15 reste distincte.
+
+## Mise à jour du 10 octobre — placement puis lancement sur A
+
+Les trois HEX RB08 remplacent leur pause initiale de 2000 ms par une attente fournie : tant que A n’est pas pressé, moteurs arrêtés et mesure série toutes les 100 ms. La seconde boucle reçoit la décision ; le départ élève ne donne toujours ni comparaison de distance ni avance. Dans la référence variable, `seuil = 20` précède cette attente. Aucun événement de bouton moteur ni variable d’activation : un nouvel appui ne crée pas une autre boucle.
+
+Protocole : ▶ → placement humain, simulation active mais robot immobile → lecture stable → A maintenu environ une seconde puis relâché → observation sans déplacer le robot. Après chaque relance/import/modification, refaire le placement pendant l’attente de A. Ne pas utiliser Stop entre placement et A ; après lancement, arrêter avant toute intervention. A doit être relâché au démarrage. RB07 reste un programme de mesure immobile sans cette attente.
+
+Les preuves du 9 octobre ci-dessus concernent les anciens fichiers. Dernier état du 10 octobre dans [la recette capteurs](recette-makecode-capteurs.md) : fixe 20 testé depuis 26 → 18 et proche 7 après A immobile ; variable 20 observée 26 → 18 ; variantes 15/25 essayées et réimportées, résultats détaillés dans l’intégration missions. La comparaison géométriquement identique et les contrôles de cours restent ouverts, pas tous les premiers essais. Un arrêt à 17 ou 18 pour une limite 20 est compatible avec `< 20`, pas une distance exacte garantie ; 17 appartient à l’ancienne version automatique.

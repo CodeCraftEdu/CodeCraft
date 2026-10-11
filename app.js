@@ -9,10 +9,14 @@
     main.focus();
   });
   const checks = new Set();
+  const demoCleanups = [];
+  // Nettoyage d'affichage uniquement : conserver les données, les liens et le code.
+  const studentTitle = text => text.replace(/^\s*\d+\s*(?:--+|[.:-]|[–—])\s*/, '')
+    .replace(/\s+(?:--+|[–—]|-)\s+/g, ' : ');
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
+    if (text !== undefined) node.textContent = /(?:^|\s)(?:section-title|subheading|lesson-title|route-card-title)(?:\s|$)/.test(className || '') ? studentTitle(text) : text;
     return node;
   };
   function createCode(code) {
@@ -105,7 +109,17 @@
       paragraph.textContent = block.text;
     }
     section.append(paragraph);
+    if (block.illustration) section.append(createIllustration(block.illustration));
     return section;
+  }
+
+  function createIllustration(config) {
+    const figure = element('figure', 'lesson-illustration');
+    const image = element('img');
+    image.src = config.src;
+    image.alt = config.alt;
+    figure.append(image, element('figcaption', '', config.caption));
+    return figure;
   }
 
   function createFlexDisplayDemo(config) {
@@ -128,15 +142,15 @@
     cards.setAttribute('aria-label', config.previewLabel);
     config.cards.forEach(text => cards.append(element('div', 'carte', text)));
     preview.append(cards);
-    const source = element('div');
+    const source = element('div', 'flex-display-demo__source');
     source.append(element('p', 'flex-display-demo__caption', config.codeLabel));
     const pre = element('pre', 'code-block');
     const code = element('code');
     const value = element('strong', 'flex-display-demo__value');
-    code.append('.cartes {\n  display: ', value, ';\n}');
+    code.append('.cartes {\n  ', element('span', 'web-code-token--property', 'display'), ': ', value, ';\n}');
     pre.append(code);
     source.append(pre);
-    layout.append(preview, source);
+    layout.append(source, preview);
     const feedback = element('p', 'flex-display-demo__feedback');
     feedback.setAttribute('role', 'status');
     const update = () => {
@@ -150,6 +164,149 @@
     select.addEventListener('change', update);
     update();
     demo.append(label, layout, feedback, element('p', 'section-intro', config.note));
+    return demo;
+  }
+
+  function createFlexPropertyDemo(config) {
+    const allowed = {
+      'flex-direction': ['row', 'column'],
+      gap: ['0px', '12px', '24px'],
+      'justify-content': ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly'],
+      'align-items': ['flex-start', 'center', 'flex-end', 'stretch'],
+      'flex-wrap': ['nowrap', 'wrap']
+    };
+    const values = allowed[config.property];
+    if (!values) return element('div');
+    const demo = element('section', 'flex-property-demo');
+    demo.append(element('h3', '', config.title), element('p', '', config.intro));
+    const label = element('label', 'flex-property-demo__control', config.property);
+    const select = element('select');
+    config.options.filter(option => values.includes(option.value)).forEach(option => {
+      const choice = element('option', '', option.value);
+      choice.value = option.value;
+      select.append(choice);
+    });
+    label.append(select);
+    const layout = element('div', 'flex-property-demo__layout');
+    const preview = element('div', 'flex-property-demo__preview');
+    preview.append(element('p', 'flex-property-demo__caption', '.cartes : le parent'));
+    const viewport = element('div', 'flex-property-demo__viewport');
+    const cards = element('div', 'flex-property-demo__cards');
+    cards.setAttribute('role', 'group');
+    cards.setAttribute('aria-label', 'Cartes organisées par le parent Flexbox');
+    config.cards.forEach((text, index) => {
+      const card = element('div', 'flex-property-demo__card', text);
+      if (config.property === 'align-items') card.style.minHeight = (50 + index * 22) + 'px';
+      cards.append(card);
+    });
+    viewport.append(cards);
+    preview.append(viewport);
+    const axes = element('p', 'flex-property-demo__axes');
+    preview.append(axes);
+    const source = element('div', 'flex-property-demo__source');
+    source.append(element('p', 'flex-property-demo__caption', 'CSS appliqué au parent'));
+    const pre = element('pre', 'code-block');
+    const code = element('code');
+    pre.append(code); source.append(pre); layout.append(source, preview);
+    const feedback = element('p', 'flex-property-demo__feedback');
+    feedback.setAttribute('role', 'status');
+    const defaults = { display: 'flex', 'flex-direction': 'row', gap: '12px', 'justify-content': 'flex-start', 'align-items': 'flex-start', 'flex-wrap': 'nowrap' };
+    if (config.property === 'flex-wrap') {
+      cards.style.width = '260px'; cards.style.maxWidth = '100%';
+      cards.style.alignContent = 'flex-start';
+    }
+    const update = () => {
+      const option = config.options.find(option => option.value === select.value && values.includes(option.value)) || config.options[0];
+      select.value = option.value;
+      const styles = { ...defaults, [config.property]: option.value };
+      Object.entries(styles).forEach(([name, value]) => cards.style.setProperty(name, value));
+      code.replaceChildren();
+      code.append('.cartes {\n');
+      Object.entries(styles).forEach(([name, value]) => {
+        code.append('  ', element('span', 'web-code-token--property', name), ': ');
+        code.append(name === config.property ? element('strong', 'flex-property-demo__value', value) : value);
+        code.append(';\n');
+      });
+      if (config.property === 'flex-wrap') code.append('  width: 260px;\n  max-width: 100%;\n  align-content: flex-start;\n');
+      code.append('}');
+      const column = styles['flex-direction'] === 'column';
+      axes.textContent = column ? 'Axe principal ↓ · Axe transversal →' : 'Axe principal → · Axe transversal ↓';
+      feedback.textContent = option.feedback;
+    };
+    select.value = config.options[0].value;
+    select.addEventListener('change', update);
+    update();
+    demo.append(label, layout, feedback, element('p', 'section-intro', config.note));
+    return demo;
+  }
+
+  function createWebComparison(config) {
+    const demo = element('section', 'web-comparison');
+    demo.append(element('h3', '', config.title), element('p', '', config.intro));
+    const controls = element('div', 'web-comparison__controls');
+    const label = element('label', '', 'Comparer les versions');
+    const select = element('select');
+    config.variants.forEach((variant, index) => {
+      const option = element('option', '', variant.label);
+      option.value = String(index); select.append(option);
+    });
+    label.append(select);
+    const reset = element('button', '', 'Revenir au départ');
+    reset.type = 'button'; controls.append(label, reset);
+    const layout = element('div', 'web-comparison__layout');
+    const result = element('div', 'web-comparison__result');
+    const previewLabel = element('p', 'web-comparison__caption', 'Aperçu');
+    const frame = element('iframe', 'web-comparison__frame');
+    frame.title = config.title + ' : résultat de la version choisie';
+    // Origine conservée uniquement pour mesurer le contenu ; scripts et navigation restent interdits.
+    frame.setAttribute('sandbox', 'allow-same-origin');
+    frame.setAttribute('referrerpolicy', 'no-referrer');
+    let resizeObserver = null;
+    const fitPreview = () => {
+      const body = frame.contentDocument?.body;
+      if (!body) return;
+      frame.style.height = Math.min(440, Math.max(96, Math.ceil(body.getBoundingClientRect().height + 32))) + 'px';
+    };
+    frame.addEventListener('load', () => {
+      if (resizeObserver) resizeObserver.disconnect();
+      fitPreview();
+      if (typeof ResizeObserver !== 'undefined' && frame.contentDocument?.body) {
+        resizeObserver = new ResizeObserver(fitPreview);
+        resizeObserver.observe(frame.contentDocument.body);
+      }
+    });
+    demoCleanups.push(() => { if (resizeObserver) resizeObserver.disconnect(); });
+    result.append(previewLabel, frame);
+    const source = element('div', 'web-comparison__source');
+    const sourceLabel = element('p', 'web-comparison__caption');
+    source.append(sourceLabel);
+    const pre = element('pre', 'code-block');
+    const code = element('code'); pre.append(code); source.append(pre);
+    layout.append(source, result);
+    const feedback = element('p', 'web-comparison__feedback');
+    feedback.setAttribute('role', 'status');
+    const update = () => {
+      const variant = config.variants[Number(select.value)] || config.variants[0];
+      const base = 'body{margin:16px;color:#292d32;background:#fff;font:16px/1.5 Arial,sans-serif;overflow-wrap:anywhere}h1{font-size:26px}h2{font-size:21px}a{color:#174b9b}pre{white-space:pre-wrap}*{box-sizing:border-box}';
+      frame.srcdoc = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; img-src data:"><style>' + base + (variant.css || '') + '</style></head><body>' + variant.html + '</body></html>';
+      code.replaceChildren();
+      const tokens = variant.code.split(/("[^"\n]*"|'[^'\n]*'|<\/?[\w-]+|[\w-]+(?=\s*[:=])|#[\da-fA-F]{3,8}\b|\b\d+(?:\.\d+)?(?:px|rem|%)?)/g);
+      tokens.forEach((token, index) => {
+        if (!token) return;
+        if (index % 2 === 0) { code.append(token); return; }
+        const kind = /^["']/.test(token) ? 'string' : /^\d|^#/.test(token) ? 'value' : 'property';
+        code.append(element('span', 'web-code-token--' + kind, token));
+      });
+      sourceLabel.textContent = config.codeLabel || (/^\s*</.test(variant.code) ? 'HTML' : /\{/.test(variant.code) && !/^HTML|^Dans/.test(variant.code) ? 'CSS' : 'Code · repères');
+      source.hidden = !variant.code;
+      layout.style.gridTemplateColumns = variant.code ? '' : '1fr';
+      feedback.textContent = variant.feedback;
+    };
+    select.value = '0';
+    select.addEventListener('change', update);
+    reset.addEventListener('click', () => { select.value = '0'; update(); });
+    update();
+    demo.append(controls, layout, feedback, element('p', 'section-intro', config.note));
     return demo;
   }
 
@@ -274,12 +431,7 @@
     } else (block.paragraphs || []).forEach((paragraph) => section.append(element("p", "", paragraph)));
     if (block.codeDiagram) section.append(createCodeDiagram(block.codeDiagram));
     if (block.illustration) {
-      const figure = element('figure', 'lesson-illustration');
-      const image = element('img');
-      image.src = block.illustration.src;
-      image.alt = block.illustration.alt;
-      figure.append(image, element('figcaption', '', block.illustration.caption));
-      section.append(figure);
+      section.append(createIllustration(block.illustration));
     }
     if (block.downloads?.length) {
       const downloads = element('ul', 'value-list');
@@ -295,11 +447,6 @@
     if (block.coordinateDiagram) section.append(createCoordinateDiagram(block.coordinateDiagram));
     if (block.visualScript) {
       section.append(createScratchVisual(block.visualScript));
-      if (block.code) {
-        const details = element('details', 'hint');
-        details.append(element('summary', '', 'Lire aussi le modèle en texte'), createCode(block.code));
-        section.append(details);
-      }
     } else if (block.code && !block.actionSteps) section.append(createCode(block.code));
     if (visual && block.shortSteps && block.paragraphs?.length) {
       const details = element('details', 'hint scratch-explanations');
@@ -315,6 +462,12 @@
     }
     if (block.demonstration?.type === 'flex-display') {
       section.append(createFlexDisplayDemo(block.demonstration));
+    }
+    if (block.demonstration?.type === 'flex-property') {
+      section.append(createFlexPropertyDemo(block.demonstration));
+    }
+    if (block.demonstration?.type === 'web-comparison') {
+      section.append(createWebComparison(block.demonstration));
     }
     return section;
   }
@@ -357,10 +510,18 @@
   };
   const moduleUrl = (id, pathwayId) => '#module/' + encodeURIComponent(id) +
     (pathwayId ? '?parcours=' + encodeURIComponent(pathwayId) : '');
+  const pathwayStartUrl = id => moduleUrl(data.pathways[id].moduleIds[0], id);
+  const singlePathway = domain => domain.pathwayIds.length === 1 && !(domain.diagnosticModuleIds || []).length;
+  const domainEntryUrl = id => singlePathway(data.domains[id]) ? pathwayStartUrl(data.domains[id].pathwayIds[0]) : '#domaine/' + id;
   const domainUrl = id => Object.keys(data.domains).length === 1 ? '#' : '#domaine/' + id;
   const own = (collection, id) => Object.prototype.hasOwnProperty.call(collection, id) ? collection[id] : null;
+  let disposeCourseNavigation = null;
 
   function start(title, theme, compact = true, domainId = null) {
+    while (demoCleanups.length) demoCleanups.pop()();
+    if (disposeCourseNavigation) disposeCourseNavigation();
+    disposeCourseNavigation = null;
+    main.classList.remove('site-shell--course');
     delete document.body.dataset.lessonLayout;
     document.title = title + ' — ' + data.site.name;
     if (theme) document.body.dataset.route = theme;
@@ -394,13 +555,14 @@
 
   function renderDomain(id, home = false) {
     const domain = data.domains[id];
+    if (!home && singlePathway(domain)) return renderPathway(domain.pathwayIds[0]);
     start(home ? data.site.subtitle : domain.title, null, home ? false : true, home ? null : id);
     if (!home) main.append(element('h1', 'library-heading domain-banner', domain.title));
     const navigation = element('nav', 'route-grid');
     navigation.setAttribute('aria-label', 'Choisir un parcours');
     domain.pathwayIds.forEach(pathwayId => {
       const pathway = data.pathways[pathwayId];
-      navigation.append(card(pathway.title, pathway.objective, '#parcours/' + pathwayId, pathway.theme));
+      navigation.append(card(pathway.title, pathway.objective, pathwayStartUrl(pathwayId), pathway.theme));
     });
     (domain.diagnosticModuleIds || []).forEach(moduleId => {
       const item = data.modules[moduleId];
@@ -425,7 +587,7 @@
     domains.forEach(id => {
       const domain = data.domains[id];
       const visual = homeVisuals[id] || homeVisuals.web;
-      const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', '#domaine/' + id);
+      const entry = card(domain.title, domain.homeDescription || 'Découvrir les parcours', domainEntryUrl(id));
       entry.classList.add('home-domain', 'home-domain--' + visual.name);
       const top = element('span', 'home-domain__top');
       top.setAttribute('aria-hidden', 'true');
@@ -441,7 +603,7 @@
       top.append(pictogram);
       entry.prepend(top);
       entry.querySelector('.route-card-title').after(element('span', 'home-domain__tag', visual.tag));
-      entry.append(element('span', 'home-domain__action', 'Découvrir les parcours →'));
+      entry.append(element('span', 'home-domain__action', singlePathway(domain) ? 'Commencer le parcours →' : 'Choisir un parcours →'));
       navigation.append(entry);
     });
     main.append(navigation);
@@ -463,43 +625,9 @@
 
   function renderPathway(id) {
     const pathway = data.pathways[id];
-    start(pathway.title, pathway.theme, true, pathway.domainId);
-    const article = element('article', 'lesson-page');
-    article.append(intro(pathway.title, pathway.objective));
-    function moduleList(moduleIds) {
-      const list = element('ol', 'module-list');
-      const first = pathway.moduleIds.indexOf(moduleIds[0]);
-      if (first > 0) list.start = first + 1;
-      moduleIds.forEach(moduleId => {
-        const item = data.modules[moduleId];
-        const row = element('li');
-        row.append(card(item.title, data.moduleTypes[item.type] + ' · ' + item.objective, moduleUrl(moduleId, id), pathway.theme));
-        list.append(row);
-      });
-      return list;
-    }
-    const grouped = new Set();
-    (pathway.stages || []).forEach((stage, index) => {
-      const moduleIds = pathway.moduleIds.filter(moduleId => stage.moduleIds.includes(moduleId) && !grouped.has(moduleId));
-      if (!moduleIds.length && !stage.upcoming) return;
-      moduleIds.forEach(moduleId => grouped.add(moduleId));
-      const section = element('section', 'pathway-stage');
-      if (!moduleIds.length) section.classList.add('pathway-stage--upcoming');
-      const heading = element('h2', 'pathway-stage__title');
-      heading.id = 'pathway-stage-' + stage.id;
-      section.setAttribute('aria-labelledby', heading.id);
-      heading.append(element('span', 'pathway-stage__number', 'Étape ' + (index + 1)), element('span', '', stage.title));
-      section.append(heading, element('p', 'pathway-stage__description', stage.description));
-      if (moduleIds.length) section.append(moduleList(moduleIds));
-      if (stage.upcoming) section.append(element('p', 'pathway-stage__upcoming', stage.upcoming));
-      if (stage.pause) section.append(element('p', 'pathway-stage__pause', stage.pause));
-      article.append(section);
-    });
-    const ungrouped = pathway.moduleIds.filter(moduleId => !grouped.has(moduleId));
-    if (ungrouped.length) article.append(moduleList(ungrouped));
-    if (pathway.nextStageLabel) article.append(element('p', 'pathway-stage__upcoming', pathway.nextStageLabel));
-    article.append(link('← Retour aux parcours', domainUrl(pathway.domainId), 'button button--secondary back-button'));
-    main.append(article);
+    // Compatibilité des anciens liens : remplacer la route sans ajouter un écran à l'historique.
+    history.replaceState(null, '', pathwayStartUrl(id));
+    renderModule(pathway.moduleIds[0], id);
   }
 
   function support(item) {
@@ -526,8 +654,12 @@
   function renderModule(id, requestedPathway) {
     const item = data.modules[id];
     const candidate = own(data.pathways, requestedPathway);
+    // Une URL partagée peut contenir un contexte périmé : ne conserver que celui
+    // qui appartient réellement au module pour le fil d'Ariane et la navigation.
     const pathway = candidate && candidate.domainId === item.domainId && candidate.moduleIds.includes(id) ? candidate : null;
     const containing = Object.values(data.pathways).filter(value => value.domainId === item.domainId && value.moduleIds.includes(id));
+    // Une entrée directe peut retrouver son étape, mais pas choisir arbitrairement
+    // entre plusieurs parcours contenant la même leçon.
     const sequence = pathway || (containing.length === 1 ? containing[0] : null);
     const stagePosition = pedagogy.pathwayStage(id, sequence);
     start(item.title, pathway ? pathway.theme : item.theme, true, item.domainId);
@@ -544,7 +676,7 @@
       trail.append(domain);
       if (pathway) {
         const parent = element('li');
-        parent.append(link(pathway.title, '#parcours/' + requestedPathway, 'lesson-text-link'));
+        parent.append(link(pathway.title, pathwayStartUrl(requestedPathway), 'lesson-text-link'));
         trail.append(parent);
       }
       const current = element('li', 'lesson-breadcrumbs__current', item.title);
@@ -600,7 +732,11 @@
       article.append(rendered);
     });
     if (toolLink) {
-      if (preparation) preparation.append(toolLink);
+      if (preparation) {
+        const illustration = preparation.querySelector('.lesson-illustration');
+        if (illustration) illustration.before(toolLink);
+        else preparation.append(toolLink);
+      }
       else article.querySelector('.lesson-intro').after(toolLink);
     }
     let criteria;
@@ -632,7 +768,73 @@
       else if (pathway && item.finalPathwayAction) navigation.append(link(item.finalPathwayAction, '#parcours/' + encodeURIComponent(requestedPathway), 'button button--primary module-navigation__next'));
     }
     if (navigation.childElementCount) article.append(navigation);
-    main.append(article);
+    if (sequence) {
+      const sequenceId = Object.keys(data.pathways).find(key => data.pathways[key] === sequence);
+      main.classList.add('site-shell--course');
+      const layout = element('div', 'course-layout');
+      layout.append(courseNavigation(sequence, sequenceId, id), article);
+      main.append(layout);
+    } else main.append(article);
+  }
+
+  function courseNavigation(sequence, sequenceId, currentId) {
+    const sidebar = element('aside', 'course-sidebar');
+    const toggle = element('button', 'course-sidebar__toggle', 'Dans ce parcours');
+    toggle.type = 'button';
+    toggle.setAttribute('aria-controls', 'course-contents');
+    const contents = element('nav', 'course-sidebar__contents');
+    contents.id = 'course-contents';
+    contents.setAttribute('aria-label', 'Sommaire du parcours');
+    const overview = element('details', 'course-sidebar__overview');
+    overview.append(element('summary', '', 'Objectif du parcours'), element('p', '', sequence.objective));
+    contents.append(overview);
+    const grouped = new Set();
+    function addModules(ids, title) {
+      if (!ids.length) return;
+      const group = element('div', 'course-sidebar__group');
+      if (title) group.append(element('h2', 'course-sidebar__group-title', title));
+      const list = element('ol', 'course-sidebar__list');
+      ids.forEach(moduleId => {
+        grouped.add(moduleId);
+        const row = element('li');
+        const entry = link('', moduleUrl(moduleId, sequenceId), 'course-sidebar__link');
+        entry.append(element('span', '', studentTitle(data.modules[moduleId].title)));
+        if (moduleId === currentId) entry.setAttribute('aria-current', 'page');
+        row.append(entry);
+        list.append(row);
+      });
+      group.append(list);
+      contents.append(group);
+    }
+    (sequence.chapters || sequence.stages || []).forEach((stage, index) => {
+      addModules(sequence.moduleIds.filter(moduleId => stage.moduleIds.includes(moduleId) && !grouped.has(moduleId)),
+        (sequence.chapters ? 'Partie ' + (index + 1) + ' · ' : '') + stage.title);
+    });
+    addModules(sequence.moduleIds.filter(moduleId => !grouped.has(moduleId)));
+    sidebar.append(toggle, contents);
+    const desktop = window.matchMedia('(min-width: 1200px)');
+    let expanded = false;
+    function sync() {
+      contents.hidden = !desktop.matches && !expanded;
+      toggle.setAttribute('aria-expanded', String(!contents.hidden));
+    }
+    toggle.addEventListener('click', () => { expanded = !expanded; sync(); });
+    desktop.addEventListener('change', sync);
+    disposeCourseNavigation = () => desktop.removeEventListener('change', sync);
+    sync();
+    // Garder la leçon active dans la fenêtre du sommaire sans déplacer le cours.
+    if (desktop.matches) requestAnimationFrame(() => {
+      if (!contents.isConnected) return;
+      const active = contents.querySelector('[aria-current="page"]');
+      if (active) {
+        const bounds = contents.getBoundingClientRect();
+        const current = active.getBoundingClientRect();
+        if (current.bottom > bounds.bottom || current.top < bounds.top) {
+          contents.scrollTop += current.top - bounds.top - contents.clientHeight / 2;
+        }
+      }
+    });
+    return sidebar;
   }
 
   function notFound() {
@@ -669,6 +871,8 @@
     const activity = [...main.querySelectorAll('[data-activity-id]')].find(el => el.dataset.activityId === params.get('activite'));
     const target = activity && ([...activity.querySelectorAll('[data-task-id]')].find(el => el.dataset.taskId === params.get('tache')) || activity);
     if (target) {
+      // Un lien vers une tâche imbriquée doit ouvrir ses encarts repliés avant
+      // le focus et le défilement ; une tâche absente revient au bloc trouvé.
       for (let el = target; el && el !== main; el = el.parentElement) if (el.tagName === 'DETAILS') el.open = true;
       target.tabIndex = -1; target.focus({ preventScroll: true }); target.scrollIntoView({ block: 'start' });
     } else window.scrollTo({top:0,behavior:'auto'});

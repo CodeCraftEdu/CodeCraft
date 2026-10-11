@@ -17,10 +17,122 @@ body.student-lowpoly[data-route="fondations"] { --route: #3f69c6; --route-dark: 
 body.student-lowpoly[data-route="debutants"] { --route: #4f8045; --route-dark: #355d31; --route-soft: #e4efdd; }
 body.student-lowpoly[data-route="avances"] { --route: #7653a5; --route-dark: #543879; --route-soft: #eee5f7; }
 body.student-lowpoly[data-route="rattrapage"] { --route: #b7652c; --route-dark: #82451e; --route-soft: #f7e6d6; }
-body.student-lowpoly[data-domain="jeux-video"] { --route: #a55d27; --route-dark: #75421f; --route-soft: #f7e6d6; }
-body.student-lowpoly[data-domain="python"] { --route: #3f69c6; --route-dark: #29498f; --route-soft: #e4ebfb; }
+body.student-lowpoly[data-domain="jeux-video"] { --route: #a55d27; --route-dark: #75421f; --route-soft: #f7e6d6; --domain-canvas: #f3eee7; }
+body.student-lowpoly[data-domain="python"] { --route: #3f69c6; --route-dark: #29498f; --route-soft: #e4ebfb; --domain-canvas: #edf1f7; }
 body.student-lowpoly[data-domain="web"]:not([data-route]) { --route: #4f8045; --route-dark: #355d31; --route-soft: #e4efdd; }
-body.student-lowpoly[data-domain="robotique"] { --route: #467e81; --route-dark: #285363; --route-soft: #e0eeeb; }
+body.student-lowpoly[data-domain="robotique"] { --route: #467e81; --route-dark: #285363; --route-soft: #e0eeeb; --domain-canvas: #eaf0ec; }
+body.student-lowpoly[data-domain="web"] { --domain-canvas: #edf1e9; }
+body.student-lowpoly[data-domain="web"][data-route="fondations"] { --domain-canvas: #edf1f7; }
+body.student-lowpoly[data-domain="web"][data-route="avances"] { --domain-canvas: #f0ecf5; }
+body.student-lowpoly[data-domain="web"][data-route="rattrapage"] { --domain-canvas: #f5eee7; }
+/* Même fond continu pour une page de parcours et ses leçons ; l'accueil reste intact. */
+body.student-lowpoly[data-domain]:not(.student-home) {
+  --canvas: var(--domain-canvas, #f3efe6);
+  background: var(--canvas);
+}
+/* Ateliers interactifs : même langage visuel que les panneaux Python.
+   Les styles restent hors des iframes et ne changent pas les expériences CSS. */
+body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) {
+  --demo-editor: color-mix(in srgb, var(--route-dark) 25%, #25212e);
+  --demo-edge: color-mix(in srgb, var(--route) 35%, #d8d5da);
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  clip-path: none;
+}
+body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) > h3 {
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--route-soft);
+  color: var(--ink);
+}
+body.student-lowpoly :is(.web-comparison__controls, .flex-display-demo__control, .flex-property-demo__control) {
+  padding: 0;
+  background: none;
+  border: 0;
+}
+body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) select {
+  border: 1px solid var(--demo-edge);
+  border-bottom: 3px solid var(--route);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+body.student-lowpoly .web-comparison__controls button {
+  border: 0;
+  border-bottom: 3px solid var(--demo-edge);
+  border-radius: 0;
+  padding-inline: 16px;
+  background: var(--route-soft);
+  color: var(--route-dark);
+}
+body.student-lowpoly .web-comparison__controls button:hover { background: var(--demo-edge); }
+body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) :is(select, button):focus-visible {
+  outline: 2px solid var(--route-dark);
+  outline-offset: 3px;
+}
+body.student-lowpoly :is(.web-comparison__result, .flex-display-demo__preview, .flex-property-demo__preview) {
+  overflow: hidden;
+  border: 0;
+  border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2);
+  background: #fffcf7;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+}
+body.student-lowpoly :is(.web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) {
+  overflow: hidden;
+  border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2);
+  background: var(--demo-editor);
+  color: #f4f5ef;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+}
+body.student-lowpoly :is(.web-comparison__caption, .flex-display-demo__caption, .flex-property-demo__caption) {
+  margin: 0;
+  padding: .8rem 1.15rem;
+  font-size: .85rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--route) 22%, white) 0 24px, var(--route-soft) 24px calc(100% - 24px), color-mix(in srgb, var(--route) 28%, white) calc(100% - 24px));
+  color: var(--route-dark);
+  border-bottom: 1px solid var(--demo-edge);
+}
+body.student-lowpoly :is(.web-comparison__source, .flex-display-demo__source, .flex-property-demo__source) > p {
+  background: linear-gradient(135deg, var(--route) 0 24px, var(--route-dark) 24px calc(100% - 24px), color-mix(in srgb, var(--route-dark) 80%, black) calc(100% - 24px));
+  color: #fffdf7;
+  border-bottom: 1px solid color-mix(in srgb, var(--route) 50%, var(--demo-editor));
+}
+body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) .code-block {
+  padding: 1.25rem 1rem;
+  border: 0;
+  border-radius: 0;
+  clip-path: none;
+  box-shadow: none;
+  background: var(--demo-editor);
+  color: #f4f5ef;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+body.student-lowpoly :is(.web-comparison__layout, .flex-display-demo__layout, .flex-property-demo__layout) { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 16px; }
+body.student-lowpoly .web-comparison__frame { border: 0; height: 160px; }
+body.student-lowpoly :is(.web-code-token--property) { color: #9bd7f3; }
+body.student-lowpoly .web-code-token--string { color: #f2d399; }
+body.student-lowpoly .web-code-token--value { color: #c2e3ac; }
+body.student-lowpoly .flex-property-demo__viewport { padding: 10px; }
+body.student-lowpoly .flex-property-demo__axes { margin: 0; padding: 8px 12px; color: var(--muted); }
+body.student-lowpoly .flex-display-demo .cartes { margin: 10px; }
+body.student-lowpoly :is(.web-comparison__feedback, .flex-display-demo__feedback, .flex-property-demo__feedback) {
+  margin: 16px 0 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-weight: 600;
+}
+@media (max-width: 480px) {
+  body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-demo) { padding: 0; }
+}
+
+@media print {
+  body.student-lowpoly[data-domain]:not(.student-home) { background: white; }
+}
 body.student-lowpoly[data-domain="jeux-video"] .route-card { --card-accent: var(--route); }
 
 /* L'accueil a sa propre identité ; les univers restent distincts. */
@@ -110,11 +222,11 @@ body.student-lowpoly .home-domain__action { width: calc(100% - 52px); }
 @media (min-width: 1000px) {
   body.student-lowpoly .home-domains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-body.student-lowpoly .module-list { gap: 16px; }
+body.student-lowpoly .module-list { gap: 16px; list-style: none; padding-left: 0; }
 
 /* Repères de parcours informatifs : aucune jauge ou validation automatique. */
 body.student-lowpoly .pathway-stage { margin: 28px 0; }
-body.student-lowpoly .pathway-stage__title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 0 0 10px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 1.45rem; color: var(--route-dark); }
+body.student-lowpoly .pathway-stage__title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 0 0 10px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 1.45rem; color: var(--ink); }
 body.student-lowpoly .pathway-stage__number { flex-shrink: 0; padding: 8px 12px; font-size: .8rem; font-weight: 700; color: var(--route-dark); background: var(--route-soft); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
 body.student-lowpoly .pathway-stage__description { margin: 0 0 18px; color: var(--muted); line-height: 1.6; }
 body.student-lowpoly .pathway-stage__pause,
@@ -127,6 +239,24 @@ body.student-lowpoly .pathway-stage--upcoming .pathway-stage__upcoming { margin:
 body.student-lowpoly .lesson-stage-location { margin: 0 0 12px; color: var(--route-dark); font-size: .85rem; font-weight: 600; line-height: 1.6; }
 body.student-lowpoly .lesson-stage-pause { margin: 18px 0 12px; padding-left: 12px; border-left: 2px solid var(--lesson-edge); color: var(--lesson-muted); font-size: .9rem; line-height: 1.6; }
 
+/* Titres de bibliothèque neutres : la couleur reste dans les facettes et les liens. */
+body.student-lowpoly[data-domain]:not(.student-home) .route-card-title {
+  color: var(--ink); font-weight: 700;
+}
+
+/* Bandeaux de parcours clairs : pas de grande surface sombre derrière l'objectif. */
+body.student-lowpoly[data-domain]:not([data-lesson-layout]) .lesson-intro {
+  background: color-mix(in srgb, var(--route-soft) 35%, var(--paper));
+  border-bottom: 3px solid color-mix(in srgb, var(--route) 30%, #d8d5da);
+}
+body.student-lowpoly[data-domain]:not([data-lesson-layout]) .lesson-intro .lesson-title,
+body.student-lowpoly[data-domain]:not([data-lesson-layout]) .lesson-intro .objective-label {
+  color: var(--ink);
+}
+body.student-lowpoly[data-domain]:not([data-lesson-layout]) .lesson-intro .objective {
+  color: #56525c;
+}
+
 /* Hero compact et boutons taillés : couleurs du parcours, pas violet partout. */
 body.student-lowpoly .lesson-intro {
   border: 0; border-bottom: 6px solid var(--route-dark); border-radius: 0; box-shadow: none;
@@ -137,23 +267,21 @@ body.student-lowpoly .lesson-intro::after { display: none; }
 body.student-lowpoly[data-lesson-layout="standard"] {
   --lesson-scene: url('images/banner-web.svg');
   --lesson-scene-filter: none;
-  --lesson-ink: color-mix(in srgb, var(--route-dark) 75%, var(--ink));
-  --lesson-muted: color-mix(in srgb, var(--route-dark) 65%, var(--muted));
+  --lesson-ink: var(--ink);
+  --lesson-muted: #56525c;
   --lesson-hero-start: color-mix(in srgb, var(--route-soft) 80%, #fff);
   --lesson-hero-end: color-mix(in srgb, var(--route) 24%, var(--route-soft));
-  --lesson-panel: color-mix(in srgb, var(--route-soft) 50%, #fff);
+  --lesson-panel: color-mix(in srgb, var(--route-soft) 18%, var(--paper));
   --lesson-edge: color-mix(in srgb, var(--route) 45%, #dbe3e8);
   --lesson-line: color-mix(in srgb, var(--route) 16%, #e6e9ee);
 }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="python"] {
   --lesson-scene: url('images/banner-python.svg');
-  --lesson-ink: #283c60; --lesson-muted: #405372;
   --lesson-hero-start: #dfe9f5; --lesson-hero-end: #cedef0;
 }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="jeux-video"] { --lesson-scene: url('images/banner-game.svg'); }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="robotique"] {
   --lesson-scene: url('images/banner-robotique.svg');
-  --lesson-ink: #254657; --lesson-muted: #3d6070;
   --lesson-hero-start: #e0eeeb; --lesson-hero-end: #c9e1dc;
 }
 body.student-lowpoly[data-lesson-layout="standard"][data-domain="web"][data-route="fondations"] { --lesson-scene-filter: hue-rotate(60deg); }
@@ -214,14 +342,14 @@ body.student-lowpoly[data-lesson-layout="standard"] .module-navigation--lesson {
 body.student-lowpoly[data-lesson-layout="standard"] .module-navigation--lesson .button { min-height: 64px; padding: 12px 16px; text-align: center; }
 body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint {
   position: relative; margin: 22px 0; padding: 22px 28px;
-  color: var(--lesson-muted); background: var(--lesson-panel); border-bottom: 3px solid var(--lesson-edge);
+  color: var(--ink); background: var(--lesson-panel); border-bottom: 3px solid var(--lesson-edge);
   clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
 }
 body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint::before {
   content: ''; position: absolute; inset: 0 auto 0 0; width: 6px;
   background: linear-gradient(150deg, var(--lesson-edge) 0 24px, var(--lesson-line) 24px);
 }
-body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__title { margin: 0 0 12px; color: var(--route-dark); font-size: 1.1rem; line-height: 1.4; }
+body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__title { margin: 0 0 12px; color: var(--ink); font-size: 1.1rem; line-height: 1.4; }
 body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
 body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__list li { position: relative; margin: 0; padding-left: 19px; line-height: 1.5; }
 body.student-lowpoly[data-lesson-layout="standard"] .lesson-checkpoint__list li::before {
@@ -298,6 +426,46 @@ body.student-lowpoly .pedagogy-choice { background: #fffcf6; border: 1px solid v
 body.student-lowpoly .pedagogy-choice--nextSteps { background: var(--route-soft); border-top: 4px solid var(--route); }
 body.student-lowpoly .pedagogy-choice--nextSteps a { display: block; padding: .75rem 1rem; color: white; border: 0; border-bottom: 4px solid var(--route-dark); box-shadow: none; background: linear-gradient(135deg, color-mix(in srgb, var(--route) 70%, white) 0 12px, var(--route) 12px calc(100% - 12px), var(--route-dark) calc(100% - 12px)); clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px); }
 body.student-lowpoly .pedagogy-choice--nextSteps a:focus-visible { outline: 0; box-shadow: inset 0 0 0 4px #f2c75c; }
+/* Sommaire commun : la couleur indique le contexte, jamais une validation. */
+body.student-lowpoly .course-layout { width: min(820px, 100%); margin: 0 auto; }
+body.student-lowpoly .course-layout > .lesson-page { min-width: 0; width: 100%; }
+body.student-lowpoly .course-sidebar { margin-bottom: 22px; color: var(--ink); }
+body.student-lowpoly .course-sidebar__toggle {
+  width: 100%; padding: 14px 18px; display: flex; justify-content: space-between;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; text-align: left;
+}
+body.student-lowpoly .course-sidebar__toggle::after { content: '+'; }
+body.student-lowpoly .course-sidebar__toggle[aria-expanded="true"]::after { content: '−'; }
+body.student-lowpoly .course-sidebar__contents {
+  position: relative; padding: 16px 8px; max-height: 65vh; overflow-y: auto;
+  overscroll-behavior: contain; scrollbar-gutter: stable; background: var(--paper);
+  border: 1px solid var(--line); border-top: 0;
+}
+body.student-lowpoly .course-sidebar__contents[hidden] { display: none; }
+body.student-lowpoly .course-sidebar__overview { margin: 0 10px 14px; font-size: .85rem; line-height: 1.5; color: var(--muted); }
+body.student-lowpoly .course-sidebar__overview summary { padding: 8px 0; cursor: pointer; color: var(--ink); font-weight: 600; }
+body.student-lowpoly .course-sidebar__overview p { margin: 8px 0; }
+body.student-lowpoly .course-sidebar__group-title { margin: 18px 0 8px; padding: 12px 13px; font-size: .85rem; line-height: 1.5; color: var(--ink); background: color-mix(in srgb, var(--route-soft) 55%, var(--paper)); border-left: 3px solid color-mix(in srgb, var(--route) 40%, transparent); }
+body.student-lowpoly .course-sidebar__list { list-style: none; padding: 0; margin: 0; }
+body.student-lowpoly .course-sidebar__list li { margin: 0; }
+body.student-lowpoly .course-sidebar__link { display: flex; align-items: baseline; gap: 10px; padding: 10px; min-height: 44px; border-left: 3px solid transparent; color: var(--ink); font-size: .9rem; line-height: 1.45; text-decoration: none; }
+body.student-lowpoly .course-sidebar__link:hover { background: color-mix(in srgb, var(--route-soft) 45%, var(--paper)); }
+body.student-lowpoly .course-sidebar__link[aria-current="page"] { border-left-color: var(--route); background: color-mix(in srgb, var(--route-soft) 65%, var(--paper)); font-weight: 700; }
+body.student-lowpoly .course-sidebar a:focus-visible,
+body.student-lowpoly .course-sidebar__toggle:focus-visible { outline: 2px solid var(--route); outline-offset: -2px; }
+@media (min-width: 1200px) {
+  body.student-lowpoly .site-shell--course { width: min(1160px, calc(100% - 48px)); }
+  body.student-lowpoly[data-lesson-layout="standard"] .site-shell--course > .page-header--compact { width: 100%; }
+  body.student-lowpoly .course-layout { display: grid; grid-template-columns: 280px minmax(0, 820px); align-items: start; gap: 36px; width: 100%; }
+  body.student-lowpoly .course-sidebar { position: sticky; top: 20px; margin: 0; }
+  body.student-lowpoly .course-sidebar__toggle { display: none; }
+  body.student-lowpoly .course-sidebar__contents { max-height: calc(100vh - 40px); border: 0; border-right: 1px solid var(--line); background: transparent; }
+}
+@media print {
+  body.student-lowpoly .course-sidebar { display: none; }
+  body.student-lowpoly .course-layout { display: block; width: 100%; }
+}
 @media (max-width: 700px) {
   body.student-lowpoly[data-route] .lesson-intro .objective,
   body.student-lowpoly[data-route] .lesson-intro > .button { grid-row: auto; }

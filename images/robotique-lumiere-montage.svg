@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" role="img" aria-labelledby="title desc">
+  <title id="title">Le chemin qui relie la carte à la lumière</title>
+  <desc id="desc">Schéma simplifié : sortie D8 de la carte, résistance 220 ohms, LED rouge, retour à GND sur la carte. La résistance et la LED sont sur le même chemin. Les positions dessinées ne sont pas celles des bornes dans Tinkercad.</desc>
+  <rect width="800" height="370" rx="16" fill="#f0f5f2"/>
+  <g font-family="Arial,sans-serif" fill="#285363">
+    <text x="28" y="40" font-size="24" font-weight="bold">Un chemin complet pour la lumière</text>
+    <text x="364" y="87" font-size="21" font-weight="bold">La résistance</text>
+    <text x="352" y="112" font-size="17">Elle limite le courant.</text>
+    <text x="598" y="87" font-size="21" font-weight="bold">La LED</text>
+  </g>
+  <rect x="28" y="122" width="220" height="180" rx="14" fill="#467e81"/>
+  <rect x="50" y="177" width="77" height="61" rx="6" fill="#285363"/>
+  <g font-family="Arial,sans-serif" fill="#fffdf7">
+    <text x="49" y="156" font-size="23" font-weight="bold">La carte</text>
+    <text x="163" y="177" font-size="17">Sortie 8</text>
+    <text x="174" y="261" font-size="17">GND</text>
+  </g>
+  <g fill="none" stroke="#467e81" stroke-width="5" stroke-linejoin="round">
+    <path d="M248 190h118m132 0h92m50 0h65v98H248"/>
+    <path d="M590 190v-30m50 30v-30" stroke="#8a9395"/>
+  </g>
+  <g fill="#fffdf7" stroke="#285363" stroke-width="3"><circle cx="237" cy="190" r="8"/><circle cx="237" cy="288" r="8"/></g>
+  <rect x="366" y="170" width="132" height="40" rx="12" fill="#e9d7ad" stroke="#8d7449" stroke-width="3"/>
+  <path d="M390 171v38m17-38v38m17-38v38m52-38v38" stroke="#996a45" stroke-width="5"/>
+  <text x="432" y="243" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#285363">220 Ω</text>
+  <path d="M583 156v-24a32 32 0 0 1 64 0v24z" fill="#bc706b" stroke="#704849" stroke-width="3"/>
+  <rect x="577" y="156" width="76" height="10" rx="4" fill="#704849"/>
+  <g font-family="Arial,sans-serif" fill="#285363" font-size="17">
+    <text x="308" y="315">Les fils relient les éléments et reviennent à la carte.</text>
+    <text x="28" y="349">Schéma simplifié : garde les connexions du circuit de départ.</text>
+  </g>
+</svg>

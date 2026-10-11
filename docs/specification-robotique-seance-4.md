@@ -28,7 +28,7 @@ La [documentation Microsoft microbit-robot](https://makecode.microbit.org/pkg/mi
 | Comparateur | Strictement inférieur, `<` | Libellé réel ; égalité appartient au cas sinon |
 | Avancer | Même mode steer, direction neutre, faible puissance fixe | Commande sans longue attente bloquant la nouvelle lecture |
 | Décision | Deux branches dans une consultation répétée | Initialisation achevée avant activation ; un seul endroit commande les moteurs |
-| Reprise | Simulation arrêtée, position/orientation et obstacle préparés, puis relance | Aucun repositionnement du robot en mouvement ; éventuel retour à une mesure éloignée dans la même exécution vérifié séparément |
+| Reprise | Simulation active, moteurs arrêtés dans l’attente de A ; placer et lire la mesure, puis appuyer sur A sans relance intermédiaire | Aucun repositionnement du robot en mouvement ; éventuel retour à une mesure éloignée dans la même exécution vérifié séparément |
 
 Le diagnostic numérique est préparé par le professeur : pas de variable à créer par l’élève pour observer la mesure. Les mouvements du robot, positions d’obstacle et interfaces de lecture ne sont pas supposés disponibles sans essais.
 

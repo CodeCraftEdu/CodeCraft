@@ -1,6 +1,6 @@
 # Protocoles des vérifications manuelles différées
 
-Mis à jour le 9 octobre 2026. Ce document détaille toutes les familles de contrôles du registre [en attente](verifications-manuelles-en-attente.md). Il ne les déclare pas exécutées. Aucun rappel automatique. À remettre à l’utilisateur lorsqu’il demandera ses contrôles, en filtrant par parcours et priorité.
+Mis à jour le 10 octobre 2026. Ce document détaille toutes les familles de contrôles du registre [en attente](verifications-manuelles-en-attente.md). Les états datés distinguent essais effectués et vérifications restantes ; une procédure seule ne déclare pas un contrôle réussi. Aucun rappel automatique. À remettre à l’utilisateur lorsqu’il demandera ses contrôles, en filtrant par parcours et priorité.
 
 ## Règles communes et compte rendu
 
@@ -73,18 +73,18 @@ Sur copie minimale en ligne droite, même départ, durée 1500 ms et arrêt : co
 
 Préalable : diagnostic immobile préparé et sauvegardé, lecture numérique `robot obstacle distance (cm)` dans la console ; aides OFF. Ne pas créer une variable distance comme exigence élève.
 
-1. Simulation arrêtée : vérifier qu’un déplacement à la souris place le robot devant un rectangle et conserve l’orientation ; capturer le placement. Relancer le diagnostic sans mouvement et relever cinq mesures espacées.
-2. Arrêter ; choisir une seconde position plus proche, même obstacle/orientation ; relever cinq mesures. Répéter les deux scènes.
+1. Démarrer le diagnostic immobile : la simulation doit tourner pour pouvoir glisser le robot. Vérifier qu’un déplacement à la souris le place devant un rectangle et conserve l’orientation ; capturer le placement et relever cinq mesures espacées.
+2. Toujours dans ce diagnostic sans avance, choisir une seconde position plus proche, même obstacle/orientation ; relever cinq mesures. Répéter les deux scènes puis vérifier la remise après Restart/import. Ne pas confondre moteur arrêté et simulation arrêtée.
 3. Écarter la visée de l’obstacle sur une copie ; relever le comportement sans cible, sans supposer que 40 signifie exactement 40 cm libres. Tester également la limite basse sans contact.
 
 Réussite : valeurs différentes et reproductibles, unité/libellé identifiés, comportement sans cible documenté. Sinon bloqué pour RB07/RB08. Le geste de déplacement n’a pas été validé par l’agent : l’outil refuse actuellement les coordonnées d’iframe. Ne pas contourner cela dans la fiche élève.
 
 ### R11 — Décision répétée et arrêt avant contact (15 min, technique)
 
-À effectuer après R10, sur copie dédiée sans trajet concurrent ni commandes A/B moteur héritées. Préparer la règle complète distance < limite → arrêt, sinon avance faible puissance ; pause de lecture courte fournie par le professeur.
+À effectuer après R10, sur copie dédiée sans trajet concurrent ni commandes A/B moteur héritées. Préparer la règle complète distance < limite → arrêt, sinon avance faible puissance ; pause de lecture courte fournie par le professeur. Pour libérer l’attente technique, maintenir le bouton A environ une seconde puis relâcher ; un clic très bref peut être manqué par la consultation de 100 ms. Ne pas maintenir A pendant la relance.
 
 1. Choisir une limite entre deux mesures validées et une scène où le robot est d’abord éloigné, orienté vers l’obstacle. Prévoir la branche.
-2. Relancer : observer numériquement la baisse de distance et le passage avance → arrêt **dans la même exécution**, puis immobilité 5 s avant contact. Refaire depuis le même départ.
+2. Avec les exports RB08 du 10 octobre : ▶, moteurs arrêtés dans l’attente de A ; placer face à la cible et relever cinq mesures de départ stables. Sans Stop/Restart intermédiaire, appuyer sur A puis observer la baisse de distance et le passage avance → arrêt **dans la même exécution**, puis immobilité 5 s avant contact. Arrêter, relancer et refaire le placement avant A pour une seconde approche comparable. Noter les mesures finales sans exiger exactement 20 cm. Après A, ne pas glisser le robot, même s’il semble arrêté : la règle peut le faire repartir.
 3. Vérifier séparément la scène déjà proche et la scène éloignée. Traiter l’égalité avec un tableau 19/20/21 pour limite 20 : arrêt / avance / avance avec `<`, sans exiger un placement exact dans la scène.
 
 Réussite : transition reproductible avant contact, pas un simple changement de texte dans la console. Si mesure non valide ou mouvement trop peu visible : ne pas publier la référence comme validée. Aucun seuil virtuel n’est une garantie matérielle.
@@ -92,6 +92,8 @@ Réussite : transition reproductible avant contact, pas un simple changement de 
 État au 9 octobre : une approche fixe s’est arrêtée à 19 ; après réimport et même virage préparatoire, départ mesuré à 17 et arrêt immédiat. Sources retrouvées, mais deuxième approche comparable non validée. Reprendre le placement, pas seulement refaire B.
 
 ### R12 — Variable seuil et réévaluation complémentaire (15 min, technique)
+
+Décision du 10 octobre : les répétitions et la comparaison géométrique stricte ci-dessous sont reportées comme approfondissement facultatif. Ne pas les redemander pour poursuivre la préparation. Cela ne coche pas R12 et ne dispense pas de vérifier une scène nouvelle avant de la distribuer. Les observations existantes attestent le fonctionnement de base, pas une calibration des points d’arrêt.
 
 Copier la référence fixe validée. Initialiser `seuil` au démarrage à la même limite et remplacer seulement le nombre de comparaison par seuil. Refaire deux essais identiques : comportement attendu inchangé. Modifier ensuite uniquement la valeur initiale de seuil, avec une seconde limite laissant avancer au départ : prévoir puis comparer les points d’arrêt, mêmes scène/puissance. Réussite : réglage donné/utilisé, résultat reproductible, copies fixe et variable conservées et réimportées.
 
@@ -104,19 +106,21 @@ Complément facultatif : seulement si un geste vérifié permet de changer la me
 Préparation : les quatre fichiers de [l’intégration capteurs](integration-robotique-capteurs.md), un navigateur de cours, une copie dédiée et une scène validée par R10. Ne pas utiliser les anciens diagnostics A/B comme départs élèves.
 
 1. Importer `RB07-Ma-distance-observation.hex`. Vérifier modèle, trois aides OFF, arrêt initial, pause 2000 ms puis lecture numérique répétée, sans mouvement ni variable. Ouvrir les données et relever deux lectures valides dans les placements préparés.
-2. Importer `RB08-Mon-obstacle-depart.hex`. Vérifier pause de consultation 100 ms, absence de condition, variable et motor steer ; robot immobile. Il doit être un départ sans solution.
-3. Importer `RB08-Obstacle-fixe-reference.hex` : une seule pile au démarrage, initialisation avant répétition, condition distance < 20, arrêter / direction 0 puissance 25 sans durée, pause 100 ms. Vérifier l’absence de blocs JavaScript gris et d’événements moteurs A/B. Refaire R11 avec ce nouveau lancement : l’ancien diagnostic ne valide pas cette architecture.
-4. Importer `RB08-Robot-prudent-reference.hex` : valeur donnée à seuil avant répétition et seuil à droite de <. Refaire R12 depuis des départs identiques, puis exporter la copie personnelle, réimporter et retrouver nom, valeur et règle.
+2. Importer `RB08-Mon-obstacle-depart.hex`. Vérifier attente fournie de A avec lecture 100 ms puis boucle de lecture seule : aucune condition sur la distance, variable ou motor steer. Le robot reste immobile avant et après A : départ sans solution. L’attente technique de A n’est pas la décision à construire.
+3. Importer `RB08-Obstacle-fixe-reference.hex` : une seule pile au démarrage, initialisation/arrêt, attente de A avec mesure active, puis règle distance < 20, arrêter / direction 0 puissance 25 sans durée, pause 100 ms. Vérifier l’absence de blocs JavaScript gris et d’événements moteurs A/B. Vérifier immobilité avant A, déclenchement après A et absence de nouvelle boucle au second appui. Refaire R11 avec ce nouveau lancement : l’ancien diagnostic ne valide pas cette architecture.
+4. Importer `RB08-Robot-prudent-reference.hex` : valeur donnée à seuil après préparation/arrêt et avant la boucle d’attente de A ; seuil à droite de < dans la seconde boucle. Refaire les comparaisons encore ouvertes de R12 depuis des départs identiques, puis vérifier la reprise de la copie dans l’accès de cours. Les références et copies professeur déjà réimportées ne sont pas à considérer comme absentes.
 
 Attendu : chaque fichier retrouve ses blocs et son rôle distinct ; seul le professeur reçoit les références complètes. Réussite technique : exports récupérables, lecture immobile, scènes et approche conformes, aucune commande concurrente. Preuves : nom/version, captures des piles et positions, valeurs initiales et observations. Si un placement ne se conserve pas après relance, noter bloqué et maintenir RB07/RB08 **en préparation**, sans valider la distribution. Langue française et accès élèves restent des essais séparés des vérifications professeur.
 
 ### R15 — Missions RB09/RB10 : scènes et preuves (30–45 min, estimation technique)
 
-**Non effectué.** Pages, guides et fiche commune intégrés en préparation : [spécification RB09/RB10](specification-robotique-rb09-rb10.md). À réaliser après la partie pratique de R10–R12/R14 ; les scènes et leurs valeurs restent à préparer et vérifier.
+Priorité actualisée au 10 octobre : accès de cours et fiche ; répétitions professeur à conditions strictement identiques facultatives et reportées. Le protocole complet reste une référence, pas une nouvelle série obligatoire. Conserver le statut partiel et n’autoriser que les scènes/valeurs effectivement vérifiées ; aucune plage continue de seuils n’est validée.
+
+**Partiellement effectué au 10 octobre.** Pages, guides et fiche commune intégrés en préparation : [spécification RB09/RB10](specification-robotique-rb09-rb10.md). Approche 15 : deux cibles depuis 26 jusqu’à 13, proche 7 immobile après A confirmé. Prudente 25 : autre cible depuis 26, arrêts 22–23 ; proche 7 immobile après relâchement de A désormais confirmé par l’utilisateur (capture bf3b1891). Fixe 20 et variable 20 : approche 26 → 18 observée. Copies 15/25 exportées et réimportées. Restent comparaisons et répétitions à conditions égales, téléchargement/ouverture locale/impression de la fiche et accès de cours. Appliquer les étapes ci-dessous seulement pour compléter ces preuves ; ne pas redemander tous les premiers essais comme s’ils manquaient.
 
 Préparer des copies de test : référence fixe `Reference-arret`, mission avec `seuil`, fiche de trace et captures des trois scènes. Conserver les originaux. Relever version, langue, modèle, aides, puissance, cadence, limite fixe et valeurs admissibles. Les fichiers de programme ne prouvent pas que la position se conserve.
 
-1. **Scènes** : simulation arrêtée, préparer A (départ éloigné, cible devant), B (proche sans contact) et C (autre position de cible, départ éloigné). Pour chacune, documenter orientation, placement et gestes de remise au départ ; relever des mesures valides et refaire le placement. B doit demander Arrêter avec toutes les valeurs proposées ; A/C doivent permettre une avance initiale.
+1. **Scènes** : avec les versions RB08 en attente de bouton A, simulation active et moteurs arrêtés, préparer la situation A (départ éloigné, cible devant), B (proche sans contact) et C (autre position de cible, départ éloigné). Pour chacune, documenter orientation, placement et gestes de remise au départ ; relever des mesures valides puis presser le bouton A sans relance intermédiaire. Distinguer bouton A et situation A sur la fiche. Après chaque Restart/import, refaire le placement pendant l’attente. B doit demander Arrêter avec toutes les valeurs proposées ; A/C doivent permettre une avance initiale.
 2. **Référence A** : observer avance puis arrêt avant contact dans une même exécution, immobilité 5 s ; recommencer depuis le même départ. Garder limite, puissance et scène fixes. Noter les lectures et capturer départ/fin. Un second lancement déjà proche n’est pas une répétition valide de l’approche.
 3. **Deux missions A** : sur deux copies de recette, essayer une valeur donnant un arrêt plus loin et une donnant un arrêt plus près que la référence, toujours après avance et avant contact. Répéter chacune depuis le même départ/orientation/obstacle/puissance. Déterminer les valeurs réellement admissibles, pas une plage déduite de deux seuls nombres. Si une mission échoue ou n’est pas visiblement distincte, la bloquer et revoir les supports avant distribution.
 4. **B et C** : pour chaque valeur qui sera proposée aux élèves, tester B (immobilité maintenue) puis C (avance → arrêt avant contact dans la même exécution), sans changer son réglage. Répéter. C vérifie le comportement ailleurs ; ne pas en déduire une marge relative à la référence sans comparer aussi la référence dans C.

@@ -1,5 +1,15 @@
 # Roadmap pédagogique de CodeCraft
 
+## Décisions de reprise — 10 octobre 2026
+
+Lorsqu’on demande « que reste-t-il à faire de prévu sur CodeCraft ? », consulter ce suivi et les roadmaps spécialisées, sans confondre développement terminé, contrôles pratiques et chantiers reportés.
+
+- **Robotique : conserver pour le moment la version accompagnée RB01–RB10.** L’utilisateur donnera cours avec cette version ; priorité à ses autres chantiers. Après utilisation en cours, reprendre les observations pour auditer les dix modules et adapter de façon ciblée le même parcours à l’apprentissage autonome. Ne pas créer un deuxième parcours distinct, ni lancer cette adaptation maintenant. Aucun ajout de mention publique, de marketing ou de signalétique sur le site demandé. Les guides et les cinq déroulés enseignant existent déjà : ne pas les proposer comme manquants. Les vérifications pratiques restantes restent documentées séparément ; pas de nouvelle série de répétitions robot par défaut.
+- **Python : amélioration du visuel des cours encore prévue.** Les vingt modules débutants existent ; le travail de direction visuelle déjà effectué ne clôt pas les améliorations et la revue visuelle restantes. Reprendre ce chantier au choix de l’utilisateur, sans le confondre avec l’écriture des modules intermédiaires/confirmés de la cartographie.
+- **GDevelop et Web avancé : restent en pause**, avec leurs roadmaps conservées pour reprise ultérieure ; cette décision ne les relance pas.
+
+Ces décisions sont des éléments de backlog, pas une autorisation à lancer automatiquement les travaux ni un calendrier.
+
 La [cartographie Python validée](cartographie-python.md) fixe la progression débutant, intermédiaire, confirmé, spécialisations et professionnalisation. Les modules futurs restent à spécifier ; cette décision n'ajoute aucun contenu vide au catalogue.
 
 Le domaine Jeu vidéo poursuit désormais **Scratch → GDevelop** (décision du 7 octobre 2026). La [roadmap GDevelop](roadmap-gdevelop.md), révisée le 8 octobre après recherches pédagogiques et communautaires, distingue 10 modules de socle, 4 de projet et 19 approfondissements au choix. GDevelop est un moteur de création à part entière, pas un passage obligatoire vers Godot. Quatre leçons et guides sont intégrés : GD01 → GD04 → GD02 → GD03, après ajustements et revue du déplacement. La recette moteur reste à effectuer.

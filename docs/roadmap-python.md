@@ -1,5 +1,7 @@
 # Python — roadmap adaptative et premier lot
 
+**Backlog confirmé par l’utilisateur le 10 octobre 2026 :** améliorer encore le visuel des cours Python. Les vingt modules débutants sont implémentés ; la direction visuelle existante ne signifie pas que ce chantier est terminé. À rappeler lorsqu’il demande les travaux encore prévus sur CodeCraft. Aucun changement visuel ni développement de modules supplémentaires lancé par cette seule confirmation. Voir les [décisions de reprise](roadmap-pedagogique.md#décisions-de-reprise--10-octobre-2026).
+
 La [cartographie Python de référence](cartographie-python.md) est validée : environ 20 modules débutants existants, 20 intermédiaires et 20 confirmés, puis spécialisations et professionnalisation. Elle fixe la direction sans publier de modules futurs ni imposer de calendrier.
 
 La DA low-poly est désormais appliquée à l’interface élève via `student-lowpoly.css` ; le sélecteur et l’aperçu exploratoires ont été retirés. Les notes d’essais ci-dessous restent l’historique des choix visuels. La référence actuelle est [la direction visuelle](direction-visuelle.md).
