@@ -173,6 +173,10 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
     const previewLabel = element('p', 'web-comparison__caption', 'Aperçu');
     const tab = element('p', 'web-comparison__tab');
     const frame = element('iframe', 'web-comparison__frame');
+    const origin = frame.ownerDocument?.location?.origin;
+    // Firefox can treat 'self' differently in srcdoc. Keep the allowed HTTP origin explicit.
+    const imageSources =
+      "'self' data:" + (origin && /^https?:\/\//.test(origin) ? ' ' + origin : '');
     frame.title = config.title + ' : résultat de la version choisie';
     // Origine conservée uniquement pour mesurer le contenu ; scripts et navigation restent interdits.
     frame.setAttribute('sandbox', 'allow-same-origin');
@@ -213,7 +217,9 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
       const base =
         'body{margin:16px;color:#292d32;background:#fff;font:16px/1.5 Arial,sans-serif;overflow-wrap:anywhere}h1{font-size:26px}h2{font-size:21px}a{color:#174b9b}pre{white-space:pre-wrap}*{box-sizing:border-box}';
       frame.srcdoc =
-        '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; img-src \'self\' data:"><style>' +
+        '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; img-src ' +
+        imageSources +
+        '"><style>' +
         base +
         (variant.css || '') +
         '</style></head><body>' +

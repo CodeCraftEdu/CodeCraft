@@ -6,6 +6,25 @@ const { studentDom } = require('./helpers/student-dom.cjs');
 const data = loadCatalog();
 const routes = createRouteUrls(data);
 
+test('fin de cours : résumé avant le bonus replié et navigation contextualisée', (t) => {
+  const dom = studentDom(data);
+  t.after(() => dom.close());
+  dom.navigate('#module/html-titres-paragraphes?parcours=web-debutants');
+  const checkpoint = dom.main.querySelector('.lesson-checkpoint');
+  const bonus = dom.main.querySelector('details.support-card--done');
+  const next = dom.main.querySelector('.module-navigation__next');
+  assert.equal(checkpoint.querySelector('h2').textContent, 'À retenir');
+  assert.equal(bonus.querySelector('summary').textContent, 'Pour aller plus loin');
+  assert.equal(bonus.open, false);
+  assert.equal(bonus.querySelector('p').textContent, data.modules['html-titres-paragraphes'].bonus);
+  assert.ok(
+    checkpoint.compareDocumentPosition(bonus) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING,
+  );
+  assert.ok(bonus.compareDocumentPosition(next) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
+  assert.match(next.textContent, /^Cours suivant : Listes HTML/);
+  assert.equal(next.hash, '#module/html-listes?parcours=web-debutants');
+});
+
 test('accueil : domaines uniques directement au cours, domaines multiples au choix', () => {
   for (const [domain, pathway, first] of [
     ['python', 'python-debutants', 'python-thonny'],

@@ -209,7 +209,7 @@ body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint::before {
 body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint__title {
   margin: 0 0 12px;
   color: var(--ink);
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   line-height: 1.4;
 }
 body.student-lowpoly[data-lesson-layout='standard'] .lesson-checkpoint__list {

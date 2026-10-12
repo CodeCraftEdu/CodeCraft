@@ -281,16 +281,16 @@ export function createRouter({
       criteria.setAttribute('aria-labelledby', 'lesson-checkpoint-title');
       criteria.dataset.activityId = 'bilan';
       criteria.tabIndex = -1;
-      const heading = element('h2', 'lesson-checkpoint__title', 'Les essentiels');
+      const heading = element('h2', 'lesson-checkpoint__title', 'À retenir');
       heading.id = 'lesson-checkpoint-title';
       const points = element('ul', 'lesson-checkpoint__list');
       item.masteryCriteria.forEach((text) => points.append(element('li', '', text)));
       criteria.append(heading, points);
     }
     // Les orientations restent dans les données et le guide professeur.
+    if (criteria) article.append(criteria);
     const specificSupport = createSupportPanel(item, element);
     if (specificSupport) article.append(specificSupport);
-    if (criteria) article.append(criteria);
     if (stagePosition?.isLast && !stagePosition.stage.upcoming)
       article.append(
         element(
@@ -322,7 +322,7 @@ export function createRouter({
       if (next)
         navigation.append(
           link(
-            data.modules[next].title + '\u00a0→',
+            'Cours suivant : ' + data.modules[next].title + '\u00a0→',
             moduleUrl(next, context),
             'button button--primary module-navigation__next',
           ),

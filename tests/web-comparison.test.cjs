@@ -7,6 +7,24 @@ const root = path.join(__dirname, '..');
 const context = { window: {} };
 runScripts(['generated/catalog.js'], context);
 const data = context.window.CODECRAFT_DATA;
+const { studentDom } = require('./helpers/student-dom.cjs');
+
+test('aperçus srcdoc : origine des images explicite et scripts toujours bloqués', (t) => {
+  const dom = studentDom();
+  t.after(() => dom.close());
+  const demo = data.modules['html-images'].blocks.find(
+    (block) => block.demonstration,
+  ).demonstration;
+  const tree = dom.demonstrations.createWebComparison(demo);
+  const frame = tree.querySelector('iframe');
+  const policy = new dom.window.DOMParser()
+    .parseFromString(frame.srcdoc, 'text/html')
+    .querySelector('meta[http-equiv="Content-Security-Policy"]').content;
+  assert.ok(policy.includes("img-src 'self' data: " + dom.window.location.origin));
+  assert.ok(policy.includes("default-src 'none'"));
+  assert.doesNotMatch(policy, /https:\s|\*/);
+  assert.equal(frame.getAttribute('sandbox'), 'allow-same-origin');
+});
 const examples = data.pathways['web-debutants'].moduleIds
   .map((id) => ({
     id,

@@ -60,7 +60,9 @@ En cas d’échec, `failure.html` et `failure.json` regroupent la suite, l’URL
 
 Les profils sont définis dans `scripts/lib/test-targets.cjs`. Les contrôles Node communs de rendu restent inclus dans les profils de cours ; le grand fichier `pedagogy.test.cjs` teste plusieurs domaines et reste partagé. `student-browser` filtre les parcours, modules et captures d’après le profil, tout en conservant ses cas communs. La version complète, sans profil, continue à couvrir les 72 modules et les 7 parcours.
 
-Pour un changement traversant plusieurs responsabilités, lancer les profils concernés ou `npm run check`. Avant livraison, `npm run check` reste la vérification complète. GitHub exécute toujours toutes les suites, sans filtrage.
+Pour une retouche purement textuelle, sans changement de code, de structure des données, de lien ni de ressource, limiter les contrôles à la régénération/validation du catalogue (`node scripts/build-catalog.cjs`), au formatage des fichiers modifiés et à la relecture. Lancer uniquement les tests dont une assertion dépend du texte modifié. Examiner l’encart rendu si sa longueur ou sa mise en forme change sensiblement ; les six suites Chrome ne sont pas nécessaires. Pour une modification documentaire uniquement, relire le diff et vérifier les liens modifiés, sans test applicatif.
+
+Pour une modification fonctionnelle, structurelle ou des styles, conserver `npm run check` complet avant livraison. Les profils servent aux vérifications intermédiaires. Avant un push, disposer d’un contrôle complet réussi sur les changements à publier ; ne pas répéter ce contrôle si ces mêmes changements ont déjà été validés. GitHub exécute toujours toutes les suites, sans filtrage.
 
 ## Scénarios précédents
 

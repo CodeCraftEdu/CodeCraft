@@ -2,7 +2,15 @@ import js from '@eslint/js';
 import globals from 'globals';
 
 export default [
-  { ignores: ['node_modules/**', 'generated/**', 'tests/archive/**', 'resources/**'] },
+  {
+    ignores: [
+      'node_modules/**',
+      'generated/**',
+      'tests/archive/**',
+      'resources/**',
+      'browser-artifacts/**',
+    ],
+  },
   {
     files: ['**/*.{js,mjs,cjs}'],
     rules: {

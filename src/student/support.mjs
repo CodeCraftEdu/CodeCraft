@@ -11,8 +11,8 @@ export function createSupportPanel(item, element) {
     grid.append(stuck);
   }
   if (item.bonus) {
-    const done = element('div', 'support-card support-card--done');
-    done.append(element('h2', 'section-title', item.stuck ? 'J’ai fini' : 'Vérification et suite'));
+    const done = element('details', 'support-card support-card--done');
+    done.append(element('summary', '', 'Pour aller plus loin'));
     done.append(element('p', '', item.bonus));
     grid.append(done);
   }

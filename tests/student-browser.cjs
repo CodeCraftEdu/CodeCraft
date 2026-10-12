@@ -7,6 +7,68 @@ const scope = studentScope(data);
 withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
   const open = (id, query = '') =>
     navigate('index.html', '#module/' + id + query, data.modules[id].title);
+  // The sidebar must stay pinned when the document reaches its lower scroll limit.
+  const [sidebarPathwayId, sidebarPathway] =
+    scope.pathways.find(([id]) => id === 'web-debutants') || scope.pathways[0] || [];
+  if (sidebarPathway) {
+    await open(sidebarPathway.moduleIds[0], '?parcours=' + sidebarPathwayId);
+    for (const height of [900, 600]) {
+      await call('Emulation.setDeviceMetricsOverride', {
+        width: 1280,
+        height,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      const positions = [];
+      for (const position of ['middle', 'bottom']) {
+        await evaluate(
+          `window.scrollTo({top:document.documentElement.scrollHeight${position === 'middle' ? '/2' : ''},behavior:'instant'});new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))`,
+        );
+        positions.push(
+          await evaluate('document.querySelector(".course-sidebar").getBoundingClientRect().top'),
+        );
+      }
+      assert.ok(Math.abs(positions[0] - 20) < 1, 'Sidebar pinned mid-page');
+      assert.ok(Math.abs(positions[1] - positions[0]) < 1, 'Sidebar stays pinned at page end');
+      await screenshot('sidebar-page-end-' + height);
+    }
+    await call('Emulation.clearDeviceMetricsOverride');
+  }
+  if (scope.includes('html-titres-paragraphes')) {
+    await open('html-titres-paragraphes', '?parcours=web-debutants');
+    for (const width of [1280, 390, 320]) {
+      await call('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 1000,
+        deviceScaleFactor: 1,
+        mobile: width < 500,
+      });
+      assert.equal(
+        await evaluate('document.querySelector("details.support-card--done").open'),
+        false,
+      );
+      assert.ok(
+        await evaluate(
+          `Math.abs(document.querySelector('.support-grid').getBoundingClientRect().width - document.querySelector('.lesson-checkpoint').getBoundingClientRect().width) < 1`,
+        ),
+      );
+      await evaluate('document.querySelector("details.support-card--done summary").click()');
+      assert.ok(
+        await evaluate(
+          'document.querySelector("details.support-card--done").open && document.querySelector("details.support-card--done p").getBoundingClientRect().height > 0',
+        ),
+      );
+      await evaluate(
+        'document.querySelector("details.support-card--done summary").click();document.querySelector(".lesson-checkpoint").scrollIntoView({block:"start",behavior:"instant"})',
+      );
+      await evaluate(
+        'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',
+      );
+      assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth'));
+      await screenshot('course-ending-' + width);
+    }
+    await call('Emulation.clearDeviceMetricsOverride');
+  }
   for (const [id, pathway] of scope.pathways) {
     const order = pathway.moduleIds;
     await navigate('index.html', '#parcours/' + id, data.modules[order[0]].title);

@@ -153,10 +153,8 @@ test('fin de module : encarts génériques supprimés, consignes spécifiques co
     assert(!texts(result).includes('Je suis bloqué'));
     if (item.stuck) {
       for (const step of item.stuck.steps) assert(texts(result).includes(step));
-      assert(texts(result).includes('J’ai fini'));
-    } else if (item.bonus) {
-      assert(texts(result).includes('Vérification et suite'));
     }
+    if (item.bonus) assert(texts(result).includes('Pour aller plus loin'));
   }
   assert(data.modules['html-titres-paragraphes'].bonus.includes('sans regarder les exemples'));
   assert.equal(data.modules['diagnostic-web'], undefined);

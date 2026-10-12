@@ -105,6 +105,11 @@ body.student-lowpoly .course-sidebar__toggle:focus-visible {
 @media (min-width: 1200px) {
   body.student-lowpoly .site-shell--course {
     width: min(1160px, calc(100% - 48px));
+    padding-bottom: 0;
+  }
+  /* Keep the footer spacing inside the sticky sidebar's containing grid. */
+  body.student-lowpoly .course-layout > .lesson-page {
+    padding-bottom: 64px;
   }
   body.student-lowpoly[data-lesson-layout='standard'] .site-shell--course > .page-header--compact {
     width: 100%;

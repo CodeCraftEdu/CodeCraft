@@ -20923,14 +20923,14 @@ window.CODECRAFT_DATA = {
         {
           "type": "details",
           "id": "aide-fondations",
-          "title": "Besoin d’un squelette titre/paragraphe ? : Fondations ou autre parcours",
+          "title": "Une page de départ pour ajouter ton image",
           "blocks": [
             {
               "type": "lesson",
               "id": "squelette",
               "title": "Une petite page à compléter",
               "paragraphs": [
-                "Si tu ne sais pas encore créer un titre et un paragraphe, utilise ce squelette fourni. Le titre et le texte sont déjà prêts : leur création n’est pas nécessaire pour travailler les images.",
+                "Le titre et le paragraphe sont déjà écrits. Complète la balise `\u003cimg>` pour ajouter ton image.",
                 "Sous le carré bleu, clique sur « Copier le lien ». Colle l’adresse dans `src` et décris l’image dans `alt`. Tu peux ensuite personnaliser les textes.",
                 "Observe comment src et alt changent le résultat dans l’aperçu."
               ],
@@ -20942,11 +20942,11 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "mission",
           "title": "4 : Mission autonome",
-          "intro": "Présente une forme avec un titre, un paragraphe et une image. Si tu ne sais pas encore créer les textes, utilise le squelette repliable juste au-dessus. Tu peux réussir la partie images avec ce support. Si ces bases sont maîtrisées, commence sans squelette.",
+          "intro": "Présente une forme avec un titre, un paragraphe et une image. Tu peux utiliser la page de départ ci-dessus ou écrire toi-même le titre et le paragraphe.",
           "items": [
             {
               "id": "image-section",
-              "text": "Crée un titre et un paragraphe, ou conserve ceux du squelette fourni pour te concentrer sur l’image."
+              "text": "Crée un titre et un paragraphe, ou conserve ceux de la page de départ pour te concentrer sur l’image."
             },
             {
               "id": "mission-image",
