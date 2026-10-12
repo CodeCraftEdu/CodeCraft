@@ -331,7 +331,7 @@ body.student-lowpoly .lesson-intro::after {
   display: none;
 }
 body.student-lowpoly[data-lesson-layout='standard'] {
-  --lesson-scene: url('images/banner-web.svg');
+  --lesson-scene: url('../../../images/banner-web.svg');
   --lesson-scene-filter: none;
   --lesson-ink: var(--ink);
   --lesson-muted: #56525c;
@@ -342,15 +342,15 @@ body.student-lowpoly[data-lesson-layout='standard'] {
   --lesson-line: color-mix(in srgb, var(--route) 16%, #e6e9ee);
 }
 body.student-lowpoly[data-lesson-layout='standard'][data-domain='python'] {
-  --lesson-scene: url('images/banner-python.svg');
+  --lesson-scene: url('../../../images/banner-python.svg');
   --lesson-hero-start: #dfe9f5;
   --lesson-hero-end: #cedef0;
 }
 body.student-lowpoly[data-lesson-layout='standard'][data-domain='jeux-video'] {
-  --lesson-scene: url('images/banner-game.svg');
+  --lesson-scene: url('../../../images/banner-game.svg');
 }
 body.student-lowpoly[data-lesson-layout='standard'][data-domain='robotique'] {
-  --lesson-scene: url('images/banner-robotique.svg');
+  --lesson-scene: url('../../../images/banner-robotique.svg');
   --lesson-hero-start: #e0eeeb;
   --lesson-hero-end: #c9e1dc;
 }

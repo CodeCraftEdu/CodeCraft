@@ -16,7 +16,7 @@ body.student-lowpoly .home-header {
   box-shadow: none;
   background-image:
     linear-gradient(90deg, #36294dc4 0, #36294d70 42%, transparent 72%),
-    url('images/codecraft-horizon.svg');
+    url('../../../images/codecraft-horizon.svg');
   background-size: cover;
   background-position: center;
   clip-path: polygon(
@@ -90,7 +90,7 @@ body.student-lowpoly .domain-banner {
   text-shadow: 0 2px 0 #302d354d;
   background-image:
     linear-gradient(90deg, #203453b3, #20345330 38%, transparent 72%),
-    url('images/banner-python.svg');
+    url('../../../images/banner-python.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,16 +109,18 @@ body.student-lowpoly .domain-banner {
 }
 body.student-lowpoly[data-domain='jeux-video'] .domain-banner {
   background-image:
-    linear-gradient(90deg, #613f55b3, #613f5530 38%, transparent 72%), url('images/banner-game.svg');
+    linear-gradient(90deg, #613f55b3, #613f5530 38%, transparent 72%),
+    url('../../../images/banner-game.svg');
 }
 body.student-lowpoly[data-domain='web'] .domain-banner {
   background-image:
-    linear-gradient(90deg, #284e49b3, #284e4930 38%, transparent 72%), url('images/banner-web.svg');
+    linear-gradient(90deg, #284e49b3, #284e4930 38%, transparent 72%),
+    url('../../../images/banner-web.svg');
 }
 body.student-lowpoly[data-domain='robotique'] .domain-banner {
   background-image:
     linear-gradient(90deg, #1b394fb8, #1b394f30 42%, transparent 72%),
-    url('images/banner-robotique.svg');
+    url('../../../images/banner-robotique.svg');
 }
 body.student-lowpoly .home-domain--game {
   --card-accent: #a55d27;

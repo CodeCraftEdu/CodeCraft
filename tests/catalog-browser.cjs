@@ -8,7 +8,36 @@ async function main() {
   buildCatalog({ check: true });
   const catalog = loadCatalog();
   await withBrowser(async ({ call, evaluate, wait, navigate, profile, errors, origin }) => {
+    const checkBackgrounds = async () => {
+      const results = await evaluate(`(async () => {
+        const urls = new Set();
+        for (const node of document.querySelectorAll('body, body *')) {
+          for (const value of [getComputedStyle(node).backgroundImage,
+            getComputedStyle(node, '::before').backgroundImage,
+            getComputedStyle(node, '::after').backgroundImage]) {
+            for (const match of value.matchAll(/url\\(["']?([^"')]+)["']?\\)/g)) urls.add(match[1]);
+          }
+        }
+        return Promise.all([...urls].map(url => new Promise(resolve => {
+          const image = new Image();
+          const timer = setTimeout(() => resolve({url, loaded: false}), 5000);
+          const finish = loaded => { clearTimeout(timer); resolve({url, loaded}); };
+          image.onload = () => finish(image.naturalWidth > 0);
+          image.onerror = () => finish(false);
+          image.src = url;
+        })));
+      })()`);
+      assert.ok(results.length > 0, 'Expected decorative background images');
+      assert.deepEqual(
+        results.filter((result) => !result.loaded),
+        [],
+        'Background images must load',
+      );
+    };
     await navigate('index.html', '', 'CodeCraft');
+    await checkBackgrounds();
+    const homeShot = await call('Page.captureScreenshot', { format: 'png' });
+    fs.writeFileSync(path.join(profile, 'home-banner.png'), Buffer.from(homeShot.data, 'base64'));
     assert.deepStrictEqual(
       await evaluate('Object.keys(window.CODECRAFT_DATA.modules)'),
       Object.keys(catalog.modules),
@@ -24,6 +53,7 @@ async function main() {
         '#domaine/' + id,
         single ? pathwayEntry(domain.pathwayIds[0]).title : domain.title,
       );
+      await checkBackgrounds();
     }
     for (const id of Object.keys(catalog.pathways)) {
       const entry = pathwayEntry(id);
