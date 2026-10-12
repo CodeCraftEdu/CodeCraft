@@ -1,8 +1,7 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const { createTextTools } = require('../src/student/text.mjs');
 class Node {
@@ -19,10 +18,8 @@ const document = {
   createElement: (tag) => new Node(tag),
   createTextNode: (text) => ({ tag: '#text', textContent: text, children: [] }),
 };
-global.document = document;
-test.after(() => {
-  delete global.document;
-});
+const { bindGlobals } = require('./helpers/fixtures.cjs');
+test.after(bindGlobals({ document }));
 const { element, appendInlineText: append } = createTextTools();
 const text = (node) => node.textContent + node.children.map(text).join('');
 
@@ -58,7 +55,7 @@ test('Code en ligne : exemples inertes, blocs de code et titres inchangés', () 
 
 test('Document HTML : balises et attributs identifiables dans la leçon', () => {
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
+  runScripts(['generated/catalog.js'], context);
   const module = context.window.CODECRAFT_DATA.modules['html-document'];
   const prose = module.blocks.flatMap((b) => b.paragraphs || []).join(' ');
   assert.match(prose, /<html> entoure le document/);
@@ -93,7 +90,7 @@ test('Web : noms de balises dans les consignes, sans transformer mots courants, 
 test('Panneaux pédagogiques : les critères utilisent le même rendu que les leçons', () => {
   document.body = { dataset: { domain: 'web' } };
   const context = { document, window: { CODECRAFT_DATA: {}, CodeCraftInlineText: append } };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'pedagogy.js'), 'utf8'), context);
+  runScripts(['pedagogy.js'], context);
   const row = context.window.CodeCraftPedagogy.node('li', 'Je repère h1 dans body.');
   assert.deepEqual(
     row.children.filter((n) => n.tag === 'code').map((n) => n.textContent),

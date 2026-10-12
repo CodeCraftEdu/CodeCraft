@@ -1,8 +1,7 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const { createCodeTools } = require('../src/student/code.mjs');
 const { codeTokens: tokenize } = createCodeTools({});
@@ -39,7 +38,7 @@ test('CSS, Python et JavaScript : repères de syntaxe, chaînes et commentaires 
 
 test('Catalogue complet : coloration sans modifier le code ni exécuter les exemples', () => {
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
+  runScripts(['generated/catalog.js'], context);
   let count = 0;
   const visit = (value) => {
     if (!value || typeof value !== 'object') return;
@@ -79,7 +78,7 @@ test('Blocs de code : hauteur libre, lignes longues contenues et nom de fichier 
   assert.match(rule, /overflow-wrap: anywhere/);
   assert.match(rule, /max-height: none/);
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
+  runScripts(['generated/catalog.js'], context);
   const demo = context.window.CODECRAFT_DATA.modules['html-document'].blocks.find(
     (b) => b.id === 'comprendre',
   ).demonstration;

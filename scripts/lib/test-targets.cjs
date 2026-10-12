@@ -1,4 +1,4 @@
-const catalog = ['catalog-build', 'content-schema'];
+const catalog = ['catalog-build', 'content-schema', 'test-helpers'];
 const student = [
   'course-entry',
   'course-navigation',

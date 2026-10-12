@@ -6,6 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
 const vm = require('node:vm');
+const { temporaryDirectory } = require('./helpers/fixtures.cjs');
 const { execFileSync } = require('node:child_process');
 const { loadCatalog, defaultContentRoot } = require('../scripts/catalog/load-catalog.cjs');
 const { validateCatalog } = require('../scripts/catalog/validate-catalog.cjs');
@@ -94,9 +95,7 @@ test('validation : identifiants d’activités et tâches dupliqués refusés', 
 });
 
 test('chargement : doublons du manifeste, fichiers oubliés et chemins hors contenu refusés', (t) => {
-  const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-content-test-'));
-  assert.equal(path.dirname(temporaryRoot), path.resolve(os.tmpdir()));
-  t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
+  const temporaryRoot = temporaryDirectory(t, 'codecraft-content-test-');
   fs.cpSync(defaultContentRoot, temporaryRoot, { recursive: true });
   const manifestFile = path.join(temporaryRoot, 'manifest.json');
   const original = fs.readFileSync(manifestFile, 'utf8');

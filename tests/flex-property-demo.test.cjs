@@ -1,11 +1,10 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
+runScripts(['generated/catalog.js'], context);
 const configs = context.window.CODECRAFT_DATA.modules['css-flexbox'].blocks
   .filter((b) => b.demonstration?.type === 'flex-property')
   .map((b) => b.demonstration);

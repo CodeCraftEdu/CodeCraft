@@ -73,3 +73,11 @@ Les tests Node importent directement les modules ES de `src/student/`. Node 22.1
 `npm run format` applique Prettier aux fichiers JavaScript, JSON, CSS et YAML éditables. `npm run format:check` vérifie leur format sans les modifier ; cette commande fait partie de `npm run check` et du workflow GitHub. La version de Prettier est verrouillée dans les dépendances de développement, conformément à sa [documentation d’installation](https://prettier.io/docs/install).
 
 `.prettierrc.json` fixe les choix communs ; `.editorconfig` indique aux éditeurs l’encodage UTF-8, deux espaces et les fins de ligne LF. `.gitattributes` conserve aussi LF après un checkout sous Windows. Le formatage ne réécrit pas le texte contenu dans les chaînes JSON des cours. `generated/`, les ressources téléchargeables, les snapshots archivés et le lockfile sont exclus dans `.prettierignore`. Les documents Markdown et les fichiers HTML/SVG ne sont pas ciblés par la commande. VS Code recommande les extensions Prettier et ESLint ; avec Prettier installé, les langages ciblés sont formatés à l’enregistrement grâce à `.vscode/settings.json`.
+
+## Outils partagés des tests
+
+`tests/helpers/script-context.cjs` charge les scripts navigateur complets dans un contexte VM indépendant. Chaque appel conserve ses propres données mutables ; aucun catalogue n’est mis en cache entre scénarios. Les tests du générateur gardent leur exécution directe pour vérifier la sortie produite.
+
+`tests/helpers/fixtures.cjs` crée les dossiers temporaires et enregistre leur suppression avec `t.after`. Il vérifie le chemin réel avant suppression. `bindGlobals` remplace temporairement les variables du navigateur simulé et retourne une fonction de restauration : appeler celle-ci dans `finally`, ou l’enregistrer avec `t.after` pour une simulation partagée par le fichier. Les restaurations imbriquées suivent l’ordre inverse des installations. `student-dom.cjs` l’utilise également si la préparation échoue.
+
+Les préparations de classe et de séance propres à un scénario restent dans son test. Partager uniquement les mécanismes réellement communs, en gardant les assertions dans les scénarios. `test-helpers.test.cjs` vérifie l’isolation des catalogues, la restauration des variables et la suppression des dossiers ; il est inclus dans les profils ciblés.

@@ -1,12 +1,12 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
+runScripts(['generated/catalog.js'], context);
 const data = context.window.CODECRAFT_DATA;
 
 test('RB01 conserve la leçon complète après retrait de l’essai visuel', () => {

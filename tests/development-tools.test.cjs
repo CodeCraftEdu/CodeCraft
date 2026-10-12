@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const os = require('node:os');
+const { temporaryDirectory } = require('./helpers/fixtures.cjs');
 const path = require('node:path');
 const vm = require('node:vm');
 const { startDevServer } = require('../scripts/dev.cjs');
@@ -13,9 +13,7 @@ const { studentScope } = require('./helpers/student-scope.cjs');
 const { loadCatalog } = require('../scripts/catalog/load-catalog.cjs');
 
 function fixture(t) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'codecraft-dev-test-'));
-  assert.equal(path.dirname(root), path.resolve(os.tmpdir()));
-  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const root = temporaryDirectory(t, 'codecraft-dev-test-');
   for (const dir of ['content', 'generated', 'resources', '.git'])
     fs.mkdirSync(path.join(root, dir));
   fs.writeFileSync(path.join(root, 'index.html'), '<html><body>Preview</body></html>');

@@ -1,14 +1,9 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
 const { spawnSync } = require('node:child_process');
 const sandbox = { window: {} };
-vm.runInNewContext(
-  fs.readFileSync(path.join(__dirname, '..', 'generated/catalog.js'), 'utf8'),
-  sandbox,
-);
+runScripts(['generated/catalog.js'], sandbox);
 const data = sandbox.window.CODECRAFT_DATA;
 const ids = ['python-fonctions', 'python-retour', 'python-quiz'];
 const block = (id, name) => data.modules[id].blocks.find((b) => b.id === name);

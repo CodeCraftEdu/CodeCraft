@@ -1,6 +1,5 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
+const { runScripts } = require('./script-context.cjs');
+const { bindGlobals } = require('./fixtures.cjs');
 const { JSDOM } = require('jsdom');
 const { loadCatalog } = require('../../scripts/catalog/load-catalog.cjs');
 const { createTextTools } = require('../../src/student/text.mjs');
@@ -30,76 +29,81 @@ function studentDom(data = loadCatalog()) {
     history: window.history,
     requestAnimationFrame: () => {},
   };
-  const previous = new Map(
-    Object.keys(bindings).map((key) => [key, Object.getOwnPropertyDescriptor(global, key)]),
-  );
-  for (const [key, value] of Object.entries(bindings))
-    Object.defineProperty(global, key, { configurable: true, writable: true, value });
-  window.CODECRAFT_DATA = data;
-  vm.runInNewContext(fs.readFileSync(path.resolve(__dirname, '../../pedagogy.js'), 'utf8'), {
-    window,
-    document: window.document,
-    URL,
-    URLSearchParams,
-  });
-  const pedagogy = window.CodeCraftPedagogy;
-  const text = createTextTools();
-  const code = createCodeTools(text);
-  const demoCleanups = [];
-  const demonstrations = createDemonstrations({ ...text, ...code, demoCleanups });
-  const routes = createRouteUrls(data);
-  const link = (label, href, cls = '') => {
-    const node = text.element('a', cls, label);
-    node.href = href;
-    return node;
-  };
-  const blocks = createBlockRenderer({
-    data,
-    pedagogy,
-    checks: new Set(),
-    ...text,
-    ...code,
-    link,
-    ...routes,
-    demonstrations,
-  });
-  const main = window.document.getElementById('main-content');
-  const router = createRouter({
-    data,
-    pedagogy,
-    main,
-    demoCleanups,
-    ...text,
-    link,
-    ...blocks,
-    routes,
-  });
-  window.CodeCraftInlineText = text.appendInlineText;
-  window.CodeCraftHighlightCode = code.highlightCode;
-  window.CodeCraftCreateCode = code.createCode;
-  return {
-    window,
-    main,
-    routes,
-    blocks,
-    demonstrations,
-    mediaListeners,
-    navigate(hash) {
-      window.history.replaceState(null, '', hash || '/');
-      router.navigate();
-    },
-    close() {
-      try {
-        window.history.replaceState(null, '', '/');
+  const restoreGlobals = bindGlobals(bindings);
+  try {
+    window.CODECRAFT_DATA = data;
+    runScripts(['pedagogy.js'], {
+      window,
+      document: window.document,
+      URL,
+      URLSearchParams,
+    });
+    const pedagogy = window.CodeCraftPedagogy;
+    const text = createTextTools();
+    const code = createCodeTools(text);
+    const demoCleanups = [];
+    const demonstrations = createDemonstrations({ ...text, ...code, demoCleanups });
+    const routes = createRouteUrls(data);
+    const link = (label, href, cls = '') => {
+      const node = text.element('a', cls, label);
+      node.href = href;
+      return node;
+    };
+    const blocks = createBlockRenderer({
+      data,
+      pedagogy,
+      checks: new Set(),
+      ...text,
+      ...code,
+      link,
+      ...routes,
+      demonstrations,
+    });
+    const main = window.document.getElementById('main-content');
+    const router = createRouter({
+      data,
+      pedagogy,
+      main,
+      demoCleanups,
+      ...text,
+      link,
+      ...blocks,
+      routes,
+    });
+    window.CodeCraftInlineText = text.appendInlineText;
+    window.CodeCraftHighlightCode = code.highlightCode;
+    window.CodeCraftCreateCode = code.createCode;
+    return {
+      window,
+      main,
+      routes,
+      blocks,
+      demonstrations,
+      mediaListeners,
+      navigate(hash) {
+        window.history.replaceState(null, '', hash || '/');
         router.navigate();
-      } finally {
-        dom.window.close();
-        for (const [key, descriptor] of previous) {
-          if (descriptor) Object.defineProperty(global, key, descriptor);
-          else delete global[key];
+      },
+      close() {
+        try {
+          window.history.replaceState(null, '', '/');
+          router.navigate();
+        } finally {
+          try {
+            dom.window.close();
+          } finally {
+            restoreGlobals();
+          }
         }
-      }
-    },
-  };
+      },
+    };
+  } catch (error) {
+    try {
+      dom.window.close();
+    } finally {
+      restoreGlobals();
+    }
+    throw error;
+  }
 }
 module.exports = { studentDom };

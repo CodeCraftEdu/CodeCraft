@@ -1,3 +1,4 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -6,8 +7,7 @@ const vm = require('node:vm');
 const model = require('../teacher-model.js');
 const root = path.join(__dirname, '..');
 const context = { window: {}, URLSearchParams };
-for (const file of ['generated/catalog.js', 'pedagogy.js'])
-  vm.runInNewContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
+runScripts(['generated/catalog.js', 'pedagogy.js'], context);
 const data = context.window.CODECRAFT_DATA,
   ui = context.window.CodeCraftPedagogy;
 

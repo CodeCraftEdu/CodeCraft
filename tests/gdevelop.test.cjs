@@ -1,13 +1,13 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const zlib = require('node:zlib');
 const root = path.resolve(__dirname, '..'),
   context = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), context);
-vm.runInNewContext(fs.readFileSync(path.join(root, 'pedagogy.js'), 'utf8'), context);
+runScripts(['generated/catalog.js'], context);
+runScripts(['pedagogy.js'], context);
 const data = context.window.CODECRAFT_DATA;
 const ids = ['gdevelop-projet', 'gdevelop-deplacement', 'gdevelop-objets', 'gdevelop-evenements'];
 

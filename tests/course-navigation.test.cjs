@@ -1,13 +1,13 @@
+const { bindGlobals } = require('./helpers/fixtures.cjs');
+const { runScripts } = require('./helpers/script-context.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const vm = require('node:vm');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const { createCourseNavigation } = require('../src/student/course-navigation.mjs');
 const { createTextTools } = require('../src/student/text.mjs');
 const catalog = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), catalog);
+runScripts(['generated/catalog.js'], catalog);
 const data = catalog.window.CODECRAFT_DATA;
 
 function render(sequence, sequenceId, currentId, wide = false) {
@@ -49,18 +49,24 @@ function render(sequence, sequenceId, currentId, wide = false) {
       '#module/' + encodeURIComponent(id) + '?parcours=' + encodeURIComponent(context),
     link: (text, href, className) => Object.assign(element('a', className, text), { href }),
   };
-  global.window = context.window;
-  global.requestAnimationFrame = context.requestAnimationFrame;
-  const { studentTitle } = createTextTools();
-  const navigation = createCourseNavigation(sequence, sequenceId, currentId, {
-    ...context,
-    studentTitle,
+  const restoreGlobals = bindGlobals({
+    window: context.window,
+    requestAnimationFrame: context.requestAnimationFrame,
   });
-  return {
-    sidebar: navigation.node,
-    media,
-    context: { studentTitle, disposeCourseNavigation: navigation.dispose },
-  };
+  try {
+    const { studentTitle } = createTextTools();
+    const navigation = createCourseNavigation(sequence, sequenceId, currentId, {
+      ...context,
+      studentTitle,
+    });
+    return {
+      sidebar: navigation.node,
+      media,
+      context: { studentTitle, disposeCourseNavigation: navigation.dispose },
+    };
+  } finally {
+    restoreGlobals();
+  }
 }
 function nodes(node) {
   return [node, ...node.children.flatMap(nodes)];
@@ -204,9 +210,4 @@ test('étapes existantes conservées, sortie du cours et aucun parcours choisi a
   assert.match(css, /position: sticky; top: 20px/);
   assert.match(css, /course-sidebar__contents\[hidden\] \{ display: none/);
   assert.match(css, /@media print \{\s*body.student-lowpoly .course-sidebar \{ display: none/);
-});
-
-test.after(() => {
-  delete global.window;
-  delete global.requestAnimationFrame;
 });

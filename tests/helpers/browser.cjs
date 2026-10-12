@@ -3,6 +3,7 @@ const http = require('node:http');
 const path = require('node:path');
 const { spawn, execFileSync } = require('node:child_process');
 const { writeFailureReport } = require('../../scripts/lib/browser-report.cjs');
+const { waitForChromePort } = require('./chrome-startup.cjs');
 const pause = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 function removeChromeProfile(chromeProfile, directory) {
   if (
@@ -95,11 +96,10 @@ async function withBrowser(run, { fixtures = {} } = {}) {
   const errors = [];
   try {
     const portFile = path.join(chromeProfile, 'DevToolsActivePort');
-    for (let i = 0; i < 100 && !fs.existsSync(portFile) && !launchError; i++) await pause(100);
-    if (launchError) throw launchError;
-    if (!fs.existsSync(portFile))
-      throw new Error('Chrome did not start. Set CHROME_PATH to its executable.');
-    const port = fs.readFileSync(portFile, 'utf8').split(/\r?\n/)[0];
+    const port = await waitForChromePort(portFile, {
+      launchError: () => launchError,
+      hasExited: () => chrome.exitCode !== null || chrome.signalCode !== null,
+    });
     const targets = await (await fetch('http://127.0.0.1:' + port + '/json/list')).json();
     socket = new WebSocket(targets.find((target) => target.type === 'page').webSocketDebuggerUrl);
     await new Promise((resolve, reject) => {

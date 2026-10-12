@@ -1,14 +1,9 @@
+const { runScripts } = require('./helpers/script-context.cjs');
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const model = require('../teacher-model.js');
-const fs = require('node:fs');
-const vm = require('node:vm');
-const path = require('node:path');
 const context = { window: {} };
-vm.runInNewContext(
-  fs.readFileSync(path.join(__dirname, '../generated/catalog.js'), 'utf8'),
-  context,
-);
+runScripts(['generated/catalog.js'], context);
 const catalog = context.window.CODECRAFT_DATA;
 function setup() {
   const doc = model.create('test');
