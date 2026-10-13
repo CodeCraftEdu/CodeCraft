@@ -1,0 +1,850 @@
+{
+  "domainId": "jeux-video",
+  "title": "Changer de niveau et terminer la partie",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Déclencher une transition une seule fois et bloquer les actions dès la fin de partie.",
+  "tool": {
+    "label": "Ouvrir l’exemple dans Scratch",
+    "url": "https://scratch.mit.edu/projects/1391213735/"
+  },
+  "skillIds": ["scratch.variables", "scratch.conditions", "scratch.messages", "scratch.game-rules"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Initialiser une variable et modifier le score."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Lire une comparaison et un si."
+    },
+    {
+      "skillId": "scratch.messages",
+      "expectation": "Distinguer envoyer un message et quand je reçois."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "comprendre",
+      "title": "Le niveau et l’état répondent à deux questions",
+      "paragraphs": [
+        "Niveau indique quelle étape du jeu est en cours. Etat indique ce que le jeu autorise : préparation, en jeu ou gagné. Ce sont deux variables pour tous les sprites.",
+        "Une boucle repose souvent la même question. Si elle envoie victoire à chaque passage, la pile qui reçoit ce message peut redémarrer avant d’avoir fini. Change d’abord l’état pour que la condition devienne fausse."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "niveau",
+      "title": "Passer au niveau suivant une seule fois",
+      "paragraphs": [
+        "Dans la boucle qui surveille une partie en jeu, vérifie à la fois niveau = 1 et score > 2. Le seuil de trois points est atteint lorsque score dépasse 2.",
+        "Mettre niveau à 2 rend niveau = 1 faux dès le passage suivant. Le message niveau2 peut ensuite demander un nouveau décor, une cible différente ou un autre réglage.",
+        "Dans notre exemple, Cible reçoit niveau2 : elle prend le costume niveau2 et une taille de 70 %. Le score est conservé."
+      ],
+      "shortSteps": [
+        "Au drapeau, mets niveau à 1. Dans la boucle de surveillance, place le test ci-dessous.",
+        "Glisse niveau et score depuis Variables dans les comparaisons. Écris 1 et 2 dans les autres cases.",
+        "Quand le score atteint trois points, mets niveau à 2, puis envoie niveau2."
+      ],
+      "visualScript": {
+        "caption": "Dans la surveillance : une transition de niveau",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "condition": [
+                      {
+                        "reporter": "niveau",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "1"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " et ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "score",
+                        "category": "variables"
+                      },
+                      " > ",
+                      {
+                        "value": "2"
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "niveau"
+                  },
+                  " à ",
+                  {
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "envoyer à tous ",
+                  {
+                    "choice": "niveau2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "victoire",
+      "title": "Bloquer la partie avant le message final",
+      "paragraphs": [
+        "La condition associe etat = en jeu et score > 5. Dès six points, mettre etat à gagné ferme la partie avant l’envoi de victoire.",
+        "La boucle trouve ensuite etat = en jeu faux : elle n’envoie plus victoire. La pile de réception peut terminer son message de deux secondes, puis exécuter stop tout.",
+        "Stop tout intervient après les deux secondes d’affichage. Le changement d’état permet aux autres piles de refuser leurs actions pendant cette attente."
+      ],
+      "shortSteps": [
+        "Crée la variable etat pour tous les sprites. Au drapeau, mets etat à en jeu avant la boucle de surveillance.",
+        "Dans cette boucle, place le test ci-dessous. Glisse etat et score depuis Variables dans les comparaisons ; écris en jeu et 5 dans les autres cases.",
+        "Passe etat à gagné avant d’envoyer victoire. La pile qui reçoit le message affiche Gagné !, puis arrête les scripts.",
+        "Dans les piles du jeu, autorise les points, déplacements et dégâts seulement si etat vaut en jeu."
+      ],
+      "visualScript": {
+        "caption": "Décider une fois, puis afficher",
+        "stacks": [
+          {
+            "caption": "Dans la surveillance",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "condition": [
+                          {
+                            "reporter": "etat",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "en jeu"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " et ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "score",
+                            "category": "variables"
+                          },
+                          " > ",
+                          {
+                            "value": "5"
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "etat"
+                      },
+                      " à ",
+                      {
+                        "value": "gagné"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "envoyer à tous ",
+                      {
+                        "choice": "victoire"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "caption": "Dans Cible : afficher la victoire",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "victoire"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": "Gagné !"
+                  },
+                  " pendant ",
+                  {
+                    "value": "2"
+                  },
+                  " secondes"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "stop ",
+                  {
+                    "choice": "tout"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "activityLink": {
+        "moduleId": "scratch-niveaux-etats",
+        "blockId": "actions",
+        "label": "Voir les blocs pour autoriser les actions"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "actions",
+      "title": "Autoriser les points seulement pendant la partie",
+      "paragraphs": [
+        "Encadre ajouter 1 à score avec si etat = en jeu. Un clic pendant Gagné ! ne donne plus de point, même si stop tout n’a pas encore été exécuté.",
+        "Dans un autre jeu, utilise cette même condition dans les piles qui déplacent un personnage, retirent des vies ou créent des clones. Une variable ne les arrête pas toute seule : leurs actions doivent la consulter.",
+        "Après une attente, vérifie de nouveau l’état avant une action : la partie peut s’être terminée pendant la pause."
+      ],
+      "shortSteps": [
+        "Dans la pile du clic, vérifie l’état avant d’ajouter un point.",
+        "Glisse etat depuis Variables dans la comparaison =. Écris en jeu dans l’autre case."
+      ],
+      "visualScript": {
+        "caption": "Cible : un clic autorisé",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": ["quand ce sprite est cliqué"]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "reporter": "etat",
+                    "category": "variables"
+                  },
+                  " = ",
+                  {
+                    "value": "en jeu"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "1"
+                  },
+                  " à ",
+                  {
+                    "choice": "score"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "details",
+      "id": "depannage",
+      "title": "Si le niveau ou la victoire se répète",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "verifier",
+          "title": "Où regarder",
+          "paragraphs": [
+            "La victoire recommence sans atteindre stop tout ? Place mettre etat à gagné avant envoyer victoire, et vérifie etat = en jeu dans la surveillance.",
+            "Le niveau 2 est annoncé en boucle ? Vérifie niveau = 1 dans sa condition et place mettre niveau à 2 avant le message.",
+            "Les points continuent pendant le message ? Place le test d’état dans la pile qui ajoute les points, autour de cette action.",
+            "Le redémarrage garde le niveau ou le petit costume ? Rassemble les valeurs de départ, le costume et la taille avant mettre etat à en jeu.",
+            "L’état semble correct mais la condition ne réagit pas ? Glisse la variable etat depuis Variables dans la comparaison. Écris en jeu dans l’autre case, avec le même espace."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "atelier",
+      "title": "Pour pratiquer : deux niveaux de clics",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "preparer",
+          "title": "Une cible, trois variables",
+          "paragraphs": [
+            "Ouvre le projet de départ puis Voir à l’intérieur. Cible possède deux costumes et aucun script. Les variables score, niveau et etat existent pour tous les sprites.",
+            "Au départ, score vaut 0 et niveau vaut 1. Trois points ouvrent le niveau 2 ; six points terminent la partie. Le score continue de compter au changement de niveau.",
+            "Construis la pile de surveillance ci-dessous, la pile du clic montrée plus haut et les deux réceptions. La référence complète permet de comparer ton travail.",
+            "Pour travailler avec un fichier, télécharge le départ ci-dessous et charge-le depuis le menu Fichier de Scratch. Sauvegarde ton projet actuel avant de le remplacer."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger le départ (.sb3)",
+              "path": "assets/scratch/niveaux-etats-depart.sb3",
+              "filename": "niveaux-etats-depart.sb3"
+            },
+            {
+              "label": "Télécharger l’exemple (.sb3)",
+              "path": "assets/scratch/niveaux-etats-reference.sb3",
+              "filename": "niveaux-etats-reference.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "construction",
+          "title": "Construire et tester progressivement",
+          "paragraphs": [
+            "Commence par les blocs de départ, avant répéter indéfiniment. Au drapeau, vérifie score = 0, niveau = 1 et la grande cible orange.",
+            "Ajoute la pile du clic, la boucle et le test de niveau avec sa réception. Après trois clics, la cible devient bleue et plus petite ; le clic suivant ne relance pas le changement.",
+            "Ajoute ensuite le test de victoire avant celui du niveau, comme dans le modèle complet. À six points, Gagné ! apparaît et les clics pendant le message ne donnent plus de point."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "modele",
+          "title": "Préparer puis surveiller la partie",
+          "paragraphs": [
+            "Crée les messages niveau2 et victoire depuis les menus des blocs Événements. Utilise exactement ces noms dans les envois et les réceptions.",
+            "La pile commence en préparation. Elle retrouve les valeurs et l’apparence de départ, puis ouvre les actions avec en jeu. Une seule pile de drapeau prépare et surveille la partie.",
+            "Dans la boucle, le test de victoire passe en premier. Le test de niveau vérifie encore l’état : si la victoire vient d’être décidée, il ne lance pas de nouvelle transition."
+          ],
+          "shortSteps": [
+            "Au drapeau, prépare les variables et l’apparence.",
+            "Passe ensuite l’état à en jeu.",
+            "Dans la boucle, surveille la victoire, puis le changement de niveau.",
+            "Glisse etat, score et niveau depuis Variables dans les comparaisons. Les autres cases contiennent les valeurs à écrire."
+          ],
+          "visualScript": {
+            "caption": "Cible : départ et surveillance",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "etat"
+                  },
+                  " à ",
+                  {
+                    "value": "préparation"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "niveau"
+                  },
+                  " à ",
+                  {
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "basculer sur le costume ",
+                  {
+                    "choice": "niveau1"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "mettre la taille à ",
+                  {
+                    "value": "100"
+                  },
+                  " % de la taille initiale"
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "etat"
+                  },
+                  " à ",
+                  {
+                    "value": "en jeu"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["répéter indéfiniment"],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "etat",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "en jeu"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "mettre ",
+                              {
+                                "choice": "etat"
+                              },
+                              " à ",
+                              {
+                                "value": "gagné"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "events",
+                            "label": "Événements",
+                            "parts": [
+                              "envoyer à tous ",
+                              {
+                                "choice": "victoire"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "etat",
+                                    "category": "variables"
+                                  },
+                                  " = ",
+                                  {
+                                    "value": "en jeu"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " et ",
+                              {
+                                "condition": [
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "niveau",
+                                        "category": "variables"
+                                      },
+                                      " = ",
+                                      {
+                                        "value": "1"
+                                      }
+                                    ],
+                                    "operator": true
+                                  },
+                                  " et ",
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "score",
+                                        "category": "variables"
+                                      },
+                                      " > ",
+                                      {
+                                        "value": "2"
+                                      }
+                                    ],
+                                    "operator": true
+                                  }
+                                ],
+                                "operator": true
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "mettre ",
+                              {
+                                "choice": "niveau"
+                              },
+                              " à ",
+                              {
+                                "value": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "events",
+                            "label": "Événements",
+                            "parts": [
+                              "envoyer à tous ",
+                              {
+                                "choice": "niveau2"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "receptions",
+          "title": "Réagir aux messages",
+          "paragraphs": [
+            "Dans Cible, ajoute quand je reçois niveau2 → basculer sur le costume niveau2 → mettre la taille à 70 % de la taille initiale.",
+            "Ajoute aussi la pile quand je reçois victoire montrée plus haut : dire Gagné ! pendant 2 secondes → stop tout. La surveillance a déjà changé l’état ; la réception se charge de l’affichage."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Observer chaque passage",
+          "items": [
+            {
+              "id": "depart",
+              "text": "Lance le drapeau. Vérifie score = 0, niveau = 1, etat = en jeu et la grande cible orange."
+            },
+            {
+              "id": "niveau",
+              "text": "Clique trois fois. Vérifie niveau = 2, score = 3 et la petite cible bleue. Un nouveau clic ne doit pas relancer ce changement."
+            },
+            {
+              "id": "fin",
+              "text": "Atteins six points. Clique encore pendant Gagné ! : le score reste à 6 et etat vaut gagné.",
+              "hint": "La pile du clic consulte etat avant chaque point."
+            },
+            {
+              "id": "stop",
+              "text": "Attends la fin du message. Les piles sont arrêtées : la réception a atteint stop tout."
+            },
+            {
+              "id": "reprise",
+              "text": "Relance pendant le message final, puis après l’arrêt. Chaque départ doit retrouver zéro point, le niveau 1 et la grande cible orange."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Choisir d’autres seuils",
+          "items": [
+            {
+              "id": "seuils",
+              "text": "Dans une copie, ouvre le niveau 2 à quatre points et la victoire à huit. Prévois les deux comparaisons, puis teste.",
+              "hint": "Avec >, utilise score > 3 et score > 7."
+            },
+            {
+              "id": "message",
+              "text": "Change le texte de victoire et sa durée à trois secondes. Vérifie encore que les clics pendant le message ne donnent aucun point."
+            },
+            {
+              "id": "expliquer",
+              "text": "Explique pourquoi niveau change avant niveau2 et etat change avant victoire."
+            },
+            {
+              "id": "conserver",
+              "text": "Sauvegarde ta version sur ton ordinateur, importe-la et vérifie les seuils et un nouveau départ."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer le niveau et l’état de la partie.",
+    "Changer une variable avant le message pour déclencher une transition une seule fois.",
+    "Bloquer les actions pendant l’affichage final.",
+    "Retrouver les variables et l’apparence de départ au drapeau."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-coordination",
+      "blockId": "exemple",
+      "label": "Revoir les messages"
+    },
+    {
+      "moduleId": "scratch-variables",
+      "blockId": "exemple",
+      "label": "Revoir les variables"
+    },
+    {
+      "moduleId": "scratch-fin-partie",
+      "blockId": "exemple",
+      "label": "Revoir arrêt et redémarrage"
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Distinguer progression et autorisation des actions, sécuriser une transition et la fin de partie.",
+    "entryDiagnosis": [
+      "Faire lire un test de score et une affectation de variable.",
+      "Faire distinguer envoyer un message et recevoir ce message."
+    ],
+    "preparation": [
+      "Pendant un atelier accompagné, ouvrir niveau, victoire ou actions selon le problème, puis revenir au projet des élèves. L’activité repliée est indépendante et n’ajoute pas de travail obligatoire à la séance.",
+      "Pour une séance autonome, ouvrir le départ partagé ou importer le fichier .sb3 : Cible sans scripts, deux costumes et trois variables globales.",
+      "Prévoir des clics pendant le message final et des relances avant et après stop tout."
+    ],
+    "why": "Un message déclenche des piles ; une variable rend explicite la décision et les actions encore autorisées.",
+    "discoverySpeech": [
+      "La condition reste-t-elle vraie après le message ?",
+      "Quelle valeur doit changer avant de prévenir les autres piles ?",
+      "Pendant les deux secondes du message, quelle condition refuse les points ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-niveaux-etats",
+        "blockId": "victoire"
+      },
+      "comments": [
+        "Un seul contrôleur prépare puis surveille. Il change niveau ou etat avant le message, sans attente entre le test et cette affectation.",
+        "Un nouvel envoi du même message peut redémarrer la pile réceptrice : la condition d’état évite les envois répétés.",
+        "La victoire est prioritaire. Le changement de niveau consulte encore l’état après le test de victoire.",
+        "Chaque pile d’action doit consulter l’état, notamment après une attente. Les autres projets doivent protéger aussi déplacements, dégâts et créations.",
+        "Le score reste global sur les deux niveaux ; les seuils 3 et 6 sont des totaux, pas trois puis six points supplémentaires."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Niveau 2 signifie-t-il que la partie est terminée ?",
+        "answer": "Non. Niveau décrit une étape ; etat peut rester en jeu."
+      },
+      {
+        "question": "Pourquoi modifier etat avant envoyer victoire ?",
+        "answer": "Pour que la surveillance n’envoie plus ce message et que les actions refusent déjà les points."
+      },
+      {
+        "question": "Stop tout placé après deux secondes suffit-il à bloquer les points pendant ces deux secondes ?",
+        "answer": "Non. La pile du clic doit vérifier etat = en jeu."
+      },
+      {
+        "question": "Pourquoi rétablir costume et taille au drapeau ?",
+        "answer": "Parce que les variables seules ne rétablissent pas l’apparence du niveau 1."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-niveaux-etats",
+      "blockId": "victoire"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-niveaux-etats",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Montrer seulement la transition correspondant au problème du projet en cours.",
+      "Tester la victoire seule avant d’ajouter le passage de niveau si les messages sont encore fragiles.",
+      "Modifier un seuil à la fois et demander une prédiction."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le message final recommence sans arrêt.",
+        "helps": [
+          "Observer l’état pendant le message.",
+          "Chercher tous les envois de victoire.",
+          "Repérer l’affectation avant l’envoi.",
+          "Conserver un contrôleur et changer l’état avant le message."
+        ]
+      },
+      {
+        "symptom": "Les actions continuent pendant la victoire.",
+        "helps": [
+          "Identifier la pile qui réalise encore une action.",
+          "Chercher sa condition d’état.",
+          "Repérer une attente éventuelle avant l’action.",
+          "Vérifier l’état juste avant l’action puis retester."
+        ]
+      },
+      {
+        "symptom": "Le nouveau départ conserve l’ancienne apparence.",
+        "helps": [
+          "Relancer après le niveau 2.",
+          "Comparer niveau et costume.",
+          "Repérer costume et taille dans la préparation.",
+          "Rétablir ces réglages avant en jeu puis relancer."
+        ]
+      }
+    ],
+    "notes": "Support ponctuel ou activité autonome. La recette décrit les contrôles du site et les essais du moteur dans docs/recette-scratch-niveaux-etats.md. Le projet de clics isole les transitions ; il ne reprend pas le jeu d’un stage.",
+    "quickConductor": [
+      "Ouvrir la section utile.",
+      "Faire prévoir la condition au passage suivant.",
+      "Revenir au projet, ou utiliser l’activité indépendante.",
+      "Tester les actions pendant le message et la relance."
+    ],
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  },
+  "scratchProjectId": "niveaux-etats"
+}

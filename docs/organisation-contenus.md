@@ -4,20 +4,20 @@ Les fichiers de `content/` sont la source de vérité. Ils contiennent uniquemen
 
 ## Trouver un contenu
 
-| Besoin | Fichier |
-| --- | --- |
-| Cours Images HTML, exercices, aperçu et guide | `content/modules/web/html-images.json` |
-| Dimensions des images et ses démonstrations | `content/modules/web/css-dimensions-images.json` |
-| Cours Python | `content/modules/python/<identifiant>.json` |
-| Cours Scratch ou GDevelop | `content/modules/jeux-video/<identifiant>.json` |
-| Cours robotique | `content/modules/robotique/<identifiant>.json` |
-| Ordre et groupes du parcours Web débutant | `content/pathways/web-debutants.json` |
-| Domaines et compétences | `content/catalog/domains.json`, `content/catalog/skills.json` |
-| Types de modules et réglages du site | `content/catalog/module-types.json`, `content/catalog/site.json` |
-| Anciennes adresses de navigation | `content/catalog/aliases.json` |
-| Liens de départ et démonstrations Scratch | `content/resources/scratch-projects.json` |
-| Données du conducteur historique | `content/teacher/historical-conductor.json` |
-| Identifiants, fichiers et ordre de chargement | `content/manifest.json` |
+| Besoin                                        | Fichier                                                          |
+| --------------------------------------------- | ---------------------------------------------------------------- |
+| Cours Images HTML, exercices, aperçu et guide | `content/modules/web/html-images.json`                           |
+| Dimensions des images et ses démonstrations   | `content/modules/web/css-dimensions-images.json`                 |
+| Cours Python                                  | `content/modules/python/<identifiant>.json`                      |
+| Cours Scratch ou GDevelop                     | `content/modules/jeux-video/<identifiant>.json`                  |
+| Cours robotique                               | `content/modules/robotique/<identifiant>.json`                   |
+| Ordre et groupes du parcours Web débutant     | `content/pathways/web-debutants.json`                            |
+| Domaines et compétences                       | `content/catalog/domains.json`, `content/catalog/skills.json`    |
+| Types de modules et réglages du site          | `content/catalog/module-types.json`, `content/catalog/site.json` |
+| Anciennes adresses de navigation              | `content/catalog/aliases.json`                                   |
+| Liens de départ et démonstrations Scratch     | `content/resources/scratch-projects.json`                        |
+| Données du conducteur historique              | `content/teacher/historical-conductor.json`                      |
+| Identifiants, fichiers et ordre de chargement | `content/manifest.json`                                          |
 
 Un module partagé existe une seule fois. Les parcours, reprises et ressources partagées le référencent par son identifiant. Les fichiers JSON suivent une indentation de deux espaces, UTF-8, avec une fin de ligne finale.
 
@@ -48,6 +48,14 @@ La sortie est versionnée pour que GitHub Pages puisse servir directement le dé
 Les validations détectent les identifiants dupliqués, les fichiers JSON non inscrits, les chemins sortant de `content/`, les modules rangés dans le mauvais domaine, les compétences inconnues et les références cassées de parcours, activité, tâche, ressource et alias. Les tests pédagogiques existants complètent ces contrôles. Les schémas de `schemas/` valident les champs, les types et les variantes de démonstration, avant les références entre contenus. Les illustrations, étapes d’action, schémas Python, scripts Scratch imbriqués et guides professeur ont des structures explicites qui rejettent les champs inconnus. Les domaines, compétences, projets Scratch et conducteur historique ont chacun un schéma dédié. Les associations de `.vscode/settings.json` donnent la même structure à l’éditeur sans modifier les données. Les références des schémas sont locales et fonctionnent hors ligne. Les schémas reposent sur [JSON Schema 2020-12](https://json-schema.org/draft/2020-12) et la [validation Ajv](https://ajv.js.org/json-schema).
 
 La génération ne valide pas à elle seule la justesse d’un cours ou l’apparence d’un aperçu ; le test navigateur `node tests/catalog-browser.cjs` vérifie les routes et les images.
+
+## Schémas Scratch
+
+Dans `visualScript`, une pièce `{ "value": "200" }` représente une valeur à saisir. Un bloc à glisser utilise `{ "reporter": "abscisse x", "category": "motion" }`, ou par exemple `{ "reporter": "score", "category": "variables" }`. La catégorie est explicite : le rendu ne la déduit jamais du texte. Les catégories de ces blocs sont `motion`, `variables`, `sensing` et `operators`. Les menus restent des pièces `choice` et les conditions des pièces `condition`.
+
+Les légendes ne sont affichées que si le bloc fournit une `explanation`. Dans une leçon avec `visualScript` et `shortSteps`, les étapes sont visibles et les `paragraphs` sont repliés : garder toute manipulation nécessaire dans les étapes. Une explication de fonctionnement plus détaillée peut rester dans les paragraphes.
+
+Une leçon peut fournir `activityLink` avec `moduleId`, `blockId` et `label` pour renvoyer directement à une autre section. Le catalogue valide la cible ; le lien conserve le parcours quand le module appartient à celui-ci.
 
 ## Ajouter un module ou un parcours
 

@@ -24,7 +24,15 @@ const profiles = {
     browser: ['student-browser'],
   },
   scratch: {
-    node: [...catalog, ...student, 'pedagogy', 'scratch-visual-only'],
+    node: [
+      ...catalog,
+      ...student,
+      'pedagogy',
+      'scratch-visual-only',
+      'scratch-vies-contacts',
+      'scratch-clones-mobiles',
+      'scratch-niveaux-etats',
+    ],
     browser: ['student-browser', 'scratch-lot3-browser'],
   },
   robotique: {

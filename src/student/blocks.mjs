@@ -172,6 +172,18 @@ export function createBlockRenderer({
           block.filename || block.title?.match(/\b[\w-]+\.(?:html|css|js|py)\b/)?.[0],
         ),
       );
+    if (block.activityLink) {
+      const pathwayId = new URLSearchParams(window.location.hash.split('?')[1]).get('parcours');
+      const paragraph = element('p');
+      paragraph.append(
+        link(
+          block.activityLink.label,
+          pedagogy.url(block.activityLink, pathwayId),
+          'lesson-text-link',
+        ),
+      );
+      section.append(paragraph);
+    }
     if (visual && block.shortSteps && block.paragraphs?.length) {
       const details = element('details', 'hint scratch-explanations');
       details.append(element('summary', '', 'Explications et repères supplémentaires'));

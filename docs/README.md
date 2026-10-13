@@ -16,6 +16,7 @@ Ces documents guident les modifications et les vérifications. Les règles édit
 - [protocoles-verifications-manuelles.md](protocoles-verifications-manuelles.md)
 - [verifications-manuelles-en-attente.md](verifications-manuelles-en-attente.md)
 - [partage-tinkercad.md](partage-tinkercad.md)
+- [publication-scratch-supports.md](publication-scratch-supports.md)
 
 ## Cadrage et évolutions prévues
 
@@ -38,12 +39,17 @@ Les fichiers suivants conservent les décisions, revues et supports de séance. 
 - [integration-robotique-signal.md](integration-robotique-signal.md)
 - [recette-makecode-capteurs.md](recette-makecode-capteurs.md)
 - [recette-makecode-robot.md](recette-makecode-robot.md)
+- [recette-scratch-vies-contacts.md](recette-scratch-vies-contacts.md)
+- [recette-scratch-clones-mobiles.md](recette-scratch-clones-mobiles.md)
+- [recette-scratch-niveaux-etats.md](recette-scratch-niveaux-etats.md)
+- [recette-scratch-editeur.md](recette-scratch-editeur.md)
 - [recette-tinkercad-bouton.md](recette-tinkercad-bouton.md)
 - [recette-tinkercad-premiere-lumiere.md](recette-tinkercad-premiere-lumiere.md)
 - [recette-tinkercad-signal.md](recette-tinkercad-signal.md)
 - [revue-pedagogique-gdevelop.md](revue-pedagogique-gdevelop.md)
 - [revue-pedagogique-python.md](revue-pedagogique-python.md)
 - [revue-pedagogique-web.md](revue-pedagogique-web.md)
+- [revue-supports-scratch-stage.md](revue-supports-scratch-stage.md)
 - [revue-textes-eleve-robotique.md](revue-textes-eleve-robotique.md)
 - [robotique-seance-1-eleve.md](robotique-seance-1-eleve.md)
 - [robotique-seance-1-professeur.md](robotique-seance-1-professeur.md)

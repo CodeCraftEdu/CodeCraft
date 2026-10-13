@@ -218,7 +218,7 @@ test('inventaire Scratch partagé : démonstrations distinctes des bases élève
   assert(preparation.paragraphs.some((text) => text.includes('n’ajoute pas de deuxième cible')));
 });
 
-test('lots Scratch : quatorze contenus réels, prérequis explicites et aucun acquis automatique', () => {
+test('lots Scratch : dix-sept contenus réels, prérequis explicites et aucun acquis automatique', () => {
   assert.deepEqual(Array.from(data.pathways['scratch-debutants'].moduleIds), [
     'scratch-decouverte',
     'scratch-actions',
@@ -228,20 +228,28 @@ test('lots Scratch : quatorze contenus réels, prérequis explicites et aucun ac
     'scratch-variables',
     'scratch-fin-partie',
     'scratch-mini-jeu',
+    'scratch-vies-contacts',
     'scratch-coordination',
     'scratch-blocs-personnalises',
     'scratch-clones',
+    'scratch-clones-mobiles',
     'scratch-temps-difficulte',
+    'scratch-niveaux-etats',
     'scratch-debogage',
     'scratch-projet-personnel',
   ]);
   assert.equal(data.pathways['scratch-debutants'].domainId, 'jeux-video');
-  assert.equal(Object.keys(data.modules).filter((id) => id.startsWith('scratch-')).length, 14);
+  assert.equal(Object.keys(data.modules).filter((id) => id.startsWith('scratch-')).length, 17);
   assert.equal(data.modules['scratch-decouverte'].prerequisiteSkills.length, 0);
   for (const id of data.pathways['scratch-debutants'].moduleIds) {
     const m = data.modules[id];
-    assert.equal(m.tool.label, 'Ouvrir Scratch');
-    assert.equal(m.tool.url, 'https://scratch.mit.edu/projects/editor/');
+    if (['scratch-vies-contacts', 'scratch-clones-mobiles', 'scratch-niveaux-etats'].includes(id)) {
+      assert.equal(m.tool.label, 'Ouvrir l’exemple dans Scratch');
+      assert.equal(m.tool.url, data.scratchProjects[m.scratchProjectId].demoUrl);
+    } else {
+      assert.equal(m.tool.label, 'Ouvrir Scratch');
+      assert.equal(m.tool.url, 'https://scratch.mit.edu/projects/editor/');
+    }
     assert(m.masteryCriteria.length >= 3);
     assert(m.teacherGuide.questions.length >= 3);
     assert(m.teacherGuide.commonErrors.every((e) => e.helps.length >= 4));
@@ -336,7 +344,7 @@ test('projet personnel Scratch : choix limité, base réutilisée et aucune exte
   const m = data.modules['scratch-projet-personnel'];
   assert.equal(m.type, 'project');
   assert.equal(m.scratchProjectId, 'chat-cible');
-  assert.equal(Object.keys(data.scratchProjects).length, 3);
+  assert.equal(Object.keys(data.scratchProjects).length, 6);
   const prereqs = Array.from(m.prerequisiteSkills, (p) => p.skillId);
   assert(!prereqs.includes('scratch.clones'));
   assert(!prereqs.includes('scratch.messages'));
@@ -756,7 +764,7 @@ test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions f
   assert.equal(
     Object.values(data.modules).filter((m) => m.domainId !== 'python' && m.domainId !== 'robotique')
       .length,
-    42,
+    45,
   );
   assert.equal(
     Object.keys(data.skills).filter(
@@ -768,7 +776,7 @@ test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions f
     Object.values(data.modules).filter(
       (m) => m.domainId !== 'python' && m.domainId !== 'robotique' && m.teacherGuide,
     ).length,
-    42,
+    45,
   );
   assert.equal(data.modules['html-mini-page'].type, 'challenge');
   assert.equal(data.modules['web-affiche-numerique'].type, 'project');

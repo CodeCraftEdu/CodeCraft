@@ -428,6 +428,9 @@
             "type": "string"
           }
         },
+        "activityLink": {
+          "$ref": "#/$defs/orientation"
+        },
         "visualScript": {
           "$ref": "#/$defs/visualScript"
         },
@@ -1018,6 +1021,20 @@
             }
           },
           "required": ["value"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "reporter": {
+              "type": "string",
+              "minLength": 1
+            },
+            "category": {
+              "enum": ["motion", "variables", "sensing", "operators"]
+            }
+          },
+          "required": ["reporter", "category"],
           "additionalProperties": false
         },
         {

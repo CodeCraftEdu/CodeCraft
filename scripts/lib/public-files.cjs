@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const publicPath =
-  /^(?:index\.html|prof(?:-conducteur-historique)?\.html|[a-z][a-z-]*\.(?:js|css)|generated\/catalog\.js|src\/student\/[a-z-]+\.mjs|styles\/[a-z/-]+\.css|(?:images|assets|resources)\/[a-zA-Z0-9_./-]+\.(?:png|svg|jpg|jpeg|webp|gif|zip|txt|py))$/;
+  /^(?:index\.html|prof(?:-conducteur-historique)?\.html|[a-z][a-z-]*\.(?:js|css)|generated\/catalog\.js|src\/student\/[a-z-]+\.mjs|styles\/[a-z/-]+\.css|(?:images|assets|resources)\/[a-zA-Z0-9_./-]+\.(?:png|svg|jpg|jpeg|webp|gif|zip|sb3|txt|py))$/;
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -15,6 +15,7 @@ const mimeTypes = {
   '.webp': 'image/webp',
   '.gif': 'image/gif',
   '.zip': 'application/zip',
+  '.sb3': 'application/zip',
   '.txt': 'text/plain; charset=utf-8',
   '.py': 'text/plain; charset=utf-8',
 };

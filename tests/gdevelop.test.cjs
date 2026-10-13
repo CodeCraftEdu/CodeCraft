@@ -58,7 +58,7 @@ test('Projet d’étape 1 : réinvestissement sans module ajouté ni validation 
   assert(module.teacherGuide.notes.includes('aides de manipulation et de raisonnement'));
   assert.equal(
     Object.values(data.modules).filter((item) => item.domainId === 'jeux-video').length,
-    18,
+    21,
   );
 });
 
@@ -84,10 +84,10 @@ test('GDevelop : quatre leçons réelles dans Jeu vidéo, Scratch conservé', ()
   assert.deepEqual(Array.from(data.pathways['gdevelop-debutants'].moduleIds), ids);
   assert(data.domains['jeux-video'].pathwayIds.includes('scratch-debutants'));
   assert(data.domains['jeux-video'].pathwayIds.includes('gdevelop-debutants'));
-  assert.equal(data.pathways['scratch-debutants'].moduleIds.length, 14);
+  assert.equal(data.pathways['scratch-debutants'].moduleIds.length, 17);
   assert.equal(
     Object.values(data.modules).filter((item) => item.domainId === 'jeux-video').length,
-    18,
+    21,
   );
   assert.equal(data.modules['gdevelop-projet'].prerequisiteSkills.length, 0);
   for (const [index, id] of ids.entries()) {

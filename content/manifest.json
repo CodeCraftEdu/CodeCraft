@@ -159,8 +159,16 @@
       "file": "modules/jeux-video/scratch-clones.json"
     },
     {
+      "id": "scratch-clones-mobiles",
+      "file": "modules/jeux-video/scratch-clones-mobiles.json"
+    },
+    {
       "id": "scratch-temps-difficulte",
       "file": "modules/jeux-video/scratch-temps-difficulte.json"
+    },
+    {
+      "id": "scratch-niveaux-etats",
+      "file": "modules/jeux-video/scratch-niveaux-etats.json"
     },
     {
       "id": "scratch-debogage",
@@ -185,6 +193,10 @@
     {
       "id": "scratch-mini-jeu",
       "file": "modules/jeux-video/scratch-mini-jeu.json"
+    },
+    {
+      "id": "scratch-vies-contacts",
+      "file": "modules/jeux-video/scratch-vies-contacts.json"
     },
     {
       "id": "scratch-variables",

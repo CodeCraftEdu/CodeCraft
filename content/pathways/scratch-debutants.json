@@ -12,10 +12,13 @@
     "scratch-variables",
     "scratch-fin-partie",
     "scratch-mini-jeu",
+    "scratch-vies-contacts",
     "scratch-coordination",
     "scratch-blocs-personnalises",
     "scratch-clones",
+    "scratch-clones-mobiles",
     "scratch-temps-difficulte",
+    "scratch-niveaux-etats",
     "scratch-debogage",
     "scratch-projet-personnel"
   ],
@@ -43,10 +46,13 @@
       "title": "Enrichir et organiser ton jeu",
       "description": "Coordonner les personnages, réutiliser des blocs et ajouter des clones, du temps et de la difficulté.",
       "moduleIds": [
+        "scratch-vies-contacts",
         "scratch-coordination",
         "scratch-blocs-personnalises",
         "scratch-clones",
-        "scratch-temps-difficulte"
+        "scratch-clones-mobiles",
+        "scratch-temps-difficulte",
+        "scratch-niveaux-etats"
       ]
     },
     {

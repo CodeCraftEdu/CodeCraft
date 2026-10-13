@@ -17,5 +17,26 @@
     "demoUrl": "https://scratch.mit.edu/projects/1388025602/",
     "studentInstructions": "Ouvre la base puis Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur. Pico et Tera sont déjà présents, sans scripts. Giga et les décors supplémentaires peuvent rester de côté pour le premier dialogue : ne recopie pas le projet terminé.",
     "teacherInstructions": "La base Carte animée fournit les personnages et décors, sans scripts. Le module propose un nouveau dialogue minimal entre Pico et Tera, pas une reproduction de la démonstration complète. Celle-ci utilise des délais et des changements d’arrière-plan : elle illustre un résultat possible, pas une solution exacte aux messages. Giga sert seulement à une extension facultative."
+  },
+  "vies-contacts": {
+    "title": "Gérer les vies et les contacts",
+    "starterUrl": "https://scratch.mit.edu/projects/1391213130/",
+    "demoUrl": "https://scratch.mit.edu/projects/1391211682/",
+    "studentInstructions": "Pilote se déplace déjà avec les flèches. Ajoute la surveillance des contacts dans une deuxième pile. Clique sur Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur.",
+    "teacherInstructions": "Pilote contient le déplacement. Danger n’a aucun script. La variable vies existe pour tous les sprites ; l’exemple ajoute une surveillance séparée, un dégât par contact et un compteur limité à zéro."
+  },
+  "clones-mobiles": {
+    "title": "Faire avancer des clones",
+    "starterUrl": "https://scratch.mit.edu/projects/1391213631/",
+    "demoUrl": "https://scratch.mit.edu/projects/1391213388/",
+    "studentInstructions": "Balle est fournie sans script. Construis sa pile de création et celle qui fait avancer les copies. Clique sur Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur.",
+    "teacherInstructions": "Balle est fournie sans script. L’exemple comporte deux piles : création de trois copies, puis déplacement et suppression de chaque clone après x > 200."
+  },
+  "niveaux-etats": {
+    "title": "Changer de niveau et terminer la partie",
+    "starterUrl": "https://scratch.mit.edu/projects/1391213849/",
+    "demoUrl": "https://scratch.mit.edu/projects/1391213735/",
+    "studentInstructions": "Cible possède deux costumes et aucun script. Construis le clic, la surveillance et les réceptions de messages. Clique sur Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur.",
+    "teacherInstructions": "Cible est fournie sans script, avec deux costumes et les variables score, niveau et etat. L’exemple passe au niveau 2 à trois points et gagne à six ; l’état ferme les clics avant le message final."
   }
 }

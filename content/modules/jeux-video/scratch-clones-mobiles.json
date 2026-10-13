@@ -1,0 +1,441 @@
+{
+  "domainId": "jeux-video",
+  "title": "Faire avancer des clones",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Séparer la création des clones, leur déplacement et leur suppression.",
+  "tool": {
+    "label": "Ouvrir l’exemple dans Scratch",
+    "url": "https://scratch.mit.edu/projects/1391213388/"
+  },
+  "skillIds": ["scratch.clones", "scratch.coordinates", "scratch.loops", "scratch.conditions"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.clones",
+      "expectation": "Distinguer le modèle original de ses copies temporaires."
+    },
+    {
+      "skillId": "scratch.coordinates",
+      "expectation": "Lire une position et modifier x."
+    },
+    {
+      "skillId": "scratch.loops",
+      "expectation": "Repérer les actions répétées."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Lire une comparaison avec >."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "comprendre",
+      "title": "Qui crée ? Qui avance ?",
+      "paragraphs": [
+        "Le modèle original fabrique des copies. Chaque clone lance sa propre pile et possède sa propre position : déplacer un clone ne déplace ni le modèle ni les autres copies.",
+        "Dans notre exemple, trois balles partent de la gauche, l’une après l’autre. Chaque copie avance vers la droite, puis se supprime. Les deux piles ci-dessous appartiennent au même sprite Balle."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "fabrique",
+      "title": "Créer depuis un modèle caché",
+      "paragraphs": [
+        "Dans Contrôle, répéter 3 fois limite la série à trois créations. La pause de 0,6 seconde sépare les départs ; elle ne règle pas la vitesse des copies.",
+        "Le modèle reste en (-180, 0). Chaque clone copie cette position et la visibilité du modèle. Comme le modèle est caché, la pile des clones doit commencer par montrer.",
+        "Place créer un clone de moi-même dans cette pile de drapeau. Dans la pile de démarrage des clones, une création ferait fabriquer de nouvelles copies par les copies elles-mêmes."
+      ],
+      "shortSteps": [
+        "Au drapeau, cache le modèle et place-le à gauche.",
+        "Crée trois clones, avec une pause entre les créations."
+      ],
+      "visualScript": {
+        "caption": "Balle : le modèle crée la série",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": ["cacher"]
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "-180"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter ",
+              {
+                "value": "3"
+              },
+              " fois"
+            ],
+            "children": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "créer un clone de ",
+                  {
+                    "choice": "moi-même"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.6"
+                  },
+                  " secondes"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "mouvement",
+      "title": "Déplacer puis supprimer chaque copie",
+      "paragraphs": [
+        "Répéter jusqu’à ce que continue tant que x > 200 est faux. La copie avance donc jusqu’à dépasser 200.",
+        "Supprimer ce clone retire cette copie et arrête ses piles. Cacher la rend seulement invisible : elle existe encore.",
+        "La scène va de x = -240 à x = 240. Ici, la sortie est fixée à x > 200. Scratch retient les sprites près de la scène : attendre une position très éloignée, comme x > 1000, empêcherait la suppression."
+      ],
+      "shortSteps": [
+        "Dans Balle, commence une nouvelle pile avec quand je commence comme un clone, puis ajoute montrer.",
+        "Glisse abscisse x depuis Mouvement dans la comparaison >, depuis Opérateurs. Écris 200 dans l’autre case.",
+        "Dans répéter jusqu’à ce que, fais avancer la copie. Place supprimer ce clone après la boucle."
+      ],
+      "visualScript": {
+        "caption": "Balle : chaque clone suit sa trajectoire",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["quand je commence comme un clone"]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": ["montrer"]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter jusqu’à ce que ",
+              {
+                "condition": [
+                  {
+                    "reporter": "abscisse x",
+                    "category": "motion"
+                  },
+                  " > ",
+                  {
+                    "value": "200"
+                  }
+                ],
+                "operator": true
+              }
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "6"
+                  },
+                  " à x"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.03"
+                  },
+                  " secondes"
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["supprimer ce clone"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "details",
+      "id": "depannage",
+      "title": "Si les copies ne fonctionnent pas",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "verifier",
+          "title": "Où regarder",
+          "paragraphs": [
+            "Les copies restent invisibles ? Place montrer au début de quand je commence comme un clone : elles ont hérité du modèle caché.",
+            "Le modèle avance mais pas les copies ? Place la boucle de déplacement sous quand je commence comme un clone, dans Balle.",
+            "Les copies se multiplient sans arrêt ? Cherche créer un clone dans les piles des copies. Conserve la création dans la pile du modèle.",
+            "Les copies restent à droite ? Vérifie x > 200 et la place de supprimer ce clone après la boucle. Avec x < 200, la boucle se terminerait dès le départ.",
+            "Les copies sont de plus en plus rapprochées ? Compare la pause de création et le déplacement des clones : des départs plus fréquents produisent des copies plus proches, à vitesse égale."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "atelier",
+      "title": "Pour pratiquer : une série de balles",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "preparer",
+          "title": "Un seul sprite à programmer",
+          "paragraphs": [
+            "Ouvre le projet de départ puis Voir à l’intérieur. Balle est le disque orange, sans script.",
+            "Dans Balle, construis les deux piles présentées au-dessus : la fabrique au drapeau et le déplacement au démarrage des clones. La ligne à droite marque x = 200.",
+            "Lance le drapeau. Trois copies partent successivement ; le modèle reste caché à gauche. La référence complète permet de comparer les deux piles.",
+            "Pour travailler avec un fichier, télécharge le départ ci-dessous et charge-le depuis le menu Fichier de Scratch. Sauvegarde ton projet actuel avant de le remplacer."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger le départ (.sb3)",
+              "path": "assets/scratch/clones-mobiles-depart.sb3",
+              "filename": "clones-mobiles-depart.sb3"
+            },
+            {
+              "label": "Télécharger l’exemple (.sb3)",
+              "path": "assets/scratch/clones-mobiles-reference.sb3",
+              "filename": "clones-mobiles-reference.sb3"
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Observer les deux piles",
+          "items": [
+            {
+              "id": "serie",
+              "text": "Lance le drapeau et compte les départs : trois copies apparaissent, mais une seule vignette Balle reste sous la scène."
+            },
+            {
+              "id": "positions",
+              "text": "Observe deux copies en même temps. Explique pourquoi elles occupent des positions différentes alors qu’elles ont le même code.",
+              "hint": "Elles démarrent à des moments différents et chacune possède son propre x."
+            },
+            {
+              "id": "sortie",
+              "text": "Attends la fin de la série. Toutes les copies doivent disparaître après avoir dépassé la ligne ; le modèle reste caché."
+            },
+            {
+              "id": "reprise",
+              "text": "Relance pendant le passage des copies. Une nouvelle série de trois départs remplace la précédente.",
+              "hint": "Le drapeau supprime les anciens clones, puis relance la pile du modèle."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Changer une chose à la fois",
+          "items": [
+            {
+              "id": "frequence",
+              "text": "Change seulement la pause entre les créations de 0,6 à 0,3 seconde. Prévois l’effet sur l’espacement, puis teste.",
+              "hint": "La vitesse reste la même ; les copies partent plus près les unes des autres."
+            },
+            {
+              "id": "vitesse",
+              "text": "Remets la pause de création à 0,6 seconde. Change seulement ajouter 6 à x en ajouter 3 à x. Compare le temps de traversée.",
+              "hint": "À pause de déplacement égale, chaque pas est plus court."
+            },
+            {
+              "id": "quantite",
+              "text": "Choisis quatre copies. Vérifie quatre départs et leur disparition, puis explique quelle pile fixe la quantité."
+            },
+            {
+              "id": "conserver",
+              "text": "Sauvegarde ta version sur ton ordinateur, importe-la et relance la série."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "bonus",
+          "title": "Approfondir : varier la hauteur de départ",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "hauteur",
+              "title": "Une position par nouvelle copie",
+              "paragraphs": [
+                "Dans une copie du projet, déplace aller à x: -180 y: 0 à l’intérieur de répéter, juste avant créer un clone. Remplace 0 par nombre aléatoire entre -100 et 100, dans Opérateurs.",
+                "Chaque création reçoit une nouvelle hauteur. La copie garde ensuite son y pendant qu’elle avance. Le modèle prépare la position suivante.",
+                "Lance plusieurs séries et compare les hauteurs. Deux copies peuvent recevoir la même valeur : aléatoire ne signifie pas forcément différent."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer la pile de création et celle qui démarre chaque clone.",
+    "Expliquer pourquoi un clone caché doit être montré.",
+    "Distinguer fréquence des créations, vitesse et quantité de copies.",
+    "Faire disparaître les copies et retrouver une série propre au drapeau."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-clones",
+      "blockId": "exemple",
+      "label": "Revoir le modèle et les copies"
+    },
+    {
+      "moduleId": "scratch-pilotage",
+      "blockId": "exemple",
+      "label": "Revoir les coordonnées"
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Séparer la fabrique du modèle et le cycle de chaque clone : apparition, déplacement, suppression.",
+    "entryDiagnosis": [
+      "Faire distinguer le modèle original et une copie temporaire.",
+      "Faire prévoir le résultat de ajouter 6 à x et de x > 200."
+    ],
+    "preparation": [
+      "Pendant un atelier accompagné, ouvrir fabrique ou mouvement selon la question, puis revenir au projet des élèves. L’activité repliée est indépendante et n’ajoute pas de travail obligatoire à la séance.",
+      "Pour l’activité autonome, ouvrir le départ partagé ou importer le fichier .sb3 : un seul sprite Balle sans scripts. La référence contient deux piles dans ce sprite.",
+      "Prévoir l’observation des départs successifs, des positions indépendantes, de la suppression et d’une relance en cours de série."
+    ],
+    "why": "Des copies partagent des scripts mais pas leur position. La création, le déplacement et la suppression ont des rôles distincts.",
+    "discoverySpeech": [
+      "Qui lance la pile de drapeau ? Qui lance la pile des clones ?",
+      "Si le modèle est caché, dans quel état apparaît sa copie ?",
+      "Quelle pause sépare les départs ? Quelle pile fait avancer chaque copie ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-clones-mobiles",
+        "blockId": "mouvement"
+      },
+      "comments": [
+        "Le modèle est caché et crée une série finie. Aucun clone ne lance une nouvelle création.",
+        "Les copies possèdent leur propre x. Une pause dans une pile suspend cette pile, pas toutes les copies.",
+        "La borne x > 200 reste atteignable. Scratch retient les sprites près de la scène ; une condition hors de cette limite peut laisser la boucle tourner.",
+        "Le modèle ne reçoit pas de suppression ; supprimer ce clone s’exécute dans la pile des copies."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi mettre montrer dans la pile des clones ?",
+        "answer": "Ils héritent de la visibilité du modèle, qui est caché."
+      },
+      {
+        "question": "La pause de 0,6 seconde change-t-elle directement leur vitesse ?",
+        "answer": "Non. Elle sépare les créations. Le déplacement dépend de la pile de chaque clone."
+      },
+      {
+        "question": "Cacher et supprimer ce clone font-ils la même chose ?",
+        "answer": "Non. Cacher laisse la copie et ses piles exister ; supprimer ce clone les retire."
+      },
+      {
+        "question": "Pourquoi deux copies qui ont le même code ne se superposent-elles pas ?",
+        "answer": "Leurs piles commencent à des moments différents et leurs positions évoluent séparément."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-clones-mobiles",
+      "blockId": "mouvement"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-clones-mobiles",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Reprendre les trois copies fixes du cours précédent si la notion de clone reste fragile.",
+      "Comparer une seule valeur à la fois : fréquence, pas de déplacement ou quantité.",
+      "Proposer les hauteurs aléatoires après une série correctement supprimée."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les copies existent mais ne se voient pas.",
+        "helps": [
+          "Repérer cacher dans le modèle.",
+          "Faire prévoir la visibilité héritée.",
+          "Chercher montrer dans la pile des clones.",
+          "Ajouter montrer puis relancer."
+        ]
+      },
+      {
+        "symptom": "La quantité de copies augmente sans limite.",
+        "helps": [
+          "Chercher toutes les créations.",
+          "Distinguer les deux chapeaux.",
+          "Conserver la création dans la pile de drapeau du modèle.",
+          "Relancer une série finie et compter les départs."
+        ]
+      },
+      {
+        "symptom": "Les copies restent dans la scène.",
+        "helps": [
+          "Observer leur dernière position.",
+          "Faire lire la comparaison et sa borne.",
+          "Repérer supprimer ce clone après la boucle.",
+          "Rétablir x > 200 puis refaire toute la série."
+        ]
+      }
+    ],
+    "notes": "Support ponctuel ou activité autonome. Les tests du site et les essais du moteur sont décrits dans docs/recette-scratch-clones-mobiles.md. Cette référence ne gère pas les contacts, un score ou une fin de partie.",
+    "quickConductor": [
+      "Ouvrir la pile répondant à la question rencontrée dans le projet.",
+      "Faire prévoir le rôle du modèle et celui de la copie.",
+      "Revenir au projet en cours, ou ouvrir l’activité indépendante.",
+      "Tester une série, sa suppression et une relance pendant son passage."
+    ],
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  },
+  "scratchProjectId": "clones-mobiles"
+}

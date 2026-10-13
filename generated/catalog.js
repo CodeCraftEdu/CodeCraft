@@ -29,6 +29,27 @@ window.CODECRAFT_DATA = {
       "demoUrl": "https://scratch.mit.edu/projects/1388025602/",
       "studentInstructions": "Ouvre la base puis Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur. Pico et Tera sont déjà présents, sans scripts. Giga et les décors supplémentaires peuvent rester de côté pour le premier dialogue : ne recopie pas le projet terminé.",
       "teacherInstructions": "La base Carte animée fournit les personnages et décors, sans scripts. Le module propose un nouveau dialogue minimal entre Pico et Tera, pas une reproduction de la démonstration complète. Celle-ci utilise des délais et des changements d’arrière-plan : elle illustre un résultat possible, pas une solution exacte aux messages. Giga sert seulement à une extension facultative."
+    },
+    "vies-contacts": {
+      "title": "Gérer les vies et les contacts",
+      "starterUrl": "https://scratch.mit.edu/projects/1391213130/",
+      "demoUrl": "https://scratch.mit.edu/projects/1391211682/",
+      "studentInstructions": "Pilote se déplace déjà avec les flèches. Ajoute la surveillance des contacts dans une deuxième pile. Clique sur Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur.",
+      "teacherInstructions": "Pilote contient le déplacement. Danger n’a aucun script. La variable vies existe pour tous les sprites ; l’exemple ajoute une surveillance séparée, un dégât par contact et un compteur limité à zéro."
+    },
+    "clones-mobiles": {
+      "title": "Faire avancer des clones",
+      "starterUrl": "https://scratch.mit.edu/projects/1391213631/",
+      "demoUrl": "https://scratch.mit.edu/projects/1391213388/",
+      "studentInstructions": "Balle est fournie sans script. Construis sa pile de création et celle qui fait avancer les copies. Clique sur Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur.",
+      "teacherInstructions": "Balle est fournie sans script. L’exemple comporte deux piles : création de trois copies, puis déplacement et suppression de chaque clone après x > 200."
+    },
+    "niveaux-etats": {
+      "title": "Changer de niveau et terminer la partie",
+      "starterUrl": "https://scratch.mit.edu/projects/1391213849/",
+      "demoUrl": "https://scratch.mit.edu/projects/1391213735/",
+      "studentInstructions": "Cible possède deux costumes et aucun script. Construis le clic, la surveillance et les réceptions de messages. Clique sur Voir à l’intérieur. Avec ton compte, utilise Remix pour garder ta copie ; sans compte, sauvegarde depuis Fichier sur ton ordinateur.",
+      "teacherInstructions": "Cible est fournie sans script, avec deux costumes et les variables score, niveau et etat. L’exemple passe au niveau 2 à trois points et gagne à six ; l’état ferme les clics avant le message final."
     }
   },
   "moduleTypes": {
@@ -10660,6 +10681,460 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
+    "scratch-clones-mobiles": {
+      "domainId": "jeux-video",
+      "title": "Faire avancer des clones",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Séparer la création des clones, leur déplacement et leur suppression.",
+      "tool": {
+        "label": "Ouvrir l’exemple dans Scratch",
+        "url": "https://scratch.mit.edu/projects/1391213388/"
+      },
+      "skillIds": [
+        "scratch.clones",
+        "scratch.coordinates",
+        "scratch.loops",
+        "scratch.conditions"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.clones",
+          "expectation": "Distinguer le modèle original de ses copies temporaires."
+        },
+        {
+          "skillId": "scratch.coordinates",
+          "expectation": "Lire une position et modifier x."
+        },
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Repérer les actions répétées."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Lire une comparaison avec >."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "comprendre",
+          "title": "Qui crée ? Qui avance ?",
+          "paragraphs": [
+            "Le modèle original fabrique des copies. Chaque clone lance sa propre pile et possède sa propre position : déplacer un clone ne déplace ni le modèle ni les autres copies.",
+            "Dans notre exemple, trois balles partent de la gauche, l’une après l’autre. Chaque copie avance vers la droite, puis se supprime. Les deux piles ci-dessous appartiennent au même sprite Balle."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "fabrique",
+          "title": "Créer depuis un modèle caché",
+          "paragraphs": [
+            "Dans Contrôle, répéter 3 fois limite la série à trois créations. La pause de 0,6 seconde sépare les départs ; elle ne règle pas la vitesse des copies.",
+            "Le modèle reste en (-180, 0). Chaque clone copie cette position et la visibilité du modèle. Comme le modèle est caché, la pile des clones doit commencer par montrer.",
+            "Place créer un clone de moi-même dans cette pile de drapeau. Dans la pile de démarrage des clones, une création ferait fabriquer de nouvelles copies par les copies elles-mêmes."
+          ],
+          "shortSteps": [
+            "Au drapeau, cache le modèle et place-le à gauche.",
+            "Crée trois clones, avec une pause entre les créations."
+          ],
+          "visualScript": {
+            "caption": "Balle : le modèle crée la série",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "cacher"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-180"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter ",
+                  {
+                    "value": "3"
+                  },
+                  " fois"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "créer un clone de ",
+                      {
+                        "choice": "moi-même"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.6"
+                      },
+                      " secondes"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "mouvement",
+          "title": "Déplacer puis supprimer chaque copie",
+          "paragraphs": [
+            "Répéter jusqu’à ce que continue tant que x > 200 est faux. La copie avance donc jusqu’à dépasser 200.",
+            "Supprimer ce clone retire cette copie et arrête ses piles. Cacher la rend seulement invisible : elle existe encore.",
+            "La scène va de x = -240 à x = 240. Ici, la sortie est fixée à x > 200. Scratch retient les sprites près de la scène : attendre une position très éloignée, comme x > 1000, empêcherait la suppression."
+          ],
+          "shortSteps": [
+            "Dans Balle, commence une nouvelle pile avec quand je commence comme un clone, puis ajoute montrer.",
+            "Glisse abscisse x depuis Mouvement dans la comparaison >, depuis Opérateurs. Écris 200 dans l’autre case.",
+            "Dans répéter jusqu’à ce que, fais avancer la copie. Place supprimer ce clone après la boucle."
+          ],
+          "visualScript": {
+            "caption": "Balle : chaque clone suit sa trajectoire",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "quand je commence comme un clone"
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "montrer"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter jusqu’à ce que ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "abscisse x",
+                        "category": "motion"
+                      },
+                      " > ",
+                      {
+                        "value": "200"
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "6"
+                      },
+                      " à x"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " secondes"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "supprimer ce clone"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Si les copies ne fonctionnent pas",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "verifier",
+              "title": "Où regarder",
+              "paragraphs": [
+                "Les copies restent invisibles ? Place montrer au début de quand je commence comme un clone : elles ont hérité du modèle caché.",
+                "Le modèle avance mais pas les copies ? Place la boucle de déplacement sous quand je commence comme un clone, dans Balle.",
+                "Les copies se multiplient sans arrêt ? Cherche créer un clone dans les piles des copies. Conserve la création dans la pile du modèle.",
+                "Les copies restent à droite ? Vérifie x > 200 et la place de supprimer ce clone après la boucle. Avec x \u003c 200, la boucle se terminerait dès le départ.",
+                "Les copies sont de plus en plus rapprochées ? Compare la pause de création et le déplacement des clones : des départs plus fréquents produisent des copies plus proches, à vitesse égale."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "atelier",
+          "title": "Pour pratiquer : une série de balles",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "preparer",
+              "title": "Un seul sprite à programmer",
+              "paragraphs": [
+                "Ouvre le projet de départ puis Voir à l’intérieur. Balle est le disque orange, sans script.",
+                "Dans Balle, construis les deux piles présentées au-dessus : la fabrique au drapeau et le déplacement au démarrage des clones. La ligne à droite marque x = 200.",
+                "Lance le drapeau. Trois copies partent successivement ; le modèle reste caché à gauche. La référence complète permet de comparer les deux piles.",
+                "Pour travailler avec un fichier, télécharge le départ ci-dessous et charge-le depuis le menu Fichier de Scratch. Sauvegarde ton projet actuel avant de le remplacer."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger le départ (.sb3)",
+                  "path": "assets/scratch/clones-mobiles-depart.sb3",
+                  "filename": "clones-mobiles-depart.sb3"
+                },
+                {
+                  "label": "Télécharger l’exemple (.sb3)",
+                  "path": "assets/scratch/clones-mobiles-reference.sb3",
+                  "filename": "clones-mobiles-reference.sb3"
+                }
+              ]
+            },
+            {
+              "type": "tasks",
+              "id": "guide",
+              "title": "Observer les deux piles",
+              "items": [
+                {
+                  "id": "serie",
+                  "text": "Lance le drapeau et compte les départs : trois copies apparaissent, mais une seule vignette Balle reste sous la scène."
+                },
+                {
+                  "id": "positions",
+                  "text": "Observe deux copies en même temps. Explique pourquoi elles occupent des positions différentes alors qu’elles ont le même code.",
+                  "hint": "Elles démarrent à des moments différents et chacune possède son propre x."
+                },
+                {
+                  "id": "sortie",
+                  "text": "Attends la fin de la série. Toutes les copies doivent disparaître après avoir dépassé la ligne ; le modèle reste caché."
+                },
+                {
+                  "id": "reprise",
+                  "text": "Relance pendant le passage des copies. Une nouvelle série de trois départs remplace la précédente.",
+                  "hint": "Le drapeau supprime les anciens clones, puis relance la pile du modèle."
+                }
+              ]
+            },
+            {
+              "type": "tasks",
+              "id": "autonomie",
+              "title": "Changer une chose à la fois",
+              "items": [
+                {
+                  "id": "frequence",
+                  "text": "Change seulement la pause entre les créations de 0,6 à 0,3 seconde. Prévois l’effet sur l’espacement, puis teste.",
+                  "hint": "La vitesse reste la même ; les copies partent plus près les unes des autres."
+                },
+                {
+                  "id": "vitesse",
+                  "text": "Remets la pause de création à 0,6 seconde. Change seulement ajouter 6 à x en ajouter 3 à x. Compare le temps de traversée.",
+                  "hint": "À pause de déplacement égale, chaque pas est plus court."
+                },
+                {
+                  "id": "quantite",
+                  "text": "Choisis quatre copies. Vérifie quatre départs et leur disparition, puis explique quelle pile fixe la quantité."
+                },
+                {
+                  "id": "conserver",
+                  "text": "Sauvegarde ta version sur ton ordinateur, importe-la et relance la série."
+                }
+              ]
+            },
+            {
+              "type": "details",
+              "id": "bonus",
+              "title": "Approfondir : varier la hauteur de départ",
+              "blocks": [
+                {
+                  "type": "lesson",
+                  "id": "hauteur",
+                  "title": "Une position par nouvelle copie",
+                  "paragraphs": [
+                    "Dans une copie du projet, déplace aller à x: -180 y: 0 à l’intérieur de répéter, juste avant créer un clone. Remplace 0 par nombre aléatoire entre -100 et 100, dans Opérateurs.",
+                    "Chaque création reçoit une nouvelle hauteur. La copie garde ensuite son y pendant qu’elle avance. Le modèle prépare la position suivante.",
+                    "Lance plusieurs séries et compare les hauteurs. Deux copies peuvent recevoir la même valeur : aléatoire ne signifie pas forcément différent."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer la pile de création et celle qui démarre chaque clone.",
+        "Expliquer pourquoi un clone caché doit être montré.",
+        "Distinguer fréquence des créations, vitesse et quantité de copies.",
+        "Faire disparaître les copies et retrouver une série propre au drapeau."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-clones",
+          "blockId": "exemple",
+          "label": "Revoir le modèle et les copies"
+        },
+        {
+          "moduleId": "scratch-pilotage",
+          "blockId": "exemple",
+          "label": "Revoir les coordonnées"
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Séparer la fabrique du modèle et le cycle de chaque clone : apparition, déplacement, suppression.",
+        "entryDiagnosis": [
+          "Faire distinguer le modèle original et une copie temporaire.",
+          "Faire prévoir le résultat de ajouter 6 à x et de x > 200."
+        ],
+        "preparation": [
+          "Pendant un atelier accompagné, ouvrir fabrique ou mouvement selon la question, puis revenir au projet des élèves. L’activité repliée est indépendante et n’ajoute pas de travail obligatoire à la séance.",
+          "Pour l’activité autonome, ouvrir le départ partagé ou importer le fichier .sb3 : un seul sprite Balle sans scripts. La référence contient deux piles dans ce sprite.",
+          "Prévoir l’observation des départs successifs, des positions indépendantes, de la suppression et d’une relance en cours de série."
+        ],
+        "why": "Des copies partagent des scripts mais pas leur position. La création, le déplacement et la suppression ont des rôles distincts.",
+        "discoverySpeech": [
+          "Qui lance la pile de drapeau ? Qui lance la pile des clones ?",
+          "Si le modèle est caché, dans quel état apparaît sa copie ?",
+          "Quelle pause sépare les départs ? Quelle pile fait avancer chaque copie ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-clones-mobiles",
+            "blockId": "mouvement"
+          },
+          "comments": [
+            "Le modèle est caché et crée une série finie. Aucun clone ne lance une nouvelle création.",
+            "Les copies possèdent leur propre x. Une pause dans une pile suspend cette pile, pas toutes les copies.",
+            "La borne x > 200 reste atteignable. Scratch retient les sprites près de la scène ; une condition hors de cette limite peut laisser la boucle tourner.",
+            "Le modèle ne reçoit pas de suppression ; supprimer ce clone s’exécute dans la pile des copies."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi mettre montrer dans la pile des clones ?",
+            "answer": "Ils héritent de la visibilité du modèle, qui est caché."
+          },
+          {
+            "question": "La pause de 0,6 seconde change-t-elle directement leur vitesse ?",
+            "answer": "Non. Elle sépare les créations. Le déplacement dépend de la pile de chaque clone."
+          },
+          {
+            "question": "Cacher et supprimer ce clone font-ils la même chose ?",
+            "answer": "Non. Cacher laisse la copie et ses piles exister ; supprimer ce clone les retire."
+          },
+          {
+            "question": "Pourquoi deux copies qui ont le même code ne se superposent-elles pas ?",
+            "answer": "Leurs piles commencent à des moments différents et leurs positions évoluent séparément."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-clones-mobiles",
+          "blockId": "mouvement"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-clones-mobiles",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Reprendre les trois copies fixes du cours précédent si la notion de clone reste fragile.",
+          "Comparer une seule valeur à la fois : fréquence, pas de déplacement ou quantité.",
+          "Proposer les hauteurs aléatoires après une série correctement supprimée."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Les copies existent mais ne se voient pas.",
+            "helps": [
+              "Repérer cacher dans le modèle.",
+              "Faire prévoir la visibilité héritée.",
+              "Chercher montrer dans la pile des clones.",
+              "Ajouter montrer puis relancer."
+            ]
+          },
+          {
+            "symptom": "La quantité de copies augmente sans limite.",
+            "helps": [
+              "Chercher toutes les créations.",
+              "Distinguer les deux chapeaux.",
+              "Conserver la création dans la pile de drapeau du modèle.",
+              "Relancer une série finie et compter les départs."
+            ]
+          },
+          {
+            "symptom": "Les copies restent dans la scène.",
+            "helps": [
+              "Observer leur dernière position.",
+              "Faire lire la comparaison et sa borne.",
+              "Repérer supprimer ce clone après la boucle.",
+              "Rétablir x > 200 puis refaire toute la série."
+            ]
+          }
+        ],
+        "notes": "Support ponctuel ou activité autonome. Les tests du site et les essais du moteur sont décrits dans docs/recette-scratch-clones-mobiles.md. Cette référence ne gère pas les contacts, un score ou une fin de partie.",
+        "quickConductor": [
+          "Ouvrir la pile répondant à la question rencontrée dans le projet.",
+          "Faire prévoir le rôle du modèle et celui de la copie.",
+          "Revenir au projet en cours, ou ouvrir l’activité indépendante.",
+          "Tester une série, sa suppression et une relance pendant son passage."
+        ],
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      },
+      "scratchProjectId": "clones-mobiles"
+    },
     "scratch-temps-difficulte": {
       "domainId": "jeux-video",
       "title": "Gérer le temps et la difficulté",
@@ -11152,6 +11627,865 @@ window.CODECRAFT_DATA = {
           }
         ]
       }
+    },
+    "scratch-niveaux-etats": {
+      "domainId": "jeux-video",
+      "title": "Changer de niveau et terminer la partie",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Déclencher une transition une seule fois et bloquer les actions dès la fin de partie.",
+      "tool": {
+        "label": "Ouvrir l’exemple dans Scratch",
+        "url": "https://scratch.mit.edu/projects/1391213735/"
+      },
+      "skillIds": [
+        "scratch.variables",
+        "scratch.conditions",
+        "scratch.messages",
+        "scratch.game-rules"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Initialiser une variable et modifier le score."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Lire une comparaison et un si."
+        },
+        {
+          "skillId": "scratch.messages",
+          "expectation": "Distinguer envoyer un message et quand je reçois."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "comprendre",
+          "title": "Le niveau et l’état répondent à deux questions",
+          "paragraphs": [
+            "Niveau indique quelle étape du jeu est en cours. Etat indique ce que le jeu autorise : préparation, en jeu ou gagné. Ce sont deux variables pour tous les sprites.",
+            "Une boucle repose souvent la même question. Si elle envoie victoire à chaque passage, la pile qui reçoit ce message peut redémarrer avant d’avoir fini. Change d’abord l’état pour que la condition devienne fausse."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau",
+          "title": "Passer au niveau suivant une seule fois",
+          "paragraphs": [
+            "Dans la boucle qui surveille une partie en jeu, vérifie à la fois niveau = 1 et score > 2. Le seuil de trois points est atteint lorsque score dépasse 2.",
+            "Mettre niveau à 2 rend niveau = 1 faux dès le passage suivant. Le message niveau2 peut ensuite demander un nouveau décor, une cible différente ou un autre réglage.",
+            "Dans notre exemple, Cible reçoit niveau2 : elle prend le costume niveau2 et une taille de 70 %. Le score est conservé."
+          ],
+          "shortSteps": [
+            "Au drapeau, mets niveau à 1. Dans la boucle de surveillance, place le test ci-dessous.",
+            "Glisse niveau et score depuis Variables dans les comparaisons. Écris 1 et 2 dans les autres cases.",
+            "Quand le score atteint trois points, mets niveau à 2, puis envoie niveau2."
+          ],
+          "visualScript": {
+            "caption": "Dans la surveillance : une transition de niveau",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "condition": [
+                          {
+                            "reporter": "niveau",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "1"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " et ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "score",
+                            "category": "variables"
+                          },
+                          " > ",
+                          {
+                            "value": "2"
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "niveau"
+                      },
+                      " à ",
+                      {
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "envoyer à tous ",
+                      {
+                        "choice": "niveau2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "victoire",
+          "title": "Bloquer la partie avant le message final",
+          "paragraphs": [
+            "La condition associe etat = en jeu et score > 5. Dès six points, mettre etat à gagné ferme la partie avant l’envoi de victoire.",
+            "La boucle trouve ensuite etat = en jeu faux : elle n’envoie plus victoire. La pile de réception peut terminer son message de deux secondes, puis exécuter stop tout.",
+            "Stop tout intervient après les deux secondes d’affichage. Le changement d’état permet aux autres piles de refuser leurs actions pendant cette attente."
+          ],
+          "shortSteps": [
+            "Crée la variable etat pour tous les sprites. Au drapeau, mets etat à en jeu avant la boucle de surveillance.",
+            "Dans cette boucle, place le test ci-dessous. Glisse etat et score depuis Variables dans les comparaisons ; écris en jeu et 5 dans les autres cases.",
+            "Passe etat à gagné avant d’envoyer victoire. La pile qui reçoit le message affiche Gagné !, puis arrête les scripts.",
+            "Dans les piles du jeu, autorise les points, déplacements et dégâts seulement si etat vaut en jeu."
+          ],
+          "visualScript": {
+            "caption": "Décider une fois, puis afficher",
+            "stacks": [
+              {
+                "caption": "Dans la surveillance",
+                "blocks": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " et ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "mettre ",
+                          {
+                            "choice": "etat"
+                          },
+                          " à ",
+                          {
+                            "value": "gagné"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "events",
+                        "label": "Événements",
+                        "parts": [
+                          "envoyer à tous ",
+                          {
+                            "choice": "victoire"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "caption": "Dans Cible : afficher la victoire",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand je reçois ",
+                      {
+                        "choice": "victoire"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": "Gagné !"
+                      },
+                      " pendant ",
+                      {
+                        "value": "2"
+                      },
+                      " secondes"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "stop ",
+                      {
+                        "choice": "tout"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "activityLink": {
+            "moduleId": "scratch-niveaux-etats",
+            "blockId": "actions",
+            "label": "Voir les blocs pour autoriser les actions"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "actions",
+          "title": "Autoriser les points seulement pendant la partie",
+          "paragraphs": [
+            "Encadre ajouter 1 à score avec si etat = en jeu. Un clic pendant Gagné ! ne donne plus de point, même si stop tout n’a pas encore été exécuté.",
+            "Dans un autre jeu, utilise cette même condition dans les piles qui déplacent un personnage, retirent des vies ou créent des clones. Une variable ne les arrête pas toute seule : leurs actions doivent la consulter.",
+            "Après une attente, vérifie de nouveau l’état avant une action : la partie peut s’être terminée pendant la pause."
+          ],
+          "shortSteps": [
+            "Dans la pile du clic, vérifie l’état avant d’ajouter un point.",
+            "Glisse etat depuis Variables dans la comparaison =. Écris en jeu dans l’autre case."
+          ],
+          "visualScript": {
+            "caption": "Cible : un clic autorisé",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand ce sprite est cliqué"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "etat",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "1"
+                      },
+                      " à ",
+                      {
+                        "choice": "score"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Si le niveau ou la victoire se répète",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "verifier",
+              "title": "Où regarder",
+              "paragraphs": [
+                "La victoire recommence sans atteindre stop tout ? Place mettre etat à gagné avant envoyer victoire, et vérifie etat = en jeu dans la surveillance.",
+                "Le niveau 2 est annoncé en boucle ? Vérifie niveau = 1 dans sa condition et place mettre niveau à 2 avant le message.",
+                "Les points continuent pendant le message ? Place le test d’état dans la pile qui ajoute les points, autour de cette action.",
+                "Le redémarrage garde le niveau ou le petit costume ? Rassemble les valeurs de départ, le costume et la taille avant mettre etat à en jeu.",
+                "L’état semble correct mais la condition ne réagit pas ? Glisse la variable etat depuis Variables dans la comparaison. Écris en jeu dans l’autre case, avec le même espace."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "atelier",
+          "title": "Pour pratiquer : deux niveaux de clics",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "preparer",
+              "title": "Une cible, trois variables",
+              "paragraphs": [
+                "Ouvre le projet de départ puis Voir à l’intérieur. Cible possède deux costumes et aucun script. Les variables score, niveau et etat existent pour tous les sprites.",
+                "Au départ, score vaut 0 et niveau vaut 1. Trois points ouvrent le niveau 2 ; six points terminent la partie. Le score continue de compter au changement de niveau.",
+                "Construis la pile de surveillance ci-dessous, la pile du clic montrée plus haut et les deux réceptions. La référence complète permet de comparer ton travail.",
+                "Pour travailler avec un fichier, télécharge le départ ci-dessous et charge-le depuis le menu Fichier de Scratch. Sauvegarde ton projet actuel avant de le remplacer."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger le départ (.sb3)",
+                  "path": "assets/scratch/niveaux-etats-depart.sb3",
+                  "filename": "niveaux-etats-depart.sb3"
+                },
+                {
+                  "label": "Télécharger l’exemple (.sb3)",
+                  "path": "assets/scratch/niveaux-etats-reference.sb3",
+                  "filename": "niveaux-etats-reference.sb3"
+                }
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "construction",
+              "title": "Construire et tester progressivement",
+              "paragraphs": [
+                "Commence par les blocs de départ, avant répéter indéfiniment. Au drapeau, vérifie score = 0, niveau = 1 et la grande cible orange.",
+                "Ajoute la pile du clic, la boucle et le test de niveau avec sa réception. Après trois clics, la cible devient bleue et plus petite ; le clic suivant ne relance pas le changement.",
+                "Ajoute ensuite le test de victoire avant celui du niveau, comme dans le modèle complet. À six points, Gagné ! apparaît et les clics pendant le message ne donnent plus de point."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "modele",
+              "title": "Préparer puis surveiller la partie",
+              "paragraphs": [
+                "Crée les messages niveau2 et victoire depuis les menus des blocs Événements. Utilise exactement ces noms dans les envois et les réceptions.",
+                "La pile commence en préparation. Elle retrouve les valeurs et l’apparence de départ, puis ouvre les actions avec en jeu. Une seule pile de drapeau prépare et surveille la partie.",
+                "Dans la boucle, le test de victoire passe en premier. Le test de niveau vérifie encore l’état : si la victoire vient d’être décidée, il ne lance pas de nouvelle transition."
+              ],
+              "shortSteps": [
+                "Au drapeau, prépare les variables et l’apparence.",
+                "Passe ensuite l’état à en jeu.",
+                "Dans la boucle, surveille la victoire, puis le changement de niveau.",
+                "Glisse etat, score et niveau depuis Variables dans les comparaisons. Les autres cases contiennent les valeurs à écrire."
+              ],
+              "visualScript": {
+                "caption": "Cible : départ et surveillance",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "etat"
+                      },
+                      " à ",
+                      {
+                        "value": "préparation"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "score"
+                      },
+                      " à ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "niveau"
+                      },
+                      " à ",
+                      {
+                        "value": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur le costume ",
+                      {
+                        "choice": "niveau1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "mettre la taille à ",
+                      {
+                        "value": "100"
+                      },
+                      " % de la taille initiale"
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": ""
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "etat"
+                      },
+                      " à ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "score",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "5"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "variables",
+                                "label": "Variables",
+                                "parts": [
+                                  "mettre ",
+                                  {
+                                    "choice": "etat"
+                                  },
+                                  " à ",
+                                  {
+                                    "value": "gagné"
+                                  }
+                                ]
+                              },
+                              {
+                                "category": "events",
+                                "label": "Événements",
+                                "parts": [
+                                  "envoyer à tous ",
+                                  {
+                                    "choice": "victoire"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "etat",
+                                        "category": "variables"
+                                      },
+                                      " = ",
+                                      {
+                                        "value": "en jeu"
+                                      }
+                                    ],
+                                    "operator": true
+                                  },
+                                  " et ",
+                                  {
+                                    "condition": [
+                                      {
+                                        "condition": [
+                                          {
+                                            "reporter": "niveau",
+                                            "category": "variables"
+                                          },
+                                          " = ",
+                                          {
+                                            "value": "1"
+                                          }
+                                        ],
+                                        "operator": true
+                                      },
+                                      " et ",
+                                      {
+                                        "condition": [
+                                          {
+                                            "reporter": "score",
+                                            "category": "variables"
+                                          },
+                                          " > ",
+                                          {
+                                            "value": "2"
+                                          }
+                                        ],
+                                        "operator": true
+                                      }
+                                    ],
+                                    "operator": true
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "variables",
+                                "label": "Variables",
+                                "parts": [
+                                  "mettre ",
+                                  {
+                                    "choice": "niveau"
+                                  },
+                                  " à ",
+                                  {
+                                    "value": "2"
+                                  }
+                                ]
+                              },
+                              {
+                                "category": "events",
+                                "label": "Événements",
+                                "parts": [
+                                  "envoyer à tous ",
+                                  {
+                                    "choice": "niveau2"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "receptions",
+              "title": "Réagir aux messages",
+              "paragraphs": [
+                "Dans Cible, ajoute quand je reçois niveau2 → basculer sur le costume niveau2 → mettre la taille à 70 % de la taille initiale.",
+                "Ajoute aussi la pile quand je reçois victoire montrée plus haut : dire Gagné ! pendant 2 secondes → stop tout. La surveillance a déjà changé l’état ; la réception se charge de l’affichage."
+              ]
+            },
+            {
+              "type": "tasks",
+              "id": "guide",
+              "title": "Observer chaque passage",
+              "items": [
+                {
+                  "id": "depart",
+                  "text": "Lance le drapeau. Vérifie score = 0, niveau = 1, etat = en jeu et la grande cible orange."
+                },
+                {
+                  "id": "niveau",
+                  "text": "Clique trois fois. Vérifie niveau = 2, score = 3 et la petite cible bleue. Un nouveau clic ne doit pas relancer ce changement."
+                },
+                {
+                  "id": "fin",
+                  "text": "Atteins six points. Clique encore pendant Gagné ! : le score reste à 6 et etat vaut gagné.",
+                  "hint": "La pile du clic consulte etat avant chaque point."
+                },
+                {
+                  "id": "stop",
+                  "text": "Attends la fin du message. Les piles sont arrêtées : la réception a atteint stop tout."
+                },
+                {
+                  "id": "reprise",
+                  "text": "Relance pendant le message final, puis après l’arrêt. Chaque départ doit retrouver zéro point, le niveau 1 et la grande cible orange."
+                }
+              ]
+            },
+            {
+              "type": "tasks",
+              "id": "autonomie",
+              "title": "Choisir d’autres seuils",
+              "items": [
+                {
+                  "id": "seuils",
+                  "text": "Dans une copie, ouvre le niveau 2 à quatre points et la victoire à huit. Prévois les deux comparaisons, puis teste.",
+                  "hint": "Avec >, utilise score > 3 et score > 7."
+                },
+                {
+                  "id": "message",
+                  "text": "Change le texte de victoire et sa durée à trois secondes. Vérifie encore que les clics pendant le message ne donnent aucun point."
+                },
+                {
+                  "id": "expliquer",
+                  "text": "Explique pourquoi niveau change avant niveau2 et etat change avant victoire."
+                },
+                {
+                  "id": "conserver",
+                  "text": "Sauvegarde ta version sur ton ordinateur, importe-la et vérifie les seuils et un nouveau départ."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer le niveau et l’état de la partie.",
+        "Changer une variable avant le message pour déclencher une transition une seule fois.",
+        "Bloquer les actions pendant l’affichage final.",
+        "Retrouver les variables et l’apparence de départ au drapeau."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-coordination",
+          "blockId": "exemple",
+          "label": "Revoir les messages"
+        },
+        {
+          "moduleId": "scratch-variables",
+          "blockId": "exemple",
+          "label": "Revoir les variables"
+        },
+        {
+          "moduleId": "scratch-fin-partie",
+          "blockId": "exemple",
+          "label": "Revoir arrêt et redémarrage"
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Distinguer progression et autorisation des actions, sécuriser une transition et la fin de partie.",
+        "entryDiagnosis": [
+          "Faire lire un test de score et une affectation de variable.",
+          "Faire distinguer envoyer un message et recevoir ce message."
+        ],
+        "preparation": [
+          "Pendant un atelier accompagné, ouvrir niveau, victoire ou actions selon le problème, puis revenir au projet des élèves. L’activité repliée est indépendante et n’ajoute pas de travail obligatoire à la séance.",
+          "Pour une séance autonome, ouvrir le départ partagé ou importer le fichier .sb3 : Cible sans scripts, deux costumes et trois variables globales.",
+          "Prévoir des clics pendant le message final et des relances avant et après stop tout."
+        ],
+        "why": "Un message déclenche des piles ; une variable rend explicite la décision et les actions encore autorisées.",
+        "discoverySpeech": [
+          "La condition reste-t-elle vraie après le message ?",
+          "Quelle valeur doit changer avant de prévenir les autres piles ?",
+          "Pendant les deux secondes du message, quelle condition refuse les points ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-niveaux-etats",
+            "blockId": "victoire"
+          },
+          "comments": [
+            "Un seul contrôleur prépare puis surveille. Il change niveau ou etat avant le message, sans attente entre le test et cette affectation.",
+            "Un nouvel envoi du même message peut redémarrer la pile réceptrice : la condition d’état évite les envois répétés.",
+            "La victoire est prioritaire. Le changement de niveau consulte encore l’état après le test de victoire.",
+            "Chaque pile d’action doit consulter l’état, notamment après une attente. Les autres projets doivent protéger aussi déplacements, dégâts et créations.",
+            "Le score reste global sur les deux niveaux ; les seuils 3 et 6 sont des totaux, pas trois puis six points supplémentaires."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Niveau 2 signifie-t-il que la partie est terminée ?",
+            "answer": "Non. Niveau décrit une étape ; etat peut rester en jeu."
+          },
+          {
+            "question": "Pourquoi modifier etat avant envoyer victoire ?",
+            "answer": "Pour que la surveillance n’envoie plus ce message et que les actions refusent déjà les points."
+          },
+          {
+            "question": "Stop tout placé après deux secondes suffit-il à bloquer les points pendant ces deux secondes ?",
+            "answer": "Non. La pile du clic doit vérifier etat = en jeu."
+          },
+          {
+            "question": "Pourquoi rétablir costume et taille au drapeau ?",
+            "answer": "Parce que les variables seules ne rétablissent pas l’apparence du niveau 1."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-niveaux-etats",
+          "blockId": "victoire"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-niveaux-etats",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Montrer seulement la transition correspondant au problème du projet en cours.",
+          "Tester la victoire seule avant d’ajouter le passage de niveau si les messages sont encore fragiles.",
+          "Modifier un seuil à la fois et demander une prédiction."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le message final recommence sans arrêt.",
+            "helps": [
+              "Observer l’état pendant le message.",
+              "Chercher tous les envois de victoire.",
+              "Repérer l’affectation avant l’envoi.",
+              "Conserver un contrôleur et changer l’état avant le message."
+            ]
+          },
+          {
+            "symptom": "Les actions continuent pendant la victoire.",
+            "helps": [
+              "Identifier la pile qui réalise encore une action.",
+              "Chercher sa condition d’état.",
+              "Repérer une attente éventuelle avant l’action.",
+              "Vérifier l’état juste avant l’action puis retester."
+            ]
+          },
+          {
+            "symptom": "Le nouveau départ conserve l’ancienne apparence.",
+            "helps": [
+              "Relancer après le niveau 2.",
+              "Comparer niveau et costume.",
+              "Repérer costume et taille dans la préparation.",
+              "Rétablir ces réglages avant en jeu puis relancer."
+            ]
+          }
+        ],
+        "notes": "Support ponctuel ou activité autonome. La recette décrit les contrôles du site et les essais du moteur dans docs/recette-scratch-niveaux-etats.md. Le projet de clics isole les transitions ; il ne reprend pas le jeu d’un stage.",
+        "quickConductor": [
+          "Ouvrir la section utile.",
+          "Faire prévoir la condition au passage suivant.",
+          "Revenir au projet, ou utiliser l’activité indépendante.",
+          "Tester les actions pendant le message et la relance."
+        ],
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      },
+      "scratchProjectId": "niveaux-etats"
     },
     "scratch-debogage": {
       "domainId": "jeux-video",
@@ -13726,6 +15060,487 @@ window.CODECRAFT_DATA = {
           }
         ]
       }
+    },
+    "scratch-vies-contacts": {
+      "domainId": "jeux-video",
+      "title": "Gérer les vies et les contacts",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Comprendre un contact prolongé et retirer une seule vie jusqu’à la séparation.",
+      "tool": {
+        "label": "Ouvrir l’exemple dans Scratch",
+        "url": "https://scratch.mit.edu/projects/1391211682/"
+      },
+      "skillIds": [
+        "scratch.contacts",
+        "scratch.variables",
+        "scratch.conditions",
+        "scratch.loops"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.contacts",
+          "expectation": "Lire une condition de contact entre deux personnages."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Initialiser une variable et modifier sa valeur."
+        },
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Repérer les actions répétées dans une boucle."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "comprendre",
+          "title": "Pourquoi plusieurs vies disparaissent",
+          "paragraphs": [
+            "Un personnage touche un danger. Dans une boucle, la question « touche Danger ? » est reposée tant que le programme tourne. Si le personnage reste au contact, la réponse reste vraie : ajouter -1 à vies se répète.",
+            "Notre règle sera : un contact retire une vie, même s’il dure. Le personnage doit se séparer du danger avant qu’un nouveau contact puisse retirer une autre vie."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "solution",
+          "title": "Attendre la séparation",
+          "shortSteps": [
+            "Place ces blocs dans la boucle qui surveille les contacts du personnage.",
+            "Garde le déplacement dans une autre pile : elle continue pendant l’attente et permet de s’éloigner.",
+            "Au contact, retire une vie, puis attends que le personnage ne touche plus le danger."
+          ],
+          "paragraphs": [
+            "Dans Contrôle, attendre jusqu’à ce que suspend cette pile jusqu’à ce que sa condition soit vraie. Dans Opérateurs, non inverse la réponse du capteur : non touche Danger ? est vrai quand les deux personnages sont séparés.",
+            "Attendre 0,3 seconde ne signifie pas attendre la séparation. Si le personnage touche toujours le danger après cette durée, la boucle peut retirer une nouvelle vie."
+          ],
+          "visualScript": {
+            "caption": "Dans le personnage : une vie, puis la séparation",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "Danger"
+                      },
+                      " ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-1"
+                      },
+                      " à ",
+                      {
+                        "choice": "vies"
+                      }
+                    ],
+                    "explanation": "Retirer une vie au contact."
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre jusqu’à ce que ",
+                      {
+                        "condition": [
+                          "non ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Danger"
+                              },
+                              " ?"
+                            ]
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "explanation": "Reprendre seulement après la séparation."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Si les vies ou le déplacement ne fonctionnent pas",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "verifier",
+              "title": "Où regarder",
+              "paragraphs": [
+                "Les vies descendent encore pendant un contact ? Cherche toutes les piles qui modifient vies. Une seule pile doit gérer ce contact, et son attente doit être placée dans le même si, juste après le retrait.",
+                "Le personnage reste bloqué après avoir perdu une vie ? Sépare le déplacement de la pile qui attend la fin du contact.",
+                "Aucune vie ne disparaît ? Vérifie le personnage choisi dans touche Danger ?, puis le contact entre les costumes visibles.",
+                "Le compteur ne repart pas à trois ? Place mettre vies à 3 au début de la pile de surveillance, avant sa boucle."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "atelier",
+          "title": "Pour pratiquer : le passage dangereux",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "preparer",
+              "title": "Un personnage et un danger",
+              "paragraphs": [
+                "Ouvre le projet de départ puis Voir à l’intérieur. Pilote est le disque bleu ; Danger est la zone orange. Clique sur Pilote pour afficher ses blocs. Les flèches gauche et droite déplacent déjà Pilote.",
+                "La variable vies existe pour tous les personnages et reste affichée. Sur Pilote, construis une deuxième pile : elle surveillera le contact pendant que la première gère le déplacement.",
+                "Le départ est en x = -120, y = 0, loin de Danger. Le drapeau y replace Pilote. La référence complète fournit la pile de surveillance pour comparer ton travail.",
+                "Pour travailler avec un fichier, télécharge le départ ci-dessous et charge-le depuis le menu Fichier de Scratch. Sauvegarde ton projet actuel avant de le remplacer."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger le départ (.sb3)",
+                  "path": "assets/scratch/vies-contacts-depart.sb3",
+                  "filename": "vies-contacts-depart.sb3"
+                },
+                {
+                  "label": "Télécharger l’exemple (.sb3)",
+                  "path": "assets/scratch/vies-contacts-reference.sb3",
+                  "filename": "vies-contacts-reference.sb3"
+                }
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "modele",
+              "title": "Surveiller les vies dans une autre pile",
+              "shortSteps": [
+                "Sur Pilote, garde la pile de déplacement déjà présente.",
+                "Ajoute la pile ci-dessous. Le si vies > 0 laisse le compteur à zéro après la dernière vie.",
+                "Au contact, la pile attend la séparation ; la pile de déplacement continue.",
+                "Glisse vies depuis Variables dans la comparaison >. Écris 0 dans l’autre case."
+              ],
+              "paragraphs": [
+                "Dans l’attente, glisse touche Danger ? à l’intérieur de non, puis place l’ensemble dans attendre jusqu’à ce que.",
+                "Le si vies > 0 évite les valeurs négatives. Ici, le personnage peut encore se déplacer à zéro vie : nous observons le compteur. Une fin de partie se construit séparément."
+              ],
+              "visualScript": {
+                "caption": "Pilote : la pile de surveillance",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vies"
+                      },
+                      " à ",
+                      {
+                        "value": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "vies",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "0"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "Danger"
+                                  },
+                                  " ?"
+                                ]
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "variables",
+                                "label": "Variables",
+                                "parts": [
+                                  "ajouter ",
+                                  {
+                                    "value": "-1"
+                                  },
+                                  " à ",
+                                  {
+                                    "choice": "vies"
+                                  }
+                                ]
+                              },
+                              {
+                                "category": "control",
+                                "label": "Contrôle",
+                                "parts": [
+                                  "attendre jusqu’à ce que ",
+                                  {
+                                    "condition": [
+                                      "non ",
+                                      {
+                                        "condition": [
+                                          "touche ",
+                                          {
+                                            "choice": "Danger"
+                                          },
+                                          " ?"
+                                        ]
+                                      }
+                                    ],
+                                    "operator": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "tasks",
+              "id": "guide",
+              "title": "Comparer les contacts",
+              "items": [
+                {
+                  "id": "loin",
+                  "text": "Lance le drapeau. Reste loin du danger : vies doit rester à 3."
+                },
+                {
+                  "id": "maintien",
+                  "text": "Avance jusqu’au danger puis relâche la touche. Reste au contact cinq secondes : vies doit rester à 2.",
+                  "hint": "Après le retrait, la pile attend que touche Danger ? devienne faux."
+                },
+                {
+                  "id": "retour",
+                  "text": "Éloigne-toi complètement, puis reviens. Ce nouveau contact doit faire passer vies à 1."
+                },
+                {
+                  "id": "zero",
+                  "text": "Sépare-toi puis touche encore le danger. Vérifie zéro vie, puis une nouvelle séparation et un nouveau contact : le compteur reste à zéro."
+                },
+                {
+                  "id": "reprise",
+                  "text": "Relance le drapeau pendant un contact. Vérifie trois vies et le retour de Pilote à gauche."
+                }
+              ]
+            },
+            {
+              "type": "tasks",
+              "id": "autonomie",
+              "title": "Choisir ta règle",
+              "items": [
+                {
+                  "id": "reserve",
+                  "text": "Choisis quatre ou cinq vies au départ. Annonce le compteur attendu après deux contacts séparés, puis teste.",
+                  "hint": "Change seulement la valeur de mettre vies à au démarrage."
+                },
+                {
+                  "id": "expliquer",
+                  "text": "Explique ce qui permet au personnage de bouger pendant que l’autre pile attend."
+                },
+                {
+                  "id": "conserver",
+                  "text": "Sauvegarde ta version sur ton ordinateur, puis importe-la et vérifie un contact et un nouveau départ."
+                }
+              ]
+            },
+            {
+              "type": "details",
+              "id": "deux-dangers",
+              "title": "Approfondir : deux dangers, une seule surveillance",
+              "blocks": [
+                {
+                  "type": "lesson",
+                  "id": "combiner",
+                  "title": "Regrouper les contacts",
+                  "paragraphs": [
+                    "Dans une copie, duplique Danger, renomme la copie Danger2 et place-la près du premier. Sur Pilote, conserve une seule pile qui retire les vies.",
+                    "Remplace touche Danger ? par la condition touche Danger ? ou touche Danger2 ?, avec ou dans Opérateurs. Dans l’attente, utilise non (touche Danger ? ou touche Danger2 ?).",
+                    "Un contact avec l’un ou les deux dangers retire une seule vie. Pour pouvoir en perdre une autre, Pilote doit se séparer des deux. Teste deux dangers qui se chevauchent, puis éloigne-toi et reviens."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Expliquer pourquoi une boucle peut retirer plusieurs vies pendant un contact prolongé.",
+        "Distinguer une attente de durée fixe et une attente de séparation.",
+        "Conserver le déplacement pendant la surveillance du contact.",
+        "Vérifier les contacts séparés, zéro vie et le redémarrage."
+      ],
+      "consolidation": [
+        {
+          "moduleId": "scratch-variables",
+          "label": "Revoir mettre et ajouter"
+        },
+        {
+          "moduleId": "scratch-reactions",
+          "label": "Revoir la condition de contact"
+        }
+      ],
+      "teacherGuide": {
+        "objective": "Expliquer les retraits répétés pendant un chevauchement et construire une surveillance unique qui attend la séparation.",
+        "entryDiagnosis": [
+          "Faire lire un si de contact dans une boucle.",
+          "Demander la différence entre mettre vies à 3 et ajouter -1 à vies."
+        ],
+        "preparation": [
+          "Pendant un atelier accompagné, ouvrir directement solution pour soutenir l’explication, puis revenir au projet des élèves. L’activité repliée est indépendante et n’ajoute pas de travail obligatoire à la séance.",
+          "Pour une séance autonome CodeCraft, ouvrir le départ partagé ou importer le fichier .sb3. Pilote contient une pile de déplacement aux flèches, Danger n’a aucun script. Ajouter la surveillance dans Pilote.",
+          "Prévoir les essais sans contact, contact prolongé, séparation et retour, zéro vie et relance. La référence est un exemple de compteur, pas un jeu terminé."
+        ],
+        "why": "La durée du contact et le nombre de dégâts sont deux choix distincts. La règle doit être définie avant de modifier les blocs.",
+        "discoverySpeech": [
+          "La boucle retrouve la même réponse vraie : que va-t-elle répéter ?",
+          "Nous voulons attendre la séparation. Quelle question nous dit qu’elle a eu lieu ?",
+          "Quelle pile continue à déplacer le personnage pendant cette attente ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-vies-contacts",
+            "blockId": "solution"
+          },
+          "comments": [
+            "La règle choisie autorise un dégât par contact continu. Une protection temporisée correspondrait à une autre règle ; une pause seule ne garantit pas la séparation.",
+            "Une seule pile modifie vies. Pour plusieurs dangers, regrouper la condition de contact et attendre la séparation de tous les dangers surveillés.",
+            "La garde vies > 0 empêche les valeurs négatives. La fin de partie n’est pas implémentée dans cet exemple : elle devra bloquer les autres actions avant son affichage."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Rester au contact pendant cinq secondes retire combien de vies ?",
+            "answer": "Une : la pile attend la séparation après le premier retrait."
+          },
+          {
+            "question": "Une pause de 0,3 seconde garantit-elle un seul dégât ?",
+            "answer": "Non. Elle se termine même si le contact continue."
+          },
+          {
+            "question": "Pourquoi le déplacement appartient-il à une autre pile ?",
+            "answer": "Pour continuer pendant l’attente et permettre la séparation."
+          },
+          {
+            "question": "Avec deux dangers, suffit-il d’attendre la séparation du premier ?",
+            "answer": "Non. La condition doit vérifier la séparation de tous les dangers qui participent à cette règle."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-vies-contacts",
+          "blockId": "solution"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-vies-contacts",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Utiliser le schéma court pendant un autre projet sans imposer l’activité complète.",
+          "Pour approfondir, faire prévoir puis tester la condition ou avec deux dangers qui se chevauchent."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Plusieurs vies disparaissent sans séparation.",
+            "helps": [
+              "Chercher toutes les piles qui changent vies.",
+              "Repérer l’attente dans le si de contact.",
+              "Comparer une durée fixe et non touche Danger ?.",
+              "Conserver une seule surveillance puis refaire le contact prolongé."
+            ]
+          },
+          {
+            "symptom": "Le personnage ne peut plus sortir du danger.",
+            "helps": [
+              "Repérer la pile qui attend.",
+              "Chercher où se trouvent les déplacements.",
+              "Comparer les deux piles de la référence.",
+              "Garder le déplacement séparé de la surveillance puis retester."
+            ]
+          },
+          {
+            "symptom": "Le nouveau départ ne retrouve pas les valeurs prévues.",
+            "helps": [
+              "Relancer loin du danger.",
+              "Observer vies et la position de Pilote.",
+              "Repérer leurs initialisations avant les boucles.",
+              "Rétablir trois vies et le départ à (-120, 0), puis relancer au contact."
+            ]
+          }
+        ],
+        "notes": "Ressource indépendante pour un usage ponctuel ou autonome. Les tests du site vérifient le contenu et son rendu ; les essais du moteur Scratch sont consignés séparément dans la recette.",
+        "quickConductor": [
+          "Ouvrir solution pour expliquer le contact prolongé.",
+          "Faire prévoir le rôle de non et de l’attente.",
+          "Revenir au projet en cours, ou ouvrir l’activité indépendante selon l’objectif de la séance.",
+          "Tester contact prolongé, séparation, zéro vie et nouveau départ."
+        ],
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      },
+      "scratchProjectId": "vies-contacts"
     },
     "scratch-variables": {
       "scratchProjectId": "chat-cible",
@@ -26416,10 +28231,13 @@ window.CODECRAFT_DATA = {
         "scratch-variables",
         "scratch-fin-partie",
         "scratch-mini-jeu",
+        "scratch-vies-contacts",
         "scratch-coordination",
         "scratch-blocs-personnalises",
         "scratch-clones",
+        "scratch-clones-mobiles",
         "scratch-temps-difficulte",
+        "scratch-niveaux-etats",
         "scratch-debogage",
         "scratch-projet-personnel"
       ],
@@ -26451,10 +28269,13 @@ window.CODECRAFT_DATA = {
           "title": "Enrichir et organiser ton jeu",
           "description": "Coordonner les personnages, réutiliser des blocs et ajouter des clones, du temps et de la difficulté.",
           "moduleIds": [
+            "scratch-vies-contacts",
             "scratch-coordination",
             "scratch-blocs-personnalises",
             "scratch-clones",
-            "scratch-temps-difficulte"
+            "scratch-clones-mobiles",
+            "scratch-temps-difficulte",
+            "scratch-niveaux-etats"
           ]
         },
         {

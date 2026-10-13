@@ -1,6 +1,17 @@
 const assert = require('node:assert/strict');
 const { withBrowser } = require('./helpers/browser.cjs');
-withBrowser(async ({ call, evaluate, wait, origin }) => {
+withBrowser(async ({ call, evaluate, wait, origin, screenshot }) => {
+  async function captureActivity(id, name) {
+    await evaluate(
+      'document.querySelector(' +
+        JSON.stringify('[data-activity-id="' + id + '"]') +
+        ').scrollIntoView({behavior:"instant",block:"start"})',
+    );
+    await evaluate(
+      'new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+    );
+    await screenshot(name);
+  }
   const cases = [
     [
       'index.html#module/scratch-reactions?parcours=scratch-debutants',
@@ -262,6 +273,160 @@ withBrowser(async ({ call, evaluate, wait, origin }) => {
         ')',
     );
     verify(await evaluate('document.documentElement.outerHTML'));
+  }
+  for (const resource of [
+    {
+      id: 'scratch-vies-contacts',
+      starterId: '1391213130',
+      demoId: '1391211682',
+      activity: 'solution',
+      practice: 'modele',
+      title: 'Gérer les vies et les contacts',
+    },
+    {
+      id: 'scratch-clones-mobiles',
+      starterId: '1391213631',
+      demoId: '1391213388',
+      activity: 'mouvement',
+      practice: 'preparer',
+      title: 'Faire avancer des clones',
+    },
+    {
+      id: 'scratch-niveaux-etats',
+      starterId: '1391213849',
+      demoId: '1391213735',
+      activity: 'victoire',
+      practice: 'modele',
+      title: 'Changer de niveau et terminer la partie',
+    },
+  ]) {
+    for (const width of [1280, 390, 320]) {
+      await call('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 900,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      await call('Page.navigate', {
+        url:
+          origin +
+          'index.html#module/' +
+          resource.id +
+          '?parcours=scratch-debutants&activite=' +
+          resource.activity,
+      });
+      await wait(
+        'document.querySelector("[data-activity-id=' +
+          resource.activity +
+          '] .scratch-script") !== null',
+      );
+      assert.equal(
+        await evaluate('document.querySelector("[data-activity-id=atelier]").open'),
+        false,
+      );
+      assert.equal(
+        await evaluate('document.querySelector("[data-activity-id=depannage]").open'),
+        false,
+      );
+      if (width === 1280) {
+        const projectLinks = await evaluate(`({
+          starter: document.querySelector('a[href="https://scratch.mit.edu/projects/${resource.starterId}/"]')?.textContent,
+          demo: document.querySelector('.lesson-tool-link')?.href
+        })`);
+        assert.equal(projectLinks.starter, 'Ouvrir le projet de départ');
+        assert.equal(projectLinks.demo, `https://scratch.mit.edu/projects/${resource.demoId}/`);
+        await evaluate('window.scrollTo({top:0,behavior:"instant"})');
+        await screenshot(resource.id + '-projets-en-ligne');
+        const downloads =
+          await evaluate(`Promise.all([...document.querySelectorAll('[data-activity-id=preparer] a[download]')].map(async a => {
+        const r = await fetch(a.href);
+        const bytes = new Uint8Array(await r.arrayBuffer());
+        return {status:r.status,type:r.headers.get('content-type'),signature:Array.from(bytes.slice(0,4))};
+      }))`);
+        assert.equal(downloads.length, 2);
+        for (const download of downloads) {
+          assert.equal(download.status, 200);
+          assert.equal(download.type, 'application/zip');
+          assert.deepEqual(download.signature, [80, 75, 3, 4]);
+        }
+      }
+      assert(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'));
+      await captureActivity(resource.activity, resource.id + '-' + resource.activity + '-' + width);
+      assert(
+        await evaluate(`
+        [...document.querySelectorAll('.scratch-script__explanations li')]
+          .every(item => item.querySelector('p')?.textContent.trim())
+      `),
+      );
+      if (resource.id !== 'scratch-vies-contacts') {
+        assert(
+          await evaluate(`(() => {
+          const reporter = document.querySelector('[data-activity-id=${resource.activity}] .scratch-script__reporter');
+          const value = document.querySelector('[data-activity-id=${resource.activity}] .scratch-script__value');
+          return reporter && value && getComputedStyle(reporter).backgroundColor !== getComputedStyle(value).backgroundColor;
+        })()`),
+        );
+        await evaluate(
+          `document.querySelector('[data-activity-id=${resource.activity}] .scratch-script').scrollIntoView({behavior:'instant',block:'start'})`,
+        );
+        await screenshot(resource.id + '-blocs-' + width);
+      }
+      if (resource.id === 'scratch-clones-mobiles') {
+        assert(
+          await evaluate(
+            'document.querySelector("[data-activity-id=fabrique] .scratch-script") !== null',
+          ),
+        );
+        await captureActivity('fabrique', resource.id + '-fabrique-' + width);
+      }
+      if (resource.id === 'scratch-niveaux-etats') {
+        await evaluate(
+          'document.querySelector("[data-activity-id=victoire] a.lesson-text-link").click()',
+        );
+        await wait(
+          'new URLSearchParams(location.hash.split("?")[1]).get("activite") === "actions"',
+        );
+        assert.equal(
+          await evaluate('new URLSearchParams(location.hash.split("?")[1]).get("parcours")'),
+          'scratch-debutants',
+        );
+        for (const id of ['niveau', 'actions']) {
+          assert(
+            await evaluate(
+              'document.querySelector("[data-activity-id=' + id + '] .scratch-script") !== null',
+            ),
+          );
+          await captureActivity(id, resource.id + '-' + id + '-' + width);
+        }
+      }
+      await call('Page.navigate', {
+        url:
+          origin +
+          'index.html#module/' +
+          resource.id +
+          '?parcours=scratch-debutants&activite=' +
+          resource.practice,
+      });
+      await wait('document.querySelector("[data-activity-id=atelier]").open');
+      assert(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'));
+      await captureActivity(resource.practice, resource.id + '-' + resource.practice + '-' + width);
+    }
+    await call('Page.navigate', { url: origin + 'prof.html#guide/' + resource.id });
+    await wait(
+      'document.body.textContent.includes(' +
+        JSON.stringify('Guide professeur : ' + resource.title) +
+        ')',
+    );
+    assert(
+      (await evaluate('document.body.textContent')).includes('L’activité repliée est indépendante'),
+    );
+    for (const projectId of [resource.starterId, resource.demoId]) {
+      assert(
+        await evaluate(
+          `document.querySelector('a[href="https://scratch.mit.edu/projects/${projectId}/"]') !== null`,
+        ),
+      );
+    }
   }
   console.log('Scratch checks passed: targeted modules and guides.');
 }).catch((error) => {

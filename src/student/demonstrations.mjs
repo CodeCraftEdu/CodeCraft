@@ -263,6 +263,14 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
           );
           renderParts(condition, part.condition);
           parent.append(condition);
+        } else if (part.reporter) {
+          parent.append(
+            element(
+              'span',
+              'scratch-script__reporter scratch-script__reporter--' + part.category,
+              part.reporter,
+            ),
+          );
         } else if (part.choice) {
           const choice = element('span', 'scratch-script__choice', part.choice);
           const caret = element('span', '', ' ▾');
@@ -294,16 +302,19 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
       }
       return row;
     };
-    config.blocks.forEach((block, index) => {
+    config.blocks.forEach((block) => {
       stack.append(renderBlock(block));
+      if (!block.explanation?.trim()) return;
       const explanation = element('li');
       explanation.append(
-        element('span', 'scratch-script__category', index + 1 + ' · ' + block.label),
+        element('span', 'scratch-script__category', block.label),
         element('p', '', block.explanation),
       );
       explanations.append(explanation);
     });
-    layout.append(stack, explanations);
+    layout.append(stack);
+    if (explanations.childElementCount) layout.append(explanations);
+    else layout.classList.add('scratch-script__layout--single');
     figure.append(layout);
     if (config.note) figure.append(element('p', 'scratch-script__note', config.note));
     return figure;

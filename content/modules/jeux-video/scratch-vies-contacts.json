@@ -1,0 +1,474 @@
+{
+  "domainId": "jeux-video",
+  "title": "Gérer les vies et les contacts",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Comprendre un contact prolongé et retirer une seule vie jusqu’à la séparation.",
+  "tool": {
+    "label": "Ouvrir l’exemple dans Scratch",
+    "url": "https://scratch.mit.edu/projects/1391211682/"
+  },
+  "skillIds": ["scratch.contacts", "scratch.variables", "scratch.conditions", "scratch.loops"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.contacts",
+      "expectation": "Lire une condition de contact entre deux personnages."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Initialiser une variable et modifier sa valeur."
+    },
+    {
+      "skillId": "scratch.loops",
+      "expectation": "Repérer les actions répétées dans une boucle."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "comprendre",
+      "title": "Pourquoi plusieurs vies disparaissent",
+      "paragraphs": [
+        "Un personnage touche un danger. Dans une boucle, la question « touche Danger ? » est reposée tant que le programme tourne. Si le personnage reste au contact, la réponse reste vraie : ajouter -1 à vies se répète.",
+        "Notre règle sera : un contact retire une vie, même s’il dure. Le personnage doit se séparer du danger avant qu’un nouveau contact puisse retirer une autre vie."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "solution",
+      "title": "Attendre la séparation",
+      "shortSteps": [
+        "Place ces blocs dans la boucle qui surveille les contacts du personnage.",
+        "Garde le déplacement dans une autre pile : elle continue pendant l’attente et permet de s’éloigner.",
+        "Au contact, retire une vie, puis attends que le personnage ne touche plus le danger."
+      ],
+      "paragraphs": [
+        "Dans Contrôle, attendre jusqu’à ce que suspend cette pile jusqu’à ce que sa condition soit vraie. Dans Opérateurs, non inverse la réponse du capteur : non touche Danger ? est vrai quand les deux personnages sont séparés.",
+        "Attendre 0,3 seconde ne signifie pas attendre la séparation. Si le personnage touche toujours le danger après cette durée, la boucle peut retirer une nouvelle vie."
+      ],
+      "visualScript": {
+        "caption": "Dans le personnage : une vie, puis la séparation",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  "touche ",
+                  {
+                    "choice": "Danger"
+                  },
+                  " ?"
+                ]
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "-1"
+                  },
+                  " à ",
+                  {
+                    "choice": "vies"
+                  }
+                ],
+                "explanation": "Retirer une vie au contact."
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre jusqu’à ce que ",
+                  {
+                    "condition": [
+                      "non ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "Danger"
+                          },
+                          " ?"
+                        ]
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "explanation": "Reprendre seulement après la séparation."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "details",
+      "id": "depannage",
+      "title": "Si les vies ou le déplacement ne fonctionnent pas",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "verifier",
+          "title": "Où regarder",
+          "paragraphs": [
+            "Les vies descendent encore pendant un contact ? Cherche toutes les piles qui modifient vies. Une seule pile doit gérer ce contact, et son attente doit être placée dans le même si, juste après le retrait.",
+            "Le personnage reste bloqué après avoir perdu une vie ? Sépare le déplacement de la pile qui attend la fin du contact.",
+            "Aucune vie ne disparaît ? Vérifie le personnage choisi dans touche Danger ?, puis le contact entre les costumes visibles.",
+            "Le compteur ne repart pas à trois ? Place mettre vies à 3 au début de la pile de surveillance, avant sa boucle."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "atelier",
+      "title": "Pour pratiquer : le passage dangereux",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "preparer",
+          "title": "Un personnage et un danger",
+          "paragraphs": [
+            "Ouvre le projet de départ puis Voir à l’intérieur. Pilote est le disque bleu ; Danger est la zone orange. Clique sur Pilote pour afficher ses blocs. Les flèches gauche et droite déplacent déjà Pilote.",
+            "La variable vies existe pour tous les personnages et reste affichée. Sur Pilote, construis une deuxième pile : elle surveillera le contact pendant que la première gère le déplacement.",
+            "Le départ est en x = -120, y = 0, loin de Danger. Le drapeau y replace Pilote. La référence complète fournit la pile de surveillance pour comparer ton travail.",
+            "Pour travailler avec un fichier, télécharge le départ ci-dessous et charge-le depuis le menu Fichier de Scratch. Sauvegarde ton projet actuel avant de le remplacer."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger le départ (.sb3)",
+              "path": "assets/scratch/vies-contacts-depart.sb3",
+              "filename": "vies-contacts-depart.sb3"
+            },
+            {
+              "label": "Télécharger l’exemple (.sb3)",
+              "path": "assets/scratch/vies-contacts-reference.sb3",
+              "filename": "vies-contacts-reference.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "modele",
+          "title": "Surveiller les vies dans une autre pile",
+          "shortSteps": [
+            "Sur Pilote, garde la pile de déplacement déjà présente.",
+            "Ajoute la pile ci-dessous. Le si vies > 0 laisse le compteur à zéro après la dernière vie.",
+            "Au contact, la pile attend la séparation ; la pile de déplacement continue.",
+            "Glisse vies depuis Variables dans la comparaison >. Écris 0 dans l’autre case."
+          ],
+          "paragraphs": [
+            "Dans l’attente, glisse touche Danger ? à l’intérieur de non, puis place l’ensemble dans attendre jusqu’à ce que.",
+            "Le si vies > 0 évite les valeurs négatives. Ici, le personnage peut encore se déplacer à zéro vie : nous observons le compteur. Une fin de partie se construit séparément."
+          ],
+          "visualScript": {
+            "caption": "Pilote : la pile de surveillance",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "vies"
+                  },
+                  " à ",
+                  {
+                    "value": "3"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["répéter indéfiniment"],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "vies",
+                            "category": "variables"
+                          },
+                          " > ",
+                          {
+                            "value": "0"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Danger"
+                              },
+                              " ?"
+                            ]
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "-1"
+                              },
+                              " à ",
+                              {
+                                "choice": "vies"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "attendre jusqu’à ce que ",
+                              {
+                                "condition": [
+                                  "non ",
+                                  {
+                                    "condition": [
+                                      "touche ",
+                                      {
+                                        "choice": "Danger"
+                                      },
+                                      " ?"
+                                    ]
+                                  }
+                                ],
+                                "operator": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Comparer les contacts",
+          "items": [
+            {
+              "id": "loin",
+              "text": "Lance le drapeau. Reste loin du danger : vies doit rester à 3."
+            },
+            {
+              "id": "maintien",
+              "text": "Avance jusqu’au danger puis relâche la touche. Reste au contact cinq secondes : vies doit rester à 2.",
+              "hint": "Après le retrait, la pile attend que touche Danger ? devienne faux."
+            },
+            {
+              "id": "retour",
+              "text": "Éloigne-toi complètement, puis reviens. Ce nouveau contact doit faire passer vies à 1."
+            },
+            {
+              "id": "zero",
+              "text": "Sépare-toi puis touche encore le danger. Vérifie zéro vie, puis une nouvelle séparation et un nouveau contact : le compteur reste à zéro."
+            },
+            {
+              "id": "reprise",
+              "text": "Relance le drapeau pendant un contact. Vérifie trois vies et le retour de Pilote à gauche."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Choisir ta règle",
+          "items": [
+            {
+              "id": "reserve",
+              "text": "Choisis quatre ou cinq vies au départ. Annonce le compteur attendu après deux contacts séparés, puis teste.",
+              "hint": "Change seulement la valeur de mettre vies à au démarrage."
+            },
+            {
+              "id": "expliquer",
+              "text": "Explique ce qui permet au personnage de bouger pendant que l’autre pile attend."
+            },
+            {
+              "id": "conserver",
+              "text": "Sauvegarde ta version sur ton ordinateur, puis importe-la et vérifie un contact et un nouveau départ."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "deux-dangers",
+          "title": "Approfondir : deux dangers, une seule surveillance",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "combiner",
+              "title": "Regrouper les contacts",
+              "paragraphs": [
+                "Dans une copie, duplique Danger, renomme la copie Danger2 et place-la près du premier. Sur Pilote, conserve une seule pile qui retire les vies.",
+                "Remplace touche Danger ? par la condition touche Danger ? ou touche Danger2 ?, avec ou dans Opérateurs. Dans l’attente, utilise non (touche Danger ? ou touche Danger2 ?).",
+                "Un contact avec l’un ou les deux dangers retire une seule vie. Pour pouvoir en perdre une autre, Pilote doit se séparer des deux. Teste deux dangers qui se chevauchent, puis éloigne-toi et reviens."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Expliquer pourquoi une boucle peut retirer plusieurs vies pendant un contact prolongé.",
+    "Distinguer une attente de durée fixe et une attente de séparation.",
+    "Conserver le déplacement pendant la surveillance du contact.",
+    "Vérifier les contacts séparés, zéro vie et le redémarrage."
+  ],
+  "consolidation": [
+    {
+      "moduleId": "scratch-variables",
+      "label": "Revoir mettre et ajouter"
+    },
+    {
+      "moduleId": "scratch-reactions",
+      "label": "Revoir la condition de contact"
+    }
+  ],
+  "teacherGuide": {
+    "objective": "Expliquer les retraits répétés pendant un chevauchement et construire une surveillance unique qui attend la séparation.",
+    "entryDiagnosis": [
+      "Faire lire un si de contact dans une boucle.",
+      "Demander la différence entre mettre vies à 3 et ajouter -1 à vies."
+    ],
+    "preparation": [
+      "Pendant un atelier accompagné, ouvrir directement solution pour soutenir l’explication, puis revenir au projet des élèves. L’activité repliée est indépendante et n’ajoute pas de travail obligatoire à la séance.",
+      "Pour une séance autonome CodeCraft, ouvrir le départ partagé ou importer le fichier .sb3. Pilote contient une pile de déplacement aux flèches, Danger n’a aucun script. Ajouter la surveillance dans Pilote.",
+      "Prévoir les essais sans contact, contact prolongé, séparation et retour, zéro vie et relance. La référence est un exemple de compteur, pas un jeu terminé."
+    ],
+    "why": "La durée du contact et le nombre de dégâts sont deux choix distincts. La règle doit être définie avant de modifier les blocs.",
+    "discoverySpeech": [
+      "La boucle retrouve la même réponse vraie : que va-t-elle répéter ?",
+      "Nous voulons attendre la séparation. Quelle question nous dit qu’elle a eu lieu ?",
+      "Quelle pile continue à déplacer le personnage pendant cette attente ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-vies-contacts",
+        "blockId": "solution"
+      },
+      "comments": [
+        "La règle choisie autorise un dégât par contact continu. Une protection temporisée correspondrait à une autre règle ; une pause seule ne garantit pas la séparation.",
+        "Une seule pile modifie vies. Pour plusieurs dangers, regrouper la condition de contact et attendre la séparation de tous les dangers surveillés.",
+        "La garde vies > 0 empêche les valeurs négatives. La fin de partie n’est pas implémentée dans cet exemple : elle devra bloquer les autres actions avant son affichage."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Rester au contact pendant cinq secondes retire combien de vies ?",
+        "answer": "Une : la pile attend la séparation après le premier retrait."
+      },
+      {
+        "question": "Une pause de 0,3 seconde garantit-elle un seul dégât ?",
+        "answer": "Non. Elle se termine même si le contact continue."
+      },
+      {
+        "question": "Pourquoi le déplacement appartient-il à une autre pile ?",
+        "answer": "Pour continuer pendant l’attente et permettre la séparation."
+      },
+      {
+        "question": "Avec deux dangers, suffit-il d’attendre la séparation du premier ?",
+        "answer": "Non. La condition doit vérifier la séparation de tous les dangers qui participent à cette règle."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-vies-contacts",
+      "blockId": "solution"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-vies-contacts",
+      "blockId": "autonomie"
+    },
+    "differentiation": [
+      "Utiliser le schéma court pendant un autre projet sans imposer l’activité complète.",
+      "Pour approfondir, faire prévoir puis tester la condition ou avec deux dangers qui se chevauchent."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Plusieurs vies disparaissent sans séparation.",
+        "helps": [
+          "Chercher toutes les piles qui changent vies.",
+          "Repérer l’attente dans le si de contact.",
+          "Comparer une durée fixe et non touche Danger ?.",
+          "Conserver une seule surveillance puis refaire le contact prolongé."
+        ]
+      },
+      {
+        "symptom": "Le personnage ne peut plus sortir du danger.",
+        "helps": [
+          "Repérer la pile qui attend.",
+          "Chercher où se trouvent les déplacements.",
+          "Comparer les deux piles de la référence.",
+          "Garder le déplacement séparé de la surveillance puis retester."
+        ]
+      },
+      {
+        "symptom": "Le nouveau départ ne retrouve pas les valeurs prévues.",
+        "helps": [
+          "Relancer loin du danger.",
+          "Observer vies et la position de Pilote.",
+          "Repérer leurs initialisations avant les boucles.",
+          "Rétablir trois vies et le départ à (-120, 0), puis relancer au contact."
+        ]
+      }
+    ],
+    "notes": "Ressource indépendante pour un usage ponctuel ou autonome. Les tests du site vérifient le contenu et son rendu ; les essais du moteur Scratch sont consignés séparément dans la recette.",
+    "quickConductor": [
+      "Ouvrir solution pour expliquer le contact prolongé.",
+      "Faire prévoir le rôle de non et de l’attente.",
+      "Revenir au projet en cours, ou ouvrir l’activité indépendante selon l’objectif de la séance.",
+      "Tester contact prolongé, séparation, zéro vie et nouveau départ."
+    ],
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  },
+  "scratchProjectId": "vies-contacts"
+}

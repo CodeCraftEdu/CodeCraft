@@ -223,6 +223,30 @@
   border: 1px solid #173565;
   text-align: center;
 }
+.scratch-script__reporter {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border: 2px solid;
+  border-radius: 999px;
+  color: white;
+}
+.scratch-script__reporter--motion {
+  background: #285bc2;
+  border-color: #193c84;
+}
+.scratch-script__reporter--variables {
+  background: #ce5b00;
+  border-color: #813900;
+}
+.scratch-script__reporter--sensing {
+  background: #137987;
+  border-color: #0b4b54;
+}
+.scratch-script__reporter--operators {
+  background: #d4edc5;
+  border-color: #3c7023;
+  color: #254419;
+}
 .scratch-script__flag {
   color: #22682e;
   font-size: 1.5em;
@@ -264,6 +288,9 @@
   .scratch-script__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
+}
+.scratch-script__layout--single {
+  grid-template-columns: minmax(0, 1fr);
 }
 .pedagogy-panel {
   overflow-wrap: anywhere;

@@ -35,7 +35,7 @@ function removeChromeProfile(chromeProfile, directory) {
 async function withBrowser(run, { fixtures = {} } = {}) {
   const root = path.resolve(__dirname, '../..');
   const allowed =
-    /^(?:index\.html|prof(?:-conducteur-historique)?\.html|generated\/catalog\.js|[a-z][a-z-]*\.(?:js|css)|src\/student\/[a-z-]+\.mjs|styles\/[a-z/-]+\.css|images\/[a-zA-Z0-9_.-]+\.(?:png|svg)|assets\/[a-z/-]+\.(?:png|svg))$/;
+    /^(?:index\.html|prof(?:-conducteur-historique)?\.html|generated\/catalog\.js|[a-z][a-z-]*\.(?:js|css)|src\/student\/[a-z-]+\.mjs|styles\/[a-z/-]+\.css|images\/[a-zA-Z0-9_.-]+\.(?:png|svg)|assets\/[a-z/-]+\.(?:png|svg|sb3))$/;
   const server = http.createServer((request, response) => {
     const name = new URL(request.url, 'http://localhost').pathname.slice(1);
     if (Object.hasOwn(fixtures, name)) {
@@ -56,6 +56,7 @@ async function withBrowser(run, { fixtures = {} } = {}) {
       '.css': 'text/css',
       '.png': 'image/png',
       '.svg': 'image/svg+xml',
+      '.sb3': 'application/zip',
     }[path.extname(name)];
     response.setHeader('Content-Type', mime);
     response.setHeader('Cache-Control', 'no-store');

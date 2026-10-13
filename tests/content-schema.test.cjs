@@ -43,7 +43,12 @@ test('schémas : scripts Scratch récursifs et variantes de pièces validés', (
       {
         category: 'control',
         label: 'Test',
-        parts: [{ condition: [{ choice: 'espace' }, ' pressée ?'], operator: true }],
+        parts: [
+          {
+            condition: [{ reporter: 'abscisse x', category: 'motion' }, ' > ', { value: '200' }],
+            operator: true,
+          },
+        ],
         children: [{ category: 'motion', label: 'Avancer', parts: ['avancer ', { value: '10' }] }],
       },
     ],
@@ -58,6 +63,18 @@ test('schémas : scripts Scratch récursifs et variantes de pièces validés', (
   const ambiguous = structuredClone(valid);
   ambiguous.blocks[0].visualScript.stacks = [];
   assert.throws(() => validateSource('module', ambiguous, 'scratch.json'), /additional properties/);
+  for (const part of [
+    { reporter: 'score' },
+    { reporter: 'score', category: 'unknown' },
+    { reporter: 'score', category: 'variables', value: 'score' },
+  ]) {
+    const badReporter = structuredClone(valid);
+    badReporter.blocks[0].visualScript.blocks[0].parts = [part];
+    assert.throws(
+      () => validateSource('module', badReporter, 'scratch.json'),
+      /invalid module structure/,
+    );
+  }
 });
 
 test('schémas : registres dédiés et conducteur historique entièrement validés', () => {
