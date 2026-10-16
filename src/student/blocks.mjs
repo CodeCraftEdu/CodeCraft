@@ -105,7 +105,12 @@ export function createBlockRenderer({
     const position = moduleLink ? block.text.indexOf(moduleLink.text) : -1;
     if (position >= 0) {
       appendInlineText(paragraph, block.text.slice(0, position));
-      paragraph.append(link(moduleLink.text, moduleUrl(moduleLink.moduleId), ''));
+      const anchor = link(moduleLink.text, moduleUrl(moduleLink.moduleId), '');
+      if (moduleLink.newTab) {
+        anchor.target = '_blank';
+        anchor.rel = 'noopener noreferrer';
+      }
+      paragraph.append(anchor);
       appendInlineText(paragraph, block.text.slice(position + moduleLink.text.length));
     } else {
       appendInlineText(paragraph, block.text);

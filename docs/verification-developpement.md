@@ -28,14 +28,15 @@ Le workflow vérifie le code sans le publier. Il démarrera lorsque cette config
 
 La configuration `eslint.config.mjs` applique les [règles recommandées d’ESLint](https://eslint.org/docs/latest/use/configure/configuration-files), avec les environnements navigateur et Node adaptés aux fichiers. Le lint couvre le code éditable, les scripts et les tests actifs ; le catalogue généré, les scénarios archivés et les ressources de cours sont exclus. Il ne fixe pas le style des guillemets ou l’indentation. Toute erreur fait échouer la commande et le contrôle GitHub.
 
-| Suite navigateur | Vérification |
-| --- | --- |
-| `catalog-browser` | 72 modules, 7 parcours, 4 domaines, alias, images réellement chargées et 72 guides |
-| `student-browser` | Transitions de tous les parcours, liens vers les tâches, rechargement, cases temporaires, Flexbox, 72 modules aux largeurs 1280/390/320 px |
-| `web-examples-browser` | Extraits réels du catalogue : proportions des images, dimensions, sélecteurs, boîtes, vrais fichiers PNG et feuille CSS locale |
-| `web-collection-browser` | Recette isolée : axes Flexbox, ajout d’une carte, retour à la ligne et débordement |
-| `scratch-lot3-browser` | Vérifications ciblées des modules Scratch et de leurs guides |
-| `teacher-browser` | Suivi, séances, impressions, OPFS, IndexedDB, sauvegardes, rechargement et conflits |
+| Suite navigateur          | Vérification                                                                                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `catalog-browser`         | Catalogue courant, parcours, domaines, alias, images réellement chargées et guides                                                               |
+| `student-browser`         | Transitions de tous les parcours, liens vers les tâches, rechargement, cases temporaires, Flexbox, tous les modules aux largeurs 1280/390/320 px |
+| `web-examples-browser`    | Extraits réels du catalogue : proportions des images, dimensions, sélecteurs, boîtes, vrais fichiers PNG et feuille CSS locale                   |
+| `web-collection-browser`  | Recette isolée : axes Flexbox, ajout d’une carte, retour à la ligne et débordement                                                               |
+| `scratch-lot3-browser`    | Vérifications ciblées des modules Scratch et de leurs guides                                                                                     |
+| `scratch-mission-browser` | Mission balises : sept chapitres, panne volontaire, téléchargements, guides, trois largeurs et retour depuis les aides                           |
+| `teacher-browser`         | Suivi, séances, impressions, OPFS, IndexedDB, sauvegardes, rechargement et conflits                                                              |
 
 Pour un contrôle ciblé : `npm run test:browser -- student-browser`. Tous ces scénarios utilisent `tests/helpers/browser.cjs` : serveur local limité aux fichiers publics, profil Chrome isolé, attente des éléments, remontée des erreurs et captures. Les fichiers privés du professeur ne sont pas ouverts. Le scénario professeur utilise des données fictives et simule les sélecteurs natifs ; leurs permissions et les manipulations dans Drive restent des vérifications manuelles.
 
@@ -47,18 +48,18 @@ En cas d’échec, `failure.html` et `failure.json` regroupent la suite, l’URL
 
 `npm run check:target -- <profil>` vérifie le formatage, le lint et la synchronisation du catalogue, puis lance les tests Node et navigateur pertinents. Les fichiers JSON continuent tous à être validés : le ciblage réduit les scénarios d’interface, pas la validation des références entre contenus. `npm run check:target -- <profil> --node-only` permet un passage intermédiaire sans Chrome ; il ne remplace pas les tests navigateur nécessaires à une modification visuelle.
 
-| Fichiers modifiés | Profil | Scénarios navigateur |
-| --- | --- | --- |
-| `content/modules/web/`, exemples et styles propres au Web | `web` | Navigation et affichage des cours Web, vrais exemples HTML/CSS, collection de cartes |
-| `content/modules/python/` | `python` | 20 cours Python, transitions et largeurs 1280/390/320 |
-| Modules `scratch-*`, scripts visuels Scratch | `scratch` | Cours Scratch et recette ciblée des guides |
-| `content/modules/robotique/` | `robotique` | Cours robotique, transitions et trois largeurs |
-| Modules `gdevelop-*` et kit | `gdevelop` | Cours GDevelop et trois largeurs ; les tests Node vérifient le kit |
-| `teacher-*.js`, `prof.html`, styles professeur | `prof` | Suivi, séances, sauvegardes fictives, conflits et impressions |
-| `app.js`, `src/student/`, styles élève communs, `pedagogy.js` côté élève | `student` | Catalogue et tous les cours ; compléter avec `web` si les iframes/exemples Web changent |
-| Scripts, schémas, manifeste et outils de développement | `tooling` | Catalogue ; tests Node du serveur, des rapports et des profils |
+| Fichiers modifiés                                                        | Profil      | Scénarios navigateur                                                                    |
+| ------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------- |
+| `content/modules/web/`, exemples et styles propres au Web                | `web`       | Navigation et affichage des cours Web, vrais exemples HTML/CSS, collection de cartes    |
+| `content/modules/python/`                                                | `python`    | 20 cours Python, transitions et largeurs 1280/390/320                                   |
+| Modules `scratch-*`, scripts visuels Scratch                             | `scratch`   | Cours Scratch et recette ciblée des guides                                              |
+| `content/modules/robotique/`                                             | `robotique` | Cours robotique, transitions et trois largeurs                                          |
+| Modules `gdevelop-*` et kit                                              | `gdevelop`  | Cours GDevelop et trois largeurs ; les tests Node vérifient le kit                      |
+| `teacher-*.js`, `prof.html`, styles professeur                           | `prof`      | Suivi, séances, sauvegardes fictives, conflits et impressions                           |
+| `app.js`, `src/student/`, styles élève communs, `pedagogy.js` côté élève | `student`   | Catalogue et tous les cours ; compléter avec `web` si les iframes/exemples Web changent |
+| Scripts, schémas, manifeste et outils de développement                   | `tooling`   | Catalogue ; tests Node du serveur, des rapports et des profils                          |
 
-Les profils sont définis dans `scripts/lib/test-targets.cjs`. Les contrôles Node communs de rendu restent inclus dans les profils de cours ; le grand fichier `pedagogy.test.cjs` teste plusieurs domaines et reste partagé. `student-browser` filtre les parcours, modules et captures d’après le profil, tout en conservant ses cas communs. La version complète, sans profil, continue à couvrir les 72 modules et les 7 parcours.
+Les profils sont définis dans `scripts/lib/test-targets.cjs`. Les contrôles Node communs de rendu restent inclus dans les profils de cours ; le grand fichier `pedagogy.test.cjs` teste plusieurs domaines et reste partagé. `student-browser` filtre les parcours, modules et captures d’après le profil, tout en conservant ses cas communs. La version complète, sans profil, couvre tous les modules et tous les parcours du catalogue courant.
 
 Pour une retouche purement textuelle, sans changement de code, de structure des données, de lien ni de ressource, limiter les contrôles à la régénération/validation du catalogue (`node scripts/build-catalog.cjs`), au formatage des fichiers modifiés et à la relecture. Lancer uniquement les tests dont une assertion dépend du texte modifié. Examiner l’encart rendu si sa longueur ou sa mise en forme change sensiblement ; les six suites Chrome ne sont pas nécessaires. Pour une modification documentaire uniquement, relire le diff et vérifier les liens modifiés, sans test applicatif.
 

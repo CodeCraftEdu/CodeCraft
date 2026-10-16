@@ -75,6 +75,7 @@ window.CODECRAFT_DATA = {
       "homeTag": "SCRATCH · GDEVELOP",
       "pathwayIds": [
         "scratch-debutants",
+        "scratch-avances",
         "gdevelop-debutants"
       ],
       "diagnosticModuleIds": []
@@ -28046,6 +28047,7693 @@ window.CODECRAFT_DATA = {
           }
         ]
       }
+    },
+    "scratch-mission-commandes": {
+      "domainId": "jeux-video",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Piloter le véhicule de Mission balises",
+      "objective": "Construire les commandes et les limites du véhicule, puis conserver la base de ton jeu.",
+      "skillIds": [
+        "scratch.keyboard",
+        "scratch.coordinates",
+        "scratch.conditions",
+        "scratch.loops"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.workspace",
+          "expectation": "Sélectionner un personnage et retrouver une sauvegarde .sb3."
+        },
+        {
+          "skillId": "scratch.loops",
+          "expectation": "Repérer les actions d’une boucle continue."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Lire un si et sa condition."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Ton véhicule et ses commandes",
+          "paragraphs": [
+            "Tu vas construire Mission balises : piloter un véhicule, activer des balises et éviter un danger. Dans ce chapitre, tu programmes les quatre flèches et les limites de la zone.",
+            "Télécharge la base ci-dessous. Dans Scratch, ouvre le menu Fichier et charge le fichier depuis ton ordinateur. Pilote, Balise et Obstacle sont déjà dessinés et nommés ; leurs zones de code sont vides. Balise reste immobile et Obstacle est caché pour le moment.",
+            "Clique sur la miniature Pilote sous la scène. Sa taille est 100 %. Tout le code de ce chapitre appartient à Pilote. Garde ces noms et tailles pendant la construction.",
+            "Garde le fichier mission-base.sb3 comme point de départ sans code. Quand les commandes seront terminées, tu sauvegarderas ton travail sous mission-01.sb3 pour le reprendre au chapitre suivant."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger la base sans code (.sb3)",
+              "path": "assets/scratch/mission/mission-base.sb3",
+              "filename": "mission-base.sb3"
+            }
+          ],
+          "illustration": {
+            "src": "assets/scratch/mission/apercu.png",
+            "alt": "Le véhicule bleu, une balise jaune à gauche et le danger rouge au centre de Mission balises.",
+            "caption": "Le jeu que tu vas construire : un véhicule, une balise et un danger."
+          }
+        },
+        {
+          "type": "details",
+          "id": "reprises",
+          "title": "Besoin de revoir une base ?",
+          "blocks": [
+            {
+              "type": "callout",
+              "id": "aide-position",
+              "title": "Revoir les positions dans un autre onglet",
+              "text": "Revoir les positions dans un autre onglet si X et Y restent difficiles. Ferme ensuite cet onglet pour retrouver ce chapitre.",
+              "moduleLink": {
+                "moduleId": "scratch-pilotage",
+                "text": "Revoir les positions dans un autre onglet",
+                "newTab": true
+              },
+              "presentation": "compact"
+            },
+            {
+              "type": "callout",
+              "id": "aide-condition",
+              "title": "Revoir les conditions dans un autre onglet",
+              "text": "Revoir les conditions dans un autre onglet si tu hésites entre une touche qui démarre une pile et une touche testée dans une boucle. Ferme ensuite cet onglet pour reprendre ici.",
+              "moduleLink": {
+                "moduleId": "scratch-reactions",
+                "text": "Revoir les conditions dans un autre onglet",
+                "newTab": true
+              },
+              "presentation": "compact"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "reperes",
+          "title": "Choisir un axe et un sens",
+          "paragraphs": [
+            "L’abscisse x donne la position horizontale : ajouter à x déplace vers la droite, ajouter un nombre négatif déplace vers la gauche. L’ordonnée y donne la position verticale : ajouter à y fait monter, ajouter un nombre négatif fait descendre.",
+            "Aller à x: 0 y: -100 fixe un départ. Ajouter 4 à x déplace depuis la position actuelle. Tu vas utiliser le départ une fois, puis répéter les tests du clavier."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "horizontal",
+          "title": "Commencer par droite et gauche",
+          "shortSteps": [
+            "Dans Événements, prends quand le drapeau vert est cliqué. Ajoute aller à x: 0 y: -100 depuis Mouvement, puis dire avec une case vide depuis Apparence pour effacer une ancienne bulle.",
+            "Ajoute répéter indéfiniment depuis Contrôle. Dans cette boucle, place deux si … alors. Pour leurs conditions, prends touche … pressée ? dans Capteurs et choisis les flèches droite et gauche.",
+            "Dans les deux si, ajoute respectivement 4 et -4 à x. Place attendre 0.03 seconde après les deux si, toujours dans la boucle.",
+            "Clique le drapeau, puis la scène. Maintiens droite, relâche, puis essaie gauche : Pilote bouge seulement tant que la touche est maintenue."
+          ],
+          "paragraphs": [
+            "La boucle repose les questions du clavier. Attendre 0.03 seconde laisse une courte pause entre deux vérifications ; cette pause reste après les tests, pas dans un si."
+          ],
+          "visualScript": {
+            "caption": "Commencer par droite et gauche",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "0"
+                  },
+                  " y: ",
+                  {
+                    "value": "-100"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche droite"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "4"
+                          },
+                          " à x"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche gauche"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-4"
+                          },
+                          " à x"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "vertical",
+          "title": "Ajouter haut et bas",
+          "shortSteps": [
+            "Dans la même boucle, ajoute les deux si ci-dessous après ceux de droite et gauche, avant attendre.",
+            "Choisis les flèches haut et bas dans Capteurs. Dans Mouvement, prends ajouter à y, avec 4 pour monter et -4 pour descendre.",
+            "Teste les quatre flèches, puis relance le drapeau depuis deux positions différentes : le véhicule doit revenir en (0, -100)."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Ajouter haut et bas",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche haut"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "4"
+                      },
+                      " à y"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche bas"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-4"
+                      },
+                      " à y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "comparer",
+          "title": "Garder le véhicule dans la zone",
+          "paragraphs": [
+            "On veut garder x entre -200 et 200, et y entre -140 et 140. Si un déplacement dépasse une borne, on remet la position sur cette borne.",
+            "Dans Opérateurs, la comparaison > demande si la valeur de gauche est plus grande que celle de droite ; \u003c demande si elle est plus petite. Glisse abscisse x ou ordonnée y depuis Mouvement dans la case de gauche. Ce sont des blocs à glisser, pas des mots à taper."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "limites",
+          "title": "Construire les quatre limites",
+          "shortSteps": [
+            "Ajoute ces quatre si dans la boucle, après les quatre commandes et avant attendre.",
+            "Pour chaque comparaison, glisse le bloc bleu abscisse x ou ordonnée y. Saisis seulement le nombre de la borne dans l’autre case.",
+            "Dans chaque si, utilise mettre x à ou mettre y à, depuis Mouvement. Le nombre remet le véhicule sur la borne qui vient d’être dépassée.",
+            "Maintiens chaque flèche jusqu’au bord et observe les champs x et y : ils s’arrêtent à -200 ou 200, puis à -140 ou 140."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Construire les quatre limites",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "abscisse x",
+                        "category": "motion"
+                      },
+                      " > ",
+                      {
+                        "value": "200"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "mettre x à ",
+                      {
+                        "value": "200"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "abscisse x",
+                        "category": "motion"
+                      },
+                      " \u003c ",
+                      {
+                        "value": "-200"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "mettre x à ",
+                      {
+                        "value": "-200"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "ordonnée y",
+                        "category": "motion"
+                      },
+                      " > ",
+                      {
+                        "value": "140"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "mettre y à ",
+                      {
+                        "value": "140"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "ordonnée y",
+                        "category": "motion"
+                      },
+                      " \u003c ",
+                      {
+                        "value": "-140"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "mettre y à ",
+                      {
+                        "value": "-140"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essais",
+          "title": "Vérifier les commandes",
+          "items": [
+            {
+              "id": "touches",
+              "text": "Relâche toutes les touches : Pilote reste immobile. Teste séparément les quatre directions."
+            },
+            {
+              "id": "bords",
+              "text": "Atteins les quatre limites et vérifie leurs coordonnées, pas seulement la position du dessin."
+            },
+            {
+              "id": "relance",
+              "text": "Relance depuis un bord, puis depuis le centre : retrouve (0, -100)."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Comparer deux vitesses sur une copie",
+          "items": [
+            {
+              "id": "conserver",
+              "text": "Sauvegarde les commandes terminées sous mission-01.sb3. Recharge le fichier que tu viens d’enregistrer et teste les quatre flèches avant de faire l’essai."
+            },
+            {
+              "id": "prevoir",
+              "text": "Dans le projet ouvert, remplace 4 par 8 à droite et -4 par -8 à gauche. Prévois ce qui change pour un appui de même durée, puis teste."
+            },
+            {
+              "id": "restaurer",
+              "text": "Sauvegarde cet essai sous mission-01-essai.sb3. Recharge ensuite ta sauvegarde des commandes terminées, mission-01.sb3 ou son nom avec suffixe : les quatre déplacements retrouvent 4 ou -4."
+            }
+          ],
+          "intro": "Depuis le menu Fichier de Scratch, sauvegarde le projet sur ton ordinateur. Repère le fichier réellement téléchargé et son dossier : un suffixe comme (1) peut être ajouté si le nom existe déjà. C’est ce fichier récent que tu rechargeras après l’essai. Modifier le projet ouvert dans Scratch ne modifie pas cette sauvegarde."
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Comparer avec la pile complète",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "modele-pilote",
+              "title": "Pilote : la pile complète",
+              "shortSteps": [
+                "Compare cette pile avec la tienne, sur Pilote. Les huit si et la pause sont dans la boucle ; le départ reste avant la boucle."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Pilote : la pile complète",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "0"
+                      },
+                      " y: ",
+                      {
+                        "value": "-100"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": ""
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "flèche droite"
+                              },
+                              " pressée ?"
+                            ]
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "4"
+                              },
+                              " à x"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "flèche gauche"
+                              },
+                              " pressée ?"
+                            ]
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "-4"
+                              },
+                              " à x"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "flèche haut"
+                              },
+                              " pressée ?"
+                            ]
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "4"
+                              },
+                              " à y"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "flèche bas"
+                              },
+                              " pressée ?"
+                            ]
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "-4"
+                              },
+                              " à y"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "abscisse x",
+                                "category": "motion"
+                              },
+                              " > ",
+                              {
+                                "value": "200"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "mettre x à ",
+                              {
+                                "value": "200"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "abscisse x",
+                                "category": "motion"
+                              },
+                              " \u003c ",
+                              {
+                                "value": "-200"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "mettre x à ",
+                              {
+                                "value": "-200"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "ordonnée y",
+                                "category": "motion"
+                              },
+                              " > ",
+                              {
+                                "value": "140"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "mettre y à ",
+                              {
+                                "value": "140"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "ordonnée y",
+                                "category": "motion"
+                              },
+                              " \u003c ",
+                              {
+                                "value": "-140"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "mettre y à ",
+                              {
+                                "value": "-140"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Référence terminée",
+              "paragraphs": [
+                "Sauvegarde ta version avant d’ouvrir cette référence dans Scratch. Elle sert à comparer ; conserve ta propre sauvegarde pour poursuivre."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger la référence Commandes (.sb3)",
+                  "path": "assets/scratch/mission/mission-commandes.sb3",
+                  "filename": "mission-commandes.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Conserver la version du prochain chapitre",
+          "paragraphs": [
+            "Garde la sauvegarde des commandes terminées que tu viens de recharger, mission-01.sb3 ou son nom avec suffixe. Pilote part de (0, -100), se déplace de 4 avec chaque flèche et reste dans les limites prévues. Balise est en (-160, 0), Obstacle reste caché et aucune variable n’est encore nécessaire.",
+            "Le chapitre suivant ajoute le score dans ce même projet. Si tu avais changé une constante pour l’essai, reprends d’abord ta sauvegarde principale."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Choisir x ou y et le signe du déplacement pour une direction.",
+        "Expliquer les tests du clavier et les limites en comparant les coordonnées.",
+        "Retrouver le même départ et conserver une sauvegarde avec les réglages de référence."
+      ],
+      "teacherGuide": {
+        "objective": "Construire les commandes et les limites du véhicule, puis conserver la base de ton jeu.",
+        "entryDiagnosis": [
+          "Faire retrouver la version de départ et lire une condition avant de construire.",
+          "Distinguer aide au clavier ou aux fichiers et aide sur le raisonnement."
+        ],
+        "preparation": [
+          "Les fichiers sont locaux dans les téléchargements du chapitre ; aucune publication Scratch ni compte élève n'est nécessaire.",
+          "Conserver le projet personnel et une sauvegarde par chapitre. Ouvrir une reprise uniquement si la version précédente manque.",
+          "Les variantes utilisent une copie d'essai. Revenir ensuite à la sauvegarde principale avec les constantes de référence."
+        ],
+        "why": "Construire les commandes et les limites du véhicule, puis conserver la base de ton jeu.",
+        "discoverySpeech": [
+          "Quel acteur exécute cette pile ?",
+          "Que prévois-tu avant de lancer ?",
+          "Quel compteur ou quelle position permettra de vérifier ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-commandes",
+            "blockId": "horizontal"
+          },
+          "comments": [
+            "La pile Pilote est entièrement construite : aucun code caché dans la base.",
+            "Les deux commandes horizontales sont un état intermédiaire, complété ensuite par Y et les limites."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi mettre la position avant la boucle ?",
+            "answer": "Pour retrouver le départ une fois, sans annuler chaque déplacement."
+          },
+          {
+            "question": "Pourquoi une case avec le mot abscisse x ne suffit-elle pas ?",
+            "answer": "Il faut le bloc bleu qui lit la position ; le texte seul ne la consulte pas."
+          },
+          {
+            "question": "Pourquoi les limites utilisent-elles mettre x à plutôt que ajouter à x ?",
+            "answer": "On ramène une position dépassée exactement sur sa borne ; on ne demande pas un déplacement supplémentaire."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-commandes",
+          "blockId": "horizontal"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-commandes",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Laisser les modèles complets disponibles après un premier essai et faire expliquer une condition plutôt que compter les blocs recopiés.",
+          "Utiliser une reprise de fichier après sauvegarde si nécessaire, en précisant les parties déjà fournies."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La touche ne déplace pas le véhicule.",
+            "helps": [
+              "Cliquer la scène puis maintenir la touche.",
+              "Retrouver le capteur de la bonne flèche.",
+              "Vérifier que son si est dans la boucle et contient le changement d’axe.",
+              "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+            ]
+          },
+          {
+            "symptom": "Le véhicule revient sans cesse au départ.",
+            "helps": [
+              "Chercher aller à (0, -100).",
+              "Faire montrer la pile et le personnage concernés avant de déplacer les blocs.",
+              "Le remettre avant la boucle, puis tester une touche.",
+              "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+            ]
+          }
+        ],
+        "notes": "Premier segment du parcours autonome Mission balises. Les notions sont construites sur le même projet. Les tests moteur du prototype et les contrôles du site ne constituent pas un essai avec un élève.",
+        "quickConductor": [
+          "Retrouver la sauvegarde attendue.",
+          "Construire un fragment et faire prévoir le résultat.",
+          "Tester la limite ou le contact, puis corriger un point.",
+          "Effectuer la variation sur copie, revenir aux réglages de reprise et sauvegarder."
+        ],
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
+    },
+    "scratch-mission-balises": {
+      "domainId": "jeux-video",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Activer les balises et compter les points",
+      "objective": "Prolonger ton véhicule avec un score, une balise qui change de côté et une victoire à six points.",
+      "skillIds": [
+        "scratch.contacts",
+        "scratch.variables",
+        "scratch.conditions",
+        "scratch.game-rules"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.keyboard",
+          "expectation": "Retrouver mission-01.sb3 et ses quatre commandes."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Distinguer une valeur de départ et une valeur qui augmente ; une reprise reste accessible dans ce chapitre."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Reprendre ton véhicule",
+          "paragraphs": [
+            "Ouvre ta sauvegarde mission-01.sb3. Vérifie les quatre directions, le départ (0, -100) et les limites. Tu conserves toute la pile de Pilote : le score et la balise auront leurs propres piles.",
+            "Si cette sauvegarde manque, la reprise ci-dessous fournit la fin de Commandes. Charge-la depuis Fichier et teste les commandes avant d’ajouter le score. Ouvrir un fichier remplace le projet affiché ; sauvegarde d’abord ton travail actuel.",
+            "Le but sera d’activer six balises. Une activation donne un point et envoie la balise de l’autre côté. À six points, les piles s’arrêtent immédiatement ; le drapeau recommence une partie."
+          ],
+          "downloads": [
+            {
+              "label": "Reprendre depuis la fin de Commandes (.sb3)",
+              "path": "assets/scratch/mission/mission-commandes.sb3",
+              "filename": "mission-commandes.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "variable",
+          "title": "Créer le compteur commun",
+          "paragraphs": [
+            "Dans Variables, clique sur Créer une variable. Nomme-la score et choisis Pour tous les sprites : Balise pourra ajouter un point et la scène pourra lire le résultat. Coche score pour afficher le compteur.",
+            "Clique sur la miniature de la scène, à droite des personnages. Le code que tu écris maintenant appartient à la scène. Mettre score à 0 remplace sa valeur au départ ; ajouter 1 à score sera l’action de Balise, au contact."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "initialisation",
+          "title": "Initialiser sur la scène",
+          "shortSteps": [
+            "Sur la scène, construis un drapeau suivi de mettre score à 0 depuis Variables.",
+            "Ajoute basculer sur l’arrière-plan secteur1 depuis Apparence. Ce décor est déjà dans la base.",
+            "Lance le drapeau : le compteur vaut 0. Clique ensuite sur Balise pour programmer les activations ; tu reviendras compléter la scène."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Initialiser sur la scène",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "basculer sur l’arrière-plan ",
+                  {
+                    "choice": "secteur1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "depart-balise",
+          "title": "Préparer Balise sans compter un ancien contact",
+          "shortSteps": [
+            "Sur Balise, ajoute un drapeau, puis aller à x: -160 y: 0.",
+            "Depuis Contrôle, prends attendre jusqu’à ce que. Glisse non depuis Opérateurs dans sa condition, puis touche Pilote ? depuis Capteurs à l’intérieur de non.",
+            "Le bloc attend que Balise et Pilote soient séparés. Ainsi, si l’ancienne partie s’est arrêtée au contact, ce contact ne donne pas un point au nouveau départ."
+          ],
+          "paragraphs": [
+            "L’attente suspend seulement la pile de Balise. La pile de Pilote continue à se lancer et replace le véhicule au départ."
+          ],
+          "visualScript": {
+            "caption": "Préparer Balise sans compter un ancien contact",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-160"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre jusqu’à ce que ",
+                  {
+                    "condition": [
+                      "non ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "Pilote"
+                          },
+                          " ?"
+                        ]
+                      }
+                    ],
+                    "operator": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "alternance",
+          "title": "Choisir l’autre position",
+          "shortSteps": [
+            "Ce si … sinon se trouve dans Contrôle. La branche du haut s’exécute quand la condition est vraie ; la branche sinon s’exécute quand elle est fausse. Une seule branche est choisie.",
+            "Dans la comparaison \u003c depuis Opérateurs, glisse abscisse x depuis Mouvement et saisis 0. Ici, l’abscisse est celle de Balise, puisque tu programmes Balise.",
+            "Si Balise est à gauche de 0, elle va en (160, 0). Sinon, elle va en (-160, 0). Tu vas placer ce bloc après l’ajout du point dans le si de contact."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Choisir l’autre position",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "abscisse x",
+                        "category": "motion"
+                      },
+                      " \u003c ",
+                      {
+                        "value": "0"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "160"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ],
+                "elseChildren": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-160"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "collecte",
+          "title": "Compter puis changer de côté",
+          "shortSteps": [
+            "Sous l’attente de séparation initiale, toujours dans Balise, ajoute cette boucle répéter indéfiniment.",
+            "Dans le si touche Pilote ?, ajoute 1 à score puis place ton si … sinon de changement de côté. Le si de position est à l’intérieur du si de contact.",
+            "Place la pause de 0.03 seconde après le si de contact, dans la boucle.",
+            "Rejoins la balise : score passe à 1 et la balise change de côté. Reste immobile : aucun autre point. Rejoins l’autre côté : score passe à 2."
+          ],
+          "paragraphs": [
+            "Les deux positions sont assez éloignées pour séparer les costumes fournis. Le changement de côté empêche le même contact de donner plusieurs points."
+          ],
+          "visualScript": {
+            "caption": "Compter puis changer de côté",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "Pilote"
+                          },
+                          " ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "1"
+                          },
+                          " à ",
+                          {
+                            "choice": "score"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "abscisse x",
+                                "category": "motion"
+                              },
+                              " \u003c ",
+                              {
+                                "value": "0"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "aller à x: ",
+                              {
+                                "value": "160"
+                              },
+                              " y: ",
+                              {
+                                "value": "0"
+                              }
+                            ]
+                          }
+                        ],
+                        "elseChildren": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "aller à x: ",
+                              {
+                                "value": "-160"
+                              },
+                              " y: ",
+                              {
+                                "value": "0"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "victoire",
+          "title": "Arrêter au sixième point",
+          "shortSteps": [
+            "Reviens sur la scène. Après le choix de secteur1, ajoute cette boucle de surveillance.",
+            "Dans > depuis Opérateurs, glisse le bloc orange score depuis Variables et saisis 5. score > 5 devient vrai dès six points.",
+            "Place stop tout depuis Contrôle dans le si. La pause de 0.03 seconde est après le si, dans la boucle.",
+            "Atteins six points : le compteur reste à 6 et les flèches ne déplacent plus Pilote. Relance : score revient à 0 et Balise repart à gauche."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Arrêter au sixième point",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "score",
+                            "category": "variables"
+                          },
+                          " > ",
+                          {
+                            "value": "5"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "stop ",
+                          {
+                            "choice": "tout"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essais",
+          "title": "Vérifier une partie",
+          "items": [
+            {
+              "id": "sans-contact",
+              "text": "Reste loin de Balise : le score reste à 0."
+            },
+            {
+              "id": "activation",
+              "text": "Active une balise et relâche les touches : un seul point, puis déplacement de la balise à l’autre position."
+            },
+            {
+              "id": "six",
+              "text": "Atteins cinq points : les commandes fonctionnent encore. Au sixième, toutes les piles s’arrêtent."
+            },
+            {
+              "id": "rejouer",
+              "text": "Relance après la victoire puis après deux points : score 0, Balise à gauche et Pilote au départ."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Essayer une partie plus courte",
+          "items": [
+            {
+              "id": "sauver",
+              "text": "Sauvegarde la version principale sous mission-02.sb3 : sa victoire reste à six points."
+            },
+            {
+              "id": "deux",
+              "text": "Dans le projet ouvert, remplace score > 5 par score > 1. Note combien d’activations termineront la partie, puis joue. Compare le résultat avec ta prévision et explique-le."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde cet essai sous mission-02-essai.sb3, puis recharge mission-02.sb3. Vérifie score > 5 sur la scène : tu poursuivras avec une victoire à six points."
+            }
+          ],
+          "intro": "Repère la sauvegarde principale que tu télécharges avant l’essai, même si son nom reçoit un suffixe. Tu modifieras ensuite le projet ouvert, puis tu rechargeras ce fichier pour poursuivre."
+        },
+        {
+          "type": "details",
+          "id": "verification-variation",
+          "title": "Vérifier après ton essai",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-variation",
+              "title": "Le seuil de victoire",
+              "paragraphs": [
+                "La partie se termine à la deuxième activation : le score augmente de 1 et 2 est la première valeur supérieure à 1.",
+                "Après la comparaison, recharge ta sauvegarde principale avec score > 5 pour poursuivre le jeu à six points."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Si le score ne réagit pas comme prévu",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "chercher",
+              "title": "Un symptôme, une vérification",
+              "paragraphs": [
+                "Le compteur monte tout seul ? Dans Balise, ajouter 1 à score doit être à l’intérieur du si touche Pilote ?, avant le changement de côté.",
+                "Le compteur revient sans cesse à 0 ? Sur la scène, mettre score à 0 est avant la boucle, pas dedans.",
+                "La balise reste collée au véhicule ? Vérifie les deux positions et le si … sinon. Ses deux branches ne sont pas deux si placés l’un après l’autre.",
+                "La partie finit au mauvais score ? Vérifie le bloc score glissé dans la comparaison et le nombre 5 ; taper le mot score ne lit pas la variable."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Comparer les deux piles nouvelles",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "modele-scene",
+              "title": "Scène : initialisation et victoire",
+              "shortSteps": [
+                "Cette pile appartient à la scène, pas à Pilote. La remise à zéro et le décor restent avant la boucle."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Scène : initialisation et victoire",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "score"
+                      },
+                      " à ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur l’arrière-plan ",
+                      {
+                        "choice": "secteur1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "stop ",
+                              {
+                                "choice": "tout"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-balise",
+              "title": "Balise : activation et alternance",
+              "shortSteps": [
+                "Cette pile appartient à Balise. Le si … sinon de position est dans le si de contact."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Balise : activation et alternance",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-160"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre jusqu’à ce que ",
+                      {
+                        "condition": [
+                          "non ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Pilote"
+                              },
+                              " ?"
+                            ]
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Pilote"
+                              },
+                              " ?"
+                            ]
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "1"
+                              },
+                              " à ",
+                              {
+                                "choice": "score"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "abscisse x",
+                                    "category": "motion"
+                                  },
+                                  " \u003c ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "aller à x: ",
+                                  {
+                                    "value": "160"
+                                  },
+                                  " y: ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseChildren": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "aller à x: ",
+                                  {
+                                    "value": "-160"
+                                  },
+                                  " y: ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Référence terminée",
+              "paragraphs": [
+                "Sauvegarde ton projet avant d’ouvrir la référence. La pile de Pilote est celle du chapitre Commandes."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger la référence Balises (.sb3)",
+                  "path": "assets/scratch/mission/mission-balises.sb3",
+                  "filename": "mission-balises.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "aide-variable",
+          "title": "Revoir les variables dans un autre onglet",
+          "text": "Revoir les variables dans un autre onglet si mettre et ajouter restent confondus. Ferme cet onglet pour revenir ici ; le prochain chapitre se suit depuis Mission balises.",
+          "moduleLink": {
+            "moduleId": "scratch-variables",
+            "text": "Revoir les variables dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Conserver la version du prochain chapitre",
+          "paragraphs": [
+            "Garde mission-02.sb3 avec les trois piles : Pilote, Balise et scène. Le score démarre à 0 ; la victoire reste à six points. Balise alterne entre (-160, 0) et (160, 0), avec une seule activation par contact.",
+            "Obstacle est encore caché. Au prochain chapitre, il deviendra un danger qui retire une vie. Tu garderas les commandes, la collecte et la surveillance de la scène."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer la remise à zéro sur la scène et l’ajout d’un point dans Balise.",
+        "Expliquer le si … sinon qui envoie Balise à l’autre position.",
+        "Vérifier une activation, l’arrêt au sixième point et le retour aux réglages après une variation."
+      ],
+      "teacherGuide": {
+        "objective": "Prolonger ton véhicule avec un score, une balise qui change de côté et une victoire à six points.",
+        "entryDiagnosis": [
+          "Faire retrouver la version de départ et lire une condition avant de construire.",
+          "Distinguer aide au clavier ou aux fichiers et aide sur le raisonnement."
+        ],
+        "preparation": [
+          "Les fichiers sont locaux dans les téléchargements du chapitre ; aucune publication Scratch ni compte élève n'est nécessaire.",
+          "Conserver le projet personnel et une sauvegarde par chapitre. Ouvrir une reprise uniquement si la version précédente manque.",
+          "Les variantes utilisent une copie d'essai. Revenir ensuite à la sauvegarde principale avec les constantes de référence."
+        ],
+        "why": "Prolonger ton véhicule avec un score, une balise qui change de côté et une victoire à six points.",
+        "discoverySpeech": [
+          "Quel acteur exécute cette pile ?",
+          "Que prévois-tu avant de lancer ?",
+          "Quel compteur ou quelle position permettra de vérifier ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-balises",
+            "blockId": "collecte"
+          },
+          "comments": [
+            "Pilote est conservé ; la scène et Balise reçoivent chacune une pile.",
+            "L’attente initiale évite de compter un ancien contact lors de la remise à zéro.",
+            "La comparaison de position est évaluée une seule fois par le si … sinon."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi le compteur est-il pour tous les sprites ?",
+            "answer": "Balise l’écrit et la scène le lit pour décider la victoire."
+          },
+          {
+            "question": "Pourquoi score > 5 termine à six ?",
+            "answer": "Le score augmente d’un point par activation ; six est la première valeur supérieure à cinq."
+          },
+          {
+            "question": "À quoi sert la séparation avant la boucle de Balise ?",
+            "answer": "À attendre la fin d’un ancien contact au redémarrage, avant de surveiller de nouvelles activations."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-balises",
+          "blockId": "collecte"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-balises",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Laisser les modèles complets disponibles après un premier essai et faire expliquer une condition plutôt que compter les blocs recopiés.",
+          "Utiliser une reprise de fichier après sauvegarde si nécessaire, en précisant les parties déjà fournies."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le score monte sans contact.",
+            "helps": [
+              "Repérer ajouter 1 à score.",
+              "Faire montrer la pile et le personnage concernés avant de déplacer les blocs.",
+              "Le placer dans le si touche Pilote ?, avant le changement de côté.",
+              "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+            ]
+          },
+          {
+            "symptom": "La balise change deux fois de côté.",
+            "helps": [
+              "Comparer si … sinon et deux si successifs.",
+              "Faire montrer la pile et le personnage concernés avant de déplacer les blocs.",
+              "Conserver une seule comparaison pour choisir une seule position.",
+              "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+            ]
+          }
+        ],
+        "notes": "Premier segment du parcours autonome Mission balises. Les notions sont construites sur le même projet. Les tests moteur du prototype et les contrôles du site ne constituent pas un essai avec un élève.",
+        "quickConductor": [
+          "Retrouver la sauvegarde attendue.",
+          "Construire un fragment et faire prévoir le résultat.",
+          "Tester la limite ou le contact, puis corriger un point.",
+          "Effectuer la variation sur copie, revenir aux réglages de reprise et sauvegarder."
+        ],
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
+    },
+    "scratch-mission-vies": {
+      "domainId": "jeux-video",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Ajouter des vies et un danger",
+      "objective": "Retirer une seule vie par contact continu et tester les deux fins dans ton jeu de balises.",
+      "skillIds": [
+        "scratch.contacts",
+        "scratch.variables",
+        "scratch.conditions",
+        "scratch.game-rules"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Retrouver mission-02.sb3 avec score remis à zéro et victoire à six."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Lire le si … sinon utilisé pour les deux positions de Balise."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Reprendre le jeu de balises",
+          "paragraphs": [
+            "Ouvre mission-02.sb3. Tu conserves les piles de Pilote et de Balise. Sur la scène, tu ajouteras les vies et une règle de défaite avant la victoire.",
+            "Si ton fichier manque, charge la reprise ci-dessous après avoir sauvegardé ton travail actuel. Elle contient le score et les deux positions de Balise, avec la victoire à six points.",
+            "Un contact prolongé avec Obstacle retirera une seule vie. Il faudra se séparer puis revenir pour en perdre une autre. À zéro vie, la partie s’arrêtera."
+          ],
+          "downloads": [
+            {
+              "label": "Reprendre depuis la fin de Balises (.sb3)",
+              "path": "assets/scratch/mission/mission-balises.sb3",
+              "filename": "mission-balises.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "variable",
+          "title": "Préparer trois vies sur la scène",
+          "paragraphs": [
+            "Dans Variables, crée vies pour tous les sprites et coche son affichage. Sur la scène, ajoute mettre vies à 3 juste après mettre score à 0, avant le choix du décor et la boucle.",
+            "Le drapeau remettra score à 0 et vies à 3 une seule fois. Obstacle retirera ensuite une vie au contact. La scène restera responsable de décider la fin."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "depart-obstacle",
+          "title": "Placer et montrer Obstacle",
+          "shortSteps": [
+            "Clique sur Obstacle. Ajoute un drapeau, aller à x: 0 y: 0 depuis Mouvement, puis montrer depuis Apparence : il était caché dans la base.",
+            "Ajoute attendre jusqu’à ce que non touche Pilote ?, comme dans Balise. Cette séparation initiale évite de compter un ancien contact au drapeau.",
+            "Lance : Obstacle apparaît au centre. Pilote reste pilotable avec sa propre pile."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Placer et montrer Obstacle",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "0"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "montrer"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre jusqu’à ce que ",
+                  {
+                    "condition": [
+                      "non ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "Pilote"
+                          },
+                          " ?"
+                        ]
+                      }
+                    ],
+                    "operator": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "deux-conditions",
+          "title": "Vérifier le contact et les vies restantes",
+          "paragraphs": [
+            "Dans Opérateurs, et réunit deux conditions : les deux doivent être vraies pour entrer dans le si. Place vies > 0 dans une case et touche Pilote ? dans l’autre.",
+            "Glisse le bloc vies depuis Variables dans >, puis saisis 0. Ce test évite de retirer une vie quand le compteur est déjà à zéro.",
+            "Après le retrait, non touche Pilote ? devient vrai uniquement quand les costumes sont séparés. Une attente d’une durée fixe ne garantit pas cette séparation."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "contact",
+          "title": "Retirer une vie puis attendre la séparation",
+          "shortSteps": [
+            "Dans Obstacle, après la séparation initiale, ajoute cette boucle. Dans son si, réunis vies > 0 et touche Pilote ? avec et.",
+            "Dans le si, place ajouter -1 à vies, puis attendre jusqu’à ce que non touche Pilote ?. L’attente reste juste après le retrait, dans le même si.",
+            "Place attendre 0.03 seconde après le si, dans la boucle. Garde les déplacements sur Pilote : il doit pouvoir s’éloigner pendant qu’Obstacle attend.",
+            "Rejoins le danger et relâche les touches pendant cinq secondes : les vies restent à 2. Éloigne-toi complètement puis reviens : elles passent à 1."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Retirer une vie puis attendre la séparation",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "condition": [
+                              {
+                                "reporter": "vies",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "0"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " et ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Pilote"
+                              },
+                              " ?"
+                            ]
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-1"
+                          },
+                          " à ",
+                          {
+                            "choice": "vies"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre jusqu’à ce que ",
+                          {
+                            "condition": [
+                              "non ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "Pilote"
+                                  },
+                                  " ?"
+                                ]
+                              }
+                            ],
+                            "operator": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "defaite",
+          "title": "Vérifier la défaite avant la victoire",
+          "shortSteps": [
+            "Reviens sur la scène. Dans sa boucle, remplace le si score > 5 par un si … sinon. Le test extérieur est vies \u003c 1.",
+            "Place stop tout dans la branche du haut. Dans sinon, replace ton ancien si score > 5 avec son stop tout. La pause de 0.03 seconde reste après le grand si … sinon.",
+            "Le programme regarde d’abord la défaite. S’il reste des vies, il peut ensuite vérifier la victoire.",
+            "Perds ta dernière vie : vies affiche 0 et les commandes s’arrêtent. Relance puis active six balises en évitant le danger : score affiche 6 et la partie s’arrête aussi."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Vérifier la défaite avant la victoire",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "vies",
+                            "category": "variables"
+                          },
+                          " \u003c ",
+                          {
+                            "value": "1"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "stop ",
+                          {
+                            "choice": "tout"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseChildren": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "stop ",
+                              {
+                                "choice": "tout"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essais",
+          "title": "Tester les contacts et les deux fins",
+          "items": [
+            {
+              "id": "maintien",
+              "text": "Lance avec trois vies. Reste cinq secondes au contact : le compteur reste à 2.",
+              "hint": "Obstacle attend la séparation après le retrait ; la pause de 0.03 seconde est une autre attente."
+            },
+            {
+              "id": "sortir",
+              "text": "Sors du danger avec les flèches. Reviens une fois : le compteur passe à 1."
+            },
+            {
+              "id": "zero",
+              "text": "Après une nouvelle séparation, reviens : vies atteint 0 et le jeu s’arrête."
+            },
+            {
+              "id": "victoire",
+              "text": "Relance et atteins six points sans perdre toutes tes vies : la victoire arrête aussi le jeu."
+            },
+            {
+              "id": "relance",
+              "text": "Relance après chaque fin, puis depuis un contact : retrouve score 0, vies 3, Pilote en (0, -100), Balise à gauche et Obstacle au centre."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Prévoir les dégâts sur une copie",
+          "items": [
+            {
+              "id": "copie",
+              "text": "Sauvegarde mission-03.sb3 avec trois vies et repère ce fichier pour le retour après l’essai."
+            },
+            {
+              "id": "quatre",
+              "text": "Dans le projet ouvert, change seulement le départ de vies à 4. Note les valeurs prévues après deux contacts séparés, puis teste. Compare les valeurs observées avec ta prévision et explique-les."
+            },
+            {
+              "id": "expliquer",
+              "text": "Explique pourquoi ajouter une attente dans la pile de déplacement pourrait empêcher de sortir du danger."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde mission-03-essai.sb3, puis recharge mission-03.sb3 et vérifie mettre vies à 3 sur la scène."
+            }
+          ],
+          "intro": "Repère la sauvegarde principale que tu télécharges avant l’essai, même si son nom reçoit un suffixe. Tu modifieras ensuite le projet ouvert, puis tu rechargeras ce fichier pour poursuivre."
+        },
+        {
+          "type": "details",
+          "id": "verification-variation",
+          "title": "Vérifier après ton essai",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-variation",
+              "title": "Les vies après chaque contact",
+              "paragraphs": [
+                "Après le premier contact, les vies passent de 4 à 3. Après une séparation et un nouveau contact, elles passent de 3 à 2. Rester au contact ne retire pas une autre vie.",
+                "Après la comparaison, recharge ta sauvegarde principale avec mettre vies à 3 pour poursuivre."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Si les vies ou les commandes restent bloquées",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "chercher",
+              "title": "Retrouver la pile responsable",
+              "paragraphs": [
+                "Les vies descendent pendant un contact ? Cherche chaque ajouter -1 à vies. Il appartient à une seule pile, dans Obstacle ; son attente de séparation doit être dans le même si.",
+                "Pilote ne peut plus sortir ? Sa pile ne doit contenir aucune attente de séparation. Cette attente appartient à Obstacle, dans une autre pile qui peut rester suspendue.",
+                "Obstacle reste invisible ? Vérifie sa miniature, son bloc montrer et sa position (0, 0).",
+                "Le nouveau départ donne déjà un dégât ? Vérifie le départ de Pilote et l’attente de séparation initiale d’Obstacle, avant sa boucle."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Comparer les piles modifiées",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "modele-scene",
+              "title": "Scène : valeurs de départ et deux fins",
+              "shortSteps": [
+                "Il n’y a qu’une pile de décision sur la scène. L’ancien test de victoire est dans sinon, sans deuxième surveillance indépendante."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Scène : valeurs de départ et deux fins",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "score"
+                      },
+                      " à ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vies"
+                      },
+                      " à ",
+                      {
+                        "value": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur l’arrière-plan ",
+                      {
+                        "choice": "secteur1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "vies",
+                                "category": "variables"
+                              },
+                              " \u003c ",
+                              {
+                                "value": "1"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "stop ",
+                              {
+                                "choice": "tout"
+                              }
+                            ]
+                          }
+                        ],
+                        "elseChildren": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "score",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "5"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "control",
+                                "label": "Contrôle",
+                                "parts": [
+                                  "stop ",
+                                  {
+                                    "choice": "tout"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-obstacle",
+              "title": "Obstacle : la surveillance complète",
+              "shortSteps": [
+                "La première attente protège le départ ; celle dans le si protège chaque contact continu. Pilote et Balise gardent leurs piles du chapitre précédent."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Obstacle : la surveillance complète",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "0"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "montrer"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre jusqu’à ce que ",
+                      {
+                        "condition": [
+                          "non ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Pilote"
+                              },
+                              " ?"
+                            ]
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "vies",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " et ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "Pilote"
+                                  },
+                                  " ?"
+                                ]
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "-1"
+                              },
+                              " à ",
+                              {
+                                "choice": "vies"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "attendre jusqu’à ce que ",
+                              {
+                                "condition": [
+                                  "non ",
+                                  {
+                                    "condition": [
+                                      "touche ",
+                                      {
+                                        "choice": "Pilote"
+                                      },
+                                      " ?"
+                                    ]
+                                  }
+                                ],
+                                "operator": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Référence terminée",
+              "paragraphs": [
+                "Sauvegarde ton travail avant d’ouvrir la référence. Tu peux comparer les quatre piles du jeu et retrouver le propriétaire de chacune."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger la référence Vies (.sb3)",
+                  "path": "assets/scratch/mission/mission-vies.sb3",
+                  "filename": "mission-vies.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "aide-contact",
+          "title": "Revoir le contact prolongé dans un autre onglet",
+          "text": "Revoir le contact prolongé dans un autre onglet pour comparer l’attente et la séparation. Dans cet exemple indépendant, le danger s’appelle Danger ; ici, il s’appelle Obstacle. Ferme l’onglet pour retrouver ton jeu.",
+          "moduleLink": {
+            "moduleId": "scratch-vies-contacts",
+            "text": "Revoir le contact prolongé dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Garder ton premier jeu complet",
+          "paragraphs": [
+            "Sauvegarde mission-03.sb3 : commandes de 4, limites prévues, score 0 et vies 3 au départ, victoire à six points ou défaite à zéro vie. Les deux positions de Balise et le danger fixe restent ceux de la référence.",
+            "Tu peux rejouer et faire expliquer les règles à quelqu’un. Garde cette version pour la suite de Mission balises, où des obstacles mobiles remplaceront le danger fixe."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Expliquer la différence entre attendre une durée et attendre la séparation.",
+        "Garder les commandes actives pendant que la surveillance du contact attend.",
+        "Tester contact prolongé, retour, dernière vie, victoire et nouvelle partie.",
+        "Retrouver les trois vies de référence après l’expérience sur une copie."
+      ],
+      "teacherGuide": {
+        "objective": "Retirer une seule vie par contact continu et tester les deux fins dans ton jeu de balises.",
+        "entryDiagnosis": [
+          "Faire retrouver la version de départ et lire une condition avant de construire.",
+          "Distinguer aide au clavier ou aux fichiers et aide sur le raisonnement."
+        ],
+        "preparation": [
+          "Les fichiers sont locaux dans les téléchargements du chapitre ; aucune publication Scratch ni compte élève n'est nécessaire.",
+          "Conserver le projet personnel et une sauvegarde par chapitre. Ouvrir une reprise uniquement si la version précédente manque.",
+          "Les variantes utilisent une copie d'essai. Revenir ensuite à la sauvegarde principale avec les constantes de référence."
+        ],
+        "why": "Retirer une seule vie par contact continu et tester les deux fins dans ton jeu de balises.",
+        "discoverySpeech": [
+          "Quel acteur exécute cette pile ?",
+          "Que prévois-tu avant de lancer ?",
+          "Quel compteur ou quelle position permettra de vérifier ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-vies",
+            "blockId": "contact"
+          },
+          "comments": [
+            "Une seule pile retire les vies, dans Obstacle ; les commandes restent dans Pilote.",
+            "La scène teste la défaite avant la victoire. L’arrêt est immédiat à ce stade, sans annonce suspendue.",
+            "La première attente de séparation sert au démarrage ; celle après le retrait sert à chaque contact."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Combien de vies perd-on pendant cinq secondes au contact ?",
+            "answer": "Une seule avant la séparation."
+          },
+          {
+            "question": "Pourquoi les flèches fonctionnent-elles encore pendant l’attente ?",
+            "answer": "Le déplacement s’exécute dans la pile de Pilote, pas dans celle d’Obstacle."
+          },
+          {
+            "question": "Si les deux conditions de fin sont vraies, laquelle est testée en premier ?",
+            "answer": "La défaite, parce que vies \u003c 1 est le test extérieur ; la victoire se trouve dans sinon."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-vies",
+          "blockId": "contact"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-vies",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Laisser les modèles complets disponibles après un premier essai et faire expliquer une condition plutôt que compter les blocs recopiés.",
+          "Utiliser une reprise de fichier après sauvegarde si nécessaire, en précisant les parties déjà fournies."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Les vies disparaissent rapidement.",
+            "helps": [
+              "Chercher tous les retraits de vies.",
+              "Faire montrer la pile et le personnage concernés avant de déplacer les blocs.",
+              "Garder une seule surveillance et l’attente dans le même si.",
+              "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+            ]
+          },
+          {
+            "symptom": "Le redémarrage compte un contact ancien.",
+            "helps": [
+              "Vérifier le départ de Pilote.",
+              "Faire montrer la pile et le personnage concernés avant de déplacer les blocs.",
+              "Vérifier l’attente initiale avant la boucle d’Obstacle.",
+              "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+            ]
+          }
+        ],
+        "notes": "Premier segment du parcours autonome Mission balises. Les notions sont construites sur le même projet. Les tests moteur du prototype et les contrôles du site ne constituent pas un essai avec un élève.",
+        "quickConductor": [
+          "Retrouver la sauvegarde attendue.",
+          "Construire un fragment et faire prévoir le résultat.",
+          "Tester la limite ou le contact, puis corriger un point.",
+          "Effectuer la variation sur copie, revenir aux réglages de reprise et sauvegarder."
+        ],
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
+    },
+    "scratch-mission-clones": {
+      "domainId": "jeux-video",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Créer les obstacles mobiles de Mission balises",
+      "objective": "Remplacer le danger fixe par des clones qui traversent la zone et disparaissent à la sortie ou au contact.",
+      "skillIds": [
+        "scratch.clones",
+        "scratch.coordinates",
+        "scratch.loops",
+        "scratch.conditions",
+        "scratch.variables"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.contacts",
+          "expectation": "Retrouver mission-03.sb3 et expliquer le retrait d’une vie par contact avec le danger fixe."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Lire une variable commune et distinguer sa valeur de départ d’une modification."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Construire une comparaison et réunir deux conditions avec et."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Reprendre ton jeu avec ses vies",
+          "paragraphs": [
+            "Ouvre ta sauvegarde principale mission-03.sb3, ou son nom avec suffixe. Vérifie le départ avec trois vies, le score à zéro et les quatre commandes. Sauvegarde cette version avant de transformer Obstacle.",
+            "Tu gardes les piles de Pilote et de Balise. Sur la scène, tu ajouteras seulement une vitesse commune ; la décision de victoire ou de défaite reste en place.",
+            "Le danger fixe va devenir un modèle caché qui fabrique des copies mobiles. Chaque copie pourra retirer une vie puis disparaître. Deux copies différentes peuvent donc retirer deux vies, même si leurs contacts sont rapprochés.",
+            "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Vies."
+          ],
+          "downloads": [
+            {
+              "label": "Reprendre depuis la fin de Vies (.sb3)",
+              "path": "assets/scratch/mission/mission-vies.sb3",
+              "filename": "mission-vies.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "transition",
+          "title": "Retirer la surveillance du danger fixe",
+          "paragraphs": [
+            "Clique sur Obstacle. Son ancienne pile commence par le drapeau, place le danger au centre, le montre et surveille le contact avec une attente de séparation.",
+            "Saisis cette pile entière par son chapeau de drapeau, puis dépose-la dans la palette des blocs pour la supprimer. La zone de code d’Obstacle doit être vide. Les piles des autres personnages et de la scène restent à leur place.",
+            "Tu vas construire deux nouvelles piles dans Obstacle : le drapeau fabrique les copies ; quand je commence comme un clone fait agir chaque copie. L’ancien retrait de vie et ses attentes de séparation sont retirés avec la pile fixe."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "vitesse",
+          "title": "Préparer la vitesse commune",
+          "shortSteps": [
+            "Dans Variables, crée vitesseObstacle pour tous les sprites. Décoche son affichage : tu gardes les compteurs score et vies visibles.",
+            "Clique sur la scène. Dans sa pile de drapeau, ajoute mettre vitesseObstacle à 4 après mettre vies à 3, avant le décor et la boucle de décision.",
+            "La scène donne la valeur de départ ; les clones liront ce même bloc orange pour avancer. Lance le drapeau et clique sur le bloc vitesseObstacle dans la palette : il indique 4."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Préparer la vitesse commune",
+            "blocks": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "vitesseObstacle"
+                  },
+                  " à ",
+                  {
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "premiere-copie",
+          "title": "Faire apparaître une seule copie",
+          "shortSteps": [
+            "Reviens sur Obstacle. Dans Événements, prends un nouveau drapeau. Ajoute cacher depuis Apparence, puis attendre 1.2 seconde et créer un clone de moi-même depuis Contrôle.",
+            "Choisis moi-même dans le menu de création : tu copies Obstacle. Cette première pile ne crée qu’une seule copie ; tu ajouteras une boucle plus tard.",
+            "Le clone hérite de l’apparence et de la visibilité du modèle. Comme le modèle est caché, tu dois encore apprendre à la copie à se montrer."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Faire apparaître une seule copie",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "cacher"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "1.2"
+                  },
+                  " seconde"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "créer un clone de ",
+                  {
+                    "choice": "moi-même"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "depart-clone",
+          "title": "Donner sa propre pile à la copie",
+          "shortSteps": [
+            "Toujours dans Obstacle, prends quand je commence comme un clone depuis Contrôle pour commencer une deuxième pile séparée du drapeau.",
+            "Ajoute aller à x: -210 y: 0 depuis Mouvement puis montrer depuis Apparence. Cette pile se lance sur la copie, pas sur le modèle original.",
+            "Lance le drapeau. Après 1.2 seconde, une copie apparaît à gauche et reste immobile. Le modèle reste caché. Clique sur le bouton rouge d’arrêt avant de compléter les piles."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Donner sa propre pile à la copie",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "quand je commence comme un clone"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-210"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "montrer"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "mouvement",
+          "title": "Traverser la zone puis supprimer la copie",
+          "shortSteps": [
+            "Dans la pile de démarrage du clone, après montrer, ajoute répéter jusqu’à ce que depuis Contrôle. Sa condition est abscisse x > 210 : glisse le bloc bleu depuis Mouvement dans > depuis Opérateurs, puis saisis 210.",
+            "Dans cette boucle, ajoute à x le bloc orange vitesseObstacle depuis Variables, puis attends 0.03 seconde. Glisse la variable dans la case numérique : taper son nom ne lit pas sa valeur.",
+            "Après la boucle, place supprimer ce clone depuis Contrôle. La boucle continue tant que x > 210 est faux, puis la copie se supprime quand elle dépasse cette limite à droite.",
+            "Lance et laisse Pilote au départ : une copie traverse de gauche à droite et disparaît. Aucun dégât n’est encore programmé. Cacher rendrait seulement la copie invisible ; supprimer la retire du jeu."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Traverser la zone puis supprimer la copie",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "quand je commence comme un clone"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-210"
+                  },
+                  " y: ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "montrer"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter jusqu’à ce que ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "abscisse x",
+                        "category": "motion"
+                      },
+                      " > ",
+                      {
+                        "value": "210"
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "reporter": "vitesseObstacle",
+                        "category": "variables"
+                      },
+                      " à x"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "supprimer ce clone"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "hauteur",
+          "title": "Choisir une hauteur au départ",
+          "shortSteps": [
+            "Dans Opérateurs, prends nombre aléatoire entre et règle ses deux bornes à -100 et 100. Le tirage donne une hauteur comprise entre ces deux valeurs.",
+            "Dans la pile du clone, remplace seulement le 0 de y par ce bloc vert. Garde x à -210. Le tirage se fait une fois au départ de chaque copie, avant la boucle de déplacement.",
+            "Relance plusieurs fois : la copie peut partir plus haut ou plus bas. Chaque trajet reste horizontal, car la boucle change x et garde y."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Choisir une hauteur au départ",
+            "blocks": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-210"
+                  },
+                  " y: ",
+                  {
+                    "reporter": "nombre aléatoire entre -100 et 100",
+                    "category": "operators"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "fabrique",
+          "title": "Produire les obstacles régulièrement",
+          "shortSteps": [
+            "Dans la pile de drapeau d’Obstacle, ajoute répéter indéfiniment après cacher. Déplace les deux blocs déjà construits, attendre 1.2 seconde et créer un clone de moi-même, à l’intérieur de cette boucle, dans cet ordre.",
+            "La création reste dans la pile de drapeau. La pile quand je commence comme un clone garde seulement le trajet de chaque copie.",
+            "Lance et descends Pilote jusqu’à y = -140 pour observer les traversées. Plusieurs copies avancent, chacune à sa hauteur. Le modèle n’apparaît pas au centre.",
+            "L’intervalle de 1.2 seconde règle les départs ; vitesseObstacle règle le déplacement de chaque copie. La pause de 0.03 seconde rythme les déplacements."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Produire les obstacles régulièrement",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "cacher"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "1.2"
+                      },
+                      " seconde"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "créer un clone de ",
+                      {
+                        "choice": "moi-même"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "contact",
+          "title": "Retirer une vie puis supprimer le clone touché",
+          "shortSteps": [
+            "Dans la pile quand je commence comme un clone, place ce si dans répéter jusqu’à ce que, après ajouter vitesseObstacle à x et avant attendre 0.03 seconde.",
+            "Depuis Opérateurs, et réunit vies > 0 et touche Pilote ?. Glisse vies depuis Variables dans > et prends touche Pilote ? dans Capteurs. Les deux conditions doivent être vraies.",
+            "Dans le si, ajoute -1 à vies puis supprimer ce clone. Garde aussi la suppression après la boucle : l’une sert au contact, l’autre à la sortie sans contact.",
+            "Lance et rejoins une copie : une vie disparaît, puis cette copie aussi. Elle ne peut plus retirer une autre vie. Une autre copie peut te toucher à son tour.",
+            "L’attente de séparation du danger fixe est remplacée par la suppression du clone. Les commandes restent sur Pilote ; les trois vies et les deux fins restent gérées par la scène."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Retirer une vie puis supprimer le clone touché",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "condition": [
+                          {
+                            "reporter": "vies",
+                            "category": "variables"
+                          },
+                          " > ",
+                          {
+                            "value": "0"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " et ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "Pilote"
+                          },
+                          " ?"
+                        ]
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-1"
+                      },
+                      " à ",
+                      {
+                        "choice": "vies"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "supprimer ce clone"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essais",
+          "title": "Tester les copies et les deux fins",
+          "items": [
+            {
+              "id": "sans-contact",
+              "text": "Lance, puis descends jusqu’à y = -140. Laisse passer plusieurs copies : les vies restent à 3 et les copies qui dépassent x = 210 disparaissent."
+            },
+            {
+              "id": "contact",
+              "text": "Rejoins un obstacle mobile. Observe la baisse d’une vie et la disparition de cette copie. Repère une autre copie pour vérifier qu’elle peut retirer une autre vie."
+            },
+            {
+              "id": "defaite",
+              "text": "Rejoins des copies jusqu’à zéro vie : les commandes et les créations s’arrêtent. Les copies encore présentes disparaissent aussitôt."
+            },
+            {
+              "id": "victoire",
+              "text": "Relance, puis active six balises en évitant les copies. À six points, le jeu s’arrête aussi."
+            },
+            {
+              "id": "relance",
+              "text": "Relance après chaque fin : score 0, vies 3, vitesseObstacle 4, Pilote au départ et Balise à gauche. La première nouvelle copie arrive après 1.2 seconde."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Comparer vitesse et fréquence",
+          "items": [
+            {
+              "id": "sauver",
+              "text": "Sauvegarde le jeu terminé sous mission-04.sb3. Repère le fichier récent, même si un suffixe est ajouté, recharge-le et vérifie les départs avant l’essai."
+            },
+            {
+              "id": "vitesse",
+              "text": "Dans le projet ouvert, change seulement mettre vitesseObstacle à 4 en mettre vitesseObstacle à 8 sur la scène. Prévois l’effet sur le temps de traversée et sur l’intervalle entre deux créations, puis lance et observe."
+            },
+            {
+              "id": "intervalle",
+              "text": "Remets la vitesse de départ à 4. Change seulement attendre 1.2 seconde en attendre 0.6 seconde dans la fabrique. Prévois ce qui change pour les départs et pour le déplacement d’une copie, puis teste."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde l’essai sous mission-04-essai.sb3. Recharge ensuite le fichier principal mission-04.sb3, ou son nom avec suffixe. Vérifie vitesseObstacle à 4 et l’intervalle à 1.2 seconde pour poursuivre."
+            }
+          ],
+          "intro": "Compare une seule modification à la fois. Place Pilote à y = -140 pendant les observations pour laisser les obstacles traverser sans contact."
+        },
+        {
+          "type": "details",
+          "id": "verification-variation",
+          "title": "Vérifier après ton essai",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-variation",
+              "title": "Deux réglages différents",
+              "paragraphs": [
+                "Avec vitesseObstacle à 8, chaque copie avance deux fois plus à chaque tour qu’avec 4 : la traversée est plus rapide. La fabrique attend toujours 1.2 seconde entre les créations.",
+                "Avec la vitesse revenue à 4 et l’intervalle à 0.6 seconde, les copies partent deux fois plus souvent. Le déplacement de chaque copie garde la même vitesse. Après les essais, la sauvegarde principale retrouve 4 et 1.2."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Si les copies ne se comportent pas comme prévu",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "chercher",
+              "title": "Retrouver la pile concernée",
+              "paragraphs": [
+                "Rien n’apparaît ? Sur Obstacle, vérifie le menu moi-même de la création, puis le chapeau quand je commence comme un clone et montrer dans la deuxième pile.",
+                "Les copies se multiplient très vite ? La création doit être dans la pile de drapeau, avec son attente de 1.2 seconde, pas dans la pile de démarrage des clones.",
+                "Une copie reste à droite ? Vérifie x > 210, le sens positif du déplacement et supprimer ce clone après la boucle.",
+                "Une copie fait perdre plusieurs vies ou le centre reste dangereux sans copie ? Recherche l’ancienne pile du danger fixe. Elle doit être retirée entièrement. Dans la nouvelle pile, supprimer ce clone vient juste après ajouter -1 à vies.",
+                "Les clones changent sans cesse de hauteur ? Le tirage de y appartient au placement initial, avant la boucle ; la boucle change seulement x."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Comparer les deux piles d’Obstacle",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "modele-fabrique",
+              "title": "Obstacle : le modèle caché crée",
+              "shortSteps": [
+                "Cette pile est la seule pile de drapeau d’Obstacle. Elle garde le modèle caché et sépare les créations de 1.2 seconde."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Obstacle : le modèle caché crée",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "cacher"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "1.2"
+                          },
+                          " seconde"
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "créer un clone de ",
+                          {
+                            "choice": "moi-même"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-clone",
+              "title": "Obstacle : chaque copie avance et se supprime",
+              "shortSteps": [
+                "Cette pile appartient aussi à Obstacle, mais démarre sur chaque clone. Le retrait de vie a sa suppression ; la fin du trajet a l’autre suppression."
+              ],
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Obstacle : chaque copie avance et se supprime",
+                "blocks": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "quand je commence comme un clone"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-210"
+                      },
+                      " y: ",
+                      {
+                        "reporter": "nombre aléatoire entre -100 et 100",
+                        "category": "operators"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "montrer"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter jusqu’à ce que ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "abscisse x",
+                            "category": "motion"
+                          },
+                          " > ",
+                          {
+                            "value": "210"
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "reporter": "vitesseObstacle",
+                            "category": "variables"
+                          },
+                          " à x"
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "vies",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " et ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "Pilote"
+                                  },
+                                  " ?"
+                                ]
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "-1"
+                              },
+                              " à ",
+                              {
+                                "choice": "vies"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "supprimer ce clone"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "supprimer ce clone"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Référence terminée",
+              "paragraphs": [
+                "Sauvegarde ton travail avant d’ouvrir la référence. Compare les deux piles d’Obstacle et l’initialisation de vitesseObstacle sur la scène. Recharge ensuite ton propre fichier principal pour poursuivre."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger la référence Clones (.sb3)",
+                  "path": "assets/scratch/mission/mission-clones.sb3",
+                  "filename": "mission-clones.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "aide-clones",
+          "title": "Revoir les clones dans un autre onglet",
+          "text": "Revoir les clones dans un autre onglet. L’aide crée une série de trois balles ; ton jeu produit des obstacles jusqu’à la fin de la partie. Compare le rôle du modèle et celui des copies, puis ferme cet onglet pour reprendre Mission balises.",
+          "moduleLink": {
+            "moduleId": "scratch-clones-mobiles",
+            "text": "Revoir les clones dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Garder le jeu avec ses obstacles mobiles",
+          "paragraphs": [
+            "Garde ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe : vitesseObstacle 4, une création toutes les 1.2 seconde, départ des clones en x = -210 et y entre -100 et 100, suppression après x > 210 ou après un contact.",
+            "Obstacle possède deux piles, sans l’ancienne surveillance fixe. Pilote et Balise gardent les leurs ; la scène initialise score, vies et vitesseObstacle puis surveille les deux fins. Le score repart à 0, les vies à 3 et la victoire reste à six points.",
+            "Le prochain chapitre fera évoluer le secteur et la vitesse pendant la partie. Tu conserveras ce même jeu."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer la pile qui crée les copies et celle que chaque copie exécute.",
+        "Placer le tirage de hauteur au départ et expliquer l’arrêt de la boucle à la sortie.",
+        "Supprimer un clone après son unique dégât et retirer l’ancienne surveillance fixe.",
+        "Prévoir l’effet de la vitesse et de l’intervalle, puis restaurer la version principale."
+      ],
+      "teacherGuide": {
+        "objective": "Remplacer le danger fixe par des clones qui traversent la zone et disparaissent à la sortie ou au contact.",
+        "entryDiagnosis": [
+          "Faire rouvrir la version Vies et montrer les piles de Pilote, Balise, Obstacle et de la scène.",
+          "Faire expliquer pourquoi l’ancien danger attendait une séparation avant un deuxième dégât."
+        ],
+        "preparation": [
+          "Les téléchargements du cours permettent de travailler sans compte ; conserver mission-03 avant la transformation.",
+          "Construire depuis le fichier de l’élève. La reprise Vies sert si ce fichier manque ; la référence Clones sert à comparer après sauvegarde.",
+          "Prévoir un clavier et une fenêtre Scratch à côté du cours. Utiliser y = -140 pour observer les traversées sans contact."
+        ],
+        "why": "Passer d’un seul acteur persistant à des copies temporaires qui exécutent chacune la même pile. Relier leur disparition à une règle de dégâts et de sortie.",
+        "discoverySpeech": [
+          "Quelle pile crée la copie ?",
+          "Sur quel acteur ce bloc de déplacement s’exécute-t-il ?",
+          "Que reste-t-il dans le jeu après supprimer ce clone ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-clones",
+            "blockId": "contact"
+          },
+          "comments": [
+            "Le retrait de vie est déplacé dans la pile des clones ; la pile fixe est supprimée, pas laissée à côté.",
+            "Le clone touché se supprime, sans attente de séparation. Deux clones distincts peuvent retirer deux vies.",
+            "La scène initialise la vitesse et décide toujours la fin. Le modèle attend avant la première création, ce qui laisse l’initialisation s’effectuer."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi cacher le modèle et montrer les copies ?",
+            "answer": "Le modèle doit fabriquer sans devenir un danger visible ; les copies héritent de sa visibilité cachée et doivent se montrer."
+          },
+          {
+            "question": "Pourquoi tirer y avant la boucle ?",
+            "answer": "Pour choisir une hauteur par copie, puis garder un trajet horizontal."
+          },
+          {
+            "question": "Pourquoi deux suppressions dans la pile du clone ?",
+            "answer": "Celle dans le si termine le clone touché ; celle après la boucle termine une traversée sans contact."
+          },
+          {
+            "question": "Est-ce que réduire l’intervalle accélère chaque copie ?",
+            "answer": "Non : cela rapproche les créations. La vitesse lue à chaque déplacement garde sa propre valeur."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-clones",
+          "blockId": "mouvement"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-clones",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Vérifier d’abord la copie unique à y = 0 avant de passer au hasard et à la production continue.",
+          "Faire verbaliser le propriétaire et le déclencheur avant d’ajouter un bloc. Le modèle complet reste consultable après un premier essai.",
+          "Pour l’observation, écarter Pilote à y = -140 ; pour le défi, jouer jusqu’aux six points sans modifier les constantes de reprise."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Les copies se multiplient au lieu de traverser régulièrement.",
+            "helps": [
+              "Arrêter le jeu et repérer tous les blocs de création.",
+              "Faire montrer le chapeau de la pile qui contient chaque création.",
+              "Garder une création dans la boucle du drapeau après attendre 1.2 seconde ; aucune dans le démarrage du clone.",
+              "Relancer et observer plusieurs départs depuis la zone sûre à y = -140."
+            ]
+          },
+          {
+            "symptom": "Le jeu retire des vies sans copie au contact ou plusieurs fois pour la même copie.",
+            "helps": [
+              "Observer quelle copie disparaît au moment du retrait.",
+              "Chercher les anciens retraits et attentes de séparation dans Obstacle.",
+              "Supprimer la pile fixe ; dans la pile du clone, placer supprimer ce clone après le retrait et garder la suppression de sortie après la boucle.",
+              "Retester un contact, une traversée sans contact, puis un nouveau départ."
+            ]
+          },
+          {
+            "symptom": "Une copie reste à droite.",
+            "helps": [
+              "Observer x pendant son déplacement.",
+              "Lire la condition de répéter jusqu’à ce que et vérifier le signe de la vitesse.",
+              "Utiliser x > 210 et une vitesse positive ; placer supprimer ce clone après la boucle.",
+              "Relancer depuis trois vies et observer une traversée complète sans contact."
+            ]
+          }
+        ],
+        "quickConductor": [
+          "Sauvegarder la version précédente puis retirer la surveillance fixe.",
+          "Observer une copie unique, son trajet et sa suppression.",
+          "Ajouter la hauteur aléatoire, la fabrique continue et le dégât.",
+          "Tester les deux fins, comparer les deux réglages et reprendre mission-04."
+        ],
+        "notes": "Chapitre cumulatif autonome. L’arrêt de la partie supprime immédiatement les clones présents ; le drapeau réinitialise les compteurs et relance les créations. Les messages et le verrouillage d’état seront enseignés plus tard. Les contrôles techniques ne prouvent pas l’autonomie avec un élève.",
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
+    },
+    "scratch-mission-messages": {
+      "domainId": "jeux-video",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Changer de secteur avec des messages",
+      "objective": "Déclencher une seule fois le changement de décor et de vitesse à trois points, sans remettre le score à zéro.",
+      "skillIds": [
+        "scratch.messages",
+        "scratch.events",
+        "scratch.variables",
+        "scratch.conditions"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.clones",
+          "expectation": "Retrouver mission-04.sb3 avec la fabrique et le trajet des copies."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Distinguer une variable commune, sa valeur de départ et une modification."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Assembler deux comparaisons avec et et repérer la boucle de décision sur la scène."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Reprendre ton jeu avec ses clones",
+          "paragraphs": [
+            "Ouvre ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe. Lance le drapeau : score 0, vies 3, vitesseObstacle 4 et décor secteur1. Vérifie les commandes et les obstacles mobiles, puis arrête avec le bouton rouge et sauvegarde avant les ajouts.",
+            "À trois points, tu vas faire passer le jeu dans un deuxième secteur. Le décor changera et les obstacles accéléreront. Le score sera conservé : il faudra toujours six points pour gagner.",
+            "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Clones."
+          ],
+          "downloads": [
+            {
+              "label": "Reprendre depuis la fin de Clones (.sb3)",
+              "path": "assets/scratch/mission/mission-clones.sb3",
+              "filename": "mission-clones.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "transition",
+          "title": "Repérer les piles à compléter",
+          "paragraphs": [
+            "Pilote et Balise gardent leurs piles. Dans Obstacle, conserve la fabrique au drapeau et le trajet des clones : tu ajouteras une troisième pile qui reçoit un message.",
+            "Sur la scène, conserve l’initialisation et les deux décisions de fin. Tu ajouteras une variable, un test de passage de secteur dans la boucle et une réception séparée pour le décor.",
+            "Un message est un signal du programme. Son nom ne s’affiche pas sur la scène : les actions sous quand je reçois produisent le résultat visible."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau",
+          "title": "Mémoriser le secteur en cours",
+          "shortSteps": [
+            "Dans Variables, crée niveau pour tous les sprites. Coche son affichage pour suivre 1 puis 2 pendant les essais.",
+            "Sur la scène, ajoute mettre niveau à 1 après mettre vitesseObstacle à 4, avant le choix de secteur1 et la boucle.",
+            "Lance le drapeau : niveau vaut 1. La variable indiquera si le passage a déjà eu lieu ; elle ne change pas le décor toute seule. Arrête le jeu pour construire les réceptions."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Mémoriser le secteur en cours",
+            "blocks": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "niveau"
+                  },
+                  " à ",
+                  {
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "reception-decor",
+          "title": "Faire réagir le décor au message",
+          "shortSteps": [
+            "Toujours sur la scène, prends quand je reçois depuis Événements pour commencer une pile séparée du drapeau.",
+            "Dans son menu, choisis Nouveau message et nomme-le secteur2. Ajoute basculer sur l’arrière-plan depuis Apparence et choisis le décor secteur2 déjà présent.",
+            "Le message secteur2 et le décor secteur2 sont deux éléments différents : le premier déclenche la pile, le second est le dessin choisi dans le bloc violet."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Faire réagir le décor au message",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "basculer sur l’arrière-plan ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "envoi-manuel",
+          "title": "Essayer le signal par un clic",
+          "shortSteps": [
+            "Sur la scène, prends envoyer à tous depuis Événements et choisis le message secteur2. Pose ce bloc seul dans la zone de code, sans le raccorder à une pile.",
+            "Clique sur ce bloc isolé : le décor devient violet. Le programme lance la pile quand je reçois secteur2, même sans clic sur le drapeau.",
+            "Tu utilises envoyer à tous sans attendre : l’expéditeur peut poursuivre pendant que les réceptions s’exécutent. Tu déplaceras ce même bloc dans la boucle après les essais.",
+            "Relance le drapeau : le décor redevient secteur1 et niveau reste à 1. Pour l’instant, ton clic a seulement essayé le décor. Arrête le jeu."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Essayer le signal par un clic",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "envoyer à tous ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "reception-vitesse",
+          "title": "Faire réagir les obstacles au même signal",
+          "shortSteps": [
+            "Sélectionne Obstacle. Ajoute une troisième pile : quand je reçois secteur2 depuis Événements, puis mettre vitesseObstacle à 7 depuis Variables. Choisis le message existant.",
+            "Coche temporairement vitesseObstacle pour voir sa valeur. Lance le drapeau, descends Pilote jusqu’à y = -140 et laisse apparaître des copies.",
+            "Reviens sur la scène et clique sur ton envoi isolé. Le décor change et vitesseObstacle affiche 7. Les copies déjà présentes accélèrent ; les suivantes utilisent aussi 7.",
+            "Le modèle et les clones reçoivent le message. Ils mettent tous la même variable commune à 7 : on fixe une valeur, on ne lui ajoute pas 7 à chaque réception.",
+            "Relance : la scène remet vitesseObstacle à 4 et choisit secteur1. Arrête le jeu avant de raccorder l’envoi automatique."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Faire réagir les obstacles au même signal",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "vitesseObstacle"
+                  },
+                  " à ",
+                  {
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "declenchement",
+          "title": "Envoyer une seule fois à trois points",
+          "shortSteps": [
+            "Sur la scène, ajoute un nouveau si dans répéter indéfiniment, après le grand si `vies \u003c 1` … sinon et avant attendre 0.03 seconde. Les deux décisions de fin restent en place.",
+            "Depuis Opérateurs, prends et. Dans son premier emplacement, construis `niveau = 1` ; dans le second, `score > 2`. Glisse les blocs orange niveau et score dans les comparaisons, puis saisis 1 et 2.",
+            "Dans ce nouveau si, place mettre niveau à 2. Déplace juste en dessous le bloc envoyer à tous secteur2 que tu avais posé seul. Il est maintenant dans le si, après le changement de niveau.",
+            "Le score atteint 3 et niveau vaut encore 1 : les deux tests sont vrais. Après mettre niveau à 2, le premier test devient faux aux tours suivants. L’envoi ne se répète donc pas à trois ou quatre points.",
+            "La scène possède maintenant deux piles : le drapeau et la réception du décor. Obstacle en possède trois. Il ne reste aucun bloc d’envoi isolé."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Envoyer une seule fois à trois points",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "condition": [
+                          {
+                            "reporter": "niveau",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "1"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " et ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "score",
+                            "category": "variables"
+                          },
+                          " > ",
+                          {
+                            "value": "2"
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "niveau"
+                      },
+                      " à ",
+                      {
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "envoyer à tous ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essais",
+          "title": "Vérifier le passage et les deux fins",
+          "items": [
+            {
+              "id": "depart",
+              "text": "Lance : score 0, niveau 1, vitesseObstacle 4 et décor secteur1. Active deux balises : le premier secteur est toujours en place."
+            },
+            {
+              "id": "passage",
+              "text": "Active une troisième balise : score reste à 3, niveau devient 2, le décor devient violet et vitesseObstacle vaut 7. Les copies continuent leur trajet avec la nouvelle vitesse."
+            },
+            {
+              "id": "suite",
+              "text": "Active la suivante : score 4, niveau 2, vitesseObstacle 7. Le score ne repart pas à zéro au changement de secteur."
+            },
+            {
+              "id": "fins",
+              "text": "Atteins six points pour gagner, puis relance et perds les trois vies pour vérifier la défaite. Dans les deux cas, le jeu s’arrête et les clones disparaissent."
+            },
+            {
+              "id": "relance",
+              "text": "Relance depuis le secteur 2 puis après une fin : score 0, vies 3, niveau 1, vitesseObstacle 4, décor secteur1, Pilote au départ et Balise à gauche."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "envoi-unique",
+          "title": "Vérifier que le message ne repart pas en boucle",
+          "items": [
+            {
+              "id": "sauver",
+              "text": "Sauvegarde la version terminée sous mission-05.sb3. Repère le téléchargement récent, même si son nom reçoit un suffixe, puis recharge ce fichier pour vérifier qu’il contient tes nouvelles piles."
+            },
+            {
+              "id": "preparer",
+              "text": "Dans le projet ouvert, remplace seulement le score de départ 0 par 2 sur la scène. Dans Obstacle, pose un bloc mettre vitesseObstacle à 4 seul, sans drapeau. Ces deux changements servent au test."
+            },
+            {
+              "id": "trois",
+              "text": "Lance : score 2, niveau 1 et vitesse 4. Active réellement une balise : score 3, niveau 2 et vitesse 7. Descends Pilote à y = -140 pour observer sans contact."
+            },
+            {
+              "id": "signal",
+              "text": "Clique sur le bloc isolé mettre vitesseObstacle à 4 et observe quelques secondes. La valeur reste à 4 : le message ne repart pas. Active une autre balise : à score 4, la vitesse reste encore à 4. Si elle revient aussitôt à 7, vérifie le test `niveau = 1` et le changement de niveau avant l’envoi."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde cet essai sous mission-05-test.sb3, puis recharge ton fichier principal mission-05.sb3 repéré plus haut. Vérifie le score de départ à 0, l’absence du bloc de test isolé et la réception qui met la vitesse à 7. Décoche l’affichage de vitesseObstacle ; garde score, vies et niveau visibles."
+            }
+          ],
+          "intro": "Le décor et la vitesse resteraient identiques si le même message était envoyé plusieurs fois. Cet essai permet de détecter les répétitions, puis de reprendre ta sauvegarde principale."
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Prévoir un passage plus tardif",
+          "items": [
+            {
+              "id": "prevoir",
+              "text": "Dans ta version principale rechargée, remplace seulement `score > 2` par `score > 3` dans le test de secteur. Note à quelle activation tu prévois le passage et ce que tu t’attends à voir à trois points."
+            },
+            {
+              "id": "essayer",
+              "text": "Lance depuis zéro et joue jusqu’au passage. Compare avec ta prévision : score, niveau, décor et vitesse. Explique pourquoi le seuil écrit dans le bloc diffère du score qui déclenche le changement."
+            },
+            {
+              "id": "restaurer",
+              "text": "Sauvegarde sous mission-05-essai.sb3, puis recharge ta version principale mission-05.sb3. Vérifie `score > 2` : tu poursuivras avec le deuxième secteur à trois points et la victoire à six."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification-variation",
+          "title": "Vérifier après ton essai",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-variation",
+              "title": "Le premier score supérieur au seuil",
+              "paragraphs": [
+                "Avec `score > 3`, le passage a lieu à la quatrième activation. À trois points, niveau vaut encore 1, le décor reste secteur1 et la vitesse reste à 4.",
+                "À quatre points, niveau passe à 2, le message déclenche secteur2 et la vitesse 7. Le score reste à 4. Le test `niveau = 1` empêche les envois suivants.",
+                "La sauvegarde principale retrouve `score > 2`, donc un passage à trois points. La décision de victoire reste `score > 5`."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Retrouver un message ou un réglage mal placé",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "sans-effet",
+              "title": "Le clic sur l’envoi ne produit pas les deux effets",
+              "paragraphs": [
+                "Vérifie le même message secteur2 dans les trois menus : l’envoi sur la scène, sa réception sur la scène et la réception dans Obstacle. La pile de décor appartient à la scène, celle de vitesse à Obstacle.",
+                "Sur la scène, prends dans la palette un nouveau bloc envoyer à tous, choisis le message existant secteur2 et pose ce bloc seul dans la zone de code. Garde l’envoi principal dans son si. Lance au drapeau, puis clique sur ce bloc isolé : le décor devient violet et vitesseObstacle passe à 7.",
+                "Si le décor change mais pas la vitesse, vérifie mettre vitesseObstacle à 7 sous la réception d’Obstacle, et la création de cette variable pour tous les sprites. Retire ensuite le bloc d’envoi temporaire et reprends le test depuis le drapeau."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "repetition",
+              "title": "La vitesse revient à 7 pendant le test à 4",
+              "paragraphs": [
+                "Dans le nouveau si, vérifie les deux conditions réunies par et : `niveau = 1` et `score > 2`. Le bloc mettre niveau à 2 doit être dans ce si, juste avant l’envoi.",
+                "Si niveau est remis à 1 dans la boucle, la condition redevient vraie : son initialisation doit rester avant répéter indéfiniment. Refais l’essai dans la copie de test, puis recharge ta version principale."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "reinitialisation",
+              "title": "Le nouveau départ garde le secteur rapide",
+              "paragraphs": [
+                "Dans la pile de drapeau de la scène, retrouve mettre niveau à 1, mettre vitesseObstacle à 4 et basculer sur l’arrière-plan secteur1 avant la boucle.",
+                "La réception de secteur2 ne remet ni score à 0 ni niveau à 1. Le drapeau prépare le départ ; le message applique les effets du passage. Relance après être passé au secteur 2."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Comparer les trois piles modifiées ou ajoutées",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "modele-scene",
+              "title": "Scène : départ, fins et passage de secteur",
+              "paragraphs": [
+                "La pile de drapeau conserve la priorité de la défaite. Le nouveau test vient après les décisions de fin et avant la pause. Il change niveau avant d’envoyer le signal."
+              ],
+              "visualScript": {
+                "caption": "Scène : départ, fins et passage de secteur",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "score"
+                      },
+                      " à ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vies"
+                      },
+                      " à ",
+                      {
+                        "value": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vitesseObstacle"
+                      },
+                      " à ",
+                      {
+                        "value": "4"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "niveau"
+                      },
+                      " à ",
+                      {
+                        "value": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur l’arrière-plan ",
+                      {
+                        "choice": "secteur1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "vies",
+                                "category": "variables"
+                              },
+                              " \u003c ",
+                              {
+                                "value": "1"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "stop ",
+                              {
+                                "choice": "tout"
+                              }
+                            ]
+                          }
+                        ],
+                        "elseChildren": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "score",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "5"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "control",
+                                "label": "Contrôle",
+                                "parts": [
+                                  "stop ",
+                                  {
+                                    "choice": "tout"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "niveau",
+                                    "category": "variables"
+                                  },
+                                  " = ",
+                                  {
+                                    "value": "1"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " et ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "score",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "2"
+                                  }
+                                ],
+                                "operator": true
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "mettre ",
+                              {
+                                "choice": "niveau"
+                              },
+                              " à ",
+                              {
+                                "value": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "events",
+                            "label": "Événements",
+                            "parts": [
+                              "envoyer à tous ",
+                              {
+                                "choice": "secteur2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-decor",
+              "title": "Scène : réception du décor",
+              "paragraphs": [
+                "Cette deuxième pile de la scène reçoit secteur2. Le décor initial reste choisi dans la pile de drapeau."
+              ],
+              "visualScript": {
+                "caption": "Scène : réception du décor",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand je reçois ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur l’arrière-plan ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-vitesse",
+              "title": "Obstacle : réception de la vitesse",
+              "paragraphs": [
+                "Cette troisième pile d’Obstacle reçoit secteur2. Les deux piles de fabrique et de trajet du chapitre Clones restent en place ; les déplacements lisent toujours vitesseObstacle."
+              ],
+              "visualScript": {
+                "caption": "Obstacle : réception de la vitesse",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand je reçois ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vitesseObstacle"
+                      },
+                      " à ",
+                      {
+                        "value": "7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Référence terminée",
+              "paragraphs": [
+                "Sauvegarde ton travail avant d’ouvrir la référence. Compare les deux piles de la scène et les trois d’Obstacle, puis recharge ton propre fichier principal pour poursuivre."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger la référence Messages (.sb3)",
+                  "path": "assets/scratch/mission/mission-messages.sb3",
+                  "filename": "mission-messages.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "aide-messages",
+          "title": "Revoir les messages dans un autre onglet",
+          "text": "Revoir les messages dans un autre onglet. L’aide organise un dialogue ; ici, un même signal change le décor et la vitesse. Compare les émissions et les réceptions, puis ferme cet onglet pour reprendre Mission balises.",
+          "moduleLink": {
+            "moduleId": "scratch-coordination",
+            "text": "Revoir les messages dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Garder le jeu avec ses deux secteurs",
+          "paragraphs": [
+            "Garde ta sauvegarde principale mission-05.sb3, ou son nom avec suffixe. Le départ remet score à 0, vies à 3, vitesseObstacle à 4 et niveau à 1, puis choisit secteur1.",
+            "À trois points, le test `niveau = 1` et `score > 2` met niveau à 2 avant d’envoyer secteur2. La scène change le décor et Obstacle met vitesseObstacle à 7. Le score est conservé et la victoire reste à six points.",
+            "La scène possède deux piles et Obstacle trois ; Pilote et Balise conservent les leurs. Il ne reste aucun bloc de test isolé. Les clones gardent l’intervalle de 1.2 seconde, leur hauteur aléatoire et leurs suppressions.",
+            "Le prochain chapitre remplacera la fin immédiate par une annonce et bloquera les actions pendant cette annonce."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Identifier l’envoi, ses deux réceptions et leur propriétaire.",
+        "Changer niveau avant le message et expliquer pourquoi le passage ne se répète pas.",
+        "Vérifier les seuils, le score conservé et le retour au premier secteur au drapeau.",
+        "Prévoir un nouveau seuil, l’essayer puis reprendre la sauvegarde principale."
+      ],
+      "teacherGuide": {
+        "objective": "Coordonner le décor et la vitesse par un message, avec un passage unique mémorisé par niveau.",
+        "entryDiagnosis": [
+          "Faire rouvrir la version Clones et retrouver les deux piles d’Obstacle ainsi que l’initialisation de vitesseObstacle sur la scène.",
+          "Faire expliquer la différence entre mettre une variable à une valeur et lui ajouter une quantité."
+        ],
+        "preparation": [
+          "Partir du fichier personnel mission-04 ; la reprise Clones remplace seulement un fichier manquant, après sauvegarde.",
+          "Conserver deux décors nommés secteur1 et secteur2, déjà fournis. Les menus de message utilisent un signal nommé secteur2.",
+          "Afficher niveau ; afficher temporairement vitesseObstacle pour les essais. La copie de diagnostic et la variation sont rechargées depuis mission-05 avant de poursuivre."
+        ],
+        "why": "Un signal déclenche plusieurs effets sans mélanger leurs propriétaires. La variable niveau mémorise le passage pour que la surveillance continue ne renvoie pas le message à chaque tour.",
+        "discoverySpeech": [
+          "Quel bloc envoie le signal et quels blocs attendent de le recevoir ?",
+          "Que produit le nom du message sans action sous sa réception ?",
+          "Quel test devient faux juste après le passage ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-messages",
+            "blockId": "declenchement"
+          },
+          "comments": [
+            "La scène garde ses deux décisions de fin, puis teste le passage ; niveau change avant l’émission.",
+            "Les réceptions courtes sont indépendantes : décor sur la scène, vitesse dans Obstacle. Envoyer sans attendre ne définit pas un ordre entre ces réceptions.",
+            "Le modèle et les clones reçoivent secteur2 et mettent la même variable globale à 7. Un ajout de 7 multiplierait les effets selon le nombre de copies."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi niveau et le décor sont-ils deux choses différentes ?",
+            "answer": "niveau mémorise le secteur dans une variable ; le décor est un dessin. Une pile doit appliquer le changement visuel."
+          },
+          {
+            "question": "Pourquoi mettre niveau à 2 avant l’envoi ?",
+            "answer": "La condition `niveau = 1` devient fausse avant le signal. La boucle ne redéclenche pas la transition aux tours suivants."
+          },
+          {
+            "question": "Les copies déjà présentes accélèrent-elles ?",
+            "answer": "Oui : leur boucle lit la variable commune vitesseObstacle à chaque déplacement. Les nouvelles copies lisent également 7."
+          },
+          {
+            "question": "Le décor inchangé à quatre points prouve-t-il un seul envoi ?",
+            "answer": "Non : des réceptions répétées peuvent réappliquer les mêmes valeurs. Le diagnostic remet temporairement la vitesse à 4 pour détecter un retour injustifié à 7."
+          },
+          {
+            "question": "Quel est le rôle du drapeau après le secteur 2 ?",
+            "answer": "Remettre les quatre variables à leurs valeurs de départ, choisir secteur1, rétablir les positions et relancer les créations."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-messages",
+          "blockId": "envoi-manuel"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-messages",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Faire réussir le changement de décor par clic avant d’ajouter la réception de vitesse et le seuil.",
+          "Faire montrer les deux conditions séparément, puis expliquer celle qui empêche la répétition. Garder le modèle complet replié après le premier essai.",
+          "Le test de l’envoi unique prépare le score à 2 dans une copie, puis exige une activation réelle. Revenir au fichier principal évite de conserver les réglages de test."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Une seule réception réagit ou aucune ne réagit.",
+            "helps": [
+              "Sur la scène, prendre un nouveau bloc envoyer à tous dans la palette, choisir le message existant secteur2 et le laisser isolé. Lancer au drapeau puis cliquer sur ce bloc temporaire pour tester les réceptions ; garder l’envoi principal raccordé dans son si.",
+              "Faire sélectionner la scène puis Obstacle et lire le message choisi sur chaque chapeau.",
+              "Raccorder le décor à la réception de la scène et mettre vitesseObstacle à 7 à celle d’Obstacle, avec le même message secteur2.",
+              "Constater le décor violet et la vitesse 7, puis retirer l’envoi temporaire. Relancer au drapeau et activer trois balises pour vérifier le déclenchement par le score."
+            ]
+          },
+          {
+            "symptom": "L’envoi repart en boucle ou la vitesse dépend du nombre de clones.",
+            "helps": [
+              "Observer la valeur pendant le diagnostic où un bloc isolé la remet à 4.",
+              "Faire lire les deux comparaisons et les blocs qui modifient niveau et vitesseObstacle.",
+              "Garder `niveau = 1` et `score > 2`, mettre niveau à 2 avant l’envoi et mettre la vitesse à 7 dans la réception, sans ajout.",
+              "Rejouer le test à trois puis quatre points avec plusieurs clones, puis recharger le fichier principal."
+            ]
+          },
+          {
+            "symptom": "Le drapeau conserve le décor violet, le niveau 2 ou la vitesse 7.",
+            "helps": [
+              "Relancer depuis une partie qui a atteint le deuxième secteur et lire les variables.",
+              "Retrouver la pile de drapeau de la scène et les blocs avant sa boucle.",
+              "Initialiser niveau à 1, vitesseObstacle à 4 et choisir secteur1 avant la surveillance ; garder score 0 et vies 3.",
+              "Vérifier un nouveau départ après passage, après victoire et après défaite."
+            ]
+          }
+        ],
+        "quickConductor": [
+          "Reprendre Clones et initialiser niveau.",
+          "Essayer l’envoi isolé avec les deux réceptions.",
+          "Déplacer l’émission dans le passage unique et tester trois puis quatre points.",
+          "Sauvegarder, détecter les répétitions dans une copie, puis prévoir un autre seuil et restaurer mission-05."
+        ],
+        "notes": "Les piles temporaires et le score de départ à 2 appartiennent à la copie de diagnostic. La référence publiée ne les contient pas. La fin reste immédiate ; l’annonce et les protections d’état appartiennent au prochain chapitre. Les contrôles techniques ne démontrent pas l’autonomie avec un élève.",
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
+    },
+    "scratch-mission-etats": {
+      "domainId": "jeux-video",
+      "type": "lesson",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Annoncer et verrouiller la fin de partie",
+      "objective": "Mémoriser la fin, refuser les actions pendant l’annonce et préparer une nouvelle partie au drapeau.",
+      "skillIds": [
+        "scratch.variables",
+        "scratch.conditions",
+        "scratch.messages",
+        "scratch.clones"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.messages",
+          "expectation": "Reprendre mission-05.sb3 avec le passage unique au secteur 2."
+        },
+        {
+          "skillId": "scratch.conditions",
+          "expectation": "Construire une comparaison, et, non et un si … sinon."
+        },
+        {
+          "skillId": "scratch.clones",
+          "expectation": "Retrouver la fabrique, le trajet et la suppression des copies."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Reprendre le jeu à deux secteurs",
+          "paragraphs": [
+            "Ouvre ta sauvegarde principale mission-05.sb3, ou son nom avec suffixe. Vérifie le départ à score 0, vies 3 et niveau 1, le passage à trois points et la fin immédiate à six points ou zéro vie. Arrête le jeu et sauvegarde avant les changements.",
+            "Tu vas conserver ces règles et afficher le résultat pendant deux secondes. Durant cette annonce, les commandes, les points et les dégâts seront bloqués ; les copies disparaîtront.",
+            "Si ta sauvegarde manque, conserve d’abord ton travail actuel puis charge cette reprise depuis Fichier. Elle remplace le projet ouvert et fournit la fin de Messages."
+          ],
+          "downloads": [
+            {
+              "label": "Reprendre depuis la fin de Messages (.sb3)",
+              "path": "assets/scratch/mission/mission-messages.sb3",
+              "filename": "mission-messages.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "transition",
+          "title": "Repérer ce qui change",
+          "paragraphs": [
+            "La scène garde ses deux piles. Tu modifieras son initialisation et sa décision de fin. Sa réception de secteur2 conserve le changement de décor.",
+            "Pilote garde sa pile de commandes, Balise sa pile de collecte et Obstacle ses trois piles. Tu protégeras les actions dans ces piles ; la réception qui fixe vitesseObstacle à 7 reste identique.",
+            "Construis d’abord la décision, puis les protections. L’annonce sera ajoutée ensuite dans une deuxième pile de Pilote. Le jeu terminé aura huit piles : deux sur la scène, deux dans Pilote, une dans Balise et trois dans Obstacle."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "etat",
+          "title": "Distinguer la préparation et le jeu",
+          "paragraphs": [],
+          "shortSteps": [
+            "Dans Variables, crée etat pour tous les sprites et coche son affichage. Ses valeurs seront du texte : preparation, en jeu, gagne et perdu. Saisis ces mots sans guillemets, avec les mêmes espaces et sans accents.",
+            "Sur la scène, place mettre etat à preparation juste sous le drapeau, avant les autres initialisations. Conserve score 0, vies 3, vitesseObstacle 4, niveau 1 et le décor secteur1.",
+            "Après le choix du décor et avant répéter indéfiniment, ajoute attendre 0.03 seconde depuis Contrôle, puis mettre etat à en jeu. Cette courte attente laisse aux autres piles de drapeau le temps de replacer les personnages.",
+            "Lance : etat affiche en jeu. preparation est bref ; la variable sert à autoriser les actions lorsque le départ est prêt. Arrête avant de modifier les décisions."
+          ],
+          "visualScript": {
+            "caption": "Distinguer la préparation et le jeu",
+            "blocks": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "etat"
+                  },
+                  " à ",
+                  {
+                    "value": "preparation"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.03"
+                  },
+                  " seconde"
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "etat"
+                  },
+                  " à ",
+                  {
+                    "value": "en jeu"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "decision",
+          "title": "Mémoriser la fin avant de stopper",
+          "paragraphs": [],
+          "shortSteps": [
+            "Sur la scène, dans la boucle, entoure le grand si `vies \u003c 1` … sinon avec un nouveau si `etat = en jeu`. Prends = dans Opérateurs, glisse le bloc orange etat dans sa première case et saisis en jeu dans la seconde.",
+            "Dans la branche de défaite, place mettre etat à perdu juste avant le stop tout existant. Dans la branche de victoire, place mettre etat à gagne avant son stop tout. Garde la défaite en premier et la victoire dans son sinon.",
+            "Entoure séparément le test de changement de secteur avec un autre si `etat = en jeu`. Ce deuxième contrôle est après la décision : il refusera le passage de secteur si la décision vient de terminer la partie.",
+            "Garde attendre 0.03 seconde à la fin de la boucle, hors des deux protections. Pour l’instant, les deux stop tout restent en place. La variable mémorise le résultat avant l’arrêt."
+          ],
+          "visualScript": {
+            "caption": "Mémoriser la fin avant de stopper",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "etat",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "vies",
+                            "category": "variables"
+                          },
+                          " \u003c ",
+                          {
+                            "value": "1"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "mettre ",
+                          {
+                            "choice": "etat"
+                          },
+                          " à ",
+                          {
+                            "value": "perdu"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "stop ",
+                          {
+                            "choice": "tout"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseChildren": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "mettre ",
+                              {
+                                "choice": "etat"
+                              },
+                              " à ",
+                              {
+                                "value": "gagne"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "stop ",
+                              {
+                                "choice": "tout"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "etat",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "condition": [
+                              {
+                                "reporter": "niveau",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "1"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " et ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "2"
+                              }
+                            ],
+                            "operator": true
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "mettre ",
+                          {
+                            "choice": "niveau"
+                          },
+                          " à ",
+                          {
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "events",
+                        "label": "Événements",
+                        "parts": [
+                          "envoyer à tous ",
+                          {
+                            "choice": "secteur2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essai-decision",
+          "title": "Vérifier les deux résultats",
+          "items": [
+            {
+              "id": "fins",
+              "text": "Joue une victoire puis une défaite, en relançant entre les deux. À l’arrêt, etat affiche gagne ou perdu. Le drapeau retrouve en jeu et remet les compteurs au départ."
+            },
+            {
+              "id": "sauver",
+              "text": "Sauvegarde ce jalon sous mission-06-decision.sb3. Repère le téléchargement le plus récent, même si le navigateur ajoute un suffixe, puis recharge-le pour vérifier ta sauvegarde."
+            },
+            {
+              "id": "priorite",
+              "text": "Dans une copie de test, change les valeurs de départ de la scène : score 6 et vies 0. Avant de lancer, prévois le résultat si les deux conditions sont vraies. Lance et observe etat."
+            },
+            {
+              "id": "retour",
+              "text": "Recharge mission-06-decision.sb3 repéré plus haut. Retrouve score 0 et vies 3 au départ avant d’ajouter les protections."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification-decision",
+          "title": "Comparer ton résultat de priorité",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-priorite",
+              "title": "La défaite est décidée en premier",
+              "paragraphs": [
+                "Avec score 6 et vies 0 au même contrôle, etat devient perdu. La victoire est dans le sinon du test de défaite : elle n’est donc pas examinée lorsque les vies sont épuisées.",
+                "Le test utilise des compteurs préparés pour isoler cette règle. La version principale garde score 0 et vies 3 au départ."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "commandes",
+          "title": "Autoriser les déplacements pendant le jeu",
+          "paragraphs": [],
+          "shortSteps": [
+            "Dans Pilote, garde aller à x: 0 y: -100 et dire avec une case vide avant la boucle. Ils préparent la position et effacent une ancienne bulle au drapeau.",
+            "Dans sa boucle, entoure les quatre tests de touches et les quatre limites avec un seul si `etat = en jeu`. Garde leurs blocs de déplacement à l’intérieur, dans le même ordre.",
+            "Le schéma montre une seule direction ; place les autres tests et les limites dans le même si. L’attente de 0.03 seconde reste après ce si, dans la boucle. Lance et vérifie les quatre commandes et les limites : en jeu, le déplacement fonctionne toujours."
+          ],
+          "visualScript": {
+            "caption": "Autoriser les déplacements pendant le jeu",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "etat",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche droite"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "4"
+                          },
+                          " à x"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "collecte",
+          "title": "Protéger le contact avec la balise",
+          "paragraphs": [],
+          "shortSteps": [
+            "Sélectionne Balise. Conserve son départ à x: -160 y: 0 et son attente de séparation initiale.",
+            "Dans sa boucle, remplace la condition Pilote touché ? par et depuis Opérateurs. Place `etat = en jeu` d’un côté et Pilote touché ? de l’autre.",
+            "Le +1 et le si … sinon qui déplace la balise restent ensemble dans ce si. Le contact seul ne suffira plus à ajouter un point après la fin.",
+            "Lance : une activation ajoute encore un point et la balise alterne de côté. Vérifie les deux positions avant de continuer."
+          ],
+          "visualScript": {
+            "caption": "Protéger le contact avec la balise",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "condition": [
+                          {
+                            "reporter": "etat",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "en jeu"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " et ",
+                      {
+                        "condition": [
+                          {
+                            "choice": "Pilote"
+                          },
+                          " touché ?"
+                        ]
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "1"
+                      },
+                      " à ",
+                      {
+                        "choice": "score"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "abscisse x",
+                            "category": "motion"
+                          },
+                          " \u003c ",
+                          {
+                            "value": "0"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "aller à x: ",
+                          {
+                            "value": "160"
+                          },
+                          " y: ",
+                          {
+                            "value": "0"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseChildren": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "aller à x: ",
+                          {
+                            "value": "-160"
+                          },
+                          " y: ",
+                          {
+                            "value": "0"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "fabrique",
+          "title": "Revérifier après l’attente de création",
+          "paragraphs": [],
+          "shortSteps": [
+            "Dans Obstacle, retrouve la pile de drapeau : cacher, puis la boucle avec attendre 1.2 seconde et créer un clone de moi-même.",
+            "Juste après cette attente, entoure créer un clone de moi-même avec si `etat = en jeu`. Le test est dans la boucle, après l’attente, et le bloc de création est dans le si.",
+            "Une attente laisse les autres piles avancer : la fin peut être décidée pendant ces 1.2 seconde. Tester avant l’attente seulement autoriserait une création trop tardive.",
+            "Lance et laisse Pilote au départ : plusieurs copies doivent encore apparaître à intervalle régulier. La pause de 1.2 seconde est conservée."
+          ],
+          "visualScript": {
+            "caption": "Revérifier après l’attente de création",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "1.2"
+                      },
+                      " seconde"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "etat",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "en jeu"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "créer un clone de ",
+                          {
+                            "choice": "moi-même"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "clones",
+          "title": "Protéger les actions et retirer les copies",
+          "paragraphs": [],
+          "shortSteps": [
+            "Toujours dans Obstacle, retrouve la pile quand je commence comme un clone. Conserve le placement x: -210, la hauteur aléatoire et montrer.",
+            "Dans répéter jusqu’à ce que, remplace la condition par ou depuis Opérateurs. Place `abscisse x > 210` d’un côté. De l’autre, glisse non depuis Opérateurs et mets `etat = en jeu` à l’intérieur.",
+            "La copie sortira de sa boucle si elle dépasse le bord OU si etat n’est plus en jeu. Le bloc supprimer ce clone reste après la boucle.",
+            "Dans la boucle, entoure ensemble ajouter vitesseObstacle à x et le si de contact existant avec si `etat = en jeu`. Garde `vies > 0` et Pilote touché ?, le retrait d’une vie et la suppression après coup à l’intérieur. L’attente de 0.03 seconde reste après cette protection.",
+            "Lance : les copies traversent encore la zone ; chaque copie touchée retire une vie puis disparaît. La réception de secteur2, qui met la vitesse à 7, reste dans sa pile séparée."
+          ],
+          "visualScript": {
+            "caption": "Protéger les actions et retirer les copies",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter jusqu’à ce que ",
+                  {
+                    "condition": [
+                      {
+                        "condition": [
+                          {
+                            "reporter": "abscisse x",
+                            "category": "motion"
+                          },
+                          " > ",
+                          {
+                            "value": "210"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " ou ",
+                      {
+                        "condition": [
+                          "non ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "etat",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "en jeu"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "reporter": "vitesseObstacle",
+                            "category": "variables"
+                          },
+                          " à x"
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "vies",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " et ",
+                              {
+                                "condition": [
+                                  {
+                                    "choice": "Pilote"
+                                  },
+                                  " touché ?"
+                                ]
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "-1"
+                              },
+                              " à ",
+                              {
+                                "choice": "vies"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "supprimer ce clone"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "supprimer ce clone"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "diagnostic",
+          "title": "Observer le verrouillage avant l’annonce",
+          "items": [
+            {
+              "id": "sauver",
+              "text": "Sauvegarde tes protections sous mission-06-protections.sb3, repère le fichier récent puis recharge-le. Les deux stop tout sont encore dans la décision de la scène."
+            },
+            {
+              "id": "copie",
+              "text": "Dans le projet ouvert, retire seulement les deux stop tout des branches de fin de la scène. Garde mettre etat à perdu et mettre etat à gagne. Tu testes une copie sans annonce et sans arrêt global."
+            },
+            {
+              "id": "victoire",
+              "text": "Prépare score 5 au départ, puis lance. Sélectionne Pilote et saisis x: -160 et y: -140 dans les champs du sprite pour attendre à l’abri. Dès que deux copies sont visibles, change seulement y en 0 : le contact avec Balise donne le sixième point et etat devient gagne. Vérifie la disparition des copies qui étaient encore présentes, puis attends plus de 1.2 seconde : aucune nouvelle n’apparaît. Maintiens une flèche : Pilote reste immobile."
+            },
+            {
+              "id": "collecte",
+              "text": "Dans cette même partie terminée, sélectionne Pilote et utilise les champs x et y du panneau du sprite pour le placer sur la Balise. Le score reste à 6 et Balise reste à sa position. Ces champs déplacent le sprite dans l’éditeur ; les touches du jeu restent bloquées."
+            },
+            {
+              "id": "defaite",
+              "text": "Prépare maintenant score 0 et vies 1 au départ. Relance, place Pilote à x: 0 et y: -140 avec les champs du sprite, puis attends au moins deux copies. Touche celle qui est la plus à droite alors qu’une autre est encore visible ; recommence si elle est déjà sortie avant le contact. etat devient perdu et vies reste à 0. La copie touchée se supprime et les autres disparaissent aussi. Attends plus de 1.2 seconde : aucune nouvelle copie n’arrive. Les flèches restent sans effet."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde l’essai sous mission-06-test-protections.sb3, puis recharge ton fichier principal mission-06-protections.sb3. Vérifie score 0, vies 3 et les deux stop tout dans la scène. La copie de diagnostic reste séparée."
+            }
+          ],
+          "intro": "Le programme continue de tourner après la décision, afin que tu puisses voir si chaque protection fonctionne. L’annonce sera ajoutée après cet essai."
+        },
+        {
+          "type": "lesson",
+          "id": "signal",
+          "title": "Remplacer les arrêts par un signal",
+          "paragraphs": [],
+          "shortSteps": [
+            "Sur la scène, dans la défaite, remplace stop tout par envoyer à tous depuis Événements. Crée le message resultat. Laisse mettre etat à perdu juste avant cet envoi.",
+            "Dans la victoire, remplace l’autre stop tout par envoyer à tous et choisis le même message resultat. Laisse mettre etat à gagne avant lui. Les deux branches n’ont plus de stop tout.",
+            "Utilise envoyer à tous sans attendre. L’état doit être fixé avant l’envoi : Pilote le lira pour choisir le texte. Le si `etat = en jeu` autour de la décision empêche les nouveaux envois après la fin.",
+            "Le deuxième si `etat = en jeu`, autour du secteur, reste en place. Même au tour où le résultat est décidé, le changement de secteur est alors refusé. Arrête le jeu pour ajouter la réception."
+          ],
+          "visualScript": {
+            "caption": "Remplacer les arrêts par un signal",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "etat",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "vies",
+                            "category": "variables"
+                          },
+                          " \u003c ",
+                          {
+                            "value": "1"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "mettre ",
+                          {
+                            "choice": "etat"
+                          },
+                          " à ",
+                          {
+                            "value": "perdu"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "events",
+                        "label": "Événements",
+                        "parts": [
+                          "envoyer à tous ",
+                          {
+                            "choice": "resultat"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseChildren": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "mettre ",
+                              {
+                                "choice": "etat"
+                              },
+                              " à ",
+                              {
+                                "value": "gagne"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "events",
+                            "label": "Événements",
+                            "parts": [
+                              "envoyer à tous ",
+                              {
+                                "choice": "resultat"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "annonce",
+          "title": "Faire annoncer le résultat par Pilote",
+          "paragraphs": [],
+          "shortSteps": [
+            "Sélectionne Pilote et commence une deuxième pile : quand je reçois resultat depuis Événements. Choisis le message existant ; sa pile de drapeau reste en place.",
+            "Ajoute si … sinon depuis Contrôle, avec la condition `etat = gagne`. Dans la première branche, prends dire pendant 2 secondes depuis Apparence et saisis Mission réussie ! Dans le sinon, prends le même bloc et saisis Plus de vies : mission terminée.",
+            "Après le si … sinon entier, ajoute stop tout. L’arrêt arrive après l’annonce choisie. Cette nouvelle pile est déclenchée une seule fois, car la scène a déjà quitté en jeu.",
+            "Les autres piles tournent pendant la bulle. Ce sont les protections, et non l’attente de deux secondes, qui refusent les déplacements, les points, les dégâts et les créations."
+          ],
+          "visualScript": {
+            "caption": "Faire annoncer le résultat par Pilote",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "resultat"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "etat",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "gagne"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": "Mission réussie !"
+                      },
+                      " pendant ",
+                      {
+                        "value": "2"
+                      },
+                      " secondes"
+                    ]
+                  }
+                ],
+                "elseChildren": [
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": "Plus de vies : mission terminée."
+                      },
+                      " pendant ",
+                      {
+                        "value": "2"
+                      },
+                      " secondes"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "stop ",
+                  {
+                    "choice": "tout"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "essais",
+          "title": "Tester la fin et le nouveau départ",
+          "items": [
+            {
+              "id": "victoire",
+              "text": "Gagne à six points. Pendant Mission réussie !, maintiens une flèche : Pilote reste immobile, le score reste à 6 et les copies disparaissent. Après deux secondes, tout s’arrête."
+            },
+            {
+              "id": "defaite",
+              "text": "Relance et épuise les trois vies. Pendant l’autre annonce, vies reste à 0 et les commandes sont bloquées. Les copies disparaissent et la fabrique n’en crée plus."
+            },
+            {
+              "id": "pendant",
+              "text": "Relance pendant une annonce, avant ses deux secondes. Vérifie en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. La bulle s’efface, Pilote revient à (0, -100) et Balise à (-160, 0). Joue plus de deux secondes : l’ancienne annonce n’arrête pas la nouvelle partie."
+            },
+            {
+              "id": "apres",
+              "text": "Relance aussi après l’arrêt complet, puis depuis le secteur 2. Retrouve les mêmes valeurs et positions ; les créations et les commandes repartent."
+            },
+            {
+              "id": "sauver",
+              "text": "Sauvegarde ta version principale sous mission-06.sb3. Repère et recharge le téléchargement récent pour vérifier qu’il conserve tes huit piles, score 0, vies 3 et l’annonce de deux secondes."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Prévoir une annonce plus longue",
+          "items": [
+            {
+              "id": "prevoir",
+              "text": "Dans une copie de ta version principale mission-06.sb3, remplace les deux durées d’annonce de 2 par 3 secondes. Prévois si le véhicule pourra bouger pendant cette seconde supplémentaire et explique ton choix."
+            },
+            {
+              "id": "essayer",
+              "text": "Lance et atteins une fin. Maintiens une flèche pendant la bulle : observe le résultat durant les trois secondes. Relance aussi avant la fin de l’annonce et vérifie que la nouvelle partie continue au-delà de cet ancien délai."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde la variante sous mission-06-essai.sb3, puis recharge ton fichier principal mission-06.sb3. Retrouve les deux annonces de 2 secondes et les valeurs de départ habituelles."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification-variation",
+          "title": "Comparer avec ta prévision",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-variation",
+              "title": "La durée ne change pas les autorisations",
+              "paragraphs": [
+                "Durant les trois secondes, etat reste gagne ou perdu. Les protections refusent toujours les actions : augmenter la durée de la bulle ne remet pas etat à en jeu.",
+                "Le drapeau arrête les anciennes piles, efface la bulle et prépare une nouvelle partie. L’ancien délai ne doit donc pas arrêter la partie relancée. La version principale conserve deux secondes."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "depannage",
+          "title": "Retrouver une action encore autorisée",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "creation-tardive",
+              "title": "Une copie apparaît pendant la bulle",
+              "paragraphs": [
+                "Dans la fabrique d’Obstacle, retrouve attendre 1.2 seconde puis si `etat = en jeu` avec créer un clone de moi-même dedans. Le test doit être après l’attente, pas seulement avant.",
+                "Dans la pile du clone, retrouve la sortie `abscisse x > 210` ou non `etat = en jeu`, puis supprimer ce clone après la boucle."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "actions-tardives",
+              "title": "Le score ou les vies changent après la fin",
+              "paragraphs": [
+                "Dans Balise, vérifie `etat = en jeu` et Pilote touché ? avant le +1 et le changement de côté. Dans le clone, vérifie que le déplacement et le test de dégât sont ensemble dans si `etat = en jeu`.",
+                "Pour tester ton jeu terminé, sauvegarde mission-06.sb3 et repère le téléchargement récent, même avec un suffixe. Dans le projet ouvert, retire seulement le stop tout placé après le si … sinon de l’annonce dans Pilote. Garde les messages et les changements d’état sur la scène. Cette copie peut continuer à tourner après la bulle pour rendre les protections observables.",
+                "Reprends les essais du diagnostic à partir du score de départ à 5 : attends deux copies à l’abri avant la dernière collecte, puis teste la défaite avec une autre copie encore présente au dernier contact. Observe les commandes, les compteurs et la disparition des copies ; attends plus de deux secondes et plus d’un intervalle de création pour vérifier qu’aucune copie ne revient.",
+                "Sauvegarde cet essai sous mission-06-depannage.sb3, puis recharge ton fichier principal mission-06.sb3 repéré avant l’essai. Vérifie score 0, vies 3 et le stop tout après l’annonce dans Pilote. Le diagnostic fait avant l’ajout de l’annonce retirait deux arrêts sur la scène ; dans ce jeu terminé, tu retires seulement celui de Pilote."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "annonce-absente",
+              "title": "La bulle manque ou se répète",
+              "paragraphs": [
+                "Sur la scène, chaque branche met d’abord etat à gagne ou perdu puis envoie resultat. La décision entière est dans si `etat = en jeu` ; aucun stop tout ne reste sur la scène.",
+                "Dans Pilote, retrouve la réception du même message, le si … sinon avec dire pendant 2 secondes, puis stop tout après les deux branches. Le dire vide de la pile de drapeau reste avant la boucle de commandes."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Comparer les piles complètes",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "modele-scene",
+              "title": "Scène : départ et décisions",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Scène : départ et décisions",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "etat"
+                      },
+                      " à ",
+                      {
+                        "value": "preparation"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "score"
+                      },
+                      " à ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vies"
+                      },
+                      " à ",
+                      {
+                        "value": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vitesseObstacle"
+                      },
+                      " à ",
+                      {
+                        "value": "4"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "niveau"
+                      },
+                      " à ",
+                      {
+                        "value": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur l’arrière-plan ",
+                      {
+                        "choice": "secteur1"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "etat"
+                      },
+                      " à ",
+                      {
+                        "value": "en jeu"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "vies",
+                                    "category": "variables"
+                                  },
+                                  " \u003c ",
+                                  {
+                                    "value": "1"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "variables",
+                                "label": "Variables",
+                                "parts": [
+                                  "mettre ",
+                                  {
+                                    "choice": "etat"
+                                  },
+                                  " à ",
+                                  {
+                                    "value": "perdu"
+                                  }
+                                ]
+                              },
+                              {
+                                "category": "events",
+                                "label": "Événements",
+                                "parts": [
+                                  "envoyer à tous ",
+                                  {
+                                    "choice": "resultat"
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseChildren": [
+                              {
+                                "category": "control",
+                                "label": "Contrôle",
+                                "parts": [
+                                  "si ",
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "score",
+                                        "category": "variables"
+                                      },
+                                      " > ",
+                                      {
+                                        "value": "5"
+                                      }
+                                    ],
+                                    "operator": true
+                                  },
+                                  " alors"
+                                ],
+                                "children": [
+                                  {
+                                    "category": "variables",
+                                    "label": "Variables",
+                                    "parts": [
+                                      "mettre ",
+                                      {
+                                        "choice": "etat"
+                                      },
+                                      " à ",
+                                      {
+                                        "value": "gagne"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "category": "events",
+                                    "label": "Événements",
+                                    "parts": [
+                                      "envoyer à tous ",
+                                      {
+                                        "choice": "resultat"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "niveau",
+                                        "category": "variables"
+                                      },
+                                      " = ",
+                                      {
+                                        "value": "1"
+                                      }
+                                    ],
+                                    "operator": true
+                                  },
+                                  " et ",
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "score",
+                                        "category": "variables"
+                                      },
+                                      " > ",
+                                      {
+                                        "value": "2"
+                                      }
+                                    ],
+                                    "operator": true
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "variables",
+                                "label": "Variables",
+                                "parts": [
+                                  "mettre ",
+                                  {
+                                    "choice": "niveau"
+                                  },
+                                  " à ",
+                                  {
+                                    "value": "2"
+                                  }
+                                ]
+                              },
+                              {
+                                "category": "events",
+                                "label": "Événements",
+                                "parts": [
+                                  "envoyer à tous ",
+                                  {
+                                    "choice": "secteur2"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-decor",
+              "title": "Scène : réception du secteur",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Scène : réception du secteur",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand je reçois ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "basculer sur l’arrière-plan ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-pilote",
+              "title": "Pilote : commandes protégées",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Pilote : commandes protégées",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "0"
+                      },
+                      " y: ",
+                      {
+                        "value": "-100"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "dire ",
+                      {
+                        "value": ""
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "flèche droite"
+                                  },
+                                  " pressée ?"
+                                ]
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "ajouter ",
+                                  {
+                                    "value": "4"
+                                  },
+                                  " à x"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "flèche gauche"
+                                  },
+                                  " pressée ?"
+                                ]
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "ajouter ",
+                                  {
+                                    "value": "-4"
+                                  },
+                                  " à x"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "flèche haut"
+                                  },
+                                  " pressée ?"
+                                ]
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "ajouter ",
+                                  {
+                                    "value": "4"
+                                  },
+                                  " à y"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  "touche ",
+                                  {
+                                    "choice": "flèche bas"
+                                  },
+                                  " pressée ?"
+                                ]
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "ajouter ",
+                                  {
+                                    "value": "-4"
+                                  },
+                                  " à y"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "abscisse x",
+                                    "category": "motion"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "200"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "mettre x à ",
+                                  {
+                                    "value": "200"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "abscisse x",
+                                    "category": "motion"
+                                  },
+                                  " \u003c ",
+                                  {
+                                    "value": "-200"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "mettre x à ",
+                                  {
+                                    "value": "-200"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "ordonnée y",
+                                    "category": "motion"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "140"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "mettre y à ",
+                                  {
+                                    "value": "140"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "ordonnée y",
+                                    "category": "motion"
+                                  },
+                                  " \u003c ",
+                                  {
+                                    "value": "-140"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "mettre y à ",
+                                  {
+                                    "value": "-140"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-annonce",
+              "title": "Pilote : réception du résultat",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Pilote : réception du résultat",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand je reçois ",
+                      {
+                        "choice": "resultat"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "etat",
+                            "category": "variables"
+                          },
+                          " = ",
+                          {
+                            "value": "gagne"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "looks",
+                        "label": "Apparence",
+                        "parts": [
+                          "dire ",
+                          {
+                            "value": "Mission réussie !"
+                          },
+                          " pendant ",
+                          {
+                            "value": "2"
+                          },
+                          " secondes"
+                        ]
+                      }
+                    ],
+                    "elseChildren": [
+                      {
+                        "category": "looks",
+                        "label": "Apparence",
+                        "parts": [
+                          "dire ",
+                          {
+                            "value": "Plus de vies : mission terminée."
+                          },
+                          " pendant ",
+                          {
+                            "value": "2"
+                          },
+                          " secondes"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "stop ",
+                      {
+                        "choice": "tout"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-balise",
+              "title": "Balise : collecte protégée",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Balise : collecte protégée",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-160"
+                      },
+                      " y: ",
+                      {
+                        "value": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre jusqu’à ce que ",
+                      {
+                        "condition": [
+                          "non ",
+                          {
+                            "condition": [
+                              {
+                                "choice": "Pilote"
+                              },
+                              " touché ?"
+                            ]
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "etat",
+                                    "category": "variables"
+                                  },
+                                  " = ",
+                                  {
+                                    "value": "en jeu"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " et ",
+                              {
+                                "condition": [
+                                  {
+                                    "choice": "Pilote"
+                                  },
+                                  " touché ?"
+                                ]
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "value": "1"
+                              },
+                              " à ",
+                              {
+                                "choice": "score"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "abscisse x",
+                                    "category": "motion"
+                                  },
+                                  " \u003c ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "aller à x: ",
+                                  {
+                                    "value": "160"
+                                  },
+                                  " y: ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseChildren": [
+                              {
+                                "category": "motion",
+                                "label": "Mouvement",
+                                "parts": [
+                                  "aller à x: ",
+                                  {
+                                    "value": "-160"
+                                  },
+                                  " y: ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-fabrique",
+              "title": "Obstacle : création protégée",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Obstacle : création protégée",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand le ",
+                      {
+                        "flag": true
+                      },
+                      " est cliqué"
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "cacher"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter indéfiniment"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "1.2"
+                          },
+                          " seconde"
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "créer un clone de ",
+                              {
+                                "choice": "moi-même"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-clone",
+              "title": "Obstacle : trajet et suppression",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Obstacle : trajet et suppression",
+                "blocks": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "quand je commence comme un clone"
+                    ]
+                  },
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "aller à x: ",
+                      {
+                        "value": "-210"
+                      },
+                      " y: ",
+                      {
+                        "reporter": "nombre aléatoire entre -100 et 100",
+                        "category": "operators"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "looks",
+                    "label": "Apparence",
+                    "parts": [
+                      "montrer"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "répéter jusqu’à ce que ",
+                      {
+                        "condition": [
+                          {
+                            "condition": [
+                              {
+                                "reporter": "abscisse x",
+                                "category": "motion"
+                              },
+                              " > ",
+                              {
+                                "value": "210"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " ou ",
+                          {
+                            "condition": [
+                              "non ",
+                              {
+                                "condition": [
+                                  {
+                                    "reporter": "etat",
+                                    "category": "variables"
+                                  },
+                                  " = ",
+                                  {
+                                    "value": "en jeu"
+                                  }
+                                ],
+                                "operator": true
+                              }
+                            ],
+                            "operator": true
+                          }
+                        ],
+                        "operator": true
+                      }
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "etat",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "en jeu"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "motion",
+                            "label": "Mouvement",
+                            "parts": [
+                              "ajouter ",
+                              {
+                                "reporter": "vitesseObstacle",
+                                "category": "variables"
+                              },
+                              " à x"
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "si ",
+                              {
+                                "condition": [
+                                  {
+                                    "condition": [
+                                      {
+                                        "reporter": "vies",
+                                        "category": "variables"
+                                      },
+                                      " > ",
+                                      {
+                                        "value": "0"
+                                      }
+                                    ],
+                                    "operator": true
+                                  },
+                                  " et ",
+                                  {
+                                    "condition": [
+                                      {
+                                        "choice": "Pilote"
+                                      },
+                                      " touché ?"
+                                    ]
+                                  }
+                                ],
+                                "operator": true
+                              },
+                              " alors"
+                            ],
+                            "children": [
+                              {
+                                "category": "variables",
+                                "label": "Variables",
+                                "parts": [
+                                  "ajouter ",
+                                  {
+                                    "value": "-1"
+                                  },
+                                  " à ",
+                                  {
+                                    "choice": "vies"
+                                  }
+                                ]
+                              },
+                              {
+                                "category": "control",
+                                "label": "Contrôle",
+                                "parts": [
+                                  "supprimer ce clone"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.03"
+                          },
+                          " seconde"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "supprimer ce clone"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "modele-vitesse",
+              "title": "Obstacle : réception de vitesse",
+              "paragraphs": [],
+              "visualScript": {
+                "caption": "Obstacle : réception de vitesse",
+                "blocks": [
+                  {
+                    "category": "events",
+                    "label": "Événements",
+                    "parts": [
+                      "quand je reçois ",
+                      {
+                        "choice": "secteur2"
+                      }
+                    ]
+                  },
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "vitesseObstacle"
+                      },
+                      " à ",
+                      {
+                        "value": "7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Comparer avec la référence terminée",
+              "paragraphs": [
+                "Sauvegarde ton propre jeu avant d’ouvrir la référence. Compare seulement la pile qui pose problème, puis recharge ta version principale mission-06.sb3 pour poursuivre."
+              ],
+              "downloads": [
+                {
+                  "label": "Télécharger la référence États (.sb3)",
+                  "path": "assets/scratch/mission/mission-etats.sb3",
+                  "filename": "mission-etats.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "aide-etats",
+          "title": "Revoir les états dans un autre onglet",
+          "text": "Revoir les états dans un autre onglet. L’aide utilise un autre jeu pour distinguer la décision et les actions autorisées. Consulte-la puis ferme cet onglet pour retrouver Mission balises.",
+          "moduleLink": {
+            "moduleId": "scratch-niveaux-etats",
+            "text": "Revoir les états dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Garder la partie avec son annonce",
+          "paragraphs": [
+            "Conserve mission-06.sb3, ou son nom avec suffixe : deux piles sur la scène, deux dans Pilote, une dans Balise et trois dans Obstacle. Aucun bloc isolé ni réglage de diagnostic ne reste dans cette version.",
+            "Le drapeau passe par preparation, remet score 0, vies 3, vitesseObstacle 4, niveau 1 et secteur1, puis autorise en jeu. Les personnages retrouvent leur départ et l’ancienne bulle s’efface.",
+            "À trois points, le secteur change une fois. À six points, etat devient gagne ; à zéro vie, perdu. La défaite reste prioritaire. Les actions sont bloquées avant le signal resultat, les copies disparaissent et Pilote annonce la fin pendant deux secondes avant stop tout.",
+            "Le prochain chapitre utilisera cette sauvegarde pour chercher des erreurs, comparer une difficulté et personnaliser une règle du jeu."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Distinguer le résultat mémorisé de son annonce et expliquer la priorité de défaite.",
+        "Protéger les commandes, la collecte, la création, le trajet et les dégâts.",
+        "Vérifier le verrouillage dans une copie sans arrêt avant de construire l’annonce.",
+        "Relancer pendant et après l’annonce, puis retrouver sa sauvegarde principale."
+      ],
+      "teacherGuide": {
+        "objective": "Mémoriser la fin, refuser les actions pendant l’annonce et préparer une nouvelle partie au drapeau.",
+        "entryDiagnosis": [
+          "Faire rouvrir mission-05 et montrer la décision de fin, le passage unique et les deux réceptions de secteur2.",
+          "Faire distinguer mettre etat à gagne d’un texte affiché ; faire retrouver le si … sinon de priorité."
+        ],
+        "preparation": [
+          "Préserver le projet personnel avant tout import. Identifier les sauvegardes mission-06-decision, mission-06-protections et mission-06 ainsi que leurs éventuels suffixes.",
+          "Afficher etat, score, vies et niveau ; vitesseObstacle peut être affichée pendant les essais. Les mots d’état sont preparation, en jeu, gagne et perdu, sans accents.",
+          "Avant l’annonce, le diagnostic retire les deux stop tout de la scène dans une copie. Après l’annonce, le dépannage de la version terminée retire uniquement l’arrêt après le si … sinon de Pilote. Recharger le fichier principal restaure l’arrêt et les valeurs normales."
+        ],
+        "why": "Une annonce avec attente laisse tourner les autres piles. L’état verrouille les actions avant le signal et empêche les annonces répétées ; le drapeau prépare une nouvelle exécution.",
+        "discoverySpeech": [
+          "Que se passe-t-il dans les autres piles pendant dire pendant 2 secondes ?",
+          "Quelles actions doivent cesser dès que le résultat est décidé ?",
+          "Pourquoi le test de création est-il après l’attente ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-etats",
+            "blockId": "decision"
+          },
+          "comments": [
+            "Premier jalon : mémoriser perdu ou gagne avant l’arrêt immédiat, puis vérifier les deux conditions préparées ensemble dans une copie.",
+            "La décision et le passage de secteur ont chacun une protection en jeu. La seconde lit l’état après la décision du même tour.",
+            "Conserver les propriétaires ; aucune nouvelle pile de décision sur Pilote ou sur les clones."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi changer etat avant d’envoyer resultat ?",
+            "answer": "La réception lit le résultat déjà mémorisé, et la scène refuse un deuxième envoi aux tours suivants."
+          },
+          {
+            "question": "Pourquoi ne pas tester seulement avant attendre 1.2 seconde ?",
+            "answer": "La partie peut finir pendant l’attente. Le test après cette attente refuse une création tardive."
+          },
+          {
+            "question": "Que fait non `etat = en jeu` dans la sortie du clone ?",
+            "answer": "Cette condition devient vraie dès que l’état quitte en jeu. La copie sort de la boucle puis se supprime."
+          },
+          {
+            "question": "Pourquoi le test sans stop tout est-il utile ?",
+            "answer": "L’arrêt global cacherait une protection absente. Sans arrêt, on observe séparément clavier, collecte, copies et création."
+          },
+          {
+            "question": "Pourquoi relancer pendant la bulle ?",
+            "answer": "Pour vérifier l’effacement, les valeurs et positions initiales, et l’absence d’un ancien délai qui arrêterait la nouvelle partie."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-etats",
+          "blockId": "diagnostic"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-etats",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Traiter décision, protections et annonce successivement. Faire réussir et sauvegarder chaque jalon avant le suivant.",
+          "Faire pointer la portée de chaque si : commandes et limites, collecte et déplacement de Balise, création après attente, mouvement et contact du clone.",
+          "Si la manipulation des champs x et y est difficile, accompagner le placement pour tester la collecte bloquée ; distinguer cette aide de l’explication de la condition."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Une action continue après le résultat.",
+            "helps": [
+              "Depuis le jeu terminé, sauvegarder mission-06 et retirer dans la copie uniquement le stop tout après l’annonce de Pilote. Conserver les émissions et les changements d’état ; observer une action et lire etat au-delà des deux secondes.",
+              "Faire montrer la pile propriétaire de cette action et le si qui l’entoure.",
+              "Vérifier en jeu dans le test, la portée complète de la protection et la place du +1 ou du dégât à l’intérieur.",
+              "Rejouer les essais de collecte et de contact avec les copies présentes, puis recharger le fichier principal identifié. Vérifier score 0, vies 3 et l’arrêt final dans Pilote."
+            ]
+          },
+          {
+            "symptom": "Une copie arrive pendant l’annonce ou reste affichée.",
+            "helps": [
+              "Dans une copie du jeu terminé, retirer uniquement l’arrêt après l’annonce de Pilote. Déclencher la fin avec d’autres copies présentes, puis observer au-delà de la bulle et d’un intervalle de création.",
+              "Distinguer la pile du modèle et celle du clone.",
+              "Placer le test en jeu après l’attente de création ; compléter la sortie par ou non `etat = en jeu` et garder supprimer ce clone après la boucle.",
+              "Pour la victoire, attendre deux copies avec Pilote à (-160, -140), puis saisir y: 0 pour la dernière collecte. Pour la défaite, toucher une copie alors qu’une autre est encore présente. Vérifier disparition, absence de nouvelles créations, puis recharger la version principale avec son arrêt final."
+            ]
+          },
+          {
+            "symptom": "Le résultat se répète, manque ou arrête la nouvelle partie.",
+            "helps": [
+              "Lire etat à la fin et vérifier si la bulle apparaît une fois.",
+              "Faire retrouver les deux émissions sur la scène et l’unique réception dans Pilote.",
+              "Mettre l’état final avant l’envoi, garder la décision dans si `etat = en jeu`, utiliser dire pendant et placer stop tout après le si … sinon de Pilote. Effacer la bulle au drapeau.",
+              "Relancer pendant la bulle puis jouer au-delà de son ancien délai ; essayer également après l’arrêt complet."
+            ]
+          }
+        ],
+        "quickConductor": [
+          "Reprendre Messages, créer etat et préparer le départ.",
+          "Verrouiller la décision avec arrêt immédiat et éprouver la priorité.",
+          "Protéger les quatre piles d’action, sauvegarder puis diagnostiquer dans une copie sans arrêt.",
+          "Restaurer la version principale, remplacer les arrêts par resultat et construire l’annonce sur Pilote.",
+          "Vérifier les deux fins et les relances, varier la durée puis restaurer mission-06."
+        ],
+        "notes": "Les compteurs préparés et les champs de position isolent des règles dans les diagnostics. Ils ne remplacent pas une partie complète au clavier. Les huit piles finales n’incluent aucun bloc de test isolé. Une recette technique et une lecture du cours ne démontrent pas encore l’autonomie avec un élève.",
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
+    },
+    "scratch-mission-tests": {
+      "domainId": "jeux-video",
+      "type": "project",
+      "theme": "fondations",
+      "tool": {
+        "label": "Ouvrir Scratch dans un autre onglet",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      },
+      "title": "Tester et personnaliser Mission balises",
+      "objective": "Trouver une panne avec un essai ciblé, comparer un réglage et conserver une version personnelle vérifiée.",
+      "skillIds": [
+        "scratch.debugging",
+        "scratch.game-rules",
+        "scratch.variables",
+        "scratch.conditions",
+        "scratch.time"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "scratch.game-rules",
+          "expectation": "Reprendre mission-06.sb3 avec les deux fins, les protections et la relance."
+        },
+        {
+          "skillId": "scratch.variables",
+          "expectation": "Distinguer une valeur de départ et une valeur modifiée pendant la partie."
+        },
+        {
+          "skillId": "scratch.clones",
+          "expectation": "Retrouver la fabrique et la pile de chaque copie."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Conserver ton jeu avant les essais",
+          "paragraphs": [
+            "Ouvre ta sauvegarde personnelle mission-06.sb3, ou son nom avec suffixe. Tu gardes le même jeu, ses huit piles et tes choix graphiques. Ce chapitre ajoute des essais et une modification personnelle.",
+            "Sauvegarde une copie sous mission-07-base.sb3. Repère le téléchargement récent, puis recharge-le pour vérifier qu’il contient ton jeu. Cette base garde score 0, vies 3, niveau 1, vitesseObstacle 4, le secteur 2 à trois points, la victoire à six et l’annonce de deux secondes.",
+            "Prépare un carnet sur papier ou dans un fichier texte. Tu y noteras les résultats et les noms des copies d’essai. Si ton projet manque, sauvegarde le travail ouvert puis charge la reprise ci-dessous depuis Fichier ; elle remplace le projet affiché et fournit la fin d’États."
+          ],
+          "downloads": [
+            {
+              "label": "Reprendre depuis la fin d’États (.sb3)",
+              "path": "assets/scratch/mission/mission-etats.sb3",
+              "filename": "mission-etats.sb3"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "methode",
+          "title": "Prévoir, observer et expliquer",
+          "paragraphs": [
+            "Pour chaque essai, note son nom, le fichier utilisé, la situation de départ, ton action et le résultat attendu. Lance ensuite et écris le résultat observé, même s’il diffère de ta prévision.",
+            "Si l’essai échoue, formule une piste et change une seule chose. Repars du même départ pour comparer. Note ce qui a changé et ce qui te permet de garder ou d’abandonner ta piste.",
+            "Par exemple : depuis le premier secteur, la deuxième activation doit laisser niveau à 1 ; la troisième doit le faire passer à 2. Regarder seulement la partie déjà terminée ne vérifie pas ces deux limites."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "limites",
+          "title": "Vérifier les règles de ta base",
+          "items": [
+            {
+              "id": "depart",
+              "text": "Lance mission-07-base.sb3. Note les valeurs de départ : etat en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. Sélectionne Pilote pour lire sa position (0, -100), puis Balise pour retrouver (-160, 0)."
+            },
+            {
+              "id": "bords",
+              "text": "Pilote avec les quatre flèches. Maintiens chaque direction jusqu’au bord : x reste entre -200 et 200, y entre -140 et 140. Lis les champs du sprite pour vérifier les bornes et note un résultat sur chaque axe."
+            },
+            {
+              "id": "point",
+              "text": "Relance et active deux balises. Chaque contact ajoute un seul point et déplace Balise à l’autre extrémité. Entre deux contacts, le score reste stable. Note le résultat attendu et ce que tu observes."
+            },
+            {
+              "id": "reprise",
+              "text": "Si une règle échoue, utilise le chapitre qui la construit pour retrouver sa pile. Corrige et refais l’essai avant la suite. Conserve ensuite une nouvelle sauvegarde mission-07-base.sb3 et repère ce téléchargement comme ta base de travail."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "seuils",
+          "title": "Essayer juste avant et juste après une fin",
+          "items": [
+            {
+              "id": "copie",
+              "text": "Dans une copie de ta base, remplace seulement le score de départ 0 par 1 sur la scène. Note ce réglage dans le carnet ; il sert à atteindre les seuils avec des contacts réels."
+            },
+            {
+              "id": "secteur",
+              "text": "Lance et active une balise : à deux points, niveau vaut encore 1 et le décor reste secteur1. À la suivante, score 3, niveau 2, décor violet et vitesse 7. À quatre points, le score est conservé et le niveau reste 2. Note tes observations."
+            },
+            {
+              "id": "victoire",
+              "text": "Continue jusqu’à cinq puis six points. À cinq, le jeu continue ; à six, etat devient gagne. Pendant la bulle, les commandes sont bloquées et les copies disparaissent. Le programme s’arrête après deux secondes. Si tu perds avant, relance la même copie pour recommencer cet essai."
+            },
+            {
+              "id": "defaite",
+              "text": "Dans cette copie, remets le score de départ à 0 et prépare vies 1. Relance, place Pilote à (0, -140) avec les champs du sprite et attends deux copies. Touche celle de droite alors qu’une autre est encore présente. La dernière vie passe de 1 à 0 : etat devient perdu, les autres copies disparaissent et les flèches sont bloquées pendant l’annonce."
+            },
+            {
+              "id": "relance",
+              "text": "Relance pendant une annonce, puis joue plus de deux secondes. L’ancienne annonce ne doit pas arrêter cette nouvelle partie. Dans cette copie, les vies repartent à 1 puisque tu as changé leur initialisation."
+            },
+            {
+              "id": "retour",
+              "text": "Sauvegarde ces essais sous mission-07-seuils.sb3, puis recharge ta base mission-07-base.sb3 repérée au début. Vérifie score 0 et vies 3. Note dans le carnet quels essais ont réussi et lesquels demandent encore une correction."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "panne",
+          "title": "Ouvrir une panne volontaire du même jeu",
+          "paragraphs": [
+            "Garde ta base personnelle mission-07-base.sb3. Télécharge le fichier de panne ci-dessous et ouvre-le depuis Fichier. Il remplace le projet affiché pour cet essai ; tu rechargeras ensuite ta base avec tes propres choix.",
+            "Ce fichier de Mission balises contient une erreur de relance. La règle attendue reste celle de ton jeu : le drapeau doit retrouver le premier secteur, puis la troisième activation doit changer le décor et la vitesse.",
+            "Lance et compare les valeurs de départ avec ton carnet. Note la différence que tu trouves. Active ensuite trois balises et décris le score, le niveau, le décor et la vitesse observés. Formule une piste avant d’ouvrir les indices."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger la panne volontaire de relance (.sb3)",
+              "path": "assets/scratch/mission/mission-panne-relance.sb3",
+              "filename": "mission-panne-relance.sb3"
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "enquete",
+          "title": "Réparer à partir d’un symptôme",
+          "items": [
+            {
+              "id": "attendu",
+              "text": "Dans ton carnet, écris : au drapeau, j’attends… mais j’observe… Puis ajoute ce qui se produit à la troisième activation. Distingue la valeur qui mémorise le secteur du dessin affiché."
+            },
+            {
+              "id": "piste",
+              "text": "Retrouve le propriétaire de l’initialisation. Compare le début de sa pile avec les valeurs attendues et choisis une seule modification à essayer. Les indices ci-dessous peuvent t’aider après ton premier examen."
+            },
+            {
+              "id": "retester",
+              "text": "Après ta correction, relance : les valeurs de départ doivent correspondre à la base. Vérifie encore le premier secteur à deux points, le passage à trois, puis un drapeau lancé depuis le secteur 2. Explique ce que ta correction change à chaque nouveau départ."
+            },
+            {
+              "id": "garder",
+              "text": "Sauvegarde la réparation sous mission-07-panne-reparee.sb3 et note ta conclusion. Recharge ensuite ta base personnelle mission-07-base.sb3. Le fichier de panne sert à l’enquête ; tes personnalisations restent dans ta base."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "indices-panne",
+          "title": "Chercher une piste pour la relance",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "indice-observation",
+              "title": "Comparer valeur et décor",
+              "paragraphs": [
+                "Au premier lancement de ce fichier, le décor revient à secteur1 mais niveau affiche 2. À trois points, le décor et la vitesse restent ceux du départ. Quelle valeur devrait retrouver 1 au drapeau ?"
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "indice-proprietaire",
+              "title": "Retrouver la pile qui prépare le jeu",
+              "paragraphs": [
+                "La scène initialise les variables communes avant sa boucle. Compare les blocs de départ de score, vies et vitesseObstacle avec ce qui prépare niveau. Le test de changement de secteur exige encore `niveau = 1`."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification-panne",
+          "title": "Comparer après ton essai de réparation",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "correction-panne",
+              "title": "Rétablir une valeur de départ",
+              "paragraphs": [
+                "La panne vient de l’initialisation de niveau absente de la pile de drapeau de la scène. Le fichier a conservé la valeur 2 : changer le décor ne remet pas cette variable à 1.",
+                "Ajoute mettre niveau à 1 sur la scène, avec les autres initialisations avant le choix du décor et la boucle. Relance : niveau retrouve 1. À score 3, le test `niveau = 1` et `score > 2` permet de nouveau le changement de secteur.",
+                "Mettre niveau à 1 seulement pendant la partie masquerait le symptôme du moment. Le bloc sous le drapeau prépare aussi chaque partie suivante."
+              ],
+              "visualScript": {
+                "caption": "Scène : valeur à préparer au drapeau",
+                "blocks": [
+                  {
+                    "category": "variables",
+                    "label": "Variables",
+                    "parts": [
+                      "mettre ",
+                      {
+                        "choice": "niveau"
+                      },
+                      " à ",
+                      {
+                        "value": "1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "comparaison",
+          "title": "Comparer la fréquence et la vitesse",
+          "items": [
+            {
+              "id": "prevoir",
+              "text": "À partir de ta base personnelle, prévois l’effet d’un intervalle de création qui passerait de 1.2 à 1.8 seconde. Note séparément ce que tu attends pour le nombre d’apparitions et pour la vitesse d’une copie."
+            },
+            {
+              "id": "temoin",
+              "text": "Dans ta base inchangée, lance puis place Pilote à (0, -140) pour observer à l’abri, sans activer de balise. Compte les apparitions pendant environ dix secondes depuis le drapeau. Compte les nouvelles copies qui entrent, et non celles visibles ensemble à un instant. Note le nombre et la vitesse affichée si tu coches vitesseObstacle."
+            },
+            {
+              "id": "reglage",
+              "text": "Dans Obstacle, dans la fabrique au drapeau, change seulement attendre 1.2 seconde en attendre 1.8 seconde. Garde le test d’état après l’attente et la création dans son si. Sauvegarde cette copie sous mission-07-intervalle.sb3."
+            },
+            {
+              "id": "comparer",
+              "text": "Relance cette copie et observe de la même façon pendant environ dix secondes, avec Pilote au même endroit et sans balise activée. Note les apparitions et la vitesse. Explique ce qui a changé et ce qui est resté identique ; ta mesure de temps peut décaler une apparition en limite d’intervalle."
+            },
+            {
+              "id": "retour",
+              "text": "Recharge mission-07-base.sb3. Vérifie l’intervalle de 1.2 seconde dans la fabrique et garde tes deux observations dans le carnet avant de choisir ta propre règle."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification-comparaison",
+          "title": "Comparer ton explication du réglage",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-intervalle",
+              "title": "Espacer les arrivées sans ralentir le trajet",
+              "paragraphs": [
+                "Avec 1.8 seconde, les créations sont plus espacées qu’avec 1.2 seconde. Sur la même durée, on attend moins d’apparitions. La vitesse de déplacement reste à 4 dans le premier secteur : seul le délai de la fabrique a changé.",
+                "Compter les copies encore visibles mélange deux effets : les arrivées et les sorties. Compter les nouvelles apparitions permet de comparer la fréquence. Les vitesses 4 puis 7 restent celles de ta base."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "variation",
+          "title": "Choisir une règle pour ta version personnelle",
+          "items": [
+            {
+              "id": "choix",
+              "text": "Depuis ta base restaurée, choisis une seule règle : commencer avec quatre vies au lieu de trois, créer les copies toutes les 1.5 seconde, ou déplacer Pilote de 5 par pas au lieu de 4 dans les quatre directions. Écris le comportement recherché et les blocs que tu penses modifier avant d’ouvrir les repères ci-dessous."
+            },
+            {
+              "id": "prevision",
+              "text": "Dans ton carnet, indique l’ancienne valeur, la nouvelle et les essais qui permettront de les distinguer. Prévois aussi une règle qui doit rester identique, par exemple le passage de secteur à trois points ou la victoire à six."
+            },
+            {
+              "id": "modifier",
+              "text": "Modifie les blocs nécessaires à cette seule règle. Lance et compare avec ta prévision. Si un résultat diffère, retrouve la pile concernée et essaie une correction à la fois. Complète ton carnet avec l’observation et ton explication."
+            },
+            {
+              "id": "conserver",
+              "text": "Garde ce changement dans ta version personnelle et sauvegarde sous mission-07.sb3. Repère le téléchargement récent, même avec un suffixe. Tu vas vérifier cette version personnalisée dans la dernière étape."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification-variation",
+          "title": "Des repères après ton premier essai",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "repere-vies",
+              "title": "Si tu as choisi quatre vies",
+              "paragraphs": [
+                "La valeur à préparer est celle de vies au drapeau sur la scène. Le départ et chaque relance doivent afficher 4. Les dégâts retirent toujours une vie par copie touchée ; les fins se décident toujours à zéro vie ou six points.",
+                "Observe plusieurs contacts séparés : avec une vie restante, le jeu continue ; le contact suivant déclenche perdu à zéro. Deux copies touchées peuvent retirer deux vies, car ce jeu ne possède pas d’invulnérabilité générale."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "repere-intervalle",
+              "title": "Si tu as choisi 1.5 seconde",
+              "paragraphs": [
+                "Le réglage appartient à l’attente de la fabrique d’Obstacle, avant le test d’état et la création. Les vitesses 4 puis 7 ne changent pas. Vérifie aussi qu’aucune copie n’apparaît après la fin."
+              ]
+            },
+            {
+              "type": "lesson",
+              "id": "repere-commandes",
+              "title": "Si tu as choisi des pas de 5",
+              "paragraphs": [
+                "Dans le fichier personnel rechargé, sélectionne Pilote et lis les quatre valeurs de déplacement : +5 à droite et en haut, -5 à gauche et en bas. Si une direction est restée à 4 ou -4, corrige-la et sauvegarde à nouveau.",
+                "Teste ensuite les quatre flèches et les limites : x reste entre -200 et 200, y entre -140 et 140. Lire les valeurs vérifie le réglage conservé ; piloter jusqu’aux bords vérifie le comportement et les limites."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "recette-finale",
+          "title": "Rouvrir et éprouver ta version personnelle",
+          "items": [
+            {
+              "id": "rouvrir",
+              "text": "Recharge le fichier mission-07.sb3 que tu viens de sauvegarder. Note le réglage choisi et les valeurs de départ attendues pour cette version. Avec le choix de quatre vies, tu attends 4 ; avec les deux autres choix, tu attends toujours 3."
+            },
+            {
+              "id": "regle",
+              "text": "Refais l’essai de ta règle depuis le fichier rechargé : compteur initial et derniers contacts pour les quatre vies, apparitions sur une durée comparable pour l’intervalle. Pour les pas de 5, sélectionne Pilote et lis ses quatre valeurs de déplacement : +5 à droite et en haut, -5 à gauche et en bas. Teste ensuite les quatre flèches et les bornes inchangées. Note le réglage lu et le résultat observé."
+            },
+            {
+              "id": "conserver",
+              "text": "Vérifie encore le passage de secteur entre deux et trois points, le score conservé à quatre, la victoire entre cinq et six et la défaite entre une et zéro vie. Pendant les annonces, les commandes restent bloquées et les copies disparaissent."
+            },
+            {
+              "id": "relancer",
+              "text": "Relance pendant une annonce puis après l’arrêt. Retrouve les valeurs de ta version personnelle, les positions de départ, secteur1 et la bulle effacée. Continue au-delà de l’ancien délai d’annonce pour vérifier que la nouvelle partie reste active."
+            },
+            {
+              "id": "corriger",
+              "text": "Si tu corriges quelque chose, refais l’essai concerné puis la vérification de fin et de relance. Sauvegarde à nouveau mission-07.sb3 et recharge le dernier téléchargement pour confirmer que la correction est conservée."
+            },
+            {
+              "id": "expliquer",
+              "text": "Présente ton jeu avec ses commandes, son but et ta règle personnelle. Appuie-toi sur une prévision, un résultat observé et une erreur corrigée dans ton carnet. Une autre personne peut essayer le jeu ; demande-lui ce qu’elle a compris et note une amélioration à reprendre."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "modeles",
+          "title": "Retrouver une référence avant personnalisation",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "reference",
+              "title": "Comparer seulement la règle qui pose problème",
+              "paragraphs": [
+                "Sauvegarde ta version personnelle avant d’ouvrir cette référence. Elle fournit le jeu à la fin d’États, avec trois vies, des pas de 4 et l’intervalle de 1.2 seconde. Elle sert à comparer les piles ; ta version personnelle peut avoir le réglage différent que tu as choisi.",
+                "Recharge ensuite ton propre fichier mission-07.sb3. Ta copie de panne réparée et ton carnet restent les traces de ton enquête."
+              ],
+              "downloads": [
+                {
+                  "label": "Comparer avec le jeu avant personnalisation (.sb3)",
+                  "path": "assets/scratch/mission/mission-etats.sb3",
+                  "filename": "mission-etats.sb3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "aide-enquete",
+          "title": "Revoir le débogage dans un autre onglet",
+          "text": "Revoir le débogage dans un autre onglet. Lis la méthode et les indices de l’aide, puis ferme cet onglet pour reprendre ton enquête dans Mission balises.",
+          "moduleLink": {
+            "moduleId": "scratch-debogage",
+            "text": "Revoir le débogage dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "lesson",
+          "id": "reprise",
+          "title": "Garder ton jeu et tes essais",
+          "paragraphs": [
+            "Conserve mission-07.sb3 avec la règle personnelle vérifiée, mission-07-base.sb3 comme point de comparaison et ton carnet d’essais. La copie de panne réparée et les variantes peuvent rester séparées avec leurs noms explicites.",
+            "Ton fichier principal contient le jeu et ton réglage choisi. Les valeurs préparées pour les seuils et les blocs de diagnostic appartiennent aux copies d’essai. Vérifie que ton principal démarre à score 0, niveau 1 et etat en jeu après la préparation.",
+            "Les sept chapitres de Mission balises sont maintenant disponibles. Tu peux rejouer, faire essayer ta version et choisir une prochaine amélioration à partir d’un résultat observé."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Décrire un départ, une action, un résultat attendu et une observation dans un carnet.",
+        "Localiser une panne de relance et vérifier la correction sur plusieurs départs.",
+        "Distinguer la fréquence de création de la vitesse de déplacement.",
+        "Conserver une règle personnelle, rouvrir sa sauvegarde et expliquer les essais réalisés."
+      ],
+      "teacherGuide": {
+        "objective": "Trouver une panne avec un essai ciblé, comparer un réglage et conserver une version personnelle vérifiée.",
+        "entryDiagnosis": [
+          "Faire rouvrir la version personnelle d’États et retrouver les huit piles, le propriétaire des décisions et l’arrêt final dans Pilote.",
+          "Faire distinguer le projet principal, la base conservée et les copies dont les compteurs sont préparés pour un essai."
+        ],
+        "preparation": [
+          "Préserver la version personnelle en mission-07-base avant tout import. Le fichier public de panne est un laboratoire volontaire, pas une mise à jour du projet de l’élève.",
+          "Le fichier de panne conserve niveau à 2 et omet uniquement sa remise à 1 au drapeau. Les autres règles et costumes sont ceux de la référence États.",
+          "Préparer un carnet papier ou texte. Aucune connexion Scratch ni partage public n’est nécessaire : les sauvegardes locales suffisent.",
+          "Repérer les copies de seuils, de réparation et d’intervalle. La recette finale attend les valeurs du choix personnel, notamment 4 vies si ce choix a été conservé."
+        ],
+        "why": "Un essai utile distingue un comportement correct d’une erreur précise. La prévision et l’observation évitent de régler plusieurs valeurs à l’aveugle ; la réouverture vérifie que le travail conservé est bien celui qui a été testé.",
+        "discoverySpeech": [
+          "Quel départ permet de vérifier la limite plutôt que regarder une partie déjà terminée ?",
+          "Comment distinguer la valeur du niveau et le décor visible ?",
+          "Quelle mesure compare les arrivées sans les confondre avec les sorties ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "scratch-mission-tests",
+            "blockId": "methode"
+          },
+          "comments": [
+            "Partir d’une observation et d’une différence avec l’attendu ; garder la conclusion dans le carnet.",
+            "Le laboratoire de panne est séparé du projet personnel. Les indices et la correction sont repliés après l’essai, pas donnés dans le chemin de recherche.",
+            "La dernière activité propose un choix limité de règle, sans pile complète à recopier."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi niveau peut-il afficher 2 alors que le décor est secteur1 ?",
+            "answer": "Le décor et la variable sont distincts. Dans la panne, le décor est remis au départ mais l’initialisation de niveau manque."
+          },
+          {
+            "question": "Pourquoi tester un nouveau drapeau après la réparation ?",
+            "answer": "Une correction faite uniquement sur la valeur du moment ne prépare pas forcément la partie suivante. Le bloc d’initialisation doit être dans la pile de drapeau."
+          },
+          {
+            "question": "Pourquoi compter les apparitions plutôt que les copies visibles ?",
+            "answer": "Le nombre visible dépend aussi de la durée de traversée et des suppressions. Les apparitions mesurent directement la fréquence de création."
+          },
+          {
+            "question": "Quelle attente de vies retenir dans la recette finale ?",
+            "answer": "Quatre si cette règle personnelle a été choisie, trois pour les autres choix. Le carnet et la sauvegarde finale décrivent le réglage retenu."
+          },
+          {
+            "question": "Une case cochée suffit-elle à confirmer une règle ?",
+            "answer": "Non : demander le départ utilisé, le résultat observé et son explication. Les résultats techniques du site ne décrivent pas les essais de l’élève."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "scratch-mission-tests",
+          "blockId": "enquete"
+        },
+        "independentActivity": {
+          "moduleId": "scratch-mission-tests",
+          "blockId": "variation"
+        },
+        "differentiation": [
+          "Accompagner la formulation attendu/observé avant de donner une piste technique. Une seule erreur est introduite dans le fichier de laboratoire.",
+          "Pour la mesure de fréquence, une personne peut annoncer les dix secondes pendant que l’autre compte les nouvelles apparitions. Garder le même protocole pour les deux réglages.",
+          "Si le projet personnel comporte déjà une variation, identifier d’abord ses valeurs et garder cette base séparée de la référence. Les réglages du chemin principal restent les points de comparaison explicitement annoncés.",
+          "Adapter le rythme et le support du carnet aux besoins de la personne ; demander l’explication d’une règle, pas la vitesse de réalisation."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le décor du fichier de panne reste au premier secteur.",
+            "helps": [
+              "Faire noter le niveau au départ puis au troisième point, avant de changer un bloc.",
+              "Faire distinguer la réception du décor de l’initialisation commune sur la scène.",
+              "Comparer les valeurs de départ aux blocs placés avant la boucle ; le test de transition attend niveau 1.",
+              "Rétablir mettre niveau à 1 au drapeau, puis vérifier deux points, trois points et une relance depuis le secteur 2."
+            ]
+          },
+          {
+            "symptom": "La comparaison d’intervalle donne une conclusion incertaine.",
+            "helps": [
+              "Faire préciser si le nombre noté compte les apparitions ou les copies encore visibles.",
+              "Vérifier même durée, même départ, aucune activation et Pilote à l’abri dans les deux essais.",
+              "Conserver les vitesses 4 et 7 ; modifier seulement l’attente de la fabrique de 1.2 à 1.8 seconde.",
+              "Refaire la mesure et distinguer une apparition à la limite du chronométrage d’une différence de fréquence."
+            ]
+          },
+          {
+            "symptom": "La recette finale utilise encore un réglage de test.",
+            "helps": [
+              "Faire montrer le nom du fichier rechargé et la règle personnelle écrite dans le carnet.",
+              "Lire les initialisations de score et vies et l’attente de la fabrique. Pour les pas de 5, vérifier dans Pilote les quatre valeurs +5, -5, +5, -5 avant l’essai des directions et des bornes ; celui-ci réussirait aussi avec les pas de 4.",
+              "Repartir du principal personnel attendu, avec score 0 et niveau 1 ; garder seulement le réglage personnel choisi.",
+              "Sauvegarder, recharger le téléchargement récent et rejouer le test qui distingue ce réglage de la base."
+            ]
+          }
+        ],
+        "quickConductor": [
+          "Sauvegarder une base personnelle et ouvrir le carnet attendu/observé.",
+          "Éprouver limites, seuils, deux fins et relance ; restaurer la base après la copie de test.",
+          "Ouvrir le laboratoire de panne, chercher avec les indices si nécessaire, réparer puis retrouver la base personnelle.",
+          "Comparer 1.2 et 1.8 seconde, puis restaurer 1.2 avant le choix.",
+          "Choisir une règle personnelle, prévoir, modifier, sauvegarder et vérifier depuis le fichier rechargé."
+        ],
+        "notes": "La référence avant personnalisation reste États ; il n’existe pas de solution unique pour mission-07. Le fichier de panne est volontairement défectueux et identifié comme tel. Les contrôles du site et du moteur ne constituent ni un carnet d’élève ni une validation de son autonomie. La reconstruction complète depuis les seules consignes et les essais en situation restent distincts.",
+        "references": [
+          {
+            "title": "Scratch : éditeur",
+            "url": "https://scratch.mit.edu/projects/editor/"
+          }
+        ]
+      }
     }
   },
   "pathways": {
@@ -28429,6 +36117,51 @@ window.CODECRAFT_DATA = {
         "html-parent-enfants",
         "css-flexbox",
         "web-collection-cartes"
+      ]
+    },
+    "scratch-avances": {
+      "domainId": "jeux-video",
+      "title": "Scratch avancé : Mission balises",
+      "theme": "fondations",
+      "objective": "Construis un même jeu étape par étape : piloter, activer les balises, gérer les vies, éviter des obstacles mobiles, changer de secteur et annoncer la fin. Teste ensuite une règle personnelle et conserve ton jeu.",
+      "moduleIds": [
+        "scratch-mission-commandes",
+        "scratch-mission-balises",
+        "scratch-mission-vies",
+        "scratch-mission-clones",
+        "scratch-mission-messages",
+        "scratch-mission-etats",
+        "scratch-mission-tests"
+      ],
+      "chapters": [
+        {
+          "id": "premier-jeu",
+          "title": "Piloter, compter et gérer les contacts",
+          "description": "Conserve ton projet entre les chapitres et teste une nouvelle règle à chaque étape.",
+          "moduleIds": [
+            "scratch-mission-commandes",
+            "scratch-mission-balises",
+            "scratch-mission-vies"
+          ]
+        },
+        {
+          "id": "obstacles-secteurs",
+          "title": "Faire évoluer les obstacles et le secteur",
+          "description": "Transforme les dangers du même jeu, compare les réglages et coordonne le changement de secteur.",
+          "moduleIds": [
+            "scratch-mission-clones",
+            "scratch-mission-messages"
+          ]
+        },
+        {
+          "id": "fin-tests",
+          "title": "Terminer et tester le jeu",
+          "description": "Verrouille les actions, vérifie les règles et conserve une version personnelle éprouvée.",
+          "moduleIds": [
+            "scratch-mission-etats",
+            "scratch-mission-tests"
+          ]
+        }
       ]
     }
   },

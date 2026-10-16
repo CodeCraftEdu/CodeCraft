@@ -1,0 +1,504 @@
+{
+  "domainId": "jeux-video",
+  "type": "project",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir Scratch dans un autre onglet",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "title": "Tester et personnaliser Mission balises",
+  "objective": "Trouver une panne avec un essai ciblé, comparer un réglage et conserver une version personnelle vérifiée.",
+  "skillIds": [
+    "scratch.debugging",
+    "scratch.game-rules",
+    "scratch.variables",
+    "scratch.conditions",
+    "scratch.time"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.game-rules",
+      "expectation": "Reprendre mission-06.sb3 avec les deux fins, les protections et la relance."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Distinguer une valeur de départ et une valeur modifiée pendant la partie."
+    },
+    {
+      "skillId": "scratch.clones",
+      "expectation": "Retrouver la fabrique et la pile de chaque copie."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "Conserver ton jeu avant les essais",
+      "paragraphs": [
+        "Ouvre ta sauvegarde personnelle mission-06.sb3, ou son nom avec suffixe. Tu gardes le même jeu, ses huit piles et tes choix graphiques. Ce chapitre ajoute des essais et une modification personnelle.",
+        "Sauvegarde une copie sous mission-07-base.sb3. Repère le téléchargement récent, puis recharge-le pour vérifier qu’il contient ton jeu. Cette base garde score 0, vies 3, niveau 1, vitesseObstacle 4, le secteur 2 à trois points, la victoire à six et l’annonce de deux secondes.",
+        "Prépare un carnet sur papier ou dans un fichier texte. Tu y noteras les résultats et les noms des copies d’essai. Si ton projet manque, sauvegarde le travail ouvert puis charge la reprise ci-dessous depuis Fichier ; elle remplace le projet affiché et fournit la fin d’États."
+      ],
+      "downloads": [
+        {
+          "label": "Reprendre depuis la fin d’États (.sb3)",
+          "path": "assets/scratch/mission/mission-etats.sb3",
+          "filename": "mission-etats.sb3"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "methode",
+      "title": "Prévoir, observer et expliquer",
+      "paragraphs": [
+        "Pour chaque essai, note son nom, le fichier utilisé, la situation de départ, ton action et le résultat attendu. Lance ensuite et écris le résultat observé, même s’il diffère de ta prévision.",
+        "Si l’essai échoue, formule une piste et change une seule chose. Repars du même départ pour comparer. Note ce qui a changé et ce qui te permet de garder ou d’abandonner ta piste.",
+        "Par exemple : depuis le premier secteur, la deuxième activation doit laisser niveau à 1 ; la troisième doit le faire passer à 2. Regarder seulement la partie déjà terminée ne vérifie pas ces deux limites."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "limites",
+      "title": "Vérifier les règles de ta base",
+      "items": [
+        {
+          "id": "depart",
+          "text": "Lance mission-07-base.sb3. Note les valeurs de départ : etat en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. Sélectionne Pilote pour lire sa position (0, -100), puis Balise pour retrouver (-160, 0)."
+        },
+        {
+          "id": "bords",
+          "text": "Pilote avec les quatre flèches. Maintiens chaque direction jusqu’au bord : x reste entre -200 et 200, y entre -140 et 140. Lis les champs du sprite pour vérifier les bornes et note un résultat sur chaque axe."
+        },
+        {
+          "id": "point",
+          "text": "Relance et active deux balises. Chaque contact ajoute un seul point et déplace Balise à l’autre extrémité. Entre deux contacts, le score reste stable. Note le résultat attendu et ce que tu observes."
+        },
+        {
+          "id": "reprise",
+          "text": "Si une règle échoue, utilise le chapitre qui la construit pour retrouver sa pile. Corrige et refais l’essai avant la suite. Conserve ensuite une nouvelle sauvegarde mission-07-base.sb3 et repère ce téléchargement comme ta base de travail."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "seuils",
+      "title": "Essayer juste avant et juste après une fin",
+      "items": [
+        {
+          "id": "copie",
+          "text": "Dans une copie de ta base, remplace seulement le score de départ 0 par 1 sur la scène. Note ce réglage dans le carnet ; il sert à atteindre les seuils avec des contacts réels."
+        },
+        {
+          "id": "secteur",
+          "text": "Lance et active une balise : à deux points, niveau vaut encore 1 et le décor reste secteur1. À la suivante, score 3, niveau 2, décor violet et vitesse 7. À quatre points, le score est conservé et le niveau reste 2. Note tes observations."
+        },
+        {
+          "id": "victoire",
+          "text": "Continue jusqu’à cinq puis six points. À cinq, le jeu continue ; à six, etat devient gagne. Pendant la bulle, les commandes sont bloquées et les copies disparaissent. Le programme s’arrête après deux secondes. Si tu perds avant, relance la même copie pour recommencer cet essai."
+        },
+        {
+          "id": "defaite",
+          "text": "Dans cette copie, remets le score de départ à 0 et prépare vies 1. Relance, place Pilote à (0, -140) avec les champs du sprite et attends deux copies. Touche celle de droite alors qu’une autre est encore présente. La dernière vie passe de 1 à 0 : etat devient perdu, les autres copies disparaissent et les flèches sont bloquées pendant l’annonce."
+        },
+        {
+          "id": "relance",
+          "text": "Relance pendant une annonce, puis joue plus de deux secondes. L’ancienne annonce ne doit pas arrêter cette nouvelle partie. Dans cette copie, les vies repartent à 1 puisque tu as changé leur initialisation."
+        },
+        {
+          "id": "retour",
+          "text": "Sauvegarde ces essais sous mission-07-seuils.sb3, puis recharge ta base mission-07-base.sb3 repérée au début. Vérifie score 0 et vies 3. Note dans le carnet quels essais ont réussi et lesquels demandent encore une correction."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "panne",
+      "title": "Ouvrir une panne volontaire du même jeu",
+      "paragraphs": [
+        "Garde ta base personnelle mission-07-base.sb3. Télécharge le fichier de panne ci-dessous et ouvre-le depuis Fichier. Il remplace le projet affiché pour cet essai ; tu rechargeras ensuite ta base avec tes propres choix.",
+        "Ce fichier de Mission balises contient une erreur de relance. La règle attendue reste celle de ton jeu : le drapeau doit retrouver le premier secteur, puis la troisième activation doit changer le décor et la vitesse.",
+        "Lance et compare les valeurs de départ avec ton carnet. Note la différence que tu trouves. Active ensuite trois balises et décris le score, le niveau, le décor et la vitesse observés. Formule une piste avant d’ouvrir les indices."
+      ],
+      "downloads": [
+        {
+          "label": "Télécharger la panne volontaire de relance (.sb3)",
+          "path": "assets/scratch/mission/mission-panne-relance.sb3",
+          "filename": "mission-panne-relance.sb3"
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "enquete",
+      "title": "Réparer à partir d’un symptôme",
+      "items": [
+        {
+          "id": "attendu",
+          "text": "Dans ton carnet, écris : au drapeau, j’attends… mais j’observe… Puis ajoute ce qui se produit à la troisième activation. Distingue la valeur qui mémorise le secteur du dessin affiché."
+        },
+        {
+          "id": "piste",
+          "text": "Retrouve le propriétaire de l’initialisation. Compare le début de sa pile avec les valeurs attendues et choisis une seule modification à essayer. Les indices ci-dessous peuvent t’aider après ton premier examen."
+        },
+        {
+          "id": "retester",
+          "text": "Après ta correction, relance : les valeurs de départ doivent correspondre à la base. Vérifie encore le premier secteur à deux points, le passage à trois, puis un drapeau lancé depuis le secteur 2. Explique ce que ta correction change à chaque nouveau départ."
+        },
+        {
+          "id": "garder",
+          "text": "Sauvegarde la réparation sous mission-07-panne-reparee.sb3 et note ta conclusion. Recharge ensuite ta base personnelle mission-07-base.sb3. Le fichier de panne sert à l’enquête ; tes personnalisations restent dans ta base."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "indices-panne",
+      "title": "Chercher une piste pour la relance",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "indice-observation",
+          "title": "Comparer valeur et décor",
+          "paragraphs": [
+            "Au premier lancement de ce fichier, le décor revient à secteur1 mais niveau affiche 2. À trois points, le décor et la vitesse restent ceux du départ. Quelle valeur devrait retrouver 1 au drapeau ?"
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "indice-proprietaire",
+          "title": "Retrouver la pile qui prépare le jeu",
+          "paragraphs": [
+            "La scène initialise les variables communes avant sa boucle. Compare les blocs de départ de score, vies et vitesseObstacle avec ce qui prépare niveau. Le test de changement de secteur exige encore `niveau = 1`."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "verification-panne",
+      "title": "Comparer après ton essai de réparation",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "correction-panne",
+          "title": "Rétablir une valeur de départ",
+          "paragraphs": [
+            "La panne vient de l’initialisation de niveau absente de la pile de drapeau de la scène. Le fichier a conservé la valeur 2 : changer le décor ne remet pas cette variable à 1.",
+            "Ajoute mettre niveau à 1 sur la scène, avec les autres initialisations avant le choix du décor et la boucle. Relance : niveau retrouve 1. À score 3, le test `niveau = 1` et `score > 2` permet de nouveau le changement de secteur.",
+            "Mettre niveau à 1 seulement pendant la partie masquerait le symptôme du moment. Le bloc sous le drapeau prépare aussi chaque partie suivante."
+          ],
+          "visualScript": {
+            "caption": "Scène : valeur à préparer au drapeau",
+            "blocks": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "niveau"
+                  },
+                  " à ",
+                  {
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "comparaison",
+      "title": "Comparer la fréquence et la vitesse",
+      "items": [
+        {
+          "id": "prevoir",
+          "text": "À partir de ta base personnelle, prévois l’effet d’un intervalle de création qui passerait de 1.2 à 1.8 seconde. Note séparément ce que tu attends pour le nombre d’apparitions et pour la vitesse d’une copie."
+        },
+        {
+          "id": "temoin",
+          "text": "Dans ta base inchangée, lance puis place Pilote à (0, -140) pour observer à l’abri, sans activer de balise. Compte les apparitions pendant environ dix secondes depuis le drapeau. Compte les nouvelles copies qui entrent, et non celles visibles ensemble à un instant. Note le nombre et la vitesse affichée si tu coches vitesseObstacle."
+        },
+        {
+          "id": "reglage",
+          "text": "Dans Obstacle, dans la fabrique au drapeau, change seulement attendre 1.2 seconde en attendre 1.8 seconde. Garde le test d’état après l’attente et la création dans son si. Sauvegarde cette copie sous mission-07-intervalle.sb3."
+        },
+        {
+          "id": "comparer",
+          "text": "Relance cette copie et observe de la même façon pendant environ dix secondes, avec Pilote au même endroit et sans balise activée. Note les apparitions et la vitesse. Explique ce qui a changé et ce qui est resté identique ; ta mesure de temps peut décaler une apparition en limite d’intervalle."
+        },
+        {
+          "id": "retour",
+          "text": "Recharge mission-07-base.sb3. Vérifie l’intervalle de 1.2 seconde dans la fabrique et garde tes deux observations dans le carnet avant de choisir ta propre règle."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "verification-comparaison",
+      "title": "Comparer ton explication du réglage",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-intervalle",
+          "title": "Espacer les arrivées sans ralentir le trajet",
+          "paragraphs": [
+            "Avec 1.8 seconde, les créations sont plus espacées qu’avec 1.2 seconde. Sur la même durée, on attend moins d’apparitions. La vitesse de déplacement reste à 4 dans le premier secteur : seul le délai de la fabrique a changé.",
+            "Compter les copies encore visibles mélange deux effets : les arrivées et les sorties. Compter les nouvelles apparitions permet de comparer la fréquence. Les vitesses 4 puis 7 restent celles de ta base."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "variation",
+      "title": "Choisir une règle pour ta version personnelle",
+      "items": [
+        {
+          "id": "choix",
+          "text": "Depuis ta base restaurée, choisis une seule règle : commencer avec quatre vies au lieu de trois, créer les copies toutes les 1.5 seconde, ou déplacer Pilote de 5 par pas au lieu de 4 dans les quatre directions. Écris le comportement recherché et les blocs que tu penses modifier avant d’ouvrir les repères ci-dessous."
+        },
+        {
+          "id": "prevision",
+          "text": "Dans ton carnet, indique l’ancienne valeur, la nouvelle et les essais qui permettront de les distinguer. Prévois aussi une règle qui doit rester identique, par exemple le passage de secteur à trois points ou la victoire à six."
+        },
+        {
+          "id": "modifier",
+          "text": "Modifie les blocs nécessaires à cette seule règle. Lance et compare avec ta prévision. Si un résultat diffère, retrouve la pile concernée et essaie une correction à la fois. Complète ton carnet avec l’observation et ton explication."
+        },
+        {
+          "id": "conserver",
+          "text": "Garde ce changement dans ta version personnelle et sauvegarde sous mission-07.sb3. Repère le téléchargement récent, même avec un suffixe. Tu vas vérifier cette version personnalisée dans la dernière étape."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "verification-variation",
+      "title": "Des repères après ton premier essai",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "repere-vies",
+          "title": "Si tu as choisi quatre vies",
+          "paragraphs": [
+            "La valeur à préparer est celle de vies au drapeau sur la scène. Le départ et chaque relance doivent afficher 4. Les dégâts retirent toujours une vie par copie touchée ; les fins se décident toujours à zéro vie ou six points.",
+            "Observe plusieurs contacts séparés : avec une vie restante, le jeu continue ; le contact suivant déclenche perdu à zéro. Deux copies touchées peuvent retirer deux vies, car ce jeu ne possède pas d’invulnérabilité générale."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "repere-intervalle",
+          "title": "Si tu as choisi 1.5 seconde",
+          "paragraphs": [
+            "Le réglage appartient à l’attente de la fabrique d’Obstacle, avant le test d’état et la création. Les vitesses 4 puis 7 ne changent pas. Vérifie aussi qu’aucune copie n’apparaît après la fin."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "repere-commandes",
+          "title": "Si tu as choisi des pas de 5",
+          "paragraphs": [
+            "Dans le fichier personnel rechargé, sélectionne Pilote et lis les quatre valeurs de déplacement : +5 à droite et en haut, -5 à gauche et en bas. Si une direction est restée à 4 ou -4, corrige-la et sauvegarde à nouveau.",
+            "Teste ensuite les quatre flèches et les limites : x reste entre -200 et 200, y entre -140 et 140. Lire les valeurs vérifie le réglage conservé ; piloter jusqu’aux bords vérifie le comportement et les limites."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "recette-finale",
+      "title": "Rouvrir et éprouver ta version personnelle",
+      "items": [
+        {
+          "id": "rouvrir",
+          "text": "Recharge le fichier mission-07.sb3 que tu viens de sauvegarder. Note le réglage choisi et les valeurs de départ attendues pour cette version. Avec le choix de quatre vies, tu attends 4 ; avec les deux autres choix, tu attends toujours 3."
+        },
+        {
+          "id": "regle",
+          "text": "Refais l’essai de ta règle depuis le fichier rechargé : compteur initial et derniers contacts pour les quatre vies, apparitions sur une durée comparable pour l’intervalle. Pour les pas de 5, sélectionne Pilote et lis ses quatre valeurs de déplacement : +5 à droite et en haut, -5 à gauche et en bas. Teste ensuite les quatre flèches et les bornes inchangées. Note le réglage lu et le résultat observé."
+        },
+        {
+          "id": "conserver",
+          "text": "Vérifie encore le passage de secteur entre deux et trois points, le score conservé à quatre, la victoire entre cinq et six et la défaite entre une et zéro vie. Pendant les annonces, les commandes restent bloquées et les copies disparaissent."
+        },
+        {
+          "id": "relancer",
+          "text": "Relance pendant une annonce puis après l’arrêt. Retrouve les valeurs de ta version personnelle, les positions de départ, secteur1 et la bulle effacée. Continue au-delà de l’ancien délai d’annonce pour vérifier que la nouvelle partie reste active."
+        },
+        {
+          "id": "corriger",
+          "text": "Si tu corriges quelque chose, refais l’essai concerné puis la vérification de fin et de relance. Sauvegarde à nouveau mission-07.sb3 et recharge le dernier téléchargement pour confirmer que la correction est conservée."
+        },
+        {
+          "id": "expliquer",
+          "text": "Présente ton jeu avec ses commandes, son but et ta règle personnelle. Appuie-toi sur une prévision, un résultat observé et une erreur corrigée dans ton carnet. Une autre personne peut essayer le jeu ; demande-lui ce qu’elle a compris et note une amélioration à reprendre."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "modeles",
+      "title": "Retrouver une référence avant personnalisation",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "reference",
+          "title": "Comparer seulement la règle qui pose problème",
+          "paragraphs": [
+            "Sauvegarde ta version personnelle avant d’ouvrir cette référence. Elle fournit le jeu à la fin d’États, avec trois vies, des pas de 4 et l’intervalle de 1.2 seconde. Elle sert à comparer les piles ; ta version personnelle peut avoir le réglage différent que tu as choisi.",
+            "Recharge ensuite ton propre fichier mission-07.sb3. Ta copie de panne réparée et ton carnet restent les traces de ton enquête."
+          ],
+          "downloads": [
+            {
+              "label": "Comparer avec le jeu avant personnalisation (.sb3)",
+              "path": "assets/scratch/mission/mission-etats.sb3",
+              "filename": "mission-etats.sb3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "aide-enquete",
+      "title": "Revoir le débogage dans un autre onglet",
+      "text": "Revoir le débogage dans un autre onglet. Lis la méthode et les indices de l’aide, puis ferme cet onglet pour reprendre ton enquête dans Mission balises.",
+      "moduleLink": {
+        "moduleId": "scratch-debogage",
+        "text": "Revoir le débogage dans un autre onglet",
+        "newTab": true
+      },
+      "presentation": "compact"
+    },
+    {
+      "type": "lesson",
+      "id": "reprise",
+      "title": "Garder ton jeu et tes essais",
+      "paragraphs": [
+        "Conserve mission-07.sb3 avec la règle personnelle vérifiée, mission-07-base.sb3 comme point de comparaison et ton carnet d’essais. La copie de panne réparée et les variantes peuvent rester séparées avec leurs noms explicites.",
+        "Ton fichier principal contient le jeu et ton réglage choisi. Les valeurs préparées pour les seuils et les blocs de diagnostic appartiennent aux copies d’essai. Vérifie que ton principal démarre à score 0, niveau 1 et etat en jeu après la préparation.",
+        "Les sept chapitres de Mission balises sont maintenant disponibles. Tu peux rejouer, faire essayer ta version et choisir une prochaine amélioration à partir d’un résultat observé."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Décrire un départ, une action, un résultat attendu et une observation dans un carnet.",
+    "Localiser une panne de relance et vérifier la correction sur plusieurs départs.",
+    "Distinguer la fréquence de création de la vitesse de déplacement.",
+    "Conserver une règle personnelle, rouvrir sa sauvegarde et expliquer les essais réalisés."
+  ],
+  "teacherGuide": {
+    "objective": "Trouver une panne avec un essai ciblé, comparer un réglage et conserver une version personnelle vérifiée.",
+    "entryDiagnosis": [
+      "Faire rouvrir la version personnelle d’États et retrouver les huit piles, le propriétaire des décisions et l’arrêt final dans Pilote.",
+      "Faire distinguer le projet principal, la base conservée et les copies dont les compteurs sont préparés pour un essai."
+    ],
+    "preparation": [
+      "Préserver la version personnelle en mission-07-base avant tout import. Le fichier public de panne est un laboratoire volontaire, pas une mise à jour du projet de l’élève.",
+      "Le fichier de panne conserve niveau à 2 et omet uniquement sa remise à 1 au drapeau. Les autres règles et costumes sont ceux de la référence États.",
+      "Préparer un carnet papier ou texte. Aucune connexion Scratch ni partage public n’est nécessaire : les sauvegardes locales suffisent.",
+      "Repérer les copies de seuils, de réparation et d’intervalle. La recette finale attend les valeurs du choix personnel, notamment 4 vies si ce choix a été conservé."
+    ],
+    "why": "Un essai utile distingue un comportement correct d’une erreur précise. La prévision et l’observation évitent de régler plusieurs valeurs à l’aveugle ; la réouverture vérifie que le travail conservé est bien celui qui a été testé.",
+    "discoverySpeech": [
+      "Quel départ permet de vérifier la limite plutôt que regarder une partie déjà terminée ?",
+      "Comment distinguer la valeur du niveau et le décor visible ?",
+      "Quelle mesure compare les arrivées sans les confondre avec les sorties ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-mission-tests",
+        "blockId": "methode"
+      },
+      "comments": [
+        "Partir d’une observation et d’une différence avec l’attendu ; garder la conclusion dans le carnet.",
+        "Le laboratoire de panne est séparé du projet personnel. Les indices et la correction sont repliés après l’essai, pas donnés dans le chemin de recherche.",
+        "La dernière activité propose un choix limité de règle, sans pile complète à recopier."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi niveau peut-il afficher 2 alors que le décor est secteur1 ?",
+        "answer": "Le décor et la variable sont distincts. Dans la panne, le décor est remis au départ mais l’initialisation de niveau manque."
+      },
+      {
+        "question": "Pourquoi tester un nouveau drapeau après la réparation ?",
+        "answer": "Une correction faite uniquement sur la valeur du moment ne prépare pas forcément la partie suivante. Le bloc d’initialisation doit être dans la pile de drapeau."
+      },
+      {
+        "question": "Pourquoi compter les apparitions plutôt que les copies visibles ?",
+        "answer": "Le nombre visible dépend aussi de la durée de traversée et des suppressions. Les apparitions mesurent directement la fréquence de création."
+      },
+      {
+        "question": "Quelle attente de vies retenir dans la recette finale ?",
+        "answer": "Quatre si cette règle personnelle a été choisie, trois pour les autres choix. Le carnet et la sauvegarde finale décrivent le réglage retenu."
+      },
+      {
+        "question": "Une case cochée suffit-elle à confirmer une règle ?",
+        "answer": "Non : demander le départ utilisé, le résultat observé et son explication. Les résultats techniques du site ne décrivent pas les essais de l’élève."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-mission-tests",
+      "blockId": "enquete"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-mission-tests",
+      "blockId": "variation"
+    },
+    "differentiation": [
+      "Accompagner la formulation attendu/observé avant de donner une piste technique. Une seule erreur est introduite dans le fichier de laboratoire.",
+      "Pour la mesure de fréquence, une personne peut annoncer les dix secondes pendant que l’autre compte les nouvelles apparitions. Garder le même protocole pour les deux réglages.",
+      "Si le projet personnel comporte déjà une variation, identifier d’abord ses valeurs et garder cette base séparée de la référence. Les réglages du chemin principal restent les points de comparaison explicitement annoncés.",
+      "Adapter le rythme et le support du carnet aux besoins de la personne ; demander l’explication d’une règle, pas la vitesse de réalisation."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le décor du fichier de panne reste au premier secteur.",
+        "helps": [
+          "Faire noter le niveau au départ puis au troisième point, avant de changer un bloc.",
+          "Faire distinguer la réception du décor de l’initialisation commune sur la scène.",
+          "Comparer les valeurs de départ aux blocs placés avant la boucle ; le test de transition attend niveau 1.",
+          "Rétablir mettre niveau à 1 au drapeau, puis vérifier deux points, trois points et une relance depuis le secteur 2."
+        ]
+      },
+      {
+        "symptom": "La comparaison d’intervalle donne une conclusion incertaine.",
+        "helps": [
+          "Faire préciser si le nombre noté compte les apparitions ou les copies encore visibles.",
+          "Vérifier même durée, même départ, aucune activation et Pilote à l’abri dans les deux essais.",
+          "Conserver les vitesses 4 et 7 ; modifier seulement l’attente de la fabrique de 1.2 à 1.8 seconde.",
+          "Refaire la mesure et distinguer une apparition à la limite du chronométrage d’une différence de fréquence."
+        ]
+      },
+      {
+        "symptom": "La recette finale utilise encore un réglage de test.",
+        "helps": [
+          "Faire montrer le nom du fichier rechargé et la règle personnelle écrite dans le carnet.",
+          "Lire les initialisations de score et vies et l’attente de la fabrique. Pour les pas de 5, vérifier dans Pilote les quatre valeurs +5, -5, +5, -5 avant l’essai des directions et des bornes ; celui-ci réussirait aussi avec les pas de 4.",
+          "Repartir du principal personnel attendu, avec score 0 et niveau 1 ; garder seulement le réglage personnel choisi.",
+          "Sauvegarder, recharger le téléchargement récent et rejouer le test qui distingue ce réglage de la base."
+        ]
+      }
+    ],
+    "quickConductor": [
+      "Sauvegarder une base personnelle et ouvrir le carnet attendu/observé.",
+      "Éprouver limites, seuils, deux fins et relance ; restaurer la base après la copie de test.",
+      "Ouvrir le laboratoire de panne, chercher avec les indices si nécessaire, réparer puis retrouver la base personnelle.",
+      "Comparer 1.2 et 1.8 seconde, puis restaurer 1.2 avant le choix.",
+      "Choisir une règle personnelle, prévoir, modifier, sauvegarder et vérifier depuis le fichier rechargé."
+    ],
+    "notes": "La référence avant personnalisation reste États ; il n’existe pas de solution unique pour mission-07. Le fichier de panne est volontairement défectueux et identifié comme tel. Les contrôles du site et du moteur ne constituent ni un carnet d’élève ni une validation de son autonomie. La reconstruction complète depuis les seules consignes et les essais en situation restent distincts.",
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  }
+}

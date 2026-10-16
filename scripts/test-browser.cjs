@@ -9,6 +9,7 @@ const suites = [
   'web-examples-browser',
   'web-collection-browser',
   'scratch-lot3-browser',
+  'scratch-mission-browser',
   'teacher-browser',
 ];
 const requested = process.argv.slice(2);

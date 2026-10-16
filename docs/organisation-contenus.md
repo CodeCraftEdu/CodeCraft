@@ -53,6 +53,10 @@ La génération ne valide pas à elle seule la justesse d’un cours ou l’appa
 
 Dans `visualScript`, une pièce `{ "value": "200" }` représente une valeur à saisir. Un bloc à glisser utilise `{ "reporter": "abscisse x", "category": "motion" }`, ou par exemple `{ "reporter": "score", "category": "variables" }`. La catégorie est explicite : le rendu ne la déduit jamais du texte. Les catégories de ces blocs sont `motion`, `variables`, `sensing` et `operators`. Les menus restent des pièces `choice` et les conditions des pièces `condition`.
 
+Un bloc `si … sinon` conserve sa branche vraie dans `children` et sa branche fausse dans `elseChildren`. Le rendu place « sinon » entre les deux listes et ferme le bloc une seule fois. Les descendants des deux branches suivent le même schéma récursif.
+
+Dans un encart de reprise, `moduleLink.newTab: true` ouvre la cible dans un autre onglet. Le texte du lien annonce ce changement et la consigne explique comment retrouver le chapitre d'origine. L'option est facultative ; un lien existant sans cette option conserve son comportement.
+
 Les légendes ne sont affichées que si le bloc fournit une `explanation`. Dans une leçon avec `visualScript` et `shortSteps`, les étapes sont visibles et les `paragraphs` sont repliés : garder toute manipulation nécessaire dans les étapes. Une explication de fonctionnement plus détaillée peut rester dans les paragraphes.
 
 Une leçon peut fournir `activityLink` avec `moduleId`, `blockId` et `label` pour renvoyer directement à une autre section. Le catalogue valide la cible ; le lien conserve le parcours quand le module appartient à celui-ci.

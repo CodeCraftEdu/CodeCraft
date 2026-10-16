@@ -1,5 +1,9 @@
 # Roadmap pédagogique de CodeCraft
 
+## Recadrage Scratch avancé : 15 octobre 2026
+
+La [roadmap Scratch avancé](roadmap-scratch-avance.md) fixe la cible : un parcours autonome autour d'un jeu fil conducteur, dont les explications restent consultables ponctuellement pendant un stage. Les trois aides déjà publiées sont conservées. Le cadrage propose sept étapes cumulatives dans une nouvelle entrée Scratch avancé, sans imposer les 17 modules existants comme prérequis ni modifier leur parcours pour l'instant. Les quatre corrections de la [revue pédagogique](revue-roadmap-scratch-avance.md) sont appliquées au cadrage : réglages de reprise, transformations des piles, mécanismes des premiers chapitres et consultation des aides dans un autre onglet. Le [prototype des transitions](recette-scratch-mission-balises.md) passe les contrôles du moteur ; le [premier segment Commandes → Balises → Vies](integration-scratch-mission-segment-1.md) est intégré avec ses fichiers, guides et reprises. Les deux corrections de sa [revue](revue-scratch-mission-segment-1.md) sont appliquées. Le [chapitre Clones](integration-scratch-mission-clones.md) est intégré ; sa [revue](revue-scratch-mission-clones.md) est corrigée. Le [chapitre Messages](integration-scratch-mission-messages.md) est intégré ; sa revue est terminée et le dépannage élève et professeur est corrigé. Le [chapitre États](integration-scratch-mission-etats.md) est intégré ; les deux corrections de diagnostic issues de sa revue sont appliquées. Le [chapitre Tests personnels](integration-scratch-mission-tests.md) est intégré, revu et corrigé. Les sept chapitres sont rédigés ; le [contrôle final des raccords](controle-raccords-scratch-mission.md) a vérifié les six passages, les reprises et la navigation réelle sans anomalie identifiée. Il clôt ce contrôle ciblé, sans déclarer une reconstruction manuelle intégrale ni une observation avec un élève. Cette décision ne relance pas les autres domaines.
+
 ## Décisions de reprise — 10 octobre 2026
 
 Lorsqu’on demande « que reste-t-il à faire de prévu sur CodeCraft ? », consulter ce suivi et les roadmaps spécialisées, sans confondre développement terminé, contrôles pratiques et chantiers reportés.
@@ -21,6 +25,7 @@ Document de référence : cadrage transmis et validé par le propriétaire du pr
 CodeCraft est ma bibliothèque pédagogique réutilisable pour enseigner le développement web à des enfants de niveaux différents.
 
 Le périmètre décidé est :
+
 - un socle HTML/CSS ;
 - trois parcours : Fondations, Débutants, Avancés ;
 - une branche JavaScript accessible ensuite selon les acquis individuels ;
@@ -38,6 +43,7 @@ Ne crée aucune séance datée, aucun programme hebdomadaire fixe et aucune hypo
 Un module n’est pas une séance. Il peut être abordé en plusieurs passages ou franchi rapidement si l’élève maîtrise déjà ses compétences.
 
 Principes :
+
 - Les parcours sont des itinéraires conseillés.
 - Les modules sont définis une fois et réutilisés dans plusieurs parcours.
 - Un changement de parcours n’oblige pas à refaire les compétences acquises.
@@ -55,6 +61,7 @@ Préserve les outils existants de préparation et d’historique des séances. L
 J’enseigne à distance avec plusieurs niveaux. Je peux accompagner un groupe pendant que les autres travaillent en autonomie.
 
 Les supports doivent permettre ce fonctionnement :
+
 - aucune consigne indispensable uniquement à l’oral ;
 - aucune activité dépendant obligatoirement d’un partage d’écran du professeur ;
 - étapes courtes et explicites ;
@@ -71,6 +78,7 @@ L’utilisation d’IA par les élèves est interdite dans ce cadre. Ne construi
 ## 4. État de départ et travail déjà réalisé
 
 L’audit initial avait identifié :
+
 - un domaine web ;
 - trois parcours ;
 - douze modules et douze compétences ;
@@ -92,6 +100,7 @@ Préparer un projet de cartes → Parent et enfants → Flexbox → Ma collectio
 Diagnostic Web a été retiré sur décision utilisateur ; les anciennes adresses renvoient au choix des parcours Web.
 
 Selon tes comptes rendus, le premier lot a maintenant ajouté :
+
 - les métadonnées pédagogiques et leur rendu ;
 - les guides professeur ;
 - l’enrichissement d’Images HTML, Parent et enfants et Flexbox ;
@@ -103,6 +112,7 @@ Les vérifications rapportées comprennent 64 tests automatisés et des vérific
 Lis l’état actuel du dépôt pour toute décision technique ; ne repars pas de l’audit initial comme si ces ajouts n’existaient pas. N’interprète pas ces comptes rendus comme une validation de mon confort d’utilisation en cours.
 
 Conserve les corrections acquises :
+
 - copie de la source d’image seule et rédaction séparée de alt ;
 - distinction exemple court explicatif / source embarquée prête à coller ;
 - squelette HTML pour les élèves qui en ont besoin ;
@@ -119,17 +129,17 @@ Ne relance pas un audit général de ce premier lot sans problème concret nouve
 
 Les codes H1, C1, J1, etc. ci-dessous sont des repères de conception, pas des identifiants techniques à imposer. Fais la correspondance avec les IDs existants sans les renommer.
 
-| Repère | Module | Prérequis principaux | Compétence cible |
-|---|---|---|---|
-| H1 | Titres et paragraphes | Manipulation de l’éditeur avec aide si nécessaire | Créer et distinguer titres et paragraphes |
-| H2 | Listes HTML | H1 | Construire une liste et ajouter un élément au bon endroit |
-| H3 | Liens HTML | H1 | Distinguer texte du lien et destination |
-| H4 | Images HTML | Reconnaître une balise et modifier un extrait | Insérer, remplacer et décrire une image avec src et alt |
-| H5 | Structure d’un document HTML | Première petite page réalisée | Distinguer head/body et titre de l’onglet/titre visible |
-| H6 | Fichiers et chemins | Liens et images | Organiser les ressources et comprendre un chemin relatif |
-| H7 | Parent et enfants | Assembler plusieurs éléments HTML | Comprendre imbrication, parent direct, descendants et frères |
-| H8 | Organiser une page en zones | H7 | Structurer avec header, main, footer, puis nav/section selon le contenu |
-| H9 | Relier plusieurs pages | H5 et H6 | Créer et vérifier une navigation locale |
+| Repère | Module                       | Prérequis principaux                              | Compétence cible                                                        |
+| ------ | ---------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------- |
+| H1     | Titres et paragraphes        | Manipulation de l’éditeur avec aide si nécessaire | Créer et distinguer titres et paragraphes                               |
+| H2     | Listes HTML                  | H1                                                | Construire une liste et ajouter un élément au bon endroit               |
+| H3     | Liens HTML                   | H1                                                | Distinguer texte du lien et destination                                 |
+| H4     | Images HTML                  | Reconnaître une balise et modifier un extrait     | Insérer, remplacer et décrire une image avec src et alt                 |
+| H5     | Structure d’un document HTML | Première petite page réalisée                     | Distinguer head/body et titre de l’onglet/titre visible                 |
+| H6     | Fichiers et chemins          | Liens et images                                   | Organiser les ressources et comprendre un chemin relatif                |
+| H7     | Parent et enfants            | Assembler plusieurs éléments HTML                 | Comprendre imbrication, parent direct, descendants et frères            |
+| H8     | Organiser une page en zones  | H7                                                | Structurer avec header, main, footer, puis nav/section selon le contenu |
+| H9     | Relier plusieurs pages       | H5 et H6                                          | Créer et vérifier une navigation locale                                 |
 
 Pour H4, les titres et paragraphes peuvent être fournis dans un squelette. Les liens sont nécessaires au bonus d’image cliquable, pas à l’objectif principal.
 
@@ -137,20 +147,20 @@ Pour H5 et H6, distingue ce que l’environnement CodePen prend en charge de ce 
 
 ## 6. Catalogue pédagogique CSS validé
 
-| Repère | Module | Prérequis principaux | Compétence cible |
-|---|---|---|---|
-| C1 | Découvrir une règle CSS | H1 | Identifier sélecteur, propriété, valeur ; modifier texte et fond |
-| C2 | Classes et couleurs CSS | C1 | Relier class et .classe ; cibler et réutiliser |
-| C3 | Relier une feuille de style | C1, H5, H6 | Relier style.css et vérifier son chargement |
-| C4 | Rendre les textes lisibles | C2 | Régler police, taille, interligne et alignement |
-| C5 | Boîtes et espacements | C2 et H7 | Distinguer contenu, padding, bordure et margin |
-| C6 | Dimensions et images dans une carte | C5 et H4 | Régler la largeur, contenir une image et préserver ses proportions |
-| C7 | Flexbox : disposer des éléments | H7, classes/sélecteurs et bases de C5 | Appliquer Flexbox au parent ; comprendre direction et axes |
-| C8 | Flexbox : aligner et répartir | C7 | Choisir gap, justify-content et align-items |
-| C9 | Flexbox : revenir à la ligne | C6 et C8 | Organiser une collection avec flex-wrap |
-| C10 | Adapter une page aux écrans | C6 et C9 | Tester les largeurs, comprendre le viewport et une media query simple |
-| C11 | États des liens et boutons | C2 et liens HTML | Distinguer lien/bouton ; rendre survol et focus repérables |
-| C12 | Réutiliser et organiser son CSS | C3 et plusieurs composants réalisés | Partager des styles, créer des variantes et limiter les répétitions |
+| Repère | Module                              | Prérequis principaux                  | Compétence cible                                                      |
+| ------ | ----------------------------------- | ------------------------------------- | --------------------------------------------------------------------- |
+| C1     | Découvrir une règle CSS             | H1                                    | Identifier sélecteur, propriété, valeur ; modifier texte et fond      |
+| C2     | Classes et couleurs CSS             | C1                                    | Relier class et .classe ; cibler et réutiliser                        |
+| C3     | Relier une feuille de style         | C1, H5, H6                            | Relier style.css et vérifier son chargement                           |
+| C4     | Rendre les textes lisibles          | C2                                    | Régler police, taille, interligne et alignement                       |
+| C5     | Boîtes et espacements               | C2 et H7                              | Distinguer contenu, padding, bordure et margin                        |
+| C6     | Dimensions et images dans une carte | C5 et H4                              | Régler la largeur, contenir une image et préserver ses proportions    |
+| C7     | Flexbox : disposer des éléments     | H7, classes/sélecteurs et bases de C5 | Appliquer Flexbox au parent ; comprendre direction et axes            |
+| C8     | Flexbox : aligner et répartir       | C7                                    | Choisir gap, justify-content et align-items                           |
+| C9     | Flexbox : revenir à la ligne        | C6 et C8                              | Organiser une collection avec flex-wrap                               |
+| C10    | Adapter une page aux écrans         | C6 et C9                              | Tester les largeurs, comprendre le viewport et une media query simple |
+| C11    | États des liens et boutons          | C2 et liens HTML                      | Distinguer lien/bouton ; rendre survol et focus repérables            |
+| C12    | Réutiliser et organiser son CSS     | C3 et plusieurs composants réalisés   | Partager des styles, créer des variantes et limiter les répétitions   |
 
 C7 à C9 peuvent rester des étapes du module Flexbox existant. Ce découpage pédagogique n’impose pas une restructuration technique.
 
@@ -159,6 +169,7 @@ Une propriété fournie dans le code de départ n’est pas automatiquement une 
 ## 7. Parcours cibles et projets jalons
 
 Fondations :
+
 1. H1 — Titres et paragraphes.
 2. H2 — Listes.
 3. Mini-page des fondations : titre, paragraphes et liste.
@@ -172,6 +183,7 @@ Fondations :
 Fondations va donc jusqu’à une première personnalisation CSS. Aucun Flexbox n’est requis pour son jalon final.
 
 Débutants :
+
 - Conserver le départ existant : H1 → H2 → H3 → Révision HTML → H4 → Classes et couleurs → Mini-page HTML complète.
 - La révision porte sur les notions déjà rencontrées à cet endroit.
 - La découverte C1 doit être accessible avant les classes aux élèves qui en ont besoin, sans répétition obligatoire pour ceux qui la maîtrisent.
@@ -181,6 +193,7 @@ Débutants :
 - Jalon « Mon mini-site » : deux ou trois pages avec un style commun.
 
 Avancés :
+
 - Conserver l’entrée : Préparer un projet de cartes → H7 → Flexbox.
 - Vérifier les classes/sélecteurs, les espacements et les dimensions ; proposer les reprises nécessaires.
 - Approfondir C7 à C9.
@@ -193,6 +206,7 @@ Avancés :
 - Module « Publier et vérifier » : publication accompagnée puis contrôle des pages, liens et images.
 
 Passerelles :
+
 - Fondations vers Débutants : reprendre au premier prérequis manquant.
 - Débutants vers Flexbox : regroupements, classes/sélecteurs, bases des espacements et carte simple compris.
 - Le mini-site multipage n’est pas obligatoire avant la découverte de Flexbox.
@@ -204,16 +218,16 @@ Réutilise les jalons existants lorsqu’ils correspondent. Ne duplique pas une 
 
 Prévoir des branches accessibles depuis les notions concernées :
 
-| Domaine | Consolidation | Bonus avec les acquis |
-|---|---|---|
-| HTML de base | Réparer une petite page et expliquer | Ajouter une rubrique sur un autre thème |
-| Liens et images | Corriger destination, source ou texte alternatif | Construire une sélection illustrée |
-| Classes | Associer règles et éléments ciblés | Créer deux variantes visuelles |
-| Parent/enfants | Réparer un mauvais regroupement | Ajouter des regroupements internes à une carte |
-| Espacements | Corriger une carte trop serrée ou trop espacée | Produire une version compacte et une version aérée |
-| Flexbox | Corriger parent, disposition ou alignement | Réutiliser dans une navigation ou comparer des dispositions |
-| Adaptation aux écrans | Réparer un débordement | Adapter à une largeur supplémentaire |
-| Projet complet | Vérifier avec une grille | Reproduire une petite maquette avec les notions acquises |
+| Domaine               | Consolidation                                    | Bonus avec les acquis                                       |
+| --------------------- | ------------------------------------------------ | ----------------------------------------------------------- |
+| HTML de base          | Réparer une petite page et expliquer             | Ajouter une rubrique sur un autre thème                     |
+| Liens et images       | Corriger destination, source ou texte alternatif | Construire une sélection illustrée                          |
+| Classes               | Associer règles et éléments ciblés               | Créer deux variantes visuelles                              |
+| Parent/enfants        | Réparer un mauvais regroupement                  | Ajouter des regroupements internes à une carte              |
+| Espacements           | Corriger une carte trop serrée ou trop espacée   | Produire une version compacte et une version aérée          |
+| Flexbox               | Corriger parent, disposition ou alignement       | Réutiliser dans une navigation ou comparer des dispositions |
+| Adaptation aux écrans | Réparer un débordement                           | Adapter à une largeur supplémentaire                        |
+| Projet complet        | Vérifier avec une grille                         | Reproduire une petite maquette avec les notions acquises    |
 
 Les ombres, arrondis, transitions simples et CSS Grid sont des extensions facultatives envisagées. Leur contenu reste à définir ; elles ne conditionnent pas JavaScript.
 
@@ -224,6 +238,7 @@ Les appuis clavier/souris/éditeur sont transversaux, proposés selon les besoin
 JavaScript vient après un socle HTML/CSS suffisamment compris par l’élève.
 
 Seuil pédagogique retenu :
+
 - structurer une petite page ;
 - utiliser des classes CSS ;
 - identifier parents et enfants ;
@@ -234,24 +249,25 @@ La maîtrise de tout le CSS, du multipage et de la publication n’est pas oblig
 
 La branche JavaScript est commune et accessible individuellement selon ces acquis.
 
-| Repère | Module | Prérequis principaux | Compétence cible |
-|---|---|---|---|
-| J1 | Découvrir JavaScript | Seuil d’entrée HTML/CSS | Exécuter une instruction, utiliser la console, distinguer les rôles des langages |
-| J2 | Variables et valeurs | J1 | Stocker et modifier textes/nombres ; distinguer leurs types |
-| J3 | Sélectionner et modifier un élément | J2 et classes HTML | Utiliser querySelector et textContent |
-| J4 | Réagir à un clic | J3 | Relier événement et action ; première découverte des fonctions |
-| J5 | Modifier une classe CSS | J4 et classes CSS | Changer l’apparence avec classList |
-| J6 | Compter et afficher | J2 à J4 | Modifier une valeur puis son affichage |
-| J7 | Prendre une décision | J2 et J4 | Comparaisons, booléens et conditions |
-| J8 | Lire une saisie | J3, J4 et J7 | Lire un champ, convertir un nombre et traiter une saisie invalide |
-| J9 | Organiser ses fonctions | Fonctions rencontrées avec les événements | Actions réutilisables, paramètres et valeur de retour |
-| J10 | Stocker une liste de données | J2 | Tableau, accès à un élément et longueur |
-| J11 | Répéter une action | J10 et bases des fonctions | Parcourir un tableau avec une boucle |
-| J12 | Créer des éléments dans la page | J3, J9 à J11 | Générer et ajouter des éléments à partir de données |
+| Repère | Module                              | Prérequis principaux                      | Compétence cible                                                                 |
+| ------ | ----------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------- |
+| J1     | Découvrir JavaScript                | Seuil d’entrée HTML/CSS                   | Exécuter une instruction, utiliser la console, distinguer les rôles des langages |
+| J2     | Variables et valeurs                | J1                                        | Stocker et modifier textes/nombres ; distinguer leurs types                      |
+| J3     | Sélectionner et modifier un élément | J2 et classes HTML                        | Utiliser querySelector et textContent                                            |
+| J4     | Réagir à un clic                    | J3                                        | Relier événement et action ; première découverte des fonctions                   |
+| J5     | Modifier une classe CSS             | J4 et classes CSS                         | Changer l’apparence avec classList                                               |
+| J6     | Compter et afficher                 | J2 à J4                                   | Modifier une valeur puis son affichage                                           |
+| J7     | Prendre une décision                | J2 et J4                                  | Comparaisons, booléens et conditions                                             |
+| J8     | Lire une saisie                     | J3, J4 et J7                              | Lire un champ, convertir un nombre et traiter une saisie invalide                |
+| J9     | Organiser ses fonctions             | Fonctions rencontrées avec les événements | Actions réutilisables, paramètres et valeur de retour                            |
+| J10    | Stocker une liste de données        | J2                                        | Tableau, accès à un élément et longueur                                          |
+| J11    | Répéter une action                  | J10 et bases des fonctions                | Parcourir un tableau avec une boucle                                             |
+| J12    | Créer des éléments dans la page     | J3, J9 à J11                              | Générer et ajouter des éléments à partir de données                              |
 
 Tout HTML nécessaire à une nouvelle interaction, notamment les boutons, champs et labels, doit être expliqué ou fourni avec une explication.
 
 Jalons :
+
 - après J5 : carte interactive ;
 - après J6 : compteur avec remise à zéro ;
 - après J8 : mini-quiz à une question avec vérification ;
@@ -268,6 +284,7 @@ Prévoir consolidations et bonus sur variables, sélection, événements, condit
 Un module ne doit pas se réduire à une règle et à du code à copier.
 
 Côté élève :
+
 - objectif concret ;
 - résultat attendu ;
 - explication accessible du pourquoi ;
@@ -280,6 +297,7 @@ Côté élève :
 - suite conseillée avec conditions explicites.
 
 Côté professeur :
+
 - diagnostic d’entrée ;
 - ressources à préparer ;
 - vocabulaire ;
@@ -320,6 +338,7 @@ Tu prends désormais en charge la conception détaillée, l’intégration et le
 Nous travaillons par lots cohérents de production, sans les confondre avec des lots de séances élèves.
 
 Pour chaque lot :
+
 1. Expliquer brièvement le périmètre et les réutilisations.
 2. Me consulter pour un changement pédagogique substantiel ou un arbitrage réellement ambigu.
 3. Une fois le lot autorisé, réaliser les contenus, l’intégration et les corrections ordinaires sans validation à chaque sous-étape.
@@ -339,34 +358,34 @@ Cette section décrit l’état du code après les lots HTML complet/premiers st
 
 ### HTML
 
-| Repère | ID existant ou état | Portée réellement présente |
-| --- | --- | --- |
-| H1 | `html-titres-paragraphes` | Exercices guidés, niveaux de titres et exercice autonome. |
-| H2 | `html-listes` | Cours ul/li, exercice guidé et défi. |
-| H3 | `html-liens` | Cours a/href et progression d’exercices. |
-| H4 | `html-images` | Cours, ressources, manipulation, mission, consolidation, bonus et teacherGuide enrichis. |
-| H5 | `html-document` | Document complet, head/body, title/h1, exercices locaux, consolidation, bonus et teacherGuide. |
-| H6 | `html-fichiers-chemins` | Dossiers, ressources existantes, chemins relatifs dans src/href, renommage, diagnostic, bonus et teacherGuide. |
-| H7 | `html-parent-enfants` | Imbrication, parent direct, descendants, frères, arbre, activités et teacherGuide ; module partagé par Débutants et Avancés. |
-| H8 | `html-zones` | header/main/footer, sections thématiques, nav facultatif après les liens, activités, consolidation et teacherGuide. |
-| H9 | `html-multipage` | Deux fichiers locaux, liens relatifs, nav, retour indépendant de l’historique, renommage, consolidation, troisième page facultative et teacherGuide. |
+| Repère | ID existant ou état       | Portée réellement présente                                                                                                                           |
+| ------ | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| H1     | `html-titres-paragraphes` | Exercices guidés, niveaux de titres et exercice autonome.                                                                                            |
+| H2     | `html-listes`             | Cours ul/li, exercice guidé et défi.                                                                                                                 |
+| H3     | `html-liens`              | Cours a/href et progression d’exercices.                                                                                                             |
+| H4     | `html-images`             | Cours, ressources, manipulation, mission, consolidation, bonus et teacherGuide enrichis.                                                             |
+| H5     | `html-document`           | Document complet, head/body, title/h1, exercices locaux, consolidation, bonus et teacherGuide.                                                       |
+| H6     | `html-fichiers-chemins`   | Dossiers, ressources existantes, chemins relatifs dans src/href, renommage, diagnostic, bonus et teacherGuide.                                       |
+| H7     | `html-parent-enfants`     | Imbrication, parent direct, descendants, frères, arbre, activités et teacherGuide ; module partagé par Débutants et Avancés.                         |
+| H8     | `html-zones`              | header/main/footer, sections thématiques, nav facultatif après les liens, activités, consolidation et teacherGuide.                                  |
+| H9     | `html-multipage`          | Deux fichiers locaux, liens relatifs, nav, retour indépendant de l’historique, renommage, consolidation, troisième page facultative et teacherGuide. |
 
 ### CSS
 
-| Repère | ID existant ou état | Portée réellement présente |
-| --- | --- | --- |
-| C1 | `css-decouverte` | Découvrir le CSS : sélecteur de balise, propriété, valeur, texte/fond, activités, consolidation, bonus, squelette local et teacherGuide. |
-| C2 | `css-classes-couleurs` | Module partagé enrichi : class/.classe, couleurs et fonds, réutilisation, diagnostic avec reprise C1, exercices, consolidation, bonus et teacherGuide. |
-| C3 | `css-feuille-style` | Fichier CSS séparé, link/rel/href, preuve de chargement, renommage, distinction chemin/sélecteur et teacherGuide. |
-| C4 | `css-textes-lisibles` | Famille, taille, interligne, alignement du texte, comparaisons, transfert, consolidation et teacherGuide. |
-| C5 | `css-boites-espacements` | Contenu, padding, bordure simple et margin ; distances comparées, transfert, consolidation et teacherGuide. Les arrondis ne sont pas enseignés. |
-| C6 | `css-dimensions-images` | Largeur/limite, border-box, proportions des images, ressources partagées, exercices, pannes, bonus naturel et teacherGuide. |
-| C7 | `css-flexbox` | Blocs `cours`, `axes` ; parent, display et direction. |
-| C8 | `css-flexbox` | Blocs `espacement`, `repartition`, `alignement` ; gap et axes d’alignement/répartition. |
-| C9 | `css-flexbox` | Blocs `retour-ligne`, `reglages-observation`, `defi` ; comparaison concrète nowrap/wrap. |
-| C10 | À créer | L’observation de wrap n’est pas un cours complet sur viewport et media queries. |
-| C11 | À créer | `css.hover` et un survol fourni existent, pas le cours lien/bouton et focus. |
-| C12 | À créer | La réutilisation élémentaire d’une classe en C2 ne constitue pas ce module d’organisation CSS. |
+| Repère | ID existant ou état      | Portée réellement présente                                                                                                                             |
+| ------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| C1     | `css-decouverte`         | Découvrir le CSS : sélecteur de balise, propriété, valeur, texte/fond, activités, consolidation, bonus, squelette local et teacherGuide.               |
+| C2     | `css-classes-couleurs`   | Module partagé enrichi : class/.classe, couleurs et fonds, réutilisation, diagnostic avec reprise C1, exercices, consolidation, bonus et teacherGuide. |
+| C3     | `css-feuille-style`      | Fichier CSS séparé, link/rel/href, preuve de chargement, renommage, distinction chemin/sélecteur et teacherGuide.                                      |
+| C4     | `css-textes-lisibles`    | Famille, taille, interligne, alignement du texte, comparaisons, transfert, consolidation et teacherGuide.                                              |
+| C5     | `css-boites-espacements` | Contenu, padding, bordure simple et margin ; distances comparées, transfert, consolidation et teacherGuide. Les arrondis ne sont pas enseignés.        |
+| C6     | `css-dimensions-images`  | Largeur/limite, border-box, proportions des images, ressources partagées, exercices, pannes, bonus naturel et teacherGuide.                            |
+| C7     | `css-flexbox`            | Blocs `cours`, `axes` ; parent, display et direction.                                                                                                  |
+| C8     | `css-flexbox`            | Blocs `espacement`, `repartition`, `alignement` ; gap et axes d’alignement/répartition.                                                                |
+| C9     | `css-flexbox`            | Blocs `retour-ligne`, `reglages-observation`, `defi` ; comparaison concrète nowrap/wrap.                                                               |
+| C10    | À créer                  | L’observation de wrap n’est pas un cours complet sur viewport et media queries.                                                                        |
+| C11    | À créer                  | `css.hover` et un survol fourni existent, pas le cours lien/bouton et focus.                                                                           |
+| C12    | À créer                  | La réutilisation élémentaire d’une classe en C2 ne constitue pas ce module d’organisation CSS.                                                         |
 
 C7–C9 restent un seul module, avec ses identifiants d’activités actuels. Ne pas créer trois copies.
 
@@ -415,13 +434,13 @@ C5 et C6 sont désormais accessibles en reprises ciblées depuis Flexbox. Le mod
 
 Ces états sont distincts et peuvent coexister ; ils ne constituent ni un dispositif de suivi élève ni une validation automatique.
 
-| État | Signification |
-| --- | --- |
-| Prévu | Périmètre pédagogique décidé, pas nécessairement rédigé. |
-| Rédigé | Consignes, exemples, exercices et guide effectivement écrits. |
-| Implémenté | Contenu intégré et accessible dans le site. |
-| Vérifié techniquement | Tests identifiés et réussis sur la version concernée. |
-| Relu pédagogiquement | Relecture du contenu réel et traitement des problèmes concrets. |
+| État                     | Signification                                                             |
+| ------------------------ | ------------------------------------------------------------------------- |
+| Prévu                    | Périmètre pédagogique décidé, pas nécessairement rédigé.                  |
+| Rédigé                   | Consignes, exemples, exercices et guide effectivement écrits.             |
+| Implémenté               | Contenu intégré et accessible dans le site.                               |
+| Vérifié techniquement    | Tests identifiés et réussis sur la version concernée.                     |
+| Relu pédagogiquement     | Relecture du contenu réel et traitement des problèmes concrets.           |
 | Essayé par le professeur | Retour explicite du professeur sur l’usage réel ; jamais déduit de tests. |
 
 État attesté des lots réalisés :
@@ -440,12 +459,12 @@ Ces états sont distincts et peuvent coexister ; ils ne constituent ni un dispos
 
 ### Périmètre et réutilisations
 
-| Élément | Action réalisée après validation du lot | Prérequis et limites |
-| --- | --- | --- |
-| Ma page HTML complète | `html-mini-page` réutilisé avec son titre et le type `challenge`. Métadonnées, liens de consolidation et teacherGuide ajoutés. Partagé avec Fondations après Images. | Titres/sous-titres, paragraphes, listes, liens, images. Conserver les exigences actuelles : h1, plusieurs niveaux de titres, au moins 3 paragraphes, une liste, 2 liens, 2 images. Aucun CSS obligatoire. |
-| C1 — Découvrir le CSS | Module `lesson` `css-decouverte` créé avec son guide. Contenu/apparence, sélecteur de balise, propriété et valeur ; texte et fond avec color/background-color. | Savoir créer et modifier un titre et un paragraphe. Pas de classe nécessaire pour la première découverte ; pas de feuille externe à apprendre avant C3. |
-| C2 — Classes et couleurs CSS | Module partagé `css-classes-couleurs` enrichi, IDs préservés. Guide, diagnostic, aides graduées, consolidation, bonus et critères de transfert ajoutés. | Comprendre une règle simple de C1 ; lien de reprise avant les classes si nécessaire. Conserver ciblage, classe réutilisée sur plusieurs éléments et renommage cohérent HTML/CSS. Ne pas imposer de refaire C1 si ces compétences sont déjà comprises. |
-| Mon affiche numérique | Module `project` réutilisable `web-affiche-numerique` créé avec cahier des charges, réalisation, vérification et teacherGuide. | Titres/paragraphes et C1/C2. Réutiliser une page existante ou créer un contenu court ; personnaliser texte/fond par des classes. Liens, images et liste peuvent être réinvestis si maîtrisés, sans nouveau prérequis caché. Aucun Flexbox, espacement, bordure, hover, typographie avancée ou publication exigé. |
+| Élément                      | Action réalisée après validation du lot                                                                                                                              | Prérequis et limites                                                                                                                                                                                                                                                                                             |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ma page HTML complète        | `html-mini-page` réutilisé avec son titre et le type `challenge`. Métadonnées, liens de consolidation et teacherGuide ajoutés. Partagé avec Fondations après Images. | Titres/sous-titres, paragraphes, listes, liens, images. Conserver les exigences actuelles : h1, plusieurs niveaux de titres, au moins 3 paragraphes, une liste, 2 liens, 2 images. Aucun CSS obligatoire.                                                                                                        |
+| C1 — Découvrir le CSS        | Module `lesson` `css-decouverte` créé avec son guide. Contenu/apparence, sélecteur de balise, propriété et valeur ; texte et fond avec color/background-color.       | Savoir créer et modifier un titre et un paragraphe. Pas de classe nécessaire pour la première découverte ; pas de feuille externe à apprendre avant C3.                                                                                                                                                          |
+| C2 — Classes et couleurs CSS | Module partagé `css-classes-couleurs` enrichi, IDs préservés. Guide, diagnostic, aides graduées, consolidation, bonus et critères de transfert ajoutés.              | Comprendre une règle simple de C1 ; lien de reprise avant les classes si nécessaire. Conserver ciblage, classe réutilisée sur plusieurs éléments et renommage cohérent HTML/CSS. Ne pas imposer de refaire C1 si ces compétences sont déjà comprises.                                                            |
+| Mon affiche numérique        | Module `project` réutilisable `web-affiche-numerique` créé avec cahier des charges, réalisation, vérification et teacherGuide.                                       | Titres/paragraphes et C1/C2. Réutiliser une page existante ou créer un contenu court ; personnaliser texte/fond par des classes. Liens, images et liste peuvent être réinvestis si maîtrisés, sans nouveau prérequis caché. Aucun Flexbox, espacement, bordure, hover, typographie avancée ou publication exigé. |
 
 La mini-page complète reste un défi sans solution intégrale donnée ; les aides orientent vers les activités de consolidation des notions concernées. Ne pas abaisser les exigences déjà proposées aux Débutants. L’affiche constitue une extension CSS distincte : la réussite du noyau HTML ne dépend pas de cette extension.
 
@@ -493,12 +512,12 @@ Le choix de séparer à l’avenir des compétences plus fines, ou de transforme
 
 Serveur à la racine du dépôt : `python -m http.server 8000`. Aucun déploiement nécessaire.
 
-| Contenu | Élève | Guide |
-| --- | --- | --- |
-| Mini-page HTML complète | [Activité](http://127.0.0.1:8000/#module/html-mini-page?parcours=web-fondations) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-mini-page) |
-| Découvrir le CSS | [Activité](http://127.0.0.1:8000/#module/css-decouverte?parcours=web-fondations) | [Guide](http://127.0.0.1:8000/prof.html#guide/css-decouverte) |
-| Classes et couleurs CSS | [Activité](http://127.0.0.1:8000/#module/css-classes-couleurs?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/css-classes-couleurs) |
-| Mon affiche numérique | [Activité](http://127.0.0.1:8000/#module/web-affiche-numerique?parcours=web-fondations) | [Guide](http://127.0.0.1:8000/prof.html#guide/web-affiche-numerique) |
+| Contenu                 | Élève                                                                                   | Guide                                                                |
+| ----------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Mini-page HTML complète | [Activité](http://127.0.0.1:8000/#module/html-mini-page?parcours=web-fondations)        | [Guide](http://127.0.0.1:8000/prof.html#guide/html-mini-page)        |
+| Découvrir le CSS        | [Activité](http://127.0.0.1:8000/#module/css-decouverte?parcours=web-fondations)        | [Guide](http://127.0.0.1:8000/prof.html#guide/css-decouverte)        |
+| Classes et couleurs CSS | [Activité](http://127.0.0.1:8000/#module/css-classes-couleurs?parcours=web-debutants)   | [Guide](http://127.0.0.1:8000/prof.html#guide/css-classes-couleurs)  |
+| Mon affiche numérique   | [Activité](http://127.0.0.1:8000/#module/web-affiche-numerique?parcours=web-fondations) | [Guide](http://127.0.0.1:8000/prof.html#guide/web-affiche-numerique) |
 
 Essai court : ouvrir C2 dans Débutants, prendre le lien de reprise C1, exécuter l’exemple et modifier seulement le fond, puis revenir à C2. Ouvrir ensuite l’affiche depuis la mini-page et demander un troisième paragraphe de même style sans nouvelle règle. Comparer avec les réponses du guide, en distinguant aide à la manipulation et compréhension. L’essai du défi HTML conserve ses six exigences initiales.
 
@@ -508,11 +527,11 @@ Essai court : ouvrir C2 dans Débutants, prendre le lien de reprise C1, exécute
 
 Trois modules `lesson`, définis une seule fois dans [lesson-data.js](../lesson-data.js), avec métadonnées et guides détaillés :
 
-| Repère | ID | Compétence ciblée | Prérequis et reprises |
-| --- | --- | --- | --- |
-| H5 | `html-document` | `html.document` | Avoir assemblé une petite page avec titres et paragraphes. Aide à la création/enregistrement du fichier distinguée du choix des balises. |
-| H6 | `html-fichiers-chemins` | `html.paths` | Liens et images ; cadre complet fourni et reprise H5 disponible. Le SVG existant du module Images est téléchargé, pas recopié en source encodée. |
-| C3 | `css-feuille-style` | `css.stylesheets` | Document complet, chemins relatifs et règle CSS simple. Reprises H5/H6/C1 accessibles avant les exercices ; les classes ne sont pas exigées par l’exemple h1. |
+| Repère | ID                      | Compétence ciblée | Prérequis et reprises                                                                                                                                         |
+| ------ | ----------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| H5     | `html-document`         | `html.document`   | Avoir assemblé une petite page avec titres et paragraphes. Aide à la création/enregistrement du fichier distinguée du choix des balises.                      |
+| H6     | `html-fichiers-chemins` | `html.paths`      | Liens et images ; cadre complet fourni et reprise H5 disponible. Le SVG existant du module Images est téléchargé, pas recopié en source encodée.              |
+| C3     | `css-feuille-style`     | `css.stylesheets` | Document complet, chemins relatifs et règle CSS simple. Reprises H5/H6/C1 accessibles avant les exercices ; les classes ne sont pas exigées par l’exemple h1. |
 
 Débutants conserve ses sept premiers modules, puis poursuit par :
 **Mini-page HTML complète → Structure d’un document HTML → Fichiers et chemins → Relier une feuille de style**.
@@ -543,11 +562,11 @@ Fondations et Avancés gardent exactement leurs listes et objectifs actuels, ain
 
 ### Accès locaux
 
-| Contenu | Élève | Guide |
-| --- | --- | --- |
-| Structure d’un document HTML | [Activité](http://127.0.0.1:8000/#module/html-document?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-document) |
-| Fichiers et chemins | [Activité](http://127.0.0.1:8000/#module/html-fichiers-chemins?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-fichiers-chemins) |
-| Relier une feuille de style | [Activité](http://127.0.0.1:8000/#module/css-feuille-style?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/css-feuille-style) |
+| Contenu                      | Élève                                                                                  | Guide                                                                |
+| ---------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Structure d’un document HTML | [Activité](http://127.0.0.1:8000/#module/html-document?parcours=web-debutants)         | [Guide](http://127.0.0.1:8000/prof.html#guide/html-document)         |
+| Fichiers et chemins          | [Activité](http://127.0.0.1:8000/#module/html-fichiers-chemins?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-fichiers-chemins) |
+| Relier une feuille de style  | [Activité](http://127.0.0.1:8000/#module/css-feuille-style?parcours=web-debutants)     | [Guide](http://127.0.0.1:8000/prof.html#guide/css-feuille-style)     |
 
 Essai professeur court : créer le document et changer seulement l’onglet ; télécharger/ranger le carré, le renommer et réparer affichage + clic ; créer la feuille CSS, vérifier une couleur, renommer la feuille puis rétablir sa liaison. Utiliser les guides pour comparer compréhension autonome, modèle et aide de manipulation.
 
@@ -557,12 +576,12 @@ Essai professeur court : créer le document et changer seulement l’onglet ; t�
 
 Lot autorisé : réutiliser H7 dans Débutants et créer H8, C4 et C5 avec contenus élèves et guides complets. Aucun nouveau renderer, style d’interface, asset, format privé ou mapping externe.
 
-| Repère | Module unique | Contenu réellement disponible |
-| --- | --- | --- |
-| H7 | `html-parent-enfants` | Module existant partagé, sans copie. Exercices et références préservés ; transition et raison pédagogique élargies aux zones HTML, lien de suite H8 ajouté, Flexbox reste accessible. |
-| H8 | `html-zones` | Rôles de header/main/footer, distinction head/header, un main et plusieurs sections thématiques, réparation d’imbrication et nav facultatif avec prérequis liens. |
-| C4 | `css-textes-lisibles` | font-family, font-size, line-height, text-align ; exemples sans police externe, comparaisons à un réglage, mission sans nom de propriété, panne d’interligne et bonus de comparaison. |
-| C5 | `css-boites-espacements` | Contenu, padding, border simple, margin ; exemple à fonds témoins, marges des enfants expliquées, comparaison latérale pour éviter une fausse addition des marges verticales, transfert et variantes compacte/aérée. |
+| Repère | Module unique            | Contenu réellement disponible                                                                                                                                                                                        |
+| ------ | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| H7     | `html-parent-enfants`    | Module existant partagé, sans copie. Exercices et références préservés ; transition et raison pédagogique élargies aux zones HTML, lien de suite H8 ajouté, Flexbox reste accessible.                                |
+| H8     | `html-zones`             | Rôles de header/main/footer, distinction head/header, un main et plusieurs sections thématiques, réparation d’imbrication et nav facultatif avec prérequis liens.                                                    |
+| C4     | `css-textes-lisibles`    | font-family, font-size, line-height, text-align ; exemples sans police externe, comparaisons à un réglage, mission sans nom de propriété, panne d’interligne et bonus de comparaison.                                |
+| C5     | `css-boites-espacements` | Contenu, padding, border simple, margin ; exemple à fonds témoins, marges des enfants expliquées, comparaison latérale pour éviter une fausse addition des marges verticales, transfert et variantes compacte/aérée. |
 
 Ordre final Débutants :
 
@@ -592,12 +611,12 @@ Fichiers du lot : `lesson-data.js`, `tests/pedagogy.test.cjs`, `tests/student-ca
 
 ### Accès locaux et essai court
 
-| Contenu | Élève | Guide |
-| --- | --- | --- |
-| Parent et enfants partagé | [Activité Débutants](http://127.0.0.1:8000/#module/html-parent-enfants?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-parent-enfants) |
-| Organiser une page en zones | [Activité](http://127.0.0.1:8000/#module/html-zones?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-zones) |
-| Rendre les textes lisibles | [Activité](http://127.0.0.1:8000/#module/css-textes-lisibles?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/css-textes-lisibles) |
-| Boîtes et espacements | [Activité](http://127.0.0.1:8000/#module/css-boites-espacements?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/css-boites-espacements) |
+| Contenu                     | Élève                                                                                          | Guide                                                                 |
+| --------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Parent et enfants partagé   | [Activité Débutants](http://127.0.0.1:8000/#module/html-parent-enfants?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-parent-enfants)    |
+| Organiser une page en zones | [Activité](http://127.0.0.1:8000/#module/html-zones?parcours=web-debutants)                    | [Guide](http://127.0.0.1:8000/prof.html#guide/html-zones)             |
+| Rendre les textes lisibles  | [Activité](http://127.0.0.1:8000/#module/css-textes-lisibles?parcours=web-debutants)           | [Guide](http://127.0.0.1:8000/prof.html#guide/css-textes-lisibles)    |
+| Boîtes et espacements       | [Activité](http://127.0.0.1:8000/#module/css-boites-espacements?parcours=web-debutants)        | [Guide](http://127.0.0.1:8000/prof.html#guide/css-boites-espacements) |
 
 Essai : ajouter une troisième section et nommer le parent de son h2 ; aérer les lignes sans agrandir les lettres ; éloigner les mots de la bordure puis la carte du cadre. Comparer les explications aux guides, sans déduire d’acquisition d’une simple copie.
 
@@ -643,10 +662,10 @@ Fichiers : `lesson-data.js`, `tests/pedagogy.test.cjs`, `tests/student-catalog.c
 
 ### Accès et essai professeur
 
-| Contenu | Élève | Guide |
-| --- | --- | --- |
+| Contenu                             | Élève                                                                                  | Guide                                                                |
+| ----------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | Dimensions et images dans une carte | [Activité](http://127.0.0.1:8000/#module/css-dimensions-images?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/css-dimensions-images) |
-| Ma carte personnelle | [Projet](http://127.0.0.1:8000/#module/web-carte-personnelle?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/web-carte-personnelle) |
+| Ma carte personnelle                | [Projet](http://127.0.0.1:8000/#module/web-carte-personnelle?parcours=web-debutants)   | [Guide](http://127.0.0.1:8000/prof.html#guide/web-carte-personnelle) |
 
 Essai court : copier seulement la source du cercle, écrire alt, comparer la carte large/étroite puis réparer la hauteur 80px. Ouvrir ensuite le cahier des charges du projet et demander les deux changements sans nom de propriété. Comparer aux réponses attendues en distinguant autonomie, modèle et aide.
 
@@ -683,10 +702,10 @@ Le cours requiert document complet, fichiers/chemins et liens, mais pas CSS. Le 
 
 ### Accès local
 
-| Contenu | Élève | Professeur |
-| --- | --- | --- |
+| Contenu                | Élève                                                                        | Professeur                                                    |
+| ---------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | Relier plusieurs pages | [Cours](http://127.0.0.1:8000/#module/html-multipage?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/html-multipage) |
-| Mon mini-site | [Projet](http://127.0.0.1:8000/#module/web-mini-site?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/web-mini-site) |
+| Mon mini-site          | [Projet](http://127.0.0.1:8000/#module/web-mini-site?parcours=web-debutants) | [Guide](http://127.0.0.1:8000/prof.html#guide/web-mini-site)  |
 
 Essai court : ouvrir directement la deuxième page puis rejoindre l’accueil par son menu ; renommer cette page et réparer les deux menus ; modifier une règle commune puis actualiser les deux pages. Comparer explication autonome, avec modèle ou avec aide.
 

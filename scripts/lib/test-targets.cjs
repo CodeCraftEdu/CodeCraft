@@ -32,8 +32,9 @@ const profiles = {
       'scratch-vies-contacts',
       'scratch-clones-mobiles',
       'scratch-niveaux-etats',
+      'scratch-mission',
     ],
-    browser: ['student-browser', 'scratch-lot3-browser'],
+    browser: ['student-browser', 'scratch-lot3-browser', 'scratch-mission-browser'],
   },
   robotique: {
     node: [...catalog, ...student, 'pedagogy', 'robotique'],

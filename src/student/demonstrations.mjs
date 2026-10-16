@@ -294,11 +294,18 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
       const row = element('li', 'scratch-script__block scratch-script__block--' + category);
       row.append(element('span', 'scratch-script__sr', block.label + ' : '));
       renderParts(row, block.parts);
-      if (block.children?.length) {
+      if (block.children?.length || block.elseChildren?.length) {
         row.classList.add('scratch-script__block--container');
         const children = element('ol', 'scratch-script__children');
-        block.children.forEach((child) => children.append(renderBlock(child)));
-        row.append(children, element('span', 'scratch-script__closing', 'fin du bloc'));
+        (block.children || []).forEach((child) => children.append(renderBlock(child)));
+        row.append(children);
+        if (block.elseChildren) {
+          row.append(element('span', 'scratch-script__otherwise', 'sinon'));
+          const otherwise = element('ol', 'scratch-script__children scratch-script__else');
+          block.elseChildren.forEach((child) => otherwise.append(renderBlock(child)));
+          row.append(otherwise);
+        }
+        row.append(element('span', 'scratch-script__closing', 'fin du bloc'));
       }
       return row;
     };

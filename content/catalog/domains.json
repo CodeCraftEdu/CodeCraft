@@ -10,7 +10,7 @@
     "title": "Jeu vidéo",
     "homeDescription": "Crée tes premiers jeux avec Scratch, puis explore GDevelop pour donner vie à de nouveaux projets.",
     "homeTag": "SCRATCH · GDEVELOP",
-    "pathwayIds": ["scratch-debutants", "gdevelop-debutants"],
+    "pathwayIds": ["scratch-debutants", "scratch-avances", "gdevelop-debutants"],
     "diagnosticModuleIds": []
   },
   "web": {

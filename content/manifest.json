@@ -309,6 +309,34 @@
     {
       "id": "css-flexbox",
       "file": "modules/web/css-flexbox.json"
+    },
+    {
+      "id": "scratch-mission-commandes",
+      "file": "modules/jeux-video/scratch-mission-commandes.json"
+    },
+    {
+      "id": "scratch-mission-balises",
+      "file": "modules/jeux-video/scratch-mission-balises.json"
+    },
+    {
+      "id": "scratch-mission-vies",
+      "file": "modules/jeux-video/scratch-mission-vies.json"
+    },
+    {
+      "id": "scratch-mission-clones",
+      "file": "modules/jeux-video/scratch-mission-clones.json"
+    },
+    {
+      "id": "scratch-mission-messages",
+      "file": "modules/jeux-video/scratch-mission-messages.json"
+    },
+    {
+      "id": "scratch-mission-etats",
+      "file": "modules/jeux-video/scratch-mission-etats.json"
+    },
+    {
+      "id": "scratch-mission-tests",
+      "file": "modules/jeux-video/scratch-mission-tests.json"
     }
   ],
   "pathways": [
@@ -339,6 +367,10 @@
     {
       "id": "web-avances",
       "file": "pathways/web-avances.json"
+    },
+    {
+      "id": "scratch-avances",
+      "file": "pathways/scratch-avances.json"
     }
   ]
 }

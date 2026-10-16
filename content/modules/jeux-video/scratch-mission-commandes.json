@@ -1,0 +1,938 @@
+{
+  "domainId": "jeux-video",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir Scratch dans un autre onglet",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "title": "Piloter le véhicule de Mission balises",
+  "objective": "Construire les commandes et les limites du véhicule, puis conserver la base de ton jeu.",
+  "skillIds": ["scratch.keyboard", "scratch.coordinates", "scratch.conditions", "scratch.loops"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.workspace",
+      "expectation": "Sélectionner un personnage et retrouver une sauvegarde .sb3."
+    },
+    {
+      "skillId": "scratch.loops",
+      "expectation": "Repérer les actions d’une boucle continue."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Lire un si et sa condition."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "Ton véhicule et ses commandes",
+      "paragraphs": [
+        "Tu vas construire Mission balises : piloter un véhicule, activer des balises et éviter un danger. Dans ce chapitre, tu programmes les quatre flèches et les limites de la zone.",
+        "Télécharge la base ci-dessous. Dans Scratch, ouvre le menu Fichier et charge le fichier depuis ton ordinateur. Pilote, Balise et Obstacle sont déjà dessinés et nommés ; leurs zones de code sont vides. Balise reste immobile et Obstacle est caché pour le moment.",
+        "Clique sur la miniature Pilote sous la scène. Sa taille est 100 %. Tout le code de ce chapitre appartient à Pilote. Garde ces noms et tailles pendant la construction.",
+        "Garde le fichier mission-base.sb3 comme point de départ sans code. Quand les commandes seront terminées, tu sauvegarderas ton travail sous mission-01.sb3 pour le reprendre au chapitre suivant."
+      ],
+      "downloads": [
+        {
+          "label": "Télécharger la base sans code (.sb3)",
+          "path": "assets/scratch/mission/mission-base.sb3",
+          "filename": "mission-base.sb3"
+        }
+      ],
+      "illustration": {
+        "src": "assets/scratch/mission/apercu.png",
+        "alt": "Le véhicule bleu, une balise jaune à gauche et le danger rouge au centre de Mission balises.",
+        "caption": "Le jeu que tu vas construire : un véhicule, une balise et un danger."
+      }
+    },
+    {
+      "type": "details",
+      "id": "reprises",
+      "title": "Besoin de revoir une base ?",
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "aide-position",
+          "title": "Revoir les positions dans un autre onglet",
+          "text": "Revoir les positions dans un autre onglet si X et Y restent difficiles. Ferme ensuite cet onglet pour retrouver ce chapitre.",
+          "moduleLink": {
+            "moduleId": "scratch-pilotage",
+            "text": "Revoir les positions dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        },
+        {
+          "type": "callout",
+          "id": "aide-condition",
+          "title": "Revoir les conditions dans un autre onglet",
+          "text": "Revoir les conditions dans un autre onglet si tu hésites entre une touche qui démarre une pile et une touche testée dans une boucle. Ferme ensuite cet onglet pour reprendre ici.",
+          "moduleLink": {
+            "moduleId": "scratch-reactions",
+            "text": "Revoir les conditions dans un autre onglet",
+            "newTab": true
+          },
+          "presentation": "compact"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "reperes",
+      "title": "Choisir un axe et un sens",
+      "paragraphs": [
+        "L’abscisse x donne la position horizontale : ajouter à x déplace vers la droite, ajouter un nombre négatif déplace vers la gauche. L’ordonnée y donne la position verticale : ajouter à y fait monter, ajouter un nombre négatif fait descendre.",
+        "Aller à x: 0 y: -100 fixe un départ. Ajouter 4 à x déplace depuis la position actuelle. Tu vas utiliser le départ une fois, puis répéter les tests du clavier."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "horizontal",
+      "title": "Commencer par droite et gauche",
+      "shortSteps": [
+        "Dans Événements, prends quand le drapeau vert est cliqué. Ajoute aller à x: 0 y: -100 depuis Mouvement, puis dire avec une case vide depuis Apparence pour effacer une ancienne bulle.",
+        "Ajoute répéter indéfiniment depuis Contrôle. Dans cette boucle, place deux si … alors. Pour leurs conditions, prends touche … pressée ? dans Capteurs et choisis les flèches droite et gauche.",
+        "Dans les deux si, ajoute respectivement 4 et -4 à x. Place attendre 0.03 seconde après les deux si, toujours dans la boucle.",
+        "Clique le drapeau, puis la scène. Maintiens droite, relâche, puis essaie gauche : Pilote bouge seulement tant que la touche est maintenue."
+      ],
+      "paragraphs": [
+        "La boucle repose les questions du clavier. Attendre 0.03 seconde laisse une courte pause entre deux vérifications ; cette pause reste après les tests, pas dans un si."
+      ],
+      "visualScript": {
+        "caption": "Commencer par droite et gauche",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ]
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "0"
+              },
+              " y: ",
+              {
+                "value": "-100"
+              }
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": [
+              "dire ",
+              {
+                "value": ""
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["répéter indéfiniment"],
+            "children": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche droite"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "4"
+                      },
+                      " à x"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "si ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "flèche gauche"
+                      },
+                      " pressée ?"
+                    ]
+                  },
+                  " alors"
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "value": "-4"
+                      },
+                      " à x"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.03"
+                  },
+                  " seconde"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "vertical",
+      "title": "Ajouter haut et bas",
+      "shortSteps": [
+        "Dans la même boucle, ajoute les deux si ci-dessous après ceux de droite et gauche, avant attendre.",
+        "Choisis les flèches haut et bas dans Capteurs. Dans Mouvement, prends ajouter à y, avec 4 pour monter et -4 pour descendre.",
+        "Teste les quatre flèches, puis relance le drapeau depuis deux positions différentes : le véhicule doit revenir en (0, -100)."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Ajouter haut et bas",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  "touche ",
+                  {
+                    "choice": "flèche haut"
+                  },
+                  " pressée ?"
+                ]
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "4"
+                  },
+                  " à y"
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  "touche ",
+                  {
+                    "choice": "flèche bas"
+                  },
+                  " pressée ?"
+                ]
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "-4"
+                  },
+                  " à y"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "comparer",
+      "title": "Garder le véhicule dans la zone",
+      "paragraphs": [
+        "On veut garder x entre -200 et 200, et y entre -140 et 140. Si un déplacement dépasse une borne, on remet la position sur cette borne.",
+        "Dans Opérateurs, la comparaison > demande si la valeur de gauche est plus grande que celle de droite ; < demande si elle est plus petite. Glisse abscisse x ou ordonnée y depuis Mouvement dans la case de gauche. Ce sont des blocs à glisser, pas des mots à taper."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "limites",
+      "title": "Construire les quatre limites",
+      "shortSteps": [
+        "Ajoute ces quatre si dans la boucle, après les quatre commandes et avant attendre.",
+        "Pour chaque comparaison, glisse le bloc bleu abscisse x ou ordonnée y. Saisis seulement le nombre de la borne dans l’autre case.",
+        "Dans chaque si, utilise mettre x à ou mettre y à, depuis Mouvement. Le nombre remet le véhicule sur la borne qui vient d’être dépassée.",
+        "Maintiens chaque flèche jusqu’au bord et observe les champs x et y : ils s’arrêtent à -200 ou 200, puis à -140 ou 140."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Construire les quatre limites",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "reporter": "abscisse x",
+                    "category": "motion"
+                  },
+                  " > ",
+                  {
+                    "value": "200"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "mettre x à ",
+                  {
+                    "value": "200"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "reporter": "abscisse x",
+                    "category": "motion"
+                  },
+                  " < ",
+                  {
+                    "value": "-200"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "mettre x à ",
+                  {
+                    "value": "-200"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "reporter": "ordonnée y",
+                    "category": "motion"
+                  },
+                  " > ",
+                  {
+                    "value": "140"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "mettre y à ",
+                  {
+                    "value": "140"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "reporter": "ordonnée y",
+                    "category": "motion"
+                  },
+                  " < ",
+                  {
+                    "value": "-140"
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "mettre y à ",
+                  {
+                    "value": "-140"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "essais",
+      "title": "Vérifier les commandes",
+      "items": [
+        {
+          "id": "touches",
+          "text": "Relâche toutes les touches : Pilote reste immobile. Teste séparément les quatre directions."
+        },
+        {
+          "id": "bords",
+          "text": "Atteins les quatre limites et vérifie leurs coordonnées, pas seulement la position du dessin."
+        },
+        {
+          "id": "relance",
+          "text": "Relance depuis un bord, puis depuis le centre : retrouve (0, -100)."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "variation",
+      "title": "Comparer deux vitesses sur une copie",
+      "items": [
+        {
+          "id": "conserver",
+          "text": "Sauvegarde les commandes terminées sous mission-01.sb3. Recharge le fichier que tu viens d’enregistrer et teste les quatre flèches avant de faire l’essai."
+        },
+        {
+          "id": "prevoir",
+          "text": "Dans le projet ouvert, remplace 4 par 8 à droite et -4 par -8 à gauche. Prévois ce qui change pour un appui de même durée, puis teste."
+        },
+        {
+          "id": "restaurer",
+          "text": "Sauvegarde cet essai sous mission-01-essai.sb3. Recharge ensuite ta sauvegarde des commandes terminées, mission-01.sb3 ou son nom avec suffixe : les quatre déplacements retrouvent 4 ou -4."
+        }
+      ],
+      "intro": "Depuis le menu Fichier de Scratch, sauvegarde le projet sur ton ordinateur. Repère le fichier réellement téléchargé et son dossier : un suffixe comme (1) peut être ajouté si le nom existe déjà. C’est ce fichier récent que tu rechargeras après l’essai. Modifier le projet ouvert dans Scratch ne modifie pas cette sauvegarde."
+    },
+    {
+      "type": "details",
+      "id": "modeles",
+      "title": "Comparer avec la pile complète",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "modele-pilote",
+          "title": "Pilote : la pile complète",
+          "shortSteps": [
+            "Compare cette pile avec la tienne, sur Pilote. Les huit si et la pause sont dans la boucle ; le départ reste avant la boucle."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Pilote : la pile complète",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "0"
+                  },
+                  " y: ",
+                  {
+                    "value": "-100"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "dire ",
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["répéter indéfiniment"],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche droite"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "4"
+                          },
+                          " à x"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche gauche"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-4"
+                          },
+                          " à x"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche haut"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "4"
+                          },
+                          " à y"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche bas"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-4"
+                          },
+                          " à y"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "abscisse x",
+                            "category": "motion"
+                          },
+                          " > ",
+                          {
+                            "value": "200"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "mettre x à ",
+                          {
+                            "value": "200"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "abscisse x",
+                            "category": "motion"
+                          },
+                          " < ",
+                          {
+                            "value": "-200"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "mettre x à ",
+                          {
+                            "value": "-200"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "ordonnée y",
+                            "category": "motion"
+                          },
+                          " > ",
+                          {
+                            "value": "140"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "mettre y à ",
+                          {
+                            "value": "140"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "ordonnée y",
+                            "category": "motion"
+                          },
+                          " < ",
+                          {
+                            "value": "-140"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "mettre y à ",
+                          {
+                            "value": "-140"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "reference",
+          "title": "Référence terminée",
+          "paragraphs": [
+            "Sauvegarde ta version avant d’ouvrir cette référence dans Scratch. Elle sert à comparer ; conserve ta propre sauvegarde pour poursuivre."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger la référence Commandes (.sb3)",
+              "path": "assets/scratch/mission/mission-commandes.sb3",
+              "filename": "mission-commandes.sb3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "reprise",
+      "title": "Conserver la version du prochain chapitre",
+      "paragraphs": [
+        "Garde la sauvegarde des commandes terminées que tu viens de recharger, mission-01.sb3 ou son nom avec suffixe. Pilote part de (0, -100), se déplace de 4 avec chaque flèche et reste dans les limites prévues. Balise est en (-160, 0), Obstacle reste caché et aucune variable n’est encore nécessaire.",
+        "Le chapitre suivant ajoute le score dans ce même projet. Si tu avais changé une constante pour l’essai, reprends d’abord ta sauvegarde principale."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Choisir x ou y et le signe du déplacement pour une direction.",
+    "Expliquer les tests du clavier et les limites en comparant les coordonnées.",
+    "Retrouver le même départ et conserver une sauvegarde avec les réglages de référence."
+  ],
+  "teacherGuide": {
+    "objective": "Construire les commandes et les limites du véhicule, puis conserver la base de ton jeu.",
+    "entryDiagnosis": [
+      "Faire retrouver la version de départ et lire une condition avant de construire.",
+      "Distinguer aide au clavier ou aux fichiers et aide sur le raisonnement."
+    ],
+    "preparation": [
+      "Les fichiers sont locaux dans les téléchargements du chapitre ; aucune publication Scratch ni compte élève n'est nécessaire.",
+      "Conserver le projet personnel et une sauvegarde par chapitre. Ouvrir une reprise uniquement si la version précédente manque.",
+      "Les variantes utilisent une copie d'essai. Revenir ensuite à la sauvegarde principale avec les constantes de référence."
+    ],
+    "why": "Construire les commandes et les limites du véhicule, puis conserver la base de ton jeu.",
+    "discoverySpeech": [
+      "Quel acteur exécute cette pile ?",
+      "Que prévois-tu avant de lancer ?",
+      "Quel compteur ou quelle position permettra de vérifier ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-mission-commandes",
+        "blockId": "horizontal"
+      },
+      "comments": [
+        "La pile Pilote est entièrement construite : aucun code caché dans la base.",
+        "Les deux commandes horizontales sont un état intermédiaire, complété ensuite par Y et les limites."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi mettre la position avant la boucle ?",
+        "answer": "Pour retrouver le départ une fois, sans annuler chaque déplacement."
+      },
+      {
+        "question": "Pourquoi une case avec le mot abscisse x ne suffit-elle pas ?",
+        "answer": "Il faut le bloc bleu qui lit la position ; le texte seul ne la consulte pas."
+      },
+      {
+        "question": "Pourquoi les limites utilisent-elles mettre x à plutôt que ajouter à x ?",
+        "answer": "On ramène une position dépassée exactement sur sa borne ; on ne demande pas un déplacement supplémentaire."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-mission-commandes",
+      "blockId": "horizontal"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-mission-commandes",
+      "blockId": "variation"
+    },
+    "differentiation": [
+      "Laisser les modèles complets disponibles après un premier essai et faire expliquer une condition plutôt que compter les blocs recopiés.",
+      "Utiliser une reprise de fichier après sauvegarde si nécessaire, en précisant les parties déjà fournies."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La touche ne déplace pas le véhicule.",
+        "helps": [
+          "Cliquer la scène puis maintenir la touche.",
+          "Retrouver le capteur de la bonne flèche.",
+          "Vérifier que son si est dans la boucle et contient le changement d’axe.",
+          "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+        ]
+      },
+      {
+        "symptom": "Le véhicule revient sans cesse au départ.",
+        "helps": [
+          "Chercher aller à (0, -100).",
+          "Faire montrer la pile et le personnage concernés avant de déplacer les blocs.",
+          "Le remettre avant la boucle, puis tester une touche.",
+          "Refaire le même essai, puis un nouveau départ pour vérifier la correction."
+        ]
+      }
+    ],
+    "notes": "Premier segment du parcours autonome Mission balises. Les notions sont construites sur le même projet. Les tests moteur du prototype et les contrôles du site ne constituent pas un essai avec un élève.",
+    "quickConductor": [
+      "Retrouver la sauvegarde attendue.",
+      "Construire un fragment et faire prévoir le résultat.",
+      "Tester la limite ou le contact, puis corriger un point.",
+      "Effectuer la variation sur copie, revenir aux réglages de reprise et sauvegarder."
+    ],
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  }
+}

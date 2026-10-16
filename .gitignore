@@ -3,3 +3,4 @@ espace-codecraft*.json
 node_modules/
 .qa-*.log
 browser-artifacts/
+__pycache__/

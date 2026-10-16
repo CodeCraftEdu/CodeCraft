@@ -1,0 +1,885 @@
+{
+  "domainId": "jeux-video",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir Scratch dans un autre onglet",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "title": "Créer les obstacles mobiles de Mission balises",
+  "objective": "Remplacer le danger fixe par des clones qui traversent la zone et disparaissent à la sortie ou au contact.",
+  "skillIds": [
+    "scratch.clones",
+    "scratch.coordinates",
+    "scratch.loops",
+    "scratch.conditions",
+    "scratch.variables"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.contacts",
+      "expectation": "Retrouver mission-03.sb3 et expliquer le retrait d’une vie par contact avec le danger fixe."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Lire une variable commune et distinguer sa valeur de départ d’une modification."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Construire une comparaison et réunir deux conditions avec et."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "Reprendre ton jeu avec ses vies",
+      "paragraphs": [
+        "Ouvre ta sauvegarde principale mission-03.sb3, ou son nom avec suffixe. Vérifie le départ avec trois vies, le score à zéro et les quatre commandes. Sauvegarde cette version avant de transformer Obstacle.",
+        "Tu gardes les piles de Pilote et de Balise. Sur la scène, tu ajouteras seulement une vitesse commune ; la décision de victoire ou de défaite reste en place.",
+        "Le danger fixe va devenir un modèle caché qui fabrique des copies mobiles. Chaque copie pourra retirer une vie puis disparaître. Deux copies différentes peuvent donc retirer deux vies, même si leurs contacts sont rapprochés.",
+        "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Vies."
+      ],
+      "downloads": [
+        {
+          "label": "Reprendre depuis la fin de Vies (.sb3)",
+          "path": "assets/scratch/mission/mission-vies.sb3",
+          "filename": "mission-vies.sb3"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "transition",
+      "title": "Retirer la surveillance du danger fixe",
+      "paragraphs": [
+        "Clique sur Obstacle. Son ancienne pile commence par le drapeau, place le danger au centre, le montre et surveille le contact avec une attente de séparation.",
+        "Saisis cette pile entière par son chapeau de drapeau, puis dépose-la dans la palette des blocs pour la supprimer. La zone de code d’Obstacle doit être vide. Les piles des autres personnages et de la scène restent à leur place.",
+        "Tu vas construire deux nouvelles piles dans Obstacle : le drapeau fabrique les copies ; quand je commence comme un clone fait agir chaque copie. L’ancien retrait de vie et ses attentes de séparation sont retirés avec la pile fixe."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "vitesse",
+      "title": "Préparer la vitesse commune",
+      "shortSteps": [
+        "Dans Variables, crée vitesseObstacle pour tous les sprites. Décoche son affichage : tu gardes les compteurs score et vies visibles.",
+        "Clique sur la scène. Dans sa pile de drapeau, ajoute mettre vitesseObstacle à 4 après mettre vies à 3, avant le décor et la boucle de décision.",
+        "La scène donne la valeur de départ ; les clones liront ce même bloc orange pour avancer. Lance le drapeau et clique sur le bloc vitesseObstacle dans la palette : il indique 4."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Préparer la vitesse commune",
+        "blocks": [
+          {
+            "category": "variables",
+            "label": "Variables",
+            "parts": [
+              "mettre ",
+              {
+                "choice": "vitesseObstacle"
+              },
+              " à ",
+              {
+                "value": "4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "premiere-copie",
+      "title": "Faire apparaître une seule copie",
+      "shortSteps": [
+        "Reviens sur Obstacle. Dans Événements, prends un nouveau drapeau. Ajoute cacher depuis Apparence, puis attendre 1.2 seconde et créer un clone de moi-même depuis Contrôle.",
+        "Choisis moi-même dans le menu de création : tu copies Obstacle. Cette première pile ne crée qu’une seule copie ; tu ajouteras une boucle plus tard.",
+        "Le clone hérite de l’apparence et de la visibilité du modèle. Comme le modèle est caché, tu dois encore apprendre à la copie à se montrer."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Faire apparaître une seule copie",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": ["cacher"]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "attendre ",
+              {
+                "value": "1.2"
+              },
+              " seconde"
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "créer un clone de ",
+              {
+                "choice": "moi-même"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "depart-clone",
+      "title": "Donner sa propre pile à la copie",
+      "shortSteps": [
+        "Toujours dans Obstacle, prends quand je commence comme un clone depuis Contrôle pour commencer une deuxième pile séparée du drapeau.",
+        "Ajoute aller à x: -210 y: 0 depuis Mouvement puis montrer depuis Apparence. Cette pile se lance sur la copie, pas sur le modèle original.",
+        "Lance le drapeau. Après 1.2 seconde, une copie apparaît à gauche et reste immobile. Le modèle reste caché. Clique sur le bouton rouge d’arrêt avant de compléter les piles."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Donner sa propre pile à la copie",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["quand je commence comme un clone"]
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "-210"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": ["montrer"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "mouvement",
+      "title": "Traverser la zone puis supprimer la copie",
+      "shortSteps": [
+        "Dans la pile de démarrage du clone, après montrer, ajoute répéter jusqu’à ce que depuis Contrôle. Sa condition est abscisse x > 210 : glisse le bloc bleu depuis Mouvement dans > depuis Opérateurs, puis saisis 210.",
+        "Dans cette boucle, ajoute à x le bloc orange vitesseObstacle depuis Variables, puis attends 0.03 seconde. Glisse la variable dans la case numérique : taper son nom ne lit pas sa valeur.",
+        "Après la boucle, place supprimer ce clone depuis Contrôle. La boucle continue tant que x > 210 est faux, puis la copie se supprime quand elle dépasse cette limite à droite.",
+        "Lance et laisse Pilote au départ : une copie traverse de gauche à droite et disparaît. Aucun dégât n’est encore programmé. Cacher rendrait seulement la copie invisible ; supprimer la retire du jeu."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Traverser la zone puis supprimer la copie",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["quand je commence comme un clone"]
+          },
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "-210"
+              },
+              " y: ",
+              {
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": ["montrer"]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "répéter jusqu’à ce que ",
+              {
+                "condition": [
+                  {
+                    "reporter": "abscisse x",
+                    "category": "motion"
+                  },
+                  " > ",
+                  {
+                    "value": "210"
+                  }
+                ],
+                "operator": true
+              }
+            ],
+            "children": [
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "reporter": "vitesseObstacle",
+                    "category": "variables"
+                  },
+                  " à x"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "0.03"
+                  },
+                  " seconde"
+                ]
+              }
+            ]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["supprimer ce clone"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "hauteur",
+      "title": "Choisir une hauteur au départ",
+      "shortSteps": [
+        "Dans Opérateurs, prends nombre aléatoire entre et règle ses deux bornes à -100 et 100. Le tirage donne une hauteur comprise entre ces deux valeurs.",
+        "Dans la pile du clone, remplace seulement le 0 de y par ce bloc vert. Garde x à -210. Le tirage se fait une fois au départ de chaque copie, avant la boucle de déplacement.",
+        "Relance plusieurs fois : la copie peut partir plus haut ou plus bas. Chaque trajet reste horizontal, car la boucle change x et garde y."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Choisir une hauteur au départ",
+        "blocks": [
+          {
+            "category": "motion",
+            "label": "Mouvement",
+            "parts": [
+              "aller à x: ",
+              {
+                "value": "-210"
+              },
+              " y: ",
+              {
+                "reporter": "nombre aléatoire entre -100 et 100",
+                "category": "operators"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "fabrique",
+      "title": "Produire les obstacles régulièrement",
+      "shortSteps": [
+        "Dans la pile de drapeau d’Obstacle, ajoute répéter indéfiniment après cacher. Déplace les deux blocs déjà construits, attendre 1.2 seconde et créer un clone de moi-même, à l’intérieur de cette boucle, dans cet ordre.",
+        "La création reste dans la pile de drapeau. La pile quand je commence comme un clone garde seulement le trajet de chaque copie.",
+        "Lance et descends Pilote jusqu’à y = -140 pour observer les traversées. Plusieurs copies avancent, chacune à sa hauteur. Le modèle n’apparaît pas au centre.",
+        "L’intervalle de 1.2 seconde règle les départs ; vitesseObstacle règle le déplacement de chaque copie. La pause de 0.03 seconde rythme les déplacements."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Produire les obstacles régulièrement",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand le ",
+              {
+                "flag": true
+              },
+              " est cliqué"
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": ["cacher"]
+          },
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": ["répéter indéfiniment"],
+            "children": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "attendre ",
+                  {
+                    "value": "1.2"
+                  },
+                  " seconde"
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "créer un clone de ",
+                  {
+                    "choice": "moi-même"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "contact",
+      "title": "Retirer une vie puis supprimer le clone touché",
+      "shortSteps": [
+        "Dans la pile quand je commence comme un clone, place ce si dans répéter jusqu’à ce que, après ajouter vitesseObstacle à x et avant attendre 0.03 seconde.",
+        "Depuis Opérateurs, et réunit vies > 0 et touche Pilote ?. Glisse vies depuis Variables dans > et prends touche Pilote ? dans Capteurs. Les deux conditions doivent être vraies.",
+        "Dans le si, ajoute -1 à vies puis supprimer ce clone. Garde aussi la suppression après la boucle : l’une sert au contact, l’autre à la sortie sans contact.",
+        "Lance et rejoins une copie : une vie disparaît, puis cette copie aussi. Elle ne peut plus retirer une autre vie. Une autre copie peut te toucher à son tour.",
+        "L’attente de séparation du danger fixe est remplacée par la suppression du clone. Les commandes restent sur Pilote ; les trois vies et les deux fins restent gérées par la scène."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Retirer une vie puis supprimer le clone touché",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "condition": [
+                      {
+                        "reporter": "vies",
+                        "category": "variables"
+                      },
+                      " > ",
+                      {
+                        "value": "0"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " et ",
+                  {
+                    "condition": [
+                      "touche ",
+                      {
+                        "choice": "Pilote"
+                      },
+                      " ?"
+                    ]
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "ajouter ",
+                  {
+                    "value": "-1"
+                  },
+                  " à ",
+                  {
+                    "choice": "vies"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["supprimer ce clone"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "essais",
+      "title": "Tester les copies et les deux fins",
+      "items": [
+        {
+          "id": "sans-contact",
+          "text": "Lance, puis descends jusqu’à y = -140. Laisse passer plusieurs copies : les vies restent à 3 et les copies qui dépassent x = 210 disparaissent."
+        },
+        {
+          "id": "contact",
+          "text": "Rejoins un obstacle mobile. Observe la baisse d’une vie et la disparition de cette copie. Repère une autre copie pour vérifier qu’elle peut retirer une autre vie."
+        },
+        {
+          "id": "defaite",
+          "text": "Rejoins des copies jusqu’à zéro vie : les commandes et les créations s’arrêtent. Les copies encore présentes disparaissent aussitôt."
+        },
+        {
+          "id": "victoire",
+          "text": "Relance, puis active six balises en évitant les copies. À six points, le jeu s’arrête aussi."
+        },
+        {
+          "id": "relance",
+          "text": "Relance après chaque fin : score 0, vies 3, vitesseObstacle 4, Pilote au départ et Balise à gauche. La première nouvelle copie arrive après 1.2 seconde."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "variation",
+      "title": "Comparer vitesse et fréquence",
+      "items": [
+        {
+          "id": "sauver",
+          "text": "Sauvegarde le jeu terminé sous mission-04.sb3. Repère le fichier récent, même si un suffixe est ajouté, recharge-le et vérifie les départs avant l’essai."
+        },
+        {
+          "id": "vitesse",
+          "text": "Dans le projet ouvert, change seulement mettre vitesseObstacle à 4 en mettre vitesseObstacle à 8 sur la scène. Prévois l’effet sur le temps de traversée et sur l’intervalle entre deux créations, puis lance et observe."
+        },
+        {
+          "id": "intervalle",
+          "text": "Remets la vitesse de départ à 4. Change seulement attendre 1.2 seconde en attendre 0.6 seconde dans la fabrique. Prévois ce qui change pour les départs et pour le déplacement d’une copie, puis teste."
+        },
+        {
+          "id": "retour",
+          "text": "Sauvegarde l’essai sous mission-04-essai.sb3. Recharge ensuite le fichier principal mission-04.sb3, ou son nom avec suffixe. Vérifie vitesseObstacle à 4 et l’intervalle à 1.2 seconde pour poursuivre."
+        }
+      ],
+      "intro": "Compare une seule modification à la fois. Place Pilote à y = -140 pendant les observations pour laisser les obstacles traverser sans contact."
+    },
+    {
+      "type": "details",
+      "id": "verification-variation",
+      "title": "Vérifier après ton essai",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-variation",
+          "title": "Deux réglages différents",
+          "paragraphs": [
+            "Avec vitesseObstacle à 8, chaque copie avance deux fois plus à chaque tour qu’avec 4 : la traversée est plus rapide. La fabrique attend toujours 1.2 seconde entre les créations.",
+            "Avec la vitesse revenue à 4 et l’intervalle à 0.6 seconde, les copies partent deux fois plus souvent. Le déplacement de chaque copie garde la même vitesse. Après les essais, la sauvegarde principale retrouve 4 et 1.2."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "depannage",
+      "title": "Si les copies ne se comportent pas comme prévu",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "chercher",
+          "title": "Retrouver la pile concernée",
+          "paragraphs": [
+            "Rien n’apparaît ? Sur Obstacle, vérifie le menu moi-même de la création, puis le chapeau quand je commence comme un clone et montrer dans la deuxième pile.",
+            "Les copies se multiplient très vite ? La création doit être dans la pile de drapeau, avec son attente de 1.2 seconde, pas dans la pile de démarrage des clones.",
+            "Une copie reste à droite ? Vérifie x > 210, le sens positif du déplacement et supprimer ce clone après la boucle.",
+            "Une copie fait perdre plusieurs vies ou le centre reste dangereux sans copie ? Recherche l’ancienne pile du danger fixe. Elle doit être retirée entièrement. Dans la nouvelle pile, supprimer ce clone vient juste après ajouter -1 à vies.",
+            "Les clones changent sans cesse de hauteur ? Le tirage de y appartient au placement initial, avant la boucle ; la boucle change seulement x."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "modeles",
+      "title": "Comparer les deux piles d’Obstacle",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "modele-fabrique",
+          "title": "Obstacle : le modèle caché crée",
+          "shortSteps": [
+            "Cette pile est la seule pile de drapeau d’Obstacle. Elle garde le modèle caché et sépare les créations de 1.2 seconde."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Obstacle : le modèle caché crée",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": ["cacher"]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["répéter indéfiniment"],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "1.2"
+                      },
+                      " seconde"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "créer un clone de ",
+                      {
+                        "choice": "moi-même"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "modele-clone",
+          "title": "Obstacle : chaque copie avance et se supprime",
+          "shortSteps": [
+            "Cette pile appartient aussi à Obstacle, mais démarre sur chaque clone. Le retrait de vie a sa suppression ; la fin du trajet a l’autre suppression."
+          ],
+          "paragraphs": [],
+          "visualScript": {
+            "caption": "Obstacle : chaque copie avance et se supprime",
+            "blocks": [
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["quand je commence comme un clone"]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "aller à x: ",
+                  {
+                    "value": "-210"
+                  },
+                  " y: ",
+                  {
+                    "reporter": "nombre aléatoire entre -100 et 100",
+                    "category": "operators"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": ["montrer"]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter jusqu’à ce que ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "abscisse x",
+                        "category": "motion"
+                      },
+                      " > ",
+                      {
+                        "value": "210"
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "children": [
+                  {
+                    "category": "motion",
+                    "label": "Mouvement",
+                    "parts": [
+                      "ajouter ",
+                      {
+                        "reporter": "vitesseObstacle",
+                        "category": "variables"
+                      },
+                      " à x"
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "condition": [
+                              {
+                                "reporter": "vies",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "0"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " et ",
+                          {
+                            "condition": [
+                              "touche ",
+                              {
+                                "choice": "Pilote"
+                              },
+                              " ?"
+                            ]
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "ajouter ",
+                          {
+                            "value": "-1"
+                          },
+                          " à ",
+                          {
+                            "choice": "vies"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": ["supprimer ce clone"]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["supprimer ce clone"]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "reference",
+          "title": "Référence terminée",
+          "paragraphs": [
+            "Sauvegarde ton travail avant d’ouvrir la référence. Compare les deux piles d’Obstacle et l’initialisation de vitesseObstacle sur la scène. Recharge ensuite ton propre fichier principal pour poursuivre."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger la référence Clones (.sb3)",
+              "path": "assets/scratch/mission/mission-clones.sb3",
+              "filename": "mission-clones.sb3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "aide-clones",
+      "title": "Revoir les clones dans un autre onglet",
+      "text": "Revoir les clones dans un autre onglet. L’aide crée une série de trois balles ; ton jeu produit des obstacles jusqu’à la fin de la partie. Compare le rôle du modèle et celui des copies, puis ferme cet onglet pour reprendre Mission balises.",
+      "moduleLink": {
+        "moduleId": "scratch-clones-mobiles",
+        "text": "Revoir les clones dans un autre onglet",
+        "newTab": true
+      },
+      "presentation": "compact"
+    },
+    {
+      "type": "lesson",
+      "id": "reprise",
+      "title": "Garder le jeu avec ses obstacles mobiles",
+      "paragraphs": [
+        "Garde ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe : vitesseObstacle 4, une création toutes les 1.2 seconde, départ des clones en x = -210 et y entre -100 et 100, suppression après x > 210 ou après un contact.",
+        "Obstacle possède deux piles, sans l’ancienne surveillance fixe. Pilote et Balise gardent les leurs ; la scène initialise score, vies et vitesseObstacle puis surveille les deux fins. Le score repart à 0, les vies à 3 et la victoire reste à six points.",
+        "Le prochain chapitre fera évoluer le secteur et la vitesse pendant la partie. Tu conserveras ce même jeu."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Distinguer la pile qui crée les copies et celle que chaque copie exécute.",
+    "Placer le tirage de hauteur au départ et expliquer l’arrêt de la boucle à la sortie.",
+    "Supprimer un clone après son unique dégât et retirer l’ancienne surveillance fixe.",
+    "Prévoir l’effet de la vitesse et de l’intervalle, puis restaurer la version principale."
+  ],
+  "teacherGuide": {
+    "objective": "Remplacer le danger fixe par des clones qui traversent la zone et disparaissent à la sortie ou au contact.",
+    "entryDiagnosis": [
+      "Faire rouvrir la version Vies et montrer les piles de Pilote, Balise, Obstacle et de la scène.",
+      "Faire expliquer pourquoi l’ancien danger attendait une séparation avant un deuxième dégât."
+    ],
+    "preparation": [
+      "Les téléchargements du cours permettent de travailler sans compte ; conserver mission-03 avant la transformation.",
+      "Construire depuis le fichier de l’élève. La reprise Vies sert si ce fichier manque ; la référence Clones sert à comparer après sauvegarde.",
+      "Prévoir un clavier et une fenêtre Scratch à côté du cours. Utiliser y = -140 pour observer les traversées sans contact."
+    ],
+    "why": "Passer d’un seul acteur persistant à des copies temporaires qui exécutent chacune la même pile. Relier leur disparition à une règle de dégâts et de sortie.",
+    "discoverySpeech": [
+      "Quelle pile crée la copie ?",
+      "Sur quel acteur ce bloc de déplacement s’exécute-t-il ?",
+      "Que reste-t-il dans le jeu après supprimer ce clone ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-mission-clones",
+        "blockId": "contact"
+      },
+      "comments": [
+        "Le retrait de vie est déplacé dans la pile des clones ; la pile fixe est supprimée, pas laissée à côté.",
+        "Le clone touché se supprime, sans attente de séparation. Deux clones distincts peuvent retirer deux vies.",
+        "La scène initialise la vitesse et décide toujours la fin. Le modèle attend avant la première création, ce qui laisse l’initialisation s’effectuer."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi cacher le modèle et montrer les copies ?",
+        "answer": "Le modèle doit fabriquer sans devenir un danger visible ; les copies héritent de sa visibilité cachée et doivent se montrer."
+      },
+      {
+        "question": "Pourquoi tirer y avant la boucle ?",
+        "answer": "Pour choisir une hauteur par copie, puis garder un trajet horizontal."
+      },
+      {
+        "question": "Pourquoi deux suppressions dans la pile du clone ?",
+        "answer": "Celle dans le si termine le clone touché ; celle après la boucle termine une traversée sans contact."
+      },
+      {
+        "question": "Est-ce que réduire l’intervalle accélère chaque copie ?",
+        "answer": "Non : cela rapproche les créations. La vitesse lue à chaque déplacement garde sa propre valeur."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-mission-clones",
+      "blockId": "mouvement"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-mission-clones",
+      "blockId": "variation"
+    },
+    "differentiation": [
+      "Vérifier d’abord la copie unique à y = 0 avant de passer au hasard et à la production continue.",
+      "Faire verbaliser le propriétaire et le déclencheur avant d’ajouter un bloc. Le modèle complet reste consultable après un premier essai.",
+      "Pour l’observation, écarter Pilote à y = -140 ; pour le défi, jouer jusqu’aux six points sans modifier les constantes de reprise."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Les copies se multiplient au lieu de traverser régulièrement.",
+        "helps": [
+          "Arrêter le jeu et repérer tous les blocs de création.",
+          "Faire montrer le chapeau de la pile qui contient chaque création.",
+          "Garder une création dans la boucle du drapeau après attendre 1.2 seconde ; aucune dans le démarrage du clone.",
+          "Relancer et observer plusieurs départs depuis la zone sûre à y = -140."
+        ]
+      },
+      {
+        "symptom": "Le jeu retire des vies sans copie au contact ou plusieurs fois pour la même copie.",
+        "helps": [
+          "Observer quelle copie disparaît au moment du retrait.",
+          "Chercher les anciens retraits et attentes de séparation dans Obstacle.",
+          "Supprimer la pile fixe ; dans la pile du clone, placer supprimer ce clone après le retrait et garder la suppression de sortie après la boucle.",
+          "Retester un contact, une traversée sans contact, puis un nouveau départ."
+        ]
+      },
+      {
+        "symptom": "Une copie reste à droite.",
+        "helps": [
+          "Observer x pendant son déplacement.",
+          "Lire la condition de répéter jusqu’à ce que et vérifier le signe de la vitesse.",
+          "Utiliser x > 210 et une vitesse positive ; placer supprimer ce clone après la boucle.",
+          "Relancer depuis trois vies et observer une traversée complète sans contact."
+        ]
+      }
+    ],
+    "quickConductor": [
+      "Sauvegarder la version précédente puis retirer la surveillance fixe.",
+      "Observer une copie unique, son trajet et sa suppression.",
+      "Ajouter la hauteur aléatoire, la fabrique continue et le dégât.",
+      "Tester les deux fins, comparer les deux réglages et reprendre mission-04."
+    ],
+    "notes": "Chapitre cumulatif autonome. L’arrêt de la partie supprime immédiatement les clones présents ; le drapeau réinitialise les compteurs et relance les créations. Les messages et le verrouillage d’état seront enseignés plus tard. Les contrôles techniques ne prouvent pas l’autonomie avec un élève.",
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  }
+}

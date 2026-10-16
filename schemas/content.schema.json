@@ -411,6 +411,9 @@
             "moduleId": {
               "type": "string",
               "minLength": 1
+            },
+            "newTab": {
+              "type": "boolean"
             }
           },
           "required": ["text", "moduleId"],
@@ -1086,6 +1089,12 @@
           "type": "string"
         },
         "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scratchBlock"
+          }
+        },
+        "elseChildren": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/scratchBlock"

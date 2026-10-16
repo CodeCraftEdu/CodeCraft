@@ -1,0 +1,35 @@
+{
+  "domainId": "jeux-video",
+  "title": "Scratch avancé : Mission balises",
+  "theme": "fondations",
+  "objective": "Construis un même jeu étape par étape : piloter, activer les balises, gérer les vies, éviter des obstacles mobiles, changer de secteur et annoncer la fin. Teste ensuite une règle personnelle et conserve ton jeu.",
+  "moduleIds": [
+    "scratch-mission-commandes",
+    "scratch-mission-balises",
+    "scratch-mission-vies",
+    "scratch-mission-clones",
+    "scratch-mission-messages",
+    "scratch-mission-etats",
+    "scratch-mission-tests"
+  ],
+  "chapters": [
+    {
+      "id": "premier-jeu",
+      "title": "Piloter, compter et gérer les contacts",
+      "description": "Conserve ton projet entre les chapitres et teste une nouvelle règle à chaque étape.",
+      "moduleIds": ["scratch-mission-commandes", "scratch-mission-balises", "scratch-mission-vies"]
+    },
+    {
+      "id": "obstacles-secteurs",
+      "title": "Faire évoluer les obstacles et le secteur",
+      "description": "Transforme les dangers du même jeu, compare les réglages et coordonne le changement de secteur.",
+      "moduleIds": ["scratch-mission-clones", "scratch-mission-messages"]
+    },
+    {
+      "id": "fin-tests",
+      "title": "Terminer et tester le jeu",
+      "description": "Verrouille les actions, vérifie les règles et conserve une version personnelle éprouvée.",
+      "moduleIds": ["scratch-mission-etats", "scratch-mission-tests"]
+    }
+  ]
+}

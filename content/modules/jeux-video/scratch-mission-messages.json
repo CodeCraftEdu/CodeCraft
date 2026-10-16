@@ -1,0 +1,869 @@
+{
+  "domainId": "jeux-video",
+  "type": "lesson",
+  "theme": "fondations",
+  "tool": {
+    "label": "Ouvrir Scratch dans un autre onglet",
+    "url": "https://scratch.mit.edu/projects/editor/"
+  },
+  "title": "Changer de secteur avec des messages",
+  "objective": "Déclencher une seule fois le changement de décor et de vitesse à trois points, sans remettre le score à zéro.",
+  "skillIds": ["scratch.messages", "scratch.events", "scratch.variables", "scratch.conditions"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "scratch.clones",
+      "expectation": "Retrouver mission-04.sb3 avec la fabrique et le trajet des copies."
+    },
+    {
+      "skillId": "scratch.variables",
+      "expectation": "Distinguer une variable commune, sa valeur de départ et une modification."
+    },
+    {
+      "skillId": "scratch.conditions",
+      "expectation": "Assembler deux comparaisons avec et et repérer la boucle de décision sur la scène."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lesson",
+      "id": "depart",
+      "title": "Reprendre ton jeu avec ses clones",
+      "paragraphs": [
+        "Ouvre ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe. Lance le drapeau : score 0, vies 3, vitesseObstacle 4 et décor secteur1. Vérifie les commandes et les obstacles mobiles, puis arrête avec le bouton rouge et sauvegarde avant les ajouts.",
+        "À trois points, tu vas faire passer le jeu dans un deuxième secteur. Le décor changera et les obstacles accéléreront. Le score sera conservé : il faudra toujours six points pour gagner.",
+        "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Clones."
+      ],
+      "downloads": [
+        {
+          "label": "Reprendre depuis la fin de Clones (.sb3)",
+          "path": "assets/scratch/mission/mission-clones.sb3",
+          "filename": "mission-clones.sb3"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "transition",
+      "title": "Repérer les piles à compléter",
+      "paragraphs": [
+        "Pilote et Balise gardent leurs piles. Dans Obstacle, conserve la fabrique au drapeau et le trajet des clones : tu ajouteras une troisième pile qui reçoit un message.",
+        "Sur la scène, conserve l’initialisation et les deux décisions de fin. Tu ajouteras une variable, un test de passage de secteur dans la boucle et une réception séparée pour le décor.",
+        "Un message est un signal du programme. Son nom ne s’affiche pas sur la scène : les actions sous quand je reçois produisent le résultat visible."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "niveau",
+      "title": "Mémoriser le secteur en cours",
+      "shortSteps": [
+        "Dans Variables, crée niveau pour tous les sprites. Coche son affichage pour suivre 1 puis 2 pendant les essais.",
+        "Sur la scène, ajoute mettre niveau à 1 après mettre vitesseObstacle à 4, avant le choix de secteur1 et la boucle.",
+        "Lance le drapeau : niveau vaut 1. La variable indiquera si le passage a déjà eu lieu ; elle ne change pas le décor toute seule. Arrête le jeu pour construire les réceptions."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Mémoriser le secteur en cours",
+        "blocks": [
+          {
+            "category": "variables",
+            "label": "Variables",
+            "parts": [
+              "mettre ",
+              {
+                "choice": "niveau"
+              },
+              " à ",
+              {
+                "value": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "reception-decor",
+      "title": "Faire réagir le décor au message",
+      "shortSteps": [
+        "Toujours sur la scène, prends quand je reçois depuis Événements pour commencer une pile séparée du drapeau.",
+        "Dans son menu, choisis Nouveau message et nomme-le secteur2. Ajoute basculer sur l’arrière-plan depuis Apparence et choisis le décor secteur2 déjà présent.",
+        "Le message secteur2 et le décor secteur2 sont deux éléments différents : le premier déclenche la pile, le second est le dessin choisi dans le bloc violet."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Faire réagir le décor au message",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand je reçois ",
+              {
+                "choice": "secteur2"
+              }
+            ]
+          },
+          {
+            "category": "looks",
+            "label": "Apparence",
+            "parts": [
+              "basculer sur l’arrière-plan ",
+              {
+                "choice": "secteur2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "envoi-manuel",
+      "title": "Essayer le signal par un clic",
+      "shortSteps": [
+        "Sur la scène, prends envoyer à tous depuis Événements et choisis le message secteur2. Pose ce bloc seul dans la zone de code, sans le raccorder à une pile.",
+        "Clique sur ce bloc isolé : le décor devient violet. Le programme lance la pile quand je reçois secteur2, même sans clic sur le drapeau.",
+        "Tu utilises envoyer à tous sans attendre : l’expéditeur peut poursuivre pendant que les réceptions s’exécutent. Tu déplaceras ce même bloc dans la boucle après les essais.",
+        "Relance le drapeau : le décor redevient secteur1 et niveau reste à 1. Pour l’instant, ton clic a seulement essayé le décor. Arrête le jeu."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Essayer le signal par un clic",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "envoyer à tous ",
+              {
+                "choice": "secteur2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "reception-vitesse",
+      "title": "Faire réagir les obstacles au même signal",
+      "shortSteps": [
+        "Sélectionne Obstacle. Ajoute une troisième pile : quand je reçois secteur2 depuis Événements, puis mettre vitesseObstacle à 7 depuis Variables. Choisis le message existant.",
+        "Coche temporairement vitesseObstacle pour voir sa valeur. Lance le drapeau, descends Pilote jusqu’à y = -140 et laisse apparaître des copies.",
+        "Reviens sur la scène et clique sur ton envoi isolé. Le décor change et vitesseObstacle affiche 7. Les copies déjà présentes accélèrent ; les suivantes utilisent aussi 7.",
+        "Le modèle et les clones reçoivent le message. Ils mettent tous la même variable commune à 7 : on fixe une valeur, on ne lui ajoute pas 7 à chaque réception.",
+        "Relance : la scène remet vitesseObstacle à 4 et choisit secteur1. Arrête le jeu avant de raccorder l’envoi automatique."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Faire réagir les obstacles au même signal",
+        "blocks": [
+          {
+            "category": "events",
+            "label": "Événements",
+            "parts": [
+              "quand je reçois ",
+              {
+                "choice": "secteur2"
+              }
+            ]
+          },
+          {
+            "category": "variables",
+            "label": "Variables",
+            "parts": [
+              "mettre ",
+              {
+                "choice": "vitesseObstacle"
+              },
+              " à ",
+              {
+                "value": "7"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "declenchement",
+      "title": "Envoyer une seule fois à trois points",
+      "shortSteps": [
+        "Sur la scène, ajoute un nouveau si dans répéter indéfiniment, après le grand si `vies < 1` … sinon et avant attendre 0.03 seconde. Les deux décisions de fin restent en place.",
+        "Depuis Opérateurs, prends et. Dans son premier emplacement, construis `niveau = 1` ; dans le second, `score > 2`. Glisse les blocs orange niveau et score dans les comparaisons, puis saisis 1 et 2.",
+        "Dans ce nouveau si, place mettre niveau à 2. Déplace juste en dessous le bloc envoyer à tous secteur2 que tu avais posé seul. Il est maintenant dans le si, après le changement de niveau.",
+        "Le score atteint 3 et niveau vaut encore 1 : les deux tests sont vrais. Après mettre niveau à 2, le premier test devient faux aux tours suivants. L’envoi ne se répète donc pas à trois ou quatre points.",
+        "La scène possède maintenant deux piles : le drapeau et la réception du décor. Obstacle en possède trois. Il ne reste aucun bloc d’envoi isolé."
+      ],
+      "paragraphs": [],
+      "visualScript": {
+        "caption": "Envoyer une seule fois à trois points",
+        "blocks": [
+          {
+            "category": "control",
+            "label": "Contrôle",
+            "parts": [
+              "si ",
+              {
+                "condition": [
+                  {
+                    "condition": [
+                      {
+                        "reporter": "niveau",
+                        "category": "variables"
+                      },
+                      " = ",
+                      {
+                        "value": "1"
+                      }
+                    ],
+                    "operator": true
+                  },
+                  " et ",
+                  {
+                    "condition": [
+                      {
+                        "reporter": "score",
+                        "category": "variables"
+                      },
+                      " > ",
+                      {
+                        "value": "2"
+                      }
+                    ],
+                    "operator": true
+                  }
+                ],
+                "operator": true
+              },
+              " alors"
+            ],
+            "children": [
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "niveau"
+                  },
+                  " à ",
+                  {
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "envoyer à tous ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "essais",
+      "title": "Vérifier le passage et les deux fins",
+      "items": [
+        {
+          "id": "depart",
+          "text": "Lance : score 0, niveau 1, vitesseObstacle 4 et décor secteur1. Active deux balises : le premier secteur est toujours en place."
+        },
+        {
+          "id": "passage",
+          "text": "Active une troisième balise : score reste à 3, niveau devient 2, le décor devient violet et vitesseObstacle vaut 7. Les copies continuent leur trajet avec la nouvelle vitesse."
+        },
+        {
+          "id": "suite",
+          "text": "Active la suivante : score 4, niveau 2, vitesseObstacle 7. Le score ne repart pas à zéro au changement de secteur."
+        },
+        {
+          "id": "fins",
+          "text": "Atteins six points pour gagner, puis relance et perds les trois vies pour vérifier la défaite. Dans les deux cas, le jeu s’arrête et les clones disparaissent."
+        },
+        {
+          "id": "relance",
+          "text": "Relance depuis le secteur 2 puis après une fin : score 0, vies 3, niveau 1, vitesseObstacle 4, décor secteur1, Pilote au départ et Balise à gauche."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "envoi-unique",
+      "title": "Vérifier que le message ne repart pas en boucle",
+      "items": [
+        {
+          "id": "sauver",
+          "text": "Sauvegarde la version terminée sous mission-05.sb3. Repère le téléchargement récent, même si son nom reçoit un suffixe, puis recharge ce fichier pour vérifier qu’il contient tes nouvelles piles."
+        },
+        {
+          "id": "preparer",
+          "text": "Dans le projet ouvert, remplace seulement le score de départ 0 par 2 sur la scène. Dans Obstacle, pose un bloc mettre vitesseObstacle à 4 seul, sans drapeau. Ces deux changements servent au test."
+        },
+        {
+          "id": "trois",
+          "text": "Lance : score 2, niveau 1 et vitesse 4. Active réellement une balise : score 3, niveau 2 et vitesse 7. Descends Pilote à y = -140 pour observer sans contact."
+        },
+        {
+          "id": "signal",
+          "text": "Clique sur le bloc isolé mettre vitesseObstacle à 4 et observe quelques secondes. La valeur reste à 4 : le message ne repart pas. Active une autre balise : à score 4, la vitesse reste encore à 4. Si elle revient aussitôt à 7, vérifie le test `niveau = 1` et le changement de niveau avant l’envoi."
+        },
+        {
+          "id": "retour",
+          "text": "Sauvegarde cet essai sous mission-05-test.sb3, puis recharge ton fichier principal mission-05.sb3 repéré plus haut. Vérifie le score de départ à 0, l’absence du bloc de test isolé et la réception qui met la vitesse à 7. Décoche l’affichage de vitesseObstacle ; garde score, vies et niveau visibles."
+        }
+      ],
+      "intro": "Le décor et la vitesse resteraient identiques si le même message était envoyé plusieurs fois. Cet essai permet de détecter les répétitions, puis de reprendre ta sauvegarde principale."
+    },
+    {
+      "type": "tasks",
+      "id": "variation",
+      "title": "Prévoir un passage plus tardif",
+      "items": [
+        {
+          "id": "prevoir",
+          "text": "Dans ta version principale rechargée, remplace seulement `score > 2` par `score > 3` dans le test de secteur. Note à quelle activation tu prévois le passage et ce que tu t’attends à voir à trois points."
+        },
+        {
+          "id": "essayer",
+          "text": "Lance depuis zéro et joue jusqu’au passage. Compare avec ta prévision : score, niveau, décor et vitesse. Explique pourquoi le seuil écrit dans le bloc diffère du score qui déclenche le changement."
+        },
+        {
+          "id": "restaurer",
+          "text": "Sauvegarde sous mission-05-essai.sb3, puis recharge ta version principale mission-05.sb3. Vérifie `score > 2` : tu poursuivras avec le deuxième secteur à trois points et la victoire à six."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "verification-variation",
+      "title": "Vérifier après ton essai",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-variation",
+          "title": "Le premier score supérieur au seuil",
+          "paragraphs": [
+            "Avec `score > 3`, le passage a lieu à la quatrième activation. À trois points, niveau vaut encore 1, le décor reste secteur1 et la vitesse reste à 4.",
+            "À quatre points, niveau passe à 2, le message déclenche secteur2 et la vitesse 7. Le score reste à 4. Le test `niveau = 1` empêche les envois suivants.",
+            "La sauvegarde principale retrouve `score > 2`, donc un passage à trois points. La décision de victoire reste `score > 5`."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "depannage",
+      "title": "Retrouver un message ou un réglage mal placé",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "sans-effet",
+          "title": "Le clic sur l’envoi ne produit pas les deux effets",
+          "paragraphs": [
+            "Vérifie le même message secteur2 dans les trois menus : l’envoi sur la scène, sa réception sur la scène et la réception dans Obstacle. La pile de décor appartient à la scène, celle de vitesse à Obstacle.",
+            "Sur la scène, prends dans la palette un nouveau bloc envoyer à tous, choisis le message existant secteur2 et pose ce bloc seul dans la zone de code. Garde l’envoi principal dans son si. Lance au drapeau, puis clique sur ce bloc isolé : le décor devient violet et vitesseObstacle passe à 7.",
+            "Si le décor change mais pas la vitesse, vérifie mettre vitesseObstacle à 7 sous la réception d’Obstacle, et la création de cette variable pour tous les sprites. Retire ensuite le bloc d’envoi temporaire et reprends le test depuis le drapeau."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "repetition",
+          "title": "La vitesse revient à 7 pendant le test à 4",
+          "paragraphs": [
+            "Dans le nouveau si, vérifie les deux conditions réunies par et : `niveau = 1` et `score > 2`. Le bloc mettre niveau à 2 doit être dans ce si, juste avant l’envoi.",
+            "Si niveau est remis à 1 dans la boucle, la condition redevient vraie : son initialisation doit rester avant répéter indéfiniment. Refais l’essai dans la copie de test, puis recharge ta version principale."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "reinitialisation",
+          "title": "Le nouveau départ garde le secteur rapide",
+          "paragraphs": [
+            "Dans la pile de drapeau de la scène, retrouve mettre niveau à 1, mettre vitesseObstacle à 4 et basculer sur l’arrière-plan secteur1 avant la boucle.",
+            "La réception de secteur2 ne remet ni score à 0 ni niveau à 1. Le drapeau prépare le départ ; le message applique les effets du passage. Relance après être passé au secteur 2."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "modeles",
+      "title": "Comparer les trois piles modifiées ou ajoutées",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "modele-scene",
+          "title": "Scène : départ, fins et passage de secteur",
+          "paragraphs": [
+            "La pile de drapeau conserve la priorité de la défaite. Le nouveau test vient après les décisions de fin et avant la pause. Il change niveau avant d’envoyer le signal."
+          ],
+          "visualScript": {
+            "caption": "Scène : départ, fins et passage de secteur",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "score"
+                  },
+                  " à ",
+                  {
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "vies"
+                  },
+                  " à ",
+                  {
+                    "value": "3"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "vitesseObstacle"
+                  },
+                  " à ",
+                  {
+                    "value": "4"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "niveau"
+                  },
+                  " à ",
+                  {
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "basculer sur l’arrière-plan ",
+                  {
+                    "choice": "secteur1"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": ["répéter indéfiniment"],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "reporter": "vies",
+                            "category": "variables"
+                          },
+                          " < ",
+                          {
+                            "value": "1"
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "stop ",
+                          {
+                            "choice": "tout"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseChildren": [
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "si ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "5"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "stop ",
+                              {
+                                "choice": "tout"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          {
+                            "condition": [
+                              {
+                                "reporter": "niveau",
+                                "category": "variables"
+                              },
+                              " = ",
+                              {
+                                "value": "1"
+                              }
+                            ],
+                            "operator": true
+                          },
+                          " et ",
+                          {
+                            "condition": [
+                              {
+                                "reporter": "score",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "2"
+                              }
+                            ],
+                            "operator": true
+                          }
+                        ],
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "mettre ",
+                          {
+                            "choice": "niveau"
+                          },
+                          " à ",
+                          {
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "events",
+                        "label": "Événements",
+                        "parts": [
+                          "envoyer à tous ",
+                          {
+                            "choice": "secteur2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "attendre ",
+                      {
+                        "value": "0.03"
+                      },
+                      " seconde"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "modele-decor",
+          "title": "Scène : réception du décor",
+          "paragraphs": [
+            "Cette deuxième pile de la scène reçoit secteur2. Le décor initial reste choisi dans la pile de drapeau."
+          ],
+          "visualScript": {
+            "caption": "Scène : réception du décor",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              },
+              {
+                "category": "looks",
+                "label": "Apparence",
+                "parts": [
+                  "basculer sur l’arrière-plan ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "modele-vitesse",
+          "title": "Obstacle : réception de la vitesse",
+          "paragraphs": [
+            "Cette troisième pile d’Obstacle reçoit secteur2. Les deux piles de fabrique et de trajet du chapitre Clones restent en place ; les déplacements lisent toujours vitesseObstacle."
+          ],
+          "visualScript": {
+            "caption": "Obstacle : réception de la vitesse",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand je reçois ",
+                  {
+                    "choice": "secteur2"
+                  }
+                ]
+              },
+              {
+                "category": "variables",
+                "label": "Variables",
+                "parts": [
+                  "mettre ",
+                  {
+                    "choice": "vitesseObstacle"
+                  },
+                  " à ",
+                  {
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "reference",
+          "title": "Référence terminée",
+          "paragraphs": [
+            "Sauvegarde ton travail avant d’ouvrir la référence. Compare les deux piles de la scène et les trois d’Obstacle, puis recharge ton propre fichier principal pour poursuivre."
+          ],
+          "downloads": [
+            {
+              "label": "Télécharger la référence Messages (.sb3)",
+              "path": "assets/scratch/mission/mission-messages.sb3",
+              "filename": "mission-messages.sb3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "aide-messages",
+      "title": "Revoir les messages dans un autre onglet",
+      "text": "Revoir les messages dans un autre onglet. L’aide organise un dialogue ; ici, un même signal change le décor et la vitesse. Compare les émissions et les réceptions, puis ferme cet onglet pour reprendre Mission balises.",
+      "moduleLink": {
+        "moduleId": "scratch-coordination",
+        "text": "Revoir les messages dans un autre onglet",
+        "newTab": true
+      },
+      "presentation": "compact"
+    },
+    {
+      "type": "lesson",
+      "id": "reprise",
+      "title": "Garder le jeu avec ses deux secteurs",
+      "paragraphs": [
+        "Garde ta sauvegarde principale mission-05.sb3, ou son nom avec suffixe. Le départ remet score à 0, vies à 3, vitesseObstacle à 4 et niveau à 1, puis choisit secteur1.",
+        "À trois points, le test `niveau = 1` et `score > 2` met niveau à 2 avant d’envoyer secteur2. La scène change le décor et Obstacle met vitesseObstacle à 7. Le score est conservé et la victoire reste à six points.",
+        "La scène possède deux piles et Obstacle trois ; Pilote et Balise conservent les leurs. Il ne reste aucun bloc de test isolé. Les clones gardent l’intervalle de 1.2 seconde, leur hauteur aléatoire et leurs suppressions.",
+        "Le prochain chapitre remplacera la fin immédiate par une annonce et bloquera les actions pendant cette annonce."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Identifier l’envoi, ses deux réceptions et leur propriétaire.",
+    "Changer niveau avant le message et expliquer pourquoi le passage ne se répète pas.",
+    "Vérifier les seuils, le score conservé et le retour au premier secteur au drapeau.",
+    "Prévoir un nouveau seuil, l’essayer puis reprendre la sauvegarde principale."
+  ],
+  "teacherGuide": {
+    "objective": "Coordonner le décor et la vitesse par un message, avec un passage unique mémorisé par niveau.",
+    "entryDiagnosis": [
+      "Faire rouvrir la version Clones et retrouver les deux piles d’Obstacle ainsi que l’initialisation de vitesseObstacle sur la scène.",
+      "Faire expliquer la différence entre mettre une variable à une valeur et lui ajouter une quantité."
+    ],
+    "preparation": [
+      "Partir du fichier personnel mission-04 ; la reprise Clones remplace seulement un fichier manquant, après sauvegarde.",
+      "Conserver deux décors nommés secteur1 et secteur2, déjà fournis. Les menus de message utilisent un signal nommé secteur2.",
+      "Afficher niveau ; afficher temporairement vitesseObstacle pour les essais. La copie de diagnostic et la variation sont rechargées depuis mission-05 avant de poursuivre."
+    ],
+    "why": "Un signal déclenche plusieurs effets sans mélanger leurs propriétaires. La variable niveau mémorise le passage pour que la surveillance continue ne renvoie pas le message à chaque tour.",
+    "discoverySpeech": [
+      "Quel bloc envoie le signal et quels blocs attendent de le recevoir ?",
+      "Que produit le nom du message sans action sous sa réception ?",
+      "Quel test devient faux juste après le passage ?"
+    ],
+    "example": {
+      "target": {
+        "moduleId": "scratch-mission-messages",
+        "blockId": "declenchement"
+      },
+      "comments": [
+        "La scène garde ses deux décisions de fin, puis teste le passage ; niveau change avant l’émission.",
+        "Les réceptions courtes sont indépendantes : décor sur la scène, vitesse dans Obstacle. Envoyer sans attendre ne définit pas un ordre entre ces réceptions.",
+        "Le modèle et les clones reçoivent secteur2 et mettent la même variable globale à 7. Un ajout de 7 multiplierait les effets selon le nombre de copies."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi niveau et le décor sont-ils deux choses différentes ?",
+        "answer": "niveau mémorise le secteur dans une variable ; le décor est un dessin. Une pile doit appliquer le changement visuel."
+      },
+      {
+        "question": "Pourquoi mettre niveau à 2 avant l’envoi ?",
+        "answer": "La condition `niveau = 1` devient fausse avant le signal. La boucle ne redéclenche pas la transition aux tours suivants."
+      },
+      {
+        "question": "Les copies déjà présentes accélèrent-elles ?",
+        "answer": "Oui : leur boucle lit la variable commune vitesseObstacle à chaque déplacement. Les nouvelles copies lisent également 7."
+      },
+      {
+        "question": "Le décor inchangé à quatre points prouve-t-il un seul envoi ?",
+        "answer": "Non : des réceptions répétées peuvent réappliquer les mêmes valeurs. Le diagnostic remet temporairement la vitesse à 4 pour détecter un retour injustifié à 7."
+      },
+      {
+        "question": "Quel est le rôle du drapeau après le secteur 2 ?",
+        "answer": "Remettre les quatre variables à leurs valeurs de départ, choisir secteur1, rétablir les positions et relancer les créations."
+      }
+    ],
+    "accompaniedActivity": {
+      "moduleId": "scratch-mission-messages",
+      "blockId": "envoi-manuel"
+    },
+    "independentActivity": {
+      "moduleId": "scratch-mission-messages",
+      "blockId": "variation"
+    },
+    "differentiation": [
+      "Faire réussir le changement de décor par clic avant d’ajouter la réception de vitesse et le seuil.",
+      "Faire montrer les deux conditions séparément, puis expliquer celle qui empêche la répétition. Garder le modèle complet replié après le premier essai.",
+      "Le test de l’envoi unique prépare le score à 2 dans une copie, puis exige une activation réelle. Revenir au fichier principal évite de conserver les réglages de test."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Une seule réception réagit ou aucune ne réagit.",
+        "helps": [
+          "Sur la scène, prendre un nouveau bloc envoyer à tous dans la palette, choisir le message existant secteur2 et le laisser isolé. Lancer au drapeau puis cliquer sur ce bloc temporaire pour tester les réceptions ; garder l’envoi principal raccordé dans son si.",
+          "Faire sélectionner la scène puis Obstacle et lire le message choisi sur chaque chapeau.",
+          "Raccorder le décor à la réception de la scène et mettre vitesseObstacle à 7 à celle d’Obstacle, avec le même message secteur2.",
+          "Constater le décor violet et la vitesse 7, puis retirer l’envoi temporaire. Relancer au drapeau et activer trois balises pour vérifier le déclenchement par le score."
+        ]
+      },
+      {
+        "symptom": "L’envoi repart en boucle ou la vitesse dépend du nombre de clones.",
+        "helps": [
+          "Observer la valeur pendant le diagnostic où un bloc isolé la remet à 4.",
+          "Faire lire les deux comparaisons et les blocs qui modifient niveau et vitesseObstacle.",
+          "Garder `niveau = 1` et `score > 2`, mettre niveau à 2 avant l’envoi et mettre la vitesse à 7 dans la réception, sans ajout.",
+          "Rejouer le test à trois puis quatre points avec plusieurs clones, puis recharger le fichier principal."
+        ]
+      },
+      {
+        "symptom": "Le drapeau conserve le décor violet, le niveau 2 ou la vitesse 7.",
+        "helps": [
+          "Relancer depuis une partie qui a atteint le deuxième secteur et lire les variables.",
+          "Retrouver la pile de drapeau de la scène et les blocs avant sa boucle.",
+          "Initialiser niveau à 1, vitesseObstacle à 4 et choisir secteur1 avant la surveillance ; garder score 0 et vies 3.",
+          "Vérifier un nouveau départ après passage, après victoire et après défaite."
+        ]
+      }
+    ],
+    "quickConductor": [
+      "Reprendre Clones et initialiser niveau.",
+      "Essayer l’envoi isolé avec les deux réceptions.",
+      "Déplacer l’émission dans le passage unique et tester trois puis quatre points.",
+      "Sauvegarder, détecter les répétitions dans une copie, puis prévoir un autre seuil et restaurer mission-05."
+    ],
+    "notes": "Les piles temporaires et le score de départ à 2 appartiennent à la copie de diagnostic. La référence publiée ne les contient pas. La fin reste immédiate ; l’annonce et les protections d’état appartiennent au prochain chapitre. Les contrôles techniques ne démontrent pas l’autonomie avec un élève.",
+    "references": [
+      {
+        "title": "Scratch : éditeur",
+        "url": "https://scratch.mit.edu/projects/editor/"
+      }
+    ]
+  }
+}

@@ -172,7 +172,7 @@ test('cartes : préparation distincte de maîtrise, une propriété testée à l
 test('revue HTML : trois contenus partagés, critères observables et guides résolus', () => {
   assert.equal(
     Object.values(data.modules).filter((module) => module.domainId !== 'robotique').length,
-    65,
+    72,
   );
   for (const id of ids) {
     const module = data.modules[id];
