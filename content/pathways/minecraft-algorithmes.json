@@ -1,0 +1,42 @@
+{
+  "domainId": "jeux-video",
+  "title": "Minecraft : résoudre et automatiser",
+  "theme": "fondations",
+  "objective": "Avec les activités de Code.org, prévois les trajets, compare les programmes, prépare les constructions et éprouve tes stratégies selon le terrain. Suis les huit missions pour débuter, ou choisis dans la première un départ adapté à ce que tu sais déjà faire, avec Scratch ou un autre outil.",
+  "moduleIds": [
+    "minecraft-trajets",
+    "minecraft-repetitions",
+    "minecraft-passage",
+    "minecraft-procedures",
+    "minecraft-motifs",
+    "minecraft-decisions",
+    "minecraft-strategies",
+    "minecraft-automatisation"
+  ],
+  "chapters": [
+    {
+      "id": "prevoir-comparer",
+      "title": "Prévoir et comparer",
+      "description": "Suivre la position et la direction, puis comparer un programme et ses répétitions.",
+      "moduleIds": ["minecraft-trajets", "minecraft-repetitions"]
+    },
+    {
+      "id": "construire-organiser",
+      "title": "Construire et organiser",
+      "description": "Prévoir les transformations du terrain, réparer un passage et composer des motifs avec des procédures.",
+      "moduleIds": ["minecraft-passage", "minecraft-procedures", "minecraft-motifs"]
+    },
+    {
+      "id": "observer-decider",
+      "title": "Observer et décider",
+      "description": "Lire le terrain, choisir le moment d’une décision et expliquer l’arrêt d’un trajet.",
+      "moduleIds": ["minecraft-decisions", "minecraft-strategies"]
+    },
+    {
+      "id": "concevoir-tester",
+      "title": "Concevoir et tester",
+      "description": "Préparer une automatisation, comparer ses organisations et vérifier un changement personnel.",
+      "moduleIds": ["minecraft-automatisation"]
+    }
+  ]
+}

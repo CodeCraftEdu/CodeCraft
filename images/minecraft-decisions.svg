@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 420" role="img" aria-labelledby="title desc">
+  <title id="title">Chemin et décisions</title>
+  <desc id="desc">Grille A à E et 1 à 5. Le chemin passe par B5, B4, B3, C3, D3, D4 et D5. Départ B5 nord, but D5. Les autres cases sont bloquées.</desc>
+  <rect width="460" height="420" rx="8" fill="#fffdf5"/>
+  <g font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#29362e">
+    <text x="90" y="42">A</text><text x="155" y="42">B</text><text x="220" y="42">C</text><text x="285" y="42">D</text><text x="350" y="42">E</text>
+    <text x="30" y="100">1</text><text x="30" y="165">2</text><text x="30" y="230">3</text><text x="30" y="295">4</text><text x="30" y="360">5</text>
+  </g>
+  <rect x="57.5" y="60" width="325" height="325" fill="#d8dbd8"/>
+  <path d="M122.5 190H317.5V385H252.5V255H187.5V385H122.5Z" fill="#c5e5fa"/>
+  <rect x="252.5" y="320" width="65" height="65" fill="#f7e2a6"/>
+  <g fill="none" stroke="#536b61" stroke-width="1.5">
+    <rect x="57.5" y="60" width="325" height="325"/>
+    <path d="M122.5 60V385M187.5 60V385M252.5 60V385M317.5 60V385M57.5 125H382.5M57.5 190H382.5M57.5 255H382.5M57.5 320H382.5"/>
+  </g>
+  <path d="M155 330L174 368L155 359L136 368Z" fill="#245c89" stroke="#123f61" stroke-width="2"/>
+  <path d="M416 120V75M406 87L416 75L426 87" fill="none" stroke="#29362e" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#29362e" text-anchor="middle">
+    <text x="416" y="145">Nord</text><text x="285" y="360">But</text>
+    <text x="220" y="411">Bleu : chemin. Gris : obstacle.</text>
+  </g>
+</svg>

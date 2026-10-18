@@ -7,6 +7,18 @@ const scope = studentScope(data);
 withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
   const open = (id, query = '') =>
     navigate('index.html', '#module/' + id + query, data.modules[id].title);
+  if (scope.includes('minecraft-trajets')) {
+    await open('minecraft-trajets', '?parcours=minecraft-algorithmes');
+    await evaluate('document.querySelector("[data-activity-id=entree-scratch] a").click()');
+    await wait(
+      'location.hash.includes("activite=autonomie") && [...document.images].every(image => image.complete) && Math.abs(document.querySelector("[data-activity-id=autonomie]").getBoundingClientRect().top - 16) < 3',
+    );
+    await evaluate('document.querySelector("[data-activity-id=suite-diagnostic] a").click()');
+    await wait(
+      'document.querySelector("h1").textContent === "Comparer deux programmes pour un trajet" && [...document.images].every(image => image.complete) && Math.abs(document.querySelector("[data-activity-id=programme-a]").getBoundingClientRect().top - 16) < 3',
+    );
+    await screenshot('minecraft-entree-comparaison');
+  }
   // The sidebar must stay pinned when the document reaches its lower scroll limit.
   const [sidebarPathwayId, sidebarPathway] =
     scope.pathways.find(([id]) => id === 'web-debutants') || scope.pathways[0] || [];
@@ -144,10 +156,34 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
       ['css-flexbox', 'flexbox'],
       ['robotique-lumiere', 'robotics'],
       ['gdevelop-projet', 'gdevelop'],
+      ['minecraft-trajets', 'minecraft-trajets'],
+      ['minecraft-repetitions', 'minecraft-repetitions'],
+      ['minecraft-passage', 'minecraft-passage'],
+      ['minecraft-procedures', 'minecraft-procedures'],
+      ['minecraft-motifs', 'minecraft-motifs'],
+      ['minecraft-decisions', 'minecraft-decisions'],
+      ['minecraft-strategies', 'minecraft-strategies'],
+      ['minecraft-automatisation', 'minecraft-automatisation'],
     ]) {
       if (scope.includes(id)) {
         await open(id);
         await screenshot(name + '-' + width);
+        if (id.startsWith('minecraft-')) {
+          const activity = {
+            'minecraft-trajets': 'reperes',
+            'minecraft-repetitions': 'programme-b',
+            'minecraft-passage': 'defi-papier',
+            'minecraft-procedures': 'defi-papier',
+            'minecraft-motifs': 'defi-papier',
+            'minecraft-decisions': 'defi-papier',
+            'minecraft-strategies': 'defi-papier',
+            'minecraft-automatisation': 'plan',
+          }[id];
+          await evaluate(
+            `document.querySelector('[data-activity-id="${activity}"]').scrollIntoView({block:'start',behavior:'instant'})`,
+          );
+          await screenshot(name + '-activity-' + width);
+        }
       }
     }
   }

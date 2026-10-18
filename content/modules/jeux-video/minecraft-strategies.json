@@ -1,0 +1,321 @@
+{
+  "domainId": "jeux-video",
+  "title": "Éprouver une stratégie avec des repères",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Choisir des actions selon le sol rencontré, prévoir leur effet et trouver une situation où la stratégie doit être adaptée.",
+  "tool": {
+    "label": "Ouvrir Voyage Aquatic, niveau 9 sur Code.org",
+    "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/9"
+  },
+  "skillIds": [
+    "minecraft.trace",
+    "minecraft.decision",
+    "minecraft.strategy",
+    "minecraft.debugging"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "minecraft.trace",
+      "expectation": "Suivre la position et l’orientation après un déplacement ou un virage."
+    },
+    {
+      "skillId": "minecraft.decision",
+      "expectation": "Distinguer une condition vraie ou fausse de l’arrêt de la boucle jusqu’au but."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Suivre des indications sur le terrain",
+      "text": "Ouvre Aquatic 9. Tu diriges toujours le personnage avec les blocs. Repère le départ, le coffre à atteindre et les cases de corail bleu et rouge. Dessine les passages utiles dans ton carnet : tu vas choisir une règle pour les parcourir."
+    },
+    {
+      "type": "lesson",
+      "id": "sol-ou-chemin",
+      "title": "Regarder sous le personnage",
+      "paragraphs": [
+        "Si chemin à droite regarde une case voisine. Si sur corail bleu pose une autre question : le personnage se trouve-t-il actuellement sur une case de ce type ? Le test ne regarde ni devant lui ni à sa droite.",
+        "Un test vrai exécute son contenu ; un test faux le saute. Tourner sur place conserve le sol sous le personnage. Avancer peut changer ce sol et donc le résultat du prochain test.",
+        "La couleur ne donne pas elle-même un ordre. C’est ton programme qui associe une action au corail bleu ou au corail rouge. Les deux couleurs peuvent donc déclencher des virages différents."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "choisir-regles",
+      "title": "Choisir deux règles sur la carte",
+      "paragraphs": [
+        "Sur ton dessin d’Aquatic 9, suis un passage vers le coffre. Marque la direction d’arrivée sur une case bleue, puis celle nécessaire pour continuer. Fais de même sur une case rouge. Déduis le virage utile pour chaque couleur et vérifie cette proposition sur les autres cases du trajet.",
+        "Dans une boucle jusqu’au but, place avancer puis deux si au même niveau : l’un pour le corail bleu, l’autre pour le corail rouge. Place dans chacun le virage prévu pour cette couleur. Lis les menus de rotation avant de lancer.",
+        "Les deux si sont testés l’un après l’autre. Le second est placé après le premier, en dehors de son contenu. Une case bleue n’est pas rouge : le test rouge reste faux après un simple virage sur une case bleue."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Prévoir puis éprouver les règles",
+      "items": [
+        {
+          "id": "mc07-couleurs-prevoir",
+          "text": "Avant de lancer, montre une arrivée sur le bleu, une sur le rouge et une sur un autre sol. Pour chacune, annonce les deux réponses des tests et la direction obtenue.",
+          "hint": "Place d’abord le pion après avancer. Lis bleu puis rouge depuis cette même case ; un virage seul ne change pas sa couleur."
+        },
+        {
+          "id": "mc07-couleurs-tester",
+          "text": "Lance depuis le départ et compare au dessin. S’il y a un écart, relève la première case concernée et le test exécuté. Corrige ce choix, utilise Réinitialiser (Reset), puis vérifie à nouveau.",
+          "hint": "Si le virage rouge n’arrive jamais, vérifie que son si est après le si bleu et non à l’intérieur."
+        },
+        {
+          "id": "mc07-couleurs-conclure",
+          "text": "Quand le coffre est atteint, explique les deux règles retenues et ce qui arrête la boucle. Pourquoi une réponse fausse au test du bleu ne termine-t-elle pas le programme ?"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "autre-repere",
+      "title": "Passer aux lanternes marines",
+      "paragraphs": [
+        "Ouvre Aquatic 10. Repère le calmar à rejoindre, les passages et les lanternes marines, les cases claires du monument. Le test proposé porte maintenant sur ce type de sol.",
+        "Sur le dessin, relève la direction d’arrivée à une lanterne et la direction nécessaire pour continuer. Vérifie sur les autres lanternes du trajet si un même virage convient. La couleur du niveau précédent ne suffit pas à choisir ce nouveau réglage.",
+        "Construis une boucle jusqu’au but avec avancer puis un si sur lanterne marine contenant le virage que tu as prévu. Si une ancienne version personnelle est déjà chargée, conserve une capture avant de la modifier."
+      ],
+      "externalLink": {
+        "label": "Ouvrir Aquatic 10 dans un autre onglet",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/10"
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "transfert",
+      "title": "Justifier la nouvelle stratégie",
+      "items": [
+        {
+          "id": "mc07-lanterne-prevoir",
+          "text": "Choisis une lanterne et une autre case du trajet. Annonce le résultat du test et l’action suivante dans les deux cas, puis vérifie par une exécution depuis le départ."
+        },
+        {
+          "id": "mc07-lanterne-arret",
+          "text": "Explique ce qui reste commun avec Aquatic 9 et ce qui a changé : le sol testé, les virages et le but. Quelle observation montre que le programme peut s’arrêter ?",
+          "hint": "Rencontrer une lanterne déclenche une action. Atteindre le calmar répond à la question de la boucle."
+        },
+        {
+          "id": "mc07-lanterne-limite",
+          "text": "Sur une copie de ton dessin, imagine une lanterne ajoutée au milieu d’une ligne droite. À quel endroit ton programme ferait-il une action inutile ? Prévois le déplacement suivant sans modifier la carte de Code.org."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "defi-papier",
+      "title": "Une stratégie sur une grille",
+      "paragraphs": [
+        "Les cases praticables sont B5, B4, B3, C3, D3, D2 et D1. Toutes les autres sont bloquées. Place le pion en B5 vers le nord ; le but est D1. Le repère bleu, marqué B, est en B3. Le repère rouge, marqué R, est en D3.",
+        "Avancer déplace d’une case devant le pion. Chaque virage fait un quart de tour sur place. Un test de couleur regarde seulement la case occupée. Les deux si du programme sont successifs, au même niveau dans la boucle.",
+        "Avant chaque tour, la boucle vérifie si le pion est au but. Si un avancer viserait une case bloquée, arrête la trace et note cette case. Utilise un pion orienté pour éprouver ce programme sur le dessin."
+      ],
+      "illustration": {
+        "src": "images/minecraft-strategies.svg",
+        "alt": "Grille A à E, lignes 1 à 5. Chemin B5, B4, B3, C3, D3, D2, D1. Départ B5 nord, but D1. Repère bleu B en B3, rouge R en D3. Autres cases bloquées.",
+        "caption": "B et R identifient les repères bleu et rouge. Le pion part en B5 vers le nord."
+      },
+      "filename": "Stratégie à éprouver",
+      "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si sur bleu\n      tourner à droite\n    si sur rouge\n      tourner à gauche"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Trouver la limite et la correction",
+      "intro": "Garde le programme et le départ identiques pour chaque comparaison. Repars de B5 nord à chaque essai.",
+      "items": [
+        {
+          "id": "mc07-grille-reference",
+          "text": "Trace le programme jusqu’au but sur la grille de départ. Note les cases occupées, les deux tests après chaque avancer et la direction finale. Où les virages sont-ils exécutés ?",
+          "hint": "Une case sans repère donne faux aux deux tests. En D3 rouge, seul le second si exécute un virage."
+        },
+        {
+          "id": "mc07-grille-deplacer",
+          "text": "Sur une copie, déplace uniquement le repère bleu de B3 à B4. B3 reste praticable sans repère ; toutes les autres cases restent identiques. Trace le même programme : quel est le premier écart et quel déplacement bloque ensuite ?"
+        },
+        {
+          "id": "mc07-grille-retirer",
+          "text": "Reprends la grille de départ et retire seulement le repère rouge de D3. D3 reste praticable. Quel virage manque et vers quelle case le pion tente-t-il ensuite d’avancer ?"
+        },
+        {
+          "id": "mc07-grille-reparer",
+          "text": "Pour chaque copie, répare uniquement les repères afin que le programme initial rejoigne D1. Vérifie depuis B5 nord et explique à quels endroits cette stratégie a besoin de ses indications.",
+          "hint": "Une indication trop tôt provoque un virage inutile ; une indication absente laisse passer le virage nécessaire."
+        },
+        {
+          "id": "mc07-grille-conclure",
+          "text": "Complète : « Cette stratégie rejoint le but sur cette grille parce que… Elle échoue sur ma variante quand… » Appuie chaque phrase sur une case et une action observées."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "comparer-papier",
+      "title": "Comparer après tes essais",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-papier",
+          "title": "Les repères doivent correspondre aux virages",
+          "paragraphs": [
+            "Sur la grille de départ, le pion passe par B4, B3, C3, D3, D2 et D1. Les paires de réponses bleu/rouge sont faux/faux, vrai/faux, faux/faux, faux/vrai, faux/faux et faux/faux. Il tourne à droite en B3, à gauche en D3 et termine D1 vers le nord après six déplacements.",
+            "Avec le bleu déplacé en B4, le premier avancer arrive en B4 et le si bleu y fait tourner vers l’est. Le déplacement suivant vise C4, bloquée. Replacer le bleu en B3 rétablit le virage au bon endroit.",
+            "Sans rouge en D3, le pion y garde la direction est. Son déplacement suivant vise E3, bloquée. Replacer le rouge en D3 rétablit le virage vers le nord.",
+            "Ces variantes gardent le même chemin et le même but. C’est la disposition des indications qui change. La réussite sur la grille de départ ne suffit donc pas à garantir la réussite de ce programme sur un autre terrain."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "construction",
+      "title": "Explorer une construction dans Aquatic 11 (facultatif)",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "niveau-onze",
+          "title": "Observer ce que la construction change",
+          "paragraphs": [
+            "Ouvre Aquatic 11. L’objectif est de construire un mur de prismarine autour du béton noir pour activer le conduit. Repère la zone à entourer et le personnage. La palette propose placer de la prismarine, des déplacements, un test de sol et une boucle jusqu’à l’achèvement du conduit.",
+            "Commence par un essai court : place une commande placer de la prismarine et une commande avancer après le départ. Prévois la case transformée, lance, puis compare au résultat. Garde cette observation dans ton carnet avant de réinitialiser.",
+            "Ouvre le menu du test de sol : il propose notamment sable, prismarine sombre et lanterne marine. Choisis un repère observable et prévois l’action utile lorsqu’il est rencontré. Distingue ce test de la boucle : celle-ci attend l’achèvement de la construction.",
+            "Si tu poursuis la construction, prépare un petit tronçon avant de le répéter et vérifie les cases effectivement construites. Si le conduit reste inactif, relève le premier écart ou la partie du mur encore manquante. Tu peux revenir à ce chapitre après l’exploration."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Aquatic 11 dans un autre onglet",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/11"
+          }
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "Conserver une réussite et une limite",
+      "paragraphs": [
+        "Garde l’adresse du niveau, une capture de tes blocs et un dessin annoté d’un test vrai, d’un test faux et du but atteint. Avec un compte Code.org, vérifie la reprise de ta version en rouvrant le niveau.",
+        "Conserve aussi les deux variantes de la grille et leurs corrections. Note le premier écart de chacune : ces traces expliquent quand ta stratégie peut être réutilisée et ce qu’il faut vérifier sur un nouveau terrain."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Un test sur le sol regarde la case occupée ; un test de chemin regarde une case voisine.",
+    "Le programme associe une action au repère ; la couleur seule ne commande pas le personnage.",
+    "Deux si successifs sont chacun évalués, même si le premier est faux.",
+    "Une stratégie s’explique par ses règles, son état de départ et les repères du terrain.",
+    "Un contre-exemple précis permet de trouver une limite puis de vérifier une correction.",
+    "Le critère d’arrêt de la boucle est distinct du repère qui déclenche un virage."
+  ],
+  "teacherGuide": {
+    "objective": "Faire formuler une stratégie fondée sur le terrain, observer ses conditions de réussite et construire un contre-exemple contrôlé.",
+    "entryDiagnosis": [
+      "Faire distinguer le sol sous le pion de la case située à sa droite.",
+      "Demander ce que fait un si faux et ce qui arrête une boucle jusqu’au but. Reprendre la mission 6 si ces deux rôles sont confondus."
+    ],
+    "preparation": [
+      "Réutiliser l’inventaire des 50 configurations. Les interfaces Aquatic 9, 10 et 11 ont été relues pour ce chapitre, sans exécution complète des puzzles ni compte utilisé. Captures aquatic9-depart.png, aquatic10-depart.png et aquatic11-depart.png dans browser-artifacts/audit-minecraft-2026-10-18/.",
+      "Aquatic 9 fournit avancer, tourner, jusqu’au but et deux si sur corail bleu/rouge. Faire déduire les virages de la carte, puis vérifier chaque occurrence du trajet. Deux tests de couleurs différentes sont successifs, pas imbriqués.",
+      "Aquatic 10 fournit le test sur lanterne marine et vise le calmar. Les cartes visibles et palettes permettent le travail proposé ; les programmes complets n’ont pas été exécutés pendant cette intégration.",
+      "Aquatic 11 est un prolongement replié. Le menu du test propose sable, prismarine sombre et lanterne marine ; il ne se limite pas au sable affiché initialement. Le défi demande un essai court pour observer l’effet du placement, sans présumer sa case ni fournir une solution de mur non exécutée.",
+      "Le cœur de la mission est Aquatic 9, le transfert 10 et le contre-exemple original. La réussite complète du niveau 11 ne conditionne pas la suite.",
+      "Préparer un pion orienté et une copie de la grille. Conserver les cases praticables dans les variantes : seul un repère change. Les lettres B et R sur les cases permettent d’identifier les deux couleurs."
+    ],
+    "why": "Après Scratch, le bénéfice porte sur les hypothèses d’une stratégie : un même programme réussit ou échoue selon la disposition du terrain, et une réussite ne prouve pas sa généralité.",
+    "discoverySpeech": [
+      "Le personnage regarde-t-il une case voisine ou le sol qu’il occupe ?",
+      "Qui décide du virage : le repère lui-même ou le programme ?",
+      "Quelle petite modification du terrain suffirait à faire échouer cette règle ?"
+    ],
+    "example": {
+      "target": { "moduleId": "minecraft-strategies", "blockId": "defi-papier" },
+      "comments": [
+        "La stratégie originale associe bleu à droite et rouge à gauche. Ces choix appartiennent au dessin, pas à une règle universelle de Minecraft ou à un corrigé annoncé des couleurs d’Aquatic 9.",
+        "Après avancer en B3, le test bleu tourne vers l’est. Le second test lit encore B3 et reste faux. En D3, bleu est faux et rouge vrai : le virage gauche remet le pion vers le nord."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Tourner sur une case bleue rend-il le test bleu faux ?",
+        "answer": "Non. Le pion n’a pas changé de case ni de sol. Le test porte sur sa case occupée, pas sur son orientation."
+      },
+      {
+        "question": "Pourquoi le si rouge doit-il être après le si bleu, et non dans son contenu ?",
+        "answer": "Deux si successifs sont évalués indépendamment. Un si rouge imbriqué dans le bleu ne serait rencontré que sur une case bleue, qui n’est pas rouge."
+      },
+      {
+        "question": "Pourquoi le repère bleu en B4 fait-il échouer la stratégie originale ?",
+        "answer": "Le premier déplacement arrive en B4 ; le virage droit y intervient trop tôt. L’avancer suivant vise C4 bloquée."
+      },
+      {
+        "question": "Que manque-t-il sans repère rouge en D3 ?",
+        "answer": "Le virage gauche vers le nord. Le pion conserve l’est et tente E3 bloquée."
+      },
+      {
+        "question": "Une carte réussie prouve-t-elle que la stratégie fonctionne partout ?",
+        "answer": "Non. Les deux variantes gardent le même chemin mais changent les indications et produisent des blocages. La réutilisation demande de vérifier leur disposition et les actions associées."
+      }
+    ],
+    "accompaniedActivity": { "moduleId": "minecraft-strategies", "blockId": "guide" },
+    "independentActivity": { "moduleId": "minecraft-strategies", "blockId": "autonomie" },
+    "differentiation": [
+      "Faire avancer un pion puis désigner le sol sous lui avant de lire les deux tests. Utiliser les lettres B et R en complément des couleurs.",
+      "Accepter une justification orale avec un pointage des cases. Le dessin peut se limiter au passage utile plutôt que reproduire tout le décor.",
+      "Pour un élève expérimenté, faire proposer un contre-exemple supplémentaire en conservant départ, but et chemin, puis demander de localiser la première divergence.",
+      "Pendant le stage, utiliser seulement l’explication du test de sol ou une variante de la grille au moment du besoin. Ne pas ajouter l’ensemble de la mission au programme du stage."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Le test de sol est prévu depuis une case devant le personnage.",
+        "helps": ["Poser le pion après avancer.", "Désigner sa case occupée avant de lire le test."]
+      },
+      {
+        "symptom": "La condition rouge n’est jamais exécutée.",
+        "helps": [
+          "Vérifier que les deux si sont au même niveau dans la boucle.",
+          "Suivre une case rouge : le bleu est faux, puis le rouge doit quand même être testé."
+        ]
+      },
+      {
+        "symptom": "L’élève change plusieurs éléments dans le contre-exemple.",
+        "helps": [
+          "Repartir de la grille de référence.",
+          "Changer uniquement le repère demandé et conserver le programme, le chemin et le départ."
+        ]
+      },
+      {
+        "symptom": "Un test faux est présenté comme la fin du programme.",
+        "helps": [
+          "Poursuivre jusqu’au test suivant ou au tour suivant.",
+          "Repérer séparément le but qui arrête la boucle."
+        ]
+      }
+    ],
+    "notes": "La simulation de la grille prouve les traces selon ses règles explicites, pas l’exécution des puzzles Code.org. La correction porte sur les repères des copies papier ; aucune édition ou importation de carte Code.org n’est promise. L’exploration 11 ne constitue pas une recette complète de construction.",
+    "quickConductor": [
+      "Distinguer test du sol occupé et test d’un passage voisin.",
+      "Faire prévoir les deux règles de corail dans Aquatic 9 et vérifier leurs effets.",
+      "Transférer le raisonnement aux lanternes d’Aquatic 10.",
+      "Tracer la grille, déplacer un repère, puis en retirer un sur une autre copie.",
+      "Faire réparer les repères, justifier la limite et conserver les preuves."
+    ],
+    "references": [
+      {
+        "title": "Code.org : Voyage Aquatic, niveau 9",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/9"
+      },
+      {
+        "title": "Code.org : Voyage Aquatic, niveau 10",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/10"
+      },
+      {
+        "title": "Code.org : Voyage Aquatic, niveau 11",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/11"
+      }
+    ]
+  }
+}

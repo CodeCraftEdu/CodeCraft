@@ -232,6 +232,8 @@ withBrowser(
     // Accepter uniquement la confirmation de perte des données fictives de ce profil de test.
     await evaluate('window.confirm=()=>true;document.getElementById("reload-space").click()');
     await wait('document.getElementById("workspace-label").value === "External"');
+    // Le libellé est affiché avant la fin de la mémorisation du fichier et du mode occupé.
+    await wait('!document.getElementById("open-space").disabled');
     await evaluate('overwriteTestFile("{invalid")');
     await evaluate('document.getElementById("open-space").click()');
     await wait('document.getElementById("operation-error").textContent.includes("JSON illisible")');
@@ -244,6 +246,7 @@ withBrowser(
     await evaluate('overwriteTestFile(' + JSON.stringify(JSON.stringify(classroomSaved)) + ');');
     await evaluate('document.getElementById("reload-space").click()');
     await wait('document.getElementById("workspace-label").value === "Test navigateur isolé"');
+    await wait('!document.getElementById("open-space").disabled');
     await evaluate('document.querySelector("[data-student-id]").click()');
     await call('Emulation.setDeviceMetricsOverride', {
       width: 390,

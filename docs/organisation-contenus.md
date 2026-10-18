@@ -61,6 +61,8 @@ Les légendes ne sont affichées que si le bloc fournit une `explanation`. Dans 
 
 Une leçon peut fournir `activityLink` avec `moduleId`, `blockId` et `label` pour renvoyer directement à une autre section. Le catalogue valide la cible ; le lien conserve le parcours quand le module appartient à celui-ci.
 
+Une leçon peut fournir `externalLink` avec `label` et une adresse `url` HTTPS pour ouvrir une activité externe précise dans un autre onglet. Le libellé annonce l’ouverture ; le chapitre CodeCraft reste disponible. Utiliser `tool` pour le lien principal du module et `externalLink` pour un autre niveau rencontré pendant l’activité.
+
 ## Ajouter un module ou un parcours
 
 Créer un fichier `content/modules/<domaine>/<identifiant>.json` sur le modèle d’un module voisin. Ajouter son couple `id` / `file` dans `modules` du manifeste. Référencer cet identifiant dans les `moduleIds` du parcours concerné. Conserver les identifiants existants : ils servent aux liens, aux références pédagogiques et aux espaces professeur.

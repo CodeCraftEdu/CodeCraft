@@ -189,6 +189,14 @@ export function createBlockRenderer({
       );
       section.append(paragraph);
     }
+    if (block.externalLink) {
+      const paragraph = element('p');
+      const anchor = link(block.externalLink.label, block.externalLink.url, 'lesson-text-link');
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      paragraph.append(anchor);
+      section.append(paragraph);
+    }
     if (visual && block.shortSteps && block.paragraphs?.length) {
       const details = element('details', 'hint scratch-explanations');
       details.append(element('summary', '', 'Explications et repères supplémentaires'));

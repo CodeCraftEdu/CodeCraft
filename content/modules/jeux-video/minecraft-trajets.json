@@ -1,0 +1,278 @@
+{
+  "domainId": "jeux-video",
+  "title": "Prévoir le trajet de l’Agent",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Suivre la position et la direction d’un personnage, puis prévoir le résultat avant de lancer son programme.",
+  "tool": {
+    "label": "Ouvrir Hero’s Journey, niveau 1 sur Code.org",
+    "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/1"
+  },
+  "skillIds": ["minecraft.orientation", "minecraft.trace"],
+  "prerequisiteSkills": [],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Garde CodeCraft ouvert à côté de Code.org et prépare une feuille ou un document pour tes prévisions. Le lien ouvre le niveau dans un autre onglet. Tu peux faire les essais sans compte."
+    },
+    {
+      "type": "lesson",
+      "id": "entree-scratch",
+      "title": "Choisir ton point de départ",
+      "paragraphs": [
+        "Tu découvres la programmation ? Suis cette mission puis les suivantes dans l’ordre. Tu apprendras à assembler les blocs, prévoir les trajets et comparer tes solutions.",
+        "Tu programmes déjà avec Scratch ou un autre outil ? Dans Hero’s Journey, les blocs commandent l’Agent. Après Exécuter, clique dans le jeu et utilise les flèches pour déplacer Alex ou Steve. Commence par les deux variantes : prévois la case et la direction après chaque action, y compris depuis un départ tourné vers l’est."
+      ],
+      "activityLink": {
+        "moduleId": "minecraft-trajets",
+        "blockId": "autonomie",
+        "label": "Prévoir les variantes pour choisir la suite"
+      }
+    },
+    {
+      "type": "callout",
+      "id": "entree-projet",
+      "title": "Tu sais déjà concevoir et comparer ?",
+      "presentation": "compact",
+      "text": "Si tu sais prévoir les cases construites, composer des répétitions et des appels, puis comparer blocs écrits et actions exécutées, tu peux commencer par Concevoir et tester une automatisation. Le projet demande aussi un test vrai et un test faux d’Aquatic et un contre-exemple de stratégie ; ses aides permettent de les retrouver. Sinon, commence par les variantes ci-dessus.",
+      "moduleLink": {
+        "moduleId": "minecraft-automatisation",
+        "text": "Concevoir et tester une automatisation"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "agent-joueur",
+      "title": "Deux personnages, deux commandes",
+      "paragraphs": [
+        "Dans Hero’s Journey, le petit robot est l’Agent : les blocs commandent ses actions. Ton personnage, Alex ou Steve, se déplace avec les flèches du clavier lorsque le programme est lancé.",
+        "Dans le niveau 1, accroche avancer sous le bloc de départ, comme le demande Code.org. Clique sur Exécuter (Run si l’interface est en anglais). Observe l’Agent rejoindre la plaque : la porte s’ouvre. Clique dans le jeu puis utilise les flèches pour guider ton personnage jusqu’au coffre.",
+        "Le programme déplace l’Agent ; les flèches déplacent ton personnage. Montre les deux personnages avant de continuer."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "reperes",
+      "title": "Une case et une direction",
+      "paragraphs": [
+        "Sur notre grille, la lettre indique la colonne et le nombre indique la ligne. C4 est donc la case de la colonne C et de la ligne 4. Le pion bleu commence en C4, tourné vers le nord, en haut de la grille.",
+        "Avancer fait passer dans la case juste devant le pion. Tourner à droite ou à gauche change son orientation d’un quart de tour, en restant dans la même case. À droite du pion signifie à sa droite à lui : quand il regarde vers le bas, sa droite est à gauche de la feuille.",
+        "Utilise un petit objet pointé ou dessine une flèche pour suivre son orientation. La grille sert à préparer ton raisonnement ; tu feras ensuite un autre trajet dans Code.org."
+      ],
+      "illustration": {
+        "src": "images/minecraft-reperes.svg",
+        "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5. Un pion bleu est en C4 et regarde vers le haut, indiqué comme le nord.",
+        "caption": "Le pion commence en C4 et regarde vers le nord."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "grille",
+      "title": "Prévois chaque action",
+      "intro": "Pars de C4 vers le nord. Suis cette suite : avancer, tourner à droite, avancer, avancer. Note la case et la direction après chaque action avant de déplacer ton pion.",
+      "items": [
+        {
+          "id": "mc01-premier-pas",
+          "text": "Après le premier avancer, quelle est la case ? Quelle direction le pion regarde-t-il ?",
+          "hints": [
+            "En haut de C4 se trouve C3. La lettre reste C.",
+            "Avancer change la position mais garde l’orientation : le pion regarde encore vers le nord."
+          ]
+        },
+        {
+          "id": "mc01-virage",
+          "text": "Prévois la case et la direction juste après tourner à droite.",
+          "hint": "La case reste la même. Depuis le nord, un quart de tour à droite oriente vers l’est, à droite de la grille."
+        },
+        {
+          "id": "mc01-arrivee",
+          "text": "Termine les deux avancer. Annonce la case et la direction finales, puis vérifie avec ton pion.",
+          "hint": "Après le virage, les déplacements changent de colonne. Ils ne changent plus de ligne."
+        },
+        {
+          "id": "mc01-expliquer",
+          "text": "Explique pourquoi les trois avancer du programme ne vont pas tous vers le haut de la grille."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "comparaison-grille",
+      "title": "Comparer après ta prévision",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "trace-grille",
+          "title": "La trace complète",
+          "paragraphs": [
+            "Départ : C4, nord. Après avancer : C3, nord. Après tourner à droite : C3, est. Après le deuxième avancer : D3, est. Après le dernier : E3, est.",
+            "Si ta prévision diffère, retrouve la première action où la case ou la direction change autrement. Repars de l’état juste avant cette action."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "niveau-trois",
+      "title": "Préparer le trajet dans Code.org",
+      "paragraphs": [
+        "Ouvre le niveau 3 avec le lien ci-dessous. Repère l’Agent, la direction qu’il regarde et la plaque qui ouvrira le passage. Utilise le dessin du jeu : les lettres de notre grille ne sont pas affichées dans Code.org.",
+        "Avant Exécuter, trace le trajet sur ta feuille et indique les virages. Assemble ensuite les blocs sous le départ. Pour glisser un bloc, prends-le dans la palette et rapproche-le du précédent jusqu’à ce qu’ils s’accrochent.",
+        "Lance puis compare le trajet de l’Agent avec ta prévision. Pour refaire le même essai, utilise Réinitialiser (Reset). Ce bouton remet le terrain et les personnages au départ en gardant les blocs. Recommencer (Start Over) sert à repartir du programme de départ."
+      ],
+      "externalLink": {
+        "label": "Ouvrir Hero’s Journey, niveau 3 dans un autre onglet",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/3"
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "mission",
+      "title": "Prévoir, lancer, expliquer",
+      "items": [
+        {
+          "id": "mc01-trace-niveau",
+          "text": "Au niveau 3, annonce le trajet et la direction finale de l’Agent avant de cliquer sur Exécuter.",
+          "hints": [
+            "Suis l’Agent avec une flèche sur ta feuille, en tournant la flèche à chaque virage.",
+            "Compte les cases parcourues séparément des rotations. Un virage ne fait pas avancer."
+          ]
+        },
+        {
+          "id": "mc01-observation",
+          "text": "Lance. Si le trajet diffère, retrouve la première action différente et change une seule chose avant de réessayer depuis le départ.",
+          "hint": "Décris un écart précis : une case de trop, un virage du mauvais côté ou un bloc placé avant le bon moment."
+        },
+        {
+          "id": "mc01-joueur",
+          "text": "Une fois le passage ouvert, déplace ton personnage jusqu’à l’objet demandé. Explique ce qui dépend des blocs et ce qui dépend du clavier."
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Un autre virage, sans modèle",
+      "intro": "Dessine une grille de cinq colonnes A à E et cinq lignes 1 à 5, avec le nord en haut. La suite d’origine est avancer, tourner à droite, avancer, avancer. Pour la première variante, pars de C4 nord et remplace seulement tourner à droite par tourner à gauche.",
+      "items": [
+        {
+          "id": "mc01-variante",
+          "text": "Prévois les quatre états et l’arrivée, puis vérifie avec ton pion. Quelle différence observes-tu par rapport à E3 ?",
+          "hint": "Après le virage, tu regardes vers l’ouest. Tu passes par B3 puis A3 et tu termines vers l’ouest."
+        },
+        {
+          "id": "mc01-depart-change",
+          "text": "Reprends la suite d’origine, avec le virage à droite, mais pars de C2 vers l’est. Prévois puis vérifie la case et la direction finales.",
+          "hint": "Tu avances d’abord en D2. Le virage à droite te tourne vers le sud ; les deux pas suivants mènent à D3 puis D4."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "suite-diagnostic",
+      "title": "Choisir après les variantes",
+      "paragraphs": [
+        "Si tu peux expliquer les cases et les directions dans les deux variantes, y compris depuis C2 vers l’est, garde tes prévisions puis passe aux programmes A et B : tous deux partent de C4 nord. Tu peux laisser Hero 1 et 3 pour une autre fois. Si les virages restent difficiles, reprends Une case et une direction puis l’essai du niveau 3 avant de poursuivre."
+      ],
+      "activityLink": {
+        "moduleId": "minecraft-repetitions",
+        "blockId": "programme-a",
+        "label": "Comparer les programmes A et B"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "Garder ta prévision et ton résultat",
+      "paragraphs": [
+        "Garde les prévisions et les résultats des variantes. Si tu as travaillé dans Hero 3, ajoute l’adresse du niveau, ton observation et une capture lisible des blocs pour pouvoir les reconstruire.",
+        "Pour un essai Code.org avec un compte, vérifie que tu retrouves tes blocs à la réouverture du niveau. Sans compte, conserve ta capture : la présence du programme dans un onglet ne garantit pas sa sauvegarde pour une autre séance."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Avancer dépend de l’orientation ; tourner change la direction dans la même case.",
+    "Une trace indique la position et la direction après chaque action.",
+    "Dans Hero’s Journey, les blocs commandent l’Agent et les flèches commandent le joueur.",
+    "Comparer prévu et observé permet de retrouver la première action à corriger."
+  ],
+  "teacherGuide": {
+    "objective": "Faire suivre un état spatial position/orientation et distinguer programme de l’Agent et commandes du joueur.",
+    "entryDiagnosis": [
+      "Pour un élève venant de Scratch, vérifier d’abord qu’il distingue l’Agent commandé par les blocs et Alex ou Steve commandé par les flèches après Exécuter. Faire ensuite directement prévoir la grille ; vérifier les virages relatifs avant de proposer les rappels.",
+      "Pour un débutant, accompagner l’ouverture de Hero 1 et le premier emboîtement. Distinguer lecture, manipulation et raisonnement spatial."
+    ],
+    "preparation": [
+      "Ouvrir les liens Hero 1 et 3. Le contexte des niveaux et leurs palettes ont été inventoriés ; aucune reconstruction systématique des puzzles n'est revendiquée.",
+      "Préparer une feuille, un pion orienté ou une flèche dessinée. L’illustration est originale et ne représente pas la carte de Hero 3.",
+      "Si la vidéo couvre le jeu, la fermer pour retrouver les commandes. Choisir Français dans le menu de langue si nécessaire.",
+      "Sans compte, conserver une capture des blocs et le carnet. Le lien de résultat est une consultation publiquement accessible, pas une sauvegarde personnelle modifiable garantie. Aucun partage requis."
+    ],
+    "why": "L’élève doit transporter un état après chaque instruction, plutôt qu'associer avancer à une direction fixe de l’écran.",
+    "discoverySpeech": [
+      "Montre la case du pion et sa direction. Que change le prochain bloc : sa position, son orientation ou les deux ?",
+      "Avant Exécuter, indique où l’Agent devrait terminer. Après le lancement, cherche la première différence avec ta prévision."
+    ],
+    "example": {
+      "target": { "moduleId": "minecraft-trajets", "blockId": "grille" },
+      "comments": [
+        "Demander position et orientation à chaque étape. Une arrivée correcte seule peut masquer une erreur de trace.",
+        "Réponse de base : C3 nord, C3 est, D3 est, E3 est."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Tourner fait-il changer de case ?",
+        "answer": "Non. L’orientation change ; la position reste la même."
+      },
+      {
+        "question": "Que donne la variante à gauche ?",
+        "answer": "C3 nord, C3 ouest, B3 ouest, A3 ouest."
+      },
+      {
+        "question": "Et la suite d’origine depuis C2 vers l’est ?",
+        "answer": "D2 est, D2 sud, D3 sud, D4 sud."
+      }
+    ],
+    "accompaniedActivity": { "moduleId": "minecraft-trajets", "blockId": "mission" },
+    "independentActivity": { "moduleId": "minecraft-trajets", "blockId": "autonomie" },
+    "differentiation": [
+      "Accepter une réponse orale et le déplacement d’un pion. Lire les consignes sans donner le virage.",
+      "Après Scratch, raccourcir la prise en main ; demander la variante de départ orienté à l’est.",
+      "Pendant le stage, ouvrir directement la grille ou la mission selon le blocage, puis revenir au travail du groupe."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Droite désigne toujours la droite de l’écran.",
+        "helps": [
+          "Orienter le pion vers le bas.",
+          "Montrer sa droite à lui, puis faire tourner le pion avant un déplacement."
+        ]
+      },
+      {
+        "symptom": "Les flèches semblent ignorer le programme.",
+        "helps": [
+          "Montrer les deux personnages.",
+          "Lancer le programme puis cliquer dans le jeu ; les flèches commandent Alex ou Steve."
+        ]
+      }
+    ],
+    "notes": "Observer séparément prévision, explication et manipulation. Une case cochée ou un niveau réussi ne démontre pas le suivi de l’orientation.",
+    "quickConductor": [
+      "Identifier joueur et Agent.",
+      "Faire prévoir la grille.",
+      "Passer au niveau 3 : prévoir, lancer, comparer.",
+      "Changer le virage ou le départ.",
+      "Conserver la trace et les blocs."
+    ],
+    "references": [
+      { "title": "Code.org : activités Minecraft", "url": "https://code.org/en-US/minecraft" },
+      {
+        "title": "Code.org : compte et conservation de la progression",
+        "url": "https://support.code.org/hc/en-us/articles/204090438-Do-students-need-to-sign-up-for-an-account-to-use-CodeAI"
+      }
+    ]
+  }
+}

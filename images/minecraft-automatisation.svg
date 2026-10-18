@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 420" role="img" aria-labelledby="title desc">
+  <title id="title">Préparer ton automatisation</title>
+  <desc id="desc">Grille A à E, lignes 1 à 5. Pion en A5 vers le nord. Dessiner les rails, les obstacles observés et l’arrivée de l’Agent.</desc>
+  <rect width="460" height="420" rx="8" fill="#fffdf5"/>
+  <g font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#29362e">
+    <text x="90" y="42">A</text><text x="155" y="42">B</text><text x="220" y="42">C</text><text x="285" y="42">D</text><text x="350" y="42">E</text>
+    <text x="30" y="100">1</text><text x="30" y="165">2</text><text x="30" y="230">3</text><text x="30" y="295">4</text><text x="30" y="360">5</text>
+  </g>
+  <rect x="57.5" y="60" width="325" height="325" fill="#f2f3ec"/>
+  <g fill="none" stroke="#536b61" stroke-width="1.5">
+    <rect x="57.5" y="60" width="325" height="325"/>
+    <path d="M122.5 60V385M187.5 60V385M252.5 60V385M317.5 60V385M57.5 125H382.5M57.5 190H382.5M57.5 255H382.5M57.5 320H382.5"/>
+  </g>
+  <path d="M90 330L109 368L90 359L71 368Z" fill="#245c89" stroke="#123f61" stroke-width="2"/>
+  <path d="M416 120V75M406 87L416 75L426 87" fill="none" stroke="#29362e" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#29362e" text-anchor="middle">
+    <text x="416" y="145">Nord</text><text x="220" y="411">A5 : départ. Grille à compléter.</text>
+  </g>
+</svg>

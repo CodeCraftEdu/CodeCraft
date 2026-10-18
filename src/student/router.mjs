@@ -81,7 +81,7 @@ export function createRouter({
     const navigation = element('nav', 'route-grid home-domains');
     navigation.setAttribute('aria-label', 'Choisir un domaine');
     const homeVisuals = {
-      'jeux-video': { name: 'game', tag: 'Scratch' },
+      'jeux-video': { name: 'game', tag: 'Scratch · Minecraft · GDevelop' },
       python: { name: 'python', tag: 'Thonny' },
       web: { name: 'web', tag: 'HTML · CSS' },
       robotique: { name: 'robotique', tag: 'Circuits virtuels' },
@@ -402,6 +402,22 @@ export function createRouter({
       target.tabIndex = -1;
       target.focus({ preventScroll: true });
       target.scrollIntoView({ block: 'start' });
+      // Les illustrations sans dimensions connues peuvent déplacer la cible
+      // après le premier défilement. Recaler seulement le cours encore affiché.
+      const loadingImages = [...main.querySelectorAll('img')].filter((image) => !image.complete);
+      if (loadingImages.length) {
+        Promise.all(
+          loadingImages.map(
+            (image) =>
+              new Promise((resolve) => {
+                image.addEventListener('load', resolve, { once: true });
+                image.addEventListener('error', resolve, { once: true });
+              }),
+          ),
+        ).then(() => {
+          if (main.contains(target)) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+        });
+      }
     } else window.scrollTo({ top: 0, behavior: 'auto' });
   }
 

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 410" role="img" aria-labelledby="title desc">
+  <title id="title">Grille du motif compact</title>
+  <desc id="desc">Cinq colonnes A à E et cinq lignes 1 à 5. Toutes les cases sont praticables. Le pion commence en B4 vers le nord.</desc>
+  <rect width="420" height="410" rx="8" fill="#fffdf5"/>
+  <g font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#29362e">
+    <text x="84" y="39">A</text><text x="146" y="39">B</text><text x="208" y="39">C</text><text x="270" y="39">D</text><text x="332" y="39">E</text>
+    <text x="25" y="96">1</text><text x="25" y="158">2</text><text x="25" y="220">3</text><text x="25" y="282">4</text><text x="25" y="344">5</text>
+  </g>
+  <rect x="53" y="55" width="310" height="310" fill="#e1edcf"/>
+  <g fill="none" stroke="#536b61" stroke-width="1.5">
+    <rect x="53" y="55" width="310" height="310"/>
+    <path d="M115 55V365M177 55V365M239 55V365M301 55V365M53 117H363M53 179H363M53 241H363M53 303H363"/>
+  </g>
+  <path d="M146 252L164 289L146 280L128 289Z" fill="#245c89" stroke="#123f61" stroke-width="2"/>
+  <path d="M390 111V68M381 80L390 68L399 80" fill="none" stroke="#29362e" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#29362e" text-anchor="middle">
+    <text x="390" y="137">Nord</text>
+    <text x="208" y="396">Départ B4. Aucun rail au départ.</text>
+  </g>
+</svg>

@@ -764,19 +764,19 @@ test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions f
   assert.equal(
     Object.values(data.modules).filter((m) => m.domainId !== 'python' && m.domainId !== 'robotique')
       .length,
-    52,
+    60,
   );
   assert.equal(
     Object.keys(data.skills).filter(
       (id) => !id.startsWith('python.') && !id.startsWith('robotique.'),
     ).length,
-    38,
+    48,
   );
   assert.equal(
     Object.values(data.modules).filter(
       (m) => m.domainId !== 'python' && m.domainId !== 'robotique' && m.teacherGuide,
     ).length,
-    52,
+    60,
   );
   assert.equal(data.modules['html-mini-page'].type, 'challenge');
   assert.equal(data.modules['web-affiche-numerique'].type, 'project');

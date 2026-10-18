@@ -71,11 +71,12 @@ window.CODECRAFT_DATA = {
     },
     "jeux-video": {
       "title": "Jeu vidéo",
-      "homeDescription": "Crée tes premiers jeux avec Scratch, puis explore GDevelop pour donner vie à de nouveaux projets.",
-      "homeTag": "SCRATCH · GDEVELOP",
+      "homeDescription": "Crée tes jeux avec Scratch, résous des défis Minecraft sur Code.org ou découvre GDevelop.",
+      "homeTag": "SCRATCH · MINECRAFT · GDEVELOP",
       "pathwayIds": [
         "scratch-debutants",
         "scratch-avances",
+        "minecraft-algorithmes",
         "gdevelop-debutants"
       ],
       "diagnosticModuleIds": []
@@ -305,6 +306,36 @@ window.CODECRAFT_DATA = {
     },
     "html.navigation": {
       "title": "Relier des pages HTML et vérifier leur navigation"
+    },
+    "minecraft.orientation": {
+      "title": "Prévoir un déplacement selon la position et la direction"
+    },
+    "minecraft.trace": {
+      "title": "Suivre puis vérifier la position et la direction après les actions"
+    },
+    "minecraft.repetition": {
+      "title": "Repérer et répéter un motif en conservant l’état atteint"
+    },
+    "minecraft.comparison": {
+      "title": "Distinguer blocs écrits, actions exécutées et distance parcourue"
+    },
+    "minecraft.construction": {
+      "title": "Prévoir les cases transformées et vérifier un passage continu"
+    },
+    "minecraft.debugging": {
+      "title": "Localiser un écart de construction et vérifier une correction depuis le départ"
+    },
+    "minecraft.procedure": {
+      "title": "Lire une procédure et préparer la position, la direction et le terrain entre ses appels"
+    },
+    "minecraft.composition": {
+      "title": "Composer des répétitions et extraire un motif réutilisable dans une procédure"
+    },
+    "minecraft.decision": {
+      "title": "Prévoir un test de chemin selon l’état courant et le distinguer de l’arrêt de la boucle"
+    },
+    "minecraft.strategy": {
+      "title": "Éprouver une stratégie fondée sur les repères du terrain et expliquer ses limites"
     }
   },
   "modules": {
@@ -35734,6 +35765,2697 @@ window.CODECRAFT_DATA = {
           }
         ]
       }
+    },
+    "minecraft-trajets": {
+      "domainId": "jeux-video",
+      "title": "Prévoir le trajet de l’Agent",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Suivre la position et la direction d’un personnage, puis prévoir le résultat avant de lancer son programme.",
+      "tool": {
+        "label": "Ouvrir Hero’s Journey, niveau 1 sur Code.org",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/1"
+      },
+      "skillIds": [
+        "minecraft.orientation",
+        "minecraft.trace"
+      ],
+      "prerequisiteSkills": [],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Garde CodeCraft ouvert à côté de Code.org et prépare une feuille ou un document pour tes prévisions. Le lien ouvre le niveau dans un autre onglet. Tu peux faire les essais sans compte."
+        },
+        {
+          "type": "lesson",
+          "id": "entree-scratch",
+          "title": "Choisir ton point de départ",
+          "paragraphs": [
+            "Tu découvres la programmation ? Suis cette mission puis les suivantes dans l’ordre. Tu apprendras à assembler les blocs, prévoir les trajets et comparer tes solutions.",
+            "Tu programmes déjà avec Scratch ou un autre outil ? Dans Hero’s Journey, les blocs commandent l’Agent. Après Exécuter, clique dans le jeu et utilise les flèches pour déplacer Alex ou Steve. Commence par les deux variantes : prévois la case et la direction après chaque action, y compris depuis un départ tourné vers l’est."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-trajets",
+            "blockId": "autonomie",
+            "label": "Prévoir les variantes pour choisir la suite"
+          }
+        },
+        {
+          "type": "callout",
+          "id": "entree-projet",
+          "title": "Tu sais déjà concevoir et comparer ?",
+          "presentation": "compact",
+          "text": "Si tu sais prévoir les cases construites, composer des répétitions et des appels, puis comparer blocs écrits et actions exécutées, tu peux commencer par Concevoir et tester une automatisation. Le projet demande aussi un test vrai et un test faux d’Aquatic et un contre-exemple de stratégie ; ses aides permettent de les retrouver. Sinon, commence par les variantes ci-dessus.",
+          "moduleLink": {
+            "moduleId": "minecraft-automatisation",
+            "text": "Concevoir et tester une automatisation"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "agent-joueur",
+          "title": "Deux personnages, deux commandes",
+          "paragraphs": [
+            "Dans Hero’s Journey, le petit robot est l’Agent : les blocs commandent ses actions. Ton personnage, Alex ou Steve, se déplace avec les flèches du clavier lorsque le programme est lancé.",
+            "Dans le niveau 1, accroche avancer sous le bloc de départ, comme le demande Code.org. Clique sur Exécuter (Run si l’interface est en anglais). Observe l’Agent rejoindre la plaque : la porte s’ouvre. Clique dans le jeu puis utilise les flèches pour guider ton personnage jusqu’au coffre.",
+            "Le programme déplace l’Agent ; les flèches déplacent ton personnage. Montre les deux personnages avant de continuer."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "reperes",
+          "title": "Une case et une direction",
+          "paragraphs": [
+            "Sur notre grille, la lettre indique la colonne et le nombre indique la ligne. C4 est donc la case de la colonne C et de la ligne 4. Le pion bleu commence en C4, tourné vers le nord, en haut de la grille.",
+            "Avancer fait passer dans la case juste devant le pion. Tourner à droite ou à gauche change son orientation d’un quart de tour, en restant dans la même case. À droite du pion signifie à sa droite à lui : quand il regarde vers le bas, sa droite est à gauche de la feuille.",
+            "Utilise un petit objet pointé ou dessine une flèche pour suivre son orientation. La grille sert à préparer ton raisonnement ; tu feras ensuite un autre trajet dans Code.org."
+          ],
+          "illustration": {
+            "src": "images/minecraft-reperes.svg",
+            "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5. Un pion bleu est en C4 et regarde vers le haut, indiqué comme le nord.",
+            "caption": "Le pion commence en C4 et regarde vers le nord."
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "grille",
+          "title": "Prévois chaque action",
+          "intro": "Pars de C4 vers le nord. Suis cette suite : avancer, tourner à droite, avancer, avancer. Note la case et la direction après chaque action avant de déplacer ton pion.",
+          "items": [
+            {
+              "id": "mc01-premier-pas",
+              "text": "Après le premier avancer, quelle est la case ? Quelle direction le pion regarde-t-il ?",
+              "hints": [
+                "En haut de C4 se trouve C3. La lettre reste C.",
+                "Avancer change la position mais garde l’orientation : le pion regarde encore vers le nord."
+              ]
+            },
+            {
+              "id": "mc01-virage",
+              "text": "Prévois la case et la direction juste après tourner à droite.",
+              "hint": "La case reste la même. Depuis le nord, un quart de tour à droite oriente vers l’est, à droite de la grille."
+            },
+            {
+              "id": "mc01-arrivee",
+              "text": "Termine les deux avancer. Annonce la case et la direction finales, puis vérifie avec ton pion.",
+              "hint": "Après le virage, les déplacements changent de colonne. Ils ne changent plus de ligne."
+            },
+            {
+              "id": "mc01-expliquer",
+              "text": "Explique pourquoi les trois avancer du programme ne vont pas tous vers le haut de la grille."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "comparaison-grille",
+          "title": "Comparer après ta prévision",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "trace-grille",
+              "title": "La trace complète",
+              "paragraphs": [
+                "Départ : C4, nord. Après avancer : C3, nord. Après tourner à droite : C3, est. Après le deuxième avancer : D3, est. Après le dernier : E3, est.",
+                "Si ta prévision diffère, retrouve la première action où la case ou la direction change autrement. Repars de l’état juste avant cette action."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau-trois",
+          "title": "Préparer le trajet dans Code.org",
+          "paragraphs": [
+            "Ouvre le niveau 3 avec le lien ci-dessous. Repère l’Agent, la direction qu’il regarde et la plaque qui ouvrira le passage. Utilise le dessin du jeu : les lettres de notre grille ne sont pas affichées dans Code.org.",
+            "Avant Exécuter, trace le trajet sur ta feuille et indique les virages. Assemble ensuite les blocs sous le départ. Pour glisser un bloc, prends-le dans la palette et rapproche-le du précédent jusqu’à ce qu’ils s’accrochent.",
+            "Lance puis compare le trajet de l’Agent avec ta prévision. Pour refaire le même essai, utilise Réinitialiser (Reset). Ce bouton remet le terrain et les personnages au départ en gardant les blocs. Recommencer (Start Over) sert à repartir du programme de départ."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Hero’s Journey, niveau 3 dans un autre onglet",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/3"
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "mission",
+          "title": "Prévoir, lancer, expliquer",
+          "items": [
+            {
+              "id": "mc01-trace-niveau",
+              "text": "Au niveau 3, annonce le trajet et la direction finale de l’Agent avant de cliquer sur Exécuter.",
+              "hints": [
+                "Suis l’Agent avec une flèche sur ta feuille, en tournant la flèche à chaque virage.",
+                "Compte les cases parcourues séparément des rotations. Un virage ne fait pas avancer."
+              ]
+            },
+            {
+              "id": "mc01-observation",
+              "text": "Lance. Si le trajet diffère, retrouve la première action différente et change une seule chose avant de réessayer depuis le départ.",
+              "hint": "Décris un écart précis : une case de trop, un virage du mauvais côté ou un bloc placé avant le bon moment."
+            },
+            {
+              "id": "mc01-joueur",
+              "text": "Une fois le passage ouvert, déplace ton personnage jusqu’à l’objet demandé. Explique ce qui dépend des blocs et ce qui dépend du clavier."
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Un autre virage, sans modèle",
+          "intro": "Dessine une grille de cinq colonnes A à E et cinq lignes 1 à 5, avec le nord en haut. La suite d’origine est avancer, tourner à droite, avancer, avancer. Pour la première variante, pars de C4 nord et remplace seulement tourner à droite par tourner à gauche.",
+          "items": [
+            {
+              "id": "mc01-variante",
+              "text": "Prévois les quatre états et l’arrivée, puis vérifie avec ton pion. Quelle différence observes-tu par rapport à E3 ?",
+              "hint": "Après le virage, tu regardes vers l’ouest. Tu passes par B3 puis A3 et tu termines vers l’ouest."
+            },
+            {
+              "id": "mc01-depart-change",
+              "text": "Reprends la suite d’origine, avec le virage à droite, mais pars de C2 vers l’est. Prévois puis vérifie la case et la direction finales.",
+              "hint": "Tu avances d’abord en D2. Le virage à droite te tourne vers le sud ; les deux pas suivants mènent à D3 puis D4."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "suite-diagnostic",
+          "title": "Choisir après les variantes",
+          "paragraphs": [
+            "Si tu peux expliquer les cases et les directions dans les deux variantes, y compris depuis C2 vers l’est, garde tes prévisions puis passe aux programmes A et B : tous deux partent de C4 nord. Tu peux laisser Hero 1 et 3 pour une autre fois. Si les virages restent difficiles, reprends Une case et une direction puis l’essai du niveau 3 avant de poursuivre."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-repetitions",
+            "blockId": "programme-a",
+            "label": "Comparer les programmes A et B"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Garder ta prévision et ton résultat",
+          "paragraphs": [
+            "Garde les prévisions et les résultats des variantes. Si tu as travaillé dans Hero 3, ajoute l’adresse du niveau, ton observation et une capture lisible des blocs pour pouvoir les reconstruire.",
+            "Pour un essai Code.org avec un compte, vérifie que tu retrouves tes blocs à la réouverture du niveau. Sans compte, conserve ta capture : la présence du programme dans un onglet ne garantit pas sa sauvegarde pour une autre séance."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Avancer dépend de l’orientation ; tourner change la direction dans la même case.",
+        "Une trace indique la position et la direction après chaque action.",
+        "Dans Hero’s Journey, les blocs commandent l’Agent et les flèches commandent le joueur.",
+        "Comparer prévu et observé permet de retrouver la première action à corriger."
+      ],
+      "teacherGuide": {
+        "objective": "Faire suivre un état spatial position/orientation et distinguer programme de l’Agent et commandes du joueur.",
+        "entryDiagnosis": [
+          "Pour un élève venant de Scratch, vérifier d’abord qu’il distingue l’Agent commandé par les blocs et Alex ou Steve commandé par les flèches après Exécuter. Faire ensuite directement prévoir la grille ; vérifier les virages relatifs avant de proposer les rappels.",
+          "Pour un débutant, accompagner l’ouverture de Hero 1 et le premier emboîtement. Distinguer lecture, manipulation et raisonnement spatial."
+        ],
+        "preparation": [
+          "Ouvrir les liens Hero 1 et 3. Le contexte des niveaux et leurs palettes ont été inventoriés ; aucune reconstruction systématique des puzzles n'est revendiquée.",
+          "Préparer une feuille, un pion orienté ou une flèche dessinée. L’illustration est originale et ne représente pas la carte de Hero 3.",
+          "Si la vidéo couvre le jeu, la fermer pour retrouver les commandes. Choisir Français dans le menu de langue si nécessaire.",
+          "Sans compte, conserver une capture des blocs et le carnet. Le lien de résultat est une consultation publiquement accessible, pas une sauvegarde personnelle modifiable garantie. Aucun partage requis."
+        ],
+        "why": "L’élève doit transporter un état après chaque instruction, plutôt qu'associer avancer à une direction fixe de l’écran.",
+        "discoverySpeech": [
+          "Montre la case du pion et sa direction. Que change le prochain bloc : sa position, son orientation ou les deux ?",
+          "Avant Exécuter, indique où l’Agent devrait terminer. Après le lancement, cherche la première différence avec ta prévision."
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-trajets",
+            "blockId": "grille"
+          },
+          "comments": [
+            "Demander position et orientation à chaque étape. Une arrivée correcte seule peut masquer une erreur de trace.",
+            "Réponse de base : C3 nord, C3 est, D3 est, E3 est."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Tourner fait-il changer de case ?",
+            "answer": "Non. L’orientation change ; la position reste la même."
+          },
+          {
+            "question": "Que donne la variante à gauche ?",
+            "answer": "C3 nord, C3 ouest, B3 ouest, A3 ouest."
+          },
+          {
+            "question": "Et la suite d’origine depuis C2 vers l’est ?",
+            "answer": "D2 est, D2 sud, D3 sud, D4 sud."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-trajets",
+          "blockId": "mission"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-trajets",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Accepter une réponse orale et le déplacement d’un pion. Lire les consignes sans donner le virage.",
+          "Après Scratch, raccourcir la prise en main ; demander la variante de départ orienté à l’est.",
+          "Pendant le stage, ouvrir directement la grille ou la mission selon le blocage, puis revenir au travail du groupe."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Droite désigne toujours la droite de l’écran.",
+            "helps": [
+              "Orienter le pion vers le bas.",
+              "Montrer sa droite à lui, puis faire tourner le pion avant un déplacement."
+            ]
+          },
+          {
+            "symptom": "Les flèches semblent ignorer le programme.",
+            "helps": [
+              "Montrer les deux personnages.",
+              "Lancer le programme puis cliquer dans le jeu ; les flèches commandent Alex ou Steve."
+            ]
+          }
+        ],
+        "notes": "Observer séparément prévision, explication et manipulation. Une case cochée ou un niveau réussi ne démontre pas le suivi de l’orientation.",
+        "quickConductor": [
+          "Identifier joueur et Agent.",
+          "Faire prévoir la grille.",
+          "Passer au niveau 3 : prévoir, lancer, comparer.",
+          "Changer le virage ou le départ.",
+          "Conserver la trace et les blocs."
+        ],
+        "references": [
+          {
+            "title": "Code.org : activités Minecraft",
+            "url": "https://code.org/en-US/minecraft"
+          },
+          {
+            "title": "Code.org : compte et conservation de la progression",
+            "url": "https://support.code.org/hc/en-us/articles/204090438-Do-students-need-to-sign-up-for-an-account-to-use-CodeAI"
+          }
+        ]
+      }
+    },
+    "minecraft-repetitions": {
+      "domainId": "jeux-video",
+      "title": "Comparer deux programmes pour un trajet",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Repérer un motif répété et expliquer ce qui change entre le nombre de blocs écrits et le nombre d’actions exécutées.",
+      "tool": {
+        "label": "Ouvrir Hero’s Journey, niveau 4 sur Code.org",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/4"
+      },
+      "skillIds": [
+        "minecraft.trace",
+        "minecraft.repetition",
+        "minecraft.comparison"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.orientation",
+          "expectation": "Prévoir avancer et tourner depuis une case et une direction. Reprends la grille de la première mission si nécessaire."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Prépare ton carnet et garde CodeCraft à côté de Code.org. Tu vas comparer deux écritures du même trajet, puis chercher un motif dans les niveaux 4 et 5. Chaque essai repartira du même départ."
+        },
+        {
+          "type": "callout",
+          "id": "reprise",
+          "title": "Retrouver les virages",
+          "presentation": "compact",
+          "text": "Ouvre Prévoir le trajet de l’Agent dans un autre onglet si avancer et tourner restent difficiles. Ferme ensuite cet onglet pour retrouver ta comparaison.",
+          "moduleLink": {
+            "moduleId": "minecraft-trajets",
+            "text": "Prévoir le trajet de l’Agent",
+            "newTab": true
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "entree-experimentee",
+          "title": "Tu utilises déjà les répétitions ?",
+          "paragraphs": [
+            "Commence par les programmes A et B : ils partent tous les deux de C4 vers le nord. Prévois leur arrivée et compare les blocs écrits, les déplacements et les rotations. Tu peux passer le rappel sur la boucle si tu sais déjà suivre tous ses tours ; garde la comparaison et les essais de transfert."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-repetitions",
+            "blockId": "programme-a",
+            "label": "Rejoindre les deux programmes à comparer"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "depart",
+          "title": "Un motif, deux écritures",
+          "paragraphs": [
+            "Reprends la grille : départ en C4, vers le nord. Les programmes A et B ci-dessous décrivent des actions à suivre avec ton pion. Tu compareras ensuite des blocs dans Code.org.",
+            "Le motif est une petite suite qui revient dans le même ordre. Ici : avancer, avancer, tourner à droite. Le programme A l’écrit deux fois. Le programme B demande de le répéter deux fois.",
+            "Une boucle répéter exécute les actions placées à l’intérieur, puis recommence au début de ce groupe. Après le nombre de tours choisi, elle continue avec les éventuelles actions placées après elle."
+          ],
+          "illustration": {
+            "src": "images/minecraft-reperes.svg",
+            "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5, avec un pion en C4 orienté vers le nord.",
+            "caption": "Même départ pour A et B : C4, vers le nord."
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "programme-a",
+          "title": "Programme A : écrire chaque action",
+          "paragraphs": [
+            "Lis les six actions. Avant de déplacer ton pion, prévois sa case et sa direction finales."
+          ],
+          "filename": "Instructions A",
+          "code": "avancer\navancer\ntourner à droite\navancer\navancer\ntourner à droite"
+        },
+        {
+          "type": "lesson",
+          "id": "programme-b",
+          "title": "Programme B : répéter le motif",
+          "paragraphs": [
+            "Les trois lignes décalées sont à l’intérieur de répéter. Au deuxième tour, le pion conserve la position et la direction atteintes à la fin du premier."
+          ],
+          "filename": "Instructions B",
+          "code": "répéter 2 fois\n  avancer\n  avancer\n  tourner à droite"
+        },
+        {
+          "type": "details",
+          "id": "aide-boucle",
+          "title": "Si tu découvres les répétitions",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "lire-tour",
+              "title": "Suivre un tour entier",
+              "paragraphs": [
+                "Pour le premier tour, lis avancer, avancer, tourner à droite. Pour le deuxième, relis ces trois mêmes actions. Le pion continue depuis sa nouvelle position : il ne revient pas en C4 entre les tours.",
+                "Dans Code.org, prends le bloc répéter, règle son nombre et glisse les actions dans son creux. Une action accrochée après le bas de la boucle est faite après les répétitions, une seule fois."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "comparaison",
+          "title": "Même trajet, moins d’écriture ?",
+          "intro": "Pour compter l’écriture, compte chaque bloc une seule fois : avancer, tourner et répéter. Nous laissons le bloc de départ de côté dans les deux programmes. Pour compter l’exécution, compte chaque déplacement et chaque rotation réellement effectués.",
+          "items": [
+            {
+              "id": "mc02-arrivees",
+              "text": "Prévois l’arrivée de A et de B, puis suis-les séparément avec ton pion en repartant de C4 vers le nord. Compare aussi les directions finales.",
+              "hint": "Après le premier groupe, tu es en C2 vers l’est. Le deuxième groupe continue depuis cet état."
+            },
+            {
+              "id": "mc02-ecriture",
+              "text": "Combien de blocs faut-il écrire pour A ? Et pour B, en comptant répéter et les trois blocs placés à l’intérieur ?",
+              "hint": "Le corps de B est écrit une seule fois. Le nombre 2 choisi dans répéter n’est pas un bloc supplémentaire."
+            },
+            {
+              "id": "mc02-execution",
+              "text": "Pour chaque programme, compte les déplacements puis les rotations exécutés. Le pion parcourt-il moins de cases avec B ?",
+              "hint": "Deux tours exécutent deux fois chacun des deux avancer et le virage."
+            },
+            {
+              "id": "mc02-critere",
+              "text": "Complète avec tes mots : B réduit…, mais conserve… Appuie ta réponse sur tes comptes."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "verification",
+          "title": "Comparer après tes essais",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-comparaison",
+              "title": "Deux écritures pour les mêmes actions",
+              "paragraphs": [
+                "A et B terminent en E2, vers le sud. Chaque programme exécute quatre déplacements et deux rotations. La boucle ne raccourcit pas le trajet.",
+                "Avec notre règle de comptage, A demande six blocs. B en demande quatre : répéter, deux avancer et un tourner. B réduit l’écriture du programme, tout en conservant les actions du trajet.",
+                "La distance, le nombre de blocs et le temps d’exécution sont des critères différents. Ici, nous avons comparé l’écriture et le trajet ; ces comptes ne mesurent pas la vitesse du jeu."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau-quatre",
+          "title": "Repérer le motif dans Hero’s Journey",
+          "paragraphs": [
+            "Ouvre le niveau 4 avec le lien en haut de la mission. Repère l’Agent, sa direction et la plaque à rejoindre. Dessine le trajet souhaité et entoure le groupe d’actions qui revient.",
+            "Construis le programme avec répéter. Prévois le nombre de cases parcourues, puis lance. Une fois le passage ouvert, utilise ton personnage pour atteindre l’objet demandé.",
+            "Dans ton carnet, écris aussi la suite complète des actions sans boucle. Si les limites du niveau empêchent de construire cette deuxième version dans Code.org, garde-la sur ta feuille pour comparer."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Comparer ton programme du niveau 4",
+          "items": [
+            {
+              "id": "mc02-motif",
+              "text": "Montre les actions qui se répètent et celles qui se font une seule fois. Explique le nombre choisi dans répéter.",
+              "hints": [
+                "Une action dans le creux de répéter est exécutée à chaque tour.",
+                "Vérifie la position de l’Agent après un tour, puis continue depuis cette position pour compter le suivant."
+              ]
+            },
+            {
+              "id": "mc02-compter-niveau",
+              "text": "Compte les blocs de ton programme avec boucle, puis les actions de ta version développée. Indique ce que la répétition simplifie.",
+              "hint": "Compte les blocs de commande en laissant le départ de côté. Compte une rotation comme une action, mais pas comme une case parcourue."
+            },
+            {
+              "id": "mc02-trajet-niveau",
+              "text": "Après Réinitialiser (Reset), refais le même trajet. Compare l’arrivée et la direction avec ta prévision."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau-cinq",
+          "title": "Trouver toi-même une répétition",
+          "paragraphs": [
+            "Au niveau 5, commence par observer le nouveau trajet. Prépare ton programme avec les actions que tu connais, puis cherche si une partie se répète.",
+            "Choisis où une boucle est utile. Les blocs qui préparent le trajet ou le terminent peuvent rester avant ou après elle. Prévois le résultat avant de lancer."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Hero’s Journey, niveau 5 dans un autre onglet",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/5"
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Choisir et justifier ton programme",
+          "items": [
+            {
+              "id": "mc02-choisir",
+              "text": "Au niveau 5, dessine le trajet, indique un motif que tu choisis de répéter et construis ton programme. Si tu préfères une autre organisation, explique ton choix.",
+              "hint": "Une suite n’a pas besoin d’être entièrement dans une seule boucle. Commence par un groupe que tu peux suivre exactement."
+            },
+            {
+              "id": "mc02-preuve",
+              "text": "Lance puis décris une observation qui confirme ta prévision. Compare ton écriture avec sa suite développée dans le carnet.",
+              "hint": "Développe ta boucle dans le carnet : retrouves-tu les mêmes actions dans le même ordre, depuis le même départ ? Compare aussi les cases parcourues et la direction finale. Réduire l’écriture ne prouve pas que tu as réduit les déplacements."
+            },
+            {
+              "id": "mc02-conserver",
+              "text": "Garde l’adresse du niveau, une capture lisible de tes blocs et ta comparaison. Si tu travailles avec un compte, vérifie la réouverture de ton niveau. Sans compte, ta capture permet de reconstruire les blocs."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "bonus",
+          "title": "Pour aller plus loin : un tour de plus",
+          "blocks": [
+            {
+              "type": "tasks",
+              "id": "troisieme-tour",
+              "title": "Prévoir sans reconstruire",
+              "intro": "Sur notre grille seulement, repars de C4 vers le nord et remplace répéter 2 fois par répéter 3 fois dans B.",
+              "items": [
+                {
+                  "id": "mc02-bonus-arrivee",
+                  "text": "Prévois la case et la direction finales, puis vérifie avec ton pion.",
+                  "hint": "Après deux tours, tu es en E2 vers le sud. Le troisième mène en E4, puis le virage oriente vers l’ouest."
+                },
+                {
+                  "id": "mc02-bonus-cout",
+                  "text": "Combien de blocs sont écrits ? Combien de déplacements et de rotations sont exécutés ?",
+                  "hint": "L’écriture reste de quatre blocs ; six déplacements et trois rotations sont exécutés."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Un motif garde ses actions dans le même ordre à chaque tour.",
+        "Le deuxième tour continue depuis la position et la direction obtenues au premier.",
+        "Une répétition peut réduire le nombre de blocs écrits sans réduire les déplacements exécutés.",
+        "Comparer deux programmes demande le même départ et un critère explicite."
+      ],
+      "teacherGuide": {
+        "objective": "Faire distinguer taille du programme, actions exécutées et distance parcourue, en réutilisant les boucles après Scratch.",
+        "entryDiagnosis": [
+          "Faire prévoir le motif depuis C4 nord. En cas de difficulté spatiale, reprendre la grille de la première mission.",
+          "Après Scratch, demander directement les comptes et leur justification ; ne pas imposer l’aide de découverte des boucles."
+        ],
+        "preparation": [
+          "Utiliser Hero 4 et 5 : déplacements, virages et répétitions figurent dans leurs palettes inventoriées. Les solutions exactes et le minimum de blocs ne sont pas imposés.",
+          "Préparer une feuille pour développer le programme si la limite de blocs empêche une seconde écriture exécutable.",
+          "Conserver les programmes par capture et carnet ; la sauvegarde avec compte est documentée, la reprise connectée n’a pas été éprouvée pendant cet audit."
+        ],
+        "why": "L’objectif nouveau après Scratch est justifier un choix selon un critère, au lieu d’assimiler automatiquement boucle, rapidité et trajet plus court.",
+        "discoverySpeech": [
+          "Les deux programmes partent du même endroit. Prévois leur arrivée, puis compte ce que tu as écrit et ce que le pion a réellement fait.",
+          "Que veux-tu améliorer : l’écriture du programme ou la distance parcourue ? Quelle observation permet de le vérifier ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-repetitions",
+            "blockId": "comparaison"
+          },
+          "comments": [
+            "A : six blocs. B : quatre avec la convention indiquée. Chaque programme : quatre déplacements, deux rotations, arrivée E2 sud.",
+            "Le départ est exclu des deux comptes. Une rotation est une action sans déplacement.",
+            "Ne pas déduire un temps moteur ou une complexité asymptotique de ces comptes."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi le second tour change-t-il de direction ?",
+            "answer": "Le premier finit par un virage à droite : l’orientation est conservée pour le tour suivant."
+          },
+          {
+            "question": "Qu’économise B ?",
+            "answer": "Deux blocs écrits dans cet exemple. Il exécute les mêmes déplacements et rotations que A."
+          },
+          {
+            "question": "Que donne un troisième tour sur la grille ?",
+            "answer": "E4 ouest ; quatre blocs écrits, six déplacements et trois rotations exécutés."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-repetitions",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-repetitions",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Autoriser une comparaison orale avec des marques sur papier. La qualité de rédaction n’est pas le critère.",
+          "Pour un débutant, développer deux tours avec le pion avant de manipuler le bloc répéter.",
+          "Pour un élève avancé, demander un critère précis et une autre organisation. Ne pas imposer la recherche d’un minimum global ni la répétition de tous les puzzles.",
+          "Pendant le stage, utiliser seulement la comparaison utile au travail en cours."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le programme compte moins de blocs, donc le trajet serait plus court.",
+            "helps": [
+              "Développer la boucle sur papier.",
+              "Compter séparément les actions réellement exécutées et les blocs écrits."
+            ]
+          },
+          {
+            "symptom": "Le pion repart au début de la grille à chaque tour.",
+            "helps": [
+              "Marquer la case et la direction après un tour.",
+              "Reprendre le motif depuis cet état, sans déplacer le pion au départ."
+            ]
+          },
+          {
+            "symptom": "Une action finale se répète trop souvent.",
+            "helps": [
+              "Repérer si elle est dans le creux de la boucle.",
+              "La placer après la boucle si elle doit être exécutée une seule fois à la fin, puis refaire la prévision."
+            ]
+          }
+        ],
+        "notes": "Distinguer réussite du puzzle, compréhension de la répétition et capacité de comparaison. Aucune supériorité générale d’une boucle ni vitesse d’apprentissage ne se déduit d’un petit nombre de blocs.",
+        "quickConductor": [
+          "Reprendre position et orientation.",
+          "Comparer A et B sur la grille.",
+          "Faire nommer le critère et compter.",
+          "Transférer au niveau 4, puis choisir au niveau 5.",
+          "Conserver prévision, programme et conclusion."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Hero’s Journey, niveau 4",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/4"
+          },
+          {
+            "title": "Code.org : Hero’s Journey, niveau 5",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/5"
+          }
+        ]
+      }
+    },
+    "minecraft-passage": {
+      "domainId": "jeux-video",
+      "title": "Construire et réparer un passage",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Prévoir les cases construites par l’Agent, puis corriger une répétition en repérant le premier écart avec le passage attendu.",
+      "tool": {
+        "label": "Ouvrir Hero’s Journey, niveau 6 sur Code.org",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/6"
+      },
+      "skillIds": [
+        "minecraft.trace",
+        "minecraft.repetition",
+        "minecraft.construction",
+        "minecraft.debugging"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.trace",
+          "expectation": "Suivre la case et la direction de l’Agent après chaque action."
+        },
+        {
+          "skillId": "minecraft.repetition",
+          "expectation": "Suivre les actions à l’intérieur d’une répétition et continuer depuis l’état obtenu au tour précédent."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Ouvre le niveau 6 et prépare ton carnet. Les blocs commandent l’Agent ; après Exécuter, les flèches déplacent Alex ou Steve. Tu vas construire un passage pour ton personnage, puis réparer un programme dans le niveau 7."
+        },
+        {
+          "type": "callout",
+          "id": "reprise",
+          "title": "Retrouver les répétitions",
+          "presentation": "compact",
+          "text": "Si tu perds le fil entre deux tours, ouvre Comparer deux programmes pour un trajet dans un autre onglet. Reprends le motif avec ton pion, puis ferme cet onglet pour revenir ici.",
+          "moduleLink": {
+            "moduleId": "minecraft-repetitions",
+            "text": "Comparer deux programmes pour un trajet",
+            "newTab": true
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "placer",
+          "title": "Avancer et construire",
+          "paragraphs": [
+            "Dans Hero’s Journey, l’Agent peut traverser l’eau. Alex ou Steve a besoin d’un passage : voir l’Agent arriver de l’autre côté ne suffit donc pas à vérifier le pont.",
+            "Le bloc placer une planche construit sur la case occupée par l’Agent. Il ne fait pas avancer. Pour couvrir une case d’eau, amène l’Agent dessus, puis place la planche.",
+            "Au niveau 6, accroche avancer puis placer une planche sous le bloc de départ. Avant de lancer, montre la case que l’Agent atteindra et celle où apparaîtra la planche. Lance et compare avec ta prévision."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "premier-essai",
+          "title": "Observer une construction",
+          "items": [
+            {
+              "id": "mc03-une-planche",
+              "text": "Repère la position de l’Agent après avancer, puis après placer. Quelle action change sa case ? Quelle action change le terrain ?",
+              "hints": [
+                "Suis les deux commandes séparément : avancer, puis placer.",
+                "Placer laisse l’Agent sur la même case. Observe le sol sous lui."
+              ]
+            },
+            {
+              "id": "mc03-reset",
+              "text": "Clique sur Réinitialiser (Reset). Retrouves-tu le terrain et l’Agent au départ ? Tes blocs sont-ils encore présents ?",
+              "hint": "Réinitialiser prépare un nouvel essai avec tes blocs. Recommencer (Start Over) sert à retrouver le programme initial."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "prevoir-pont",
+          "title": "Préparer tout le passage",
+          "paragraphs": [
+            "Sur le dessin du niveau 6, repère les deux rives et les cases d’eau à couvrir pour rejoindre la pelle. Dessine ce passage et marque le départ et la direction de l’Agent.",
+            "Après ton premier essai, tu connais le motif avancer puis placer. Cherche combien de fois le répéter pour couvrir les cases d’eau du passage. Indique aussi où sera l’Agent après le dernier tour.",
+            "Place les deux commandes dans le creux de répéter. Règle le nombre d’après ton dessin, puis lance depuis le terrain réinitialisé."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Vérifier le pont du niveau 6",
+          "items": [
+            {
+              "id": "mc03-cases",
+              "text": "Compare les cases couvertes avec ton dessin. Si une planche manque ou apparaît ailleurs, retrouve le premier tour où le résultat diffère.",
+              "hint": "Pour chaque tour, note la case atteinte, puis marque la planche posée sur cette case."
+            },
+            {
+              "id": "mc03-traverser",
+              "text": "Après Exécuter, clique dans le jeu et utilise les flèches pour faire traverser Alex ou Steve jusqu’à la pelle. Le passage est-il continu ?",
+              "hint": "Vérifie les cases entre les deux rives, y compris celle qui touche chaque rive. L’Agent peut survoler une case d’eau encore vide."
+            },
+            {
+              "id": "mc03-expliquer",
+              "text": "Explique le nombre choisi dans répéter en montrant les cases construites. Distingue le trajet de l’Agent et le passage utilisable par ton personnage."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau-sept",
+          "title": "Lire le programme avant de le corriger",
+          "paragraphs": [
+            "Ouvre le niveau 7 avec le lien ci-dessous. Un programme est déjà accroché : répéter 3 fois, avec avancer puis placer une planche à l’intérieur. Le nouveau passage est plus large. Si tu avais déjà modifié ce niveau, conserve ta capture puis utilise Recommencer (Start Over) pour retrouver le programme fourni.",
+            "Avant de modifier, note le nombre de tours et prévois les cases que ce programme couvrira. Lance une fois et compare le pont obtenu avec celui dont ton personnage a besoin pour rejoindre la pioche.",
+            "Certaines commandes sont attachées et verrouillées. Tu peux changer le nombre de répétitions : utilise ce réglage pour réparer le passage, en conservant les commandes fournies."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Hero’s Journey, niveau 7 dans un autre onglet",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/7"
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "reparer",
+          "title": "Trouver la première case manquante",
+          "items": [
+            {
+              "id": "mc03-localiser",
+              "text": "Montre la première case d’eau du passage qui reste vide. À quel moment le programme s’arrête-t-il par rapport à cette case ?",
+              "hints": [
+                "Marque une case construite par tour. Compare les trois tours au nombre de cases à couvrir.",
+                "Le motif peut être correct et s’arrêter trop tôt. Compare les deux extrémités du pont aux rives."
+              ]
+            },
+            {
+              "id": "mc03-corriger",
+              "text": "Choisis le nombre de tours d’après les cases manquantes. Annonce la nouvelle position finale et les cases couvertes, puis change seulement ce nombre.",
+              "hint": "Compte les cases d’eau à couvrir depuis le départ de l’Agent. Une rive déjà praticable n’est pas une case d’eau supplémentaire."
+            },
+            {
+              "id": "mc03-verifier",
+              "text": "Réinitialise et relance. Compare avec ta prévision, puis fais traverser ton personnage jusqu’à la pioche. Explique pourquoi la correction répare le passage."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "defi-papier",
+          "title": "Un passage à réparer sur papier",
+          "paragraphs": [
+            "Sur ce dessin, les cases A, B et G sont des rives praticables. C, D, E et F sont de l’eau. L’Agent commence en B, vers la droite, et peut avancer sur l’eau. Alex ou Steve doit pouvoir aller de A à G.",
+            "Pour ce défi, avancer déplace l’Agent d’une case vers la droite ; placer une planche couvre sa case d’eau actuelle et le laisse sur place. Suis le programme ci-dessous avec un pion et marque les planches sur ton dessin."
+          ],
+          "illustration": {
+            "src": "images/minecraft-passage.svg",
+            "alt": "Sept cases alignées de A à G : A et B sont la rive de départ, C à F sont de l’eau, G est la rive d’arrivée. L’Agent est en B, orienté vers G.",
+            "caption": "Départ en B, vers la droite. Construis un passage continu entre les rives."
+          },
+          "filename": "Instructions",
+          "code": "répéter 3 fois\n  avancer\n  placer une planche"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Réparer et justifier sans modèle",
+          "items": [
+            {
+              "id": "mc03-papier-trace",
+              "text": "Sur le dessin, prévois la position finale de l’Agent et les cases couvertes par le programme. Quelle case manque au passage ?",
+              "hint": "Fais un trait par tour et marque la case où placer est exécuté."
+            },
+            {
+              "id": "mc03-papier-reparation",
+              "text": "Change seulement le nombre de répétitions pour compléter le passage. Annonce l’arrivée et les cases couvertes, puis vérifie avec ton pion."
+            },
+            {
+              "id": "mc03-papier-ordre",
+              "text": "Repars du dessin initial. Que construirait avancer trois fois puis placer une seule fois, après les déplacements ? Compare avec le programme initial : même arrivée, même passage ?",
+              "hint": "Après les trois déplacements, le pion n’a pas encore posé de planche. Sur quelle case se trouve-t-il au moment de placer ?"
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "comparaison-papier",
+          "title": "Comparer après tes essais",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-papier",
+              "title": "L’arrivée ne suffit pas",
+              "paragraphs": [
+                "Avec trois tours, l’Agent passe en C, D puis E et pose une planche sur chacune de ces cases. Il termine en E, vers la droite. F reste vide : le passage n’atteint pas la rive G.",
+                "Avec quatre tours, il couvre C, D, E et F et termine en F, vers la droite. Les quatre cases d’eau sont couvertes ; le personnage peut passer de A à G.",
+                "Avec trois avancer suivis d’un seul placer, l’Agent termine aussi en E, mais seule E reçoit une planche. La position finale ne dit donc pas à elle seule quelles cases ont été construites."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Garder la correction et son explication",
+          "paragraphs": [
+            "Dans ton carnet, garde le dessin du passage, le nombre initial de tours, la première case manquante et ta correction. Ajoute une capture lisible des blocs du niveau 7 et son adresse pour pouvoir les reconstruire.",
+            "Note ce que tu as observé après Réinitialiser : cases construites, arrivée de l’Agent et traversée du personnage. Avec un compte Code.org, vérifie aussi que tu retrouves tes blocs en rouvrant le niveau."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Avancer change la position ; placer une planche change le terrain sous l’Agent.",
+        "Le passage du personnage doit être continu, même si l’Agent peut traverser l’eau.",
+        "Le nombre de répétitions se justifie par les cases à construire depuis le départ choisi.",
+        "Une correction se vérifie depuis le terrain initial, en comparant la prévision, les cases couvertes et la traversée.",
+        "Deux programmes peuvent donner la même arrivée et construire des passages différents."
+      ],
+      "teacherGuide": {
+        "objective": "Faire suivre position et terrain modifié, localiser un arrêt prématuré de répétition et vérifier le résultat du point de vue du joueur.",
+        "entryDiagnosis": [
+          "Faire suivre un tour avancer puis placer. Demander ce qui change dans la position et dans le terrain.",
+          "Après Scratch, abréger le rappel de boucle, mais vérifier la différence entre Agent programmé et joueur au clavier. Demander une trace du terrain, pas seulement une arrivée."
+        ],
+        "preparation": [
+          "Ouvrir Hero 6 et 7. Les palettes inventoriées contiennent déplacements, virages, planches et répétitions. Hero 7 fournit répéter 3 fois avec avancer puis placer ; la pile est partiellement verrouillée, le nombre est modifiable.",
+          "Préparer un pion et un dessin. La bande A à G est un exercice original, distinct des cartes Code.org ; la solution quatre tours concerne seulement cette bande.",
+          "Le moteur officiel place sur la position actuelle de l’Agent. Les cartes de référence agent06 et agent07 ont les mêmes départs que les configurations inventoriées. Elles demandent respectivement trois et cinq placements droits depuis ces départs ; compter les cases du niveau affiché avant d’accompagner une réponse.",
+          "La consultation des sources confirme les mécanismes et restrictions ; aucune nouvelle exécution complète de Hero 6 ou 7 n’est revendiquée. Conserver capture et carnet pour la reprise."
+        ],
+        "why": "La trace doit inclure le monde modifié. Arriver de l’autre côté avec l’Agent ne prouve ni continuité du pont ni possibilité de traversée pour le joueur.",
+        "discoverySpeech": [
+          "Montre où sera l’Agent, puis marque la case qui recevra la planche. Qu’est-ce qui change après chacune des deux actions ?",
+          "À quelle case le pont s’arrête-t-il ? Quel nombre de tours faut-il prévoir pour rejoindre l’autre rive ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-passage",
+            "blockId": "premier-essai"
+          },
+          "comments": [
+            "Faire nommer déplacement et construction séparément. Placer une planche ne déplace pas l’Agent.",
+            "Après Reset, les constructions de l’essai précédent doivent être effacées avant la nouvelle comparaison. Le programme est conservé."
+          ]
+        },
+        "questions": [
+          {
+            "question": "L’Agent atteint l’autre côté. Le pont est-il forcément terminé ?",
+            "answer": "Non. Il traverse l’eau ; le joueur a besoin d’un chemin praticable continu. Faire montrer les cases et essayer la traversée au clavier."
+          },
+          {
+            "question": "Que donne le programme initial sur la bande A à G ?",
+            "answer": "Trois déplacements et trois placements : C, D et E sont couvertes, arrivée E vers la droite. F manque. Quatre tours couvrent C à F et donnent F vers la droite."
+          },
+          {
+            "question": "Que révèle la variante trois avancer puis un seul placer ?",
+            "answer": "Même arrivée E et même orientation que le programme initial, mais seule E est couverte. Comparer seulement l’arrivée laisserait passer cette erreur."
+          },
+          {
+            "question": "Comment réparer Hero 7 sans déplacer les blocs verrouillés ?",
+            "answer": "Conserver avancer puis placer et ajuster le nombre de tours aux cases d’eau à couvrir. La carte de référence demande cinq tours, contre trois fournis ; vérifier ce compte sur la carte affichée."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-passage",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-passage",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Accepter une trace dessinée ou orale. Marquer une planche après chaque déplacement sans imposer une rédaction longue.",
+          "Pour un débutant, faire suivre un tour puis deux avant de compter tout le passage.",
+          "Pour un élève avancé, demander pourquoi même position finale ne garantit pas même construction ; conserver le défi sans afficher sa réponse.",
+          "Pendant le stage, ouvrir le premier essai ou la recherche de case manquante au moment du besoin, puis revenir au travail du groupe."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "L’élève croit que placer construit devant l’Agent.",
+            "helps": [
+              "Faire observer un seul déplacement suivi d’un placement.",
+              "Marquer la case occupée au moment de placer."
+            ]
+          },
+          {
+            "symptom": "L’élève compte la rive comme une planche manquante.",
+            "helps": [
+              "Distinguer les cases d’eau et les rives déjà praticables.",
+              "Suivre chaque tour depuis le départ réel, avant de modifier le nombre."
+            ]
+          },
+          {
+            "symptom": "L’élève essaie de détacher les commandes verrouillées du niveau 7.",
+            "helps": [
+              "Lire le motif fourni et vérifier ce qu’il construit en un tour.",
+              "Faire modifier le nombre de répétitions pour compléter le passage."
+            ]
+          },
+          {
+            "symptom": "L’élève déclare le pont correct parce que l’Agent est arrivé.",
+            "helps": [
+              "Faire montrer chaque case entre les deux rives.",
+              "Repartir avec Reset puis vérifier la traversée d’Alex ou Steve au clavier."
+            ]
+          }
+        ],
+        "notes": "Distinguer correction expliquée et nombre trouvé au hasard. Une capture et une case cochée ne prouvent pas la compréhension ; demander une prévision des cases couvertes et une vérification depuis le départ.",
+        "quickConductor": [
+          "Séparer déplacement et construction sur un tour.",
+          "Prévoir puis construire le pont du niveau 6.",
+          "Lire les trois tours fournis au niveau 7 avant de modifier.",
+          "Repérer le manque, régler le nombre et vérifier après Reset.",
+          "Transférer sur la bande originale et comparer terrain et arrivée.",
+          "Conserver la correction et les observations."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Hero’s Journey, niveau 6",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/6"
+          },
+          {
+            "title": "Code.org : Hero’s Journey, niveau 7",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/7"
+          },
+          {
+            "title": "Moteur officiel : placement sur la position de l’entité",
+            "url": "https://github.com/code-dot-org/craft/blob/main/src/js/game/LevelMVC/LevelModel.js"
+          }
+        ]
+      }
+    },
+    "minecraft-procedures": {
+      "domainId": "jeux-video",
+      "title": "Lire une procédure avant de l’appeler",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Lire une procédure fournie et prévoir sa position finale, sa direction et ses constructions pour choisir et enchaîner les appels.",
+      "tool": {
+        "label": "Ouvrir Hero’s Journey, niveau 8 sur Code.org",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/8"
+      },
+      "skillIds": [
+        "minecraft.trace",
+        "minecraft.construction",
+        "minecraft.procedure"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.trace",
+          "expectation": "Suivre la position et la direction entre deux actions ou deux tours de boucle."
+        },
+        {
+          "skillId": "minecraft.construction",
+          "expectation": "Prévoir où l’Agent place les blocs et vérifier le terrain construit."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Avant de commencer",
+          "text": "Ouvre le niveau 8 et prépare ton carnet. Les blocs commandent l’Agent ; les flèches déplacent Alex ou Steve après Exécuter. Tu vas lire des groupes de commandes déjà fournis pour choisir où les utiliser."
+        },
+        {
+          "type": "lesson",
+          "id": "entree-scratch",
+          "title": "Tu connais les blocs personnalisés de Scratch ?",
+          "paragraphs": [
+            "Si tu sais déjà distinguer une définition et un appel, commence par prévoir l’appel dans Hero 8. Lis quand même toute la définition fournie, jusqu’au dernier virage, et repère le petit bloc vert portant le même nom : c’est l’appel à accrocher sous le départ. Suis la direction et le terrain après chaque appel pour préparer le suivant.",
+            "Si tu découvres les procédures, poursuis avec La définition et l’appel juste en dessous."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-procedures",
+            "blockId": "lire-huit",
+            "label": "Prévoir l’effet de la procédure fournie"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "definition-appel",
+          "title": "La définition et l’appel",
+          "paragraphs": [
+            "Une procédure est un groupe de commandes auquel on donne un nom. Code.org utilise aussi le mot fonction. Dans ce chapitre, ces groupes font agir l’Agent sans fournir de valeur en retour.",
+            "Au niveau 8, repère la grande définition nommée construire un pont, ou build bridge en anglais. Lis les commandes placées à l’intérieur : elles décrivent ce que fait ce groupe. La définition reste à part dans l’espace de travail.",
+            "Le petit bloc vert portant ce nom est un appel. Prends-le dans la palette et accroche-le sous le bloc de départ : quand le programme atteint cet appel, il exécute les commandes de la définition, puis continue après l’appel. Une définition posée à côté ne lance pas toute seule ses commandes."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "lire-huit",
+          "title": "Prévoir un appel dans Hero 8",
+          "intro": "Avant de lancer, observe la position de l’Agent et la direction qu’il regarde. Lis la définition jusqu’à sa dernière commande.",
+          "items": [
+            {
+              "id": "mc04-commandes",
+              "text": "Dans ton carnet, relève les déplacements, les placements et le dernier virage de la procédure. Quelles cases recevront une planche ?",
+              "hints": [
+                "Pour chaque avancer, déplace une flèche sur ton dessin. Pour chaque placer, marque la case occupée.",
+                "Compte séparément les déplacements et les placements : toutes les cases traversées ne reçoivent pas une planche."
+              ]
+            },
+            {
+              "id": "mc04-fin-appel",
+              "text": "Avec un seul appel sous le départ, prévois l’arrivée et la direction finale de l’Agent. Lance puis compare. Le virage final change-t-il la case ?",
+              "hint": "Le dernier virage prépare la direction du prochain appel ; il ne construit pas et ne déplace pas l’Agent."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "raccorder",
+          "title": "Le deuxième appel reprend l’état obtenu",
+          "paragraphs": [
+            "Après ton premier essai, note où se trouve l’Agent et dans quelle direction il regarde. Le nom construire un pont ne décrit pas à lui seul tous ces effets : la définition contient aussi des déplacements et un virage.",
+            "Prévois maintenant un deuxième appel de la même procédure, juste après le premier. Son point de départ sera l’arrivée du premier appel, avec la nouvelle direction. Marque les cases du deuxième groupe sur ton dessin.",
+            "Clique sur Réinitialiser (Reset), garde le premier appel et accroche le deuxième à sa suite sous le départ. Lance depuis le terrain initial. Les définitions fournies restent en place : tu composes ton programme avec les petits blocs d’appel."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Vérifier le raccord des deux appels",
+          "items": [
+            {
+              "id": "mc04-deux-appels",
+              "text": "Compare les deux constructions et la direction finale avec ton dessin. Pourquoi le deuxième groupe ne continue-t-il pas tout droit ?",
+              "hint": "Repars de la dernière commande du premier appel : elle a changé la direction de l’Agent."
+            },
+            {
+              "id": "mc04-joueur",
+              "text": "Après Exécuter, clique dans le jeu puis utilise les flèches pour guider ton personnage jusqu’à la torche. Vérifie le passage construit, pas seulement l’arrivée de l’Agent."
+            },
+            {
+              "id": "mc04-avant-apres",
+              "text": "Pour chacun des deux appels, décris le départ, l’arrivée, la direction finale et les cases construites. Utilise ton dessin pour montrer le raccord."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau-dix",
+          "title": "Choisir une procédure courte ou longue",
+          "paragraphs": [
+            "Ouvre le niveau 10 avec le lien ci-dessous. Deux définitions sont fournies : réparer le chemin court et réparer le chemin long, ou fix short path et fix long path. Lis leurs commandes avant de choisir les appels. Leurs définitions sont verrouillées.",
+            "Elles répètent le groupe détruire, avancer, placer un rail. Détruire enlève un bloc destructible devant l’Agent ; avancer l’amène sur la case dégagée ; placer pose le rail sur sa case actuelle. Suis ces trois actions sur le premier tronçon du niveau.",
+            "Compare les nombres de répétitions et cherche si une des procédures contient un virage. Repère sur la carte les tronçons à réparer et les changements de direction nécessaires. Tu peux placer des déplacements et des virages disponibles avant, entre ou après les appels."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Hero’s Journey, niveau 10 dans un autre onglet",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/10"
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "choisir-dix",
+          "title": "Préparer et essayer ton enchaînement",
+          "items": [
+            {
+              "id": "mc04-dix-lire",
+              "text": "Pour chaque procédure de Hero 10, prévois le nombre de déplacements et de rails posés, puis la direction finale. Quelle différence observes-tu avec la procédure de Hero 8 ?",
+              "hint": "Regarde la dernière commande de chaque définition. Le nom d’une procédure ne dit pas si elle tourne."
+            },
+            {
+              "id": "mc04-dix-raccord",
+              "text": "Sur ton dessin de la carte, choisis une procédure pour chaque tronçon. Avant chaque appel, indique la position et la direction nécessaires. Ajoute les commandes de raccord utiles.",
+              "hints": [
+                "Compte les cases du tronçon dans la direction regardée par l’Agent.",
+                "Un appel commence depuis l’état courant. Un virage ou un déplacement de raccord doit être une commande de ton programme s’il n’est pas dans la procédure."
+              ]
+            },
+            {
+              "id": "mc04-dix-verifier",
+              "text": "Lance depuis le départ. Compare les rails et la position aux prévisions, puis guide ton personnage jusqu’au briquet. Si le résultat diffère, repère le premier appel ou raccord concerné avant de modifier et de relancer après Reset."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "defi-papier",
+          "title": "Prévoir deux appels sur une grille",
+          "paragraphs": [
+            "Sur cette grille originale, le pion commence en B5 vers le nord. Les cases B4, B3, C3 et D3 sont de l’eau. Les autres cases sont praticables. Le passage à construire relie B5 à E3 en passant par ces quatre cases d’eau.",
+            "Pour ce dessin, la procédure tronçon est définie ci-dessous. Avancer déplace d’une case dans la direction regardée. Placer une planche couvre la case d’eau occupée ; sur une case déjà praticable, cela ne change pas le passage. Tourner à droite fait un quart de tour sur place."
+          ],
+          "illustration": {
+            "src": "images/minecraft-procedures.svg",
+            "alt": "Grille A à E et 1 à 5. Départ B5 vers le nord. L’eau occupe B4, B3, C3 et D3. L’arrivée visée est E3.",
+            "caption": "Départ B5, nord. Observe aussi la direction entre les appels."
+          },
+          "filename": "Définition",
+          "code": "définir tronçon\n  répéter 2 fois\n    avancer\n    placer une planche\n  tourner à droite"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Choisir d’après l’état de départ",
+          "intro": "Travaille sur le dessin et la définition tronçon ci-dessus. Prévois sur papier avant de suivre les actions avec ton pion.",
+          "items": [
+            {
+              "id": "mc04-papier-un",
+              "text": "Depuis B5 nord, prévois un appel de tronçon. Note l’arrivée, la direction finale et les cases couvertes.",
+              "hint": "Suis les deux tours, puis le virage qui se trouve après la boucle."
+            },
+            {
+              "id": "mc04-papier-deux",
+              "text": "Enchaîne un deuxième appel de tronçon, sans remise au départ. Le passage jusqu’à E3 est-il continu ? Où finit l’Agent, et vers où regarde-t-il ?",
+              "hint": "Le deuxième appel démarre là où le premier s’est terminé, avec sa direction finale."
+            },
+            {
+              "id": "mc04-papier-invalide",
+              "text": "Repars du dessin initial, en B5 mais vers l’est. Prévois un seul appel. Couvre-t-il les mêmes cases d’eau ? Quelle commande faudrait-il ajouter avant cet appel pour retrouver le bon départ ?",
+              "hint": "Compare la direction actuelle à celle requise pour atteindre B4 en avançant."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "comparaison-papier",
+          "title": "Comparer après tes prévisions",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-papier",
+              "title": "Le départ compte autant que la définition",
+              "paragraphs": [
+                "Le premier appel couvre B4 puis B3, termine en B3 et tourne vers l’est. Le deuxième couvre C3 puis D3, termine en D3 et tourne vers le sud. Les quatre cases d’eau sont couvertes ; le passage B5, B4, B3, C3, D3, E3 est continu. L’Agent n’a pas besoin de terminer lui-même en E3 pour que ce passage existe.",
+                "Depuis B5 vers l’est, un seul appel passe par C5 et D5, puis termine en D5 vers le sud. Ces cases étaient déjà praticables : le passage d’eau reste à construire. Avant l’appel, un virage à gauche aurait rétabli B5 nord.",
+                "La définition reste la même dans ces essais. Son effet dépend de la position, de la direction et du terrain au moment de l’appel."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Conserver l’enchaînement et ses raccords",
+          "paragraphs": [
+            "Garde dans ton carnet l’adresse de Hero 10, un dessin des tronçons et une capture lisible des appels avec leurs commandes de raccord. Note aussi l’effet de chaque procédure et ce que tu as observé après Reset.",
+            "Pour reconstruire ton programme, tu pourras relire les définitions fournies et reprendre tes appels depuis la capture. Avec un compte Code.org, vérifie la reprise en rouvrant le niveau."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "La définition décrit les commandes ; l’appel les fait exécuter à cet endroit du programme.",
+        "Le nom d’une procédure ne suffit pas à prévoir ses déplacements, virages et constructions.",
+        "Un appel reprend la position, la direction et le terrain laissés par les commandes précédentes.",
+        "Le raccord entre deux appels se prépare en lisant les définitions et en suivant l’état obtenu.",
+        "Une même procédure ne construit pas forcément le même passage depuis une autre direction."
+      ],
+      "teacherGuide": {
+        "objective": "Faire lire les effets d’une procédure et prévoir ses conditions de départ et son état final avant de composer les appels.",
+        "entryDiagnosis": [
+          "Demander à l’élève de montrer définition et appel dans Hero 8. Après Scratch, réutiliser la distinction définir/appeler sans imposer un second cours de création de bloc.",
+          "Faire suivre la direction après le dernier bloc de la définition. Si les rotations restent difficiles, reprendre une trace de la mission 1."
+        ],
+        "preparation": [
+          "Hero 8 fournit build bridge : avancer, placer une planche, avancer, placer une planche, avancer, avancer, tourner à droite. La définition et ses commandes sont verrouillées ; la palette fournit l’appel. Les deux appels se placent sous le départ, pas dans la définition.",
+          "Hero 10 fournit fix short path et fix long path, respectivement deux et trois répétitions de détruire, avancer, placer un rail. Les deux définitions sont verrouillées et ne contiennent aucun virage. La palette propose les commandes de raccord et les appels ; aucun paramètre n’est à créer.",
+          "Hero 9 n’est pas requis : les actions détruire devant puis avancer et placer sont expliquées à l’entrée de Hero 10. Prévoir un premier suivi de ce motif pour un débutant.",
+          "L’inventaire des configurations est réutilisé. La destruction vise le bloc devant l’entité dans le moteur officiel ; le placement concerne sa position actuelle. Aucune nouvelle exécution complète des puzzles n’est revendiquée.",
+          "Le défi sur grille est original. Sa procédure tronçon contient deux déplacements, deux placements et un virage ; elle est distincte de celle de Hero 8. Préparer un pion orienté et des marques pour les cases couvertes."
+        ],
+        "why": "L’apport après Scratch porte sur les raccords : un appel n’est pas une commande qui retrouve automatiquement son départ et son orientation. Le terrain modifié fait aussi partie de l’état à suivre.",
+        "discoverySpeech": [
+          "Montre la définition et le petit bloc qui l’appelle. Que fait l’Agent quand le programme rencontre cet appel ?",
+          "Où et dans quelle direction se termine le premier appel ? Le deuxième peut-il commencer ainsi sur le tronçon que tu vises ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-procedures",
+            "blockId": "lire-huit"
+          },
+          "comments": [
+            "Hero 8 : chaque appel exécute quatre déplacements, deux placements et un virage à droite. Le deuxième poursuit depuis l’arrivée et la nouvelle orientation, sans remise à zéro.",
+            "Vérifier la trace sur la carte affichée ; le nom construire un pont ne précise pas le virage ni les deux déplacements sans placement."
+          ]
+        },
+        "questions": [
+          {
+            "question": "La définition reste à côté du départ. S’exécute-t-elle toute seule ?",
+            "answer": "Non. Un appel atteint dans le programme déclenche ses commandes. Au retour, le programme poursuit après cet appel."
+          },
+          {
+            "question": "Les procédures de Hero 10 tournent-elles comme celle de Hero 8 ?",
+            "answer": "Non. Elles répètent deux ou trois fois détruire devant, avancer, placer un rail, sans rotation. Un virage de raccord doit être ajouté dans le programme si le tracé l’exige."
+          },
+          {
+            "question": "Que donnent deux appels de tronçon sur le dessin original ?",
+            "answer": "Depuis B5 nord : B4 et B3 couvertes, fin B3 est ; puis C3 et D3 couvertes, fin D3 sud. Le passage jusqu’à E3 est continu."
+          },
+          {
+            "question": "Que change le départ B5 est pour un appel ?",
+            "answer": "Arrivée D5 sud, sans couvrir les quatre cases d’eau visées. Un virage à gauche avant l’appel rétablit le départ B5 nord."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-procedures",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-procedures",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Accepter un tableau dessiné ou une explication orale : départ, arrivée, direction, terrain. Lire les commandes si la lecture freine le raisonnement.",
+          "Pour un débutant, suivre les actions d’un seul appel avant de composer deux appels.",
+          "Après Scratch, demander directement la trace et un mauvais état de départ. La syntaxe de définition n’est pas l’objectif de ce chapitre.",
+          "Pendant le stage, ouvrir la lecture d’une procédure ou le défi du raccord au moment où le besoin apparaît, puis revenir au projet du groupe."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La définition est présente mais l’Agent ne construit rien.",
+            "helps": [
+              "Repérer les appels sous le départ.",
+              "Vérifier qu’un appel est accroché au programme, puis relancer après Reset."
+            ]
+          },
+          {
+            "symptom": "Le deuxième appel est prévu depuis le départ initial.",
+            "helps": [
+              "Marquer l’arrivée et la direction après le premier appel.",
+              "Reprendre la définition depuis cet état, sans remettre le pion au départ."
+            ]
+          },
+          {
+            "symptom": "L’élève ajoute un virage en supposant que toutes les procédures tournent.",
+            "helps": [
+              "Comparer les dernières commandes de Hero 8 et Hero 10.",
+              "Tracer l’orientation après chaque appel avant d’ajouter un virage de raccord."
+            ]
+          },
+          {
+            "symptom": "L’élève veut réécrire la définition verrouillée pour l’adapter.",
+            "helps": [
+              "Lire la définition fournie jusqu’au bout.",
+              "Choisir le bon appel et préparer sa position ou sa direction avec les commandes disponibles."
+            ]
+          }
+        ],
+        "notes": "Une réussite du puzzle ou un appel placé ne suffit pas à montrer la compréhension. Demander le raccord expliqué et une prévision depuis une autre direction. La grille fournit un transfert indépendant de la carte Code.org.",
+        "quickConductor": [
+          "Distinguer définition et appel sur Hero 8.",
+          "Faire prévoir puis essayer un appel, et ensuite deux.",
+          "Lire les deux procédures de Hero 10 et préparer les raccords.",
+          "Prévoir les deux appels du dessin original, puis changer la direction initiale.",
+          "Conserver les effets et les appels avec leurs raccords."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Hero’s Journey, niveau 8",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/8"
+          },
+          {
+            "title": "Code.org : Hero’s Journey, niveau 10",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/10"
+          }
+        ]
+      }
+    },
+    "minecraft-motifs": {
+      "domainId": "jeux-video",
+      "title": "Composer un motif avec des boucles",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Emboîter deux répétitions, extraire un tronçon dans une procédure et prévoir les rails posés ainsi que l’état final de l’Agent.",
+      "tool": {
+        "label": "Ouvrir Hero’s Journey, niveau 12 sur Code.org",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+      },
+      "skillIds": [
+        "minecraft.repetition",
+        "minecraft.composition",
+        "minecraft.procedure",
+        "minecraft.comparison"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.repetition",
+          "expectation": "Suivre le motif complet et l’état obtenu à chaque tour."
+        },
+        {
+          "skillId": "minecraft.procedure",
+          "expectation": "Distinguer définition et appel, puis suivre la position et la direction entre deux appels."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Préparer Hero 12",
+          "text": "Ouvre le niveau 12, un espace de construction libre. Les blocs commandent l’Agent. Si tu as déjà travaillé ici, conserve une capture de tes blocs, puis retire les commandes accrochées au départ. Garde les deux définitions fournies. Clique sur Réinitialiser (Reset) pour retrouver le terrain et l’Agent au départ."
+        },
+        {
+          "type": "lesson",
+          "id": "entree-experimentee",
+          "title": "Tu sais déjà suivre deux boucles emboîtées ?",
+          "paragraphs": [
+            "Après la préparation de Hero 12, tu peux commencer par écrire le tronçon dans une définition. Tu travailleras les appels, la place des virages et la différence entre l’arrivée de l’Agent et les rails construits. Si tu hésites sur le nombre d’actions dans deux boucles, fais d’abord la comparaison ci-dessous avec une répétition de six."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-motifs",
+            "blockId": "definir-troncon",
+            "label": "Composer le motif avec une définition et ses appels"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "deux-boucles",
+          "title": "Répéter un groupe qui contient une boucle",
+          "paragraphs": [
+            "Dans la palette, prends une répétition et place une seconde répétition à l’intérieur. Règle celle du dehors sur 2 et celle du dedans sur 3. Dans la boucle intérieure, place poser un rail, puis avancer. Sous le départ, ajoute tourner à droite avant ces boucles.",
+            "L’écriture ci-dessous décrit les blocs à assembler. À chaque tour de la boucle extérieure, la boucle intérieure recommence ses trois tours. Une fois ce groupe terminé, le programme passe au tour extérieur suivant."
+          ],
+          "filename": "Programme",
+          "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    répéter 3 fois\n      placer un rail\n      avancer"
+        },
+        {
+          "type": "tasks",
+          "id": "compter",
+          "title": "Prévoir la ligne avant de lancer",
+          "items": [
+            {
+              "id": "mc05-produire",
+              "text": "Depuis le départ initial, prévois le nombre de placements et de déplacements. Dessine les cases qui recevront un rail et l’arrivée de l’Agent. Lance, puis utilise la flèche droite sous le jeu pour avancer Alex ou Steve le long des rails. La vue suit ton personnage : avance jusqu’à voir le dernier rail et l’Agent, puis compare avec ton dessin.",
+              "hints": [
+                "Un tour extérieur contient trois placements et trois déplacements. Il y a deux tours extérieurs.",
+                "Placer vient avant avancer : le premier rail est sur la case de départ. Après le dernier déplacement, l’Agent se trouve une case après le dernier rail posé."
+              ]
+            },
+            {
+              "id": "mc05-comparer-six",
+              "text": "Conserve une capture de cette version. Remplace les deux répétitions par une seule répétition de 6 contenant placer un rail puis avancer. Garde le virage initial. Prévois si le tracé et l’arrivée changent, puis essaie après Reset. Suis de nouveau les rails avec ton personnage pour observer l’arrivée.",
+              "hint": "Déroule les actions des deux versions. Aucune commande ne sépare ici les groupes de trois."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "comparer",
+          "title": "Quand les groupes ont-ils un intérêt ?",
+          "paragraphs": [
+            "Dans ces deux versions, placer puis avancer est exécuté six fois dans la même direction. Tu obtiens six rails et six déplacements. Les deux boucles ne réduisent ici ni le travail de l’Agent ni le nombre de blocs à écrire par rapport à la répétition simple.",
+            "Pour former un angle, il faut changer la direction entre les groupes. Tu vas garder un tronçon de trois rails dans une procédure et placer les virages dans le programme qui l’appelle."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "definir-troncon",
+          "title": "Écrire le tronçon dans une définition",
+          "paragraphs": [
+            "Dans Hero 12, les deux définitions peuvent recevoir tes commandes. Repère la première, appelée fonction 1 ou function 1. Remplace son contenu par une répétition de 3 contenant placer un rail puis avancer. Cette définition reste séparée du départ.",
+            "Nous appelons ce groupe tronçon dans les exemples. Dans Code.org, garde le nom visible de ta première définition et prends le petit bloc d’appel portant ce même nom."
+          ],
+          "filename": "Première définition",
+          "code": "définir tronçon\n  répéter 3 fois\n    placer un rail\n    avancer"
+        },
+        {
+          "type": "lesson",
+          "id": "appeler-angle",
+          "title": "Faire tourner le programme entre les tronçons",
+          "paragraphs": [
+            "Prépare le programme sous le départ : tourner à droite, puis une répétition de 2 contenant l’appel de ta première procédure suivi de tourner à gauche. Si tu avais construit la ligne de six rails, cette répétition remplace celle de 6. La boucle de 3 reste dans la définition : le programme principal appelle ce groupe au lieu de recopier ses commandes.",
+            "Avant de lancer, marque l’arrivée du premier appel et sa direction après le virage. Le second appel commencera dans cet état. Réinitialise le terrain, puis lance. Le dernier virage se fait aussi : il suit le second appel."
+          ],
+          "filename": "Programme principal",
+          "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    appeler tronçon\n    tourner à gauche"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Vérifier la composition",
+          "items": [
+            {
+              "id": "mc05-angle",
+              "text": "Avec les flèches sous le jeu, déplace Alex ou Steve le long des rails pour voir les deux tronçons et l’Agent. Compare avec ton dessin. Pourquoi les deux tronçons forment-ils un angle ? La procédure contient-elle elle-même un virage ?",
+              "hint": "La définition construit droit. Le virage est dans la boucle extérieure, après l’appel."
+            },
+            {
+              "id": "mc05-dernier-virage",
+              "text": "Note la direction finale de l’Agent et sa position par rapport au dernier rail. Explique l’effet du dernier avancer, puis du dernier tourner à gauche.",
+              "hint": "Placer puis avancer laisse l’Agent après le rail posé. Le virage suivant change sa direction, sans changer sa case."
+            },
+            {
+              "id": "mc05-reutiliser",
+              "text": "Montre où modifier le nombre de rails de chaque tronçon et où modifier le nombre d’appels. Explique ce que devient le total si chaque appel construit deux rails et si le programme fait toujours deux appels.",
+              "hint": "Le nombre de tours dans la définition agit à chaque appel. Deux appels de deux placements donnent quatre placements."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "defi-papier",
+          "title": "Tracer un motif compact",
+          "paragraphs": [
+            "Sur cette grille originale, toutes les cases sont praticables. Le pion commence en B4 vers le nord. Placer un rail marque sa case actuelle ; avancer le déplace d’une case dans la direction regardée. Un virage fait un quart de tour sur place.",
+            "Pour ce défi, la définition tronçon contient deux tours, comme ci-dessous. Utilise un pion orienté et marque les rails sur ton dessin."
+          ],
+          "illustration": {
+            "src": "images/minecraft-motifs.svg",
+            "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5. Toutes les cases sont praticables. Le pion commence en B4 vers le nord.",
+            "caption": "Départ B4, nord. Marque séparément les rails et l’arrivée."
+          },
+          "filename": "Définition du défi",
+          "code": "définir tronçon\n  répéter 2 fois\n    placer un rail\n    avancer"
+        },
+        {
+          "type": "lesson",
+          "id": "programme-papier",
+          "title": "Prévoir les appels et les virages",
+          "paragraphs": [
+            "Exécute sur papier ce programme avec la définition du défi. Le virage initial fait partie de la trace."
+          ],
+          "filename": "Programme du défi",
+          "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    appeler tronçon\n    tourner à gauche"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Distinguer le tracé et l’état final",
+          "intro": "Prévois avant de déplacer ton pion, puis suis chaque commande pour vérifier.",
+          "items": [
+            {
+              "id": "mc05-papier-trace",
+              "text": "Depuis B4 nord, relève les cases recevant un rail et l’état après chaque appel suivi de son virage. Combien de placements et de déplacements sont exécutés au total ?",
+              "hint": "Le virage initial oriente le pion vers l’est. Deux appels exécutent chacun deux fois placer puis avancer."
+            },
+            {
+              "id": "mc05-papier-sans-final",
+              "text": "Un camarade garde le virage entre les deux appels mais retire seulement celui qui suit le deuxième. Les rails changent-ils ? Compare la position et la direction finales.",
+              "hint": "Le virage retiré vient après tous les placements et tous les déplacements."
+            },
+            {
+              "id": "mc05-papier-inverser",
+              "text": "Repars du dessin initial. Dans la définition seulement, inverse les deux commandes : avancer puis placer un rail. Garde tous les virages du programme. Prévois les rails, la position et la direction finales. Une même arrivée prouve-t-elle que le tracé est identique ?",
+              "hint": "Suis les mêmes déplacements, mais marque un rail après chaque déplacement. Le départ reçoit-il encore un rail ?"
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "comparaison-papier",
+          "title": "Comparer après tes prévisions",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-papier",
+              "title": "Les rails et l’Agent ne racontent pas la même chose",
+              "paragraphs": [
+                "Avec placer puis avancer, le premier appel pose les rails en B4 et C4. Il termine en D4 ; le virage suivant oriente le pion au nord. Le second pose en D4 et D3, termine en D2, puis le dernier virage oriente le pion à l’ouest. Il y a quatre placements et quatre déplacements.",
+                "En retirant seulement le tout dernier virage, les rails et la position finale D2 restent identiques. Le pion regarde le nord au lieu de l’ouest.",
+                "Avec avancer puis placer dans la définition, les rails sont en C4, D4, D3 et D2. Le pion termine encore en D2 vers l’ouest. B4 ne reçoit plus de rail et D2 en reçoit un : même arrivée et même direction ne signifient pas même construction."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Conserver la définition avec ses appels",
+          "paragraphs": [
+            "Dans ton carnet, garde l’adresse de Hero 12, une capture de la définition et une autre du programme principal. Note le nombre de placements par appel, les raccords et l’état final observé après Reset.",
+            "Pour reprendre, tu dois pouvoir reconstruire la définition et les appels. Avec un compte Code.org, vérifie en rouvrant le niveau que tu retrouves ta propre version avant de fermer ton travail."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Deux répétitions de trois placements exécutent six placements ; la boucle intérieure recommence à chaque tour extérieur.",
+        "Emboîter deux boucles ne réduit pas automatiquement les actions exécutées ou les blocs écrits.",
+        "Une procédure conserve un motif, et son appel exécute ce motif depuis l’état courant.",
+        "La position d’un virage dans le programme détermine la direction du tronçon suivant et l’orientation finale.",
+        "Placer puis avancer et avancer puis placer peuvent donner la même arrivée avec des rails sur des cases différentes."
+      ],
+      "teacherGuide": {
+        "objective": "Faire composer deux niveaux de répétition, extraire un motif dans une procédure puis distinguer état final, tracé et coût d’exécution.",
+        "entryDiagnosis": [
+          "Demander l’effet d’un appel et l’état requis pour le suivant. Reprendre la mission 4 si l’élève remet mentalement l’Agent au départ entre les appels.",
+          "Faire expliquer deux répétitions de trois actions sur papier avant de manipuler les emboîtements si nécessaire."
+        ],
+        "preparation": [
+          "Hero 12 est libre. Deux définitions sans paramètres sont fournies et modifiables, avec leurs appels dans la palette. Les répétitions vont de 2 à 10 et peuvent être imbriquées. Aucun éditeur JavaScript ni paramètre n’est nécessaire.",
+          "Les constructions de référence ont déjà été exécutées lors de l’audit ciblé : deux groupes de trois rails en ligne, puis deux appels de la première procédure avec tourner à gauche après chaque appel. Les captures sont dans browser-artifacts/audit-minecraft-2026-10-18/hero12-boucles.png et hero12-procedure-angle.png. Cette intégration ne revendique pas de nouvelle exécution du jeu.",
+          "Les essais Hero 12 partent de l’état initial avec tourner à droite. Le terrain est remis à zéro entre versions. La vue suit Alex ou Steve : après exécution, utiliser les flèches sous le jeu pour suivre les rails et retrouver l’Agent. Le suivi de la vue et les commandes du joueur ont été vérifiés dans l’essai conservé de Hero 12 ; capture hero12-vue-joueur.png dans browser-artifacts/audit-minecraft-2026-10-18/. Le défi original compact sert au suivi case par case.",
+          "Conserver une capture des travaux déjà présents avant de retirer leurs commandes. Reset restaure le terrain et les personnages tout en gardant le programme ; Start Over concerne le retour aux blocs de départ.",
+          "La première définition est désignée tronçon dans les exemples CodeCraft. L’élève garde le nom fourni dans Code.org et utilise l’appel correspondant. La seconde définition n’intervient pas dans cette activité.",
+          "La grille originale utilise deux placements par appel, contre trois dans les premiers essais Hero 12. Préparer un pion orienté et quatre marques de rails. Toutes les cases du dessin sont praticables."
+        ],
+        "why": "Après Scratch, l’intérêt porte sur la composition : prévoir le nombre d’actions à travers deux boucles, distinguer le motif de son contexte d’appel et montrer que l’état final ne résume pas les constructions.",
+        "discoverySpeech": [
+          "Combien de fois la commande placer sera-t-elle exécutée ? Montre les tours extérieurs et les tours intérieurs.",
+          "Où placer le virage pour que le deuxième tronçon change de direction sans faire tourner chaque rail du premier ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-motifs",
+            "blockId": "appeler-angle"
+          },
+          "comments": [
+            "La définition contient répéter 3 fois, placer puis avancer. Le programme contient le virage initial à droite, puis répéter 2 fois, appeler puis tourner à gauche.",
+            "Six placements et six déplacements sont exécutés. Les deux virages de la boucle principale sont exécutés aussi. Depuis le départ initial nord, le premier tronçon est vers l’est, le second vers le nord et l’Agent finit orienté à l’ouest."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Pourquoi une seule boucle de six suffit-elle pour la première ligne ?",
+            "answer": "Les deux groupes de trois se suivent sans autre action entre eux. Ils exécutent la même suite de six motifs placer puis avancer. L’emboîtement n’apporte ici aucune réduction d’exécution ou d’écriture."
+          },
+          {
+            "question": "Où est le virage qui sépare les tronçons ?",
+            "answer": "Dans la boucle du programme principal, après l’appel. La définition construit droit. Ce virage est aussi exécuté après le dernier appel."
+          },
+          {
+            "question": "Que donne le programme du défi original ?",
+            "answer": "Rails B4, C4, D4, D3 ; quatre placements et quatre déplacements. Après le premier appel et le virage : D4 nord. Après le second et le virage : D2 ouest."
+          },
+          {
+            "question": "Que montre l’inversion avancer puis placer ?",
+            "answer": "Les rails sont C4, D4, D3, D2 et l’état final reste D2 ouest. Une arrivée et une direction identiques ne garantissent pas des constructions identiques."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-motifs",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-motifs",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Faire déplier les deux tours extérieurs dans un tableau, avec une ligne par placement et déplacement. Accepter un suivi oral ou avec un pion.",
+          "Si l’emboîtement bloque, faire d’abord construire un seul tronçon, puis l’envelopper dans la seconde répétition.",
+          "Après Scratch, concentrer l’échange sur le coût, les virages et le contre-exemple même arrivée, autres rails. La création d’une fonction avec paramètres n’est pas requise.",
+          "Pendant le stage, utiliser seulement la comparaison ou la trace utile au projet en cours, puis revenir à celui-ci."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "L’élève prévoit cinq placements avec deux boucles de deux et trois tours.",
+            "helps": [
+              "Dessiner les trois placements du premier tour extérieur.",
+              "Recommencer les trois placements au deuxième tour : les nombres ne s’additionnent pas."
+            ]
+          },
+          {
+            "symptom": "Les rails tournent à chaque case au lieu de former deux tronçons.",
+            "helps": [
+              "Repérer si le virage est entré dans la répétition intérieure.",
+              "Le placer après l’appel dans la boucle du programme principal, puis relancer après Reset."
+            ]
+          },
+          {
+            "symptom": "La définition est correcte mais rien ne se construit.",
+            "helps": [
+              "Repérer le petit bloc d’appel correspondant au nom de la définition.",
+              "Vérifier que l’appel est accroché sous le départ dans la boucle extérieure."
+            ]
+          },
+          {
+            "symptom": "L’élève annonce des constructions identiques parce que l’Agent finit au même endroit.",
+            "helps": [
+              "Marquer les rails au moment exact des placements.",
+              "Comparer B4 et D2 dans les deux versions du défi original."
+            ]
+          }
+        ],
+        "notes": "Hero 12 n’impose pas une solution ni une validation de ce motif. Demander la prévision, les cases construites et l’explication de l’état final. Les tests CodeCraft simulent les règles du défi original et ne constituent pas une recette du moteur Code.org.",
+        "quickConductor": [
+          "Prévoir puis essayer deux groupes de trois rails et comparer à une répétition de six.",
+          "Extraire le tronçon de trois dans la première définition.",
+          "Composer deux appels avec un virage à gauche après chaque appel.",
+          "Tracer le défi compact puis comparer le dernier virage et l’ordre des placements.",
+          "Conserver la définition et le programme d’appel ensemble."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Hero’s Journey, niveau 12",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+          }
+        ]
+      }
+    },
+    "minecraft-decisions": {
+      "domainId": "jeux-video",
+      "title": "Choisir une action selon le chemin",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Lire un test de chemin, prévoir quand il est vrai ou faux et choisir le moment de le vérifier dans une boucle jusqu’au but.",
+      "tool": {
+        "label": "Ouvrir Voyage Aquatic, niveau 7 sur Code.org",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/7"
+      },
+      "skillIds": [
+        "minecraft.trace",
+        "minecraft.repetition",
+        "minecraft.decision",
+        "minecraft.debugging"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.trace",
+          "expectation": "Suivre la case occupée et la direction après un déplacement ou un virage."
+        },
+        {
+          "skillId": "minecraft.repetition",
+          "expectation": "Lire toutes les actions d’un tour avant de recommencer le suivant."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Passer de Hero à Aquatic",
+          "text": "Ouvre le niveau 7 de Voyage Aquatic. Ici, les blocs pilotent directement Alex ou Steve, à pied ou en bateau selon la scène. Tu lances son trajet avec Exécuter : tu vas prévoir ses décisions dans le programme. Garde ton carnet pour noter sa case, sa direction et le résultat des tests."
+        },
+        {
+          "type": "lesson",
+          "id": "boucle-but",
+          "title": "Répéter jusqu’au but",
+          "paragraphs": [
+            "La boucle répéter jusqu’au but recommence ses commandes tant que l’objectif du niveau n’est pas atteint. Avant chaque nouveau tour, elle vérifie le but. Son nombre de tours dépend donc du trajet exécuté, au lieu d’être fixé à l’avance.",
+            "Repère l’objectif indiqué par le niveau et le personnage qui doit l’atteindre. Un obstacle devant lui ne signifie pas que le but est atteint : il faut encore que les commandes lui permettent de continuer."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "entree-experimentee",
+          "title": "Tu utilises déjà les conditions ?",
+          "paragraphs": [
+            "Après avoir lu la boucle jusqu’au but, tu peux passer à la décision d’Aquatic 7. Prévois un test vrai et un test faux depuis la case et la direction du personnage. Compare ensuite les ordres des commandes sur la grille, notamment depuis B3 nord. Si le rôle d’un si reste difficile, lis d’abord Un test pose une question."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-decisions",
+            "blockId": "lire-sept",
+            "label": "Prévoir la décision d’Aquatic 7"
+          }
+        },
+        {
+          "type": "details",
+          "id": "prise-en-main",
+          "title": "Essayer la boucle sur un trajet simple (facultatif)",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "reprendre-quatre",
+              "title": "Avancer jusqu’au dauphin",
+              "paragraphs": [
+                "Au niveau 4, place avancer dans la boucle jusqu’au but. Prévois ce qui fera arrêter les répétitions, puis lance. Reviens à cette page après l’essai pour poursuivre le niveau 7."
+              ],
+              "externalLink": {
+                "label": "Ouvrir Aquatic 4 dans un autre onglet",
+                "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/4"
+              }
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "condition",
+          "title": "Un test pose une question",
+          "paragraphs": [
+            "Le bloc si chemin à droite demande si le personnage peut passer sur la case voisine située à sa droite, depuis sa position et sa direction actuelles. Le résultat est vrai si le passage est possible, faux sinon. À droite se repère depuis le personnage : quand il tourne, la case testée change aussi.",
+            "Si le test est vrai, les commandes placées dans le si sont exécutées. S’il est faux, elles sont sautées et le programme continue après ce bloc. Le test seul ne déplace pas le personnage et ne le fait pas tourner.",
+            "Le menu du test permet de regarder devant, à droite ou à gauche. Lis la direction sélectionnée avant de prévoir sa réponse. Si tu connais les si de Scratch, retrouve ce même principe en suivant ici la case et l’orientation."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "lire-sept",
+          "title": "Compléter la décision dans Aquatic 7",
+          "paragraphs": [
+            "Le programme de départ contient une boucle jusqu’au but, avancer puis si chemin à droite. Si une ancienne version personnelle apparaît, garde une capture avant d’utiliser Recommencer (Start Over) pour retrouver ce programme.",
+            "Observe les ouvertures sur la carte. Place tourner à droite à l’intérieur du si. Lis maintenant le tour complet : le personnage avance, puis teste depuis la case où il vient d’arriver. Il tourne seulement si le passage à droite est possible."
+          ],
+          "filename": "Programme guidé",
+          "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si chemin à droite\n      tourner à droite"
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Prévoir une décision vraie et une fausse",
+          "items": [
+            {
+              "id": "mc06-sept-faux",
+              "text": "Sur ton dessin de la carte, suis le premier avancer. Quelle case est ensuite regardée par le test ? Note sa réponse et la commande qui sera exécutée ou sautée.",
+              "hint": "Le test vient après avancer. Place d’abord ton pion sur sa nouvelle case en conservant sa direction."
+            },
+            {
+              "id": "mc06-sept-vrai",
+              "text": "Poursuis jusqu’à une ouverture à droite. Prévois le virage et la direction du prochain avancer. Relève aussi une position où le test est faux.",
+              "hint": "Un test faux saute le virage. Il ne termine pas la boucle jusqu’au but."
+            },
+            {
+              "id": "mc06-sept-verifier",
+              "text": "Lance et compare le trajet à tes prévisions. Montre où le test devient vrai, où il est faux et ce qui arrête finalement la boucle. Avant un nouvel essai, utilise Réinitialiser (Reset)."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "moment-test",
+          "title": "Tester avant ou après le déplacement",
+          "paragraphs": [
+            "Avancer puis tester et tester puis avancer ne posent pas la question depuis la même case. Pour comparer les deux ordres, note la case et la direction au moment précis où le si est rencontré.",
+            "Sur ton dessin d’Aquatic 7, choisis un angle. Prévois quand chaque version y repère l’ouverture. Un changement d’ordre ne modifie pas forcément tout le trajet : il faut suivre les actions depuis le départ choisi pour le savoir. Tu compareras aussi ces ordres sur la grille plus bas."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "niveau-huit",
+          "title": "Reconstruire la décision sur une autre carte",
+          "paragraphs": [
+            "Ouvre Aquatic 8. Repère le départ, les passages et le poisson tropical à atteindre. Prévois les déplacements et les virages utiles avant de poser tes blocs.",
+            "Construis une boucle jusqu’au but avec un déplacement et un test de chemin. Choisis la direction regardée par le test et la rotation à exécuter si ce test est vrai. Les menus du test et du virage se règlent séparément : lis les deux.",
+            "Place les commandes dans l’ordre que tu peux justifier sur la carte. Marque la position où le test doit être effectué et la direction obtenue après son action."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Aquatic 8 dans un autre onglet",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/8"
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "transfert",
+          "title": "Expliquer avant de modifier",
+          "items": [
+            {
+              "id": "mc06-huit-prevoir",
+              "text": "Choisis une position où ta condition sera vraie et une autre où elle sera fausse. Pour chacune, montre la case testée et annonce l’action suivante.",
+              "hint": "Lis la direction du personnage, puis celle choisie dans le menu du test. Un virage est une autre commande."
+            },
+            {
+              "id": "mc06-huit-verifier",
+              "text": "Lance depuis le départ. Si le trajet diffère, relève la première position concernée : est-ce le déplacement, la direction du test ou le virage qui ne correspond pas à ta prévision ? Corrige puis relance après Reset.",
+              "hint": "Reprends un seul tour de boucle à partir de la position précédant l’écart."
+            },
+            {
+              "id": "mc06-huit-arret",
+              "text": "Quand tu atteins l’objectif, explique pourquoi la boucle s’arrête. Compare cette raison à ce qui se passe lorsqu’un si chemin est faux."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "defi-papier",
+          "title": "Décider sur une grille",
+          "paragraphs": [
+            "Sur cette grille originale, les cases praticables sont B5, B4, B3, C3, D3, D4 et D5. Toutes les autres sont bloquées. Le départ est B5 vers le nord et le but est D5.",
+            "Avancer déplace d’une case devant le pion ; tourner à droite fait un quart de tour sur place. Si chemin à droite regarde la case voisine à droite du pion et exécute son contenu seulement si elle est praticable. Si avancer viserait une case bloquée, arrête ta trace et note le blocage.",
+            "La boucle vérifie avant chaque tour si le pion est au but. Si c’est le cas, elle ne commence pas de nouveau tour. Suis le programme A sur ton dessin."
+          ],
+          "illustration": {
+            "src": "images/minecraft-decisions.svg",
+            "alt": "Grille A à E et 1 à 5. Chemin en B5, B4, B3, C3, D3, D4 et D5. Départ B5 nord, but D5. Toutes les autres cases sont bloquées.",
+            "caption": "Départ B5, nord. Le test dépend de la case et de la direction."
+          },
+          "filename": "Programme A",
+          "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si chemin à droite\n      tourner à droite"
+        },
+        {
+          "type": "lesson",
+          "id": "tester-dabord",
+          "title": "Le même test placé avant avancer",
+          "paragraphs": [
+            "Le programme B conserve les mêmes commandes et déplace le si avant avancer. Utilise la même grille pour le comparer au programme A."
+          ],
+          "filename": "Programme B",
+          "code": "au départ\n  répéter jusqu’au but\n    si chemin à droite\n      tourner à droite\n    avancer"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Justifier le test et son moment",
+          "intro": "Prévois d’abord, puis vérifie avec un pion orienté sur le dessin.",
+          "items": [
+            {
+              "id": "mc06-papier-tests",
+              "text": "Teste si chemin à droite depuis B4 nord, B3 nord, puis B4 est. Pour chaque état, nomme la case regardée et donne vrai ou faux.",
+              "hint": "Tourner le pion change sa droite. Depuis B4 vers l’est, sa droite est vers le bas de la grille."
+            },
+            {
+              "id": "mc06-papier-trace",
+              "text": "Depuis B5 nord, trace le programme A jusqu’au but. Note la réponse du test après chaque déplacement, les virages et la direction finale. Un test faux a-t-il arrêté la répétition ?",
+              "hint": "Avance avant de tester. Après un si faux, le tour se termine puis la boucle vérifie le but."
+            },
+            {
+              "id": "mc06-papier-ordre",
+              "text": "Change seulement le départ : place le pion en B3 vers le nord, avec D5 comme but. Compare les programmes A et B. Lequel peut commencer à suivre le chemin ? Explique ce que chacun fait avant son premier test ou déplacement.",
+              "hint": "Depuis B3 nord, B2 est bloquée et C3 est praticable. Dans quelle version le virage peut-il arriver avant le premier avancer ?"
+            },
+            {
+              "id": "mc06-papier-but",
+              "text": "Place directement le pion en D5, au but. Doit-il exécuter un premier avancer avant que la boucle s’arrête ? Justifie avec la règle de la boucle."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "comparaison-papier",
+          "title": "Comparer après tes prévisions",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-papier",
+              "title": "La question dépend de l’état courant",
+              "paragraphs": [
+                "Depuis B4 nord, le test regarde C4 : faux. Depuis B3 nord, il regarde C3 : vrai. Depuis B4 est, il regarde B5 : vrai. À droite ne désigne donc pas toujours l’est de la carte.",
+                "Le programme A passe par B4, B3, C3, D3, D4, D5. Les réponses successives sont faux, vrai, faux, vrai, faux, faux. Il tourne en B3 puis en D3, avance six fois et termine en D5 vers le sud. Les si faux ont sauté les virages ; l’arrivée au but arrête les nouveaux tours.",
+                "Depuis B3 nord, A essaie d’avancer vers B2 avant de tester : la trace est bloquée. B teste d’abord C3, tourne vers l’est et avance en C3. Il poursuit par D3, D4, D5 et termine vers le sud. Ici, changer le moment du test change la possibilité de partir.",
+                "Depuis D5 déjà au but, aucun tour ne commence : ni déplacement ni test de chemin ne sont exécutés. Avec un départ B5 nord, les deux programmes peuvent suivre le même trajet ; l’ordre ne se juge pas sans connaître l’état de départ."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Conserver les raisons de tes choix",
+          "paragraphs": [
+            "Garde l’adresse du niveau travaillé, une capture de tes blocs et deux états de ton dessin : un où le test est vrai, un où il est faux. Pour chacun, note la case regardée et l’action qui suit. Indique aussi le but qui arrête les répétitions.",
+            "Avec un compte Code.org, vérifie la reprise de ta version en rouvrant le niveau. Ton carnet et la capture permettent aussi de reconstruire ce programme court."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Un test de chemin dépend de la position du personnage, de sa direction et du côté sélectionné.",
+        "Un si vrai exécute son contenu ; un si faux le saute et laisse le programme continuer.",
+        "La boucle jusqu’au but et le test de chemin posent deux questions différentes.",
+        "Tester avant ou après avancer peut changer le résultat ; il faut suivre l’état au moment du test.",
+        "Une prévision comporte au moins un test vrai, un test faux et la raison de l’arrêt."
+      ],
+      "teacherGuide": {
+        "objective": "Faire expliquer une décision à partir de l’état spatial et distinguer le test local du critère d’arrêt de la répétition.",
+        "entryDiagnosis": [
+          "Faire indiquer la droite du pion dans deux orientations. Si elle est assimilée à l’est de la carte, reprendre une rotation avec un objet orienté.",
+          "Demander la différence entre répéter un nombre donné de fois et répéter jusqu’au but. La reprise Aquatic 4 est disponible sans imposer les niveaux 4 à 6 à tous les élèves."
+        ],
+        "preparation": [
+          "La transition Hero/Aquatic est explicite : les blocs pilotent le personnage ou son bateau, sans second Agent à guider au clavier.",
+          "L’inventaire confirme les liens Aquatic 4, 7 et 8. Le niveau 7 fournit jusqu’au but, avancer puis si chemin à droite avec une branche à compléter. Les contrôles ciblés de l’interface confirment le sélecteur devant/droite/gauche ; au niveau 8, le menu de rotation permet droite/gauche même si la palette affiche gauche au départ.",
+          "Les cartes et palettes des niveaux 7 et 8 ont été observées pendant cette intégration, sans exécution complète des puzzles. Captures aquatic7-depart.png et aquatic8-depart.png dans browser-artifacts/audit-minecraft-2026-10-18/. Réutiliser l’inventaire existant pour le reste ; aucun éditeur JavaScript ou terrain importable n’est requis.",
+          "Dans le niveau 7, faire suivre avancer avant de regarder le passage à droite. Les tâches demandent une réponse fausse et une vraie sur la carte affichée, puis la raison de l’arrêt au coffre.",
+          "La grille originale est indépendante des cartes Code.org. Elle définit son arrêt sur blocage pour la trace papier. Le programme A depuis B5 nord donne six déplacements et deux virages ; depuis B3 nord, avancer vise B2 bloquée. Le programme B peut d’abord tourner et rejoindre D5.",
+          "La reprise avec un compte reste à vérifier dans l’usage réel. Conserver les blocs existants avant Start Over, qui restaure le programme fourni, et distinguer ce bouton de Reset entre deux essais."
+        ],
+        "why": "Après Scratch, le bénéfice porte sur la lecture située du test : sa direction est relative, son résultat change avec l’état, et son emplacement dans la boucle peut autoriser ou empêcher un départ.",
+        "discoverySpeech": [
+          "Quelle case le personnage regarde-t-il quand il rencontre ce si ? A-t-il déjà avancé dans ce tour ?",
+          "Si le chemin à droite est fermé, quelle commande est sautée ? La boucle doit-elle pour autant s’arrêter ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-decisions",
+            "blockId": "lire-sept"
+          },
+          "comments": [
+            "Le si se trouve dans la boucle jusqu’au but, après avancer. Tourner est dans le si : il dépend du résultat de ce test.",
+            "Faire verbaliser la case testée après le déplacement et la direction du prochain déplacement après le virage. La réponse fausse ne produit pas implicitement une autre rotation."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Un test faux termine-t-il la boucle jusqu’au but ?",
+            "answer": "Non. Le contenu du si est sauté, puis le programme continue. La boucle vérifie séparément si l’objectif est atteint."
+          },
+          {
+            "question": "Quelle case est à droite depuis B4 est sur la grille ?",
+            "answer": "B5, qui est praticable. Depuis B4 nord, ce serait C4, bloquée."
+          },
+          {
+            "question": "Pourquoi A et B diffèrent-ils depuis B3 nord ?",
+            "answer": "A tente d’abord B2 bloquée. B regarde C3, tourne à droite avant son déplacement et rejoint le chemin vers D5."
+          },
+          {
+            "question": "Inverser l’ordre change-t-il toujours le trajet ?",
+            "answer": "Non. Depuis B5 nord sur cette grille, les deux programmes peuvent rejoindre D5 par le même chemin. Il faut tenir compte du départ et des états où le test est rencontré."
+          },
+          {
+            "question": "Que se passe-t-il si le pion du défi est déjà au but ?",
+            "answer": "La condition de boucle est vérifiée avant le tour. Aucun avancer ni test de chemin n’est exécuté."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-decisions",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-decisions",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Lire les commandes à voix haute et faire tourner un pion. Accepter un dessin ou une explication orale plutôt qu’un tableau écrit.",
+          "Pour découvrir la boucle jusqu’au but, utiliser Aquatic 4 puis revenir au chapitre. Les niveaux 5 et 6 peuvent servir d’entraînement supplémentaire selon le besoin du groupe.",
+          "Après Scratch, aller directement aux états vrai/faux et à la comparaison du départ B3 nord. Éviter de transformer ce transfert en nouveau cours général sur si.",
+          "Pendant le stage, ouvrir la section sur le test au moment d’un blocage, puis revenir au projet commun."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "La droite du personnage reste l’est de la carte après un virage.",
+            "helps": [
+              "Orienter le pion comme le personnage.",
+              "Montrer sa droite avant de nommer la case testée."
+            ]
+          },
+          {
+            "symptom": "Le personnage tourne même quand le test est faux.",
+            "helps": [
+              "Vérifier que tourner est à l’intérieur du si.",
+              "Suivre un tour où la case testée est bloquée et sauter seulement le contenu du si."
+            ]
+          },
+          {
+            "symptom": "L’élève prévoit le test depuis la case avant le déplacement.",
+            "helps": [
+              "Marquer l’ordre avancer puis si dans le programme.",
+              "Déplacer le pion avant de regarder la case voisine du test."
+            ]
+          },
+          {
+            "symptom": "L’élève pense qu’un obstacle satisfait le but.",
+            "helps": [
+              "Repérer l’objectif du niveau.",
+              "Séparer la question le but est-il atteint de la question le chemin choisi est-il libre."
+            ]
+          }
+        ],
+        "notes": "La réussite de Code.org ne suffit pas à expliquer la décision. Demander les deux états vrai/faux et le critère d’arrêt. Le contre-exemple de la grille n’est pas annoncé comme une carte importée ni comme le comportement exact du moteur en cas de collision.",
+        "quickConductor": [
+          "Préciser le contrôle direct du personnage et lire la boucle jusqu’au but.",
+          "Compléter la branche du niveau 7 et prévoir un test vrai et un faux.",
+          "Reconstruire une décision justifiée sur la carte du niveau 8.",
+          "Tracer le dessin original puis déplacer le départ à B3 nord pour comparer les ordres.",
+          "Conserver deux états du test et la raison de l’arrêt."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Voyage Aquatic, niveau 7",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/7"
+          },
+          {
+            "title": "Code.org : Voyage Aquatic, niveau 8",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/8"
+          }
+        ]
+      }
+    },
+    "minecraft-strategies": {
+      "domainId": "jeux-video",
+      "title": "Éprouver une stratégie avec des repères",
+      "type": "lesson",
+      "theme": "fondations",
+      "objective": "Choisir des actions selon le sol rencontré, prévoir leur effet et trouver une situation où la stratégie doit être adaptée.",
+      "tool": {
+        "label": "Ouvrir Voyage Aquatic, niveau 9 sur Code.org",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/9"
+      },
+      "skillIds": [
+        "minecraft.trace",
+        "minecraft.decision",
+        "minecraft.strategy",
+        "minecraft.debugging"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.trace",
+          "expectation": "Suivre la position et l’orientation après un déplacement ou un virage."
+        },
+        {
+          "skillId": "minecraft.decision",
+          "expectation": "Distinguer une condition vraie ou fausse de l’arrêt de la boucle jusqu’au but."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Suivre des indications sur le terrain",
+          "text": "Ouvre Aquatic 9. Tu diriges toujours le personnage avec les blocs. Repère le départ, le coffre à atteindre et les cases de corail bleu et rouge. Dessine les passages utiles dans ton carnet : tu vas choisir une règle pour les parcourir."
+        },
+        {
+          "type": "lesson",
+          "id": "sol-ou-chemin",
+          "title": "Regarder sous le personnage",
+          "paragraphs": [
+            "Si chemin à droite regarde une case voisine. Si sur corail bleu pose une autre question : le personnage se trouve-t-il actuellement sur une case de ce type ? Le test ne regarde ni devant lui ni à sa droite.",
+            "Un test vrai exécute son contenu ; un test faux le saute. Tourner sur place conserve le sol sous le personnage. Avancer peut changer ce sol et donc le résultat du prochain test.",
+            "La couleur ne donne pas elle-même un ordre. C’est ton programme qui associe une action au corail bleu ou au corail rouge. Les deux couleurs peuvent donc déclencher des virages différents."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "choisir-regles",
+          "title": "Choisir deux règles sur la carte",
+          "paragraphs": [
+            "Sur ton dessin d’Aquatic 9, suis un passage vers le coffre. Marque la direction d’arrivée sur une case bleue, puis celle nécessaire pour continuer. Fais de même sur une case rouge. Déduis le virage utile pour chaque couleur et vérifie cette proposition sur les autres cases du trajet.",
+            "Dans une boucle jusqu’au but, place avancer puis deux si au même niveau : l’un pour le corail bleu, l’autre pour le corail rouge. Place dans chacun le virage prévu pour cette couleur. Lis les menus de rotation avant de lancer.",
+            "Les deux si sont testés l’un après l’autre. Le second est placé après le premier, en dehors de son contenu. Une case bleue n’est pas rouge : le test rouge reste faux après un simple virage sur une case bleue."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "guide",
+          "title": "Prévoir puis éprouver les règles",
+          "items": [
+            {
+              "id": "mc07-couleurs-prevoir",
+              "text": "Avant de lancer, montre une arrivée sur le bleu, une sur le rouge et une sur un autre sol. Pour chacune, annonce les deux réponses des tests et la direction obtenue.",
+              "hint": "Place d’abord le pion après avancer. Lis bleu puis rouge depuis cette même case ; un virage seul ne change pas sa couleur."
+            },
+            {
+              "id": "mc07-couleurs-tester",
+              "text": "Lance depuis le départ et compare au dessin. S’il y a un écart, relève la première case concernée et le test exécuté. Corrige ce choix, utilise Réinitialiser (Reset), puis vérifie à nouveau.",
+              "hint": "Si le virage rouge n’arrive jamais, vérifie que son si est après le si bleu et non à l’intérieur."
+            },
+            {
+              "id": "mc07-couleurs-conclure",
+              "text": "Quand le coffre est atteint, explique les deux règles retenues et ce qui arrête la boucle. Pourquoi une réponse fausse au test du bleu ne termine-t-elle pas le programme ?"
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "autre-repere",
+          "title": "Passer aux lanternes marines",
+          "paragraphs": [
+            "Ouvre Aquatic 10. Repère le calmar à rejoindre, les passages et les lanternes marines, les cases claires du monument. Le test proposé porte maintenant sur ce type de sol.",
+            "Sur le dessin, relève la direction d’arrivée à une lanterne et la direction nécessaire pour continuer. Vérifie sur les autres lanternes du trajet si un même virage convient. La couleur du niveau précédent ne suffit pas à choisir ce nouveau réglage.",
+            "Construis une boucle jusqu’au but avec avancer puis un si sur lanterne marine contenant le virage que tu as prévu. Si une ancienne version personnelle est déjà chargée, conserve une capture avant de la modifier."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Aquatic 10 dans un autre onglet",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/10"
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "transfert",
+          "title": "Justifier la nouvelle stratégie",
+          "items": [
+            {
+              "id": "mc07-lanterne-prevoir",
+              "text": "Choisis une lanterne et une autre case du trajet. Annonce le résultat du test et l’action suivante dans les deux cas, puis vérifie par une exécution depuis le départ."
+            },
+            {
+              "id": "mc07-lanterne-arret",
+              "text": "Explique ce qui reste commun avec Aquatic 9 et ce qui a changé : le sol testé, les virages et le but. Quelle observation montre que le programme peut s’arrêter ?",
+              "hint": "Rencontrer une lanterne déclenche une action. Atteindre le calmar répond à la question de la boucle."
+            },
+            {
+              "id": "mc07-lanterne-limite",
+              "text": "Sur une copie de ton dessin, imagine une lanterne ajoutée au milieu d’une ligne droite. À quel endroit ton programme ferait-il une action inutile ? Prévois le déplacement suivant sans modifier la carte de Code.org."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "defi-papier",
+          "title": "Une stratégie sur une grille",
+          "paragraphs": [
+            "Les cases praticables sont B5, B4, B3, C3, D3, D2 et D1. Toutes les autres sont bloquées. Place le pion en B5 vers le nord ; le but est D1. Le repère bleu, marqué B, est en B3. Le repère rouge, marqué R, est en D3.",
+            "Avancer déplace d’une case devant le pion. Chaque virage fait un quart de tour sur place. Un test de couleur regarde seulement la case occupée. Les deux si du programme sont successifs, au même niveau dans la boucle.",
+            "Avant chaque tour, la boucle vérifie si le pion est au but. Si un avancer viserait une case bloquée, arrête la trace et note cette case. Utilise un pion orienté pour éprouver ce programme sur le dessin."
+          ],
+          "illustration": {
+            "src": "images/minecraft-strategies.svg",
+            "alt": "Grille A à E, lignes 1 à 5. Chemin B5, B4, B3, C3, D3, D2, D1. Départ B5 nord, but D1. Repère bleu B en B3, rouge R en D3. Autres cases bloquées.",
+            "caption": "B et R identifient les repères bleu et rouge. Le pion part en B5 vers le nord."
+          },
+          "filename": "Stratégie à éprouver",
+          "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si sur bleu\n      tourner à droite\n    si sur rouge\n      tourner à gauche"
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Trouver la limite et la correction",
+          "intro": "Garde le programme et le départ identiques pour chaque comparaison. Repars de B5 nord à chaque essai.",
+          "items": [
+            {
+              "id": "mc07-grille-reference",
+              "text": "Trace le programme jusqu’au but sur la grille de départ. Note les cases occupées, les deux tests après chaque avancer et la direction finale. Où les virages sont-ils exécutés ?",
+              "hint": "Une case sans repère donne faux aux deux tests. En D3 rouge, seul le second si exécute un virage."
+            },
+            {
+              "id": "mc07-grille-deplacer",
+              "text": "Sur une copie, déplace uniquement le repère bleu de B3 à B4. B3 reste praticable sans repère ; toutes les autres cases restent identiques. Trace le même programme : quel est le premier écart et quel déplacement bloque ensuite ?"
+            },
+            {
+              "id": "mc07-grille-retirer",
+              "text": "Reprends la grille de départ et retire seulement le repère rouge de D3. D3 reste praticable. Quel virage manque et vers quelle case le pion tente-t-il ensuite d’avancer ?"
+            },
+            {
+              "id": "mc07-grille-reparer",
+              "text": "Pour chaque copie, répare uniquement les repères afin que le programme initial rejoigne D1. Vérifie depuis B5 nord et explique à quels endroits cette stratégie a besoin de ses indications.",
+              "hint": "Une indication trop tôt provoque un virage inutile ; une indication absente laisse passer le virage nécessaire."
+            },
+            {
+              "id": "mc07-grille-conclure",
+              "text": "Complète : « Cette stratégie rejoint le but sur cette grille parce que… Elle échoue sur ma variante quand… » Appuie chaque phrase sur une case et une action observées."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "comparer-papier",
+          "title": "Comparer après tes essais",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "resultat-papier",
+              "title": "Les repères doivent correspondre aux virages",
+              "paragraphs": [
+                "Sur la grille de départ, le pion passe par B4, B3, C3, D3, D2 et D1. Les paires de réponses bleu/rouge sont faux/faux, vrai/faux, faux/faux, faux/vrai, faux/faux et faux/faux. Il tourne à droite en B3, à gauche en D3 et termine D1 vers le nord après six déplacements.",
+                "Avec le bleu déplacé en B4, le premier avancer arrive en B4 et le si bleu y fait tourner vers l’est. Le déplacement suivant vise C4, bloquée. Replacer le bleu en B3 rétablit le virage au bon endroit.",
+                "Sans rouge en D3, le pion y garde la direction est. Son déplacement suivant vise E3, bloquée. Replacer le rouge en D3 rétablit le virage vers le nord.",
+                "Ces variantes gardent le même chemin et le même but. C’est la disposition des indications qui change. La réussite sur la grille de départ ne suffit donc pas à garantir la réussite de ce programme sur un autre terrain."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "construction",
+          "title": "Explorer une construction dans Aquatic 11 (facultatif)",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "niveau-onze",
+              "title": "Observer ce que la construction change",
+              "paragraphs": [
+                "Ouvre Aquatic 11. L’objectif est de construire un mur de prismarine autour du béton noir pour activer le conduit. Repère la zone à entourer et le personnage. La palette propose placer de la prismarine, des déplacements, un test de sol et une boucle jusqu’à l’achèvement du conduit.",
+                "Commence par un essai court : place une commande placer de la prismarine et une commande avancer après le départ. Prévois la case transformée, lance, puis compare au résultat. Garde cette observation dans ton carnet avant de réinitialiser.",
+                "Ouvre le menu du test de sol : il propose notamment sable, prismarine sombre et lanterne marine. Choisis un repère observable et prévois l’action utile lorsqu’il est rencontré. Distingue ce test de la boucle : celle-ci attend l’achèvement de la construction.",
+                "Si tu poursuis la construction, prépare un petit tronçon avant de le répéter et vérifie les cases effectivement construites. Si le conduit reste inactif, relève le premier écart ou la partie du mur encore manquante. Tu peux revenir à ce chapitre après l’exploration."
+              ],
+              "externalLink": {
+                "label": "Ouvrir Aquatic 11 dans un autre onglet",
+                "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/11"
+              }
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Conserver une réussite et une limite",
+          "paragraphs": [
+            "Garde l’adresse du niveau, une capture de tes blocs et un dessin annoté d’un test vrai, d’un test faux et du but atteint. Avec un compte Code.org, vérifie la reprise de ta version en rouvrant le niveau.",
+            "Conserve aussi les deux variantes de la grille et leurs corrections. Note le premier écart de chacune : ces traces expliquent quand ta stratégie peut être réutilisée et ce qu’il faut vérifier sur un nouveau terrain."
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Un test sur le sol regarde la case occupée ; un test de chemin regarde une case voisine.",
+        "Le programme associe une action au repère ; la couleur seule ne commande pas le personnage.",
+        "Deux si successifs sont chacun évalués, même si le premier est faux.",
+        "Une stratégie s’explique par ses règles, son état de départ et les repères du terrain.",
+        "Un contre-exemple précis permet de trouver une limite puis de vérifier une correction.",
+        "Le critère d’arrêt de la boucle est distinct du repère qui déclenche un virage."
+      ],
+      "teacherGuide": {
+        "objective": "Faire formuler une stratégie fondée sur le terrain, observer ses conditions de réussite et construire un contre-exemple contrôlé.",
+        "entryDiagnosis": [
+          "Faire distinguer le sol sous le pion de la case située à sa droite.",
+          "Demander ce que fait un si faux et ce qui arrête une boucle jusqu’au but. Reprendre la mission 6 si ces deux rôles sont confondus."
+        ],
+        "preparation": [
+          "Réutiliser l’inventaire des 50 configurations. Les interfaces Aquatic 9, 10 et 11 ont été relues pour ce chapitre, sans exécution complète des puzzles ni compte utilisé. Captures aquatic9-depart.png, aquatic10-depart.png et aquatic11-depart.png dans browser-artifacts/audit-minecraft-2026-10-18/.",
+          "Aquatic 9 fournit avancer, tourner, jusqu’au but et deux si sur corail bleu/rouge. Faire déduire les virages de la carte, puis vérifier chaque occurrence du trajet. Deux tests de couleurs différentes sont successifs, pas imbriqués.",
+          "Aquatic 10 fournit le test sur lanterne marine et vise le calmar. Les cartes visibles et palettes permettent le travail proposé ; les programmes complets n’ont pas été exécutés pendant cette intégration.",
+          "Aquatic 11 est un prolongement replié. Le menu du test propose sable, prismarine sombre et lanterne marine ; il ne se limite pas au sable affiché initialement. Le défi demande un essai court pour observer l’effet du placement, sans présumer sa case ni fournir une solution de mur non exécutée.",
+          "Le cœur de la mission est Aquatic 9, le transfert 10 et le contre-exemple original. La réussite complète du niveau 11 ne conditionne pas la suite.",
+          "Préparer un pion orienté et une copie de la grille. Conserver les cases praticables dans les variantes : seul un repère change. Les lettres B et R sur les cases permettent d’identifier les deux couleurs."
+        ],
+        "why": "Après Scratch, le bénéfice porte sur les hypothèses d’une stratégie : un même programme réussit ou échoue selon la disposition du terrain, et une réussite ne prouve pas sa généralité.",
+        "discoverySpeech": [
+          "Le personnage regarde-t-il une case voisine ou le sol qu’il occupe ?",
+          "Qui décide du virage : le repère lui-même ou le programme ?",
+          "Quelle petite modification du terrain suffirait à faire échouer cette règle ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-strategies",
+            "blockId": "defi-papier"
+          },
+          "comments": [
+            "La stratégie originale associe bleu à droite et rouge à gauche. Ces choix appartiennent au dessin, pas à une règle universelle de Minecraft ou à un corrigé annoncé des couleurs d’Aquatic 9.",
+            "Après avancer en B3, le test bleu tourne vers l’est. Le second test lit encore B3 et reste faux. En D3, bleu est faux et rouge vrai : le virage gauche remet le pion vers le nord."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Tourner sur une case bleue rend-il le test bleu faux ?",
+            "answer": "Non. Le pion n’a pas changé de case ni de sol. Le test porte sur sa case occupée, pas sur son orientation."
+          },
+          {
+            "question": "Pourquoi le si rouge doit-il être après le si bleu, et non dans son contenu ?",
+            "answer": "Deux si successifs sont évalués indépendamment. Un si rouge imbriqué dans le bleu ne serait rencontré que sur une case bleue, qui n’est pas rouge."
+          },
+          {
+            "question": "Pourquoi le repère bleu en B4 fait-il échouer la stratégie originale ?",
+            "answer": "Le premier déplacement arrive en B4 ; le virage droit y intervient trop tôt. L’avancer suivant vise C4 bloquée."
+          },
+          {
+            "question": "Que manque-t-il sans repère rouge en D3 ?",
+            "answer": "Le virage gauche vers le nord. Le pion conserve l’est et tente E3 bloquée."
+          },
+          {
+            "question": "Une carte réussie prouve-t-elle que la stratégie fonctionne partout ?",
+            "answer": "Non. Les deux variantes gardent le même chemin mais changent les indications et produisent des blocages. La réutilisation demande de vérifier leur disposition et les actions associées."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-strategies",
+          "blockId": "guide"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-strategies",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Faire avancer un pion puis désigner le sol sous lui avant de lire les deux tests. Utiliser les lettres B et R en complément des couleurs.",
+          "Accepter une justification orale avec un pointage des cases. Le dessin peut se limiter au passage utile plutôt que reproduire tout le décor.",
+          "Pour un élève expérimenté, faire proposer un contre-exemple supplémentaire en conservant départ, but et chemin, puis demander de localiser la première divergence.",
+          "Pendant le stage, utiliser seulement l’explication du test de sol ou une variante de la grille au moment du besoin. Ne pas ajouter l’ensemble de la mission au programme du stage."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Le test de sol est prévu depuis une case devant le personnage.",
+            "helps": [
+              "Poser le pion après avancer.",
+              "Désigner sa case occupée avant de lire le test."
+            ]
+          },
+          {
+            "symptom": "La condition rouge n’est jamais exécutée.",
+            "helps": [
+              "Vérifier que les deux si sont au même niveau dans la boucle.",
+              "Suivre une case rouge : le bleu est faux, puis le rouge doit quand même être testé."
+            ]
+          },
+          {
+            "symptom": "L’élève change plusieurs éléments dans le contre-exemple.",
+            "helps": [
+              "Repartir de la grille de référence.",
+              "Changer uniquement le repère demandé et conserver le programme, le chemin et le départ."
+            ]
+          },
+          {
+            "symptom": "Un test faux est présenté comme la fin du programme.",
+            "helps": [
+              "Poursuivre jusqu’au test suivant ou au tour suivant.",
+              "Repérer séparément le but qui arrête la boucle."
+            ]
+          }
+        ],
+        "notes": "La simulation de la grille prouve les traces selon ses règles explicites, pas l’exécution des puzzles Code.org. La correction porte sur les repères des copies papier ; aucune édition ou importation de carte Code.org n’est promise. L’exploration 11 ne constitue pas une recette complète de construction.",
+        "quickConductor": [
+          "Distinguer test du sol occupé et test d’un passage voisin.",
+          "Faire prévoir les deux règles de corail dans Aquatic 9 et vérifier leurs effets.",
+          "Transférer le raisonnement aux lanternes d’Aquatic 10.",
+          "Tracer la grille, déplacer un repère, puis en retirer un sur une autre copie.",
+          "Faire réparer les repères, justifier la limite et conserver les preuves."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Voyage Aquatic, niveau 9",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/9"
+          },
+          {
+            "title": "Code.org : Voyage Aquatic, niveau 10",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/10"
+          },
+          {
+            "title": "Code.org : Voyage Aquatic, niveau 11",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/11"
+          }
+        ]
+      }
+    },
+    "minecraft-automatisation": {
+      "domainId": "jeux-video",
+      "title": "Concevoir et tester une automatisation",
+      "type": "project",
+      "theme": "fondations",
+      "objective": "Concevoir un petit tracé de rails, comparer deux organisations du programme et vérifier une modification personnelle depuis le même départ.",
+      "tool": {
+        "label": "Ouvrir Hero’s Journey, niveau 12 sur Code.org",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+      },
+      "skillIds": [
+        "minecraft.trace",
+        "minecraft.construction",
+        "minecraft.procedure",
+        "minecraft.composition",
+        "minecraft.comparison",
+        "minecraft.debugging",
+        "minecraft.strategy"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "minecraft.trace",
+          "expectation": "Prévoir les cases occupées et la direction après les déplacements et les virages."
+        },
+        {
+          "skillId": "minecraft.procedure",
+          "expectation": "Distinguer une définition et ses appels, puis suivre l’état entre deux appels."
+        },
+        {
+          "skillId": "minecraft.comparison",
+          "expectation": "Distinguer les blocs écrits, les actions exécutées et les cases construites."
+        },
+        {
+          "skillId": "minecraft.decision",
+          "expectation": "Expliquer un test vrai, un test faux et le but d’une boucle à partir d’un essai Aquatic."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "callout",
+          "id": "preparer",
+          "title": "Préparer l’Agent",
+          "text": "Ouvre Hero 12. Les blocs commandent l’Agent ; les flèches sous le jeu déplacent Alex ou Steve. Si un ancien travail est présent, conserve une capture des définitions et du programme principal. Retire ensuite les commandes accrochées au départ et clique sur Réinitialiser (Reset) pour retrouver le terrain initial. Garde les deux définitions fournies."
+        },
+        {
+          "type": "lesson",
+          "id": "projet",
+          "title": "Ton défi de construction",
+          "paragraphs": [
+            "Construis un chemin compact de six rails sur six cases différentes, avec deux changements de direction entre les rails du tracé. Commence sur la case initiale de l’Agent : oriente-le d’abord vers la droite, puis pose le premier rail avant d’avancer.",
+            "Prépare trois tronçons de deux rails. Choisis les virages entre ces tronçons en tenant compte du terrain. Chaque rail doit rejoindre le précédent par un côté, sans repasser sur une case déjà construite.",
+            "Annonce aussi la case et la direction finales de l’Agent. Le virage initial et un éventuel virage après le dernier rail se comptent dans les actions ; ils ne constituent pas les deux changements de direction entre les rails.",
+            "Tu vas préparer le dessin, écrire une première version, puis en construire une seconde qui réalise le même tracé avec le même état final. Hero 12 est libre : compare ton résultat à ce dessin pour vérifier le défi."
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "plan",
+          "title": "Dessiner avant d’assembler",
+          "paragraphs": [
+            "Sur cette grille de préparation, A5 représente la case initiale de l’Agent, le nord est en haut. Observe le terrain réel et reporte les obstacles utiles. Garde ton tracé dans cette petite zone à droite et au-dessus du départ.",
+            "Marque les six cases qui recevront un rail, puis dessine séparément la case finale de l’Agent et une flèche pour sa direction. Le dernier avancer peut laisser l’Agent une case après le dernier rail : prévois aussi cette case libre.",
+            "Indique l’état après chaque tronçon, avant et après le virage. Choisis un petit groupe d’actions que tu peux réutiliser pour construire tes deux rails."
+          ],
+          "illustration": {
+            "src": "images/minecraft-automatisation.svg",
+            "alt": "Grille de préparation de cinq colonnes A à E et cinq lignes 1 à 5, à compléter. Départ du pion en A5 vers le nord. Dessiner les rails, les obstacles observés et l’arrivée.",
+            "caption": "A5 correspond au départ. Dessine les rails et l’arrivée dans des cases distinctes si ton programme l’exige."
+          }
+        },
+        {
+          "type": "tasks",
+          "id": "prevision",
+          "title": "Préparer ta première version",
+          "items": [
+            {
+              "id": "mc08-dessiner",
+              "text": "Présente ton dessin : six cases différentes reliées par leurs côtés, deux changements de direction dans le tracé et une arrivée prévue pour l’Agent. Suis-le avec un pion depuis A5 nord.",
+              "hint": "Le premier virage oriente l’Agent à droite. Vérifie que chaque virage entre les tronçons laisse la place aux deux rails suivants et à leur dernier déplacement."
+            },
+            {
+              "id": "mc08-prevoir",
+              "text": "Note les placements, déplacements et virages que tu prévois. Explique ce que contient un tronçon et dans quel état le suivant doit commencer.",
+              "hint": "Pour poser deux rails différents, suis chaque placer et chaque avancer. Un virage change la direction, pas la case occupée."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "assembler",
+          "title": "Construire ta première solution",
+          "paragraphs": [
+            "Assemble les commandes correspondant à ton dessin. Tu peux commencer par des actions directement accrochées au départ ou par de petites répétitions. Garde les virages aux endroits prévus et compare la pile au trajet du pion avant de lancer.",
+            "Pour utiliser une procédure, remplace le contenu d’une des deux définitions fournies par ton groupe réutilisable. Garde son nom visible dans Code.org, puis utilise le bloc d’appel portant ce nom. Une définition reste séparée du départ ; les appels vont dans le programme principal.",
+            "Chaque essai commence par Reset : il remet le terrain et les personnages au départ en conservant tes blocs. Après exécution, utilise les flèches sous le jeu pour faire suivre les rails par Alex ou Steve. La vue suit ce personnage et permet de retrouver l’Agent."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "essai",
+          "title": "Comparer la prévision au résultat",
+          "items": [
+            {
+              "id": "mc08-essai",
+              "text": "Réinitialise puis lance. Compare les six cases construites au dessin, puis vérifie la case et la direction finales de l’Agent. Conserve une capture de cette version et de son résultat."
+            },
+            {
+              "id": "mc08-corriger",
+              "text": "Si le résultat diffère, relève la première commande qui crée un écart. Est-ce un placement, un déplacement, un virage ou un appel commencé dans un autre état ? Corrige ce point puis vérifie de nouveau depuis Reset.",
+              "hint": "Compare les états après chaque tronçon. Si les rails sont bons mais la direction finale diffère, regarde le dernier virage."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "comparer",
+          "title": "Organiser autrement le même travail",
+          "paragraphs": [
+            "Conserve ta première version, puis écris une seconde organisation qui produit les mêmes rails, la même case finale et la même direction finale. Utilise dans au moins une des deux versions une définition réutilisable et ses appels.",
+            "Tu peux extraire un groupe répété dans une procédure ou comparer des actions recopiées à des répétitions. Vérifie aussi les virages : une rotation placée dans une boucle est exécutée après chaque appel, y compris le dernier.",
+            "Choisis un critère : nombre de blocs écrits ou facilité à changer la longueur d’un tronçon. Pour compter les blocs, compte ceux accrochés au départ et le contenu des définitions appelées, une seule fois par définition. Inclus les boucles et les appels ; laisse de côté les cadres départ et définir dans les deux versions.",
+            "Compte séparément les actions exécutées : placements, déplacements et virages. Un appel ou une boucle peut réduire l’écriture sans réduire le travail de l’Agent."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "comparaison",
+          "title": "Défendre ton choix",
+          "items": [
+            {
+              "id": "mc08-equivalence",
+              "text": "Essaie les deux versions après Reset. Montre que les rails et l’état final correspondent. Si un dernier virage est présent dans une seule version, ajuste les commandes pour comparer le même résultat."
+            },
+            {
+              "id": "mc08-critere",
+              "text": "Présente ton critère et les deux résultats : combien de blocs, ou quel changement serait nécessaire pour allonger chaque tronçon ? Garde les deux captures et explique la version que tu retiens.",
+              "hint": "Si tu compares la facilité de modification, désigne les endroits à changer dans chaque version. Prévoir l’effet suffit : agrandir réellement la construction n’est pas nécessaire ici."
+            },
+            {
+              "id": "mc08-actions",
+              "text": "Compare les placements, déplacements et virages exécutés par les deux versions. Une écriture plus courte a-t-elle aussi réduit ces actions ? Appuie ta réponse sur les deux traces."
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "variante",
+          "title": "Éprouver une modification personnelle",
+          "paragraphs": [
+            "Conserve la version retenue et son dessin. Sur une copie, change le sens d’un virage entre deux tronçons pour obtenir un autre tracé, en gardant six rails différents et deux changements de direction. Prévois les nouvelles cases et l’état final ; vérifie d’abord la place disponible sur le terrain.",
+            "Quand le dessin convient, adapte le programme. Si le virage à changer est commun à plusieurs appels dans une boucle, tu peux séparer ces appels pour modifier seulement celui que tu as choisi.",
+            "Repars du même terrain initial avec Reset, puis essaie. Note ce qui correspond à ta prévision, le premier écart éventuel et la correction vérifiée."
+          ]
+        },
+        {
+          "type": "tasks",
+          "id": "autonomie",
+          "title": "Présenter ton nouvel essai",
+          "items": [
+            {
+              "id": "mc08-variante-prevoir",
+              "text": "Montre le seul virage entre tronçons que tu changes et la suite du tracé prévu. Vérifie que les six rails et l’arrivée tiennent sur des cases utilisables."
+            },
+            {
+              "id": "mc08-variante-tester",
+              "text": "Après Reset, lance la variante. Compare les rails, la case finale et la direction finale au nouveau dessin. Conserve les résultats et explique l’effet du changement.",
+              "hint": "Un virage conservé après le dernier tronçon agit encore sur la direction finale. Garde-le dans ta prévision si ta version le contient."
+            }
+          ]
+        },
+        {
+          "type": "details",
+          "id": "aides",
+          "title": "Reprendre une difficulté",
+          "blocks": [
+            {
+              "type": "lesson",
+              "id": "aide-motif",
+              "title": "Retrouver le groupe réutilisable",
+              "paragraphs": [
+                "Suis seulement un tronçon de deux rails avec ton pion. Note les commandes de placement et de déplacement, puis cherche ce qui se répète. Reprends ensuite le dessin complet pour placer les virages entre les groupes."
+              ],
+              "activityLink": {
+                "moduleId": "minecraft-motifs",
+                "blockId": "definir-troncon",
+                "label": "Revoir la définition et les appels d’un tronçon"
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "aide-comparaison",
+              "title": "Choisir ce que tu compares",
+              "paragraphs": [
+                "Écris séparément les blocs que tu poses dans l’éditeur et les actions que l’Agent exécutera. Déroule les appels sur papier si leur nombre t’empêche de suivre les déplacements."
+              ],
+              "activityLink": {
+                "moduleId": "minecraft-repetitions",
+                "blockId": "programme-b",
+                "label": "Revoir la comparaison des écritures"
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "aide-tests",
+              "title": "Retrouver une trace conditionnelle",
+              "paragraphs": [
+                "Si tes traces Aquatic manquent, reprends un essai du niveau 7 dans la mission sur les décisions. Garde un test vrai, un test faux et la raison de l’arrêt, puis reviens au projet pour comparer ces choix à ta construction."
+              ],
+              "activityLink": {
+                "moduleId": "minecraft-decisions",
+                "blockId": "guide",
+                "label": "Retrouver les essais d’Aquatic 7"
+              }
+            }
+          ]
+        },
+        {
+          "type": "lesson",
+          "id": "bilan-aquatic",
+          "title": "Relier tes différentes solutions",
+          "paragraphs": [
+            "Dans Hero 12, tu prépares les déplacements et les virages à partir du terrain observé. Les tests de chemin et de sol utilisés dans Aquatic ne sont pas proposés dans cette palette.",
+            "Choisis dans ton carnet un résultat d’Aquatic où un test vrai déclenchait une action et un résultat où le test était faux. Explique quelle information le programme utilisait alors, puis comment tu as prévu tes virages dans la construction actuelle.",
+            "Ajoute un contre-exemple de la mission précédente : un changement de repère qui faisait échouer une stratégie. Qu’as-tu vérifié ici avant de réutiliser ton tronçon ou de changer un virage ?"
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-strategies",
+            "blockId": "autonomie",
+            "label": "Retrouver les variantes de la grille à repères"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "conserver",
+          "title": "Garder un dossier que tu peux reprendre",
+          "paragraphs": [
+            "Garde l’adresse de Hero 12, les dessins de départ et de la variante, les captures des deux organisations et toutes les définitions appelées. Note les résultats observés et la raison de ton choix. Tu peux compléter tes captures par une explication orale ou des flèches annotées.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta propre version. Les dessins et les captures permettent aussi de reconstruire les blocs manuellement. Vérifie que la définition et le programme principal sont tous les deux lisibles."
+          ]
+        },
+        {
+          "type": "callout",
+          "id": "suite",
+          "title": "Poursuivre ton apprentissage",
+          "text": "Tu peux maintenant choisir un autre problème à automatiser, créer un jeu plus personnel dans Scratch ou commencer la programmation textuelle. Garde tes traces : prévoir, essayer et expliquer restent utiles dans chacun de ces projets."
+        }
+      ],
+      "masteryCriteria": [
+        "La construction est prévue par six cases de rails distinctes, deux changements de direction dans le tracé et un état final annoncé.",
+        "Une définition réutilisable et ses appels sont expliqués à partir de l’état courant de l’Agent.",
+        "Les deux organisations sont comparées sur le même résultat, avec un critère explicite.",
+        "Les blocs écrits sont distingués des placements, déplacements et virages exécutés.",
+        "Une modification du tracé est prévue puis vérifiée depuis un état initial identique.",
+        "Le rôle d’un test Aquatic est expliqué et distingué du programme de construction préparé dans Hero."
+      ],
+      "teacherGuide": {
+        "objective": "Faire concevoir une automatisation limitée sans pile complète fournie, comparer deux organisations équivalentes et justifier un nouvel essai.",
+        "entryDiagnosis": [
+          "Demander de tracer deux placements suivis chacun d’un déplacement et de distinguer le dernier rail de l’arrivée de l’Agent.",
+          "Faire expliquer une définition et un appel. Les aides repliées renvoient aux missions 5 et 2 sans imposer de recopier tout leur exemple.",
+          "Faire choisir un critère de comparaison. Accepter une entrée directe pour un élève capable de prévoir, composer et comparer ; les traces Aquatic restent nécessaires au bilan des tests."
+        ],
+        "preparation": [
+          "Réutiliser les contrôles de Hero 12 : deux définitions modifiables sans paramètres, répétitions de 2 à 10, placement, déplacement et rotation. Aucun test de chemin ou de sol n’est disponible dans cette palette. L’intégration ne demande aucune nouvelle fonction, importation de carte ou saisie JavaScript.",
+          "La réalisation de référence déjà exécutée lors de l’audit utilise le premier tronçon avec répéter 2 fois placer un rail puis avancer. Le programme principal tourne à droite puis répète 3 fois appeler le tronçon et tourner à gauche. Capture browser-artifacts/audit-minecraft-2026-10-18/hero12-motif-compact.png. Cette pile complète reste une référence professeur, pas un modèle élève.",
+          "Avec A5 comme départ nord sur la grille, cette référence pose A5, B5, C5, C4, C3, B3 et termine A3 sud. Il y a six placements, six déplacements et quatre virages : le droit initial, puis trois gauches dont le dernier ne change plus le tracé.",
+          "Une version entièrement déroulée de cette référence contient 16 blocs d’action. La version avec la procédure et la boucle principale en contient 7 selon la convention du cours : trois dans la définition, quatre sous le départ. Les cadres définir et départ sont exclus. Les 16 actions exécutées sont identiques, appels et boucles étant des structures et non des déplacements supplémentaires.",
+          "Pour une variante du tracé, une organisation avec trois appels séparés permet de conserver gauche après le premier et de choisir droite après le deuxième. Avec un dernier gauche conservé après le troisième, les rails prévus sont A5, B5, C5, C4, C3, D3 ; arrivée E3 nord. Cette variante est simulée selon les règles de la grille, sans nouvelle exécution dans le moteur. Faire vérifier le terrain réel avant l’essai.",
+          "La grille est un support de plan relatif : A5 correspond au départ réel, pas à un repère officiel de Code.org. L’élève doit y reporter les contraintes observées. Le suivi de la vue avec Alex ou Steve a déjà été vérifié lors de la mission 5 ; garder Reset avant chaque exécution pour retrouver l’Agent, les personnages et le terrain initiaux.",
+          "Hero 12 est libre : le bouton Finish ou la couleur du niveau ne valident pas les objectifs du projet CodeCraft. Vérifier dessin, rails, état final, comparaison et variante. Conserver l’ancien travail avant de modifier les définitions."
+        ],
+        "why": "Le projet réunit anticipation, réutilisation, comparaison et vérification. Le carnet Aquatic complète ce bilan pour les décisions que la palette Hero ne permet pas de programmer.",
+        "discoverySpeech": [
+          "Quelles cases recevront un rail et où l’Agent terminera-t-il ?",
+          "Quelle partie de ton programme peux-tu organiser autrement sans changer ce résultat ?",
+          "Quelle prévision te permettra d’expliquer ton changement de virage ?"
+        ],
+        "example": {
+          "target": {
+            "moduleId": "minecraft-automatisation",
+            "blockId": "plan"
+          },
+          "comments": [
+            "Laisser l’élève dessiner et choisir sa première organisation. Le guide conserve une réalisation éprouvée pour diagnostiquer, pas une pile à dicter.",
+            "Les deux changements de direction concernent les rails successifs. Le droit initial et le dernier gauche de la référence changent l’orientation de l’Agent, sans ajouter un angle entre deux rails déjà posés.",
+            "Pour comparer les versions, exiger le même état final. Supprimer seulement le dernier gauche conserve les rails et la case A3, mais donne ouest au lieu de sud."
+          ]
+        },
+        "questions": [
+          {
+            "question": "Six placements garantissent-ils six rails différents ?",
+            "answer": "Non. Il faut suivre les cases : un retour sur une case déjà construite ne crée pas une sixième case distincte."
+          },
+          {
+            "question": "Pourquoi la référence à trois appels finit-elle au sud ?",
+            "answer": "Après le droit initial, les tronçons vont à l’est, au nord, puis à l’ouest. Le gauche après le troisième appel tourne ensuite l’Agent vers le sud, sans déplacer ni poser de rail."
+          },
+          {
+            "question": "La version à sept blocs fait-elle moins de travail que la version déroulée ?",
+            "answer": "Non. Pour cette référence, les deux exécutent six placements, six déplacements et quatre virages. La procédure et les répétitions réduisent l’écriture."
+          },
+          {
+            "question": "Peut-on demander si chemin ou si sur un corail dans Hero 12 ?",
+            "answer": "Ces tests ne sont pas dans cette palette. Le projet prépare ses actions à partir du terrain observé ; les traces Aquatic servent à expliquer le rôle des décisions conditionnelles."
+          },
+          {
+            "question": "Comment comparer une variante sans confondre son effet avec le terrain d’un essai précédent ?",
+            "answer": "Conserver la version précédente, prévoir le nouveau résultat puis utiliser Reset avant l’exécution pour remettre le terrain et les personnages à l’état initial."
+          }
+        ],
+        "accompaniedActivity": {
+          "moduleId": "minecraft-automatisation",
+          "blockId": "prevision"
+        },
+        "independentActivity": {
+          "moduleId": "minecraft-automatisation",
+          "blockId": "autonomie"
+        },
+        "differentiation": [
+          "Accepter des cases pointées, un pion orienté et une explication orale à la place de longues notes. L’élève conserve néanmoins une trace de la prévision et du résultat.",
+          "Si le projet bloque, reprendre un seul tronçon puis faire placer un virage par l’élève. Les aides repliées ciblent le groupe réutilisable et le critère de comparaison.",
+          "Pour aller plus loin, faire comparer l’emplacement des virages dans la définition et dans le programme principal, avec une nouvelle prévision de l’état entre appels.",
+          "Pendant le stage, ce projet peut servir de petit défi final si le temps et les acquis le permettent. Les missions du site ne sont pas à ajouter intégralement au programme de la semaine."
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Six blocs placer produisent moins de six cases construites.",
+            "helps": [
+              "Relever chaque case occupée au moment du placement.",
+              "Repérer le premier retour sur une case déjà construite."
+            ]
+          },
+          {
+            "symptom": "Les rails correspondent mais les directions finales des deux versions diffèrent.",
+            "helps": [
+              "Suivre toutes les rotations après le dernier placement.",
+              "Vérifier le dernier tour de la boucle contenant l’appel et son virage."
+            ]
+          },
+          {
+            "symptom": "Le coût annoncé ne compte que le programme principal.",
+            "helps": [
+              "Ajouter une fois le contenu de chaque définition appelée.",
+              "Distinguer ensuite ce comptage du déroulement de ses appels."
+            ]
+          },
+          {
+            "symptom": "Le changement personnel modifie le virage après tous les tronçons.",
+            "helps": [
+              "Dérouler les appels sur le dessin.",
+              "Séparer les appels pour modifier seulement le virage choisi, puis prévoir l’ensemble des effets."
+            ]
+          },
+          {
+            "symptom": "L’élève cherche l’Agent avec les commandes de déplacement du joueur.",
+            "helps": [
+              "Les blocs déplacent l’Agent ; les flèches déplacent Alex ou Steve et la vue.",
+              "Suivre les rails avec le joueur pour observer l’arrivée de l’Agent."
+            ]
+          }
+        ],
+        "notes": "Les calculs de la grille et le comptage sont vérifiés par simulation ; ils ne valident pas automatiquement toutes les constructions personnelles dans Code.org. L’essai compact de référence avait déjà été exécuté pendant l’audit. Aucun nouveau test du moteur, compte, publication ou observation avec des élèves n’est revendiqué ici.",
+        "quickConductor": [
+          "Préserver l’ancien travail puis préparer le terrain initial.",
+          "Faire dessiner six cases, deux angles et l’état final avant les blocs.",
+          "Vérifier une première organisation et localiser un éventuel écart.",
+          "Comparer à une seconde organisation équivalente, avec définition et appels dans au moins une version.",
+          "Prévoir et tester un changement du tracé depuis Reset.",
+          "Relier le résultat aux décisions Aquatic et conserver les preuves."
+        ],
+        "references": [
+          {
+            "title": "Code.org : Hero’s Journey, niveau 12",
+            "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+          }
+        ]
+      }
     }
   },
   "pathways": {
@@ -36160,6 +38882,60 @@ window.CODECRAFT_DATA = {
           "moduleIds": [
             "scratch-mission-etats",
             "scratch-mission-tests"
+          ]
+        }
+      ]
+    },
+    "minecraft-algorithmes": {
+      "domainId": "jeux-video",
+      "title": "Minecraft : résoudre et automatiser",
+      "theme": "fondations",
+      "objective": "Avec les activités de Code.org, prévois les trajets, compare les programmes, prépare les constructions et éprouve tes stratégies selon le terrain. Suis les huit missions pour débuter, ou choisis dans la première un départ adapté à ce que tu sais déjà faire, avec Scratch ou un autre outil.",
+      "moduleIds": [
+        "minecraft-trajets",
+        "minecraft-repetitions",
+        "minecraft-passage",
+        "minecraft-procedures",
+        "minecraft-motifs",
+        "minecraft-decisions",
+        "minecraft-strategies",
+        "minecraft-automatisation"
+      ],
+      "chapters": [
+        {
+          "id": "prevoir-comparer",
+          "title": "Prévoir et comparer",
+          "description": "Suivre la position et la direction, puis comparer un programme et ses répétitions.",
+          "moduleIds": [
+            "minecraft-trajets",
+            "minecraft-repetitions"
+          ]
+        },
+        {
+          "id": "construire-organiser",
+          "title": "Construire et organiser",
+          "description": "Prévoir les transformations du terrain, réparer un passage et composer des motifs avec des procédures.",
+          "moduleIds": [
+            "minecraft-passage",
+            "minecraft-procedures",
+            "minecraft-motifs"
+          ]
+        },
+        {
+          "id": "observer-decider",
+          "title": "Observer et décider",
+          "description": "Lire le terrain, choisir le moment d’une décision et expliquer l’arrêt d’un trajet.",
+          "moduleIds": [
+            "minecraft-decisions",
+            "minecraft-strategies"
+          ]
+        },
+        {
+          "id": "concevoir-tester",
+          "title": "Concevoir et tester",
+          "description": "Préparer une automatisation, comparer ses organisations et vérifier un changement personnel.",
+          "moduleIds": [
+            "minecraft-automatisation"
           ]
         }
       ]

@@ -202,5 +202,35 @@
   },
   "html.navigation": {
     "title": "Relier des pages HTML et vérifier leur navigation"
+  },
+  "minecraft.orientation": {
+    "title": "Prévoir un déplacement selon la position et la direction"
+  },
+  "minecraft.trace": {
+    "title": "Suivre puis vérifier la position et la direction après les actions"
+  },
+  "minecraft.repetition": {
+    "title": "Repérer et répéter un motif en conservant l’état atteint"
+  },
+  "minecraft.comparison": {
+    "title": "Distinguer blocs écrits, actions exécutées et distance parcourue"
+  },
+  "minecraft.construction": {
+    "title": "Prévoir les cases transformées et vérifier un passage continu"
+  },
+  "minecraft.debugging": {
+    "title": "Localiser un écart de construction et vérifier une correction depuis le départ"
+  },
+  "minecraft.procedure": {
+    "title": "Lire une procédure et préparer la position, la direction et le terrain entre ses appels"
+  },
+  "minecraft.composition": {
+    "title": "Composer des répétitions et extraire un motif réutilisable dans une procédure"
+  },
+  "minecraft.decision": {
+    "title": "Prévoir un test de chemin selon l’état courant et le distinguer de l’arrêt de la boucle"
+  },
+  "minecraft.strategy": {
+    "title": "Éprouver une stratégie fondée sur les repères du terrain et expliquer ses limites"
   }
 }

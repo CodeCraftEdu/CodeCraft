@@ -56,6 +56,7 @@ const profiles = {
       'scratch-visual-only',
       'flex-property-demo',
       'web-comparison',
+      'minecraft',
     ],
     browser: ['catalog-browser', 'student-browser'],
   },

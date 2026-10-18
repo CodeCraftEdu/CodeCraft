@@ -1,0 +1,369 @@
+{
+  "domainId": "jeux-video",
+  "title": "Concevoir et tester une automatisation",
+  "type": "project",
+  "theme": "fondations",
+  "objective": "Concevoir un petit tracé de rails, comparer deux organisations du programme et vérifier une modification personnelle depuis le même départ.",
+  "tool": {
+    "label": "Ouvrir Hero’s Journey, niveau 12 sur Code.org",
+    "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+  },
+  "skillIds": [
+    "minecraft.trace",
+    "minecraft.construction",
+    "minecraft.procedure",
+    "minecraft.composition",
+    "minecraft.comparison",
+    "minecraft.debugging",
+    "minecraft.strategy"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "minecraft.trace",
+      "expectation": "Prévoir les cases occupées et la direction après les déplacements et les virages."
+    },
+    {
+      "skillId": "minecraft.procedure",
+      "expectation": "Distinguer une définition et ses appels, puis suivre l’état entre deux appels."
+    },
+    {
+      "skillId": "minecraft.comparison",
+      "expectation": "Distinguer les blocs écrits, les actions exécutées et les cases construites."
+    },
+    {
+      "skillId": "minecraft.decision",
+      "expectation": "Expliquer un test vrai, un test faux et le but d’une boucle à partir d’un essai Aquatic."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Préparer l’Agent",
+      "text": "Ouvre Hero 12. Les blocs commandent l’Agent ; les flèches sous le jeu déplacent Alex ou Steve. Si un ancien travail est présent, conserve une capture des définitions et du programme principal. Retire ensuite les commandes accrochées au départ et clique sur Réinitialiser (Reset) pour retrouver le terrain initial. Garde les deux définitions fournies."
+    },
+    {
+      "type": "lesson",
+      "id": "projet",
+      "title": "Ton défi de construction",
+      "paragraphs": [
+        "Construis un chemin compact de six rails sur six cases différentes, avec deux changements de direction entre les rails du tracé. Commence sur la case initiale de l’Agent : oriente-le d’abord vers la droite, puis pose le premier rail avant d’avancer.",
+        "Prépare trois tronçons de deux rails. Choisis les virages entre ces tronçons en tenant compte du terrain. Chaque rail doit rejoindre le précédent par un côté, sans repasser sur une case déjà construite.",
+        "Annonce aussi la case et la direction finales de l’Agent. Le virage initial et un éventuel virage après le dernier rail se comptent dans les actions ; ils ne constituent pas les deux changements de direction entre les rails.",
+        "Tu vas préparer le dessin, écrire une première version, puis en construire une seconde qui réalise le même tracé avec le même état final. Hero 12 est libre : compare ton résultat à ce dessin pour vérifier le défi."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "plan",
+      "title": "Dessiner avant d’assembler",
+      "paragraphs": [
+        "Sur cette grille de préparation, A5 représente la case initiale de l’Agent, le nord est en haut. Observe le terrain réel et reporte les obstacles utiles. Garde ton tracé dans cette petite zone à droite et au-dessus du départ.",
+        "Marque les six cases qui recevront un rail, puis dessine séparément la case finale de l’Agent et une flèche pour sa direction. Le dernier avancer peut laisser l’Agent une case après le dernier rail : prévois aussi cette case libre.",
+        "Indique l’état après chaque tronçon, avant et après le virage. Choisis un petit groupe d’actions que tu peux réutiliser pour construire tes deux rails."
+      ],
+      "illustration": {
+        "src": "images/minecraft-automatisation.svg",
+        "alt": "Grille de préparation de cinq colonnes A à E et cinq lignes 1 à 5, à compléter. Départ du pion en A5 vers le nord. Dessiner les rails, les obstacles observés et l’arrivée.",
+        "caption": "A5 correspond au départ. Dessine les rails et l’arrivée dans des cases distinctes si ton programme l’exige."
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "prevision",
+      "title": "Préparer ta première version",
+      "items": [
+        {
+          "id": "mc08-dessiner",
+          "text": "Présente ton dessin : six cases différentes reliées par leurs côtés, deux changements de direction dans le tracé et une arrivée prévue pour l’Agent. Suis-le avec un pion depuis A5 nord.",
+          "hint": "Le premier virage oriente l’Agent à droite. Vérifie que chaque virage entre les tronçons laisse la place aux deux rails suivants et à leur dernier déplacement."
+        },
+        {
+          "id": "mc08-prevoir",
+          "text": "Note les placements, déplacements et virages que tu prévois. Explique ce que contient un tronçon et dans quel état le suivant doit commencer.",
+          "hint": "Pour poser deux rails différents, suis chaque placer et chaque avancer. Un virage change la direction, pas la case occupée."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "assembler",
+      "title": "Construire ta première solution",
+      "paragraphs": [
+        "Assemble les commandes correspondant à ton dessin. Tu peux commencer par des actions directement accrochées au départ ou par de petites répétitions. Garde les virages aux endroits prévus et compare la pile au trajet du pion avant de lancer.",
+        "Pour utiliser une procédure, remplace le contenu d’une des deux définitions fournies par ton groupe réutilisable. Garde son nom visible dans Code.org, puis utilise le bloc d’appel portant ce nom. Une définition reste séparée du départ ; les appels vont dans le programme principal.",
+        "Chaque essai commence par Reset : il remet le terrain et les personnages au départ en conservant tes blocs. Après exécution, utilise les flèches sous le jeu pour faire suivre les rails par Alex ou Steve. La vue suit ce personnage et permet de retrouver l’Agent."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "essai",
+      "title": "Comparer la prévision au résultat",
+      "items": [
+        {
+          "id": "mc08-essai",
+          "text": "Réinitialise puis lance. Compare les six cases construites au dessin, puis vérifie la case et la direction finales de l’Agent. Conserve une capture de cette version et de son résultat."
+        },
+        {
+          "id": "mc08-corriger",
+          "text": "Si le résultat diffère, relève la première commande qui crée un écart. Est-ce un placement, un déplacement, un virage ou un appel commencé dans un autre état ? Corrige ce point puis vérifie de nouveau depuis Reset.",
+          "hint": "Compare les états après chaque tronçon. Si les rails sont bons mais la direction finale diffère, regarde le dernier virage."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "comparer",
+      "title": "Organiser autrement le même travail",
+      "paragraphs": [
+        "Conserve ta première version, puis écris une seconde organisation qui produit les mêmes rails, la même case finale et la même direction finale. Utilise dans au moins une des deux versions une définition réutilisable et ses appels.",
+        "Tu peux extraire un groupe répété dans une procédure ou comparer des actions recopiées à des répétitions. Vérifie aussi les virages : une rotation placée dans une boucle est exécutée après chaque appel, y compris le dernier.",
+        "Choisis un critère : nombre de blocs écrits ou facilité à changer la longueur d’un tronçon. Pour compter les blocs, compte ceux accrochés au départ et le contenu des définitions appelées, une seule fois par définition. Inclus les boucles et les appels ; laisse de côté les cadres départ et définir dans les deux versions.",
+        "Compte séparément les actions exécutées : placements, déplacements et virages. Un appel ou une boucle peut réduire l’écriture sans réduire le travail de l’Agent."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "comparaison",
+      "title": "Défendre ton choix",
+      "items": [
+        {
+          "id": "mc08-equivalence",
+          "text": "Essaie les deux versions après Reset. Montre que les rails et l’état final correspondent. Si un dernier virage est présent dans une seule version, ajuste les commandes pour comparer le même résultat."
+        },
+        {
+          "id": "mc08-critere",
+          "text": "Présente ton critère et les deux résultats : combien de blocs, ou quel changement serait nécessaire pour allonger chaque tronçon ? Garde les deux captures et explique la version que tu retiens.",
+          "hint": "Si tu compares la facilité de modification, désigne les endroits à changer dans chaque version. Prévoir l’effet suffit : agrandir réellement la construction n’est pas nécessaire ici."
+        },
+        {
+          "id": "mc08-actions",
+          "text": "Compare les placements, déplacements et virages exécutés par les deux versions. Une écriture plus courte a-t-elle aussi réduit ces actions ? Appuie ta réponse sur les deux traces."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "variante",
+      "title": "Éprouver une modification personnelle",
+      "paragraphs": [
+        "Conserve la version retenue et son dessin. Sur une copie, change le sens d’un virage entre deux tronçons pour obtenir un autre tracé, en gardant six rails différents et deux changements de direction. Prévois les nouvelles cases et l’état final ; vérifie d’abord la place disponible sur le terrain.",
+        "Quand le dessin convient, adapte le programme. Si le virage à changer est commun à plusieurs appels dans une boucle, tu peux séparer ces appels pour modifier seulement celui que tu as choisi.",
+        "Repars du même terrain initial avec Reset, puis essaie. Note ce qui correspond à ta prévision, le premier écart éventuel et la correction vérifiée."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Présenter ton nouvel essai",
+      "items": [
+        {
+          "id": "mc08-variante-prevoir",
+          "text": "Montre le seul virage entre tronçons que tu changes et la suite du tracé prévu. Vérifie que les six rails et l’arrivée tiennent sur des cases utilisables."
+        },
+        {
+          "id": "mc08-variante-tester",
+          "text": "Après Reset, lance la variante. Compare les rails, la case finale et la direction finale au nouveau dessin. Conserve les résultats et explique l’effet du changement.",
+          "hint": "Un virage conservé après le dernier tronçon agit encore sur la direction finale. Garde-le dans ta prévision si ta version le contient."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "aides",
+      "title": "Reprendre une difficulté",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "aide-motif",
+          "title": "Retrouver le groupe réutilisable",
+          "paragraphs": [
+            "Suis seulement un tronçon de deux rails avec ton pion. Note les commandes de placement et de déplacement, puis cherche ce qui se répète. Reprends ensuite le dessin complet pour placer les virages entre les groupes."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-motifs",
+            "blockId": "definir-troncon",
+            "label": "Revoir la définition et les appels d’un tronçon"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "aide-comparaison",
+          "title": "Choisir ce que tu compares",
+          "paragraphs": [
+            "Écris séparément les blocs que tu poses dans l’éditeur et les actions que l’Agent exécutera. Déroule les appels sur papier si leur nombre t’empêche de suivre les déplacements."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-repetitions",
+            "blockId": "programme-b",
+            "label": "Revoir la comparaison des écritures"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "aide-tests",
+          "title": "Retrouver une trace conditionnelle",
+          "paragraphs": [
+            "Si tes traces Aquatic manquent, reprends un essai du niveau 7 dans la mission sur les décisions. Garde un test vrai, un test faux et la raison de l’arrêt, puis reviens au projet pour comparer ces choix à ta construction."
+          ],
+          "activityLink": {
+            "moduleId": "minecraft-decisions",
+            "blockId": "guide",
+            "label": "Retrouver les essais d’Aquatic 7"
+          }
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "bilan-aquatic",
+      "title": "Relier tes différentes solutions",
+      "paragraphs": [
+        "Dans Hero 12, tu prépares les déplacements et les virages à partir du terrain observé. Les tests de chemin et de sol utilisés dans Aquatic ne sont pas proposés dans cette palette.",
+        "Choisis dans ton carnet un résultat d’Aquatic où un test vrai déclenchait une action et un résultat où le test était faux. Explique quelle information le programme utilisait alors, puis comment tu as prévu tes virages dans la construction actuelle.",
+        "Ajoute un contre-exemple de la mission précédente : un changement de repère qui faisait échouer une stratégie. Qu’as-tu vérifié ici avant de réutiliser ton tronçon ou de changer un virage ?"
+      ],
+      "activityLink": {
+        "moduleId": "minecraft-strategies",
+        "blockId": "autonomie",
+        "label": "Retrouver les variantes de la grille à repères"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "Garder un dossier que tu peux reprendre",
+      "paragraphs": [
+        "Garde l’adresse de Hero 12, les dessins de départ et de la variante, les captures des deux organisations et toutes les définitions appelées. Note les résultats observés et la raison de ton choix. Tu peux compléter tes captures par une explication orale ou des flèches annotées.",
+        "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta propre version. Les dessins et les captures permettent aussi de reconstruire les blocs manuellement. Vérifie que la définition et le programme principal sont tous les deux lisibles."
+      ]
+    },
+    {
+      "type": "callout",
+      "id": "suite",
+      "title": "Poursuivre ton apprentissage",
+      "text": "Tu peux maintenant choisir un autre problème à automatiser, créer un jeu plus personnel dans Scratch ou commencer la programmation textuelle. Garde tes traces : prévoir, essayer et expliquer restent utiles dans chacun de ces projets."
+    }
+  ],
+  "masteryCriteria": [
+    "La construction est prévue par six cases de rails distinctes, deux changements de direction dans le tracé et un état final annoncé.",
+    "Une définition réutilisable et ses appels sont expliqués à partir de l’état courant de l’Agent.",
+    "Les deux organisations sont comparées sur le même résultat, avec un critère explicite.",
+    "Les blocs écrits sont distingués des placements, déplacements et virages exécutés.",
+    "Une modification du tracé est prévue puis vérifiée depuis un état initial identique.",
+    "Le rôle d’un test Aquatic est expliqué et distingué du programme de construction préparé dans Hero."
+  ],
+  "teacherGuide": {
+    "objective": "Faire concevoir une automatisation limitée sans pile complète fournie, comparer deux organisations équivalentes et justifier un nouvel essai.",
+    "entryDiagnosis": [
+      "Demander de tracer deux placements suivis chacun d’un déplacement et de distinguer le dernier rail de l’arrivée de l’Agent.",
+      "Faire expliquer une définition et un appel. Les aides repliées renvoient aux missions 5 et 2 sans imposer de recopier tout leur exemple.",
+      "Faire choisir un critère de comparaison. Accepter une entrée directe pour un élève capable de prévoir, composer et comparer ; les traces Aquatic restent nécessaires au bilan des tests."
+    ],
+    "preparation": [
+      "Réutiliser les contrôles de Hero 12 : deux définitions modifiables sans paramètres, répétitions de 2 à 10, placement, déplacement et rotation. Aucun test de chemin ou de sol n’est disponible dans cette palette. L’intégration ne demande aucune nouvelle fonction, importation de carte ou saisie JavaScript.",
+      "La réalisation de référence déjà exécutée lors de l’audit utilise le premier tronçon avec répéter 2 fois placer un rail puis avancer. Le programme principal tourne à droite puis répète 3 fois appeler le tronçon et tourner à gauche. Capture browser-artifacts/audit-minecraft-2026-10-18/hero12-motif-compact.png. Cette pile complète reste une référence professeur, pas un modèle élève.",
+      "Avec A5 comme départ nord sur la grille, cette référence pose A5, B5, C5, C4, C3, B3 et termine A3 sud. Il y a six placements, six déplacements et quatre virages : le droit initial, puis trois gauches dont le dernier ne change plus le tracé.",
+      "Une version entièrement déroulée de cette référence contient 16 blocs d’action. La version avec la procédure et la boucle principale en contient 7 selon la convention du cours : trois dans la définition, quatre sous le départ. Les cadres définir et départ sont exclus. Les 16 actions exécutées sont identiques, appels et boucles étant des structures et non des déplacements supplémentaires.",
+      "Pour une variante du tracé, une organisation avec trois appels séparés permet de conserver gauche après le premier et de choisir droite après le deuxième. Avec un dernier gauche conservé après le troisième, les rails prévus sont A5, B5, C5, C4, C3, D3 ; arrivée E3 nord. Cette variante est simulée selon les règles de la grille, sans nouvelle exécution dans le moteur. Faire vérifier le terrain réel avant l’essai.",
+      "La grille est un support de plan relatif : A5 correspond au départ réel, pas à un repère officiel de Code.org. L’élève doit y reporter les contraintes observées. Le suivi de la vue avec Alex ou Steve a déjà été vérifié lors de la mission 5 ; garder Reset avant chaque exécution pour retrouver l’Agent, les personnages et le terrain initiaux.",
+      "Hero 12 est libre : le bouton Finish ou la couleur du niveau ne valident pas les objectifs du projet CodeCraft. Vérifier dessin, rails, état final, comparaison et variante. Conserver l’ancien travail avant de modifier les définitions."
+    ],
+    "why": "Le projet réunit anticipation, réutilisation, comparaison et vérification. Le carnet Aquatic complète ce bilan pour les décisions que la palette Hero ne permet pas de programmer.",
+    "discoverySpeech": [
+      "Quelles cases recevront un rail et où l’Agent terminera-t-il ?",
+      "Quelle partie de ton programme peux-tu organiser autrement sans changer ce résultat ?",
+      "Quelle prévision te permettra d’expliquer ton changement de virage ?"
+    ],
+    "example": {
+      "target": { "moduleId": "minecraft-automatisation", "blockId": "plan" },
+      "comments": [
+        "Laisser l’élève dessiner et choisir sa première organisation. Le guide conserve une réalisation éprouvée pour diagnostiquer, pas une pile à dicter.",
+        "Les deux changements de direction concernent les rails successifs. Le droit initial et le dernier gauche de la référence changent l’orientation de l’Agent, sans ajouter un angle entre deux rails déjà posés.",
+        "Pour comparer les versions, exiger le même état final. Supprimer seulement le dernier gauche conserve les rails et la case A3, mais donne ouest au lieu de sud."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Six placements garantissent-ils six rails différents ?",
+        "answer": "Non. Il faut suivre les cases : un retour sur une case déjà construite ne crée pas une sixième case distincte."
+      },
+      {
+        "question": "Pourquoi la référence à trois appels finit-elle au sud ?",
+        "answer": "Après le droit initial, les tronçons vont à l’est, au nord, puis à l’ouest. Le gauche après le troisième appel tourne ensuite l’Agent vers le sud, sans déplacer ni poser de rail."
+      },
+      {
+        "question": "La version à sept blocs fait-elle moins de travail que la version déroulée ?",
+        "answer": "Non. Pour cette référence, les deux exécutent six placements, six déplacements et quatre virages. La procédure et les répétitions réduisent l’écriture."
+      },
+      {
+        "question": "Peut-on demander si chemin ou si sur un corail dans Hero 12 ?",
+        "answer": "Ces tests ne sont pas dans cette palette. Le projet prépare ses actions à partir du terrain observé ; les traces Aquatic servent à expliquer le rôle des décisions conditionnelles."
+      },
+      {
+        "question": "Comment comparer une variante sans confondre son effet avec le terrain d’un essai précédent ?",
+        "answer": "Conserver la version précédente, prévoir le nouveau résultat puis utiliser Reset avant l’exécution pour remettre le terrain et les personnages à l’état initial."
+      }
+    ],
+    "accompaniedActivity": { "moduleId": "minecraft-automatisation", "blockId": "prevision" },
+    "independentActivity": { "moduleId": "minecraft-automatisation", "blockId": "autonomie" },
+    "differentiation": [
+      "Accepter des cases pointées, un pion orienté et une explication orale à la place de longues notes. L’élève conserve néanmoins une trace de la prévision et du résultat.",
+      "Si le projet bloque, reprendre un seul tronçon puis faire placer un virage par l’élève. Les aides repliées ciblent le groupe réutilisable et le critère de comparaison.",
+      "Pour aller plus loin, faire comparer l’emplacement des virages dans la définition et dans le programme principal, avec une nouvelle prévision de l’état entre appels.",
+      "Pendant le stage, ce projet peut servir de petit défi final si le temps et les acquis le permettent. Les missions du site ne sont pas à ajouter intégralement au programme de la semaine."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Six blocs placer produisent moins de six cases construites.",
+        "helps": [
+          "Relever chaque case occupée au moment du placement.",
+          "Repérer le premier retour sur une case déjà construite."
+        ]
+      },
+      {
+        "symptom": "Les rails correspondent mais les directions finales des deux versions diffèrent.",
+        "helps": [
+          "Suivre toutes les rotations après le dernier placement.",
+          "Vérifier le dernier tour de la boucle contenant l’appel et son virage."
+        ]
+      },
+      {
+        "symptom": "Le coût annoncé ne compte que le programme principal.",
+        "helps": [
+          "Ajouter une fois le contenu de chaque définition appelée.",
+          "Distinguer ensuite ce comptage du déroulement de ses appels."
+        ]
+      },
+      {
+        "symptom": "Le changement personnel modifie le virage après tous les tronçons.",
+        "helps": [
+          "Dérouler les appels sur le dessin.",
+          "Séparer les appels pour modifier seulement le virage choisi, puis prévoir l’ensemble des effets."
+        ]
+      },
+      {
+        "symptom": "L’élève cherche l’Agent avec les commandes de déplacement du joueur.",
+        "helps": [
+          "Les blocs déplacent l’Agent ; les flèches déplacent Alex ou Steve et la vue.",
+          "Suivre les rails avec le joueur pour observer l’arrivée de l’Agent."
+        ]
+      }
+    ],
+    "notes": "Les calculs de la grille et le comptage sont vérifiés par simulation ; ils ne valident pas automatiquement toutes les constructions personnelles dans Code.org. L’essai compact de référence avait déjà été exécuté pendant l’audit. Aucun nouveau test du moteur, compte, publication ou observation avec des élèves n’est revendiqué ici.",
+    "quickConductor": [
+      "Préserver l’ancien travail puis préparer le terrain initial.",
+      "Faire dessiner six cases, deux angles et l’état final avant les blocs.",
+      "Vérifier une première organisation et localiser un éventuel écart.",
+      "Comparer à une seconde organisation équivalente, avec définition et appels dans au moins une version.",
+      "Prévoir et tester un changement du tracé depuis Reset.",
+      "Relier le résultat aux décisions Aquatic et conserver les preuves."
+    ],
+    "references": [
+      {
+        "title": "Code.org : Hero’s Journey, niveau 12",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+      }
+    ]
+  }
+}

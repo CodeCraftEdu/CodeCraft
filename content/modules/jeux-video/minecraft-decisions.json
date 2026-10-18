@@ -1,0 +1,355 @@
+{
+  "domainId": "jeux-video",
+  "title": "Choisir une action selon le chemin",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Lire un test de chemin, prévoir quand il est vrai ou faux et choisir le moment de le vérifier dans une boucle jusqu’au but.",
+  "tool": {
+    "label": "Ouvrir Voyage Aquatic, niveau 7 sur Code.org",
+    "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/7"
+  },
+  "skillIds": [
+    "minecraft.trace",
+    "minecraft.repetition",
+    "minecraft.decision",
+    "minecraft.debugging"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "minecraft.trace",
+      "expectation": "Suivre la case occupée et la direction après un déplacement ou un virage."
+    },
+    {
+      "skillId": "minecraft.repetition",
+      "expectation": "Lire toutes les actions d’un tour avant de recommencer le suivant."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Passer de Hero à Aquatic",
+      "text": "Ouvre le niveau 7 de Voyage Aquatic. Ici, les blocs pilotent directement Alex ou Steve, à pied ou en bateau selon la scène. Tu lances son trajet avec Exécuter : tu vas prévoir ses décisions dans le programme. Garde ton carnet pour noter sa case, sa direction et le résultat des tests."
+    },
+    {
+      "type": "lesson",
+      "id": "boucle-but",
+      "title": "Répéter jusqu’au but",
+      "paragraphs": [
+        "La boucle répéter jusqu’au but recommence ses commandes tant que l’objectif du niveau n’est pas atteint. Avant chaque nouveau tour, elle vérifie le but. Son nombre de tours dépend donc du trajet exécuté, au lieu d’être fixé à l’avance.",
+        "Repère l’objectif indiqué par le niveau et le personnage qui doit l’atteindre. Un obstacle devant lui ne signifie pas que le but est atteint : il faut encore que les commandes lui permettent de continuer."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "entree-experimentee",
+      "title": "Tu utilises déjà les conditions ?",
+      "paragraphs": [
+        "Après avoir lu la boucle jusqu’au but, tu peux passer à la décision d’Aquatic 7. Prévois un test vrai et un test faux depuis la case et la direction du personnage. Compare ensuite les ordres des commandes sur la grille, notamment depuis B3 nord. Si le rôle d’un si reste difficile, lis d’abord Un test pose une question."
+      ],
+      "activityLink": {
+        "moduleId": "minecraft-decisions",
+        "blockId": "lire-sept",
+        "label": "Prévoir la décision d’Aquatic 7"
+      }
+    },
+    {
+      "type": "details",
+      "id": "prise-en-main",
+      "title": "Essayer la boucle sur un trajet simple (facultatif)",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "reprendre-quatre",
+          "title": "Avancer jusqu’au dauphin",
+          "paragraphs": [
+            "Au niveau 4, place avancer dans la boucle jusqu’au but. Prévois ce qui fera arrêter les répétitions, puis lance. Reviens à cette page après l’essai pour poursuivre le niveau 7."
+          ],
+          "externalLink": {
+            "label": "Ouvrir Aquatic 4 dans un autre onglet",
+            "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/4"
+          }
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "condition",
+      "title": "Un test pose une question",
+      "paragraphs": [
+        "Le bloc si chemin à droite demande si le personnage peut passer sur la case voisine située à sa droite, depuis sa position et sa direction actuelles. Le résultat est vrai si le passage est possible, faux sinon. À droite se repère depuis le personnage : quand il tourne, la case testée change aussi.",
+        "Si le test est vrai, les commandes placées dans le si sont exécutées. S’il est faux, elles sont sautées et le programme continue après ce bloc. Le test seul ne déplace pas le personnage et ne le fait pas tourner.",
+        "Le menu du test permet de regarder devant, à droite ou à gauche. Lis la direction sélectionnée avant de prévoir sa réponse. Si tu connais les si de Scratch, retrouve ce même principe en suivant ici la case et l’orientation."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "lire-sept",
+      "title": "Compléter la décision dans Aquatic 7",
+      "paragraphs": [
+        "Le programme de départ contient une boucle jusqu’au but, avancer puis si chemin à droite. Si une ancienne version personnelle apparaît, garde une capture avant d’utiliser Recommencer (Start Over) pour retrouver ce programme.",
+        "Observe les ouvertures sur la carte. Place tourner à droite à l’intérieur du si. Lis maintenant le tour complet : le personnage avance, puis teste depuis la case où il vient d’arriver. Il tourne seulement si le passage à droite est possible."
+      ],
+      "filename": "Programme guidé",
+      "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si chemin à droite\n      tourner à droite"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Prévoir une décision vraie et une fausse",
+      "items": [
+        {
+          "id": "mc06-sept-faux",
+          "text": "Sur ton dessin de la carte, suis le premier avancer. Quelle case est ensuite regardée par le test ? Note sa réponse et la commande qui sera exécutée ou sautée.",
+          "hint": "Le test vient après avancer. Place d’abord ton pion sur sa nouvelle case en conservant sa direction."
+        },
+        {
+          "id": "mc06-sept-vrai",
+          "text": "Poursuis jusqu’à une ouverture à droite. Prévois le virage et la direction du prochain avancer. Relève aussi une position où le test est faux.",
+          "hint": "Un test faux saute le virage. Il ne termine pas la boucle jusqu’au but."
+        },
+        {
+          "id": "mc06-sept-verifier",
+          "text": "Lance et compare le trajet à tes prévisions. Montre où le test devient vrai, où il est faux et ce qui arrête finalement la boucle. Avant un nouvel essai, utilise Réinitialiser (Reset)."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "moment-test",
+      "title": "Tester avant ou après le déplacement",
+      "paragraphs": [
+        "Avancer puis tester et tester puis avancer ne posent pas la question depuis la même case. Pour comparer les deux ordres, note la case et la direction au moment précis où le si est rencontré.",
+        "Sur ton dessin d’Aquatic 7, choisis un angle. Prévois quand chaque version y repère l’ouverture. Un changement d’ordre ne modifie pas forcément tout le trajet : il faut suivre les actions depuis le départ choisi pour le savoir. Tu compareras aussi ces ordres sur la grille plus bas."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "niveau-huit",
+      "title": "Reconstruire la décision sur une autre carte",
+      "paragraphs": [
+        "Ouvre Aquatic 8. Repère le départ, les passages et le poisson tropical à atteindre. Prévois les déplacements et les virages utiles avant de poser tes blocs.",
+        "Construis une boucle jusqu’au but avec un déplacement et un test de chemin. Choisis la direction regardée par le test et la rotation à exécuter si ce test est vrai. Les menus du test et du virage se règlent séparément : lis les deux.",
+        "Place les commandes dans l’ordre que tu peux justifier sur la carte. Marque la position où le test doit être effectué et la direction obtenue après son action."
+      ],
+      "externalLink": {
+        "label": "Ouvrir Aquatic 8 dans un autre onglet",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/8"
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "transfert",
+      "title": "Expliquer avant de modifier",
+      "items": [
+        {
+          "id": "mc06-huit-prevoir",
+          "text": "Choisis une position où ta condition sera vraie et une autre où elle sera fausse. Pour chacune, montre la case testée et annonce l’action suivante.",
+          "hint": "Lis la direction du personnage, puis celle choisie dans le menu du test. Un virage est une autre commande."
+        },
+        {
+          "id": "mc06-huit-verifier",
+          "text": "Lance depuis le départ. Si le trajet diffère, relève la première position concernée : est-ce le déplacement, la direction du test ou le virage qui ne correspond pas à ta prévision ? Corrige puis relance après Reset.",
+          "hint": "Reprends un seul tour de boucle à partir de la position précédant l’écart."
+        },
+        {
+          "id": "mc06-huit-arret",
+          "text": "Quand tu atteins l’objectif, explique pourquoi la boucle s’arrête. Compare cette raison à ce qui se passe lorsqu’un si chemin est faux."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "defi-papier",
+      "title": "Décider sur une grille",
+      "paragraphs": [
+        "Sur cette grille originale, les cases praticables sont B5, B4, B3, C3, D3, D4 et D5. Toutes les autres sont bloquées. Le départ est B5 vers le nord et le but est D5.",
+        "Avancer déplace d’une case devant le pion ; tourner à droite fait un quart de tour sur place. Si chemin à droite regarde la case voisine à droite du pion et exécute son contenu seulement si elle est praticable. Si avancer viserait une case bloquée, arrête ta trace et note le blocage.",
+        "La boucle vérifie avant chaque tour si le pion est au but. Si c’est le cas, elle ne commence pas de nouveau tour. Suis le programme A sur ton dessin."
+      ],
+      "illustration": {
+        "src": "images/minecraft-decisions.svg",
+        "alt": "Grille A à E et 1 à 5. Chemin en B5, B4, B3, C3, D3, D4 et D5. Départ B5 nord, but D5. Toutes les autres cases sont bloquées.",
+        "caption": "Départ B5, nord. Le test dépend de la case et de la direction."
+      },
+      "filename": "Programme A",
+      "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si chemin à droite\n      tourner à droite"
+    },
+    {
+      "type": "lesson",
+      "id": "tester-dabord",
+      "title": "Le même test placé avant avancer",
+      "paragraphs": [
+        "Le programme B conserve les mêmes commandes et déplace le si avant avancer. Utilise la même grille pour le comparer au programme A."
+      ],
+      "filename": "Programme B",
+      "code": "au départ\n  répéter jusqu’au but\n    si chemin à droite\n      tourner à droite\n    avancer"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Justifier le test et son moment",
+      "intro": "Prévois d’abord, puis vérifie avec un pion orienté sur le dessin.",
+      "items": [
+        {
+          "id": "mc06-papier-tests",
+          "text": "Teste si chemin à droite depuis B4 nord, B3 nord, puis B4 est. Pour chaque état, nomme la case regardée et donne vrai ou faux.",
+          "hint": "Tourner le pion change sa droite. Depuis B4 vers l’est, sa droite est vers le bas de la grille."
+        },
+        {
+          "id": "mc06-papier-trace",
+          "text": "Depuis B5 nord, trace le programme A jusqu’au but. Note la réponse du test après chaque déplacement, les virages et la direction finale. Un test faux a-t-il arrêté la répétition ?",
+          "hint": "Avance avant de tester. Après un si faux, le tour se termine puis la boucle vérifie le but."
+        },
+        {
+          "id": "mc06-papier-ordre",
+          "text": "Change seulement le départ : place le pion en B3 vers le nord, avec D5 comme but. Compare les programmes A et B. Lequel peut commencer à suivre le chemin ? Explique ce que chacun fait avant son premier test ou déplacement.",
+          "hint": "Depuis B3 nord, B2 est bloquée et C3 est praticable. Dans quelle version le virage peut-il arriver avant le premier avancer ?"
+        },
+        {
+          "id": "mc06-papier-but",
+          "text": "Place directement le pion en D5, au but. Doit-il exécuter un premier avancer avant que la boucle s’arrête ? Justifie avec la règle de la boucle."
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "comparaison-papier",
+      "title": "Comparer après tes prévisions",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-papier",
+          "title": "La question dépend de l’état courant",
+          "paragraphs": [
+            "Depuis B4 nord, le test regarde C4 : faux. Depuis B3 nord, il regarde C3 : vrai. Depuis B4 est, il regarde B5 : vrai. À droite ne désigne donc pas toujours l’est de la carte.",
+            "Le programme A passe par B4, B3, C3, D3, D4, D5. Les réponses successives sont faux, vrai, faux, vrai, faux, faux. Il tourne en B3 puis en D3, avance six fois et termine en D5 vers le sud. Les si faux ont sauté les virages ; l’arrivée au but arrête les nouveaux tours.",
+            "Depuis B3 nord, A essaie d’avancer vers B2 avant de tester : la trace est bloquée. B teste d’abord C3, tourne vers l’est et avance en C3. Il poursuit par D3, D4, D5 et termine vers le sud. Ici, changer le moment du test change la possibilité de partir.",
+            "Depuis D5 déjà au but, aucun tour ne commence : ni déplacement ni test de chemin ne sont exécutés. Avec un départ B5 nord, les deux programmes peuvent suivre le même trajet ; l’ordre ne se juge pas sans connaître l’état de départ."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "Conserver les raisons de tes choix",
+      "paragraphs": [
+        "Garde l’adresse du niveau travaillé, une capture de tes blocs et deux états de ton dessin : un où le test est vrai, un où il est faux. Pour chacun, note la case regardée et l’action qui suit. Indique aussi le but qui arrête les répétitions.",
+        "Avec un compte Code.org, vérifie la reprise de ta version en rouvrant le niveau. Ton carnet et la capture permettent aussi de reconstruire ce programme court."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Un test de chemin dépend de la position du personnage, de sa direction et du côté sélectionné.",
+    "Un si vrai exécute son contenu ; un si faux le saute et laisse le programme continuer.",
+    "La boucle jusqu’au but et le test de chemin posent deux questions différentes.",
+    "Tester avant ou après avancer peut changer le résultat ; il faut suivre l’état au moment du test.",
+    "Une prévision comporte au moins un test vrai, un test faux et la raison de l’arrêt."
+  ],
+  "teacherGuide": {
+    "objective": "Faire expliquer une décision à partir de l’état spatial et distinguer le test local du critère d’arrêt de la répétition.",
+    "entryDiagnosis": [
+      "Faire indiquer la droite du pion dans deux orientations. Si elle est assimilée à l’est de la carte, reprendre une rotation avec un objet orienté.",
+      "Demander la différence entre répéter un nombre donné de fois et répéter jusqu’au but. La reprise Aquatic 4 est disponible sans imposer les niveaux 4 à 6 à tous les élèves."
+    ],
+    "preparation": [
+      "La transition Hero/Aquatic est explicite : les blocs pilotent le personnage ou son bateau, sans second Agent à guider au clavier.",
+      "L’inventaire confirme les liens Aquatic 4, 7 et 8. Le niveau 7 fournit jusqu’au but, avancer puis si chemin à droite avec une branche à compléter. Les contrôles ciblés de l’interface confirment le sélecteur devant/droite/gauche ; au niveau 8, le menu de rotation permet droite/gauche même si la palette affiche gauche au départ.",
+      "Les cartes et palettes des niveaux 7 et 8 ont été observées pendant cette intégration, sans exécution complète des puzzles. Captures aquatic7-depart.png et aquatic8-depart.png dans browser-artifacts/audit-minecraft-2026-10-18/. Réutiliser l’inventaire existant pour le reste ; aucun éditeur JavaScript ou terrain importable n’est requis.",
+      "Dans le niveau 7, faire suivre avancer avant de regarder le passage à droite. Les tâches demandent une réponse fausse et une vraie sur la carte affichée, puis la raison de l’arrêt au coffre.",
+      "La grille originale est indépendante des cartes Code.org. Elle définit son arrêt sur blocage pour la trace papier. Le programme A depuis B5 nord donne six déplacements et deux virages ; depuis B3 nord, avancer vise B2 bloquée. Le programme B peut d’abord tourner et rejoindre D5.",
+      "La reprise avec un compte reste à vérifier dans l’usage réel. Conserver les blocs existants avant Start Over, qui restaure le programme fourni, et distinguer ce bouton de Reset entre deux essais."
+    ],
+    "why": "Après Scratch, le bénéfice porte sur la lecture située du test : sa direction est relative, son résultat change avec l’état, et son emplacement dans la boucle peut autoriser ou empêcher un départ.",
+    "discoverySpeech": [
+      "Quelle case le personnage regarde-t-il quand il rencontre ce si ? A-t-il déjà avancé dans ce tour ?",
+      "Si le chemin à droite est fermé, quelle commande est sautée ? La boucle doit-elle pour autant s’arrêter ?"
+    ],
+    "example": {
+      "target": { "moduleId": "minecraft-decisions", "blockId": "lire-sept" },
+      "comments": [
+        "Le si se trouve dans la boucle jusqu’au but, après avancer. Tourner est dans le si : il dépend du résultat de ce test.",
+        "Faire verbaliser la case testée après le déplacement et la direction du prochain déplacement après le virage. La réponse fausse ne produit pas implicitement une autre rotation."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Un test faux termine-t-il la boucle jusqu’au but ?",
+        "answer": "Non. Le contenu du si est sauté, puis le programme continue. La boucle vérifie séparément si l’objectif est atteint."
+      },
+      {
+        "question": "Quelle case est à droite depuis B4 est sur la grille ?",
+        "answer": "B5, qui est praticable. Depuis B4 nord, ce serait C4, bloquée."
+      },
+      {
+        "question": "Pourquoi A et B diffèrent-ils depuis B3 nord ?",
+        "answer": "A tente d’abord B2 bloquée. B regarde C3, tourne à droite avant son déplacement et rejoint le chemin vers D5."
+      },
+      {
+        "question": "Inverser l’ordre change-t-il toujours le trajet ?",
+        "answer": "Non. Depuis B5 nord sur cette grille, les deux programmes peuvent rejoindre D5 par le même chemin. Il faut tenir compte du départ et des états où le test est rencontré."
+      },
+      {
+        "question": "Que se passe-t-il si le pion du défi est déjà au but ?",
+        "answer": "La condition de boucle est vérifiée avant le tour. Aucun avancer ni test de chemin n’est exécuté."
+      }
+    ],
+    "accompaniedActivity": { "moduleId": "minecraft-decisions", "blockId": "guide" },
+    "independentActivity": { "moduleId": "minecraft-decisions", "blockId": "autonomie" },
+    "differentiation": [
+      "Lire les commandes à voix haute et faire tourner un pion. Accepter un dessin ou une explication orale plutôt qu’un tableau écrit.",
+      "Pour découvrir la boucle jusqu’au but, utiliser Aquatic 4 puis revenir au chapitre. Les niveaux 5 et 6 peuvent servir d’entraînement supplémentaire selon le besoin du groupe.",
+      "Après Scratch, aller directement aux états vrai/faux et à la comparaison du départ B3 nord. Éviter de transformer ce transfert en nouveau cours général sur si.",
+      "Pendant le stage, ouvrir la section sur le test au moment d’un blocage, puis revenir au projet commun."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "La droite du personnage reste l’est de la carte après un virage.",
+        "helps": [
+          "Orienter le pion comme le personnage.",
+          "Montrer sa droite avant de nommer la case testée."
+        ]
+      },
+      {
+        "symptom": "Le personnage tourne même quand le test est faux.",
+        "helps": [
+          "Vérifier que tourner est à l’intérieur du si.",
+          "Suivre un tour où la case testée est bloquée et sauter seulement le contenu du si."
+        ]
+      },
+      {
+        "symptom": "L’élève prévoit le test depuis la case avant le déplacement.",
+        "helps": [
+          "Marquer l’ordre avancer puis si dans le programme.",
+          "Déplacer le pion avant de regarder la case voisine du test."
+        ]
+      },
+      {
+        "symptom": "L’élève pense qu’un obstacle satisfait le but.",
+        "helps": [
+          "Repérer l’objectif du niveau.",
+          "Séparer la question le but est-il atteint de la question le chemin choisi est-il libre."
+        ]
+      }
+    ],
+    "notes": "La réussite de Code.org ne suffit pas à expliquer la décision. Demander les deux états vrai/faux et le critère d’arrêt. Le contre-exemple de la grille n’est pas annoncé comme une carte importée ni comme le comportement exact du moteur en cas de collision.",
+    "quickConductor": [
+      "Préciser le contrôle direct du personnage et lire la boucle jusqu’au but.",
+      "Compléter la branche du niveau 7 et prévoir un test vrai et un faux.",
+      "Reconstruire une décision justifiée sur la carte du niveau 8.",
+      "Tracer le dessin original puis déplacer le départ à B3 nord pour comparer les ordres.",
+      "Conserver deux états du test et la raison de l’arrêt."
+    ],
+    "references": [
+      {
+        "title": "Code.org : Voyage Aquatic, niveau 7",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/7"
+      },
+      {
+        "title": "Code.org : Voyage Aquatic, niveau 8",
+        "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/8"
+      }
+    ]
+  }
+}

@@ -337,6 +337,38 @@
     {
       "id": "scratch-mission-tests",
       "file": "modules/jeux-video/scratch-mission-tests.json"
+    },
+    {
+      "id": "minecraft-trajets",
+      "file": "modules/jeux-video/minecraft-trajets.json"
+    },
+    {
+      "id": "minecraft-repetitions",
+      "file": "modules/jeux-video/minecraft-repetitions.json"
+    },
+    {
+      "id": "minecraft-passage",
+      "file": "modules/jeux-video/minecraft-passage.json"
+    },
+    {
+      "id": "minecraft-procedures",
+      "file": "modules/jeux-video/minecraft-procedures.json"
+    },
+    {
+      "id": "minecraft-motifs",
+      "file": "modules/jeux-video/minecraft-motifs.json"
+    },
+    {
+      "id": "minecraft-decisions",
+      "file": "modules/jeux-video/minecraft-decisions.json"
+    },
+    {
+      "id": "minecraft-strategies",
+      "file": "modules/jeux-video/minecraft-strategies.json"
+    },
+    {
+      "id": "minecraft-automatisation",
+      "file": "modules/jeux-video/minecraft-automatisation.json"
     }
   ],
   "pathways": [
@@ -371,6 +403,10 @@
     {
       "id": "scratch-avances",
       "file": "pathways/scratch-avances.json"
+    },
+    {
+      "id": "minecraft-algorithmes",
+      "file": "pathways/minecraft-algorithmes.json"
     }
   ]
 }

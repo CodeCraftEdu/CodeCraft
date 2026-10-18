@@ -1,0 +1,311 @@
+{
+  "domainId": "jeux-video",
+  "title": "Composer un motif avec des boucles",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Emboîter deux répétitions, extraire un tronçon dans une procédure et prévoir les rails posés ainsi que l’état final de l’Agent.",
+  "tool": {
+    "label": "Ouvrir Hero’s Journey, niveau 12 sur Code.org",
+    "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+  },
+  "skillIds": [
+    "minecraft.repetition",
+    "minecraft.composition",
+    "minecraft.procedure",
+    "minecraft.comparison"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "minecraft.repetition",
+      "expectation": "Suivre le motif complet et l’état obtenu à chaque tour."
+    },
+    {
+      "skillId": "minecraft.procedure",
+      "expectation": "Distinguer définition et appel, puis suivre la position et la direction entre deux appels."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Préparer Hero 12",
+      "text": "Ouvre le niveau 12, un espace de construction libre. Les blocs commandent l’Agent. Si tu as déjà travaillé ici, conserve une capture de tes blocs, puis retire les commandes accrochées au départ. Garde les deux définitions fournies. Clique sur Réinitialiser (Reset) pour retrouver le terrain et l’Agent au départ."
+    },
+    {
+      "type": "lesson",
+      "id": "entree-experimentee",
+      "title": "Tu sais déjà suivre deux boucles emboîtées ?",
+      "paragraphs": [
+        "Après la préparation de Hero 12, tu peux commencer par écrire le tronçon dans une définition. Tu travailleras les appels, la place des virages et la différence entre l’arrivée de l’Agent et les rails construits. Si tu hésites sur le nombre d’actions dans deux boucles, fais d’abord la comparaison ci-dessous avec une répétition de six."
+      ],
+      "activityLink": {
+        "moduleId": "minecraft-motifs",
+        "blockId": "definir-troncon",
+        "label": "Composer le motif avec une définition et ses appels"
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "deux-boucles",
+      "title": "Répéter un groupe qui contient une boucle",
+      "paragraphs": [
+        "Dans la palette, prends une répétition et place une seconde répétition à l’intérieur. Règle celle du dehors sur 2 et celle du dedans sur 3. Dans la boucle intérieure, place poser un rail, puis avancer. Sous le départ, ajoute tourner à droite avant ces boucles.",
+        "L’écriture ci-dessous décrit les blocs à assembler. À chaque tour de la boucle extérieure, la boucle intérieure recommence ses trois tours. Une fois ce groupe terminé, le programme passe au tour extérieur suivant."
+      ],
+      "filename": "Programme",
+      "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    répéter 3 fois\n      placer un rail\n      avancer"
+    },
+    {
+      "type": "tasks",
+      "id": "compter",
+      "title": "Prévoir la ligne avant de lancer",
+      "items": [
+        {
+          "id": "mc05-produire",
+          "text": "Depuis le départ initial, prévois le nombre de placements et de déplacements. Dessine les cases qui recevront un rail et l’arrivée de l’Agent. Lance, puis utilise la flèche droite sous le jeu pour avancer Alex ou Steve le long des rails. La vue suit ton personnage : avance jusqu’à voir le dernier rail et l’Agent, puis compare avec ton dessin.",
+          "hints": [
+            "Un tour extérieur contient trois placements et trois déplacements. Il y a deux tours extérieurs.",
+            "Placer vient avant avancer : le premier rail est sur la case de départ. Après le dernier déplacement, l’Agent se trouve une case après le dernier rail posé."
+          ]
+        },
+        {
+          "id": "mc05-comparer-six",
+          "text": "Conserve une capture de cette version. Remplace les deux répétitions par une seule répétition de 6 contenant placer un rail puis avancer. Garde le virage initial. Prévois si le tracé et l’arrivée changent, puis essaie après Reset. Suis de nouveau les rails avec ton personnage pour observer l’arrivée.",
+          "hint": "Déroule les actions des deux versions. Aucune commande ne sépare ici les groupes de trois."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "comparer",
+      "title": "Quand les groupes ont-ils un intérêt ?",
+      "paragraphs": [
+        "Dans ces deux versions, placer puis avancer est exécuté six fois dans la même direction. Tu obtiens six rails et six déplacements. Les deux boucles ne réduisent ici ni le travail de l’Agent ni le nombre de blocs à écrire par rapport à la répétition simple.",
+        "Pour former un angle, il faut changer la direction entre les groupes. Tu vas garder un tronçon de trois rails dans une procédure et placer les virages dans le programme qui l’appelle."
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "definir-troncon",
+      "title": "Écrire le tronçon dans une définition",
+      "paragraphs": [
+        "Dans Hero 12, les deux définitions peuvent recevoir tes commandes. Repère la première, appelée fonction 1 ou function 1. Remplace son contenu par une répétition de 3 contenant placer un rail puis avancer. Cette définition reste séparée du départ.",
+        "Nous appelons ce groupe tronçon dans les exemples. Dans Code.org, garde le nom visible de ta première définition et prends le petit bloc d’appel portant ce même nom."
+      ],
+      "filename": "Première définition",
+      "code": "définir tronçon\n  répéter 3 fois\n    placer un rail\n    avancer"
+    },
+    {
+      "type": "lesson",
+      "id": "appeler-angle",
+      "title": "Faire tourner le programme entre les tronçons",
+      "paragraphs": [
+        "Prépare le programme sous le départ : tourner à droite, puis une répétition de 2 contenant l’appel de ta première procédure suivi de tourner à gauche. Si tu avais construit la ligne de six rails, cette répétition remplace celle de 6. La boucle de 3 reste dans la définition : le programme principal appelle ce groupe au lieu de recopier ses commandes.",
+        "Avant de lancer, marque l’arrivée du premier appel et sa direction après le virage. Le second appel commencera dans cet état. Réinitialise le terrain, puis lance. Le dernier virage se fait aussi : il suit le second appel."
+      ],
+      "filename": "Programme principal",
+      "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    appeler tronçon\n    tourner à gauche"
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Vérifier la composition",
+      "items": [
+        {
+          "id": "mc05-angle",
+          "text": "Avec les flèches sous le jeu, déplace Alex ou Steve le long des rails pour voir les deux tronçons et l’Agent. Compare avec ton dessin. Pourquoi les deux tronçons forment-ils un angle ? La procédure contient-elle elle-même un virage ?",
+          "hint": "La définition construit droit. Le virage est dans la boucle extérieure, après l’appel."
+        },
+        {
+          "id": "mc05-dernier-virage",
+          "text": "Note la direction finale de l’Agent et sa position par rapport au dernier rail. Explique l’effet du dernier avancer, puis du dernier tourner à gauche.",
+          "hint": "Placer puis avancer laisse l’Agent après le rail posé. Le virage suivant change sa direction, sans changer sa case."
+        },
+        {
+          "id": "mc05-reutiliser",
+          "text": "Montre où modifier le nombre de rails de chaque tronçon et où modifier le nombre d’appels. Explique ce que devient le total si chaque appel construit deux rails et si le programme fait toujours deux appels.",
+          "hint": "Le nombre de tours dans la définition agit à chaque appel. Deux appels de deux placements donnent quatre placements."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "defi-papier",
+      "title": "Tracer un motif compact",
+      "paragraphs": [
+        "Sur cette grille originale, toutes les cases sont praticables. Le pion commence en B4 vers le nord. Placer un rail marque sa case actuelle ; avancer le déplace d’une case dans la direction regardée. Un virage fait un quart de tour sur place.",
+        "Pour ce défi, la définition tronçon contient deux tours, comme ci-dessous. Utilise un pion orienté et marque les rails sur ton dessin."
+      ],
+      "illustration": {
+        "src": "images/minecraft-motifs.svg",
+        "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5. Toutes les cases sont praticables. Le pion commence en B4 vers le nord.",
+        "caption": "Départ B4, nord. Marque séparément les rails et l’arrivée."
+      },
+      "filename": "Définition du défi",
+      "code": "définir tronçon\n  répéter 2 fois\n    placer un rail\n    avancer"
+    },
+    {
+      "type": "lesson",
+      "id": "programme-papier",
+      "title": "Prévoir les appels et les virages",
+      "paragraphs": [
+        "Exécute sur papier ce programme avec la définition du défi. Le virage initial fait partie de la trace."
+      ],
+      "filename": "Programme du défi",
+      "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    appeler tronçon\n    tourner à gauche"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Distinguer le tracé et l’état final",
+      "intro": "Prévois avant de déplacer ton pion, puis suis chaque commande pour vérifier.",
+      "items": [
+        {
+          "id": "mc05-papier-trace",
+          "text": "Depuis B4 nord, relève les cases recevant un rail et l’état après chaque appel suivi de son virage. Combien de placements et de déplacements sont exécutés au total ?",
+          "hint": "Le virage initial oriente le pion vers l’est. Deux appels exécutent chacun deux fois placer puis avancer."
+        },
+        {
+          "id": "mc05-papier-sans-final",
+          "text": "Un camarade garde le virage entre les deux appels mais retire seulement celui qui suit le deuxième. Les rails changent-ils ? Compare la position et la direction finales.",
+          "hint": "Le virage retiré vient après tous les placements et tous les déplacements."
+        },
+        {
+          "id": "mc05-papier-inverser",
+          "text": "Repars du dessin initial. Dans la définition seulement, inverse les deux commandes : avancer puis placer un rail. Garde tous les virages du programme. Prévois les rails, la position et la direction finales. Une même arrivée prouve-t-elle que le tracé est identique ?",
+          "hint": "Suis les mêmes déplacements, mais marque un rail après chaque déplacement. Le départ reçoit-il encore un rail ?"
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "comparaison-papier",
+      "title": "Comparer après tes prévisions",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-papier",
+          "title": "Les rails et l’Agent ne racontent pas la même chose",
+          "paragraphs": [
+            "Avec placer puis avancer, le premier appel pose les rails en B4 et C4. Il termine en D4 ; le virage suivant oriente le pion au nord. Le second pose en D4 et D3, termine en D2, puis le dernier virage oriente le pion à l’ouest. Il y a quatre placements et quatre déplacements.",
+            "En retirant seulement le tout dernier virage, les rails et la position finale D2 restent identiques. Le pion regarde le nord au lieu de l’ouest.",
+            "Avec avancer puis placer dans la définition, les rails sont en C4, D4, D3 et D2. Le pion termine encore en D2 vers l’ouest. B4 ne reçoit plus de rail et D2 en reçoit un : même arrivée et même direction ne signifient pas même construction."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "Conserver la définition avec ses appels",
+      "paragraphs": [
+        "Dans ton carnet, garde l’adresse de Hero 12, une capture de la définition et une autre du programme principal. Note le nombre de placements par appel, les raccords et l’état final observé après Reset.",
+        "Pour reprendre, tu dois pouvoir reconstruire la définition et les appels. Avec un compte Code.org, vérifie en rouvrant le niveau que tu retrouves ta propre version avant de fermer ton travail."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Deux répétitions de trois placements exécutent six placements ; la boucle intérieure recommence à chaque tour extérieur.",
+    "Emboîter deux boucles ne réduit pas automatiquement les actions exécutées ou les blocs écrits.",
+    "Une procédure conserve un motif, et son appel exécute ce motif depuis l’état courant.",
+    "La position d’un virage dans le programme détermine la direction du tronçon suivant et l’orientation finale.",
+    "Placer puis avancer et avancer puis placer peuvent donner la même arrivée avec des rails sur des cases différentes."
+  ],
+  "teacherGuide": {
+    "objective": "Faire composer deux niveaux de répétition, extraire un motif dans une procédure puis distinguer état final, tracé et coût d’exécution.",
+    "entryDiagnosis": [
+      "Demander l’effet d’un appel et l’état requis pour le suivant. Reprendre la mission 4 si l’élève remet mentalement l’Agent au départ entre les appels.",
+      "Faire expliquer deux répétitions de trois actions sur papier avant de manipuler les emboîtements si nécessaire."
+    ],
+    "preparation": [
+      "Hero 12 est libre. Deux définitions sans paramètres sont fournies et modifiables, avec leurs appels dans la palette. Les répétitions vont de 2 à 10 et peuvent être imbriquées. Aucun éditeur JavaScript ni paramètre n’est nécessaire.",
+      "Les constructions de référence ont déjà été exécutées lors de l’audit ciblé : deux groupes de trois rails en ligne, puis deux appels de la première procédure avec tourner à gauche après chaque appel. Les captures sont dans browser-artifacts/audit-minecraft-2026-10-18/hero12-boucles.png et hero12-procedure-angle.png. Cette intégration ne revendique pas de nouvelle exécution du jeu.",
+      "Les essais Hero 12 partent de l’état initial avec tourner à droite. Le terrain est remis à zéro entre versions. La vue suit Alex ou Steve : après exécution, utiliser les flèches sous le jeu pour suivre les rails et retrouver l’Agent. Le suivi de la vue et les commandes du joueur ont été vérifiés dans l’essai conservé de Hero 12 ; capture hero12-vue-joueur.png dans browser-artifacts/audit-minecraft-2026-10-18/. Le défi original compact sert au suivi case par case.",
+      "Conserver une capture des travaux déjà présents avant de retirer leurs commandes. Reset restaure le terrain et les personnages tout en gardant le programme ; Start Over concerne le retour aux blocs de départ.",
+      "La première définition est désignée tronçon dans les exemples CodeCraft. L’élève garde le nom fourni dans Code.org et utilise l’appel correspondant. La seconde définition n’intervient pas dans cette activité.",
+      "La grille originale utilise deux placements par appel, contre trois dans les premiers essais Hero 12. Préparer un pion orienté et quatre marques de rails. Toutes les cases du dessin sont praticables."
+    ],
+    "why": "Après Scratch, l’intérêt porte sur la composition : prévoir le nombre d’actions à travers deux boucles, distinguer le motif de son contexte d’appel et montrer que l’état final ne résume pas les constructions.",
+    "discoverySpeech": [
+      "Combien de fois la commande placer sera-t-elle exécutée ? Montre les tours extérieurs et les tours intérieurs.",
+      "Où placer le virage pour que le deuxième tronçon change de direction sans faire tourner chaque rail du premier ?"
+    ],
+    "example": {
+      "target": { "moduleId": "minecraft-motifs", "blockId": "appeler-angle" },
+      "comments": [
+        "La définition contient répéter 3 fois, placer puis avancer. Le programme contient le virage initial à droite, puis répéter 2 fois, appeler puis tourner à gauche.",
+        "Six placements et six déplacements sont exécutés. Les deux virages de la boucle principale sont exécutés aussi. Depuis le départ initial nord, le premier tronçon est vers l’est, le second vers le nord et l’Agent finit orienté à l’ouest."
+      ]
+    },
+    "questions": [
+      {
+        "question": "Pourquoi une seule boucle de six suffit-elle pour la première ligne ?",
+        "answer": "Les deux groupes de trois se suivent sans autre action entre eux. Ils exécutent la même suite de six motifs placer puis avancer. L’emboîtement n’apporte ici aucune réduction d’exécution ou d’écriture."
+      },
+      {
+        "question": "Où est le virage qui sépare les tronçons ?",
+        "answer": "Dans la boucle du programme principal, après l’appel. La définition construit droit. Ce virage est aussi exécuté après le dernier appel."
+      },
+      {
+        "question": "Que donne le programme du défi original ?",
+        "answer": "Rails B4, C4, D4, D3 ; quatre placements et quatre déplacements. Après le premier appel et le virage : D4 nord. Après le second et le virage : D2 ouest."
+      },
+      {
+        "question": "Que montre l’inversion avancer puis placer ?",
+        "answer": "Les rails sont C4, D4, D3, D2 et l’état final reste D2 ouest. Une arrivée et une direction identiques ne garantissent pas des constructions identiques."
+      }
+    ],
+    "accompaniedActivity": { "moduleId": "minecraft-motifs", "blockId": "guide" },
+    "independentActivity": { "moduleId": "minecraft-motifs", "blockId": "autonomie" },
+    "differentiation": [
+      "Faire déplier les deux tours extérieurs dans un tableau, avec une ligne par placement et déplacement. Accepter un suivi oral ou avec un pion.",
+      "Si l’emboîtement bloque, faire d’abord construire un seul tronçon, puis l’envelopper dans la seconde répétition.",
+      "Après Scratch, concentrer l’échange sur le coût, les virages et le contre-exemple même arrivée, autres rails. La création d’une fonction avec paramètres n’est pas requise.",
+      "Pendant le stage, utiliser seulement la comparaison ou la trace utile au projet en cours, puis revenir à celui-ci."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’élève prévoit cinq placements avec deux boucles de deux et trois tours.",
+        "helps": [
+          "Dessiner les trois placements du premier tour extérieur.",
+          "Recommencer les trois placements au deuxième tour : les nombres ne s’additionnent pas."
+        ]
+      },
+      {
+        "symptom": "Les rails tournent à chaque case au lieu de former deux tronçons.",
+        "helps": [
+          "Repérer si le virage est entré dans la répétition intérieure.",
+          "Le placer après l’appel dans la boucle du programme principal, puis relancer après Reset."
+        ]
+      },
+      {
+        "symptom": "La définition est correcte mais rien ne se construit.",
+        "helps": [
+          "Repérer le petit bloc d’appel correspondant au nom de la définition.",
+          "Vérifier que l’appel est accroché sous le départ dans la boucle extérieure."
+        ]
+      },
+      {
+        "symptom": "L’élève annonce des constructions identiques parce que l’Agent finit au même endroit.",
+        "helps": [
+          "Marquer les rails au moment exact des placements.",
+          "Comparer B4 et D2 dans les deux versions du défi original."
+        ]
+      }
+    ],
+    "notes": "Hero 12 n’impose pas une solution ni une validation de ce motif. Demander la prévision, les cases construites et l’explication de l’état final. Les tests CodeCraft simulent les règles du défi original et ne constituent pas une recette du moteur Code.org.",
+    "quickConductor": [
+      "Prévoir puis essayer deux groupes de trois rails et comparer à une répétition de six.",
+      "Extraire le tronçon de trois dans la première définition.",
+      "Composer deux appels avec un virage à gauche après chaque appel.",
+      "Tracer le défi compact puis comparer le dernier virage et l’ordre des placements.",
+      "Conserver la définition et le programme d’appel ensemble."
+    ],
+    "references": [
+      {
+        "title": "Code.org : Hero’s Journey, niveau 12",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/12"
+      }
+    ]
+  }
+}

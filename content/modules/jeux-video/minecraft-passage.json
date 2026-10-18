@@ -1,0 +1,320 @@
+{
+  "domainId": "jeux-video",
+  "title": "Construire et réparer un passage",
+  "type": "lesson",
+  "theme": "fondations",
+  "objective": "Prévoir les cases construites par l’Agent, puis corriger une répétition en repérant le premier écart avec le passage attendu.",
+  "tool": {
+    "label": "Ouvrir Hero’s Journey, niveau 6 sur Code.org",
+    "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/6"
+  },
+  "skillIds": [
+    "minecraft.trace",
+    "minecraft.repetition",
+    "minecraft.construction",
+    "minecraft.debugging"
+  ],
+  "prerequisiteSkills": [
+    {
+      "skillId": "minecraft.trace",
+      "expectation": "Suivre la case et la direction de l’Agent après chaque action."
+    },
+    {
+      "skillId": "minecraft.repetition",
+      "expectation": "Suivre les actions à l’intérieur d’une répétition et continuer depuis l’état obtenu au tour précédent."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "id": "preparer",
+      "title": "Avant de commencer",
+      "text": "Ouvre le niveau 6 et prépare ton carnet. Les blocs commandent l’Agent ; après Exécuter, les flèches déplacent Alex ou Steve. Tu vas construire un passage pour ton personnage, puis réparer un programme dans le niveau 7."
+    },
+    {
+      "type": "callout",
+      "id": "reprise",
+      "title": "Retrouver les répétitions",
+      "presentation": "compact",
+      "text": "Si tu perds le fil entre deux tours, ouvre Comparer deux programmes pour un trajet dans un autre onglet. Reprends le motif avec ton pion, puis ferme cet onglet pour revenir ici.",
+      "moduleLink": {
+        "moduleId": "minecraft-repetitions",
+        "text": "Comparer deux programmes pour un trajet",
+        "newTab": true
+      }
+    },
+    {
+      "type": "lesson",
+      "id": "placer",
+      "title": "Avancer et construire",
+      "paragraphs": [
+        "Dans Hero’s Journey, l’Agent peut traverser l’eau. Alex ou Steve a besoin d’un passage : voir l’Agent arriver de l’autre côté ne suffit donc pas à vérifier le pont.",
+        "Le bloc placer une planche construit sur la case occupée par l’Agent. Il ne fait pas avancer. Pour couvrir une case d’eau, amène l’Agent dessus, puis place la planche.",
+        "Au niveau 6, accroche avancer puis placer une planche sous le bloc de départ. Avant de lancer, montre la case que l’Agent atteindra et celle où apparaîtra la planche. Lance et compare avec ta prévision."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "premier-essai",
+      "title": "Observer une construction",
+      "items": [
+        {
+          "id": "mc03-une-planche",
+          "text": "Repère la position de l’Agent après avancer, puis après placer. Quelle action change sa case ? Quelle action change le terrain ?",
+          "hints": [
+            "Suis les deux commandes séparément : avancer, puis placer.",
+            "Placer laisse l’Agent sur la même case. Observe le sol sous lui."
+          ]
+        },
+        {
+          "id": "mc03-reset",
+          "text": "Clique sur Réinitialiser (Reset). Retrouves-tu le terrain et l’Agent au départ ? Tes blocs sont-ils encore présents ?",
+          "hint": "Réinitialiser prépare un nouvel essai avec tes blocs. Recommencer (Start Over) sert à retrouver le programme initial."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "prevoir-pont",
+      "title": "Préparer tout le passage",
+      "paragraphs": [
+        "Sur le dessin du niveau 6, repère les deux rives et les cases d’eau à couvrir pour rejoindre la pelle. Dessine ce passage et marque le départ et la direction de l’Agent.",
+        "Après ton premier essai, tu connais le motif avancer puis placer. Cherche combien de fois le répéter pour couvrir les cases d’eau du passage. Indique aussi où sera l’Agent après le dernier tour.",
+        "Place les deux commandes dans le creux de répéter. Règle le nombre d’après ton dessin, puis lance depuis le terrain réinitialisé."
+      ]
+    },
+    {
+      "type": "tasks",
+      "id": "guide",
+      "title": "Vérifier le pont du niveau 6",
+      "items": [
+        {
+          "id": "mc03-cases",
+          "text": "Compare les cases couvertes avec ton dessin. Si une planche manque ou apparaît ailleurs, retrouve le premier tour où le résultat diffère.",
+          "hint": "Pour chaque tour, note la case atteinte, puis marque la planche posée sur cette case."
+        },
+        {
+          "id": "mc03-traverser",
+          "text": "Après Exécuter, clique dans le jeu et utilise les flèches pour faire traverser Alex ou Steve jusqu’à la pelle. Le passage est-il continu ?",
+          "hint": "Vérifie les cases entre les deux rives, y compris celle qui touche chaque rive. L’Agent peut survoler une case d’eau encore vide."
+        },
+        {
+          "id": "mc03-expliquer",
+          "text": "Explique le nombre choisi dans répéter en montrant les cases construites. Distingue le trajet de l’Agent et le passage utilisable par ton personnage."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "niveau-sept",
+      "title": "Lire le programme avant de le corriger",
+      "paragraphs": [
+        "Ouvre le niveau 7 avec le lien ci-dessous. Un programme est déjà accroché : répéter 3 fois, avec avancer puis placer une planche à l’intérieur. Le nouveau passage est plus large. Si tu avais déjà modifié ce niveau, conserve ta capture puis utilise Recommencer (Start Over) pour retrouver le programme fourni.",
+        "Avant de modifier, note le nombre de tours et prévois les cases que ce programme couvrira. Lance une fois et compare le pont obtenu avec celui dont ton personnage a besoin pour rejoindre la pioche.",
+        "Certaines commandes sont attachées et verrouillées. Tu peux changer le nombre de répétitions : utilise ce réglage pour réparer le passage, en conservant les commandes fournies."
+      ],
+      "externalLink": {
+        "label": "Ouvrir Hero’s Journey, niveau 7 dans un autre onglet",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/7"
+      }
+    },
+    {
+      "type": "tasks",
+      "id": "reparer",
+      "title": "Trouver la première case manquante",
+      "items": [
+        {
+          "id": "mc03-localiser",
+          "text": "Montre la première case d’eau du passage qui reste vide. À quel moment le programme s’arrête-t-il par rapport à cette case ?",
+          "hints": [
+            "Marque une case construite par tour. Compare les trois tours au nombre de cases à couvrir.",
+            "Le motif peut être correct et s’arrêter trop tôt. Compare les deux extrémités du pont aux rives."
+          ]
+        },
+        {
+          "id": "mc03-corriger",
+          "text": "Choisis le nombre de tours d’après les cases manquantes. Annonce la nouvelle position finale et les cases couvertes, puis change seulement ce nombre.",
+          "hint": "Compte les cases d’eau à couvrir depuis le départ de l’Agent. Une rive déjà praticable n’est pas une case d’eau supplémentaire."
+        },
+        {
+          "id": "mc03-verifier",
+          "text": "Réinitialise et relance. Compare avec ta prévision, puis fais traverser ton personnage jusqu’à la pioche. Explique pourquoi la correction répare le passage."
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "defi-papier",
+      "title": "Un passage à réparer sur papier",
+      "paragraphs": [
+        "Sur ce dessin, les cases A, B et G sont des rives praticables. C, D, E et F sont de l’eau. L’Agent commence en B, vers la droite, et peut avancer sur l’eau. Alex ou Steve doit pouvoir aller de A à G.",
+        "Pour ce défi, avancer déplace l’Agent d’une case vers la droite ; placer une planche couvre sa case d’eau actuelle et le laisse sur place. Suis le programme ci-dessous avec un pion et marque les planches sur ton dessin."
+      ],
+      "illustration": {
+        "src": "images/minecraft-passage.svg",
+        "alt": "Sept cases alignées de A à G : A et B sont la rive de départ, C à F sont de l’eau, G est la rive d’arrivée. L’Agent est en B, orienté vers G.",
+        "caption": "Départ en B, vers la droite. Construis un passage continu entre les rives."
+      },
+      "filename": "Instructions",
+      "code": "répéter 3 fois\n  avancer\n  placer une planche"
+    },
+    {
+      "type": "tasks",
+      "id": "autonomie",
+      "title": "Réparer et justifier sans modèle",
+      "items": [
+        {
+          "id": "mc03-papier-trace",
+          "text": "Sur le dessin, prévois la position finale de l’Agent et les cases couvertes par le programme. Quelle case manque au passage ?",
+          "hint": "Fais un trait par tour et marque la case où placer est exécuté."
+        },
+        {
+          "id": "mc03-papier-reparation",
+          "text": "Change seulement le nombre de répétitions pour compléter le passage. Annonce l’arrivée et les cases couvertes, puis vérifie avec ton pion."
+        },
+        {
+          "id": "mc03-papier-ordre",
+          "text": "Repars du dessin initial. Que construirait avancer trois fois puis placer une seule fois, après les déplacements ? Compare avec le programme initial : même arrivée, même passage ?",
+          "hint": "Après les trois déplacements, le pion n’a pas encore posé de planche. Sur quelle case se trouve-t-il au moment de placer ?"
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "id": "comparaison-papier",
+      "title": "Comparer après tes essais",
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "resultat-papier",
+          "title": "L’arrivée ne suffit pas",
+          "paragraphs": [
+            "Avec trois tours, l’Agent passe en C, D puis E et pose une planche sur chacune de ces cases. Il termine en E, vers la droite. F reste vide : le passage n’atteint pas la rive G.",
+            "Avec quatre tours, il couvre C, D, E et F et termine en F, vers la droite. Les quatre cases d’eau sont couvertes ; le personnage peut passer de A à G.",
+            "Avec trois avancer suivis d’un seul placer, l’Agent termine aussi en E, mais seule E reçoit une planche. La position finale ne dit donc pas à elle seule quelles cases ont été construites."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "id": "conserver",
+      "title": "Garder la correction et son explication",
+      "paragraphs": [
+        "Dans ton carnet, garde le dessin du passage, le nombre initial de tours, la première case manquante et ta correction. Ajoute une capture lisible des blocs du niveau 7 et son adresse pour pouvoir les reconstruire.",
+        "Note ce que tu as observé après Réinitialiser : cases construites, arrivée de l’Agent et traversée du personnage. Avec un compte Code.org, vérifie aussi que tu retrouves tes blocs en rouvrant le niveau."
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Avancer change la position ; placer une planche change le terrain sous l’Agent.",
+    "Le passage du personnage doit être continu, même si l’Agent peut traverser l’eau.",
+    "Le nombre de répétitions se justifie par les cases à construire depuis le départ choisi.",
+    "Une correction se vérifie depuis le terrain initial, en comparant la prévision, les cases couvertes et la traversée.",
+    "Deux programmes peuvent donner la même arrivée et construire des passages différents."
+  ],
+  "teacherGuide": {
+    "objective": "Faire suivre position et terrain modifié, localiser un arrêt prématuré de répétition et vérifier le résultat du point de vue du joueur.",
+    "entryDiagnosis": [
+      "Faire suivre un tour avancer puis placer. Demander ce qui change dans la position et dans le terrain.",
+      "Après Scratch, abréger le rappel de boucle, mais vérifier la différence entre Agent programmé et joueur au clavier. Demander une trace du terrain, pas seulement une arrivée."
+    ],
+    "preparation": [
+      "Ouvrir Hero 6 et 7. Les palettes inventoriées contiennent déplacements, virages, planches et répétitions. Hero 7 fournit répéter 3 fois avec avancer puis placer ; la pile est partiellement verrouillée, le nombre est modifiable.",
+      "Préparer un pion et un dessin. La bande A à G est un exercice original, distinct des cartes Code.org ; la solution quatre tours concerne seulement cette bande.",
+      "Le moteur officiel place sur la position actuelle de l’Agent. Les cartes de référence agent06 et agent07 ont les mêmes départs que les configurations inventoriées. Elles demandent respectivement trois et cinq placements droits depuis ces départs ; compter les cases du niveau affiché avant d’accompagner une réponse.",
+      "La consultation des sources confirme les mécanismes et restrictions ; aucune nouvelle exécution complète de Hero 6 ou 7 n’est revendiquée. Conserver capture et carnet pour la reprise."
+    ],
+    "why": "La trace doit inclure le monde modifié. Arriver de l’autre côté avec l’Agent ne prouve ni continuité du pont ni possibilité de traversée pour le joueur.",
+    "discoverySpeech": [
+      "Montre où sera l’Agent, puis marque la case qui recevra la planche. Qu’est-ce qui change après chacune des deux actions ?",
+      "À quelle case le pont s’arrête-t-il ? Quel nombre de tours faut-il prévoir pour rejoindre l’autre rive ?"
+    ],
+    "example": {
+      "target": { "moduleId": "minecraft-passage", "blockId": "premier-essai" },
+      "comments": [
+        "Faire nommer déplacement et construction séparément. Placer une planche ne déplace pas l’Agent.",
+        "Après Reset, les constructions de l’essai précédent doivent être effacées avant la nouvelle comparaison. Le programme est conservé."
+      ]
+    },
+    "questions": [
+      {
+        "question": "L’Agent atteint l’autre côté. Le pont est-il forcément terminé ?",
+        "answer": "Non. Il traverse l’eau ; le joueur a besoin d’un chemin praticable continu. Faire montrer les cases et essayer la traversée au clavier."
+      },
+      {
+        "question": "Que donne le programme initial sur la bande A à G ?",
+        "answer": "Trois déplacements et trois placements : C, D et E sont couvertes, arrivée E vers la droite. F manque. Quatre tours couvrent C à F et donnent F vers la droite."
+      },
+      {
+        "question": "Que révèle la variante trois avancer puis un seul placer ?",
+        "answer": "Même arrivée E et même orientation que le programme initial, mais seule E est couverte. Comparer seulement l’arrivée laisserait passer cette erreur."
+      },
+      {
+        "question": "Comment réparer Hero 7 sans déplacer les blocs verrouillés ?",
+        "answer": "Conserver avancer puis placer et ajuster le nombre de tours aux cases d’eau à couvrir. La carte de référence demande cinq tours, contre trois fournis ; vérifier ce compte sur la carte affichée."
+      }
+    ],
+    "accompaniedActivity": { "moduleId": "minecraft-passage", "blockId": "guide" },
+    "independentActivity": { "moduleId": "minecraft-passage", "blockId": "autonomie" },
+    "differentiation": [
+      "Accepter une trace dessinée ou orale. Marquer une planche après chaque déplacement sans imposer une rédaction longue.",
+      "Pour un débutant, faire suivre un tour puis deux avant de compter tout le passage.",
+      "Pour un élève avancé, demander pourquoi même position finale ne garantit pas même construction ; conserver le défi sans afficher sa réponse.",
+      "Pendant le stage, ouvrir le premier essai ou la recherche de case manquante au moment du besoin, puis revenir au travail du groupe."
+    ],
+    "commonErrors": [
+      {
+        "symptom": "L’élève croit que placer construit devant l’Agent.",
+        "helps": [
+          "Faire observer un seul déplacement suivi d’un placement.",
+          "Marquer la case occupée au moment de placer."
+        ]
+      },
+      {
+        "symptom": "L’élève compte la rive comme une planche manquante.",
+        "helps": [
+          "Distinguer les cases d’eau et les rives déjà praticables.",
+          "Suivre chaque tour depuis le départ réel, avant de modifier le nombre."
+        ]
+      },
+      {
+        "symptom": "L’élève essaie de détacher les commandes verrouillées du niveau 7.",
+        "helps": [
+          "Lire le motif fourni et vérifier ce qu’il construit en un tour.",
+          "Faire modifier le nombre de répétitions pour compléter le passage."
+        ]
+      },
+      {
+        "symptom": "L’élève déclare le pont correct parce que l’Agent est arrivé.",
+        "helps": [
+          "Faire montrer chaque case entre les deux rives.",
+          "Repartir avec Reset puis vérifier la traversée d’Alex ou Steve au clavier."
+        ]
+      }
+    ],
+    "notes": "Distinguer correction expliquée et nombre trouvé au hasard. Une capture et une case cochée ne prouvent pas la compréhension ; demander une prévision des cases couvertes et une vérification depuis le départ.",
+    "quickConductor": [
+      "Séparer déplacement et construction sur un tour.",
+      "Prévoir puis construire le pont du niveau 6.",
+      "Lire les trois tours fournis au niveau 7 avant de modifier.",
+      "Repérer le manque, régler le nombre et vérifier après Reset.",
+      "Transférer sur la bande originale et comparer terrain et arrivée.",
+      "Conserver la correction et les observations."
+    ],
+    "references": [
+      {
+        "title": "Code.org : Hero’s Journey, niveau 6",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/6"
+      },
+      {
+        "title": "Code.org : Hero’s Journey, niveau 7",
+        "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/7"
+      },
+      {
+        "title": "Moteur officiel : placement sur la position de l’entité",
+        "url": "https://github.com/code-dot-org/craft/blob/main/src/js/game/LevelMVC/LevelModel.js"
+      }
+    ]
+  }
+}

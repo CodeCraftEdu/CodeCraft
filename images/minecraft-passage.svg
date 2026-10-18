@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 205" role="img" aria-labelledby="title desc">
+  <title id="title">Un passage à construire</title>
+  <desc id="desc">Cases A et B sur la rive de départ, C à F dans l’eau, G sur la rive d’arrivée. L’Agent commence en B, vers la droite.</desc>
+  <rect width="540" height="205" rx="8" fill="#fffdf5"/>
+  <g font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#29362e">
+    <text x="60" y="42">A</text><text x="130" y="42">B</text><text x="200" y="42">C</text><text x="270" y="42">D</text><text x="340" y="42">E</text><text x="410" y="42">F</text><text x="480" y="42">G</text>
+  </g>
+  <rect x="25" y="60" width="140" height="70" fill="#e1edcf"/>
+  <rect x="165" y="60" width="280" height="70" fill="#d6ecfb"/>
+  <rect x="445" y="60" width="70" height="70" fill="#e1edcf"/>
+  <g fill="none" stroke="#536b61" stroke-width="2">
+    <rect x="25" y="60" width="490" height="70"/>
+    <path d="M95 60V130M165 60V130M235 60V130M305 60V130M375 60V130M445 60V130"/>
+  </g>
+  <path d="M151 95L116 77L125 95L116 113Z" fill="#245c89" stroke="#123f61" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#29362e">
+    <text x="95" y="162">Rive</text><text x="305" y="162">Eau</text><text x="480" y="162">Rive</text>
+  </g>
+</svg>

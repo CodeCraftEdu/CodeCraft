@@ -434,6 +434,15 @@
         "activityLink": {
           "$ref": "#/$defs/orientation"
         },
+        "externalLink": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "minLength": 1 },
+            "url": { "type": "string", "pattern": "^https://[^\\s]+$" }
+          },
+          "required": ["label", "url"],
+          "additionalProperties": false
+        },
         "visualScript": {
           "$ref": "#/$defs/visualScript"
         },
