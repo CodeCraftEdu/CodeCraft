@@ -161,13 +161,13 @@
           "title": "Surveiller les vies dans une autre pile",
           "shortSteps": [
             "Sur Pilote, garde la pile de déplacement déjà présente.",
-            "Ajoute la pile ci-dessous. Le si vies > 0 laisse le compteur à zéro après la dernière vie.",
+            "Ajoute la pile ci-dessous. Elle retire une vie seulement si vies > 0 et si Pilote touche Danger.",
             "Au contact, la pile attend la séparation ; la pile de déplacement continue.",
-            "Glisse vies depuis Variables dans la comparaison >. Écris 0 dans l’autre case."
+            "Dans Opérateurs, prends et. Place la comparaison vies > 0 dans une case et le capteur touche Danger ? dans l’autre."
           ],
           "paragraphs": [
             "Dans l’attente, glisse touche Danger ? à l’intérieur de non, puis place l’ensemble dans attendre jusqu’à ce que.",
-            "Le si vies > 0 évite les valeurs négatives. Ici, le personnage peut encore se déplacer à zéro vie : nous observons le compteur. Une fin de partie se construit séparément."
+            "La comparaison vies > 0 évite les valeurs négatives. Ici, le personnage peut encore se déplacer à zéro vie : nous observons le compteur. Une fin de partie se construit séparément."
           ],
           "visualScript": {
             "caption": "Pilote : la pile de surveillance",
@@ -210,24 +210,19 @@
                       {
                         "condition": [
                           {
-                            "reporter": "vies",
-                            "category": "variables"
+                            "condition": [
+                              {
+                                "reporter": "vies",
+                                "category": "variables"
+                              },
+                              " > ",
+                              {
+                                "value": "0"
+                              }
+                            ],
+                            "operator": true
                           },
-                          " > ",
-                          {
-                            "value": "0"
-                          }
-                        ],
-                        "operator": true
-                      },
-                      " alors"
-                    ],
-                    "children": [
-                      {
-                        "category": "control",
-                        "label": "Contrôle",
-                        "parts": [
-                          "si ",
+                          " et ",
                           {
                             "condition": [
                               "touche ",
@@ -236,45 +231,46 @@
                               },
                               " ?"
                             ]
-                          },
-                          " alors"
+                          }
                         ],
-                        "children": [
+                        "operator": true
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "variables",
+                        "label": "Variables",
+                        "parts": [
+                          "ajouter ",
                           {
-                            "category": "variables",
-                            "label": "Variables",
-                            "parts": [
-                              "ajouter ",
-                              {
-                                "value": "-1"
-                              },
-                              " à ",
-                              {
-                                "choice": "vies"
-                              }
-                            ]
+                            "value": "-1"
                           },
+                          " à ",
                           {
-                            "category": "control",
-                            "label": "Contrôle",
-                            "parts": [
-                              "attendre jusqu’à ce que ",
+                            "choice": "vies"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre jusqu’à ce que ",
+                          {
+                            "condition": [
+                              "non ",
                               {
                                 "condition": [
-                                  "non ",
+                                  "touche ",
                                   {
-                                    "condition": [
-                                      "touche ",
-                                      {
-                                        "choice": "Danger"
-                                      },
-                                      " ?"
-                                    ]
-                                  }
-                                ],
-                                "operator": true
+                                    "choice": "Danger"
+                                  },
+                                  " ?"
+                                ]
                               }
-                            ]
+                            ],
+                            "operator": true
                           }
                         ]
                       }

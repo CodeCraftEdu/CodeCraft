@@ -39,7 +39,7 @@
       "title": "1 - Ouvrir le projet d’observation",
       "paragraphs": [
         "Télécharge le fichier ci-dessous. Dans l’accueil MakeCode, utilise Importer → Importer un fichier, puis choisis ce fichier .hex. Reste en Blocs et nomme ta copie Ma-distance. Ce fichier contient aussi le programme : tu n’as pas à installer une extension ni à écrire en JavaScript.",
-        "La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom distance_cm. N’ajoute aucune commande d’avance, de virage ou de bouton.",
+        "La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom `distance_cm`. N’ajoute aucune commande d’avance, de virage ou de bouton.",
         "Le bloc répéter tant que vrai (while true) est déjà préparé : ici, il sert à relire sans fin. Garde-le et la petite pause. Il ne fait pas bouger le robot."
       ],
       "downloads": [
@@ -55,7 +55,7 @@
       "id": "observer",
       "title": "2 - Lire l’information reçue",
       "paragraphs": [
-        "Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data : Simulator). Repère les nouvelles lignes distance_cm : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.",
+        "Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data : Simulator). Repère les nouvelles lignes `distance_cm` : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.",
         "Observe la démonstration du professeur avec deux situations préparées et une cible devant le capteur. Avant chaque essai, prévois quelle situation donnera la mesure la plus petite. Note les deux lectures et montre celle qui correspond à la cible la plus proche.",
         "Le robot et sa cible peuvent rester immobiles : relire ne fait pas forcément changer le nombre. Une lecture absente ou étrange est à vérifier avec le professeur ; elle ne signifie pas automatiquement que la voie est libre. Garde le robot et les données visibles. Avec ce programme d’observation sans avance, garde la simulation active pour glisser le robot immobile ; arrête-la pour modifier le programme."
       ]
@@ -67,7 +67,7 @@
       "items": [
         {
           "id": "rb07-source",
-          "text": "Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne distance_cm et explique d’où vient le nombre.",
+          "text": "Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne `distance_cm` et explique d’où vient le nombre.",
           "hint": "Le capteur fournit l’information. Le bloc d’écriture permet seulement de la voir dans les données."
         },
         {

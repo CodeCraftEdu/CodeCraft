@@ -395,6 +395,10 @@
         "filename": {
           "type": "string"
         },
+        "consoleOutput": {
+          "type": "string",
+          "minLength": 1
+        },
         "actionSteps": {
           "type": "array",
           "items": {
@@ -896,6 +900,10 @@
     "illustration": {
       "type": "object",
       "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
         "src": {
           "type": "string",
           "minLength": 1

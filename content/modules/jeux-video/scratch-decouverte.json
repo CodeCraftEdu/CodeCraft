@@ -34,7 +34,6 @@
       ],
       "visualScript": {
         "caption": "Deux blocs accrochés : un seul script",
-        "note": "Modèle à reproduire dans Scratch, pas un éditeur interactif.",
         "blocks": [
           {
             "category": "events",
@@ -102,7 +101,7 @@
       "id": "conserver",
       "title": "3 : Sauvegarder sans compte",
       "paragraphs": [
-        "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer premier-essai.sb3.",
+        "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer `premier-essai.sb3`.",
         "Le téléchargement garde l’état du projet à ce moment-là. Après de nouvelles modifications, télécharge une nouvelle version : ne suppose pas que l’ancien fichier a changé.",
         "Pour rouvrir : dans Scratch, choisis Fichier → Charger depuis votre ordinateur et sélectionne ton .sb3. Attention : charger remplace le projet ouvert. Sauvegarde d’abord ton travail actuel si tu veux le garder.",
         "N’utilise pas ton nom complet ou d’autres informations personnelles dans le titre. Il n’est pas nécessaire de partager le projet en ligne."

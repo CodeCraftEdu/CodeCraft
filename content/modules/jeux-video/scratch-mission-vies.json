@@ -12,7 +12,7 @@
   "prerequisiteSkills": [
     {
       "skillId": "scratch.variables",
-      "expectation": "Retrouver mission-02.sb3 avec score remis à zéro et victoire à six."
+      "expectation": "Retrouver `mission-02.sb3` avec score remis à zéro et victoire à six."
     },
     {
       "skillId": "scratch.conditions",
@@ -25,7 +25,7 @@
       "id": "depart",
       "title": "Reprendre le jeu de balises",
       "paragraphs": [
-        "Ouvre mission-02.sb3. Tu conserves les piles de Pilote et de Balise. Sur la scène, tu ajouteras les vies et une règle de défaite avant la victoire.",
+        "Ouvre `mission-02.sb3`. Tu conserves les piles de Pilote et de Balise. Sur la scène, tu ajouteras les vies et une règle de défaite avant la victoire.",
         "Si ton fichier manque, charge la reprise ci-dessous après avoir sauvegardé ton travail actuel. Elle contient le score et les deux positions de Balise, avec la victoire à six points.",
         "Un contact prolongé avec Obstacle retirera une seule vie. Il faudra se séparer puis revenir pour en perdre une autre. À zéro vie, la partie s’arrêtera."
       ],
@@ -371,7 +371,7 @@
       "items": [
         {
           "id": "copie",
-          "text": "Sauvegarde mission-03.sb3 avec trois vies et repère ce fichier pour le retour après l’essai."
+          "text": "Sauvegarde `mission-03.sb3` avec trois vies et repère ce fichier pour le retour après l’essai."
         },
         {
           "id": "quatre",
@@ -383,7 +383,7 @@
         },
         {
           "id": "retour",
-          "text": "Sauvegarde mission-03-essai.sb3, puis recharge mission-03.sb3 et vérifie mettre vies à 3 sur la scène."
+          "text": "Sauvegarde `mission-03-essai.sb3`, puis recharge `mission-03.sb3` et vérifie mettre vies à 3 sur la scène."
         }
       ],
       "intro": "Repère la sauvegarde principale que tu télécharges avant l’essai, même si son nom reçoit un suffixe. Tu modifieras ensuite le projet ouvert, puis tu rechargeras ce fichier pour poursuivre."
@@ -768,7 +768,7 @@
       "id": "reprise",
       "title": "Garder ton premier jeu complet",
       "paragraphs": [
-        "Sauvegarde mission-03.sb3 : commandes de 4, limites prévues, score 0 et vies 3 au départ, victoire à six points ou défaite à zéro vie. Les deux positions de Balise et le danger fixe restent ceux de la référence.",
+        "Sauvegarde `mission-03.sb3` : commandes de 4, limites prévues, score 0 et vies 3 au départ, victoire à six points ou défaite à zéro vie. Les deux positions de Balise et le danger fixe restent ceux de la référence.",
         "Tu peux rejouer et faire expliquer les règles à quelqu’un. Garde cette version pour la suite de Mission balises, où des obstacles mobiles remplaceront le danger fixe."
       ]
     }

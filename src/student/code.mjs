@@ -91,6 +91,7 @@ export function createCodeTools({ element }) {
   }
   function codeFileLabel(code, label) {
     if (label && !['HTML', 'CSS'].includes(label)) return label;
+    if (/(?:^|\n)[ \t│]*[├└]──/.test(code)) return 'Arborescence';
     if (/<\/?[a-z][\w:-]*(?:\s|>|\/)|<!doctype/i.test(code)) return 'index.html';
     if (/\{[\s\S]*?[\w-]+\s*:/.test(code) && !/^\s*\{/.test(code)) return 'style.css';
     if (/\b(?:const|let|var|function|console\.log)\b/.test(code)) return 'script.js';
@@ -98,9 +99,29 @@ export function createCodeTools({ element }) {
       return 'main.py';
     return label || 'Code';
   }
+  function createCodeHeader(filename) {
+    const header = element('div', 'code-diagram__header');
+    if (filename === 'Arborescence') {
+      header.append(element('span', 'code-diagram__zone', 'Arborescence'));
+      return header;
+    }
+    header.append(
+      element('span', 'code-diagram__zone', 'Éditeur'),
+      element('span', 'code-diagram__file', filename),
+    );
+    return header;
+  }
+  function createConsole(output) {
+    const panel = element('div', 'code-diagram__console');
+    panel.append(
+      element('div', 'code-diagram__header', 'Console'),
+      element('pre', 'code-diagram__result', output),
+    );
+    return panel;
+  }
   function createCode(code, filename) {
     const editor = element('div', 'code-editor');
-    editor.append(element('p', 'code-editor__header', codeFileLabel(code, filename)));
+    editor.append(createCodeHeader(codeFileLabel(code, filename)));
     const pre = element('pre', 'code-block');
     const codeNode = element('code');
     highlightCode(codeNode, code);
@@ -109,5 +130,5 @@ export function createCodeTools({ element }) {
     return editor;
   }
 
-  return { codeTokens, highlightCode, codeFileLabel, createCode };
+  return { codeTokens, highlightCode, codeFileLabel, createCodeHeader, createConsole, createCode };
 }

@@ -45,7 +45,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir comparer, répondre à input et repérer un bloc répété. Pour le modèle numérique, il faut aussi savoir additionner 1. Enregistre tes essais puis crée encore.py. Avant de lancer, repère Arrêter / redémarrer : interromps un programme qui ne finit pas avant de le modifier.",
+      "text": "Il faut savoir comparer, répondre à `input` et repérer un bloc répété. Pour le modèle numérique, il faut aussi savoir additionner 1. Enregistre tes essais puis crée `encore.py`. Avant de lancer, repère Arrêter / redémarrer : interromps un programme qui ne finit pas avant de le modifier.",
       "moduleLink": {
         "moduleId": "python-for",
         "text": "Revoir une répétition connue"
@@ -56,11 +56,12 @@
       "id": "exemple",
       "title": "1 - Tester avant chaque passage",
       "paragraphs": [
-        "while signifie tant que. Avant chaque passage, Python teste la condition : si elle est vraie, il exécute le bloc ; sinon, il continue après la boucle. Contrairement à if, il revient tester après le bloc.",
-        "La première question donne une valeur à reponse avant le premier test. Dans le bloc, une nouvelle question actualise cette valeur : le test suivant peut alors devenir faux.",
+        "`while` signifie tant que. Avant chaque passage, Python teste la condition : si elle est vraie, il exécute le bloc ; sinon, il continue après la boucle. Contrairement à `if`, il revient tester après le bloc.",
+        "La première question donne une valeur à `reponse` avant le premier test. Dans le bloc, une nouvelle question actualise cette valeur : le test suivant peut alors devenir faux.",
         "Ici, seul oui permet un tour. Tout autre texte arrête, même Oui ou oui suivi d’un espace. Ce n’est pas une correction automatique des réponses ; un premier non donne zéro passage."
       ],
-      "code": "reponse = input(\"Continuer ? oui pour continuer : \")\nwhile reponse == \"oui\":\n    print(\"Un nouveau tour\")\n    reponse = input(\"Continuer ? oui pour continuer : \")\nprint(\"Fin\")"
+      "code": "reponse = input(\"Continuer ? oui pour continuer : \")\nwhile reponse == \"oui\":\n    print(\"Un nouveau tour\")\n    reponse = input(\"Continuer ? oui pour continuer : \")\nprint(\"Fin\")",
+      "filename": "encore.py"
     },
     {
       "type": "tasks",
@@ -75,12 +76,12 @@
         {
           "id": "plusieurs-tours",
           "text": "Relance avec oui puis non, puis avec oui, oui, non. Annonce le nombre de tours avant chaque essai et repère la nouvelle saisie.",
-          "hint": "Un puis deux tours. La question du bloc actualise reponse avant le prochain test."
+          "hint": "Un puis deux tours. La question du bloc actualise `reponse` avant le prochain test."
         },
         {
           "id": "sans-mise-a-jour",
           "text": "Sans exécuter une version incorrecte, imagine que la nouvelle saisie du bloc est supprimée. Avec un premier oui, explique pourquoi la condition resterait vraie.",
-          "hint": "reponse garderait oui. Arrêter / redémarrer interrompt une répétition involontaire ; l’absence de nouvelle saisie n’est pas à tester en lançant cette panne."
+          "hint": "`reponse` garderait oui. Arrêter / redémarrer interrompt une répétition involontaire ; l’absence de nouvelle saisie n’est pas à tester en lançant cette panne."
         }
       ]
     },
@@ -89,22 +90,24 @@
       "id": "numerique",
       "title": "2 - Faire évoluer une valeur",
       "paragraphs": [
-        "Enregistre encore.py puis crée while_tours.py. tour commence à 1 ; tant que tour < 4, on l’affiche puis on l’augmente.",
+        "Enregistre `encore.py` puis crée `while_tours.py`. tour commence à 1 ; tant que tour < 4, on l’affiche puis on l’augmente.",
         "Dans tour = tour + 1, Python lit l’ancienne valeur à droite, ajoute 1, puis conserve le résultat sous le même nom. Ce n’est pas une égalité mathématique. La mise à jour dans le bloc permet d’atteindre l’arrêt.",
         "Prédis puis teste : 1, 2, 3 puis Fin. Avec tour initialisé à 4 ou 5, il n’y a aucun passage. Restaure ensuite tour = 1."
       ],
-      "code": "tour = 1\nwhile tour < 4:\n    print(\"Tour\", tour)\n    tour = tour + 1\nprint(\"Fin\")"
+      "code": "tour = 1\nwhile tour < 4:\n    print(\"Tour\", tour)\n    tour = tour + 1\nprint(\"Fin\")",
+      "filename": "while_tours.py",
+      "consoleOutput": "Tour 1\nTour 2\nTour 3\nFin"
     },
     {
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - choisir la continuation",
-      "intro": "Enregistre encore.py et while_tours.py puis crée repetition_personnelle.py. Essaie avant les indices ; garde les modèles.",
+      "intro": "Enregistre `encore.py` et `while_tours.py` puis crée `repetition_personnelle.py`. Essaie avant les indices ; garde les modèles.",
       "items": [
         {
           "id": "mot-personnel",
           "text": "Choisis ton mot de continuation et un message personnel. Pose une première question, répète le message tant que la réponse correspond au mot, puis redemande à chaque passage.",
-          "hint": "Initialise la réponse avant while ; actualise-la dans le bloc. Le print final reste hors de la boucle."
+          "hint": "Initialise la réponse avant `while` ; actualise-la dans le bloc. Le `print` final reste hors de la boucle."
         },
         {
           "id": "tests-personnels",
@@ -118,7 +121,7 @@
         },
         {
           "id": "borne-personnelle",
-          "text": "Enregistre ton fichier. Rouvre while_tours.py puis crée borne_personnelle.py avec Enregistrer sous. Garde tour = 1, choisis une autre borne pour produire cinq tours et prédis la dernière valeur. Teste aussi un départ exactement à ta borne puis au-dessus.",
+          "text": "Enregistre ton fichier. Rouvre `while_tours.py` puis crée `borne_personnelle.py` avec Enregistrer sous. Garde tour = 1, choisis une autre borne pour produire cinq tours et prédis la dernière valeur. Teste aussi un départ exactement à ta borne puis au-dessus.",
           "hint": "La borne doit être 6 pour afficher 1 à 5. Avec un départ à 6 ou à 7, aucun tour ; Fin s’affiche. Vérifie que l’addition de 1 reste dans le bloc."
         }
       ]
@@ -140,7 +143,7 @@
     "Expliquer le test préalable et répété, y compris zéro passage.",
     "Construire une répétition textuelle avec saisie actualisée et arrêt vérifié.",
     "Modifier une borne numérique et tester départ inférieur, égal et supérieur.",
-    "Expliquer le rôle de la mise à jour et distinguer attente de input et répétition sans fin."
+    "Expliquer le rôle de la mise à jour et distinguer attente de `input` et répétition sans fin."
   ],
   "consolidation": [
     {

@@ -25,7 +25,7 @@
     },
     {
       "skillId": "python.input",
-      "expectation": "Conserver une réponse de input."
+      "expectation": "Conserver une réponse de `input`."
     },
     {
       "skillId": "python.numbers",
@@ -45,7 +45,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir afficher une variable numérique, convertir une réponse entière et relire une erreur après un essai. Sinon, reprends le point concerné. Enregistre tes essais précédents et crée choix.py sans les effacer. Commence avec une valeur fixe : la question viendra ensuite.",
+      "text": "Il faut savoir afficher une variable numérique, convertir une réponse entière et relire une erreur après un essai. Sinon, reprends le point concerné. Enregistre tes essais précédents et crée `choix.py` sans les effacer. Commence avec une valeur fixe : la question viendra ensuite.",
       "moduleLink": {
         "moduleId": "python-erreurs",
         "text": "Revoir le diagnostic des erreurs"
@@ -56,21 +56,25 @@
       "id": "comparer",
       "title": "1 - Une comparaison, deux réponses",
       "paragraphs": [
-        ">= signifie supérieur ou égal. points >= 10 est vrai pour 10 et 12, faux pour 9. Python affiche True pour vrai et False pour faux.",
+        ">= signifie supérieur ou égal. points >= 10 est vrai pour 10 et 12, faux pour 9. Python affiche `True` pour vrai et `False` pour faux.",
         "> signifie strictement supérieur et < strictement inférieur. == compare deux valeurs : points == 10 demande si elles sont égales. Un seul = affecte une valeur à une variable ; il ne fait pas une comparaison."
       ],
-      "code": "points = 10\nprint(points >= 10)\nprint(points > 10)\nprint(points == 10)"
+      "code": "points = 10\nprint(points >= 10)\nprint(points > 10)\nprint(points == 10)",
+      "filename": "choix.py",
+      "consoleOutput": "True\nFalse\nTrue"
     },
     {
       "type": "lesson",
       "id": "exemple",
       "title": "2 - Choisir une seule branche",
       "paragraphs": [
-        "if signifie si : le premier message s’affiche si la comparaison est vraie. else signifie sinon : son message s’affiche si elle est fausse. Une seule des deux branches s’exécute.",
-        "Chaque ligne if ou else se termine par deux-points. Les instructions de sa branche commencent quatre espaces plus loin : c’est l’indentation. else est aligné avec if. Thonny peut ajouter les espaces après les deux-points ; vérifie leur alignement.",
-        "La dernière ligne revient au même alignement que if : elle est hors des branches et s’exécute dans les deux cas. Avec points = 10, attends Passage ouvert puis Fin du test."
+        "`if` signifie si : le premier message s’affiche si la comparaison est vraie. `else` signifie sinon : son message s’affiche si elle est fausse. Une seule des deux branches s’exécute.",
+        "Chaque ligne `if` ou `else` se termine par deux-points. Les instructions de sa branche commencent quatre espaces plus loin : c’est l’indentation. `else` est aligné avec `if`. Thonny peut ajouter les espaces après les deux-points ; vérifie leur alignement.",
+        "La dernière ligne revient au même alignement que `if` : elle est hors des branches et s’exécute dans les deux cas. Avec points = 10, attends Passage ouvert puis Fin du test."
       ],
-      "code": "points = 10\nif points >= 10:\n    print(\"Passage ouvert\")\nelse:\n    print(\"Encore quelques points\")\nprint(\"Fin du test\")"
+      "code": "points = 10\nif points >= 10:\n    print(\"Passage ouvert\")\nelse:\n    print(\"Encore quelques points\")\nprint(\"Fin du test\")",
+      "filename": "choix.py",
+      "consoleOutput": "Passage ouvert\nFin du test"
     },
     {
       "type": "tasks",
@@ -80,12 +84,12 @@
         {
           "id": "trois-cas",
           "text": "Prédis puis teste le modèle avec 9, 10 et 11. Pour chaque essai, indique la branche choisie et le message qui s’affiche toujours.",
-          "hint": "9 choisit else ; 10 et 11 choisissent if. Fin du test s’affiche dans les trois cas."
+          "hint": "9 choisit `else` ; 10 et 11 choisissent `if`. Fin du test s’affiche dans les trois cas."
         },
         {
           "id": "strict",
           "text": "Remplace >= par > et reteste 10. Explique ce qui change, puis restaure >=.",
-          "hint": "10 n’est pas strictement supérieur à 10 : avec >, il choisit else."
+          "hint": "10 n’est pas strictement supérieur à 10 : avec >, il choisit `else`."
         },
         {
           "id": "alignement",
@@ -99,27 +103,28 @@
       "id": "saisie",
       "title": "3 - Le choix dépend d’une réponse",
       "paragraphs": [
-        "Enregistre choix.py, puis utilise Enregistrer sous pour créer choix_saisie.py et conserver le modèle à valeur fixe. Dans cette copie, remplace seulement points = 10 par les deux lignes ci-dessous, au début du fichier, sans indentation. Garde ensuite le même if/else et le print final : on modifie seulement l’origine des points.",
-        "Réponds avec un entier écrit en chiffres, sans unité ni décimale. La conversion a lieu avant la comparaison. Une entrée comme dix provoque toujours ValueError : if/else ne protège pas cette conversion.",
+        "Enregistre `choix.py`, puis utilise Enregistrer sous pour créer `choix_saisie.py` et conserver le modèle à valeur fixe. Dans cette copie, remplace seulement points = 10 par les deux lignes ci-dessous, au début du fichier, sans indentation. Garde ensuite le même `if`/`else` et le `print` final : on modifie seulement l’origine des points.",
+        "Réponds avec un entier écrit en chiffres, sans unité ni décimale. La conversion a lieu avant la comparaison. Une entrée comme dix provoque toujours `ValueError` : `if`/`else` ne protège pas cette conversion.",
         "Teste 9, 10 et 11 en relançant pour chaque réponse. Une seule exécution ne prouve pas que les deux branches fonctionnent."
       ],
-      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)"
+      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)",
+      "filename": "choix_saisie.py"
     },
     {
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - ouvrir un coffre",
-      "intro": "Enregistre choix_saisie.py puis crée coffre.py. Conserve tes deux modèles. Le coffre s’ouvre à partir de 5 clés ; essaie sans recopier la décision complète.",
+      "intro": "Enregistre `choix_saisie.py` puis crée `coffre.py`. Conserve tes deux modèles. Le coffre s’ouvre à partir de 5 clés ; essaie sans recopier la décision complète.",
       "items": [
         {
           "id": "coffre-question",
           "text": "Demande un nombre entier de clés, conserve-le comme nombre et affiche Coffre ouvert s’il y en a au moins 5, sinon Pas assez de clés.",
-          "hint": "Après input et int, compare avec >= 5. Chaque branche contient son propre print indenté."
+          "hint": "Après `input` et `int`, compare avec >= 5. Chaque branche contient son propre `print` indenté."
         },
         {
           "id": "coffre-tests",
           "text": "Prédis puis teste 4, 5 et 6. Ajoute un message Fin qui s’affiche toujours après le choix.",
-          "hint": "4 ne suffit pas ; 5 et 6 ouvrent le coffre. Le dernier print doit être aligné avec if, pas avec le print d’une branche."
+          "hint": "4 ne suffit pas ; 5 et 6 ouvrent le coffre. Le dernier `print` doit être aligné avec `if`, pas avec le `print` d’une branche."
         },
         {
           "id": "coffre-modifier",
@@ -136,7 +141,7 @@
         {
           "id": "mot-cle",
           "text": "Dans un nouveau fichier, demande un mot. Affiche Bienvenue si la réponse est exactement étoile, sinon Mot différent. Teste étoile, Etoile et lune.",
-          "hint": "input suffit pour du texte, sans int. Compare la variable à \"étoile\" avec ==. Les majuscules et les accents comptent."
+          "hint": "`input` suffit pour du texte, sans `int`. Compare la variable à \"étoile\" avec ==. Les majuscules et les accents comptent."
         }
       ]
     },
@@ -149,7 +154,7 @@
   ],
   "masteryCriteria": [
     "Distinguer = et ==, et expliquer la frontière de >=.",
-    "Construire un if/else avec deux-points et indentation cohérente.",
+    "Construire un `if`/`else` avec deux-points et indentation cohérente.",
     "Tester les deux branches et la valeur exactement au seuil.",
     "Modifier le seuil et distinguer une instruction de branche d’une instruction exécutée toujours."
   ],
@@ -179,7 +184,7 @@
       "prerequisiteSkills": [
         {
           "skillId": "python.conditions",
-          "expectation": "Construire if/else et tester les deux branches ; sinon reprendre le coffre."
+          "expectation": "Construire `if`/`else` et tester les deux branches ; sinon reprendre le coffre."
         }
       ]
     }

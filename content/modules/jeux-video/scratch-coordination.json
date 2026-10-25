@@ -73,7 +73,6 @@
       ],
       "visualScript": {
         "caption": "Deux personnages : un signal reponse",
-        "note": "Modèles à construire sur les deux sprites. Aucun éditeur interactif ici.",
         "stacks": [
           {
             "caption": "Pico : lance le dialogue",

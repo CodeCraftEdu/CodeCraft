@@ -25,13 +25,14 @@
       "id": "exemple",
       "title": "1 - Un objet, plusieurs exemplaires",
       "paragraphs": [
-        "Crée un seul Sprite nommé Jeton avec une animation contenant images/jeton.png. Place trois exemplaires espacés dans le cadre visible de la scène. Ne crée pas Jeton2 ou Jeton3 : regarde la liste, puis compte les jetons dans la pièce.",
+        "Crée un seul Sprite nommé Jeton avec une animation contenant `images/jeton.png`. Place trois exemplaires espacés dans le cadre visible de la scène. Ne crée pas Jeton2 ou Jeton3 : regarde la liste, puis compte les jetons dans la pièce.",
         "Chaque exemplaire placé est une instance. L’objet définit leur dessin commun ; les instances ont leurs propres positions. Prévois : si tu déplaces un seul jeton dans la scène, lesquels garderont leur place ? Essaie ce déplacement puis vérifie dans l’aperçu.",
-        "Ferme l’aperçu. Prévois maintenant ce qui changera si tu modifies le dessin de l’objet Jeton. Dans sa définition, remplace l’image existante par images/jeton-alternatif.png ; n’ajoute ni animation ni nouvel objet. Relance : les trois dessins changent, mais les positions restent les mêmes.",
+        "Ferme l’aperçu. Prévois maintenant ce qui changera si tu modifies le dessin de l’objet Jeton. Dans sa définition, remplace l’image existante par `images/jeton-alternatif.png` ; n’ajoute ni animation ni nouvel objet. Relance : les trois dessins changent, mais les positions restent les mêmes.",
         "Tu as agi à deux endroits différents : la position d’un exemplaire dans la scène, puis l’image commune dans la définition de l’objet. Montre lequel tu choisirais pour changer une seule place ou tous les dessins."
       ],
       "illustration": {
         "src": "images/gdevelop-instances.svg",
+        "title": "Objets et instances",
         "alt": "Une définition Jeton fournit trois exemplaires : leurs dessins sont communs, leurs positions peuvent être différentes. Les nombres du schéma sont seulement des exemples.",
         "caption": "Un dessin commun, des positions individuelles. Les coordonnées du schéma ne sont pas des placements imposés."
       }
@@ -46,6 +47,7 @@
       ],
       "illustration": {
         "src": "images/gdevelop-coordonnees.svg",
+        "title": "Coordonnées dans la scène",
         "alt": "Dans GDevelop avec la caméra par défaut, X augmente vers la droite et Y vers le bas. Changer X d’une instance la déplace horizontalement, changer Y la déplace verticalement.",
         "caption": "Les coordonnées sont les propriétés de l’instance sélectionnée, pas un programme de mouvement."
       }

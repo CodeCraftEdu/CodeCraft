@@ -55,8 +55,8 @@
       "id": "exemple",
       "title": "2 - Ton premier fichier",
       "paragraphs": [
-        "Choisis Fichier → Nouveau. Dans l’éditeur vide, écris la ligne ci-dessous avec des guillemets droits et les deux parenthèses. print affiche le message placé entre guillemets ; tu le découvriras plus en détail ensuite.",
-        "Choisis Fichier → Enregistrer sous, crée ou choisis un dossier pour tes programmes, puis nomme le fichier bonjour.py. .py indique un fichier Python. Si Thonny demande où enregistrer, choisis Cet ordinateur.",
+        "Choisis Fichier → Nouveau. Dans l’éditeur vide, écris la ligne ci-dessous avec des guillemets droits et les deux parenthèses. `print` affiche le message placé entre guillemets ; tu le découvriras plus en détail ensuite.",
+        "Choisis Fichier → Enregistrer sous, crée ou choisis un dossier pour tes programmes, puis nomme le fichier `bonjour.py`. .py indique un fichier Python. Si Thonny demande où enregistrer, choisis Cet ordinateur.",
         "Clique sur Exécuter, ou utilise F5. Dans la console, tu dois lire Bonjour ! : le message affiché est le résultat, pas une nouvelle instruction à recopier."
       ],
       "code": "print(\"Bonjour !\")",
@@ -84,7 +84,7 @@
       "items": [
         {
           "id": "premier-fichier",
-          "text": "Crée bonjour.py, écris le modèle et exécute-le.",
+          "text": "Crée `bonjour.py`, écris le modèle et exécute-le.",
           "hint": "Écris dans l’éditeur du haut. Si la ligne échoue, compare les guillemets et parenthèses. Demande de l’aide pour l’installation ou le clavier si nécessaire."
         },
         {
@@ -94,7 +94,7 @@
         },
         {
           "id": "rouvrir-fichier",
-          "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver bonjour.py et le relancer.",
+          "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver `bonjour.py` et le relancer.",
           "hint": "Note le dossier choisi. Un onglet fermé n’efface pas un fichier enregistré. Ne ferme pas sans enregistrer tes modifications."
         }
       ]
@@ -103,11 +103,11 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - créer et retrouver un fichier",
-      "intro": "Essaie sans démonstration. Garde bonjour.py : tu vas créer un autre fichier, pas le remplacer.",
+      "intro": "Essaie sans démonstration. Garde `bonjour.py` : tu vas créer un autre fichier, pas le remplacer.",
       "items": [
         {
           "id": "retrouver-seul",
-          "text": "Crée accueil.py avec un message de ton choix, enregistre-le dans ton dossier et exécute-le. Ferme ensuite son onglet, rouvre le fichier et relance-le.",
+          "text": "Crée `accueil.py` avec un message de ton choix, enregistre-le dans ton dossier et exécute-le. Ferme ensuite son onglet, rouvre le fichier et relance-le.",
           "hint": "Fichier → Nouveau, puis Enregistrer sous avec un autre nom. Après sauvegarde, Ouvrir retrouve le fichier ; Exécuter lance ses instructions."
         },
         {
@@ -124,7 +124,7 @@
       "items": [
         {
           "id": "deuxieme-fichier",
-          "text": "Ouvre bonjour.py et accueil.py. Avant de lancer chacun, repère son nom dans l’onglet et prédis le message affiché. Modifie seulement accueil.py et vérifie que bonjour.py garde son message.",
+          "text": "Ouvre `bonjour.py` et `accueil.py`. Avant de lancer chacun, repère son nom dans l’onglet et prédis le message affiché. Modifie seulement `accueil.py` et vérifie que `bonjour.py` garde son message.",
           "hint": "Le fichier actif est celui dont l’onglet est sélectionné. Enregistre ta modification ; deux fichiers différents conservent deux programmes distincts."
         }
       ]

@@ -2,6 +2,8 @@
 
 Ces règles s’appliquent à tous les modules et parcours, y compris aux démonstrations et à leurs explications.
 
+Pour Minecraft, les manipulations et observations se font directement dans Code.org. Ne pas ajouter de grille, de dessin préparatoire, de simulation sur papier ou de carnet obligatoire. Si une illustration manque, signaler à l'utilisateur où une capture de Code.org serait utile. Voir [la règle actuelle du parcours](minecraft-codeorg.md).
+
 - Donner l’action attendue, l’observation à faire et l’explication utile à la notion travaillée.
 - Préférer une consigne positive et concrète à « ne fais pas ceci ». Garder une interdiction seulement si elle évite un risque ou une confusion réelle dans l’exercice.
 - Décrire le chemin principal. Ne pas empiler les scénarios de connexion, d’installation, de matériel absent ou d’aide à la manipulation dans chaque introduction. Placer un dépannage indispensable à l’endroit où le problème survient.
@@ -19,7 +21,7 @@ Ces règles s’appliquent à tous les modules et parcours, y compris aux démon
 - Tous les exemples et indices de code partagent un cadre avec un en-tête de fichier, des coins biseautés et un liseré inférieur teinté du parcours. Employer le nom réel du fichier lorsqu’il est connu ; sinon, utiliser un nom de référence adapté au langage (`index.html`, `style.css`, `script.js`, `main.py`) ou « Code » pour les extraits non identifiés.
 - Pour les premières images HTML, travailler avec une adresse d’image en ligne et un chemin relatif accompagné de l’arborescence du projet. Fournir des fichiers PNG ou JPEG ; garder les sources encodées et le code SVG hors de ces activités.
 
-Le rendu prend aussi en charge les anciens noms de balises et d’attributs seuls (src, alt, href, etc.) en texte brut dans les modules Web, y compris dans les consignes, indices, critères et retours des démonstrations, sans modifier les données ni ajouter des chevrons aux sélecteurs CSS. Les mots ambigus comme « a », « article » et « style » nécessitent une mention explicite de balise/attribut ou le balisage par accents graves. Les noms de fichiers et les textes des autres univers restent inchangés.
+Le rendu prend aussi en charge les anciens noms de balises et d’attributs seuls (src, alt, href, etc.) en texte brut dans les modules Web, y compris dans les consignes, indices, critères et retours des démonstrations, sans modifier les données ni ajouter des chevrons aux sélecteurs CSS. Les mots ambigus comme « a », « article » et « style » nécessitent une mention explicite de balise/attribut ou le balisage par accents graves. Dans tous les parcours, baliser explicitement les noms de fichiers, appels, expressions et mots-clés cités comme du code. Garder en texte courant les mots ordinaires et les noms de commandes des interfaces à blocs.
 
 Avant de livrer un texte, relire chaque précaution : sert-elle l’action, la compréhension ou la protection de l’élève ici ? Sinon, la retirer. Ne pas supprimer automatiquement toutes les phrases négatives : certaines expliquent une différence essentielle ou un diagnostic.
 

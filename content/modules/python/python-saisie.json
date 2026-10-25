@@ -17,7 +17,7 @@
     },
     {
       "skillId": "python.output",
-      "expectation": "Afficher du texte avec print."
+      "expectation": "Afficher du texte avec `print`."
     },
     {
       "skillId": "python.variables",
@@ -29,7 +29,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir exécuter un fichier, afficher un message et réutiliser une variable. Sinon, reprends Variables et valeurs. Enregistre ton travail précédent et crée questions.py sans effacer les autres fichiers.",
+      "text": "Il faut savoir exécuter un fichier, afficher un message et réutiliser une variable. Sinon, reprends Variables et valeurs. Enregistre ton travail précédent et crée `questions.py` sans effacer les autres fichiers.",
       "moduleLink": {
         "moduleId": "python-variables",
         "text": "Revoir les variables"
@@ -40,12 +40,13 @@
       "id": "exemple",
       "title": "1 - Demander, attendre, utiliser",
       "paragraphs": [
-        "input affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.",
+        "`input` affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.",
         "Le texte répondu devient la valeur de pseudo. La question reste dans le code ; la réponse vient de la personne qui utilise le programme.",
-        "Dans print(\"Bienvenue\", pseudo), la virgule sépare deux éléments à afficher : un texte et une valeur. print ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.",
-        "input fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."
+        "Dans `print(\"Bienvenue\", pseudo)`, la virgule sépare deux éléments à afficher : un texte et une valeur. `print` ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.",
+        "`input` fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."
       ],
-      "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)"
+      "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)",
+      "filename": "questions.py"
     },
     {
       "type": "lesson",
@@ -73,8 +74,8 @@
         },
         {
           "id": "changer-question",
-          "text": "Change seulement le texte de la question dans input. Relance pour tester.",
-          "hint": "Garde le même nom de variable ; modifie le texte entre guillemets dans input, pas la réponse dans le code."
+          "text": "Change seulement le texte de la question dans `input`. Relance pour tester.",
+          "hint": "Garde le même nom de variable ; modifie le texte entre guillemets dans `input`, pas la réponse dans le code."
         }
       ]
     },
@@ -82,12 +83,12 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - une préférence",
-      "intro": "Enregistre questions.py, puis crée preference.py. Essaie avant l’indice.",
+      "intro": "Enregistre `questions.py`, puis crée `preference.py`. Essaie avant l’indice.",
       "items": [
         {
           "id": "question-personnelle",
           "text": "Demande une activité préférée, conserve la réponse dans une variable de ton choix et affiche une phrase qui l’utilise.",
-          "hint": "Une affectation avec input, puis un print contenant un texte et le nom de ta variable, séparés par une virgule. Pas de guillemets autour du nom."
+          "hint": "Une affectation avec `input`, puis un `print` contenant un texte et le nom de ta variable, séparés par une virgule. Pas de guillemets autour du nom."
         },
         {
           "id": "tester-preference",
@@ -111,7 +112,7 @@
   ],
   "masteryCriteria": [
     "Saisir et valider une réponse dans la console sans la remplacer dans le code.",
-    "Expliquer la pause provoquée par input et la valeur enregistrée dans la variable.",
+    "Expliquer la pause provoquée par `input` et la valeur enregistrée dans la variable.",
     "Créer une autre question puis utiliser sa réponse, sans recopier tout le modèle."
   ],
   "consolidation": [

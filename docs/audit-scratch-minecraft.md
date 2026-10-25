@@ -1,5 +1,7 @@
 # Audit Scratch et proposition Minecraft via Code.org
 
+Le [cadrage actuel](minecraft-codeorg.md), demandé ensuite par l'utilisateur, retire les exercices sur grille, dessins et carnets obligatoires au profit du travail direct dans Code.org. Les propositions correspondantes ci-dessous restent historiques.
+
 18 octobre 2026. Positionnement et huit missions validés par l'utilisateur. Cadrage consolidé après vérification ciblée de Hero 12 et de la reprise du travail. Aucun essai avec des élèves n'est déclaré.
 
 Depuis cet audit, les huit missions ont été rédigées et intégrées : voir le [compte rendu du premier lot](integration-minecraft-premier-lot.md), la [mission 3 sur les passages](integration-minecraft-passage.md), la [mission 4 sur les procédures](integration-minecraft-procedures.md), la [mission 5 sur les motifs composés](integration-minecraft-motifs.md), la [mission 6 sur les décisions de chemin](integration-minecraft-decisions.md), la [mission 7 sur les repères et les limites d’une stratégie](integration-minecraft-strategies.md) et le [projet final d’automatisation](integration-minecraft-automatisation.md). Les revues individuelles et la [revue transversale](revue-transversale-minecraft.md) sont réalisées. Le chemin adapté aux acquis, relevé par cette dernière, est désormais visible et accessible aux élèves dans le parcours.

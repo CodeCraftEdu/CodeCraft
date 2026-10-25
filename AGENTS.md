@@ -1,5 +1,16 @@
 # Contenus pédagogiques
 
+## Mode économique par défaut
+
+L’utilisateur demande de préserver son usage Codex. Rechercher le résultat utile avec le minimum de lectures, d’appels d’outils et de vérifications nécessaires, sans réduire la qualité du travail demandé.
+
+- Rester dans le périmètre demandé. Une petite retouche ne doit pas devenir une harmonisation générale ou un nouveau chantier.
+- Réutiliser les informations, documents déjà lus et résultats de contrôle présents dans le contexte. Lire seulement les fichiers et passages utiles à la décision ; éviter les relectures et recherches larges par réflexe.
+- Pour une petite modification, privilégier une lecture ciblée, une modification et une validation groupée. Régénérer le catalogue et vérifier le formatage une fois sur le résultat final. Si le rendu doit être examiné, une seule capture ciblée suffit généralement ; recommencer seulement si un problème ou un changement visuel le justifie.
+- Ne pas multiplier les tests, captures, recherches Internet ou analyses annexes sans besoin concret. Après les contrôles adaptés ci-dessous, terminer. Les modifications fonctionnelles conservent leurs vérifications nécessaires.
+
+## Organisation et vérifications
+
 Lire `docs/carte-projet.md` pour localiser les responsabilités, et `docs/README.md` pour distinguer les règles actuelles des spécifications historiques. Les modules de rendu sont dans `src/student/`, les styles éditables dans `styles/` ; les fichiers CSS de la racine sont leurs points d’entrée.
 
 Adapter les vérifications à la modification. Pour une retouche purement textuelle (titre, consigne, orthographe), sans changement de code, de structure des données, de lien ni de ressource : régénérer et valider le catalogue si le contenu change, vérifier le formatage des fichiers concernés et relire le résultat. Lancer seulement les tests concernés si une assertion dépend du texte modifié. Vérifier l’encart rendu si la longueur ou la mise en forme peut affecter sa lisibilité. Ne pas lancer toutes les suites Node et Chrome pour cette seule retouche. Pour une modification documentaire uniquement, relire le diff et vérifier les liens modifiés ; aucun test applicatif n’est nécessaire.

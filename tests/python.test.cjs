@@ -31,6 +31,86 @@ const ids = [
 ];
 const block = (id, name) => data.modules[id].blocks.find((b) => b.id === name);
 
+test('Python : les exemples partagent le cadre éditeur et les résultats sont directement visibles', () => {
+  const { studentDom } = require('./helpers/student-dom.cjs');
+  const dom = studentDom();
+  let editors = 0;
+  let consoles = 0;
+  try {
+    for (const id of ids) {
+      dom.navigate('#module/' + id + '?parcours=python-debutants');
+      function visit(blocks) {
+        for (const block of blocks) {
+          if (block.code && !block.actionSteps && !block.codeDiagram) {
+            const figure = dom.main.querySelector(
+              '[data-activity-id="' + block.id + '"] > .code-diagram',
+            );
+            assert.ok(figure, id + '/' + block.id);
+            assert.equal(figure.querySelector('code').textContent, block.code);
+            assert.equal(figure.querySelector('.code-diagram__file').textContent, block.filename);
+            assert.equal(figure.querySelectorAll('button, input').length, 0);
+            assert.equal(figure.querySelector('.code-diagram__run'), null);
+            editors++;
+            const consolePanel = figure.querySelector('.code-diagram__console');
+            if (block.consoleOutput !== undefined) {
+              assert.equal(consolePanel.tagName, 'DIV');
+              assert.equal(consolePanel.querySelector('summary'), null);
+              assert.equal(
+                consolePanel.querySelector('.code-diagram__header').textContent,
+                'Console',
+              );
+              assert.equal(consolePanel.querySelector('pre').textContent, block.consoleOutput);
+              consoles++;
+            } else assert.equal(consolePanel, null);
+          }
+          if (block.blocks) visit(block.blocks);
+        }
+      }
+      visit(data.modules[id].blocks);
+    }
+  } finally {
+    dom.close();
+  }
+  assert.ok(editors > 0);
+  assert.ok(consoles > 0);
+  assert.ok(consoles < editors);
+});
+
+test('Python : les résultats présentés correspondent aux programmes complets', () => {
+  const examples = [];
+  function visit(blocks) {
+    for (const block of blocks) {
+      if (block.consoleOutput !== undefined) {
+        assert.doesNotMatch(block.code, /input\(|random/);
+        examples.push({ code: block.code, output: block.consoleOutput });
+      }
+      if (block.blocks) visit(block.blocks);
+    }
+  }
+  for (const id of ids) visit(data.modules[id].blocks);
+  const program = [
+    'import contextlib, io, json, sys',
+    'results = []',
+    'for example in json.load(sys.stdin):',
+    '    output = io.StringIO()',
+    '    with contextlib.redirect_stdout(output):',
+    '        exec(example["code"], {})',
+    '    results.append(output.getvalue().removesuffix("\\n"))',
+    'print(json.dumps(results))',
+  ].join('\n');
+  const result = spawnSync(process.env.PYTHON_PATH || 'python', ['-X', 'utf8', '-c', program], {
+    input: JSON.stringify(examples),
+    encoding: 'utf8',
+    windowsHide: true,
+    timeout: 10000,
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(
+    JSON.parse(result.stdout),
+    examples.map((example) => example.output),
+  );
+});
+
 test('Thonny : présentation pilote, trois actions et consignes intégralement réutilisées', () => {
   assert.equal(data.modules['python-thonny'].presentation, 'workshop');
   assert.equal(Object.values(data.modules).filter((m) => m.presentation === 'workshop').length, 1);
@@ -59,7 +139,7 @@ test('Python revue 1–4 : autonomie fichiers, essais conservés et introduction
   const createFile = block('python-thonny', 'autonomie').items.find(
     (i) => i.id === 'retrouver-seul',
   );
-  assert(createFile.text.includes('Crée accueil.py'));
+  assert(createFile.text.includes('Crée `accueil.py`'));
   assert(createFile.text.includes('enregistre-le'));
   assert(createFile.text.includes('rouvre le fichier'));
   assert(data.modules['python-thonny'].masteryCriteria.some((c) => c.includes('Créer et nommer')));
@@ -67,8 +147,8 @@ test('Python revue 1–4 : autonomie fichiers, essais conservés et introduction
   const replacement = block('python-variables', 'guide').items.find(
     (i) => i.id === 'predire-remplacement',
   );
-  assert(replacement.text.includes('Enregistre variables.py'));
-  assert(replacement.text.includes('crée remplacement.py'));
+  assert(replacement.text.includes('Enregistre `variables.py`'));
+  assert(replacement.text.includes('crée `remplacement.py`'));
   assert(replacement.text.includes('Garde le premier fichier'));
   assert(!block('python-variables', 'preparer').text.includes('Pour chaque test'));
   assert(block('python-variables', 'autonomie').items.some((i) => i.id === 'test-propre'));
@@ -285,9 +365,9 @@ test('Python lot 3 : plusieurs issues, frontières et projet sans notions caché
       .paragraphs.join(' ')
       .includes('conditions_independantes.py'),
   );
-  assert(block('python-elif', 'saisie').paragraphs[0].includes('Rouvre possibilites.py'));
+  assert(block('python-elif', 'saisie').paragraphs[0].includes('Rouvre `possibilites.py`'));
   assert(block('python-elif', 'saisie').paragraphs[0].includes('possibilites_saisie.py'));
-  assert(block('python-elif', 'autonomie').intro.includes('Enregistre possibilites_saisie.py'));
+  assert(block('python-elif', 'autonomie').intro.includes('Enregistre `possibilites_saisie.py`'));
   for (const filename of [
     'possibilites.py',
     'ordre_conditions.py',
@@ -313,7 +393,7 @@ test('Python lot 3 : plusieurs issues, frontières et projet sans notions caché
   const renameTask = block('python-aventure', 'verification').items.find(
     (i) => i.id === 'modifier-route',
   );
-  assert(renameTask.text.includes('rappel des choix affiché par else'));
+  assert(renameTask.text.includes('rappel des choix affiché par `else`'));
   assert(renameTask.text.includes('un mot inconnu'));
   assert(
     adventure.teacherGuide.questions
@@ -371,7 +451,7 @@ test('Python lot 4 : bornes, arrêt et accumulation avec transfert distinct', ()
   assert(
     block('python-for', 'guide')
       .items.find((i) => i.id === 'bloc')
-      .text.startsWith('Rouvre repetitions.py et rétablis range(3).'),
+      .text.startsWith('Rouvre `repetitions.py` et rétablis `range(3)`.'),
   );
   const repetition = block('python-for', 'exemple').code;
   for (const n of [0, 1, 3, 6]) {
@@ -501,7 +581,7 @@ test('Python lot 5 : tirage conservé, projet déterministe et essais sans déca
     assert.equal(data.modules[id].blocks.filter((b) => b.title === 'Avant de commencer').length, 1);
     assert(data.modules[id].blocks.every((b) => !b.title.includes('—')));
   }
-  assert(block('python-hasard', 'preparer').text.includes('Ne nomme pas ton fichier random.py'));
+  assert(block('python-hasard', 'preparer').text.includes('Ne nomme pas ton fichier `random.py`'));
   assert(
     block('python-nombre-mystere', 'structure').paragraphs.some((p) =>
       p.includes('Retire la branche Trouvé'),
@@ -660,7 +740,7 @@ test('Python lot 6 : listes, texte, cas vides et transfert de casse', () => {
   assert(
     block('python-listes', 'guide')
       .items.find((i) => i.id === 'parcours-ajout')
-      .text.includes('Dans parcours_liste.py'),
+      .text.includes('Dans `parcours_liste.py`'),
   );
   // Solutions de contrôle originales, réservées aux tests, pas publiées dans l'autonomie.
   const collection =
@@ -714,7 +794,7 @@ test('Python lot 6 : listes, texte, cas vides et transfert de casse', () => {
     );
   const transfer = block('python-texte', 'transfert').items[0];
   assert(transfer.text.includes('mon_mot_casse.py'));
-  assert(transfer.text.includes('par normalisee = sans_bords'));
+  assert(transfer.text.includes('par `normalisee = sans_bords`'));
   assert(transfer.text.includes('Actualise la question'));
   assert.equal(
     execute(block('python-texte', 'remplacement').code).stdout,

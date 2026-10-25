@@ -42,15 +42,15 @@
       "title": "CSS : Lire une règle",
       "paragraphs": [
         "h1 est le sélecteur : il choisit les éléments h1 de la page. Ici, il y en a un. On écrit h1 sans les chevrons du HTML.",
-        "Entre les accolades { et }, chaque déclaration indique une propriété et sa valeur. Dans color: blue;, color est la propriété et blue la valeur. Les deux-points séparent les deux ; termine chaque déclaration par un point-virgule.",
-        "color règle la couleur des lettres. background-color règle le fond de l’élément sélectionné, pas forcément celui de toute la page. Ici, un bloc de fond peut être plus large que les mots.",
+        "Entre les accolades { et }, chaque déclaration indique une propriété et sa valeur. Dans `color`: blue;, `color` est la propriété et blue la valeur. Les deux-points séparent les deux ; termine chaque déclaration par un point-virgule.",
+        "`color` règle la couleur des lettres. `background-color` règle le fond de l’élément sélectionné, pas forcément celui de toute la page. Ici, un bloc de fond peut être plus large que les mots.",
         "blue signifie bleu, white blanc. Les mots de couleur CSS de ces exemples sont en anglais."
       ],
       "code": "h1 {\n  color: blue;\n  background-color: white;\n}",
       "demonstration": {
         "type": "web-comparison",
         "title": "Le même titre, une couleur différente",
-        "intro": "Le HTML reste identique. Change seulement la valeur de color dans la règle h1.",
+        "intro": "Le HTML reste identique. Change seulement la valeur de `color` dans la règle h1.",
         "variants": [
           {
             "label": "color: blue",
@@ -95,7 +95,7 @@
             "label": "Fond jaune clair",
             "html": "<p>Je découvre le CSS.</p><p>Je peux changer l’apparence.</p>",
             "code": "p {\n  color: black;\n  background-color: lightyellow;\n}",
-            "feedback": "background-color change le fond de chaque paragraphe, pas la couleur de ses lettres.",
+            "feedback": "`background-color` change le fond de chaque paragraphe, pas la couleur de ses lettres.",
             "css": "p{color:black;background-color:lightyellow}"
           }
         ],
@@ -145,7 +145,7 @@
             "Quel élément veux-tu modifier ?",
             "Les mots du titre restent dans HTML ; son apparence se règle dans CSS.",
             "Compare le rôle des deux propriétés du cours.",
-            "Dans la règle h1, écris color: darkgreen; et background-color: white; entre accolades."
+            "Dans la règle h1, écris `color`: darkgreen; et `background-color`: white; entre accolades."
           ]
         },
         {
@@ -155,7 +155,7 @@
             "Repère les deux balises p.",
             "Un seul sélecteur peut les choisir toutes les deux.",
             "Compare avec la règle p, pas avec h1.",
-            "Écris une règle p avec color: black; et background-color: lightyellow;."
+            "Écris une règle p avec `color`: black; et `background-color`: lightyellow;."
           ]
         },
         {
@@ -191,16 +191,16 @@
       "type": "tasks",
       "id": "reparer",
       "title": "Consolidation : Une règle à réparer",
-      "intro": "Dans un essai séparé, copie dans HTML <p>Texte à réparer</p> et dans CSS : p { color = blue; background-color: white; }. Le texte devrait devenir bleu, mais la déclaration de couleur est incorrecte.",
+      "intro": "Dans un essai séparé, copie dans HTML <p>Texte à réparer</p> et dans CSS : p { `color` = blue; `background-color`: white; }. Le texte devrait devenir bleu, mais la déclaration de couleur est incorrecte.",
       "items": [
         {
           "id": "reparer-declaration",
           "text": "Repère puis corrige l’erreur. Explique la différence entre l’écriture incorrecte et celle qui fonctionne.",
           "hints": [
-            "Regarde la ponctuation après color.",
+            "Regarde la ponctuation après `color`.",
             "Une déclaration sépare propriété et valeur par un signe précis.",
-            "Compare avec color: blue; dans le cours.",
-            "Remplace = par : ; garde le point-virgule. La règle devient p { color: blue; background-color: white; }."
+            "Compare avec `color`: blue; dans le cours.",
+            "Remplace = par : ; garde le point-virgule. La règle devient p { `color`: blue; `background-color`: white; }."
           ]
         },
         {
@@ -241,7 +241,7 @@
           "id": "squelette-local",
           "title": "Un fichier prêt à accueillir tes essais",
           "paragraphs": [
-            "Crée un fichier index.html dans ton dossier de travail, colle ce squelette, puis enregistre-le. Ouvre ce fichier dans un navigateur. Après chaque modification, enregistre dans VS Code puis actualise le navigateur.",
+            "Crée un fichier `index.html` dans ton dossier de travail, colle ce squelette, puis enregistre-le. Ouvre ce fichier dans un navigateur. Après chaque modification, enregistre dans VS Code puis actualise le navigateur.",
             "Le texte entre <!-- et --> et celui entre /* et */ sont des commentaires : des indications invisibles dans la page. Colle le HTML à la place du commentaire dans body, et le CSS à la place du commentaire dans style. Garde les autres lignes.",
             "head contient ici les réglages du document ; title donne le titre de l’onglet. body accueille ce qui est visible. style accueille les règles CSS dans cet exemple fourni. Tu n’as pas à reconstruire ce cadre de mémoire.",
             "Dans CodePen, n’utilise pas ce squelette complet : les panneaux HTML et CSS prennent en charge ce cadre pour toi. Le chargement d’un fichier CSS séparé sera une autre activité."

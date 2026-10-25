@@ -20,6 +20,24 @@ Les pages de domaine reprennent leur paysage d’accueil dans un bandeau compact
 
 Les retours secondaires ont des facettes accordées à la couleur du parcours. Le mot-symbole CodeCraft est le seul lien Accueil sur les domaines et les cours ; les liens précédent/suivant et les retours aux parcours restent conservés. La revue des parcours et cours comprend les indices ouverts, les fins de cours et les modèles Scratch à 390 px, sans recolorer les blocs pédagogiques.
 
+## Exemples Python harmonisés
+
+Les 49 extraits des autres leçons Python reprennent le cadre éditeur de la première leçon : en-tête bleu, nom du fichier, coloration et coins biseautés. Aucun faux bouton d'exécution n'est affiché. Trente résultats fixes vérifiés apparaissent directement dans un panneau « Console » sur fond bleu nuit, avec texte clair. Les labels des deux panneaux sont décalés des coins biseautés. Les exemples avec saisie, hasard, erreur volontaire ou dépendance à un extrait précédent gardent uniquement l'éditeur. Les programmes et consignes restent inchangés.
+
+Validation complète : 239 tests Node et sept suites navigateur réussis, journal `browser-artifacts/python-visual-check.log`, rapport `browser-artifacts/run-0iI6Av/summary.json`. Les captures `python-editeur-console-1280.png` et `python-editeur-console-320.png` du scénario élève ont été examinées. Le format des données est décrit dans [l'organisation des contenus](organisation-contenus.md).
+
+## Panneaux harmonisés dans les parcours
+
+Les exemples, indices de code, démonstrations Web et étapes Thonny partagent l'en-tête « Éditeur », le cartouche de fichier, la coloration et les coins biseautés. Les consoles fournies restent visibles et leur texte est aligné sur le code, après la colonne des numéros de ligne. Les fonds sombres et en-têtes suivent les variables de couleur du parcours : bleu Python, vert et violet Web, orange jeux vidéo et bleu-vert robotique. Les références explicites au code sont balisées dans les textes, sans changer les programmes ni les aperçus.
+
+Les contrôles de cette harmonisation sont conservés dans `browser-artifacts/site-code-check.log` ; le scénario élève vérifie les en-têtes communs et capture les éditeurs sur ordinateur et petit écran.
+
+## Fenêtres Scratch et GDevelop
+
+Les scripts Scratch, groupes de scripts, repères de coordonnées et schémas GDevelop reprennent le cadre biseauté des éditeurs : bandeau cuivré, liseré du parcours et fond clair légèrement teinté. Les groupes gardent un bandeau principal et des sous-titres plus discrets. Les silhouettes et couleurs des blocs Scratch restent intactes. Les figures GDevelop ont un titre explicite, distinct de leur légende. Les captures `scratch-window-*` et `gdevelop-window-*` du scénario élève couvrent ordinateur et mobile.
+
+Les libellés de catégories Scratch reprennent la couleur des blocs avec une petite pastille. Le texte jaune et orange utilise une nuance plus foncée sur fond clair. Un libellé mixte comme « Contrôle + Opérateurs » distingue les deux catégories. Les teintes sont partagées entre blocs, valeurs glissées et libellés dans `styles/components/pedagogy.css`.
+
 ## Point de retour
 
 L’accueil propose un horizon crépusculaire original en SVG et des montagnes facettées. La bannière affiche seulement le mot-symbole CodeCraft avec un léger relief et la phrase d’accueil. Les cartes des trois univers utilisent un paysage CSS compact, un symbole intégré et des couleurs distinctes, avec le contenu sur fond clair. Le fond atmosphérique est limité à l’accueil ; les cours gardent leurs fonds de lecture. Aucun asset de Spyro n’est utilisé. Le logo précédent `images/logo-transparent.png` et l’essai `images/codecraft-emblem.svg` restent conservés sans être affichés dans la bannière.

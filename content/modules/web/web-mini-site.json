@@ -92,7 +92,7 @@
       "items": [
         {
           "id": "exigence-1",
-          "text": "Deux fichiers HTML complets dans le même dossier, avec un accueil index.html et une seconde page au nom simple choisi."
+          "text": "Deux fichiers HTML complets dans le même dossier, avec un accueil `index.html` et une seconde page au nom simple choisi."
         },
         {
           "id": "exigence-2",
@@ -108,7 +108,7 @@
         },
         {
           "id": "exigence-5",
-          "text": "Un seul fichier style.css commun, relié dans head de chaque document ; des classes réutilisées pour des rôles comparables."
+          "text": "Un seul fichier `style.css` commun, relié dans head de chaque document ; des classes réutilisées pour des rôles comparables."
         },
         {
           "id": "exigence-6",
@@ -133,9 +133,9 @@
       "id": "dossier",
       "title": "2 : Préparer l’organisation",
       "paragraphs": [
-        "Tu peux garder index.html et idees.html de l’exercice précédent, dans une copie. L’arbre ci-dessous est un exemple d’organisation : adapte le nom de ta seconde page et celui de l’image.",
-        "Les deux HTML et style.css restent voisins. Les dessins sont rangés dans images. Conserver cette organisation limite les nouveaux chemins à comprendre : chaque HTML peut utiliser href=\"style.css\" et src=\"images/carre-bleu.png\".",
-        "Vérifie les extensions et les noms exacts. On ne place pas les deux pages HTML dans style.css ; ce fichier reçoit seulement les règles CSS. Pas besoin de serveur ni de mise en ligne pour ces liens et fichiers."
+        "Tu peux garder `index.html` et `idees.html` de l’exercice précédent, dans une copie. L’arbre ci-dessous est un exemple d’organisation : adapte le nom de ta seconde page et celui de l’image.",
+        "Les deux HTML et `style.css` restent voisins. Les dessins sont rangés dans images. Conserver cette organisation limite les nouveaux chemins à comprendre : chaque HTML peut utiliser href=\"`style.css`\" et src=\"`images/carre-bleu.png`\".",
+        "Vérifie les extensions et les noms exacts. On ne place pas les deux pages HTML dans `style.css` ; ce fichier reçoit seulement les règles CSS. Pas besoin de serveur ni de mise en ligne pour ces liens et fichiers."
       ],
       "code": "mon-mini-site/\n├── index.html\n├── idees.html\n├── style.css\n└── images/\n    └── carre-bleu.png"
     },
@@ -144,7 +144,7 @@
       "id": "liaison",
       "title": "3 : Une feuille pour les deux documents",
       "paragraphs": [
-        "Dans head de CHAQUE page, relie le même fichier style.css. Cette ligne est un rappel de Relier une feuille de style ; elle n’est pas un lien cliquable à placer dans le menu.",
+        "Dans head de CHAQUE page, relie le même fichier `style.css`. Cette ligne est un rappel de Relier une feuille de style ; elle n’est pas un lien cliquable à placer dans le menu.",
         "Si tu pars d’une copie qui utilisait un autre fichier CSS, garde une copie de sauvegarde puis remplace son ancienne liaison par celle vers la feuille commune. Ne conserve pas une deuxième feuille ou un ancien bloc style qui masquerait tes essais."
       ],
       "code": "<link rel=\"stylesheet\" href=\"style.css\">"
@@ -154,10 +154,10 @@
       "id": "partage",
       "title": "Un petit essai pour prouver le partage",
       "paragraphs": [
-        "Avant la réalisation complète, donne class=\"titre\" au h1 de chacune des deux pages et ajoute cette règle dans l’unique style.css. Ouvre les deux documents : leurs titres doivent être bleu marine.",
-        "Change navy en darkgreen uniquement dans style.css, enregistre puis actualise CHACUNE des pages. Si les deux titres changent, tu as une preuve que cette règle commune agit sur les deux.",
+        "Avant la réalisation complète, donne class=\"titre\" au h1 de chacune des deux pages et ajoute cette règle dans l’unique `style.css`. Ouvre les deux documents : leurs titres doivent être bleu marine.",
+        "Change navy en darkgreen uniquement dans `style.css`, enregistre puis actualise CHACUNE des pages. Si les deux titres changent, tu as une preuve que cette règle commune agit sur les deux.",
         "Le fichier commun est relu lors du chargement ou de l’actualisation de chaque page ; une page déjà ouverte ne se met pas à jour toute seule pendant la saisie.",
-        "CSS partage les règles d’apparence, pas le contenu HTML. Modifier le menu dans un fichier ne modifie donc pas automatiquement l’autre. Ne crée pas style-accueil.css et style-idees.css pour reproduire les mêmes règles."
+        "CSS partage les règles d’apparence, pas le contenu HTML. Modifier le menu dans un fichier ne modifie donc pas automatiquement l’autre. Ne crée pas `style-accueil.css` et `style-idees.css` pour reproduire les mêmes règles."
       ],
       "code": ".titre {\n  color: navy;\n}",
       "demonstration": {
@@ -169,7 +169,7 @@
             "label": "style.css : navy",
             "html": "<h1 class=\"titre\">Mon carnet</h1><p>Page d’accueil représentée.</p><hr><h1 class=\"titre\">Mes idées</h1><p>Seconde page représentée.</p>",
             "code": ".titre {\n  color: navy;\n}",
-            "feedback": "La même règle peut agir sur les deux documents reliés à style.css.",
+            "feedback": "La même règle peut agir sur les deux documents reliés à `style.css`.",
             "css": ".titre{color:navy}"
           },
           {
@@ -195,7 +195,7 @@
         },
         {
           "id": "fichiers",
-          "text": "Crée ou copie tes deux HTML, puis crée style.css et le dossier images. Vérifie que tu travailles dans la bonne copie."
+          "text": "Crée ou copie tes deux HTML, puis crée `style.css` et le dossier images. Vérifie que tu travailles dans la bonne copie."
         },
         {
           "id": "menus",
@@ -213,8 +213,8 @@
       "title": "Une image disponible pour ton site local",
       "paragraphs": [
         "Tu peux utiliser le carré fourni pour un thème de formes ou le remplacer par un fichier d’exercice déjà disponible. Aucun téléchargement d’image personnelle ni recherche Internet n’est requis.",
-        "Dans la ressource ci-dessous, choisis Télécharger l’image et place carre-bleu.png dans ton dossier images. Le chemin de l’image sera `images/carre-bleu.png`.",
-        "Dans le HTML de la page illustrée, utilise une balise img avec src=\"images/carre-bleu.png\", une classe pour son style et un alt que tu rédiges pour décrire le dessin. Réutilise les réglages de proportions du cours Dimensions.",
+        "Dans la ressource ci-dessous, choisis Télécharger l’image et place `carre-bleu.png` dans ton dossier images. Le chemin de l’image sera `images/carre-bleu.png`.",
+        "Dans le HTML de la page illustrée, utilise une balise img avec src=\"`images/carre-bleu.png`\", une classe pour son style et un alt que tu rédiges pour décrire le dessin. Réutilise les réglages de proportions du cours Dimensions.",
         "Si la même image sert sur deux pages voisines, les deux src peuvent viser le même fichier : inutile de le dupliquer. Ne déplace pas les ressources d’un autre projet ; copie-les ou télécharge-les dans celui-ci."
       ]
     },
@@ -242,7 +242,7 @@
         },
         {
           "id": "styles",
-          "text": "Dans style.css, règle la présentation commune de tes titres et paragraphes avec des classes cohérentes. Choisis une lecture facile ; noir sur blanc convient.",
+          "text": "Dans `style.css`, règle la présentation commune de tes titres et paragraphes avec des classes cohérentes. Choisis une lecture facile ; noir sur blanc convient.",
           "hints": [
             "Choisis un nom de classe par rôle utile.",
             "Compare les classes présentes dans les deux HTML.",
@@ -257,7 +257,7 @@
             "Vérifie d’abord que l’image se charge.",
             "Le chemin est lu depuis le fichier HTML.",
             "Une image chargée mais écrasée est un problème de dimensions, pas de src.",
-            "Utilise Images pour la source/alt, ou Dimensions pour width et height auto ; ne cache pas le problème avec une hauteur choisie au hasard."
+            "Utilise Images pour la source/alt, ou Dimensions pour `width` et `height` auto ; ne cache pas le problème avec une hauteur choisie au hasard."
           ]
         },
         {
@@ -280,11 +280,11 @@
       "type": "tasks",
       "id": "verifier",
       "title": "5 : Vérifier comme un visiteur",
-      "intro": "Enregistre tous les fichiers. Tester seulement index.html ne suffit pas.",
+      "intro": "Enregistre tous les fichiers. Tester seulement `index.html` ne suffit pas.",
       "items": [
         {
           "id": "toutes-destinations",
-          "text": "Depuis index.html, clique sur chaque lien ; recommence depuis la seconde page. Vérifie le nom du fichier, le titre visible et le contenu atteint."
+          "text": "Depuis `index.html`, clique sur chaque lien ; recommence depuis la seconde page. Vérifie le nom du fichier, le titre visible et le contenu atteint."
         },
         {
           "id": "entree-directe",
@@ -320,7 +320,7 @@
       "items": [
         {
           "id": "lien-casse",
-          "text": "Dans le menu de l’accueil, remplace temporairement le href de la seconde page par absent.html. Observe le lien cassé, puis corrige uniquement la destination.",
+          "text": "Dans le menu de l’accueil, remplace temporairement le href de la seconde page par `absent.html`. Observe le lien cassé, puis corrige uniquement la destination.",
           "hints": [
             "Le texte cliquable peut être correct malgré une mauvaise adresse.",
             "Compare href au nom réel du second fichier.",
@@ -330,12 +330,12 @@
         },
         {
           "id": "feuille-absente",
-          "text": "Dans head de la seconde page seulement, remplace href=\"style.css\" par href=\"absent.css\". Observe que cette page perd les règles de la feuille, alors que l’accueil les garde. Répare la liaison.",
+          "text": "Dans head de la seconde page seulement, remplace href=\"`style.css`\" par href=\"`absent.css`\". Observe que cette page perd les règles de la feuille, alors que l’accueil les garde. Répare la liaison.",
           "hints": [
             "La navigation peut fonctionner même sans le style.",
             "Compare les deux link.",
             "La feuille existe ; une page demande un autre nom.",
-            "Rétablis href=\"style.css\", enregistre puis actualise cette page. Ne duplique pas le CSS dans le HTML."
+            "Rétablis href=\"`style.css`\", enregistre puis actualise cette page. Ne duplique pas le CSS dans le HTML."
           ]
         },
         {
@@ -375,7 +375,7 @@
             },
             {
               "id": "controle-trois",
-              "text": "Teste tous les liens depuis chacune des trois pages et prouve qu’une modification de style.css atteint les trois après actualisation. Ne crée pas une feuille CSS supplémentaire."
+              "text": "Teste tous les liens depuis chacune des trois pages et prouve qu’une modification de `style.css` atteint les trois après actualisation. Ne crée pas une feuille CSS supplémentaire."
             }
           ]
         }
@@ -499,7 +499,7 @@
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         }
       ]
     }

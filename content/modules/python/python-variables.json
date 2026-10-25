@@ -25,7 +25,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir afficher du texte et prévoir l’ordre des instructions. Sinon, reprends Afficher des messages. Enregistre tes essais, puis crée variables.py sans remplacer tes autres fichiers. Écris les instructions dans l’éditeur et exécute le fichier entier.",
+      "text": "Il faut savoir afficher du texte et prévoir l’ordre des instructions. Sinon, reprends Afficher des messages. Enregistre tes essais, puis crée `variables.py` sans remplacer tes autres fichiers. Écris les instructions dans l’éditeur et exécute le fichier entier.",
       "moduleLink": {
         "moduleId": "python-affichage",
         "text": "Revoir l’affichage et l’ordre"
@@ -40,7 +40,9 @@
         "Sans guillemets, personnage demande la valeur associée à ce nom. Avec guillemets, \"personnage\" est simplement le texte personnage.",
         "Prédis les deux messages, puis exécute le fichier entier."
       ],
-      "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")"
+      "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")",
+      "filename": "variables.py",
+      "consoleOutput": "Luna\npersonnage"
     },
     {
       "type": "lesson",
@@ -48,9 +50,11 @@
       "title": "2 - La valeur peut changer",
       "paragraphs": [
         "Chaque instruction utilise la valeur disponible à cet instant. Le deuxième = remplace la valeur associée au nom personnage. Il ne modifie pas un message déjà affiché.",
-        "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas print comme nom de variable."
+        "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas `print` comme nom de variable."
       ],
-      "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)"
+      "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)",
+      "filename": "variables.py",
+      "consoleOutput": "Luna\nMilo"
     },
     {
       "type": "tasks",
@@ -69,7 +73,7 @@
         },
         {
           "id": "predire-remplacement",
-          "text": "Enregistre variables.py, puis crée remplacement.py pour le deuxième exemple. Garde le premier fichier, annonce les deux résultats et exécute le nouveau fichier.",
+          "text": "Enregistre `variables.py`, puis crée `remplacement.py` pour le deuxième exemple. Garde le premier fichier, annonce les deux résultats et exécute le nouveau fichier.",
           "hint": "Lis de haut en bas : la valeur est d’abord Luna, puis Milo. Tes deux fichiers permettent de comparer les exemples."
         }
       ]
@@ -78,12 +82,12 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - deux informations",
-      "intro": "Enregistre ton essai actuel, puis crée personnage.py. Garde variables.py et remplacement.py ; essaie sans recopier le modèle.",
+      "intro": "Enregistre ton essai actuel, puis crée `personnage.py`. Garde `variables.py` et `remplacement.py` ; essaie sans recopier le modèle.",
       "items": [
         {
           "id": "deux-variables",
           "text": "Crée deux variables textuelles avec des noms de ton choix et affiche leurs valeurs.",
-          "hint": "Une instruction d’affectation pour chaque information ; puis un print pour chaque variable, sans guillemets autour de son nom."
+          "hint": "Une instruction d’affectation pour chaque information ; puis un `print` pour chaque variable, sans guillemets autour de son nom."
         },
         {
           "id": "modifier-une-valeur",
@@ -92,7 +96,7 @@
         },
         {
           "id": "test-propre",
-          "text": "Enregistre personnage.py. Clique sur Arrêter / redémarrer puis exécute le fichier entier : vérifie qu’il fonctionne sans les essais précédents.",
+          "text": "Enregistre `personnage.py`. Clique sur Arrêter / redémarrer puis exécute le fichier entier : vérifie qu’il fonctionne sans les essais précédents.",
           "hint": "Le fichier doit définir lui-même chaque variable avant de l’utiliser. Le redémarrage permet de vérifier qu’un ancien essai ne cachait pas un oubli."
         }
       ]
@@ -102,9 +106,10 @@
       "id": "erreur",
       "title": "Pour consolider - un nom incohérent",
       "paragraphs": [
-        "Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque NameError parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."
+        "Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque `NameError` parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."
       ],
-      "code": "compagnon = \"chat\"\nprint(animal)"
+      "code": "compagnon = \"chat\"\nprint(animal)",
+      "filename": "variables.py"
     },
     {
       "type": "tasks",
@@ -114,7 +119,7 @@
         {
           "id": "reutiliser-valeur",
           "text": "Affiche la même variable à trois endroits dans ton fichier. Change sa valeur de départ et prédis les trois résultats avant de relancer.",
-          "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs print."
+          "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs `print`."
         }
       ]
     }

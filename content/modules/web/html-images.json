@@ -140,7 +140,7 @@
       "items": [
         {
           "id": "source-incorrecte",
-          "text": "Remplace temporairement src par image-introuvable.png. Observe, puis rétablis une source fournie.",
+          "text": "Remplace temporairement src par `image-introuvable.png`. Observe, puis rétablis une source fournie.",
           "hints": [
             "Observe l’image absente et relis src.",
             "Un nom de fichier seul ne suffit pas si ce fichier n’existe pas à cet endroit.",

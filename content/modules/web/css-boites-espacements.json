@@ -37,7 +37,7 @@
       "paragraphs": [
         "Résultat attendu : deux cartes dont le texte ne touche pas la bordure et qui sont séparées du cadre extérieur. Tu sauras changer l’espace du bon côté de la bordure.",
         "Ouvre un nouveau Pen, puis utilise HTML et CSS séparément. En local, travaille dans une copie avec une feuille déjà reliée : extrait HTML dans body, règles dans le fichier CSS, puis enregistre et actualise. Le cours de liaison est accessible dans les reprises si nécessaire.",
-        "Une boîte contient du contenu, par exemple un titre et un paragraphe. Autour du contenu viennent le padding (espace intérieur), la border (bordure) et la margin (espace extérieur). Les mots anglais sont les noms utilisés en CSS."
+        "Une boîte contient du contenu, par exemple un titre et un paragraphe. Autour du contenu viennent le `padding` (espace intérieur), la `border` (bordure) et la `margin` (espace extérieur). Les mots anglais sont les noms utilisés en CSS."
       ]
     },
     {
@@ -45,11 +45,11 @@
       "id": "couches",
       "title": "2 : De l’intérieur vers l’extérieur",
       "paragraphs": [
-        "padding éloigne le contenu de sa bordure. Le fond de la boîte remplit aussi cet espace intérieur.",
-        "border trace ici une ligne autour du contenu et du padding. border: 2px solid navy signifie une épaisseur de 2 pixels CSS, un trait continu (solid) et la couleur bleu marine (navy). Épaisseur, style du trait et couleur ont chacun leur rôle.",
-        "margin crée de l’espace à l’extérieur de la bordure. Cet espace est transparent : on voit le fond du parent, pas le fond blanc de la carte.",
-        "Avec une seule valeur, padding: 16px et margin: 12px règlent les quatre côtés. px signifie pixel CSS, une unité de taille ; 0 peut s’écrire sans unité. Nous n’avons pas besoin de régler chaque côté séparément ici.",
-        "Les titres et paragraphes ont souvent leurs propres marges par défaut. Dans cet exercice, .titre et .texte ont margin: 0 pour les enlever et observer uniquement les espaces de .carte. Ce réglage de démonstration n’est pas une obligation pour toutes tes pages."
+        "`padding` éloigne le contenu de sa bordure. Le fond de la boîte remplit aussi cet espace intérieur.",
+        "`border` trace ici une ligne autour du contenu et du `padding`. `border`: 2px solid navy signifie une épaisseur de 2 pixels CSS, un trait continu (solid) et la couleur bleu marine (navy). Épaisseur, style du trait et couleur ont chacun leur rôle.",
+        "`margin` crée de l’espace à l’extérieur de la bordure. Cet espace est transparent : on voit le fond du parent, pas le fond blanc de la carte.",
+        "Avec une seule valeur, `padding`: 16px et `margin`: 12px règlent les quatre côtés. px signifie pixel CSS, une unité de taille ; 0 peut s’écrire sans unité. Nous n’avons pas besoin de régler chaque côté séparément ici.",
+        "Les titres et paragraphes ont souvent leurs propres marges par défaut. Dans cet exercice, .titre et .texte ont `margin`: 0 pour les enlever et observer uniquement les espaces de .carte. Ce réglage de démonstration n’est pas une obligation pour toutes tes pages."
       ],
       "code": "contenu : titre et paragraphe\n→ padding : espace intérieur\n→ border : ligne de bordure\n→ margin : espace extérieur",
       "demonstration": {
@@ -97,7 +97,7 @@
       "title": "CSS : Voir les deux sortes d’espace",
       "paragraphs": [
         "Le cadre gris de .atelier permet de repérer le parent. Dans chaque carte, le fond blanc continue jusqu’à sa bordure bleue. Dehors, on voit le gris du parent.",
-        "Observe surtout le côté gauche de la première carte : la distance entre le cadre gris et la bordure bleue montre sa marge ; la distance entre la bordure bleue et les mots montre son padding.",
+        "Observe surtout le côté gauche de la première carte : la distance entre le cadre gris et la bordure bleue montre sa marge ; la distance entre la bordure bleue et les mots montre son `padding`.",
         "Les cartes s’empilent naturellement, sans Flexbox. Leurs marges verticales peuvent se regrouper au lieu de s’additionner : deux marges de 12px ne donnent pas forcément 24px entre les cartes. Pour la première comparaison, mesure visuellement à gauche, pas entre les deux cartes."
       ],
       "code": ".atelier {\n  background-color: lightgray;\n  border: 2px solid gray;\n}\n.carte {\n  background-color: white;\n  border: 2px solid navy;\n  padding: 16px;\n  margin: 12px;\n}\n.titre {\n  margin: 0;\n}\n.texte {\n  margin: 0;\n}"
@@ -114,21 +114,21 @@
         },
         {
           "id": "interieur",
-          "text": "Dans .carte, compare padding: 0 puis padding: 24px. Garde margin: 12px. Explique de quel côté de la bordure l’espace change.",
+          "text": "Dans .carte, compare `padding`: 0 puis `padding`: 24px. Garde `margin`: 12px. Explique de quel côté de la bordure l’espace change.",
           "hints": [
             "Regarde les mots par rapport à la ligne bleue.",
-            "Le padding est à l’intérieur.",
+            "Le `padding` est à l’intérieur.",
             "Compare le blanc entre les mots et la bordure.",
-            "À padding: 24px, les mots sont plus éloignés de la bordure. Rétablis ensuite padding: 16px."
+            "À `padding`: 24px, les mots sont plus éloignés de la bordure. Rétablis ensuite `padding`: 16px."
           ]
         },
         {
           "id": "exterieur",
-          "text": "Avec padding: 16px, compare margin: 0 puis margin: 24px. Observe l’espace gris à gauche de la bordure, puis remets margin: 12px."
+          "text": "Avec `padding`: 16px, compare `margin`: 0 puis `margin`: 24px. Observe l’espace gris à gauche de la bordure, puis remets `margin`: 12px."
         },
         {
           "id": "bordure",
-          "text": "Compare border: 2px solid navy puis border: 6px solid navy. Explique pourquoi un trait plus épais n’est pas une marge. Remets 2px."
+          "text": "Compare `border`: 2px solid navy puis `border`: 6px solid navy. Explique pourquoi un trait plus épais n’est pas une marge. Remets 2px."
         }
       ]
     },
@@ -148,8 +148,8 @@
           "hints": [
             "Repère le côté de la bordure où se trouvent les mots.",
             "La modification concerne l’intérieur.",
-            "Compare les rôles de padding et margin.",
-            "Augmente seulement padding dans .carte, par exemple de 16px à 24px. Garde margin et border."
+            "Compare les rôles de `padding` et `margin`.",
+            "Augmente seulement `padding` dans .carte, par exemple de 16px à 24px. Garde `margin` et `border`."
           ]
         },
         {
@@ -159,7 +159,7 @@
             "Regarde l’espace entre deux bordures, à gauche.",
             "Cet espace est extérieur à la carte.",
             "Le fond gris vient du parent.",
-            "Augmente margin dans .carte, par exemple de 12px à 24px. Ne change pas padding ni border."
+            "Augmente `margin` dans .carte, par exemple de 12px à 24px. Ne change pas `padding` ni `border`."
           ]
         },
         {
@@ -187,7 +187,7 @@
         },
         {
           "id": "verifier-3",
-          "text": "Je peux éloigner la carte du cadre sans changer son padding."
+          "text": "Je peux éloigner la carte du cadre sans changer son `padding`."
         },
         {
           "id": "verifier-4",
@@ -220,17 +220,17 @@
       "items": [
         {
           "id": "corriger",
-          "text": "Redonne de l’air aux mots sans agrandir encore l’espace extérieur. Explique pourquoi augmenter margin ne corrige pas ce problème.",
+          "text": "Redonne de l’air aux mots sans agrandir encore l’espace extérieur. Explique pourquoi augmenter `margin` ne corrige pas ce problème.",
           "hints": [
             "Pointe l’espace manquant à l’intérieur de la ligne.",
             "La marge est déjà grande, mais elle est dehors.",
-            "Compare padding: 0 et margin: 32px.",
-            "Essaie padding: 16px en gardant margin: 32px. Ensuite seulement, réduis la marge si tu souhaites moins d’espace extérieur."
+            "Compare `padding`: 0 et `margin`: 32px.",
+            "Essaie `padding`: 16px en gardant `margin`: 32px. Ensuite seulement, réduis la marge si tu souhaites moins d’espace extérieur."
           ]
         },
         {
           "id": "distinguer",
-          "text": "Si le texte reste décalé avec padding: 0, vérifie les marges de .titre et .texte : un enfant peut avoir sa propre marge. Explique quel élément porte chaque règle."
+          "text": "Si le texte reste décalé avec `padding`: 0, vérifie les marges de .titre et .texte : un enfant peut avoir sa propre marge. Explique quel élément porte chaque règle."
         }
       ]
     },
@@ -247,11 +247,11 @@
           "items": [
             {
               "id": "compact",
-              "text": "Dans la première, essaie padding: 8px et margin: 8px sur .carte, en gardant les bordures à 2px."
+              "text": "Dans la première, essaie `padding`: 8px et `margin`: 8px sur .carte, en gardant les bordures à 2px."
             },
             {
               "id": "aere",
-              "text": "Dans la seconde, essaie padding: 24px et margin: 20px. Garde exactement les mêmes textes et la même taille de caractères."
+              "text": "Dans la seconde, essaie `padding`: 24px et `margin`: 20px. Garde exactement les mêmes textes et la même taille de caractères."
             },
             {
               "id": "choisir",
@@ -265,12 +265,12 @@
       "type": "callout",
       "id": "suite",
       "title": "Garder une base pour la suite",
-      "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Si l’espace intérieur/extérieur reste flou, refais un essai en ne changeant que padding ou margin. Le bonus n’est pas obligatoire."
+      "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Si l’espace intérieur/extérieur reste flou, refais un essai en ne changeant que `padding` ou `margin`. Le bonus n’est pas obligatoire."
     }
   ],
   "masteryCriteria": [
-    "Choisir padding ou margin à partir d’un besoin décrit sans nom de propriété.",
-    "Identifier le contenu, le padding, la bordure et la marge dans l’exemple ; expliquer quel fond est visible.",
+    "Choisir `padding` ou `margin` à partir d’un besoin décrit sans nom de propriété.",
+    "Identifier le contenu, le `padding`, la bordure et la marge dans l’exemple ; expliquer quel fond est visible.",
     "Réparer un manque d’espace intérieur sans augmenter inutilement l’espace extérieur.",
     "Réutiliser les classes sur une troisième carte et expliquer le résultat.",
     "Lire les trois valeurs d’une bordure simple ; les arrondis ne sont ni enseignés ni réputés acquis ici."
@@ -364,7 +364,7 @@
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         }
       ]
     },

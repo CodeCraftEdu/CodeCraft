@@ -49,16 +49,16 @@
       "id": "notions",
       "title": "2 : Quatre réglages différents",
       "paragraphs": [
-        "font-family choisit la famille de caractères. sans-serif demande une police sans empattements disponible sur l’appareil ; serif en demande une avec de petites terminaisons. Le dessin exact peut varier selon l’ordinateur. Aucun téléchargement de police n’est nécessaire.",
-        "font-size règle la taille des caractères. Ici px signifie pixel CSS, une unité de taille à l’écran : 18px donne des lettres plus grandes que 12px. N’ajoute pas d’espace entre 18 et px.",
-        "line-height règle la hauteur des lignes. Avec 1.5 sans unité, chaque ligne occupe une hauteur égale à 1,5 fois la taille du texte : à 18px cela fait 27px. Cela aère les lignes à l’intérieur d’un même paragraphe, pas l’espace entre deux paragraphes.",
-        "text-align aligne le texte dans la largeur disponible de son élément : left à gauche, center au centre, right à droite. Centrer les mots ne centre pas la boîte qui les contient.",
+        "`font-family` choisit la famille de caractères. sans-serif demande une police sans empattements disponible sur l’appareil ; serif en demande une avec de petites terminaisons. Le dessin exact peut varier selon l’ordinateur. Aucun téléchargement de police n’est nécessaire.",
+        "`font-size` règle la taille des caractères. Ici px signifie pixel CSS, une unité de taille à l’écran : 18px donne des lettres plus grandes que 12px. N’ajoute pas d’espace entre 18 et px.",
+        "`line-height` règle la hauteur des lignes. Avec 1.5 sans unité, chaque ligne occupe une hauteur égale à 1,5 fois la taille du texte : à 18px cela fait 27px. Cela aère les lignes à l’intérieur d’un même paragraphe, pas l’espace entre deux paragraphes.",
+        "`text-align` aligne le texte dans la largeur disponible de son élément : left à gauche, center au centre, right à droite. Centrer les mots ne centre pas la boîte qui les contient.",
         "Pour du français, un paragraphe long aligné à gauche est un bon point de départ. Un titre court peut être centré. Les nombres de l’exemple sont des choix à comparer, pas une règle universelle de bonne lecture."
       ],
       "demonstration": {
         "type": "web-comparison",
         "title": "Même texte, autre interligne",
-        "intro": "Seul line-height change. Observe l’espace entre les lignes, sans modifier la taille des lettres.",
+        "intro": "Seul `line-height` change. Observe l’espace entre les lignes, sans modifier la taille des lettres.",
         "variants": [
           {
             "label": "Lignes serrées",
@@ -105,11 +105,11 @@
       "items": [
         {
           "id": "taille",
-          "text": "Dans .lecture seulement, compare font-size: 12px puis 18px. Garde 18px. Décris ce qui change et ce qui reste identique."
+          "text": "Dans .lecture seulement, compare `font-size`: 12px puis 18px. Garde 18px. Décris ce qui change et ce qui reste identique."
         },
         {
           "id": "lignes",
-          "text": "Réduis la largeur de l’aperçu CodePen ou de la fenêtre jusqu’à avoir au moins trois lignes dans un paragraphe. Compare line-height: 1 puis 1.5 ; garde 1.5.",
+          "text": "Réduis la largeur de l’aperçu CodePen ou de la fenêtre jusqu’à avoir au moins trois lignes dans un paragraphe. Compare `line-height`: 1 puis 1.5 ; garde 1.5.",
           "hints": [
             "Le réglage agit entre les lignes d’un même paragraphe.",
             "Si tout tient sur une ligne, rétrécis l’aperçu plutôt que d’ajouter des <br>.",
@@ -144,7 +144,7 @@
             "Sépare les choix du titre et des paragraphes.",
             "Vérifie que les deux paragraphes ont la même classe.",
             "Taille des lettres et hauteur des lignes sont deux réglages différents.",
-            "Exemple de choix possible : titre 28px, paragraphes 18px et line-height: 1.5 ; ces valeurs ne sont pas la seule solution."
+            "Exemple de choix possible : titre 28px, paragraphes 18px et `line-height`: 1.5 ; ces valeurs ne sont pas la seule solution."
           ]
         },
         {
@@ -153,8 +153,8 @@
           "hints": [
             "Repère ce qui sépare les lignes dans un paragraphe.",
             "La taille des lettres doit rester constante.",
-            "Compare font-size et line-height.",
-            "Modifie seulement line-height dans .lecture, par exemple de 1.5 à 1.7 ; ne change pas font-size ni .titre."
+            "Compare `font-size` et `line-height`.",
+            "Modifie seulement `line-height` dans .lecture, par exemple de 1.5 à 1.7 ; ne change pas `font-size` ni .titre."
           ]
         },
         {
@@ -216,7 +216,7 @@
             "Lis la propriété qui parle des lignes.",
             "0.8 donne une ligne moins haute que la taille du texte.",
             "À taille constante, compare 0.8 puis 1.5.",
-            "Garde font-size: 24px et essaie line-height: 1.5. Les lettres ont la même taille, mais les lignes ont plus de place."
+            "Garde `font-size`: 24px et essaie `line-height`: 1.5. Les lettres ont la même taille, mais les lignes ont plus de place."
           ]
         },
         {

@@ -58,7 +58,7 @@
             "Décris ce que tu veux voir, sans commencer par une liste de propriétés.",
             "Distingue l’écart entre deux cartes et la place libre autour du groupe.",
             "Repère le parent qui les contient toutes.",
-            "Reprends les étapes direction, gap, répartition et wrap de Flexbox ; choisis ensuite ton propre résultat."
+            "Reprends les étapes direction, `gap`, répartition et `wrap` de Flexbox ; choisis ensuite ton propre résultat."
           ]
         }
       ]
@@ -115,7 +115,7 @@
             "Le paragraphe plus long peut rendre une carte plus haute.",
             "Observe les bords hauts et bas des cartes sur une même ligne.",
             "En ligne, l’axe transversal est vertical dans ces exemples.",
-            "Compare align-items: flex-start puis center sur le parent. Si tu ne vois rien, vérifie qu’il y a plusieurs cartes sur la ligne et des hauteurs différentes."
+            "Compare `align-items`: `flex`-start puis center sur le parent. Si tu ne vois rien, vérifie qu’il y a plusieurs cartes sur la ligne et des hauteurs différentes."
           ]
         }
       ]
@@ -132,8 +132,8 @@
           "hints": [
             "Réduis progressivement la largeur de l’aperçu, pas seulement celle de la page de cours.",
             "Compare avec ton plan ; indique les deux largeurs réellement testées.",
-            "Vérifie flex-wrap, la direction et les dimensions de l’apparence conservée.",
-            "Avec row et wrap, les cartes qui ne tiennent plus passent à une autre ligne. Si une carte seule dépasse, sa largeur doit aussi être revue : wrap ne répare pas tout."
+            "Vérifie `flex-wrap`, la direction et les dimensions de l’apparence conservée.",
+            "Avec `row` et `wrap`, les cartes qui ne tiennent plus passent à une autre ligne. Si une carte seule dépasse, sa largeur doit aussi être revue : `wrap` ne répare pas tout."
           ]
         },
         {
@@ -169,7 +169,7 @@
             "Quels sont le sens de la collection et le sens du centrage demandé ?",
             "En colonne, l’axe principal est vertical et l’autre axe est horizontal dans nos exemples.",
             "Le parent doit être plus large qu’une carte pour rendre le centrage visible.",
-            "Sur le parent, compare flex-direction: column et align-items: center avec align-items: flex-start ; ne centre pas seulement le texte."
+            "Sur le parent, compare `flex-direction`: `column` et `align-items`: center avec `align-items`: `flex`-start ; ne centre pas seulement le texte."
           ]
         },
         {

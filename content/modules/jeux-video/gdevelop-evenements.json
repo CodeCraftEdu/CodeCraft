@@ -46,6 +46,7 @@
       ],
       "illustration": {
         "src": "images/gdevelop-evenements.svg",
+        "title": "Événements GDevelop",
         "alt": "Deux événements séparés : si Espace est maintenue, afficher Message ; si Espace n’est pas maintenue, masquer Message. Chaque condition est reliée à sa propre action.",
         "caption": "Schéma de lecture, pas une capture de l’interface. Les deux conditions sont opposées."
       }

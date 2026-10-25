@@ -12,7 +12,7 @@
   "prerequisiteSkills": [
     {
       "skillId": "scratch.messages",
-      "expectation": "Reprendre mission-05.sb3 avec le passage unique au secteur 2."
+      "expectation": "Reprendre `mission-05.sb3` avec le passage unique au secteur 2."
     },
     {
       "skillId": "scratch.conditions",
@@ -29,7 +29,7 @@
       "id": "depart",
       "title": "Reprendre le jeu à deux secteurs",
       "paragraphs": [
-        "Ouvre ta sauvegarde principale mission-05.sb3, ou son nom avec suffixe. Vérifie le départ à score 0, vies 3 et niveau 1, le passage à trois points et la fin immédiate à six points ou zéro vie. Arrête le jeu et sauvegarde avant les changements.",
+        "Ouvre ta sauvegarde principale `mission-05.sb3`, ou son nom avec suffixe. Vérifie le départ à score 0, vies 3 et niveau 1, le passage à trois points et la fin immédiate à six points ou zéro vie. Arrête le jeu et sauvegarde avant les changements.",
         "Tu vas conserver ces règles et afficher le résultat pendant deux secondes. Durant cette annonce, les commandes, les points et les dégâts seront bloqués ; les copies disparaîtront.",
         "Si ta sauvegarde manque, conserve d’abord ton travail actuel puis charge cette reprise depuis Fichier. Elle remplace le projet ouvert et fournit la fin de Messages."
       ],
@@ -343,7 +343,7 @@
         },
         {
           "id": "sauver",
-          "text": "Sauvegarde ce jalon sous mission-06-decision.sb3. Repère le téléchargement le plus récent, même si le navigateur ajoute un suffixe, puis recharge-le pour vérifier ta sauvegarde."
+          "text": "Sauvegarde ce jalon sous `mission-06-decision.sb3`. Repère le téléchargement le plus récent, même si le navigateur ajoute un suffixe, puis recharge-le pour vérifier ta sauvegarde."
         },
         {
           "id": "priorite",
@@ -351,7 +351,7 @@
         },
         {
           "id": "retour",
-          "text": "Recharge mission-06-decision.sb3 repéré plus haut. Retrouve score 0 et vies 3 au départ avant d’ajouter les protections."
+          "text": "Recharge `mission-06-decision.sb3` repéré plus haut. Retrouve score 0 et vies 3 au départ avant d’ajouter les protections."
         }
       ]
     },
@@ -808,7 +808,7 @@
       "items": [
         {
           "id": "sauver",
-          "text": "Sauvegarde tes protections sous mission-06-protections.sb3, repère le fichier récent puis recharge-le. Les deux stop tout sont encore dans la décision de la scène."
+          "text": "Sauvegarde tes protections sous `mission-06-protections.sb3`, repère le fichier récent puis recharge-le. Les deux stop tout sont encore dans la décision de la scène."
         },
         {
           "id": "copie",
@@ -828,7 +828,7 @@
         },
         {
           "id": "retour",
-          "text": "Sauvegarde l’essai sous mission-06-test-protections.sb3, puis recharge ton fichier principal mission-06-protections.sb3. Vérifie score 0, vies 3 et les deux stop tout dans la scène. La copie de diagnostic reste séparée."
+          "text": "Sauvegarde l’essai sous `mission-06-test-protections.sb3`, puis recharge ton fichier principal `mission-06-protections.sb3`. Vérifie score 0, vies 3 et les deux stop tout dans la scène. La copie de diagnostic reste séparée."
         }
       ],
       "intro": "Le programme continue de tourner après la décision, afin que tu puisses voir si chaque protection fonctionne. L’annonce sera ajoutée après cet essai."
@@ -1084,7 +1084,7 @@
         },
         {
           "id": "sauver",
-          "text": "Sauvegarde ta version principale sous mission-06.sb3. Repère et recharge le téléchargement récent pour vérifier qu’il conserve tes huit piles, score 0, vies 3 et l’annonce de deux secondes."
+          "text": "Sauvegarde ta version principale sous `mission-06.sb3`. Repère et recharge le téléchargement récent pour vérifier qu’il conserve tes huit piles, score 0, vies 3 et l’annonce de deux secondes."
         }
       ]
     },
@@ -1095,7 +1095,7 @@
       "items": [
         {
           "id": "prevoir",
-          "text": "Dans une copie de ta version principale mission-06.sb3, remplace les deux durées d’annonce de 2 par 3 secondes. Prévois si le véhicule pourra bouger pendant cette seconde supplémentaire et explique ton choix."
+          "text": "Dans une copie de ta version principale `mission-06.sb3`, remplace les deux durées d’annonce de 2 par 3 secondes. Prévois si le véhicule pourra bouger pendant cette seconde supplémentaire et explique ton choix."
         },
         {
           "id": "essayer",
@@ -1103,7 +1103,7 @@
         },
         {
           "id": "retour",
-          "text": "Sauvegarde la variante sous mission-06-essai.sb3, puis recharge ton fichier principal mission-06.sb3. Retrouve les deux annonces de 2 secondes et les valeurs de départ habituelles."
+          "text": "Sauvegarde la variante sous `mission-06-essai.sb3`, puis recharge ton fichier principal `mission-06.sb3`. Retrouve les deux annonces de 2 secondes et les valeurs de départ habituelles."
         }
       ]
     },
@@ -1143,9 +1143,9 @@
           "title": "Le score ou les vies changent après la fin",
           "paragraphs": [
             "Dans Balise, vérifie `etat = en jeu` et Pilote touché ? avant le +1 et le changement de côté. Dans le clone, vérifie que le déplacement et le test de dégât sont ensemble dans si `etat = en jeu`.",
-            "Pour tester ton jeu terminé, sauvegarde mission-06.sb3 et repère le téléchargement récent, même avec un suffixe. Dans le projet ouvert, retire seulement le stop tout placé après le si … sinon de l’annonce dans Pilote. Garde les messages et les changements d’état sur la scène. Cette copie peut continuer à tourner après la bulle pour rendre les protections observables.",
+            "Pour tester ton jeu terminé, sauvegarde `mission-06.sb3` et repère le téléchargement récent, même avec un suffixe. Dans le projet ouvert, retire seulement le stop tout placé après le si … sinon de l’annonce dans Pilote. Garde les messages et les changements d’état sur la scène. Cette copie peut continuer à tourner après la bulle pour rendre les protections observables.",
             "Reprends les essais du diagnostic à partir du score de départ à 5 : attends deux copies à l’abri avant la dernière collecte, puis teste la défaite avec une autre copie encore présente au dernier contact. Observe les commandes, les compteurs et la disparition des copies ; attends plus de deux secondes et plus d’un intervalle de création pour vérifier qu’aucune copie ne revient.",
-            "Sauvegarde cet essai sous mission-06-depannage.sb3, puis recharge ton fichier principal mission-06.sb3 repéré avant l’essai. Vérifie score 0, vies 3 et le stop tout après l’annonce dans Pilote. Le diagnostic fait avant l’ajout de l’annonce retirait deux arrêts sur la scène ; dans ce jeu terminé, tu retires seulement celui de Pilote."
+            "Sauvegarde cet essai sous `mission-06-depannage.sb3`, puis recharge ton fichier principal `mission-06.sb3` repéré avant l’essai. Vérifie score 0, vies 3 et le stop tout après l’annonce dans Pilote. Le diagnostic fait avant l’ajout de l’annonce retirait deux arrêts sur la scène ; dans ce jeu terminé, tu retires seulement celui de Pilote."
           ]
         },
         {
@@ -2460,7 +2460,7 @@
           "id": "reference",
           "title": "Comparer avec la référence terminée",
           "paragraphs": [
-            "Sauvegarde ton propre jeu avant d’ouvrir la référence. Compare seulement la pile qui pose problème, puis recharge ta version principale mission-06.sb3 pour poursuivre."
+            "Sauvegarde ton propre jeu avant d’ouvrir la référence. Compare seulement la pile qui pose problème, puis recharge ta version principale `mission-06.sb3` pour poursuivre."
           ],
           "downloads": [
             {
@@ -2489,7 +2489,7 @@
       "id": "reprise",
       "title": "Garder la partie avec son annonce",
       "paragraphs": [
-        "Conserve mission-06.sb3, ou son nom avec suffixe : deux piles sur la scène, deux dans Pilote, une dans Balise et trois dans Obstacle. Aucun bloc isolé ni réglage de diagnostic ne reste dans cette version.",
+        "Conserve `mission-06.sb3`, ou son nom avec suffixe : deux piles sur la scène, deux dans Pilote, une dans Balise et trois dans Obstacle. Aucun bloc isolé ni réglage de diagnostic ne reste dans cette version.",
         "Le drapeau passe par preparation, remet score 0, vies 3, vitesseObstacle 4, niveau 1 et secteur1, puis autorise en jeu. Les personnages retrouvent leur départ et l’ancienne bulle s’efface.",
         "À trois points, le secteur change une fois. À six points, etat devient gagne ; à zéro vie, perdu. La défaite reste prioritaire. Les actions sont bloquées avant le signal resultat, les copies disparaissent et Pilote annonce la fin pendant deux secondes avant stop tout.",
         "Le prochain chapitre utilisera cette sauvegarde pour chercher des erreurs, comparer une difficulté et personnaliser une règle du jeu."

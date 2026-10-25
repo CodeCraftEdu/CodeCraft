@@ -32,11 +32,11 @@
     },
     {
       "skillId": "python.text",
-      "expectation": "Préparer la réponse avec strip et lower."
+      "expectation": "Préparer la réponse avec `strip` et `lower`."
     },
     {
       "skillId": "python.conditions",
-      "expectation": "Comparer deux textes avec if/else."
+      "expectation": "Comparer deux textes avec `if`/`else`."
     },
     {
       "skillId": "python.accumulation",
@@ -48,7 +48,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Enregistre tes autres fichiers et crée quiz.py, sans les remplacer. Il faut pouvoir fournir deux arguments, conserver un résultat, préparer un texte et cumuler des points ; si nécessaire, reprends Renvoyer un résultat. Le score repart à zéro à chaque lancement.",
+      "text": "Enregistre tes autres fichiers et crée `quiz.py`, sans les remplacer. Il faut pouvoir fournir deux arguments, conserver un résultat, préparer un texte et cumuler des points ; si nécessaire, reprends Renvoyer un résultat. Le score repart à zéro à chaque lancement.",
       "moduleLink": {
         "moduleId": "python-retour",
         "text": "Renvoyer un résultat"
@@ -59,8 +59,8 @@
       "id": "contrat",
       "title": "Un quiz personnel, une règle claire",
       "paragraphs": [
-        "Choisis un thème et trois questions avec une réponse courte chacune, sans renseignements personnels. Définis une seule fonction poser_question(question, attendue) : les arguments donnent le texte à demander et la réponse attendue.",
-        "Dans le corps, input(question) renvoie le texte saisi. Conserve-le dans une variable locale reponse, puis conserve les résultats de strip et de lower dans deux autres variables. Compare le texte préparé à attendue, donnée en minuscules sans espace aux bords : renvoie 1 s'il correspond, 0 sinon.",
+        "Choisis un thème et trois questions avec une réponse courte chacune, sans renseignements personnels. Définis une seule fonction `poser_question(question, attendue)` : les arguments donnent le texte à demander et la réponse attendue.",
+        "Dans le corps, `input(question)` renvoie le texte saisi. Conserve-le dans une variable locale `reponse`, puis conserve les résultats de `strip` et de `lower` dans deux autres variables. Compare le texte préparé à attendue, donnée en minuscules sans espace aux bords : renvoie 1 s'il correspond, 0 sinon.",
         "La règle tolère les majuscules et les espaces aux bords, pas les fautes, accents différents ni espaces au milieu. Une réponse vide est refusée car tes réponses attendues sont non vides.",
         "Initialise le score à zéro dans le programme, hors de la fonction et avant les appels. Chaque appel renvoie des points que tu ajoutes au score. Trois appels posent trois questions ; après le dernier ajout, affiche les points sur 3."
       ]
@@ -87,27 +87,27 @@
       "type": "tasks",
       "id": "guide",
       "title": "2 - Une question avant le score",
-      "intro": "Fais évoluer quiz.py : une fonction et un appel de test d'abord, puis un programme qui compte ses points.",
+      "intro": "Fais évoluer `quiz.py` : une fonction et un appel de test d'abord, puis un programme qui compte ses points.",
       "items": [
         {
           "id": "fonction-question",
-          "text": "Reprends ta comparaison à deux paramètres de mon_point.py. Adapte sa définition en poser_question(question, attendue) : le premier paramètre contient maintenant la question à afficher, et non la réponse du joueur. Garde attendue comme second paramètre.",
-          "hint": "Avant, reponse venait du premier argument. Maintenant, question vient du premier argument et reponse sera créée dans le corps grâce à la saisie."
+          "text": "Reprends ta comparaison à deux paramètres de `mon_point.py`. Adapte sa définition en `poser_question(question, attendue)` : le premier paramètre contient maintenant la question à afficher, et non la réponse du joueur. Garde attendue comme second paramètre.",
+          "hint": "Avant, `reponse` venait du premier argument. Maintenant, question vient du premier argument et `reponse` sera créée dans le corps grâce à la saisie."
         },
         {
           "id": "saisie-locale",
-          "text": "Avant la comparaison, pose la question reçue et conserve le texte saisi dans reponse. Fais un premier essai avec une comparaison exacte, sans préparation du texte. Appelle une seule fois la fonction et conserve le résultat avant de l'afficher.",
-          "hint": "Utilise reponse = input(question). Compare reponse à attendue ; chaque branche doit renvoyer 1 ou 0. Le premier argument est le texte de la question, le second la réponse attendue."
+          "text": "Avant la comparaison, pose la question reçue et conserve le texte saisi dans `reponse`. Fais un premier essai avec une comparaison exacte, sans préparation du texte. Appelle une seule fois la fonction et conserve le résultat avant de l'afficher.",
+          "hint": "Utilise `reponse` = `input(question)`. Compare `reponse` à attendue ; chaque branche doit renvoyer 1 ou 0. Le premier argument est le texte de la question, le second la réponse attendue."
         },
         {
           "id": "preparer-reponse",
-          "text": "Ajoute strip puis lower en deux étapes avant la comparaison. Compare désormais le texte préparé à attendue. Prévois les valeurs intermédiaires pour une réponse avec des majuscules et des espaces aux bords.",
-          "hint": "Conserve reponse.strip() dans sans_bords, puis sans_bords.lower() dans normalisee. La comparaison porte sur normalisee, pas sur reponse."
+          "text": "Ajoute `strip` puis `lower` en deux étapes avant la comparaison. Compare désormais le texte préparé à attendue. Prévois les valeurs intermédiaires pour une réponse avec des majuscules et des espaces aux bords.",
+          "hint": "Conserve `reponse.strip()` dans `sans_bords`, puis `sans_bords.lower()` dans normalisee. La comparaison porte sur normalisee, pas sur `reponse`."
         },
         {
           "id": "verifier-question",
           "text": "Relance la question avec la bonne réponse, une mauvaise, vide, des majuscules et des espaces aux bords. Prévois les résultats et explique les deux arguments, la réponse locale et l'entier renvoyé.",
-          "hint": "Le résultat est un nombre ; un affichage juste/faux ne remplace pas return."
+          "hint": "Le résultat est un nombre ; un affichage juste/faux ne remplace pas `return`."
         },
         {
           "id": "debut-score",
@@ -120,7 +120,7 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "3 - Ton quiz de trois questions",
-      "intro": "Continue dans quiz.py avec tes textes ; essaie sans regarder un programme complet.",
+      "intro": "Continue dans `quiz.py` avec tes textes ; essaie sans regarder un programme complet.",
       "items": [
         {
           "id": "trois-appels",
@@ -134,7 +134,7 @@
         },
         {
           "id": "modifier-question",
-          "text": "Enregistre puis crée quiz_variante.py. Change une question et sa réponse attendue. Teste la nouvelle réponse, l'ancienne et les autres questions ; mets à jour tout message de correction éventuel.",
+          "text": "Enregistre puis crée `quiz_variante.py`. Change une question et sa réponse attendue. Teste la nouvelle réponse, l'ancienne et les autres questions ; mets à jour tout message de correction éventuel.",
           "hint": "Le texte demandé et attendue sont deux arguments distincts. Une ancienne réponse différente doit être refusée."
         }
       ]
@@ -153,7 +153,7 @@
         {
           "id": "limites-quiz",
           "text": "Explique quelles différences la règle tolère et refuse. Présente une modification personnelle et ses tests, en précisant modèles, indices ou aide reçue.",
-          "hint": "strip/lower ne corrigent ni fautes ni espaces internes ; les limites sont annoncées."
+          "hint": "`strip`/`lower` ne corrigent ni fautes ni espaces internes ; les limites sont annoncées."
         }
       ]
     },
@@ -165,7 +165,7 @@
       "items": [
         {
           "id": "quatrieme-question",
-          "text": "Dans une copie quiz_quatre.py, ajoute une question avec un nouvel appel, sans recopier la définition. Actualise les points après cet appel et le bilan sur 4 ; teste quatre justes puis une fausse.",
+          "text": "Dans une copie `quiz_quatre.py`, ajoute une question avec un nouvel appel, sans recopier la définition. Actualise les points après cet appel et le bilan sur 4 ; teste quatre justes puis une fausse.",
           "hint": "Change le nombre total annoncé, pas la valeur d'un point."
         }
       ]
@@ -178,8 +178,8 @@
       "items": [
         {
           "id": "retour-joueur",
-          "text": "Si tu souhaites un message juste/faux, ajoute-le dans chaque branche avant le return correspondant. Reteste les scores pour vérifier que l'affichage n'a pas remplacé le résultat renvoyé.",
-          "hint": "return termine l'appel : un message placé après lui dans la même branche ne sera pas affiché."
+          "text": "Si tu souhaites un message juste/faux, ajoute-le dans chaque branche avant le `return` correspondant. Reteste les scores pour vérifier que l'affichage n'a pas remplacé le résultat renvoyé.",
+          "hint": "`return` termine l'appel : un message placé après lui dans la même branche ne sera pas affiché."
         }
       ]
     }

@@ -1,6 +1,17 @@
-export function createDemonstrations({ element, highlightCode, codeFileLabel, demoCleanups }) {
+export function createDemonstrations({
+  element,
+  highlightCode,
+  codeFileLabel,
+  createCodeHeader,
+  createConsole,
+  demoCleanups,
+}) {
   function createIllustration(config) {
     const figure = element('figure', 'lesson-illustration');
+    if (config.title) {
+      figure.classList.add('game-window');
+      figure.append(element('p', 'game-window__header', config.title));
+    }
     const image = element('img');
     image.src = config.src;
     image.alt = config.alt;
@@ -29,7 +40,7 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
     config.cards.forEach((text) => cards.append(element('div', 'carte', text)));
     preview.append(cards);
     const source = element('div', 'flex-display-demo__source');
-    source.append(element('p', 'flex-display-demo__caption', 'style.css'));
+    source.append(createCodeHeader('style.css'));
     const pre = element('pre', 'code-block');
     const code = element('code');
     pre.append(code);
@@ -103,7 +114,7 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
     const axes = element('p', 'flex-property-demo__axes');
     preview.append(axes);
     const source = element('div', 'flex-property-demo__source');
-    source.append(element('p', 'flex-property-demo__caption', 'style.css'));
+    source.append(createCodeHeader('style.css'));
     const pre = element('pre', 'code-block');
     const code = element('code');
     pre.append(code);
@@ -201,8 +212,9 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
     });
     result.append(previewLabel, tab, frame);
     const source = element('div', 'web-comparison__source');
-    const sourceLabel = element('p', 'web-comparison__caption');
-    source.append(sourceLabel);
+    const sourceHeader = createCodeHeader('index.html');
+    const sourceLabel = sourceHeader.children[1];
+    source.append(sourceHeader);
     const pre = element('pre', 'code-block');
     const code = element('code');
     pre.append(code);
@@ -248,6 +260,16 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
     const layout = element('div', 'scratch-script__layout');
     const stack = element('ol', 'scratch-script__stack');
     const explanations = element('ol', 'scratch-script__explanations');
+    const categoryNames = {
+      Événements: 'events',
+      Mouvement: 'motion',
+      Apparence: 'looks',
+      Contrôle: 'control',
+      Capteurs: 'sensing',
+      Variables: 'variables',
+      'Mes blocs': 'custom',
+      Opérateurs: 'operators',
+    };
     const renderParts = (parent, parts) =>
       parts.forEach((part) => {
         if (typeof part === 'string') parent.append(document.createTextNode(part));
@@ -313,10 +335,19 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
       stack.append(renderBlock(block));
       if (!block.explanation?.trim()) return;
       const explanation = element('li');
-      explanation.append(
-        element('span', 'scratch-script__category', block.label),
-        element('p', '', block.explanation),
-      );
+      const categoryLabel = element('span', 'scratch-script__category');
+      block.label.split(' + ').forEach((name, index) => {
+        if (index) categoryLabel.append(document.createTextNode(' + '));
+        categoryLabel.append(
+          element(
+            'span',
+            'scratch-script__category-name scratch-script__category-name--' +
+              (categoryNames[name] || block.category || 'motion'),
+            name,
+          ),
+        );
+      });
+      explanation.append(categoryLabel, element('p', '', block.explanation));
       explanations.append(explanation);
     });
     layout.append(stack);
@@ -350,27 +381,21 @@ export function createDemonstrations({ element, highlightCode, codeFileLabel, de
 
   function createCodeDiagram(config) {
     const figure = element('figure', 'code-diagram');
-    figure.setAttribute('aria-label', 'Code dans l’éditeur et résultat dans la console');
+    figure.setAttribute(
+      'aria-label',
+      config.output === undefined
+        ? 'Code dans l’éditeur'
+        : 'Code dans l’éditeur et résultat dans la console',
+    );
     const editor = element('div', 'code-diagram__editor');
-    const header = element('div', 'code-diagram__header');
-    const tools = element('div', 'code-diagram__tools');
-    const icon = element('span', 'code-diagram__play', '▶');
-    icon.setAttribute('aria-hidden', 'true');
-    const label = element('span', 'code-diagram__run');
-    label.append(icon, document.createTextNode('Exécuter'));
-    tools.append(element('span', 'code-diagram__file', config.filename), label);
-    header.append(element('span', 'code-diagram__zone', 'Éditeur'), tools);
+    const header = createCodeHeader(config.filename);
     const pre = element('pre', 'code-diagram__source');
     const code = element('code');
     highlightCode(code, config.codeParts.map((part) => part.text).join(''));
     pre.append(code);
     editor.append(header, pre);
-    const consolePanel = element('div', 'code-diagram__console');
-    consolePanel.append(
-      element('div', 'code-diagram__header', 'Console'),
-      element('pre', 'code-diagram__result', config.output),
-    );
-    figure.append(editor, consolePanel);
+    figure.append(editor);
+    if (config.output !== undefined) figure.append(createConsole(config.output));
     if (config.note) figure.append(element('p', 'code-diagram__note', config.note));
     return figure;
   }

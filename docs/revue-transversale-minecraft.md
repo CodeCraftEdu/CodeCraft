@@ -1,5 +1,7 @@
 # Revue transversale du parcours Minecraft
 
+Cette revue précède le [recentrage demandé par l'utilisateur sur Code.org](minecraft-codeorg.md). Les grilles, diagnostics sur papier et carnets décrits ici ont depuis été retirés des cours. Le document conserve l'historique de la revue.
+
 18 octobre 2026. Lecture des huit modules et des guides, du [parcours](../content/pathways/minecraft-algorithmes.json), des compétences, du [cadrage validé](audit-scratch-minecraft.md), du rendu des liens et des prérequis. Cette revue examine les raccords et les usages du parcours ; elle complète les revues individuelles, dont la [revue de la mission 8](revue-minecraft-automatisation.md).
 
 ## Verdict

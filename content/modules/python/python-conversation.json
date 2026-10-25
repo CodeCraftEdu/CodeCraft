@@ -33,7 +33,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir créer un fichier, afficher un message et conserver puis réutiliser une réponse dans une variable. Sinon, reprends Poser une question. Enregistre les exercices précédents puis crée conversation.py : ne les efface pas. Choisis un thème et des réponses fictifs, sans renseignement personnel.",
+      "text": "Il faut savoir créer un fichier, afficher un message et conserver puis réutiliser une réponse dans une variable. Sinon, reprends Poser une question. Enregistre les exercices précédents puis crée `conversation.py` : ne les efface pas. Choisis un thème et des réponses fictifs, sans renseignement personnel.",
       "moduleLink": {
         "moduleId": "python-saisie",
         "text": "Revoir la saisie"
@@ -58,17 +58,17 @@
         {
           "id": "accueil-minimal",
           "text": "Affiche ton message d’accueil.",
-          "hint": "Utilise print avec ton texte entre guillemets et entre parenthèses."
+          "hint": "Utilise `print` avec ton texte entre guillemets et entre parenthèses."
         },
         {
           "id": "question-minimale",
           "text": "Pose une première question et conserve sa réponse.",
-          "hint": "Choisis un nom de variable, puis = et input avec ta question entre guillemets et parenthèses."
+          "hint": "Choisis un nom de variable, puis = et `input` avec ta question entre guillemets et parenthèses."
         },
         {
           "id": "reponse-minimale",
           "text": "Affiche un message qui utilise cette réponse, puis teste avec deux réponses différentes.",
-          "hint": "Dans print, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets."
+          "hint": "Dans `print`, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets."
         }
       ]
     },
@@ -76,7 +76,7 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "2 - Construis ta conversation",
-      "intro": "Continue dans conversation.py. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.",
+      "intro": "Continue dans `conversation.py`. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.",
       "items": [
         {
           "id": "accueil-projet",
@@ -86,16 +86,16 @@
         {
           "id": "trois-questions",
           "text": "Pose au moins trois questions et garde leurs réponses dans trois variables différentes.",
-          "hint": "Une ligne avec input pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente."
+          "hint": "Une ligne avec `input` pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente."
         },
         {
           "id": "trois-reponses",
           "text": "Après les questions, réutilise chacune des trois réponses dans tes messages finaux.",
-          "hint": "Tu peux faire plusieurs print. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets."
+          "hint": "Tu peux faire plusieurs `print`. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets."
         },
         {
           "id": "sauvegarder-projet",
-          "text": "Enregistre conversation.py dans ton dossier de programmes.",
+          "text": "Enregistre `conversation.py` dans ton dossier de programmes.",
           "hint": "Conserve les fichiers des modules précédents. Une modification doit être enregistrée pour rester après fermeture."
         }
       ]
@@ -113,12 +113,12 @@
         {
           "id": "retrouver-dialogue",
           "text": "Après enregistrement, ferme puis rouvre le fichier et teste-le à nouveau.",
-          "hint": "Retrouve conversation.py dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme."
+          "hint": "Retrouve `conversation.py` dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme."
         },
         {
           "id": "expliquer-dialogue",
-          "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Enregistre, puis utilise Enregistrer sous pour créer conversation_modifiee.py. Dans cette copie, renomme une variable et tous ses usages ; teste avec de nouvelles réponses.",
-          "hint": "Choisis un nom distinct des deux autres. Change le nom à gauche de = et dans chaque print qui l’utilise. La question peut rester identique ; conserve conversation.py."
+          "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Enregistre, puis utilise Enregistrer sous pour créer `conversation_modifiee.py`. Dans cette copie, renomme une variable et tous ses usages ; teste avec de nouvelles réponses.",
+          "hint": "Choisis un nom distinct des deux autres. Change le nom à gauche de = et dans chaque `print` qui l’utilise. La question peut rester identique ; conserve `conversation.py`."
         }
       ]
     },
@@ -130,7 +130,7 @@
         {
           "id": "quatrieme-question",
           "text": "Ajoute une quatrième question et utilise sa réponse dans un nouveau message final.",
-          "hint": "Une nouvelle variable, un input et un print : aucune condition ou boucle n’est nécessaire."
+          "hint": "Une nouvelle variable, un `input` et un `print` : aucune condition ou boucle n’est nécessaire."
         }
       ]
     },

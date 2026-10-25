@@ -38,7 +38,7 @@
     },
     {
       "skillId": "css.spacing",
-      "expectation": "Distinguer padding et margin et lire une bordure simple."
+      "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
     },
     {
       "skillId": "css.colors",
@@ -120,7 +120,7 @@
       "title": "2 : Choisir ton environnement",
       "paragraphs": [
         "Dans CodePen : crée un nouveau Pen, avec le contenu dans HTML et les règles dans CSS. Tu peux aussi partir d’une copie de ton exercice Dimensions, mais il faudra changer le contenu, ajouter le second paragraphe et justifier tes choix.",
-        "En local : fais une copie de ton dossier HTML/CSS. Garde le cadre complet, sa ligne link et les fichiers associés ; remplace le contenu de body et adapte la feuille. Enregistre les deux fichiers et actualise index.html. La gestion des fichiers n’est pas une nouvelle exigence si tu choisis CodePen.",
+        "En local : fais une copie de ton dossier HTML/CSS. Garde le cadre complet, sa ligne link et les fichiers associés ; remplace le contenu de body et adapte la feuille. Enregistre les deux fichiers et actualise `index.html`. La gestion des fichiers n’est pas une nouvelle exigence si tu choisis CodePen.",
         "Les cours restent consultables : essayer seul ne signifie pas rester bloqué sans aide. Note simplement ce que tu as repris et ce que tu as pu faire sans modèle."
       ]
     },
@@ -154,7 +154,7 @@
       "title": "Une illustration disponible sans recherche",
       "paragraphs": [
         "Tu peux choisir un thème comme « Un signal orange » avec ce dessin. Dans CodePen, copie le lien de l’image dans `src`. Décris ensuite le dessin dans `alt`.",
-        "En local, télécharge le dessin dans images à côté de index.html et utilise images/cercle-orange.png. Pour le carré ou une aide à la source, le cours Dimensions et le module Images restent accessibles dans les reprises.",
+        "En local, télécharge le dessin dans images à côté de `index.html` et utilise `images/cercle-orange.png`. Pour le carré ou une aide à la source, le cours Dimensions et le module Images restent accessibles dans les reprises.",
         "Tu n’as pas besoin d’inventer un nouveau chemin si la source que tu utilisais fonctionne déjà. Rédige toutefois alt pour l’image réellement présente."
       ]
     },
@@ -206,8 +206,8 @@
           "hints": [
             "Localise l’espace qui manque par rapport au bord.",
             "Ne confonds pas marge extérieure et espace intérieur.",
-            "Une bordure n’est pas nécessaire pour appliquer un padding.",
-            "Reprends Boîtes et espacements si tu ne sais pas choisir entre padding et margin."
+            "Une bordure n’est pas nécessaire pour appliquer un `padding`.",
+            "Reprends Boîtes et espacements si tu ne sais pas choisir entre `padding` et `margin`."
           ]
         },
         {
@@ -285,7 +285,7 @@
           "text": "Les lignes se serrent, ou le texte colle au bord : distingue l’interligne de l’espace intérieur avant de choisir la reprise.",
           "hints": [
             "Pointe l’endroit précis où il manque de l’air.",
-            "Entre les lignes d’un paragraphe : interligne ; autour du contenu : padding.",
+            "Entre les lignes d’un paragraphe : interligne ; autour du contenu : `padding`.",
             "Changer la taille des lettres ou la marge extérieure ne répond pas toujours au besoin.",
             "Choisis le cours Lisibilité ou Boîtes, fais un seul essai puis reviens à ta carte."
           ]
@@ -440,7 +440,7 @@
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         }
       ]
     },
@@ -491,7 +491,7 @@
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         },
         {
           "skillId": "css.colors",
@@ -576,7 +576,7 @@
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         },
         {
           "skillId": "css.colors",

@@ -74,7 +74,7 @@
       "title": "CSS : Deux groupes lisibles",
       "paragraphs": [
         ".annonce choisit les éléments dont class vaut annonce ; .information choisit ceux portant information.",
-        "color donne la couleur des lettres, background-color celle de leur fond. white signifie blanc, navy bleu très foncé, black noir et lightyellow jaune clair.",
+        "`color` donne la couleur des lettres, `background-color` celle de leur fond. white signifie blanc, navy bleu très foncé, black noir et lightyellow jaune clair.",
         "Le fond des paragraphes peut être plus large que leurs mots : il appartient à chaque élément. L’affiche peut rester très simple ; aucune mise en page nouvelle n’est demandée."
       ],
       "code": ".annonce {\n  color: white;\n  background-color: navy;\n}\n\n.information {\n  color: black;\n  background-color: lightyellow;\n}",
@@ -118,7 +118,7 @@
             "Regarde le class du premier paragraphe.",
             "Le nouveau paragraphe peut partager ce même nom.",
             "Une seule règle peut servir aux deux.",
-            "Ajoute un p class=\"information\", puis modifie color dans .information. Les deux paragraphes doivent changer."
+            "Ajoute un p class=\"information\", puis modifie `color` dans .information. Les deux paragraphes doivent changer."
           ]
         },
         {
@@ -153,7 +153,7 @@
           "hints": [
             "Commence par une seule règle.",
             "Distingue le texte à colorer de son fond.",
-            "Relis color et background-color dans l’exemple.",
+            "Relis `color` et `background-color` dans l’exemple.",
             "Ajoute ces deux propriétés entre accolades, avec : et ;. Puis teste l’autre classe."
           ]
         },
@@ -228,8 +228,8 @@
           "hints": [
             "Montre les lettres et la zone derrière.",
             "Deux propriétés différentes règlent ces parties.",
-            "Compare color et background-color.",
-            "Garde color et modifie background-color uniquement, puis reteste."
+            "Compare `color` et `background-color`.",
+            "Garde `color` et modifie `background-color` uniquement, puis reteste."
           ]
         }
       ]

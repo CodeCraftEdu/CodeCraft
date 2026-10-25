@@ -18,7 +18,7 @@
   "prerequisiteSkills": [
     {
       "skillId": "scratch.game-rules",
-      "expectation": "Reprendre mission-06.sb3 avec les deux fins, les protections et la relance."
+      "expectation": "Reprendre `mission-06.sb3` avec les deux fins, les protections et la relance."
     },
     {
       "skillId": "scratch.variables",
@@ -35,8 +35,8 @@
       "id": "depart",
       "title": "Conserver ton jeu avant les essais",
       "paragraphs": [
-        "Ouvre ta sauvegarde personnelle mission-06.sb3, ou son nom avec suffixe. Tu gardes le même jeu, ses huit piles et tes choix graphiques. Ce chapitre ajoute des essais et une modification personnelle.",
-        "Sauvegarde une copie sous mission-07-base.sb3. Repère le téléchargement récent, puis recharge-le pour vérifier qu’il contient ton jeu. Cette base garde score 0, vies 3, niveau 1, vitesseObstacle 4, le secteur 2 à trois points, la victoire à six et l’annonce de deux secondes.",
+        "Ouvre ta sauvegarde personnelle `mission-06.sb3`, ou son nom avec suffixe. Tu gardes le même jeu, ses huit piles et tes choix graphiques. Ce chapitre ajoute des essais et une modification personnelle.",
+        "Sauvegarde une copie sous `mission-07-base.sb3`. Repère le téléchargement récent, puis recharge-le pour vérifier qu’il contient ton jeu. Cette base garde score 0, vies 3, niveau 1, vitesseObstacle 4, le secteur 2 à trois points, la victoire à six et l’annonce de deux secondes.",
         "Prépare un carnet sur papier ou dans un fichier texte. Tu y noteras les résultats et les noms des copies d’essai. Si ton projet manque, sauvegarde le travail ouvert puis charge la reprise ci-dessous depuis Fichier ; elle remplace le projet affiché et fournit la fin d’États."
       ],
       "downloads": [
@@ -64,7 +64,7 @@
       "items": [
         {
           "id": "depart",
-          "text": "Lance mission-07-base.sb3. Note les valeurs de départ : etat en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. Sélectionne Pilote pour lire sa position (0, -100), puis Balise pour retrouver (-160, 0)."
+          "text": "Lance `mission-07-base.sb3`. Note les valeurs de départ : etat en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. Sélectionne Pilote pour lire sa position (0, -100), puis Balise pour retrouver (-160, 0)."
         },
         {
           "id": "bords",
@@ -76,7 +76,7 @@
         },
         {
           "id": "reprise",
-          "text": "Si une règle échoue, utilise le chapitre qui la construit pour retrouver sa pile. Corrige et refais l’essai avant la suite. Conserve ensuite une nouvelle sauvegarde mission-07-base.sb3 et repère ce téléchargement comme ta base de travail."
+          "text": "Si une règle échoue, utilise le chapitre qui la construit pour retrouver sa pile. Corrige et refais l’essai avant la suite. Conserve ensuite une nouvelle sauvegarde `mission-07-base.sb3` et repère ce téléchargement comme ta base de travail."
         }
       ]
     },
@@ -107,7 +107,7 @@
         },
         {
           "id": "retour",
-          "text": "Sauvegarde ces essais sous mission-07-seuils.sb3, puis recharge ta base mission-07-base.sb3 repérée au début. Vérifie score 0 et vies 3. Note dans le carnet quels essais ont réussi et lesquels demandent encore une correction."
+          "text": "Sauvegarde ces essais sous `mission-07-seuils.sb3`, puis recharge ta base `mission-07-base.sb3` repérée au début. Vérifie score 0 et vies 3. Note dans le carnet quels essais ont réussi et lesquels demandent encore une correction."
         }
       ]
     },
@@ -116,7 +116,7 @@
       "id": "panne",
       "title": "Ouvrir une panne volontaire du même jeu",
       "paragraphs": [
-        "Garde ta base personnelle mission-07-base.sb3. Télécharge le fichier de panne ci-dessous et ouvre-le depuis Fichier. Il remplace le projet affiché pour cet essai ; tu rechargeras ensuite ta base avec tes propres choix.",
+        "Garde ta base personnelle `mission-07-base.sb3`. Télécharge le fichier de panne ci-dessous et ouvre-le depuis Fichier. Il remplace le projet affiché pour cet essai ; tu rechargeras ensuite ta base avec tes propres choix.",
         "Ce fichier de Mission balises contient une erreur de relance. La règle attendue reste celle de ton jeu : le drapeau doit retrouver le premier secteur, puis la troisième activation doit changer le décor et la vitesse.",
         "Lance et compare les valeurs de départ avec ton carnet. Note la différence que tu trouves. Active ensuite trois balises et décris le score, le niveau, le décor et la vitesse observés. Formule une piste avant d’ouvrir les indices."
       ],
@@ -147,7 +147,7 @@
         },
         {
           "id": "garder",
-          "text": "Sauvegarde la réparation sous mission-07-panne-reparee.sb3 et note ta conclusion. Recharge ensuite ta base personnelle mission-07-base.sb3. Le fichier de panne sert à l’enquête ; tes personnalisations restent dans ta base."
+          "text": "Sauvegarde la réparation sous `mission-07-panne-reparee.sb3` et note ta conclusion. Recharge ensuite ta base personnelle `mission-07-base.sb3`. Le fichier de panne sert à l’enquête ; tes personnalisations restent dans ta base."
         }
       ]
     },
@@ -225,7 +225,7 @@
         },
         {
           "id": "reglage",
-          "text": "Dans Obstacle, dans la fabrique au drapeau, change seulement attendre 1.2 seconde en attendre 1.8 seconde. Garde le test d’état après l’attente et la création dans son si. Sauvegarde cette copie sous mission-07-intervalle.sb3."
+          "text": "Dans Obstacle, dans la fabrique au drapeau, change seulement attendre 1.2 seconde en attendre 1.8 seconde. Garde le test d’état après l’attente et la création dans son si. Sauvegarde cette copie sous `mission-07-intervalle.sb3`."
         },
         {
           "id": "comparer",
@@ -233,7 +233,7 @@
         },
         {
           "id": "retour",
-          "text": "Recharge mission-07-base.sb3. Vérifie l’intervalle de 1.2 seconde dans la fabrique et garde tes deux observations dans le carnet avant de choisir ta propre règle."
+          "text": "Recharge `mission-07-base.sb3`. Vérifie l’intervalle de 1.2 seconde dans la fabrique et garde tes deux observations dans le carnet avant de choisir ta propre règle."
         }
       ]
     },
@@ -272,7 +272,7 @@
         },
         {
           "id": "conserver",
-          "text": "Garde ce changement dans ta version personnelle et sauvegarde sous mission-07.sb3. Repère le téléchargement récent, même avec un suffixe. Tu vas vérifier cette version personnalisée dans la dernière étape."
+          "text": "Garde ce changement dans ta version personnelle et sauvegarde sous `mission-07.sb3`. Repère le téléchargement récent, même avec un suffixe. Tu vas vérifier cette version personnalisée dans la dernière étape."
         }
       ]
     },
@@ -316,7 +316,7 @@
       "items": [
         {
           "id": "rouvrir",
-          "text": "Recharge le fichier mission-07.sb3 que tu viens de sauvegarder. Note le réglage choisi et les valeurs de départ attendues pour cette version. Avec le choix de quatre vies, tu attends 4 ; avec les deux autres choix, tu attends toujours 3."
+          "text": "Recharge le fichier `mission-07.sb3` que tu viens de sauvegarder. Note le réglage choisi et les valeurs de départ attendues pour cette version. Avec le choix de quatre vies, tu attends 4 ; avec les deux autres choix, tu attends toujours 3."
         },
         {
           "id": "regle",
@@ -332,7 +332,7 @@
         },
         {
           "id": "corriger",
-          "text": "Si tu corriges quelque chose, refais l’essai concerné puis la vérification de fin et de relance. Sauvegarde à nouveau mission-07.sb3 et recharge le dernier téléchargement pour confirmer que la correction est conservée."
+          "text": "Si tu corriges quelque chose, refais l’essai concerné puis la vérification de fin et de relance. Sauvegarde à nouveau `mission-07.sb3` et recharge le dernier téléchargement pour confirmer que la correction est conservée."
         },
         {
           "id": "expliquer",
@@ -351,7 +351,7 @@
           "title": "Comparer seulement la règle qui pose problème",
           "paragraphs": [
             "Sauvegarde ta version personnelle avant d’ouvrir cette référence. Elle fournit le jeu à la fin d’États, avec trois vies, des pas de 4 et l’intervalle de 1.2 seconde. Elle sert à comparer les piles ; ta version personnelle peut avoir le réglage différent que tu as choisi.",
-            "Recharge ensuite ton propre fichier mission-07.sb3. Ta copie de panne réparée et ton carnet restent les traces de ton enquête."
+            "Recharge ensuite ton propre fichier `mission-07.sb3`. Ta copie de panne réparée et ton carnet restent les traces de ton enquête."
           ],
           "downloads": [
             {
@@ -380,7 +380,7 @@
       "id": "reprise",
       "title": "Garder ton jeu et tes essais",
       "paragraphs": [
-        "Conserve mission-07.sb3 avec la règle personnelle vérifiée, mission-07-base.sb3 comme point de comparaison et ton carnet d’essais. La copie de panne réparée et les variantes peuvent rester séparées avec leurs noms explicites.",
+        "Conserve `mission-07.sb3` avec la règle personnelle vérifiée, `mission-07-base.sb3` comme point de comparaison et ton carnet d’essais. La copie de panne réparée et les variantes peuvent rester séparées avec leurs noms explicites.",
         "Ton fichier principal contient le jeu et ton réglage choisi. Les valeurs préparées pour les seuils et les blocs de diagnostic appartiennent aux copies d’essai. Vérifie que ton principal démarre à score 0, niveau 1 et etat en jeu après la préparation.",
         "Les sept chapitres de Mission balises sont maintenant disponibles. Tu peux rejouer, faire essayer ta version et choisir une prochaine amélioration à partir d’un résultat observé."
       ]

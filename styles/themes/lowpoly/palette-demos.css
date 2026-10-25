@@ -10,6 +10,10 @@ body.student-lowpoly {
   --route: #72508d;
   --route-dark: #49305e;
   --route-soft: #eee6f5;
+  --code-editor-bg: color-mix(in srgb, var(--route-dark) 25%, #25212e);
+  --code-console-bg: color-mix(in srgb, var(--route-dark) 20%, #111a22);
+  --code-console-header: color-mix(in srgb, var(--route-dark) 35%, #202b34);
+  --code-console-edge: color-mix(in srgb, var(--route) 45%, #536070);
   background: linear-gradient(150deg, #e7deec 0, #eee9df 32rem, #f3efe6 80rem);
   background-attachment: fixed;
 }
@@ -146,19 +150,19 @@ body.student-lowpoly
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
-  border: 1px solid #3b3c34;
+  border: 0;
   border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2);
-  background: #25271f;
+  background: var(--code-editor-bg);
   color: #f4f5ef;
   clip-path: polygon(
-    8px 0,
-    calc(100% - 8px) 0,
-    100% 8px,
-    100% calc(100% - 8px),
-    calc(100% - 8px) 100%,
-    8px 100%,
-    0 calc(100% - 8px),
-    0 8px
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
   );
 }
 body.student-lowpoly
@@ -175,35 +179,6 @@ body.student-lowpoly
   );
   color: var(--route-dark);
   border-bottom: 1px solid var(--demo-edge);
-}
-body.student-lowpoly
-  :is(
-    .code-editor,
-    .web-comparison__source,
-    .flex-display-demo__source,
-    .flex-property-demo__source
-  )
-  > p {
-  margin: 0;
-  font-size: 0.85rem;
-  padding: 0.45rem 0.85rem;
-  background: #2d2f26;
-  color: #c4c5bc;
-  border-bottom: 1px solid #3b3c34;
-  font-weight: 400;
-  font-family: Consolas, 'Courier New', monospace;
-}
-body.student-lowpoly
-  :is(
-    .code-editor,
-    .web-comparison__source,
-    .flex-display-demo__source,
-    .flex-property-demo__source
-  )
-  > p::before {
-  content: '‹›';
-  margin-right: 0.6rem;
-  color: #ed914d;
 }
 body.student-lowpoly .code-editor {
   margin-top: 18px;
@@ -222,15 +197,15 @@ body.student-lowpoly :is(.web-comparison, .flex-display-demo, .flex-property-dem
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   overflow: visible;
-  padding: 0.7rem 0.6rem;
+  padding: 1.25rem 1rem;
   border: 0;
   border-radius: 0;
   clip-path: none;
   box-shadow: none;
-  background: #25271f;
+  background: var(--code-editor-bg);
   color: #f4f5ef;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 body.student-lowpoly
   :is(.web-comparison__layout, .flex-display-demo__layout, .flex-property-demo__layout) {

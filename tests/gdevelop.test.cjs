@@ -80,6 +80,33 @@ test('Repère d’étape : position structurelle, entrée directe possible et au
   assert.equal(locate('python-thonny', data.pathways['python-debutants']), null);
   assert.equal(JSON.stringify(data), before);
 });
+test('GDevelop : fenêtres de schémas titrées, images et légendes conservées', () => {
+  const { studentDom } = require('./helpers/student-dom.cjs');
+  const dom = studentDom(data);
+  try {
+    let count = 0;
+    for (const id of ids) {
+      for (const block of data.modules[id].blocks.filter((block) => block.illustration)) {
+        const preview = dom.blocks.createBlock(block, id);
+        const figure = preview.querySelector('.game-window');
+        assert(figure, id);
+        assert.equal(
+          figure.querySelector('.game-window__header').textContent,
+          block.illustration.title,
+        );
+        assert.equal(figure.querySelector('img').getAttribute('src'), block.illustration.src);
+        assert.equal(figure.querySelector('img').alt, block.illustration.alt);
+        assert.equal(figure.querySelector('figcaption').textContent, block.illustration.caption);
+        assert.equal(figure.querySelector('.code-editor'), null);
+        count++;
+      }
+    }
+    assert.equal(count, 5);
+  } finally {
+    dom.close();
+  }
+});
+
 test('GDevelop : quatre leçons réelles dans Jeu vidéo, Scratch conservé', () => {
   assert.deepEqual(Array.from(data.pathways['gdevelop-debutants'].moduleIds), ids);
   assert(data.domains['jeux-video'].pathwayIds.includes('scratch-debutants'));

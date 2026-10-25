@@ -25,7 +25,7 @@
     },
     {
       "skillId": "python.input",
-      "expectation": "Conserver une réponse de input."
+      "expectation": "Conserver une réponse de `input`."
     },
     {
       "skillId": "python.numbers",
@@ -41,7 +41,7 @@
     },
     {
       "skillId": "python.conditions",
-      "expectation": "Construire if/else et tester le seuil ; sinon reprendre Faire un choix."
+      "expectation": "Construire `if`/`else` et tester le seuil ; sinon reprendre Faire un choix."
     }
   ],
   "blocks": [
@@ -49,7 +49,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir construire un if/else, comparer des nombres et tester les deux branches. Pour la saisie, il faut aussi savoir convertir un entier. Enregistre choix.py et crée possibilites.py sans effacer tes anciens fichiers.",
+      "text": "Il faut savoir construire un `if`/`else`, comparer des nombres et tester les deux branches. Pour la saisie, il faut aussi savoir convertir un entier. Enregistre `choix.py` et crée `possibilites.py` sans effacer tes anciens fichiers.",
       "moduleLink": {
         "moduleId": "python-conditions",
         "text": "Revoir le choix à deux issues"
@@ -60,31 +60,37 @@
       "id": "exemple",
       "title": "1 - Ajouter une autre condition",
       "paragraphs": [
-        "elif signifie sinon si. Si la condition du if est fausse, Python teste celle du elif. Si aucune condition n’est vraie, il exécute else. Les mots if, elif et else sont alignés ; chaque branche commence quatre espaces plus loin et chaque en-tête se termine par deux-points.",
+        "`elif` signifie sinon si. Si la condition du `if` est fausse, Python teste celle du `elif`. Si aucune condition n’est vraie, il exécute `else`. Les mots `if`, `elif` et `else` sont alignés ; chaque branche commence quatre espaces plus loin et chaque en-tête se termine par deux-points.",
         "Python choisit seulement la première condition vraie de cette chaîne. Avec 10 points, les deux comparaisons seraient vraies, mais seule la première branche est exécutée : on lit Grand passage, puis Fin du choix.",
         "Ici, 10 ou plus ouvre le grand passage ; de 5 à 9 ouvre le petit passage ; moins de 5 fait patienter. La dernière ligne non indentée s’exécute dans tous les cas."
       ],
-      "code": "points = 10\nif points >= 10:\n    print(\"Grand passage\")\nelif points >= 5:\n    print(\"Petit passage\")\nelse:\n    print(\"Patienter\")\nprint(\"Fin du choix\")"
+      "code": "points = 10\nif points >= 10:\n    print(\"Grand passage\")\nelif points >= 5:\n    print(\"Petit passage\")\nelse:\n    print(\"Patienter\")\nprint(\"Fin du choix\")",
+      "filename": "possibilites.py",
+      "consoleOutput": "Grand passage\nFin du choix"
     },
     {
       "type": "lesson",
       "id": "ordre",
       "title": "2 - L’ordre change la décision",
       "paragraphs": [
-        "Crée ordre_conditions.py pour ce modèle volontairement mal ordonné. Prédis ce qu’il affiche avec 12, puis exécute-le. Compare le résultat au grand passage attendu pour cette valeur et cherche ce qui empêche de le choisir.",
+        "Crée `ordre_conditions.py` pour ce modèle volontairement mal ordonné. Prédis ce qu’il affiche avec 12, puis exécute-le. Compare le résultat au grand passage attendu pour cette valeur et cherche ce qui empêche de le choisir.",
         "Après ton essai, vérifie si un premier test couvre déjà tous les cas du suivant. L’ordre des seuils n’est pas une règle universelle : il doit correspondre aux issues attendues."
       ],
-      "code": "points = 12\nif points >= 5:\n    print(\"Petit passage\")\nelif points >= 10:\n    print(\"Grand passage\")\nelse:\n    print(\"Patienter\")"
+      "code": "points = 12\nif points >= 5:\n    print(\"Petit passage\")\nelif points >= 10:\n    print(\"Grand passage\")\nelse:\n    print(\"Patienter\")",
+      "filename": "ordre_conditions.py",
+      "consoleOutput": "Petit passage"
     },
     {
       "type": "lesson",
       "id": "independants",
       "title": "3 - Deux if ne font pas une chaîne",
       "paragraphs": [
-        "Crée conditions_independantes.py pour conserver ce troisième modèle. Les deux if sont indépendants. Python teste chacun, même si le premier est vrai. Avec 12, les deux messages s’affichent.",
-        "Choisis une chaîne if/elif/else quand les issues doivent être exclusives. Des if indépendants conviennent lorsque plusieurs actions peuvent se produire ensemble. Le mot else se rattache au if ou à la chaîne qui le précède, pas à tous les if du fichier."
+        "Crée `conditions_independantes.py` pour conserver ce troisième modèle. Les deux `if` sont indépendants. Python teste chacun, même si le premier est vrai. Avec 12, les deux messages s’affichent.",
+        "Choisis une chaîne `if`/`elif`/`else` quand les issues doivent être exclusives. Des `if` indépendants conviennent lorsque plusieurs actions peuvent se produire ensemble. Le mot `else` se rattache au `if` ou à la chaîne qui le précède, pas à tous les `if` du fichier."
       ],
-      "code": "points = 12\nif points >= 10:\n    print(\"Grand passage\")\nif points >= 5:\n    print(\"Petit passage\")"
+      "code": "points = 12\nif points >= 10:\n    print(\"Grand passage\")\nif points >= 5:\n    print(\"Petit passage\")",
+      "filename": "conditions_independantes.py",
+      "consoleOutput": "Grand passage\nPetit passage"
     },
     {
       "type": "tasks",
@@ -103,8 +109,8 @@
         },
         {
           "id": "comparer-if",
-          "text": "Compare le modèle à deux if et la chaîne avec 12. Explique pourquoi l’un affiche deux issues et l’autre une seule.",
-          "hint": "Deux if font deux décisions indépendantes. Dans la chaîne, Python ne choisit que la première condition vraie."
+          "text": "Compare le modèle à deux `if` et la chaîne avec 12. Explique pourquoi l’un affiche deux issues et l’autre une seule.",
+          "hint": "Deux `if` font deux décisions indépendantes. Dans la chaîne, Python ne choisit que la première condition vraie."
         }
       ]
     },
@@ -113,21 +119,22 @@
       "id": "saisie",
       "title": "4 - Choisir avec une réponse",
       "paragraphs": [
-        "Rouvre possibilites.py et utilise Fichier → Enregistrer sous pour créer possibilites_saisie.py. Dans cette copie, remplace points = 10 par ces deux lignes au début du fichier, sans indentation, puis garde la chaîne et le message final. Demande un entier écrit en chiffres, sans unité ni décimale.",
-        "Teste 4, 5, 9 et 10 en répondant dans la console. elif ne protège pas la conversion : une réponse comme dix provoque ValueError avant le choix. Arrête puis relance pour un nouvel essai."
+        "Rouvre `possibilites.py` et utilise Fichier → Enregistrer sous pour créer `possibilites_saisie.py`. Dans cette copie, remplace points = 10 par ces deux lignes au début du fichier, sans indentation, puis garde la chaîne et le message final. Demande un entier écrit en chiffres, sans unité ni décimale.",
+        "Teste 4, 5, 9 et 10 en répondant dans la console. `elif` ne protège pas la conversion : une réponse comme dix provoque `ValueError` avant le choix. Arrête puis relance pour un nouvel essai."
       ],
-      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)"
+      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)",
+      "filename": "possibilites_saisie.py"
     },
     {
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - trois coffres",
-      "intro": "Enregistre possibilites_saisie.py puis crée coffres.py sans remplacer les autres essais. Écris ta propre décision avant d’ouvrir l’indice.",
+      "intro": "Enregistre `possibilites_saisie.py` puis crée `coffres.py` sans remplacer les autres essais. Écris ta propre décision avant d’ouvrir l’indice.",
       "items": [
         {
           "id": "coffres-regle",
           "text": "Demande un nombre entier de clés. Affiche Coffre doré à partir de 8, Coffre argenté de 3 à 7, sinon Aucun coffre. Une seule issue doit s’afficher.",
-          "hint": "Convertis la réponse, puis teste >= 8 avant >= 3. else couvre les valeurs restantes ; aucun deuxième test de borne n’est nécessaire ici."
+          "hint": "Convertis la réponse, puis teste >= 8 avant >= 3. `else` couvre les valeurs restantes ; aucun deuxième test de borne n’est nécessaire ici."
         },
         {
           "id": "coffres-tests",
@@ -149,15 +156,15 @@
         {
           "id": "quatre-issues",
           "text": "Dans un nouveau fichier, ajoute un coffre de bronze de 1 à 2 clés. Garde argenté à partir de 3, doré à partir de 8 et aucun coffre pour moins de 1. Teste 0, 1, 2, 3, 7 et 8.",
-          "hint": "Une chaîne peut contenir plusieurs elif : ajoute le test >= 1 après >= 3, avant else."
+          "hint": "Une chaîne peut contenir plusieurs `elif` : ajoute le test >= 1 après >= 3, avant `else`."
         }
       ]
     }
   ],
   "masteryCriteria": [
-    "Expliquer le rôle de elif et la sélection de la première condition vraie.",
+    "Expliquer le rôle de `elif` et la sélection de la première condition vraie.",
     "Ordonner des seuils qui se recouvrent et tester les deux frontières.",
-    "Distinguer une chaîne exclusive de plusieurs if indépendants.",
+    "Distinguer une chaîne exclusive de plusieurs `if` indépendants.",
     "Construire une décision personnelle, modifier un seuil et choisir les tests correspondants."
   ],
   "consolidation": [

@@ -12,7 +12,7 @@
   "prerequisiteSkills": [
     {
       "skillId": "scratch.keyboard",
-      "expectation": "Retrouver mission-01.sb3 et ses quatre commandes."
+      "expectation": "Retrouver `mission-01.sb3` et ses quatre commandes."
     },
     {
       "skillId": "scratch.variables",
@@ -25,7 +25,7 @@
       "id": "depart",
       "title": "Reprendre ton véhicule",
       "paragraphs": [
-        "Ouvre ta sauvegarde mission-01.sb3. Vérifie les quatre directions, le départ (0, -100) et les limites. Tu conserves toute la pile de Pilote : le score et la balise auront leurs propres piles.",
+        "Ouvre ta sauvegarde `mission-01.sb3`. Vérifie les quatre directions, le départ (0, -100) et les limites. Tu conserves toute la pile de Pilote : le score et la balise auront leurs propres piles.",
         "Si cette sauvegarde manque, la reprise ci-dessous fournit la fin de Commandes. Charge-la depuis Fichier et teste les commandes avant d’ajouter le score. Ouvrir un fichier remplace le projet affiché ; sauvegarde d’abord ton travail actuel.",
         "Le but sera d’activer six balises. Une activation donne un point et envoie la balise de l’autre côté. À six points, les piles s’arrêtent immédiatement ; le drapeau recommence une partie."
       ],
@@ -452,7 +452,7 @@
       "items": [
         {
           "id": "sauver",
-          "text": "Sauvegarde la version principale sous mission-02.sb3 : sa victoire reste à six points."
+          "text": "Sauvegarde la version principale sous `mission-02.sb3` : sa victoire reste à six points."
         },
         {
           "id": "deux",
@@ -460,7 +460,7 @@
         },
         {
           "id": "retour",
-          "text": "Sauvegarde cet essai sous mission-02-essai.sb3, puis recharge mission-02.sb3. Vérifie score > 5 sur la scène : tu poursuivras avec une victoire à six points."
+          "text": "Sauvegarde cet essai sous `mission-02-essai.sb3`, puis recharge `mission-02.sb3`. Vérifie score > 5 sur la scène : tu poursuivras avec une victoire à six points."
         }
       ],
       "intro": "Repère la sauvegarde principale que tu télécharges avant l’essai, même si son nom reçoit un suffixe. Tu modifieras ensuite le projet ouvert, puis tu rechargeras ce fichier pour poursuivre."
@@ -803,7 +803,7 @@
       "id": "reprise",
       "title": "Conserver la version du prochain chapitre",
       "paragraphs": [
-        "Garde mission-02.sb3 avec les trois piles : Pilote, Balise et scène. Le score démarre à 0 ; la victoire reste à six points. Balise alterne entre (-160, 0) et (160, 0), avec une seule activation par contact.",
+        "Garde `mission-02.sb3` avec les trois piles : Pilote, Balise et scène. Le score démarre à 0 ; la victoire reste à six points. Balise alterne entre (-160, 0) et (160, 0), avec une seule activation par contact.",
         "Obstacle est encore caché. Au prochain chapitre, il deviendra un danger qui retire une vie. Tu garderas les commandes, la collecte et la surveillance de la scène."
       ]
     }

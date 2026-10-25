@@ -144,7 +144,7 @@
           "id": "squelette-local",
           "title": "Cadre vide, pas une solution du défi",
           "paragraphs": [
-            "Crée index.html, colle ce cadre, puis place ton propre contenu entre <body> et </body>, à la place du commentaire. Enregistre et ouvre le fichier dans ton navigateur ; actualise-le après chaque enregistrement.",
+            "Crée `index.html`, colle ce cadre, puis place ton propre contenu entre <body> et </body>, à la place du commentaire. Enregistre et ouvre le fichier dans ton navigateur ; actualise-le après chaque enregistrement.",
             "Le commentaire entre <!-- et --> est une indication, pas un texte visible. head contient des réglages ; title donne le titre de l’onglet, pas le h1 à créer dans la page. body reçoit le contenu visible. Tu peux garder ce cadre tel quel.",
             "Pour une image locale, utilise un fichier dont tu connais le chemin, ou l’adresse de l’image fournie dans Images. Dans CodePen, n’utilise pas ce cadre : le panneau HTML reçoit seulement le contenu du défi."
           ],

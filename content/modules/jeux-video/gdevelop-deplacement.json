@@ -32,6 +32,7 @@
       ],
       "illustration": {
         "src": "images/gdevelop-deplacement.svg",
+        "title": "Déplacement du personnage",
         "alt": "L’objet Personnage reçoit un comportement de déplacement fourni qui utilise les quatre flèches. Dans l’aperçu, les flèches pilotent le personnage ; dans l’éditeur, on choisit sa place de départ.",
         "caption": "Schéma, pas une capture de GDevelop. Le comportement fournit le pilotage ; nous n’écrivons pas encore les événements de déplacement."
       }
@@ -78,7 +79,7 @@
         {
           "id": "gd04-choix",
           "text": "Choisis une vitesse adaptée à ton trajet et explique pourquoi. Si elle ne te convient pas, change seulement ce réglage et reteste. Enregistre, ferme puis rouvre le projet une fois : vérifie que les flèches et ta vitesse sont conservées.",
-          "hint": "Garde jeu.json et images ensemble. L’aperçu ne sauvegarde pas la dernière position jouée comme nouveau départ : tu retrouves le placement de la scène et les réglages enregistrés."
+          "hint": "Garde `jeu.json` et images ensemble. L’aperçu ne sauvegarde pas la dernière position jouée comme nouveau départ : tu retrouves le placement de la scène et les réglages enregistrés."
         }
       ]
     },

@@ -44,12 +44,13 @@
       "id": "exemple",
       "title": "2 - Du projet à l’aperçu",
       "paragraphs": [
-        "Crée un projet vide enregistré localement dans mon-premier-jeu, à côté du dossier images, puis une scène nommée Jeu. Le professeur peut t’aider à trouver ces commandes si l’interface diffère ; ne choisis ni modèle de jeu ni création de compte. Le fichier de travail proposé s’appelle jeu.json.",
-        "Ajoute un objet Sprite nommé Personnage. Dans son éditeur, crée une animation contenant une seule image : images/personnage.png. Ici, « animation » est le rangement de l’image dans GDevelop ; nous n’animons pas encore le pion.",
+        "Crée un projet vide enregistré localement dans mon-premier-jeu, à côté du dossier images, puis une scène nommée Jeu. Le professeur peut t’aider à trouver ces commandes si l’interface diffère ; ne choisis ni modèle de jeu ni création de compte. Le fichier de travail proposé s’appelle `jeu.json`.",
+        "Ajoute un objet Sprite nommé Personnage. Dans son éditeur, crée une animation contenant une seule image : `images/personnage.png`. Ici, « animation » est le rangement de l’image dans GDevelop ; nous n’animons pas encore le pion.",
         "Glisse un exemplaire de Personnage dans le cadre visible de Jeu, sans le coller au bord. Prévois ce que montrera l’aperçu, puis lance-le. Le pion visible et immobile est le résultat attendu. Ferme l’aperçu : tu retrouves la scène que tu peux modifier."
       ],
       "illustration": {
         "src": "images/gdevelop-projet.svg",
+        "title": "Projet et scène GDevelop",
         "alt": "Le projet contient la scène Jeu et le dossier images. Un objet Personnage est placé dans Jeu, puis visible dans l’aperçu.",
         "caption": "Projet → scène à modifier → aperçu à essayer. L’aperçu ne remplace pas le fichier de travail."
       }
@@ -72,7 +73,7 @@
         {
           "id": "gd01-reouvrir",
           "text": "Enregistre cette position. Montre le dossier et le fichier que tu devras ouvrir pour retrouver ton travail ; garde les images à côté.",
-          "hint": "Utilise Fichier → Enregistrer, puis l’ouverture d’un projet local. Ne déplace pas jeu.json seul : laisse le dossier images à côté."
+          "hint": "Utilise Fichier → Enregistrer, puis l’ouverture d’un projet local. Ne déplace pas `jeu.json` seul : laisse le dossier images à côté."
         }
       ]
     },
@@ -84,7 +85,7 @@
         {
           "id": "gd01-autonome",
           "text": "Choisis le point de départ de ton explorateur dans le cadre visible. Prévois son emplacement, modifie la scène puis enregistre. Ferme le projet et rouvre le bon fichier : vérifie dans un aperçu neuf la position ET l’image conservées.",
-          "hint": "Travaille toujours sur jeu.json dans ton dossier. Une image manquante ou une ancienne position est un problème à observer, pas une raison de tout recréer."
+          "hint": "Travaille toujours sur `jeu.json` dans ton dossier. Une image manquante ou une ancienne position est un problème à observer, pas une raison de tout recréer."
         }
       ]
     },
@@ -95,8 +96,8 @@
       "items": [
         {
           "id": "gd01-copie",
-          "text": "Après sauvegarde et fermeture, copie tout le dossier mon-premier-jeu sous un autre nom. Ouvre jeu.json de la copie et teste l’image. Garde l’original intact.",
-          "hint": "La copie doit contenir jeu.json ET images. Le titre de la fenêtre peut être identique : vérifie le chemin du fichier ouvert avant de modifier la copie."
+          "text": "Après sauvegarde et fermeture, copie tout le dossier mon-premier-jeu sous un autre nom. Ouvre `jeu.json` de la copie et teste l’image. Garde l’original intact.",
+          "hint": "La copie doit contenir `jeu.json` ET images. Le titre de la fenêtre peut être identique : vérifie le chemin du fichier ouvert avant de modifier la copie."
         }
       ]
     }

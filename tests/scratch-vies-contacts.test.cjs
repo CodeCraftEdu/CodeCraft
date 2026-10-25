@@ -56,6 +56,18 @@ test('support vies : explication directe et activité repliée, liens internes u
     dom.navigate('#module/scratch-vies-contacts?parcours=scratch-debutants&activite=autonomie');
     assert.equal(main.querySelector('[data-activity-id="atelier"]').open, true);
     assert(main.querySelector('[data-activity-id="autonomie"]'));
+    dom.navigate('#module/scratch-vies-contacts?parcours=scratch-debutants&activite=modele');
+    const model = main.querySelector('[data-activity-id="modele"]');
+    const conditionals = [...model.querySelectorAll('.scratch-script__block--control')].filter(
+      (block) =>
+        [...block.childNodes].some((node) => node.nodeType === 3 && node.textContent === 'si '),
+    );
+    assert.equal(conditionals.length, 1);
+    assert(
+      conditionals[0].querySelector('.scratch-script__condition').textContent.includes(' et '),
+    );
+    assert(model.querySelector('.scratch-script').textContent.includes('attendre jusqu’à ce que'));
+    assert(model.querySelector('.scratch-script__reporter--variables').textContent === 'vies');
   } finally {
     dom.close();
   }

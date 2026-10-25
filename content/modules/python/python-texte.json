@@ -29,7 +29,7 @@
     },
     {
       "skillId": "python.conditions",
-      "expectation": "Construire deux issues avec if/else."
+      "expectation": "Construire deux issues avec `if`/`else`."
     },
     {
       "skillId": "python.for",
@@ -45,7 +45,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir conserver une réponse et construire un if/else. Reprends longueur, indices et for si nécessaire. Crée texte.py ; fais évoluer tes fichiers pendant chaque activité et conserve les variantes importantes. Ni conversion numérique, hasard ni while n'est requis.",
+      "text": "Il faut savoir conserver une réponse et construire un `if`/`else`. Reprends longueur, indices et `for` si nécessaire. Crée `texte.py` ; fais évoluer tes fichiers pendant chaque activité et conserve les variantes importantes. Ni conversion numérique, hasard ni `while` n'est requis.",
       "moduleLink": {
         "moduleId": "python-listes",
         "text": "Revoir positions et parcours"
@@ -56,18 +56,20 @@
       "id": "exemple",
       "title": "1 - Un texte, des caractères",
       "paragraphs": [
-        "Une chaîne de caractères est du texte ordonné. len compte ici les caractères, pas les mots. for parcourt successivement chaque caractère : prévois 4, puis C, o, d et e.",
-        "Dans texte.py, ajoute ensuite un espace dans le texte et prévois la nouvelle longueur. L'espace compte aussi et apparaît comme une ligne vide au cours du parcours. Ces essais simples ne décrivent pas toutes les écritures complexes ou les emojis."
+        "Une chaîne de caractères est du texte ordonné. `len` compte ici les caractères, pas les mots. `for` parcourt successivement chaque caractère : prévois 4, puis C, o, d et e.",
+        "Dans `texte.py`, ajoute ensuite un espace dans le texte et prévois la nouvelle longueur. L'espace compte aussi et apparaît comme une ligne vide au cours du parcours. Ces essais simples ne décrivent pas toutes les écritures complexes ou les emojis."
       ],
-      "code": "mot = \"Code\"\nprint(len(mot))\nfor caractere in mot:\n    print(caractere)"
+      "code": "mot = \"Code\"\nprint(len(mot))\nfor caractere in mot:\n    print(caractere)",
+      "filename": "texte.py",
+      "consoleOutput": "4\nC\no\nd\ne"
     },
     {
       "type": "lesson",
       "id": "indices",
       "title": "2 - Lire une position",
       "paragraphs": [
-        "Dans texte.py, rétablis mot = \"Code\" puis ajoute print(mot[0]) et print(mot[3]). Prévois C et e : l'indice commence à zéro comme pour les listes. Une position inexistante produit IndexError.",
-        "Enregistre puis crée texte_vide.py avec Enregistrer sous. Garde mot = \"\", len et for seulement : longueur 0 et aucun passage. Retire les consultations d'indice. Ne consulte pas le premier caractère d'une réponse qui peut être vide.",
+        "Dans `texte.py`, rétablis mot = \"Code\" puis ajoute `print(mot[0])` et `print(mot[3])`. Prévois C et e : l'indice commence à zéro comme pour les listes. Une position inexistante produit `IndexError`.",
+        "Enregistre puis crée `texte_vide.py` avec Enregistrer sous. Garde mot = \"\", `len` et `for` seulement : longueur 0 et aucun passage. Retire les consultations d'indice. Ne consulte pas le premier caractère d'une réponse qui peut être vide.",
         "Un texte n'est pas une liste que l'on modifie par position : mot[0] = \"c\" n'est pas une modification possible. Pour transformer le texte, on va produire un nouveau résultat."
       ]
     },
@@ -76,21 +78,24 @@
       "id": "transformation",
       "title": "3 - Conserver le texte transformé",
       "paragraphs": [
-        "Crée transformation_texte.py. reponse.strip() retire les espaces aux bords dans cet exemple ; sans_bords.lower() met les lettres en minuscules. Le point appelle une méthode du texte, les parenthèses l'exécutent. Chaque résultat est conservé dans une variable.",
-        "L'original reste inchangé, contrairement à append qui modifie une liste. Ajoute ensuite reponse.lower() sur une ligne seule, puis affiche reponse : sans conserver le résultat, sa valeur ne change pas. Prédis puis vérifie.",
-        "strip ne retire pas les espaces au milieu ; lower ne corrige ni les fautes ni les accents. Les deux opérations sont séparées pour suivre chaque résultat."
+        "Crée `transformation_texte.py`. `reponse.strip()` retire les espaces aux bords dans cet exemple ; `sans_bords.lower()` met les lettres en minuscules. Le point appelle une méthode du texte, les parenthèses l'exécutent. Chaque résultat est conservé dans une variable.",
+        "L'original reste inchangé, contrairement à `append` qui modifie une liste. Ajoute ensuite `reponse.lower()` sur une ligne seule, puis affiche `reponse` : sans conserver le résultat, sa valeur ne change pas. Prédis puis vérifie.",
+        "`strip` ne retire pas les espaces au milieu ; `lower` ne corrige ni les fautes ni les accents. Les deux opérations sont séparées pour suivre chaque résultat."
       ],
-      "code": "reponse = \"  TOUR  \"\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nprint(\"Original :\", reponse)\nprint(\"Préparé :\", normalisee)"
+      "code": "reponse = \"  TOUR  \"\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nprint(\"Original :\", reponse)\nprint(\"Préparé :\", normalisee)",
+      "filename": "transformation_texte.py",
+      "consoleOutput": "Original :   TOUR  \nPréparé : tour"
     },
     {
       "type": "lesson",
       "id": "comparaison",
       "title": "4 - Choisir une règle de réponse",
       "paragraphs": [
-        "Enregistre transformation_texte.py puis crée comparaison_texte.py. Le modèle accepte tour, même avec des majuscules ou des espaces aux bords. Il ne tolère pas une faute ou un espace au milieu. == compare ici le texte préparé au mot accepté.",
+        "Enregistre `transformation_texte.py` puis crée `comparaison_texte.py`. Le modèle accepte tour, même avec des majuscules ou des espaces aux bords. Il ne tolère pas une faute ou un espace au milieu. == compare ici le texte préparé au mot accepté.",
         "Prévois les deux issues, puis teste tour et lune. Une réponse vide ou composée d'espaces peut être comparée sans erreur : on ne consulte aucun indice. Le message Refusé indique simplement que la réponse ne correspond pas à la règle."
       ],
-      "code": "reponse = input(\"Écris tour : \")\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nif normalisee == \"tour\":\n    print(\"Accepté\")\nelse:\n    print(\"Refusé\")"
+      "code": "reponse = input(\"Écris tour : \")\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nif normalisee == \"tour\":\n    print(\"Accepté\")\nelse:\n    print(\"Refusé\")",
+      "filename": "comparaison_texte.py"
     },
     {
       "type": "tasks",
@@ -99,18 +104,18 @@
       "items": [
         {
           "id": "caracteres-texte",
-          "text": "Dans texte.py, explique longueur, positions et parcours. Compare avec texte_vide.py : pourquoi aucun indice n'y est-il consulté ?",
-          "hint": "Un texte vide a zéro caractère ; aucun indice n'existe. Le code après for reste exécuté."
+          "text": "Dans `texte.py`, explique longueur, positions et parcours. Compare avec `texte_vide.py` : pourquoi aucun indice n'y est-il consulté ?",
+          "hint": "Un texte vide a zéro caractère ; aucun indice n'existe. Le code après `for` reste exécuté."
         },
         {
           "id": "original-resultat",
-          "text": "Dans transformation_texte.py, montre les valeurs de reponse, sans_bords et normalisee. Explique l'effet de l'appel lower dont tu n'as pas conservé le résultat.",
-          "hint": "Les résultats sont de nouveaux textes. reponse garde les majuscules et espaces d'origine."
+          "text": "Dans `transformation_texte.py`, montre les valeurs de `reponse`, `sans_bords` et normalisee. Explique l'effet de l'appel `lower` dont tu n'as pas conservé le résultat.",
+          "hint": "Les résultats sont de nouveaux textes. `reponse` garde les majuscules et espaces d'origine."
         },
         {
           "id": "regle-tests",
-          "text": "Dans comparaison_texte.py, prévois puis teste tour, Tour, tour entouré d'espaces, TO UR, lune, une réponse vide et une réponse composée d'espaces. Explique chaque issue.",
-          "hint": "Les trois premiers correspondent. Les autres non : ni correction des espaces internes, ni faute corrigée. Vide et espaces donnent un texte préparé vide, sans IndexError."
+          "text": "Dans `comparaison_texte.py`, prévois puis teste tour, Tour, tour entouré d'espaces, TO UR, lune, une réponse vide et une réponse composée d'espaces. Explique chaque issue.",
+          "hint": "Les trois premiers correspondent. Les autres non : ni correction des espaces internes, ni faute corrigée. Vide et espaces donnent un texte préparé vide, sans `IndexError`."
         }
       ]
     },
@@ -118,12 +123,12 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - ton mot accepté",
-      "intro": "Crée mon_mot.py avec ton propre mot et tes messages. Choisis un mot simple en minuscules, sans accent ni espace ; essaie avant de consulter les indices.",
+      "intro": "Crée `mon_mot.py` avec ton propre mot et tes messages. Choisis un mot simple en minuscules, sans accent ni espace ; essaie avant de consulter les indices.",
       "items": [
         {
           "id": "mot-personnel",
           "text": "Annonce ta règle : majuscules et espaces aux bords tolérés. Pose la question, garde la réponse originale, prépare-la en deux étapes et affiche un message personnel pour chaque issue.",
-          "hint": "input renvoie le texte saisi ; l'affectation à reponse le conserve. strip puis lower produisent de nouveaux résultats à conserver eux aussi. Compare le texte préparé au mot choisi avec if/else."
+          "hint": "`input` renvoie le texte saisi ; l'affectation à `reponse` le conserve. `strip` puis `lower` produisent de nouveaux résultats à conserver eux aussi. Compare le texte préparé au mot choisi avec `if`/`else`."
         },
         {
           "id": "mot-tests",
@@ -132,8 +137,8 @@
         },
         {
           "id": "mot-modifie",
-          "text": "Enregistre puis crée mon_mot_modifie.py avec Enregistrer sous. Change le mot accepté dans la question et la comparaison. Teste le nouveau et l'ancien mot : explique ce qui a changé.",
-          "hint": "La question annonce la règle mais seule la comparaison décide. Conserve mon_mot.py pour retrouver le premier essai."
+          "text": "Enregistre puis crée `mon_mot_modifie.py` avec Enregistrer sous. Change le mot accepté dans la question et la comparaison. Teste le nouveau et l'ancien mot : explique ce qui a changé.",
+          "hint": "La question annonce la règle mais seule la comparaison décide. Conserve `mon_mot.py` pour retrouver le premier essai."
         }
       ]
     },
@@ -144,7 +149,7 @@
       "items": [
         {
           "id": "mot-casse",
-          "text": "Enregistre mon_mot.py puis crée mon_mot_casse.py avec Enregistrer sous. Remplace normalisee = sans_bords.lower() par normalisee = sans_bords ; garde strip. Actualise la question pour annoncer que les majuscules comptent. Prévois puis teste une majuscule et un espace au bord.",
+          "text": "Enregistre `mon_mot.py` puis crée `mon_mot_casse.py` avec Enregistrer sous. Remplace `normalisee = sans_bords.lower()` par `normalisee = sans_bords` ; garde `strip`. Actualise la question pour annoncer que les majuscules comptent. Prévois puis teste une majuscule et un espace au bord.",
           "hint": "La variable comparée reste définie, mais n'est plus mise en minuscules. Une majuscule est refusée si le mot accepté est en minuscules ; les espaces aux bords restent tolérés. Ce n'est donc pas une comparaison entièrement exacte."
         }
       ]
@@ -154,16 +159,18 @@
       "id": "remplacement",
       "title": "Bonus - remplacer une partie du texte",
       "paragraphs": [
-        "Dans remplacement_texte.py, replace cherche le premier texte donné et remplace ses occurrences par le second. Conserve le résultat ; l'original reste intact. Prévois puis vérifie les deux affichages, puis change les textes du remplacement. Ce bonus n'est pas requis pour continuer."
+        "Dans `remplacement_texte.py`, replace cherche le premier texte donné et remplace ses occurrences par le second. Conserve le résultat ; l'original reste intact. Prévois puis vérifie les deux affichages, puis change les textes du remplacement. Ce bonus n'est pas requis pour continuer."
       ],
-      "code": "message = \"Bonjour, voyageur !\"\nnouveau = message.replace(\"voyageur\", \"pilote\")\nprint(message)\nprint(nouveau)"
+      "code": "message = \"Bonjour, voyageur !\"\nnouveau = message.replace(\"voyageur\", \"pilote\")\nprint(message)\nprint(nouveau)",
+      "filename": "remplacement_texte.py",
+      "consoleOutput": "Bonjour, voyageur !\nBonjour, pilote !"
     }
   ],
   "masteryCriteria": [
     "Distinguer longueur, caractères et indices sur un texte simple, y compris un texte vide.",
     "Conserver le résultat d'une transformation et expliquer pourquoi l'original reste inchangé.",
     "Créer une comparaison personnelle avec tests de casse, bords, autre mot et vide.",
-    "Expliquer les limites de strip/lower sans prétendre corriger les fautes ou accents.",
+    "Expliquer les limites de `strip`/`lower` sans prétendre corriger les fautes ou accents.",
     "Modifier la règle dans une copie et vérifier l'effet précis sur casse et espaces aux bords."
   ],
   "consolidation": [

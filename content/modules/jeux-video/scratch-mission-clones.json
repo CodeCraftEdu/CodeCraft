@@ -18,7 +18,7 @@
   "prerequisiteSkills": [
     {
       "skillId": "scratch.contacts",
-      "expectation": "Retrouver mission-03.sb3 et expliquer le retrait d’une vie par contact avec le danger fixe."
+      "expectation": "Retrouver `mission-03.sb3` et expliquer le retrait d’une vie par contact avec le danger fixe."
     },
     {
       "skillId": "scratch.variables",
@@ -35,7 +35,7 @@
       "id": "depart",
       "title": "Reprendre ton jeu avec ses vies",
       "paragraphs": [
-        "Ouvre ta sauvegarde principale mission-03.sb3, ou son nom avec suffixe. Vérifie le départ avec trois vies, le score à zéro et les quatre commandes. Sauvegarde cette version avant de transformer Obstacle.",
+        "Ouvre ta sauvegarde principale `mission-03.sb3`, ou son nom avec suffixe. Vérifie le départ avec trois vies, le score à zéro et les quatre commandes. Sauvegarde cette version avant de transformer Obstacle.",
         "Tu gardes les piles de Pilote et de Balise. Sur la scène, tu ajouteras seulement une vitesse commune ; la décision de victoire ou de défaite reste en place.",
         "Le danger fixe va devenir un modèle caché qui fabrique des copies mobiles. Chaque copie pourra retirer une vie puis disparaître. Deux copies différentes peuvent donc retirer deux vies, même si leurs contacts sont rapprochés.",
         "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Vies."
@@ -473,7 +473,7 @@
       "items": [
         {
           "id": "sauver",
-          "text": "Sauvegarde le jeu terminé sous mission-04.sb3. Repère le fichier récent, même si un suffixe est ajouté, recharge-le et vérifie les départs avant l’essai."
+          "text": "Sauvegarde le jeu terminé sous `mission-04.sb3`. Repère le fichier récent, même si un suffixe est ajouté, recharge-le et vérifie les départs avant l’essai."
         },
         {
           "id": "vitesse",
@@ -485,7 +485,7 @@
         },
         {
           "id": "retour",
-          "text": "Sauvegarde l’essai sous mission-04-essai.sb3. Recharge ensuite le fichier principal mission-04.sb3, ou son nom avec suffixe. Vérifie vitesseObstacle à 4 et l’intervalle à 1.2 seconde pour poursuivre."
+          "text": "Sauvegarde l’essai sous `mission-04-essai.sb3`. Recharge ensuite le fichier principal `mission-04.sb3`, ou son nom avec suffixe. Vérifie vitesseObstacle à 4 et l’intervalle à 1.2 seconde pour poursuivre."
         }
       ],
       "intro": "Compare une seule modification à la fois. Place Pilote à y = -140 pendant les observations pour laisser les obstacles traverser sans contact."
@@ -768,7 +768,7 @@
       "id": "reprise",
       "title": "Garder le jeu avec ses obstacles mobiles",
       "paragraphs": [
-        "Garde ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe : vitesseObstacle 4, une création toutes les 1.2 seconde, départ des clones en x = -210 et y entre -100 et 100, suppression après x > 210 ou après un contact.",
+        "Garde ta sauvegarde principale `mission-04.sb3`, ou son nom avec suffixe : vitesseObstacle 4, une création toutes les 1.2 seconde, départ des clones en x = -210 et y entre -100 et 100, suppression après x > 210 ou après un contact.",
         "Obstacle possède deux piles, sans l’ancienne surveillance fixe. Pilote et Balise gardent les leurs ; la scène initialise score, vies et vitesseObstacle puis surveille les deux fins. Le score repart à 0, les vies à 3 et la victoire reste à six points.",
         "Le prochain chapitre fera évoluer le secteur et la vitesse pendant la partie. Tu conserveras ce même jeu."
       ]

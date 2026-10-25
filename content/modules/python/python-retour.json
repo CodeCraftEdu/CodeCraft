@@ -8,7 +8,7 @@
     "label": "Site officiel de Thonny",
     "url": "https://thonny.org/"
   },
-  "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
+  "objective": "Conserver le résultat d'une fonction et distinguer `return`, affichage et variables locales.",
   "skillIds": ["python.return"],
   "prerequisiteSkills": [
     {
@@ -25,7 +25,7 @@
     },
     {
       "skillId": "python.conditions",
-      "expectation": "Suivre les deux issues de if/else."
+      "expectation": "Suivre les deux issues de `if`/`else`."
     }
   ],
   "blocks": [
@@ -33,7 +33,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Enregistre les essais précédents et crée resultat.py. Il faut distinguer définition, appel et paramètres ; sinon, reprends Définir et appeler une fonction. Les exemples utilisent des nombres fixes.",
+      "text": "Enregistre les essais précédents et crée `resultat.py`. Il faut distinguer définition, appel et paramètres ; sinon, reprends Définir et appeler une fonction. Les exemples utilisent des nombres fixes.",
       "moduleLink": {
         "moduleId": "python-fonctions",
         "text": "Définir et appeler une fonction"
@@ -44,41 +44,49 @@
       "id": "exemple",
       "title": "1 - Renvoyer puis utiliser",
       "paragraphs": [
-        "return renvoie une valeur à l'endroit qui a appelé la fonction et termine cet appel. Ici, l'appel ajouter_bonus(3) renvoie 5 : points conserve cette valeur, puis le programme l'affiche et l'utilise dans une addition.",
-        "bonus est créé dans le corps. Le résultat est renvoyé, pas la variable elle-même. Un return n'arrête pas tout le fichier : les lignes après l'appel continuent."
+        "`return` renvoie une valeur à l'endroit qui a appelé la fonction et termine cet appel. Ici, l'appel `ajouter_bonus(3)` renvoie 5 : `points` conserve cette valeur, puis le programme l'affiche et l'utilise dans une addition.",
+        "`bonus` est créé dans le corps. Le résultat est renvoyé, pas la variable elle-même. Un `return` n'arrête pas tout le fichier : les lignes après l'appel continuent."
       ],
-      "code": "def ajouter_bonus(nombre):\n    bonus = 2\n    return nombre + bonus\n\npoints = ajouter_bonus(3)\nprint(points)\nprint(points + 1)"
+      "code": "def ajouter_bonus(nombre):\n    bonus = 2\n    return nombre + bonus\n\npoints = ajouter_bonus(3)\nprint(points)\nprint(points + 1)",
+      "filename": "resultat.py",
+      "consoleOutput": "5\n6"
     },
     {
       "type": "lesson",
       "id": "afficher-ou-retourner",
       "title": "2 - Afficher ne suffit pas à renvoyer",
       "paragraphs": [
-        "Dans afficher_resultat.py, compare cette fonction au premier modèle. print montre 5, mais la fonction ne contient pas return. Son résultat renvoyé est None, qui indique ici l'absence de valeur utile renvoyée. resultat conserve None, pas 5.",
-        "Prévois les deux affichages : 5 puis None. Pour conserver un nombre, remplace le print du corps par return nombre + 2 ; le print extérieur affichera alors 5. Ce n'est pas une conversion de None."
+        "Dans `afficher_resultat.py`, compare cette fonction au premier modèle. `print` montre 5, mais la fonction ne contient pas `return`. Son résultat renvoyé est `None`, qui indique ici l'absence de valeur utile renvoyée. `resultat` conserve `None`, pas 5.",
+        "Prévois les deux affichages : 5 puis `None`. Pour conserver un nombre, remplace le `print` du corps par `return nombre + 2` ; le `print` extérieur affichera alors 5. Ce n'est pas une conversion de `None`."
       ],
-      "code": "def montrer_bonus(nombre):\n    print(nombre + 2)\n\nresultat = montrer_bonus(3)\nprint(resultat)"
+      "code": "def montrer_bonus(nombre):\n    print(nombre + 2)\n\nresultat = montrer_bonus(3)\nprint(resultat)",
+      "filename": "afficher_resultat.py",
+      "consoleOutput": "5\nNone"
     },
     {
       "type": "lesson",
       "id": "local",
       "title": "3 - Des noms locaux à chaque appel",
       "paragraphs": [
-        "Dans noms_locaux.py, nombre reçoit 4 lors de l'appel. resultat_local est créé dans le corps : ces noms sont locaux à cet appel. La valeur renvoyée est conservée à l'extérieur dans resultat_exterieur. Les affichages donnent 8 puis 100.",
-        "Dans une copie diagnostic_local.py, ajoute print(resultat_local) après les affichages : NameError est attendu car ce nom n'a pas été défini à l'extérieur. Le résultat utilisable est déjà dans resultat_exterieur ; utilise ce nom pour corriger. Relance le fichier entier dans une console propre.",
-        "Reviens à noms_locaux.py. Après avoir expliqué les noms distincts, renomme valeur_exterieure en nombre sur sa ligne de définition et dans le dernier print, sans changer la fonction. Prévois puis vérifie 8 et 100 : le paramètre nombre reçoit 4, mais la variable extérieure nombre garde 100. Un même nom peut désigner deux variables différentes selon l'endroit."
+        "Dans `noms_locaux.py`, nombre reçoit 4 lors de l'appel. `resultat_local` est créé dans le corps : ces noms sont locaux à cet appel. La valeur renvoyée est conservée à l'extérieur dans `resultat_exterieur`. Les affichages donnent 8 puis 100.",
+        "Dans une copie `diagnostic_local.py`, ajoute `print(resultat_local)` après les affichages : `NameError` est attendu car ce nom n'a pas été défini à l'extérieur. Le résultat utilisable est déjà dans `resultat_exterieur` ; utilise ce nom pour corriger. Relance le fichier entier dans une console propre.",
+        "Reviens à `noms_locaux.py`. Après avoir expliqué les noms distincts, renomme `valeur_exterieure` en nombre sur sa ligne de définition et dans le dernier `print`, sans changer la fonction. Prévois puis vérifie 8 et 100 : le paramètre nombre reçoit 4, mais la variable extérieure nombre garde 100. Un même nom peut désigner deux variables différentes selon l'endroit."
       ],
-      "code": "valeur_exterieure = 100\n\ndef doubler(nombre):\n    resultat_local = nombre + nombre\n    return resultat_local\n\nresultat_exterieur = doubler(4)\nprint(resultat_exterieur)\nprint(valeur_exterieure)"
+      "code": "valeur_exterieure = 100\n\ndef doubler(nombre):\n    resultat_local = nombre + nombre\n    return resultat_local\n\nresultat_exterieur = doubler(4)\nprint(resultat_exterieur)\nprint(valeur_exterieure)",
+      "filename": "noms_locaux.py",
+      "consoleOutput": "8\n100"
     },
     {
       "type": "lesson",
       "id": "deux-issues",
       "title": "4 - Un résultat dans les deux issues",
       "paragraphs": [
-        "Dans point_fixe.py, la fonction compare deux textes fournis à ses paramètres. Chaque branche renvoie un entier : 1 si les textes sont égaux, 0 sinon. Les textes sont donnés directement aux appels, sans saisie.",
-        "Le return choisi termine l'appel ; les print extérieurs montrent les valeurs renvoyées. Sans return dans une issue, cet appel renverrait None. Les trois appels vérifient juste, faux et vide."
+        "Dans `point_fixe.py`, la fonction compare deux textes fournis à ses paramètres. Chaque branche renvoie un entier : 1 si les textes sont égaux, 0 sinon. Les textes sont donnés directement aux appels, sans saisie.",
+        "Le `return` choisi termine l'appel ; les `print` extérieurs montrent les valeurs renvoyées. Sans `return` dans une issue, cet appel renverrait `None`. Les trois appels vérifient juste, faux et vide."
       ],
-      "code": "def attribuer_point(reponse, attendue):\n    if reponse == attendue:\n        return 1\n    else:\n        return 0\n\nprint(attribuer_point(\"tour\", \"tour\"))\nprint(attribuer_point(\"lune\", \"tour\"))\nprint(attribuer_point(\"\", \"tour\"))"
+      "code": "def attribuer_point(reponse, attendue):\n    if reponse == attendue:\n        return 1\n    else:\n        return 0\n\nprint(attribuer_point(\"tour\", \"tour\"))\nprint(attribuer_point(\"lune\", \"tour\"))\nprint(attribuer_point(\"\", \"tour\"))",
+      "filename": "point_fixe.py",
+      "consoleOutput": "1\n0\n0"
     },
     {
       "type": "tasks",
@@ -88,17 +96,17 @@
       "items": [
         {
           "id": "deux-resultats",
-          "text": "Dans resultat.py, conserve deux appels pour 3 puis 0 dans deux variables différentes. Prévois puis affiche leurs valeurs et leur somme.",
+          "text": "Dans `resultat.py`, conserve deux appels pour 3 puis 0 dans deux variables différentes. Prévois puis affiche leurs valeurs et leur somme.",
           "hint": "Chaque appel renvoie un résultat indépendant : 5 puis 2."
         },
         {
           "id": "comparer-print-return",
-          "text": "Dans une copie d'afficher_resultat.py, remplace le print du corps par return. Compare les affichages et ce qui est conservé.",
-          "hint": "Le print extérieur doit rester ; le résultat n'est plus None."
+          "text": "Dans une copie d'`afficher_resultat.py`, remplace le `print` du corps par `return`. Compare les affichages et ce qui est conservé.",
+          "hint": "Le `print` extérieur doit rester ; le résultat n'est plus `None`."
         },
         {
           "id": "tester-issues",
-          "text": "Change les textes des appels dans point_fixe.py et teste deux textes égaux, différents et vides. Explique les valeurs renvoyées.",
+          "text": "Change les textes des appels dans `point_fixe.py` et teste deux textes égaux, différents et vides. Explique les valeurs renvoyées.",
           "hint": "Deux textes vides sont égaux ; le cas vide comparé à tour reste faux."
         }
       ]
@@ -107,7 +115,7 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - créer et réutiliser des résultats",
-      "intro": "Crée mon_calcul.py sans recopier tout le premier fichier. Puis crée mon_point.py pour appliquer une règle personnelle.",
+      "intro": "Crée `mon_calcul.py` sans recopier tout le premier fichier. Puis crée `mon_point.py` pour appliquer une règle personnelle.",
       "items": [
         {
           "id": "calcul-personnel",
@@ -121,12 +129,12 @@
         },
         {
           "id": "modifier-bonus",
-          "text": "Enregistre puis crée mon_calcul_variante.py avec Enregistrer sous, avec un autre bonus. Prévois les deux résultats et leur somme. Montre les noms définis dans le corps et ceux définis à l'extérieur, puis explique comment le résultat passe de l'un à l'autre.",
+          "text": "Enregistre puis crée `mon_calcul_variante.py` avec Enregistrer sous, avec un autre bonus. Prévois les deux résultats et leur somme. Montre les noms définis dans le corps et ceux définis à l'extérieur, puis explique comment le résultat passe de l'un à l'autre.",
           "hint": "Le bonus local est recréé pour chaque appel ; garde la version de départ."
         },
         {
           "id": "regle-personnelle",
-          "text": "Dans mon_point.py, crée une fonction à deux paramètres : une proposition textuelle et une réponse attendue. Choisis tes propres mots. Renvoie 1 si les textes sont égaux, 0 sinon, sans afficher dans la fonction. Conserve puis affiche les résultats de trois appels : égal, différent et vide face à une réponse attendue non vide.",
+          "text": "Dans `mon_point.py`, crée une fonction à deux paramètres : une proposition textuelle et une réponse attendue. Choisis tes propres mots. Renvoie 1 si les textes sont égaux, 0 sinon, sans afficher dans la fonction. Conserve puis affiche les résultats de trois appels : égal, différent et vide face à une réponse attendue non vide.",
           "hint": "Prévois 1, 0 et 0 ; la comparaison utilise les paramètres, pas un mot fixé dans le corps."
         },
         {
@@ -140,18 +148,18 @@
       "type": "tasks",
       "id": "bonus",
       "title": "Bonus - préparer du texte",
-      "intro": "Si strip et lower sont compris, utilise une copie preparation.py.",
+      "intro": "Si `strip` et `lower` sont compris, utilise une copie `preparation.py`.",
       "items": [
         {
           "id": "retour-texte",
-          "text": "Définis une fonction à un paramètre qui prépare un texte avec strip puis lower et renvoie le résultat. Garde le texte original et affiche original/résultat pour \"  TOUR  \" puis vide.",
-          "hint": "Conserve les transformations en deux étapes ; la fonction ne demande pas input."
+          "text": "Définis une fonction à un paramètre qui prépare un texte avec `strip` puis `lower` et renvoie le résultat. Garde le texte original et affiche original/résultat pour \"  TOUR  \" puis vide.",
+          "hint": "Conserve les transformations en deux étapes ; la fonction ne demande pas `input`."
         }
       ]
     }
   ],
   "masteryCriteria": [
-    "Distinguer un affichage print du résultat renvoyé par return, y compris None sans retour utile.",
+    "Distinguer un affichage `print` du résultat renvoyé par `return`, y compris `None` sans retour utile.",
     "Conserver deux résultats et les réutiliser hors de la fonction.",
     "Identifier les paramètres et noms locaux, retrouver le résultat conservé à l'extérieur et expliquer la comparaison de deux noms identiques.",
     "Créer et tester personnellement une fonction à deux issues, puis modifier un calcul et une réponse attendue avec prévision."
@@ -181,7 +189,7 @@
       "prerequisiteSkills": [
         {
           "skillId": "python.text",
-          "expectation": "Conserver strip et lower."
+          "expectation": "Conserver `strip` et `lower`."
         }
       ]
     }

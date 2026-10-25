@@ -335,7 +335,7 @@ window.CODECRAFT_DATA = {
       "title": "Prévoir un test de chemin selon l’état courant et le distinguer de l’arrêt de la boucle"
     },
     "minecraft.strategy": {
-      "title": "Éprouver une stratégie fondée sur les repères du terrain et expliquer ses limites"
+      "title": "Adapter une stratégie aux repères du terrain"
     }
   },
   "modules": {
@@ -1675,7 +1675,7 @@ window.CODECRAFT_DATA = {
           "title": "1 - Ouvrir le projet d’observation",
           "paragraphs": [
             "Télécharge le fichier ci-dessous. Dans l’accueil MakeCode, utilise Importer → Importer un fichier, puis choisis ce fichier .hex. Reste en Blocs et nomme ta copie Ma-distance. Ce fichier contient aussi le programme : tu n’as pas à installer une extension ni à écrire en JavaScript.",
-            "La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom distance_cm. N’ajoute aucune commande d’avance, de virage ou de bouton.",
+            "La préparation choisit le modèle elecfreaks cutebot, désactive les trois aides et arrête les moteurs. Après une courte pause, une répétition fournie écrit la mesure sous le nom `distance_cm`. N’ajoute aucune commande d’avance, de virage ou de bouton.",
             "Le bloc répéter tant que vrai (while true) est déjà préparé : ici, il sert à relire sans fin. Garde-le et la petite pause. Il ne fait pas bouger le robot."
           ],
           "downloads": [
@@ -1691,7 +1691,7 @@ window.CODECRAFT_DATA = {
           "id": "observer",
           "title": "2 - Lire l’information reçue",
           "paragraphs": [
-            "Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data : Simulator). Repère les nouvelles lignes distance_cm : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.",
+            "Montre l’avant du robot et son capteur. Ouvre Afficher les données du simulateur (Show data : Simulator). Repère les nouvelles lignes `distance_cm` : elles indiquent la lecture du capteur en centimètres, pas une durée ni une puissance moteur.",
             "Observe la démonstration du professeur avec deux situations préparées et une cible devant le capteur. Avant chaque essai, prévois quelle situation donnera la mesure la plus petite. Note les deux lectures et montre celle qui correspond à la cible la plus proche.",
             "Le robot et sa cible peuvent rester immobiles : relire ne fait pas forcément changer le nombre. Une lecture absente ou étrange est à vérifier avec le professeur ; elle ne signifie pas automatiquement que la voie est libre. Garde le robot et les données visibles. Avec ce programme d’observation sans avance, garde la simulation active pour glisser le robot immobile ; arrête-la pour modifier le programme."
           ]
@@ -1703,7 +1703,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "rb07-source",
-              "text": "Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne distance_cm et explique d’où vient le nombre.",
+              "text": "Sur la démonstration immobile, montre le capteur, lis une nouvelle ligne `distance_cm` et explique d’où vient le nombre.",
               "hint": "Le capteur fournit l’information. Le bloc d’écriture permet seulement de la voir dans les données."
             },
             {
@@ -2655,12 +2655,13 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "2 - Du projet à l’aperçu",
           "paragraphs": [
-            "Crée un projet vide enregistré localement dans mon-premier-jeu, à côté du dossier images, puis une scène nommée Jeu. Le professeur peut t’aider à trouver ces commandes si l’interface diffère ; ne choisis ni modèle de jeu ni création de compte. Le fichier de travail proposé s’appelle jeu.json.",
-            "Ajoute un objet Sprite nommé Personnage. Dans son éditeur, crée une animation contenant une seule image : images/personnage.png. Ici, « animation » est le rangement de l’image dans GDevelop ; nous n’animons pas encore le pion.",
+            "Crée un projet vide enregistré localement dans mon-premier-jeu, à côté du dossier images, puis une scène nommée Jeu. Le professeur peut t’aider à trouver ces commandes si l’interface diffère ; ne choisis ni modèle de jeu ni création de compte. Le fichier de travail proposé s’appelle `jeu.json`.",
+            "Ajoute un objet Sprite nommé Personnage. Dans son éditeur, crée une animation contenant une seule image : `images/personnage.png`. Ici, « animation » est le rangement de l’image dans GDevelop ; nous n’animons pas encore le pion.",
             "Glisse un exemplaire de Personnage dans le cadre visible de Jeu, sans le coller au bord. Prévois ce que montrera l’aperçu, puis lance-le. Le pion visible et immobile est le résultat attendu. Ferme l’aperçu : tu retrouves la scène que tu peux modifier."
           ],
           "illustration": {
             "src": "images/gdevelop-projet.svg",
+            "title": "Projet et scène GDevelop",
             "alt": "Le projet contient la scène Jeu et le dossier images. Un objet Personnage est placé dans Jeu, puis visible dans l’aperçu.",
             "caption": "Projet → scène à modifier → aperçu à essayer. L’aperçu ne remplace pas le fichier de travail."
           }
@@ -2683,7 +2684,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "gd01-reouvrir",
               "text": "Enregistre cette position. Montre le dossier et le fichier que tu devras ouvrir pour retrouver ton travail ; garde les images à côté.",
-              "hint": "Utilise Fichier → Enregistrer, puis l’ouverture d’un projet local. Ne déplace pas jeu.json seul : laisse le dossier images à côté."
+              "hint": "Utilise Fichier → Enregistrer, puis l’ouverture d’un projet local. Ne déplace pas `jeu.json` seul : laisse le dossier images à côté."
             }
           ]
         },
@@ -2695,7 +2696,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "gd01-autonome",
               "text": "Choisis le point de départ de ton explorateur dans le cadre visible. Prévois son emplacement, modifie la scène puis enregistre. Ferme le projet et rouvre le bon fichier : vérifie dans un aperçu neuf la position ET l’image conservées.",
-              "hint": "Travaille toujours sur jeu.json dans ton dossier. Une image manquante ou une ancienne position est un problème à observer, pas une raison de tout recréer."
+              "hint": "Travaille toujours sur `jeu.json` dans ton dossier. Une image manquante ou une ancienne position est un problème à observer, pas une raison de tout recréer."
             }
           ]
         },
@@ -2706,8 +2707,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "gd01-copie",
-              "text": "Après sauvegarde et fermeture, copie tout le dossier mon-premier-jeu sous un autre nom. Ouvre jeu.json de la copie et teste l’image. Garde l’original intact.",
-              "hint": "La copie doit contenir jeu.json ET images. Le titre de la fenêtre peut être identique : vérifie le chemin du fichier ouvert avant de modifier la copie."
+              "text": "Après sauvegarde et fermeture, copie tout le dossier mon-premier-jeu sous un autre nom. Ouvre `jeu.json` de la copie et teste l’image. Garde l’original intact.",
+              "hint": "La copie doit contenir `jeu.json` ET images. Le titre de la fenêtre peut être identique : vérifie le chemin du fichier ouvert avant de modifier la copie."
             }
           ]
         }
@@ -2882,6 +2883,7 @@ window.CODECRAFT_DATA = {
           ],
           "illustration": {
             "src": "images/gdevelop-deplacement.svg",
+            "title": "Déplacement du personnage",
             "alt": "L’objet Personnage reçoit un comportement de déplacement fourni qui utilise les quatre flèches. Dans l’aperçu, les flèches pilotent le personnage ; dans l’éditeur, on choisit sa place de départ.",
             "caption": "Schéma, pas une capture de GDevelop. Le comportement fournit le pilotage ; nous n’écrivons pas encore les événements de déplacement."
           }
@@ -2928,7 +2930,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "gd04-choix",
               "text": "Choisis une vitesse adaptée à ton trajet et explique pourquoi. Si elle ne te convient pas, change seulement ce réglage et reteste. Enregistre, ferme puis rouvre le projet une fois : vérifie que les flèches et ta vitesse sont conservées.",
-              "hint": "Garde jeu.json et images ensemble. L’aperçu ne sauvegarde pas la dernière position jouée comme nouveau départ : tu retrouves le placement de la scène et les réglages enregistrés."
+              "hint": "Garde `jeu.json` et images ensemble. L’aperçu ne sauvegarde pas la dernière position jouée comme nouveau départ : tu retrouves le placement de la scène et les réglages enregistrés."
             }
           ]
         },
@@ -3128,13 +3130,14 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Un objet, plusieurs exemplaires",
           "paragraphs": [
-            "Crée un seul Sprite nommé Jeton avec une animation contenant images/jeton.png. Place trois exemplaires espacés dans le cadre visible de la scène. Ne crée pas Jeton2 ou Jeton3 : regarde la liste, puis compte les jetons dans la pièce.",
+            "Crée un seul Sprite nommé Jeton avec une animation contenant `images/jeton.png`. Place trois exemplaires espacés dans le cadre visible de la scène. Ne crée pas Jeton2 ou Jeton3 : regarde la liste, puis compte les jetons dans la pièce.",
             "Chaque exemplaire placé est une instance. L’objet définit leur dessin commun ; les instances ont leurs propres positions. Prévois : si tu déplaces un seul jeton dans la scène, lesquels garderont leur place ? Essaie ce déplacement puis vérifie dans l’aperçu.",
-            "Ferme l’aperçu. Prévois maintenant ce qui changera si tu modifies le dessin de l’objet Jeton. Dans sa définition, remplace l’image existante par images/jeton-alternatif.png ; n’ajoute ni animation ni nouvel objet. Relance : les trois dessins changent, mais les positions restent les mêmes.",
+            "Ferme l’aperçu. Prévois maintenant ce qui changera si tu modifies le dessin de l’objet Jeton. Dans sa définition, remplace l’image existante par `images/jeton-alternatif.png` ; n’ajoute ni animation ni nouvel objet. Relance : les trois dessins changent, mais les positions restent les mêmes.",
             "Tu as agi à deux endroits différents : la position d’un exemplaire dans la scène, puis l’image commune dans la définition de l’objet. Montre lequel tu choisirais pour changer une seule place ou tous les dessins."
           ],
           "illustration": {
             "src": "images/gdevelop-instances.svg",
+            "title": "Objets et instances",
             "alt": "Une définition Jeton fournit trois exemplaires : leurs dessins sont communs, leurs positions peuvent être différentes. Les nombres du schéma sont seulement des exemples.",
             "caption": "Un dessin commun, des positions individuelles. Les coordonnées du schéma ne sont pas des placements imposés."
           }
@@ -3149,6 +3152,7 @@ window.CODECRAFT_DATA = {
           ],
           "illustration": {
             "src": "images/gdevelop-coordonnees.svg",
+            "title": "Coordonnées dans la scène",
             "alt": "Dans GDevelop avec la caméra par défaut, X augmente vers la droite et Y vers le bas. Changer X d’une instance la déplace horizontalement, changer Y la déplace verticalement.",
             "caption": "Les coordonnées sont les propriétés de l’instance sélectionnée, pas un programme de mouvement."
           }
@@ -3389,6 +3393,7 @@ window.CODECRAFT_DATA = {
           ],
           "illustration": {
             "src": "images/gdevelop-evenements.svg",
+            "title": "Événements GDevelop",
             "alt": "Deux événements séparés : si Espace est maintenue, afficher Message ; si Espace n’est pas maintenue, masquer Message. Chaque condition est reliée à sa propre action.",
             "caption": "Schéma de lecture, pas une capture de l’interface. Les deux conditions sont opposées."
           }
@@ -3658,8 +3663,8 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "2 - Ton premier fichier",
           "paragraphs": [
-            "Choisis Fichier → Nouveau. Dans l’éditeur vide, écris la ligne ci-dessous avec des guillemets droits et les deux parenthèses. print affiche le message placé entre guillemets ; tu le découvriras plus en détail ensuite.",
-            "Choisis Fichier → Enregistrer sous, crée ou choisis un dossier pour tes programmes, puis nomme le fichier bonjour.py. .py indique un fichier Python. Si Thonny demande où enregistrer, choisis Cet ordinateur.",
+            "Choisis Fichier → Nouveau. Dans l’éditeur vide, écris la ligne ci-dessous avec des guillemets droits et les deux parenthèses. `print` affiche le message placé entre guillemets ; tu le découvriras plus en détail ensuite.",
+            "Choisis Fichier → Enregistrer sous, crée ou choisis un dossier pour tes programmes, puis nomme le fichier `bonjour.py`. .py indique un fichier Python. Si Thonny demande où enregistrer, choisis Cet ordinateur.",
             "Clique sur Exécuter, ou utilise F5. Dans la console, tu dois lire Bonjour ! : le message affiché est le résultat, pas une nouvelle instruction à recopier."
           ],
           "code": "print(\"Bonjour !\")",
@@ -3687,7 +3692,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "premier-fichier",
-              "text": "Crée bonjour.py, écris le modèle et exécute-le.",
+              "text": "Crée `bonjour.py`, écris le modèle et exécute-le.",
               "hint": "Écris dans l’éditeur du haut. Si la ligne échoue, compare les guillemets et parenthèses. Demande de l’aide pour l’installation ou le clavier si nécessaire."
             },
             {
@@ -3697,7 +3702,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "rouvrir-fichier",
-              "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver bonjour.py et le relancer.",
+              "text": "Enregistre, ferme le fichier, puis utilise Fichier → Ouvrir pour retrouver `bonjour.py` et le relancer.",
               "hint": "Note le dossier choisi. Un onglet fermé n’efface pas un fichier enregistré. Ne ferme pas sans enregistrer tes modifications."
             }
           ]
@@ -3706,11 +3711,11 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - créer et retrouver un fichier",
-          "intro": "Essaie sans démonstration. Garde bonjour.py : tu vas créer un autre fichier, pas le remplacer.",
+          "intro": "Essaie sans démonstration. Garde `bonjour.py` : tu vas créer un autre fichier, pas le remplacer.",
           "items": [
             {
               "id": "retrouver-seul",
-              "text": "Crée accueil.py avec un message de ton choix, enregistre-le dans ton dossier et exécute-le. Ferme ensuite son onglet, rouvre le fichier et relance-le.",
+              "text": "Crée `accueil.py` avec un message de ton choix, enregistre-le dans ton dossier et exécute-le. Ferme ensuite son onglet, rouvre le fichier et relance-le.",
               "hint": "Fichier → Nouveau, puis Enregistrer sous avec un autre nom. Après sauvegarde, Ouvrir retrouve le fichier ; Exécuter lance ses instructions."
             },
             {
@@ -3727,7 +3732,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "deuxieme-fichier",
-              "text": "Ouvre bonjour.py et accueil.py. Avant de lancer chacun, repère son nom dans l’onglet et prédis le message affiché. Modifie seulement accueil.py et vérifie que bonjour.py garde son message.",
+              "text": "Ouvre `bonjour.py` et `accueil.py`. Avant de lancer chacun, repère son nom dans l’onglet et prédis le message affiché. Modifie seulement `accueil.py` et vérifie que `bonjour.py` garde son message.",
               "hint": "Le fichier actif est celui dont l’onglet est sélectionné. Enregistre ta modification ; deux fichiers différents conservent deux programmes distincts."
             }
           ]
@@ -3880,7 +3885,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir créer, enregistrer et exécuter un fichier dans Thonny. Sinon, reprends Premiers pas avec Thonny. Enregistre ton travail précédent, puis crée messages.py sans remplacer les autres fichiers.",
+          "text": "Il faut savoir créer, enregistrer et exécuter un fichier dans Thonny. Sinon, reprends Premiers pas avec Thonny. Enregistre ton travail précédent, puis crée `messages.py` sans remplacer les autres fichiers.",
           "moduleLink": {
             "moduleId": "python-thonny",
             "text": "Revoir les fichiers dans Thonny"
@@ -3891,11 +3896,13 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Du texte, une instruction par ligne",
           "paragraphs": [
-            "print affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.",
-            "Python exécute ces instructions de haut en bas. Chaque print de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.",
+            "`print` affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.",
+            "Python exécute ces instructions de haut en bas. Chaque `print` de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.",
             "Avant d’exécuter, annonce quelle phrase apparaîtra en premier."
           ],
-          "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")"
+          "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")",
+          "filename": "messages.py",
+          "consoleOutput": "Bienvenue !\nVoici mon premier programme."
         },
         {
           "type": "tasks",
@@ -3904,18 +3911,18 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "afficher-modele",
-              "text": "Écris et exécute les deux instructions du modèle dans messages.py.",
+              "text": "Écris et exécute les deux instructions du modèle dans `messages.py`.",
               "hint": "N’écris pas le résultat ni >>> dans l’éditeur. Utilise les guillemets droits du clavier, pas les guillemets courbes d’un traitement de texte."
             },
             {
               "id": "personnaliser-textes",
               "text": "Modifie les deux messages sans retirer leurs guillemets.",
-              "hint": "Change seulement le texte à l’intérieur des guillemets."
+              "hint": "Change seulement le texte à l’`int`érieur des guillemets."
             },
             {
               "id": "troisieme-instruction",
               "text": "Ajoute une troisième instruction pour afficher une phrase de fin.",
-              "hint": "Une nouvelle ligne avec print, des parenthèses et du texte entre guillemets."
+              "hint": "Une nouvelle ligne avec `print`, des parenthèses et du texte entre guillemets."
             },
             {
               "id": "inverser-ordre",
@@ -3928,12 +3935,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - une présentation sans modèle",
-          "intro": "Enregistre messages.py. Crée presentation.py ; essaie sans ouvrir l’indice.",
+          "intro": "Enregistre `messages.py`. Crée `presentation.py` ; essaie sans ouvrir l’indice.",
           "items": [
             {
               "id": "presentation-personnelle",
               "text": "Affiche une présentation de trois lignes sur un personnage ou un sujet de ton choix, avec tes propres phrases.",
-              "hint": "Chaque phrase peut avoir son propre print. Tu n’as pas besoin de variable ni de question pour ce module."
+              "hint": "Chaque phrase peut avoir son propre `print`. Tu n’as pas besoin de variable ni de question pour ce module."
             },
             {
               "id": "prediction-personnelle",
@@ -3950,7 +3957,8 @@ window.CODECRAFT_DATA = {
             "Cette ligne est volontairement incorrecte : il manque un guillemet droit. Une erreur indique que Python ne peut pas exécuter cette instruction telle quelle, pas que ton idée est mauvaise. Compare les paires de guillemets et de parenthèses, corrige puis relance.",
             "Une phrase différente de celle attendue n’est pas forcément une erreur Python : le programme peut fonctionner mais ne pas réaliser ta consigne."
           ],
-          "code": "print(\"Bonjour !)"
+          "code": "print(\"Bonjour !)",
+          "filename": "messages.py"
         },
         {
           "type": "tasks",
@@ -3959,7 +3967,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "dessin-texte",
-              "text": "Avec plusieurs print, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.",
+              "text": "Avec plusieurs `print`, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.",
               "hint": "Chaque ligne du dessin est un texte entre guillemets. Évite les antislashs pour cet essai : aucune nouvelle notation n’est nécessaire."
             }
           ]
@@ -4121,7 +4129,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir afficher du texte et prévoir l’ordre des instructions. Sinon, reprends Afficher des messages. Enregistre tes essais, puis crée variables.py sans remplacer tes autres fichiers. Écris les instructions dans l’éditeur et exécute le fichier entier.",
+          "text": "Il faut savoir afficher du texte et prévoir l’ordre des instructions. Sinon, reprends Afficher des messages. Enregistre tes essais, puis crée `variables.py` sans remplacer tes autres fichiers. Écris les instructions dans l’éditeur et exécute le fichier entier.",
           "moduleLink": {
             "moduleId": "python-affichage",
             "text": "Revoir l’affichage et l’ordre"
@@ -4136,7 +4144,9 @@ window.CODECRAFT_DATA = {
             "Sans guillemets, personnage demande la valeur associée à ce nom. Avec guillemets, \"personnage\" est simplement le texte personnage.",
             "Prédis les deux messages, puis exécute le fichier entier."
           ],
-          "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")"
+          "code": "personnage = \"Luna\"\nprint(personnage)\nprint(\"personnage\")",
+          "filename": "variables.py",
+          "consoleOutput": "Luna\npersonnage"
         },
         {
           "type": "lesson",
@@ -4144,9 +4154,11 @@ window.CODECRAFT_DATA = {
           "title": "2 - La valeur peut changer",
           "paragraphs": [
             "Chaque instruction utilise la valeur disponible à cet instant. Le deuxième = remplace la valeur associée au nom personnage. Il ne modifie pas un message déjà affiché.",
-            "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas print comme nom de variable."
+            "Les noms respectent les majuscules : personnage et Personnage sont différents. Choisis des noms simples comme personnage ou animal ; sans espace, sans tiret et sans chiffre au début. N’utilise pas `print` comme nom de variable."
           ],
-          "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)"
+          "code": "personnage = \"Luna\"\nprint(personnage)\npersonnage = \"Milo\"\nprint(personnage)",
+          "filename": "variables.py",
+          "consoleOutput": "Luna\nMilo"
         },
         {
           "type": "tasks",
@@ -4165,7 +4177,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "predire-remplacement",
-              "text": "Enregistre variables.py, puis crée remplacement.py pour le deuxième exemple. Garde le premier fichier, annonce les deux résultats et exécute le nouveau fichier.",
+              "text": "Enregistre `variables.py`, puis crée `remplacement.py` pour le deuxième exemple. Garde le premier fichier, annonce les deux résultats et exécute le nouveau fichier.",
               "hint": "Lis de haut en bas : la valeur est d’abord Luna, puis Milo. Tes deux fichiers permettent de comparer les exemples."
             }
           ]
@@ -4174,12 +4186,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - deux informations",
-          "intro": "Enregistre ton essai actuel, puis crée personnage.py. Garde variables.py et remplacement.py ; essaie sans recopier le modèle.",
+          "intro": "Enregistre ton essai actuel, puis crée `personnage.py`. Garde `variables.py` et `remplacement.py` ; essaie sans recopier le modèle.",
           "items": [
             {
               "id": "deux-variables",
               "text": "Crée deux variables textuelles avec des noms de ton choix et affiche leurs valeurs.",
-              "hint": "Une instruction d’affectation pour chaque information ; puis un print pour chaque variable, sans guillemets autour de son nom."
+              "hint": "Une instruction d’affectation pour chaque information ; puis un `print` pour chaque variable, sans guillemets autour de son nom."
             },
             {
               "id": "modifier-une-valeur",
@@ -4188,7 +4200,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "test-propre",
-              "text": "Enregistre personnage.py. Clique sur Arrêter / redémarrer puis exécute le fichier entier : vérifie qu’il fonctionne sans les essais précédents.",
+              "text": "Enregistre `personnage.py`. Clique sur Arrêter / redémarrer puis exécute le fichier entier : vérifie qu’il fonctionne sans les essais précédents.",
               "hint": "Le fichier doit définir lui-même chaque variable avant de l’utiliser. Le redémarrage permet de vérifier qu’un ancien essai ne cachait pas un oubli."
             }
           ]
@@ -4198,9 +4210,10 @@ window.CODECRAFT_DATA = {
           "id": "erreur",
           "title": "Pour consolider - un nom incohérent",
           "paragraphs": [
-            "Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque NameError parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."
+            "Cette panne est volontaire : compare les noms. Après Arrêter / redémarrer, exécuter le fichier provoque `NameError` parce que Python ne connaît pas la variable animal. Corrige le nom pour afficher la valeur prévue, puis relance."
           ],
-          "code": "compagnon = \"chat\"\nprint(animal)"
+          "code": "compagnon = \"chat\"\nprint(animal)",
+          "filename": "variables.py"
         },
         {
           "type": "tasks",
@@ -4210,7 +4223,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "reutiliser-valeur",
               "text": "Affiche la même variable à trois endroits dans ton fichier. Change sa valeur de départ et prédis les trois résultats avant de relancer.",
-              "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs print."
+              "hint": "Aucune boucle nécessaire : réutilise son nom dans plusieurs `print`."
             }
           ]
         }
@@ -4362,7 +4375,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.output",
-          "expectation": "Afficher du texte avec print."
+          "expectation": "Afficher du texte avec `print`."
         },
         {
           "skillId": "python.variables",
@@ -4374,7 +4387,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir exécuter un fichier, afficher un message et réutiliser une variable. Sinon, reprends Variables et valeurs. Enregistre ton travail précédent et crée questions.py sans effacer les autres fichiers.",
+          "text": "Il faut savoir exécuter un fichier, afficher un message et réutiliser une variable. Sinon, reprends Variables et valeurs. Enregistre ton travail précédent et crée `questions.py` sans effacer les autres fichiers.",
           "moduleLink": {
             "moduleId": "python-variables",
             "text": "Revoir les variables"
@@ -4385,12 +4398,13 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Demander, attendre, utiliser",
           "paragraphs": [
-            "input affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.",
+            "`input` affiche la question entre ses parenthèses, puis attend une réponse. Après avoir exécuté, clique dans la console à la suite de la question, écris ta réponse et appuie sur Entrée. Le programme peut alors continuer.",
             "Le texte répondu devient la valeur de pseudo. La question reste dans le code ; la réponse vient de la personne qui utilise le programme.",
-            "Dans print(\"Bienvenue\", pseudo), la virgule sépare deux éléments à afficher : un texte et une valeur. print ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.",
-            "input fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."
+            "Dans `print(\"Bienvenue\", pseudo)`, la virgule sépare deux éléments à afficher : un texte et une valeur. `print` ajoute ici un espace entre eux. On ne met pas la virgule entre les guillemets.",
+            "`input` fournit du texte, même si tu réponds avec des chiffres. Nous ne faisons pas encore de calcul avec cette réponse."
           ],
-          "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)"
+          "code": "pseudo = input(\"Quel pseudo choisis-tu ? \")\nprint(\"Bienvenue\", pseudo)",
+          "filename": "questions.py"
         },
         {
           "type": "lesson",
@@ -4418,8 +4432,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "changer-question",
-              "text": "Change seulement le texte de la question dans input. Relance pour tester.",
-              "hint": "Garde le même nom de variable ; modifie le texte entre guillemets dans input, pas la réponse dans le code."
+              "text": "Change seulement le texte de la question dans `input`. Relance pour tester.",
+              "hint": "Garde le même nom de variable ; modifie le texte entre guillemets dans `input`, pas la réponse dans le code."
             }
           ]
         },
@@ -4427,12 +4441,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - une préférence",
-          "intro": "Enregistre questions.py, puis crée preference.py. Essaie avant l’indice.",
+          "intro": "Enregistre `questions.py`, puis crée `preference.py`. Essaie avant l’indice.",
           "items": [
             {
               "id": "question-personnelle",
               "text": "Demande une activité préférée, conserve la réponse dans une variable de ton choix et affiche une phrase qui l’utilise.",
-              "hint": "Une affectation avec input, puis un print contenant un texte et le nom de ta variable, séparés par une virgule. Pas de guillemets autour du nom."
+              "hint": "Une affectation avec `input`, puis un `print` contenant un texte et le nom de ta variable, séparés par une virgule. Pas de guillemets autour du nom."
             },
             {
               "id": "tester-preference",
@@ -4456,7 +4470,7 @@ window.CODECRAFT_DATA = {
       ],
       "masteryCriteria": [
         "Saisir et valider une réponse dans la console sans la remplacer dans le code.",
-        "Expliquer la pause provoquée par input et la valeur enregistrée dans la variable.",
+        "Expliquer la pause provoquée par `input` et la valeur enregistrée dans la variable.",
         "Créer une autre question puis utiliser sa réponse, sans recopier tout le modèle."
       ],
       "consolidation": [
@@ -4625,7 +4639,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir créer un fichier, afficher un message et conserver puis réutiliser une réponse dans une variable. Sinon, reprends Poser une question. Enregistre les exercices précédents puis crée conversation.py : ne les efface pas. Choisis un thème et des réponses fictifs, sans renseignement personnel.",
+          "text": "Il faut savoir créer un fichier, afficher un message et conserver puis réutiliser une réponse dans une variable. Sinon, reprends Poser une question. Enregistre les exercices précédents puis crée `conversation.py` : ne les efface pas. Choisis un thème et des réponses fictifs, sans renseignement personnel.",
           "moduleLink": {
             "moduleId": "python-saisie",
             "text": "Revoir la saisie"
@@ -4650,17 +4664,17 @@ window.CODECRAFT_DATA = {
             {
               "id": "accueil-minimal",
               "text": "Affiche ton message d’accueil.",
-              "hint": "Utilise print avec ton texte entre guillemets et entre parenthèses."
+              "hint": "Utilise `print` avec ton texte entre guillemets et entre parenthèses."
             },
             {
               "id": "question-minimale",
               "text": "Pose une première question et conserve sa réponse.",
-              "hint": "Choisis un nom de variable, puis = et input avec ta question entre guillemets et parenthèses."
+              "hint": "Choisis un nom de variable, puis = et `input` avec ta question entre guillemets et parenthèses."
             },
             {
               "id": "reponse-minimale",
               "text": "Affiche un message qui utilise cette réponse, puis teste avec deux réponses différentes.",
-              "hint": "Dans print, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets."
+              "hint": "Dans `print`, sépare ton texte et le nom de la variable par une virgule. Le nom de variable n’est pas entre guillemets."
             }
           ]
         },
@@ -4668,7 +4682,7 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "2 - Construis ta conversation",
-          "intro": "Continue dans conversation.py. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.",
+          "intro": "Continue dans `conversation.py`. Essaie avant les indices ; ajoute une question à la fois, sans supprimer tes exercices sauvegardés.",
           "items": [
             {
               "id": "accueil-projet",
@@ -4678,16 +4692,16 @@ window.CODECRAFT_DATA = {
             {
               "id": "trois-questions",
               "text": "Pose au moins trois questions et garde leurs réponses dans trois variables différentes.",
-              "hint": "Une ligne avec input pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente."
+              "hint": "Une ligne avec `input` pour chaque question. Le programme attend chaque réponse avant de passer à la suivante. Garde des noms différents pour ne pas remplacer une réponse précédente."
             },
             {
               "id": "trois-reponses",
               "text": "Après les questions, réutilise chacune des trois réponses dans tes messages finaux.",
-              "hint": "Tu peux faire plusieurs print. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets."
+              "hint": "Tu peux faire plusieurs `print`. Vérifie que chaque nom de variable est réellement utilisé, pas recopié entre guillemets."
             },
             {
               "id": "sauvegarder-projet",
-              "text": "Enregistre conversation.py dans ton dossier de programmes.",
+              "text": "Enregistre `conversation.py` dans ton dossier de programmes.",
               "hint": "Conserve les fichiers des modules précédents. Une modification doit être enregistrée pour rester après fermeture."
             }
           ]
@@ -4705,12 +4719,12 @@ window.CODECRAFT_DATA = {
             {
               "id": "retrouver-dialogue",
               "text": "Après enregistrement, ferme puis rouvre le fichier et teste-le à nouveau.",
-              "hint": "Retrouve conversation.py dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme."
+              "hint": "Retrouve `conversation.py` dans ton dossier ; tes anciennes réponses ne sont pas une sauvegarde de ton programme."
             },
             {
               "id": "expliquer-dialogue",
-              "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Enregistre, puis utilise Enregistrer sous pour créer conversation_modifiee.py. Dans cette copie, renomme une variable et tous ses usages ; teste avec de nouvelles réponses.",
-              "hint": "Choisis un nom distinct des deux autres. Change le nom à gauche de = et dans chaque print qui l’utilise. La question peut rester identique ; conserve conversation.py."
+              "text": "Explique où le programme attend et quelle variable conserve chaque réponse. Enregistre, puis utilise Enregistrer sous pour créer `conversation_modifiee.py`. Dans cette copie, renomme une variable et tous ses usages ; teste avec de nouvelles réponses.",
+              "hint": "Choisis un nom distinct des deux autres. Change le nom à gauche de = et dans chaque `print` qui l’utilise. La question peut rester identique ; conserve `conversation.py`."
             }
           ]
         },
@@ -4722,7 +4736,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "quatrieme-question",
               "text": "Ajoute une quatrième question et utilise sa réponse dans un nouveau message final.",
-              "hint": "Une nouvelle variable, un input et un print : aucune condition ou boucle n’est nécessaire."
+              "hint": "Une nouvelle variable, un `input` et un `print` : aucune condition ou boucle n’est nécessaire."
             }
           ]
         },
@@ -4902,7 +4916,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.output",
-          "expectation": "Afficher une valeur avec print."
+          "expectation": "Afficher une valeur avec `print`."
         },
         {
           "skillId": "python.variables",
@@ -4918,7 +4932,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir exécuter un fichier, afficher une variable et réutiliser une réponse de input. Si tu hésites sur un point, reprends le module correspondant. Enregistre tes anciens programmes et crée calculs.py sans les effacer. Commence par des nombres fixes : la question viendra ensuite.",
+          "text": "Il faut savoir exécuter un fichier, afficher une variable et réutiliser une réponse de `input`. Si tu hésites sur un point, reprends le module correspondant. Enregistre tes anciens programmes et crée `calculs.py` sans les effacer. Commence par des nombres fixes : la question viendra ensuite.",
           "moduleLink": {
             "moduleId": "python-variables",
             "text": "Revoir les variables"
@@ -4929,10 +4943,12 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Nombre ou texte ?",
           "paragraphs": [
-            "12 est un nombre. \"12\" est du texte : les guillemets changent la façon dont Python utilise la valeur, même si print les affiche de manière semblable.",
+            "12 est un nombre. \"12\" est du texte : les guillemets changent la façon dont Python utilise la valeur, même si `print` les affiche de manière semblable.",
             "Avec deux nombres, + additionne. Avec deux textes, + les colle : \"12\" + \"3\" donne le texte 123, pas le nombre 15. Prédis les trois lignes avant d’exécuter le modèle."
           ],
-          "code": "print(12 + 3)\nprint(\"12\" + \"3\")\nprint(\"12 + 3\")"
+          "code": "print(12 + 3)\nprint(\"12\" + \"3\")\nprint(\"12 + 3\")",
+          "filename": "calculs.py",
+          "consoleOutput": "15\n123\n12 + 3"
         },
         {
           "type": "lesson",
@@ -4940,9 +4956,11 @@ window.CODECRAFT_DATA = {
           "title": "2 - Calculer et conserver",
           "paragraphs": [
             "Avec des nombres, + additionne. Le calcul à droite de = est effectué, puis son résultat devient la valeur de total.",
-            "Dans print, le nom sans guillemets utilise cette valeur. Prédis le total avant d’exécuter : changer points suffit pour calculer un autre résultat."
+            "Dans `print`, le nom sans guillemets utilise cette valeur. Prédis le total avant d’exécuter : changer points suffit pour calculer un autre résultat."
           ],
-          "code": "points = 4\nbonus = 3\ntotal = points + bonus\nprint(\"Total :\", total)"
+          "code": "points = 4\nbonus = 3\ntotal = points + bonus\nprint(\"Total :\", total)",
+          "filename": "calculs.py",
+          "consoleOutput": "Total : 7"
         },
         {
           "type": "tasks",
@@ -4966,10 +4984,11 @@ window.CODECRAFT_DATA = {
           "id": "conversion",
           "title": "3 - Une réponse utilisable dans un calcul",
           "paragraphs": [
-            "Un entier est un nombre sans partie décimale, comme 0, 5 ou -2. input fournit du texte : int transforme le texte \"12\" en entier 12. On conserve d’abord la réponse, puis on la convertit ; les deux étapes sont visibles.",
-            "Réponds avec un entier écrit en chiffres, sans unité, virgule ni point. Le programme n’accepte pas cinq, 5 pièces ou 2.5 : int provoque une ValueError et arrête cet essai. Ce modèle n’est pas une saisie protégée ; le module suivant apprend à lire cette erreur."
+            "Un entier est un nombre sans partie décimale, comme 0, 5 ou -2. `input` fournit du texte : `int` transforme le texte \"12\" en entier 12. On conserve d’abord la réponse, puis on la convertit ; les deux étapes sont visibles.",
+            "Réponds avec un entier écrit en chiffres, sans unité, virgule ni point. Le programme n’accepte pas cinq, 5 pièces ou 2.5 : `int` provoque une `ValueError` et arrête cet essai. Ce modèle n’est pas une saisie protégée ; le module suivant apprend à lire cette erreur."
           ],
-          "code": "reponse = input(\"Combien de pièces ? Entier uniquement : \")\npieces = int(reponse)\ntotal = pieces + 2\nprint(\"Avec le bonus :\", total)"
+          "code": "reponse = input(\"Combien de pièces ? Entier uniquement : \")\npieces = int(reponse)\ntotal = pieces + 2\nprint(\"Avec le bonus :\", total)",
+          "filename": "calculs.py"
         },
         {
           "type": "tasks",
@@ -4979,7 +4998,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "deux-entiers",
               "text": "Teste le modèle avec 5 puis avec 0. Prédis chaque total et montre où le texte devient un entier.",
-              "hint": "Les totaux sont 7 et 2. int(reponse) effectue la conversion ; input seul ne le fait pas."
+              "hint": "Les totaux sont 7 et 2. `int(reponse)` effectue la conversion ; `input` seul ne le fait pas."
             }
           ]
         },
@@ -4987,12 +5006,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - un total de points",
-          "intro": "Enregistre calculs.py puis crée points.py. Essaie sans recopier le modèle complet.",
+          "intro": "Enregistre `calculs.py` puis crée `points.py`. Essaie sans recopier le modèle complet.",
           "items": [
             {
               "id": "total-personnel",
               "text": "Demande un nombre entier de points, ajoute un bonus fixe de 4 et affiche le total. La question doit annoncer le format attendu.",
-              "hint": "Conserve le texte de input, transforme-le avec int, puis additionne 4 à la valeur numérique. Utilise des noms adaptés aux points."
+              "hint": "Conserve le texte de `input`, transforme-le avec `int`, puis additionne 4 à la valeur numérique. Utilise des noms adaptés aux points."
             },
             {
               "id": "preuve-calcul",
@@ -5009,7 +5028,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "deux-valeurs",
               "text": "Dans un nouveau fichier, demande deux entiers et affiche leur somme. Teste 2 et 7, puis 0 et 4.",
-              "hint": "Deux noms distincts, deux input et deux conversions int. Additionne les nombres, pas les textes."
+              "hint": "Deux noms distincts, deux `input` et deux conversions `int`. Additionne les nombres, pas les textes."
             }
           ]
         },
@@ -5023,10 +5042,12 @@ window.CODECRAFT_DATA = {
               "id": "autres-operations",
               "title": "Soustraire, multiplier, diviser",
               "paragraphs": [
-                "Cette exploration est facultative : l’addition et la conversion suffisent pour continuer le parcours. Crée operations.py sans remplacer calculs.py.",
+                "Cette exploration est facultative : l’addition et la conversion suffisent pour continuer le parcours. Crée `operations.py` sans remplacer `calculs.py`.",
                 "- soustrait, * multiplie et / divise. Prédis puis teste ces trois lignes : tu dois lire 6, 16 et 4.0. La division donne ici une écriture décimale ; ne divise pas par zéro."
               ],
-              "code": "print(8 - 2)\nprint(8 * 2)\nprint(8 / 2)"
+              "code": "print(8 - 2)\nprint(8 * 2)\nprint(8 / 2)",
+              "filename": "operations.py",
+              "consoleOutput": "6\n16\n4.0"
             },
             {
               "type": "lesson",
@@ -5035,17 +5056,20 @@ window.CODECRAFT_DATA = {
               "paragraphs": [
                 "La multiplication et la division passent avant l’addition et la soustraction. Des parenthèses donnent la priorité à un groupe. Prédis puis compare les deux résultats : 20 et 14."
               ],
-              "code": "print((2 + 3) * 4)\nprint(2 + 3 * 4)"
+              "code": "print((2 + 3) * 4)\nprint(2 + 3 * 4)",
+              "filename": "calculs.py",
+              "consoleOutput": "20\n14"
             },
             {
               "type": "lesson",
               "id": "ecriture-courte",
               "title": "Réunir saisie et conversion",
               "paragraphs": [
-                "Après avoir compris les deux étapes séparées, int(input(...)) peut les réunir. Il convertit le résultat de input, pas le texte de la question. Cette écriture ne protège toujours pas des entrées invalides.",
+                "Après avoir compris les deux étapes séparées, `int`(`input(...)`) peut les réunir. Il convertit le résultat de `input`, pas le texte de la question. Cette écriture ne protège toujours pas des entrées invalides.",
                 "Dans un fichier distinct, teste 5 : la valeur numérique affichée doit être 5. La forme en deux lignes reste tout aussi correcte."
               ],
-              "code": "pieces = int(input(\"Pièces, entier uniquement : \"))\nprint(pieces)"
+              "code": "pieces = int(input(\"Pièces, entier uniquement : \"))\nprint(pieces)",
+              "filename": "calculs.py"
             }
           ]
         }
@@ -5087,7 +5111,7 @@ window.CODECRAFT_DATA = {
           "prerequisiteSkills": [
             {
               "skillId": "python.conversion",
-              "expectation": "Expliquer pourquoi int attend un entier écrit en chiffres ; sinon reprendre la conversion."
+              "expectation": "Expliquer pourquoi `int` attend un entier écrit en chiffres ; sinon reprendre la conversion."
             }
           ]
         }
@@ -5199,7 +5223,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.output",
-          "expectation": "Lire les sorties de print."
+          "expectation": "Lire les sorties de `print`."
         },
         {
           "skillId": "python.variables",
@@ -5234,32 +5258,35 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Lire avant de modifier",
           "paragraphs": [
-            "Crée diagnostic_nom.py pour ce premier exemple. Ce modèle est volontairement incorrect : la dernière ligne devrait afficher 7, mais le nom utilisé ne correspond pas au nom défini. Exécute-le pour observer le message.",
-            "Dans la console, lis la dernière ligne du message : NameError indique qu’un nom n’est pas défini. Repère ensuite le numéro de ligne et le nom du fichier signalés, puis regarde cette ligne dans l’éditeur. Le numéro dépend de ton propre fichier.",
+            "Crée `diagnostic_nom.py` pour ce premier exemple. Ce modèle est volontairement incorrect : la dernière ligne devrait afficher 7, mais le nom utilisé ne correspond pas au nom défini. Exécute-le pour observer le message.",
+            "Dans la console, lis la dernière ligne du message : `NameError` indique qu’un nom n’est pas défini. Repère ensuite le numéro de ligne et le nom du fichier signalés, puis regarde cette ligne dans l’éditeur. Le numéro dépend de ton propre fichier.",
             "La ligne signalée indique où Python a rencontré le problème ; sa cause peut être plus haut. Compare les noms, corrige seulement celui qui est incohérent, puis relance le fichier entier. Ne recopie pas le message d’erreur dans l’éditeur."
           ],
-          "code": "points = 5\nbonus = 2\nprint(point + bonus)"
+          "code": "points = 5\nbonus = 2\nprint(point + bonus)",
+          "filename": "diagnostic_nom.py"
         },
         {
           "type": "lesson",
           "id": "syntaxe",
           "title": "2 - Une instruction impossible à lire",
           "paragraphs": [
-            "Enregistre ton premier essai, puis crée diagnostic_syntaxe.py. Ce modèle incorrect produit une SyntaxError : il manque un guillemet fermant. Python ne peut pas lire l’instruction et n’exécute pas le fichier.",
+            "Enregistre ton premier essai, puis crée `diagnostic_syntaxe.py`. Ce modèle incorrect produit une `SyntaxError` : il manque un guillemet fermant. Python ne peut pas lire l’instruction et n’exécute pas le fichier.",
             "Regarde les guillemets et les parenthèses par paires. L’indicateur dans le message aide à chercher, mais ne promet pas de pointer exactement le caractère manquant. Corrige une cause et reteste."
           ],
-          "code": "print(\"Bonjour !)"
+          "code": "print(\"Bonjour !)",
+          "filename": "diagnostic_syntaxe.py"
         },
         {
           "type": "lesson",
           "id": "conversion",
           "title": "3 - Une valeur non convertible",
           "paragraphs": [
-            "Enregistre tes essais et crée diagnostic_conversion.py. Ce modèle est correct pour une réponse entière. Essaie 5, puis relance avec cinq : la conversion produit une ValueError. Le texte fourni ne représente pas l’entier attendu.",
-            "Avec cette entrée invalide, la ligne après int n’est pas exécutée. Pour vérifier le diagnostic, relance avec 5 : le résultat doit être 7. Les mots exacts du message peuvent varier selon la version de Python.",
+            "Enregistre tes essais et crée `diagnostic_conversion.py`. Ce modèle est correct pour une réponse entière. Essaie 5, puis relance avec cinq : la conversion produit une `ValueError`. Le texte fourni ne représente pas l’entier attendu.",
+            "Avec cette entrée invalide, la ligne après `int` n’est pas exécutée. Pour vérifier le diagnostic, relance avec 5 : le résultat doit être 7. Les mots exacts du message peuvent varier selon la version de Python.",
             "Lire l’erreur n’est pas la gérer : ce programme s’arrête toujours pour une mauvaise entrée. Nous n’ajoutons pas encore de nouvelle tentative ni de try/except."
           ],
-          "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)\nprint(points + 2)"
+          "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)\nprint(points + 2)",
+          "filename": "diagnostic_conversion.py"
         },
         {
           "type": "tasks",
@@ -5268,12 +5295,12 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "nom-incoherent",
-              "text": "Dans diagnostic_nom.py, teste le modèle NameError, repère la ligne et corrige le nom. Vérifie que le résultat devient 7.",
+              "text": "Dans `diagnostic_nom.py`, teste le modèle `NameError`, repère la ligne et corrige le nom. Vérifie que le résultat devient 7.",
               "hint": "points est défini, point ne l’est pas. La correction ne demande pas de nouvelle variable."
             },
             {
               "id": "guillemet-manquant",
-              "text": "Dans diagnostic_syntaxe.py, corrige le modèle SyntaxError. Explique ce qui manquait et vérifie le message Bonjour !.",
+              "text": "Dans `diagnostic_syntaxe.py`, corrige le modèle `SyntaxError`. Explique ce qui manquait et vérifie le message Bonjour !.",
               "hint": "Le texte doit se terminer par un guillemet avant la parenthèse fermante."
             }
           ]
@@ -5283,25 +5310,27 @@ window.CODECRAFT_DATA = {
           "id": "resultat",
           "title": "4 - Sans message d’erreur, mais faux",
           "paragraphs": [
-            "Crée diagnostic_resultat.py et garde tes essais précédents. L’objectif est d’ajouter un bonus de 2 aux 5 points, donc d’afficher 7. Le signe - soustrait : ce modèle fait une soustraction au lieu de l’addition demandée. Prévois le résultat puis corrige le signe.",
+            "Crée `diagnostic_resultat.py` et garde tes essais précédents. L’objectif est d’ajouter un bonus de 2 aux 5 points, donc d’afficher 7. Le signe - soustrait : ce modèle fait une soustraction au lieu de l’addition demandée. Prévois le résultat puis corrige le signe.",
             "Une exécution sans erreur n’est pas une preuve de réussite. Compare toujours la sortie au résultat attendu, puis teste une autre valeur après la correction."
           ],
-          "code": "points = 5\nbonus = 2\nprint(points - bonus)"
+          "code": "points = 5\nbonus = 2\nprint(points - bonus)",
+          "filename": "diagnostic_resultat.py"
         },
         {
           "type": "lesson",
           "id": "mission",
           "title": "Un programme à diagnostiquer",
           "paragraphs": [
-            "Dans correction.py, l’objectif est d’ajouter 3 à 10, puis d’afficher la valeur de message. Ce modèle contient volontairement deux défauts. Prédis ce qui devrait s’afficher selon l’objectif avant de le tester."
+            "Dans `correction.py`, l’objectif est d’ajouter 3 à 10, puis d’afficher la valeur de message. Ce modèle contient volontairement deux défauts. Prédis ce qui devrait s’afficher selon l’objectif avant de le tester."
           ],
-          "code": "print(10 - 3)\nmessage = \"Bonjour\"\nprint(mesage)"
+          "code": "print(10 - 3)\nmessage = \"Bonjour\"\nprint(mesage)",
+          "filename": "correction.py"
         },
         {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - retrouver l’intention",
-          "intro": "Crée correction.py pour le modèle à diagnostiquer. Conserve les fichiers des exemples guidés ; essaie avant les indices.",
+          "intro": "Crée `correction.py` pour le modèle à diagnostiquer. Conserve les fichiers des exemples guidés ; essaie avant les indices.",
           "items": [
             {
               "id": "deux-defauts",
@@ -5320,7 +5349,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "diagnostic-saisie",
-              "text": "Rouvre diagnostic_conversion.py. Choisis une réponse qui fait échouer ce programme et une autre qui le fait réussir. Avant les essais, prédis ce qui se passera ; puis explique la ligne concernée, la cause et le résultat de l’essai réussi.",
+              "text": "Rouvre `diagnostic_conversion.py`. Choisis une réponse qui fait échouer ce programme et une autre qui le fait réussir. Avant les essais, prédis ce qui se passera ; puis explique la ligne concernée, la cause et le résultat de l’essai réussi.",
               "hint": "Observe le format demandé par la question et le rôle de chaque ligne. Relance pour chaque réponse ; lire une erreur ne signifie pas l’intercepter."
             }
           ]
@@ -5340,7 +5369,7 @@ window.CODECRAFT_DATA = {
       ],
       "masteryCriteria": [
         "Repérer le fichier, la ligne et la catégorie d’une erreur sans recopier le message.",
-        "Relier NameError, SyntaxError et ValueError à une cause précise sur les exemples enseignés.",
+        "Relier `NameError`, `SyntaxError` et `ValueError` à une cause précise sur les exemples enseignés.",
         "Corriger une cause à la fois puis relancer un test pertinent.",
         "Détecter un résultat faux même sans exception et expliquer la correction."
       ],
@@ -5491,7 +5520,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.input",
-          "expectation": "Conserver une réponse de input."
+          "expectation": "Conserver une réponse de `input`."
         },
         {
           "skillId": "python.numbers",
@@ -5511,7 +5540,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir afficher une variable numérique, convertir une réponse entière et relire une erreur après un essai. Sinon, reprends le point concerné. Enregistre tes essais précédents et crée choix.py sans les effacer. Commence avec une valeur fixe : la question viendra ensuite.",
+          "text": "Il faut savoir afficher une variable numérique, convertir une réponse entière et relire une erreur après un essai. Sinon, reprends le point concerné. Enregistre tes essais précédents et crée `choix.py` sans les effacer. Commence avec une valeur fixe : la question viendra ensuite.",
           "moduleLink": {
             "moduleId": "python-erreurs",
             "text": "Revoir le diagnostic des erreurs"
@@ -5522,21 +5551,25 @@ window.CODECRAFT_DATA = {
           "id": "comparer",
           "title": "1 - Une comparaison, deux réponses",
           "paragraphs": [
-            ">= signifie supérieur ou égal. points >= 10 est vrai pour 10 et 12, faux pour 9. Python affiche True pour vrai et False pour faux.",
+            ">= signifie supérieur ou égal. points >= 10 est vrai pour 10 et 12, faux pour 9. Python affiche `True` pour vrai et `False` pour faux.",
             "> signifie strictement supérieur et \u003c strictement inférieur. == compare deux valeurs : points == 10 demande si elles sont égales. Un seul = affecte une valeur à une variable ; il ne fait pas une comparaison."
           ],
-          "code": "points = 10\nprint(points >= 10)\nprint(points > 10)\nprint(points == 10)"
+          "code": "points = 10\nprint(points >= 10)\nprint(points > 10)\nprint(points == 10)",
+          "filename": "choix.py",
+          "consoleOutput": "True\nFalse\nTrue"
         },
         {
           "type": "lesson",
           "id": "exemple",
           "title": "2 - Choisir une seule branche",
           "paragraphs": [
-            "if signifie si : le premier message s’affiche si la comparaison est vraie. else signifie sinon : son message s’affiche si elle est fausse. Une seule des deux branches s’exécute.",
-            "Chaque ligne if ou else se termine par deux-points. Les instructions de sa branche commencent quatre espaces plus loin : c’est l’indentation. else est aligné avec if. Thonny peut ajouter les espaces après les deux-points ; vérifie leur alignement.",
-            "La dernière ligne revient au même alignement que if : elle est hors des branches et s’exécute dans les deux cas. Avec points = 10, attends Passage ouvert puis Fin du test."
+            "`if` signifie si : le premier message s’affiche si la comparaison est vraie. `else` signifie sinon : son message s’affiche si elle est fausse. Une seule des deux branches s’exécute.",
+            "Chaque ligne `if` ou `else` se termine par deux-points. Les instructions de sa branche commencent quatre espaces plus loin : c’est l’indentation. `else` est aligné avec `if`. Thonny peut ajouter les espaces après les deux-points ; vérifie leur alignement.",
+            "La dernière ligne revient au même alignement que `if` : elle est hors des branches et s’exécute dans les deux cas. Avec points = 10, attends Passage ouvert puis Fin du test."
           ],
-          "code": "points = 10\nif points >= 10:\n    print(\"Passage ouvert\")\nelse:\n    print(\"Encore quelques points\")\nprint(\"Fin du test\")"
+          "code": "points = 10\nif points >= 10:\n    print(\"Passage ouvert\")\nelse:\n    print(\"Encore quelques points\")\nprint(\"Fin du test\")",
+          "filename": "choix.py",
+          "consoleOutput": "Passage ouvert\nFin du test"
         },
         {
           "type": "tasks",
@@ -5546,12 +5579,12 @@ window.CODECRAFT_DATA = {
             {
               "id": "trois-cas",
               "text": "Prédis puis teste le modèle avec 9, 10 et 11. Pour chaque essai, indique la branche choisie et le message qui s’affiche toujours.",
-              "hint": "9 choisit else ; 10 et 11 choisissent if. Fin du test s’affiche dans les trois cas."
+              "hint": "9 choisit `else` ; 10 et 11 choisissent `if`. Fin du test s’affiche dans les trois cas."
             },
             {
               "id": "strict",
               "text": "Remplace >= par > et reteste 10. Explique ce qui change, puis restaure >=.",
-              "hint": "10 n’est pas strictement supérieur à 10 : avec >, il choisit else."
+              "hint": "10 n’est pas strictement supérieur à 10 : avec >, il choisit `else`."
             },
             {
               "id": "alignement",
@@ -5565,27 +5598,28 @@ window.CODECRAFT_DATA = {
           "id": "saisie",
           "title": "3 - Le choix dépend d’une réponse",
           "paragraphs": [
-            "Enregistre choix.py, puis utilise Enregistrer sous pour créer choix_saisie.py et conserver le modèle à valeur fixe. Dans cette copie, remplace seulement points = 10 par les deux lignes ci-dessous, au début du fichier, sans indentation. Garde ensuite le même if/else et le print final : on modifie seulement l’origine des points.",
-            "Réponds avec un entier écrit en chiffres, sans unité ni décimale. La conversion a lieu avant la comparaison. Une entrée comme dix provoque toujours ValueError : if/else ne protège pas cette conversion.",
+            "Enregistre `choix.py`, puis utilise Enregistrer sous pour créer `choix_saisie.py` et conserver le modèle à valeur fixe. Dans cette copie, remplace seulement points = 10 par les deux lignes ci-dessous, au début du fichier, sans indentation. Garde ensuite le même `if`/`else` et le `print` final : on modifie seulement l’origine des points.",
+            "Réponds avec un entier écrit en chiffres, sans unité ni décimale. La conversion a lieu avant la comparaison. Une entrée comme dix provoque toujours `ValueError` : `if`/`else` ne protège pas cette conversion.",
             "Teste 9, 10 et 11 en relançant pour chaque réponse. Une seule exécution ne prouve pas que les deux branches fonctionnent."
           ],
-          "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)"
+          "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)",
+          "filename": "choix_saisie.py"
         },
         {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ouvrir un coffre",
-          "intro": "Enregistre choix_saisie.py puis crée coffre.py. Conserve tes deux modèles. Le coffre s’ouvre à partir de 5 clés ; essaie sans recopier la décision complète.",
+          "intro": "Enregistre `choix_saisie.py` puis crée `coffre.py`. Conserve tes deux modèles. Le coffre s’ouvre à partir de 5 clés ; essaie sans recopier la décision complète.",
           "items": [
             {
               "id": "coffre-question",
               "text": "Demande un nombre entier de clés, conserve-le comme nombre et affiche Coffre ouvert s’il y en a au moins 5, sinon Pas assez de clés.",
-              "hint": "Après input et int, compare avec >= 5. Chaque branche contient son propre print indenté."
+              "hint": "Après `input` et `int`, compare avec >= 5. Chaque branche contient son propre `print` indenté."
             },
             {
               "id": "coffre-tests",
               "text": "Prédis puis teste 4, 5 et 6. Ajoute un message Fin qui s’affiche toujours après le choix.",
-              "hint": "4 ne suffit pas ; 5 et 6 ouvrent le coffre. Le dernier print doit être aligné avec if, pas avec le print d’une branche."
+              "hint": "4 ne suffit pas ; 5 et 6 ouvrent le coffre. Le dernier `print` doit être aligné avec `if`, pas avec le `print` d’une branche."
             },
             {
               "id": "coffre-modifier",
@@ -5602,7 +5636,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "mot-cle",
               "text": "Dans un nouveau fichier, demande un mot. Affiche Bienvenue si la réponse est exactement étoile, sinon Mot différent. Teste étoile, Etoile et lune.",
-              "hint": "input suffit pour du texte, sans int. Compare la variable à \"étoile\" avec ==. Les majuscules et les accents comptent."
+              "hint": "`input` suffit pour du texte, sans `int`. Compare la variable à \"étoile\" avec ==. Les majuscules et les accents comptent."
             }
           ]
         },
@@ -5615,7 +5649,7 @@ window.CODECRAFT_DATA = {
       ],
       "masteryCriteria": [
         "Distinguer = et ==, et expliquer la frontière de >=.",
-        "Construire un if/else avec deux-points et indentation cohérente.",
+        "Construire un `if`/`else` avec deux-points et indentation cohérente.",
         "Tester les deux branches et la valeur exactement au seuil.",
         "Modifier le seuil et distinguer une instruction de branche d’une instruction exécutée toujours."
       ],
@@ -5645,7 +5679,7 @@ window.CODECRAFT_DATA = {
           "prerequisiteSkills": [
             {
               "skillId": "python.conditions",
-              "expectation": "Construire if/else et tester les deux branches ; sinon reprendre le coffre."
+              "expectation": "Construire `if`/`else` et tester les deux branches ; sinon reprendre le coffre."
             }
           ]
         }
@@ -5765,7 +5799,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.input",
-          "expectation": "Conserver une réponse de input."
+          "expectation": "Conserver une réponse de `input`."
         },
         {
           "skillId": "python.numbers",
@@ -5781,7 +5815,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.conditions",
-          "expectation": "Construire if/else et tester le seuil ; sinon reprendre Faire un choix."
+          "expectation": "Construire `if`/`else` et tester le seuil ; sinon reprendre Faire un choix."
         }
       ],
       "blocks": [
@@ -5789,7 +5823,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir construire un if/else, comparer des nombres et tester les deux branches. Pour la saisie, il faut aussi savoir convertir un entier. Enregistre choix.py et crée possibilites.py sans effacer tes anciens fichiers.",
+          "text": "Il faut savoir construire un `if`/`else`, comparer des nombres et tester les deux branches. Pour la saisie, il faut aussi savoir convertir un entier. Enregistre `choix.py` et crée `possibilites.py` sans effacer tes anciens fichiers.",
           "moduleLink": {
             "moduleId": "python-conditions",
             "text": "Revoir le choix à deux issues"
@@ -5800,31 +5834,37 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Ajouter une autre condition",
           "paragraphs": [
-            "elif signifie sinon si. Si la condition du if est fausse, Python teste celle du elif. Si aucune condition n’est vraie, il exécute else. Les mots if, elif et else sont alignés ; chaque branche commence quatre espaces plus loin et chaque en-tête se termine par deux-points.",
+            "`elif` signifie sinon si. Si la condition du `if` est fausse, Python teste celle du `elif`. Si aucune condition n’est vraie, il exécute `else`. Les mots `if`, `elif` et `else` sont alignés ; chaque branche commence quatre espaces plus loin et chaque en-tête se termine par deux-points.",
             "Python choisit seulement la première condition vraie de cette chaîne. Avec 10 points, les deux comparaisons seraient vraies, mais seule la première branche est exécutée : on lit Grand passage, puis Fin du choix.",
             "Ici, 10 ou plus ouvre le grand passage ; de 5 à 9 ouvre le petit passage ; moins de 5 fait patienter. La dernière ligne non indentée s’exécute dans tous les cas."
           ],
-          "code": "points = 10\nif points >= 10:\n    print(\"Grand passage\")\nelif points >= 5:\n    print(\"Petit passage\")\nelse:\n    print(\"Patienter\")\nprint(\"Fin du choix\")"
+          "code": "points = 10\nif points >= 10:\n    print(\"Grand passage\")\nelif points >= 5:\n    print(\"Petit passage\")\nelse:\n    print(\"Patienter\")\nprint(\"Fin du choix\")",
+          "filename": "possibilites.py",
+          "consoleOutput": "Grand passage\nFin du choix"
         },
         {
           "type": "lesson",
           "id": "ordre",
           "title": "2 - L’ordre change la décision",
           "paragraphs": [
-            "Crée ordre_conditions.py pour ce modèle volontairement mal ordonné. Prédis ce qu’il affiche avec 12, puis exécute-le. Compare le résultat au grand passage attendu pour cette valeur et cherche ce qui empêche de le choisir.",
+            "Crée `ordre_conditions.py` pour ce modèle volontairement mal ordonné. Prédis ce qu’il affiche avec 12, puis exécute-le. Compare le résultat au grand passage attendu pour cette valeur et cherche ce qui empêche de le choisir.",
             "Après ton essai, vérifie si un premier test couvre déjà tous les cas du suivant. L’ordre des seuils n’est pas une règle universelle : il doit correspondre aux issues attendues."
           ],
-          "code": "points = 12\nif points >= 5:\n    print(\"Petit passage\")\nelif points >= 10:\n    print(\"Grand passage\")\nelse:\n    print(\"Patienter\")"
+          "code": "points = 12\nif points >= 5:\n    print(\"Petit passage\")\nelif points >= 10:\n    print(\"Grand passage\")\nelse:\n    print(\"Patienter\")",
+          "filename": "ordre_conditions.py",
+          "consoleOutput": "Petit passage"
         },
         {
           "type": "lesson",
           "id": "independants",
           "title": "3 - Deux if ne font pas une chaîne",
           "paragraphs": [
-            "Crée conditions_independantes.py pour conserver ce troisième modèle. Les deux if sont indépendants. Python teste chacun, même si le premier est vrai. Avec 12, les deux messages s’affichent.",
-            "Choisis une chaîne if/elif/else quand les issues doivent être exclusives. Des if indépendants conviennent lorsque plusieurs actions peuvent se produire ensemble. Le mot else se rattache au if ou à la chaîne qui le précède, pas à tous les if du fichier."
+            "Crée `conditions_independantes.py` pour conserver ce troisième modèle. Les deux `if` sont indépendants. Python teste chacun, même si le premier est vrai. Avec 12, les deux messages s’affichent.",
+            "Choisis une chaîne `if`/`elif`/`else` quand les issues doivent être exclusives. Des `if` indépendants conviennent lorsque plusieurs actions peuvent se produire ensemble. Le mot `else` se rattache au `if` ou à la chaîne qui le précède, pas à tous les `if` du fichier."
           ],
-          "code": "points = 12\nif points >= 10:\n    print(\"Grand passage\")\nif points >= 5:\n    print(\"Petit passage\")"
+          "code": "points = 12\nif points >= 10:\n    print(\"Grand passage\")\nif points >= 5:\n    print(\"Petit passage\")",
+          "filename": "conditions_independantes.py",
+          "consoleOutput": "Grand passage\nPetit passage"
         },
         {
           "type": "tasks",
@@ -5843,8 +5883,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "comparer-if",
-              "text": "Compare le modèle à deux if et la chaîne avec 12. Explique pourquoi l’un affiche deux issues et l’autre une seule.",
-              "hint": "Deux if font deux décisions indépendantes. Dans la chaîne, Python ne choisit que la première condition vraie."
+              "text": "Compare le modèle à deux `if` et la chaîne avec 12. Explique pourquoi l’un affiche deux issues et l’autre une seule.",
+              "hint": "Deux `if` font deux décisions indépendantes. Dans la chaîne, Python ne choisit que la première condition vraie."
             }
           ]
         },
@@ -5853,21 +5893,22 @@ window.CODECRAFT_DATA = {
           "id": "saisie",
           "title": "4 - Choisir avec une réponse",
           "paragraphs": [
-            "Rouvre possibilites.py et utilise Fichier → Enregistrer sous pour créer possibilites_saisie.py. Dans cette copie, remplace points = 10 par ces deux lignes au début du fichier, sans indentation, puis garde la chaîne et le message final. Demande un entier écrit en chiffres, sans unité ni décimale.",
-            "Teste 4, 5, 9 et 10 en répondant dans la console. elif ne protège pas la conversion : une réponse comme dix provoque ValueError avant le choix. Arrête puis relance pour un nouvel essai."
+            "Rouvre `possibilites.py` et utilise Fichier → Enregistrer sous pour créer `possibilites_saisie.py`. Dans cette copie, remplace points = 10 par ces deux lignes au début du fichier, sans indentation, puis garde la chaîne et le message final. Demande un entier écrit en chiffres, sans unité ni décimale.",
+            "Teste 4, 5, 9 et 10 en répondant dans la console. `elif` ne protège pas la conversion : une réponse comme dix provoque `ValueError` avant le choix. Arrête puis relance pour un nouvel essai."
           ],
-          "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)"
+          "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)",
+          "filename": "possibilites_saisie.py"
         },
         {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - trois coffres",
-          "intro": "Enregistre possibilites_saisie.py puis crée coffres.py sans remplacer les autres essais. Écris ta propre décision avant d’ouvrir l’indice.",
+          "intro": "Enregistre `possibilites_saisie.py` puis crée `coffres.py` sans remplacer les autres essais. Écris ta propre décision avant d’ouvrir l’indice.",
           "items": [
             {
               "id": "coffres-regle",
               "text": "Demande un nombre entier de clés. Affiche Coffre doré à partir de 8, Coffre argenté de 3 à 7, sinon Aucun coffre. Une seule issue doit s’afficher.",
-              "hint": "Convertis la réponse, puis teste >= 8 avant >= 3. else couvre les valeurs restantes ; aucun deuxième test de borne n’est nécessaire ici."
+              "hint": "Convertis la réponse, puis teste >= 8 avant >= 3. `else` couvre les valeurs restantes ; aucun deuxième test de borne n’est nécessaire ici."
             },
             {
               "id": "coffres-tests",
@@ -5889,15 +5930,15 @@ window.CODECRAFT_DATA = {
             {
               "id": "quatre-issues",
               "text": "Dans un nouveau fichier, ajoute un coffre de bronze de 1 à 2 clés. Garde argenté à partir de 3, doré à partir de 8 et aucun coffre pour moins de 1. Teste 0, 1, 2, 3, 7 et 8.",
-              "hint": "Une chaîne peut contenir plusieurs elif : ajoute le test >= 1 après >= 3, avant else."
+              "hint": "Une chaîne peut contenir plusieurs `elif` : ajoute le test >= 1 après >= 3, avant `else`."
             }
           ]
         }
       ],
       "masteryCriteria": [
-        "Expliquer le rôle de elif et la sélection de la première condition vraie.",
+        "Expliquer le rôle de `elif` et la sélection de la première condition vraie.",
         "Ordonner des seuils qui se recouvrent et tester les deux frontières.",
-        "Distinguer une chaîne exclusive de plusieurs if indépendants.",
+        "Distinguer une chaîne exclusive de plusieurs `if` indépendants.",
         "Construire une décision personnelle, modifier un seuil et choisir les tests correspondants."
       ],
       "consolidation": [
@@ -6068,7 +6109,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir conserver une réponse textuelle, comparer avec == et construire if/elif/else. Sinon, reprends Plusieurs possibilités. Enregistre tes essais et crée aventure.py sans effacer les autres fichiers. Choisis un univers fictif : aucun renseignement personnel n’est nécessaire.",
+          "text": "Il faut savoir conserver une réponse textuelle, comparer avec == et construire `if`/`elif`/`else`. Sinon, reprends Plusieurs possibilités. Enregistre tes essais et crée `aventure.py` sans effacer les autres fichiers. Choisis un univers fictif : aucun renseignement personnel n’est nécessaire.",
           "moduleLink": {
             "moduleId": "python-elif",
             "text": "Revoir plusieurs issues"
@@ -6089,9 +6130,9 @@ window.CODECRAFT_DATA = {
           "id": "texte",
           "title": "2 - Un choix textuel exact",
           "paragraphs": [
-            "Pour du texte, compare la réponse à un mot entre guillemets avec ==. Ne convertis pas le lieu avec int : ce n’est pas un nombre.",
+            "Pour du texte, compare la réponse à un mot entre guillemets avec ==. Ne convertis pas le lieu avec `int` : ce n’est pas un nombre.",
             "La comparaison est exacte : tour, Tour et tour suivi d’un espace sont trois textes différents. Écris les mots acceptés dans la question pour guider la saisie. Ce projet ne corrige pas automatiquement les majuscules ou les espaces.",
-            "Tu peux ajouter deux elif après le premier if, puis un else pour le mot inconnu. Comme dans le module précédent, les en-têtes sont alignés et les messages de branche sont indentés."
+            "Tu peux ajouter deux `elif` après le premier `if`, puis un `else` pour le mot inconnu. Comme dans le module précédent, les en-têtes sont alignés et les messages de branche sont indentés."
           ]
         },
         {
@@ -6102,17 +6143,17 @@ window.CODECRAFT_DATA = {
             {
               "id": "une-question",
               "text": "Affiche un accueil et demande un lieu en annonçant tour comme choix accepté. Conserve la réponse dans une variable.",
-              "hint": "Utilise print pour l’accueil, puis une variable affectée au résultat de input. Ne mets pas la réponse dans le fichier."
+              "hint": "Utilise `print` pour l’accueil, puis une variable affectée au résultat de `input`. Ne mets pas la réponse dans le fichier."
             },
             {
               "id": "une-issue",
-              "text": "Avec if/else, affiche un événement si la réponse est exactement tour, sinon un message indiquant que le lieu est inconnu.",
-              "hint": "Compare ta variable à \"tour\" avec ==. Le else ne doit pas faire entrer dans un lieu non choisi."
+              "text": "Avec `if`/`else`, affiche un événement si la réponse est exactement tour, sinon un message indiquant que le lieu est inconnu.",
+              "hint": "Compare ta variable à \"tour\" avec ==. Le `else` ne doit pas faire entrer dans un lieu non choisi."
             },
             {
               "id": "deux-essais",
               "text": "Prédis puis teste tour et lune. Explique quelle branche a été choisie.",
-              "hint": "Un essai reconnaît le lieu ; l’autre utilise else. Relance pour chaque réponse."
+              "hint": "Un essai reconnaît le lieu ; l’autre utilise `else`. Relance pour chaque réponse."
             }
           ]
         },
@@ -6120,22 +6161,22 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "3 - Construis ton aventure",
-          "intro": "Enregistre le premier essai, puis crée mon_aventure.py pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.",
+          "intro": "Enregistre le premier essai, puis crée `mon_aventure.py` pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.",
           "items": [
             {
               "id": "accueil-pseudo",
               "text": "Affiche un accueil, demande un pseudo fictif et réutilise-le dans un message. Garde cette réponse distincte du choix de destination.",
-              "hint": "Deux informations nécessitent deux noms de variables différents. print peut afficher un texte et une variable séparés par une virgule."
+              "hint": "Deux informations nécessitent deux noms de variables différents. `print` peut afficher un texte et une variable séparés par une virgule."
             },
             {
               "id": "trois-lieux",
-              "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne if/elif/elif/else : un événement propre à chaque lieu, puis un message utile pour tout autre mot.",
-              "hint": "Trois comparaisons exactes avec == ; else conseille les mots acceptés. Une seule issue doit s’afficher par essai."
+              "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne `if`/`elif`/`elif`/`else` : un événement propre à chaque lieu, puis un message utile pour tout autre mot.",
+              "hint": "Trois comparaisons exactes avec == ; `else` conseille les mots acceptés. Une seule issue doit s’afficher par essai."
             },
             {
               "id": "fin-commune",
               "text": "Ajoute un message de fin qui s’affiche après le choix, quelle que soit la destination.",
-              "hint": "Aligne ce print avec if, pas avec les messages des branches."
+              "hint": "Aligne ce `print` avec `if`, pas avec les messages des branches."
             }
           ]
         },
@@ -6156,8 +6197,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "modifier-route",
-              "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par else. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.",
-              "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de else doit annoncer les choix à jour, sans l’ancien mot."
+              "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par `else`. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.",
+              "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de `else` doit annoncer les choix à jour, sans l’ancien mot."
             },
             {
               "id": "retrouver-projet",
@@ -6173,8 +6214,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "quatrieme-lieu",
-              "text": "Ajoute une quatrième destination annoncée dans la question et une branche elif avant else. Teste les quatre destinations et un mot inconnu.",
-              "hint": "Garde else en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire."
+              "text": "Ajoute une quatrième destination annoncée dans la question et une branche `elif` avant `else`. Teste les quatre destinations et un mot inconnu.",
+              "hint": "Garde `else` en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire."
             }
           ]
         },
@@ -6332,7 +6373,7 @@ window.CODECRAFT_DATA = {
       "title": "Répéter un nombre de fois",
       "type": "lesson",
       "theme": "fondations",
-      "objective": "Construire une répétition avec for/range et prévoir ses passages.",
+      "objective": "Construire une répétition avec `for`/`range` et prévoir ses passages.",
       "prerequisitesInContent": true,
       "tool": {
         "label": "Site officiel de Thonny",
@@ -6364,7 +6405,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir afficher, réutiliser une variable et repérer un bloc indenté. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée repetitions.py sans les effacer. Commence avec un nombre de tours fixe.",
+          "text": "Il faut savoir afficher, réutiliser une variable et repérer un bloc indenté. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée `repetitions.py` sans les effacer. Commence avec un nombre de tours fixe.",
           "moduleLink": {
             "moduleId": "python-conditions",
             "text": "Revoir les blocs indentés"
@@ -6375,22 +6416,26 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Une action répétée",
           "paragraphs": [
-            "Au lieu d’écrire trois print identiques, for répète un bloc. for tour in range(3) signifie ici : pour chaque valeur fournie par range(3), exécuter les instructions indentées.",
-            "tour est un nom de variable : for lui affecte successivement les valeurs fournies. in relie ce nom à la suite parcourue. Garde les deux-points et quatre espaces devant les instructions du bloc.",
-            "Prédis combien de Bonjour ! et de Fin s’afficheront. Le print de Fin, non indenté, vient après la boucle."
+            "Au lieu d’écrire trois `print` identiques, `for` répète un bloc. `for` tour in `range(3)` signifie ici : pour chaque valeur fournie par `range(3)`, exécuter les instructions indentées.",
+            "tour est un nom de variable : `for` lui affecte successivement les valeurs fournies. in relie ce nom à la suite parcourue. Garde les deux-points et quatre espaces devant les instructions du bloc.",
+            "Prédis combien de Bonjour ! et de Fin s’afficheront. Le `print` de Fin, non indenté, vient après la boucle."
           ],
-          "code": "for tour in range(3):\n    print(\"Bonjour !\")\nprint(\"Fin\")"
+          "code": "for tour in range(3):\n    print(\"Bonjour !\")\nprint(\"Fin\")",
+          "filename": "repetitions.py",
+          "consoleOutput": "Bonjour !\nBonjour !\nBonjour !\nFin"
         },
         {
           "type": "lesson",
           "id": "valeurs",
           "title": "2 - Les valeurs de tour",
           "paragraphs": [
-            "Enregistre repetitions.py puis crée tours.py pour ce modèle. range(3) fournit 0, 1, 2 : trois valeurs, en commençant par 0. La borne 3 est exclue.",
-            "Exécute, puis remplace range(3) par range(1, 4). Prédis les valeurs : elles vont de 1 à 3, pas jusqu’à 4. La première borne est le début ; la seconde est la fin exclue.",
-            "range n’est pas une liste. Ici, for parcourt une suite de nombres ; plus tard, il pourra parcourir d’autres éléments. Pas besoin d’une liste pour ces essais."
+            "Enregistre `repetitions.py` puis crée `tours.py` pour ce modèle. `range(3)` fournit 0, 1, 2 : trois valeurs, en commençant par 0. La borne 3 est exclue.",
+            "Exécute, puis remplace `range(3)` par `range(1, 4)`. Prédis les valeurs : elles vont de 1 à 3, pas jusqu’à 4. La première borne est le début ; la seconde est la fin exclue.",
+            "`range` n’est pas une liste. Ici, `for` parcourt une suite de nombres ; plus tard, il pourra parcourir d’autres éléments. Pas besoin d’une liste pour ces essais."
           ],
-          "code": "for tour in range(3):\n    print(\"Tour\", tour)\nprint(\"Fin\")"
+          "code": "for tour in range(3):\n    print(\"Tour\", tour)\nprint(\"Fin\")",
+          "filename": "tours.py",
+          "consoleOutput": "Tour 0\nTour 1\nTour 2\nFin"
         },
         {
           "type": "tasks",
@@ -6399,17 +6444,17 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "passages",
-              "text": "Dans repetitions.py, prédis puis teste range(1), range(3) et range(0). Vérifie aussi le message après la boucle.",
+              "text": "Dans `repetitions.py`, prédis puis teste `range(1)`, `range(3)` et `range(0)`. Vérifie aussi le message après la boucle.",
               "hint": "Un, trois puis zéro Bonjour ! ; Fin s’affiche une seule fois dans les trois essais."
             },
             {
               "id": "bornes",
-              "text": "Dans tours.py, compare range(1, 4), range(1, 5) et range(1, 1). Prédis les valeurs et le nombre de passages avant chaque essai.",
+              "text": "Dans `tours.py`, compare `range(1, 4)`, `range(1, 5)` et `range(1, 1)`. Prédis les valeurs et le nombre de passages avant chaque essai.",
               "hint": "1 à 3, puis 1 à 4, puis aucun tour : la borne de fin est exclue. Fin reste affiché."
             },
             {
               "id": "bloc",
-              "text": "Rouvre repetitions.py et rétablis range(3). Place provisoirement le print de Fin dans le bloc. Prédis la différence avec trois tours, teste, puis remets-le après la boucle.",
+              "text": "Rouvre `repetitions.py` et rétablis `range(3)`. Place provisoirement le `print` de Fin dans le bloc. Prédis la différence avec trois tours, teste, puis remets-le après la boucle.",
               "hint": "Dans le bloc, Fin se répète à chaque tour ; hors du bloc, il s’affiche une seule fois."
             }
           ]
@@ -6418,12 +6463,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ton parcours de tours",
-          "intro": "Enregistre repetitions.py et tours.py, puis crée parcours_tours.py. Conserve les exemples ; essaie avant les indices.",
+          "intro": "Enregistre `repetitions.py` et `tours.py`, puis crée `parcours_tours.py`. Conserve les exemples ; essaie avant les indices.",
           "items": [
             {
               "id": "tours-personnels",
               "text": "Affiche les tours de 1 à 4 avec un message de ton choix à chaque tour, puis un seul message de fin. Essaie sans recopier le modèle complet.",
-              "hint": "Avec range à deux bornes, la première valeur est incluse et la dernière borne est exclue. Affiche la variable sans guillemets autour de son nom."
+              "hint": "Avec `range` à deux bornes, la première valeur est incluse et la dernière borne est exclue. Affiche la variable sans guillemets autour de son nom."
             },
             {
               "id": "changer-tours",
@@ -6432,8 +6477,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "aucun-tour",
-              "text": "Enregistre ton programme, puis crée parcours_vide.py avec Enregistrer sous. Modifie les bornes pour n’avoir aucun tour. Prédis puis teste le message final ; rouvre ensuite le premier fichier.",
-              "hint": "Deux bornes égales ne donnent aucun passage. Un print hors du bloc doit encore s’exécuter."
+              "text": "Enregistre ton programme, puis crée `parcours_vide.py` avec Enregistrer sous. Modifie les bornes pour n’avoir aucun tour. Prédis puis teste le message final ; rouvre ensuite le premier fichier.",
+              "hint": "Deux bornes égales ne donnent aucun passage. Un `print` hors du bloc doit encore s’exécuter."
             }
           ]
         },
@@ -6444,14 +6489,14 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "nombre-saisi",
-              "text": "Dans repetitions_saisie.py, demande un entier de 0 à 6, conserve la réponse puis convertis-la avec int en deux lignes. Utilise le nombre pour répéter ton message. Teste 0, 1 et 4.",
-              "hint": "range peut recevoir la variable numérique. Ce programme ne contrôle pas le domaine 0 à 6 ; une saisie non convertible provoque toujours ValueError. Pas de gestion d’erreur à ajouter."
+              "text": "Dans `repetitions_saisie.py`, demande un entier de 0 à 6, conserve la réponse puis convertis-la avec `int` en deux lignes. Utilise le nombre pour répéter ton message. Teste 0, 1 et 4.",
+              "hint": "`range` peut recevoir la variable numérique. Ce programme ne contrôle pas le domaine 0 à 6 ; une saisie non convertible provoque toujours `ValueError`. Pas de gestion d’erreur à ajouter."
             }
           ]
         }
       ],
       "masteryCriteria": [
-        "Prévoir les valeurs de range à une ou deux bornes et distinguer fin exclue et dernière valeur.",
+        "Prévoir les valeurs de `range` à une ou deux bornes et distinguer fin exclue et dernière valeur.",
         "Construire une répétition personnelle puis modifier son nombre de tours.",
         "Expliquer les instructions dans le bloc et après, même sans passage.",
         "Conserver les variantes et distinguer reproduction, explication et modification autonome."
@@ -6622,7 +6667,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir comparer, répondre à input et repérer un bloc répété. Pour le modèle numérique, il faut aussi savoir additionner 1. Enregistre tes essais puis crée encore.py. Avant de lancer, repère Arrêter / redémarrer : interromps un programme qui ne finit pas avant de le modifier.",
+          "text": "Il faut savoir comparer, répondre à `input` et repérer un bloc répété. Pour le modèle numérique, il faut aussi savoir additionner 1. Enregistre tes essais puis crée `encore.py`. Avant de lancer, repère Arrêter / redémarrer : interromps un programme qui ne finit pas avant de le modifier.",
           "moduleLink": {
             "moduleId": "python-for",
             "text": "Revoir une répétition connue"
@@ -6633,11 +6678,12 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Tester avant chaque passage",
           "paragraphs": [
-            "while signifie tant que. Avant chaque passage, Python teste la condition : si elle est vraie, il exécute le bloc ; sinon, il continue après la boucle. Contrairement à if, il revient tester après le bloc.",
-            "La première question donne une valeur à reponse avant le premier test. Dans le bloc, une nouvelle question actualise cette valeur : le test suivant peut alors devenir faux.",
+            "`while` signifie tant que. Avant chaque passage, Python teste la condition : si elle est vraie, il exécute le bloc ; sinon, il continue après la boucle. Contrairement à `if`, il revient tester après le bloc.",
+            "La première question donne une valeur à `reponse` avant le premier test. Dans le bloc, une nouvelle question actualise cette valeur : le test suivant peut alors devenir faux.",
             "Ici, seul oui permet un tour. Tout autre texte arrête, même Oui ou oui suivi d’un espace. Ce n’est pas une correction automatique des réponses ; un premier non donne zéro passage."
           ],
-          "code": "reponse = input(\"Continuer ? oui pour continuer : \")\nwhile reponse == \"oui\":\n    print(\"Un nouveau tour\")\n    reponse = input(\"Continuer ? oui pour continuer : \")\nprint(\"Fin\")"
+          "code": "reponse = input(\"Continuer ? oui pour continuer : \")\nwhile reponse == \"oui\":\n    print(\"Un nouveau tour\")\n    reponse = input(\"Continuer ? oui pour continuer : \")\nprint(\"Fin\")",
+          "filename": "encore.py"
         },
         {
           "type": "tasks",
@@ -6652,12 +6698,12 @@ window.CODECRAFT_DATA = {
             {
               "id": "plusieurs-tours",
               "text": "Relance avec oui puis non, puis avec oui, oui, non. Annonce le nombre de tours avant chaque essai et repère la nouvelle saisie.",
-              "hint": "Un puis deux tours. La question du bloc actualise reponse avant le prochain test."
+              "hint": "Un puis deux tours. La question du bloc actualise `reponse` avant le prochain test."
             },
             {
               "id": "sans-mise-a-jour",
               "text": "Sans exécuter une version incorrecte, imagine que la nouvelle saisie du bloc est supprimée. Avec un premier oui, explique pourquoi la condition resterait vraie.",
-              "hint": "reponse garderait oui. Arrêter / redémarrer interrompt une répétition involontaire ; l’absence de nouvelle saisie n’est pas à tester en lançant cette panne."
+              "hint": "`reponse` garderait oui. Arrêter / redémarrer interrompt une répétition involontaire ; l’absence de nouvelle saisie n’est pas à tester en lançant cette panne."
             }
           ]
         },
@@ -6666,22 +6712,24 @@ window.CODECRAFT_DATA = {
           "id": "numerique",
           "title": "2 - Faire évoluer une valeur",
           "paragraphs": [
-            "Enregistre encore.py puis crée while_tours.py. tour commence à 1 ; tant que tour \u003c 4, on l’affiche puis on l’augmente.",
+            "Enregistre `encore.py` puis crée `while_tours.py`. tour commence à 1 ; tant que tour \u003c 4, on l’affiche puis on l’augmente.",
             "Dans tour = tour + 1, Python lit l’ancienne valeur à droite, ajoute 1, puis conserve le résultat sous le même nom. Ce n’est pas une égalité mathématique. La mise à jour dans le bloc permet d’atteindre l’arrêt.",
             "Prédis puis teste : 1, 2, 3 puis Fin. Avec tour initialisé à 4 ou 5, il n’y a aucun passage. Restaure ensuite tour = 1."
           ],
-          "code": "tour = 1\nwhile tour \u003c 4:\n    print(\"Tour\", tour)\n    tour = tour + 1\nprint(\"Fin\")"
+          "code": "tour = 1\nwhile tour \u003c 4:\n    print(\"Tour\", tour)\n    tour = tour + 1\nprint(\"Fin\")",
+          "filename": "while_tours.py",
+          "consoleOutput": "Tour 1\nTour 2\nTour 3\nFin"
         },
         {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - choisir la continuation",
-          "intro": "Enregistre encore.py et while_tours.py puis crée repetition_personnelle.py. Essaie avant les indices ; garde les modèles.",
+          "intro": "Enregistre `encore.py` et `while_tours.py` puis crée `repetition_personnelle.py`. Essaie avant les indices ; garde les modèles.",
           "items": [
             {
               "id": "mot-personnel",
               "text": "Choisis ton mot de continuation et un message personnel. Pose une première question, répète le message tant que la réponse correspond au mot, puis redemande à chaque passage.",
-              "hint": "Initialise la réponse avant while ; actualise-la dans le bloc. Le print final reste hors de la boucle."
+              "hint": "Initialise la réponse avant `while` ; actualise-la dans le bloc. Le `print` final reste hors de la boucle."
             },
             {
               "id": "tests-personnels",
@@ -6695,7 +6743,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "borne-personnelle",
-              "text": "Enregistre ton fichier. Rouvre while_tours.py puis crée borne_personnelle.py avec Enregistrer sous. Garde tour = 1, choisis une autre borne pour produire cinq tours et prédis la dernière valeur. Teste aussi un départ exactement à ta borne puis au-dessus.",
+              "text": "Enregistre ton fichier. Rouvre `while_tours.py` puis crée `borne_personnelle.py` avec Enregistrer sous. Garde tour = 1, choisis une autre borne pour produire cinq tours et prédis la dernière valeur. Teste aussi un départ exactement à ta borne puis au-dessus.",
               "hint": "La borne doit être 6 pour afficher 1 à 5. Avec un départ à 6 ou à 7, aucun tour ; Fin s’affiche. Vérifie que l’addition de 1 reste dans le bloc."
             }
           ]
@@ -6717,7 +6765,7 @@ window.CODECRAFT_DATA = {
         "Expliquer le test préalable et répété, y compris zéro passage.",
         "Construire une répétition textuelle avec saisie actualisée et arrêt vérifié.",
         "Modifier une borne numérique et tester départ inférieur, égal et supérieur.",
-        "Expliquer le rôle de la mise à jour et distinguer attente de input et répétition sans fin."
+        "Expliquer le rôle de la mise à jour et distinguer attente de `input` et répétition sans fin."
       ],
       "consolidation": [
         {
@@ -6903,7 +6951,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir additionner, utiliser for/range et comparer une réponse textuelle. Prédis points = 2 puis points = points + 3 : on obtient 5. Sinon, reprends l’addition. Enregistre tes essais et crée total.py. while et la conversion ne sont pas nécessaires au socle de ce module.",
+          "text": "Il faut savoir additionner, utiliser `for`/`range` et comparer une réponse textuelle. Prédis points = 2 puis points = points + 3 : on obtient 5. Sinon, reprends l’addition. Enregistre tes essais et crée `total.py`. `while` et la conversion ne sont pas nécessaires au socle de ce module.",
           "moduleLink": {
             "moduleId": "python-calculs",
             "text": "Revoir nombre et addition"
@@ -6915,31 +6963,36 @@ window.CODECRAFT_DATA = {
           "title": "1 - Garder le total entre les tours",
           "paragraphs": [
             "score = 0 initialise la valeur avant la boucle, une seule fois. À chaque passage, score = score + 2 lit l’ancienne valeur, ajoute 2 et conserve le nouveau résultat.",
-            "Les valeurs après les passages sont 2, 4, 6, 8. Prédis le bilan. Le print après la boucle affiche le résultat final une seule fois.",
-            "Pour observer les valeurs, ajoute provisoirement print(score) après la mise à jour dans le bloc ; teste puis retire cet affichage. score = 2 remplacerait toujours la valeur par 2, sans accumuler."
+            "Les valeurs après les passages sont 2, 4, 6, 8. Prédis le bilan. Le `print` après la boucle affiche le résultat final une seule fois.",
+            "Pour observer les valeurs, ajoute provisoirement `print(score)` après la mise à jour dans le bloc ; teste puis retire cet affichage. score = 2 remplacerait toujours la valeur par 2, sans accumuler."
           ],
-          "code": "score = 0\nfor tour in range(4):\n    score = score + 2\nprint(\"Score :\", score)"
+          "code": "score = 0\nfor tour in range(4):\n    score = score + 2\nprint(\"Score :\", score)",
+          "filename": "total.py",
+          "consoleOutput": "Score : 8"
         },
         {
           "type": "lesson",
           "id": "compteur",
           "title": "2 - Compter des événements",
           "paragraphs": [
-            "Enregistre total.py puis crée compteur.py. Ici, une augmentation de 1 compte les passages. Dans le modèle précédent, une augmentation de 2 additionnait les gains.",
+            "Enregistre `total.py` puis crée `compteur.py`. Ici, une augmentation de 1 compte les passages. Dans le modèle précédent, une augmentation de 2 additionnait les gains.",
             "Compteur et score sont ici deux usages de variables numériques, pas deux types différents de Python. L’initialisation reste avant la boucle ; le bilan vient après."
           ],
-          "code": "passages = 0\nfor tour in range(3):\n    passages = passages + 1\nprint(\"Passages :\", passages)"
+          "code": "passages = 0\nfor tour in range(3):\n    passages = passages + 1\nprint(\"Passages :\", passages)",
+          "filename": "compteur.py",
+          "consoleOutput": "Passages : 3"
         },
         {
           "type": "lesson",
           "id": "branche",
           "title": "3 - Une décision dans chaque tour",
           "paragraphs": [
-            "Enregistre compteur.py puis crée decisions.py. Un if peut se trouver dans un for : à chaque tour, la question est posée puis sa réponse est comparée.",
-            "Les instructions du tour ont quatre espaces. L’instruction de la branche en a huit : elle appartient au if, lui-même dans le for. Fin n’a pas d’espace au début et vient après tous les tours. Ce n’est pas une boucle à l’intérieur d’une boucle.",
+            "Enregistre `compteur.py` puis crée `decisions.py`. Un `if` peut se trouver dans un `for` : à chaque tour, la question est posée puis sa réponse est comparée.",
+            "Les instructions du tour ont quatre espaces. L’instruction de la branche en a huit : elle appartient au `if`, lui-même dans le `for`. Fin n’a pas d’espace au début et vient après tous les tours. Ce n’est pas une boucle à l’`int`érieur d’une boucle.",
             "Teste oui, non, oui. On lit deux Trouvé puis une seule Fin ; un tour sans oui a bien lieu mais ne produit pas Trouvé. La comparaison textuelle reste exacte."
           ],
-          "code": "for tour in range(3):\n    reponse = input(\"Objet trouvé ? oui pour confirmer : \")\n    if reponse == \"oui\":\n        print(\"Trouvé\")\nprint(\"Fin\")"
+          "code": "for tour in range(3):\n    reponse = input(\"Objet trouvé ? oui pour confirmer : \")\n    if reponse == \"oui\":\n        print(\"Trouvé\")\nprint(\"Fin\")",
+          "filename": "decisions.py"
         },
         {
           "type": "tasks",
@@ -6948,12 +7001,12 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "total-valeurs",
-              "text": "Dans total.py, prédis puis teste le total après quatre gains de 2. Remplace provisoirement score = score + 2 par score = 2, compare les résultats puis restaure l’accumulation.",
+              "text": "Dans `total.py`, prédis puis teste le total après quatre gains de 2. Remplace provisoirement score = score + 2 par score = 2, compare les résultats puis restaure l’accumulation.",
               "hint": "Le total devient 8 avec l’accumulation, mais reste 2 avec l’affectation constante."
             },
             {
               "id": "compter-reussites",
-              "text": "Enregistre decisions.py puis crée collecte.py avec Enregistrer sous. Ajoute une variable reussites initialisée à 0 avant for. Augmente-la de 1 seulement pour oui, puis affiche son bilan après les trois tours.",
+              "text": "Enregistre `decisions.py` puis crée `collecte.py` avec Enregistrer sous. Ajoute une variable reussites initialisée à 0 avant `for`. Augmente-la de 1 seulement pour oui, puis affiche son bilan après les trois tours.",
               "hint": "Place la mise à jour dans la branche à huit espaces. L’initialisation et le bilan ne sont pas dans le bloc."
             },
             {
@@ -6963,7 +7016,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "ajouter-score",
-              "text": "Enregistre collecte.py puis crée collecte_score.py avec Enregistrer sous. Garde le compteur de réussites et ajoute un score initialisé à 0, augmenté de 2 seulement lors d’une réussite. Reteste la séquence mixte.",
+              "text": "Enregistre `collecte.py` puis crée `collecte_score.py` avec Enregistrer sous. Garde le compteur de réussites et ajoute un score initialisé à 0, augmenté de 2 seulement lors d’une réussite. Reteste la séquence mixte.",
               "hint": "Deux variables suffisent : réussites et score. Pour oui, non, oui, attends 2 réussites et 4 points ; pas besoin d’un compteur de tous les tours."
             }
           ]
@@ -6972,12 +7025,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ton score",
-          "intro": "Enregistre collecte.py et collecte_score.py, puis crée mon_score.py. Choisis tes messages et ton mot accepté ; essaie sans recopier la solution complète.",
+          "intro": "Enregistre `collecte.py` et `collecte_score.py`, puis crée `mon_score.py`. Choisis tes messages et ton mot accepté ; essaie sans recopier la solution complète.",
           "items": [
             {
               "id": "score-personnel",
               "text": "Prévois quatre tours avec une question personnelle annonçant un mot accepté. Compte les réponses qui correspondent et donne 3 points à chacune ; tout autre texte rapporte zéro. Affiche réussites et score après la boucle.",
-              "hint": "Initialise les deux valeurs avant for ; actualise-les dans la branche concernée. input donne du texte : aucune conversion nécessaire."
+              "hint": "Initialise les deux valeurs avant `for` ; actualise-les dans la branche concernée. `input` donne du texte : aucune conversion nécessaire."
             },
             {
               "id": "tests-score",
@@ -6991,7 +7044,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retrouver-score",
-              "text": "Enregistre, ferme puis rouvre mon_score.py. Relance dans un état propre et explique les lignes à zéro, quatre et huit espaces.",
+              "text": "Enregistre, ferme puis rouvre `mon_score.py`. Relance dans un état propre et explique les lignes à zéro, quatre et huit espaces.",
               "hint": "Le fichier doit définir lui-même ses variables. Arrêter / redémarrer avant la relance permet de vérifier qu’un ancien essai ne cachait pas un oubli."
             }
           ]
@@ -7003,8 +7056,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "score-while",
-              "text": "Dans score_while.py, réutilise la continuation textuelle du module Répéter tant que. Compte les tours acceptés et ajoute 2 points par accord. Prédis puis teste un arrêt immédiat et deux accords suivis d’un arrêt.",
-              "hint": "Reprends python-while si nécessaire. Initialise les valeurs avant la boucle, actualise-les dans le bloc et redemande la réponse. Attends 0 tour/0 point puis 2 tours/4 points."
+              "text": "Dans `score_while.py`, réutilise la continuation textuelle du module Répéter tant que. Compte les tours acceptés et ajoute 2 points par accord. Prédis puis teste un arrêt immédiat et deux accords suivis d’un arrêt.",
+              "hint": "Reprends python-`while` si nécessaire. Initialise les valeurs avant la boucle, actualise-les dans le bloc et redemande la réponse. Attends 0 tour/0 point puis 2 tours/4 points."
             }
           ]
         }
@@ -7193,7 +7246,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Enregistre tes essais précédents et crée fonctions.py dans Thonny, sans les remplacer. Il faut pouvoir expliquer un affichage et une variable ; sinon, reprends Variables et valeurs. Fais évoluer ce fichier pendant la découverte et les essais guidés.",
+          "text": "Enregistre tes essais précédents et crée `fonctions.py` dans Thonny, sans les remplacer. Il faut pouvoir expliquer un affichage et une variable ; sinon, reprends Variables et valeurs. Fais évoluer ce fichier pendant la découverte et les essais guidés.",
           "moduleLink": {
             "moduleId": "python-variables",
             "text": "Variables et valeurs"
@@ -7204,43 +7257,49 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Définir n'est pas appeler",
           "paragraphs": [
-            "def définit un bloc réutilisable. annoncer est le nom choisi ; les parenthèses sont vides ici, les deux-points annoncent le corps indenté. Les deux instructions du corps ne s'exécutent pas au moment où cette définition est rencontrée.",
-            "annoncer() appelle la fonction : ses deux messages s'affichent dans l'ordre, puis le programme reprend après l'appel. Ici, Préparation s'affiche avant ces messages, puis Fin. Les lignes non indentées sont hors du corps.",
+            "`def` définit un bloc réutilisable. annoncer est le nom choisi ; les parenthèses sont vides ici, les deux-points annoncent le corps indenté. Les deux instructions du corps ne s'exécutent pas au moment où cette définition est rencontrée.",
+            "`annoncer()` appelle la fonction : ses deux messages s'affichent dans l'ordre, puis le programme reprend après l'appel. Ici, Préparation s'affiche avant ces messages, puis Fin. Les lignes non indentées sont hors du corps.",
             "Prévois les affichages, puis ajoute un second appel avant Fin : les deux instructions sont réutilisées sans les recopier. Change ensuite un message dans le corps et vérifie qu'il change lors des deux appels.",
             "Retire provisoirement les appels, sans supprimer la définition : les messages du corps ne s'affichent plus. Restaure ensuite un appel. Relance toujours le fichier entier, avec la définition avant son premier appel."
           ],
-          "code": "def annoncer():\n    print(\"Prépare ton matériel\")\n    print(\"Départ de la visite\")\n\nprint(\"Préparation\")\nannoncer()\nprint(\"Fin\")"
+          "code": "def annoncer():\n    print(\"Prépare ton matériel\")\n    print(\"Départ de la visite\")\n\nprint(\"Préparation\")\nannoncer()\nprint(\"Fin\")",
+          "filename": "fonctions.py",
+          "consoleOutput": "Préparation\nPrépare ton matériel\nDépart de la visite\nFin"
         },
         {
           "type": "lesson",
           "id": "parametre",
           "title": "2 - Une valeur différente à chaque appel",
           "paragraphs": [
-            "Dans fonctions.py, remplace la version précédente par ce modèle après avoir terminé ses essais. nom est un paramètre : il reçoit la valeur fournie entre les parenthèses à chaque appel. Dans saluer(\"Nova\"), \"Nova\" est l'argument ; ce n'est pas le nom du paramètre.",
+            "Dans `fonctions.py`, remplace la version précédente par ce modèle après avoir terminé ses essais. nom est un paramètre : il reçoit la valeur fournie entre les parenthèses à chaque appel. Dans `saluer(\"Nova\")`, \"Nova\" est l'argument ; ce n'est pas le nom du paramètre.",
             "Le corps est écrit une seule fois mais s'exécute deux fois avec des valeurs différentes. Modifier un argument ne demande pas de recopier ou de modifier le corps."
           ],
-          "code": "def saluer(nom):\n    print(\"Bonjour\", nom)\n\nsaluer(\"Nova\")\nsaluer(\"Orion\")"
+          "code": "def saluer(nom):\n    print(\"Bonjour\", nom)\n\nsaluer(\"Nova\")\nsaluer(\"Orion\")",
+          "filename": "fonctions.py",
+          "consoleOutput": "Bonjour Nova\nBonjour Orion"
         },
         {
           "type": "lesson",
           "id": "deux-parametres",
           "title": "3 - Deux paramètres, un ordre",
           "paragraphs": [
-            "Fais évoluer fonctions.py vers ce modèle. Les virgules séparent les deux paramètres puis les deux arguments. Le premier argument donne nom, le second donne role ; l'ordre compte.",
-            "Prévois les deux phrases. Inverse provisoirement les arguments du premier appel, explique le résultat puis restaure leur ordre. Un argument manquant ou en trop provoque ici TypeError ; corrige l'appel, pas le nombre de messages."
+            "Fais évoluer `fonctions.py` vers ce modèle. Les virgules séparent les deux paramètres puis les deux arguments. Le premier argument donne nom, le second donne role ; l'ordre compte.",
+            "Prévois les deux phrases. Inverse provisoirement les arguments du premier appel, explique le résultat puis restaure leur ordre. Un argument manquant ou en trop provoque ici `TypeError` ; corrige l'appel, pas le nombre de messages."
           ],
-          "code": "def presenter(nom, role):\n    print(nom, \"est\", role)\n\npresenter(\"Nova\", \"pilote\")\npresenter(\"Orion\", \"guide\")"
+          "code": "def presenter(nom, role):\n    print(nom, \"est\", role)\n\npresenter(\"Nova\", \"pilote\")\npresenter(\"Orion\", \"guide\")",
+          "filename": "fonctions.py",
+          "consoleOutput": "Nova est pilote\nOrion est guide"
         },
         {
           "type": "tasks",
           "id": "guide",
           "title": "Vérifie tes appels",
-          "intro": "Continue avec presenter dans fonctions.py. Garde seulement le diagnostic incorrect dans une copie.",
+          "intro": "Continue avec presenter dans `fonctions.py`. Garde seulement le diagnostic incorrect dans une copie.",
           "items": [
             {
               "id": "double-appel",
               "text": "Ajoute un troisième appel de presenter avec un autre nom et un autre rôle. Prévois les trois phrases puis explique pourquoi le corps est exécuté trois fois.",
-              "hint": "Trois appels séparés, pas trois copies du print du corps."
+              "hint": "Trois appels séparés, pas trois copies du `print` du corps."
             },
             {
               "id": "changer-argument",
@@ -7249,7 +7308,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "argument-manquant",
-              "text": "Enregistre fonctions.py puis crée diagnostic_appel.py avec Enregistrer sous. Enlève le second argument du premier appel de presenter. Lis TypeError, corrige puis relance le fichier entier.",
+              "text": "Enregistre `fonctions.py` puis crée `diagnostic_appel.py` avec Enregistrer sous. Enlève le second argument du premier appel de presenter. Lis `TypeError`, corrige puis relance le fichier entier.",
               "hint": "L'appel doit fournir deux arguments dans ce modèle."
             }
           ]
@@ -7258,7 +7317,7 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - une fonction personnelle",
-          "intro": "Crée ma_presentation.py avec des noms et rôles fictifs. Essaie sans recopier le modèle entier.",
+          "intro": "Crée `ma_presentation.py` avec des noms et rôles fictifs. Essaie sans recopier le modèle entier.",
           "items": [
             {
               "id": "fonction-personnelle",
@@ -7281,12 +7340,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "bonus",
           "title": "Bonus - appeler pendant un parcours",
-          "intro": "Seulement si listes et for sont compris ; garde la version précédente.",
+          "intro": "Seulement si listes et `for` sont compris ; garde la version précédente.",
           "items": [
             {
               "id": "parcours-fonction",
-              "text": "Dans une copie, reprends la petite fonction saluer de la découverte. Définis une liste de trois noms fictifs et parcours-la avec for pour appeler saluer sur chaque valeur. Explique où sont la définition, la boucle et les appels.",
-              "hint": "La définition est avant la boucle ; l'appel est dans le bloc for."
+              "text": "Dans une copie, reprends la petite fonction saluer de la découverte. Définis une liste de trois noms fictifs et parcours-la avec `for` pour appeler saluer sur chaque valeur. Explique où sont la définition, la boucle et les appels.",
+              "hint": "La définition est avant la boucle ; l'appel est dans le bloc `for`."
             }
           ]
         }
@@ -7317,7 +7376,7 @@ window.CODECRAFT_DATA = {
           "prerequisiteSkills": [
             {
               "skillId": "python.for",
-              "expectation": "Suivre un for."
+              "expectation": "Suivre un `for`."
             },
             {
               "skillId": "python.lists",
@@ -7464,7 +7523,7 @@ window.CODECRAFT_DATA = {
         "label": "Site officiel de Thonny",
         "url": "https://thonny.org/"
       },
-      "objective": "Conserver le résultat d'une fonction et distinguer return, affichage et variables locales.",
+      "objective": "Conserver le résultat d'une fonction et distinguer `return`, affichage et variables locales.",
       "skillIds": [
         "python.return"
       ],
@@ -7483,7 +7542,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.conditions",
-          "expectation": "Suivre les deux issues de if/else."
+          "expectation": "Suivre les deux issues de `if`/`else`."
         }
       ],
       "blocks": [
@@ -7491,7 +7550,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Enregistre les essais précédents et crée resultat.py. Il faut distinguer définition, appel et paramètres ; sinon, reprends Définir et appeler une fonction. Les exemples utilisent des nombres fixes.",
+          "text": "Enregistre les essais précédents et crée `resultat.py`. Il faut distinguer définition, appel et paramètres ; sinon, reprends Définir et appeler une fonction. Les exemples utilisent des nombres fixes.",
           "moduleLink": {
             "moduleId": "python-fonctions",
             "text": "Définir et appeler une fonction"
@@ -7502,41 +7561,49 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Renvoyer puis utiliser",
           "paragraphs": [
-            "return renvoie une valeur à l'endroit qui a appelé la fonction et termine cet appel. Ici, l'appel ajouter_bonus(3) renvoie 5 : points conserve cette valeur, puis le programme l'affiche et l'utilise dans une addition.",
-            "bonus est créé dans le corps. Le résultat est renvoyé, pas la variable elle-même. Un return n'arrête pas tout le fichier : les lignes après l'appel continuent."
+            "`return` renvoie une valeur à l'endroit qui a appelé la fonction et termine cet appel. Ici, l'appel `ajouter_bonus(3)` renvoie 5 : `points` conserve cette valeur, puis le programme l'affiche et l'utilise dans une addition.",
+            "`bonus` est créé dans le corps. Le résultat est renvoyé, pas la variable elle-même. Un `return` n'arrête pas tout le fichier : les lignes après l'appel continuent."
           ],
-          "code": "def ajouter_bonus(nombre):\n    bonus = 2\n    return nombre + bonus\n\npoints = ajouter_bonus(3)\nprint(points)\nprint(points + 1)"
+          "code": "def ajouter_bonus(nombre):\n    bonus = 2\n    return nombre + bonus\n\npoints = ajouter_bonus(3)\nprint(points)\nprint(points + 1)",
+          "filename": "resultat.py",
+          "consoleOutput": "5\n6"
         },
         {
           "type": "lesson",
           "id": "afficher-ou-retourner",
           "title": "2 - Afficher ne suffit pas à renvoyer",
           "paragraphs": [
-            "Dans afficher_resultat.py, compare cette fonction au premier modèle. print montre 5, mais la fonction ne contient pas return. Son résultat renvoyé est None, qui indique ici l'absence de valeur utile renvoyée. resultat conserve None, pas 5.",
-            "Prévois les deux affichages : 5 puis None. Pour conserver un nombre, remplace le print du corps par return nombre + 2 ; le print extérieur affichera alors 5. Ce n'est pas une conversion de None."
+            "Dans `afficher_resultat.py`, compare cette fonction au premier modèle. `print` montre 5, mais la fonction ne contient pas `return`. Son résultat renvoyé est `None`, qui indique ici l'absence de valeur utile renvoyée. `resultat` conserve `None`, pas 5.",
+            "Prévois les deux affichages : 5 puis `None`. Pour conserver un nombre, remplace le `print` du corps par `return nombre + 2` ; le `print` extérieur affichera alors 5. Ce n'est pas une conversion de `None`."
           ],
-          "code": "def montrer_bonus(nombre):\n    print(nombre + 2)\n\nresultat = montrer_bonus(3)\nprint(resultat)"
+          "code": "def montrer_bonus(nombre):\n    print(nombre + 2)\n\nresultat = montrer_bonus(3)\nprint(resultat)",
+          "filename": "afficher_resultat.py",
+          "consoleOutput": "5\nNone"
         },
         {
           "type": "lesson",
           "id": "local",
           "title": "3 - Des noms locaux à chaque appel",
           "paragraphs": [
-            "Dans noms_locaux.py, nombre reçoit 4 lors de l'appel. resultat_local est créé dans le corps : ces noms sont locaux à cet appel. La valeur renvoyée est conservée à l'extérieur dans resultat_exterieur. Les affichages donnent 8 puis 100.",
-            "Dans une copie diagnostic_local.py, ajoute print(resultat_local) après les affichages : NameError est attendu car ce nom n'a pas été défini à l'extérieur. Le résultat utilisable est déjà dans resultat_exterieur ; utilise ce nom pour corriger. Relance le fichier entier dans une console propre.",
-            "Reviens à noms_locaux.py. Après avoir expliqué les noms distincts, renomme valeur_exterieure en nombre sur sa ligne de définition et dans le dernier print, sans changer la fonction. Prévois puis vérifie 8 et 100 : le paramètre nombre reçoit 4, mais la variable extérieure nombre garde 100. Un même nom peut désigner deux variables différentes selon l'endroit."
+            "Dans `noms_locaux.py`, nombre reçoit 4 lors de l'appel. `resultat_local` est créé dans le corps : ces noms sont locaux à cet appel. La valeur renvoyée est conservée à l'extérieur dans `resultat_exterieur`. Les affichages donnent 8 puis 100.",
+            "Dans une copie `diagnostic_local.py`, ajoute `print(resultat_local)` après les affichages : `NameError` est attendu car ce nom n'a pas été défini à l'extérieur. Le résultat utilisable est déjà dans `resultat_exterieur` ; utilise ce nom pour corriger. Relance le fichier entier dans une console propre.",
+            "Reviens à `noms_locaux.py`. Après avoir expliqué les noms distincts, renomme `valeur_exterieure` en nombre sur sa ligne de définition et dans le dernier `print`, sans changer la fonction. Prévois puis vérifie 8 et 100 : le paramètre nombre reçoit 4, mais la variable extérieure nombre garde 100. Un même nom peut désigner deux variables différentes selon l'endroit."
           ],
-          "code": "valeur_exterieure = 100\n\ndef doubler(nombre):\n    resultat_local = nombre + nombre\n    return resultat_local\n\nresultat_exterieur = doubler(4)\nprint(resultat_exterieur)\nprint(valeur_exterieure)"
+          "code": "valeur_exterieure = 100\n\ndef doubler(nombre):\n    resultat_local = nombre + nombre\n    return resultat_local\n\nresultat_exterieur = doubler(4)\nprint(resultat_exterieur)\nprint(valeur_exterieure)",
+          "filename": "noms_locaux.py",
+          "consoleOutput": "8\n100"
         },
         {
           "type": "lesson",
           "id": "deux-issues",
           "title": "4 - Un résultat dans les deux issues",
           "paragraphs": [
-            "Dans point_fixe.py, la fonction compare deux textes fournis à ses paramètres. Chaque branche renvoie un entier : 1 si les textes sont égaux, 0 sinon. Les textes sont donnés directement aux appels, sans saisie.",
-            "Le return choisi termine l'appel ; les print extérieurs montrent les valeurs renvoyées. Sans return dans une issue, cet appel renverrait None. Les trois appels vérifient juste, faux et vide."
+            "Dans `point_fixe.py`, la fonction compare deux textes fournis à ses paramètres. Chaque branche renvoie un entier : 1 si les textes sont égaux, 0 sinon. Les textes sont donnés directement aux appels, sans saisie.",
+            "Le `return` choisi termine l'appel ; les `print` extérieurs montrent les valeurs renvoyées. Sans `return` dans une issue, cet appel renverrait `None`. Les trois appels vérifient juste, faux et vide."
           ],
-          "code": "def attribuer_point(reponse, attendue):\n    if reponse == attendue:\n        return 1\n    else:\n        return 0\n\nprint(attribuer_point(\"tour\", \"tour\"))\nprint(attribuer_point(\"lune\", \"tour\"))\nprint(attribuer_point(\"\", \"tour\"))"
+          "code": "def attribuer_point(reponse, attendue):\n    if reponse == attendue:\n        return 1\n    else:\n        return 0\n\nprint(attribuer_point(\"tour\", \"tour\"))\nprint(attribuer_point(\"lune\", \"tour\"))\nprint(attribuer_point(\"\", \"tour\"))",
+          "filename": "point_fixe.py",
+          "consoleOutput": "1\n0\n0"
         },
         {
           "type": "tasks",
@@ -7546,17 +7613,17 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "deux-resultats",
-              "text": "Dans resultat.py, conserve deux appels pour 3 puis 0 dans deux variables différentes. Prévois puis affiche leurs valeurs et leur somme.",
+              "text": "Dans `resultat.py`, conserve deux appels pour 3 puis 0 dans deux variables différentes. Prévois puis affiche leurs valeurs et leur somme.",
               "hint": "Chaque appel renvoie un résultat indépendant : 5 puis 2."
             },
             {
               "id": "comparer-print-return",
-              "text": "Dans une copie d'afficher_resultat.py, remplace le print du corps par return. Compare les affichages et ce qui est conservé.",
-              "hint": "Le print extérieur doit rester ; le résultat n'est plus None."
+              "text": "Dans une copie d'`afficher_resultat.py`, remplace le `print` du corps par `return`. Compare les affichages et ce qui est conservé.",
+              "hint": "Le `print` extérieur doit rester ; le résultat n'est plus `None`."
             },
             {
               "id": "tester-issues",
-              "text": "Change les textes des appels dans point_fixe.py et teste deux textes égaux, différents et vides. Explique les valeurs renvoyées.",
+              "text": "Change les textes des appels dans `point_fixe.py` et teste deux textes égaux, différents et vides. Explique les valeurs renvoyées.",
               "hint": "Deux textes vides sont égaux ; le cas vide comparé à tour reste faux."
             }
           ]
@@ -7565,7 +7632,7 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - créer et réutiliser des résultats",
-          "intro": "Crée mon_calcul.py sans recopier tout le premier fichier. Puis crée mon_point.py pour appliquer une règle personnelle.",
+          "intro": "Crée `mon_calcul.py` sans recopier tout le premier fichier. Puis crée `mon_point.py` pour appliquer une règle personnelle.",
           "items": [
             {
               "id": "calcul-personnel",
@@ -7579,12 +7646,12 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "modifier-bonus",
-              "text": "Enregistre puis crée mon_calcul_variante.py avec Enregistrer sous, avec un autre bonus. Prévois les deux résultats et leur somme. Montre les noms définis dans le corps et ceux définis à l'extérieur, puis explique comment le résultat passe de l'un à l'autre.",
+              "text": "Enregistre puis crée `mon_calcul_variante.py` avec Enregistrer sous, avec un autre bonus. Prévois les deux résultats et leur somme. Montre les noms définis dans le corps et ceux définis à l'extérieur, puis explique comment le résultat passe de l'un à l'autre.",
               "hint": "Le bonus local est recréé pour chaque appel ; garde la version de départ."
             },
             {
               "id": "regle-personnelle",
-              "text": "Dans mon_point.py, crée une fonction à deux paramètres : une proposition textuelle et une réponse attendue. Choisis tes propres mots. Renvoie 1 si les textes sont égaux, 0 sinon, sans afficher dans la fonction. Conserve puis affiche les résultats de trois appels : égal, différent et vide face à une réponse attendue non vide.",
+              "text": "Dans `mon_point.py`, crée une fonction à deux paramètres : une proposition textuelle et une réponse attendue. Choisis tes propres mots. Renvoie 1 si les textes sont égaux, 0 sinon, sans afficher dans la fonction. Conserve puis affiche les résultats de trois appels : égal, différent et vide face à une réponse attendue non vide.",
               "hint": "Prévois 1, 0 et 0 ; la comparaison utilise les paramètres, pas un mot fixé dans le corps."
             },
             {
@@ -7598,18 +7665,18 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "bonus",
           "title": "Bonus - préparer du texte",
-          "intro": "Si strip et lower sont compris, utilise une copie preparation.py.",
+          "intro": "Si `strip` et `lower` sont compris, utilise une copie `preparation.py`.",
           "items": [
             {
               "id": "retour-texte",
-              "text": "Définis une fonction à un paramètre qui prépare un texte avec strip puis lower et renvoie le résultat. Garde le texte original et affiche original/résultat pour \"  TOUR  \" puis vide.",
-              "hint": "Conserve les transformations en deux étapes ; la fonction ne demande pas input."
+              "text": "Définis une fonction à un paramètre qui prépare un texte avec `strip` puis `lower` et renvoie le résultat. Garde le texte original et affiche original/résultat pour \"  TOUR  \" puis vide.",
+              "hint": "Conserve les transformations en deux étapes ; la fonction ne demande pas `input`."
             }
           ]
         }
       ],
       "masteryCriteria": [
-        "Distinguer un affichage print du résultat renvoyé par return, y compris None sans retour utile.",
+        "Distinguer un affichage `print` du résultat renvoyé par `return`, y compris `None` sans retour utile.",
         "Conserver deux résultats et les réutiliser hors de la fonction.",
         "Identifier les paramètres et noms locaux, retrouver le résultat conservé à l'extérieur et expliquer la comparaison de deux noms identiques.",
         "Créer et tester personnellement une fonction à deux issues, puis modifier un calcul et une réponse attendue avec prévision."
@@ -7639,7 +7706,7 @@ window.CODECRAFT_DATA = {
           "prerequisiteSkills": [
             {
               "skillId": "python.text",
-              "expectation": "Conserver strip et lower."
+              "expectation": "Conserver `strip` et `lower`."
             }
           ]
         }
@@ -7811,11 +7878,11 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.text",
-          "expectation": "Préparer la réponse avec strip et lower."
+          "expectation": "Préparer la réponse avec `strip` et `lower`."
         },
         {
           "skillId": "python.conditions",
-          "expectation": "Comparer deux textes avec if/else."
+          "expectation": "Comparer deux textes avec `if`/`else`."
         },
         {
           "skillId": "python.accumulation",
@@ -7827,7 +7894,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Enregistre tes autres fichiers et crée quiz.py, sans les remplacer. Il faut pouvoir fournir deux arguments, conserver un résultat, préparer un texte et cumuler des points ; si nécessaire, reprends Renvoyer un résultat. Le score repart à zéro à chaque lancement.",
+          "text": "Enregistre tes autres fichiers et crée `quiz.py`, sans les remplacer. Il faut pouvoir fournir deux arguments, conserver un résultat, préparer un texte et cumuler des points ; si nécessaire, reprends Renvoyer un résultat. Le score repart à zéro à chaque lancement.",
           "moduleLink": {
             "moduleId": "python-retour",
             "text": "Renvoyer un résultat"
@@ -7838,8 +7905,8 @@ window.CODECRAFT_DATA = {
           "id": "contrat",
           "title": "Un quiz personnel, une règle claire",
           "paragraphs": [
-            "Choisis un thème et trois questions avec une réponse courte chacune, sans renseignements personnels. Définis une seule fonction poser_question(question, attendue) : les arguments donnent le texte à demander et la réponse attendue.",
-            "Dans le corps, input(question) renvoie le texte saisi. Conserve-le dans une variable locale reponse, puis conserve les résultats de strip et de lower dans deux autres variables. Compare le texte préparé à attendue, donnée en minuscules sans espace aux bords : renvoie 1 s'il correspond, 0 sinon.",
+            "Choisis un thème et trois questions avec une réponse courte chacune, sans renseignements personnels. Définis une seule fonction `poser_question(question, attendue)` : les arguments donnent le texte à demander et la réponse attendue.",
+            "Dans le corps, `input(question)` renvoie le texte saisi. Conserve-le dans une variable locale `reponse`, puis conserve les résultats de `strip` et de `lower` dans deux autres variables. Compare le texte préparé à attendue, donnée en minuscules sans espace aux bords : renvoie 1 s'il correspond, 0 sinon.",
             "La règle tolère les majuscules et les espaces aux bords, pas les fautes, accents différents ni espaces au milieu. Une réponse vide est refusée car tes réponses attendues sont non vides.",
             "Initialise le score à zéro dans le programme, hors de la fonction et avant les appels. Chaque appel renvoie des points que tu ajoutes au score. Trois appels posent trois questions ; après le dernier ajout, affiche les points sur 3."
           ]
@@ -7866,27 +7933,27 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "guide",
           "title": "2 - Une question avant le score",
-          "intro": "Fais évoluer quiz.py : une fonction et un appel de test d'abord, puis un programme qui compte ses points.",
+          "intro": "Fais évoluer `quiz.py` : une fonction et un appel de test d'abord, puis un programme qui compte ses points.",
           "items": [
             {
               "id": "fonction-question",
-              "text": "Reprends ta comparaison à deux paramètres de mon_point.py. Adapte sa définition en poser_question(question, attendue) : le premier paramètre contient maintenant la question à afficher, et non la réponse du joueur. Garde attendue comme second paramètre.",
-              "hint": "Avant, reponse venait du premier argument. Maintenant, question vient du premier argument et reponse sera créée dans le corps grâce à la saisie."
+              "text": "Reprends ta comparaison à deux paramètres de `mon_point.py`. Adapte sa définition en `poser_question(question, attendue)` : le premier paramètre contient maintenant la question à afficher, et non la réponse du joueur. Garde attendue comme second paramètre.",
+              "hint": "Avant, `reponse` venait du premier argument. Maintenant, question vient du premier argument et `reponse` sera créée dans le corps grâce à la saisie."
             },
             {
               "id": "saisie-locale",
-              "text": "Avant la comparaison, pose la question reçue et conserve le texte saisi dans reponse. Fais un premier essai avec une comparaison exacte, sans préparation du texte. Appelle une seule fois la fonction et conserve le résultat avant de l'afficher.",
-              "hint": "Utilise reponse = input(question). Compare reponse à attendue ; chaque branche doit renvoyer 1 ou 0. Le premier argument est le texte de la question, le second la réponse attendue."
+              "text": "Avant la comparaison, pose la question reçue et conserve le texte saisi dans `reponse`. Fais un premier essai avec une comparaison exacte, sans préparation du texte. Appelle une seule fois la fonction et conserve le résultat avant de l'afficher.",
+              "hint": "Utilise `reponse` = `input(question)`. Compare `reponse` à attendue ; chaque branche doit renvoyer 1 ou 0. Le premier argument est le texte de la question, le second la réponse attendue."
             },
             {
               "id": "preparer-reponse",
-              "text": "Ajoute strip puis lower en deux étapes avant la comparaison. Compare désormais le texte préparé à attendue. Prévois les valeurs intermédiaires pour une réponse avec des majuscules et des espaces aux bords.",
-              "hint": "Conserve reponse.strip() dans sans_bords, puis sans_bords.lower() dans normalisee. La comparaison porte sur normalisee, pas sur reponse."
+              "text": "Ajoute `strip` puis `lower` en deux étapes avant la comparaison. Compare désormais le texte préparé à attendue. Prévois les valeurs intermédiaires pour une réponse avec des majuscules et des espaces aux bords.",
+              "hint": "Conserve `reponse.strip()` dans `sans_bords`, puis `sans_bords.lower()` dans normalisee. La comparaison porte sur normalisee, pas sur `reponse`."
             },
             {
               "id": "verifier-question",
               "text": "Relance la question avec la bonne réponse, une mauvaise, vide, des majuscules et des espaces aux bords. Prévois les résultats et explique les deux arguments, la réponse locale et l'entier renvoyé.",
-              "hint": "Le résultat est un nombre ; un affichage juste/faux ne remplace pas return."
+              "hint": "Le résultat est un nombre ; un affichage juste/faux ne remplace pas `return`."
             },
             {
               "id": "debut-score",
@@ -7899,7 +7966,7 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "3 - Ton quiz de trois questions",
-          "intro": "Continue dans quiz.py avec tes textes ; essaie sans regarder un programme complet.",
+          "intro": "Continue dans `quiz.py` avec tes textes ; essaie sans regarder un programme complet.",
           "items": [
             {
               "id": "trois-appels",
@@ -7913,7 +7980,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "modifier-question",
-              "text": "Enregistre puis crée quiz_variante.py. Change une question et sa réponse attendue. Teste la nouvelle réponse, l'ancienne et les autres questions ; mets à jour tout message de correction éventuel.",
+              "text": "Enregistre puis crée `quiz_variante.py`. Change une question et sa réponse attendue. Teste la nouvelle réponse, l'ancienne et les autres questions ; mets à jour tout message de correction éventuel.",
               "hint": "Le texte demandé et attendue sont deux arguments distincts. Une ancienne réponse différente doit être refusée."
             }
           ]
@@ -7932,7 +7999,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "limites-quiz",
               "text": "Explique quelles différences la règle tolère et refuse. Présente une modification personnelle et ses tests, en précisant modèles, indices ou aide reçue.",
-              "hint": "strip/lower ne corrigent ni fautes ni espaces internes ; les limites sont annoncées."
+              "hint": "`strip`/`lower` ne corrigent ni fautes ni espaces internes ; les limites sont annoncées."
             }
           ]
         },
@@ -7944,7 +8011,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "quatrieme-question",
-              "text": "Dans une copie quiz_quatre.py, ajoute une question avec un nouvel appel, sans recopier la définition. Actualise les points après cet appel et le bilan sur 4 ; teste quatre justes puis une fausse.",
+              "text": "Dans une copie `quiz_quatre.py`, ajoute une question avec un nouvel appel, sans recopier la définition. Actualise les points après cet appel et le bilan sur 4 ; teste quatre justes puis une fausse.",
               "hint": "Change le nombre total annoncé, pas la valeur d'un point."
             }
           ]
@@ -7957,8 +8024,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "retour-joueur",
-              "text": "Si tu souhaites un message juste/faux, ajoute-le dans chaque branche avant le return correspondant. Reteste les scores pour vérifier que l'affichage n'a pas remplacé le résultat renvoyé.",
-              "hint": "return termine l'appel : un message placé après lui dans la même branche ne sera pas affiché."
+              "text": "Si tu souhaites un message juste/faux, ajoute-le dans chaque branche avant le `return` correspondant. Reteste les scores pour vérifier que l'affichage n'a pas remplacé le résultat renvoyé.",
+              "hint": "`return` termine l'appel : un message placé après lui dans la même branche ne sera pas affiché."
             }
           ]
         }
@@ -8161,7 +8228,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.for",
-          "expectation": "Suivre les passages et le bloc d'un for."
+          "expectation": "Suivre les passages et le bloc d'un `for`."
         }
       ],
       "blocks": [
@@ -8169,7 +8236,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir afficher une variable et suivre un for. Crée inventaire.py et fais-le évoluer pendant les étapes ; enregistre avant chaque copie. Ni hasard ni while n'est nécessaire ici. Le bonus seul utilise input.",
+          "text": "Il faut savoir afficher une variable et suivre un `for`. Crée `inventaire.py` et fais-le évoluer pendant les étapes ; enregistre avant chaque copie. Ni hasard ni `while` n'est nécessaire ici. Le bonus seul utilise `input`.",
           "moduleLink": {
             "moduleId": "python-for",
             "text": "Revoir les répétitions"
@@ -8181,17 +8248,19 @@ window.CODECRAFT_DATA = {
           "title": "1 - Plusieurs valeurs, une liste",
           "paragraphs": [
             "Les crochets entourent la liste ; les virgules séparent ses éléments. Ici, chaque élément est du texte entre guillemets. La variable objets conserve cette liste ordonnée. Deux éléments peuvent avoir la même valeur.",
-            "print(objets) affiche la liste complète, avec ses crochets et guillemets. objets[0] consulte un seul élément : l'indice 0 désigne la première position. Son affichage donne carte, sans les crochets de la liste."
+            "`print(objets)` affiche la liste complète, avec ses crochets et guillemets. objets[0] consulte un seul élément : l'indice 0 désigne la première position. Son affichage donne carte, sans les crochets de la liste."
           ],
-          "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nprint(objets)\nprint(objets[0])"
+          "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nprint(objets)\nprint(objets[0])",
+          "filename": "inventaire.py",
+          "consoleOutput": "['carte', 'corde', 'lampe']\ncarte"
         },
         {
           "type": "lesson",
           "id": "indices",
           "title": "2 - Position et nombre d'éléments",
           "paragraphs": [
-            "Dans inventaire.py, ajoute print(objets[1]) puis print(objets[2]). Prévois corde puis lampe. Pour trois éléments, les indices sont 0, 1 et 2 : on commence à zéro.",
-            "Ajoute print(len(objets)). len donne le nombre d'éléments : 3, pas le dernier indice. Les parenthèses appellent len sur la liste ; les crochets consultent une position. Un indice 3 n'existe pas dans cette liste."
+            "Dans `inventaire.py`, ajoute `print(objets[1])` puis `print(objets[2])`. Prévois corde puis lampe. Pour trois éléments, les indices sont 0, 1 et 2 : on commence à zéro.",
+            "Ajoute `print`(`len(objets)`). `len` donne le nombre d'éléments : 3, pas le dernier indice. Les parenthèses appellent `len` sur la liste ; les crochets consultent une position. Un indice 3 n'existe pas dans cette liste."
           ]
         },
         {
@@ -8199,20 +8268,23 @@ window.CODECRAFT_DATA = {
           "id": "parcours",
           "title": "3 - Parcourir les valeurs",
           "paragraphs": [
-            "Enregistre inventaire.py puis crée parcours_liste.py. for peut parcourir directement une liste : objet reçoit successivement carte, corde et lampe, pas les indices 0, 1 et 2. Le nom de cette variable est libre ; il est ici distinct de objets.",
-            "Le print indenté s'exécute pour chaque élément. Fin, sans indentation, s'affiche une fois après la boucle. Prévois l'ordre avant de lancer."
+            "Enregistre `inventaire.py` puis crée `parcours_liste.py`. `for` peut parcourir directement une liste : objet reçoit successivement carte, corde et lampe, pas les indices 0, 1 et 2. Le nom de cette variable est libre ; il est ici distinct de objets.",
+            "Le `print` indenté s'exécute pour chaque élément. Fin, sans indentation, s'affiche une fois après la boucle. Prévois l'ordre avant de lancer."
           ],
-          "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nfor objet in objets:\n    print(\"Objet :\", objet)\nprint(\"Fin\")"
+          "code": "objets = [\"carte\", \"corde\", \"lampe\"]\nfor objet in objets:\n    print(\"Objet :\", objet)\nprint(\"Fin\")",
+          "filename": "parcours_liste.py",
+          "consoleOutput": "Objet : carte\nObjet : corde\nObjet : lampe\nFin"
         },
         {
           "type": "lesson",
           "id": "ajout",
           "title": "4 - Ajouter à la fin",
           "paragraphs": [
-            "Continue dans parcours_liste.py. Après Fin, ajoute les lignes ci-dessous, puis un second parcours. objets.append(\"boussole\") ajoute une valeur à la fin de la liste existante. Le point appelle une méthode de cette liste ; les parenthèses contiennent la valeur à ajouter.",
-            "Prévois quatre éléments, dans l'ordre carte, corde, lampe, boussole. L'appel append occupe sa propre ligne : n'écris ni objets = objets.append(...) ni print(objets.append(...)). C'est la liste modifiée que tu affiches ensuite. Chaque relance recrée la liste initiale avant cet ajout."
+            "Continue dans `parcours_liste.py`. Après Fin, ajoute les lignes ci-dessous, puis un second parcours. `objets.append(\"boussole\")` ajoute une valeur à la fin de la liste existante. Le point appelle une méthode de cette liste ; les parenthèses contiennent la valeur à ajouter.",
+            "Prévois quatre éléments, dans l'ordre carte, corde, lampe, boussole. L'appel `append` occupe sa propre ligne : n'écris ni objets = `objets.append(...)` ni `print`(`objets.append(...)`). C'est la liste modifiée que tu affiches ensuite. Chaque relance recrée la liste initiale avant cet ajout."
           ],
-          "code": "objets.append(\"boussole\")\nprint(objets)\nprint(len(objets))"
+          "code": "objets.append(\"boussole\")\nprint(objets)\nprint(len(objets))",
+          "filename": "parcours_liste.py"
         },
         {
           "type": "tasks",
@@ -8221,23 +8293,23 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "positions-liste",
-              "text": "Dans inventaire.py, montre la liste complète, ses trois positions et sa longueur. Explique pourquoi 3 est la longueur mais pas un indice utilisable ici.",
-              "hint": "Trois positions : 0, 1 et 2. len compte les éléments, il ne donne pas la dernière position."
+              "text": "Dans `inventaire.py`, montre la liste complète, ses trois positions et sa longueur. Explique pourquoi 3 est la longueur mais pas un indice utilisable ici.",
+              "hint": "Trois positions : 0, 1 et 2. `len` compte les éléments, il ne donne pas la dernière position."
             },
             {
               "id": "parcours-ajout",
-              "text": "Dans parcours_liste.py, compare les deux parcours autour de l'ajout. Repère le moment où la liste change et explique la valeur reçue par objet à chaque passage.",
-              "hint": "Le premier parcours a trois passages ; le second en a quatre. append est entre eux et ajoute à la fin."
+              "text": "Dans `parcours_liste.py`, compare les deux parcours autour de l'ajout. Repère le moment où la liste change et explique la valeur reçue par objet à chaque passage.",
+              "hint": "Le premier parcours a trois passages ; le second en a quatre. `append` est entre eux et ajoute à la fin."
             },
             {
               "id": "vide-liste",
-              "text": "Enregistre puis crée collection_vide.py avec Enregistrer sous. Garde seulement une liste objets = [], son affichage, len et un for suivi de Fin ; retire les consultations d'indice et l'ajout. Prévois puis vérifie le résultat.",
-              "hint": "[] contient zéro élément : len vaut 0, for ne fait aucun passage, mais Fin s'affiche. Aucun élément à l'indice 0."
+              "text": "Enregistre puis crée `collection_vide.py` avec Enregistrer sous. Garde seulement une liste objets = [], son affichage, `len` et un `for` suivi de Fin ; retire les consultations d'indice et l'ajout. Prévois puis vérifie le résultat.",
+              "hint": "[] contient zéro élément : `len` vaut 0, `for` ne fait aucun passage, mais Fin s'affiche. Aucun élément à l'indice 0."
             },
             {
               "id": "diagnostic-indice",
-              "text": "Dans diagnostic_indice.py, définis trois éléments puis affiche objets[3]. Lis l'erreur, choisis une position existante et reteste. Garde les autres fichiers.",
-              "hint": "IndexError signale ici une position inexistante. Corrige l'indice en 0, 1 ou 2 ; il ne s'agit pas d'un nom de variable inconnu."
+              "text": "Dans `diagnostic_indice.py`, définis trois éléments puis affiche objets[3]. Lis l'erreur, choisis une position existante et reteste. Garde les autres fichiers.",
+              "hint": "`IndexError` signale ici une position inexistante. Corrige l'indice en 0, 1 ou 2 ; il ne s'agit pas d'un nom de variable inconnu."
             }
           ]
         },
@@ -8245,22 +8317,22 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ta collection",
-          "intro": "Crée ma_collection.py avec tes propres valeurs et messages. Fais évoluer ce fichier ; essaie avant les indices et conserve les exemples.",
+          "intro": "Crée `ma_collection.py` avec tes propres valeurs et messages. Fais évoluer ce fichier ; essaie avant les indices et conserve les exemples.",
           "items": [
             {
               "id": "collection-personnelle",
-              "text": "Choisis trois éléments textuels. Affiche leur nombre, puis chaque élément avec un for. Consulte aussi le premier et le troisième. Prévois longueur, positions et ordre avant d'exécuter.",
-              "hint": "Une liste entre crochets, len pour le nombre, indices 0 et 2 pour ces positions ; for reçoit directement les valeurs."
+              "text": "Choisis trois éléments textuels. Affiche leur nombre, puis chaque élément avec un `for`. Consulte aussi le premier et le troisième. Prévois longueur, positions et ordre avant d'exécuter.",
+              "hint": "Une liste entre crochets, `len` pour le nombre, indices 0 et 2 pour ces positions ; `for` reçoit directement les valeurs."
             },
             {
               "id": "collection-complete",
-              "text": "Ajoute un quatrième élément avec append après le premier parcours, puis affiche le nouveau nombre et refais le parcours. Explique ce qui change, sans réécrire la liste de départ.",
-              "hint": "Place l'ajout avant le second bilan, hors du premier for. La nouvelle valeur arrive à la fin."
+              "text": "Ajoute un quatrième élément avec `append` après le premier parcours, puis affiche le nouveau nombre et refais le parcours. Explique ce qui change, sans réécrire la liste de départ.",
+              "hint": "Place l'ajout avant le second bilan, hors du premier `for`. La nouvelle valeur arrive à la fin."
             },
             {
               "id": "collection-modifiee",
-              "text": "Enregistre puis crée ma_collection_modifiee.py avec Enregistrer sous. Change une valeur dans la définition initiale. Prévois et vérifie son effet sur les positions, le nombre et les deux parcours. Explique aussi pourquoi collection_vide.py fait zéro passage.",
-              "hint": "Remplacer une valeur ne change pas le nombre d'éléments. Garde la première version pour comparer ; une liste vide ne fournit aucune valeur à for."
+              "text": "Enregistre puis crée `ma_collection_modifiee.py` avec Enregistrer sous. Change une valeur dans la définition initiale. Prévois et vérifie son effet sur les positions, le nombre et les deux parcours. Explique aussi pourquoi `collection_vide.py` fait zéro passage.",
+              "hint": "Remplacer une valeur ne change pas le nombre d'éléments. Garde la première version pour comparer ; une liste vide ne fournit aucune valeur à `for`."
             }
           ]
         },
@@ -8271,17 +8343,17 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "collection-reponse",
-              "text": "Dans collection_saisie.py, demande un élément avec input, ajoute la réponse à une liste fixe et affiche le bilan. Relance avec une autre réponse : retrouve-t-on la précédente ?",
-              "hint": "Conserve la réponse dans une variable, puis appelle append avec cette variable. Chaque lancement recrée la liste fixe ; ce programme ne sauvegarde pas de données sur disque."
+              "text": "Dans `collection_saisie.py`, demande un élément avec `input`, ajoute la réponse à une liste fixe et affiche le bilan. Relance avec une autre réponse : retrouve-t-on la précédente ?",
+              "hint": "Conserve la réponse dans une variable, puis appelle `append` avec cette variable. Chaque lancement recrée la liste fixe ; ce programme ne sauvegarde pas de données sur disque."
             }
           ]
         }
       ],
       "masteryCriteria": [
         "Créer une liste personnelle et distinguer élément, liste complète et longueur.",
-        "Expliquer l'indice zéro, consulter une position existante et reconnaître un IndexError.",
+        "Expliquer l'indice zéro, consulter une position existante et reconnaître un `IndexError`.",
         "Parcourir les valeurs dans l'ordre et expliquer zéro passage pour une liste vide.",
-        "Ajouter à la fin avec append, prédire le nouveau bilan et tester une modification personnelle."
+        "Ajouter à la fin avec `append`, prédire le nouveau bilan et tester une modification personnelle."
       ],
       "consolidation": [
         {
@@ -8313,7 +8385,7 @@ window.CODECRAFT_DATA = {
           "prerequisiteSkills": [
             {
               "skillId": "python.input",
-              "expectation": "Conserver la réponse d'input ; sinon reprendre Poser une question."
+              "expectation": "Conserver la réponse d'`input` ; sinon reprendre Poser une question."
             }
           ]
         }
@@ -8458,7 +8530,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.conditions",
-          "expectation": "Construire deux issues avec if/else."
+          "expectation": "Construire deux issues avec `if`/`else`."
         },
         {
           "skillId": "python.for",
@@ -8474,7 +8546,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir conserver une réponse et construire un if/else. Reprends longueur, indices et for si nécessaire. Crée texte.py ; fais évoluer tes fichiers pendant chaque activité et conserve les variantes importantes. Ni conversion numérique, hasard ni while n'est requis.",
+          "text": "Il faut savoir conserver une réponse et construire un `if`/`else`. Reprends longueur, indices et `for` si nécessaire. Crée `texte.py` ; fais évoluer tes fichiers pendant chaque activité et conserve les variantes importantes. Ni conversion numérique, hasard ni `while` n'est requis.",
           "moduleLink": {
             "moduleId": "python-listes",
             "text": "Revoir positions et parcours"
@@ -8485,18 +8557,20 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Un texte, des caractères",
           "paragraphs": [
-            "Une chaîne de caractères est du texte ordonné. len compte ici les caractères, pas les mots. for parcourt successivement chaque caractère : prévois 4, puis C, o, d et e.",
-            "Dans texte.py, ajoute ensuite un espace dans le texte et prévois la nouvelle longueur. L'espace compte aussi et apparaît comme une ligne vide au cours du parcours. Ces essais simples ne décrivent pas toutes les écritures complexes ou les emojis."
+            "Une chaîne de caractères est du texte ordonné. `len` compte ici les caractères, pas les mots. `for` parcourt successivement chaque caractère : prévois 4, puis C, o, d et e.",
+            "Dans `texte.py`, ajoute ensuite un espace dans le texte et prévois la nouvelle longueur. L'espace compte aussi et apparaît comme une ligne vide au cours du parcours. Ces essais simples ne décrivent pas toutes les écritures complexes ou les emojis."
           ],
-          "code": "mot = \"Code\"\nprint(len(mot))\nfor caractere in mot:\n    print(caractere)"
+          "code": "mot = \"Code\"\nprint(len(mot))\nfor caractere in mot:\n    print(caractere)",
+          "filename": "texte.py",
+          "consoleOutput": "4\nC\no\nd\ne"
         },
         {
           "type": "lesson",
           "id": "indices",
           "title": "2 - Lire une position",
           "paragraphs": [
-            "Dans texte.py, rétablis mot = \"Code\" puis ajoute print(mot[0]) et print(mot[3]). Prévois C et e : l'indice commence à zéro comme pour les listes. Une position inexistante produit IndexError.",
-            "Enregistre puis crée texte_vide.py avec Enregistrer sous. Garde mot = \"\", len et for seulement : longueur 0 et aucun passage. Retire les consultations d'indice. Ne consulte pas le premier caractère d'une réponse qui peut être vide.",
+            "Dans `texte.py`, rétablis mot = \"Code\" puis ajoute `print(mot[0])` et `print(mot[3])`. Prévois C et e : l'indice commence à zéro comme pour les listes. Une position inexistante produit `IndexError`.",
+            "Enregistre puis crée `texte_vide.py` avec Enregistrer sous. Garde mot = \"\", `len` et `for` seulement : longueur 0 et aucun passage. Retire les consultations d'indice. Ne consulte pas le premier caractère d'une réponse qui peut être vide.",
             "Un texte n'est pas une liste que l'on modifie par position : mot[0] = \"c\" n'est pas une modification possible. Pour transformer le texte, on va produire un nouveau résultat."
           ]
         },
@@ -8505,21 +8579,24 @@ window.CODECRAFT_DATA = {
           "id": "transformation",
           "title": "3 - Conserver le texte transformé",
           "paragraphs": [
-            "Crée transformation_texte.py. reponse.strip() retire les espaces aux bords dans cet exemple ; sans_bords.lower() met les lettres en minuscules. Le point appelle une méthode du texte, les parenthèses l'exécutent. Chaque résultat est conservé dans une variable.",
-            "L'original reste inchangé, contrairement à append qui modifie une liste. Ajoute ensuite reponse.lower() sur une ligne seule, puis affiche reponse : sans conserver le résultat, sa valeur ne change pas. Prédis puis vérifie.",
-            "strip ne retire pas les espaces au milieu ; lower ne corrige ni les fautes ni les accents. Les deux opérations sont séparées pour suivre chaque résultat."
+            "Crée `transformation_texte.py`. `reponse.strip()` retire les espaces aux bords dans cet exemple ; `sans_bords.lower()` met les lettres en minuscules. Le point appelle une méthode du texte, les parenthèses l'exécutent. Chaque résultat est conservé dans une variable.",
+            "L'original reste inchangé, contrairement à `append` qui modifie une liste. Ajoute ensuite `reponse.lower()` sur une ligne seule, puis affiche `reponse` : sans conserver le résultat, sa valeur ne change pas. Prédis puis vérifie.",
+            "`strip` ne retire pas les espaces au milieu ; `lower` ne corrige ni les fautes ni les accents. Les deux opérations sont séparées pour suivre chaque résultat."
           ],
-          "code": "reponse = \"  TOUR  \"\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nprint(\"Original :\", reponse)\nprint(\"Préparé :\", normalisee)"
+          "code": "reponse = \"  TOUR  \"\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nprint(\"Original :\", reponse)\nprint(\"Préparé :\", normalisee)",
+          "filename": "transformation_texte.py",
+          "consoleOutput": "Original :   TOUR  \nPréparé : tour"
         },
         {
           "type": "lesson",
           "id": "comparaison",
           "title": "4 - Choisir une règle de réponse",
           "paragraphs": [
-            "Enregistre transformation_texte.py puis crée comparaison_texte.py. Le modèle accepte tour, même avec des majuscules ou des espaces aux bords. Il ne tolère pas une faute ou un espace au milieu. == compare ici le texte préparé au mot accepté.",
+            "Enregistre `transformation_texte.py` puis crée `comparaison_texte.py`. Le modèle accepte tour, même avec des majuscules ou des espaces aux bords. Il ne tolère pas une faute ou un espace au milieu. == compare ici le texte préparé au mot accepté.",
             "Prévois les deux issues, puis teste tour et lune. Une réponse vide ou composée d'espaces peut être comparée sans erreur : on ne consulte aucun indice. Le message Refusé indique simplement que la réponse ne correspond pas à la règle."
           ],
-          "code": "reponse = input(\"Écris tour : \")\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nif normalisee == \"tour\":\n    print(\"Accepté\")\nelse:\n    print(\"Refusé\")"
+          "code": "reponse = input(\"Écris tour : \")\nsans_bords = reponse.strip()\nnormalisee = sans_bords.lower()\nif normalisee == \"tour\":\n    print(\"Accepté\")\nelse:\n    print(\"Refusé\")",
+          "filename": "comparaison_texte.py"
         },
         {
           "type": "tasks",
@@ -8528,18 +8605,18 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "caracteres-texte",
-              "text": "Dans texte.py, explique longueur, positions et parcours. Compare avec texte_vide.py : pourquoi aucun indice n'y est-il consulté ?",
-              "hint": "Un texte vide a zéro caractère ; aucun indice n'existe. Le code après for reste exécuté."
+              "text": "Dans `texte.py`, explique longueur, positions et parcours. Compare avec `texte_vide.py` : pourquoi aucun indice n'y est-il consulté ?",
+              "hint": "Un texte vide a zéro caractère ; aucun indice n'existe. Le code après `for` reste exécuté."
             },
             {
               "id": "original-resultat",
-              "text": "Dans transformation_texte.py, montre les valeurs de reponse, sans_bords et normalisee. Explique l'effet de l'appel lower dont tu n'as pas conservé le résultat.",
-              "hint": "Les résultats sont de nouveaux textes. reponse garde les majuscules et espaces d'origine."
+              "text": "Dans `transformation_texte.py`, montre les valeurs de `reponse`, `sans_bords` et normalisee. Explique l'effet de l'appel `lower` dont tu n'as pas conservé le résultat.",
+              "hint": "Les résultats sont de nouveaux textes. `reponse` garde les majuscules et espaces d'origine."
             },
             {
               "id": "regle-tests",
-              "text": "Dans comparaison_texte.py, prévois puis teste tour, Tour, tour entouré d'espaces, TO UR, lune, une réponse vide et une réponse composée d'espaces. Explique chaque issue.",
-              "hint": "Les trois premiers correspondent. Les autres non : ni correction des espaces internes, ni faute corrigée. Vide et espaces donnent un texte préparé vide, sans IndexError."
+              "text": "Dans `comparaison_texte.py`, prévois puis teste tour, Tour, tour entouré d'espaces, TO UR, lune, une réponse vide et une réponse composée d'espaces. Explique chaque issue.",
+              "hint": "Les trois premiers correspondent. Les autres non : ni correction des espaces internes, ni faute corrigée. Vide et espaces donnent un texte préparé vide, sans `IndexError`."
             }
           ]
         },
@@ -8547,12 +8624,12 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ton mot accepté",
-          "intro": "Crée mon_mot.py avec ton propre mot et tes messages. Choisis un mot simple en minuscules, sans accent ni espace ; essaie avant de consulter les indices.",
+          "intro": "Crée `mon_mot.py` avec ton propre mot et tes messages. Choisis un mot simple en minuscules, sans accent ni espace ; essaie avant de consulter les indices.",
           "items": [
             {
               "id": "mot-personnel",
               "text": "Annonce ta règle : majuscules et espaces aux bords tolérés. Pose la question, garde la réponse originale, prépare-la en deux étapes et affiche un message personnel pour chaque issue.",
-              "hint": "input renvoie le texte saisi ; l'affectation à reponse le conserve. strip puis lower produisent de nouveaux résultats à conserver eux aussi. Compare le texte préparé au mot choisi avec if/else."
+              "hint": "`input` renvoie le texte saisi ; l'affectation à `reponse` le conserve. `strip` puis `lower` produisent de nouveaux résultats à conserver eux aussi. Compare le texte préparé au mot choisi avec `if`/`else`."
             },
             {
               "id": "mot-tests",
@@ -8561,8 +8638,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "mot-modifie",
-              "text": "Enregistre puis crée mon_mot_modifie.py avec Enregistrer sous. Change le mot accepté dans la question et la comparaison. Teste le nouveau et l'ancien mot : explique ce qui a changé.",
-              "hint": "La question annonce la règle mais seule la comparaison décide. Conserve mon_mot.py pour retrouver le premier essai."
+              "text": "Enregistre puis crée `mon_mot_modifie.py` avec Enregistrer sous. Change le mot accepté dans la question et la comparaison. Teste le nouveau et l'ancien mot : explique ce qui a changé.",
+              "hint": "La question annonce la règle mais seule la comparaison décide. Conserve `mon_mot.py` pour retrouver le premier essai."
             }
           ]
         },
@@ -8573,7 +8650,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mot-casse",
-              "text": "Enregistre mon_mot.py puis crée mon_mot_casse.py avec Enregistrer sous. Remplace normalisee = sans_bords.lower() par normalisee = sans_bords ; garde strip. Actualise la question pour annoncer que les majuscules comptent. Prévois puis teste une majuscule et un espace au bord.",
+              "text": "Enregistre `mon_mot.py` puis crée `mon_mot_casse.py` avec Enregistrer sous. Remplace `normalisee = sans_bords.lower()` par `normalisee = sans_bords` ; garde `strip`. Actualise la question pour annoncer que les majuscules comptent. Prévois puis teste une majuscule et un espace au bord.",
               "hint": "La variable comparée reste définie, mais n'est plus mise en minuscules. Une majuscule est refusée si le mot accepté est en minuscules ; les espaces aux bords restent tolérés. Ce n'est donc pas une comparaison entièrement exacte."
             }
           ]
@@ -8583,16 +8660,18 @@ window.CODECRAFT_DATA = {
           "id": "remplacement",
           "title": "Bonus - remplacer une partie du texte",
           "paragraphs": [
-            "Dans remplacement_texte.py, replace cherche le premier texte donné et remplace ses occurrences par le second. Conserve le résultat ; l'original reste intact. Prévois puis vérifie les deux affichages, puis change les textes du remplacement. Ce bonus n'est pas requis pour continuer."
+            "Dans `remplacement_texte.py`, replace cherche le premier texte donné et remplace ses occurrences par le second. Conserve le résultat ; l'original reste intact. Prévois puis vérifie les deux affichages, puis change les textes du remplacement. Ce bonus n'est pas requis pour continuer."
           ],
-          "code": "message = \"Bonjour, voyageur !\"\nnouveau = message.replace(\"voyageur\", \"pilote\")\nprint(message)\nprint(nouveau)"
+          "code": "message = \"Bonjour, voyageur !\"\nnouveau = message.replace(\"voyageur\", \"pilote\")\nprint(message)\nprint(nouveau)",
+          "filename": "remplacement_texte.py",
+          "consoleOutput": "Bonjour, voyageur !\nBonjour, pilote !"
         }
       ],
       "masteryCriteria": [
         "Distinguer longueur, caractères et indices sur un texte simple, y compris un texte vide.",
         "Conserver le résultat d'une transformation et expliquer pourquoi l'original reste inchangé.",
         "Créer une comparaison personnelle avec tests de casse, bords, autre mot et vide.",
-        "Expliquer les limites de strip/lower sans prétendre corriger les fautes ou accents.",
+        "Expliquer les limites de `strip`/`lower` sans prétendre corriger les fautes ou accents.",
         "Modifier la règle dans une copie et vérifier l'effet précis sur casse et espaces aux bords."
       ],
       "consolidation": [
@@ -8780,7 +8859,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.for",
-          "expectation": "Prévoir les passages de for/range ; sinon reprendre les tours."
+          "expectation": "Prévoir les passages de `for`/`range` ; sinon reprendre les tours."
         }
       ],
       "blocks": [
@@ -8788,7 +8867,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir afficher une variable numérique et suivre un for. Enregistre tes essais et crée tirage.py. Ne nomme pas ton fichier random.py ni une variable random : ces noms peuvent masquer le module utilisé. random fait partie de Python ; aucun package à installer.",
+          "text": "Il faut savoir afficher une variable numérique et suivre un `for`. Enregistre tes essais et crée `tirage.py`. Ne nomme pas ton fichier `random.py` ni une variable random : ces noms peuvent masquer le module utilisé. random fait partie de Python ; aucun package à installer.",
           "moduleLink": {
             "moduleId": "python-for",
             "text": "Revoir les tours et leurs valeurs"
@@ -8799,18 +8878,19 @@ window.CODECRAFT_DATA = {
           "id": "exemple",
           "title": "1 - Importer et tirer",
           "paragraphs": [
-            "import random rend accessible le module random de la bibliothèque standard. Dans random.randint, le point désigne une fonction de ce module ; les parenthèses appellent cette fonction. On utilise une fonction existante, sans apprendre encore à en définir une.",
-            "random.randint(1, 6) fournit un entier de 1 à 6, bornes comprises. La variable nombre conserve le résultat de cet appel ; print l’affiche.",
-            "Attention à la différence : range(1, 6) fournit les valeurs de 1 à 5, tandis que randint(1, 6) peut aussi donner 6. Avant le lancement, annonce les valeurs possibles, pas un résultat exact."
+            "`import` random rend accessible le module random de la bibliothèque standard. Dans random.`randint`, le point désigne une fonction de ce module ; les parenthèses appellent cette fonction. On utilise une fonction existante, sans apprendre encore à en définir une.",
+            "`random.randint(1, 6)` fournit un entier de 1 à 6, bornes comprises. La variable nombre conserve le résultat de cet appel ; `print` l’affiche.",
+            "Attention à la différence : `range(1, 6)` fournit les valeurs de 1 à 5, tandis que `randint(1, 6)` peut aussi donner 6. Avant le lancement, annonce les valeurs possibles, pas un résultat exact."
           ],
-          "code": "import random\nnombre = random.randint(1, 6)\nprint(\"Nombre :\", nombre)"
+          "code": "import random\nnombre = random.randint(1, 6)\nprint(\"Nombre :\", nombre)",
+          "filename": "tirage.py"
         },
         {
           "type": "lesson",
           "id": "relance",
           "title": "2 - Nouveau tirage ne veut pas dire résultat différent",
           "paragraphs": [
-            "Relance tirage.py plusieurs fois. Chaque exécution fait un nouvel appel, mais deux résultats consécutifs peuvent être identiques.",
+            "Relance `tirage.py` plusieurs fois. Chaque exécution fait un nouvel appel, mais deux résultats consécutifs peuvent être identiques.",
             "Quelques essais ne garantissent pas de voir toutes les valeurs ou les deux bornes. Un résultat doit rester dans la plage annoncée ; ne corrige pas le code seulement parce qu’une valeur se répète."
           ]
         },
@@ -8819,20 +8899,22 @@ window.CODECRAFT_DATA = {
           "id": "conserver",
           "title": "3 - Un tirage, plusieurs affichages",
           "paragraphs": [
-            "Enregistre tirage.py puis crée valeur_conservee.py. Le tirage est avant for : il a lieu une fois, puis les trois passages utilisent la même valeur.",
+            "Enregistre `tirage.py` puis crée `valeur_conservee.py`. Le tirage est avant `for` : il a lieu une fois, puis les trois passages utilisent la même valeur.",
             "Annonce ce qui est garanti avant d’exécuter : les trois affichages sont identiques dans cette exécution, même si tu ne connais pas leur valeur."
           ],
-          "code": "import random\nnombre = random.randint(1, 6)\nfor tour in range(3):\n    print(nombre)"
+          "code": "import random\nnombre = random.randint(1, 6)\nfor tour in range(3):\n    print(nombre)",
+          "filename": "valeur_conservee.py"
         },
         {
           "type": "lesson",
           "id": "renouveler",
           "title": "4 - Un nouveau tirage à chaque tour",
           "paragraphs": [
-            "Enregistre valeur_conservee.py puis crée nouveaux_tirages.py. Le tirage est maintenant dans le bloc : chaque passage appelle randint, puis affiche la valeur obtenue.",
+            "Enregistre `valeur_conservee.py` puis crée `nouveaux_tirages.py`. Le tirage est maintenant dans le bloc : chaque passage appelle `randint`, puis affiche la valeur obtenue.",
             "Les trois résultats peuvent différer, mais aussi se répéter. C’est le nombre d’appels et leur emplacement qui changent, pas une obligation d’obtenir trois valeurs différentes."
           ],
-          "code": "import random\nfor tour in range(3):\n    nombre = random.randint(1, 6)\n    print(nombre)"
+          "code": "import random\nfor tour in range(3):\n    nombre = random.randint(1, 6)\n    print(nombre)",
+          "filename": "nouveaux_tirages.py"
         },
         {
           "type": "tasks",
@@ -8841,18 +8923,18 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "bornes-hasard",
-              "text": "Dans tirage.py, montre l’import, les bornes et la variable résultat. Compare les valeurs possibles de randint(1, 6) à celles de range(1, 6).",
-              "hint": "randint inclut 6 ; range l’exclut. Un tirage est un entier, pas toute la suite."
+              "text": "Dans `tirage.py`, montre l’`import`, les bornes et la variable résultat. Compare les valeurs possibles de `randint(1, 6)` à celles de `range(1, 6)`.",
+              "hint": "`randint` inclut 6 ; `range` l’exclut. Un tirage est un entier, pas toute la suite."
             },
             {
               "id": "valeur-unique",
-              "text": "Enregistre puis crée tirage_fixe.py avec Enregistrer sous. Remplace les bornes par randint(4, 4), prédis puis teste plusieurs fois.",
-              "hint": "La seule valeur possible est 4. Le programme appelle quand même randint."
+              "text": "Enregistre puis crée `tirage_fixe.py` avec Enregistrer sous. Remplace les bornes par `randint(4, 4)`, prédis puis teste plusieurs fois.",
+              "hint": "La seule valeur possible est 4. Le programme appelle quand même `randint`."
             },
             {
               "id": "appels",
-              "text": "Compare valeur_conservee.py et nouveaux_tirages.py. Montre combien de fois la ligne du tirage est exécutée et explique les répétitions possibles des résultats.",
-              "hint": "Un appel avant for contre trois appels dans for ; des appels différents peuvent produire la même valeur."
+              "text": "Compare `valeur_conservee.py` et `nouveaux_tirages.py`. Montre combien de fois la ligne du tirage est exécutée et explique les répétitions possibles des résultats.",
+              "hint": "Un appel avant `for` contre trois appels dans `for` ; des appels différents peuvent produire la même valeur."
             }
           ]
         },
@@ -8860,22 +8942,22 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ton intervalle",
-          "intro": "Enregistre les exemples puis crée mon_tirage.py. Choisis tes messages et essaie avant les indices ; garde tous les fichiers.",
+          "intro": "Enregistre les exemples puis crée `mon_tirage.py`. Choisis tes messages et essaie avant les indices ; garde tous les fichiers.",
           "items": [
             {
               "id": "plage-personnelle",
               "text": "Choisis une plage positive, par exemple 3 à 9. Tire une fois et réutilise le nombre dans deux messages personnels. Annonce les valeurs possibles et repère la ligne qui tire.",
-              "hint": "Un appel à randint conserve la valeur dans une variable. Les deux print réutilisent son nom sans refaire le tirage."
+              "hint": "Un appel à `randint` conserve la valeur dans une variable. Les deux `print` réutilisent son nom sans refaire le tirage."
             },
             {
               "id": "trois-appels",
-              "text": "Enregistre puis crée mon_tirage_repetition.py avec Enregistrer sous. Fais trois tirages successifs et explique ce que tu as déplacé. Trois nombres différents ne sont pas exigés.",
+              "text": "Enregistre puis crée `mon_tirage_repetition.py` avec Enregistrer sous. Fais trois tirages successifs et explique ce que tu as déplacé. Trois nombres différents ne sont pas exigés.",
               "hint": "Le tirage doit appartenir au bloc répété. Vérifie l’emplacement, pas seulement les sorties."
             },
             {
               "id": "modifier-plage",
-              "text": "Change les bornes, annonce les nouvelles possibilités puis teste. Dans une copie nommée mon_tirage_fixe.py, réduis la plage à une seule valeur et vérifie ta prédiction.",
-              "hint": "Des bornes égales donnent toujours cette valeur. Garde mon_tirage.py et sa plage initiale."
+              "text": "Change les bornes, annonce les nouvelles possibilités puis teste. Dans une copie nommée `mon_tirage_fixe.py`, réduis la plage à une seule valeur et vérifie ta prédiction.",
+              "hint": "Des bornes égales donnent toujours cette valeur. Garde `mon_tirage.py` et sa plage initiale."
             }
           ]
         },
@@ -8887,14 +8969,14 @@ window.CODECRAFT_DATA = {
             {
               "id": "tirage-seuil",
               "text": "Dans un nouveau fichier, fais cinq tirages de 1 à 6. À chaque tour, affiche un message si le nombre obtenu vaut au moins 4. Montre que la comparaison utilise le tirage conservé.",
-              "hint": "Un tirage dans for, puis un if sur la variable. Ne refais pas un tirage dans le test ; reprends les conditions si nécessaire."
+              "hint": "Un tirage dans `for`, puis un `if` sur la variable. Ne refais pas un tirage dans le test ; reprends les conditions si nécessaire."
             }
           ]
         }
       ],
       "masteryCriteria": [
-        "Expliquer import, l’appel random.randint et la variable résultat.",
-        "Distinguer les bornes incluses de randint de la fin exclue de range.",
+        "Expliquer `import`, l’appel random.`randint` et la variable résultat.",
+        "Distinguer les bornes incluses de `randint` de la fin exclue de `range`.",
         "Réutiliser un tirage conservé et distinguer affichages répétés et nouveaux appels.",
         "Modifier une plage, vérifier une valeur unique et expliquer pourquoi deux tirages peuvent être identiques."
       ],
@@ -9074,7 +9156,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "python.input",
-          "expectation": "Conserver une réponse de input."
+          "expectation": "Conserver une réponse de `input`."
         },
         {
           "skillId": "python.numbers",
@@ -9114,7 +9196,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Il faut savoir convertir une réponse entière, comparer, actualiser un while et compter les essais. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée comparaison_mystere.py. Commence avec un secret fixe pour vérifier la logique avant le hasard.",
+          "text": "Il faut savoir convertir une réponse entière, comparer, actualiser un `while` et compter les essais. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée `comparaison_mystere.py`. Commence avec un secret fixe pour vérifier la logique avant le hasard.",
           "moduleLink": {
             "moduleId": "python-while",
             "text": "Revoir la mise à jour et l’arrêt"
@@ -9126,7 +9208,7 @@ window.CODECRAFT_DATA = {
           "title": "1 - La règle du jeu",
           "paragraphs": [
             "Au lancement, le programme choisit une fois un entier de 1 à 10. À chaque proposition, il indique Trop petit ou Trop grand, jusqu’à la réussite. Il annonce alors le total d’essais, y compris la proposition gagnante.",
-            "Annonce un entier écrit en chiffres, sans unité ni décimale. Un entier hors de la plage est comparé et compte comme essai. Une entrée comme cinq provoque ValueError et termine cet essai : le jeu n’est pas protégé contre les mauvaises saisies.",
+            "Annonce un entier écrit en chiffres, sans unité ni décimale. Un entier hors de la plage est comparé et compte comme essai. Une entrée comme cinq provoque `ValueError` et termine cet essai : le jeu n’est pas protégé contre les mauvaises saisies.",
             "Pas de limite d’essais ni de nouvelle partie automatique ici. Si une version répète sans fin, utilise Arrêter / redémarrer avant de la corriger."
           ]
         },
@@ -9137,13 +9219,13 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "comparaison-fixe",
-              "text": "Dans comparaison_mystere.py, fixe secret à 6. Demande une proposition entière avec input, puis convertis la réponse avec int dans une autre ligne.",
+              "text": "Dans `comparaison_mystere.py`, fixe secret à 6. Demande une proposition entière avec `input`, puis convertis la réponse avec `int` dans une autre ligne.",
               "hint": "Le secret est une valeur numérique. Garde distincts le texte de la réponse et le nombre comparé."
             },
             {
               "id": "trois-issues",
               "text": "Affiche Trop petit si la proposition est inférieure au secret, Trop grand si elle est supérieure, sinon Trouvé. Prédis puis teste 4, 6 et 8 dans trois exécutions.",
-              "hint": "Une chaîne if/elif/else ; chaque message dépend de la comparaison. Ce premier fichier n’a pas encore de boucle."
+              "hint": "Une chaîne `if`/`elif`/`else` ; chaque message dépend de la comparaison. Ce premier fichier n’a pas encore de boucle."
             }
           ]
         },
@@ -9152,19 +9234,21 @@ window.CODECRAFT_DATA = {
           "id": "difference",
           "title": "2 - Continuer quand les valeurs diffèrent",
           "paragraphs": [
-            "Enregistre ton premier essai puis crée inegalite.py pour ce petit exemple. != signifie différent de : le résultat est vrai lorsque les valeurs diffèrent, faux lorsqu’elles sont égales.",
-            "Prédis puis vérifie True, puis False. Ce signe ne fait pas une affectation. Quand proposition devient égale à secret, proposition != secret devient faux : c’est ce qui permettra d’arrêter la répétition."
+            "Enregistre ton premier essai puis crée `inegalite.py` pour ce petit exemple. != signifie différent de : le résultat est vrai lorsque les valeurs diffèrent, faux lorsqu’elles sont égales.",
+            "Prédis puis vérifie `True`, puis `False`. Ce signe ne fait pas une affectation. Quand proposition devient égale à secret, proposition != secret devient faux : c’est ce qui permettra d’arrêter la répétition."
           ],
-          "code": "secret = 6\nproposition = 4\nprint(proposition != secret)\nproposition = 6\nprint(proposition != secret)"
+          "code": "secret = 6\nproposition = 4\nprint(proposition != secret)\nproposition = 6\nprint(proposition != secret)",
+          "filename": "inegalite.py",
+          "consoleOutput": "True\nFalse"
         },
         {
           "type": "lesson",
           "id": "structure",
           "title": "3 - Passer du choix à la répétition",
           "paragraphs": [
-            "Rouvre comparaison_mystere.py puis crée repetition_mystere.py avec Enregistrer sous. Garde le secret fixe et la première question suivie de sa conversion avant while. Répète tant que proposition != secret.",
-            "Dans while, garde seulement les indices Trop petit et Trop grand selon la comparaison. Retire la branche Trouvé de l’ancienne chaîne : lorsque le bloc est exécuté, la proposition diffère forcément du secret. Place le message de réussite après la boucle, non indenté.",
-            "Après l’indice, pose une nouvelle question puis convertis la réponse dans le bloc de while. Ces deux lignes actualisent la proposition avant le test suivant. Quatre espaces pour les instructions de while, huit pour les messages de ses branches, zéro pour la réussite finale."
+            "Rouvre `comparaison_mystere.py` puis crée `repetition_mystere.py` avec Enregistrer sous. Garde le secret fixe et la première question suivie de sa conversion avant `while`. Répète tant que proposition != secret.",
+            "Dans `while`, garde seulement les indices Trop petit et Trop grand selon la comparaison. Retire la branche Trouvé de l’ancienne chaîne : lorsque le bloc est exécuté, la proposition diffère forcément du secret. Place le message de réussite après la boucle, non indenté.",
+            "Après l’indice, pose une nouvelle question puis convertis la réponse dans le bloc de `while`. Ces deux lignes actualisent la proposition avant le test suivant. Quatre espaces pour les instructions de `while`, huit pour les messages de ses branches, zéro pour la réussite finale."
           ]
         },
         {
@@ -9175,12 +9259,12 @@ window.CODECRAFT_DATA = {
             {
               "id": "routes-fixes",
               "text": "Avec le secret à 6, prédis puis teste 6 ; 4 puis 6 ; 8 puis 6 ; 4, 8 puis 6. Vérifie les indices et l’absence de nouvelle question après réussite.",
-              "hint": "La première séquence ne passe pas dans while. Les autres passent une, une puis deux fois. Trouvé apparaît seulement après l’arrêt."
+              "hint": "La première séquence ne passe pas dans `while`. Les autres passent une, une puis deux fois. Trouvé apparaît seulement après l’arrêt."
             },
             {
               "id": "compter-essais",
-              "text": "Enregistre ta version. Initialise essais à 1 après la première proposition convertie. Augmente-le de 1 après chaque nouvelle conversion dans while. Affiche le bilan après la réussite et reteste les quatre séquences.",
-              "hint": "Les totaux attendus sont 1, 2, 2, 3. Le compteur compte les propositions converties, pas seulement les tours de while."
+              "text": "Enregistre ta version. Initialise essais à 1 après la première proposition convertie. Augmente-le de 1 après chaque nouvelle conversion dans `while`. Affiche le bilan après la réussite et reteste les quatre séquences.",
+              "hint": "Les totaux attendus sont 1, 2, 2, 3. Le compteur compte les propositions converties, pas seulement les tours de `while`."
             }
           ]
         },
@@ -9189,41 +9273,41 @@ window.CODECRAFT_DATA = {
           "id": "tirage",
           "title": "4 - Remplacer la source du secret",
           "paragraphs": [
-            "Enregistre repetition_mystere.py puis crée mystere_aleatoire.py avec Enregistrer sous. Ajoute import random au début et remplace seulement secret = 6 par secret = random.randint(1, 10), avant toute question et avant while.",
+            "Enregistre `repetition_mystere.py` puis crée `mystere_aleatoire.py` avec Enregistrer sous. Ajoute `import` random au début et remplace seulement secret = 6 par secret = `random.randint(1, 10)`, avant toute question et avant `while`.",
             "Ne refais pas le tirage après un échec : le secret reste le même pendant toute la partie. Une relance en tire un nouveau, qui peut toutefois être identique au précédent.",
-            "Pour diagnostiquer, tu peux afficher provisoirement le secret juste après le tirage, en annonçant que c’est une aide de test. Retire cet affichage du jeu final. Ne nomme pas le fichier random.py."
+            "Pour diagnostiquer, tu peux afficher provisoirement le secret juste après le tirage, en annonçant que c’est une aide de test. Retire cet affichage du jeu final. Ne nomme pas le fichier `random.py`."
           ]
         },
         {
           "type": "tasks",
           "id": "autonomie",
           "title": "À toi - ton nombre mystère",
-          "intro": "Enregistre les fichiers guidés puis crée mon_nombre_mystere.py. Prépare une courte description de ta règle et de tes variables ; essaie avant les indices.",
+          "intro": "Enregistre les fichiers guidés puis crée `mon_nombre_mystere.py`. Prépare une courte description de ta règle et de tes variables ; essaie avant les indices.",
           "items": [
             {
               "id": "jeu-personnel",
               "text": "Construis ta version avec une plage de 1 à 12 et tes propres messages. Tire une fois, demande et convertis chaque proposition, indique trop petit ou trop grand, puis affiche la réussite et le total d’essais.",
-              "hint": "Prépare le rôle des variables avant le code. La première saisie est avant while ; les suivantes sont dans le bloc. Le secret ne change pas pendant la partie."
+              "hint": "Prépare le rôle des variables avant le code. La première saisie est avant `while` ; les suivantes sont dans le bloc. Le secret ne change pas pendant la partie."
             },
             {
               "id": "tests-personnels",
-              "text": "Enregistre puis crée test_nombre_mystere.py avec Enregistrer sous. Remplace provisoirement le tirage par un secret fixe à 7. Choisis toi-même une proposition inférieure et une supérieure. Prédis puis teste : réussite immédiate, chaque échec suivi de réussite, puis les deux échecs avant réussite.",
+              "text": "Enregistre puis crée `test_nombre_mystere.py` avec Enregistrer sous. Remplace provisoirement le tirage par un secret fixe à 7. Choisis toi-même une proposition inférieure et une supérieure. Prédis puis teste : réussite immédiate, chaque échec suivi de réussite, puis les deux échecs avant réussite.",
               "hint": "Par exemple 3 et 10 entourent 7. Attends 1, 2, 2 et 3 essais ; aucune question après la réussite. Les valeurs sont des aides, pas des choix imposés."
             },
             {
               "id": "bornes-et-format",
               "text": "Dans le fichier de test, utilise successivement un secret à 1 puis à 12 et vérifie la réussite immédiate. Essaie aussi un entier hors plage suivi du secret. Puis teste un texte non convertible, explique l’arrêt et relance avec un entier.",
-              "hint": "L’entier hors plage compte comme essai ; un texte non convertible provoque ValueError sur int et n’atteint pas la réussite. Pas de try/except à ajouter."
+              "hint": "L’entier hors plage compte comme essai ; un texte non convertible provoque `ValueError` sur `int` et n’atteint pas la réussite. Pas de try/except à ajouter."
             },
             {
               "id": "retrouver-aleatoire",
-              "text": "Enregistre le fichier de test. Rouvre mon_nombre_mystere.py et vérifie le tirage aléatoire unique, sans affichage du secret. Ferme, rouvre puis relance le jeu ; explique la place du tirage, des deux saisies et du compteur.",
-              "hint": "La copie fixe sert au diagnostic ; la version personnelle conserve randint. Le fichier doit définir toutes les valeurs nécessaires sans ancien essai."
+              "text": "Enregistre le fichier de test. Rouvre `mon_nombre_mystere.py` et vérifie le tirage aléatoire unique, sans affichage du secret. Ferme, rouvre puis relance le jeu ; explique la place du tirage, des deux saisies et du compteur.",
+              "hint": "La copie fixe sert au diagnostic ; la version personnelle conserve `randint`. Le fichier doit définir toutes les valeurs nécessaires sans ancien essai."
             },
             {
               "id": "modifier-plage",
-              "text": "Enregistre puis crée mystere_modifie.py avec Enregistrer sous. Change la plage, mets à jour son annonce dans les deux questions et teste les nouvelles bornes dans une copie à secret fixe.",
-              "hint": "Garde les versions précédentes. Les bornes de randint sont incluses ; modifier l’annonce seule ne change pas le tirage."
+              "text": "Enregistre puis crée `mystere_modifie.py` avec Enregistrer sous. Change la plage, mets à jour son annonce dans les deux questions et teste les nouvelles bornes dans une copie à secret fixe.",
+              "hint": "Garde les versions précédentes. Les bornes de `randint` sont incluses ; modifier l’annonce seule ne change pas le tirage."
             }
           ]
         },
@@ -9235,7 +9319,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "appreciation",
               "text": "Dans une copie du jeu, ajoute après réussite une appréciation selon le total d’essais, avec deux seuils de ton choix. Vérifie chaque issue avec un secret fixe et conserve le total exact.",
-              "hint": "Une chaîne if/elif/else après while suffit. Pas de plafond d’essais ni de nouvelle partie à ajouter."
+              "hint": "Une chaîne `if`/`elif`/`else` après `while` suffit. Pas de plafond d’essais ni de nouvelle partie à ajouter."
             }
           ]
         }
@@ -9297,7 +9381,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "python.for",
-              "expectation": "Suivre un for ; sinon reprendre Répéter un nombre de fois."
+              "expectation": "Suivre un `for` ; sinon reprendre Répéter un nombre de fois."
             }
           ]
         }
@@ -9460,7 +9544,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "2 : Quatre petits déplacements",
-            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
                 "category": "events",
@@ -9575,7 +9658,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "3 : Répéter jusqu’à l’arrêt",
-            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
                 "category": "events",
@@ -9890,7 +9972,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "3 : Maintenir une touche, toucher la cible",
-            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
                 "category": "events",
@@ -13557,7 +13638,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "Deux personnages : un signal reponse",
-            "note": "Modèles à construire sur les deux sprites. Aucun éditeur interactif ici.",
             "stacks": [
               {
                 "caption": "Pico : lance le dialogue",
@@ -15261,13 +15341,13 @@ window.CODECRAFT_DATA = {
               "title": "Surveiller les vies dans une autre pile",
               "shortSteps": [
                 "Sur Pilote, garde la pile de déplacement déjà présente.",
-                "Ajoute la pile ci-dessous. Le si vies > 0 laisse le compteur à zéro après la dernière vie.",
+                "Ajoute la pile ci-dessous. Elle retire une vie seulement si vies > 0 et si Pilote touche Danger.",
                 "Au contact, la pile attend la séparation ; la pile de déplacement continue.",
-                "Glisse vies depuis Variables dans la comparaison >. Écris 0 dans l’autre case."
+                "Dans Opérateurs, prends et. Place la comparaison vies > 0 dans une case et le capteur touche Danger ? dans l’autre."
               ],
               "paragraphs": [
                 "Dans l’attente, glisse touche Danger ? à l’intérieur de non, puis place l’ensemble dans attendre jusqu’à ce que.",
-                "Le si vies > 0 évite les valeurs négatives. Ici, le personnage peut encore se déplacer à zéro vie : nous observons le compteur. Une fin de partie se construit séparément."
+                "La comparaison vies > 0 évite les valeurs négatives. Ici, le personnage peut encore se déplacer à zéro vie : nous observons le compteur. Une fin de partie se construit séparément."
               ],
               "visualScript": {
                 "caption": "Pilote : la pile de surveillance",
@@ -15312,24 +15392,19 @@ window.CODECRAFT_DATA = {
                           {
                             "condition": [
                               {
-                                "reporter": "vies",
-                                "category": "variables"
+                                "condition": [
+                                  {
+                                    "reporter": "vies",
+                                    "category": "variables"
+                                  },
+                                  " > ",
+                                  {
+                                    "value": "0"
+                                  }
+                                ],
+                                "operator": true
                               },
-                              " > ",
-                              {
-                                "value": "0"
-                              }
-                            ],
-                            "operator": true
-                          },
-                          " alors"
-                        ],
-                        "children": [
-                          {
-                            "category": "control",
-                            "label": "Contrôle",
-                            "parts": [
-                              "si ",
+                              " et ",
                               {
                                 "condition": [
                                   "touche ",
@@ -15338,45 +15413,46 @@ window.CODECRAFT_DATA = {
                                   },
                                   " ?"
                                 ]
-                              },
-                              " alors"
+                              }
                             ],
-                            "children": [
+                            "operator": true
+                          },
+                          " alors"
+                        ],
+                        "children": [
+                          {
+                            "category": "variables",
+                            "label": "Variables",
+                            "parts": [
+                              "ajouter ",
                               {
-                                "category": "variables",
-                                "label": "Variables",
-                                "parts": [
-                                  "ajouter ",
-                                  {
-                                    "value": "-1"
-                                  },
-                                  " à ",
-                                  {
-                                    "choice": "vies"
-                                  }
-                                ]
+                                "value": "-1"
                               },
+                              " à ",
                               {
-                                "category": "control",
-                                "label": "Contrôle",
-                                "parts": [
-                                  "attendre jusqu’à ce que ",
+                                "choice": "vies"
+                              }
+                            ]
+                          },
+                          {
+                            "category": "control",
+                            "label": "Contrôle",
+                            "parts": [
+                              "attendre jusqu’à ce que ",
+                              {
+                                "condition": [
+                                  "non ",
                                   {
                                     "condition": [
-                                      "non ",
+                                      "touche ",
                                       {
-                                        "condition": [
-                                          "touche ",
-                                          {
-                                            "choice": "Danger"
-                                          },
-                                          " ?"
-                                        ]
-                                      }
-                                    ],
-                                    "operator": true
+                                        "choice": "Danger"
+                                      },
+                                      " ?"
+                                    ]
                                   }
-                                ]
+                                ],
+                                "operator": true
                               }
                             ]
                           }
@@ -15652,7 +15728,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "3 : Un point par contact",
-            "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
             "blocks": [
               {
                 "category": "events",
@@ -16127,7 +16202,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "Deux blocs accrochés : un seul script",
-            "note": "Modèle à reproduire dans Scratch, pas un éditeur interactif.",
             "blocks": [
               {
                 "category": "events",
@@ -16195,7 +16269,7 @@ window.CODECRAFT_DATA = {
           "id": "conserver",
           "title": "3 : Sauvegarder sans compte",
           "paragraphs": [
-            "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer premier-essai.sb3.",
+            "Choisis Fichier → Sauvegarder sur votre ordinateur. Ton navigateur télécharge un fichier .sb3. Repère-le dans tes téléchargements et garde-le dans un dossier que tu peux retrouver. Tu peux le nommer `premier-essai.sb3`.",
             "Le téléchargement garde l’état du projet à ce moment-là. Après de nouvelles modifications, télécharge une nouvelle version : ne suppose pas que l’ancien fichier a changé.",
             "Pour rouvrir : dans Scratch, choisis Fichier → Charger depuis votre ordinateur et sélectionne ton .sb3. Attention : charger remplace le projet ouvert. Sauvegarde d’abord ton travail actuel si tu veux le garder.",
             "N’utilise pas ton nom complet ou d’autres informations personnelles dans le titre. Il n’est pas nécessaire de partager le projet en ligne."
@@ -16411,7 +16485,7 @@ window.CODECRAFT_DATA = {
           "title": "2 : Assemble cette petite scène",
           "paragraphs": [
             "Sélectionne le chat du projet neuf préparé au début. Il n’a pas d’ancienne pile : tu peux construire cet essai sans supprimer ton travail précédent. Reste dans ce projet pour modifier les messages, l’ordre et la pause.",
-            "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous. Ce modèle se lit ; il ne se colle pas comme du code texte.",
+            "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous.",
             "Avant de cliquer sur le drapeau, annonce ce que fera le chat en premier, puis en dernier. Observe ensuite les deux déplacements et la pause."
           ],
           "shortSteps": [
@@ -16421,7 +16495,6 @@ window.CODECRAFT_DATA = {
           ],
           "visualScript": {
             "caption": "Une pile : les actions de haut en bas",
-            "note": "Assemble ces blocs dans Scratch. Le modèle n’est pas interactif.",
             "blocks": [
               {
                 "category": "events",
@@ -17216,7 +17289,7 @@ window.CODECRAFT_DATA = {
           "title": "1 : Deux pages, deux fichiers",
           "paragraphs": [
             "Résultat attendu : tu peux aller de l’accueil à une page de découvertes, puis revenir par un lien présent sur la page, sans dépendre du bouton Retour du navigateur.",
-            "Crée un NOUVEAU dossier mini-navigation, pour garder tes exercices précédents. Dans ton éditeur, crée puis enregistre deux fichiers distincts avec les noms ci-dessous. Affiche les extensions dans l’explorateur si nécessaire : decouvertes.html.txt n’est pas le fichier demandé.",
+            "Crée un NOUVEAU dossier mini-navigation, pour garder tes exercices précédents. Dans ton éditeur, crée puis enregistre deux fichiers distincts avec les noms ci-dessous. Affiche les extensions dans l’explorateur si nécessaire : `decouvertes.html`.txt n’est pas le fichier demandé.",
             "Les noms de fichiers sont ici en minuscules, sans espace ni accent. Respecte exactement leur écriture, même si ton ordinateur tolère parfois des différences de majuscules. Le texte visible peut, lui, avoir des accents.",
             "Chaque fichier possède son propre document complet, son title pour l’onglet et son h1 visible. Ne colle pas les deux documents à la suite dans un même fichier. Travaille sans IA."
           ],
@@ -17227,8 +17300,8 @@ window.CODECRAFT_DATA = {
           "id": "liens",
           "title": "2 : Une destination depuis la page actuelle",
           "paragraphs": [
-            "Dans href, decouvertes.html désigne ici un fichier situé dans le même dossier que la page contenant le lien. Le navigateur cherche la destination depuis cette page, pas depuis ton éditeur.",
-            "Le texte Découvertes annonce la destination ; modifier seulement ce texte ne change pas le fichier ouvert. Pour revenir, href=\"index.html\" vise le fichier d’accueil.",
+            "Dans href, `decouvertes.html` désigne ici un fichier situé dans le même dossier que la page contenant le lien. Le navigateur cherche la destination depuis cette page, pas depuis ton éditeur.",
+            "Le texte Découvertes annonce la destination ; modifier seulement ce texte ne change pas le fichier ouvert. Pour revenir, href=\"`index.html`\" vise le fichier d’accueil.",
             "N’écris pas le chemin complet de ton ordinateur ni un / au début : nous utilisons des fichiers voisins avec leurs noms et extensions. Un chemin relatif reste valable si le dossier complet est déplacé en conservant cette organisation.",
             "Cliquer charge l’autre document. Un lien ne crée pas un fichier, ne recopie pas son contenu et ne fabrique pas automatiquement un lien de retour : il faut écrire celui-ci sur la deuxième page."
           ],
@@ -17242,7 +17315,7 @@ window.CODECRAFT_DATA = {
                 "label": "Depuis index.html",
                 "html": "\u003cp>Page représentée : index.html\u003c/p>\u003ch1>Mon carnet\u003c/h1>\u003cp>Trajet : index.html → decouvertes.html\u003c/p>",
                 "code": "\u003ca href=\"decouvertes.html\">Découvertes\u003c/a>",
-                "feedback": "Depuis l’accueil, ce lien cherche le fichier voisin decouvertes.html.",
+                "feedback": "Depuis l’accueil, ce lien cherche le fichier voisin `decouvertes.html`.",
                 "css": ""
               },
               {
@@ -17273,7 +17346,7 @@ window.CODECRAFT_DATA = {
           "id": "accueil",
           "title": "index.html : Le document d’accueil",
           "paragraphs": [
-            "Copie uniquement ce document dans index.html, puis enregistre. Son titre d’onglet et son titre visible permettront de reconnaître la page."
+            "Copie uniquement ce document dans `index.html`, puis enregistre. Son titre d’onglet et son titre visible permettront de reconnaître la page."
           ],
           "code": "\u003c!doctype html>\n\u003chtml lang=\"fr\">\n\u003chead>\n  \u003cmeta charset=\"utf-8\">\n  \u003ctitle>Accueil du carnet\u003c/title>\n\u003c/head>\n\u003cbody>\n  \u003ch1>Mon carnet\u003c/h1>\n  \u003cnav>\n    \u003ca href=\"index.html\">Accueil\u003c/a>\n    \u003ca href=\"decouvertes.html\">Découvertes\u003c/a>\n  \u003c/nav>\n  \u003cp>Bienvenue dans mon carnet de découvertes.\u003c/p>\n\u003c/body>\n\u003c/html>"
         },
@@ -17282,7 +17355,7 @@ window.CODECRAFT_DATA = {
           "id": "seconde",
           "title": "decouvertes.html : Le deuxième document",
           "paragraphs": [
-            "Copie ce document dans decouvertes.html, pas à la suite du précédent. Enregistre aussi ce fichier."
+            "Copie ce document dans `decouvertes.html`, pas à la suite du précédent. Enregistre aussi ce fichier."
           ],
           "code": "\u003c!doctype html>\n\u003chtml lang=\"fr\">\n\u003chead>\n  \u003cmeta charset=\"utf-8\">\n  \u003ctitle>Découvertes du carnet\u003c/title>\n\u003c/head>\n\u003cbody>\n  \u003ch1>Mes découvertes\u003c/h1>\n  \u003cnav>\n    \u003ca href=\"index.html\">Accueil\u003c/a>\n    \u003ca href=\"decouvertes.html\">Découvertes\u003c/a>\n  \u003c/nav>\n  \u003cp>Je compare des formes et je note mes idées.\u003c/p>\n\u003c/body>\n\u003c/html>"
         },
@@ -17290,28 +17363,28 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "guide",
           "title": "Exercice guidé : Faire l’aller et le retour",
-          "intro": "Ouvre index.html depuis ton dossier dans un navigateur. Si le double-clic ouvre l’éditeur, utilise Ouvrir avec et choisis ton navigateur.",
+          "intro": "Ouvre `index.html` depuis ton dossier dans un navigateur. Si le double-clic ouvre l’éditeur, utilise Ouvrir avec et choisis ton navigateur.",
           "items": [
             {
               "id": "aller",
-              "text": "Clique sur Découvertes dans la page. Vérifie le nom decouvertes.html dans la barre d’adresse, le titre de l’onglet et le h1 Mes découvertes."
+              "text": "Clique sur Découvertes dans la page. Vérifie le nom `decouvertes.html` dans la barre d’adresse, le titre de l’onglet et le h1 Mes découvertes."
             },
             {
               "id": "retour",
-              "text": "Clique sur Accueil dans la deuxième page. Vérifie que tu retrouves index.html et Mon carnet, sans utiliser le bouton Retour du navigateur."
+              "text": "Clique sur Accueil dans la deuxième page. Vérifie que tu retrouves `index.html` et Mon carnet, sans utiliser le bouton Retour du navigateur."
             },
             {
               "id": "direct",
-              "text": "Ferme cet onglet de test ou ouvre un nouvel onglet, puis ouvre directement decouvertes.html depuis le dossier. Utilise son lien Accueil : il doit fonctionner sans historique préalable."
+              "text": "Ferme cet onglet de test ou ouvre un nouvel onglet, puis ouvre directement `decouvertes.html` depuis le dossier. Utilise son lien Accueil : il doit fonctionner sans historique préalable."
             },
             {
               "id": "texte-lien",
-              "text": "Dans les deux fichiers, remplace seulement le texte visible Découvertes par Mes idées, sans toucher à href. Enregistre, actualise et vérifie que le lien ouvre toujours decouvertes.html.",
+              "text": "Dans les deux fichiers, remplace seulement le texte visible Découvertes par Mes idées, sans toucher à href. Enregistre, actualise et vérifie que le lien ouvre toujours `decouvertes.html`.",
               "hints": [
                 "Repère ce qui se trouve entre \u003ca> et \u003c/a>.",
                 "Ce sont les mots du lien, pas l’adresse.",
                 "Compare les guillemets de href au texte visible.",
-                "Change seulement les mots, garde href=\"decouvertes.html\" dans les deux menus."
+                "Change seulement les mots, garde href=\"`decouvertes.html`\" dans les deux menus."
               ]
             },
             {
@@ -17328,11 +17401,11 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "renommer",
-              "text": "Renomme decouvertes.html en idees.html dans le dossier de copie, en gardant index.html. Ne modifie pas encore les liens."
+              "text": "Renomme `decouvertes.html` en `idees.html` dans le dossier de copie, en gardant `index.html`. Ne modifie pas encore les liens."
             },
             {
               "id": "predire",
-              "text": "Avant de cliquer, prédis ce qui arrivera à l’ancien lien. Ouvre index.html de la copie et observe : l’ancien nom ne désigne plus un fichier présent."
+              "text": "Avant de cliquer, prédis ce qui arrivera à l’ancien lien. Ouvre `index.html` de la copie et observe : l’ancien nom ne désigne plus un fichier présent."
             },
             {
               "id": "reparer-menus",
@@ -17341,7 +17414,7 @@ window.CODECRAFT_DATA = {
                 "Ouvre les deux documents dans l’éditeur.",
                 "Recherche l’ancien nom dans les attributs href.",
                 "Un menu peut encore pointer vers l’ancien fichier même si l’autre a été corrigé.",
-                "Dans index.html et idees.html, remplace href=\"decouvertes.html\" par href=\"idees.html\". Garde href=\"index.html\"."
+                "Dans `index.html` et `idees.html`, remplace href=\"`decouvertes.html`\" par href=\"`idees.html`\". Garde href=\"`index.html`\"."
               ]
             },
             {
@@ -17350,7 +17423,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "parcours-complet",
-              "text": "Teste tous les liens depuis chaque page, puis ouvre idees.html directement et reviens à l’accueil par son lien. Explique la différence entre nom de fichier, titre de l’onglet et texte du lien."
+              "text": "Teste tous les liens depuis chaque page, puis ouvre `idees.html` directement et reviens à l’accueil par son lien. Explique la différence entre nom de fichier, titre de l’onglet et texte du lien."
             }
           ]
         },
@@ -17390,7 +17463,7 @@ window.CODECRAFT_DATA = {
           "id": "panne",
           "title": "Consolidation : Un lien visible, mais une destination absente",
           "paragraphs": [
-            "Dans une copie de ta version réparée, remplace seulement le lien vers idees.html de index.html par celui-ci. Le texte reste correct ; l’adresse comporte une faute.",
+            "Dans une copie de ta version réparée, remplace seulement le lien vers `idees.html` de `index.html` par celui-ci. Le texte reste correct ; l’adresse comporte une faute.",
             "Teste le lien. Selon le navigateur, une page d’erreur ou une indication de fichier introuvable apparaît. Pour réparer, reviens à l’éditeur et au fichier ; une erreur de navigation n’a pas supprimé ton travail."
           ],
           "code": "\u003ca href=\"idee.html\">Mes idées\u003c/a>"
@@ -17403,22 +17476,22 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "corriger-fichier",
-              "text": "Compare href au fichier réellement présent. Corrige uniquement la référence, enregistre puis rouvre index.html et reteste.",
+              "text": "Compare href au fichier réellement présent. Corrige uniquement la référence, enregistre puis rouvre `index.html` et reteste.",
               "hints": [
                 "Regarde les noms dans ton dossier.",
                 "Une lettre manque dans l’adresse.",
-                "Compare idee.html et idees.html.",
-                "Rétablis href=\"idees.html\". Changer Mes idées n’aurait pas corrigé la destination."
+                "Compare `idee.html` et `idees.html`.",
+                "Rétablis href=\"`idees.html`\". Changer Mes idées n’aurait pas corrigé la destination."
               ]
             },
             {
               "id": "retour-manquant",
-              "text": "Dans une autre copie, enlève le lien Accueil de idees.html. Ouvre cette page directement, constate l’absence de retour dans la page puis rétablis-le.",
+              "text": "Dans une autre copie, enlève le lien Accueil de `idees.html`. Ouvre cette page directement, constate l’absence de retour dans la page puis rétablis-le.",
               "hints": [
                 "Le bouton Retour du navigateur n’est pas le menu du site.",
                 "La page peut être la première visitée.",
-                "Vise index.html, qui est au même niveau.",
-                "Ajoute \u003ca href=\"index.html\">Accueil\u003c/a> dans nav de idees.html."
+                "Vise `index.html`, qui est au même niveau.",
+                "Ajoute \u003ca href=\"index.html\">Accueil\u003c/a> dans nav de `idees.html`."
               ]
             },
             {
@@ -17440,11 +17513,11 @@ window.CODECRAFT_DATA = {
               "items": [
                 {
                   "id": "troisieme",
-                  "text": "Crée observations.html dans le même dossier en copiant le cadre d’une page existante. Change title, h1 et paragraphe ; ne garde pas un deuxième accueil déguisé."
+                  "text": "Crée `observations.html` dans le même dossier en copiant le cadre d’une page existante. Change title, h1 et paragraphe ; ne garde pas un deuxième accueil déguisé."
                 },
                 {
                   "id": "ajouter-menu",
-                  "text": "Ajoute un lien Observations vers ce fichier dans les trois menus, en conservant Accueil et le lien vers idees.html.",
+                  "text": "Ajoute un lien Observations vers ce fichier dans les trois menus, en conservant Accueil et le lien vers `idees.html`.",
                   "hints": [
                     "Le nouveau fichier est voisin des deux autres.",
                     "Le nouveau lien doit aussi exister dans la nouvelle page.",
@@ -17454,7 +17527,7 @@ window.CODECRAFT_DATA = {
                 },
                 {
                   "id": "tester-trois",
-                  "text": "Depuis chacune des trois pages, teste toutes les destinations, puis ouvre observations.html directement. Aucun passage par l’accueil ne doit être nécessaire pour retrouver les autres pages."
+                  "text": "Depuis chacune des trois pages, teste toutes les destinations, puis ouvre `observations.html` directement. Aucun passage par l’accueil ne doit être nécessaire pour retrouver les autres pages."
                 }
               ]
             }
@@ -17841,7 +17914,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "exigence-1",
-              "text": "Deux fichiers HTML complets dans le même dossier, avec un accueil index.html et une seconde page au nom simple choisi."
+              "text": "Deux fichiers HTML complets dans le même dossier, avec un accueil `index.html` et une seconde page au nom simple choisi."
             },
             {
               "id": "exigence-2",
@@ -17857,7 +17930,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "exigence-5",
-              "text": "Un seul fichier style.css commun, relié dans head de chaque document ; des classes réutilisées pour des rôles comparables."
+              "text": "Un seul fichier `style.css` commun, relié dans head de chaque document ; des classes réutilisées pour des rôles comparables."
             },
             {
               "id": "exigence-6",
@@ -17882,9 +17955,9 @@ window.CODECRAFT_DATA = {
           "id": "dossier",
           "title": "2 : Préparer l’organisation",
           "paragraphs": [
-            "Tu peux garder index.html et idees.html de l’exercice précédent, dans une copie. L’arbre ci-dessous est un exemple d’organisation : adapte le nom de ta seconde page et celui de l’image.",
-            "Les deux HTML et style.css restent voisins. Les dessins sont rangés dans images. Conserver cette organisation limite les nouveaux chemins à comprendre : chaque HTML peut utiliser href=\"style.css\" et src=\"images/carre-bleu.png\".",
-            "Vérifie les extensions et les noms exacts. On ne place pas les deux pages HTML dans style.css ; ce fichier reçoit seulement les règles CSS. Pas besoin de serveur ni de mise en ligne pour ces liens et fichiers."
+            "Tu peux garder `index.html` et `idees.html` de l’exercice précédent, dans une copie. L’arbre ci-dessous est un exemple d’organisation : adapte le nom de ta seconde page et celui de l’image.",
+            "Les deux HTML et `style.css` restent voisins. Les dessins sont rangés dans images. Conserver cette organisation limite les nouveaux chemins à comprendre : chaque HTML peut utiliser href=\"`style.css`\" et src=\"`images/carre-bleu.png`\".",
+            "Vérifie les extensions et les noms exacts. On ne place pas les deux pages HTML dans `style.css` ; ce fichier reçoit seulement les règles CSS. Pas besoin de serveur ni de mise en ligne pour ces liens et fichiers."
           ],
           "code": "mon-mini-site/\n├── index.html\n├── idees.html\n├── style.css\n└── images/\n    └── carre-bleu.png"
         },
@@ -17893,7 +17966,7 @@ window.CODECRAFT_DATA = {
           "id": "liaison",
           "title": "3 : Une feuille pour les deux documents",
           "paragraphs": [
-            "Dans head de CHAQUE page, relie le même fichier style.css. Cette ligne est un rappel de Relier une feuille de style ; elle n’est pas un lien cliquable à placer dans le menu.",
+            "Dans head de CHAQUE page, relie le même fichier `style.css`. Cette ligne est un rappel de Relier une feuille de style ; elle n’est pas un lien cliquable à placer dans le menu.",
             "Si tu pars d’une copie qui utilisait un autre fichier CSS, garde une copie de sauvegarde puis remplace son ancienne liaison par celle vers la feuille commune. Ne conserve pas une deuxième feuille ou un ancien bloc style qui masquerait tes essais."
           ],
           "code": "\u003clink rel=\"stylesheet\" href=\"style.css\">"
@@ -17903,10 +17976,10 @@ window.CODECRAFT_DATA = {
           "id": "partage",
           "title": "Un petit essai pour prouver le partage",
           "paragraphs": [
-            "Avant la réalisation complète, donne class=\"titre\" au h1 de chacune des deux pages et ajoute cette règle dans l’unique style.css. Ouvre les deux documents : leurs titres doivent être bleu marine.",
-            "Change navy en darkgreen uniquement dans style.css, enregistre puis actualise CHACUNE des pages. Si les deux titres changent, tu as une preuve que cette règle commune agit sur les deux.",
+            "Avant la réalisation complète, donne class=\"titre\" au h1 de chacune des deux pages et ajoute cette règle dans l’unique `style.css`. Ouvre les deux documents : leurs titres doivent être bleu marine.",
+            "Change navy en darkgreen uniquement dans `style.css`, enregistre puis actualise CHACUNE des pages. Si les deux titres changent, tu as une preuve que cette règle commune agit sur les deux.",
             "Le fichier commun est relu lors du chargement ou de l’actualisation de chaque page ; une page déjà ouverte ne se met pas à jour toute seule pendant la saisie.",
-            "CSS partage les règles d’apparence, pas le contenu HTML. Modifier le menu dans un fichier ne modifie donc pas automatiquement l’autre. Ne crée pas style-accueil.css et style-idees.css pour reproduire les mêmes règles."
+            "CSS partage les règles d’apparence, pas le contenu HTML. Modifier le menu dans un fichier ne modifie donc pas automatiquement l’autre. Ne crée pas `style-accueil.css` et `style-idees.css` pour reproduire les mêmes règles."
           ],
           "code": ".titre {\n  color: navy;\n}",
           "demonstration": {
@@ -17918,7 +17991,7 @@ window.CODECRAFT_DATA = {
                 "label": "style.css : navy",
                 "html": "\u003ch1 class=\"titre\">Mon carnet\u003c/h1>\u003cp>Page d’accueil représentée.\u003c/p>\u003chr>\u003ch1 class=\"titre\">Mes idées\u003c/h1>\u003cp>Seconde page représentée.\u003c/p>",
                 "code": ".titre {\n  color: navy;\n}",
-                "feedback": "La même règle peut agir sur les deux documents reliés à style.css.",
+                "feedback": "La même règle peut agir sur les deux documents reliés à `style.css`.",
                 "css": ".titre{color:navy}"
               },
               {
@@ -17944,7 +18017,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "fichiers",
-              "text": "Crée ou copie tes deux HTML, puis crée style.css et le dossier images. Vérifie que tu travailles dans la bonne copie."
+              "text": "Crée ou copie tes deux HTML, puis crée `style.css` et le dossier images. Vérifie que tu travailles dans la bonne copie."
             },
             {
               "id": "menus",
@@ -17962,8 +18035,8 @@ window.CODECRAFT_DATA = {
           "title": "Une image disponible pour ton site local",
           "paragraphs": [
             "Tu peux utiliser le carré fourni pour un thème de formes ou le remplacer par un fichier d’exercice déjà disponible. Aucun téléchargement d’image personnelle ni recherche Internet n’est requis.",
-            "Dans la ressource ci-dessous, choisis Télécharger l’image et place carre-bleu.png dans ton dossier images. Le chemin de l’image sera `images/carre-bleu.png`.",
-            "Dans le HTML de la page illustrée, utilise une balise img avec src=\"images/carre-bleu.png\", une classe pour son style et un alt que tu rédiges pour décrire le dessin. Réutilise les réglages de proportions du cours Dimensions.",
+            "Dans la ressource ci-dessous, choisis Télécharger l’image et place `carre-bleu.png` dans ton dossier images. Le chemin de l’image sera `images/carre-bleu.png`.",
+            "Dans le HTML de la page illustrée, utilise une balise img avec src=\"`images/carre-bleu.png`\", une classe pour son style et un alt que tu rédiges pour décrire le dessin. Réutilise les réglages de proportions du cours Dimensions.",
             "Si la même image sert sur deux pages voisines, les deux src peuvent viser le même fichier : inutile de le dupliquer. Ne déplace pas les ressources d’un autre projet ; copie-les ou télécharge-les dans celui-ci."
           ]
         },
@@ -17991,7 +18064,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "styles",
-              "text": "Dans style.css, règle la présentation commune de tes titres et paragraphes avec des classes cohérentes. Choisis une lecture facile ; noir sur blanc convient.",
+              "text": "Dans `style.css`, règle la présentation commune de tes titres et paragraphes avec des classes cohérentes. Choisis une lecture facile ; noir sur blanc convient.",
               "hints": [
                 "Choisis un nom de classe par rôle utile.",
                 "Compare les classes présentes dans les deux HTML.",
@@ -18006,7 +18079,7 @@ window.CODECRAFT_DATA = {
                 "Vérifie d’abord que l’image se charge.",
                 "Le chemin est lu depuis le fichier HTML.",
                 "Une image chargée mais écrasée est un problème de dimensions, pas de src.",
-                "Utilise Images pour la source/alt, ou Dimensions pour width et height auto ; ne cache pas le problème avec une hauteur choisie au hasard."
+                "Utilise Images pour la source/alt, ou Dimensions pour `width` et `height` auto ; ne cache pas le problème avec une hauteur choisie au hasard."
               ]
             },
             {
@@ -18029,11 +18102,11 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "verifier",
           "title": "5 : Vérifier comme un visiteur",
-          "intro": "Enregistre tous les fichiers. Tester seulement index.html ne suffit pas.",
+          "intro": "Enregistre tous les fichiers. Tester seulement `index.html` ne suffit pas.",
           "items": [
             {
               "id": "toutes-destinations",
-              "text": "Depuis index.html, clique sur chaque lien ; recommence depuis la seconde page. Vérifie le nom du fichier, le titre visible et le contenu atteint."
+              "text": "Depuis `index.html`, clique sur chaque lien ; recommence depuis la seconde page. Vérifie le nom du fichier, le titre visible et le contenu atteint."
             },
             {
               "id": "entree-directe",
@@ -18069,7 +18142,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "lien-casse",
-              "text": "Dans le menu de l’accueil, remplace temporairement le href de la seconde page par absent.html. Observe le lien cassé, puis corrige uniquement la destination.",
+              "text": "Dans le menu de l’accueil, remplace temporairement le href de la seconde page par `absent.html`. Observe le lien cassé, puis corrige uniquement la destination.",
               "hints": [
                 "Le texte cliquable peut être correct malgré une mauvaise adresse.",
                 "Compare href au nom réel du second fichier.",
@@ -18079,12 +18152,12 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "feuille-absente",
-              "text": "Dans head de la seconde page seulement, remplace href=\"style.css\" par href=\"absent.css\". Observe que cette page perd les règles de la feuille, alors que l’accueil les garde. Répare la liaison.",
+              "text": "Dans head de la seconde page seulement, remplace href=\"`style.css`\" par href=\"`absent.css`\". Observe que cette page perd les règles de la feuille, alors que l’accueil les garde. Répare la liaison.",
               "hints": [
                 "La navigation peut fonctionner même sans le style.",
                 "Compare les deux link.",
                 "La feuille existe ; une page demande un autre nom.",
-                "Rétablis href=\"style.css\", enregistre puis actualise cette page. Ne duplique pas le CSS dans le HTML."
+                "Rétablis href=\"`style.css`\", enregistre puis actualise cette page. Ne duplique pas le CSS dans le HTML."
               ]
             },
             {
@@ -18124,7 +18197,7 @@ window.CODECRAFT_DATA = {
                 },
                 {
                   "id": "controle-trois",
-                  "text": "Teste tous les liens depuis chacune des trois pages et prouve qu’une modification de style.css atteint les trois après actualisation. Ne crée pas une feuille CSS supplémentaire."
+                  "text": "Teste tous les liens depuis chacune des trois pages et prouve qu’une modification de `style.css` atteint les trois après actualisation. Ne crée pas une feuille CSS supplémentaire."
                 }
               ]
             }
@@ -18248,7 +18321,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             }
           ]
         }
@@ -18561,7 +18634,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         }
       ],
       "blocks": [
@@ -18590,11 +18663,11 @@ window.CODECRAFT_DATA = {
           "id": "largeur",
           "title": "2 : Largeur de la carte : que mesure-t-on ?",
           "paragraphs": [
-            "width fixe ici la largeur souhaitée de la carte. px signifie pixel CSS : width: 320px vise une largeur de 320 pixels CSS.",
-            "Par défaut, la largeur d’une div désigne seulement son contenu : padding et bordure s’ajoutent. Avec 320px de contenu, 16px de padding de chaque côté et une bordure de 2px, la boîte ferait 356px de large.",
-            "box-sizing: border-box change ce calcul : les 320px comprennent alors le contenu, le padding et la bordure. Le contenu dispose ici de 284px : 320 − 32 − 4. La margin, si tu en ajoutes une, reste à l’extérieur ; cet exemple n’en met pas sur la carte.",
-            "max-width pose une limite. Ici 100% représente toute la largeur disponible du parent, pas toujours celle de l’écran. Avec border-box, la carte peut rétrécir pour tenir dans ce parent au lieu de conserver obligatoirement 320px.",
-            "Ces règles aident dans les largeurs testées, elles ne rendent pas tout contenu automatiquement adaptable : des mots très longs ou un padding trop grand peuvent encore poser problème. Les adaptations avancées aux écrans viendront plus tard."
+            "`width` fixe ici la largeur souhaitée de la carte. px signifie pixel CSS : `width`: 320px vise une largeur de 320 pixels CSS.",
+            "Par défaut, la largeur d’une div désigne seulement son contenu : `padding` et bordure s’ajoutent. Avec 320px de contenu, 16px de `padding` de chaque côté et une bordure de 2px, la boîte ferait 356px de large.",
+            "`box-sizing`: `border`-box change ce calcul : les 320px comprennent alors le contenu, le `padding` et la bordure. Le contenu dispose ici de 284px : 320 − 32 − 4. La `margin`, si tu en ajoutes une, reste à l’extérieur ; cet exemple n’en met pas sur la carte.",
+            "`max-width` pose une limite. Ici 100% représente toute la largeur disponible du parent, pas toujours celle de l’écran. Avec `border`-box, la carte peut rétrécir pour tenir dans ce parent au lieu de conserver obligatoirement 320px.",
+            "Ces règles aident dans les largeurs testées, elles ne rendent pas tout contenu automatiquement adaptable : des mots très longs ou un `padding` trop grand peuvent encore poser problème. Les adaptations avancées aux écrans viendront plus tard."
           ]
         },
         {
@@ -18603,8 +18676,8 @@ window.CODECRAFT_DATA = {
           "title": "3 : Image : une largeur et une hauteur liée",
           "paragraphs": [
             "Une image a des dimensions d’origine. Les deux dessins ci-dessous font 160 × 120 : le fichier entier est un rectangle, même si la forme dessinée à l’intérieur est un cercle ou un carré.",
-            "Sur .illustration, width: 100% prend la largeur du contenu de la carte, sans son padding ni sa bordure. Cette règle peut agrandir une petite image ; une photo de faible qualité pourrait alors devenir floue.",
-            "height est la hauteur. height: auto laisse le navigateur la calculer à partir des proportions de l’image. Quand la largeur est multipliée par deux, la hauteur l’est aussi : le cercle reste rond.",
+            "Sur .illustration, `width`: 100% prend la largeur du contenu de la carte, sans son `padding` ni sa bordure. Cette règle peut agrandir une petite image ; une photo de faible qualité pourrait alors devenir floue.",
+            "`height` est la hauteur. `height`: auto laisse le navigateur la calculer à partir des proportions de l’image. Quand la largeur est multipliée par deux, la hauteur l’est aussi : le cercle reste rond.",
             "Ne fixe pas en même temps une hauteur arbitraire pour faire rentrer l’image. Le texte peut prendre plusieurs lignes : on ne fixe pas non plus la hauteur de la carte. Elle grandit avec son contenu.",
             "Une image absente est un autre problème : commence par vérifier src et le chargement, pas par modifier ses dimensions. alt décrit le dessin ; ce n’est ni son adresse ni un réglage de taille."
           ],
@@ -18638,7 +18711,7 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Pour le premier essai, clique sur Copier le lien sous le cercle orange. Colle son adresse dans `src`, puis décris l’image dans `alt`.",
             "Complète `src` avec le lien de l’image et `alt` avec ta description.",
-            "En local, utilise plutôt Télécharger l’image : place cercle-orange.png dans un dossier images à côté de index.html, puis écris src=\"images/cercle-orange.png\". Le texte alternatif reste à rédiger. Le carré suit la même logique avec carre-bleu.png."
+            "En local, utilise plutôt Télécharger l’image : place `cercle-orange.png` dans un dossier images à côté de `index.html`, puis écris src=\"`images/cercle-orange.png`\". Le texte alternatif reste à rédiger. Le carré suit la même logique avec `carre-bleu.png`."
           ]
         },
         {
@@ -18667,7 +18740,7 @@ window.CODECRAFT_DATA = {
           "id": "css",
           "title": "CSS : La carte et son image",
           "paragraphs": [
-            "Colle ces règles dans CSS, sans balises \u003cstyle>. Les propriétés de largeur concernent deux éléments différents : la carte et l’image. L’image ne possède ici ni padding ni bordure.",
+            "Colle ces règles dans CSS, sans balises \u003cstyle>. Les propriétés de largeur concernent deux éléments différents : la carte et l’image. L’image ne possède ici ni `padding` ni bordure.",
             "La bordure et le fond sont des repères déjà rencontrés ; le petit espace qui peut rester sous une image en ligne n’est pas une déformation et n’a pas à être corrigé dans ce module."
           ],
           "code": ".carte {\n  width: 320px;\n  max-width: 100%;\n  box-sizing: border-box;\n  padding: 16px;\n  border: 2px solid navy;\n  background-color: white;\n}\n.illustration {\n  width: 100%;\n  height: auto;\n}"
@@ -18680,11 +18753,11 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "charger",
-              "text": "Complète src avec la source du cercle et rédige alt. Vérifie d’abord que le cercle s’affiche. Si l’image est absente, utilise la reprise Images plutôt que de changer width."
+              "text": "Complète src avec la source du cercle et rédige alt. Vérifie d’abord que le cercle s’affiche. Si l’image est absente, utilise la reprise Images plutôt que de changer `width`."
             },
             {
               "id": "largeur-carte",
-              "text": "Dans .carte seulement, remplace width: 320px par 240px. Prédis ce qui arrive à l’image, puis observe. Remets 320px.",
+              "text": "Dans .carte seulement, remplace `width`: 320px par 240px. Prédis ce qui arrive à l’image, puis observe. Remets 320px.",
               "hints": [
                 "Repère le parent de l’image.",
                 "La largeur de l’image est un pourcentage du contenu de sa carte.",
@@ -18702,7 +18775,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "expliquer-taille",
-              "text": "Explique pourquoi width: 100% sur l’image ne signifie pas 100 pixels, et pourquoi l’image est moins large que les 320px de la carte."
+              "text": "Explique pourquoi `width`: 100% sur l’image ne signifie pas 100 pixels, et pourquoi l’image est moins large que les 320px de la carte."
             }
           ]
         },
@@ -18723,7 +18796,7 @@ window.CODECRAFT_DATA = {
                 "Repère la règle du conteneur.",
                 "Change la largeur souhaitée, pas celle de l’image.",
                 "La limite à 100% et le calcul incluant la bordure restent utiles.",
-                "Dans .carte, mets width: 280px ; conserve max-width: 100% et box-sizing: border-box."
+                "Dans .carte, mets `width`: 280px ; conserve `max-width`: 100% et `box-sizing`: `border`-box."
               ]
             },
             {
@@ -18733,14 +18806,14 @@ window.CODECRAFT_DATA = {
                 "Observe le dessin, pas seulement le rectangle du fichier.",
                 "La hauteur doit suivre les proportions d’origine.",
                 "Compare une hauteur fixe et une hauteur calculée.",
-                "Garde width: 100% et height: auto dans .illustration ; ne fixe pas une autre hauteur."
+                "Garde `width`: 100% et `height`: auto dans .illustration ; ne fixe pas une autre hauteur."
               ]
             },
             {
               "id": "predire-padding",
-              "text": "En gardant la largeur de carte à 280px, passe son padding de 16px à 24px. Avant de tester, prédis ce qui arrive à la largeur extérieure et à l’image.",
+              "text": "En gardant la largeur de carte à 280px, passe son `padding` de 16px à 24px. Avant de tester, prédis ce qui arrive à la largeur extérieure et à l’image.",
               "hints": [
-                "La bordure est comprise dans la largeur avec border-box.",
+                "La bordure est comprise dans la largeur avec `border`-box.",
                 "L’espace intérieur prend plus de place.",
                 "Le contenu restant devient plus étroit.",
                 "La carte reste à 280px si la place suffit ; le contenu passe de 244px à 228px. L’image suit ce contenu."
@@ -18779,7 +18852,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "verifier-6",
-              "text": "J’explique pourquoi le padding change la place restante pour l’image."
+              "text": "J’explique pourquoi le `padding` change la place restante pour l’image."
             }
           ]
         },
@@ -18805,17 +18878,17 @@ window.CODECRAFT_DATA = {
                 "Le cercle se charge déjà.",
                 "Cherche le réglage qui impose une hauteur sans tenir compte de la largeur.",
                 "Compare 80px et auto.",
-                "Rétablis height: auto dans .illustration ; la hauteur redevient proportionnelle à la largeur."
+                "Rétablis `height`: auto dans .illustration ; la hauteur redevient proportionnelle à la largeur."
               ]
             },
             {
               "id": "reparer-limite",
-              "text": "Dans .carte, enlève temporairement max-width: 100%, garde width: 320px, puis rétrécis l’aperçu à environ 260px. Explique pourquoi la carte dépasse, puis rétablis seulement la limite.",
+              "text": "Dans .carte, enlève temporairement `max-width`: 100%, garde `width`: 320px, puis rétrécis l’aperçu à environ 260px. Explique pourquoi la carte dépasse, puis rétablis seulement la limite.",
               "hints": [
                 "Regarde d’abord la carte, pas son image.",
                 "L’image peut suivre une carte trop large.",
                 "Une largeur souhaitée et une limite n’ont pas le même rôle.",
-                "Rétablis max-width: 100% dans .carte ; conserve border-box. Si le dépassement reste, vérifie d’éventuelles marges ajoutées ou un mot sans espace."
+                "Rétablis `max-width`: 100% dans .carte ; conserve `border`-box. Si le dépassement reste, vérifie d’éventuelles marges ajoutées ou un mot sans espace."
               ]
             }
           ]
@@ -18830,8 +18903,8 @@ window.CODECRAFT_DATA = {
               "id": "bonus-explication",
               "title": "Remplir ou seulement limiter ?",
               "paragraphs": [
-                "Si les proportions sont comprises, compare dans une copie les deux choix sur une carte à 320px. La règle de base width: 100% remplit son contenu, même quand le dessin d’origine est plus petit.",
-                "Pour garder la largeur naturelle du dessin quand il a assez de place, remplace la règle .illustration entière par celle-ci. width: auto laisse sa largeur naturelle ; max-width: 100% le réduit seulement si le contenu de la carte est plus étroit. height: auto conserve les proportions."
+                "Si les proportions sont comprises, compare dans une copie les deux choix sur une carte à 320px. La règle de base `width`: 100% remplit son contenu, même quand le dessin d’origine est plus petit.",
+                "Pour garder la largeur naturelle du dessin quand il a assez de place, remplace la règle .illustration entière par celle-ci. `width`: auto laisse sa largeur naturelle ; `max-width`: 100% le réduit seulement si le contenu de la carte est plus étroit. `height`: auto conserve les proportions."
               ],
               "code": ".illustration {\n  width: auto;\n  max-width: 100%;\n  height: auto;\n}"
             },
@@ -18859,7 +18932,7 @@ window.CODECRAFT_DATA = {
         }
       ],
       "masteryCriteria": [
-        "Choisir la règle du conteneur pour changer sa largeur, et expliquer la largeur du contenu après padding et bordure.",
+        "Choisir la règle du conteneur pour changer sa largeur, et expliquer la largeur du contenu après `padding` et bordure.",
         "Conserver les proportions d’une image pendant une modification de largeur sans fixer arbitrairement sa hauteur.",
         "Réparer séparément une image déformée, une carte trop large et une image non chargée.",
         "Adapter src et alt lors d’un remplacement ; évaluer ce réinvestissement séparément du réglage CSS.",
@@ -18965,7 +19038,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             },
             {
               "skillId": "html.headings",
@@ -19201,7 +19274,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         },
         {
           "skillId": "css.colors",
@@ -19283,7 +19356,7 @@ window.CODECRAFT_DATA = {
           "title": "2 : Choisir ton environnement",
           "paragraphs": [
             "Dans CodePen : crée un nouveau Pen, avec le contenu dans HTML et les règles dans CSS. Tu peux aussi partir d’une copie de ton exercice Dimensions, mais il faudra changer le contenu, ajouter le second paragraphe et justifier tes choix.",
-            "En local : fais une copie de ton dossier HTML/CSS. Garde le cadre complet, sa ligne link et les fichiers associés ; remplace le contenu de body et adapte la feuille. Enregistre les deux fichiers et actualise index.html. La gestion des fichiers n’est pas une nouvelle exigence si tu choisis CodePen.",
+            "En local : fais une copie de ton dossier HTML/CSS. Garde le cadre complet, sa ligne link et les fichiers associés ; remplace le contenu de body et adapte la feuille. Enregistre les deux fichiers et actualise `index.html`. La gestion des fichiers n’est pas une nouvelle exigence si tu choisis CodePen.",
             "Les cours restent consultables : essayer seul ne signifie pas rester bloqué sans aide. Note simplement ce que tu as repris et ce que tu as pu faire sans modèle."
           ]
         },
@@ -19317,7 +19390,7 @@ window.CODECRAFT_DATA = {
           "title": "Une illustration disponible sans recherche",
           "paragraphs": [
             "Tu peux choisir un thème comme « Un signal orange » avec ce dessin. Dans CodePen, copie le lien de l’image dans `src`. Décris ensuite le dessin dans `alt`.",
-            "En local, télécharge le dessin dans images à côté de index.html et utilise images/cercle-orange.png. Pour le carré ou une aide à la source, le cours Dimensions et le module Images restent accessibles dans les reprises.",
+            "En local, télécharge le dessin dans images à côté de `index.html` et utilise `images/cercle-orange.png`. Pour le carré ou une aide à la source, le cours Dimensions et le module Images restent accessibles dans les reprises.",
             "Tu n’as pas besoin d’inventer un nouveau chemin si la source que tu utilisais fonctionne déjà. Rédige toutefois alt pour l’image réellement présente."
           ]
         },
@@ -19369,8 +19442,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Localise l’espace qui manque par rapport au bord.",
                 "Ne confonds pas marge extérieure et espace intérieur.",
-                "Une bordure n’est pas nécessaire pour appliquer un padding.",
-                "Reprends Boîtes et espacements si tu ne sais pas choisir entre padding et margin."
+                "Une bordure n’est pas nécessaire pour appliquer un `padding`.",
+                "Reprends Boîtes et espacements si tu ne sais pas choisir entre `padding` et `margin`."
               ]
             },
             {
@@ -19448,7 +19521,7 @@ window.CODECRAFT_DATA = {
               "text": "Les lignes se serrent, ou le texte colle au bord : distingue l’interligne de l’espace intérieur avant de choisir la reprise.",
               "hints": [
                 "Pointe l’endroit précis où il manque de l’air.",
-                "Entre les lignes d’un paragraphe : interligne ; autour du contenu : padding.",
+                "Entre les lignes d’un paragraphe : interligne ; autour du contenu : `padding`.",
                 "Changer la taille des lettres ou la marge extérieure ne répond pas toujours au besoin.",
                 "Choisis le cours Lisibilité ou Boîtes, fais un seul essai puis reviens à ta carte."
               ]
@@ -19603,7 +19676,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             }
           ]
         },
@@ -19654,7 +19727,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             },
             {
               "skillId": "css.colors",
@@ -19739,7 +19812,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             },
             {
               "skillId": "css.colors",
@@ -20030,7 +20103,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "pas-style",
-              "text": "Explique pourquoi la page n’a pas automatiquement un grand bandeau coloré. Ne rajoute pas de CSS pour réussir cet exercice."
+              "text": "Explique pourquoi la page n’a pas automatiquement un grand bandeau `color`é. Ne rajoute pas de CSS pour réussir cet exercice."
             }
           ]
         },
@@ -20448,16 +20521,16 @@ window.CODECRAFT_DATA = {
           "id": "notions",
           "title": "2 : Quatre réglages différents",
           "paragraphs": [
-            "font-family choisit la famille de caractères. sans-serif demande une police sans empattements disponible sur l’appareil ; serif en demande une avec de petites terminaisons. Le dessin exact peut varier selon l’ordinateur. Aucun téléchargement de police n’est nécessaire.",
-            "font-size règle la taille des caractères. Ici px signifie pixel CSS, une unité de taille à l’écran : 18px donne des lettres plus grandes que 12px. N’ajoute pas d’espace entre 18 et px.",
-            "line-height règle la hauteur des lignes. Avec 1.5 sans unité, chaque ligne occupe une hauteur égale à 1,5 fois la taille du texte : à 18px cela fait 27px. Cela aère les lignes à l’intérieur d’un même paragraphe, pas l’espace entre deux paragraphes.",
-            "text-align aligne le texte dans la largeur disponible de son élément : left à gauche, center au centre, right à droite. Centrer les mots ne centre pas la boîte qui les contient.",
+            "`font-family` choisit la famille de caractères. sans-serif demande une police sans empattements disponible sur l’appareil ; serif en demande une avec de petites terminaisons. Le dessin exact peut varier selon l’ordinateur. Aucun téléchargement de police n’est nécessaire.",
+            "`font-size` règle la taille des caractères. Ici px signifie pixel CSS, une unité de taille à l’écran : 18px donne des lettres plus grandes que 12px. N’ajoute pas d’espace entre 18 et px.",
+            "`line-height` règle la hauteur des lignes. Avec 1.5 sans unité, chaque ligne occupe une hauteur égale à 1,5 fois la taille du texte : à 18px cela fait 27px. Cela aère les lignes à l’intérieur d’un même paragraphe, pas l’espace entre deux paragraphes.",
+            "`text-align` aligne le texte dans la largeur disponible de son élément : left à gauche, center au centre, right à droite. Centrer les mots ne centre pas la boîte qui les contient.",
             "Pour du français, un paragraphe long aligné à gauche est un bon point de départ. Un titre court peut être centré. Les nombres de l’exemple sont des choix à comparer, pas une règle universelle de bonne lecture."
           ],
           "demonstration": {
             "type": "web-comparison",
             "title": "Même texte, autre interligne",
-            "intro": "Seul line-height change. Observe l’espace entre les lignes, sans modifier la taille des lettres.",
+            "intro": "Seul `line-height` change. Observe l’espace entre les lignes, sans modifier la taille des lettres.",
             "variants": [
               {
                 "label": "Lignes serrées",
@@ -20504,11 +20577,11 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "taille",
-              "text": "Dans .lecture seulement, compare font-size: 12px puis 18px. Garde 18px. Décris ce qui change et ce qui reste identique."
+              "text": "Dans .lecture seulement, compare `font-size`: 12px puis 18px. Garde 18px. Décris ce qui change et ce qui reste identique."
             },
             {
               "id": "lignes",
-              "text": "Réduis la largeur de l’aperçu CodePen ou de la fenêtre jusqu’à avoir au moins trois lignes dans un paragraphe. Compare line-height: 1 puis 1.5 ; garde 1.5.",
+              "text": "Réduis la largeur de l’aperçu CodePen ou de la fenêtre jusqu’à avoir au moins trois lignes dans un paragraphe. Compare `line-height`: 1 puis 1.5 ; garde 1.5.",
               "hints": [
                 "Le réglage agit entre les lignes d’un même paragraphe.",
                 "Si tout tient sur une ligne, rétrécis l’aperçu plutôt que d’ajouter des \u003cbr>.",
@@ -20543,7 +20616,7 @@ window.CODECRAFT_DATA = {
                 "Sépare les choix du titre et des paragraphes.",
                 "Vérifie que les deux paragraphes ont la même classe.",
                 "Taille des lettres et hauteur des lignes sont deux réglages différents.",
-                "Exemple de choix possible : titre 28px, paragraphes 18px et line-height: 1.5 ; ces valeurs ne sont pas la seule solution."
+                "Exemple de choix possible : titre 28px, paragraphes 18px et `line-height`: 1.5 ; ces valeurs ne sont pas la seule solution."
               ]
             },
             {
@@ -20552,8 +20625,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Repère ce qui sépare les lignes dans un paragraphe.",
                 "La taille des lettres doit rester constante.",
-                "Compare font-size et line-height.",
-                "Modifie seulement line-height dans .lecture, par exemple de 1.5 à 1.7 ; ne change pas font-size ni .titre."
+                "Compare `font-size` et `line-height`.",
+                "Modifie seulement `line-height` dans .lecture, par exemple de 1.5 à 1.7 ; ne change pas `font-size` ni .titre."
               ]
             },
             {
@@ -20615,7 +20688,7 @@ window.CODECRAFT_DATA = {
                 "Lis la propriété qui parle des lignes.",
                 "0.8 donne une ligne moins haute que la taille du texte.",
                 "À taille constante, compare 0.8 puis 1.5.",
-                "Garde font-size: 24px et essaie line-height: 1.5. Les lettres ont la même taille, mais les lignes ont plus de place."
+                "Garde `font-size`: 24px et essaie `line-height`: 1.5. Les lettres ont la même taille, mais les lignes ont plus de place."
               ]
             },
             {
@@ -20916,7 +20989,7 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Résultat attendu : deux cartes dont le texte ne touche pas la bordure et qui sont séparées du cadre extérieur. Tu sauras changer l’espace du bon côté de la bordure.",
             "Ouvre un nouveau Pen, puis utilise HTML et CSS séparément. En local, travaille dans une copie avec une feuille déjà reliée : extrait HTML dans body, règles dans le fichier CSS, puis enregistre et actualise. Le cours de liaison est accessible dans les reprises si nécessaire.",
-            "Une boîte contient du contenu, par exemple un titre et un paragraphe. Autour du contenu viennent le padding (espace intérieur), la border (bordure) et la margin (espace extérieur). Les mots anglais sont les noms utilisés en CSS."
+            "Une boîte contient du contenu, par exemple un titre et un paragraphe. Autour du contenu viennent le `padding` (espace intérieur), la `border` (bordure) et la `margin` (espace extérieur). Les mots anglais sont les noms utilisés en CSS."
           ]
         },
         {
@@ -20924,11 +20997,11 @@ window.CODECRAFT_DATA = {
           "id": "couches",
           "title": "2 : De l’intérieur vers l’extérieur",
           "paragraphs": [
-            "padding éloigne le contenu de sa bordure. Le fond de la boîte remplit aussi cet espace intérieur.",
-            "border trace ici une ligne autour du contenu et du padding. border: 2px solid navy signifie une épaisseur de 2 pixels CSS, un trait continu (solid) et la couleur bleu marine (navy). Épaisseur, style du trait et couleur ont chacun leur rôle.",
-            "margin crée de l’espace à l’extérieur de la bordure. Cet espace est transparent : on voit le fond du parent, pas le fond blanc de la carte.",
-            "Avec une seule valeur, padding: 16px et margin: 12px règlent les quatre côtés. px signifie pixel CSS, une unité de taille ; 0 peut s’écrire sans unité. Nous n’avons pas besoin de régler chaque côté séparément ici.",
-            "Les titres et paragraphes ont souvent leurs propres marges par défaut. Dans cet exercice, .titre et .texte ont margin: 0 pour les enlever et observer uniquement les espaces de .carte. Ce réglage de démonstration n’est pas une obligation pour toutes tes pages."
+            "`padding` éloigne le contenu de sa bordure. Le fond de la boîte remplit aussi cet espace intérieur.",
+            "`border` trace ici une ligne autour du contenu et du `padding`. `border`: 2px solid navy signifie une épaisseur de 2 pixels CSS, un trait continu (solid) et la couleur bleu marine (navy). Épaisseur, style du trait et couleur ont chacun leur rôle.",
+            "`margin` crée de l’espace à l’extérieur de la bordure. Cet espace est transparent : on voit le fond du parent, pas le fond blanc de la carte.",
+            "Avec une seule valeur, `padding`: 16px et `margin`: 12px règlent les quatre côtés. px signifie pixel CSS, une unité de taille ; 0 peut s’écrire sans unité. Nous n’avons pas besoin de régler chaque côté séparément ici.",
+            "Les titres et paragraphes ont souvent leurs propres marges par défaut. Dans cet exercice, .titre et .texte ont `margin`: 0 pour les enlever et observer uniquement les espaces de .carte. Ce réglage de démonstration n’est pas une obligation pour toutes tes pages."
           ],
           "code": "contenu : titre et paragraphe\n→ padding : espace intérieur\n→ border : ligne de bordure\n→ margin : espace extérieur",
           "demonstration": {
@@ -20976,7 +21049,7 @@ window.CODECRAFT_DATA = {
           "title": "CSS : Voir les deux sortes d’espace",
           "paragraphs": [
             "Le cadre gris de .atelier permet de repérer le parent. Dans chaque carte, le fond blanc continue jusqu’à sa bordure bleue. Dehors, on voit le gris du parent.",
-            "Observe surtout le côté gauche de la première carte : la distance entre le cadre gris et la bordure bleue montre sa marge ; la distance entre la bordure bleue et les mots montre son padding.",
+            "Observe surtout le côté gauche de la première carte : la distance entre le cadre gris et la bordure bleue montre sa marge ; la distance entre la bordure bleue et les mots montre son `padding`.",
             "Les cartes s’empilent naturellement, sans Flexbox. Leurs marges verticales peuvent se regrouper au lieu de s’additionner : deux marges de 12px ne donnent pas forcément 24px entre les cartes. Pour la première comparaison, mesure visuellement à gauche, pas entre les deux cartes."
           ],
           "code": ".atelier {\n  background-color: lightgray;\n  border: 2px solid gray;\n}\n.carte {\n  background-color: white;\n  border: 2px solid navy;\n  padding: 16px;\n  margin: 12px;\n}\n.titre {\n  margin: 0;\n}\n.texte {\n  margin: 0;\n}"
@@ -20993,21 +21066,21 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "interieur",
-              "text": "Dans .carte, compare padding: 0 puis padding: 24px. Garde margin: 12px. Explique de quel côté de la bordure l’espace change.",
+              "text": "Dans .carte, compare `padding`: 0 puis `padding`: 24px. Garde `margin`: 12px. Explique de quel côté de la bordure l’espace change.",
               "hints": [
                 "Regarde les mots par rapport à la ligne bleue.",
-                "Le padding est à l’intérieur.",
+                "Le `padding` est à l’intérieur.",
                 "Compare le blanc entre les mots et la bordure.",
-                "À padding: 24px, les mots sont plus éloignés de la bordure. Rétablis ensuite padding: 16px."
+                "À `padding`: 24px, les mots sont plus éloignés de la bordure. Rétablis ensuite `padding`: 16px."
               ]
             },
             {
               "id": "exterieur",
-              "text": "Avec padding: 16px, compare margin: 0 puis margin: 24px. Observe l’espace gris à gauche de la bordure, puis remets margin: 12px."
+              "text": "Avec `padding`: 16px, compare `margin`: 0 puis `margin`: 24px. Observe l’espace gris à gauche de la bordure, puis remets `margin`: 12px."
             },
             {
               "id": "bordure",
-              "text": "Compare border: 2px solid navy puis border: 6px solid navy. Explique pourquoi un trait plus épais n’est pas une marge. Remets 2px."
+              "text": "Compare `border`: 2px solid navy puis `border`: 6px solid navy. Explique pourquoi un trait plus épais n’est pas une marge. Remets 2px."
             }
           ]
         },
@@ -21027,8 +21100,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Repère le côté de la bordure où se trouvent les mots.",
                 "La modification concerne l’intérieur.",
-                "Compare les rôles de padding et margin.",
-                "Augmente seulement padding dans .carte, par exemple de 16px à 24px. Garde margin et border."
+                "Compare les rôles de `padding` et `margin`.",
+                "Augmente seulement `padding` dans .carte, par exemple de 16px à 24px. Garde `margin` et `border`."
               ]
             },
             {
@@ -21038,7 +21111,7 @@ window.CODECRAFT_DATA = {
                 "Regarde l’espace entre deux bordures, à gauche.",
                 "Cet espace est extérieur à la carte.",
                 "Le fond gris vient du parent.",
-                "Augmente margin dans .carte, par exemple de 12px à 24px. Ne change pas padding ni border."
+                "Augmente `margin` dans .carte, par exemple de 12px à 24px. Ne change pas `padding` ni `border`."
               ]
             },
             {
@@ -21066,7 +21139,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "verifier-3",
-              "text": "Je peux éloigner la carte du cadre sans changer son padding."
+              "text": "Je peux éloigner la carte du cadre sans changer son `padding`."
             },
             {
               "id": "verifier-4",
@@ -21099,17 +21172,17 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "corriger",
-              "text": "Redonne de l’air aux mots sans agrandir encore l’espace extérieur. Explique pourquoi augmenter margin ne corrige pas ce problème.",
+              "text": "Redonne de l’air aux mots sans agrandir encore l’espace extérieur. Explique pourquoi augmenter `margin` ne corrige pas ce problème.",
               "hints": [
                 "Pointe l’espace manquant à l’intérieur de la ligne.",
                 "La marge est déjà grande, mais elle est dehors.",
-                "Compare padding: 0 et margin: 32px.",
-                "Essaie padding: 16px en gardant margin: 32px. Ensuite seulement, réduis la marge si tu souhaites moins d’espace extérieur."
+                "Compare `padding`: 0 et `margin`: 32px.",
+                "Essaie `padding`: 16px en gardant `margin`: 32px. Ensuite seulement, réduis la marge si tu souhaites moins d’espace extérieur."
               ]
             },
             {
               "id": "distinguer",
-              "text": "Si le texte reste décalé avec padding: 0, vérifie les marges de .titre et .texte : un enfant peut avoir sa propre marge. Explique quel élément porte chaque règle."
+              "text": "Si le texte reste décalé avec `padding`: 0, vérifie les marges de .titre et .texte : un enfant peut avoir sa propre marge. Explique quel élément porte chaque règle."
             }
           ]
         },
@@ -21126,11 +21199,11 @@ window.CODECRAFT_DATA = {
               "items": [
                 {
                   "id": "compact",
-                  "text": "Dans la première, essaie padding: 8px et margin: 8px sur .carte, en gardant les bordures à 2px."
+                  "text": "Dans la première, essaie `padding`: 8px et `margin`: 8px sur .carte, en gardant les bordures à 2px."
                 },
                 {
                   "id": "aere",
-                  "text": "Dans la seconde, essaie padding: 24px et margin: 20px. Garde exactement les mêmes textes et la même taille de caractères."
+                  "text": "Dans la seconde, essaie `padding`: 24px et `margin`: 20px. Garde exactement les mêmes textes et la même taille de caractères."
                 },
                 {
                   "id": "choisir",
@@ -21144,12 +21217,12 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "suite",
           "title": "Garder une base pour la suite",
-          "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Si l’espace intérieur/extérieur reste flou, refais un essai en ne changeant que padding ou margin. Le bonus n’est pas obligatoire."
+          "text": "Tu peux conserver ces cartes pour le cours Dimensions et images dans une carte, puis réaliser Ma carte personnelle. Si l’espace intérieur/extérieur reste flou, refais un essai en ne changeant que `padding` ou `margin`. Le bonus n’est pas obligatoire."
         }
       ],
       "masteryCriteria": [
-        "Choisir padding ou margin à partir d’un besoin décrit sans nom de propriété.",
-        "Identifier le contenu, le padding, la bordure et la marge dans l’exemple ; expliquer quel fond est visible.",
+        "Choisir `padding` ou `margin` à partir d’un besoin décrit sans nom de propriété.",
+        "Identifier le contenu, le `padding`, la bordure et la marge dans l’exemple ; expliquer quel fond est visible.",
         "Réparer un manque d’espace intérieur sans augmenter inutilement l’espace extérieur.",
         "Réutiliser les classes sur une troisième carte et expliquer le résultat.",
         "Lire les trois valeurs d’une bordure simple ; les arrondis ne sont ni enseignés ni réputés acquis ici."
@@ -21243,7 +21316,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             }
           ]
         },
@@ -22813,7 +22886,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "source-incorrecte",
-              "text": "Remplace temporairement src par image-introuvable.png. Observe, puis rétablis une source fournie.",
+              "text": "Remplace temporairement src par `image-introuvable.png`. Observe, puis rétablis une source fournie.",
               "hints": [
                 "Observe l’image absente et relis src.",
                 "Un nom de fichier seul ne suffit pas si ce fichier n’existe pas à cet endroit.",
@@ -23116,7 +23189,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise-css",
           "title": "Avant de commencer : Comprends-tu une règle ?",
           "tone": "neutral",
-          "text": "Dans p { color: blue; }, peux-tu montrer la cible, la propriété et la valeur, puis changer seulement le fond avec background-color ? Si tu hésites, ouvre Découvrir le CSS et reviens ici ensuite. Si tu sais déjà l’expliquer, continue sans refaire ce cours.",
+          "text": "Dans p { `color`: blue; }, peux-tu montrer la cible, la propriété et la valeur, puis changer seulement le fond avec `background-color` ? Si tu hésites, ouvre Découvrir le CSS et reviens ici ensuite. Si tu sais déjà l’expliquer, continue sans refaire ce cours.",
           "moduleLink": {
             "text": "Découvrir le CSS",
             "moduleId": "css-decouverte"
@@ -23141,7 +23214,7 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Dans le panneau CSS de CodePen, écris la règle ci-dessous. Ne la mets pas dans le panneau HTML.",
             "Le sélecteur .titre choisit les éléments dont la classe est titre. Le point se met dans le CSS, pas dans la valeur de class en HTML. Les deux noms doivent correspondre exactement.",
-            "Les accolades { et } entourent les instructions. color change la couleur du texte ; blue signifie bleu. Les deux-points séparent la propriété de sa valeur, et le point-virgule termine l’instruction.",
+            "Les accolades { et } entourent les instructions. `color` change la couleur du texte ; blue signifie bleu. Les deux-points séparent la propriété de sa valeur, et le point-virgule termine l’instruction.",
             "Plusieurs éléments peuvent partager la même classe : ils recevront tous la même couleur."
           ],
           "code": ".titre {\n  color: blue;\n}",
@@ -23201,7 +23274,7 @@ window.CODECRAFT_DATA = {
                 "Regarde la classe attribuée au paragraphe.",
                 "Son nom doit être le même dans le sélecteur, avec un point seulement dans CSS.",
                 "Compare class=\"titre\" et .titre dans l’exemple.",
-                "Utilise class=\"texte\" puis .texte { color: green; }. Vérifie ce paragraphe avant d’en ajouter un autre."
+                "Utilise class=\"texte\" puis .texte { `color`: green; }. Vérifie ce paragraphe avant d’en ajouter un autre."
               ]
             },
             {
@@ -23237,7 +23310,7 @@ window.CODECRAFT_DATA = {
             {
               "id": "defi-couleurs",
               "text": "Écris les deux règles CSS : le titre doit avoir une couleur différente des paragraphes.",
-              "hint": "Chaque règle commence par un point suivi du nom de la classe. Utilise color entre accolades."
+              "hint": "Chaque règle commence par un point suivi du nom de la classe. Utilise `color` entre accolades."
             },
             {
               "id": "defi-verifier",
@@ -23250,7 +23323,7 @@ window.CODECRAFT_DATA = {
           "id": "fond",
           "title": "Réutiliser aussi un fond",
           "paragraphs": [
-            "Si tu as compris le ciblage, ajoute un fond aux paragraphes qui partagent texte. background-color règle leur fond ; color règle les lettres. Cette règle remplace ta règle .texte actuelle.",
+            "Si tu as compris le ciblage, ajoute un fond aux paragraphes qui partagent texte. `background-color` règle leur fond ; `color` règle les lettres. Cette règle remplace ta règle .texte actuelle.",
             "Le fond peut occuper plus de place que les mots : il colore la zone de chaque paragraphe, pas seulement ses lettres. black signifie noir et lightyellow jaune clair. Tu peux choisir des couleurs, mais garde les lettres bien lisibles."
           ],
           "code": ".texte {\n  color: black;\n  background-color: lightyellow;\n}"
@@ -23327,9 +23400,9 @@ window.CODECRAFT_DATA = {
               "text": "Crée deux paragraphes avec class=\"calme\" et class=\"fort\". Donne au premier des lettres noires sur fond blanc, au second des lettres blanches sur fond navy (bleu très foncé).",
               "hints": [
                 "Prévois une règle pour chaque classe.",
-                "Réutilise color et background-color.",
+                "Réutilise `color` et `background-color`.",
                 "Compare avec la règle .texte du cours.",
-                "Écris .calme { color: black; background-color: white; } et .fort { color: white; background-color: navy; }."
+                "Écris .calme { `color`: black; `background-color`: white; } et .fort { `color`: white; `background-color`: navy; }."
               ]
             },
             {
@@ -23750,7 +23823,7 @@ window.CODECRAFT_DATA = {
               "id": "squelette-local",
               "title": "Cadre vide, pas une solution du défi",
               "paragraphs": [
-                "Crée index.html, colle ce cadre, puis place ton propre contenu entre \u003cbody> et \u003c/body>, à la place du commentaire. Enregistre et ouvre le fichier dans ton navigateur ; actualise-le après chaque enregistrement.",
+                "Crée `index.html`, colle ce cadre, puis place ton propre contenu entre \u003cbody> et \u003c/body>, à la place du commentaire. Enregistre et ouvre le fichier dans ton navigateur ; actualise-le après chaque enregistrement.",
                 "Le commentaire entre \u003c!-- et --> est une indication, pas un texte visible. head contient des réglages ; title donne le titre de l’onglet, pas le h1 à créer dans la page. body reçoit le contenu visible. Tu peux garder ce cadre tel quel.",
                 "Pour une image locale, utilise un fichier dont tu connais le chemin, ou l’adresse de l’image fournie dans Images. Dans CodePen, n’utilise pas ce cadre : le panneau HTML reçoit seulement le contenu du défi."
               ],
@@ -24082,15 +24155,15 @@ window.CODECRAFT_DATA = {
           "title": "CSS : Lire une règle",
           "paragraphs": [
             "h1 est le sélecteur : il choisit les éléments h1 de la page. Ici, il y en a un. On écrit h1 sans les chevrons du HTML.",
-            "Entre les accolades { et }, chaque déclaration indique une propriété et sa valeur. Dans color: blue;, color est la propriété et blue la valeur. Les deux-points séparent les deux ; termine chaque déclaration par un point-virgule.",
-            "color règle la couleur des lettres. background-color règle le fond de l’élément sélectionné, pas forcément celui de toute la page. Ici, un bloc de fond peut être plus large que les mots.",
+            "Entre les accolades { et }, chaque déclaration indique une propriété et sa valeur. Dans `color`: blue;, `color` est la propriété et blue la valeur. Les deux-points séparent les deux ; termine chaque déclaration par un point-virgule.",
+            "`color` règle la couleur des lettres. `background-color` règle le fond de l’élément sélectionné, pas forcément celui de toute la page. Ici, un bloc de fond peut être plus large que les mots.",
             "blue signifie bleu, white blanc. Les mots de couleur CSS de ces exemples sont en anglais."
           ],
           "code": "h1 {\n  color: blue;\n  background-color: white;\n}",
           "demonstration": {
             "type": "web-comparison",
             "title": "Le même titre, une couleur différente",
-            "intro": "Le HTML reste identique. Change seulement la valeur de color dans la règle h1.",
+            "intro": "Le HTML reste identique. Change seulement la valeur de `color` dans la règle h1.",
             "variants": [
               {
                 "label": "color: blue",
@@ -24135,7 +24208,7 @@ window.CODECRAFT_DATA = {
                 "label": "Fond jaune clair",
                 "html": "\u003cp>Je découvre le CSS.\u003c/p>\u003cp>Je peux changer l’apparence.\u003c/p>",
                 "code": "p {\n  color: black;\n  background-color: lightyellow;\n}",
-                "feedback": "background-color change le fond de chaque paragraphe, pas la couleur de ses lettres.",
+                "feedback": "`background-color` change le fond de chaque paragraphe, pas la couleur de ses lettres.",
                 "css": "p{color:black;background-color:lightyellow}"
               }
             ],
@@ -24185,7 +24258,7 @@ window.CODECRAFT_DATA = {
                 "Quel élément veux-tu modifier ?",
                 "Les mots du titre restent dans HTML ; son apparence se règle dans CSS.",
                 "Compare le rôle des deux propriétés du cours.",
-                "Dans la règle h1, écris color: darkgreen; et background-color: white; entre accolades."
+                "Dans la règle h1, écris `color`: darkgreen; et `background-color`: white; entre accolades."
               ]
             },
             {
@@ -24195,7 +24268,7 @@ window.CODECRAFT_DATA = {
                 "Repère les deux balises p.",
                 "Un seul sélecteur peut les choisir toutes les deux.",
                 "Compare avec la règle p, pas avec h1.",
-                "Écris une règle p avec color: black; et background-color: lightyellow;."
+                "Écris une règle p avec `color`: black; et `background-color`: lightyellow;."
               ]
             },
             {
@@ -24231,16 +24304,16 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "reparer",
           "title": "Consolidation : Une règle à réparer",
-          "intro": "Dans un essai séparé, copie dans HTML \u003cp>Texte à réparer\u003c/p> et dans CSS : p { color = blue; background-color: white; }. Le texte devrait devenir bleu, mais la déclaration de couleur est incorrecte.",
+          "intro": "Dans un essai séparé, copie dans HTML \u003cp>Texte à réparer\u003c/p> et dans CSS : p { `color` = blue; `background-color`: white; }. Le texte devrait devenir bleu, mais la déclaration de couleur est incorrecte.",
           "items": [
             {
               "id": "reparer-declaration",
               "text": "Repère puis corrige l’erreur. Explique la différence entre l’écriture incorrecte et celle qui fonctionne.",
               "hints": [
-                "Regarde la ponctuation après color.",
+                "Regarde la ponctuation après `color`.",
                 "Une déclaration sépare propriété et valeur par un signe précis.",
-                "Compare avec color: blue; dans le cours.",
-                "Remplace = par : ; garde le point-virgule. La règle devient p { color: blue; background-color: white; }."
+                "Compare avec `color`: blue; dans le cours.",
+                "Remplace = par : ; garde le point-virgule. La règle devient p { `color`: blue; `background-color`: white; }."
               ]
             },
             {
@@ -24281,7 +24354,7 @@ window.CODECRAFT_DATA = {
               "id": "squelette-local",
               "title": "Un fichier prêt à accueillir tes essais",
               "paragraphs": [
-                "Crée un fichier index.html dans ton dossier de travail, colle ce squelette, puis enregistre-le. Ouvre ce fichier dans un navigateur. Après chaque modification, enregistre dans VS Code puis actualise le navigateur.",
+                "Crée un fichier `index.html` dans ton dossier de travail, colle ce squelette, puis enregistre-le. Ouvre ce fichier dans un navigateur. Après chaque modification, enregistre dans VS Code puis actualise le navigateur.",
                 "Le texte entre \u003c!-- et --> et celui entre /* et */ sont des commentaires : des indications invisibles dans la page. Colle le HTML à la place du commentaire dans body, et le CSS à la place du commentaire dans style. Garde les autres lignes.",
                 "head contient ici les réglages du document ; title donne le titre de l’onglet. body accueille ce qui est visible. style accueille les règles CSS dans cet exemple fourni. Tu n’as pas à reconstruire ce cadre de mémoire.",
                 "Dans CodePen, n’utilise pas ce squelette complet : les panneaux HTML et CSS prennent en charge ce cadre pour toi. Le chargement d’un fichier CSS séparé sera une autre activité."
@@ -24550,7 +24623,7 @@ window.CODECRAFT_DATA = {
           "title": "CSS : Deux groupes lisibles",
           "paragraphs": [
             ".annonce choisit les éléments dont class vaut annonce ; .information choisit ceux portant information.",
-            "color donne la couleur des lettres, background-color celle de leur fond. white signifie blanc, navy bleu très foncé, black noir et lightyellow jaune clair.",
+            "`color` donne la couleur des lettres, `background-color` celle de leur fond. white signifie blanc, navy bleu très foncé, black noir et lightyellow jaune clair.",
             "Le fond des paragraphes peut être plus large que leurs mots : il appartient à chaque élément. L’affiche peut rester très simple ; aucune mise en page nouvelle n’est demandée."
           ],
           "code": ".annonce {\n  color: white;\n  background-color: navy;\n}\n\n.information {\n  color: black;\n  background-color: lightyellow;\n}",
@@ -24594,7 +24667,7 @@ window.CODECRAFT_DATA = {
                 "Regarde le class du premier paragraphe.",
                 "Le nouveau paragraphe peut partager ce même nom.",
                 "Une seule règle peut servir aux deux.",
-                "Ajoute un p class=\"information\", puis modifie color dans .information. Les deux paragraphes doivent changer."
+                "Ajoute un p class=\"information\", puis modifie `color` dans .information. Les deux paragraphes doivent changer."
               ]
             },
             {
@@ -24629,7 +24702,7 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Commence par une seule règle.",
                 "Distingue le texte à colorer de son fond.",
-                "Relis color et background-color dans l’exemple.",
+                "Relis `color` et `background-color` dans l’exemple.",
                 "Ajoute ces deux propriétés entre accolades, avec : et ;. Puis teste l’autre classe."
               ]
             },
@@ -24704,8 +24777,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Montre les lettres et la zone derrière.",
                 "Deux propriétés différentes règlent ces parties.",
-                "Compare color et background-color.",
-                "Garde color et modifie background-color uniquement, puis reteste."
+                "Compare `color` et `background-color`.",
+                "Garde `color` et modifie `background-color` uniquement, puis reteste."
               ]
             }
           ]
@@ -25055,17 +25128,17 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "creer-fichier",
-              "text": "Dans la liste de fichiers de VS Code, crée index.html, colle le document de départ puis enregistre avec Ctrl+S (Cmd+S sur Mac).",
+              "text": "Dans la liste de fichiers de VS Code, crée `index.html`, colle le document de départ puis enregistre avec Ctrl+S (Cmd+S sur Mac).",
               "hints": [
                 "Regarde le nom du fichier dans la liste, pas seulement le titre du navigateur.",
                 "Le fichier doit se terminer par .html, pas par .html.txt.",
-                "Compare index.html avec le nom demandé.",
+                "Compare `index.html` avec le nom demandé.",
                 "Si nécessaire, renomme le fichier avec son extension complète ; conserve son contenu, puis enregistre."
               ]
             },
             {
               "id": "ouvrir-fichier",
-              "text": "Ouvre index.html dans Chrome ou Edge depuis l’explorateur de fichiers : clic droit → Ouvrir avec → ton navigateur si le double-clic ouvre l’éditeur. Vérifie l’onglet et le h1."
+              "text": "Ouvre `index.html` dans Chrome ou Edge depuis l’explorateur de fichiers : clic droit → Ouvrir avec → ton navigateur si le double-clic ouvre l’éditeur. Vérifie l’onglet et le h1."
             },
             {
               "id": "modifier-onglet",
@@ -25384,7 +25457,7 @@ window.CODECRAFT_DATA = {
             "Tu vas afficher un dessin enregistré dans un dossier et créer un lien qui ouvre ce même dessin. Le résultat attendu est une image visible et un lien qui mène au bon fichier.",
             "Un fichier contient des données ; un dossier sert à ranger des fichiers. Une extension comme `.html` ou `.png` fait partie du nom et indique un type de fichier. Le dessin fourni est une image PNG.",
             "Ouvre ton dossier atelier-web dans ton éditeur de texte et garde le navigateur à côté pour tester les chemins.",
-            "Dans CodePen, écrire images/carre-bleu.png ne donne pas accès à un dossier de ton ordinateur. Ici, les essais se font dans tes fichiers locaux. Sans accès aux fichiers, tu peux raisonner sur l’arbre, mais l’essai de chargement restera à faire dans cet environnement."
+            "Dans CodePen, écrire `images/carre-bleu.png` ne donne pas accès à un dossier de ton ordinateur. Ici, les essais se font dans tes fichiers locaux. Sans accès aux fichiers, tu peux raisonner sur l’arbre, mais l’essai de chargement restera à faire dans cet environnement."
           ]
         },
         {
@@ -25403,8 +25476,8 @@ window.CODECRAFT_DATA = {
           "id": "arbre",
           "title": "2 : Ton dossier de départ",
           "paragraphs": [
-            "Si tu n’as pas encore de dossier de travail, crée atelier-web, ouvre-le dans VS Code avec Fichier → Ouvrir le dossier, puis crée un fichier nommé index.html. Son contenu complet est fourni plus bas. Tu n’as pas besoin d’avoir fait le cours précédent pour disposer de ce cadre.",
-            "Crée un dossier images à côté de index.html dans atelier-web. Place le fichier téléchargé carre-bleu.png dans images. Vérifie son nom exact, y compris le tiret et l’extension.",
+            "Si tu n’as pas encore de dossier de travail, crée atelier-web, ouvre-le dans VS Code avec Fichier → Ouvrir le dossier, puis crée un fichier nommé `index.html`. Son contenu complet est fourni plus bas. Tu n’as pas besoin d’avoir fait le cours précédent pour disposer de ce cadre.",
+            "Crée un dossier images à côté de `index.html` dans atelier-web. Place le fichier téléchargé `carre-bleu.png` dans images. Vérifie son nom exact, y compris le tiret et l’extension.",
             "Si le téléchargement reste dans Téléchargements, la page ne le trouvera pas avec le chemin demandé. Déplace ou copie le fichier dans images. Ne modifie pas le dessin lui-même.",
             "L’arbre ci-dessous décrit les dossiers et fichiers, pas le HTML à copier. Les lignes décalées se trouvent à l’intérieur du dossier au-dessus."
           ],
@@ -25415,7 +25488,7 @@ window.CODECRAFT_DATA = {
           "id": "chemin",
           "title": "3 : Lire un chemin relatif",
           "paragraphs": [
-            "Dans ce document, un chemin relatif part du dossier qui contient index.html. images/carre-bleu.png signifie : entrer dans images, puis prendre carre-bleu.png.",
+            "Dans ce document, un chemin relatif part du dossier qui contient `index.html`. `images/carre-bleu.png` signifie : entrer dans images, puis prendre `carre-bleu.png`.",
             "On utilise / pour séparer les dossiers dans le chemin HTML, même sous Windows. Ne copie pas le chemin complet de ton ordinateur : il ne désignerait pas la même chose sur un autre poste.",
             "Garde les mêmes lettres, majuscules/minuscules et extensions que les fichiers. Certains systèmes tolèrent une différence de casse, d’autres non. Utilise les noms simples de l’exemple.",
             "Un chemin ne déplace pas le fichier : il indique où le chercher. Si tu renommes ou déplaces le fichier, les références qui le désignent doivent être adaptées.",
@@ -25424,20 +25497,20 @@ window.CODECRAFT_DATA = {
           "demonstration": {
             "type": "web-comparison",
             "title": "Pars du fichier HTML pour retrouver l’image",
-            "intro": "Dans ce dossier représenté, index.html se trouve à côté du dossier images.",
+            "intro": "Dans ce dossier représenté, `index.html` se trouve à côté du dossier images.",
             "variants": [
               {
                 "label": "Le bon chemin",
                 "html": "\u003cpre>atelier/\n├── index.html\n├── style.css\n└── images/\n    └── forme.png\u003c/pre>\u003cp>index.html → images → forme.png\u003c/p>",
                 "code": "\u003cimg src=\"images/forme.png\" alt=\"Une forme\">",
-                "feedback": "Entre dans images, puis retrouve forme.png. Les noms et extensions doivent correspondre.",
+                "feedback": "Entre dans images, puis retrouve `forme.png`. Les noms et extensions doivent correspondre.",
                 "css": ""
               },
               {
                 "label": "Un dossier oublié",
                 "html": "\u003cpre>atelier/\n├── index.html\n├── style.css\n└── images/\n    └── forme.png\u003c/pre>\u003cp>index.html → forme.png : aucun fichier à cet endroit\u003c/p>",
                 "code": "\u003cimg src=\"forme.png\" alt=\"Une forme\">",
-                "feedback": "Ce chemin cherche forme.png à côté d’index.html, alors que le dessin est dans images.",
+                "feedback": "Ce chemin cherche `forme.png` à côté d’`index.html`, alors que le dessin est dans images.",
                 "css": ""
               }
             ],
@@ -25459,21 +25532,21 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "guide",
           "title": "Exercice guidé : Suivre le chemin",
-          "intro": "Enregistre index.html puis ouvre-le dans le navigateur.",
+          "intro": "Enregistre `index.html` puis ouvre-le dans le navigateur.",
           "items": [
             {
               "id": "verifier-dossiers",
               "text": "Compare tes fichiers avec l’arbre. Vérifie que le dessin est bien dans images, pas simplement visible dans les téléchargements.",
               "hints": [
                 "Regarde l’emplacement réel du fichier.",
-                "index.html et images doivent être dans le même dossier atelier-web.",
+                "`index.html` et images doivent être dans le même dossier atelier-web.",
                 "Compare les niveaux de l’arbre.",
-                "Place carre-bleu.png dans images puis garde le chemin images/carre-bleu.png dans HTML."
+                "Place `carre-bleu.png` dans images puis garde le chemin `images/carre-bleu.png` dans HTML."
               ]
             },
             {
               "id": "verifier-image",
-              "text": "Vérifie que le carré s’affiche. Si ce n’est pas le cas, suis le chemin mot par mot depuis index.html."
+              "text": "Vérifie que le carré s’affiche. Si ce n’est pas le cas, suis le chemin mot par mot depuis `index.html`."
             },
             {
               "id": "verifier-lien",
@@ -25493,7 +25566,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "renommer",
-              "text": "Renomme le fichier carre-bleu.png en forme.png dans ton dossier. Avant d’actualiser la page, prédis ce qui ne fonctionnera plus."
+              "text": "Renomme le fichier `carre-bleu.png` en `forme.png` dans ton dossier. Avant d’actualiser la page, prédis ce qui ne fonctionnera plus."
             },
             {
               "id": "adapter",
@@ -25501,8 +25574,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Repère les deux références vers l’ancien nom.",
                 "L’image et le lien ont chacun leur propre chemin.",
-                "Compare src et href avec le nom forme.png dans le dossier images.",
-                "Remplace images/carre-bleu.png par images/forme.png dans src et dans href. Enregistre, actualise et teste le clic."
+                "Compare src et href avec le nom `forme.png` dans le dossier images.",
+                "Remplace `images/carre-bleu.png` par `images/forme.png` dans src et dans href. Enregistre, actualise et teste le clic."
               ]
             },
             {
@@ -25530,7 +25603,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "verifier-explication",
-              "text": "Je peux retrouver le fichier depuis le dossier de index.html et distinguer chemin, alt et texte du lien."
+              "text": "Je peux retrouver le fichier depuis le dossier de `index.html` et distinguer chemin, alt et texte du lien."
             }
           ]
         },
@@ -25538,16 +25611,16 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "reparer",
           "title": "Consolidation : Image absente, quelle cause ?",
-          "intro": "Utilise maintenant ton fichier images/forme.png. Crée une erreur volontaire puis répare-la.",
+          "intro": "Utilise maintenant ton fichier `images/forme.png`. Crée une erreur volontaire puis répare-la.",
           "items": [
             {
               "id": "fichier-absent",
-              "text": "Remplace uniquement src par forme.png. L’image ne se charge plus. Explique où ce chemin cherche le dessin, puis répare-le.",
+              "text": "Remplace uniquement src par `forme.png`. L’image ne se charge plus. Explique où ce chemin cherche le dessin, puis répare-le.",
               "hints": [
-                "Regarde le dossier qui contient index.html.",
-                "Le chemin sans dossier cherche forme.png à côté de index.html.",
+                "Regarde le dossier qui contient `index.html`.",
+                "Le chemin sans dossier cherche `forme.png` à côté de `index.html`.",
                 "Compare avec l’arbre : le dessin est dans images.",
-                "Rétablis images/forme.png dans src ; ne déplace pas le dessin pour masquer l’erreur de chemin."
+                "Rétablis `images/forme.png` dans src ; ne déplace pas le dessin pour masquer l’erreur de chemin."
               ]
             },
             {
@@ -25565,8 +25638,8 @@ window.CODECRAFT_DATA = {
           "id": "bonus-explication",
           "title": "Bonus : Un niveau de dossier supplémentaire",
           "paragraphs": [
-            "Facultatif : un chemin peut traverser plusieurs dossiers en les séparant par /. Dans media/images/forme.png, on entre d’abord dans media, puis images, puis on ouvre forme.png.",
-            "Pour essayer sans perdre ton travail, fais une copie de ton dossier atelier-web avec son contenu. Dans cette copie, crée media puis déplace images à l’intérieur. Garde index.html à la racine."
+            "Facultatif : un chemin peut traverser plusieurs dossiers en les séparant par /. Dans `media/images/forme.png`, on entre d’abord dans media, puis images, puis on ouvre `forme.png`.",
+            "Pour essayer sans perdre ton travail, fais une copie de ton dossier atelier-web avec son contenu. Dans cette copie, crée media puis déplace images à l’intérieur. Garde `index.html` à la racine."
           ],
           "code": "atelier-web-copie/\n├── index.html\n└── media/\n    └── images/\n        └── forme.png"
         },
@@ -25580,10 +25653,10 @@ window.CODECRAFT_DATA = {
               "id": "bonus-chemins",
               "text": "Dans la copie du projet, adapte le chemin de l’image et celui du lien, puis vérifie les deux.",
               "hints": [
-                "Pars du dossier de index.html.",
+                "Pars du dossier de `index.html`.",
                 "Traverse chaque dossier dans l’ordre.",
                 "Compare avec l’arbre du bonus.",
-                "Utilise media/images/forme.png dans src et href."
+                "Utilise `media/images/forme.png` dans src et href."
               ]
             },
             {
@@ -25834,7 +25907,7 @@ window.CODECRAFT_DATA = {
           "id": "prerequis-css",
           "title": "Avant de commencer : La règle CSS",
           "tone": "neutral",
-          "text": "Tu dois pouvoir expliquer h1 { color: blue; } et modifier sa couleur. Si tu hésites encore entre sélecteur, propriété et valeur, reprends Découvrir le CSS puis utilise Retour dans ton navigateur pour revenir ici. Retrouve les leçons du document et des chemins depuis le parcours dans le fil d’Ariane si nécessaire.",
+          "text": "Tu dois pouvoir expliquer h1 { `color`: blue; } et modifier sa couleur. Si tu hésites encore entre sélecteur, propriété et valeur, reprends Découvrir le CSS puis utilise Retour dans ton navigateur pour revenir ici. Retrouve les leçons du document et des chemins depuis le parcours dans le fil d’Ariane si nécessaire.",
           "moduleLink": {
             "text": "Découvrir le CSS",
             "moduleId": "css-decouverte"
@@ -25845,8 +25918,8 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "1 : Deux fichiers, deux rôles",
           "paragraphs": [
-            "Tu vas obtenir un titre bleu dont la couleur est définie dans un fichier style.css séparé. Puis tu modifieras ce fichier et vérifieras que la page suit bien le changement.",
-            "Le fichier index.html conserve le contenu et son cadre. Le fichier style.css contient seulement les règles CSS, sans balises HTML. Une feuille externe est un fichier séparé de la page, pas forcément un fichier sur Internet.",
+            "Tu vas obtenir un titre bleu dont la couleur est définie dans un fichier `style.css` séparé. Puis tu modifieras ce fichier et vérifieras que la page suit bien le changement.",
+            "Le fichier `index.html` conserve le contenu et son cadre. Le fichier `style.css` contient seulement les règles CSS, sans balises HTML. Une feuille externe est un fichier séparé de la page, pas forcément un fichier sur Internet.",
             "CodePen relie son panneau CSS à l’aperçu pour toi. Les essais de ce module se font avec de vrais fichiers locaux dans un éditeur comme VS Code. Tu n’as pas à coller link dans le panneau HTML de CodePen ni à téléverser un fichier.",
             "Crée un dossier atelier-style pour garder tes exercices précédents. Ouvre-le dans ton éditeur de texte."
           ]
@@ -25857,7 +25930,7 @@ window.CODECRAFT_DATA = {
           "title": "2 : La ligne qui relie HTML et CSS",
           "paragraphs": [
             "Ajoute cette ligne dans head du document. link indique une ressource liée ; rel=\"stylesheet\" précise qu’il s’agit d’une feuille de style. href donne le chemin vers le fichier CSS.",
-            "Ici style.css est dans le même dossier que index.html, donc son nom suffit. Ne l’écris pas styles.css : le nom doit être exactement celui du fichier créé.",
+            "Ici `style.css` est dans le même dossier que `index.html`, donc son nom suffit. Ne l’écris pas `styles.css` : le nom doit être exactement celui du fichier créé.",
             "link ne produit pas un lien cliquable dans la page, contrairement à a. Elle n’entoure pas de contenu et n’a pas de balise fermante.",
             "Le navigateur doit trouver le fichier ET une règle correspondant aux éléments HTML. Un bon chemin ne corrige pas une règle qui cible un élément absent."
           ],
@@ -25890,7 +25963,7 @@ window.CODECRAFT_DATA = {
           "id": "arbre",
           "title": "Le dossier de cet exercice",
           "paragraphs": [
-            "Crée les deux fichiers dans atelier-style. Vérifie les extensions .html et .css : un fichier style.css.txt n’est pas celui demandé."
+            "Crée les deux fichiers dans atelier-style. Vérifie les extensions .html et .css : un fichier `style.css`.txt n’est pas celui demandé."
           ],
           "code": "atelier-style/\n├── index.html\n└── style.css"
         },
@@ -25899,7 +25972,7 @@ window.CODECRAFT_DATA = {
           "id": "html",
           "title": "index.html : Le document complet",
           "paragraphs": [
-            "Copie ce document dans index.html. Repère link dans head et h1 dans body. Cet essai ne contient aucun ancien bloc style : ainsi, le résultat dépend du fichier CSS externe."
+            "Copie ce document dans `index.html`. Repère link dans head et h1 dans body. Cet essai ne contient aucun ancien bloc style : ainsi, le résultat dépend du fichier CSS externe."
           ],
           "code": "\u003c!doctype html>\n\u003chtml lang=\"fr\">\n\u003chead>\n  \u003cmeta charset=\"utf-8\">\n  \u003ctitle>Mon premier style externe\u003c/title>\n  \u003clink rel=\"stylesheet\" href=\"style.css\">\n\u003c/head>\n\u003cbody>\n  \u003ch1>Une page reliée\u003c/h1>\n  \u003cp>Le contenu et son style sont dans deux fichiers.\u003c/p>\n\u003c/body>\n\u003c/html>"
         },
@@ -25908,7 +25981,7 @@ window.CODECRAFT_DATA = {
           "id": "css",
           "title": "style.css : Seulement des règles",
           "paragraphs": [
-            "Copie cette règle dans style.css. N’ajoute ni \u003cstyle>, ni \u003c/style>, ni cadre HTML dans ce fichier. Le sélecteur h1 et color ont le même sens que dans le panneau CSS de CodePen."
+            "Copie cette règle dans `style.css`. N’ajoute ni \u003cstyle>, ni \u003c/style>, ni cadre HTML dans ce fichier. Le sélecteur h1 et `color` ont le même sens que dans le panneau CSS de CodePen."
           ],
           "code": "h1 {\n  color: blue;\n}"
         },
@@ -25916,28 +25989,28 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "guide",
           "title": "Exercice guidé : Prouver que la feuille est chargée",
-          "intro": "Enregistre les deux fichiers. Ouvre index.html dans le navigateur, pas style.css.",
+          "intro": "Enregistre les deux fichiers. Ouvre `index.html` dans le navigateur, pas `style.css`.",
           "items": [
             {
               "id": "observer",
-              "text": "Vérifie que le h1 est bleu. La présence du nom style.css dans le dossier ne suffit pas : son effet doit être visible."
+              "text": "Vérifie que le h1 est bleu. La présence du nom `style.css` dans le dossier ne suffit pas : son effet doit être visible."
             },
             {
               "id": "modifier-css",
-              "text": "Dans style.css seulement, remplace blue par purple (violet). Enregistre ce fichier puis actualise index.html dans le navigateur."
+              "text": "Dans `style.css` seulement, remplace blue par purple (violet). Enregistre ce fichier puis actualise `index.html` dans le navigateur."
             },
             {
               "id": "expliquer-liaison",
-              "text": "Explique pourquoi la couleur a changé sans modifier les mots dans index.html. Montre le chemin qui permet au navigateur de retrouver le CSS."
+              "text": "Explique pourquoi la couleur a changé sans modifier les mots dans `index.html`. Montre le chemin qui permet au navigateur de retrouver le CSS."
             },
             {
               "id": "verifier-erreur",
               "text": "Si le titre ne change pas, vérifie d’abord enregistrement et chemin, puis le sélecteur et la déclaration. Utilise la consolidation si nécessaire.",
               "hints": [
-                "Vérifie que tu regardes le bon index.html.",
+                "Vérifie que tu regardes le bon `index.html`.",
                 "Compare le nom du CSS à href dans link.",
                 "Compare ensuite la règle avec le h1 présent.",
-                "Rétablis rel=\"stylesheet\", href=\"style.css\" et h1 { color: purple; }, puis enregistre les deux fichiers et actualise."
+                "Rétablis rel=\"stylesheet\", href=\"`style.css`\" et h1 { `color`: purple; }, puis enregistre les deux fichiers et actualise."
               ]
             }
           ]
@@ -25950,31 +26023,31 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "renommer-feuille",
-              "text": "Renomme style.css en theme.css dans ton dossier. Avant d’actualiser la page, prédis pourquoi le style va disparaître."
+              "text": "Renomme `style.css` en `theme.css` dans ton dossier. Avant d’actualiser la page, prédis pourquoi le style va disparaître."
             },
             {
               "id": "reparer-liaison",
               "text": "Rétablis le style en modifiant uniquement la référence dans HTML, pas les règles de couleur.",
               "hints": [
                 "Cherche la ligne qui désigne l’ancien fichier.",
-                "Le contenu de theme.css n’a pas changé.",
+                "Le contenu de `theme.css` n’a pas changé.",
                 "Compare le nom réel avec href dans link.",
-                "Remplace href=\"style.css\" par href=\"theme.css\" ; garde rel=\"stylesheet\". Enregistre index.html puis actualise."
+                "Remplace href=\"`style.css`\" par href=\"`theme.css`\" ; garde rel=\"stylesheet\". Enregistre `index.html` puis actualise."
               ]
             },
             {
               "id": "regle-paragraphe",
-              "text": "Dans theme.css, ajoute une règle pour rendre le paragraphe vert foncé (darkgreen). Prédis quel élément changera, puis vérifie.",
+              "text": "Dans `theme.css`, ajoute une règle pour rendre le paragraphe vert foncé (darkgreen). Prédis quel élément changera, puis vérifie.",
               "hints": [
                 "Le paragraphe est un p dans HTML.",
                 "Écris une deuxième règle à côté de celle du h1, pas à l’intérieur.",
                 "Reprends la syntaxe sélecteur, accolades, propriété et valeur.",
-                "Ajoute p { color: darkgreen; } dans theme.css, enregistre puis actualise."
+                "Ajoute p { `color`: darkgreen; } dans `theme.css`, enregistre puis actualise."
               ]
             },
             {
               "id": "expliquer-preuve",
-              "text": "Montre comment tu peux prouver que c’est theme.css qui est utilisé : modifie une couleur dans ce fichier, sans changer le HTML."
+              "text": "Montre comment tu peux prouver que c’est `theme.css` qui est utilisé : modifie une couleur dans ce fichier, sans changer le HTML."
             }
           ]
         },
@@ -26005,21 +26078,21 @@ window.CODECRAFT_DATA = {
           "type": "tasks",
           "id": "reparer",
           "title": "Consolidation : Chemin ou règle ?",
-          "intro": "Pars de ta version avec theme.css et les règles h1 et p. Fais les deux essais séparément, en réparant le premier avant le second.",
+          "intro": "Pars de ta version avec `theme.css` et les règles h1 et p. Fais les deux essais séparément, en réparant le premier avant le second.",
           "items": [
             {
               "id": "mauvais-fichier",
-              "text": "Dans link, remplace temporairement theme.css par absent.css. Observe que les couleurs de la feuille disparaissent. Corrige seulement le chemin.",
+              "text": "Dans link, remplace temporairement `theme.css` par `absent.css`. Observe que les couleurs de la feuille disparaissent. Corrige seulement le chemin.",
               "hints": [
                 "Le fichier demandé existe-t-il dans le dossier ?",
                 "Un chemin incorrect empêche de charger toute cette feuille.",
-                "Compare absent.css avec le nom réel.",
-                "Rétablis href=\"theme.css\" puis enregistre et actualise."
+                "Compare `absent.css` avec le nom réel.",
+                "Rétablis href=\"`theme.css`\" puis enregistre et actualise."
               ]
             },
             {
               "id": "mauvais-selecteur",
-              "text": "Garde le bon chemin. Dans le CSS, remplace seulement le sélecteur h1 par h2. Le titre n’est plus coloré, mais le paragraphe l’est encore. Explique, puis répare.",
+              "text": "Garde le bon chemin. Dans le CSS, remplace seulement le sélecteur h1 par h2. Le titre n’est plus `color`é, mais le paragraphe l’est encore. Explique, puis répare.",
               "hints": [
                 "Vérifie quels éléments existent dans body.",
                 "La feuille est chargée : la règle p agit encore.",
@@ -26038,8 +26111,8 @@ window.CODECRAFT_DATA = {
           "id": "bonus-explication",
           "title": "Bonus : Ranger le CSS dans un dossier",
           "paragraphs": [
-            "Facultatif : fais une copie du projet. Crée un dossier css à côté de index.html puis déplace theme.css dedans.",
-            "Depuis index.html, le chemin devient css/theme.css : même raisonnement qu’avec les images. Les règles dans le fichier CSS ne changent pas. Adapte seulement href dans link.",
+            "Facultatif : fais une copie du projet. Crée un dossier css à côté de `index.html` puis déplace `theme.css` dedans.",
+            "Depuis `index.html`, le chemin devient `css/theme.css` : même raisonnement qu’avec les images. Les règles dans le fichier CSS ne changent pas. Adapte seulement href dans link.",
             "Ce rangement est un essai, pas une obligation pour réussir le module."
           ],
           "code": "atelier-style-copie/\n├── index.html\n└── css/\n    └── theme.css"
@@ -26054,7 +26127,7 @@ window.CODECRAFT_DATA = {
               "id": "bonus-deplacer",
               "text": "Adapte le chemin vers la feuille déplacée, puis vérifie les couleurs du titre et du paragraphe.",
               "hints": [
-                "Pars du dossier de index.html.",
+                "Pars du dossier de `index.html`.",
                 "Entre dans le dossier css avant le nom du fichier.",
                 "Compare avec l’arbre du bonus.",
                 "Utilise \u003clink rel=\"stylesheet\" href=\"css/theme.css\"> dans head."
@@ -26371,7 +26444,7 @@ window.CODECRAFT_DATA = {
           "title": "Comprendre les repères de la base",
           "paragraphs": [
             "Dans le HTML, le groupe .cartes entoure trois .carte distinctes ; chaque carte contient son titre et son paragraphe. Vérifie les ouvertures et fermetures des div, pas seulement l’aperçu.",
-            "Dans le CSS, border dessine la bordure ; padding écarte le contenu de cette bordure, à l’intérieur ; margin laisse de l’espace à l’extérieur ; border-radius arrondit les coins.",
+            "Dans le CSS, `border` dessine la bordure ; `padding` écarte le contenu de cette bordure, à l’intérieur ; `margin` laisse de l’espace à l’extérieur ; `border-radius` arrondit les coins.",
             "La checklist vérifie la présence de ces éléments, pas leur maîtrise. Si tu as copié la base, indique-le ; les manipulations qui suivent permettent de commencer à expliquer son fonctionnement."
           ]
         },
@@ -26393,19 +26466,19 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "bordures",
-              "text": "Je repère border dans .carte et je vois une bordure autour de chacune."
+              "text": "Je repère `border` dans .carte et je vois une bordure autour de chacune."
             },
             {
               "id": "padding",
-              "text": "Je repère padding : l’espace entre le contenu et la bordure est à l’intérieur de la carte."
+              "text": "Je repère `padding` : l’espace entre le contenu et la bordure est à l’intérieur de la carte."
             },
             {
               "id": "margin",
-              "text": "Je repère margin : l’espace est à l’extérieur de la carte."
+              "text": "Je repère `margin` : l’espace est à l’extérieur de la carte."
             },
             {
               "id": "radius",
-              "text": "Je repère border-radius et j’observe les coins arrondis."
+              "text": "Je repère `border-radius` et j’observe les coins arrondis."
             },
             {
               "id": "hover",
@@ -26422,13 +26495,13 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "tester-padding",
-              "text": "Dans .carte, change seulement padding de 20px à 40px. Compare l’espace intérieur puis rétablis 20px.",
+              "text": "Dans .carte, change seulement `padding` de 20px à 40px. Compare l’espace intérieur puis rétablis 20px.",
               "hint": "Observe la distance entre le texte et sa bordure, pas l’espace extérieur entre les cartes."
             },
             {
               "id": "tester-margin",
-              "text": "Change seulement margin de 10px à 25px. Compare l’espace extérieur puis rétablis 10px.",
-              "hint": "Garde padding inchangé : on compare une seule propriété à la fois."
+              "text": "Change seulement `margin` de 10px à 25px. Compare l’espace extérieur puis rétablis 10px.",
+              "hint": "Garde `padding` inchangé : on compare une seule propriété à la fois."
             },
             {
               "id": "adapter-carte",
@@ -26453,7 +26526,7 @@ window.CODECRAFT_DATA = {
       "masteryCriteria": [
         "Préparer et conserver une base de trois cartes personnalisées, en indiquant si elle vient du modèle ou d’un projet personnel.",
         "Repérer le groupe cartes, les éléments de classe carte et la règle .carte qui s’applique à chacun.",
-        "Comparer padding et margin en modifiant une seule valeur à la fois, puis rétablir les valeurs de départ.",
+        "Comparer `padding` et `margin` en modifiant une seule valeur à la fois, puis rétablir les valeurs de départ.",
         "Ajouter une quatrième carte dans le groupe sans recopier toute la base et expliquer le style obtenu ; préciser les aides utilisées."
       ],
       "consolidation": [
@@ -26632,7 +26705,7 @@ window.CODECRAFT_DATA = {
                 "label": "La collection .cartes",
                 "html": "\u003cdiv style=\"border:3px solid #467e81;padding:12px\">\u003cstrong>.cartes\u003c/strong>\u003cdiv style=\"border:1px solid gray;padding:8px;margin-top:8px\">.carte : Forêt\u003c/div>\u003cdiv style=\"border:1px solid gray;padding:8px;margin-top:8px\">.carte : Montagne\u003c/div>\u003c/div>",
                 "code": ".cartes\n├── .carte\n└── .carte",
-                "feedback": "Les deux cartes sont les enfants directs de .cartes. Le cadre coloré indique le groupe observé.",
+                "feedback": "Les deux cartes sont les enfants directs de .cartes. Le cadre `color`é indique le groupe observé.",
                 "css": ""
               },
               {
@@ -27058,7 +27131,7 @@ window.CODECRAFT_DATA = {
                 "Décris ce que tu veux voir, sans commencer par une liste de propriétés.",
                 "Distingue l’écart entre deux cartes et la place libre autour du groupe.",
                 "Repère le parent qui les contient toutes.",
-                "Reprends les étapes direction, gap, répartition et wrap de Flexbox ; choisis ensuite ton propre résultat."
+                "Reprends les étapes direction, `gap`, répartition et `wrap` de Flexbox ; choisis ensuite ton propre résultat."
               ]
             }
           ]
@@ -27115,7 +27188,7 @@ window.CODECRAFT_DATA = {
                 "Le paragraphe plus long peut rendre une carte plus haute.",
                 "Observe les bords hauts et bas des cartes sur une même ligne.",
                 "En ligne, l’axe transversal est vertical dans ces exemples.",
-                "Compare align-items: flex-start puis center sur le parent. Si tu ne vois rien, vérifie qu’il y a plusieurs cartes sur la ligne et des hauteurs différentes."
+                "Compare `align-items`: `flex`-start puis center sur le parent. Si tu ne vois rien, vérifie qu’il y a plusieurs cartes sur la ligne et des hauteurs différentes."
               ]
             }
           ]
@@ -27132,8 +27205,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Réduis progressivement la largeur de l’aperçu, pas seulement celle de la page de cours.",
                 "Compare avec ton plan ; indique les deux largeurs réellement testées.",
-                "Vérifie flex-wrap, la direction et les dimensions de l’apparence conservée.",
-                "Avec row et wrap, les cartes qui ne tiennent plus passent à une autre ligne. Si une carte seule dépasse, sa largeur doit aussi être revue : wrap ne répare pas tout."
+                "Vérifie `flex-wrap`, la direction et les dimensions de l’apparence conservée.",
+                "Avec `row` et `wrap`, les cartes qui ne tiennent plus passent à une autre ligne. Si une carte seule dépasse, sa largeur doit aussi être revue : `wrap` ne répare pas tout."
               ]
             },
             {
@@ -27169,7 +27242,7 @@ window.CODECRAFT_DATA = {
                 "Quels sont le sens de la collection et le sens du centrage demandé ?",
                 "En colonne, l’axe principal est vertical et l’autre axe est horizontal dans nos exemples.",
                 "Le parent doit être plus large qu’une carte pour rendre le centrage visible.",
-                "Sur le parent, compare flex-direction: column et align-items: center avec align-items: flex-start ; ne centre pas seulement le texte."
+                "Sur le parent, compare `flex-direction`: `column` et `align-items`: center avec `align-items`: `flex`-start ; ne centre pas seulement le texte."
               ]
             },
             {
@@ -27385,9 +27458,9 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Si tu arrives avec uniquement du HTML, voici le CSS nécessaire pour le diagnostic et les essais. Copie-le avant les questions suivantes.",
             "Retrouve le projet conservé avant l’exercice Parent et enfants. Garde son HTML avec au moins trois cartes et conserve son HTML et son CSS dans deux fichiers texte. Dans une copie du projet, remplace le CSS de départ par la base ci-dessous ; ajoute ensuite les propriétés apprises dans la règle .cartes existante.",
-            "Les bordures, couleurs, tailles et espaces intérieurs ci-dessous servent uniquement à rendre les cartes et leur conteneur visibles. min-height donne au conteneur de la place pour observer l’alignement. min-width évite que les cartes deviennent trop étroites.",
-            "Tu n’as pas besoin de savoir recréer cette apparence pour commencer Flexbox. Copier ce CSS ne prouve pas que tu maîtrises ces propriétés. La marge des cartes est mise à zéro pour mieux observer gap.",
-            "Dans ce module, tu apprends à manipuler display, flex-direction, gap, justify-content, align-items et flex-wrap."
+            "Les bordures, couleurs, tailles et espaces intérieurs ci-dessous servent uniquement à rendre les cartes et leur conteneur visibles. `min-height` donne au conteneur de la place pour observer l’alignement. `min-width` évite que les cartes deviennent trop étroites.",
+            "Tu n’as pas besoin de savoir recréer cette apparence pour commencer Flexbox. Copier ce CSS ne prouve pas que tu maîtrises ces propriétés. La marge des cartes est mise à zéro pour mieux observer `gap`.",
+            "Dans ce module, tu apprends à manipuler `display`, `flex-direction`, `gap`, `justify-content`, `align-items` et `flex-wrap`."
           ],
           "code": ".cartes {\n  max-width: 900px;\n  min-height: 420px;\n  border: 2px dashed #52634a;\n}\n\n.carte {\n  box-sizing: border-box;\n  width: 160px;\n  min-width: 160px;\n  margin: 0;\n  padding: 12px;\n  border: 2px solid #52634a;\n  border-radius: 8px;\n  background-color: #f5f2e8;\n}"
         },
@@ -27416,8 +27489,8 @@ window.CODECRAFT_DATA = {
           "id": "cours",
           "title": "1 : Activer Flexbox sur le parent",
           "paragraphs": [
-            "Le conteneur .cartes contient les éléments .carte. Ajoute display: flex dans sa règle CSS. Ses enfants directs deviennent les éléments organisés par Flexbox.",
-            "Les h2 et p à l’intérieur d’une carte ne deviennent pas les enfants directs de .cartes. Mettre display: flex sur .carte organiserait le contenu de chaque carte, pas les cartes entre elles."
+            "Le conteneur .cartes contient les éléments .carte. Ajoute `display`: `flex` dans sa règle CSS. Ses enfants directs deviennent les éléments organisés par Flexbox.",
+            "Les h2 et p à l’intérieur d’une carte ne deviennent pas les enfants directs de .cartes. Mettre `display`: `flex` sur .carte organiserait le contenu de chaque carte, pas les cartes entre elles."
           ],
           "code": ".cartes {\n  display: flex;\n}",
           "demonstration": {
@@ -27452,8 +27525,8 @@ window.CODECRAFT_DATA = {
           "id": "axes",
           "title": "2 : Direction et axes",
           "paragraphs": [
-            "Ajoute flex-direction: row au parent. Dans nos exemples en français, les cartes se suivent sur une ligne de gauche à droite : c’est l’axe principal. L’axe transversal lui est perpendiculaire.",
-            "Remplace row par column : les cartes se suivent maintenant de haut en bas. L’axe principal devient vertical et l’axe transversal horizontal. Puis reviens à row.",
+            "Ajoute `flex-direction`: `row` au parent. Dans nos exemples en français, les cartes se suivent sur une ligne de gauche à droite : c’est l’axe principal. L’axe transversal lui est perpendiculaire.",
+            "Remplace `row` par `column` : les cartes se suivent maintenant de haut en bas. L’axe principal devient vertical et l’axe transversal horizontal. Puis reviens à `row`.",
             "Les mots horizontal et vertical décrivent nos exemples avec une écriture horizontale. Retiens surtout : la direction choisie définit l’axe principal ; l’autre axe est perpendiculaire."
           ],
           "code": ".cartes {\n  display: flex;\n  flex-direction: row;\n}",
@@ -27461,7 +27534,7 @@ window.CODECRAFT_DATA = {
             "type": "flex-property",
             "property": "flex-direction",
             "title": "Change le sens des cartes",
-            "intro": "Passe de row à column. Les mêmes cartes restent dans l’ordre A, B, C ; c’est leur direction qui change.",
+            "intro": "Passe de `row` à `column`. Les mêmes cartes restent dans l’ordre A, B, C ; c’est leur direction qui change.",
             "cards": [
               "A",
               "B",
@@ -27470,11 +27543,11 @@ window.CODECRAFT_DATA = {
             "options": [
               {
                 "value": "row",
-                "feedback": "En row, l’axe principal va de gauche à droite dans cet exemple."
+                "feedback": "En `row`, l’axe principal va de gauche à droite dans cet exemple."
               },
               {
                 "value": "column",
-                "feedback": "En column, l’axe principal va de haut en bas. L’axe transversal devient horizontal."
+                "feedback": "En `column`, l’axe principal va de haut en bas. L’axe transversal devient horizontal."
               }
             ],
             "note": "Seule flex-direction change. Les flèches indiquent les axes dans cet exemple en français ; elles ne sont pas des éléments à ajouter au CSS."
@@ -27485,15 +27558,15 @@ window.CODECRAFT_DATA = {
           "id": "espacement",
           "title": "3 : Régler gap",
           "paragraphs": [
-            "Ajoute gap: 20px au parent. gap règle les gouttières entre les cartes ; il n’ajoute pas de marge extérieure autour de la collection.",
-            "Teste 5px, 20px puis 30px. En column, l’écart suit la colonne. Avec plusieurs lignes, cette valeur s’applique aussi entre les lignes."
+            "Ajoute `gap`: 20px au parent. `gap` règle les gouttières entre les cartes ; il n’ajoute pas de marge extérieure autour de la collection.",
+            "Teste 5px, 20px puis 30px. En `column`, l’écart suit la colonne. Avec plusieurs lignes, cette valeur s’applique aussi entre les lignes."
           ],
           "code": ".cartes {\n  display: flex;\n  gap: 20px;\n}",
           "demonstration": {
             "type": "flex-property",
             "property": "gap",
             "title": "Vois l’écart se former",
-            "intro": "Compare trois écarts entre les mêmes cartes. Regarde aussi le bord gauche : gap ne crée pas d’espace autour du groupe.",
+            "intro": "Compare trois écarts entre les mêmes cartes. Regarde aussi le bord gauche : `gap` ne crée pas d’espace autour du groupe.",
             "cards": [
               "A",
               "B",
@@ -27502,7 +27575,7 @@ window.CODECRAFT_DATA = {
             "options": [
               {
                 "value": "0px",
-                "feedback": "Sans gap, les bordures des cartes se touchent."
+                "feedback": "Sans `gap`, les bordures des cartes se touchent."
               },
               {
                 "value": "12px",
@@ -27520,10 +27593,10 @@ window.CODECRAFT_DATA = {
           "type": "lesson",
           "title": "4 : Répartir avec justify-content",
           "paragraphs": [
-            "justify-content répartit l’espace libre sur l’axe principal. Avec row dans notre exemple, il agit horizontalement ; avec column, verticalement.",
-            "S’il ne reste pas de place libre, changer la répartition peut avoir peu ou pas d’effet. Pour tester en column, tu peux donner plus de hauteur au conteneur en changeant temporairement min-height: 420px en min-height: 800px.",
-            "flex-start regroupe au début, flex-end à la fin, center au centre. space-between répartit l’espace libre entre les éléments ; space-around en met autour de chacun ; space-evenly crée des intervalles de répartition égaux, bords compris.",
-            "Un gap reste présent : les valeurs de répartition peuvent ajouter de l’espace entre les cartes. Teste une valeur à la fois."
+            "`justify-content` répartit l’espace libre sur l’axe principal. Avec `row` dans notre exemple, il agit horizontalement ; avec `column`, verticalement.",
+            "S’il ne reste pas de place libre, changer la répartition peut avoir peu ou pas d’effet. Pour tester en `column`, tu peux donner plus de hauteur au conteneur en changeant temporairement `min-height`: 420px en `min-height`: 800px.",
+            "`flex`-start regroupe au début, `flex`-end à la fin, center au centre. `space-between` répartit l’espace libre entre les éléments ; `space-around` en met autour de chacun ; `space-evenly` crée des intervalles de répartition égaux, bords compris.",
+            "Un `gap` reste présent : les valeurs de répartition peuvent ajouter de l’espace entre les cartes. Teste une valeur à la fois."
           ],
           "code": ".cartes {\n  display: flex;\n  gap: 20px;\n  justify-content: flex-start;\n}",
           "valuesTitle": "Valeurs de justify-content à tester",
@@ -27569,7 +27642,7 @@ window.CODECRAFT_DATA = {
               },
               {
                 "value": "space-evenly",
-                "feedback": "Les parts d’espace libre sont égales, bords compris. L’écart fixe de gap s’ajoute encore entre les cartes."
+                "feedback": "Les parts d’espace libre sont égales, bords compris. L’écart fixe de `gap` s’ajoute encore entre les cartes."
               }
             ],
             "note": "Seul justify-content change. La direction reste row et gap reste à 12px. Si l’aperçu est trop étroit, il reste moins d’espace à répartir."
@@ -27580,16 +27653,16 @@ window.CODECRAFT_DATA = {
           "id": "alignement",
           "title": "5 : Aligner avec align-items",
           "paragraphs": [
-            "align-items place les cartes sur l’axe transversal : verticalement en row, horizontalement en column dans nos exemples.",
-            "Teste flex-start, center puis flex-end. Dans notre conteneur plus haut que les cartes, observe leur placement. La valeur initiale stretch peut étirer les cartes sur cet axe si leur taille le permet.",
-            "Reviens à row. Essaie justify-content: center et align-items: center ensemble : l’un agit sur l’axe principal, l’autre sur l’axe transversal."
+            "`align-items` place les cartes sur l’axe transversal : verticalement en `row`, horizontalement en `column` dans nos exemples.",
+            "Teste `flex`-start, center puis `flex`-end. Dans notre conteneur plus haut que les cartes, observe leur placement. La valeur initiale stretch peut étirer les cartes sur cet axe si leur taille le permet.",
+            "Reviens à `row`. Essaie `justify-content`: center et `align-items`: center ensemble : l’un agit sur l’axe principal, l’autre sur l’axe transversal."
           ],
           "code": ".cartes {\n  display: flex;\n  flex-direction: row;\n  gap: 20px;\n  justify-content: center;\n  align-items: center;\n}",
           "demonstration": {
             "type": "flex-property",
             "property": "align-items",
             "title": "Aligne des cartes de tailles différentes",
-            "intro": "Ici, la direction reste row. Change l’alignement vertical et compare le haut et le bas des cartes.",
+            "intro": "Ici, la direction reste `row`. Change l’alignement vertical et compare le haut et le bas des cartes.",
             "cards": [
               "A",
               "B",
@@ -27621,9 +27694,9 @@ window.CODECRAFT_DATA = {
           "id": "retour-ligne",
           "title": "6 : Autoriser plusieurs lignes",
           "paragraphs": [
-            "Par défaut, flex-wrap vaut nowrap : les cartes restent sur une seule ligne. Elles peuvent se rétrécir si leurs dimensions le permettent, ou déborder si elles ne tiennent pas.",
-            "En row, réduis la largeur de l’aperçu. Ajoute flex-wrap: wrap : les cartes peuvent passer à la ligne suivante. Notre min-width fourni rend ce changement facile à observer.",
-            "Chaque ligne est répartie séparément par justify-content. Cette observation est une première adaptation à l’espace disponible, pas une maîtrise complète du responsive."
+            "Par défaut, `flex-wrap` vaut `nowrap` : les cartes restent sur une seule ligne. Elles peuvent se rétrécir si leurs dimensions le permettent, ou dé`border` si elles ne tiennent pas.",
+            "En `row`, réduis la largeur de l’aperçu. Ajoute `flex-wrap`: `wrap` : les cartes peuvent passer à la ligne suivante. Notre `min-width` fourni rend ce changement facile à observer.",
+            "Chaque ligne est répartie séparément par `justify-content`. Cette observation est une première adaptation à l’espace disponible, pas une maîtrise complète du responsive."
           ],
           "code": ".cartes {\n  display: flex;\n  flex-direction: row;\n  gap: 20px;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}",
           "demonstration": {
@@ -27660,22 +27733,22 @@ window.CODECRAFT_DATA = {
             {
               "id": "cote-a-cote",
               "text": "Place les trois cartes côte à côte avec Flexbox.",
-              "hint": "display: flex doit être placé sur le parent des cartes.",
+              "hint": "`display`: `flex` doit être placé sur le parent des cartes.",
               "syntax": ".cartes {\n  display: flex;\n}"
             },
             {
               "id": "gap",
-              "text": "Ajoute un espace régulier entre les cartes avec gap.",
+              "text": "Ajoute un espace régulier entre les cartes avec `gap`.",
               "hint": "Essaie par exemple 10px, 20px puis 30px.",
               "syntax": ".cartes {\n  display: flex;\n  gap: 20px;\n}"
             },
             {
               "id": "justify-center",
-              "text": "Centre les cartes avec justify-content."
+              "text": "Centre les cartes avec `justify-content`."
             },
             {
               "id": "tester-justify",
-              "text": "Teste au moins trois valeurs différentes de justify-content."
+              "text": "Teste au moins trois valeurs différentes de `justify-content`."
             },
             {
               "id": "choisir-justify",
@@ -27706,7 +27779,7 @@ window.CODECRAFT_DATA = {
           "title": "Réglages de départ pour vérifier et comparer",
           "paragraphs": [
             "Après la mission, utilise ces réglages pour la vérification de compréhension et le bonus à six cartes. Remplace les valeurs correspondantes dans tes règles existantes ; conserve le reste du CSS d’apparence.",
-            "Le conteneur reçoit une largeur de 520px, limitée à l’espace disponible par max-width: 100%. Chaque carte reste large de 160px. Avec un écart de 20px, trois cartes tiennent sur une ligne de 520px ; six demandent plus de place.",
+            "Le conteneur reçoit une largeur de 520px, limitée à l’espace disponible par `max-width`: 100%. Chaque carte reste large de 160px. Avec un écart de 20px, trois cartes tiennent sur une ligne de 520px ; six demandent plus de place.",
             "Pour comparer nettement, agrandis l’aperçu jusqu’à avoir au moins 524px disponibles (bordure comprise). Dans un aperçu plus étroit, moins de cartes tiendront par ligne. Pour la vérification à trois cartes en colonne, cette largeur laisse un espace visible de chaque côté lors du centrage."
           ],
           "code": ".cartes {\n  display: flex;\n  width: 520px;\n  max-width: 100%;\n  flex-direction: row;\n  gap: 20px;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: nowrap;\n}\n\n.carte {\n  box-sizing: border-box;\n  width: 160px;\n  min-width: 160px;\n}"
@@ -27723,8 +27796,8 @@ window.CODECRAFT_DATA = {
               "hints": [
                 "Repère le sens dans lequel les cartes se suivent et le sens dans lequel tu veux les centrer.",
                 "Une fois les cartes en colonne, le centrage horizontal concerne l’autre axe.",
-                "Compare avec les étapes « Direction et axes » et « Aligner avec align-items ».",
-                "Change flex-direction en column et align-items en center sur .cartes. Avec flex-start à la place de center, observe le déplacement horizontal."
+                "Compare avec les étapes « Direction et axes » et « Aligner avec `align-items` ».",
+                "Change `flex-direction` en `column` et `align-items` en center sur .cartes. Avec `flex`-start à la place de center, observe le déplacement horizontal."
               ]
             },
             {
@@ -27741,22 +27814,22 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mauvais-parent",
-              "text": "Imagine que display: flex a été mis sur .carte uniquement. Corrige pour organiser la collection.",
+              "text": "Imagine que `display`: `flex` a été mis sur .carte uniquement. Corrige pour organiser la collection.",
               "hints": [
                 "Quels éléments veux-tu déplacer ensemble ?",
-                "Leur parent commun doit porter display: flex.",
+                "Leur parent commun doit porter `display`: `flex`.",
                 "Compare avec l’étape 1.",
-                "Retire display: flex de .carte et ajoute-le dans la règle .cartes. Vérifie les trois cartes."
+                "Retire `display`: `flex` de .carte et ajoute-le dans la règle .cartes. Vérifie les trois cartes."
               ]
             },
             {
               "id": "mauvais-axe",
-              "text": "En column, tu veux centrer horizontalement les cartes mais justify-content: center ne le fait pas. Corrige.",
+              "text": "En `column`, tu veux centrer horizontalement les cartes mais `justify-content`: center ne le fait pas. Corrige.",
               "hints": [
                 "Repère la direction et les deux axes.",
-                "En column, l’axe horizontal est transversal.",
-                "Compare avec l’étape align-items.",
-                "Ajoute align-items: center au parent, puis compare avant et après."
+                "En `column`, l’axe horizontal est transversal.",
+                "Compare avec l’étape `align-items`.",
+                "Ajoute `align-items`: center au parent, puis compare avant et après."
               ]
             }
           ]
@@ -27768,16 +27841,16 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "six-cartes",
-              "text": "Duplique trois cartes pour en obtenir six au total. Utilise le conteneur de 520px, les cartes de 160px et gap: 20px du code fourni."
+              "text": "Duplique trois cartes pour en obtenir six au total. Utilise le conteneur de 520px, les cartes de 160px et `gap`: 20px du code fourni."
             },
             {
               "id": "tester-largeur",
-              "text": "Avec flex-wrap: nowrap, observe les six cartes sur une seule ligne : elles dépassent du conteneur. Explique pourquoi 520px ne suffisent pas."
+              "text": "Avec `flex-wrap`: `nowrap`, observe les six cartes sur une seule ligne : elles dépassent du conteneur. Explique pourquoi 520px ne suffisent pas."
             },
             {
               "id": "wrap",
-              "text": "Change uniquement flex-wrap de nowrap à wrap. À 520px de largeur disponible dans le conteneur, observe deux lignes de trois cartes. Repasse à nowrap puis à wrap et explique la différence.",
-              "hint": "Conserve flex-direction: row, les dimensions et gap. Compare le nombre de lignes et le débordement.",
+              "text": "Change uniquement `flex-wrap` de `nowrap` à `wrap`. À 520px de largeur disponible dans le conteneur, observe deux lignes de trois cartes. Repasse à `nowrap` puis à `wrap` et explique la différence.",
+              "hint": "Conserve `flex-direction`: `row`, les dimensions et `gap`. Compare le nombre de lignes et le débordement.",
               "syntax": ".cartes {\n  flex-wrap: wrap;\n}"
             },
             {
@@ -27804,7 +27877,7 @@ window.CODECRAFT_DATA = {
                 "Repère les trois enfants du même parent.",
                 "Le sélecteur doit correspondre à class=\"navigation\".",
                 "Compare avec .cartes en remplaçant seulement le nom du sélecteur.",
-                "Ajoute display: flex, puis gap et justify-content, en testant après chaque ajout."
+                "Ajoute `display`: `flex`, puis `gap` et `justify-content`, en testant après chaque ajout."
               ]
             },
             {
@@ -27827,8 +27900,8 @@ window.CODECRAFT_DATA = {
         }
       ],
       "masteryCriteria": [
-        "Placer display: flex sur le conteneur commun et expliquer quels enfants il organise.",
-        "Expliquer au moins deux réglages parmi direction, gap, répartition et alignement.",
+        "Placer `display`: `flex` sur le conteneur commun et expliquer quels enfants il organise.",
+        "Expliquer au moins deux réglages parmi direction, `gap`, répartition et alignement.",
         "À partir de « Mets les cartes en colonne, puis centre-les horizontalement », choisir les réglages et expliquer les deux axes.",
         "Observer une largeur réduite et autoriser le retour à la ligne lorsque les cartes ne tiennent plus."
       ],
@@ -27883,7 +27956,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "skillId": "css.spacing",
-              "expectation": "Distinguer padding et margin et lire une bordure simple."
+              "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
             }
           ]
         }
@@ -28118,7 +28191,7 @@ window.CODECRAFT_DATA = {
             "Tu vas construire Mission balises : piloter un véhicule, activer des balises et éviter un danger. Dans ce chapitre, tu programmes les quatre flèches et les limites de la zone.",
             "Télécharge la base ci-dessous. Dans Scratch, ouvre le menu Fichier et charge le fichier depuis ton ordinateur. Pilote, Balise et Obstacle sont déjà dessinés et nommés ; leurs zones de code sont vides. Balise reste immobile et Obstacle est caché pour le moment.",
             "Clique sur la miniature Pilote sous la scène. Sa taille est 100 %. Tout le code de ce chapitre appartient à Pilote. Garde ces noms et tailles pendant la construction.",
-            "Garde le fichier mission-base.sb3 comme point de départ sans code. Quand les commandes seront terminées, tu sauvegarderas ton travail sous mission-01.sb3 pour le reprendre au chapitre suivant."
+            "Garde le fichier `mission-base.sb3` comme point de départ sans code. Quand les commandes seront terminées, tu sauvegarderas ton travail sous `mission-01.sb3` pour le reprendre au chapitre suivant."
           ],
           "downloads": [
             {
@@ -28567,7 +28640,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "conserver",
-              "text": "Sauvegarde les commandes terminées sous mission-01.sb3. Recharge le fichier que tu viens d’enregistrer et teste les quatre flèches avant de faire l’essai."
+              "text": "Sauvegarde les commandes terminées sous `mission-01.sb3`. Recharge le fichier que tu viens d’enregistrer et teste les quatre flèches avant de faire l’essai."
             },
             {
               "id": "prevoir",
@@ -28575,7 +28648,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "restaurer",
-              "text": "Sauvegarde cet essai sous mission-01-essai.sb3. Recharge ensuite ta sauvegarde des commandes terminées, mission-01.sb3 ou son nom avec suffixe : les quatre déplacements retrouvent 4 ou -4."
+              "text": "Sauvegarde cet essai sous `mission-01-essai.sb3`. Recharge ensuite ta sauvegarde des commandes terminées, `mission-01.sb3` ou son nom avec suffixe : les quatre déplacements retrouvent 4 ou -4."
             }
           ],
           "intro": "Depuis le menu Fichier de Scratch, sauvegarde le projet sur ton ordinateur. Repère le fichier réellement téléchargé et son dossier : un suffixe comme (1) peut être ajouté si le nom existe déjà. C’est ce fichier récent que tu rechargeras après l’essai. Modifier le projet ouvert dans Scratch ne modifie pas cette sauvegarde."
@@ -28928,7 +29001,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Conserver la version du prochain chapitre",
           "paragraphs": [
-            "Garde la sauvegarde des commandes terminées que tu viens de recharger, mission-01.sb3 ou son nom avec suffixe. Pilote part de (0, -100), se déplace de 4 avec chaque flèche et reste dans les limites prévues. Balise est en (-160, 0), Obstacle reste caché et aucune variable n’est encore nécessaire.",
+            "Garde la sauvegarde des commandes terminées que tu viens de recharger, `mission-01.sb3` ou son nom avec suffixe. Pilote part de (0, -100), se déplace de 4 avec chaque flèche et reste dans les limites prévues. Balise est en (-160, 0), Obstacle reste caché et aucune variable n’est encore nécessaire.",
             "Le chapitre suivant ajoute le score dans ce même projet. Si tu avais changé une constante pour l’essai, reprends d’abord ta sauvegarde principale."
           ]
         }
@@ -29045,7 +29118,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "scratch.keyboard",
-          "expectation": "Retrouver mission-01.sb3 et ses quatre commandes."
+          "expectation": "Retrouver `mission-01.sb3` et ses quatre commandes."
         },
         {
           "skillId": "scratch.variables",
@@ -29058,7 +29131,7 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "Reprendre ton véhicule",
           "paragraphs": [
-            "Ouvre ta sauvegarde mission-01.sb3. Vérifie les quatre directions, le départ (0, -100) et les limites. Tu conserves toute la pile de Pilote : le score et la balise auront leurs propres piles.",
+            "Ouvre ta sauvegarde `mission-01.sb3`. Vérifie les quatre directions, le départ (0, -100) et les limites. Tu conserves toute la pile de Pilote : le score et la balise auront leurs propres piles.",
             "Si cette sauvegarde manque, la reprise ci-dessous fournit la fin de Commandes. Charge-la depuis Fichier et teste les commandes avant d’ajouter le score. Ouvrir un fichier remplace le projet affiché ; sauvegarde d’abord ton travail actuel.",
             "Le but sera d’activer six balises. Une activation donne un point et envoie la balise de l’autre côté. À six points, les piles s’arrêtent immédiatement ; le drapeau recommence une partie."
           ],
@@ -29489,7 +29562,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "sauver",
-              "text": "Sauvegarde la version principale sous mission-02.sb3 : sa victoire reste à six points."
+              "text": "Sauvegarde la version principale sous `mission-02.sb3` : sa victoire reste à six points."
             },
             {
               "id": "deux",
@@ -29497,7 +29570,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde cet essai sous mission-02-essai.sb3, puis recharge mission-02.sb3. Vérifie score > 5 sur la scène : tu poursuivras avec une victoire à six points."
+              "text": "Sauvegarde cet essai sous `mission-02-essai.sb3`, puis recharge `mission-02.sb3`. Vérifie score > 5 sur la scène : tu poursuivras avec une victoire à six points."
             }
           ],
           "intro": "Repère la sauvegarde principale que tu télécharges avant l’essai, même si son nom reçoit un suffixe. Tu modifieras ensuite le projet ouvert, puis tu rechargeras ce fichier pour poursuivre."
@@ -29844,7 +29917,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Conserver la version du prochain chapitre",
           "paragraphs": [
-            "Garde mission-02.sb3 avec les trois piles : Pilote, Balise et scène. Le score démarre à 0 ; la victoire reste à six points. Balise alterne entre (-160, 0) et (160, 0), avec une seule activation par contact.",
+            "Garde `mission-02.sb3` avec les trois piles : Pilote, Balise et scène. Le score démarre à 0 ; la victoire reste à six points. Balise alterne entre (-160, 0) et (160, 0), avec une seule activation par contact.",
             "Obstacle est encore caché. Au prochain chapitre, il deviendra un danger qui retire une vie. Tu garderas les commandes, la collecte et la surveillance de la scène."
           ]
         }
@@ -29962,7 +30035,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "scratch.variables",
-          "expectation": "Retrouver mission-02.sb3 avec score remis à zéro et victoire à six."
+          "expectation": "Retrouver `mission-02.sb3` avec score remis à zéro et victoire à six."
         },
         {
           "skillId": "scratch.conditions",
@@ -29975,7 +30048,7 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "Reprendre le jeu de balises",
           "paragraphs": [
-            "Ouvre mission-02.sb3. Tu conserves les piles de Pilote et de Balise. Sur la scène, tu ajouteras les vies et une règle de défaite avant la victoire.",
+            "Ouvre `mission-02.sb3`. Tu conserves les piles de Pilote et de Balise. Sur la scène, tu ajouteras les vies et une règle de défaite avant la victoire.",
             "Si ton fichier manque, charge la reprise ci-dessous après avoir sauvegardé ton travail actuel. Elle contient le score et les deux positions de Balise, avec la victoire à six points.",
             "Un contact prolongé avec Obstacle retirera une seule vie. Il faudra se séparer puis revenir pour en perdre une autre. À zéro vie, la partie s’arrêtera."
           ],
@@ -30327,7 +30400,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "copie",
-              "text": "Sauvegarde mission-03.sb3 avec trois vies et repère ce fichier pour le retour après l’essai."
+              "text": "Sauvegarde `mission-03.sb3` avec trois vies et repère ce fichier pour le retour après l’essai."
             },
             {
               "id": "quatre",
@@ -30339,7 +30412,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde mission-03-essai.sb3, puis recharge mission-03.sb3 et vérifie mettre vies à 3 sur la scène."
+              "text": "Sauvegarde `mission-03-essai.sb3`, puis recharge `mission-03.sb3` et vérifie mettre vies à 3 sur la scène."
             }
           ],
           "intro": "Repère la sauvegarde principale que tu télécharges avant l’essai, même si son nom reçoit un suffixe. Tu modifieras ensuite le projet ouvert, puis tu rechargeras ce fichier pour poursuivre."
@@ -30730,7 +30803,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Garder ton premier jeu complet",
           "paragraphs": [
-            "Sauvegarde mission-03.sb3 : commandes de 4, limites prévues, score 0 et vies 3 au départ, victoire à six points ou défaite à zéro vie. Les deux positions de Balise et le danger fixe restent ceux de la référence.",
+            "Sauvegarde `mission-03.sb3` : commandes de 4, limites prévues, score 0 et vies 3 au départ, victoire à six points ou défaite à zéro vie. Les deux positions de Balise et le danger fixe restent ceux de la référence.",
             "Tu peux rejouer et faire expliquer les règles à quelqu’un. Garde cette version pour la suite de Mission balises, où des obstacles mobiles remplaceront le danger fixe."
           ]
         }
@@ -30850,7 +30923,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "scratch.contacts",
-          "expectation": "Retrouver mission-03.sb3 et expliquer le retrait d’une vie par contact avec le danger fixe."
+          "expectation": "Retrouver `mission-03.sb3` et expliquer le retrait d’une vie par contact avec le danger fixe."
         },
         {
           "skillId": "scratch.variables",
@@ -30867,7 +30940,7 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "Reprendre ton jeu avec ses vies",
           "paragraphs": [
-            "Ouvre ta sauvegarde principale mission-03.sb3, ou son nom avec suffixe. Vérifie le départ avec trois vies, le score à zéro et les quatre commandes. Sauvegarde cette version avant de transformer Obstacle.",
+            "Ouvre ta sauvegarde principale `mission-03.sb3`, ou son nom avec suffixe. Vérifie le départ avec trois vies, le score à zéro et les quatre commandes. Sauvegarde cette version avant de transformer Obstacle.",
             "Tu gardes les piles de Pilote et de Balise. Sur la scène, tu ajouteras seulement une vitesse commune ; la décision de victoire ou de défaite reste en place.",
             "Le danger fixe va devenir un modèle caché qui fabrique des copies mobiles. Chaque copie pourra retirer une vie puis disparaître. Deux copies différentes peuvent donc retirer deux vies, même si leurs contacts sont rapprochés.",
             "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Vies."
@@ -31323,7 +31396,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "sauver",
-              "text": "Sauvegarde le jeu terminé sous mission-04.sb3. Repère le fichier récent, même si un suffixe est ajouté, recharge-le et vérifie les départs avant l’essai."
+              "text": "Sauvegarde le jeu terminé sous `mission-04.sb3`. Repère le fichier récent, même si un suffixe est ajouté, recharge-le et vérifie les départs avant l’essai."
             },
             {
               "id": "vitesse",
@@ -31335,7 +31408,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde l’essai sous mission-04-essai.sb3. Recharge ensuite le fichier principal mission-04.sb3, ou son nom avec suffixe. Vérifie vitesseObstacle à 4 et l’intervalle à 1.2 seconde pour poursuivre."
+              "text": "Sauvegarde l’essai sous `mission-04-essai.sb3`. Recharge ensuite le fichier principal `mission-04.sb3`, ou son nom avec suffixe. Vérifie vitesseObstacle à 4 et l’intervalle à 1.2 seconde pour poursuivre."
             }
           ],
           "intro": "Compare une seule modification à la fois. Place Pilote à y = -140 pendant les observations pour laisser les obstacles traverser sans contact."
@@ -31630,7 +31703,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Garder le jeu avec ses obstacles mobiles",
           "paragraphs": [
-            "Garde ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe : vitesseObstacle 4, une création toutes les 1.2 seconde, départ des clones en x = -210 et y entre -100 et 100, suppression après x > 210 ou après un contact.",
+            "Garde ta sauvegarde principale `mission-04.sb3`, ou son nom avec suffixe : vitesseObstacle 4, une création toutes les 1.2 seconde, départ des clones en x = -210 et y entre -100 et 100, suppression après x > 210 ou après un contact.",
             "Obstacle possède deux piles, sans l’ancienne surveillance fixe. Pilote et Balise gardent les leurs ; la scène initialise score, vies et vitesseObstacle puis surveille les deux fins. Le score repart à 0, les vies à 3 et la victoire reste à six points.",
             "Le prochain chapitre fera évoluer le secteur et la vitesse pendant la partie. Tu conserveras ce même jeu."
           ]
@@ -31764,7 +31837,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "scratch.clones",
-          "expectation": "Retrouver mission-04.sb3 avec la fabrique et le trajet des copies."
+          "expectation": "Retrouver `mission-04.sb3` avec la fabrique et le trajet des copies."
         },
         {
           "skillId": "scratch.variables",
@@ -31781,7 +31854,7 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "Reprendre ton jeu avec ses clones",
           "paragraphs": [
-            "Ouvre ta sauvegarde principale mission-04.sb3, ou son nom avec suffixe. Lance le drapeau : score 0, vies 3, vitesseObstacle 4 et décor secteur1. Vérifie les commandes et les obstacles mobiles, puis arrête avec le bouton rouge et sauvegarde avant les ajouts.",
+            "Ouvre ta sauvegarde principale `mission-04.sb3`, ou son nom avec suffixe. Lance le drapeau : score 0, vies 3, vitesseObstacle 4 et décor secteur1. Vérifie les commandes et les obstacles mobiles, puis arrête avec le bouton rouge et sauvegarde avant les ajouts.",
             "À trois points, tu vas faire passer le jeu dans un deuxième secteur. Le décor changera et les obstacles accéléreront. Le score sera conservé : il faudra toujours six points pour gagner.",
             "Si ton fichier manque, sauvegarde ton travail actuel puis charge la reprise ci-dessous depuis Fichier. Elle remplace le projet affiché et fournit la fin du chapitre Clones."
           ],
@@ -32056,7 +32129,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "sauver",
-              "text": "Sauvegarde la version terminée sous mission-05.sb3. Repère le téléchargement récent, même si son nom reçoit un suffixe, puis recharge ce fichier pour vérifier qu’il contient tes nouvelles piles."
+              "text": "Sauvegarde la version terminée sous `mission-05.sb3`. Repère le téléchargement récent, même si son nom reçoit un suffixe, puis recharge ce fichier pour vérifier qu’il contient tes nouvelles piles."
             },
             {
               "id": "preparer",
@@ -32072,7 +32145,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde cet essai sous mission-05-test.sb3, puis recharge ton fichier principal mission-05.sb3 repéré plus haut. Vérifie le score de départ à 0, l’absence du bloc de test isolé et la réception qui met la vitesse à 7. Décoche l’affichage de vitesseObstacle ; garde score, vies et niveau visibles."
+              "text": "Sauvegarde cet essai sous `mission-05-test.sb3`, puis recharge ton fichier principal `mission-05.sb3` repéré plus haut. Vérifie le score de départ à 0, l’absence du bloc de test isolé et la réception qui met la vitesse à 7. Décoche l’affichage de vitesseObstacle ; garde score, vies et niveau visibles."
             }
           ],
           "intro": "Le décor et la vitesse resteraient identiques si le même message était envoyé plusieurs fois. Cet essai permet de détecter les répétitions, puis de reprendre ta sauvegarde principale."
@@ -32092,7 +32165,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "restaurer",
-              "text": "Sauvegarde sous mission-05-essai.sb3, puis recharge ta version principale mission-05.sb3. Vérifie `score > 2` : tu poursuivras avec le deuxième secteur à trois points et la victoire à six."
+              "text": "Sauvegarde sous `mission-05-essai.sb3`, puis recharge ta version principale `mission-05.sb3`. Vérifie `score > 2` : tu poursuivras avec le deuxième secteur à trois points et la victoire à six."
             }
           ]
         },
@@ -32501,7 +32574,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Garder le jeu avec ses deux secteurs",
           "paragraphs": [
-            "Garde ta sauvegarde principale mission-05.sb3, ou son nom avec suffixe. Le départ remet score à 0, vies à 3, vitesseObstacle à 4 et niveau à 1, puis choisit secteur1.",
+            "Garde ta sauvegarde principale `mission-05.sb3`, ou son nom avec suffixe. Le départ remet score à 0, vies à 3, vitesseObstacle à 4 et niveau à 1, puis choisit secteur1.",
             "À trois points, le test `niveau = 1` et `score > 2` met niveau à 2 avant d’envoyer secteur2. La scène change le décor et Obstacle met vitesseObstacle à 7. Le score est conservé et la victoire reste à six points.",
             "La scène possède deux piles et Obstacle trois ; Pilote et Balise conservent les leurs. Il ne reste aucun bloc de test isolé. Les clones gardent l’intervalle de 1.2 seconde, leur hauteur aléatoire et leurs suppressions.",
             "Le prochain chapitre remplacera la fin immédiate par une annonce et bloquera les actions pendant cette annonce."
@@ -32640,7 +32713,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "scratch.messages",
-          "expectation": "Reprendre mission-05.sb3 avec le passage unique au secteur 2."
+          "expectation": "Reprendre `mission-05.sb3` avec le passage unique au secteur 2."
         },
         {
           "skillId": "scratch.conditions",
@@ -32657,7 +32730,7 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "Reprendre le jeu à deux secteurs",
           "paragraphs": [
-            "Ouvre ta sauvegarde principale mission-05.sb3, ou son nom avec suffixe. Vérifie le départ à score 0, vies 3 et niveau 1, le passage à trois points et la fin immédiate à six points ou zéro vie. Arrête le jeu et sauvegarde avant les changements.",
+            "Ouvre ta sauvegarde principale `mission-05.sb3`, ou son nom avec suffixe. Vérifie le départ à score 0, vies 3 et niveau 1, le passage à trois points et la fin immédiate à six points ou zéro vie. Arrête le jeu et sauvegarde avant les changements.",
             "Tu vas conserver ces règles et afficher le résultat pendant deux secondes. Durant cette annonce, les commandes, les points et les dégâts seront bloqués ; les copies disparaîtront.",
             "Si ta sauvegarde manque, conserve d’abord ton travail actuel puis charge cette reprise depuis Fichier. Elle remplace le projet ouvert et fournit la fin de Messages."
           ],
@@ -32971,7 +33044,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "sauver",
-              "text": "Sauvegarde ce jalon sous mission-06-decision.sb3. Repère le téléchargement le plus récent, même si le navigateur ajoute un suffixe, puis recharge-le pour vérifier ta sauvegarde."
+              "text": "Sauvegarde ce jalon sous `mission-06-decision.sb3`. Repère le téléchargement le plus récent, même si le navigateur ajoute un suffixe, puis recharge-le pour vérifier ta sauvegarde."
             },
             {
               "id": "priorite",
@@ -32979,7 +33052,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Recharge mission-06-decision.sb3 repéré plus haut. Retrouve score 0 et vies 3 au départ avant d’ajouter les protections."
+              "text": "Recharge `mission-06-decision.sb3` repéré plus haut. Retrouve score 0 et vies 3 au départ avant d’ajouter les protections."
             }
           ]
         },
@@ -33442,7 +33515,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "sauver",
-              "text": "Sauvegarde tes protections sous mission-06-protections.sb3, repère le fichier récent puis recharge-le. Les deux stop tout sont encore dans la décision de la scène."
+              "text": "Sauvegarde tes protections sous `mission-06-protections.sb3`, repère le fichier récent puis recharge-le. Les deux stop tout sont encore dans la décision de la scène."
             },
             {
               "id": "copie",
@@ -33462,7 +33535,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde l’essai sous mission-06-test-protections.sb3, puis recharge ton fichier principal mission-06-protections.sb3. Vérifie score 0, vies 3 et les deux stop tout dans la scène. La copie de diagnostic reste séparée."
+              "text": "Sauvegarde l’essai sous `mission-06-test-protections.sb3`, puis recharge ton fichier principal `mission-06-protections.sb3`. Vérifie score 0, vies 3 et les deux stop tout dans la scène. La copie de diagnostic reste séparée."
             }
           ],
           "intro": "Le programme continue de tourner après la décision, afin que tu puisses voir si chaque protection fonctionne. L’annonce sera ajoutée après cet essai."
@@ -33718,7 +33791,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "sauver",
-              "text": "Sauvegarde ta version principale sous mission-06.sb3. Repère et recharge le téléchargement récent pour vérifier qu’il conserve tes huit piles, score 0, vies 3 et l’annonce de deux secondes."
+              "text": "Sauvegarde ta version principale sous `mission-06.sb3`. Repère et recharge le téléchargement récent pour vérifier qu’il conserve tes huit piles, score 0, vies 3 et l’annonce de deux secondes."
             }
           ]
         },
@@ -33729,7 +33802,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "prevoir",
-              "text": "Dans une copie de ta version principale mission-06.sb3, remplace les deux durées d’annonce de 2 par 3 secondes. Prévois si le véhicule pourra bouger pendant cette seconde supplémentaire et explique ton choix."
+              "text": "Dans une copie de ta version principale `mission-06.sb3`, remplace les deux durées d’annonce de 2 par 3 secondes. Prévois si le véhicule pourra bouger pendant cette seconde supplémentaire et explique ton choix."
             },
             {
               "id": "essayer",
@@ -33737,7 +33810,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde la variante sous mission-06-essai.sb3, puis recharge ton fichier principal mission-06.sb3. Retrouve les deux annonces de 2 secondes et les valeurs de départ habituelles."
+              "text": "Sauvegarde la variante sous `mission-06-essai.sb3`, puis recharge ton fichier principal `mission-06.sb3`. Retrouve les deux annonces de 2 secondes et les valeurs de départ habituelles."
             }
           ]
         },
@@ -33777,9 +33850,9 @@ window.CODECRAFT_DATA = {
               "title": "Le score ou les vies changent après la fin",
               "paragraphs": [
                 "Dans Balise, vérifie `etat = en jeu` et Pilote touché ? avant le +1 et le changement de côté. Dans le clone, vérifie que le déplacement et le test de dégât sont ensemble dans si `etat = en jeu`.",
-                "Pour tester ton jeu terminé, sauvegarde mission-06.sb3 et repère le téléchargement récent, même avec un suffixe. Dans le projet ouvert, retire seulement le stop tout placé après le si … sinon de l’annonce dans Pilote. Garde les messages et les changements d’état sur la scène. Cette copie peut continuer à tourner après la bulle pour rendre les protections observables.",
+                "Pour tester ton jeu terminé, sauvegarde `mission-06.sb3` et repère le téléchargement récent, même avec un suffixe. Dans le projet ouvert, retire seulement le stop tout placé après le si … sinon de l’annonce dans Pilote. Garde les messages et les changements d’état sur la scène. Cette copie peut continuer à tourner après la bulle pour rendre les protections observables.",
                 "Reprends les essais du diagnostic à partir du score de départ à 5 : attends deux copies à l’abri avant la dernière collecte, puis teste la défaite avec une autre copie encore présente au dernier contact. Observe les commandes, les compteurs et la disparition des copies ; attends plus de deux secondes et plus d’un intervalle de création pour vérifier qu’aucune copie ne revient.",
-                "Sauvegarde cet essai sous mission-06-depannage.sb3, puis recharge ton fichier principal mission-06.sb3 repéré avant l’essai. Vérifie score 0, vies 3 et le stop tout après l’annonce dans Pilote. Le diagnostic fait avant l’ajout de l’annonce retirait deux arrêts sur la scène ; dans ce jeu terminé, tu retires seulement celui de Pilote."
+                "Sauvegarde cet essai sous `mission-06-depannage.sb3`, puis recharge ton fichier principal `mission-06.sb3` repéré avant l’essai. Vérifie score 0, vies 3 et le stop tout après l’annonce dans Pilote. Le diagnostic fait avant l’ajout de l’annonce retirait deux arrêts sur la scène ; dans ce jeu terminé, tu retires seulement celui de Pilote."
               ]
             },
             {
@@ -35112,7 +35185,7 @@ window.CODECRAFT_DATA = {
               "id": "reference",
               "title": "Comparer avec la référence terminée",
               "paragraphs": [
-                "Sauvegarde ton propre jeu avant d’ouvrir la référence. Compare seulement la pile qui pose problème, puis recharge ta version principale mission-06.sb3 pour poursuivre."
+                "Sauvegarde ton propre jeu avant d’ouvrir la référence. Compare seulement la pile qui pose problème, puis recharge ta version principale `mission-06.sb3` pour poursuivre."
               ],
               "downloads": [
                 {
@@ -35141,7 +35214,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Garder la partie avec son annonce",
           "paragraphs": [
-            "Conserve mission-06.sb3, ou son nom avec suffixe : deux piles sur la scène, deux dans Pilote, une dans Balise et trois dans Obstacle. Aucun bloc isolé ni réglage de diagnostic ne reste dans cette version.",
+            "Conserve `mission-06.sb3`, ou son nom avec suffixe : deux piles sur la scène, deux dans Pilote, une dans Balise et trois dans Obstacle. Aucun bloc isolé ni réglage de diagnostic ne reste dans cette version.",
             "Le drapeau passe par preparation, remet score 0, vies 3, vitesseObstacle 4, niveau 1 et secteur1, puis autorise en jeu. Les personnages retrouvent leur départ et l’ancienne bulle s’efface.",
             "À trois points, le secteur change une fois. À six points, etat devient gagne ; à zéro vie, perdu. La défaite reste prioritaire. Les actions sont bloquées avant le signal resultat, les copies disparaissent et Pilote annonce la fin pendant deux secondes avant stop tout.",
             "Le prochain chapitre utilisera cette sauvegarde pour chercher des erreurs, comparer une difficulté et personnaliser une règle du jeu."
@@ -35282,7 +35355,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "scratch.game-rules",
-          "expectation": "Reprendre mission-06.sb3 avec les deux fins, les protections et la relance."
+          "expectation": "Reprendre `mission-06.sb3` avec les deux fins, les protections et la relance."
         },
         {
           "skillId": "scratch.variables",
@@ -35299,8 +35372,8 @@ window.CODECRAFT_DATA = {
           "id": "depart",
           "title": "Conserver ton jeu avant les essais",
           "paragraphs": [
-            "Ouvre ta sauvegarde personnelle mission-06.sb3, ou son nom avec suffixe. Tu gardes le même jeu, ses huit piles et tes choix graphiques. Ce chapitre ajoute des essais et une modification personnelle.",
-            "Sauvegarde une copie sous mission-07-base.sb3. Repère le téléchargement récent, puis recharge-le pour vérifier qu’il contient ton jeu. Cette base garde score 0, vies 3, niveau 1, vitesseObstacle 4, le secteur 2 à trois points, la victoire à six et l’annonce de deux secondes.",
+            "Ouvre ta sauvegarde personnelle `mission-06.sb3`, ou son nom avec suffixe. Tu gardes le même jeu, ses huit piles et tes choix graphiques. Ce chapitre ajoute des essais et une modification personnelle.",
+            "Sauvegarde une copie sous `mission-07-base.sb3`. Repère le téléchargement récent, puis recharge-le pour vérifier qu’il contient ton jeu. Cette base garde score 0, vies 3, niveau 1, vitesseObstacle 4, le secteur 2 à trois points, la victoire à six et l’annonce de deux secondes.",
             "Prépare un carnet sur papier ou dans un fichier texte. Tu y noteras les résultats et les noms des copies d’essai. Si ton projet manque, sauvegarde le travail ouvert puis charge la reprise ci-dessous depuis Fichier ; elle remplace le projet affiché et fournit la fin d’États."
           ],
           "downloads": [
@@ -35328,7 +35401,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "depart",
-              "text": "Lance mission-07-base.sb3. Note les valeurs de départ : etat en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. Sélectionne Pilote pour lire sa position (0, -100), puis Balise pour retrouver (-160, 0)."
+              "text": "Lance `mission-07-base.sb3`. Note les valeurs de départ : etat en jeu, score 0, vies 3, niveau 1, vitesseObstacle 4 et secteur1. Sélectionne Pilote pour lire sa position (0, -100), puis Balise pour retrouver (-160, 0)."
             },
             {
               "id": "bords",
@@ -35340,7 +35413,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "reprise",
-              "text": "Si une règle échoue, utilise le chapitre qui la construit pour retrouver sa pile. Corrige et refais l’essai avant la suite. Conserve ensuite une nouvelle sauvegarde mission-07-base.sb3 et repère ce téléchargement comme ta base de travail."
+              "text": "Si une règle échoue, utilise le chapitre qui la construit pour retrouver sa pile. Corrige et refais l’essai avant la suite. Conserve ensuite une nouvelle sauvegarde `mission-07-base.sb3` et repère ce téléchargement comme ta base de travail."
             }
           ]
         },
@@ -35371,7 +35444,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Sauvegarde ces essais sous mission-07-seuils.sb3, puis recharge ta base mission-07-base.sb3 repérée au début. Vérifie score 0 et vies 3. Note dans le carnet quels essais ont réussi et lesquels demandent encore une correction."
+              "text": "Sauvegarde ces essais sous `mission-07-seuils.sb3`, puis recharge ta base `mission-07-base.sb3` repérée au début. Vérifie score 0 et vies 3. Note dans le carnet quels essais ont réussi et lesquels demandent encore une correction."
             }
           ]
         },
@@ -35380,7 +35453,7 @@ window.CODECRAFT_DATA = {
           "id": "panne",
           "title": "Ouvrir une panne volontaire du même jeu",
           "paragraphs": [
-            "Garde ta base personnelle mission-07-base.sb3. Télécharge le fichier de panne ci-dessous et ouvre-le depuis Fichier. Il remplace le projet affiché pour cet essai ; tu rechargeras ensuite ta base avec tes propres choix.",
+            "Garde ta base personnelle `mission-07-base.sb3`. Télécharge le fichier de panne ci-dessous et ouvre-le depuis Fichier. Il remplace le projet affiché pour cet essai ; tu rechargeras ensuite ta base avec tes propres choix.",
             "Ce fichier de Mission balises contient une erreur de relance. La règle attendue reste celle de ton jeu : le drapeau doit retrouver le premier secteur, puis la troisième activation doit changer le décor et la vitesse.",
             "Lance et compare les valeurs de départ avec ton carnet. Note la différence que tu trouves. Active ensuite trois balises et décris le score, le niveau, le décor et la vitesse observés. Formule une piste avant d’ouvrir les indices."
           ],
@@ -35411,7 +35484,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "garder",
-              "text": "Sauvegarde la réparation sous mission-07-panne-reparee.sb3 et note ta conclusion. Recharge ensuite ta base personnelle mission-07-base.sb3. Le fichier de panne sert à l’enquête ; tes personnalisations restent dans ta base."
+              "text": "Sauvegarde la réparation sous `mission-07-panne-reparee.sb3` et note ta conclusion. Recharge ensuite ta base personnelle `mission-07-base.sb3`. Le fichier de panne sert à l’enquête ; tes personnalisations restent dans ta base."
             }
           ]
         },
@@ -35489,7 +35562,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "reglage",
-              "text": "Dans Obstacle, dans la fabrique au drapeau, change seulement attendre 1.2 seconde en attendre 1.8 seconde. Garde le test d’état après l’attente et la création dans son si. Sauvegarde cette copie sous mission-07-intervalle.sb3."
+              "text": "Dans Obstacle, dans la fabrique au drapeau, change seulement attendre 1.2 seconde en attendre 1.8 seconde. Garde le test d’état après l’attente et la création dans son si. Sauvegarde cette copie sous `mission-07-intervalle.sb3`."
             },
             {
               "id": "comparer",
@@ -35497,7 +35570,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "retour",
-              "text": "Recharge mission-07-base.sb3. Vérifie l’intervalle de 1.2 seconde dans la fabrique et garde tes deux observations dans le carnet avant de choisir ta propre règle."
+              "text": "Recharge `mission-07-base.sb3`. Vérifie l’intervalle de 1.2 seconde dans la fabrique et garde tes deux observations dans le carnet avant de choisir ta propre règle."
             }
           ]
         },
@@ -35536,7 +35609,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "conserver",
-              "text": "Garde ce changement dans ta version personnelle et sauvegarde sous mission-07.sb3. Repère le téléchargement récent, même avec un suffixe. Tu vas vérifier cette version personnalisée dans la dernière étape."
+              "text": "Garde ce changement dans ta version personnelle et sauvegarde sous `mission-07.sb3`. Repère le téléchargement récent, même avec un suffixe. Tu vas vérifier cette version personnalisée dans la dernière étape."
             }
           ]
         },
@@ -35580,7 +35653,7 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "rouvrir",
-              "text": "Recharge le fichier mission-07.sb3 que tu viens de sauvegarder. Note le réglage choisi et les valeurs de départ attendues pour cette version. Avec le choix de quatre vies, tu attends 4 ; avec les deux autres choix, tu attends toujours 3."
+              "text": "Recharge le fichier `mission-07.sb3` que tu viens de sauvegarder. Note le réglage choisi et les valeurs de départ attendues pour cette version. Avec le choix de quatre vies, tu attends 4 ; avec les deux autres choix, tu attends toujours 3."
             },
             {
               "id": "regle",
@@ -35596,7 +35669,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "corriger",
-              "text": "Si tu corriges quelque chose, refais l’essai concerné puis la vérification de fin et de relance. Sauvegarde à nouveau mission-07.sb3 et recharge le dernier téléchargement pour confirmer que la correction est conservée."
+              "text": "Si tu corriges quelque chose, refais l’essai concerné puis la vérification de fin et de relance. Sauvegarde à nouveau `mission-07.sb3` et recharge le dernier téléchargement pour confirmer que la correction est conservée."
             },
             {
               "id": "expliquer",
@@ -35615,7 +35688,7 @@ window.CODECRAFT_DATA = {
               "title": "Comparer seulement la règle qui pose problème",
               "paragraphs": [
                 "Sauvegarde ta version personnelle avant d’ouvrir cette référence. Elle fournit le jeu à la fin d’États, avec trois vies, des pas de 4 et l’intervalle de 1.2 seconde. Elle sert à comparer les piles ; ta version personnelle peut avoir le réglage différent que tu as choisi.",
-                "Recharge ensuite ton propre fichier mission-07.sb3. Ta copie de panne réparée et ton carnet restent les traces de ton enquête."
+                "Recharge ensuite ton propre fichier `mission-07.sb3`. Ta copie de panne réparée et ton carnet restent les traces de ton enquête."
               ],
               "downloads": [
                 {
@@ -35644,7 +35717,7 @@ window.CODECRAFT_DATA = {
           "id": "reprise",
           "title": "Garder ton jeu et tes essais",
           "paragraphs": [
-            "Conserve mission-07.sb3 avec la règle personnelle vérifiée, mission-07-base.sb3 comme point de comparaison et ton carnet d’essais. La copie de panne réparée et les variantes peuvent rester séparées avec leurs noms explicites.",
+            "Conserve `mission-07.sb3` avec la règle personnelle vérifiée, `mission-07-base.sb3` comme point de comparaison et ton carnet d’essais. La copie de panne réparée et les variantes peuvent rester séparées avec leurs noms explicites.",
             "Ton fichier principal contient le jeu et ton réglage choisi. Les valeurs préparées pour les seuils et les blocs de diagnostic appartiennent aux copies d’essai. Vérifie que ton principal démarre à score 0, niveau 1 et etat en jeu après la préparation.",
             "Les sept chapitres de Mission balises sont maintenant disponibles. Tu peux rejouer, faire essayer ta version et choisir une prochaine amélioration à partir d’un résultat observé."
           ]
@@ -35786,20 +35859,20 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Garde CodeCraft ouvert à côté de Code.org et prépare une feuille ou un document pour tes prévisions. Le lien ouvre le niveau dans un autre onglet. Tu peux faire les essais sans compte."
+          "text": "Ouvre Code.org dans un autre onglet pour garder cette page sous les yeux. Avant de lancer un programme, essaie de dire où l’Agent va arriver. Tu peux faire les essais sans compte."
         },
         {
           "type": "lesson",
           "id": "entree-scratch",
-          "title": "Choisir ton point de départ",
+          "title": "Débuter ou passer les rappels",
           "paragraphs": [
-            "Tu découvres la programmation ? Suis cette mission puis les suivantes dans l’ordre. Tu apprendras à assembler les blocs, prévoir les trajets et comparer tes solutions.",
-            "Tu programmes déjà avec Scratch ou un autre outil ? Dans Hero’s Journey, les blocs commandent l’Agent. Après Exécuter, clique dans le jeu et utilise les flèches pour déplacer Alex ou Steve. Commence par les deux variantes : prévois la case et la direction après chaque action, y compris depuis un départ tourné vers l’est."
+            "Tu débutes ? Poursuis avec Deux personnages, deux commandes.",
+            "Tu utilises déjà des blocs, dans Scratch par exemple ? Passe au niveau 3 pour suivre le trajet dans le jeu. Les blocs commandent l’Agent ; après Exécuter, clique dans le jeu puis utilise les flèches pour déplacer Alex ou Steve."
           ],
           "activityLink": {
             "moduleId": "minecraft-trajets",
-            "blockId": "autonomie",
-            "label": "Prévoir les variantes pour choisir la suite"
+            "blockId": "niveau-trois",
+            "label": "Commencer directement dans Hero 3"
           }
         },
         {
@@ -35807,7 +35880,7 @@ window.CODECRAFT_DATA = {
           "id": "entree-projet",
           "title": "Tu sais déjà concevoir et comparer ?",
           "presentation": "compact",
-          "text": "Si tu sais prévoir les cases construites, composer des répétitions et des appels, puis comparer blocs écrits et actions exécutées, tu peux commencer par Concevoir et tester une automatisation. Le projet demande aussi un test vrai et un test faux d’Aquatic et un contre-exemple de stratégie ; ses aides permettent de les retrouver. Sinon, commence par les variantes ci-dessus.",
+          "text": "Si tu sais déjà construire avec des répétitions et des appels, puis comparer deux programmes, tu peux commencer par Concevoir et tester une automatisation. Ses aides renvoient aux niveaux utiles si une difficulté apparaît.",
           "moduleLink": {
             "moduleId": "minecraft-automatisation",
             "text": "Concevoir et tester une automatisation"
@@ -35825,73 +35898,12 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "id": "reperes",
-          "title": "Une case et une direction",
-          "paragraphs": [
-            "Sur notre grille, la lettre indique la colonne et le nombre indique la ligne. C4 est donc la case de la colonne C et de la ligne 4. Le pion bleu commence en C4, tourné vers le nord, en haut de la grille.",
-            "Avancer fait passer dans la case juste devant le pion. Tourner à droite ou à gauche change son orientation d’un quart de tour, en restant dans la même case. À droite du pion signifie à sa droite à lui : quand il regarde vers le bas, sa droite est à gauche de la feuille.",
-            "Utilise un petit objet pointé ou dessine une flèche pour suivre son orientation. La grille sert à préparer ton raisonnement ; tu feras ensuite un autre trajet dans Code.org."
-          ],
-          "illustration": {
-            "src": "images/minecraft-reperes.svg",
-            "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5. Un pion bleu est en C4 et regarde vers le haut, indiqué comme le nord.",
-            "caption": "Le pion commence en C4 et regarde vers le nord."
-          }
-        },
-        {
-          "type": "tasks",
-          "id": "grille",
-          "title": "Prévois chaque action",
-          "intro": "Pars de C4 vers le nord. Suis cette suite : avancer, tourner à droite, avancer, avancer. Note la case et la direction après chaque action avant de déplacer ton pion.",
-          "items": [
-            {
-              "id": "mc01-premier-pas",
-              "text": "Après le premier avancer, quelle est la case ? Quelle direction le pion regarde-t-il ?",
-              "hints": [
-                "En haut de C4 se trouve C3. La lettre reste C.",
-                "Avancer change la position mais garde l’orientation : le pion regarde encore vers le nord."
-              ]
-            },
-            {
-              "id": "mc01-virage",
-              "text": "Prévois la case et la direction juste après tourner à droite.",
-              "hint": "La case reste la même. Depuis le nord, un quart de tour à droite oriente vers l’est, à droite de la grille."
-            },
-            {
-              "id": "mc01-arrivee",
-              "text": "Termine les deux avancer. Annonce la case et la direction finales, puis vérifie avec ton pion.",
-              "hint": "Après le virage, les déplacements changent de colonne. Ils ne changent plus de ligne."
-            },
-            {
-              "id": "mc01-expliquer",
-              "text": "Explique pourquoi les trois avancer du programme ne vont pas tous vers le haut de la grille."
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "comparaison-grille",
-          "title": "Comparer après ta prévision",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "trace-grille",
-              "title": "La trace complète",
-              "paragraphs": [
-                "Départ : C4, nord. Après avancer : C3, nord. Après tourner à droite : C3, est. Après le deuxième avancer : D3, est. Après le dernier : E3, est.",
-                "Si ta prévision diffère, retrouve la première action où la case ou la direction change autrement. Repars de l’état juste avant cette action."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "lesson",
           "id": "niveau-trois",
           "title": "Préparer le trajet dans Code.org",
           "paragraphs": [
-            "Ouvre le niveau 3 avec le lien ci-dessous. Repère l’Agent, la direction qu’il regarde et la plaque qui ouvrira le passage. Utilise le dessin du jeu : les lettres de notre grille ne sont pas affichées dans Code.org.",
-            "Avant Exécuter, trace le trajet sur ta feuille et indique les virages. Assemble ensuite les blocs sous le départ. Pour glisser un bloc, prends-le dans la palette et rapproche-le du précédent jusqu’à ce qu’ils s’accrochent.",
-            "Lance puis compare le trajet de l’Agent avec ta prévision. Pour refaire le même essai, utilise Réinitialiser (Reset). Ce bouton remet le terrain et les personnages au départ en gardant les blocs. Recommencer (Start Over) sert à repartir du programme de départ."
+            "Ouvre le niveau 3 avec le lien ci-dessous. Repère l’Agent, la direction qu’il regarde et la plaque qui ouvrira le passage.",
+            "Avancer déplace l’Agent dans la direction qu’il regarde. Tourner change cette direction en restant sur place. Montre dans le jeu où il doit aller, puis assemble les blocs sous le départ. Glisse chaque bloc près du précédent jusqu’à ce qu’ils s’accrochent.",
+            "Lance et observe le trajet. Si l’Agent manque la plaque, repère la première action à corriger. Réinitialiser (Reset) remet le terrain et les personnages au départ en gardant les blocs. Recommencer (Start Over) retrouve le programme fourni."
           ],
           "externalLink": {
             "label": "Ouvrir Hero’s Journey, niveau 3 dans un autre onglet",
@@ -35905,11 +35917,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc01-trace-niveau",
-              "text": "Au niveau 3, annonce le trajet et la direction finale de l’Agent avant de cliquer sur Exécuter.",
-              "hints": [
-                "Suis l’Agent avec une flèche sur ta feuille, en tournant la flèche à chaque virage.",
-                "Compte les cases parcourues séparément des rotations. Un virage ne fait pas avancer."
-              ]
+              "text": "Au niveau 3, montre la plaque à rejoindre et la direction dans laquelle l’Agent doit partir.",
+              "hint": "Repère d’abord la face de l’Agent. Un virage change sa direction sans le déplacer."
             },
             {
               "id": "mc01-observation",
@@ -35923,114 +35932,66 @@ window.CODECRAFT_DATA = {
           ]
         },
         {
-          "type": "tasks",
-          "id": "autonomie",
-          "title": "Un autre virage, sans modèle",
-          "intro": "Dessine une grille de cinq colonnes A à E et cinq lignes 1 à 5, avec le nord en haut. La suite d’origine est avancer, tourner à droite, avancer, avancer. Pour la première variante, pars de C4 nord et remplace seulement tourner à droite par tourner à gauche.",
-          "items": [
-            {
-              "id": "mc01-variante",
-              "text": "Prévois les quatre états et l’arrivée, puis vérifie avec ton pion. Quelle différence observes-tu par rapport à E3 ?",
-              "hint": "Après le virage, tu regardes vers l’ouest. Tu passes par B3 puis A3 et tu termines vers l’ouest."
-            },
-            {
-              "id": "mc01-depart-change",
-              "text": "Reprends la suite d’origine, avec le virage à droite, mais pars de C2 vers l’est. Prévois puis vérifie la case et la direction finales.",
-              "hint": "Tu avances d’abord en D2. Le virage à droite te tourne vers le sud ; les deux pas suivants mènent à D3 puis D4."
-            }
-          ]
-        },
-        {
-          "type": "lesson",
-          "id": "suite-diagnostic",
-          "title": "Choisir après les variantes",
-          "paragraphs": [
-            "Si tu peux expliquer les cases et les directions dans les deux variantes, y compris depuis C2 vers l’est, garde tes prévisions puis passe aux programmes A et B : tous deux partent de C4 nord. Tu peux laisser Hero 1 et 3 pour une autre fois. Si les virages restent difficiles, reprends Une case et une direction puis l’essai du niveau 3 avant de poursuivre."
-          ],
-          "activityLink": {
-            "moduleId": "minecraft-repetitions",
-            "blockId": "programme-a",
-            "label": "Comparer les programmes A et B"
-          }
-        },
-        {
           "type": "lesson",
           "id": "conserver",
-          "title": "Garder ta prévision et ton résultat",
+          "title": "Reprendre ton programme plus tard",
           "paragraphs": [
-            "Garde les prévisions et les résultats des variantes. Si tu as travaillé dans Hero 3, ajoute l’adresse du niveau, ton observation et une capture lisible des blocs pour pouvoir les reconstruire.",
-            "Pour un essai Code.org avec un compte, vérifie que tu retrouves tes blocs à la réouverture du niveau. Sans compte, conserve ta capture : la présence du programme dans un onglet ne garantit pas sa sauvegarde pour une autre séance."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         }
       ],
       "masteryCriteria": [
         "Avancer dépend de l’orientation ; tourner change la direction dans la même case.",
-        "Une trace indique la position et la direction après chaque action.",
+        "Le trajet est suivi directement dans le jeu en distinguant déplacements et virages.",
         "Dans Hero’s Journey, les blocs commandent l’Agent et les flèches commandent le joueur.",
         "Comparer prévu et observé permet de retrouver la première action à corriger."
       ],
       "teacherGuide": {
-        "objective": "Faire suivre un état spatial position/orientation et distinguer programme de l’Agent et commandes du joueur.",
+        "objective": "Suivre la position et la direction d’un personnage, puis prévoir le résultat avant de lancer son programme.",
         "entryDiagnosis": [
-          "Pour un élève venant de Scratch, vérifier d’abord qu’il distingue l’Agent commandé par les blocs et Alex ou Steve commandé par les flèches après Exécuter. Faire ensuite directement prévoir la grille ; vérifier les virages relatifs avant de proposer les rappels.",
-          "Pour un débutant, accompagner l’ouverture de Hero 1 et le premier emboîtement. Distinguer lecture, manipulation et raisonnement spatial."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "Ouvrir les liens Hero 1 et 3. Le contexte des niveaux et leurs palettes ont été inventoriés ; aucune reconstruction systématique des puzzles n'est revendiquée.",
-          "Préparer une feuille, un pion orienté ou une flèche dessinée. L’illustration est originale et ne représente pas la carte de Hero 3.",
           "Si la vidéo couvre le jeu, la fermer pour retrouver les commandes. Choisir Français dans le menu de langue si nécessaire.",
-          "Sans compte, conserver une capture des blocs et le carnet. Le lien de résultat est une consultation publiquement accessible, pas une sauvegarde personnelle modifiable garantie. Aucun partage requis."
+          "Sans compte, conserver une capture des blocs pour la reprise. Le lien de résultat est une consultation publiquement accessible, pas une sauvegarde personnelle modifiable garantie. Aucun partage requis."
         ],
-        "why": "L’élève doit transporter un état après chaque instruction, plutôt qu'associer avancer à une direction fixe de l’écran.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
-          "Montre la case du pion et sa direction. Que change le prochain bloc : sa position, son orientation ou les deux ?",
+          "Montre l’Agent et sa direction dans le jeu. Que change le prochain bloc : sa position, son orientation ou les deux ?",
           "Avant Exécuter, indique où l’Agent devrait terminer. Après le lancement, cherche la première différence avec ta prévision."
         ],
         "example": {
           "target": {
             "moduleId": "minecraft-trajets",
-            "blockId": "grille"
+            "blockId": "agent-joueur"
           },
           "comments": [
-            "Demander position et orientation à chaque étape. Une arrivée correcte seule peut masquer une erreur de trace.",
-            "Réponse de base : C3 nord, C3 est, D3 est, E3 est."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
           {
             "question": "Tourner fait-il changer de case ?",
             "answer": "Non. L’orientation change ; la position reste la même."
-          },
-          {
-            "question": "Que donne la variante à gauche ?",
-            "answer": "C3 nord, C3 ouest, B3 ouest, A3 ouest."
-          },
-          {
-            "question": "Et la suite d’origine depuis C2 vers l’est ?",
-            "answer": "D2 est, D2 sud, D3 sud, D4 sud."
           }
         ],
         "accompaniedActivity": {
           "moduleId": "minecraft-trajets",
-          "blockId": "mission"
+          "blockId": "agent-joueur"
         },
         "independentActivity": {
           "moduleId": "minecraft-trajets",
-          "blockId": "autonomie"
+          "blockId": "mission"
         },
         "differentiation": [
-          "Accepter une réponse orale et le déplacement d’un pion. Lire les consignes sans donner le virage.",
-          "Après Scratch, raccourcir la prise en main ; demander la variante de départ orienté à l’est.",
-          "Pendant le stage, ouvrir directement la grille ou la mission selon le blocage, puis revenir au travail du groupe."
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
+          "Après Scratch, raccourcir la prise en main ; demander la variante de départ orienté à l’est."
         ],
         "commonErrors": [
-          {
-            "symptom": "Droite désigne toujours la droite de l’écran.",
-            "helps": [
-              "Orienter le pion vers le bas.",
-              "Montrer sa droite à lui, puis faire tourner le pion avant un déplacement."
-            ]
-          },
           {
             "symptom": "Les flèches semblent ignorer le programme.",
             "helps": [
@@ -36039,13 +36000,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "Observer séparément prévision, explication et manipulation. Une case cochée ou un niveau réussi ne démontre pas le suivi de l’orientation.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Identifier joueur et Agent.",
-          "Faire prévoir la grille.",
-          "Passer au niveau 3 : prévoir, lancer, comparer.",
-          "Changer le virage ou le départ.",
-          "Conserver la trace et les blocs."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -36061,10 +36022,10 @@ window.CODECRAFT_DATA = {
     },
     "minecraft-repetitions": {
       "domainId": "jeux-video",
-      "title": "Comparer deux programmes pour un trajet",
+      "title": "Répéter des actions pour un trajet",
       "type": "lesson",
       "theme": "fondations",
-      "objective": "Repérer un motif répété et expliquer ce qui change entre le nombre de blocs écrits et le nombre d’actions exécutées.",
+      "objective": "Repérer un groupe d’actions à répéter dans Code.org et distinguer les blocs écrits des actions exécutées.",
       "tool": {
         "label": "Ouvrir Hero’s Journey, niveau 4 sur Code.org",
         "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/4"
@@ -36077,7 +36038,7 @@ window.CODECRAFT_DATA = {
       "prerequisiteSkills": [
         {
           "skillId": "minecraft.orientation",
-          "expectation": "Prévoir avancer et tourner depuis une case et une direction. Reprends la grille de la première mission si nécessaire."
+          "expectation": "Distinguer avancer et tourner dans le jeu. Reprendre Hero 1 ou 3 si nécessaire."
         }
       ],
       "blocks": [
@@ -36085,7 +36046,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Prépare ton carnet et garde CodeCraft à côté de Code.org. Tu vas comparer deux écritures du même trajet, puis chercher un motif dans les niveaux 4 et 5. Chaque essai repartira du même départ."
+          "text": "Ouvre Hero 4. Tu vas utiliser une répétition pour rejoindre la plaque, puis choisir un motif dans Hero 5. Réinitialise avant chaque nouvel essai."
         },
         {
           "type": "callout",
@@ -36104,48 +36065,13 @@ window.CODECRAFT_DATA = {
           "id": "entree-experimentee",
           "title": "Tu utilises déjà les répétitions ?",
           "paragraphs": [
-            "Commence par les programmes A et B : ils partent tous les deux de C4 vers le nord. Prévois leur arrivée et compare les blocs écrits, les déplacements et les rotations. Tu peux passer le rappel sur la boucle si tu sais déjà suivre tous ses tours ; garde la comparaison et les essais de transfert."
+            "Si tu connais déjà répéter, commence directement dans Hero 4. Observe ce que la boucle simplifie dans le programme et ce que l’Agent fait réellement à chaque tour."
           ],
           "activityLink": {
             "moduleId": "minecraft-repetitions",
-            "blockId": "programme-a",
-            "label": "Rejoindre les deux programmes à comparer"
+            "blockId": "niveau-quatre",
+            "label": "Utiliser les répétitions dans Hero 4"
           }
-        },
-        {
-          "type": "lesson",
-          "id": "depart",
-          "title": "Un motif, deux écritures",
-          "paragraphs": [
-            "Reprends la grille : départ en C4, vers le nord. Les programmes A et B ci-dessous décrivent des actions à suivre avec ton pion. Tu compareras ensuite des blocs dans Code.org.",
-            "Le motif est une petite suite qui revient dans le même ordre. Ici : avancer, avancer, tourner à droite. Le programme A l’écrit deux fois. Le programme B demande de le répéter deux fois.",
-            "Une boucle répéter exécute les actions placées à l’intérieur, puis recommence au début de ce groupe. Après le nombre de tours choisi, elle continue avec les éventuelles actions placées après elle."
-          ],
-          "illustration": {
-            "src": "images/minecraft-reperes.svg",
-            "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5, avec un pion en C4 orienté vers le nord.",
-            "caption": "Même départ pour A et B : C4, vers le nord."
-          }
-        },
-        {
-          "type": "lesson",
-          "id": "programme-a",
-          "title": "Programme A : écrire chaque action",
-          "paragraphs": [
-            "Lis les six actions. Avant de déplacer ton pion, prévois sa case et sa direction finales."
-          ],
-          "filename": "Instructions A",
-          "code": "avancer\navancer\ntourner à droite\navancer\navancer\ntourner à droite"
-        },
-        {
-          "type": "lesson",
-          "id": "programme-b",
-          "title": "Programme B : répéter le motif",
-          "paragraphs": [
-            "Les trois lignes décalées sont à l’intérieur de répéter. Au deuxième tour, le pion conserve la position et la direction atteintes à la fin du premier."
-          ],
-          "filename": "Instructions B",
-          "code": "répéter 2 fois\n  avancer\n  avancer\n  tourner à droite"
         },
         {
           "type": "details",
@@ -36157,52 +36083,8 @@ window.CODECRAFT_DATA = {
               "id": "lire-tour",
               "title": "Suivre un tour entier",
               "paragraphs": [
-                "Pour le premier tour, lis avancer, avancer, tourner à droite. Pour le deuxième, relis ces trois mêmes actions. Le pion continue depuis sa nouvelle position : il ne revient pas en C4 entre les tours.",
-                "Dans Code.org, prends le bloc répéter, règle son nombre et glisse les actions dans son creux. Une action accrochée après le bas de la boucle est faite après les répétitions, une seule fois."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "tasks",
-          "id": "comparaison",
-          "title": "Même trajet, moins d’écriture ?",
-          "intro": "Pour compter l’écriture, compte chaque bloc une seule fois : avancer, tourner et répéter. Nous laissons le bloc de départ de côté dans les deux programmes. Pour compter l’exécution, compte chaque déplacement et chaque rotation réellement effectués.",
-          "items": [
-            {
-              "id": "mc02-arrivees",
-              "text": "Prévois l’arrivée de A et de B, puis suis-les séparément avec ton pion en repartant de C4 vers le nord. Compare aussi les directions finales.",
-              "hint": "Après le premier groupe, tu es en C2 vers l’est. Le deuxième groupe continue depuis cet état."
-            },
-            {
-              "id": "mc02-ecriture",
-              "text": "Combien de blocs faut-il écrire pour A ? Et pour B, en comptant répéter et les trois blocs placés à l’intérieur ?",
-              "hint": "Le corps de B est écrit une seule fois. Le nombre 2 choisi dans répéter n’est pas un bloc supplémentaire."
-            },
-            {
-              "id": "mc02-execution",
-              "text": "Pour chaque programme, compte les déplacements puis les rotations exécutés. Le pion parcourt-il moins de cases avec B ?",
-              "hint": "Deux tours exécutent deux fois chacun des deux avancer et le virage."
-            },
-            {
-              "id": "mc02-critere",
-              "text": "Complète avec tes mots : B réduit…, mais conserve… Appuie ta réponse sur tes comptes."
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "verification",
-          "title": "Comparer après tes essais",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "resultat-comparaison",
-              "title": "Deux écritures pour les mêmes actions",
-              "paragraphs": [
-                "A et B terminent en E2, vers le sud. Chaque programme exécute quatre déplacements et deux rotations. La boucle ne raccourcit pas le trajet.",
-                "Avec notre règle de comptage, A demande six blocs. B en demande quatre : répéter, deux avancer et un tourner. B réduit l’écriture du programme, tout en conservant les actions du trajet.",
-                "La distance, le nombre de blocs et le temps d’exécution sont des critères différents. Ici, nous avons comparé l’écriture et le trajet ; ces comptes ne mesurent pas la vitesse du jeu."
+                "Dans Code.org, prends le bloc répéter, règle son nombre et glisse les actions dans son creux. Chaque tour exécute ces actions dans l’ordre, depuis la position atteinte au tour précédent.",
+                "Une action accrochée après le bas de la boucle est exécutée après les répétitions, une seule fois."
               ]
             }
           ]
@@ -36212,9 +36094,9 @@ window.CODECRAFT_DATA = {
           "id": "niveau-quatre",
           "title": "Repérer le motif dans Hero’s Journey",
           "paragraphs": [
-            "Ouvre le niveau 4 avec le lien en haut de la mission. Repère l’Agent, sa direction et la plaque à rejoindre. Dessine le trajet souhaité et entoure le groupe d’actions qui revient.",
-            "Construis le programme avec répéter. Prévois le nombre de cases parcourues, puis lance. Une fois le passage ouvert, utilise ton personnage pour atteindre l’objet demandé.",
-            "Dans ton carnet, écris aussi la suite complète des actions sans boucle. Si les limites du niveau empêchent de construire cette deuxième version dans Code.org, garde-la sur ta feuille pour comparer."
+            "Dans Hero 4, repère l’Agent et la plaque à rejoindre. Observe les cases à parcourir et choisis les actions à répéter.",
+            "Place ces actions dans répéter et règle le nombre de tours. Lance, puis utilise ton personnage pour atteindre l’objet demandé une fois le passage ouvert.",
+            "Observe les blocs : les actions placées dans la boucle sont écrites une seule fois, mais l’Agent les exécute à chaque tour. Moins de blocs dans l’éditeur ne signifie donc pas moins de déplacements dans le jeu."
           ]
         },
         {
@@ -36232,7 +36114,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "mc02-compter-niveau",
-              "text": "Compte les blocs de ton programme avec boucle, puis les actions de ta version développée. Indique ce que la répétition simplifie.",
+              "text": "Compte les blocs dans la boucle, puis observe combien de fois l’Agent exécute leurs actions. Qu’est-ce que la répétition simplifie dans ton programme ?",
               "hint": "Compte les blocs de commande en laissant le départ de côté. Compte une rotation comme une action, mais pas comme une case parcourue."
             },
             {
@@ -36261,42 +36143,17 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc02-choisir",
-              "text": "Au niveau 5, dessine le trajet, indique un motif que tu choisis de répéter et construis ton programme. Si tu préfères une autre organisation, explique ton choix.",
-              "hint": "Une suite n’a pas besoin d’être entièrement dans une seule boucle. Commence par un groupe que tu peux suivre exactement."
+              "text": "Dans Hero 5, repère une suite d’actions qui se répète et construis ton programme. Explique où tu places la boucle.",
+              "hint": "Les actions avant ou après la boucle sont exécutées une seule fois."
             },
             {
               "id": "mc02-preuve",
-              "text": "Lance puis décris une observation qui confirme ta prévision. Compare ton écriture avec sa suite développée dans le carnet.",
-              "hint": "Développe ta boucle dans le carnet : retrouves-tu les mêmes actions dans le même ordre, depuis le même départ ? Compare aussi les cases parcourues et la direction finale. Réduire l’écriture ne prouve pas que tu as réduit les déplacements."
+              "text": "Lance et observe si le passage s’ouvre. Montre les actions répétées dans ton programme et explique ce que tu changerais si l’Agent s’arrêtait trop tôt.",
+              "hint": "Vérifie le nombre de tours et les actions placées dans la boucle."
             },
             {
               "id": "mc02-conserver",
-              "text": "Garde l’adresse du niveau, une capture lisible de tes blocs et ta comparaison. Si tu travailles avec un compte, vérifie la réouverture de ton niveau. Sans compte, ta capture permet de reconstruire les blocs."
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "bonus",
-          "title": "Pour aller plus loin : un tour de plus",
-          "blocks": [
-            {
-              "type": "tasks",
-              "id": "troisieme-tour",
-              "title": "Prévoir sans reconstruire",
-              "intro": "Sur notre grille seulement, repars de C4 vers le nord et remplace répéter 2 fois par répéter 3 fois dans B.",
-              "items": [
-                {
-                  "id": "mc02-bonus-arrivee",
-                  "text": "Prévois la case et la direction finales, puis vérifie avec ton pion.",
-                  "hint": "Après deux tours, tu es en E2 vers le sud. Le troisième mène en E4, puis le virage oriente vers l’ouest."
-                },
-                {
-                  "id": "mc02-bonus-cout",
-                  "text": "Combien de blocs sont écrits ? Combien de déplacements et de rotations sont exécutés ?",
-                  "hint": "L’écriture reste de quatre blocs ; six déplacements et trois rotations sont exécutés."
-                }
-              ]
+              "text": "Pour reprendre plus tard, garde l’adresse du niveau et une capture de tes blocs. Avec un compte, vérifie que tu retrouves ta version à la réouverture."
             }
           ]
         }
@@ -36304,61 +36161,47 @@ window.CODECRAFT_DATA = {
       "masteryCriteria": [
         "Un motif garde ses actions dans le même ordre à chaque tour.",
         "Le deuxième tour continue depuis la position et la direction obtenues au premier.",
-        "Une répétition peut réduire le nombre de blocs écrits sans réduire les déplacements exécutés.",
-        "Comparer deux programmes demande le même départ et un critère explicite."
+        "Une répétition peut réduire le nombre de blocs écrits sans réduire les déplacements exécutés."
       ],
       "teacherGuide": {
-        "objective": "Faire distinguer taille du programme, actions exécutées et distance parcourue, en réutilisant les boucles après Scratch.",
+        "objective": "Repérer un groupe d’actions à répéter dans Code.org et distinguer les blocs écrits des actions exécutées.",
         "entryDiagnosis": [
-          "Faire prévoir le motif depuis C4 nord. En cas de difficulté spatiale, reprendre la grille de la première mission.",
-          "Après Scratch, demander directement les comptes et leur justification ; ne pas imposer l’aide de découverte des boucles."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
-          "Utiliser Hero 4 et 5 : déplacements, virages et répétitions figurent dans leurs palettes inventoriées. Les solutions exactes et le minimum de blocs ne sont pas imposés.",
-          "Préparer une feuille pour développer le programme si la limite de blocs empêche une seconde écriture exécutable.",
-          "Conserver les programmes par capture et carnet ; la sauvegarde avec compte est documentée, la reprise connectée n’a pas été éprouvée pendant cet audit."
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
+          "Utiliser Hero 4 et 5 : déplacements, virages et répétitions figurent dans leurs palettes inventoriées. Les solutions exactes et le minimum de blocs ne sont pas imposés."
         ],
-        "why": "L’objectif nouveau après Scratch est justifier un choix selon un critère, au lieu d’assimiler automatiquement boucle, rapidité et trajet plus court.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
-          "Les deux programmes partent du même endroit. Prévois leur arrivée, puis compte ce que tu as écrit et ce que le pion a réellement fait.",
-          "Que veux-tu améliorer : l’écriture du programme ou la distance parcourue ? Quelle observation permet de le vérifier ?"
+          "Montre les actions dans la boucle et observe ce que l’Agent fait à chaque tour."
         ],
         "example": {
           "target": {
             "moduleId": "minecraft-repetitions",
-            "blockId": "comparaison"
+            "blockId": "niveau-quatre"
           },
           "comments": [
-            "A : six blocs. B : quatre avec la convention indiquée. Chaque programme : quatre déplacements, deux rotations, arrivée E2 sud.",
-            "Le départ est exclu des deux comptes. Une rotation est une action sans déplacement.",
-            "Ne pas déduire un temps moteur ou une complexité asymptotique de ces comptes."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
           {
-            "question": "Pourquoi le second tour change-t-il de direction ?",
-            "answer": "Le premier finit par un virage à droite : l’orientation est conservée pour le tour suivant."
-          },
-          {
-            "question": "Qu’économise B ?",
-            "answer": "Deux blocs écrits dans cet exemple. Il exécute les mêmes déplacements et rotations que A."
-          },
-          {
-            "question": "Que donne un troisième tour sur la grille ?",
-            "answer": "E4 ouest ; quatre blocs écrits, six déplacements et trois rotations exécutés."
+            "question": "La boucle fait-elle moins avancer l’Agent ?",
+            "answer": "Elle évite de recopier les blocs. Le nombre de déplacements dépend toujours du nombre de tours et des actions dans la boucle."
           }
         ],
         "accompaniedActivity": {
           "moduleId": "minecraft-repetitions",
-          "blockId": "guide"
+          "blockId": "niveau-quatre"
         },
         "independentActivity": {
           "moduleId": "minecraft-repetitions",
           "blockId": "autonomie"
         },
         "differentiation": [
-          "Autoriser une comparaison orale avec des marques sur papier. La qualité de rédaction n’est pas le critère.",
-          "Pour un débutant, développer deux tours avec le pion avant de manipuler le bloc répéter.",
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
           "Pour un élève avancé, demander un critère précis et une autre organisation. Ne pas imposer la recherche d’un minimum global ni la répétition de tous les puzzles.",
           "Pendant le stage, utiliser seulement la comparaison utile au travail en cours."
         ],
@@ -36366,15 +36209,7 @@ window.CODECRAFT_DATA = {
           {
             "symptom": "Le programme compte moins de blocs, donc le trajet serait plus court.",
             "helps": [
-              "Développer la boucle sur papier.",
               "Compter séparément les actions réellement exécutées et les blocs écrits."
-            ]
-          },
-          {
-            "symptom": "Le pion repart au début de la grille à chaque tour.",
-            "helps": [
-              "Marquer la case et la direction après un tour.",
-              "Reprendre le motif depuis cet état, sans déplacer le pion au départ."
             ]
           },
           {
@@ -36385,13 +36220,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "Distinguer réussite du puzzle, compréhension de la répétition et capacité de comparaison. Aucune supériorité générale d’une boucle ni vitesse d’apprentissage ne se déduit d’un petit nombre de blocs.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Reprendre position et orientation.",
-          "Comparer A et B sur la grille.",
-          "Faire nommer le critère et compter.",
-          "Transférer au niveau 4, puis choisir au niveau 5.",
-          "Conserver prévision, programme et conclusion."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -36436,17 +36271,17 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Ouvre le niveau 6 et prépare ton carnet. Les blocs commandent l’Agent ; après Exécuter, les flèches déplacent Alex ou Steve. Tu vas construire un passage pour ton personnage, puis réparer un programme dans le niveau 7."
+          "text": "Ouvre Hero 6. Les blocs commandent l’Agent ; après Exécuter, les flèches déplacent Alex ou Steve. Construis un passage pour ton personnage, puis répare le programme fourni dans Hero 7."
         },
         {
           "type": "callout",
           "id": "reprise",
           "title": "Retrouver les répétitions",
           "presentation": "compact",
-          "text": "Si tu perds le fil entre deux tours, ouvre Comparer deux programmes pour un trajet dans un autre onglet. Reprends le motif avec ton pion, puis ferme cet onglet pour revenir ici.",
+          "text": "Si tu perds le fil entre deux tours, ouvre Répéter des actions pour un trajet dans un autre onglet. Reprends la boucle dans Hero 4, puis reviens ici.",
           "moduleLink": {
             "moduleId": "minecraft-repetitions",
-            "text": "Comparer deux programmes pour un trajet",
+            "text": "Répéter des actions pour un trajet",
             "newTab": true
           }
         },
@@ -36485,9 +36320,9 @@ window.CODECRAFT_DATA = {
           "id": "prevoir-pont",
           "title": "Préparer tout le passage",
           "paragraphs": [
-            "Sur le dessin du niveau 6, repère les deux rives et les cases d’eau à couvrir pour rejoindre la pelle. Dessine ce passage et marque le départ et la direction de l’Agent.",
-            "Après ton premier essai, tu connais le motif avancer puis placer. Cherche combien de fois le répéter pour couvrir les cases d’eau du passage. Indique aussi où sera l’Agent après le dernier tour.",
-            "Place les deux commandes dans le creux de répéter. Règle le nombre d’après ton dessin, puis lance depuis le terrain réinitialisé."
+            "Dans Hero 6, repère les deux rives et les cases d’eau à couvrir pour rejoindre la pelle.",
+            "Place avancer puis placer une planche dans répéter. Règle le nombre de tours selon les cases à couvrir et lance depuis le terrain réinitialisé.",
+            "Observe où les planches apparaissent, puis fais traverser Alex ou Steve pour vérifier le passage."
           ]
         },
         {
@@ -36497,8 +36332,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc03-cases",
-              "text": "Compare les cases couvertes avec ton dessin. Si une planche manque ou apparaît ailleurs, retrouve le premier tour où le résultat diffère.",
-              "hint": "Pour chaque tour, note la case atteinte, puis marque la planche posée sur cette case."
+              "text": "Observe les cases couvertes. Si une planche manque ou apparaît ailleurs, repère le premier tour où le passage n’est plus construit comme prévu.",
+              "hint": "À chaque tour, l’Agent avance puis pose une planche sur la case qu’il occupe."
             },
             {
               "id": "mc03-traverser",
@@ -36517,7 +36352,7 @@ window.CODECRAFT_DATA = {
           "title": "Lire le programme avant de le corriger",
           "paragraphs": [
             "Ouvre le niveau 7 avec le lien ci-dessous. Un programme est déjà accroché : répéter 3 fois, avec avancer puis placer une planche à l’intérieur. Le nouveau passage est plus large. Si tu avais déjà modifié ce niveau, conserve ta capture puis utilise Recommencer (Start Over) pour retrouver le programme fourni.",
-            "Avant de modifier, note le nombre de tours et prévois les cases que ce programme couvrira. Lance une fois et compare le pont obtenu avec celui dont ton personnage a besoin pour rejoindre la pioche.",
+            "Avant de modifier, regarde le nombre de tours. Lance une fois et compare le pont obtenu avec celui dont ton personnage a besoin pour rejoindre la pioche.",
             "Certaines commandes sont attachées et verrouillées. Tu peux changer le nombre de répétitions : utilise ce réglage pour réparer le passage, en conservant les commandes fournies."
           ],
           "externalLink": {
@@ -36551,65 +36386,11 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "id": "defi-papier",
-          "title": "Un passage à réparer sur papier",
-          "paragraphs": [
-            "Sur ce dessin, les cases A, B et G sont des rives praticables. C, D, E et F sont de l’eau. L’Agent commence en B, vers la droite, et peut avancer sur l’eau. Alex ou Steve doit pouvoir aller de A à G.",
-            "Pour ce défi, avancer déplace l’Agent d’une case vers la droite ; placer une planche couvre sa case d’eau actuelle et le laisse sur place. Suis le programme ci-dessous avec un pion et marque les planches sur ton dessin."
-          ],
-          "illustration": {
-            "src": "images/minecraft-passage.svg",
-            "alt": "Sept cases alignées de A à G : A et B sont la rive de départ, C à F sont de l’eau, G est la rive d’arrivée. L’Agent est en B, orienté vers G.",
-            "caption": "Départ en B, vers la droite. Construis un passage continu entre les rives."
-          },
-          "filename": "Instructions",
-          "code": "répéter 3 fois\n  avancer\n  placer une planche"
-        },
-        {
-          "type": "tasks",
-          "id": "autonomie",
-          "title": "Réparer et justifier sans modèle",
-          "items": [
-            {
-              "id": "mc03-papier-trace",
-              "text": "Sur le dessin, prévois la position finale de l’Agent et les cases couvertes par le programme. Quelle case manque au passage ?",
-              "hint": "Fais un trait par tour et marque la case où placer est exécuté."
-            },
-            {
-              "id": "mc03-papier-reparation",
-              "text": "Change seulement le nombre de répétitions pour compléter le passage. Annonce l’arrivée et les cases couvertes, puis vérifie avec ton pion."
-            },
-            {
-              "id": "mc03-papier-ordre",
-              "text": "Repars du dessin initial. Que construirait avancer trois fois puis placer une seule fois, après les déplacements ? Compare avec le programme initial : même arrivée, même passage ?",
-              "hint": "Après les trois déplacements, le pion n’a pas encore posé de planche. Sur quelle case se trouve-t-il au moment de placer ?"
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "comparaison-papier",
-          "title": "Comparer après tes essais",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "resultat-papier",
-              "title": "L’arrivée ne suffit pas",
-              "paragraphs": [
-                "Avec trois tours, l’Agent passe en C, D puis E et pose une planche sur chacune de ces cases. Il termine en E, vers la droite. F reste vide : le passage n’atteint pas la rive G.",
-                "Avec quatre tours, il couvre C, D, E et F et termine en F, vers la droite. Les quatre cases d’eau sont couvertes ; le personnage peut passer de A à G.",
-                "Avec trois avancer suivis d’un seul placer, l’Agent termine aussi en E, mais seule E reçoit une planche. La position finale ne dit donc pas à elle seule quelles cases ont été construites."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "lesson",
           "id": "conserver",
           "title": "Garder la correction et son explication",
           "paragraphs": [
-            "Dans ton carnet, garde le dessin du passage, le nombre initial de tours, la première case manquante et ta correction. Ajoute une capture lisible des blocs du niveau 7 et son adresse pour pouvoir les reconstruire.",
-            "Note ce que tu as observé après Réinitialiser : cases construites, arrivée de l’Agent et traversée du personnage. Avec un compte Code.org, vérifie aussi que tu retrouves tes blocs en rouvrant le niveau."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         }
       ],
@@ -36621,18 +36402,17 @@ window.CODECRAFT_DATA = {
         "Deux programmes peuvent donner la même arrivée et construire des passages différents."
       ],
       "teacherGuide": {
-        "objective": "Faire suivre position et terrain modifié, localiser un arrêt prématuré de répétition et vérifier le résultat du point de vue du joueur.",
+        "objective": "Prévoir les cases construites par l’Agent, puis corriger une répétition en repérant le premier écart avec le passage attendu.",
         "entryDiagnosis": [
-          "Faire suivre un tour avancer puis placer. Demander ce qui change dans la position et dans le terrain.",
-          "Après Scratch, abréger le rappel de boucle, mais vérifier la différence entre Agent programmé et joueur au clavier. Demander une trace du terrain, pas seulement une arrivée."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "Ouvrir Hero 6 et 7. Les palettes inventoriées contiennent déplacements, virages, planches et répétitions. Hero 7 fournit répéter 3 fois avec avancer puis placer ; la pile est partiellement verrouillée, le nombre est modifiable.",
-          "Préparer un pion et un dessin. La bande A à G est un exercice original, distinct des cartes Code.org ; la solution quatre tours concerne seulement cette bande.",
-          "Le moteur officiel place sur la position actuelle de l’Agent. Les cartes de référence agent06 et agent07 ont les mêmes départs que les configurations inventoriées. Elles demandent respectivement trois et cinq placements droits depuis ces départs ; compter les cases du niveau affiché avant d’accompagner une réponse.",
-          "La consultation des sources confirme les mécanismes et restrictions ; aucune nouvelle exécution complète de Hero 6 ou 7 n’est revendiquée. Conserver capture et carnet pour la reprise."
+          "Le moteur officiel place sur la position actuelle de l’Agent. Les cartes de référence agent06 et agent07 ont les mêmes départs que les configurations inventoriées. Elles demandent respectivement trois et cinq placements droits depuis ces départs ; compter les cases du niveau affiché avant d’accompagner une réponse."
         ],
-        "why": "La trace doit inclure le monde modifié. Arriver de l’autre côté avec l’Agent ne prouve ni continuité du pont ni possibilité de traversée pour le joueur.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
           "Montre où sera l’Agent, puis marque la case qui recevra la planche. Qu’est-ce qui change après chacune des deux actions ?",
           "À quelle case le pont s’arrête-t-il ? Quel nombre de tours faut-il prévoir pour rejoindre l’autre rive ?"
@@ -36643,8 +36423,7 @@ window.CODECRAFT_DATA = {
             "blockId": "premier-essai"
           },
           "comments": [
-            "Faire nommer déplacement et construction séparément. Placer une planche ne déplace pas l’Agent.",
-            "Après Reset, les constructions de l’essai précédent doivent être effacées avant la nouvelle comparaison. Le programme est conservé."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
@@ -36653,28 +36432,20 @@ window.CODECRAFT_DATA = {
             "answer": "Non. Il traverse l’eau ; le joueur a besoin d’un chemin praticable continu. Faire montrer les cases et essayer la traversée au clavier."
           },
           {
-            "question": "Que donne le programme initial sur la bande A à G ?",
-            "answer": "Trois déplacements et trois placements : C, D et E sont couvertes, arrivée E vers la droite. F manque. Quatre tours couvrent C à F et donnent F vers la droite."
-          },
-          {
-            "question": "Que révèle la variante trois avancer puis un seul placer ?",
-            "answer": "Même arrivée E et même orientation que le programme initial, mais seule E est couverte. Comparer seulement l’arrivée laisserait passer cette erreur."
-          },
-          {
             "question": "Comment réparer Hero 7 sans déplacer les blocs verrouillés ?",
             "answer": "Conserver avancer puis placer et ajuster le nombre de tours aux cases d’eau à couvrir. La carte de référence demande cinq tours, contre trois fournis ; vérifier ce compte sur la carte affichée."
           }
         ],
         "accompaniedActivity": {
           "moduleId": "minecraft-passage",
-          "blockId": "guide"
+          "blockId": "premier-essai"
         },
         "independentActivity": {
           "moduleId": "minecraft-passage",
-          "blockId": "autonomie"
+          "blockId": "reparer"
         },
         "differentiation": [
-          "Accepter une trace dessinée ou orale. Marquer une planche après chaque déplacement sans imposer une rédaction longue.",
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
           "Pour un débutant, faire suivre un tour puis deux avant de compter tout le passage.",
           "Pour un élève avancé, demander pourquoi même position finale ne garantit pas même construction ; conserver le défi sans afficher sa réponse.",
           "Pendant le stage, ouvrir le premier essai ou la recherche de case manquante au moment du besoin, puis revenir au travail du groupe."
@@ -36709,14 +36480,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "Distinguer correction expliquée et nombre trouvé au hasard. Une capture et une case cochée ne prouvent pas la compréhension ; demander une prévision des cases couvertes et une vérification depuis le départ.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Séparer déplacement et construction sur un tour.",
-          "Prévoir puis construire le pont du niveau 6.",
-          "Lire les trois tours fournis au niveau 7 avant de modifier.",
-          "Repérer le manque, régler le nombre et vérifier après Reset.",
-          "Transférer sur la bande originale et comparer terrain et arrivée.",
-          "Conserver la correction et les observations."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -36764,7 +36534,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Avant de commencer",
-          "text": "Ouvre le niveau 8 et prépare ton carnet. Les blocs commandent l’Agent ; les flèches déplacent Alex ou Steve après Exécuter. Tu vas lire des groupes de commandes déjà fournis pour choisir où les utiliser."
+          "text": "Ouvre Hero 8. Les blocs commandent l’Agent ; les flèches déplacent Alex ou Steve après Exécuter. Lis les groupes de commandes fournis pour choisir leurs appels."
         },
         {
           "type": "lesson",
@@ -36798,11 +36568,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc04-commandes",
-              "text": "Dans ton carnet, relève les déplacements, les placements et le dernier virage de la procédure. Quelles cases recevront une planche ?",
-              "hints": [
-                "Pour chaque avancer, déplace une flèche sur ton dessin. Pour chaque placer, marque la case occupée.",
-                "Compte séparément les déplacements et les placements : toutes les cases traversées ne reçoivent pas une planche."
-              ]
+              "text": "Dans la définition fournie, montre les déplacements, les placements et le dernier virage. Lance un appel et observe les cases qui reçoivent une planche.",
+              "hint": "Suis l’Agent pendant l’exécution : avancer change sa case, placer transforme le sol sous lui."
             },
             {
               "id": "mc04-fin-appel",
@@ -36816,9 +36583,9 @@ window.CODECRAFT_DATA = {
           "id": "raccorder",
           "title": "Le deuxième appel reprend l’état obtenu",
           "paragraphs": [
-            "Après ton premier essai, note où se trouve l’Agent et dans quelle direction il regarde. Le nom construire un pont ne décrit pas à lui seul tous ces effets : la définition contient aussi des déplacements et un virage.",
-            "Prévois maintenant un deuxième appel de la même procédure, juste après le premier. Son point de départ sera l’arrivée du premier appel, avec la nouvelle direction. Marque les cases du deuxième groupe sur ton dessin.",
-            "Clique sur Réinitialiser (Reset), garde le premier appel et accroche le deuxième à sa suite sous le départ. Lance depuis le terrain initial. Les définitions fournies restent en place : tu composes ton programme avec les petits blocs d’appel."
+            "Après le premier appel, observe la case et la direction de l’Agent. La définition contient aussi un virage : son nom ne suffit pas à décrire tous ses effets.",
+            "Ajoute un deuxième appel de la même procédure sous le premier. Il commencera depuis la position et la direction laissées par le premier appel.",
+            "Clique sur Reset puis lance les deux appels. Les définitions restent en place ; le programme utilise les petits blocs d’appel."
           ]
         },
         {
@@ -36828,8 +36595,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc04-deux-appels",
-              "text": "Compare les deux constructions et la direction finale avec ton dessin. Pourquoi le deuxième groupe ne continue-t-il pas tout droit ?",
-              "hint": "Repars de la dernière commande du premier appel : elle a changé la direction de l’Agent."
+              "text": "Observe les deux constructions. Pourquoi le deuxième appel ne continue-t-il pas tout droit ?",
+              "hint": "Regarde le dernier bloc de la définition."
             },
             {
               "id": "mc04-joueur",
@@ -36837,7 +36604,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "mc04-avant-apres",
-              "text": "Pour chacun des deux appels, décris le départ, l’arrivée, la direction finale et les cases construites. Utilise ton dessin pour montrer le raccord."
+              "text": "Montre dans le jeu où chaque appel commence et se termine. Explique le raccord entre les deux constructions."
             }
           ]
         },
@@ -36867,11 +36634,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "mc04-dix-raccord",
-              "text": "Sur ton dessin de la carte, choisis une procédure pour chaque tronçon. Avant chaque appel, indique la position et la direction nécessaires. Ajoute les commandes de raccord utiles.",
-              "hints": [
-                "Compte les cases du tronçon dans la direction regardée par l’Agent.",
-                "Un appel commence depuis l’état courant. Un virage ou un déplacement de raccord doit être une commande de ton programme s’il n’est pas dans la procédure."
-              ]
+              "text": "Dans Hero 10, repère les tronçons à réparer et choisis un appel court ou long pour chacun. Ajoute les déplacements et les virages nécessaires entre les appels.",
+              "hint": "Lis le nombre de répétitions de chaque définition et compte les cases du tronçon dans le jeu."
             },
             {
               "id": "mc04-dix-verifier",
@@ -36881,67 +36645,11 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "id": "defi-papier",
-          "title": "Prévoir deux appels sur une grille",
-          "paragraphs": [
-            "Sur cette grille originale, le pion commence en B5 vers le nord. Les cases B4, B3, C3 et D3 sont de l’eau. Les autres cases sont praticables. Le passage à construire relie B5 à E3 en passant par ces quatre cases d’eau.",
-            "Pour ce dessin, la procédure tronçon est définie ci-dessous. Avancer déplace d’une case dans la direction regardée. Placer une planche couvre la case d’eau occupée ; sur une case déjà praticable, cela ne change pas le passage. Tourner à droite fait un quart de tour sur place."
-          ],
-          "illustration": {
-            "src": "images/minecraft-procedures.svg",
-            "alt": "Grille A à E et 1 à 5. Départ B5 vers le nord. L’eau occupe B4, B3, C3 et D3. L’arrivée visée est E3.",
-            "caption": "Départ B5, nord. Observe aussi la direction entre les appels."
-          },
-          "filename": "Définition",
-          "code": "définir tronçon\n  répéter 2 fois\n    avancer\n    placer une planche\n  tourner à droite"
-        },
-        {
-          "type": "tasks",
-          "id": "autonomie",
-          "title": "Choisir d’après l’état de départ",
-          "intro": "Travaille sur le dessin et la définition tronçon ci-dessus. Prévois sur papier avant de suivre les actions avec ton pion.",
-          "items": [
-            {
-              "id": "mc04-papier-un",
-              "text": "Depuis B5 nord, prévois un appel de tronçon. Note l’arrivée, la direction finale et les cases couvertes.",
-              "hint": "Suis les deux tours, puis le virage qui se trouve après la boucle."
-            },
-            {
-              "id": "mc04-papier-deux",
-              "text": "Enchaîne un deuxième appel de tronçon, sans remise au départ. Le passage jusqu’à E3 est-il continu ? Où finit l’Agent, et vers où regarde-t-il ?",
-              "hint": "Le deuxième appel démarre là où le premier s’est terminé, avec sa direction finale."
-            },
-            {
-              "id": "mc04-papier-invalide",
-              "text": "Repars du dessin initial, en B5 mais vers l’est. Prévois un seul appel. Couvre-t-il les mêmes cases d’eau ? Quelle commande faudrait-il ajouter avant cet appel pour retrouver le bon départ ?",
-              "hint": "Compare la direction actuelle à celle requise pour atteindre B4 en avançant."
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "comparaison-papier",
-          "title": "Comparer après tes prévisions",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "resultat-papier",
-              "title": "Le départ compte autant que la définition",
-              "paragraphs": [
-                "Le premier appel couvre B4 puis B3, termine en B3 et tourne vers l’est. Le deuxième couvre C3 puis D3, termine en D3 et tourne vers le sud. Les quatre cases d’eau sont couvertes ; le passage B5, B4, B3, C3, D3, E3 est continu. L’Agent n’a pas besoin de terminer lui-même en E3 pour que ce passage existe.",
-                "Depuis B5 vers l’est, un seul appel passe par C5 et D5, puis termine en D5 vers le sud. Ces cases étaient déjà praticables : le passage d’eau reste à construire. Avant l’appel, un virage à gauche aurait rétabli B5 nord.",
-                "La définition reste la même dans ces essais. Son effet dépend de la position, de la direction et du terrain au moment de l’appel."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "lesson",
           "id": "conserver",
           "title": "Conserver l’enchaînement et ses raccords",
           "paragraphs": [
-            "Garde dans ton carnet l’adresse de Hero 10, un dessin des tronçons et une capture lisible des appels avec leurs commandes de raccord. Note aussi l’effet de chaque procédure et ce que tu as observé après Reset.",
-            "Pour reconstruire ton programme, tu pourras relire les définitions fournies et reprendre tes appels depuis la capture. Avec un compte Code.org, vérifie la reprise en rouvrant le niveau."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         }
       ],
@@ -36953,19 +36661,19 @@ window.CODECRAFT_DATA = {
         "Une même procédure ne construit pas forcément le même passage depuis une autre direction."
       ],
       "teacherGuide": {
-        "objective": "Faire lire les effets d’une procédure et prévoir ses conditions de départ et son état final avant de composer les appels.",
+        "objective": "Lire une procédure fournie et prévoir sa position finale, sa direction et ses constructions pour choisir et enchaîner les appels.",
         "entryDiagnosis": [
-          "Demander à l’élève de montrer définition et appel dans Hero 8. Après Scratch, réutiliser la distinction définir/appeler sans imposer un second cours de création de bloc.",
-          "Faire suivre la direction après le dernier bloc de la définition. Si les rotations restent difficiles, reprendre une trace de la mission 1."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "Hero 8 fournit build bridge : avancer, placer une planche, avancer, placer une planche, avancer, avancer, tourner à droite. La définition et ses commandes sont verrouillées ; la palette fournit l’appel. Les deux appels se placent sous le départ, pas dans la définition.",
           "Hero 10 fournit fix short path et fix long path, respectivement deux et trois répétitions de détruire, avancer, placer un rail. Les deux définitions sont verrouillées et ne contiennent aucun virage. La palette propose les commandes de raccord et les appels ; aucun paramètre n’est à créer.",
           "Hero 9 n’est pas requis : les actions détruire devant puis avancer et placer sont expliquées à l’entrée de Hero 10. Prévoir un premier suivi de ce motif pour un débutant.",
-          "L’inventaire des configurations est réutilisé. La destruction vise le bloc devant l’entité dans le moteur officiel ; le placement concerne sa position actuelle. Aucune nouvelle exécution complète des puzzles n’est revendiquée.",
-          "Le défi sur grille est original. Sa procédure tronçon contient deux déplacements, deux placements et un virage ; elle est distincte de celle de Hero 8. Préparer un pion orienté et des marques pour les cases couvertes."
+          "L’inventaire des configurations est réutilisé. La destruction vise le bloc devant l’entité dans le moteur officiel ; le placement concerne sa position actuelle. Aucune nouvelle exécution complète des puzzles n’est revendiquée."
         ],
-        "why": "L’apport après Scratch porte sur les raccords : un appel n’est pas une commande qui retrouve automatiquement son départ et son orientation. Le terrain modifié fait aussi partie de l’état à suivre.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
           "Montre la définition et le petit bloc qui l’appelle. Que fait l’Agent quand le programme rencontre cet appel ?",
           "Où et dans quelle direction se termine le premier appel ? Le deuxième peut-il commencer ainsi sur le tronçon que tu vises ?"
@@ -36976,8 +36684,7 @@ window.CODECRAFT_DATA = {
             "blockId": "lire-huit"
           },
           "comments": [
-            "Hero 8 : chaque appel exécute quatre déplacements, deux placements et un virage à droite. Le deuxième poursuit depuis l’arrivée et la nouvelle orientation, sans remise à zéro.",
-            "Vérifier la trace sur la carte affichée ; le nom construire un pont ne précise pas le virage ni les deux déplacements sans placement."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
@@ -36988,26 +36695,18 @@ window.CODECRAFT_DATA = {
           {
             "question": "Les procédures de Hero 10 tournent-elles comme celle de Hero 8 ?",
             "answer": "Non. Elles répètent deux ou trois fois détruire devant, avancer, placer un rail, sans rotation. Un virage de raccord doit être ajouté dans le programme si le tracé l’exige."
-          },
-          {
-            "question": "Que donnent deux appels de tronçon sur le dessin original ?",
-            "answer": "Depuis B5 nord : B4 et B3 couvertes, fin B3 est ; puis C3 et D3 couvertes, fin D3 sud. Le passage jusqu’à E3 est continu."
-          },
-          {
-            "question": "Que change le départ B5 est pour un appel ?",
-            "answer": "Arrivée D5 sud, sans couvrir les quatre cases d’eau visées. Un virage à gauche avant l’appel rétablit le départ B5 nord."
           }
         ],
         "accompaniedActivity": {
           "moduleId": "minecraft-procedures",
-          "blockId": "guide"
+          "blockId": "lire-huit"
         },
         "independentActivity": {
           "moduleId": "minecraft-procedures",
-          "blockId": "autonomie"
+          "blockId": "choisir-dix"
         },
         "differentiation": [
-          "Accepter un tableau dessiné ou une explication orale : départ, arrivée, direction, terrain. Lire les commandes si la lecture freine le raisonnement.",
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
           "Pour un débutant, suivre les actions d’un seul appel avant de composer deux appels.",
           "Après Scratch, demander directement la trace et un mauvais état de départ. La syntaxe de définition n’est pas l’objectif de ce chapitre.",
           "Pendant le stage, ouvrir la lecture d’une procédure ou le défi du raccord au moment où le besoin apparaît, puis revenir au projet du groupe."
@@ -37023,8 +36722,7 @@ window.CODECRAFT_DATA = {
           {
             "symptom": "Le deuxième appel est prévu depuis le départ initial.",
             "helps": [
-              "Marquer l’arrivée et la direction après le premier appel.",
-              "Reprendre la définition depuis cet état, sans remettre le pion au départ."
+              "Marquer l’arrivée et la direction après le premier appel."
             ]
           },
           {
@@ -37042,13 +36740,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "Une réussite du puzzle ou un appel placé ne suffit pas à montrer la compréhension. Demander le raccord expliqué et une prévision depuis une autre direction. La grille fournit un transfert indépendant de la carte Code.org.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Distinguer définition et appel sur Hero 8.",
-          "Faire prévoir puis essayer un appel, et ensuite deux.",
-          "Lire les deux procédures de Hero 10 et préparer les raccords.",
-          "Prévoir les deux appels du dessin original, puis changer la direction initiale.",
-          "Conserver les effets et les appels avec leurs raccords."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -37114,10 +36812,8 @@ window.CODECRAFT_DATA = {
           "title": "Répéter un groupe qui contient une boucle",
           "paragraphs": [
             "Dans la palette, prends une répétition et place une seconde répétition à l’intérieur. Règle celle du dehors sur 2 et celle du dedans sur 3. Dans la boucle intérieure, place poser un rail, puis avancer. Sous le départ, ajoute tourner à droite avant ces boucles.",
-            "L’écriture ci-dessous décrit les blocs à assembler. À chaque tour de la boucle extérieure, la boucle intérieure recommence ses trois tours. Une fois ce groupe terminé, le programme passe au tour extérieur suivant."
-          ],
-          "filename": "Programme",
-          "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    répéter 3 fois\n      placer un rail\n      avancer"
+            "À chaque tour de la boucle extérieure, la boucle intérieure exécute ses trois tours. L’Agent continue depuis la position atteinte au tour précédent."
+          ]
         },
         {
           "type": "tasks",
@@ -37126,11 +36822,8 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc05-produire",
-              "text": "Depuis le départ initial, prévois le nombre de placements et de déplacements. Dessine les cases qui recevront un rail et l’arrivée de l’Agent. Lance, puis utilise la flèche droite sous le jeu pour avancer Alex ou Steve le long des rails. La vue suit ton personnage : avance jusqu’à voir le dernier rail et l’Agent, puis compare avec ton dessin.",
-              "hints": [
-                "Un tour extérieur contient trois placements et trois déplacements. Il y a deux tours extérieurs.",
-                "Placer vient avant avancer : le premier rail est sur la case de départ. Après le dernier déplacement, l’Agent se trouve une case après le dernier rail posé."
-              ]
+              "text": "Lance les deux boucles dans Hero 12. Observe le nombre de rails posés, puis utilise la flèche droite sous le jeu pour déplacer Alex ou Steve le long des rails et retrouver l’Agent.",
+              "hint": "Chaque tour extérieur fait exécuter trois placements et trois déplacements. Le dernier déplacement laisse l’Agent après le dernier rail posé."
             },
             {
               "id": "mc05-comparer-six",
@@ -37154,10 +36847,8 @@ window.CODECRAFT_DATA = {
           "title": "Écrire le tronçon dans une définition",
           "paragraphs": [
             "Dans Hero 12, les deux définitions peuvent recevoir tes commandes. Repère la première, appelée fonction 1 ou function 1. Remplace son contenu par une répétition de 3 contenant placer un rail puis avancer. Cette définition reste séparée du départ.",
-            "Nous appelons ce groupe tronçon dans les exemples. Dans Code.org, garde le nom visible de ta première définition et prends le petit bloc d’appel portant ce même nom."
-          ],
-          "filename": "Première définition",
-          "code": "définir tronçon\n  répéter 3 fois\n    placer un rail\n    avancer"
+            "Ce groupe construit un tronçon. Garde le nom visible de ta première définition dans Code.org et prends le petit bloc d’appel portant ce même nom."
+          ]
         },
         {
           "type": "lesson",
@@ -37165,10 +36856,8 @@ window.CODECRAFT_DATA = {
           "title": "Faire tourner le programme entre les tronçons",
           "paragraphs": [
             "Prépare le programme sous le départ : tourner à droite, puis une répétition de 2 contenant l’appel de ta première procédure suivi de tourner à gauche. Si tu avais construit la ligne de six rails, cette répétition remplace celle de 6. La boucle de 3 reste dans la définition : le programme principal appelle ce groupe au lieu de recopier ses commandes.",
-            "Avant de lancer, marque l’arrivée du premier appel et sa direction après le virage. Le second appel commencera dans cet état. Réinitialise le terrain, puis lance. Le dernier virage se fait aussi : il suit le second appel."
-          ],
-          "filename": "Programme principal",
-          "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    appeler tronçon\n    tourner à gauche"
+            "Clique sur Reset puis lance. Observe la direction laissée par le premier appel et le virage suivant. Le deuxième appel continue depuis cet état. Le dernier virage s’exécute aussi après le second appel."
+          ]
         },
         {
           "type": "tasks",
@@ -37177,12 +36866,12 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc05-angle",
-              "text": "Avec les flèches sous le jeu, déplace Alex ou Steve le long des rails pour voir les deux tronçons et l’Agent. Compare avec ton dessin. Pourquoi les deux tronçons forment-ils un angle ? La procédure contient-elle elle-même un virage ?",
-              "hint": "La définition construit droit. Le virage est dans la boucle extérieure, après l’appel."
+              "text": "Déplace Alex ou Steve le long des rails pour voir les deux tronçons et l’Agent. Pourquoi les tronçons forment-ils un angle ? Où se trouve le virage dans les blocs ?",
+              "hint": "La définition construit droit. Le programme principal tourne après chaque appel."
             },
             {
               "id": "mc05-dernier-virage",
-              "text": "Note la direction finale de l’Agent et sa position par rapport au dernier rail. Explique l’effet du dernier avancer, puis du dernier tourner à gauche.",
+              "text": "Observe la direction finale de l’Agent et sa position par rapport au dernier rail. Explique l’effet du dernier avancer et du dernier tourner à gauche.",
               "hint": "Placer puis avancer laisse l’Agent après le rail posé. Le virage suivant change sa direction, sans changer sa case."
             },
             {
@@ -37194,77 +36883,11 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "id": "defi-papier",
-          "title": "Tracer un motif compact",
-          "paragraphs": [
-            "Sur cette grille originale, toutes les cases sont praticables. Le pion commence en B4 vers le nord. Placer un rail marque sa case actuelle ; avancer le déplace d’une case dans la direction regardée. Un virage fait un quart de tour sur place.",
-            "Pour ce défi, la définition tronçon contient deux tours, comme ci-dessous. Utilise un pion orienté et marque les rails sur ton dessin."
-          ],
-          "illustration": {
-            "src": "images/minecraft-motifs.svg",
-            "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5. Toutes les cases sont praticables. Le pion commence en B4 vers le nord.",
-            "caption": "Départ B4, nord. Marque séparément les rails et l’arrivée."
-          },
-          "filename": "Définition du défi",
-          "code": "définir tronçon\n  répéter 2 fois\n    placer un rail\n    avancer"
-        },
-        {
-          "type": "lesson",
-          "id": "programme-papier",
-          "title": "Prévoir les appels et les virages",
-          "paragraphs": [
-            "Exécute sur papier ce programme avec la définition du défi. Le virage initial fait partie de la trace."
-          ],
-          "filename": "Programme du défi",
-          "code": "au départ\n  tourner à droite\n  répéter 2 fois\n    appeler tronçon\n    tourner à gauche"
-        },
-        {
-          "type": "tasks",
-          "id": "autonomie",
-          "title": "Distinguer le tracé et l’état final",
-          "intro": "Prévois avant de déplacer ton pion, puis suis chaque commande pour vérifier.",
-          "items": [
-            {
-              "id": "mc05-papier-trace",
-              "text": "Depuis B4 nord, relève les cases recevant un rail et l’état après chaque appel suivi de son virage. Combien de placements et de déplacements sont exécutés au total ?",
-              "hint": "Le virage initial oriente le pion vers l’est. Deux appels exécutent chacun deux fois placer puis avancer."
-            },
-            {
-              "id": "mc05-papier-sans-final",
-              "text": "Un camarade garde le virage entre les deux appels mais retire seulement celui qui suit le deuxième. Les rails changent-ils ? Compare la position et la direction finales.",
-              "hint": "Le virage retiré vient après tous les placements et tous les déplacements."
-            },
-            {
-              "id": "mc05-papier-inverser",
-              "text": "Repars du dessin initial. Dans la définition seulement, inverse les deux commandes : avancer puis placer un rail. Garde tous les virages du programme. Prévois les rails, la position et la direction finales. Une même arrivée prouve-t-elle que le tracé est identique ?",
-              "hint": "Suis les mêmes déplacements, mais marque un rail après chaque déplacement. Le départ reçoit-il encore un rail ?"
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "comparaison-papier",
-          "title": "Comparer après tes prévisions",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "resultat-papier",
-              "title": "Les rails et l’Agent ne racontent pas la même chose",
-              "paragraphs": [
-                "Avec placer puis avancer, le premier appel pose les rails en B4 et C4. Il termine en D4 ; le virage suivant oriente le pion au nord. Le second pose en D4 et D3, termine en D2, puis le dernier virage oriente le pion à l’ouest. Il y a quatre placements et quatre déplacements.",
-                "En retirant seulement le tout dernier virage, les rails et la position finale D2 restent identiques. Le pion regarde le nord au lieu de l’ouest.",
-                "Avec avancer puis placer dans la définition, les rails sont en C4, D4, D3 et D2. Le pion termine encore en D2 vers l’ouest. B4 ne reçoit plus de rail et D2 en reçoit un : même arrivée et même direction ne signifient pas même construction."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "lesson",
           "id": "conserver",
           "title": "Conserver la définition avec ses appels",
           "paragraphs": [
-            "Dans ton carnet, garde l’adresse de Hero 12, une capture de la définition et une autre du programme principal. Note le nombre de placements par appel, les raccords et l’état final observé après Reset.",
-            "Pour reprendre, tu dois pouvoir reconstruire la définition et les appels. Avec un compte Code.org, vérifie en rouvrant le niveau que tu retrouves ta propre version avant de fermer ton travail."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         }
       ],
@@ -37272,24 +36895,23 @@ window.CODECRAFT_DATA = {
         "Deux répétitions de trois placements exécutent six placements ; la boucle intérieure recommence à chaque tour extérieur.",
         "Emboîter deux boucles ne réduit pas automatiquement les actions exécutées ou les blocs écrits.",
         "Une procédure conserve un motif, et son appel exécute ce motif depuis l’état courant.",
-        "La position d’un virage dans le programme détermine la direction du tronçon suivant et l’orientation finale.",
-        "Placer puis avancer et avancer puis placer peuvent donner la même arrivée avec des rails sur des cases différentes."
+        "La position d’un virage dans le programme détermine la direction du tronçon suivant et l’orientation finale."
       ],
       "teacherGuide": {
-        "objective": "Faire composer deux niveaux de répétition, extraire un motif dans une procédure puis distinguer état final, tracé et coût d’exécution.",
+        "objective": "Emboîter deux répétitions, extraire un tronçon dans une procédure et prévoir les rails posés ainsi que l’état final de l’Agent.",
         "entryDiagnosis": [
-          "Demander l’effet d’un appel et l’état requis pour le suivant. Reprendre la mission 4 si l’élève remet mentalement l’Agent au départ entre les appels.",
-          "Faire expliquer deux répétitions de trois actions sur papier avant de manipuler les emboîtements si nécessaire."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "Hero 12 est libre. Deux définitions sans paramètres sont fournies et modifiables, avec leurs appels dans la palette. Les répétitions vont de 2 à 10 et peuvent être imbriquées. Aucun éditeur JavaScript ni paramètre n’est nécessaire.",
           "Les constructions de référence ont déjà été exécutées lors de l’audit ciblé : deux groupes de trois rails en ligne, puis deux appels de la première procédure avec tourner à gauche après chaque appel. Les captures sont dans browser-artifacts/audit-minecraft-2026-10-18/hero12-boucles.png et hero12-procedure-angle.png. Cette intégration ne revendique pas de nouvelle exécution du jeu.",
           "Les essais Hero 12 partent de l’état initial avec tourner à droite. Le terrain est remis à zéro entre versions. La vue suit Alex ou Steve : après exécution, utiliser les flèches sous le jeu pour suivre les rails et retrouver l’Agent. Le suivi de la vue et les commandes du joueur ont été vérifiés dans l’essai conservé de Hero 12 ; capture hero12-vue-joueur.png dans browser-artifacts/audit-minecraft-2026-10-18/. Le défi original compact sert au suivi case par case.",
           "Conserver une capture des travaux déjà présents avant de retirer leurs commandes. Reset restaure le terrain et les personnages tout en gardant le programme ; Start Over concerne le retour aux blocs de départ.",
-          "La première définition est désignée tronçon dans les exemples CodeCraft. L’élève garde le nom fourni dans Code.org et utilise l’appel correspondant. La seconde définition n’intervient pas dans cette activité.",
-          "La grille originale utilise deux placements par appel, contre trois dans les premiers essais Hero 12. Préparer un pion orienté et quatre marques de rails. Toutes les cases du dessin sont praticables."
+          "La première définition est désignée tronçon dans les exemples CodeCraft. L’élève garde le nom fourni dans Code.org et utilise l’appel correspondant. La seconde définition n’intervient pas dans cette activité."
         ],
-        "why": "Après Scratch, l’intérêt porte sur la composition : prévoir le nombre d’actions à travers deux boucles, distinguer le motif de son contexte d’appel et montrer que l’état final ne résume pas les constructions.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
           "Combien de fois la commande placer sera-t-elle exécutée ? Montre les tours extérieurs et les tours intérieurs.",
           "Où placer le virage pour que le deuxième tronçon change de direction sans faire tourner chaque rail du premier ?"
@@ -37297,11 +36919,10 @@ window.CODECRAFT_DATA = {
         "example": {
           "target": {
             "moduleId": "minecraft-motifs",
-            "blockId": "appeler-angle"
+            "blockId": "compter"
           },
           "comments": [
-            "La définition contient répéter 3 fois, placer puis avancer. Le programme contient le virage initial à droite, puis répéter 2 fois, appeler puis tourner à gauche.",
-            "Six placements et six déplacements sont exécutés. Les deux virages de la boucle principale sont exécutés aussi. Depuis le départ initial nord, le premier tronçon est vers l’est, le second vers le nord et l’Agent finit orienté à l’ouest."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
@@ -37312,35 +36933,25 @@ window.CODECRAFT_DATA = {
           {
             "question": "Où est le virage qui sépare les tronçons ?",
             "answer": "Dans la boucle du programme principal, après l’appel. La définition construit droit. Ce virage est aussi exécuté après le dernier appel."
-          },
-          {
-            "question": "Que donne le programme du défi original ?",
-            "answer": "Rails B4, C4, D4, D3 ; quatre placements et quatre déplacements. Après le premier appel et le virage : D4 nord. Après le second et le virage : D2 ouest."
-          },
-          {
-            "question": "Que montre l’inversion avancer puis placer ?",
-            "answer": "Les rails sont C4, D4, D3, D2 et l’état final reste D2 ouest. Une arrivée et une direction identiques ne garantissent pas des constructions identiques."
           }
         ],
         "accompaniedActivity": {
           "moduleId": "minecraft-motifs",
-          "blockId": "guide"
+          "blockId": "compter"
         },
         "independentActivity": {
           "moduleId": "minecraft-motifs",
-          "blockId": "autonomie"
+          "blockId": "guide"
         },
         "differentiation": [
-          "Faire déplier les deux tours extérieurs dans un tableau, avec une ligne par placement et déplacement. Accepter un suivi oral ou avec un pion.",
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
           "Si l’emboîtement bloque, faire d’abord construire un seul tronçon, puis l’envelopper dans la seconde répétition.",
-          "Après Scratch, concentrer l’échange sur le coût, les virages et le contre-exemple même arrivée, autres rails. La création d’une fonction avec paramètres n’est pas requise.",
           "Pendant le stage, utiliser seulement la comparaison ou la trace utile au projet en cours, puis revenir à celui-ci."
         ],
         "commonErrors": [
           {
             "symptom": "L’élève prévoit cinq placements avec deux boucles de deux et trois tours.",
             "helps": [
-              "Dessiner les trois placements du premier tour extérieur.",
               "Recommencer les trois placements au deuxième tour : les nombres ne s’additionnent pas."
             ]
           },
@@ -37361,18 +36972,17 @@ window.CODECRAFT_DATA = {
           {
             "symptom": "L’élève annonce des constructions identiques parce que l’Agent finit au même endroit.",
             "helps": [
-              "Marquer les rails au moment exact des placements.",
-              "Comparer B4 et D2 dans les deux versions du défi original."
+              "Marquer les rails au moment exact des placements."
             ]
           }
         ],
-        "notes": "Hero 12 n’impose pas une solution ni une validation de ce motif. Demander la prévision, les cases construites et l’explication de l’état final. Les tests CodeCraft simulent les règles du défi original et ne constituent pas une recette du moteur Code.org.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Prévoir puis essayer deux groupes de trois rails et comparer à une répétition de six.",
-          "Extraire le tronçon de trois dans la première définition.",
-          "Composer deux appels avec un virage à gauche après chaque appel.",
-          "Tracer le défi compact puis comparer le dernier virage et l’ordre des placements.",
-          "Conserver la définition et le programme d’appel ensemble."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -37413,7 +37023,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Passer de Hero à Aquatic",
-          "text": "Ouvre le niveau 7 de Voyage Aquatic. Ici, les blocs pilotent directement Alex ou Steve, à pied ou en bateau selon la scène. Tu lances son trajet avec Exécuter : tu vas prévoir ses décisions dans le programme. Garde ton carnet pour noter sa case, sa direction et le résultat des tests."
+          "text": "Ouvre Aquatic 7. Ici, les blocs pilotent directement Alex ou Steve. Observe les passages autour du personnage : le programme va choisir quand tourner."
         },
         {
           "type": "lesson",
@@ -37429,7 +37039,7 @@ window.CODECRAFT_DATA = {
           "id": "entree-experimentee",
           "title": "Tu utilises déjà les conditions ?",
           "paragraphs": [
-            "Après avoir lu la boucle jusqu’au but, tu peux passer à la décision d’Aquatic 7. Prévois un test vrai et un test faux depuis la case et la direction du personnage. Compare ensuite les ordres des commandes sur la grille, notamment depuis B3 nord. Si le rôle d’un si reste difficile, lis d’abord Un test pose une question."
+            "Si tu connais déjà les conditions, lis le fonctionnement de la boucle jusqu’au but puis complète la décision dans Aquatic 7. Observe une situation où le virage se déclenche et une autre où il est ignoré."
           ],
           "activityLink": {
             "moduleId": "minecraft-decisions",
@@ -37473,9 +37083,7 @@ window.CODECRAFT_DATA = {
           "paragraphs": [
             "Le programme de départ contient une boucle jusqu’au but, avancer puis si chemin à droite. Si une ancienne version personnelle apparaît, garde une capture avant d’utiliser Recommencer (Start Over) pour retrouver ce programme.",
             "Observe les ouvertures sur la carte. Place tourner à droite à l’intérieur du si. Lis maintenant le tour complet : le personnage avance, puis teste depuis la case où il vient d’arriver. Il tourne seulement si le passage à droite est possible."
-          ],
-          "filename": "Programme guidé",
-          "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si chemin à droite\n      tourner à droite"
+          ]
         },
         {
           "type": "tasks",
@@ -37484,13 +37092,13 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc06-sept-faux",
-              "text": "Sur ton dessin de la carte, suis le premier avancer. Quelle case est ensuite regardée par le test ? Note sa réponse et la commande qui sera exécutée ou sautée.",
-              "hint": "Le test vient après avancer. Place d’abord ton pion sur sa nouvelle case en conservant sa direction."
+              "text": "Observe le premier déplacement dans Aquatic 7. Quelle case le test regarde-t-il ensuite ? Le virage est-il exécuté ou ignoré ?",
+              "hint": "Le test vient après avancer : il utilise la nouvelle position du personnage."
             },
             {
               "id": "mc06-sept-vrai",
-              "text": "Poursuis jusqu’à une ouverture à droite. Prévois le virage et la direction du prochain avancer. Relève aussi une position où le test est faux.",
-              "hint": "Un test faux saute le virage. Il ne termine pas la boucle jusqu’au but."
+              "text": "Dans le jeu, repère une ouverture à droite. Observe quand le personnage tourne et dans quelle direction il avance ensuite.",
+              "hint": "Un test faux saute le virage, puis la répétition continue."
             },
             {
               "id": "mc06-sept-verifier",
@@ -37500,21 +37108,12 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "id": "moment-test",
-          "title": "Tester avant ou après le déplacement",
-          "paragraphs": [
-            "Avancer puis tester et tester puis avancer ne posent pas la question depuis la même case. Pour comparer les deux ordres, note la case et la direction au moment précis où le si est rencontré.",
-            "Sur ton dessin d’Aquatic 7, choisis un angle. Prévois quand chaque version y repère l’ouverture. Un changement d’ordre ne modifie pas forcément tout le trajet : il faut suivre les actions depuis le départ choisi pour le savoir. Tu compareras aussi ces ordres sur la grille plus bas."
-          ]
-        },
-        {
-          "type": "lesson",
           "id": "niveau-huit",
           "title": "Reconstruire la décision sur une autre carte",
           "paragraphs": [
-            "Ouvre Aquatic 8. Repère le départ, les passages et le poisson tropical à atteindre. Prévois les déplacements et les virages utiles avant de poser tes blocs.",
-            "Construis une boucle jusqu’au but avec un déplacement et un test de chemin. Choisis la direction regardée par le test et la rotation à exécuter si ce test est vrai. Les menus du test et du virage se règlent séparément : lis les deux.",
-            "Place les commandes dans l’ordre que tu peux justifier sur la carte. Marque la position où le test doit être effectué et la direction obtenue après son action."
+            "Ouvre Aquatic 8. Repère le personnage, les passages et le poisson tropical à atteindre.",
+            "Construis une boucle jusqu’au but avec un déplacement et un test de chemin. Choisis le côté regardé par le test et la rotation à exécuter si le passage est possible. Ces deux menus se règlent séparément.",
+            "Essaie depuis le départ. Si le personnage tourne trop tôt, trop tard ou du mauvais côté, corrige la commande concernée puis relance après Reset."
           ],
           "externalLink": {
             "label": "Ouvrir Aquatic 8 dans un autre onglet",
@@ -37544,83 +37143,11 @@ window.CODECRAFT_DATA = {
         },
         {
           "type": "lesson",
-          "id": "defi-papier",
-          "title": "Décider sur une grille",
-          "paragraphs": [
-            "Sur cette grille originale, les cases praticables sont B5, B4, B3, C3, D3, D4 et D5. Toutes les autres sont bloquées. Le départ est B5 vers le nord et le but est D5.",
-            "Avancer déplace d’une case devant le pion ; tourner à droite fait un quart de tour sur place. Si chemin à droite regarde la case voisine à droite du pion et exécute son contenu seulement si elle est praticable. Si avancer viserait une case bloquée, arrête ta trace et note le blocage.",
-            "La boucle vérifie avant chaque tour si le pion est au but. Si c’est le cas, elle ne commence pas de nouveau tour. Suis le programme A sur ton dessin."
-          ],
-          "illustration": {
-            "src": "images/minecraft-decisions.svg",
-            "alt": "Grille A à E et 1 à 5. Chemin en B5, B4, B3, C3, D3, D4 et D5. Départ B5 nord, but D5. Toutes les autres cases sont bloquées.",
-            "caption": "Départ B5, nord. Le test dépend de la case et de la direction."
-          },
-          "filename": "Programme A",
-          "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si chemin à droite\n      tourner à droite"
-        },
-        {
-          "type": "lesson",
-          "id": "tester-dabord",
-          "title": "Le même test placé avant avancer",
-          "paragraphs": [
-            "Le programme B conserve les mêmes commandes et déplace le si avant avancer. Utilise la même grille pour le comparer au programme A."
-          ],
-          "filename": "Programme B",
-          "code": "au départ\n  répéter jusqu’au but\n    si chemin à droite\n      tourner à droite\n    avancer"
-        },
-        {
-          "type": "tasks",
-          "id": "autonomie",
-          "title": "Justifier le test et son moment",
-          "intro": "Prévois d’abord, puis vérifie avec un pion orienté sur le dessin.",
-          "items": [
-            {
-              "id": "mc06-papier-tests",
-              "text": "Teste si chemin à droite depuis B4 nord, B3 nord, puis B4 est. Pour chaque état, nomme la case regardée et donne vrai ou faux.",
-              "hint": "Tourner le pion change sa droite. Depuis B4 vers l’est, sa droite est vers le bas de la grille."
-            },
-            {
-              "id": "mc06-papier-trace",
-              "text": "Depuis B5 nord, trace le programme A jusqu’au but. Note la réponse du test après chaque déplacement, les virages et la direction finale. Un test faux a-t-il arrêté la répétition ?",
-              "hint": "Avance avant de tester. Après un si faux, le tour se termine puis la boucle vérifie le but."
-            },
-            {
-              "id": "mc06-papier-ordre",
-              "text": "Change seulement le départ : place le pion en B3 vers le nord, avec D5 comme but. Compare les programmes A et B. Lequel peut commencer à suivre le chemin ? Explique ce que chacun fait avant son premier test ou déplacement.",
-              "hint": "Depuis B3 nord, B2 est bloquée et C3 est praticable. Dans quelle version le virage peut-il arriver avant le premier avancer ?"
-            },
-            {
-              "id": "mc06-papier-but",
-              "text": "Place directement le pion en D5, au but. Doit-il exécuter un premier avancer avant que la boucle s’arrête ? Justifie avec la règle de la boucle."
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "comparaison-papier",
-          "title": "Comparer après tes prévisions",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "resultat-papier",
-              "title": "La question dépend de l’état courant",
-              "paragraphs": [
-                "Depuis B4 nord, le test regarde C4 : faux. Depuis B3 nord, il regarde C3 : vrai. Depuis B4 est, il regarde B5 : vrai. À droite ne désigne donc pas toujours l’est de la carte.",
-                "Le programme A passe par B4, B3, C3, D3, D4, D5. Les réponses successives sont faux, vrai, faux, vrai, faux, faux. Il tourne en B3 puis en D3, avance six fois et termine en D5 vers le sud. Les si faux ont sauté les virages ; l’arrivée au but arrête les nouveaux tours.",
-                "Depuis B3 nord, A essaie d’avancer vers B2 avant de tester : la trace est bloquée. B teste d’abord C3, tourne vers l’est et avance en C3. Il poursuit par D3, D4, D5 et termine vers le sud. Ici, changer le moment du test change la possibilité de partir.",
-                "Depuis D5 déjà au but, aucun tour ne commence : ni déplacement ni test de chemin ne sont exécutés. Avec un départ B5 nord, les deux programmes peuvent suivre le même trajet ; l’ordre ne se juge pas sans connaître l’état de départ."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "lesson",
           "id": "conserver",
           "title": "Conserver les raisons de tes choix",
           "paragraphs": [
-            "Garde l’adresse du niveau travaillé, une capture de tes blocs et deux états de ton dessin : un où le test est vrai, un où il est faux. Pour chacun, note la case regardée et l’action qui suit. Indique aussi le but qui arrête les répétitions.",
-            "Avec un compte Code.org, vérifie la reprise de ta version en rouvrant le niveau. Ton carnet et la capture permettent aussi de reconstruire ce programme court."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         }
       ],
@@ -37628,24 +37155,23 @@ window.CODECRAFT_DATA = {
         "Un test de chemin dépend de la position du personnage, de sa direction et du côté sélectionné.",
         "Un si vrai exécute son contenu ; un si faux le saute et laisse le programme continuer.",
         "La boucle jusqu’au but et le test de chemin posent deux questions différentes.",
-        "Tester avant ou après avancer peut changer le résultat ; il faut suivre l’état au moment du test.",
-        "Une prévision comporte au moins un test vrai, un test faux et la raison de l’arrêt."
+        "L’exécution permet de repérer un test vrai, un test faux et ce qui arrête la boucle."
       ],
       "teacherGuide": {
-        "objective": "Faire expliquer une décision à partir de l’état spatial et distinguer le test local du critère d’arrêt de la répétition.",
+        "objective": "Lire un test de chemin, prévoir quand il est vrai ou faux et choisir le moment de le vérifier dans une boucle jusqu’au but.",
         "entryDiagnosis": [
-          "Faire indiquer la droite du pion dans deux orientations. Si elle est assimilée à l’est de la carte, reprendre une rotation avec un objet orienté.",
-          "Demander la différence entre répéter un nombre donné de fois et répéter jusqu’au but. La reprise Aquatic 4 est disponible sans imposer les niveaux 4 à 6 à tous les élèves."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "La transition Hero/Aquatic est explicite : les blocs pilotent le personnage ou son bateau, sans second Agent à guider au clavier.",
           "L’inventaire confirme les liens Aquatic 4, 7 et 8. Le niveau 7 fournit jusqu’au but, avancer puis si chemin à droite avec une branche à compléter. Les contrôles ciblés de l’interface confirment le sélecteur devant/droite/gauche ; au niveau 8, le menu de rotation permet droite/gauche même si la palette affiche gauche au départ.",
           "Les cartes et palettes des niveaux 7 et 8 ont été observées pendant cette intégration, sans exécution complète des puzzles. Captures aquatic7-depart.png et aquatic8-depart.png dans browser-artifacts/audit-minecraft-2026-10-18/. Réutiliser l’inventaire existant pour le reste ; aucun éditeur JavaScript ou terrain importable n’est requis.",
           "Dans le niveau 7, faire suivre avancer avant de regarder le passage à droite. Les tâches demandent une réponse fausse et une vraie sur la carte affichée, puis la raison de l’arrêt au coffre.",
-          "La grille originale est indépendante des cartes Code.org. Elle définit son arrêt sur blocage pour la trace papier. Le programme A depuis B5 nord donne six déplacements et deux virages ; depuis B3 nord, avancer vise B2 bloquée. Le programme B peut d’abord tourner et rejoindre D5.",
           "La reprise avec un compte reste à vérifier dans l’usage réel. Conserver les blocs existants avant Start Over, qui restaure le programme fourni, et distinguer ce bouton de Reset entre deux essais."
         ],
-        "why": "Après Scratch, le bénéfice porte sur la lecture située du test : sa direction est relative, son résultat change avec l’état, et son emplacement dans la boucle peut autoriser ou empêcher un départ.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
           "Quelle case le personnage regarde-t-il quand il rencontre ce si ? A-t-il déjà avancé dans ce tour ?",
           "Si le chemin à droite est fermé, quelle commande est sautée ? La boucle doit-elle pour autant s’arrêter ?"
@@ -37653,33 +37179,16 @@ window.CODECRAFT_DATA = {
         "example": {
           "target": {
             "moduleId": "minecraft-decisions",
-            "blockId": "lire-sept"
+            "blockId": "guide"
           },
           "comments": [
-            "Le si se trouve dans la boucle jusqu’au but, après avancer. Tourner est dans le si : il dépend du résultat de ce test.",
-            "Faire verbaliser la case testée après le déplacement et la direction du prochain déplacement après le virage. La réponse fausse ne produit pas implicitement une autre rotation."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
           {
             "question": "Un test faux termine-t-il la boucle jusqu’au but ?",
             "answer": "Non. Le contenu du si est sauté, puis le programme continue. La boucle vérifie séparément si l’objectif est atteint."
-          },
-          {
-            "question": "Quelle case est à droite depuis B4 est sur la grille ?",
-            "answer": "B5, qui est praticable. Depuis B4 nord, ce serait C4, bloquée."
-          },
-          {
-            "question": "Pourquoi A et B diffèrent-ils depuis B3 nord ?",
-            "answer": "A tente d’abord B2 bloquée. B regarde C3, tourne à droite avant son déplacement et rejoint le chemin vers D5."
-          },
-          {
-            "question": "Inverser l’ordre change-t-il toujours le trajet ?",
-            "answer": "Non. Depuis B5 nord sur cette grille, les deux programmes peuvent rejoindre D5 par le même chemin. Il faut tenir compte du départ et des états où le test est rencontré."
-          },
-          {
-            "question": "Que se passe-t-il si le pion du défi est déjà au but ?",
-            "answer": "La condition de boucle est vérifiée avant le tour. Aucun avancer ni test de chemin n’est exécuté."
           }
         ],
         "accompaniedActivity": {
@@ -37688,19 +37197,17 @@ window.CODECRAFT_DATA = {
         },
         "independentActivity": {
           "moduleId": "minecraft-decisions",
-          "blockId": "autonomie"
+          "blockId": "transfert"
         },
         "differentiation": [
-          "Lire les commandes à voix haute et faire tourner un pion. Accepter un dessin ou une explication orale plutôt qu’un tableau écrit.",
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
           "Pour découvrir la boucle jusqu’au but, utiliser Aquatic 4 puis revenir au chapitre. Les niveaux 5 et 6 peuvent servir d’entraînement supplémentaire selon le besoin du groupe.",
-          "Après Scratch, aller directement aux états vrai/faux et à la comparaison du départ B3 nord. Éviter de transformer ce transfert en nouveau cours général sur si.",
           "Pendant le stage, ouvrir la section sur le test au moment d’un blocage, puis revenir au projet commun."
         ],
         "commonErrors": [
           {
             "symptom": "La droite du personnage reste l’est de la carte après un virage.",
             "helps": [
-              "Orienter le pion comme le personnage.",
               "Montrer sa droite avant de nommer la case testée."
             ]
           },
@@ -37714,8 +37221,7 @@ window.CODECRAFT_DATA = {
           {
             "symptom": "L’élève prévoit le test depuis la case avant le déplacement.",
             "helps": [
-              "Marquer l’ordre avancer puis si dans le programme.",
-              "Déplacer le pion avant de regarder la case voisine du test."
+              "Marquer l’ordre avancer puis si dans le programme."
             ]
           },
           {
@@ -37726,13 +37232,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "La réussite de Code.org ne suffit pas à expliquer la décision. Demander les deux états vrai/faux et le critère d’arrêt. Le contre-exemple de la grille n’est pas annoncé comme une carte importée ni comme le comportement exact du moteur en cas de collision.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Préciser le contrôle direct du personnage et lire la boucle jusqu’au but.",
-          "Compléter la branche du niveau 7 et prévoir un test vrai et un faux.",
-          "Reconstruire une décision justifiée sur la carte du niveau 8.",
-          "Tracer le dessin original puis déplacer le départ à B3 nord pour comparer les ordres.",
-          "Conserver deux états du test et la raison de l’arrêt."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -37748,10 +37254,10 @@ window.CODECRAFT_DATA = {
     },
     "minecraft-strategies": {
       "domainId": "jeux-video",
-      "title": "Éprouver une stratégie avec des repères",
+      "title": "Adapter une stratégie aux repères du terrain",
       "type": "lesson",
       "theme": "fondations",
-      "objective": "Choisir des actions selon le sol rencontré, prévoir leur effet et trouver une situation où la stratégie doit être adaptée.",
+      "objective": "Choisir des actions selon le sol rencontré et adapter les tests et les virages à une nouvelle carte.",
       "tool": {
         "label": "Ouvrir Voyage Aquatic, niveau 9 sur Code.org",
         "url": "https://studio.code.org/courses/aquatic/units/1/lessons/1/levels/9"
@@ -37777,7 +37283,7 @@ window.CODECRAFT_DATA = {
           "type": "callout",
           "id": "preparer",
           "title": "Suivre des indications sur le terrain",
-          "text": "Ouvre Aquatic 9. Tu diriges toujours le personnage avec les blocs. Repère le départ, le coffre à atteindre et les cases de corail bleu et rouge. Dessine les passages utiles dans ton carnet : tu vas choisir une règle pour les parcourir."
+          "text": "Ouvre Aquatic 9. Les blocs dirigent le personnage. Repère le coffre et les cases de corail bleu et rouge sur le trajet."
         },
         {
           "type": "lesson",
@@ -37794,9 +37300,9 @@ window.CODECRAFT_DATA = {
           "id": "choisir-regles",
           "title": "Choisir deux règles sur la carte",
           "paragraphs": [
-            "Sur ton dessin d’Aquatic 9, suis un passage vers le coffre. Marque la direction d’arrivée sur une case bleue, puis celle nécessaire pour continuer. Fais de même sur une case rouge. Déduis le virage utile pour chaque couleur et vérifie cette proposition sur les autres cases du trajet.",
-            "Dans une boucle jusqu’au but, place avancer puis deux si au même niveau : l’un pour le corail bleu, l’autre pour le corail rouge. Place dans chacun le virage prévu pour cette couleur. Lis les menus de rotation avant de lancer.",
-            "Les deux si sont testés l’un après l’autre. Le second est placé après le premier, en dehors de son contenu. Une case bleue n’est pas rouge : le test rouge reste faux après un simple virage sur une case bleue."
+            "Dans Aquatic 9, regarde le passage avant et après une case bleue. Choisis le virage qui permet de poursuivre. Fais de même pour le corail rouge.",
+            "Dans la boucle jusqu’au but, place avancer puis deux si au même niveau : l’un pour le corail bleu, l’autre pour le corail rouge. Place dans chacun le virage choisi, puis lance et observe.",
+            "Les deux si sont testés l’un après l’autre. Le second reste en dehors du contenu du premier. Tourner ne change pas le sol sous le personnage."
           ]
         },
         {
@@ -37806,12 +37312,12 @@ window.CODECRAFT_DATA = {
           "items": [
             {
               "id": "mc07-couleurs-prevoir",
-              "text": "Avant de lancer, montre une arrivée sur le bleu, une sur le rouge et une sur un autre sol. Pour chacune, annonce les deux réponses des tests et la direction obtenue.",
-              "hint": "Place d’abord le pion après avancer. Lis bleu puis rouge depuis cette même case ; un virage seul ne change pas sa couleur."
+              "text": "Pendant l’exécution, repère une case bleue, une rouge et une case sans repère. Quels virages sont exécutés dans chaque cas ?",
+              "hint": "Observe le sol sous le personnage au moment du test."
             },
             {
               "id": "mc07-couleurs-tester",
-              "text": "Lance depuis le départ et compare au dessin. S’il y a un écart, relève la première case concernée et le test exécuté. Corrige ce choix, utilise Réinitialiser (Reset), puis vérifie à nouveau.",
+              "text": "Lance depuis le départ et observe les virages. Si le personnage manque un passage, repère la première case concernée et corrige le test ou la rotation. Relance après Reset.",
               "hint": "Si le virage rouge n’arrive jamais, vérifie que son si est après le si bleu et non à l’intérieur."
             },
             {
@@ -37825,9 +37331,9 @@ window.CODECRAFT_DATA = {
           "id": "autre-repere",
           "title": "Passer aux lanternes marines",
           "paragraphs": [
-            "Ouvre Aquatic 10. Repère le calmar à rejoindre, les passages et les lanternes marines, les cases claires du monument. Le test proposé porte maintenant sur ce type de sol.",
-            "Sur le dessin, relève la direction d’arrivée à une lanterne et la direction nécessaire pour continuer. Vérifie sur les autres lanternes du trajet si un même virage convient. La couleur du niveau précédent ne suffit pas à choisir ce nouveau réglage.",
-            "Construis une boucle jusqu’au but avec avancer puis un si sur lanterne marine contenant le virage que tu as prévu. Si une ancienne version personnelle est déjà chargée, conserve une capture avant de la modifier."
+            "Ouvre Aquatic 10. Repère le calmar à rejoindre et les lanternes marines, les cases claires du monument.",
+            "Sur une lanterne, compare la direction d’arrivée du personnage au passage à suivre. Choisis le virage utile et vérifie s’il convient aux autres lanternes du trajet.",
+            "Construis une boucle jusqu’au but avec avancer puis un si sur lanterne marine contenant ce virage. Lance et observe. Conserve une capture avant de remplacer une ancienne version personnelle."
           ],
           "externalLink": {
             "label": "Ouvrir Aquatic 10 dans un autre onglet",
@@ -37847,75 +37353,6 @@ window.CODECRAFT_DATA = {
               "id": "mc07-lanterne-arret",
               "text": "Explique ce qui reste commun avec Aquatic 9 et ce qui a changé : le sol testé, les virages et le but. Quelle observation montre que le programme peut s’arrêter ?",
               "hint": "Rencontrer une lanterne déclenche une action. Atteindre le calmar répond à la question de la boucle."
-            },
-            {
-              "id": "mc07-lanterne-limite",
-              "text": "Sur une copie de ton dessin, imagine une lanterne ajoutée au milieu d’une ligne droite. À quel endroit ton programme ferait-il une action inutile ? Prévois le déplacement suivant sans modifier la carte de Code.org."
-            }
-          ]
-        },
-        {
-          "type": "lesson",
-          "id": "defi-papier",
-          "title": "Une stratégie sur une grille",
-          "paragraphs": [
-            "Les cases praticables sont B5, B4, B3, C3, D3, D2 et D1. Toutes les autres sont bloquées. Place le pion en B5 vers le nord ; le but est D1. Le repère bleu, marqué B, est en B3. Le repère rouge, marqué R, est en D3.",
-            "Avancer déplace d’une case devant le pion. Chaque virage fait un quart de tour sur place. Un test de couleur regarde seulement la case occupée. Les deux si du programme sont successifs, au même niveau dans la boucle.",
-            "Avant chaque tour, la boucle vérifie si le pion est au but. Si un avancer viserait une case bloquée, arrête la trace et note cette case. Utilise un pion orienté pour éprouver ce programme sur le dessin."
-          ],
-          "illustration": {
-            "src": "images/minecraft-strategies.svg",
-            "alt": "Grille A à E, lignes 1 à 5. Chemin B5, B4, B3, C3, D3, D2, D1. Départ B5 nord, but D1. Repère bleu B en B3, rouge R en D3. Autres cases bloquées.",
-            "caption": "B et R identifient les repères bleu et rouge. Le pion part en B5 vers le nord."
-          },
-          "filename": "Stratégie à éprouver",
-          "code": "au départ\n  répéter jusqu’au but\n    avancer\n    si sur bleu\n      tourner à droite\n    si sur rouge\n      tourner à gauche"
-        },
-        {
-          "type": "tasks",
-          "id": "autonomie",
-          "title": "Trouver la limite et la correction",
-          "intro": "Garde le programme et le départ identiques pour chaque comparaison. Repars de B5 nord à chaque essai.",
-          "items": [
-            {
-              "id": "mc07-grille-reference",
-              "text": "Trace le programme jusqu’au but sur la grille de départ. Note les cases occupées, les deux tests après chaque avancer et la direction finale. Où les virages sont-ils exécutés ?",
-              "hint": "Une case sans repère donne faux aux deux tests. En D3 rouge, seul le second si exécute un virage."
-            },
-            {
-              "id": "mc07-grille-deplacer",
-              "text": "Sur une copie, déplace uniquement le repère bleu de B3 à B4. B3 reste praticable sans repère ; toutes les autres cases restent identiques. Trace le même programme : quel est le premier écart et quel déplacement bloque ensuite ?"
-            },
-            {
-              "id": "mc07-grille-retirer",
-              "text": "Reprends la grille de départ et retire seulement le repère rouge de D3. D3 reste praticable. Quel virage manque et vers quelle case le pion tente-t-il ensuite d’avancer ?"
-            },
-            {
-              "id": "mc07-grille-reparer",
-              "text": "Pour chaque copie, répare uniquement les repères afin que le programme initial rejoigne D1. Vérifie depuis B5 nord et explique à quels endroits cette stratégie a besoin de ses indications.",
-              "hint": "Une indication trop tôt provoque un virage inutile ; une indication absente laisse passer le virage nécessaire."
-            },
-            {
-              "id": "mc07-grille-conclure",
-              "text": "Complète : « Cette stratégie rejoint le but sur cette grille parce que… Elle échoue sur ma variante quand… » Appuie chaque phrase sur une case et une action observées."
-            }
-          ]
-        },
-        {
-          "type": "details",
-          "id": "comparer-papier",
-          "title": "Comparer après tes essais",
-          "blocks": [
-            {
-              "type": "lesson",
-              "id": "resultat-papier",
-              "title": "Les repères doivent correspondre aux virages",
-              "paragraphs": [
-                "Sur la grille de départ, le pion passe par B4, B3, C3, D3, D2 et D1. Les paires de réponses bleu/rouge sont faux/faux, vrai/faux, faux/faux, faux/vrai, faux/faux et faux/faux. Il tourne à droite en B3, à gauche en D3 et termine D1 vers le nord après six déplacements.",
-                "Avec le bleu déplacé en B4, le premier avancer arrive en B4 et le si bleu y fait tourner vers l’est. Le déplacement suivant vise C4, bloquée. Replacer le bleu en B3 rétablit le virage au bon endroit.",
-                "Sans rouge en D3, le pion y garde la direction est. Son déplacement suivant vise E3, bloquée. Replacer le rouge en D3 rétablit le virage vers le nord.",
-                "Ces variantes gardent le même chemin et le même but. C’est la disposition des indications qui change. La réussite sur la grille de départ ne suffit donc pas à garantir la réussite de ce programme sur un autre terrain."
-              ]
             }
           ]
         },
@@ -37930,7 +37367,7 @@ window.CODECRAFT_DATA = {
               "title": "Observer ce que la construction change",
               "paragraphs": [
                 "Ouvre Aquatic 11. L’objectif est de construire un mur de prismarine autour du béton noir pour activer le conduit. Repère la zone à entourer et le personnage. La palette propose placer de la prismarine, des déplacements, un test de sol et une boucle jusqu’à l’achèvement du conduit.",
-                "Commence par un essai court : place une commande placer de la prismarine et une commande avancer après le départ. Prévois la case transformée, lance, puis compare au résultat. Garde cette observation dans ton carnet avant de réinitialiser.",
+                "Commence par un essai court : place une commande placer de la prismarine et une commande avancer après le départ. Lance et observe quelle case est transformée avant de réinitialiser.",
                 "Ouvre le menu du test de sol : il propose notamment sable, prismarine sombre et lanterne marine. Choisis un repère observable et prévois l’action utile lorsqu’il est rencontré. Distingue ce test de la boucle : celle-ci attend l’achèvement de la construction.",
                 "Si tu poursuis la construction, prépare un petit tronçon avant de le répéter et vérifie les cases effectivement construites. Si le conduit reste inactif, relève le premier écart ou la partie du mur encore manquante. Tu peux revenir à ce chapitre après l’exploration."
               ],
@@ -37944,10 +37381,10 @@ window.CODECRAFT_DATA = {
         {
           "type": "lesson",
           "id": "conserver",
-          "title": "Conserver une réussite et une limite",
+          "title": "Reprendre ton programme",
           "paragraphs": [
-            "Garde l’adresse du niveau, une capture de tes blocs et un dessin annoté d’un test vrai, d’un test faux et du but atteint. Avec un compte Code.org, vérifie la reprise de ta version en rouvrant le niveau.",
-            "Conserve aussi les deux variantes de la grille et leurs corrections. Note le premier écart de chacune : ces traces expliquent quand ta stratégie peut être réutilisée et ce qu’il faut vérifier sur un nouveau terrain."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         }
       ],
@@ -37955,60 +37392,40 @@ window.CODECRAFT_DATA = {
         "Un test sur le sol regarde la case occupée ; un test de chemin regarde une case voisine.",
         "Le programme associe une action au repère ; la couleur seule ne commande pas le personnage.",
         "Deux si successifs sont chacun évalués, même si le premier est faux.",
-        "Une stratégie s’explique par ses règles, son état de départ et les repères du terrain.",
-        "Un contre-exemple précis permet de trouver une limite puis de vérifier une correction.",
+        "Les tests, virages et buts sont adaptés à la carte réellement utilisée.",
         "Le critère d’arrêt de la boucle est distinct du repère qui déclenche un virage."
       ],
       "teacherGuide": {
-        "objective": "Faire formuler une stratégie fondée sur le terrain, observer ses conditions de réussite et construire un contre-exemple contrôlé.",
+        "objective": "Choisir des actions selon le sol rencontré et adapter les tests et les virages à une nouvelle carte.",
         "entryDiagnosis": [
-          "Faire distinguer le sol sous le pion de la case située à sa droite.",
-          "Demander ce que fait un si faux et ce qui arrête une boucle jusqu’au but. Reprendre la mission 6 si ces deux rôles sont confondus."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "Réutiliser l’inventaire des 50 configurations. Les interfaces Aquatic 9, 10 et 11 ont été relues pour ce chapitre, sans exécution complète des puzzles ni compte utilisé. Captures aquatic9-depart.png, aquatic10-depart.png et aquatic11-depart.png dans browser-artifacts/audit-minecraft-2026-10-18/.",
           "Aquatic 9 fournit avancer, tourner, jusqu’au but et deux si sur corail bleu/rouge. Faire déduire les virages de la carte, puis vérifier chaque occurrence du trajet. Deux tests de couleurs différentes sont successifs, pas imbriqués.",
           "Aquatic 10 fournit le test sur lanterne marine et vise le calmar. Les cartes visibles et palettes permettent le travail proposé ; les programmes complets n’ont pas été exécutés pendant cette intégration.",
-          "Aquatic 11 est un prolongement replié. Le menu du test propose sable, prismarine sombre et lanterne marine ; il ne se limite pas au sable affiché initialement. Le défi demande un essai court pour observer l’effet du placement, sans présumer sa case ni fournir une solution de mur non exécutée.",
-          "Le cœur de la mission est Aquatic 9, le transfert 10 et le contre-exemple original. La réussite complète du niveau 11 ne conditionne pas la suite.",
-          "Préparer un pion orienté et une copie de la grille. Conserver les cases praticables dans les variantes : seul un repère change. Les lettres B et R sur les cases permettent d’identifier les deux couleurs."
+          "Aquatic 11 est un prolongement replié. Le menu du test propose sable, prismarine sombre et lanterne marine ; il ne se limite pas au sable affiché initialement. Le défi demande un essai court pour observer l’effet du placement, sans présumer sa case ni fournir une solution de mur non exécutée."
         ],
-        "why": "Après Scratch, le bénéfice porte sur les hypothèses d’une stratégie : un même programme réussit ou échoue selon la disposition du terrain, et une réussite ne prouve pas sa généralité.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
-          "Le personnage regarde-t-il une case voisine ou le sol qu’il occupe ?",
-          "Qui décide du virage : le repère lui-même ou le programme ?",
-          "Quelle petite modification du terrain suffirait à faire échouer cette règle ?"
+          "Le personnage teste-t-il une case voisine ou le sol qu’il occupe ?",
+          "Quel test et quel virage changent entre Aquatic 9 et 10 ?"
         ],
         "example": {
           "target": {
             "moduleId": "minecraft-strategies",
-            "blockId": "defi-papier"
+            "blockId": "guide"
           },
           "comments": [
-            "La stratégie originale associe bleu à droite et rouge à gauche. Ces choix appartiennent au dessin, pas à une règle universelle de Minecraft ou à un corrigé annoncé des couleurs d’Aquatic 9.",
-            "Après avancer en B3, le test bleu tourne vers l’est. Le second test lit encore B3 et reste faux. En D3, bleu est faux et rouge vrai : le virage gauche remet le pion vers le nord."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
           {
-            "question": "Tourner sur une case bleue rend-il le test bleu faux ?",
-            "answer": "Non. Le pion n’a pas changé de case ni de sol. Le test porte sur sa case occupée, pas sur son orientation."
-          },
-          {
             "question": "Pourquoi le si rouge doit-il être après le si bleu, et non dans son contenu ?",
             "answer": "Deux si successifs sont évalués indépendamment. Un si rouge imbriqué dans le bleu ne serait rencontré que sur une case bleue, qui n’est pas rouge."
-          },
-          {
-            "question": "Pourquoi le repère bleu en B4 fait-il échouer la stratégie originale ?",
-            "answer": "Le premier déplacement arrive en B4 ; le virage droit y intervient trop tôt. L’avancer suivant vise C4 bloquée."
-          },
-          {
-            "question": "Que manque-t-il sans repère rouge en D3 ?",
-            "answer": "Le virage gauche vers le nord. Le pion conserve l’est et tente E3 bloquée."
-          },
-          {
-            "question": "Une carte réussie prouve-t-elle que la stratégie fonctionne partout ?",
-            "answer": "Non. Les deux variantes gardent le même chemin mais changent les indications et produisent des blocages. La réutilisation demande de vérifier leur disposition et les actions associées."
           }
         ],
         "accompaniedActivity": {
@@ -38017,19 +37434,15 @@ window.CODECRAFT_DATA = {
         },
         "independentActivity": {
           "moduleId": "minecraft-strategies",
-          "blockId": "autonomie"
+          "blockId": "transfert"
         },
         "differentiation": [
-          "Faire avancer un pion puis désigner le sol sous lui avant de lire les deux tests. Utiliser les lettres B et R en complément des couleurs.",
-          "Accepter une justification orale avec un pointage des cases. Le dessin peut se limiter au passage utile plutôt que reproduire tout le décor.",
-          "Pour un élève expérimenté, faire proposer un contre-exemple supplémentaire en conservant départ, but et chemin, puis demander de localiser la première divergence.",
-          "Pendant le stage, utiliser seulement l’explication du test de sol ou une variante de la grille au moment du besoin. Ne pas ajouter l’ensemble de la mission au programme du stage."
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises."
         ],
         "commonErrors": [
           {
             "symptom": "Le test de sol est prévu depuis une case devant le personnage.",
             "helps": [
-              "Poser le pion après avancer.",
               "Désigner sa case occupée avant de lire le test."
             ]
           },
@@ -38041,13 +37454,6 @@ window.CODECRAFT_DATA = {
             ]
           },
           {
-            "symptom": "L’élève change plusieurs éléments dans le contre-exemple.",
-            "helps": [
-              "Repartir de la grille de référence.",
-              "Changer uniquement le repère demandé et conserver le programme, le chemin et le départ."
-            ]
-          },
-          {
             "symptom": "Un test faux est présenté comme la fin du programme.",
             "helps": [
               "Poursuivre jusqu’au test suivant ou au tour suivant.",
@@ -38055,13 +37461,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "La simulation de la grille prouve les traces selon ses règles explicites, pas l’exécution des puzzles Code.org. La correction porte sur les repères des copies papier ; aucune édition ou importation de carte Code.org n’est promise. L’exploration 11 ne constitue pas une recette complète de construction.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Distinguer test du sol occupé et test d’un passage voisin.",
-          "Faire prévoir les deux règles de corail dans Aquatic 9 et vérifier leurs effets.",
-          "Transférer le raisonnement aux lanternes d’Aquatic 10.",
-          "Tracer la grille, déplacer un repère, puis en retirer un sur une autre copie.",
-          "Faire réparer les repères, justifier la limite et conserver les preuves."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {
@@ -38113,7 +37519,7 @@ window.CODECRAFT_DATA = {
         },
         {
           "skillId": "minecraft.decision",
-          "expectation": "Expliquer un test vrai, un test faux et le but d’une boucle à partir d’un essai Aquatic."
+          "expectation": "Distinguer un test vrai ou faux et le but qui arrête une boucle dans Aquatic."
         }
       ],
       "blocks": [
@@ -38128,42 +37534,9 @@ window.CODECRAFT_DATA = {
           "id": "projet",
           "title": "Ton défi de construction",
           "paragraphs": [
-            "Construis un chemin compact de six rails sur six cases différentes, avec deux changements de direction entre les rails du tracé. Commence sur la case initiale de l’Agent : oriente-le d’abord vers la droite, puis pose le premier rail avant d’avancer.",
-            "Prépare trois tronçons de deux rails. Choisis les virages entre ces tronçons en tenant compte du terrain. Chaque rail doit rejoindre le précédent par un côté, sans repasser sur une case déjà construite.",
-            "Annonce aussi la case et la direction finales de l’Agent. Le virage initial et un éventuel virage après le dernier rail se comptent dans les actions ; ils ne constituent pas les deux changements de direction entre les rails.",
-            "Tu vas préparer le dessin, écrire une première version, puis en construire une seconde qui réalise le même tracé avec le même état final. Hero 12 est libre : compare ton résultat à ce dessin pour vérifier le défi."
-          ]
-        },
-        {
-          "type": "lesson",
-          "id": "plan",
-          "title": "Dessiner avant d’assembler",
-          "paragraphs": [
-            "Sur cette grille de préparation, A5 représente la case initiale de l’Agent, le nord est en haut. Observe le terrain réel et reporte les obstacles utiles. Garde ton tracé dans cette petite zone à droite et au-dessus du départ.",
-            "Marque les six cases qui recevront un rail, puis dessine séparément la case finale de l’Agent et une flèche pour sa direction. Le dernier avancer peut laisser l’Agent une case après le dernier rail : prévois aussi cette case libre.",
-            "Indique l’état après chaque tronçon, avant et après le virage. Choisis un petit groupe d’actions que tu peux réutiliser pour construire tes deux rails."
-          ],
-          "illustration": {
-            "src": "images/minecraft-automatisation.svg",
-            "alt": "Grille de préparation de cinq colonnes A à E et cinq lignes 1 à 5, à compléter. Départ du pion en A5 vers le nord. Dessiner les rails, les obstacles observés et l’arrivée.",
-            "caption": "A5 correspond au départ. Dessine les rails et l’arrivée dans des cases distinctes si ton programme l’exige."
-          }
-        },
-        {
-          "type": "tasks",
-          "id": "prevision",
-          "title": "Préparer ta première version",
-          "items": [
-            {
-              "id": "mc08-dessiner",
-              "text": "Présente ton dessin : six cases différentes reliées par leurs côtés, deux changements de direction dans le tracé et une arrivée prévue pour l’Agent. Suis-le avec un pion depuis A5 nord.",
-              "hint": "Le premier virage oriente l’Agent à droite. Vérifie que chaque virage entre les tronçons laisse la place aux deux rails suivants et à leur dernier déplacement."
-            },
-            {
-              "id": "mc08-prevoir",
-              "text": "Note les placements, déplacements et virages que tu prévois. Explique ce que contient un tronçon et dans quel état le suivant doit commencer.",
-              "hint": "Pour poser deux rails différents, suis chaque placer et chaque avancer. Un virage change la direction, pas la case occupée."
-            }
+            "Dans Hero 12, construis six rails sur six cases différentes, avec deux changements de direction dans le tracé. Oriente d’abord l’Agent vers la droite et pose le premier rail avant d’avancer.",
+            "Utilise trois tronçons de deux rails et choisis les virages selon la place disponible dans le jeu. Les rails doivent se rejoindre par les côtés.",
+            "Après chaque essai, observe les rails, la position de l’Agent et sa direction finale. Le virage initial et un éventuel virage après le dernier rail ne constituent pas les deux angles du tracé."
           ]
         },
         {
@@ -38171,7 +37544,7 @@ window.CODECRAFT_DATA = {
           "id": "assembler",
           "title": "Construire ta première solution",
           "paragraphs": [
-            "Assemble les commandes correspondant à ton dessin. Tu peux commencer par des actions directement accrochées au départ ou par de petites répétitions. Garde les virages aux endroits prévus et compare la pile au trajet du pion avant de lancer.",
+            "Assemble une première version dans l’éditeur. Tu peux commencer par des actions directement accrochées au départ ou par de petites répétitions.",
             "Pour utiliser une procédure, remplace le contenu d’une des deux définitions fournies par ton groupe réutilisable. Garde son nom visible dans Code.org, puis utilise le bloc d’appel portant ce nom. Une définition reste séparée du départ ; les appels vont dans le programme principal.",
             "Chaque essai commence par Reset : il remet le terrain et les personnages au départ en conservant tes blocs. Après exécution, utilise les flèches sous le jeu pour faire suivre les rails par Alex ou Steve. La vue suit ce personnage et permet de retrouver l’Agent."
           ]
@@ -38179,11 +37552,11 @@ window.CODECRAFT_DATA = {
         {
           "type": "tasks",
           "id": "essai",
-          "title": "Comparer la prévision au résultat",
+          "title": "Vérifier ta construction",
           "items": [
             {
               "id": "mc08-essai",
-              "text": "Réinitialise puis lance. Compare les six cases construites au dessin, puis vérifie la case et la direction finales de l’Agent. Conserve une capture de cette version et de son résultat."
+              "text": "Clique sur Reset puis lance. Vérifie dans le jeu les six rails, les deux angles et la direction finale de l’Agent. Conserve une capture de cette version et de son résultat."
             },
             {
               "id": "mc08-corriger",
@@ -38219,7 +37592,7 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "mc08-actions",
-              "text": "Compare les placements, déplacements et virages exécutés par les deux versions. Une écriture plus courte a-t-elle aussi réduit ces actions ? Appuie ta réponse sur les deux traces."
+              "text": "Observe les placements, déplacements et virages exécutés par les deux versions. Une écriture plus courte fait-elle aussi moins agir l’Agent ?"
             }
           ]
         },
@@ -38228,9 +37601,9 @@ window.CODECRAFT_DATA = {
           "id": "variante",
           "title": "Éprouver une modification personnelle",
           "paragraphs": [
-            "Conserve la version retenue et son dessin. Sur une copie, change le sens d’un virage entre deux tronçons pour obtenir un autre tracé, en gardant six rails différents et deux changements de direction. Prévois les nouvelles cases et l’état final ; vérifie d’abord la place disponible sur le terrain.",
-            "Quand le dessin convient, adapte le programme. Si le virage à changer est commun à plusieurs appels dans une boucle, tu peux séparer ces appels pour modifier seulement celui que tu as choisi.",
-            "Repars du même terrain initial avec Reset, puis essaie. Note ce qui correspond à ta prévision, le premier écart éventuel et la correction vérifiée."
+            "Conserve une capture de la version retenue. Dans l’éditeur, change le sens d’un seul virage entre deux tronçons. Vérifie sur le terrain que les rails pourront être posés et que l’Agent aura la place d’avancer.",
+            "Si ce virage est partagé par plusieurs appels dans une boucle, sépare les appels pour ne modifier que celui que tu as choisi.",
+            "Clique sur Reset puis essaie. Observe le nouveau tracé et l’état final. Corrige un éventuel blocage, puis vérifie à nouveau."
           ]
         },
         {
@@ -38244,8 +37617,8 @@ window.CODECRAFT_DATA = {
             },
             {
               "id": "mc08-variante-tester",
-              "text": "Après Reset, lance la variante. Compare les rails, la case finale et la direction finale au nouveau dessin. Conserve les résultats et explique l’effet du changement.",
-              "hint": "Un virage conservé après le dernier tronçon agit encore sur la direction finale. Garde-le dans ta prévision si ta version le contient."
+              "text": "Après Reset, lance la variante. Observe les rails et la direction finale de l’Agent. Explique ce que le changement de virage a modifié.",
+              "hint": "Un virage après le dernier tronçon change encore la direction finale de l’Agent."
             }
           ]
         },
@@ -38259,7 +37632,7 @@ window.CODECRAFT_DATA = {
               "id": "aide-motif",
               "title": "Retrouver le groupe réutilisable",
               "paragraphs": [
-                "Suis seulement un tronçon de deux rails avec ton pion. Note les commandes de placement et de déplacement, puis cherche ce qui se répète. Reprends ensuite le dessin complet pour placer les virages entre les groupes."
+                "Dans l’éditeur, commence par deux répétitions de placer un rail puis avancer. Lance après Reset et observe ce tronçon avant d’ajouter les appels suivants et leurs virages."
               ],
               "activityLink": {
                 "moduleId": "minecraft-motifs",
@@ -38272,20 +37645,20 @@ window.CODECRAFT_DATA = {
               "id": "aide-comparaison",
               "title": "Choisir ce que tu compares",
               "paragraphs": [
-                "Écris séparément les blocs que tu poses dans l’éditeur et les actions que l’Agent exécutera. Déroule les appels sur papier si leur nombre t’empêche de suivre les déplacements."
+                "Montre les blocs posés une seule fois dans l’éditeur, puis observe combien de fois leurs actions s’exécutent. Compare les programmes depuis le même départ."
               ],
               "activityLink": {
                 "moduleId": "minecraft-repetitions",
-                "blockId": "programme-b",
-                "label": "Revoir la comparaison des écritures"
+                "blockId": "niveau-quatre",
+                "label": "Revoir les répétitions dans Hero 4"
               }
             },
             {
               "type": "lesson",
               "id": "aide-tests",
-              "title": "Retrouver une trace conditionnelle",
+              "title": "Revoir une décision dans le jeu",
               "paragraphs": [
-                "Si tes traces Aquatic manquent, reprends un essai du niveau 7 dans la mission sur les décisions. Garde un test vrai, un test faux et la raison de l’arrêt, puis reviens au projet pour comparer ces choix à ta construction."
+                "Pour revoir les conditions, ouvre Aquatic 7 depuis la mission sur les décisions. Observe un virage exécuté et un virage ignoré, puis reviens au projet."
               ],
               "activityLink": {
                 "moduleId": "minecraft-decisions",
@@ -38300,23 +37673,22 @@ window.CODECRAFT_DATA = {
           "id": "bilan-aquatic",
           "title": "Relier tes différentes solutions",
           "paragraphs": [
-            "Dans Hero 12, tu prépares les déplacements et les virages à partir du terrain observé. Les tests de chemin et de sol utilisés dans Aquatic ne sont pas proposés dans cette palette.",
-            "Choisis dans ton carnet un résultat d’Aquatic où un test vrai déclenchait une action et un résultat où le test était faux. Explique quelle information le programme utilisait alors, puis comment tu as prévu tes virages dans la construction actuelle.",
-            "Ajoute un contre-exemple de la mission précédente : un changement de repère qui faisait échouer une stratégie. Qu’as-tu vérifié ici avant de réutiliser ton tronçon ou de changer un virage ?"
+            "Hero 12 ne propose pas les tests de chemin ou de sol utilisés dans Aquatic. Ici, tu places les virages toi-même dans le programme.",
+            "Dans Aquatic, quelle information permettait de choisir quand tourner ? Compare ce rôle avec les virages de ta construction. Tu peux rouvrir Aquatic 10 pour observer son test de sol."
           ],
           "activityLink": {
             "moduleId": "minecraft-strategies",
-            "blockId": "autonomie",
-            "label": "Retrouver les variantes de la grille à repères"
+            "blockId": "autre-repere",
+            "label": "Revoir les tests de sol dans Aquatic 10"
           }
         },
         {
           "type": "lesson",
           "id": "conserver",
-          "title": "Garder un dossier que tu peux reprendre",
+          "title": "Reprendre ta construction",
           "paragraphs": [
-            "Garde l’adresse de Hero 12, les dessins de départ et de la variante, les captures des deux organisations et toutes les définitions appelées. Note les résultats observés et la raison de ton choix. Tu peux compléter tes captures par une explication orale ou des flèches annotées.",
-            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta propre version. Les dessins et les captures permettent aussi de reconstruire les blocs manuellement. Vérifie que la définition et le programme principal sont tous les deux lisibles."
+            "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+            "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
           ]
         },
         {
@@ -38327,30 +37699,26 @@ window.CODECRAFT_DATA = {
         }
       ],
       "masteryCriteria": [
-        "La construction est prévue par six cases de rails distinctes, deux changements de direction dans le tracé et un état final annoncé.",
-        "Une définition réutilisable et ses appels sont expliqués à partir de l’état courant de l’Agent.",
-        "Les deux organisations sont comparées sur le même résultat, avec un critère explicite.",
-        "Les blocs écrits sont distingués des placements, déplacements et virages exécutés.",
-        "Une modification du tracé est prévue puis vérifiée depuis un état initial identique.",
-        "Le rôle d’un test Aquatic est expliqué et distingué du programme de construction préparé dans Hero."
+        "La construction comporte six rails distincts et deux angles dans le tracé.",
+        "Une définition réutilisable et ses appels sont expliqués à partir des actions de l’Agent.",
+        "Deux organisations produisent les mêmes rails, la même position et la même direction finales.",
+        "Les blocs écrits sont distingués des actions réellement exécutées.",
+        "Un virage est modifié puis testé depuis le même terrain initial.",
+        "Les décisions conditionnelles d’Aquatic sont distinguées des virages placés dans Hero."
       ],
       "teacherGuide": {
-        "objective": "Faire concevoir une automatisation limitée sans pile complète fournie, comparer deux organisations équivalentes et justifier un nouvel essai.",
+        "objective": "Concevoir un petit tracé de rails, comparer deux organisations du programme et vérifier une modification personnelle depuis le même départ.",
         "entryDiagnosis": [
-          "Demander de tracer deux placements suivis chacun d’un déplacement et de distinguer le dernier rail de l’arrivée de l’Agent.",
-          "Faire expliquer une définition et un appel. Les aides repliées renvoient aux missions 5 et 2 sans imposer de recopier tout leur exemple.",
-          "Faire choisir un critère de comparaison. Accepter une entrée directe pour un élève capable de prévoir, composer et comparer ; les traces Aquatic restent nécessaires au bilan des tests."
+          "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+          "Observer un premier essai pour choisir les explications à reprendre."
         ],
         "preparation": [
+          "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
           "Réutiliser les contrôles de Hero 12 : deux définitions modifiables sans paramètres, répétitions de 2 à 10, placement, déplacement et rotation. Aucun test de chemin ou de sol n’est disponible dans cette palette. L’intégration ne demande aucune nouvelle fonction, importation de carte ou saisie JavaScript.",
           "La réalisation de référence déjà exécutée lors de l’audit utilise le premier tronçon avec répéter 2 fois placer un rail puis avancer. Le programme principal tourne à droite puis répète 3 fois appeler le tronçon et tourner à gauche. Capture browser-artifacts/audit-minecraft-2026-10-18/hero12-motif-compact.png. Cette pile complète reste une référence professeur, pas un modèle élève.",
-          "Avec A5 comme départ nord sur la grille, cette référence pose A5, B5, C5, C4, C3, B3 et termine A3 sud. Il y a six placements, six déplacements et quatre virages : le droit initial, puis trois gauches dont le dernier ne change plus le tracé.",
-          "Une version entièrement déroulée de cette référence contient 16 blocs d’action. La version avec la procédure et la boucle principale en contient 7 selon la convention du cours : trois dans la définition, quatre sous le départ. Les cadres définir et départ sont exclus. Les 16 actions exécutées sont identiques, appels et boucles étant des structures et non des déplacements supplémentaires.",
-          "Pour une variante du tracé, une organisation avec trois appels séparés permet de conserver gauche après le premier et de choisir droite après le deuxième. Avec un dernier gauche conservé après le troisième, les rails prévus sont A5, B5, C5, C4, C3, D3 ; arrivée E3 nord. Cette variante est simulée selon les règles de la grille, sans nouvelle exécution dans le moteur. Faire vérifier le terrain réel avant l’essai.",
-          "La grille est un support de plan relatif : A5 correspond au départ réel, pas à un repère officiel de Code.org. L’élève doit y reporter les contraintes observées. Le suivi de la vue avec Alex ou Steve a déjà été vérifié lors de la mission 5 ; garder Reset avant chaque exécution pour retrouver l’Agent, les personnages et le terrain initiaux.",
-          "Hero 12 est libre : le bouton Finish ou la couleur du niveau ne valident pas les objectifs du projet CodeCraft. Vérifier dessin, rails, état final, comparaison et variante. Conserver l’ancien travail avant de modifier les définitions."
+          "Une version entièrement déroulée de cette référence contient 16 blocs d’action. La version avec la procédure et la boucle principale en contient 7 selon la convention du cours : trois dans la définition, quatre sous le départ. Les cadres définir et départ sont exclus. Les 16 actions exécutées sont identiques, appels et boucles étant des structures et non des déplacements supplémentaires."
         ],
-        "why": "Le projet réunit anticipation, réutilisation, comparaison et vérification. Le carnet Aquatic complète ce bilan pour les décisions que la palette Hero ne permet pas de programmer.",
+        "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
         "discoverySpeech": [
           "Quelles cases recevront un rail et où l’Agent terminera-t-il ?",
           "Quelle partie de ton programme peux-tu organiser autrement sans changer ce résultat ?",
@@ -38359,12 +37727,10 @@ window.CODECRAFT_DATA = {
         "example": {
           "target": {
             "moduleId": "minecraft-automatisation",
-            "blockId": "plan"
+            "blockId": "essai"
           },
           "comments": [
-            "Laisser l’élève dessiner et choisir sa première organisation. Le guide conserve une réalisation éprouvée pour diagnostiquer, pas une pile à dicter.",
-            "Les deux changements de direction concernent les rails successifs. Le droit initial et le dernier gauche de la référence changent l’orientation de l’Agent, sans ajouter un angle entre deux rails déjà posés.",
-            "Pour comparer les versions, exiger le même état final. Supprimer seulement le dernier gauche conserve les rails et la case A3, mais donne ouest au lieu de sud."
+            "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
           ]
         },
         "questions": [
@@ -38382,7 +37748,7 @@ window.CODECRAFT_DATA = {
           },
           {
             "question": "Peut-on demander si chemin ou si sur un corail dans Hero 12 ?",
-            "answer": "Ces tests ne sont pas dans cette palette. Le projet prépare ses actions à partir du terrain observé ; les traces Aquatic servent à expliquer le rôle des décisions conditionnelles."
+            "answer": "Ces tests ne sont pas disponibles dans Hero 12. Les virages sont placés dans le programme ; dans Aquatic, une condition peut les déclencher pendant le trajet."
           },
           {
             "question": "Comment comparer une variante sans confondre son effet avec le terrain d’un essai précédent ?",
@@ -38391,14 +37757,14 @@ window.CODECRAFT_DATA = {
         ],
         "accompaniedActivity": {
           "moduleId": "minecraft-automatisation",
-          "blockId": "prevision"
+          "blockId": "essai"
         },
         "independentActivity": {
           "moduleId": "minecraft-automatisation",
           "blockId": "autonomie"
         },
         "differentiation": [
-          "Accepter des cases pointées, un pion orienté et une explication orale à la place de longues notes. L’élève conserve néanmoins une trace de la prévision et du résultat.",
+          "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
           "Si le projet bloque, reprendre un seul tronçon puis faire placer un virage par l’élève. Les aides repliées ciblent le groupe réutilisable et le critère de comparaison.",
           "Pour aller plus loin, faire comparer l’emplacement des virages dans la définition et dans le programme principal, avec une nouvelle prévision de l’état entre appels.",
           "Pendant le stage, ce projet peut servir de petit défi final si le temps et les acquis le permettent. Les missions du site ne sont pas à ajouter intégralement au programme de la semaine."
@@ -38428,7 +37794,6 @@ window.CODECRAFT_DATA = {
           {
             "symptom": "Le changement personnel modifie le virage après tous les tronçons.",
             "helps": [
-              "Dérouler les appels sur le dessin.",
               "Séparer les appels pour modifier seulement le virage choisi, puis prévoir l’ensemble des effets."
             ]
           },
@@ -38440,14 +37805,13 @@ window.CODECRAFT_DATA = {
             ]
           }
         ],
-        "notes": "Les calculs de la grille et le comptage sont vérifiés par simulation ; ils ne valident pas automatiquement toutes les constructions personnelles dans Code.org. L’essai compact de référence avait déjà été exécuté pendant l’audit. Aucun nouveau test du moteur, compte, publication ou observation avec des élèves n’est revendiqué ici.",
+        "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
         "quickConductor": [
-          "Préserver l’ancien travail puis préparer le terrain initial.",
-          "Faire dessiner six cases, deux angles et l’état final avant les blocs.",
-          "Vérifier une première organisation et localiser un éventuel écart.",
-          "Comparer à une seconde organisation équivalente, avec définition et appels dans au moins une version.",
-          "Prévoir et tester un changement du tracé depuis Reset.",
-          "Relier le résultat aux décisions Aquatic et conserver les preuves."
+          "Ouvrir le niveau et repérer le but dans le jeu.",
+          "Assembler ou lire les blocs, puis lancer.",
+          "Observer une difficulté et corriger la commande concernée.",
+          "Réinitialiser avant de vérifier le nouvel essai.",
+          "Conserver les blocs pour une reprise ultérieure."
         ],
         "references": [
           {

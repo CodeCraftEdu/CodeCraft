@@ -1,9 +1,9 @@
 {
   "domainId": "jeux-video",
-  "title": "Comparer deux programmes pour un trajet",
+  "title": "Répéter des actions pour un trajet",
   "type": "lesson",
   "theme": "fondations",
-  "objective": "Repérer un motif répété et expliquer ce qui change entre le nombre de blocs écrits et le nombre d’actions exécutées.",
+  "objective": "Repérer un groupe d’actions à répéter dans Code.org et distinguer les blocs écrits des actions exécutées.",
   "tool": {
     "label": "Ouvrir Hero’s Journey, niveau 4 sur Code.org",
     "url": "https://studio.code.org/courses/hero/units/1/lessons/1/levels/4"
@@ -12,7 +12,7 @@
   "prerequisiteSkills": [
     {
       "skillId": "minecraft.orientation",
-      "expectation": "Prévoir avancer et tourner depuis une case et une direction. Reprends la grille de la première mission si nécessaire."
+      "expectation": "Distinguer avancer et tourner dans le jeu. Reprendre Hero 1 ou 3 si nécessaire."
     }
   ],
   "blocks": [
@@ -20,7 +20,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Prépare ton carnet et garde CodeCraft à côté de Code.org. Tu vas comparer deux écritures du même trajet, puis chercher un motif dans les niveaux 4 et 5. Chaque essai repartira du même départ."
+      "text": "Ouvre Hero 4. Tu vas utiliser une répétition pour rejoindre la plaque, puis choisir un motif dans Hero 5. Réinitialise avant chaque nouvel essai."
     },
     {
       "type": "callout",
@@ -39,48 +39,13 @@
       "id": "entree-experimentee",
       "title": "Tu utilises déjà les répétitions ?",
       "paragraphs": [
-        "Commence par les programmes A et B : ils partent tous les deux de C4 vers le nord. Prévois leur arrivée et compare les blocs écrits, les déplacements et les rotations. Tu peux passer le rappel sur la boucle si tu sais déjà suivre tous ses tours ; garde la comparaison et les essais de transfert."
+        "Si tu connais déjà répéter, commence directement dans Hero 4. Observe ce que la boucle simplifie dans le programme et ce que l’Agent fait réellement à chaque tour."
       ],
       "activityLink": {
         "moduleId": "minecraft-repetitions",
-        "blockId": "programme-a",
-        "label": "Rejoindre les deux programmes à comparer"
+        "blockId": "niveau-quatre",
+        "label": "Utiliser les répétitions dans Hero 4"
       }
-    },
-    {
-      "type": "lesson",
-      "id": "depart",
-      "title": "Un motif, deux écritures",
-      "paragraphs": [
-        "Reprends la grille : départ en C4, vers le nord. Les programmes A et B ci-dessous décrivent des actions à suivre avec ton pion. Tu compareras ensuite des blocs dans Code.org.",
-        "Le motif est une petite suite qui revient dans le même ordre. Ici : avancer, avancer, tourner à droite. Le programme A l’écrit deux fois. Le programme B demande de le répéter deux fois.",
-        "Une boucle répéter exécute les actions placées à l’intérieur, puis recommence au début de ce groupe. Après le nombre de tours choisi, elle continue avec les éventuelles actions placées après elle."
-      ],
-      "illustration": {
-        "src": "images/minecraft-reperes.svg",
-        "alt": "Grille de cinq colonnes A à E et cinq lignes 1 à 5, avec un pion en C4 orienté vers le nord.",
-        "caption": "Même départ pour A et B : C4, vers le nord."
-      }
-    },
-    {
-      "type": "lesson",
-      "id": "programme-a",
-      "title": "Programme A : écrire chaque action",
-      "paragraphs": [
-        "Lis les six actions. Avant de déplacer ton pion, prévois sa case et sa direction finales."
-      ],
-      "filename": "Instructions A",
-      "code": "avancer\navancer\ntourner à droite\navancer\navancer\ntourner à droite"
-    },
-    {
-      "type": "lesson",
-      "id": "programme-b",
-      "title": "Programme B : répéter le motif",
-      "paragraphs": [
-        "Les trois lignes décalées sont à l’intérieur de répéter. Au deuxième tour, le pion conserve la position et la direction atteintes à la fin du premier."
-      ],
-      "filename": "Instructions B",
-      "code": "répéter 2 fois\n  avancer\n  avancer\n  tourner à droite"
     },
     {
       "type": "details",
@@ -92,52 +57,8 @@
           "id": "lire-tour",
           "title": "Suivre un tour entier",
           "paragraphs": [
-            "Pour le premier tour, lis avancer, avancer, tourner à droite. Pour le deuxième, relis ces trois mêmes actions. Le pion continue depuis sa nouvelle position : il ne revient pas en C4 entre les tours.",
-            "Dans Code.org, prends le bloc répéter, règle son nombre et glisse les actions dans son creux. Une action accrochée après le bas de la boucle est faite après les répétitions, une seule fois."
-          ]
-        }
-      ]
-    },
-    {
-      "type": "tasks",
-      "id": "comparaison",
-      "title": "Même trajet, moins d’écriture ?",
-      "intro": "Pour compter l’écriture, compte chaque bloc une seule fois : avancer, tourner et répéter. Nous laissons le bloc de départ de côté dans les deux programmes. Pour compter l’exécution, compte chaque déplacement et chaque rotation réellement effectués.",
-      "items": [
-        {
-          "id": "mc02-arrivees",
-          "text": "Prévois l’arrivée de A et de B, puis suis-les séparément avec ton pion en repartant de C4 vers le nord. Compare aussi les directions finales.",
-          "hint": "Après le premier groupe, tu es en C2 vers l’est. Le deuxième groupe continue depuis cet état."
-        },
-        {
-          "id": "mc02-ecriture",
-          "text": "Combien de blocs faut-il écrire pour A ? Et pour B, en comptant répéter et les trois blocs placés à l’intérieur ?",
-          "hint": "Le corps de B est écrit une seule fois. Le nombre 2 choisi dans répéter n’est pas un bloc supplémentaire."
-        },
-        {
-          "id": "mc02-execution",
-          "text": "Pour chaque programme, compte les déplacements puis les rotations exécutés. Le pion parcourt-il moins de cases avec B ?",
-          "hint": "Deux tours exécutent deux fois chacun des deux avancer et le virage."
-        },
-        {
-          "id": "mc02-critere",
-          "text": "Complète avec tes mots : B réduit…, mais conserve… Appuie ta réponse sur tes comptes."
-        }
-      ]
-    },
-    {
-      "type": "details",
-      "id": "verification",
-      "title": "Comparer après tes essais",
-      "blocks": [
-        {
-          "type": "lesson",
-          "id": "resultat-comparaison",
-          "title": "Deux écritures pour les mêmes actions",
-          "paragraphs": [
-            "A et B terminent en E2, vers le sud. Chaque programme exécute quatre déplacements et deux rotations. La boucle ne raccourcit pas le trajet.",
-            "Avec notre règle de comptage, A demande six blocs. B en demande quatre : répéter, deux avancer et un tourner. B réduit l’écriture du programme, tout en conservant les actions du trajet.",
-            "La distance, le nombre de blocs et le temps d’exécution sont des critères différents. Ici, nous avons comparé l’écriture et le trajet ; ces comptes ne mesurent pas la vitesse du jeu."
+            "Dans Code.org, prends le bloc répéter, règle son nombre et glisse les actions dans son creux. Chaque tour exécute ces actions dans l’ordre, depuis la position atteinte au tour précédent.",
+            "Une action accrochée après le bas de la boucle est exécutée après les répétitions, une seule fois."
           ]
         }
       ]
@@ -147,9 +68,9 @@
       "id": "niveau-quatre",
       "title": "Repérer le motif dans Hero’s Journey",
       "paragraphs": [
-        "Ouvre le niveau 4 avec le lien en haut de la mission. Repère l’Agent, sa direction et la plaque à rejoindre. Dessine le trajet souhaité et entoure le groupe d’actions qui revient.",
-        "Construis le programme avec répéter. Prévois le nombre de cases parcourues, puis lance. Une fois le passage ouvert, utilise ton personnage pour atteindre l’objet demandé.",
-        "Dans ton carnet, écris aussi la suite complète des actions sans boucle. Si les limites du niveau empêchent de construire cette deuxième version dans Code.org, garde-la sur ta feuille pour comparer."
+        "Dans Hero 4, repère l’Agent et la plaque à rejoindre. Observe les cases à parcourir et choisis les actions à répéter.",
+        "Place ces actions dans répéter et règle le nombre de tours. Lance, puis utilise ton personnage pour atteindre l’objet demandé une fois le passage ouvert.",
+        "Observe les blocs : les actions placées dans la boucle sont écrites une seule fois, mais l’Agent les exécute à chaque tour. Moins de blocs dans l’éditeur ne signifie donc pas moins de déplacements dans le jeu."
       ]
     },
     {
@@ -167,7 +88,7 @@
         },
         {
           "id": "mc02-compter-niveau",
-          "text": "Compte les blocs de ton programme avec boucle, puis les actions de ta version développée. Indique ce que la répétition simplifie.",
+          "text": "Compte les blocs dans la boucle, puis observe combien de fois l’Agent exécute leurs actions. Qu’est-ce que la répétition simplifie dans ton programme ?",
           "hint": "Compte les blocs de commande en laissant le départ de côté. Compte une rotation comme une action, mais pas comme une case parcourue."
         },
         {
@@ -196,42 +117,17 @@
       "items": [
         {
           "id": "mc02-choisir",
-          "text": "Au niveau 5, dessine le trajet, indique un motif que tu choisis de répéter et construis ton programme. Si tu préfères une autre organisation, explique ton choix.",
-          "hint": "Une suite n’a pas besoin d’être entièrement dans une seule boucle. Commence par un groupe que tu peux suivre exactement."
+          "text": "Dans Hero 5, repère une suite d’actions qui se répète et construis ton programme. Explique où tu places la boucle.",
+          "hint": "Les actions avant ou après la boucle sont exécutées une seule fois."
         },
         {
           "id": "mc02-preuve",
-          "text": "Lance puis décris une observation qui confirme ta prévision. Compare ton écriture avec sa suite développée dans le carnet.",
-          "hint": "Développe ta boucle dans le carnet : retrouves-tu les mêmes actions dans le même ordre, depuis le même départ ? Compare aussi les cases parcourues et la direction finale. Réduire l’écriture ne prouve pas que tu as réduit les déplacements."
+          "text": "Lance et observe si le passage s’ouvre. Montre les actions répétées dans ton programme et explique ce que tu changerais si l’Agent s’arrêtait trop tôt.",
+          "hint": "Vérifie le nombre de tours et les actions placées dans la boucle."
         },
         {
           "id": "mc02-conserver",
-          "text": "Garde l’adresse du niveau, une capture lisible de tes blocs et ta comparaison. Si tu travailles avec un compte, vérifie la réouverture de ton niveau. Sans compte, ta capture permet de reconstruire les blocs."
-        }
-      ]
-    },
-    {
-      "type": "details",
-      "id": "bonus",
-      "title": "Pour aller plus loin : un tour de plus",
-      "blocks": [
-        {
-          "type": "tasks",
-          "id": "troisieme-tour",
-          "title": "Prévoir sans reconstruire",
-          "intro": "Sur notre grille seulement, repars de C4 vers le nord et remplace répéter 2 fois par répéter 3 fois dans B.",
-          "items": [
-            {
-              "id": "mc02-bonus-arrivee",
-              "text": "Prévois la case et la direction finales, puis vérifie avec ton pion.",
-              "hint": "Après deux tours, tu es en E2 vers le sud. Le troisième mène en E4, puis le virage oriente vers l’ouest."
-            },
-            {
-              "id": "mc02-bonus-cout",
-              "text": "Combien de blocs sont écrits ? Combien de déplacements et de rotations sont exécutés ?",
-              "hint": "L’écriture reste de quatre blocs ; six déplacements et trois rotations sont exécutés."
-            }
-          ]
+          "text": "Pour reprendre plus tard, garde l’adresse du niveau et une capture de tes blocs. Avec un compte, vérifie que tu retrouves ta version à la réouverture."
         }
       ]
     }
@@ -239,69 +135,54 @@
   "masteryCriteria": [
     "Un motif garde ses actions dans le même ordre à chaque tour.",
     "Le deuxième tour continue depuis la position et la direction obtenues au premier.",
-    "Une répétition peut réduire le nombre de blocs écrits sans réduire les déplacements exécutés.",
-    "Comparer deux programmes demande le même départ et un critère explicite."
+    "Une répétition peut réduire le nombre de blocs écrits sans réduire les déplacements exécutés."
   ],
   "teacherGuide": {
-    "objective": "Faire distinguer taille du programme, actions exécutées et distance parcourue, en réutilisant les boucles après Scratch.",
+    "objective": "Repérer un groupe d’actions à répéter dans Code.org et distinguer les blocs écrits des actions exécutées.",
     "entryDiagnosis": [
-      "Faire prévoir le motif depuis C4 nord. En cas de difficulté spatiale, reprendre la grille de la première mission.",
-      "Après Scratch, demander directement les comptes et leur justification ; ne pas imposer l’aide de découverte des boucles."
+      "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+      "Observer un premier essai pour choisir les explications à reprendre."
     ],
     "preparation": [
-      "Utiliser Hero 4 et 5 : déplacements, virages et répétitions figurent dans leurs palettes inventoriées. Les solutions exactes et le minimum de blocs ne sont pas imposés.",
-      "Préparer une feuille pour développer le programme si la limite de blocs empêche une seconde écriture exécutable.",
-      "Conserver les programmes par capture et carnet ; la sauvegarde avec compte est documentée, la reprise connectée n’a pas été éprouvée pendant cet audit."
+      "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
+      "Utiliser Hero 4 et 5 : déplacements, virages et répétitions figurent dans leurs palettes inventoriées. Les solutions exactes et le minimum de blocs ne sont pas imposés."
     ],
-    "why": "L’objectif nouveau après Scratch est justifier un choix selon un critère, au lieu d’assimiler automatiquement boucle, rapidité et trajet plus court.",
+    "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
     "discoverySpeech": [
-      "Les deux programmes partent du même endroit. Prévois leur arrivée, puis compte ce que tu as écrit et ce que le pion a réellement fait.",
-      "Que veux-tu améliorer : l’écriture du programme ou la distance parcourue ? Quelle observation permet de le vérifier ?"
+      "Montre les actions dans la boucle et observe ce que l’Agent fait à chaque tour."
     ],
     "example": {
-      "target": { "moduleId": "minecraft-repetitions", "blockId": "comparaison" },
+      "target": {
+        "moduleId": "minecraft-repetitions",
+        "blockId": "niveau-quatre"
+      },
       "comments": [
-        "A : six blocs. B : quatre avec la convention indiquée. Chaque programme : quatre déplacements, deux rotations, arrivée E2 sud.",
-        "Le départ est exclu des deux comptes. Une rotation est une action sans déplacement.",
-        "Ne pas déduire un temps moteur ou une complexité asymptotique de ces comptes."
+        "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
       ]
     },
     "questions": [
       {
-        "question": "Pourquoi le second tour change-t-il de direction ?",
-        "answer": "Le premier finit par un virage à droite : l’orientation est conservée pour le tour suivant."
-      },
-      {
-        "question": "Qu’économise B ?",
-        "answer": "Deux blocs écrits dans cet exemple. Il exécute les mêmes déplacements et rotations que A."
-      },
-      {
-        "question": "Que donne un troisième tour sur la grille ?",
-        "answer": "E4 ouest ; quatre blocs écrits, six déplacements et trois rotations exécutés."
+        "question": "La boucle fait-elle moins avancer l’Agent ?",
+        "answer": "Elle évite de recopier les blocs. Le nombre de déplacements dépend toujours du nombre de tours et des actions dans la boucle."
       }
     ],
-    "accompaniedActivity": { "moduleId": "minecraft-repetitions", "blockId": "guide" },
-    "independentActivity": { "moduleId": "minecraft-repetitions", "blockId": "autonomie" },
+    "accompaniedActivity": {
+      "moduleId": "minecraft-repetitions",
+      "blockId": "niveau-quatre"
+    },
+    "independentActivity": {
+      "moduleId": "minecraft-repetitions",
+      "blockId": "autonomie"
+    },
     "differentiation": [
-      "Autoriser une comparaison orale avec des marques sur papier. La qualité de rédaction n’est pas le critère.",
-      "Pour un débutant, développer deux tours avec le pion avant de manipuler le bloc répéter.",
+      "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
       "Pour un élève avancé, demander un critère précis et une autre organisation. Ne pas imposer la recherche d’un minimum global ni la répétition de tous les puzzles.",
       "Pendant le stage, utiliser seulement la comparaison utile au travail en cours."
     ],
     "commonErrors": [
       {
         "symptom": "Le programme compte moins de blocs, donc le trajet serait plus court.",
-        "helps": [
-          "Développer la boucle sur papier.",
-          "Compter séparément les actions réellement exécutées et les blocs écrits."
-        ]
-      },
-      {
-        "symptom": "Le pion repart au début de la grille à chaque tour.",
-        "helps": [
-          "Marquer la case et la direction après un tour.",
-          "Reprendre le motif depuis cet état, sans déplacer le pion au départ."
-        ]
+        "helps": ["Compter séparément les actions réellement exécutées et les blocs écrits."]
       },
       {
         "symptom": "Une action finale se répète trop souvent.",
@@ -311,13 +192,13 @@
         ]
       }
     ],
-    "notes": "Distinguer réussite du puzzle, compréhension de la répétition et capacité de comparaison. Aucune supériorité générale d’une boucle ni vitesse d’apprentissage ne se déduit d’un petit nombre de blocs.",
+    "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
     "quickConductor": [
-      "Reprendre position et orientation.",
-      "Comparer A et B sur la grille.",
-      "Faire nommer le critère et compter.",
-      "Transférer au niveau 4, puis choisir au niveau 5.",
-      "Conserver prévision, programme et conclusion."
+      "Ouvrir le niveau et repérer le but dans le jeu.",
+      "Assembler ou lire les blocs, puis lancer.",
+      "Observer une difficulté et corriger la commande concernée.",
+      "Réinitialiser avant de vérifier le nouvel essai.",
+      "Conserver les blocs pour une reprise ultérieure."
     ],
     "references": [
       {

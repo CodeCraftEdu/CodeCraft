@@ -11,7 +11,7 @@
       "id": "reprise-css",
       "title": "Avant de commencer : Comprends-tu une règle ?",
       "tone": "neutral",
-      "text": "Dans p { color: blue; }, peux-tu montrer la cible, la propriété et la valeur, puis changer seulement le fond avec background-color ? Si tu hésites, ouvre Découvrir le CSS et reviens ici ensuite. Si tu sais déjà l’expliquer, continue sans refaire ce cours.",
+      "text": "Dans p { `color`: blue; }, peux-tu montrer la cible, la propriété et la valeur, puis changer seulement le fond avec `background-color` ? Si tu hésites, ouvre Découvrir le CSS et reviens ici ensuite. Si tu sais déjà l’expliquer, continue sans refaire ce cours.",
       "moduleLink": {
         "text": "Découvrir le CSS",
         "moduleId": "css-decouverte"
@@ -36,7 +36,7 @@
       "paragraphs": [
         "Dans le panneau CSS de CodePen, écris la règle ci-dessous. Ne la mets pas dans le panneau HTML.",
         "Le sélecteur .titre choisit les éléments dont la classe est titre. Le point se met dans le CSS, pas dans la valeur de class en HTML. Les deux noms doivent correspondre exactement.",
-        "Les accolades { et } entourent les instructions. color change la couleur du texte ; blue signifie bleu. Les deux-points séparent la propriété de sa valeur, et le point-virgule termine l’instruction.",
+        "Les accolades { et } entourent les instructions. `color` change la couleur du texte ; blue signifie bleu. Les deux-points séparent la propriété de sa valeur, et le point-virgule termine l’instruction.",
         "Plusieurs éléments peuvent partager la même classe : ils recevront tous la même couleur."
       ],
       "code": ".titre {\n  color: blue;\n}",
@@ -96,7 +96,7 @@
             "Regarde la classe attribuée au paragraphe.",
             "Son nom doit être le même dans le sélecteur, avec un point seulement dans CSS.",
             "Compare class=\"titre\" et .titre dans l’exemple.",
-            "Utilise class=\"texte\" puis .texte { color: green; }. Vérifie ce paragraphe avant d’en ajouter un autre."
+            "Utilise class=\"texte\" puis .texte { `color`: green; }. Vérifie ce paragraphe avant d’en ajouter un autre."
           ]
         },
         {
@@ -132,7 +132,7 @@
         {
           "id": "defi-couleurs",
           "text": "Écris les deux règles CSS : le titre doit avoir une couleur différente des paragraphes.",
-          "hint": "Chaque règle commence par un point suivi du nom de la classe. Utilise color entre accolades."
+          "hint": "Chaque règle commence par un point suivi du nom de la classe. Utilise `color` entre accolades."
         },
         {
           "id": "defi-verifier",
@@ -145,7 +145,7 @@
       "id": "fond",
       "title": "Réutiliser aussi un fond",
       "paragraphs": [
-        "Si tu as compris le ciblage, ajoute un fond aux paragraphes qui partagent texte. background-color règle leur fond ; color règle les lettres. Cette règle remplace ta règle .texte actuelle.",
+        "Si tu as compris le ciblage, ajoute un fond aux paragraphes qui partagent texte. `background-color` règle leur fond ; `color` règle les lettres. Cette règle remplace ta règle .texte actuelle.",
         "Le fond peut occuper plus de place que les mots : il colore la zone de chaque paragraphe, pas seulement ses lettres. black signifie noir et lightyellow jaune clair. Tu peux choisir des couleurs, mais garde les lettres bien lisibles."
       ],
       "code": ".texte {\n  color: black;\n  background-color: lightyellow;\n}"
@@ -222,9 +222,9 @@
           "text": "Crée deux paragraphes avec class=\"calme\" et class=\"fort\". Donne au premier des lettres noires sur fond blanc, au second des lettres blanches sur fond navy (bleu très foncé).",
           "hints": [
             "Prévois une règle pour chaque classe.",
-            "Réutilise color et background-color.",
+            "Réutilise `color` et `background-color`.",
             "Compare avec la règle .texte du cours.",
-            "Écris .calme { color: black; background-color: white; } et .fort { color: white; background-color: navy; }."
+            "Écris .calme { `color`: black; `background-color`: white; } et .fort { `color`: white; `background-color`: navy; }."
           ]
         },
         {

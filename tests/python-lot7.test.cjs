@@ -63,8 +63,8 @@ test('Python finitions : affectation explicite, titre adapté et bonus indépend
   const textHint = block('python-texte', 'autonomie').items.find(
     (t) => t.id === 'mot-personnel',
   ).hint;
-  assert(textHint.includes('input renvoie le texte saisi'));
-  assert(textHint.includes("l'affectation à reponse le conserve"));
+  assert(textHint.includes('`input` renvoie le texte saisi'));
+  assert(textHint.includes("l'affectation à `reponse` le conserve"));
   assert(!textHint.includes('input conserve'));
   assert.equal(
     block('python-retour', 'autonomie').title,
@@ -78,7 +78,7 @@ test('Python finitions : affectation explicite, titre adapté et bonus indépend
   assert.equal(message.title, 'Bonus - un retour au joueur');
   assert(message.intro.includes('indépendant'));
   assert.equal(message.items[0].id, 'retour-joueur');
-  assert(message.items[0].text.includes('avant le return'));
+  assert(message.items[0].text.includes('avant le `return`'));
   assert.deepEqual(
     Array.from(data.modules['python-quiz'].bonusActivities, (a) => a.blockId),
     ['bonus', 'bonus-message'],
@@ -209,8 +209,8 @@ test('Python revue 7 : passage explicite à la saisie et un seul appel compté',
     ['fonction-question', 'saisie-locale', 'preparer-reponse', 'verifier-question', 'debut-score'],
   );
   assert(tasks[0].text.includes('et non la réponse du joueur'));
-  assert(tasks[1].hint.includes('reponse = input(question)'));
-  assert(tasks[2].hint.includes('pas sur reponse'));
+  assert(tasks[1].hint.replaceAll('`', '').includes('reponse = input(question)'));
+  assert(tasks[2].hint.includes('pas sur `reponse`'));
   assert(tasks[4].text.includes('Ne conserve pas un ancien appel de test en plus'));
   assert(block('python-quiz', 'autonomie').items[0].text.includes('ajoute deux appels'));
   const student = data.modules['python-quiz'].blocks;

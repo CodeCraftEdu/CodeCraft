@@ -12,5 +12,5 @@
   <path d="M220 250L237 283L220 276L203 283Z" fill="#245c89" stroke="#123f61" stroke-width="2"/>
   <path d="M429 122V74M418 87L429 74L440 87" fill="none" stroke="#29362e" stroke-width="3"/>
   <text x="429" y="150" fill="#29362e" font-family="Arial, sans-serif" font-size="19" text-anchor="middle">Nord</text>
-  <text x="250" y="386" fill="#29362e" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">Départ : C4, vers le nord</text>
+  <text x="250" y="386" fill="#29362e" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">Départ : C4</text>
 </svg>

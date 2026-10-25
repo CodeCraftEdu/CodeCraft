@@ -21,7 +21,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir créer, enregistrer et exécuter un fichier dans Thonny. Sinon, reprends Premiers pas avec Thonny. Enregistre ton travail précédent, puis crée messages.py sans remplacer les autres fichiers.",
+      "text": "Il faut savoir créer, enregistrer et exécuter un fichier dans Thonny. Sinon, reprends Premiers pas avec Thonny. Enregistre ton travail précédent, puis crée `messages.py` sans remplacer les autres fichiers.",
       "moduleLink": {
         "moduleId": "python-thonny",
         "text": "Revoir les fichiers dans Thonny"
@@ -32,11 +32,13 @@
       "id": "exemple",
       "title": "1 - Du texte, une instruction par ligne",
       "paragraphs": [
-        "print affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.",
-        "Python exécute ces instructions de haut en bas. Chaque print de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.",
+        "`print` affiche ce qui se trouve entre ses parenthèses. Les guillemets droits délimitent le texte : ils ne font pas partie du message affiché. Garde une parenthèse ouvrante et une fermante.",
+        "Python exécute ces instructions de haut en bas. Chaque `print` de cet exemple affiche une nouvelle ligne. Observe : deux instructions produisent deux lignes de résultat.",
         "Avant d’exécuter, annonce quelle phrase apparaîtra en premier."
       ],
-      "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")"
+      "code": "print(\"Bienvenue !\")\nprint(\"Voici mon premier programme.\")",
+      "filename": "messages.py",
+      "consoleOutput": "Bienvenue !\nVoici mon premier programme."
     },
     {
       "type": "tasks",
@@ -45,18 +47,18 @@
       "items": [
         {
           "id": "afficher-modele",
-          "text": "Écris et exécute les deux instructions du modèle dans messages.py.",
+          "text": "Écris et exécute les deux instructions du modèle dans `messages.py`.",
           "hint": "N’écris pas le résultat ni >>> dans l’éditeur. Utilise les guillemets droits du clavier, pas les guillemets courbes d’un traitement de texte."
         },
         {
           "id": "personnaliser-textes",
           "text": "Modifie les deux messages sans retirer leurs guillemets.",
-          "hint": "Change seulement le texte à l’intérieur des guillemets."
+          "hint": "Change seulement le texte à l’`int`érieur des guillemets."
         },
         {
           "id": "troisieme-instruction",
           "text": "Ajoute une troisième instruction pour afficher une phrase de fin.",
-          "hint": "Une nouvelle ligne avec print, des parenthèses et du texte entre guillemets."
+          "hint": "Une nouvelle ligne avec `print`, des parenthèses et du texte entre guillemets."
         },
         {
           "id": "inverser-ordre",
@@ -69,12 +71,12 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - une présentation sans modèle",
-      "intro": "Enregistre messages.py. Crée presentation.py ; essaie sans ouvrir l’indice.",
+      "intro": "Enregistre `messages.py`. Crée `presentation.py` ; essaie sans ouvrir l’indice.",
       "items": [
         {
           "id": "presentation-personnelle",
           "text": "Affiche une présentation de trois lignes sur un personnage ou un sujet de ton choix, avec tes propres phrases.",
-          "hint": "Chaque phrase peut avoir son propre print. Tu n’as pas besoin de variable ni de question pour ce module."
+          "hint": "Chaque phrase peut avoir son propre `print`. Tu n’as pas besoin de variable ni de question pour ce module."
         },
         {
           "id": "prediction-personnelle",
@@ -91,7 +93,8 @@
         "Cette ligne est volontairement incorrecte : il manque un guillemet droit. Une erreur indique que Python ne peut pas exécuter cette instruction telle quelle, pas que ton idée est mauvaise. Compare les paires de guillemets et de parenthèses, corrige puis relance.",
         "Une phrase différente de celle attendue n’est pas forcément une erreur Python : le programme peut fonctionner mais ne pas réaliser ta consigne."
       ],
-      "code": "print(\"Bonjour !)"
+      "code": "print(\"Bonjour !)",
+      "filename": "messages.py"
     },
     {
       "type": "tasks",
@@ -100,7 +103,7 @@
       "items": [
         {
           "id": "dessin-texte",
-          "text": "Avec plusieurs print, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.",
+          "text": "Avec plusieurs `print`, dessine une petite forme en utilisant seulement des espaces, des étoiles et des traits.",
           "hint": "Chaque ligne du dessin est un texte entre guillemets. Évite les antislashs pour cet essai : aucune nouvelle notation n’est nécessaire."
         }
       ]

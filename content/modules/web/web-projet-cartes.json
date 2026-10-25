@@ -57,7 +57,7 @@
       "title": "Comprendre les repères de la base",
       "paragraphs": [
         "Dans le HTML, le groupe .cartes entoure trois .carte distinctes ; chaque carte contient son titre et son paragraphe. Vérifie les ouvertures et fermetures des div, pas seulement l’aperçu.",
-        "Dans le CSS, border dessine la bordure ; padding écarte le contenu de cette bordure, à l’intérieur ; margin laisse de l’espace à l’extérieur ; border-radius arrondit les coins.",
+        "Dans le CSS, `border` dessine la bordure ; `padding` écarte le contenu de cette bordure, à l’intérieur ; `margin` laisse de l’espace à l’extérieur ; `border-radius` arrondit les coins.",
         "La checklist vérifie la présence de ces éléments, pas leur maîtrise. Si tu as copié la base, indique-le ; les manipulations qui suivent permettent de commencer à expliquer son fonctionnement."
       ]
     },
@@ -79,19 +79,19 @@
         },
         {
           "id": "bordures",
-          "text": "Je repère border dans .carte et je vois une bordure autour de chacune."
+          "text": "Je repère `border` dans .carte et je vois une bordure autour de chacune."
         },
         {
           "id": "padding",
-          "text": "Je repère padding : l’espace entre le contenu et la bordure est à l’intérieur de la carte."
+          "text": "Je repère `padding` : l’espace entre le contenu et la bordure est à l’intérieur de la carte."
         },
         {
           "id": "margin",
-          "text": "Je repère margin : l’espace est à l’extérieur de la carte."
+          "text": "Je repère `margin` : l’espace est à l’extérieur de la carte."
         },
         {
           "id": "radius",
-          "text": "Je repère border-radius et j’observe les coins arrondis."
+          "text": "Je repère `border-radius` et j’observe les coins arrondis."
         },
         {
           "id": "hover",
@@ -108,13 +108,13 @@
       "items": [
         {
           "id": "tester-padding",
-          "text": "Dans .carte, change seulement padding de 20px à 40px. Compare l’espace intérieur puis rétablis 20px.",
+          "text": "Dans .carte, change seulement `padding` de 20px à 40px. Compare l’espace intérieur puis rétablis 20px.",
           "hint": "Observe la distance entre le texte et sa bordure, pas l’espace extérieur entre les cartes."
         },
         {
           "id": "tester-margin",
-          "text": "Change seulement margin de 10px à 25px. Compare l’espace extérieur puis rétablis 10px.",
-          "hint": "Garde padding inchangé : on compare une seule propriété à la fois."
+          "text": "Change seulement `margin` de 10px à 25px. Compare l’espace extérieur puis rétablis 10px.",
+          "hint": "Garde `padding` inchangé : on compare une seule propriété à la fois."
         },
         {
           "id": "adapter-carte",
@@ -139,7 +139,7 @@
   "masteryCriteria": [
     "Préparer et conserver une base de trois cartes personnalisées, en indiquant si elle vient du modèle ou d’un projet personnel.",
     "Repérer le groupe cartes, les éléments de classe carte et la règle .carte qui s’applique à chacun.",
-    "Comparer padding et margin en modifiant une seule valeur à la fois, puis rétablir les valeurs de départ.",
+    "Comparer `padding` et `margin` en modifiant une seule valeur à la fois, puis rétablir les valeurs de départ.",
     "Ajouter une quatrième carte dans le groupe sans recopier toute la base et expliquer le style obtenu ; préciser les aides utilisées."
   ],
   "consolidation": [

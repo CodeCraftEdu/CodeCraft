@@ -115,7 +115,7 @@
         },
         {
           "id": "pas-style",
-          "text": "Explique pourquoi la page n’a pas automatiquement un grand bandeau coloré. Ne rajoute pas de CSS pour réussir cet exercice."
+          "text": "Explique pourquoi la page n’a pas automatiquement un grand bandeau `color`é. Ne rajoute pas de CSS pour réussir cet exercice."
         }
       ]
     },

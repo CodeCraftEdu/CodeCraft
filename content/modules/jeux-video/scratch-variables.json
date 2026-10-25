@@ -74,7 +74,6 @@
       ],
       "visualScript": {
         "caption": "3 : Un point par contact",
-        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
         "blocks": [
           {
             "category": "events",

@@ -17,7 +17,7 @@
     },
     {
       "skillId": "python.output",
-      "expectation": "Lire les sorties de print."
+      "expectation": "Lire les sorties de `print`."
     },
     {
       "skillId": "python.variables",
@@ -52,32 +52,35 @@
       "id": "exemple",
       "title": "1 - Lire avant de modifier",
       "paragraphs": [
-        "Crée diagnostic_nom.py pour ce premier exemple. Ce modèle est volontairement incorrect : la dernière ligne devrait afficher 7, mais le nom utilisé ne correspond pas au nom défini. Exécute-le pour observer le message.",
-        "Dans la console, lis la dernière ligne du message : NameError indique qu’un nom n’est pas défini. Repère ensuite le numéro de ligne et le nom du fichier signalés, puis regarde cette ligne dans l’éditeur. Le numéro dépend de ton propre fichier.",
+        "Crée `diagnostic_nom.py` pour ce premier exemple. Ce modèle est volontairement incorrect : la dernière ligne devrait afficher 7, mais le nom utilisé ne correspond pas au nom défini. Exécute-le pour observer le message.",
+        "Dans la console, lis la dernière ligne du message : `NameError` indique qu’un nom n’est pas défini. Repère ensuite le numéro de ligne et le nom du fichier signalés, puis regarde cette ligne dans l’éditeur. Le numéro dépend de ton propre fichier.",
         "La ligne signalée indique où Python a rencontré le problème ; sa cause peut être plus haut. Compare les noms, corrige seulement celui qui est incohérent, puis relance le fichier entier. Ne recopie pas le message d’erreur dans l’éditeur."
       ],
-      "code": "points = 5\nbonus = 2\nprint(point + bonus)"
+      "code": "points = 5\nbonus = 2\nprint(point + bonus)",
+      "filename": "diagnostic_nom.py"
     },
     {
       "type": "lesson",
       "id": "syntaxe",
       "title": "2 - Une instruction impossible à lire",
       "paragraphs": [
-        "Enregistre ton premier essai, puis crée diagnostic_syntaxe.py. Ce modèle incorrect produit une SyntaxError : il manque un guillemet fermant. Python ne peut pas lire l’instruction et n’exécute pas le fichier.",
+        "Enregistre ton premier essai, puis crée `diagnostic_syntaxe.py`. Ce modèle incorrect produit une `SyntaxError` : il manque un guillemet fermant. Python ne peut pas lire l’instruction et n’exécute pas le fichier.",
         "Regarde les guillemets et les parenthèses par paires. L’indicateur dans le message aide à chercher, mais ne promet pas de pointer exactement le caractère manquant. Corrige une cause et reteste."
       ],
-      "code": "print(\"Bonjour !)"
+      "code": "print(\"Bonjour !)",
+      "filename": "diagnostic_syntaxe.py"
     },
     {
       "type": "lesson",
       "id": "conversion",
       "title": "3 - Une valeur non convertible",
       "paragraphs": [
-        "Enregistre tes essais et crée diagnostic_conversion.py. Ce modèle est correct pour une réponse entière. Essaie 5, puis relance avec cinq : la conversion produit une ValueError. Le texte fourni ne représente pas l’entier attendu.",
-        "Avec cette entrée invalide, la ligne après int n’est pas exécutée. Pour vérifier le diagnostic, relance avec 5 : le résultat doit être 7. Les mots exacts du message peuvent varier selon la version de Python.",
+        "Enregistre tes essais et crée `diagnostic_conversion.py`. Ce modèle est correct pour une réponse entière. Essaie 5, puis relance avec cinq : la conversion produit une `ValueError`. Le texte fourni ne représente pas l’entier attendu.",
+        "Avec cette entrée invalide, la ligne après `int` n’est pas exécutée. Pour vérifier le diagnostic, relance avec 5 : le résultat doit être 7. Les mots exacts du message peuvent varier selon la version de Python.",
         "Lire l’erreur n’est pas la gérer : ce programme s’arrête toujours pour une mauvaise entrée. Nous n’ajoutons pas encore de nouvelle tentative ni de try/except."
       ],
-      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)\nprint(points + 2)"
+      "code": "reponse = input(\"Points, entier uniquement : \")\npoints = int(reponse)\nprint(points + 2)",
+      "filename": "diagnostic_conversion.py"
     },
     {
       "type": "tasks",
@@ -86,12 +89,12 @@
       "items": [
         {
           "id": "nom-incoherent",
-          "text": "Dans diagnostic_nom.py, teste le modèle NameError, repère la ligne et corrige le nom. Vérifie que le résultat devient 7.",
+          "text": "Dans `diagnostic_nom.py`, teste le modèle `NameError`, repère la ligne et corrige le nom. Vérifie que le résultat devient 7.",
           "hint": "points est défini, point ne l’est pas. La correction ne demande pas de nouvelle variable."
         },
         {
           "id": "guillemet-manquant",
-          "text": "Dans diagnostic_syntaxe.py, corrige le modèle SyntaxError. Explique ce qui manquait et vérifie le message Bonjour !.",
+          "text": "Dans `diagnostic_syntaxe.py`, corrige le modèle `SyntaxError`. Explique ce qui manquait et vérifie le message Bonjour !.",
           "hint": "Le texte doit se terminer par un guillemet avant la parenthèse fermante."
         }
       ]
@@ -101,25 +104,27 @@
       "id": "resultat",
       "title": "4 - Sans message d’erreur, mais faux",
       "paragraphs": [
-        "Crée diagnostic_resultat.py et garde tes essais précédents. L’objectif est d’ajouter un bonus de 2 aux 5 points, donc d’afficher 7. Le signe - soustrait : ce modèle fait une soustraction au lieu de l’addition demandée. Prévois le résultat puis corrige le signe.",
+        "Crée `diagnostic_resultat.py` et garde tes essais précédents. L’objectif est d’ajouter un bonus de 2 aux 5 points, donc d’afficher 7. Le signe - soustrait : ce modèle fait une soustraction au lieu de l’addition demandée. Prévois le résultat puis corrige le signe.",
         "Une exécution sans erreur n’est pas une preuve de réussite. Compare toujours la sortie au résultat attendu, puis teste une autre valeur après la correction."
       ],
-      "code": "points = 5\nbonus = 2\nprint(points - bonus)"
+      "code": "points = 5\nbonus = 2\nprint(points - bonus)",
+      "filename": "diagnostic_resultat.py"
     },
     {
       "type": "lesson",
       "id": "mission",
       "title": "Un programme à diagnostiquer",
       "paragraphs": [
-        "Dans correction.py, l’objectif est d’ajouter 3 à 10, puis d’afficher la valeur de message. Ce modèle contient volontairement deux défauts. Prédis ce qui devrait s’afficher selon l’objectif avant de le tester."
+        "Dans `correction.py`, l’objectif est d’ajouter 3 à 10, puis d’afficher la valeur de message. Ce modèle contient volontairement deux défauts. Prédis ce qui devrait s’afficher selon l’objectif avant de le tester."
       ],
-      "code": "print(10 - 3)\nmessage = \"Bonjour\"\nprint(mesage)"
+      "code": "print(10 - 3)\nmessage = \"Bonjour\"\nprint(mesage)",
+      "filename": "correction.py"
     },
     {
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - retrouver l’intention",
-      "intro": "Crée correction.py pour le modèle à diagnostiquer. Conserve les fichiers des exemples guidés ; essaie avant les indices.",
+      "intro": "Crée `correction.py` pour le modèle à diagnostiquer. Conserve les fichiers des exemples guidés ; essaie avant les indices.",
       "items": [
         {
           "id": "deux-defauts",
@@ -138,7 +143,7 @@
         },
         {
           "id": "diagnostic-saisie",
-          "text": "Rouvre diagnostic_conversion.py. Choisis une réponse qui fait échouer ce programme et une autre qui le fait réussir. Avant les essais, prédis ce qui se passera ; puis explique la ligne concernée, la cause et le résultat de l’essai réussi.",
+          "text": "Rouvre `diagnostic_conversion.py`. Choisis une réponse qui fait échouer ce programme et une autre qui le fait réussir. Avant les essais, prédis ce qui se passera ; puis explique la ligne concernée, la cause et le résultat de l’essai réussi.",
           "hint": "Observe le format demandé par la question et le rôle de chaque ligne. Relance pour chaque réponse ; lire une erreur ne signifie pas l’intercepter."
         }
       ]
@@ -158,7 +163,7 @@
   ],
   "masteryCriteria": [
     "Repérer le fichier, la ligne et la catégorie d’une erreur sans recopier le message.",
-    "Relier NameError, SyntaxError et ValueError à une cause précise sur les exemples enseignés.",
+    "Relier `NameError`, `SyntaxError` et `ValueError` à une cause précise sur les exemples enseignés.",
     "Corriger une cause à la fois puis relancer un test pertinent.",
     "Détecter un résultat faux même sans exception et expliquer la correction."
   ],

@@ -44,7 +44,7 @@
             "label": "La collection .cartes",
             "html": "<div style=\"border:3px solid #467e81;padding:12px\"><strong>.cartes</strong><div style=\"border:1px solid gray;padding:8px;margin-top:8px\">.carte : Forêt</div><div style=\"border:1px solid gray;padding:8px;margin-top:8px\">.carte : Montagne</div></div>",
             "code": ".cartes\n├── .carte\n└── .carte",
-            "feedback": "Les deux cartes sont les enfants directs de .cartes. Le cadre coloré indique le groupe observé.",
+            "feedback": "Les deux cartes sont les enfants directs de .cartes. Le cadre `color`é indique le groupe observé.",
             "css": ""
           },
           {

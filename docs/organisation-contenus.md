@@ -49,7 +49,19 @@ Les validations détectent les identifiants dupliqués, les fichiers JSON non in
 
 La génération ne valide pas à elle seule la justesse d’un cours ou l’apparence d’un aperçu ; le test navigateur `node tests/catalog-browser.cjs` vérifie les routes et les images.
 
+## Code dans les textes et panneaux
+
+Dans tous les parcours, les accents graves délimitent explicitement le code en ligne : noms de fichiers, appels, expressions et mots-clés. Les mots ordinaires et les libellés des interfaces à blocs restent du texte courant. La mise en forme conserve le texte affiché et ne lance aucun code.
+
+Les fonctions `createCodeHeader`, `createCode` et `createConsole` de `src/student/code.mjs` servent aux exemples, indices, démonstrations et étapes d'action. L'en-tête affiche « Éditeur » et le nom du fichier ; les résultats fournis utilisent un panneau « Console » directement visible. Les palettes de parcours teintent les panneaux et le code en ligne. Les aperçus HTML/CSS gardent leur rendu dans une iframe isolée.
+
+## Exemples Python
+
+Les extraits Python utilisent le même cadre éditeur que le schéma de la première leçon. `code` reste la source unique de l'extrait et `filename` nomme son fichier. Le champ facultatif `consoleOutput` contient uniquement un résultat fixe vérifié avec Python, pour un exemple complet. Le résultat est directement visible dans le panneau « Console » ; les saisies, tirages aléatoires, extraits incomplets et erreurs volontaires ne reçoivent pas de résultat prédéfini. Aucun interpréteur Python n'est exécuté par le site.
+
 ## Schémas Scratch
+
+Les figures Scratch et les schémas GDevelop partagent le cadre biseauté et le bandeau du parcours Jeu vidéo. Les couleurs des catégories Scratch restent celles des blocs. Une `illustration` peut fournir un `title` facultatif pour afficher un bandeau de fenêtre ; `caption` reste la légende sous l'image, et `alt` sa description accessible. Les cinq schémas GDevelop utilisent ce titre explicite.
 
 Dans `visualScript`, une pièce `{ "value": "200" }` représente une valeur à saisir. Un bloc à glisser utilise `{ "reporter": "abscisse x", "category": "motion" }`, ou par exemple `{ "reporter": "score", "category": "variables" }`. La catégorie est explicite : le rendu ne la déduit jamais du texte. Les catégories de ces blocs sont `motion`, `variables`, `sensing` et `operators`. Les menus restent des pièces `choice` et les conditions des pièces `condition`.
 

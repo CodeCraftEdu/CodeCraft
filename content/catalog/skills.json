@@ -231,6 +231,6 @@
     "title": "Prévoir un test de chemin selon l’état courant et le distinguer de l’arrêt de la boucle"
   },
   "minecraft.strategy": {
-    "title": "Éprouver une stratégie fondée sur les repères du terrain et expliquer ses limites"
+    "title": "Adapter une stratégie aux repères du terrain"
   }
 }

@@ -420,11 +420,11 @@ body.student-lowpoly .syntax {
 body.student-lowpoly .code-block {
   border: 1px solid #3b3c34;
   border-radius: 0;
-  background: #25271f;
+  background: var(--code-editor-bg);
   color: #f5f5ef;
-  padding: 0.7rem 0.6rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  padding: 1.25rem 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
   clip-path: polygon(
     8px 0,
     calc(100% - 8px) 0,
@@ -441,11 +441,81 @@ body.student-lowpoly .disclosure-body .content-card {
   border: 0;
   box-shadow: none;
 }
-body.student-lowpoly .scratch-script,
-body.student-lowpoly .scratch-scripts {
-  border: 1px solid var(--line);
+body.student-lowpoly :is(.scratch-script, .scratch-scripts, .scratch-coordinates, .game-window) {
+  min-width: 0;
+  margin: 1.25rem 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 5px solid color-mix(in srgb, var(--route) 55%, #c5b8d2);
   background: color-mix(in srgb, var(--route) 4%, var(--paper));
-  border-radius: 2px;
+  border-radius: 0;
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+}
+body.student-lowpoly
+  :is(.scratch-script, .scratch-scripts, .scratch-coordinates, .game-window)
+  > :is(.scratch-script__caption, .game-window__header) {
+  margin: 0;
+  padding: 0.8rem 1.6rem;
+  background: linear-gradient(
+    135deg,
+    var(--route) 0 24px,
+    color-mix(in srgb, var(--route) 70%, var(--route-dark)) 24px calc(100% - 24px),
+    color-mix(in srgb, var(--route) 65%, black) calc(100% - 24px)
+  );
+  color: #fffdf7;
+  border-bottom: 1px solid color-mix(in srgb, var(--route) 65%, white);
+  font-size: 1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+body.student-lowpoly
+  :is(.scratch-script__layout, .scratch-scripts__grid, .scratch-coordinates__grid) {
+  padding: 1.2rem 1.6rem;
+}
+body.student-lowpoly .scratch-scripts .scratch-script {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--route) 35%, var(--line));
+  border-bottom-width: 3px;
+  clip-path: none;
+}
+body.student-lowpoly .scratch-scripts .scratch-script > .scratch-script__caption {
+  background: var(--route-soft);
+  color: var(--route-dark);
+  padding: 0.8rem 1rem;
+}
+body.student-lowpoly
+  :is(.scratch-script, .scratch-scripts, .scratch-coordinates)
+  > .scratch-script__note {
+  margin: 0;
+  padding: 0 1.6rem 1.2rem;
+}
+body.student-lowpoly .scratch-script__note:empty {
+  display: none;
+}
+body.student-lowpoly .game-window img {
+  padding: 1.2rem 1.6rem;
+}
+body.student-lowpoly .game-window figcaption {
+  margin: 0;
+  padding: 0 1.6rem 1.2rem;
+}
+@media (max-width: 480px) {
+  body.student-lowpoly
+    :is(.scratch-script__layout, .scratch-scripts__grid, .scratch-coordinates__grid) {
+    padding: 1rem 0.75rem;
+  }
+  body.student-lowpoly .game-window img {
+    padding: 1rem 0.75rem;
+  }
 }
 /* Les couleurs et silhouettes pédagogiques des vrais blocs Scratch sont conservées. */
 
@@ -468,10 +538,18 @@ body.student-lowpoly .code-diagram__console {
   );
 }
 body.student-lowpoly .code-diagram__editor {
-  background: color-mix(in srgb, var(--route-dark) 25%, #25212e);
+  background: var(--code-editor-bg);
 }
-body.student-lowpoly .code-diagram__editor .code-diagram__header {
-  padding: 0.8rem 1.15rem;
+body.student-lowpoly
+  :is(
+    .code-diagram__editor,
+    .code-editor,
+    .web-comparison__source,
+    .flex-display-demo__source,
+    .flex-property-demo__source
+  )
+  > .code-diagram__header {
+  padding: 0.8rem 1.6rem;
   background: linear-gradient(
     135deg,
     var(--route) 0 24px,
@@ -481,24 +559,26 @@ body.student-lowpoly .code-diagram__editor .code-diagram__header {
   border-bottom: 1px solid color-mix(in srgb, var(--route) 65%, white);
 }
 body.student-lowpoly .code-diagram__file {
+  color: #f4f5ef;
   border-color: color-mix(in srgb, var(--route) 50%, white);
   background: color-mix(in srgb, var(--route-dark) 60%, #25212e);
 }
 body.student-lowpoly .code-diagram__console {
-  background: #fffcf7;
+  background: var(--code-console-bg);
 }
 body.student-lowpoly .code-diagram__console .code-diagram__header {
-  color: var(--route-dark);
-  border-bottom: 1px solid var(--line);
+  padding: 0.8rem 1.6rem;
+  color: #e8eef7;
+  border-bottom: 1px solid var(--code-console-edge);
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--route) 22%, white) 0 24px,
-    var(--route-soft) 24px calc(100% - 24px),
-    color-mix(in srgb, var(--route) 28%, white) calc(100% - 24px)
+    color-mix(in srgb, var(--code-console-header) 85%, white) 0 24px,
+    var(--code-console-header) 24px calc(100% - 24px),
+    color-mix(in srgb, var(--code-console-header) 90%, black) calc(100% - 24px)
   );
 }
 body.student-lowpoly .code-diagram__result {
-  color: var(--ink);
+  color: #e8eef7;
 }
 body.student-lowpoly .pedagogy-choice {
   background: #fffcf6;

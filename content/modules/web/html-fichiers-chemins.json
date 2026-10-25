@@ -24,7 +24,7 @@
         "Tu vas afficher un dessin enregistré dans un dossier et créer un lien qui ouvre ce même dessin. Le résultat attendu est une image visible et un lien qui mène au bon fichier.",
         "Un fichier contient des données ; un dossier sert à ranger des fichiers. Une extension comme `.html` ou `.png` fait partie du nom et indique un type de fichier. Le dessin fourni est une image PNG.",
         "Ouvre ton dossier atelier-web dans ton éditeur de texte et garde le navigateur à côté pour tester les chemins.",
-        "Dans CodePen, écrire images/carre-bleu.png ne donne pas accès à un dossier de ton ordinateur. Ici, les essais se font dans tes fichiers locaux. Sans accès aux fichiers, tu peux raisonner sur l’arbre, mais l’essai de chargement restera à faire dans cet environnement."
+        "Dans CodePen, écrire `images/carre-bleu.png` ne donne pas accès à un dossier de ton ordinateur. Ici, les essais se font dans tes fichiers locaux. Sans accès aux fichiers, tu peux raisonner sur l’arbre, mais l’essai de chargement restera à faire dans cet environnement."
       ]
     },
     {
@@ -43,8 +43,8 @@
       "id": "arbre",
       "title": "2 : Ton dossier de départ",
       "paragraphs": [
-        "Si tu n’as pas encore de dossier de travail, crée atelier-web, ouvre-le dans VS Code avec Fichier → Ouvrir le dossier, puis crée un fichier nommé index.html. Son contenu complet est fourni plus bas. Tu n’as pas besoin d’avoir fait le cours précédent pour disposer de ce cadre.",
-        "Crée un dossier images à côté de index.html dans atelier-web. Place le fichier téléchargé carre-bleu.png dans images. Vérifie son nom exact, y compris le tiret et l’extension.",
+        "Si tu n’as pas encore de dossier de travail, crée atelier-web, ouvre-le dans VS Code avec Fichier → Ouvrir le dossier, puis crée un fichier nommé `index.html`. Son contenu complet est fourni plus bas. Tu n’as pas besoin d’avoir fait le cours précédent pour disposer de ce cadre.",
+        "Crée un dossier images à côté de `index.html` dans atelier-web. Place le fichier téléchargé `carre-bleu.png` dans images. Vérifie son nom exact, y compris le tiret et l’extension.",
         "Si le téléchargement reste dans Téléchargements, la page ne le trouvera pas avec le chemin demandé. Déplace ou copie le fichier dans images. Ne modifie pas le dessin lui-même.",
         "L’arbre ci-dessous décrit les dossiers et fichiers, pas le HTML à copier. Les lignes décalées se trouvent à l’intérieur du dossier au-dessus."
       ],
@@ -55,7 +55,7 @@
       "id": "chemin",
       "title": "3 : Lire un chemin relatif",
       "paragraphs": [
-        "Dans ce document, un chemin relatif part du dossier qui contient index.html. images/carre-bleu.png signifie : entrer dans images, puis prendre carre-bleu.png.",
+        "Dans ce document, un chemin relatif part du dossier qui contient `index.html`. `images/carre-bleu.png` signifie : entrer dans images, puis prendre `carre-bleu.png`.",
         "On utilise / pour séparer les dossiers dans le chemin HTML, même sous Windows. Ne copie pas le chemin complet de ton ordinateur : il ne désignerait pas la même chose sur un autre poste.",
         "Garde les mêmes lettres, majuscules/minuscules et extensions que les fichiers. Certains systèmes tolèrent une différence de casse, d’autres non. Utilise les noms simples de l’exemple.",
         "Un chemin ne déplace pas le fichier : il indique où le chercher. Si tu renommes ou déplaces le fichier, les références qui le désignent doivent être adaptées.",
@@ -64,20 +64,20 @@
       "demonstration": {
         "type": "web-comparison",
         "title": "Pars du fichier HTML pour retrouver l’image",
-        "intro": "Dans ce dossier représenté, index.html se trouve à côté du dossier images.",
+        "intro": "Dans ce dossier représenté, `index.html` se trouve à côté du dossier images.",
         "variants": [
           {
             "label": "Le bon chemin",
             "html": "<pre>atelier/\n├── index.html\n├── style.css\n└── images/\n    └── forme.png</pre><p>index.html → images → forme.png</p>",
             "code": "<img src=\"images/forme.png\" alt=\"Une forme\">",
-            "feedback": "Entre dans images, puis retrouve forme.png. Les noms et extensions doivent correspondre.",
+            "feedback": "Entre dans images, puis retrouve `forme.png`. Les noms et extensions doivent correspondre.",
             "css": ""
           },
           {
             "label": "Un dossier oublié",
             "html": "<pre>atelier/\n├── index.html\n├── style.css\n└── images/\n    └── forme.png</pre><p>index.html → forme.png : aucun fichier à cet endroit</p>",
             "code": "<img src=\"forme.png\" alt=\"Une forme\">",
-            "feedback": "Ce chemin cherche forme.png à côté d’index.html, alors que le dessin est dans images.",
+            "feedback": "Ce chemin cherche `forme.png` à côté d’`index.html`, alors que le dessin est dans images.",
             "css": ""
           }
         ],
@@ -99,21 +99,21 @@
       "type": "tasks",
       "id": "guide",
       "title": "Exercice guidé : Suivre le chemin",
-      "intro": "Enregistre index.html puis ouvre-le dans le navigateur.",
+      "intro": "Enregistre `index.html` puis ouvre-le dans le navigateur.",
       "items": [
         {
           "id": "verifier-dossiers",
           "text": "Compare tes fichiers avec l’arbre. Vérifie que le dessin est bien dans images, pas simplement visible dans les téléchargements.",
           "hints": [
             "Regarde l’emplacement réel du fichier.",
-            "index.html et images doivent être dans le même dossier atelier-web.",
+            "`index.html` et images doivent être dans le même dossier atelier-web.",
             "Compare les niveaux de l’arbre.",
-            "Place carre-bleu.png dans images puis garde le chemin images/carre-bleu.png dans HTML."
+            "Place `carre-bleu.png` dans images puis garde le chemin `images/carre-bleu.png` dans HTML."
           ]
         },
         {
           "id": "verifier-image",
-          "text": "Vérifie que le carré s’affiche. Si ce n’est pas le cas, suis le chemin mot par mot depuis index.html."
+          "text": "Vérifie que le carré s’affiche. Si ce n’est pas le cas, suis le chemin mot par mot depuis `index.html`."
         },
         {
           "id": "verifier-lien",
@@ -133,7 +133,7 @@
       "items": [
         {
           "id": "renommer",
-          "text": "Renomme le fichier carre-bleu.png en forme.png dans ton dossier. Avant d’actualiser la page, prédis ce qui ne fonctionnera plus."
+          "text": "Renomme le fichier `carre-bleu.png` en `forme.png` dans ton dossier. Avant d’actualiser la page, prédis ce qui ne fonctionnera plus."
         },
         {
           "id": "adapter",
@@ -141,8 +141,8 @@
           "hints": [
             "Repère les deux références vers l’ancien nom.",
             "L’image et le lien ont chacun leur propre chemin.",
-            "Compare src et href avec le nom forme.png dans le dossier images.",
-            "Remplace images/carre-bleu.png par images/forme.png dans src et dans href. Enregistre, actualise et teste le clic."
+            "Compare src et href avec le nom `forme.png` dans le dossier images.",
+            "Remplace `images/carre-bleu.png` par `images/forme.png` dans src et dans href. Enregistre, actualise et teste le clic."
           ]
         },
         {
@@ -170,7 +170,7 @@
         },
         {
           "id": "verifier-explication",
-          "text": "Je peux retrouver le fichier depuis le dossier de index.html et distinguer chemin, alt et texte du lien."
+          "text": "Je peux retrouver le fichier depuis le dossier de `index.html` et distinguer chemin, alt et texte du lien."
         }
       ]
     },
@@ -178,16 +178,16 @@
       "type": "tasks",
       "id": "reparer",
       "title": "Consolidation : Image absente, quelle cause ?",
-      "intro": "Utilise maintenant ton fichier images/forme.png. Crée une erreur volontaire puis répare-la.",
+      "intro": "Utilise maintenant ton fichier `images/forme.png`. Crée une erreur volontaire puis répare-la.",
       "items": [
         {
           "id": "fichier-absent",
-          "text": "Remplace uniquement src par forme.png. L’image ne se charge plus. Explique où ce chemin cherche le dessin, puis répare-le.",
+          "text": "Remplace uniquement src par `forme.png`. L’image ne se charge plus. Explique où ce chemin cherche le dessin, puis répare-le.",
           "hints": [
-            "Regarde le dossier qui contient index.html.",
-            "Le chemin sans dossier cherche forme.png à côté de index.html.",
+            "Regarde le dossier qui contient `index.html`.",
+            "Le chemin sans dossier cherche `forme.png` à côté de `index.html`.",
             "Compare avec l’arbre : le dessin est dans images.",
-            "Rétablis images/forme.png dans src ; ne déplace pas le dessin pour masquer l’erreur de chemin."
+            "Rétablis `images/forme.png` dans src ; ne déplace pas le dessin pour masquer l’erreur de chemin."
           ]
         },
         {
@@ -205,8 +205,8 @@
       "id": "bonus-explication",
       "title": "Bonus : Un niveau de dossier supplémentaire",
       "paragraphs": [
-        "Facultatif : un chemin peut traverser plusieurs dossiers en les séparant par /. Dans media/images/forme.png, on entre d’abord dans media, puis images, puis on ouvre forme.png.",
-        "Pour essayer sans perdre ton travail, fais une copie de ton dossier atelier-web avec son contenu. Dans cette copie, crée media puis déplace images à l’intérieur. Garde index.html à la racine."
+        "Facultatif : un chemin peut traverser plusieurs dossiers en les séparant par /. Dans `media/images/forme.png`, on entre d’abord dans media, puis images, puis on ouvre `forme.png`.",
+        "Pour essayer sans perdre ton travail, fais une copie de ton dossier atelier-web avec son contenu. Dans cette copie, crée media puis déplace images à l’intérieur. Garde `index.html` à la racine."
       ],
       "code": "atelier-web-copie/\n├── index.html\n└── media/\n    └── images/\n        └── forme.png"
     },
@@ -220,10 +220,10 @@
           "id": "bonus-chemins",
           "text": "Dans la copie du projet, adapte le chemin de l’image et celui du lien, puis vérifie les deux.",
           "hints": [
-            "Pars du dossier de index.html.",
+            "Pars du dossier de `index.html`.",
             "Traverse chaque dossier dans l’ordre.",
             "Compare avec l’arbre du bonus.",
-            "Utilise media/images/forme.png dans src et href."
+            "Utilise `media/images/forme.png` dans src et href."
           ]
         },
         {

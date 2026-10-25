@@ -91,6 +91,37 @@ test('Scratch illustré : blocs de valeur distincts des saisies, légendes utile
     );
     assert.equal(explained.querySelectorAll('.scratch-script__explanations li').length, 1);
     assert.equal(explained.querySelector('.scratch-script__category').textContent, 'Événements');
+    assert(explained.querySelector('.scratch-script__category-name--events'));
+    const mixed = dom.blocks.createBlock(
+      {
+        type: 'lesson',
+        title: 'Deux catégories',
+        visualScript: {
+          caption: 'Condition',
+          blocks: [
+            {
+              category: 'control',
+              label: 'Contrôle + Opérateurs',
+              parts: ['si'],
+              explanation: 'Teste une comparaison.',
+            },
+          ],
+        },
+      },
+      'scratch-pilotage',
+    );
+    assert.equal(
+      mixed.querySelector('.scratch-script__category').textContent,
+      'Contrôle + Opérateurs',
+    );
+    assert.equal(
+      mixed.querySelector('.scratch-script__category-name--control').textContent,
+      'Contrôle',
+    );
+    assert.equal(
+      mixed.querySelector('.scratch-script__category-name--operators').textContent,
+      'Opérateurs',
+    );
   } finally {
     dom.close();
   }

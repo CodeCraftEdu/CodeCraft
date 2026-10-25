@@ -9,6 +9,7 @@ Ces documents guident les modifications et les vérifications. Les règles édit
 - [carte-projet.md](carte-projet.md)
 - [organisation-contenus.md](organisation-contenus.md)
 - [regles-editoriales.md](regles-editoriales.md)
+- [minecraft-codeorg.md](minecraft-codeorg.md)
 - [verification-developpement.md](verification-developpement.md)
 - [navigation-parcours.md](navigation-parcours.md)
 - [direction-visuelle.md](direction-visuelle.md)

@@ -44,7 +44,7 @@
       "title": "2 : Assemble cette petite scène",
       "paragraphs": [
         "Sélectionne le chat du projet neuf préparé au début. Il n’a pas d’ancienne pile : tu peux construire cet essai sans supprimer ton travail précédent. Reste dans ce projet pour modifier les messages, l’ordre et la pause.",
-        "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous. Ce modèle se lit ; il ne se colle pas comme du code texte.",
+        "Prends chaque bloc dans sa catégorie, change les textes et nombres, puis accroche-les dans l’ordre ci-dessous.",
         "Avant de cliquer sur le drapeau, annonce ce que fera le chat en premier, puis en dernier. Observe ensuite les deux déplacements et la pause."
       ],
       "shortSteps": [
@@ -54,7 +54,6 @@
       ],
       "visualScript": {
         "caption": "Une pile : les actions de haut en bas",
-        "note": "Assemble ces blocs dans Scratch. Le modèle n’est pas interactif.",
         "blocks": [
           {
             "category": "events",

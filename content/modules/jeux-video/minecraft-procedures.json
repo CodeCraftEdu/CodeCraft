@@ -24,7 +24,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Ouvre le niveau 8 et prépare ton carnet. Les blocs commandent l’Agent ; les flèches déplacent Alex ou Steve après Exécuter. Tu vas lire des groupes de commandes déjà fournis pour choisir où les utiliser."
+      "text": "Ouvre Hero 8. Les blocs commandent l’Agent ; les flèches déplacent Alex ou Steve après Exécuter. Lis les groupes de commandes fournis pour choisir leurs appels."
     },
     {
       "type": "lesson",
@@ -58,11 +58,8 @@
       "items": [
         {
           "id": "mc04-commandes",
-          "text": "Dans ton carnet, relève les déplacements, les placements et le dernier virage de la procédure. Quelles cases recevront une planche ?",
-          "hints": [
-            "Pour chaque avancer, déplace une flèche sur ton dessin. Pour chaque placer, marque la case occupée.",
-            "Compte séparément les déplacements et les placements : toutes les cases traversées ne reçoivent pas une planche."
-          ]
+          "text": "Dans la définition fournie, montre les déplacements, les placements et le dernier virage. Lance un appel et observe les cases qui reçoivent une planche.",
+          "hint": "Suis l’Agent pendant l’exécution : avancer change sa case, placer transforme le sol sous lui."
         },
         {
           "id": "mc04-fin-appel",
@@ -76,9 +73,9 @@
       "id": "raccorder",
       "title": "Le deuxième appel reprend l’état obtenu",
       "paragraphs": [
-        "Après ton premier essai, note où se trouve l’Agent et dans quelle direction il regarde. Le nom construire un pont ne décrit pas à lui seul tous ces effets : la définition contient aussi des déplacements et un virage.",
-        "Prévois maintenant un deuxième appel de la même procédure, juste après le premier. Son point de départ sera l’arrivée du premier appel, avec la nouvelle direction. Marque les cases du deuxième groupe sur ton dessin.",
-        "Clique sur Réinitialiser (Reset), garde le premier appel et accroche le deuxième à sa suite sous le départ. Lance depuis le terrain initial. Les définitions fournies restent en place : tu composes ton programme avec les petits blocs d’appel."
+        "Après le premier appel, observe la case et la direction de l’Agent. La définition contient aussi un virage : son nom ne suffit pas à décrire tous ses effets.",
+        "Ajoute un deuxième appel de la même procédure sous le premier. Il commencera depuis la position et la direction laissées par le premier appel.",
+        "Clique sur Reset puis lance les deux appels. Les définitions restent en place ; le programme utilise les petits blocs d’appel."
       ]
     },
     {
@@ -88,8 +85,8 @@
       "items": [
         {
           "id": "mc04-deux-appels",
-          "text": "Compare les deux constructions et la direction finale avec ton dessin. Pourquoi le deuxième groupe ne continue-t-il pas tout droit ?",
-          "hint": "Repars de la dernière commande du premier appel : elle a changé la direction de l’Agent."
+          "text": "Observe les deux constructions. Pourquoi le deuxième appel ne continue-t-il pas tout droit ?",
+          "hint": "Regarde le dernier bloc de la définition."
         },
         {
           "id": "mc04-joueur",
@@ -97,7 +94,7 @@
         },
         {
           "id": "mc04-avant-apres",
-          "text": "Pour chacun des deux appels, décris le départ, l’arrivée, la direction finale et les cases construites. Utilise ton dessin pour montrer le raccord."
+          "text": "Montre dans le jeu où chaque appel commence et se termine. Explique le raccord entre les deux constructions."
         }
       ]
     },
@@ -127,11 +124,8 @@
         },
         {
           "id": "mc04-dix-raccord",
-          "text": "Sur ton dessin de la carte, choisis une procédure pour chaque tronçon. Avant chaque appel, indique la position et la direction nécessaires. Ajoute les commandes de raccord utiles.",
-          "hints": [
-            "Compte les cases du tronçon dans la direction regardée par l’Agent.",
-            "Un appel commence depuis l’état courant. Un virage ou un déplacement de raccord doit être une commande de ton programme s’il n’est pas dans la procédure."
-          ]
+          "text": "Dans Hero 10, repère les tronçons à réparer et choisis un appel court ou long pour chacun. Ajoute les déplacements et les virages nécessaires entre les appels.",
+          "hint": "Lis le nombre de répétitions de chaque définition et compte les cases du tronçon dans le jeu."
         },
         {
           "id": "mc04-dix-verifier",
@@ -141,67 +135,11 @@
     },
     {
       "type": "lesson",
-      "id": "defi-papier",
-      "title": "Prévoir deux appels sur une grille",
-      "paragraphs": [
-        "Sur cette grille originale, le pion commence en B5 vers le nord. Les cases B4, B3, C3 et D3 sont de l’eau. Les autres cases sont praticables. Le passage à construire relie B5 à E3 en passant par ces quatre cases d’eau.",
-        "Pour ce dessin, la procédure tronçon est définie ci-dessous. Avancer déplace d’une case dans la direction regardée. Placer une planche couvre la case d’eau occupée ; sur une case déjà praticable, cela ne change pas le passage. Tourner à droite fait un quart de tour sur place."
-      ],
-      "illustration": {
-        "src": "images/minecraft-procedures.svg",
-        "alt": "Grille A à E et 1 à 5. Départ B5 vers le nord. L’eau occupe B4, B3, C3 et D3. L’arrivée visée est E3.",
-        "caption": "Départ B5, nord. Observe aussi la direction entre les appels."
-      },
-      "filename": "Définition",
-      "code": "définir tronçon\n  répéter 2 fois\n    avancer\n    placer une planche\n  tourner à droite"
-    },
-    {
-      "type": "tasks",
-      "id": "autonomie",
-      "title": "Choisir d’après l’état de départ",
-      "intro": "Travaille sur le dessin et la définition tronçon ci-dessus. Prévois sur papier avant de suivre les actions avec ton pion.",
-      "items": [
-        {
-          "id": "mc04-papier-un",
-          "text": "Depuis B5 nord, prévois un appel de tronçon. Note l’arrivée, la direction finale et les cases couvertes.",
-          "hint": "Suis les deux tours, puis le virage qui se trouve après la boucle."
-        },
-        {
-          "id": "mc04-papier-deux",
-          "text": "Enchaîne un deuxième appel de tronçon, sans remise au départ. Le passage jusqu’à E3 est-il continu ? Où finit l’Agent, et vers où regarde-t-il ?",
-          "hint": "Le deuxième appel démarre là où le premier s’est terminé, avec sa direction finale."
-        },
-        {
-          "id": "mc04-papier-invalide",
-          "text": "Repars du dessin initial, en B5 mais vers l’est. Prévois un seul appel. Couvre-t-il les mêmes cases d’eau ? Quelle commande faudrait-il ajouter avant cet appel pour retrouver le bon départ ?",
-          "hint": "Compare la direction actuelle à celle requise pour atteindre B4 en avançant."
-        }
-      ]
-    },
-    {
-      "type": "details",
-      "id": "comparaison-papier",
-      "title": "Comparer après tes prévisions",
-      "blocks": [
-        {
-          "type": "lesson",
-          "id": "resultat-papier",
-          "title": "Le départ compte autant que la définition",
-          "paragraphs": [
-            "Le premier appel couvre B4 puis B3, termine en B3 et tourne vers l’est. Le deuxième couvre C3 puis D3, termine en D3 et tourne vers le sud. Les quatre cases d’eau sont couvertes ; le passage B5, B4, B3, C3, D3, E3 est continu. L’Agent n’a pas besoin de terminer lui-même en E3 pour que ce passage existe.",
-            "Depuis B5 vers l’est, un seul appel passe par C5 et D5, puis termine en D5 vers le sud. Ces cases étaient déjà praticables : le passage d’eau reste à construire. Avant l’appel, un virage à gauche aurait rétabli B5 nord.",
-            "La définition reste la même dans ces essais. Son effet dépend de la position, de la direction et du terrain au moment de l’appel."
-          ]
-        }
-      ]
-    },
-    {
-      "type": "lesson",
       "id": "conserver",
       "title": "Conserver l’enchaînement et ses raccords",
       "paragraphs": [
-        "Garde dans ton carnet l’adresse de Hero 10, un dessin des tronçons et une capture lisible des appels avec leurs commandes de raccord. Note aussi l’effet de chaque procédure et ce que tu as observé après Reset.",
-        "Pour reconstruire ton programme, tu pourras relire les définitions fournies et reprendre tes appels depuis la capture. Avec un compte Code.org, vérifie la reprise en rouvrant le niveau."
+        "Pour reprendre ton travail plus tard, garde l’adresse du niveau et une capture lisible de tes blocs. Inclue les définitions utilisées avec leurs appels.",
+        "Avec un compte Code.org, rouvre le niveau pour vérifier que tu retrouves ta version. Sans compte, les captures permettent de reconstruire les blocs manuellement."
       ]
     }
   ],
@@ -213,28 +151,30 @@
     "Une même procédure ne construit pas forcément le même passage depuis une autre direction."
   ],
   "teacherGuide": {
-    "objective": "Faire lire les effets d’une procédure et prévoir ses conditions de départ et son état final avant de composer les appels.",
+    "objective": "Lire une procédure fournie et prévoir sa position finale, sa direction et ses constructions pour choisir et enchaîner les appels.",
     "entryDiagnosis": [
-      "Demander à l’élève de montrer définition et appel dans Hero 8. Après Scratch, réutiliser la distinction définir/appeler sans imposer un second cours de création de bloc.",
-      "Faire suivre la direction après le dernier bloc de la définition. Si les rotations restent difficiles, reprendre une trace de la mission 1."
+      "Demander de montrer les personnages et les commandes utiles dans le niveau Code.org.",
+      "Observer un premier essai pour choisir les explications à reprendre."
     ],
     "preparation": [
+      "Ouvrir le niveau indiqué et conserver les blocs personnels avant de les remplacer.",
       "Hero 8 fournit build bridge : avancer, placer une planche, avancer, placer une planche, avancer, avancer, tourner à droite. La définition et ses commandes sont verrouillées ; la palette fournit l’appel. Les deux appels se placent sous le départ, pas dans la définition.",
       "Hero 10 fournit fix short path et fix long path, respectivement deux et trois répétitions de détruire, avancer, placer un rail. Les deux définitions sont verrouillées et ne contiennent aucun virage. La palette propose les commandes de raccord et les appels ; aucun paramètre n’est à créer.",
       "Hero 9 n’est pas requis : les actions détruire devant puis avancer et placer sont expliquées à l’entrée de Hero 10. Prévoir un premier suivi de ce motif pour un débutant.",
-      "L’inventaire des configurations est réutilisé. La destruction vise le bloc devant l’entité dans le moteur officiel ; le placement concerne sa position actuelle. Aucune nouvelle exécution complète des puzzles n’est revendiquée.",
-      "Le défi sur grille est original. Sa procédure tronçon contient deux déplacements, deux placements et un virage ; elle est distincte de celle de Hero 8. Préparer un pion orienté et des marques pour les cases couvertes."
+      "L’inventaire des configurations est réutilisé. La destruction vise le bloc devant l’entité dans le moteur officiel ; le placement concerne sa position actuelle. Aucune nouvelle exécution complète des puzzles n’est revendiquée."
     ],
-    "why": "L’apport après Scratch porte sur les raccords : un appel n’est pas une commande qui retrouve automatiquement son départ et son orientation. Le terrain modifié fait aussi partie de l’état à suivre.",
+    "why": "Les essais dans Code.org permettent de relier les blocs, leurs actions et le résultat dans le jeu.",
     "discoverySpeech": [
       "Montre la définition et le petit bloc qui l’appelle. Que fait l’Agent quand le programme rencontre cet appel ?",
       "Où et dans quelle direction se termine le premier appel ? Le deuxième peut-il commencer ainsi sur le tronçon que tu vises ?"
     ],
     "example": {
-      "target": { "moduleId": "minecraft-procedures", "blockId": "lire-huit" },
+      "target": {
+        "moduleId": "minecraft-procedures",
+        "blockId": "lire-huit"
+      },
       "comments": [
-        "Hero 8 : chaque appel exécute quatre déplacements, deux placements et un virage à droite. Le deuxième poursuit depuis l’arrivée et la nouvelle orientation, sans remise à zéro.",
-        "Vérifier la trace sur la carte affichée ; le nom construire un pont ne précise pas le virage ni les deux déplacements sans placement."
+        "Observer l’exécution dans Code.org et demander une explication à partir du jeu et des blocs."
       ]
     },
     "questions": [
@@ -245,20 +185,18 @@
       {
         "question": "Les procédures de Hero 10 tournent-elles comme celle de Hero 8 ?",
         "answer": "Non. Elles répètent deux ou trois fois détruire devant, avancer, placer un rail, sans rotation. Un virage de raccord doit être ajouté dans le programme si le tracé l’exige."
-      },
-      {
-        "question": "Que donnent deux appels de tronçon sur le dessin original ?",
-        "answer": "Depuis B5 nord : B4 et B3 couvertes, fin B3 est ; puis C3 et D3 couvertes, fin D3 sud. Le passage jusqu’à E3 est continu."
-      },
-      {
-        "question": "Que change le départ B5 est pour un appel ?",
-        "answer": "Arrivée D5 sud, sans couvrir les quatre cases d’eau visées. Un virage à gauche avant l’appel rétablit le départ B5 nord."
       }
     ],
-    "accompaniedActivity": { "moduleId": "minecraft-procedures", "blockId": "guide" },
-    "independentActivity": { "moduleId": "minecraft-procedures", "blockId": "autonomie" },
+    "accompaniedActivity": {
+      "moduleId": "minecraft-procedures",
+      "blockId": "lire-huit"
+    },
+    "independentActivity": {
+      "moduleId": "minecraft-procedures",
+      "blockId": "choisir-dix"
+    },
     "differentiation": [
-      "Accepter un tableau dessiné ou une explication orale : départ, arrivée, direction, terrain. Lire les commandes si la lecture freine le raisonnement.",
+      "Accepter une réponse orale ou un pointage dans le jeu. Les notes ne sont pas requises.",
       "Pour un débutant, suivre les actions d’un seul appel avant de composer deux appels.",
       "Après Scratch, demander directement la trace et un mauvais état de départ. La syntaxe de définition n’est pas l’objectif de ce chapitre.",
       "Pendant le stage, ouvrir la lecture d’une procédure ou le défi du raccord au moment où le besoin apparaît, puis revenir au projet du groupe."
@@ -273,10 +211,7 @@
       },
       {
         "symptom": "Le deuxième appel est prévu depuis le départ initial.",
-        "helps": [
-          "Marquer l’arrivée et la direction après le premier appel.",
-          "Reprendre la définition depuis cet état, sans remettre le pion au départ."
-        ]
+        "helps": ["Marquer l’arrivée et la direction après le premier appel."]
       },
       {
         "symptom": "L’élève ajoute un virage en supposant que toutes les procédures tournent.",
@@ -293,13 +228,13 @@
         ]
       }
     ],
-    "notes": "Une réussite du puzzle ou un appel placé ne suffit pas à montrer la compréhension. Demander le raccord expliqué et une prévision depuis une autre direction. La grille fournit un transfert indépendant de la carte Code.org.",
+    "notes": "Les niveaux Code.org servent de support aux manipulations et aux observations. Les contrôles locaux ne valident pas le moteur Code.org ni la compréhension d’un élève.",
     "quickConductor": [
-      "Distinguer définition et appel sur Hero 8.",
-      "Faire prévoir puis essayer un appel, et ensuite deux.",
-      "Lire les deux procédures de Hero 10 et préparer les raccords.",
-      "Prévoir les deux appels du dessin original, puis changer la direction initiale.",
-      "Conserver les effets et les appels avec leurs raccords."
+      "Ouvrir le niveau et repérer le but dans le jeu.",
+      "Assembler ou lire les blocs, puis lancer.",
+      "Observer une difficulté et corriger la commande concernée.",
+      "Réinitialiser avant de vérifier le nouvel essai.",
+      "Conserver les blocs pour une reprise ultérieure."
     ],
     "references": [
       {

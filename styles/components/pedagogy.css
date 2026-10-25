@@ -1,5 +1,16 @@
 /* Relations pédagogiques, ressources d’exercice et guides publics. */
 /* Modèle statique de blocs : uniquement les activités ayant visualScript. */
+.scratch-script,
+.scratch-scripts {
+  --scratch-events: #ffcf45;
+  --scratch-motion: #285bc2;
+  --scratch-looks: #7542b8;
+  --scratch-control: #ffae38;
+  --scratch-variables: #ce5b00;
+  --scratch-custom: #b53550;
+  --scratch-sensing: #137987;
+  --scratch-operators: #d4edc5;
+}
 .scratch-script {
   margin: 1.25rem 0;
   padding: 1.2rem;
@@ -34,7 +45,7 @@
   overflow-wrap: anywhere;
 }
 .scratch-script__block--events {
-  background: #ffcf45;
+  background: var(--scratch-events);
   border-color: #a57308;
   color: #332600;
   border-top-left-radius: 24px 18px;
@@ -42,33 +53,33 @@
   padding-top: 0.9rem;
 }
 .scratch-script__block--motion {
-  background: #285bc2;
+  background: var(--scratch-motion);
   border-color: #193c84;
   color: white;
   margin-top: -2px;
 }
 .scratch-script__block--looks {
-  background: #7542b8;
+  background: var(--scratch-looks);
   border-color: #492a76;
   color: white;
 }
 .scratch-script__block--control {
-  background: #ffae38;
+  background: var(--scratch-control);
   border-color: #9b5a00;
   color: #382200;
 }
 .scratch-script__block--variables {
-  background: #ce5b00;
+  background: var(--scratch-variables);
   border-color: #813900;
   color: white;
 }
 .scratch-script__block--custom {
-  background: #b53550;
+  background: var(--scratch-custom);
   border-color: #742236;
   color: white;
 }
 .scratch-script__block--sensing {
-  background: #137987;
+  background: var(--scratch-sensing);
   border-color: #0b4b54;
   color: white;
 }
@@ -82,7 +93,7 @@
   line-height: 1.5;
 }
 .scratch-script__condition--operator {
-  background: #d4edc5;
+  background: var(--scratch-operators);
   border-color: #3c7023;
   color: #254419;
 }
@@ -231,19 +242,19 @@
   color: white;
 }
 .scratch-script__reporter--motion {
-  background: #285bc2;
+  background: var(--scratch-motion);
   border-color: #193c84;
 }
 .scratch-script__reporter--variables {
-  background: #ce5b00;
+  background: var(--scratch-variables);
   border-color: #813900;
 }
 .scratch-script__reporter--sensing {
-  background: #137987;
+  background: var(--scratch-sensing);
   border-color: #0b4b54;
 }
 .scratch-script__reporter--operators {
-  background: #d4edc5;
+  background: var(--scratch-operators);
   border-color: #3c7023;
   color: #254419;
 }
@@ -262,8 +273,55 @@
   margin-top: 1rem;
 }
 .scratch-script__category {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 0.4em;
   font-size: 0.9rem;
   font-weight: 800;
+}
+.scratch-script__category-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  color: var(--category-text, var(--category-color));
+}
+.scratch-script__category-name::before {
+  content: '';
+  flex: 0 0 0.65em;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  background: var(--category-color);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 30%, transparent);
+}
+.scratch-script__category-name--events {
+  --category-color: var(--scratch-events);
+  --category-text: #825b00;
+}
+.scratch-script__category-name--motion {
+  --category-color: var(--scratch-motion);
+}
+.scratch-script__category-name--looks {
+  --category-color: var(--scratch-looks);
+}
+.scratch-script__category-name--control {
+  --category-color: var(--scratch-control);
+  --category-text: #9b5a00;
+}
+.scratch-script__category-name--variables {
+  --category-color: var(--scratch-variables);
+  --category-text: #813900;
+}
+.scratch-script__category-name--custom {
+  --category-color: var(--scratch-custom);
+}
+.scratch-script__category-name--sensing {
+  --category-color: var(--scratch-sensing);
+}
+.scratch-script__category-name--operators {
+  --category-color: var(--scratch-operators);
+  --category-text: #3c7023;
 }
 .scratch-script__explanations p {
   margin: 0.25rem 0 0;
@@ -631,7 +689,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 0.65rem 1rem;
+  padding: 0.65rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -640,6 +698,8 @@
   border-bottom: 1px solid #536058;
 }
 .code-diagram__file {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   padding: 0.2rem 0.55rem;
   border: 1px solid #66766b;
   background: #252e2b;
@@ -651,7 +711,7 @@
   margin: 0;
   padding: 1.25rem 1rem;
   font:
-    1.1rem/1.6 Consolas,
+    1rem/1.6 Consolas,
     'Courier New',
     monospace;
   white-space: pre-wrap;
@@ -663,34 +723,18 @@
 .code-diagram__token--string {
   color: #ce9178;
 }
-.code-diagram__tools {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.code-diagram__run {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #c2e3ac;
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-.code-diagram__play {
-  font-size: 0.8rem;
-}
 .code-diagram__console {
   margin-top: 1rem;
-  background: #fffdf6;
+  background: #17212f;
 }
 .code-diagram__console .code-diagram__header {
-  border-bottom: 1px solid #c4cbbb;
-  background: #edf0e7;
-  color: #36462f;
+  border-bottom: 1px solid #42566e;
+  background: #25364a;
+  color: #e8eef7;
 }
 .code-diagram__result {
-  color: #283c29;
+  padding-left: calc(1rem + 4.5ch);
+  color: #e8eef7;
 }
 .code-diagram .code-diagram__note {
   margin: 0.85rem 0 0;
@@ -722,24 +766,8 @@
 .lesson-page--workshop .lesson-action p {
   margin: 0.65rem 0;
 }
-.lesson-page--workshop .lesson-action .lesson-action__label {
-  margin-top: 1rem;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
 .lesson-page--workshop .lesson-action .code-block {
   margin-top: 0.4rem;
-}
-.lesson-page--workshop .lesson-action__output {
-  padding: 1rem;
-  margin: 0.4rem 0 0;
-  border: 2px solid var(--route);
-  background: var(--route-soft);
-  font:
-    1rem Consolas,
-    'Courier New',
-    monospace;
-  white-space: pre-wrap;
 }
 .lesson-page--workshop .hint {
   border: 0;
@@ -812,7 +840,7 @@
   padding: 0.08em 0.3em;
   border-radius: 3px;
   background: color-mix(in srgb, var(--route-soft, #e8edf5) 65%, var(--paper, #fffdf7));
-  color: inherit;
+  color: var(--route-dark, var(--ink));
   font-family: Consolas, 'Courier New', monospace;
   font-size: 0.94em;
   box-decoration-break: clone;

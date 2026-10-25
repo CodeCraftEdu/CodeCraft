@@ -38,7 +38,7 @@
     },
     {
       "skillId": "python.input",
-      "expectation": "Conserver une réponse de input."
+      "expectation": "Conserver une réponse de `input`."
     },
     {
       "skillId": "python.numbers",
@@ -78,7 +78,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir convertir une réponse entière, comparer, actualiser un while et compter les essais. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée comparaison_mystere.py. Commence avec un secret fixe pour vérifier la logique avant le hasard.",
+      "text": "Il faut savoir convertir une réponse entière, comparer, actualiser un `while` et compter les essais. Sinon, reprends le point concerné. Enregistre tes anciens programmes et crée `comparaison_mystere.py`. Commence avec un secret fixe pour vérifier la logique avant le hasard.",
       "moduleLink": {
         "moduleId": "python-while",
         "text": "Revoir la mise à jour et l’arrêt"
@@ -90,7 +90,7 @@
       "title": "1 - La règle du jeu",
       "paragraphs": [
         "Au lancement, le programme choisit une fois un entier de 1 à 10. À chaque proposition, il indique Trop petit ou Trop grand, jusqu’à la réussite. Il annonce alors le total d’essais, y compris la proposition gagnante.",
-        "Annonce un entier écrit en chiffres, sans unité ni décimale. Un entier hors de la plage est comparé et compte comme essai. Une entrée comme cinq provoque ValueError et termine cet essai : le jeu n’est pas protégé contre les mauvaises saisies.",
+        "Annonce un entier écrit en chiffres, sans unité ni décimale. Un entier hors de la plage est comparé et compte comme essai. Une entrée comme cinq provoque `ValueError` et termine cet essai : le jeu n’est pas protégé contre les mauvaises saisies.",
         "Pas de limite d’essais ni de nouvelle partie automatique ici. Si une version répète sans fin, utilise Arrêter / redémarrer avant de la corriger."
       ]
     },
@@ -101,13 +101,13 @@
       "items": [
         {
           "id": "comparaison-fixe",
-          "text": "Dans comparaison_mystere.py, fixe secret à 6. Demande une proposition entière avec input, puis convertis la réponse avec int dans une autre ligne.",
+          "text": "Dans `comparaison_mystere.py`, fixe secret à 6. Demande une proposition entière avec `input`, puis convertis la réponse avec `int` dans une autre ligne.",
           "hint": "Le secret est une valeur numérique. Garde distincts le texte de la réponse et le nombre comparé."
         },
         {
           "id": "trois-issues",
           "text": "Affiche Trop petit si la proposition est inférieure au secret, Trop grand si elle est supérieure, sinon Trouvé. Prédis puis teste 4, 6 et 8 dans trois exécutions.",
-          "hint": "Une chaîne if/elif/else ; chaque message dépend de la comparaison. Ce premier fichier n’a pas encore de boucle."
+          "hint": "Une chaîne `if`/`elif`/`else` ; chaque message dépend de la comparaison. Ce premier fichier n’a pas encore de boucle."
         }
       ]
     },
@@ -116,19 +116,21 @@
       "id": "difference",
       "title": "2 - Continuer quand les valeurs diffèrent",
       "paragraphs": [
-        "Enregistre ton premier essai puis crée inegalite.py pour ce petit exemple. != signifie différent de : le résultat est vrai lorsque les valeurs diffèrent, faux lorsqu’elles sont égales.",
-        "Prédis puis vérifie True, puis False. Ce signe ne fait pas une affectation. Quand proposition devient égale à secret, proposition != secret devient faux : c’est ce qui permettra d’arrêter la répétition."
+        "Enregistre ton premier essai puis crée `inegalite.py` pour ce petit exemple. != signifie différent de : le résultat est vrai lorsque les valeurs diffèrent, faux lorsqu’elles sont égales.",
+        "Prédis puis vérifie `True`, puis `False`. Ce signe ne fait pas une affectation. Quand proposition devient égale à secret, proposition != secret devient faux : c’est ce qui permettra d’arrêter la répétition."
       ],
-      "code": "secret = 6\nproposition = 4\nprint(proposition != secret)\nproposition = 6\nprint(proposition != secret)"
+      "code": "secret = 6\nproposition = 4\nprint(proposition != secret)\nproposition = 6\nprint(proposition != secret)",
+      "filename": "inegalite.py",
+      "consoleOutput": "True\nFalse"
     },
     {
       "type": "lesson",
       "id": "structure",
       "title": "3 - Passer du choix à la répétition",
       "paragraphs": [
-        "Rouvre comparaison_mystere.py puis crée repetition_mystere.py avec Enregistrer sous. Garde le secret fixe et la première question suivie de sa conversion avant while. Répète tant que proposition != secret.",
-        "Dans while, garde seulement les indices Trop petit et Trop grand selon la comparaison. Retire la branche Trouvé de l’ancienne chaîne : lorsque le bloc est exécuté, la proposition diffère forcément du secret. Place le message de réussite après la boucle, non indenté.",
-        "Après l’indice, pose une nouvelle question puis convertis la réponse dans le bloc de while. Ces deux lignes actualisent la proposition avant le test suivant. Quatre espaces pour les instructions de while, huit pour les messages de ses branches, zéro pour la réussite finale."
+        "Rouvre `comparaison_mystere.py` puis crée `repetition_mystere.py` avec Enregistrer sous. Garde le secret fixe et la première question suivie de sa conversion avant `while`. Répète tant que proposition != secret.",
+        "Dans `while`, garde seulement les indices Trop petit et Trop grand selon la comparaison. Retire la branche Trouvé de l’ancienne chaîne : lorsque le bloc est exécuté, la proposition diffère forcément du secret. Place le message de réussite après la boucle, non indenté.",
+        "Après l’indice, pose une nouvelle question puis convertis la réponse dans le bloc de `while`. Ces deux lignes actualisent la proposition avant le test suivant. Quatre espaces pour les instructions de `while`, huit pour les messages de ses branches, zéro pour la réussite finale."
       ]
     },
     {
@@ -139,12 +141,12 @@
         {
           "id": "routes-fixes",
           "text": "Avec le secret à 6, prédis puis teste 6 ; 4 puis 6 ; 8 puis 6 ; 4, 8 puis 6. Vérifie les indices et l’absence de nouvelle question après réussite.",
-          "hint": "La première séquence ne passe pas dans while. Les autres passent une, une puis deux fois. Trouvé apparaît seulement après l’arrêt."
+          "hint": "La première séquence ne passe pas dans `while`. Les autres passent une, une puis deux fois. Trouvé apparaît seulement après l’arrêt."
         },
         {
           "id": "compter-essais",
-          "text": "Enregistre ta version. Initialise essais à 1 après la première proposition convertie. Augmente-le de 1 après chaque nouvelle conversion dans while. Affiche le bilan après la réussite et reteste les quatre séquences.",
-          "hint": "Les totaux attendus sont 1, 2, 2, 3. Le compteur compte les propositions converties, pas seulement les tours de while."
+          "text": "Enregistre ta version. Initialise essais à 1 après la première proposition convertie. Augmente-le de 1 après chaque nouvelle conversion dans `while`. Affiche le bilan après la réussite et reteste les quatre séquences.",
+          "hint": "Les totaux attendus sont 1, 2, 2, 3. Le compteur compte les propositions converties, pas seulement les tours de `while`."
         }
       ]
     },
@@ -153,41 +155,41 @@
       "id": "tirage",
       "title": "4 - Remplacer la source du secret",
       "paragraphs": [
-        "Enregistre repetition_mystere.py puis crée mystere_aleatoire.py avec Enregistrer sous. Ajoute import random au début et remplace seulement secret = 6 par secret = random.randint(1, 10), avant toute question et avant while.",
+        "Enregistre `repetition_mystere.py` puis crée `mystere_aleatoire.py` avec Enregistrer sous. Ajoute `import` random au début et remplace seulement secret = 6 par secret = `random.randint(1, 10)`, avant toute question et avant `while`.",
         "Ne refais pas le tirage après un échec : le secret reste le même pendant toute la partie. Une relance en tire un nouveau, qui peut toutefois être identique au précédent.",
-        "Pour diagnostiquer, tu peux afficher provisoirement le secret juste après le tirage, en annonçant que c’est une aide de test. Retire cet affichage du jeu final. Ne nomme pas le fichier random.py."
+        "Pour diagnostiquer, tu peux afficher provisoirement le secret juste après le tirage, en annonçant que c’est une aide de test. Retire cet affichage du jeu final. Ne nomme pas le fichier `random.py`."
       ]
     },
     {
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - ton nombre mystère",
-      "intro": "Enregistre les fichiers guidés puis crée mon_nombre_mystere.py. Prépare une courte description de ta règle et de tes variables ; essaie avant les indices.",
+      "intro": "Enregistre les fichiers guidés puis crée `mon_nombre_mystere.py`. Prépare une courte description de ta règle et de tes variables ; essaie avant les indices.",
       "items": [
         {
           "id": "jeu-personnel",
           "text": "Construis ta version avec une plage de 1 à 12 et tes propres messages. Tire une fois, demande et convertis chaque proposition, indique trop petit ou trop grand, puis affiche la réussite et le total d’essais.",
-          "hint": "Prépare le rôle des variables avant le code. La première saisie est avant while ; les suivantes sont dans le bloc. Le secret ne change pas pendant la partie."
+          "hint": "Prépare le rôle des variables avant le code. La première saisie est avant `while` ; les suivantes sont dans le bloc. Le secret ne change pas pendant la partie."
         },
         {
           "id": "tests-personnels",
-          "text": "Enregistre puis crée test_nombre_mystere.py avec Enregistrer sous. Remplace provisoirement le tirage par un secret fixe à 7. Choisis toi-même une proposition inférieure et une supérieure. Prédis puis teste : réussite immédiate, chaque échec suivi de réussite, puis les deux échecs avant réussite.",
+          "text": "Enregistre puis crée `test_nombre_mystere.py` avec Enregistrer sous. Remplace provisoirement le tirage par un secret fixe à 7. Choisis toi-même une proposition inférieure et une supérieure. Prédis puis teste : réussite immédiate, chaque échec suivi de réussite, puis les deux échecs avant réussite.",
           "hint": "Par exemple 3 et 10 entourent 7. Attends 1, 2, 2 et 3 essais ; aucune question après la réussite. Les valeurs sont des aides, pas des choix imposés."
         },
         {
           "id": "bornes-et-format",
           "text": "Dans le fichier de test, utilise successivement un secret à 1 puis à 12 et vérifie la réussite immédiate. Essaie aussi un entier hors plage suivi du secret. Puis teste un texte non convertible, explique l’arrêt et relance avec un entier.",
-          "hint": "L’entier hors plage compte comme essai ; un texte non convertible provoque ValueError sur int et n’atteint pas la réussite. Pas de try/except à ajouter."
+          "hint": "L’entier hors plage compte comme essai ; un texte non convertible provoque `ValueError` sur `int` et n’atteint pas la réussite. Pas de try/except à ajouter."
         },
         {
           "id": "retrouver-aleatoire",
-          "text": "Enregistre le fichier de test. Rouvre mon_nombre_mystere.py et vérifie le tirage aléatoire unique, sans affichage du secret. Ferme, rouvre puis relance le jeu ; explique la place du tirage, des deux saisies et du compteur.",
-          "hint": "La copie fixe sert au diagnostic ; la version personnelle conserve randint. Le fichier doit définir toutes les valeurs nécessaires sans ancien essai."
+          "text": "Enregistre le fichier de test. Rouvre `mon_nombre_mystere.py` et vérifie le tirage aléatoire unique, sans affichage du secret. Ferme, rouvre puis relance le jeu ; explique la place du tirage, des deux saisies et du compteur.",
+          "hint": "La copie fixe sert au diagnostic ; la version personnelle conserve `randint`. Le fichier doit définir toutes les valeurs nécessaires sans ancien essai."
         },
         {
           "id": "modifier-plage",
-          "text": "Enregistre puis crée mystere_modifie.py avec Enregistrer sous. Change la plage, mets à jour son annonce dans les deux questions et teste les nouvelles bornes dans une copie à secret fixe.",
-          "hint": "Garde les versions précédentes. Les bornes de randint sont incluses ; modifier l’annonce seule ne change pas le tirage."
+          "text": "Enregistre puis crée `mystere_modifie.py` avec Enregistrer sous. Change la plage, mets à jour son annonce dans les deux questions et teste les nouvelles bornes dans une copie à secret fixe.",
+          "hint": "Garde les versions précédentes. Les bornes de `randint` sont incluses ; modifier l’annonce seule ne change pas le tirage."
         }
       ]
     },
@@ -199,7 +201,7 @@
         {
           "id": "appreciation",
           "text": "Dans une copie du jeu, ajoute après réussite une appréciation selon le total d’essais, avec deux seuils de ton choix. Vérifie chaque issue avec un secret fixe et conserve le total exact.",
-          "hint": "Une chaîne if/elif/else après while suffit. Pas de plafond d’essais ni de nouvelle partie à ajouter."
+          "hint": "Une chaîne `if`/`elif`/`else` après `while` suffit. Pas de plafond d’essais ni de nouvelle partie à ajouter."
         }
       ]
     }
@@ -261,7 +263,7 @@
         },
         {
           "skillId": "python.for",
-          "expectation": "Suivre un for ; sinon reprendre Répéter un nombre de fois."
+          "expectation": "Suivre un `for` ; sinon reprendre Répéter un nombre de fois."
         }
       ]
     }

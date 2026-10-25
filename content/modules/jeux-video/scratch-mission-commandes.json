@@ -32,7 +32,7 @@
         "Tu vas construire Mission balises : piloter un véhicule, activer des balises et éviter un danger. Dans ce chapitre, tu programmes les quatre flèches et les limites de la zone.",
         "Télécharge la base ci-dessous. Dans Scratch, ouvre le menu Fichier et charge le fichier depuis ton ordinateur. Pilote, Balise et Obstacle sont déjà dessinés et nommés ; leurs zones de code sont vides. Balise reste immobile et Obstacle est caché pour le moment.",
         "Clique sur la miniature Pilote sous la scène. Sa taille est 100 %. Tout le code de ce chapitre appartient à Pilote. Garde ces noms et tailles pendant la construction.",
-        "Garde le fichier mission-base.sb3 comme point de départ sans code. Quand les commandes seront terminées, tu sauvegarderas ton travail sous mission-01.sb3 pour le reprendre au chapitre suivant."
+        "Garde le fichier `mission-base.sb3` comme point de départ sans code. Quand les commandes seront terminées, tu sauvegarderas ton travail sous `mission-01.sb3` pour le reprendre au chapitre suivant."
       ],
       "downloads": [
         {
@@ -479,7 +479,7 @@
       "items": [
         {
           "id": "conserver",
-          "text": "Sauvegarde les commandes terminées sous mission-01.sb3. Recharge le fichier que tu viens d’enregistrer et teste les quatre flèches avant de faire l’essai."
+          "text": "Sauvegarde les commandes terminées sous `mission-01.sb3`. Recharge le fichier que tu viens d’enregistrer et teste les quatre flèches avant de faire l’essai."
         },
         {
           "id": "prevoir",
@@ -487,7 +487,7 @@
         },
         {
           "id": "restaurer",
-          "text": "Sauvegarde cet essai sous mission-01-essai.sb3. Recharge ensuite ta sauvegarde des commandes terminées, mission-01.sb3 ou son nom avec suffixe : les quatre déplacements retrouvent 4 ou -4."
+          "text": "Sauvegarde cet essai sous `mission-01-essai.sb3`. Recharge ensuite ta sauvegarde des commandes terminées, `mission-01.sb3` ou son nom avec suffixe : les quatre déplacements retrouvent 4 ou -4."
         }
       ],
       "intro": "Depuis le menu Fichier de Scratch, sauvegarde le projet sur ton ordinateur. Repère le fichier réellement téléchargé et son dossier : un suffixe comme (1) peut être ajouté si le nom existe déjà. C’est ce fichier récent que tu rechargeras après l’essai. Modifier le projet ouvert dans Scratch ne modifie pas cette sauvegarde."
@@ -838,7 +838,7 @@
       "id": "reprise",
       "title": "Conserver la version du prochain chapitre",
       "paragraphs": [
-        "Garde la sauvegarde des commandes terminées que tu viens de recharger, mission-01.sb3 ou son nom avec suffixe. Pilote part de (0, -100), se déplace de 4 avec chaque flèche et reste dans les limites prévues. Balise est en (-160, 0), Obstacle reste caché et aucune variable n’est encore nécessaire.",
+        "Garde la sauvegarde des commandes terminées que tu viens de recharger, `mission-01.sb3` ou son nom avec suffixe. Pilote part de (0, -100), se déplace de 4 avec chaque flèche et reste dans les limites prévues. Balise est en (-160, 0), Obstacle reste caché et aucune variable n’est encore nécessaire.",
         "Le chapitre suivant ajoute le score dans ce même projet. Si tu avais changé une constante pour l’essai, reprends d’abord ta sauvegarde principale."
       ]
     }

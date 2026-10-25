@@ -20,7 +20,7 @@
     },
     {
       "skillId": "css.spacing",
-      "expectation": "Distinguer padding et margin et lire une bordure simple."
+      "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
     }
   ],
   "blocks": [
@@ -49,11 +49,11 @@
       "id": "largeur",
       "title": "2 : Largeur de la carte : que mesure-t-on ?",
       "paragraphs": [
-        "width fixe ici la largeur souhaitée de la carte. px signifie pixel CSS : width: 320px vise une largeur de 320 pixels CSS.",
-        "Par défaut, la largeur d’une div désigne seulement son contenu : padding et bordure s’ajoutent. Avec 320px de contenu, 16px de padding de chaque côté et une bordure de 2px, la boîte ferait 356px de large.",
-        "box-sizing: border-box change ce calcul : les 320px comprennent alors le contenu, le padding et la bordure. Le contenu dispose ici de 284px : 320 − 32 − 4. La margin, si tu en ajoutes une, reste à l’extérieur ; cet exemple n’en met pas sur la carte.",
-        "max-width pose une limite. Ici 100% représente toute la largeur disponible du parent, pas toujours celle de l’écran. Avec border-box, la carte peut rétrécir pour tenir dans ce parent au lieu de conserver obligatoirement 320px.",
-        "Ces règles aident dans les largeurs testées, elles ne rendent pas tout contenu automatiquement adaptable : des mots très longs ou un padding trop grand peuvent encore poser problème. Les adaptations avancées aux écrans viendront plus tard."
+        "`width` fixe ici la largeur souhaitée de la carte. px signifie pixel CSS : `width`: 320px vise une largeur de 320 pixels CSS.",
+        "Par défaut, la largeur d’une div désigne seulement son contenu : `padding` et bordure s’ajoutent. Avec 320px de contenu, 16px de `padding` de chaque côté et une bordure de 2px, la boîte ferait 356px de large.",
+        "`box-sizing`: `border`-box change ce calcul : les 320px comprennent alors le contenu, le `padding` et la bordure. Le contenu dispose ici de 284px : 320 − 32 − 4. La `margin`, si tu en ajoutes une, reste à l’extérieur ; cet exemple n’en met pas sur la carte.",
+        "`max-width` pose une limite. Ici 100% représente toute la largeur disponible du parent, pas toujours celle de l’écran. Avec `border`-box, la carte peut rétrécir pour tenir dans ce parent au lieu de conserver obligatoirement 320px.",
+        "Ces règles aident dans les largeurs testées, elles ne rendent pas tout contenu automatiquement adaptable : des mots très longs ou un `padding` trop grand peuvent encore poser problème. Les adaptations avancées aux écrans viendront plus tard."
       ]
     },
     {
@@ -62,8 +62,8 @@
       "title": "3 : Image : une largeur et une hauteur liée",
       "paragraphs": [
         "Une image a des dimensions d’origine. Les deux dessins ci-dessous font 160 × 120 : le fichier entier est un rectangle, même si la forme dessinée à l’intérieur est un cercle ou un carré.",
-        "Sur .illustration, width: 100% prend la largeur du contenu de la carte, sans son padding ni sa bordure. Cette règle peut agrandir une petite image ; une photo de faible qualité pourrait alors devenir floue.",
-        "height est la hauteur. height: auto laisse le navigateur la calculer à partir des proportions de l’image. Quand la largeur est multipliée par deux, la hauteur l’est aussi : le cercle reste rond.",
+        "Sur .illustration, `width`: 100% prend la largeur du contenu de la carte, sans son `padding` ni sa bordure. Cette règle peut agrandir une petite image ; une photo de faible qualité pourrait alors devenir floue.",
+        "`height` est la hauteur. `height`: auto laisse le navigateur la calculer à partir des proportions de l’image. Quand la largeur est multipliée par deux, la hauteur l’est aussi : le cercle reste rond.",
         "Ne fixe pas en même temps une hauteur arbitraire pour faire rentrer l’image. Le texte peut prendre plusieurs lignes : on ne fixe pas non plus la hauteur de la carte. Elle grandit avec son contenu.",
         "Une image absente est un autre problème : commence par vérifier src et le chargement, pas par modifier ses dimensions. alt décrit le dessin ; ce n’est ni son adresse ni un réglage de taille."
       ],
@@ -97,7 +97,7 @@
       "paragraphs": [
         "Pour le premier essai, clique sur Copier le lien sous le cercle orange. Colle son adresse dans `src`, puis décris l’image dans `alt`.",
         "Complète `src` avec le lien de l’image et `alt` avec ta description.",
-        "En local, utilise plutôt Télécharger l’image : place cercle-orange.png dans un dossier images à côté de index.html, puis écris src=\"images/cercle-orange.png\". Le texte alternatif reste à rédiger. Le carré suit la même logique avec carre-bleu.png."
+        "En local, utilise plutôt Télécharger l’image : place `cercle-orange.png` dans un dossier images à côté de `index.html`, puis écris src=\"`images/cercle-orange.png`\". Le texte alternatif reste à rédiger. Le carré suit la même logique avec `carre-bleu.png`."
       ]
     },
     {
@@ -126,7 +126,7 @@
       "id": "css",
       "title": "CSS : La carte et son image",
       "paragraphs": [
-        "Colle ces règles dans CSS, sans balises <style>. Les propriétés de largeur concernent deux éléments différents : la carte et l’image. L’image ne possède ici ni padding ni bordure.",
+        "Colle ces règles dans CSS, sans balises <style>. Les propriétés de largeur concernent deux éléments différents : la carte et l’image. L’image ne possède ici ni `padding` ni bordure.",
         "La bordure et le fond sont des repères déjà rencontrés ; le petit espace qui peut rester sous une image en ligne n’est pas une déformation et n’a pas à être corrigé dans ce module."
       ],
       "code": ".carte {\n  width: 320px;\n  max-width: 100%;\n  box-sizing: border-box;\n  padding: 16px;\n  border: 2px solid navy;\n  background-color: white;\n}\n.illustration {\n  width: 100%;\n  height: auto;\n}"
@@ -139,11 +139,11 @@
       "items": [
         {
           "id": "charger",
-          "text": "Complète src avec la source du cercle et rédige alt. Vérifie d’abord que le cercle s’affiche. Si l’image est absente, utilise la reprise Images plutôt que de changer width."
+          "text": "Complète src avec la source du cercle et rédige alt. Vérifie d’abord que le cercle s’affiche. Si l’image est absente, utilise la reprise Images plutôt que de changer `width`."
         },
         {
           "id": "largeur-carte",
-          "text": "Dans .carte seulement, remplace width: 320px par 240px. Prédis ce qui arrive à l’image, puis observe. Remets 320px.",
+          "text": "Dans .carte seulement, remplace `width`: 320px par 240px. Prédis ce qui arrive à l’image, puis observe. Remets 320px.",
           "hints": [
             "Repère le parent de l’image.",
             "La largeur de l’image est un pourcentage du contenu de sa carte.",
@@ -161,7 +161,7 @@
         },
         {
           "id": "expliquer-taille",
-          "text": "Explique pourquoi width: 100% sur l’image ne signifie pas 100 pixels, et pourquoi l’image est moins large que les 320px de la carte."
+          "text": "Explique pourquoi `width`: 100% sur l’image ne signifie pas 100 pixels, et pourquoi l’image est moins large que les 320px de la carte."
         }
       ]
     },
@@ -182,7 +182,7 @@
             "Repère la règle du conteneur.",
             "Change la largeur souhaitée, pas celle de l’image.",
             "La limite à 100% et le calcul incluant la bordure restent utiles.",
-            "Dans .carte, mets width: 280px ; conserve max-width: 100% et box-sizing: border-box."
+            "Dans .carte, mets `width`: 280px ; conserve `max-width`: 100% et `box-sizing`: `border`-box."
           ]
         },
         {
@@ -192,14 +192,14 @@
             "Observe le dessin, pas seulement le rectangle du fichier.",
             "La hauteur doit suivre les proportions d’origine.",
             "Compare une hauteur fixe et une hauteur calculée.",
-            "Garde width: 100% et height: auto dans .illustration ; ne fixe pas une autre hauteur."
+            "Garde `width`: 100% et `height`: auto dans .illustration ; ne fixe pas une autre hauteur."
           ]
         },
         {
           "id": "predire-padding",
-          "text": "En gardant la largeur de carte à 280px, passe son padding de 16px à 24px. Avant de tester, prédis ce qui arrive à la largeur extérieure et à l’image.",
+          "text": "En gardant la largeur de carte à 280px, passe son `padding` de 16px à 24px. Avant de tester, prédis ce qui arrive à la largeur extérieure et à l’image.",
           "hints": [
-            "La bordure est comprise dans la largeur avec border-box.",
+            "La bordure est comprise dans la largeur avec `border`-box.",
             "L’espace intérieur prend plus de place.",
             "Le contenu restant devient plus étroit.",
             "La carte reste à 280px si la place suffit ; le contenu passe de 244px à 228px. L’image suit ce contenu."
@@ -238,7 +238,7 @@
         },
         {
           "id": "verifier-6",
-          "text": "J’explique pourquoi le padding change la place restante pour l’image."
+          "text": "J’explique pourquoi le `padding` change la place restante pour l’image."
         }
       ]
     },
@@ -264,17 +264,17 @@
             "Le cercle se charge déjà.",
             "Cherche le réglage qui impose une hauteur sans tenir compte de la largeur.",
             "Compare 80px et auto.",
-            "Rétablis height: auto dans .illustration ; la hauteur redevient proportionnelle à la largeur."
+            "Rétablis `height`: auto dans .illustration ; la hauteur redevient proportionnelle à la largeur."
           ]
         },
         {
           "id": "reparer-limite",
-          "text": "Dans .carte, enlève temporairement max-width: 100%, garde width: 320px, puis rétrécis l’aperçu à environ 260px. Explique pourquoi la carte dépasse, puis rétablis seulement la limite.",
+          "text": "Dans .carte, enlève temporairement `max-width`: 100%, garde `width`: 320px, puis rétrécis l’aperçu à environ 260px. Explique pourquoi la carte dépasse, puis rétablis seulement la limite.",
           "hints": [
             "Regarde d’abord la carte, pas son image.",
             "L’image peut suivre une carte trop large.",
             "Une largeur souhaitée et une limite n’ont pas le même rôle.",
-            "Rétablis max-width: 100% dans .carte ; conserve border-box. Si le dépassement reste, vérifie d’éventuelles marges ajoutées ou un mot sans espace."
+            "Rétablis `max-width`: 100% dans .carte ; conserve `border`-box. Si le dépassement reste, vérifie d’éventuelles marges ajoutées ou un mot sans espace."
           ]
         }
       ]
@@ -289,8 +289,8 @@
           "id": "bonus-explication",
           "title": "Remplir ou seulement limiter ?",
           "paragraphs": [
-            "Si les proportions sont comprises, compare dans une copie les deux choix sur une carte à 320px. La règle de base width: 100% remplit son contenu, même quand le dessin d’origine est plus petit.",
-            "Pour garder la largeur naturelle du dessin quand il a assez de place, remplace la règle .illustration entière par celle-ci. width: auto laisse sa largeur naturelle ; max-width: 100% le réduit seulement si le contenu de la carte est plus étroit. height: auto conserve les proportions."
+            "Si les proportions sont comprises, compare dans une copie les deux choix sur une carte à 320px. La règle de base `width`: 100% remplit son contenu, même quand le dessin d’origine est plus petit.",
+            "Pour garder la largeur naturelle du dessin quand il a assez de place, remplace la règle .illustration entière par celle-ci. `width`: auto laisse sa largeur naturelle ; `max-width`: 100% le réduit seulement si le contenu de la carte est plus étroit. `height`: auto conserve les proportions."
           ],
           "code": ".illustration {\n  width: auto;\n  max-width: 100%;\n  height: auto;\n}"
         },
@@ -318,7 +318,7 @@
     }
   ],
   "masteryCriteria": [
-    "Choisir la règle du conteneur pour changer sa largeur, et expliquer la largeur du contenu après padding et bordure.",
+    "Choisir la règle du conteneur pour changer sa largeur, et expliquer la largeur du contenu après `padding` et bordure.",
     "Conserver les proportions d’une image pendant une modification de largeur sans fixer arbitrairement sa hauteur.",
     "Réparer séparément une image déformée, une carte trop large et une image non chargée.",
     "Adapter src et alt lors d’un remplacement ; évaluer ce réinvestissement séparément du réglage CSS.",
@@ -424,7 +424,7 @@
         },
         {
           "skillId": "css.spacing",
-          "expectation": "Distinguer padding et margin et lire une bordure simple."
+          "expectation": "Distinguer `padding` et `margin` et lire une bordure simple."
         },
         {
           "skillId": "html.headings",

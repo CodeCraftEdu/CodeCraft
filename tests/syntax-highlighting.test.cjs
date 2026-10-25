@@ -142,7 +142,7 @@ test('Cadre commun : en-tête de fichier pour les exemples et nom adapté au lan
       this.attrs[key] = value;
     }
   }
-  const { createCode: create } = createCodeTools({
+  const { createCode: create, createConsole } = createCodeTools({
     element: (tag, cls, value) => new Node(tag, cls, value),
   });
   const text = (n) => (typeof n === 'string' ? n : n.textContent + n.children.map(text).join(''));
@@ -153,10 +153,24 @@ test('Cadre commun : en-tête de fichier pour les exemples et nom adapté au lan
   ]) {
     const editor = create(code, filename);
     assert.equal(editor.cls, 'code-editor');
-    assert.equal(editor.children[0].textContent, label);
+    assert.equal(editor.children[0].cls, 'code-diagram__header');
+    assert.equal(editor.children[0].children[0].textContent, 'Éditeur');
+    assert.equal(editor.children[0].children[1].textContent, label);
     assert.equal(editor.children[1].tag, 'pre');
     assert.equal(text(editor.children[1].children[0]), code);
   }
+  const output = '5\nNone\n  indentation';
+  const treeSource = 'mon-projet/\n├── index.html\n└── images/';
+  for (const label of ['Arborescence', undefined]) {
+    const tree = create(treeSource, label);
+    assert.equal(tree.children[0].children.length, 1);
+    assert.equal(tree.children[0].children[0].textContent, 'Arborescence');
+    assert.equal(text(tree.children[1].children[0]), treeSource);
+  }
+  const consolePanel = createConsole(output);
+  assert.equal(consolePanel.tag, 'div');
+  assert.equal(consolePanel.children[0].textContent, 'Console');
+  assert.equal(consolePanel.children[1].textContent, output);
   const css = require('./helpers/style-source.cjs').readStyle(
     path.join(root, 'student-lowpoly.css'),
   );

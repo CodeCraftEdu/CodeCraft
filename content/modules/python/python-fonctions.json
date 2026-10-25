@@ -29,7 +29,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Enregistre tes essais précédents et crée fonctions.py dans Thonny, sans les remplacer. Il faut pouvoir expliquer un affichage et une variable ; sinon, reprends Variables et valeurs. Fais évoluer ce fichier pendant la découverte et les essais guidés.",
+      "text": "Enregistre tes essais précédents et crée `fonctions.py` dans Thonny, sans les remplacer. Il faut pouvoir expliquer un affichage et une variable ; sinon, reprends Variables et valeurs. Fais évoluer ce fichier pendant la découverte et les essais guidés.",
       "moduleLink": {
         "moduleId": "python-variables",
         "text": "Variables et valeurs"
@@ -40,43 +40,49 @@
       "id": "exemple",
       "title": "1 - Définir n'est pas appeler",
       "paragraphs": [
-        "def définit un bloc réutilisable. annoncer est le nom choisi ; les parenthèses sont vides ici, les deux-points annoncent le corps indenté. Les deux instructions du corps ne s'exécutent pas au moment où cette définition est rencontrée.",
-        "annoncer() appelle la fonction : ses deux messages s'affichent dans l'ordre, puis le programme reprend après l'appel. Ici, Préparation s'affiche avant ces messages, puis Fin. Les lignes non indentées sont hors du corps.",
+        "`def` définit un bloc réutilisable. annoncer est le nom choisi ; les parenthèses sont vides ici, les deux-points annoncent le corps indenté. Les deux instructions du corps ne s'exécutent pas au moment où cette définition est rencontrée.",
+        "`annoncer()` appelle la fonction : ses deux messages s'affichent dans l'ordre, puis le programme reprend après l'appel. Ici, Préparation s'affiche avant ces messages, puis Fin. Les lignes non indentées sont hors du corps.",
         "Prévois les affichages, puis ajoute un second appel avant Fin : les deux instructions sont réutilisées sans les recopier. Change ensuite un message dans le corps et vérifie qu'il change lors des deux appels.",
         "Retire provisoirement les appels, sans supprimer la définition : les messages du corps ne s'affichent plus. Restaure ensuite un appel. Relance toujours le fichier entier, avec la définition avant son premier appel."
       ],
-      "code": "def annoncer():\n    print(\"Prépare ton matériel\")\n    print(\"Départ de la visite\")\n\nprint(\"Préparation\")\nannoncer()\nprint(\"Fin\")"
+      "code": "def annoncer():\n    print(\"Prépare ton matériel\")\n    print(\"Départ de la visite\")\n\nprint(\"Préparation\")\nannoncer()\nprint(\"Fin\")",
+      "filename": "fonctions.py",
+      "consoleOutput": "Préparation\nPrépare ton matériel\nDépart de la visite\nFin"
     },
     {
       "type": "lesson",
       "id": "parametre",
       "title": "2 - Une valeur différente à chaque appel",
       "paragraphs": [
-        "Dans fonctions.py, remplace la version précédente par ce modèle après avoir terminé ses essais. nom est un paramètre : il reçoit la valeur fournie entre les parenthèses à chaque appel. Dans saluer(\"Nova\"), \"Nova\" est l'argument ; ce n'est pas le nom du paramètre.",
+        "Dans `fonctions.py`, remplace la version précédente par ce modèle après avoir terminé ses essais. nom est un paramètre : il reçoit la valeur fournie entre les parenthèses à chaque appel. Dans `saluer(\"Nova\")`, \"Nova\" est l'argument ; ce n'est pas le nom du paramètre.",
         "Le corps est écrit une seule fois mais s'exécute deux fois avec des valeurs différentes. Modifier un argument ne demande pas de recopier ou de modifier le corps."
       ],
-      "code": "def saluer(nom):\n    print(\"Bonjour\", nom)\n\nsaluer(\"Nova\")\nsaluer(\"Orion\")"
+      "code": "def saluer(nom):\n    print(\"Bonjour\", nom)\n\nsaluer(\"Nova\")\nsaluer(\"Orion\")",
+      "filename": "fonctions.py",
+      "consoleOutput": "Bonjour Nova\nBonjour Orion"
     },
     {
       "type": "lesson",
       "id": "deux-parametres",
       "title": "3 - Deux paramètres, un ordre",
       "paragraphs": [
-        "Fais évoluer fonctions.py vers ce modèle. Les virgules séparent les deux paramètres puis les deux arguments. Le premier argument donne nom, le second donne role ; l'ordre compte.",
-        "Prévois les deux phrases. Inverse provisoirement les arguments du premier appel, explique le résultat puis restaure leur ordre. Un argument manquant ou en trop provoque ici TypeError ; corrige l'appel, pas le nombre de messages."
+        "Fais évoluer `fonctions.py` vers ce modèle. Les virgules séparent les deux paramètres puis les deux arguments. Le premier argument donne nom, le second donne role ; l'ordre compte.",
+        "Prévois les deux phrases. Inverse provisoirement les arguments du premier appel, explique le résultat puis restaure leur ordre. Un argument manquant ou en trop provoque ici `TypeError` ; corrige l'appel, pas le nombre de messages."
       ],
-      "code": "def presenter(nom, role):\n    print(nom, \"est\", role)\n\npresenter(\"Nova\", \"pilote\")\npresenter(\"Orion\", \"guide\")"
+      "code": "def presenter(nom, role):\n    print(nom, \"est\", role)\n\npresenter(\"Nova\", \"pilote\")\npresenter(\"Orion\", \"guide\")",
+      "filename": "fonctions.py",
+      "consoleOutput": "Nova est pilote\nOrion est guide"
     },
     {
       "type": "tasks",
       "id": "guide",
       "title": "Vérifie tes appels",
-      "intro": "Continue avec presenter dans fonctions.py. Garde seulement le diagnostic incorrect dans une copie.",
+      "intro": "Continue avec presenter dans `fonctions.py`. Garde seulement le diagnostic incorrect dans une copie.",
       "items": [
         {
           "id": "double-appel",
           "text": "Ajoute un troisième appel de presenter avec un autre nom et un autre rôle. Prévois les trois phrases puis explique pourquoi le corps est exécuté trois fois.",
-          "hint": "Trois appels séparés, pas trois copies du print du corps."
+          "hint": "Trois appels séparés, pas trois copies du `print` du corps."
         },
         {
           "id": "changer-argument",
@@ -85,7 +91,7 @@
         },
         {
           "id": "argument-manquant",
-          "text": "Enregistre fonctions.py puis crée diagnostic_appel.py avec Enregistrer sous. Enlève le second argument du premier appel de presenter. Lis TypeError, corrige puis relance le fichier entier.",
+          "text": "Enregistre `fonctions.py` puis crée `diagnostic_appel.py` avec Enregistrer sous. Enlève le second argument du premier appel de presenter. Lis `TypeError`, corrige puis relance le fichier entier.",
           "hint": "L'appel doit fournir deux arguments dans ce modèle."
         }
       ]
@@ -94,7 +100,7 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "À toi - une fonction personnelle",
-      "intro": "Crée ma_presentation.py avec des noms et rôles fictifs. Essaie sans recopier le modèle entier.",
+      "intro": "Crée `ma_presentation.py` avec des noms et rôles fictifs. Essaie sans recopier le modèle entier.",
       "items": [
         {
           "id": "fonction-personnelle",
@@ -117,12 +123,12 @@
       "type": "tasks",
       "id": "bonus",
       "title": "Bonus - appeler pendant un parcours",
-      "intro": "Seulement si listes et for sont compris ; garde la version précédente.",
+      "intro": "Seulement si listes et `for` sont compris ; garde la version précédente.",
       "items": [
         {
           "id": "parcours-fonction",
-          "text": "Dans une copie, reprends la petite fonction saluer de la découverte. Définis une liste de trois noms fictifs et parcours-la avec for pour appeler saluer sur chaque valeur. Explique où sont la définition, la boucle et les appels.",
-          "hint": "La définition est avant la boucle ; l'appel est dans le bloc for."
+          "text": "Dans une copie, reprends la petite fonction saluer de la découverte. Définis une liste de trois noms fictifs et parcours-la avec `for` pour appeler saluer sur chaque valeur. Explique où sont la définition, la boucle et les appels.",
+          "hint": "La définition est avant la boucle ; l'appel est dans le bloc `for`."
         }
       ]
     }
@@ -153,7 +159,7 @@
       "prerequisiteSkills": [
         {
           "skillId": "python.for",
-          "expectation": "Suivre un for."
+          "expectation": "Suivre un `for`."
         },
         {
           "skillId": "python.lists",

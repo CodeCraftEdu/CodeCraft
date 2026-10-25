@@ -46,7 +46,6 @@
       ],
       "visualScript": {
         "caption": "2 : Quatre petits déplacements",
-        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
         "blocks": [
           {
             "category": "events",
@@ -161,7 +160,6 @@
       ],
       "visualScript": {
         "caption": "3 : Répéter jusqu’à l’arrêt",
-        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
         "blocks": [
           {
             "category": "events",

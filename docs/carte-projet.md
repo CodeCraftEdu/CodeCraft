@@ -9,6 +9,7 @@ CodeCraft est un site statique. Les contenus JSON, le rendu navigateur et les ou
 | Règles de texte élève | `docs/regles-editoriales.md` |
 | Format des données | `schemas/content.schema.json` et `docs/organisation-contenus.md` |
 | Branchement de l’application élève | `app.js` |
+| Pied de page public et contact | `index.html`, `styles/themes/lowpoly/footer.css` |
 | Texte en ligne et création des éléments | `src/student/text.mjs` |
 | Coloration et panneaux de code | `src/student/code.mjs` |
 | Aperçus HTML/CSS et schémas Scratch/Python | `src/student/demonstrations.mjs` |

@@ -75,7 +75,6 @@
       ],
       "visualScript": {
         "caption": "3 : Maintenir une touche, toucher la cible",
-        "note": "Modèle de blocs à assembler dans Scratch. Les menus dessinés ici ne sont pas interactifs.",
         "blocks": [
           {
             "category": "events",

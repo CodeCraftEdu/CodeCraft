@@ -53,7 +53,7 @@
       "type": "callout",
       "id": "preparer",
       "title": "Avant de commencer",
-      "text": "Il faut savoir conserver une réponse textuelle, comparer avec == et construire if/elif/else. Sinon, reprends Plusieurs possibilités. Enregistre tes essais et crée aventure.py sans effacer les autres fichiers. Choisis un univers fictif : aucun renseignement personnel n’est nécessaire.",
+      "text": "Il faut savoir conserver une réponse textuelle, comparer avec == et construire `if`/`elif`/`else`. Sinon, reprends Plusieurs possibilités. Enregistre tes essais et crée `aventure.py` sans effacer les autres fichiers. Choisis un univers fictif : aucun renseignement personnel n’est nécessaire.",
       "moduleLink": {
         "moduleId": "python-elif",
         "text": "Revoir plusieurs issues"
@@ -74,9 +74,9 @@
       "id": "texte",
       "title": "2 - Un choix textuel exact",
       "paragraphs": [
-        "Pour du texte, compare la réponse à un mot entre guillemets avec ==. Ne convertis pas le lieu avec int : ce n’est pas un nombre.",
+        "Pour du texte, compare la réponse à un mot entre guillemets avec ==. Ne convertis pas le lieu avec `int` : ce n’est pas un nombre.",
         "La comparaison est exacte : tour, Tour et tour suivi d’un espace sont trois textes différents. Écris les mots acceptés dans la question pour guider la saisie. Ce projet ne corrige pas automatiquement les majuscules ou les espaces.",
-        "Tu peux ajouter deux elif après le premier if, puis un else pour le mot inconnu. Comme dans le module précédent, les en-têtes sont alignés et les messages de branche sont indentés."
+        "Tu peux ajouter deux `elif` après le premier `if`, puis un `else` pour le mot inconnu. Comme dans le module précédent, les en-têtes sont alignés et les messages de branche sont indentés."
       ]
     },
     {
@@ -87,17 +87,17 @@
         {
           "id": "une-question",
           "text": "Affiche un accueil et demande un lieu en annonçant tour comme choix accepté. Conserve la réponse dans une variable.",
-          "hint": "Utilise print pour l’accueil, puis une variable affectée au résultat de input. Ne mets pas la réponse dans le fichier."
+          "hint": "Utilise `print` pour l’accueil, puis une variable affectée au résultat de `input`. Ne mets pas la réponse dans le fichier."
         },
         {
           "id": "une-issue",
-          "text": "Avec if/else, affiche un événement si la réponse est exactement tour, sinon un message indiquant que le lieu est inconnu.",
-          "hint": "Compare ta variable à \"tour\" avec ==. Le else ne doit pas faire entrer dans un lieu non choisi."
+          "text": "Avec `if`/`else`, affiche un événement si la réponse est exactement tour, sinon un message indiquant que le lieu est inconnu.",
+          "hint": "Compare ta variable à \"tour\" avec ==. Le `else` ne doit pas faire entrer dans un lieu non choisi."
         },
         {
           "id": "deux-essais",
           "text": "Prédis puis teste tour et lune. Explique quelle branche a été choisie.",
-          "hint": "Un essai reconnaît le lieu ; l’autre utilise else. Relance pour chaque réponse."
+          "hint": "Un essai reconnaît le lieu ; l’autre utilise `else`. Relance pour chaque réponse."
         }
       ]
     },
@@ -105,22 +105,22 @@
       "type": "tasks",
       "id": "autonomie",
       "title": "3 - Construis ton aventure",
-      "intro": "Enregistre le premier essai, puis crée mon_aventure.py pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.",
+      "intro": "Enregistre le premier essai, puis crée `mon_aventure.py` pour ton projet personnel. Utilise tes propres lieux et messages ; essaie avant les indices.",
       "items": [
         {
           "id": "accueil-pseudo",
           "text": "Affiche un accueil, demande un pseudo fictif et réutilise-le dans un message. Garde cette réponse distincte du choix de destination.",
-          "hint": "Deux informations nécessitent deux noms de variables différents. print peut afficher un texte et une variable séparés par une virgule."
+          "hint": "Deux informations nécessitent deux noms de variables différents. `print` peut afficher un texte et une variable séparés par une virgule."
         },
         {
           "id": "trois-lieux",
-          "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne if/elif/elif/else : un événement propre à chaque lieu, puis un message utile pour tout autre mot.",
-          "hint": "Trois comparaisons exactes avec == ; else conseille les mots acceptés. Une seule issue doit s’afficher par essai."
+          "text": "Annonce trois mots acceptés et demande la destination. Construis une chaîne `if`/`elif`/`elif`/`else` : un événement propre à chaque lieu, puis un message utile pour tout autre mot.",
+          "hint": "Trois comparaisons exactes avec == ; `else` conseille les mots acceptés. Une seule issue doit s’afficher par essai."
         },
         {
           "id": "fin-commune",
           "text": "Ajoute un message de fin qui s’affiche après le choix, quelle que soit la destination.",
-          "hint": "Aligne ce print avec if, pas avec les messages des branches."
+          "hint": "Aligne ce `print` avec `if`, pas avec les messages des branches."
         }
       ]
     },
@@ -141,8 +141,8 @@
         },
         {
           "id": "modifier-route",
-          "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par else. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.",
-          "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de else doit annoncer les choix à jour, sans l’ancien mot."
+          "text": "Renomme une destination : change le mot dans la question, dans la comparaison et dans tout rappel des choix affiché par `else`. Teste le nouveau mot, l’ancien, les deux autres destinations et un mot inconnu.",
+          "hint": "L’ancien mot devient inconnu ; les autres routes doivent continuer à fonctionner. Le message de `else` doit annoncer les choix à jour, sans l’ancien mot."
         },
         {
           "id": "retrouver-projet",
@@ -158,8 +158,8 @@
       "items": [
         {
           "id": "quatrieme-lieu",
-          "text": "Ajoute une quatrième destination annoncée dans la question et une branche elif avant else. Teste les quatre destinations et un mot inconnu.",
-          "hint": "Garde else en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire."
+          "text": "Ajoute une quatrième destination annoncée dans la question et une branche `elif` avant `else`. Teste les quatre destinations et un mot inconnu.",
+          "hint": "Garde `else` en dernier : il reste réservé à toute réponse non reconnue. Pas de nouvelle notion nécessaire."
         }
       ]
     },

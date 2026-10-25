@@ -36,7 +36,7 @@
       "title": "1 : Deux pages, deux fichiers",
       "paragraphs": [
         "Résultat attendu : tu peux aller de l’accueil à une page de découvertes, puis revenir par un lien présent sur la page, sans dépendre du bouton Retour du navigateur.",
-        "Crée un NOUVEAU dossier mini-navigation, pour garder tes exercices précédents. Dans ton éditeur, crée puis enregistre deux fichiers distincts avec les noms ci-dessous. Affiche les extensions dans l’explorateur si nécessaire : decouvertes.html.txt n’est pas le fichier demandé.",
+        "Crée un NOUVEAU dossier mini-navigation, pour garder tes exercices précédents. Dans ton éditeur, crée puis enregistre deux fichiers distincts avec les noms ci-dessous. Affiche les extensions dans l’explorateur si nécessaire : `decouvertes.html`.txt n’est pas le fichier demandé.",
         "Les noms de fichiers sont ici en minuscules, sans espace ni accent. Respecte exactement leur écriture, même si ton ordinateur tolère parfois des différences de majuscules. Le texte visible peut, lui, avoir des accents.",
         "Chaque fichier possède son propre document complet, son title pour l’onglet et son h1 visible. Ne colle pas les deux documents à la suite dans un même fichier. Travaille sans IA."
       ],
@@ -47,8 +47,8 @@
       "id": "liens",
       "title": "2 : Une destination depuis la page actuelle",
       "paragraphs": [
-        "Dans href, decouvertes.html désigne ici un fichier situé dans le même dossier que la page contenant le lien. Le navigateur cherche la destination depuis cette page, pas depuis ton éditeur.",
-        "Le texte Découvertes annonce la destination ; modifier seulement ce texte ne change pas le fichier ouvert. Pour revenir, href=\"index.html\" vise le fichier d’accueil.",
+        "Dans href, `decouvertes.html` désigne ici un fichier situé dans le même dossier que la page contenant le lien. Le navigateur cherche la destination depuis cette page, pas depuis ton éditeur.",
+        "Le texte Découvertes annonce la destination ; modifier seulement ce texte ne change pas le fichier ouvert. Pour revenir, href=\"`index.html`\" vise le fichier d’accueil.",
         "N’écris pas le chemin complet de ton ordinateur ni un / au début : nous utilisons des fichiers voisins avec leurs noms et extensions. Un chemin relatif reste valable si le dossier complet est déplacé en conservant cette organisation.",
         "Cliquer charge l’autre document. Un lien ne crée pas un fichier, ne recopie pas son contenu et ne fabrique pas automatiquement un lien de retour : il faut écrire celui-ci sur la deuxième page."
       ],
@@ -62,7 +62,7 @@
             "label": "Depuis index.html",
             "html": "<p>Page représentée : index.html</p><h1>Mon carnet</h1><p>Trajet : index.html → decouvertes.html</p>",
             "code": "<a href=\"decouvertes.html\">Découvertes</a>",
-            "feedback": "Depuis l’accueil, ce lien cherche le fichier voisin decouvertes.html.",
+            "feedback": "Depuis l’accueil, ce lien cherche le fichier voisin `decouvertes.html`.",
             "css": ""
           },
           {
@@ -93,7 +93,7 @@
       "id": "accueil",
       "title": "index.html : Le document d’accueil",
       "paragraphs": [
-        "Copie uniquement ce document dans index.html, puis enregistre. Son titre d’onglet et son titre visible permettront de reconnaître la page."
+        "Copie uniquement ce document dans `index.html`, puis enregistre. Son titre d’onglet et son titre visible permettront de reconnaître la page."
       ],
       "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Accueil du carnet</title>\n</head>\n<body>\n  <h1>Mon carnet</h1>\n  <nav>\n    <a href=\"index.html\">Accueil</a>\n    <a href=\"decouvertes.html\">Découvertes</a>\n  </nav>\n  <p>Bienvenue dans mon carnet de découvertes.</p>\n</body>\n</html>"
     },
@@ -102,7 +102,7 @@
       "id": "seconde",
       "title": "decouvertes.html : Le deuxième document",
       "paragraphs": [
-        "Copie ce document dans decouvertes.html, pas à la suite du précédent. Enregistre aussi ce fichier."
+        "Copie ce document dans `decouvertes.html`, pas à la suite du précédent. Enregistre aussi ce fichier."
       ],
       "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Découvertes du carnet</title>\n</head>\n<body>\n  <h1>Mes découvertes</h1>\n  <nav>\n    <a href=\"index.html\">Accueil</a>\n    <a href=\"decouvertes.html\">Découvertes</a>\n  </nav>\n  <p>Je compare des formes et je note mes idées.</p>\n</body>\n</html>"
     },
@@ -110,28 +110,28 @@
       "type": "tasks",
       "id": "guide",
       "title": "Exercice guidé : Faire l’aller et le retour",
-      "intro": "Ouvre index.html depuis ton dossier dans un navigateur. Si le double-clic ouvre l’éditeur, utilise Ouvrir avec et choisis ton navigateur.",
+      "intro": "Ouvre `index.html` depuis ton dossier dans un navigateur. Si le double-clic ouvre l’éditeur, utilise Ouvrir avec et choisis ton navigateur.",
       "items": [
         {
           "id": "aller",
-          "text": "Clique sur Découvertes dans la page. Vérifie le nom decouvertes.html dans la barre d’adresse, le titre de l’onglet et le h1 Mes découvertes."
+          "text": "Clique sur Découvertes dans la page. Vérifie le nom `decouvertes.html` dans la barre d’adresse, le titre de l’onglet et le h1 Mes découvertes."
         },
         {
           "id": "retour",
-          "text": "Clique sur Accueil dans la deuxième page. Vérifie que tu retrouves index.html et Mon carnet, sans utiliser le bouton Retour du navigateur."
+          "text": "Clique sur Accueil dans la deuxième page. Vérifie que tu retrouves `index.html` et Mon carnet, sans utiliser le bouton Retour du navigateur."
         },
         {
           "id": "direct",
-          "text": "Ferme cet onglet de test ou ouvre un nouvel onglet, puis ouvre directement decouvertes.html depuis le dossier. Utilise son lien Accueil : il doit fonctionner sans historique préalable."
+          "text": "Ferme cet onglet de test ou ouvre un nouvel onglet, puis ouvre directement `decouvertes.html` depuis le dossier. Utilise son lien Accueil : il doit fonctionner sans historique préalable."
         },
         {
           "id": "texte-lien",
-          "text": "Dans les deux fichiers, remplace seulement le texte visible Découvertes par Mes idées, sans toucher à href. Enregistre, actualise et vérifie que le lien ouvre toujours decouvertes.html.",
+          "text": "Dans les deux fichiers, remplace seulement le texte visible Découvertes par Mes idées, sans toucher à href. Enregistre, actualise et vérifie que le lien ouvre toujours `decouvertes.html`.",
           "hints": [
             "Repère ce qui se trouve entre <a> et </a>.",
             "Ce sont les mots du lien, pas l’adresse.",
             "Compare les guillemets de href au texte visible.",
-            "Change seulement les mots, garde href=\"decouvertes.html\" dans les deux menus."
+            "Change seulement les mots, garde href=\"`decouvertes.html`\" dans les deux menus."
           ]
         },
         {
@@ -148,11 +148,11 @@
       "items": [
         {
           "id": "renommer",
-          "text": "Renomme decouvertes.html en idees.html dans le dossier de copie, en gardant index.html. Ne modifie pas encore les liens."
+          "text": "Renomme `decouvertes.html` en `idees.html` dans le dossier de copie, en gardant `index.html`. Ne modifie pas encore les liens."
         },
         {
           "id": "predire",
-          "text": "Avant de cliquer, prédis ce qui arrivera à l’ancien lien. Ouvre index.html de la copie et observe : l’ancien nom ne désigne plus un fichier présent."
+          "text": "Avant de cliquer, prédis ce qui arrivera à l’ancien lien. Ouvre `index.html` de la copie et observe : l’ancien nom ne désigne plus un fichier présent."
         },
         {
           "id": "reparer-menus",
@@ -161,7 +161,7 @@
             "Ouvre les deux documents dans l’éditeur.",
             "Recherche l’ancien nom dans les attributs href.",
             "Un menu peut encore pointer vers l’ancien fichier même si l’autre a été corrigé.",
-            "Dans index.html et idees.html, remplace href=\"decouvertes.html\" par href=\"idees.html\". Garde href=\"index.html\"."
+            "Dans `index.html` et `idees.html`, remplace href=\"`decouvertes.html`\" par href=\"`idees.html`\". Garde href=\"`index.html`\"."
           ]
         },
         {
@@ -170,7 +170,7 @@
         },
         {
           "id": "parcours-complet",
-          "text": "Teste tous les liens depuis chaque page, puis ouvre idees.html directement et reviens à l’accueil par son lien. Explique la différence entre nom de fichier, titre de l’onglet et texte du lien."
+          "text": "Teste tous les liens depuis chaque page, puis ouvre `idees.html` directement et reviens à l’accueil par son lien. Explique la différence entre nom de fichier, titre de l’onglet et texte du lien."
         }
       ]
     },
@@ -210,7 +210,7 @@
       "id": "panne",
       "title": "Consolidation : Un lien visible, mais une destination absente",
       "paragraphs": [
-        "Dans une copie de ta version réparée, remplace seulement le lien vers idees.html de index.html par celui-ci. Le texte reste correct ; l’adresse comporte une faute.",
+        "Dans une copie de ta version réparée, remplace seulement le lien vers `idees.html` de `index.html` par celui-ci. Le texte reste correct ; l’adresse comporte une faute.",
         "Teste le lien. Selon le navigateur, une page d’erreur ou une indication de fichier introuvable apparaît. Pour réparer, reviens à l’éditeur et au fichier ; une erreur de navigation n’a pas supprimé ton travail."
       ],
       "code": "<a href=\"idee.html\">Mes idées</a>"
@@ -223,22 +223,22 @@
       "items": [
         {
           "id": "corriger-fichier",
-          "text": "Compare href au fichier réellement présent. Corrige uniquement la référence, enregistre puis rouvre index.html et reteste.",
+          "text": "Compare href au fichier réellement présent. Corrige uniquement la référence, enregistre puis rouvre `index.html` et reteste.",
           "hints": [
             "Regarde les noms dans ton dossier.",
             "Une lettre manque dans l’adresse.",
-            "Compare idee.html et idees.html.",
-            "Rétablis href=\"idees.html\". Changer Mes idées n’aurait pas corrigé la destination."
+            "Compare `idee.html` et `idees.html`.",
+            "Rétablis href=\"`idees.html`\". Changer Mes idées n’aurait pas corrigé la destination."
           ]
         },
         {
           "id": "retour-manquant",
-          "text": "Dans une autre copie, enlève le lien Accueil de idees.html. Ouvre cette page directement, constate l’absence de retour dans la page puis rétablis-le.",
+          "text": "Dans une autre copie, enlève le lien Accueil de `idees.html`. Ouvre cette page directement, constate l’absence de retour dans la page puis rétablis-le.",
           "hints": [
             "Le bouton Retour du navigateur n’est pas le menu du site.",
             "La page peut être la première visitée.",
-            "Vise index.html, qui est au même niveau.",
-            "Ajoute <a href=\"index.html\">Accueil</a> dans nav de idees.html."
+            "Vise `index.html`, qui est au même niveau.",
+            "Ajoute <a href=\"index.html\">Accueil</a> dans nav de `idees.html`."
           ]
         },
         {
@@ -260,11 +260,11 @@
           "items": [
             {
               "id": "troisieme",
-              "text": "Crée observations.html dans le même dossier en copiant le cadre d’une page existante. Change title, h1 et paragraphe ; ne garde pas un deuxième accueil déguisé."
+              "text": "Crée `observations.html` dans le même dossier en copiant le cadre d’une page existante. Change title, h1 et paragraphe ; ne garde pas un deuxième accueil déguisé."
             },
             {
               "id": "ajouter-menu",
-              "text": "Ajoute un lien Observations vers ce fichier dans les trois menus, en conservant Accueil et le lien vers idees.html.",
+              "text": "Ajoute un lien Observations vers ce fichier dans les trois menus, en conservant Accueil et le lien vers `idees.html`.",
               "hints": [
                 "Le nouveau fichier est voisin des deux autres.",
                 "Le nouveau lien doit aussi exister dans la nouvelle page.",
@@ -274,7 +274,7 @@
             },
             {
               "id": "tester-trois",
-              "text": "Depuis chacune des trois pages, teste toutes les destinations, puis ouvre observations.html directement. Aucun passage par l’accueil ne doit être nécessaire pour retrouver les autres pages."
+              "text": "Depuis chacune des trois pages, teste toutes les destinations, puis ouvre `observations.html` directement. Aucun passage par l’accueil ne doit être nécessaire pour retrouver les autres pages."
             }
           ]
         }

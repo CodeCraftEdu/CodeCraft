@@ -94,17 +94,17 @@
         },
         {
           "id": "creer-fichier",
-          "text": "Dans la liste de fichiers de VS Code, crée index.html, colle le document de départ puis enregistre avec Ctrl+S (Cmd+S sur Mac).",
+          "text": "Dans la liste de fichiers de VS Code, crée `index.html`, colle le document de départ puis enregistre avec Ctrl+S (Cmd+S sur Mac).",
           "hints": [
             "Regarde le nom du fichier dans la liste, pas seulement le titre du navigateur.",
             "Le fichier doit se terminer par .html, pas par .html.txt.",
-            "Compare index.html avec le nom demandé.",
+            "Compare `index.html` avec le nom demandé.",
             "Si nécessaire, renomme le fichier avec son extension complète ; conserve son contenu, puis enregistre."
           ]
         },
         {
           "id": "ouvrir-fichier",
-          "text": "Ouvre index.html dans Chrome ou Edge depuis l’explorateur de fichiers : clic droit → Ouvrir avec → ton navigateur si le double-clic ouvre l’éditeur. Vérifie l’onglet et le h1."
+          "text": "Ouvre `index.html` dans Chrome ou Edge depuis l’explorateur de fichiers : clic droit → Ouvrir avec → ton navigateur si le double-clic ouvre l’éditeur. Vérifie l’onglet et le h1."
         },
         {
           "id": "modifier-onglet",

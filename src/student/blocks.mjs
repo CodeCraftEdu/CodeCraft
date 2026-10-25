@@ -5,6 +5,8 @@ export function createBlockRenderer({
   element,
   appendInlineText,
   createCode,
+  createConsole,
+  codeFileLabel,
   link,
   moduleUrl,
   demonstrations,
@@ -120,7 +122,7 @@ export function createBlockRenderer({
     return section;
   }
 
-  function createLesson(block) {
+  function createLesson(block, routeId) {
     const section = element('section', 'content-card');
     section.append(element('h2', 'section-title', block.title));
     const visual = block.visualScript || block.coordinateDiagram;
@@ -136,16 +138,10 @@ export function createBlockRenderer({
         heading.append(document.createTextNode(step.title));
         action.append(heading, element('p', '', block.paragraphs[step.paragraphIndex]));
         if (step.showCode) {
-          action.append(
-            element('p', 'lesson-action__label', 'Dans l’éditeur'),
-            createCode(block.code),
-          );
+          action.append(createCode(block.code, block.filename));
         }
         if (step.output !== undefined) {
-          action.append(
-            element('p', 'lesson-action__label', 'Résultat dans la console'),
-            element('pre', 'lesson-action__output', step.output),
-          );
+          action.append(createConsole(step.output));
         }
         steps.append(action);
       });
@@ -170,12 +166,18 @@ export function createBlockRenderer({
     if (block.coordinateDiagram) section.append(createCoordinateDiagram(block.coordinateDiagram));
     if (block.visualScript) {
       section.append(createScratchVisual(block.visualScript));
-    } else if (block.code && !block.actionSteps)
+    } else if (block.code && !block.actionSteps && !block.codeDiagram)
       section.append(
-        createCode(
-          block.code,
-          block.filename || block.title?.match(/\b[\w-]+\.(?:html|css|js|py)\b/)?.[0],
-        ),
+        data.modules[routeId]?.domainId === 'python'
+          ? createCodeDiagram({
+              filename: codeFileLabel(block.code, block.filename),
+              codeParts: [{ text: block.code }],
+              output: block.consoleOutput,
+            })
+          : createCode(
+              block.code,
+              block.filename || block.title?.match(/\b[\w-]+\.(?:html|css|js|py)\b/)?.[0],
+            ),
       );
     if (block.activityLink) {
       const pathwayId = new URLSearchParams(window.location.hash.split('?')[1]).get('parcours');
@@ -253,7 +255,7 @@ export function createBlockRenderer({
     if (block.type === 'tasks') return createTasks(block, routeId);
     if (block.type === 'checklist') return createChecklist(block, routeId);
     if (block.type === 'callout') return createCallout(block);
-    if (block.type === 'lesson') return createLesson(block);
+    if (block.type === 'lesson') return createLesson(block, routeId);
     if (block.type === 'details') return createDetails(block, routeId);
     if (block.type === 'resource')
       return pedagogy.resource(data.modules[routeId], block.resourceId);
