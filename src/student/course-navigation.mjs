@@ -5,15 +5,20 @@ export function createCourseNavigation(
   { data, element, link, moduleUrl, studentTitle },
 ) {
   const sidebar = element('aside', 'course-sidebar');
-  const toggle = element('button', 'course-sidebar__toggle', 'Dans ce parcours');
+  const library = sequence.navigationMode === 'library';
+  const toggle = element(
+    'button',
+    'course-sidebar__toggle',
+    library ? 'Les recettes' : 'Dans ce parcours',
+  );
   toggle.type = 'button';
   toggle.setAttribute('aria-controls', 'course-contents');
   const contents = element('nav', 'course-sidebar__contents');
   contents.id = 'course-contents';
-  contents.setAttribute('aria-label', 'Sommaire du parcours');
+  contents.setAttribute('aria-label', library ? 'Carnet de recettes' : 'Sommaire du parcours');
   const overview = element('details', 'course-sidebar__overview');
   overview.append(
-    element('summary', '', 'Objectif du parcours'),
+    element('summary', '', library ? 'Utiliser le carnet' : 'Objectif du parcours'),
     element('p', '', sequence.objective),
   );
   contents.append(overview);

@@ -1,0 +1,243 @@
+/* StPageFlip owns all folding, clipping and moving shadows. */
+body.student-lowpoly .site-shell--book {
+  width: min(1440px, calc(100% - 32px));
+  max-width: none;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .site-shell--book .page-header--compact {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.recipe-book {
+  --paper: #fff7e8;
+  color: #3d2b1f;
+}
+.recipe-book > .lesson-title {
+  font-size: clamp(1.2rem, 3vw, 1.65rem);
+  margin: 0 0 1rem;
+}
+.recipe-book__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.recipe-book__button {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #65371e;
+  background: #fff8ec;
+  border: 1px solid #b99b7b;
+  border-radius: 5px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+}
+.recipe-book__button:hover {
+  background: #f2dfc5;
+}
+.recipe-book__button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.recipe-book a:focus-visible,
+.recipe-book button:focus-visible,
+.recipe-book__body:focus-visible {
+  outline: 3px solid #924915;
+  outline-offset: 3px;
+}
+.recipe-book__status {
+  font-size: 0.85rem;
+  color: #775c46;
+  margin: 0.6rem 0;
+}
+.recipe-book__stage {
+  padding: 16px 0 35px;
+}
+.recipe-book [hidden] {
+  display: none !important;
+}
+.recipe-book__host {
+  margin: 0 auto;
+}
+.recipe-book__page {
+  background: var(--paper);
+  border: 1px solid #c9ae89;
+  overflow: hidden;
+}
+.recipe-book__paper {
+  height: 100%;
+  padding: 30px 26px 32px;
+  box-sizing: border-box;
+  position: relative;
+  background: linear-gradient(90deg, #e6d2b3 0%, #fff7e8 5%, #fff9ed 94%, #ead9bd 100%);
+}
+.recipe-book__page.--left .recipe-book__paper {
+  box-shadow: inset -16px 0 24px -20px #57321e;
+}
+.recipe-book__page.--right .recipe-book__paper {
+  box-shadow: inset 16px 0 24px -20px #57321e;
+}
+.recipe-book__body {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: #b49a7b transparent;
+  padding: 3px;
+}
+.recipe-book__body h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.2;
+  margin: 0.7rem 0 1.6rem;
+  color: #633c25;
+}
+.recipe-book__body p {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.recipe-book__eyebrow {
+  text-transform: uppercase;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.14em;
+  color: #976239;
+  border-bottom: 1px solid #dac3a1;
+  padding-bottom: 0.65rem;
+}
+.recipe-book__objective {
+  font-weight: 600;
+}
+.recipe-book__number {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #84684d;
+}
+.recipe-book__cover {
+  background: #734021;
+  color: #ffedcf;
+  border: 2px solid #4e2a18;
+}
+.recipe-book__cover .recipe-book__paper {
+  padding: 10%;
+  background: linear-gradient(100deg, #59311d, #8d4c27 7%, #8d4c27 91%, #6e391f);
+  box-shadow:
+    inset 10px 0 14px #301d154d,
+    inset -3px 0 5px #3f230e;
+}
+.recipe-book__cover .recipe-book__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #c69860;
+  padding: 1rem;
+}
+.recipe-book__cover .recipe-book__body h2 {
+  color: #ffe9bc;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+.recipe-book__cover .recipe-book__eyebrow {
+  color: #f1c794;
+}
+.recipe-book__cover .recipe-book__number {
+  display: none;
+}
+.recipe-book__contents ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.recipe-book__contents li {
+  border-bottom: 1px solid #ddc5a3;
+}
+.recipe-book__contents a {
+  display: block;
+  padding: 0.9rem 0;
+  color: #81441e;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .recipe-book .content-card {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  clip-path: none;
+  box-shadow: none;
+}
+.recipe-book .content-card > .section-title,
+.recipe-book .scratch-script__caption {
+  display: none;
+}
+body.student-lowpoly[data-lesson-layout='standard'] .recipe-book .scratch-script {
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  margin: 0;
+  box-shadow: none;
+  clip-path: none;
+}
+.recipe-book .scratch-script__layout {
+  display: block;
+}
+.recipe-book .scratch-script__stack {
+  padding: 0 0 0.6rem;
+}
+.recipe-book .scratch-script__block {
+  font-size: 14px;
+  min-height: 0;
+  padding: 0.3rem 0.45rem;
+  line-height: 1.5;
+}
+.recipe-book .scratch-script__children {
+  margin: 0.5rem -0.45rem 0.3rem 0.1rem;
+  padding: 0.4rem 0.3rem 0.5rem 0.45rem;
+}
+.recipe-book__script-page .recipe-book__body {
+  overflow: auto;
+}
+.recipe-book__script-page .recipe-book__button {
+  margin-top: 1rem;
+}
+.recipe-book__linear-recipe {
+  background: var(--paper);
+  border: 1px solid #ceb697;
+  padding: clamp(16px, 4vw, 40px);
+  margin-top: 1.5rem;
+}
+.recipe-book__flat .scratch-script {
+  overflow-x: auto;
+}
+.recipe-book__flat .recipe-book__contents {
+  max-width: 800px;
+}
+@media (max-width: 600px) {
+  body.student-lowpoly .site-shell--book {
+    width: calc(100% - 24px);
+  }
+  .recipe-book__paper {
+    padding: 18px 14px 28px;
+  }
+  .recipe-book__toolbar {
+    gap: 6px;
+  }
+  .recipe-book__button {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+@media print {
+  .recipe-book__stage,
+  .recipe-book__toolbar,
+  .recipe-book__status {
+    display: none !important;
+  }
+  .recipe-book .recipe-book__flat[hidden] {
+    display: block !important;
+  }
+}

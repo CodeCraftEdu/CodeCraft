@@ -369,6 +369,10 @@
     {
       "id": "minecraft-automatisation",
       "file": "modules/jeux-video/minecraft-automatisation.json"
+    },
+    {
+      "id": "scratch-recette-marche",
+      "file": "modules/jeux-video/scratch-recette-marche.json"
     }
   ],
   "pathways": [
@@ -407,6 +411,10 @@
     {
       "id": "minecraft-algorithmes",
       "file": "pathways/minecraft-algorithmes.json"
+    },
+    {
+      "id": "scratch-recettes",
+      "file": "pathways/scratch-recettes.json"
     }
   ]
 }

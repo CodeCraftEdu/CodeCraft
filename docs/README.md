@@ -18,10 +18,13 @@ Ces documents guident les modifications et les vérifications. Les règles édit
 - [verifications-manuelles-en-attente.md](verifications-manuelles-en-attente.md)
 - [partage-tinkercad.md](partage-tinkercad.md)
 - [publication-scratch-supports.md](publication-scratch-supports.md)
+- [livre-recettes-scratch.md](livre-recettes-scratch.md)
 
 ## Cadrage et évolutions prévues
 
 Ces documents distinguent les lots réalisés, les propositions et les recettes restant à confirmer. Leur mention d’un module ne signifie pas nécessairement qu’il est publié.
+
+- [cadrage-recettes-scratch.md](cadrage-recettes-scratch.md)
 
 - [audit-scratch-minecraft.md](audit-scratch-minecraft.md)
 - [cartographie-python.md](cartographie-python.md)
@@ -82,6 +85,7 @@ Les fichiers suivants conservent les décisions, revues et supports de séance. 
 - [revue-scratch-mission-messages.md](revue-scratch-mission-messages.md)
 - [revue-scratch-mission-etats.md](revue-scratch-mission-etats.md)
 - [revue-scratch-mission-tests.md](revue-scratch-mission-tests.md)
+- [revue-scratch-recette-marche.md](revue-scratch-recette-marche.md)
 - [revue-textes-eleve-robotique.md](revue-textes-eleve-robotique.md)
 - [robotique-seance-1-eleve.md](robotique-seance-1-eleve.md)
 - [robotique-seance-1-professeur.md](robotique-seance-1-professeur.md)

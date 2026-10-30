@@ -76,6 +76,7 @@ window.CODECRAFT_DATA = {
       "pathwayIds": [
         "scratch-debutants",
         "scratch-avances",
+        "scratch-recettes",
         "minecraft-algorithmes",
         "gdevelop-debutants"
       ],
@@ -37820,6 +37821,183 @@ window.CODECRAFT_DATA = {
           }
         ]
       }
+    },
+    "scratch-recette-marche": {
+      "domainId": "jeux-video",
+      "title": "Animer la marche de mon personnage",
+      "type": "lesson",
+      "theme": "fondations",
+      "presentation": "recipe",
+      "objective": "Déplacer et animer le personnage avec les flèches dans une même pile.",
+      "showTool": false,
+      "prerequisitesInContent": true,
+      "skillIds": [
+        "scratch.keyboard",
+        "scratch.loops",
+        "scratch.conditions"
+      ],
+      "blocks": [
+        {
+          "type": "lesson",
+          "id": "animation",
+          "title": "Recette",
+          "paragraphs": [
+            "Prépare un personnage avec deux costumes de marche. Si tu as déjà un script de déplacement, remplace-le par cette pile.",
+            "À adapter : les touches, les 5 pas de déplacement et les 0.1 seconde entre les costumes."
+          ],
+          "visualScript": {
+            "caption": "Animation de marche",
+            "blocks": [
+              {
+                "category": "events",
+                "label": "Événements",
+                "parts": [
+                  "quand le ",
+                  {
+                    "flag": true
+                  },
+                  " est cliqué"
+                ]
+              },
+              {
+                "category": "motion",
+                "label": "Mouvement",
+                "parts": [
+                  "fixer le sens de rotation ",
+                  {
+                    "choice": "gauche-droite"
+                  }
+                ]
+              },
+              {
+                "category": "control",
+                "label": "Contrôle",
+                "parts": [
+                  "répéter indéfiniment"
+                ],
+                "children": [
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche droite"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "s’orienter à ",
+                          {
+                            "value": "90"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "avancer de ",
+                          {
+                            "value": "5"
+                          },
+                          " pas"
+                        ]
+                      },
+                      {
+                        "category": "looks",
+                        "label": "Apparence",
+                        "parts": [
+                          "costume suivant"
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.1"
+                          },
+                          " secondes"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "control",
+                    "label": "Contrôle",
+                    "parts": [
+                      "si ",
+                      {
+                        "condition": [
+                          "touche ",
+                          {
+                            "choice": "flèche gauche"
+                          },
+                          " pressée ?"
+                        ]
+                      },
+                      " alors"
+                    ],
+                    "children": [
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "s’orienter à ",
+                          {
+                            "value": "-90"
+                          }
+                        ]
+                      },
+                      {
+                        "category": "motion",
+                        "label": "Mouvement",
+                        "parts": [
+                          "avancer de ",
+                          {
+                            "value": "5"
+                          },
+                          " pas"
+                        ]
+                      },
+                      {
+                        "category": "looks",
+                        "label": "Apparence",
+                        "parts": [
+                          "costume suivant"
+                        ]
+                      },
+                      {
+                        "category": "control",
+                        "label": "Contrôle",
+                        "parts": [
+                          "attendre ",
+                          {
+                            "value": "0.1"
+                          },
+                          " secondes"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
     }
   },
   "pathways": {
@@ -38302,6 +38480,16 @@ window.CODECRAFT_DATA = {
             "minecraft-automatisation"
           ]
         }
+      ]
+    },
+    "scratch-recettes": {
+      "domainId": "jeux-video",
+      "title": "Recettes Scratch",
+      "navigationMode": "library",
+      "theme": "fondations",
+      "objective": "Un carnet pour enrichir ton propre jeu. Choisis une recette, vérifie ses prérequis et adapte les blocs à tes sprites.",
+      "moduleIds": [
+        "scratch-recette-marche"
       ]
     }
   },

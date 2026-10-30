@@ -9,6 +9,7 @@ export default [
       'tests/archive/**',
       'resources/**',
       'browser-artifacts/**',
+      'src/student/page-flip-vendor.mjs',
     ],
   },
   {

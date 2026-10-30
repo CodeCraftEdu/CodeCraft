@@ -239,7 +239,7 @@ test('catalogue Scratch : contenus réels, prérequis explicites et aucun acquis
     'scratch-projet-personnel',
   ]);
   assert.equal(data.pathways['scratch-debutants'].domainId, 'jeux-video');
-  assert.equal(Object.keys(data.modules).filter((id) => id.startsWith('scratch-')).length, 24);
+  assert.equal(Object.keys(data.modules).filter((id) => id.startsWith('scratch-')).length, 25);
   assert.equal(data.modules['scratch-decouverte'].prerequisiteSkills.length, 0);
   for (const id of data.pathways['scratch-debutants'].moduleIds) {
     const m = data.modules[id];
@@ -764,7 +764,7 @@ test('lots pédagogiques : modules uniques, noyau HTML conservé et extensions f
   assert.equal(
     Object.values(data.modules).filter((m) => m.domainId !== 'python' && m.domainId !== 'robotique')
       .length,
-    60,
+    61,
   );
   assert.equal(
     Object.keys(data.skills).filter(

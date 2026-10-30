@@ -68,10 +68,12 @@ test('anciennes routes de parcours : premier cours, contexte conservé et histor
       const parent = dom.main.querySelectorAll('.lesson-breadcrumbs a')[1];
       assert.equal(parent.hash, routes.pathwayStartUrl(id));
       assert.equal(dom.window.history.length, before);
-      assert.equal(
-        dom.main.querySelector('.course-sidebar__overview summary').textContent,
-        'Objectif du parcours',
-      );
+      if (id === 'scratch-recettes') assert.ok(dom.main.querySelector('.recipe-book'));
+      else
+        assert.equal(
+          dom.main.querySelector('.course-sidebar__overview summary').textContent,
+          pathway.navigationMode === 'library' ? 'Utiliser le carnet' : 'Objectif du parcours',
+        );
       assert.equal(dom.mediaListeners.size, 1);
     }
     dom.navigate('');

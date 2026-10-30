@@ -441,8 +441,14 @@
         "externalLink": {
           "type": "object",
           "properties": {
-            "label": { "type": "string", "minLength": 1 },
-            "url": { "type": "string", "pattern": "^https://[^\\s]+$" }
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https://[^\\s]+$"
+            }
           },
           "required": ["label", "url"],
           "additionalProperties": false
@@ -806,6 +812,9 @@
           "items": {
             "$ref": "#/$defs/group"
           }
+        },
+        "navigationMode": {
+          "enum": ["sequence", "library"]
         }
       },
       "required": ["domainId", "title", "theme", "objective", "moduleIds"],
@@ -1051,7 +1060,7 @@
               "minLength": 1
             },
             "category": {
-              "enum": ["motion", "variables", "sensing", "operators"]
+              "enum": ["motion", "looks", "variables", "sensing", "operators"]
             }
           },
           "required": ["reporter", "category"],

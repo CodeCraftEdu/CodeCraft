@@ -1,5 +1,6 @@
 const catalog = ['catalog-build', 'content-schema', 'test-helpers'];
 const student = [
+  'recipe-book',
   'course-entry',
   'course-navigation',
   'inline-code',

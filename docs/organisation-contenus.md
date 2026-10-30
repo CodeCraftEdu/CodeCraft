@@ -65,6 +65,8 @@ Les figures Scratch et les schémas GDevelop partagent le cadre biseauté et le 
 
 Dans `visualScript`, une pièce `{ "value": "200" }` représente une valeur à saisir. Un bloc à glisser utilise `{ "reporter": "abscisse x", "category": "motion" }`, ou par exemple `{ "reporter": "score", "category": "variables" }`. La catégorie est explicite : le rendu ne la déduit jamais du texte. Les catégories de ces blocs sont `motion`, `variables`, `sensing` et `operators`. Les menus restent des pièces `choice` et les conditions des pièces `condition`.
 
+Les reporters d’Apparence, comme le nom du costume, utilisent la catégorie `looks`. Un parcours avec `navigationMode: "library"` présente un carnet de fiches indépendantes et ne propose pas de cours précédent ou suivant.
+
 Un bloc `si … sinon` conserve sa branche vraie dans `children` et sa branche fausse dans `elseChildren`. Le rendu place « sinon » entre les deux listes et ferme le bloc une seule fois. Les descendants des deux branches suivent le même schéma récursif.
 
 Dans un encart de reprise, `moduleLink.newTab: true` ouvre la cible dans un autre onglet. Le texte du lien annonce ce changement et la consigne explique comment retrouver le chapitre d'origine. L'option est facultative ; un lien existant sans cette option conserve son comportement.

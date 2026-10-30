@@ -7,3 +7,5 @@ resources/
 # Local output is also excluded by .gitignore
 node_modules/
 browser-artifacts/
+# Official StPageFlip distribution, preserved verbatim
+src/student/page-flip-vendor.mjs

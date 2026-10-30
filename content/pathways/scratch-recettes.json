@@ -1,0 +1,8 @@
+{
+  "domainId": "jeux-video",
+  "title": "Recettes Scratch",
+  "navigationMode": "library",
+  "theme": "fondations",
+  "objective": "Un carnet pour enrichir ton propre jeu. Choisis une recette, vérifie ses prérequis et adapte les blocs à tes sprites.",
+  "moduleIds": ["scratch-recette-marche"]
+}

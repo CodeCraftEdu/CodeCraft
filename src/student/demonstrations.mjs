@@ -327,7 +327,6 @@ export function createDemonstrations({
           block.elseChildren.forEach((child) => otherwise.append(renderBlock(child)));
           row.append(otherwise);
         }
-        row.append(element('span', 'scratch-script__closing', 'fin du bloc'));
       }
       return row;
     };

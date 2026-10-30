@@ -297,6 +297,7 @@ module.exports = async ({ evaluate, wait, call, directory }) => {
   await click('#close-conductor-mode');
   assert.equal(await evaluate('document.getElementById("conductor-mode")'), null);
   assert.equal(await evaluate('document.getElementById("main-content").inert'), false);
+  await wait(`Math.abs(window.scrollY - ${returnScroll}) < 3`);
   assert(Math.abs((await evaluate('window.scrollY')) - returnScroll) < 3);
   await click('[data-choice="session-skills"][data-value="html.images"]');
   await click('[data-choice="session-modules"][data-value="html-images"]');

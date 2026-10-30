@@ -441,7 +441,7 @@
         conductorKeyHandler = null;
         window.scrollTo(0, conductorReturnScroll);
         document.documentElement.style.scrollBehavior = conductorReturnScrollBehavior;
-        if (restoreFocus) conductorReturnFocus?.focus();
+        if (restoreFocus) conductorReturnFocus?.focus({ preventScroll: true });
       }
       function openConductorMode(session, trigger) {
         closeConductorMode(false);

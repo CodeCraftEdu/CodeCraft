@@ -1,5 +1,6 @@
 import { createCourseNavigation } from './course-navigation.mjs';
 import { createSupportPanel } from './support.mjs';
+import { createRecipeBook } from './recipe-book.mjs';
 
 export function createRouter({
   data,
@@ -22,7 +23,7 @@ export function createRouter({
     while (demoCleanups.length) demoCleanups.pop()();
     if (disposeCourseNavigation) disposeCourseNavigation();
     disposeCourseNavigation = null;
-    main.classList.remove('site-shell--course');
+    main.classList.remove('site-shell--course', 'site-shell--book');
     delete document.body.dataset.lessonLayout;
     document.title = title + ' : ' + data.site.name;
     if (theme) document.body.dataset.route = theme;
@@ -63,7 +64,13 @@ export function createRouter({
     domain.pathwayIds.forEach((pathwayId) => {
       const pathway = data.pathways[pathwayId];
       navigation.append(
-        card(pathway.title, pathway.objective, pathwayStartUrl(pathwayId), pathway.theme),
+        card(
+          pathway.title,
+          pathway.objective,
+          pathwayStartUrl(pathwayId) +
+            (pathwayId === 'scratch-recettes' ? '&livre=couverture' : ''),
+          pathway.theme,
+        ),
       );
     });
     (domain.diagnosticModuleIds || []).forEach((moduleId) => {
@@ -147,10 +154,10 @@ export function createRouter({
     const pathway = data.pathways[id];
     // Compatibilité des anciens liens : remplacer la route sans ajouter un écran à l'historique.
     history.replaceState(null, '', pathwayStartUrl(id));
-    renderModule(pathway.moduleIds[0], id);
+    renderModule(pathway.moduleIds[0], id, id === 'scratch-recettes');
   }
 
-  function renderModule(id, requestedPathway) {
+  function renderModule(id, requestedPathway, openCover = false) {
     const item = data.modules[id];
     const candidate = own(data.pathways, requestedPathway);
     // Une URL partagée peut contenir un contexte périmé : ne conserver que celui
@@ -170,6 +177,7 @@ export function createRouter({
     document.body.dataset.lessonLayout = 'standard';
     const article = element('article', 'lesson-page');
     if (item.presentation === 'workshop') article.classList.add('lesson-page--workshop');
+    if (item.presentation === 'recipe') article.classList.add('lesson-page--recipe');
     const back = element('nav', 'library-links');
     back.setAttribute('aria-label', 'Fil d’Ariane');
     {
@@ -191,6 +199,28 @@ export function createRouter({
       back.append(trail);
     }
     main.querySelector('.page-header--compact').append(back);
+    if (sequence === data.pathways['scratch-recettes']) {
+      main.classList.add('site-shell--book');
+      const book = createRecipeBook({
+        sequence,
+        currentId: id,
+        openCover:
+          openCover ||
+          new URLSearchParams(location.hash.split('?')[1]).get('livre') === 'couverture',
+        data,
+        element,
+        link,
+        createBlock,
+        moduleUrl,
+        onRecipeChange: (selectedId) => {
+          main.querySelector('.lesson-breadcrumbs__current').textContent =
+            data.modules[selectedId].title;
+        },
+      });
+      demoCleanups.push(book.dispose);
+      main.append(book.node);
+      return;
+    }
     if (stagePosition) {
       const { stage, number, position, total } = stagePosition;
       article.append(
@@ -205,7 +235,9 @@ export function createRouter({
         ),
       );
     }
-    article.append(intro(item.title, item.objective));
+    if (item.presentation === 'recipe') {
+      article.append(element('h1', 'lesson-title', item.title));
+    } else article.append(intro(item.title, item.objective));
     // Le téléchargement de Thonny n'est utile qu'à l'installation. Scratch et
     // CodePen restent accessibles là où ils constituent l'environnement de travail.
     const showTool =
@@ -306,7 +338,7 @@ export function createRouter({
       );
     const navigation = element('nav', 'module-navigation module-navigation--lesson');
     navigation.setAttribute('aria-label', 'Navigation entre modules');
-    if (sequence) {
+    if (sequence && sequence.navigationMode !== 'library') {
       const position = sequence.moduleIds.indexOf(id);
       const previous = sequence.moduleIds[position - 1];
       const next = sequence.moduleIds[position + 1];

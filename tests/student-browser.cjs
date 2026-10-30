@@ -31,6 +31,9 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
     await screenshot('site-footer-' + width);
   }
   await call('Emulation.clearDeviceMetricsOverride');
+  if (scope.includes('scratch-recette-marche')) {
+    await require('./recipe-book-scenario.cjs')({ navigate, evaluate, wait, call, screenshot });
+  }
   if (scope.includes('python-affichage')) {
     await open('python-affichage', '?parcours=python-debutants');
     for (const width of [1280, 320]) {
@@ -63,8 +66,15 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
   if (scope.includes('minecraft-trajets')) {
     await open('minecraft-trajets', '?parcours=minecraft-algorithmes');
     await evaluate('document.querySelector("[data-activity-id=entree-scratch] a").click()');
+    // Verify the navigation result, not a font- and viewport-dependent pixel offset.
     await wait(
-      'location.hash.includes("activite=niveau-trois") && Math.abs(document.querySelector("[data-activity-id=niveau-trois]").getBoundingClientRect().top - 16) < 3',
+      `(() => {
+        const target = document.querySelector('[data-activity-id=niveau-trois]');
+        const title = target?.querySelector('h2, h3');
+        if (!title || document.activeElement !== target) return false;
+        const bounds = title.getBoundingClientRect();
+        return location.hash.includes('activite=niveau-trois') && bounds.top >= 0 && bounds.top < innerHeight / 3 && bounds.bottom <= innerHeight;
+      })()`,
     );
     await screenshot('minecraft-entree-codeorg');
   }
@@ -138,7 +148,7 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
         'document.querySelector("main h1")?.textContent === ' +
           JSON.stringify(data.modules[order[i]].title),
       );
-      const expected = [order[i - 1], order[i + 1]]
+      const expected = (pathway.navigationMode === 'library' ? [] : [order[i - 1], order[i + 1]])
         .filter(Boolean)
         .map((module) => '#module/' + module + '?parcours=' + id);
       const neighbours = await evaluate(
@@ -155,7 +165,9 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
         true,
         'Shared editor headers: ' + order[i],
       );
-      if (i + 1 < order.length)
+      if (i + 1 < order.length && pathway.navigationMode === 'library')
+        await open(order[i + 1], '?parcours=' + id);
+      else if (i + 1 < order.length)
         await evaluate('document.querySelector(".module-navigation__next").click()');
     }
   }
