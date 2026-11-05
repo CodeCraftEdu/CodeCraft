@@ -371,6 +371,22 @@
       "file": "modules/jeux-video/minecraft-automatisation.json"
     },
     {
+      "id": "ia-regles-donnees",
+      "file": "modules/ia/ia-regles-donnees.json"
+    },
+    {
+      "id": "ia-decouvrir",
+      "file": "modules/ia/ia-decouvrir.json"
+    },
+    {
+      "id": "ia-classification",
+      "file": "modules/ia/ia-classification.json"
+    },
+    {
+      "id": "ia-entrainement",
+      "file": "modules/ia/ia-entrainement.json"
+    },
+    {
       "id": "scratch-recette-marche",
       "file": "modules/jeux-video/scratch-recette-marche.json"
     }
@@ -411,6 +427,10 @@
     {
       "id": "minecraft-algorithmes",
       "file": "pathways/minecraft-algorithmes.json"
+    },
+    {
+      "id": "ia-experience",
+      "file": "pathways/ia-experience.json"
     },
     {
       "id": "scratch-recettes",

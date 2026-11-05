@@ -6,6 +6,7 @@ const { writeRunSummary, writeFailureReport, artifacts } = require('./lib/browse
 const suites = [
   'catalog-browser',
   'student-browser',
+  'ai-experience-browser',
   'web-examples-browser',
   'web-collection-browser',
   'scratch-lot3-browser',

@@ -1,0 +1,631 @@
+{
+  "domainId": "ia",
+  "title": "Des règles aux données",
+  "type": "lesson",
+  "theme": "avances",
+  "objective": "Joue contre des instructions, puis choisis et teste une règle à partir de messages. Compare ces démarches avec l’entraînement d’un modèle.",
+  "skillIds": ["ia.instructions", "ia.apprentissage", "ia.generalisation"],
+  "prerequisiteSkills": [],
+  "blocks": [
+    {
+      "id": "experience",
+      "type": "lesson",
+      "title": "Observe, propose et teste",
+      "aiExperience": {
+        "rules": [
+          {
+            "id": "first-corner",
+            "text": "Premier X : choisir un coin.",
+            "reason": "Au moment du choix, les coins libres autorisés étaient : {cells}."
+          },
+          {
+            "id": "second-opposite",
+            "text": "Deuxième X : si le coin opposé au premier X ne contient pas O, y placer X.",
+            "reason": "Le coin opposé au premier X était libre : {cells}."
+          },
+          {
+            "id": "second-corner",
+            "text": "Deuxième X : sinon, choisir un coin libre.",
+            "reason": "O occupait le coin opposé. Les autres coins libres autorisés étaient : {cells}."
+          },
+          {
+            "id": "complete-line",
+            "text": "Troisième et quatrième X : d’abord compléter une ligne contenant deux X et une case libre.",
+            "reason": "X pouvait compléter une ligne horizontale, verticale ou diagonale : {cells}."
+          },
+          {
+            "id": "block-line",
+            "text": "Sinon, bloquer une ligne contenant deux O et une case libre.",
+            "reason": "Aucune ligne de X ne pouvait être complétée. O menaçait de gagner ; les cases de blocage autorisées étaient : {cells}."
+          },
+          {
+            "id": "free-corner",
+            "text": "Sinon, choisir un coin libre.",
+            "reason": "Aucune ligne de deux X ni de deux O ne pouvait être complétée. Les coins libres autorisés étaient : {cells}."
+          },
+          {
+            "id": "last-cell",
+            "text": "Cinquième X : occuper la dernière case libre.",
+            "reason": "Il ne restait qu’une case libre : {cells}."
+          }
+        ],
+        "gameQuestions": [
+          {
+            "id": "strategy",
+            "prompt": "Qui a défini la stratégie des X ?",
+            "options": [
+              {
+                "id": "designers",
+                "text": "Les personnes qui ont écrit les instructions.",
+                "correct": true,
+                "feedback": "Les concepteurs ont choisi les décisions à appliquer. Le programme exécute cette stratégie."
+              },
+              {
+                "id": "paper",
+                "text": "La grille, pendant la partie.",
+                "correct": false,
+                "feedback": "La grille représente la situation. Les décisions viennent des instructions écrites par les concepteurs."
+              },
+              {
+                "id": "player",
+                "text": "Les O ont entraîné les X.",
+                "correct": false,
+                "feedback": "Les coups des O changent la situation, mais ils ne modifient pas les instructions des X."
+              }
+            ]
+          },
+          {
+            "id": "fixed",
+            "prompt": "Les instructions des X ont-elles changé pendant la partie ?",
+            "options": [
+              {
+                "id": "unchanged",
+                "text": "Non, la même liste reste en place.",
+                "correct": true,
+                "feedback": "La règle choisie dépend du tour et de la grille ; la liste d’instructions reste identique."
+              },
+              {
+                "id": "win",
+                "text": "Oui, dès que les X se rapprochent d’une victoire.",
+                "correct": false,
+                "feedback": "Une occasion de gagner déclenche une instruction déjà écrite. Elle ne crée pas une nouvelle instruction."
+              }
+            ]
+          },
+          {
+            "id": "replay",
+            "prompt": "Rejouer suffit-il à améliorer ce programme ?",
+            "options": [
+              {
+                "id": "no",
+                "text": "Non, ses instructions resteraient les mêmes.",
+                "correct": true,
+                "feedback": "Ici, aucune procédure d’entraînement ne modifie la stratégie à partir des parties. Pour changer ses décisions, il faudrait changer ses instructions."
+              },
+              {
+                "id": "yes",
+                "text": "Oui, il apprend automatiquement de chaque partie.",
+                "correct": false,
+                "feedback": "Répéter une exécution ne constitue pas automatiquement un entraînement. Ce programme ne possède pas de mécanisme qui ajuste ses règles après les parties."
+              }
+            ]
+          }
+        ],
+        "flow": {
+          "explanation": "Avec des règles explicites, les concepteurs décrivent les décisions. L’apprentissage automatique est une approche de l’IA : un entraînement ajuste un modèle à partir de données. Ici, les exemples sont déjà classés : c’est un apprentissage supervisé. Une étiquette est la catégorie associée à un exemple, comme « joie ». Les paramètres sont des valeurs numériques que l’entraînement ajuste et que le modèle utilise pour calculer ses résultats.",
+          "prompt": "Remets dans l’ordre la préparation et l’utilisation d’un modèle qui classe des messages. Les boutons Monter et Descendre fonctionnent aussi au clavier.",
+          "cards": [
+            {
+              "id": "data",
+              "text": "Réunir des messages et leurs étiquettes. Garder une partie des exemples à part pour les tests."
+            },
+            {
+              "id": "train",
+              "text": "Entraîner un modèle avec ces exemples pour ajuster ses paramètres."
+            },
+            {
+              "id": "evaluate",
+              "text": "Tester le modèle sur d’autres messages étiquetés, gardés à part de l’entraînement, et comparer ses réponses aux étiquettes."
+            },
+            {
+              "id": "input",
+              "text": "Fournir un nouveau message au modèle entraîné."
+            },
+            {
+              "id": "output",
+              "text": "Lire sa prédiction : ici, la catégorie proposée pour le message. Vérifier ce résultat."
+            }
+          ],
+          "initialOrder": ["input", "data", "output", "train", "evaluate"],
+          "feedback": "Les exemples d’entraînement servent à ajuster le modèle. On évalue ensuite ses réponses sur des exemples gardés à part pour repérer ses erreurs avant de l’utiliser. Une prédiction est un résultat proposé, pas forcément une prévision du futur. Produire ce résultat ne constitue pas à lui seul un nouvel entraînement."
+        },
+        "categories": [
+          {
+            "id": "joie",
+            "label": "Joie",
+            "emoji": "😃"
+          },
+          {
+            "id": "tristesse",
+            "label": "Tristesse",
+            "emoji": "😢"
+          },
+          {
+            "id": "colere",
+            "label": "Colère",
+            "emoji": "😡"
+          },
+          {
+            "id": "indeterminee",
+            "label": "Indéterminée",
+            "emoji": "?"
+          }
+        ],
+        "corpus": [
+          {
+            "id": "corpus-1",
+            "category": "joie",
+            "text": "Nous avons applaudi quand la fusée en carton a décollé !"
+          },
+          {
+            "id": "corpus-2",
+            "category": "joie",
+            "text": "Nous étions fiers de voir notre robot terminer le parcours."
+          },
+          {
+            "id": "corpus-3",
+            "category": "joie",
+            "text": "Quel sourire en découvrant ma photo sur l’affiche !"
+          },
+          {
+            "id": "corpus-4",
+            "category": "joie",
+            "text": "Cette soirée sous les étoiles était chouette."
+          },
+          {
+            "id": "corpus-5",
+            "category": "joie",
+            "text": "Nous étions ravis du retour des hirondelles au jardin."
+          },
+          {
+            "id": "corpus-6",
+            "category": "tristesse",
+            "text": "Le refuge a fermé et je n’y verrai plus les chèvres."
+          },
+          {
+            "id": "corpus-7",
+            "category": "tristesse",
+            "text": "J’ai perdu mon carnet et je repense à tous mes dessins."
+          },
+          {
+            "id": "corpus-8",
+            "category": "tristesse",
+            "text": "Le banc de ma grand-mère est vide et ça me serre le cœur."
+          },
+          {
+            "id": "corpus-9",
+            "category": "tristesse",
+            "text": "J’ai pleuré en rangeant le panier de mon chien."
+          },
+          {
+            "id": "corpus-10",
+            "category": "tristesse",
+            "text": "Notre répétition a été annulée et la scène va me manquer."
+          },
+          {
+            "id": "corpus-11",
+            "category": "colere",
+            "text": "Ils ont triché au tournoi et refusent de rendre la coupe."
+          },
+          {
+            "id": "corpus-12",
+            "category": "colere",
+            "text": "Ils ont hurlé sur ma sœur pour une erreur minuscule."
+          },
+          {
+            "id": "corpus-13",
+            "category": "colere",
+            "text": "On m’a interdit de présenter mon travail sans me laisser parler."
+          },
+          {
+            "id": "corpus-14",
+            "category": "colere",
+            "text": "Ils ont coupé l’arbre du quartier, ça me met en rage !"
+          },
+          {
+            "id": "corpus-15",
+            "category": "colere",
+            "text": "Le voisin a cassé mon cerf-volant exprès, je suis furieux !"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "prefix-et",
+            "label": "Début du message, puis « et »",
+            "description": "Dans cet ordre : commence par « Nous » → joie ; par « Ils » → colère ; sinon contient le mot « et » → tristesse ; sinon → indéterminée.",
+            "policy": "first",
+            "conditions": [
+              {
+                "kind": "starts",
+                "term": "Nous",
+                "category": "joie"
+              },
+              {
+                "kind": "starts",
+                "term": "Ils",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "et",
+                "category": "tristesse"
+              }
+            ]
+          },
+          {
+            "id": "prefix",
+            "label": "Seulement « Nous » et « Ils »",
+            "description": "Commence par « Nous » → joie ; par « Ils » → colère ; sinon → indéterminée. Ces débuts apparaissent dans plusieurs exemples, mais ne couvrent pas toute la collection.",
+            "policy": "first",
+            "conditions": [
+              {
+                "kind": "starts",
+                "term": "Nous",
+                "category": "joie"
+              },
+              {
+                "kind": "starts",
+                "term": "Ils",
+                "category": "colere"
+              }
+            ]
+          },
+          {
+            "id": "words",
+            "label": "Des mots repérés dans chaque colonne",
+            "description": "« applaudi », « fiers », « sourire », « chouette », « ravis » → joie. « fermé », « perdu », « vide », « pleuré », « manquer » → tristesse. « triché », « hurlé », « interdit », « rage », « furieux » → colère. Si plusieurs catégories ressortent ou si aucun indice ne correspond, la prédiction est indéterminée.",
+            "policy": "consensus",
+            "conditions": [
+              {
+                "kind": "word",
+                "term": "applaudi",
+                "category": "joie"
+              },
+              {
+                "kind": "word",
+                "term": "fiers",
+                "category": "joie"
+              },
+              {
+                "kind": "word",
+                "term": "sourire",
+                "category": "joie"
+              },
+              {
+                "kind": "word",
+                "term": "chouette",
+                "category": "joie"
+              },
+              {
+                "kind": "word",
+                "term": "ravis",
+                "category": "joie"
+              },
+              {
+                "kind": "word",
+                "term": "fermé",
+                "category": "tristesse"
+              },
+              {
+                "kind": "word",
+                "term": "perdu",
+                "category": "tristesse"
+              },
+              {
+                "kind": "word",
+                "term": "vide",
+                "category": "tristesse"
+              },
+              {
+                "kind": "word",
+                "term": "pleuré",
+                "category": "tristesse"
+              },
+              {
+                "kind": "word",
+                "term": "manquer",
+                "category": "tristesse"
+              },
+              {
+                "kind": "word",
+                "term": "triché",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "hurlé",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "interdit",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "rage",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "furieux",
+                "category": "colere"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "id": "attente",
+            "text": "Nous avons reçu un courrier ce matin.",
+            "interpretation": "Un courrier peut annoncer une bonne ou une mauvaise nouvelle, ou donner une simple information. Sans son contenu, l’émotion reste ambiguë."
+          },
+          {
+            "id": "projet",
+            "text": "Le studio a fermé et le spectacle est annulé.",
+            "interpretation": "L’annulation peut évoquer de la tristesse ou de la colère. Le contexte manque pour trancher entre les deux."
+          },
+          {
+            "id": "peinture",
+            "text": "Ils ont applaudi quand mon court métrage s’est terminé !",
+            "interpretation": "Les applaudissements peuvent susciter de la joie ou de la fierté. Le mot « Ils » ne justifie pas de prédire la colère."
+          },
+          {
+            "id": "billets",
+            "text": "Nous avions préparé une nuit sous les étoiles, mais l’orage nous a fait rentrer.",
+            "interpretation": "La sortie interrompue peut susciter de la déception. Commencer par « Nous » ne garantit pas un message joyeux."
+          }
+        ],
+        "extraExamples": [
+          {
+            "id": "nous",
+            "text": "Des messages commençant par « Nous » qui expriment une déception.",
+            "useful": true,
+            "feedback": "Ils permettent de vérifier si ce début de phrase suffit vraiment à annoncer la joie."
+          },
+          {
+            "id": "ils",
+            "text": "Des messages commençant par « Ils » qui racontent une réussite.",
+            "useful": true,
+            "feedback": "Ils mettent à l’épreuve l’association entre « Ils » et la colère."
+          },
+          {
+            "id": "et",
+            "text": "Des messages avec « et » exprimant différentes émotions.",
+            "useful": true,
+            "feedback": "Ils vérifient si une liaison grammaticale permet réellement de choisir une émotion."
+          },
+          {
+            "id": "copies",
+            "text": "Dix copies du même message joyeux déjà présent.",
+            "useful": false,
+            "feedback": "Ces copies n’apportent pas une situation nouvelle. Des exemples variés seraient plus utiles pour chercher les limites de la règle."
+          }
+        ],
+        "reviewQuestions": [
+          {
+            "id": "explicit",
+            "prompt": "Quelle phrase donne une instruction explicite applicable à une grille ?",
+            "options": [
+              {
+                "id": "concrete",
+                "text": "Si deux O sont alignés avec une case libre, placer X dans cette case.",
+                "correct": true,
+                "feedback": "Le test et l’action sont décrits : on peut examiner la grille puis appliquer l’instruction."
+              },
+              {
+                "id": "clever",
+                "text": "Jouer intelligemment.",
+                "correct": false,
+                "feedback": "Cette phrase ne décrit ni les cases à examiner ni la façon de choisir le prochain coup."
+              }
+            ]
+          },
+          {
+            "id": "training",
+            "prompt": "Que se passe-t-il pendant un entraînement en apprentissage automatique ?",
+            "options": [
+              {
+                "id": "adjust",
+                "text": "Un algorithme ajuste un modèle à partir de données.",
+                "correct": true,
+                "feedback": "L’entraînement ajuste le modèle. Ensuite, on peut lui fournir une nouvelle entrée pour obtenir une prédiction."
+              },
+              {
+                "id": "allrules",
+                "text": "Une personne écrit à la main chaque décision possible.",
+                "correct": false,
+                "feedback": "C’est une approche fondée sur des règles explicites. En apprentissage automatique, l’entraînement ajuste le modèle à partir de données."
+              },
+              {
+                "id": "running",
+                "text": "Le programme est seulement exécuté plusieurs fois.",
+                "correct": false,
+                "feedback": "Exécuter un programme ne suffit pas : un entraînement comporte un mécanisme d’ajustement à partir des données."
+              }
+            ]
+          },
+          {
+            "id": "newcases",
+            "prompt": "Une règle réussit sur plusieurs exemples déjà vus. Que peut-on en conclure ?",
+            "options": [
+              {
+                "id": "limited",
+                "text": "Elle réussit sur ces exemples ; il faut aussi essayer de nouveaux cas.",
+                "correct": true,
+                "feedback": "Une régularité peut être propre à une petite collection. Des cas nouveaux et variés permettent de chercher ses limites."
+              },
+              {
+                "id": "always",
+                "text": "Elle réussira sur tous les prochains messages.",
+                "correct": false,
+                "feedback": "Les exemples observés ne couvrent pas forcément les nouvelles situations. Les tests avec « Nous » et « Ils » ont montré cette limite."
+              }
+            ]
+          }
+        ],
+        "freeCheck": {
+          "prompt": "Explique comment une règle fondée sur quelques messages peut réussir sur les exemples et échouer sur un nouveau message.",
+          "criteria": [
+            "Nommer un indice utilisé par la règle.",
+            "Expliquer qu’une régularité observée ne garantit pas une réussite sur les nouveaux cas.",
+            "Proposer des exemples variés pour mettre cet indice à l’épreuve."
+          ],
+          "sample": "Plusieurs messages de joie commencent par « Nous ». Pourtant, le message sur la nuit sous les étoiles peut exprimer une déception. Je chercherais d’autres messages commençant par « Nous », avec des émotions variées, puis je comparerais leurs étiquettes aux prédictions."
+        },
+        "copy": {
+          "gameIntro": "Tu joues les O ; le programme commence avec les X. Le but est d’aligner trois de ses symboles sur une ligne, une colonne ou une diagonale. Le programme suit les instructions affichées pour son tour. Plusieurs cases peuvent respecter une instruction : chaque prévision valide est acceptée.",
+          "guessInstructions": "Choisis une case pour prévoir le prochain X.",
+          "emojisIntro": "Voici quinze messages auxquels on a attribué une catégorie d’émotion : leur étiquette. Cherche un mot ou une construction qui revient dans chaque catégorie. Ces catégories représentent une interprétation des messages ; elles ne permettent pas de connaître l’émotion réelle de leur auteur.",
+          "hypothesisIntro": "Une hypothèse est une règle possible à mettre à l’épreuve. Choisis-en une à partir des exemples. Elle restera fixe pendant le test. Ici, tu choisis la règle ; dans un apprentissage automatique, un algorithme, c’est-à-dire une suite d’instructions, ajuste le modèle pendant l’entraînement.",
+          "fixedRuleIntro": "Compare ta règle aux exemples de départ, puis teste-la sur quatre autres messages. Compare la catégorie obtenue à une interprétation du message entier. Si tu changes ensuite de règle, tu retrouveras les mêmes messages pour comparer les résultats.",
+          "emojisConclusion": "Tu as choisi puis testé une règle à partir d’exemples. Un indice présent dans quelques messages ne suffit pas à expliquer toute la collection ni à réussir sur d’autres messages. Dans un apprentissage automatique, c’est l’algorithme d’entraînement qui ajuste le modèle à partir des données.",
+          "extraPrompt": "Quels exemples supplémentaires permettraient de mettre ces raccourcis à l’épreuve ? Choisis les propositions utiles, puis vérifie leurs raisons.",
+          "freeIntro": "Compare ta réponse aux critères et à l’exemple. Cette réponse libre sert à expliquer ton raisonnement."
+        }
+      }
+    },
+    {
+      "id": "sources",
+      "type": "details",
+      "title": "Sources et crédits",
+      "blocks": [
+        {
+          "type": "lesson",
+          "title": "Experience AI",
+          "paragraphs": [
+            "La leçon 2 d’Experience AI, conçue par Raspberry Pi Foundation et Google DeepMind, inspire la comparaison entre règles et données. Le morpion reprend le principe de « La feuille de papier intelligente », une activité de Peter McOwan et Paul Curzon, Queen Mary University of London.",
+            "CodeCraft a créé les quinze messages de la collection, les quatre messages d’essai et leurs explications. Le raccourci « Nous », « Ils », puis « et » sert à tester les limites d’une règle grammaticale."
+          ],
+          "externalLink": {
+            "label": "Consulter la leçon officielle",
+            "url": "https://experience-ai.org/fr-CA/units/understanding-ai-11-14/lessons/13"
+          },
+          "id": "sources-1"
+        },
+        {
+          "type": "lesson",
+          "title": "Entraînement et utilisation",
+          "paragraphs": [
+            "Le complément Google for Developers précise le rôle des données et de l’entraînement dans la création d’un modèle."
+          ],
+          "externalLink": {
+            "label": "Qu’est-ce que le machine learning ?",
+            "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml?hl=fr"
+          },
+          "id": "sources-2"
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Décrire une instruction avec un test et une action.",
+    "Distinguer l’entraînement d’un modèle et son utilisation sur une nouvelle entrée.",
+    "Donner un contre-exemple à une règle tirée d’une petite collection."
+  ],
+  "teacherGuide": {
+    "objective": "Comparer exécution de règles et apprentissage automatique ; éprouver une régularité sur de nouveaux messages.",
+    "entryDiagnosis": ["Faire expliquer une instruction simple et le rôle d’une étiquette."],
+    "preparation": [
+      "Ouvrir le chapitre dans le navigateur utilisé par les élèves. La reprise est locale à ce navigateur.",
+      "Prévoir un exemple de contexte pour discuter l’attente longue sans imposer une émotion."
+    ],
+    "discoverySpeech": [
+      "Commencer directement par le morpion. Faire verbaliser l’instruction appliquée avant de révéler le coup.",
+      "Morpion : repérer la stratégie écrite et distinguer changement de situation et changement d’instructions.",
+      "Étapes : distinguer préparation des données, entraînement, nouvelle entrée et prédiction.",
+      "Émojis : formuler une règle explicite, la conserver pendant le test et distinguer sa sortie d’une interprétation humaine.",
+      "Bilan : expliquer pourquoi une régularité peut échouer sur de nouveaux exemples."
+    ],
+    "questions": [
+      {
+        "question": "Est-ce que les X apprennent pendant cette partie ?",
+        "answer": "Non. La liste des instructions reste identique. La grille change et déclenche une instruction déjà écrite."
+      },
+      {
+        "question": "Est-ce que choisir la règle d’émojis entraîne un modèle logiciel ?",
+        "answer": "Non. L’élève choisit et teste une règle explicite à partir d’exemples. Un véritable entraînement ajuste un modèle par un algorithme."
+      },
+      {
+        "question": "Pourquoi ne pas afficher un pourcentage de réussite sur les quatre messages ?",
+        "answer": "Certaines interprétations sont ambiguës ; aucune étiquette unique de référence n’a été fixée pour chaque cas."
+      },
+      {
+        "question": "Qui a écrit la stratégie ? Les coups précédents modifient-ils les instructions ?",
+        "answer": "Les concepteurs ont écrit la stratégie. Les coups changent la grille, mais les instructions restent identiques."
+      },
+      {
+        "question": "Quelle étape ajuste un véritable modèle ? À quel moment reçoit-il une nouvelle entrée ?",
+        "answer": "L’entraînement ajuste le modèle à partir des données. Le modèle reçoit une nouvelle entrée lors de son utilisation, après cet entraînement."
+      },
+      {
+        "question": "Peut-on attribuer une émotion certaine à « Nous avons reçu un courrier ce matin » ? Quel contexte manque ?",
+        "answer": "Le message reste ambigu. Demander ce que le courrier annonce et à qui il est destiné."
+      },
+      {
+        "question": "Quels exemples pourraient contredire votre règle ?",
+        "answer": "Chercher des messages qui contredisent le raccourci, par exemple une phrase commençant par Nous qui exprime une déception."
+      }
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Confondre règle proposée par l’élève et entraînement logiciel.",
+        "helps": [
+          "Faire nommer qui a choisi la règle.",
+          "Revenir à la carte où l’algorithme ajuste un modèle."
+        ]
+      },
+      {
+        "symptom": "Prendre la catégorie calculée pour une émotion certaine.",
+        "helps": [
+          "Lire l’indice déclencheur puis le message entier.",
+          "Demander quel contexte manque avant de choisir une émotion."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "title": "Experience AI, leçon 2",
+        "url": "https://experience-ai.org/fr-CA/units/understanding-ai-11-14/lessons/13"
+      },
+      {
+        "title": "Licence des fichiers Experience AI fournis",
+        "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+      }
+    ],
+    "example": {
+      "target": {
+        "moduleId": "ia-regles-donnees",
+        "blockId": "experience"
+      },
+      "comments": ["Commencer par une prévision puis repérer l’instruction effectivement exécutée."]
+    },
+    "accompaniedActivity": {
+      "moduleId": "ia-regles-donnees",
+      "blockId": "experience",
+      "label": "Comparer les prédictions de la règle"
+    },
+    "independentActivity": {
+      "moduleId": "ia-regles-donnees",
+      "blockId": "experience",
+      "label": "Bilan et contre-exemples"
+    },
+    "quickConductor": [
+      "Faire prévoir un coup des X avant de le révéler.",
+      "Faire ordonner données, entraînement, évaluation et utilisation.",
+      "Conserver une hypothèse pendant les quatre messages de test.",
+      "Discuter les cas ambigus puis comparer le bilan aux critères."
+    ]
+  },
+  "prerequisitesInContent": true
+}

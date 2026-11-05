@@ -32,5 +32,12 @@
     "homeTag": "CIRCUITS · ROBOTS",
     "pathwayIds": ["robotique-debutants"],
     "diagnosticModuleIds": []
+  },
+  "ia": {
+    "title": "Intelligence artificielle",
+    "homeDescription": "Explore des règles, propose des hypothèses et teste ce que les données permettent de prévoir.",
+    "homeTag": "EXPÉRIENCES INTERACTIVES",
+    "pathwayIds": ["ia-experience"],
+    "diagnosticModuleIds": []
   }
 }

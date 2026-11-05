@@ -58,8 +58,11 @@ const profiles = {
       'flex-property-demo',
       'web-comparison',
       'minecraft',
+      'ai-experience',
+      'ai-discovery',
+      'ai-training',
     ],
-    browser: ['catalog-browser', 'student-browser'],
+    browser: ['catalog-browser', 'student-browser', 'ai-experience-browser'],
   },
   tooling: { node: [...catalog, 'development-tools'], browser: ['catalog-browser'] },
 };

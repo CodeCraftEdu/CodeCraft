@@ -5,6 +5,7 @@ Ces règles s’appliquent à tous les modules et parcours, y compris aux démon
 Pour Minecraft, les manipulations et observations se font directement dans Code.org. Ne pas ajouter de grille, de dessin préparatoire, de simulation sur papier ou de carnet obligatoire. Si une illustration manque, signaler à l'utilisateur où une capture de Code.org serait utile. Voir [la règle actuelle du parcours](minecraft-codeorg.md).
 
 - Donner l’action attendue, l’observation à faire et l’explication utile à la notion travaillée.
+- Ne jamais cumuler les affirmations (« Oui. Oui. », « Oui. Exact. », « Oui, tout à fait »). Une seule validation suffit, puis donner directement l’explication. Si le rendu ajoute déjà cette validation, le texte du retour contient uniquement l’explication.
 - Préférer une consigne positive et concrète à « ne fais pas ceci ». Garder une interdiction seulement si elle évite un risque ou une confusion réelle dans l’exercice.
 - Décrire le chemin principal. Ne pas empiler les scénarios de connexion, d’installation, de matériel absent ou d’aide à la manipulation dans chaque introduction. Placer un dépannage indispensable à l’endroit où le problème survient.
 - Garder les précautions de sécurité, de confidentialité et de sauvegarde, ainsi que les distinctions techniques nécessaires (par exemple title et h1, ou une simulation et du matériel réel).

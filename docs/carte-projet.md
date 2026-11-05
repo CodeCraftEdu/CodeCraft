@@ -2,34 +2,37 @@
 
 CodeCraft est un site statique. Les contenus JSON, le rendu navigateur et les outils Node ont des responsabilités distinctes. Commencer par cette carte, puis lire le document du domaine concerné dans [l’index](README.md).
 
-| Modification | Source à ouvrir |
-| --- | --- |
-| Texte, exercice, démonstration ou guide | `content/modules/<domaine>/<id>.json` |
-| Ordre des cours et étapes | `content/pathways/<id>.json` |
-| Règles de texte élève | `docs/regles-editoriales.md` |
-| Format des données | `schemas/content.schema.json` et `docs/organisation-contenus.md` |
-| Branchement de l’application élève | `app.js` |
-| Pied de page public et contact | `index.html`, `styles/themes/lowpoly/footer.css` |
-| Texte en ligne et création des éléments | `src/student/text.mjs` |
-| Coloration et panneaux de code | `src/student/code.mjs` |
-| Aperçus HTML/CSS et schémas Scratch/Python | `src/student/demonstrations.mjs` |
-| Affichage des blocs et des activités | `src/student/blocks.mjs` |
-| Construction des adresses | `src/student/routes.mjs` |
-| Navigation et pages | `src/student/router.mjs` |
-| Sommaire du parcours et événements de largeur | `src/student/course-navigation.mjs` |
-| Aide et prolongements propres à un module | `src/student/support.mjs` |
-| Ressources et panneaux pédagogiques partagés | `pedagogy.js` |
-| Guides professeur | `teacher-guides.js` |
-| Données privées, fichiers et séances | `teacher-model.js`, `teacher-file-access.js`, `teacher-sessions.js`, `teacher-classroom.js` |
-| Interface professeur | `teacher-app.js` |
-| Variables et règles du document | `styles/base/` |
-| Bibliothèque, cours, exercices et espace professeur | `styles/components/` |
-| Aspect élève low-poly | `styles/themes/lowpoly/` |
-| Assemblage des contenus | `scripts/build-catalog.cjs`, `scripts/catalog/` |
-| Vérifications | `tests/`, [recette navigateur](verification-developpement.md) |
-| Serveur local, génération surveillée et rechargement | `scripts/dev.cjs`, `scripts/lib/public-files.cjs` |
-| Choix des tests par responsabilité | `scripts/check-target.cjs`, `scripts/lib/test-targets.cjs` |
-| Rapports d’échec et index des captures | `scripts/lib/browser-report.cjs`, `tests/helpers/browser.cjs` |
+| Modification                                         | Source à ouvrir                                                                                                    |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Texte, exercice, démonstration ou guide              | `content/modules/<domaine>/<id>.json`                                                                              |
+| Ordre des cours et étapes                            | `content/pathways/<id>.json`                                                                                       |
+| Règles de texte élève                                | `docs/regles-editoriales.md`                                                                                       |
+| Format des données                                   | `schemas/content.schema.json` et `docs/organisation-contenus.md`                                                   |
+| Branchement de l’application élève                   | `app.js`                                                                                                           |
+| Pied de page public et contact                       | `index.html`, `styles/themes/lowpoly/footer.css`                                                                   |
+| Texte en ligne et création des éléments              | `src/student/text.mjs`                                                                                             |
+| Coloration et panneaux de code                       | `src/student/code.mjs`                                                                                             |
+| Aperçus HTML/CSS et schémas Scratch/Python           | `src/student/demonstrations.mjs`                                                                                   |
+| Chapitre interactif IA, règles et reprise            | `src/student/ai-experience.mjs`, `src/student/ai-rules.mjs`, `src/student/ai-support.mjs`, `docs/ia-experience.md` |
+| Découverte IA, usages et examen d’un résultat        | `src/student/ai-discovery.mjs`, `content/modules/ia/ia-decouvrir.json`, `assets/ia/`                               |
+| Entraînement IA et relevé des essais                 | `src/student/ai-training.mjs`, `content/modules/ia/ia-entrainement.json`, `resources/ia/`                          |
+| Affichage des blocs et des activités                 | `src/student/blocks.mjs`                                                                                           |
+| Construction des adresses                            | `src/student/routes.mjs`                                                                                           |
+| Navigation et pages                                  | `src/student/router.mjs`                                                                                           |
+| Sommaire du parcours et événements de largeur        | `src/student/course-navigation.mjs`                                                                                |
+| Aide et prolongements propres à un module            | `src/student/support.mjs`                                                                                          |
+| Ressources et panneaux pédagogiques partagés         | `pedagogy.js`                                                                                                      |
+| Guides professeur                                    | `teacher-guides.js`                                                                                                |
+| Données privées, fichiers et séances                 | `teacher-model.js`, `teacher-file-access.js`, `teacher-sessions.js`, `teacher-classroom.js`                        |
+| Interface professeur                                 | `teacher-app.js`                                                                                                   |
+| Variables et règles du document                      | `styles/base/`                                                                                                     |
+| Bibliothèque, cours, exercices et espace professeur  | `styles/components/`                                                                                               |
+| Aspect élève low-poly                                | `styles/themes/lowpoly/`                                                                                           |
+| Assemblage des contenus                              | `scripts/build-catalog.cjs`, `scripts/catalog/`                                                                    |
+| Vérifications                                        | `tests/`, [recette navigateur](verification-developpement.md)                                                      |
+| Serveur local, génération surveillée et rechargement | `scripts/dev.cjs`, `scripts/lib/public-files.cjs`                                                                  |
+| Choix des tests par responsabilité                   | `scripts/check-target.cjs`, `scripts/lib/test-targets.cjs`                                                         |
+| Rapports d’échec et index des captures               | `scripts/lib/browser-report.cjs`, `tests/helpers/browser.cjs`                                                      |
 
 ## Rendu et dépendances
 

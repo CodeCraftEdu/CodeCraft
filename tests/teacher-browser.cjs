@@ -279,7 +279,7 @@ withBrowser(
     await call('Page.navigate', { url: base + 'prof-conducteur-historique.html' });
     await wait('document.querySelectorAll(".teacher-slot").length === 9');
     await call('Page.navigate', { url: base + 'index.html' });
-    await wait('document.querySelectorAll(".route-card").length === 4');
+    await wait('document.querySelectorAll(".route-card").length === 5');
     assert.equal(errors.length, 0, JSON.stringify(errors));
     console.log(
       'PASS Chrome : suivi, séances, présences, créneaux, snapshots, impression/PDF, rechargement ; flux OPFS, IndexedDB, secours, conflits, responsive, archive et accueil élève.',

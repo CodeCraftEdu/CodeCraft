@@ -1,0 +1,7 @@
+{
+  "domainId": "ia",
+  "title": "Comprendre l’IA par l’expérience",
+  "theme": "avances",
+  "objective": "Découvre les usages de l’IA, compare règles et apprentissage, puis entraîne un classificateur et examine ses résultats.",
+  "moduleIds": ["ia-decouvrir", "ia-regles-donnees", "ia-classification", "ia-entrainement"]
+}

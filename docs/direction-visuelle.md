@@ -16,6 +16,30 @@ La feuille `student-lowpoly.css` est chargée uniquement dans `index.html`. Tout
 - Pas de texture derrière le code, de police externe, d’animation nouvelle ou d’asset de jeu.
 - Les silhouettes et couleurs des blocs Scratch restent des repères pédagogiques, pas des éléments à recolorer.
 
+## Référence visuelle validée
+
+Le 27 octobre 2026, l’utilisateur a choisi [cette scène nocturne](../assets/ia/scene-fantastique.webp) comme référence concrète de DA pour le site et les prochaines images. Son [prompt et sa provenance](../assets/ia/README.md) sont conservés. Partir de ce résultat approuvé, pas d’une interprétation générique du mot « low-poly ».
+
+- Rendu de jeu PS1 de la fin des années 1990 : volumes larges et anguleux, contours imparfaits, textures peintes basse définition légèrement douces et ombrage simple. Éviter le rendu de figurines modernes, les matériaux réalistes et les triangles contrastés partout.
+- Décor aéré : grandes surfaces presque planes, une terrasse, quelques masses rocheuses et un petit bâtiment suffisent. Ajouter seulement les éléments nécessaires à la scène ; pas de multiplication de reliefs, gemmes, accessoires ou détails fins.
+- Skybox très présente : vastes dégradés peints, longues traînées douces, peu de détails. La référence associe un sol turquoise, des masses lavande et un ciel prune/violet ; les autres ambiances peuvent varier la palette en gardant cette simplicité.
+- Créatures fantastiques originales, peu humaines, aux silhouettes différentes : bipèdes trapus ou quadrupèdes compacts, membres courts, queues et têtes ovales irrégulières. Sans traits de visage ni cornes par défaut, sans vêtements humains ou accessoires automatiques. Pas de tête de vrai animal ni de mascotte existante.
+- Pour l’interface, garder les textes nets, les fonds de lecture clairs, les couleurs propres aux parcours et les cadres biseautés existants. Cette référence oriente les paysages et illustrations ; elle ne demande pas de transformer toutes les pages en décor nocturne.
+
+## Illustrations originales
+
+Les illustrations créées pour CodeCraft suivent une direction inspirée des premiers jeux de plateforme 3D PS1 : géométrie simplifiée, silhouettes fortes et compositions aérées. Les personnages sont des créatures géométriques originales sans visage dessiné. Les facettes restent discrètes : les volumes peuvent être ombrés en douceur, sans souligner chaque triangle. Éviter le manga, les anatomies détaillées, le photoréalisme et les décors chargés.
+
+Pour les PNJ, suivre les créatures de la référence validée : anatomies fantastiques peu humaines, corps compacts, membres courts et grandes pattes. Varier les silhouettes plutôt que décliner deux mannequins identiques. Éviter les vêtements et chaussures humains, les corps de golems faits d’un amas de triangles contrastés et les têtes sphériques parfaites.
+
+Le caractère PS1 repose sur des textures peintes simples et légèrement douces pour la pierre, l’herbe et la terre, une lumière très colorée, des dégradés stylisés et un monde construit en profondeur. Prévoir premier plan, chemins ou plateformes, architecture et horizon. Une définition modeste et quelques contours anguleux peuvent participer au rendu ; éviter le filtre de gros pixels uniforme et l’aspect diorama low-poly contemporain. Les captures fournies par l’utilisateur servent de références visuelles pour cette distinction. Garder l’interface, les textes et les commandes nets et lisibles ; cette esthétique concerne les illustrations.
+
+Les skyboxes sont un repère important : leur réserver une vraie place dans la composition. Partir des références fournies : grands dégradés peints doux, quelques bandes de nuages lisses et peu contrastées, très peu de détails. Les astres restent facultatifs et rares. Éviter les ciels réalistes chargés, les accumulations de planètes, d’étoiles ou de nuages et les effets arc-en-ciel détaillés. Le ciel contribue à l’atmosphère sans exiger de relief à l’horizon.
+
+Garder les environnements simples : terrain principalement plat, grandes surfaces peu détaillées, une marche basse si utile et quelques volumes massifs suffisent. Ne pas ajouter automatiquement des montagnes à l’horizon, des châteaux, falaises, gemmes ou reliefs décoratifs. Les arbres emploient un tronc et un houppier simple, sans feuilles modélisées. Les têtes arrondies des créatures restent légèrement irrégulières et polygonales, avec des proportions de petits PNJ rétro ; éviter les sphères parfaites et lisses.
+
+Employer une palette variée et saturée, cohérente avec les paysages du site : verts vifs, turquoise, bleu, rose, violet, jaune orangé et crème. Le violet est un repère, sans devenir la couleur de tout le décor. L’inspiration vient des premiers Crash Bandicoot et Spyro, sans reprendre de personnage ni d’asset des jeux. Privilégier des créatures fantastiques abstraites, aux corps compacts faits de volumes simples et aux têtes plutôt rondes ou ovales, sans visage dessiné, tête de vrai animal ni silhouette de mascotte reconnaissable. Un dragon réinventé peut aussi convenir. Un arbre simple ou une petite arche peuvent évoquer ces univers sans charger la composition. Les objets nécessaires à une activité doivent rester immédiatement identifiables.
+
 Les pages de domaine reprennent leur paysage d’accueil dans un bandeau compact. Le parcours et les modules Scratch adoptent l’ambre, Python le bleu ; les couleurs des parcours Web restent distinctes. Ce choix est porté par `data-domain` dans le rendu élève, sans modifier les thèmes ni les identifiants du catalogue. Les en-têtes de parcours et de modules n’affichent plus le libellé générique « Espace de cours ». Le lien CodeCraft compact est un mot-symbole sans cadre violet.
 
 Les retours secondaires ont des facettes accordées à la couleur du parcours. Le mot-symbole CodeCraft est le seul lien Accueil sur les domaines et les cours ; les liens précédent/suivant et les retours aux parcours restent conservés. La revue des parcours et cours comprend les indices ouverts, les fins de cours et les modèles Scratch à 390 px, sans recolorer les blocs pédagogiques.

@@ -151,15 +151,15 @@ body.student-lowpoly .course-sidebar__toggle:focus-visible {
     grid-row: auto;
   }
   body.student-lowpoly .home-header {
-    padding: 26px 22px;
-    min-height: 220px;
+    padding: 22px;
+    min-height: 168px;
     gap: 16px;
   }
   body.student-lowpoly .home-logo {
     width: 64px;
     height: 64px;
   }
-  body.student-lowpoly .route-card {
+  body.student-lowpoly .route-card:not(.home-domain) {
     padding: 22px;
   }
   body.student-lowpoly .code-diagram__header {

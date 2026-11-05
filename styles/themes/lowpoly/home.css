@@ -8,9 +8,10 @@ body.student-lowpoly.student-home {
   background-repeat: no-repeat;
 }
 body.student-lowpoly .home-header {
-  min-height: 220px;
+  min-height: 168px;
   gap: 18px;
-  padding: 26px 38px;
+  padding: 22px 30px;
+  margin-bottom: 24px;
   border: 0;
   border-bottom: 4px solid #756385;
   box-shadow: none;

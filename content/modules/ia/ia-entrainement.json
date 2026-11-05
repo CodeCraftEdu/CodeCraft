@@ -1,0 +1,249 @@
+{
+  "domainId": "ia",
+  "title": "Entraîner un modèle et examiner ses erreurs",
+  "type": "lesson",
+  "theme": "avances",
+  "objective": "Entraîne un classificateur, compare deux versions sur les mêmes photos et examine les limites de ses données.",
+  "skillIds": ["ia.apprentissage", "ia.classification", "ia.evaluation", "ia.generalisation"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "ia.classification",
+      "expectation": "Reconnaître une catégorie et une étiquette."
+    },
+    {
+      "skillId": "ia.evaluation",
+      "expectation": "Distinguer le score d’une prédiction et les réponses correctes sur des essais."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "id": "entrainement",
+      "type": "lesson",
+      "title": "Prépare, entraîne et compare",
+      "aiTraining": {
+        "basePath": "resources/ia/tasses-cuilleres",
+        "classes": ["Cuillères", "Tasses"],
+        "steps": [
+          {
+            "label": "Préparer",
+            "title": "Deux catégories, des exemples étiquetés",
+            "paragraphs": [
+              "Tu vas entraîner un modèle à distinguer des photos de tasses et de cuillères. Dans le chapitre précédent, tu utilisais un classificateur déjà préparé. Ici, tu choisis ses exemples et tu lances son entraînement.",
+              "Télécharge le kit et extrais l’archive. Il contient quatre dossiers : Départ pour entraîner, Essais pour comparer, Complément pour ajouter des exemples et Nouveaux essais pour la fin. Une photo montre une ou plusieurs cuillères, ou une ou plusieurs tasses. Une tasse peut contenir une boisson et avoir une soucoupe.",
+              "Sur ordinateur, ouvre Teachable Machine et choisis le français avant de commencer : changer la langue recharge le projet. Utilise un projet Images, modèle d’images standard. Renomme les deux classes « Cuillères » et « Tasses ». Tu peux utiliser les fichiers sans caméra ni compte Drive.",
+              "Dans chaque classe, clique sur Importer et sélectionne les trois photos du dossier correspondant dans 01-depart. Vérifie leurs étiquettes et observe le recadrage carré des vignettes : une partie des objets allongés peut sortir du cadre.",
+              "Repère ce qui varie déjà entre ces exemples : les objets, leur orientation et leur fond. Laisse les photos des autres lots dans leurs dossiers pour les étapes suivantes."
+            ],
+            "links": [
+              {
+                "label": "Télécharger le kit de 20 photos (3,4 Mo)",
+                "url": "resources/ia/tasses-cuilleres.zip"
+              },
+              {
+                "label": "Ouvrir le projet Images dans un autre onglet",
+                "url": "https://teachablemachine.withgoogle.com/train/image"
+              }
+            ]
+          },
+          {
+            "label": "Entraîner",
+            "title": "Entraîner, puis essayer quatre photos",
+            "paragraphs": [
+              "Clique sur « Entraîner le modèle » avec les réglages proposés et attends la fin. Ajouter des photos prépare les données ; l’entraînement ajuste des valeurs numériques à partir des exemples et de leurs catégories. Teachable Machine s’appuie sur un modèle déjà entraîné et adapte une partie du système à tes catégories.",
+              "Dans Aperçu, sélectionne l’entrée par fichier et teste les quatre photos de 02-essais, une par une. Garde ces photos hors des classes d’entraînement. Si un encart masque l’aperçu, ferme-le.",
+              "Pour chaque fichier, reporte ci-dessous la catégorie dont le score est le plus élevé. Le nom de son dossier indique la catégorie attendue. Les liens du tableau permettent de regarder la photo ; utilise le fichier extrait du kit pour l’importer dans l’aperçu.",
+              "CodeCraft conserve ton relevé dans ce navigateur ; il ne récupère pas les réponses de Teachable Machine. Un score de 100 % accompagne une prédiction : il ne garantit pas la réussite sur toutes les photos. Observe une erreur éventuelle et les situations encore peu représentées, même si tes quatre essais réussissent."
+            ]
+          },
+          {
+            "label": "Comparer",
+            "title": "Choisir des ajouts et réentraîner",
+            "paragraphs": [
+              "Regarde les photos de 03-complement. Choisis une ou deux photos par catégorie pour mieux représenter une situation : autre orientation, plusieurs objets, autre type de tasse ou autre décor. Coche les fichiers que tu vas réellement importer et explique ton choix.",
+              "Si tous tes premiers essais sont corrects, choisis une variation peu représentée dans les photos de départ. Le but est d’examiner un changement, pas d’obtenir obligatoirement une erreur ou un meilleur résultat."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ces essais permettent de conclure",
+            "paragraphs": [
+              "Compare le nombre de réponses correctes avant et après sur les quatre mêmes photos. Il peut augmenter, rester identique ou diminuer. Une photo non renseignée n’est pas comptée comme un échec. Termine les quatre essais de chaque version pour comparer les mêmes cas.",
+              "Les photos utilisées pour décider des ajouts servent ensuite de comparaison pendant la préparation. Les quatre nouvelles photos apportent une vérification supplémentaire, mais ce petit nombre ne démontre pas une fiabilité générale. Une erreur isolée ne prouve pas que le modèle se base sur le fond.",
+              "Des exemples pris presque toujours sous le même angle ou dans le même décor couvrent mal d’autres usages. Un tel déséquilibre peut contribuer à des erreurs répétées : c’est un risque de biais dans les données. Plus de photos ou des classes de même taille ne garantissent pas des données représentatives.",
+              "Avant de fermer Teachable Machine, télécharge le projet en tant que fichier .tm depuis son menu. Pour reprendre, ouvre ce fichier dans l’outil, puis relance l’entraînement : les catégories et photos reviennent, mais le modèle doit être réentraîné. La sauvegarde de tes réponses sur CodeCraft ne conserve pas ce projet externe."
+            ]
+          }
+        ],
+        "comparison": [
+          {
+            "file": "cuillere-04.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères"
+          },
+          {
+            "file": "cuillere-11.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères"
+          },
+          {
+            "file": "tasse-02.jpg",
+            "folder": "tasses",
+            "expected": "Tasses"
+          },
+          {
+            "file": "tasse-15.jpg",
+            "folder": "tasses",
+            "expected": "Tasses"
+          }
+        ],
+        "fresh": [
+          {
+            "file": "cuillere-07.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères"
+          },
+          {
+            "file": "cuillere-12.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères"
+          },
+          {
+            "file": "tasse-11.jpg",
+            "folder": "tasses",
+            "expected": "Tasses"
+          },
+          {
+            "file": "tasse-16.jpg",
+            "folder": "tasses",
+            "expected": "Tasses"
+          }
+        ],
+        "complement": [
+          {
+            "file": "cuillere-05.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères",
+            "description": "plusieurs cuillères côte à côte"
+          },
+          {
+            "file": "cuillere-06.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères",
+            "description": "une cuillère horizontale sur du tissu"
+          },
+          {
+            "file": "cuillere-09.jpg",
+            "folder": "cuilleres",
+            "expected": "Cuillères",
+            "description": "une cuillère décorée, vue de dessus"
+          },
+          {
+            "file": "tasse-06.jpg",
+            "folder": "tasses",
+            "expected": "Tasses",
+            "description": "plusieurs tasses sur un fond gris"
+          },
+          {
+            "file": "tasse-07.jpg",
+            "folder": "tasses",
+            "expected": "Tasses",
+            "description": "une tasse peinte sur fond clair"
+          },
+          {
+            "file": "tasse-14.jpg",
+            "folder": "tasses",
+            "expected": "Tasses",
+            "description": "une tasse haute tenue en main"
+          }
+        ],
+        "reasonPrompt": "Quels fichiers choisis-tu et quelle situation veux-tu mieux représenter ?",
+        "retrain": "Dans Teachable Machine, ajoute les photos cochées à leurs classes, puis relance « Entraîner le modèle ». Reprends les quatre photos de 02-essais dans Aperçu, sans les ajouter aux classes, et renseigne Après. Si le sélecteur de fichier a disparu, resélectionne l’entrée par fichier.",
+        "freshIntro": "Teste maintenant les quatre photos de 04-nouveaux-essais, encore gardées à part, et relève les réponses de la seconde version. Cette vérification porte sur d’autres photos que celles utilisées pour choisir tes ajouts.",
+        "freeCheck": {
+          "prompt": "Décris un essai, les exemples que tu as ajoutés et le résultat après réentraînement. Que peux-tu conclure, et quel autre cas faudrait-il encore tester ?",
+          "criteria": [
+            "Je cite un fichier testé et compare sa catégorie proposée à celle attendue.",
+            "J’explique les photos ajoutées et je distingue ajout de données et nouvel entraînement.",
+            "Je décris le résultat observé, même inchangé, et propose un autre essai sans généraliser à toutes les photos."
+          ],
+          "sample": "Si les quatre essais réussissent avant et après, je peux écrire : « J’ai ajouté une tasse haute pour varier les formes, puis relancé l’entraînement. Les quatre mêmes photos sont toujours bien classées. Cela ne prouve pas une amélioration. Je testerais une autre tasse haute sur un fond différent, sans l’ajouter à l’entraînement. » Adapte cette réponse à tes fichiers et résultats réels."
+        },
+        "beforeReminder": "Avant d’ajouter des photos et de relancer l’entraînement, termine le relevé des quatre essais avec le premier modèle. Le réentraînement remplacera cette version dans Teachable Machine.",
+        "biasCheck": {
+          "prompt": "Imagine maintenant une commande vocale entraînée surtout sur un seul accent. Elle pourrait moins bien fonctionner pour d’autres personnes. Quelles voix faudrait-il inclure dans l’entraînement et réserver pour les essais ? Les choix de collecte peuvent ainsi produire ou renforcer des inégalités entre utilisateurs.",
+          "answer": "Inclure des voix et accents variés correspondant aux personnes qui utiliseront la commande. Réserver pour les essais des enregistrements distincts, notamment d’autres personnes, puis comparer les erreurs selon les groupes. Ajouter beaucoup d’enregistrements d’un seul accent ne suffit pas à représenter les autres. Même avec des données diversifiées, il faut vérifier les résultats."
+        }
+      }
+    },
+    {
+      "id": "sources",
+      "type": "details",
+      "title": "Sources et crédits",
+      "blocks": [
+        {
+          "id": "source-experience",
+          "type": "lesson",
+          "title": "Adaptation CodeCraft",
+          "paragraphs": [
+            "Scénario et kit originaux CodeCraft, en lien avec les objectifs de la leçon 4 Experience AI. L’activité officielle utilise Machine Learning for Kids ; ce chapitre utilise Teachable Machine."
+          ],
+          "externalLink": {
+            "label": "Experience AI : Bias in, bias out",
+            "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/15"
+          }
+        },
+        {
+          "id": "source-outil",
+          "type": "lesson",
+          "title": "Outil et sauvegarde",
+          "paragraphs": [
+            "La FAQ documente les exemples, l’apprentissage par transfert et la sauvegarde. Les commandes de reprise ont été vérifiées dans l’outil."
+          ],
+          "externalLink": {
+            "label": "FAQ Teachable Machine",
+            "url": "https://teachablemachine.withgoogle.com/faq"
+          }
+        },
+        {
+          "id": "source-essais",
+          "type": "lesson",
+          "title": "Séparer les données",
+          "paragraphs": [
+            "Réserver des exemples distincts et distinguer comparaison pendant les ajustements et vérification finale."
+          ],
+          "externalLink": {
+            "label": "Google : diviser les données",
+            "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets"
+          }
+        },
+        {
+          "id": "source-biais",
+          "type": "lesson",
+          "title": "Représentation et biais",
+          "paragraphs": [
+            "Les données peuvent refléter des choix de collecte et des déséquilibres sociaux."
+          ],
+          "externalLink": {
+            "label": "Google : types de biais",
+            "url": "https://developers.google.com/machine-learning/crash-course/fairness/types-of-bias"
+          }
+        },
+        {
+          "id": "credits-photos",
+          "type": "lesson",
+          "title": "Photographies",
+          "paragraphs": [
+            "Les vingt photographies proviennent de Wikimedia Commons. Le fichier CREDITS.txt du kit conserve les auteurs, sources et licences de chaque photo."
+          ]
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Importer des exemples dans les catégories appropriées et lancer un entraînement.",
+    "Tester des photos réservées et relever les réponses réelles.",
+    "Justifier des ajouts, réentraîner et comparer les mêmes cas.",
+    "Expliquer une limite des essais et un risque lié aux données peu représentatives."
+  ]
+}

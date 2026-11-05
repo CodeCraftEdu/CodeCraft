@@ -1,2 +1,4 @@
 /* Shared pedagogical components. */
 @import url('styles/components/pedagogy.css');
+@import url('styles/components/ai-experience.css');
+@import url('styles/components/ai-discovery.css');

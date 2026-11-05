@@ -1,3 +1,7 @@
+import { createAiExperience } from './ai-experience.mjs';
+import { createAiDiscovery } from './ai-discovery.mjs';
+import { createAiTraining } from './ai-training.mjs';
+
 export function createBlockRenderer({
   data,
   pedagogy,
@@ -220,6 +224,9 @@ export function createBlockRenderer({
     if (block.demonstration?.type === 'web-comparison') {
       section.append(createWebComparison(block.demonstration));
     }
+    if (block.aiExperience) section.append(createAiExperience(block.aiExperience, { element }));
+    if (block.aiDiscovery) section.append(createAiDiscovery(block.aiDiscovery, { element }));
+    if (block.aiTraining) section.append(createAiTraining(block.aiTraining, { element }));
     return section;
   }
 

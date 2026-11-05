@@ -18,8 +18,8 @@ test('catalogue : fichiers sources et sortie navigateur strictement identiques, 
   const sandbox = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'generated/catalog.js'), 'utf8'), sandbox);
   assert.deepStrictEqual(JSON.parse(JSON.stringify(sandbox.window.CODECRAFT_DATA)), data);
-  assert.equal(Object.keys(data.modules).length, 91);
-  assert.equal(Object.keys(data.pathways).length, 10);
+  assert.equal(Object.keys(data.modules).length, 95);
+  assert.equal(Object.keys(data.pathways).length, 11);
   buildCatalog({ check: true });
 });
 

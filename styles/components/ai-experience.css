@@ -1,0 +1,400 @@
+body.student-lowpoly[data-domain='ia'] {
+  --route: #7862b0;
+  --route-dark: #4e397b;
+  --route-soft: #eee8f8;
+  --domain-canvas: #f1eef6;
+}
+.ai-lab {
+  min-width: 0;
+}
+.ai-lab__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.ai-lab .ai-lab__nav .button {
+  min-height: 44px;
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+}
+body.student-lowpoly .ai-lab__nav .button[aria-current='step'] {
+  background: var(--route-dark);
+  color: white;
+  border-bottom-color: var(--route);
+}
+body.student-lowpoly .ai-lab .button--primary {
+  background: var(--route-dark);
+  color: #fffdf7;
+}
+.ai-lab__progress {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.ai-lab__status:empty {
+  display: none;
+}
+.ai-lab__title {
+  margin: 1rem 0;
+  line-height: 1.35;
+}
+.ai-lab__title:focus {
+  outline: none;
+}
+.ai-lab__game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 0.75rem;
+}
+.ai-lab__game,
+.ai-lab__instructions {
+  min-width: 0;
+}
+.ai-lab__turn {
+  margin: 0.5rem 0;
+  font-weight: 700;
+}
+.ai-lab__game-controls .ai-lab__mode {
+  margin: 0.5rem 0;
+}
+.ai-lab__instructions > .ai-lab__title {
+  margin-top: 0;
+}
+.ai-lab__board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  max-width: 20rem;
+  margin: 0 0 1rem;
+}
+.ai-lab__cell {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 2px solid #8a79a7;
+  border-bottom-width: 4px;
+  border-radius: 3px;
+  background: #f3eef9;
+  color: #493370;
+  cursor: pointer;
+  font: inherit;
+}
+.ai-lab__cell strong {
+  display: block;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1;
+}
+.ai-lab__cell:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.ai-lab__cell--x {
+  background: #e6dff2;
+  color: #503582;
+}
+.ai-lab__cell--o {
+  background: #dfeee9;
+  color: #235c4a;
+}
+.ai-lab__cell[aria-pressed='true'] {
+  border: 3px solid #503582;
+  background: #fff0c8;
+}
+.ai-lab__cell:not(:disabled):hover {
+  background: #fff0c8;
+}
+.ai-lab__coordinate {
+  position: absolute;
+  left: 0.4rem;
+  top: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.ai-lab__rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ai-lab__rules li {
+  padding: 0.45rem 0.65rem;
+  border-left: 3px solid #d0c5df;
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+.ai-lab__rules .is-applied {
+  border-left-color: #503582;
+  background: #eee8f8;
+}
+.ai-lab__applied {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #503582;
+}
+.ai-lab__choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+.ai-lab__choice input {
+  flex: 0 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--route-dark);
+}
+.ai-lab__choice > span {
+  min-width: 0;
+}
+.ai-lab__description {
+  display: block;
+  margin-top: 0.4rem;
+  font-weight: 400;
+}
+.ai-lab__question {
+  min-width: 0;
+  margin: 1.4rem 0;
+  padding: 1rem;
+  border: 1px solid #c2b4d5;
+  background: #fffdf8;
+}
+.ai-lab__question legend {
+  max-width: 100%;
+  padding: 0 0.4rem;
+  font-weight: 700;
+}
+.ai-lab .button {
+  max-width: 100%;
+  min-height: 44px;
+  margin: 0.5rem 0.4rem 0.5rem 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ai-lab .button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.ai-lab__feedback {
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #53784d;
+  background: #edf3e8;
+  color: #283d24;
+}
+.ai-lab__feedback--review {
+  border-color: #9b6727;
+  background: #fff1d9;
+  color: #624016;
+}
+.ai-lab__flow {
+  list-style-position: inside;
+  margin: 1.2rem 0;
+  padding: 0;
+}
+.ai-lab__flow-card {
+  padding: 1rem;
+  margin: 0.7rem 0;
+  border: 1px solid #c2b4d5;
+  background: #f3eef9;
+}
+.ai-lab__flow-text {
+  font-weight: 700;
+}
+.ai-lab__flow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+}
+.ai-lab__flow-actions .button {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.7rem;
+}
+.ai-lab__corpus {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+.ai-lab__corpus-column {
+  min-width: 0;
+  padding: 0.8rem;
+  border-top: 4px solid #9d89ba;
+  background: #f2edf7;
+}
+.ai-lab__corpus-column h4 {
+  margin: 0 0 0.7rem;
+}
+.ai-lab__corpus-column ul {
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+.ai-lab__corpus-column li {
+  margin-bottom: 0.7rem;
+}
+.ai-lab__fixed-rule {
+  padding: 1rem;
+  border-left: 4px solid #705395;
+  background: #eee8f8;
+}
+.ai-lab__fixed-rule h4 {
+  margin-top: 0;
+}
+.ai-lab__examples {
+  margin: 1rem 0;
+}
+.ai-lab__examples summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.ai-lab__test {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #c2b4d5;
+  background: #fffdf8;
+}
+.ai-lab__test h4 {
+  margin-top: 0;
+}
+.ai-lab__result {
+  margin: 0;
+}
+.ai-lab__result dt {
+  font-weight: 700;
+  margin-top: 0.8rem;
+}
+.ai-lab__result dd {
+  margin: 0.3rem 0 0;
+}
+.ai-lab__free-label {
+  display: block;
+  margin: 1.5rem 0 0.6rem;
+  font-weight: 700;
+}
+.ai-lab textarea {
+  display: block;
+  width: 100%;
+  min-height: 8rem;
+  resize: vertical;
+  padding: 0.7rem;
+  border: 1px solid #8a79a7;
+  background: #fff;
+  color: #302d35;
+  font: inherit;
+}
+.ai-lab__criteria {
+  padding: 1rem;
+  margin: 1rem 0;
+  background: #eee8f8;
+}
+.ai-lab__navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+.ai-lab__reset {
+  margin-left: auto;
+}
+body.student-lowpoly .ai-lab__navigation > .button {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+.ai-lab__reset-link {
+  min-height: 44px;
+  padding: 0.5rem 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.ai-lab__reset:has(.ai-lab__confirmation) {
+  flex-basis: 100%;
+  order: 1;
+}
+.ai-lab__confirmation {
+  padding: 1rem;
+  border: 2px solid #9b6727;
+  background: #fff1d9;
+}
+.ai-sources {
+  margin: 0.5rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.ai-sources > summary {
+  width: fit-content;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+body.student-lowpoly[data-domain='ia'] .ai-sources .content-card {
+  margin: 0.75rem 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  clip-path: none;
+}
+body.student-lowpoly[data-domain='ia'] .ai-sources .section-title {
+  margin: 1rem 0 0.5rem;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+}
+body.student-lowpoly[data-domain='ia'] .ai-sources .section-title::before {
+  display: none;
+}
+body.student-lowpoly[data-domain='ia'] .lesson-page--ai .lesson-checkpoint {
+  margin: 0.75rem 0;
+  padding: 1rem 1.25rem;
+}
+body.student-lowpoly[data-domain='ia'] .lesson-page--ai .lesson-checkpoint__title {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+body.student-lowpoly[data-domain='ia'] .lesson-page--ai .lesson-checkpoint__list {
+  gap: 0.35rem;
+}
+body.student-lowpoly[data-domain='ia'] .lesson-page--ai .lesson-checkpoint__list li {
+  margin: 0;
+}
+@media (max-width: 850px) {
+  .ai-lab__game-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ai-lab__board {
+    max-width: 22rem;
+  }
+  .ai-lab__corpus {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .ai-lab__question,
+  .ai-lab__test {
+    padding: 0.7rem;
+  }
+  .ai-lab__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ai-lab .ai-lab__nav .button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}

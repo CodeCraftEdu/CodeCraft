@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-labelledby="title desc">
+  <title id="title">Une tasse dessinée</title>
+  <desc id="desc">Un récipient avec une anse, posé sur une soucoupe.</desc>
+  <path fill="#fffdf5" d="M0 0h640v300H0z"/>
+  <g stroke="#514264" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <path d="M226 90h160v102q-5 30-80 30t-80-30z" fill="#e9e1f2"/>
+    <path d="M386 109h27q38 3 30 34t-57 30M206 240q100 35 200 0M265 57l5-20m40 20 5-20m40 20 5-20"/>
+  </g>
+</svg>

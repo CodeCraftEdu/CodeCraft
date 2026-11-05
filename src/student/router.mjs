@@ -1,5 +1,6 @@
 import { createCourseNavigation } from './course-navigation.mjs';
 import { createSupportPanel } from './support.mjs';
+import { createAiSources } from './ai-support.mjs';
 import { createRecipeBook } from './recipe-book.mjs';
 
 export function createRouter({
@@ -92,6 +93,7 @@ export function createRouter({
       python: { name: 'python', tag: 'Thonny' },
       web: { name: 'web', tag: 'HTML · CSS' },
       robotique: { name: 'robotique', tag: 'Circuits virtuels' },
+      ia: { name: 'ia', tag: 'Expériences interactives' },
     };
     domains.forEach((id) => {
       const domain = data.domains[id];
@@ -176,6 +178,11 @@ export function createRouter({
     start(item.title, pathway ? pathway.theme : item.theme, true, item.domainId);
     document.body.dataset.lessonLayout = 'standard';
     const article = element('article', 'lesson-page');
+    const aiChapter = item.blocks.some(
+      (block) => block.aiExperience || block.aiDiscovery || block.aiTraining,
+    );
+    if (aiChapter) article.classList.add('lesson-page--ai');
+    let aiSources;
     if (item.presentation === 'workshop') article.classList.add('lesson-page--workshop');
     if (item.presentation === 'recipe') article.classList.add('lesson-page--recipe');
     const back = element('nav', 'library-links');
@@ -297,6 +304,10 @@ export function createRouter({
     if (scratchProject) article.append(scratchProject);
     item.blocks.forEach((block) => {
       if (block === preparationBlock) return;
+      if (aiChapter && block.id === 'sources') {
+        aiSources = createAiSources(block, { element, createBlock, routeId: id });
+        return;
+      }
       const rendered = createBlock(block, id);
       article.append(rendered);
     });
@@ -321,6 +332,7 @@ export function createRouter({
     }
     // Les orientations restent dans les données et le guide professeur.
     if (criteria) article.append(criteria);
+    if (aiSources) article.append(aiSources);
     const specificSupport = createSupportPanel(item, element);
     if (specificSupport) article.append(specificSupport);
     if (stagePosition?.isLast && !stagePosition.stage.upcoming)

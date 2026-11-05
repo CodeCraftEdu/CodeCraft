@@ -1,0 +1,24 @@
+Tasses et cuillères : kit CodeCraft
+
+PRÉPARER ET ENTRAÎNER
+Extrais l’archive. Ouvre un projet Images standard dans Teachable Machine et choisis le français avant de commencer.
+Crée les classes Cuillères et Tasses. Dans 01-depart, importe les trois photos du dossier cuilleres dans Cuillères et celles du dossier tasses dans Tasses.
+Clique sur « Entraîner le modèle » et attends la fin de l’entraînement.
+Une photo montre une ou plusieurs cuillères, ou une ou plusieurs tasses. Les tasses peuvent avoir une soucoupe ou contenir une boisson.
+L’outil recadre les photos en carré : observe quelle partie des objets reste visible.
+
+ESSAYER
+Dans Aperçu, choisis l’entrée par fichier. Teste les quatre photos de 02-essais, une par une, sans les importer dans les classes d’entraînement.
+Pour chaque photo, compare la catégorie proposée au nom de son dossier. Garde ces réponses pour comparer les deux versions.
+
+CHOISIR ET COMPARER
+Observe tes essais et les photos de départ. Quelle situation aimerais-tu mieux représenter : une autre orientation, un décor différent, plusieurs objets ou un autre type de tasse ?
+Dans 03-complement, regarde les trois photos proposées par catégorie. Choisis une ou deux photos par catégorie et explique ce qu’elles ajoutent. Une variation peut être utile à explorer même si tous tes premiers essais réussissent.
+Ajoute les photos choisies dans leurs classes, puis clique de nouveau sur « Entraîner le modèle ».
+Reprends les quatre photos de 02-essais et compare les réponses. Le résultat peut s’améliorer, rester identique ou se dégrader.
+Teste ensuite les quatre photos de 04-nouveaux-essais pour examiner cette version sur d’autres exemples. Garde-les à part jusqu’à cette étape.
+Le pourcentage affiché accompagne une prédiction ; il ne mesure pas la réussite sur toutes les photos possibles.
+
+REPRENDRE PLUS TARD
+Télécharge le projet au format .tm avant de fermer l’onglet. Sa réouverture restaure les exemples ; relance ensuite l’entraînement.
+Conserve CREDITS.txt avec les photos.

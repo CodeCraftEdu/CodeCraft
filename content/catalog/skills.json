@@ -232,5 +232,29 @@
   },
   "minecraft.strategy": {
     "title": "Adapter une stratégie aux repères du terrain"
+  },
+  "ia.instructions": {
+    "title": "Décrire et exécuter des instructions explicites"
+  },
+  "ia.apprentissage": {
+    "title": "Distinguer règles, entraînement et utilisation d’un modèle"
+  },
+  "ia.generalisation": {
+    "title": "Mettre une régularité à l’épreuve avec de nouveaux exemples"
+  },
+  "ia.usages": {
+    "title": "Identifier la tâche d’un système d’IA"
+  },
+  "ia.entrees-sorties": {
+    "title": "Distinguer entrée, tâche et résultat"
+  },
+  "ia.verification": {
+    "title": "Examiner un résultat avec une référence adaptée"
+  },
+  "ia.classification": {
+    "title": "Relier classification, classes et exemples étiquetés"
+  },
+  "ia.evaluation": {
+    "title": "Distinguer score et résultats mesurés pour choisir des tests"
   }
 }

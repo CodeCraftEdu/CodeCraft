@@ -1,0 +1,633 @@
+{
+  "domainId": "ia",
+  "title": "Que fait un système d’IA ?",
+  "type": "lesson",
+  "theme": "avances",
+  "objective": "Repère la tâche d’un système d’IA, ce qu’il reçoit et ce qu’il produit, puis examine son résultat.",
+  "skillIds": ["ia.usages", "ia.entrees-sorties", "ia.verification"],
+  "prerequisiteSkills": [],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "id": "decouverte",
+      "type": "lesson",
+      "title": "Découvre, décris et vérifie",
+      "aiDiscovery": {
+        "steps": [
+          {
+            "id": "usages",
+            "label": "Les usages",
+            "title": "Quelle tâche réalise le système ?",
+            "intro": "L’intelligence artificielle (IA) est un domaine où l’on conçoit des systèmes capables de réaliser des tâches comme reconnaître des éléments, prévoir un résultat ou générer du contenu. Dans les exemples suivants, un modèle est la partie du système entraînée sur des données pour repérer des régularités utiles à sa tâche. Associe chaque situation à la tâche décrite. Un même outil peut réunir plusieurs fonctions.",
+            "groups": [
+              {
+                "id": "videos",
+                "title": "Une sélection de vidéos",
+                "description": "Une plateforme utilise un modèle pour ordonner les vidéos proposées selon les contenus déjà consultés.",
+                "fields": [
+                  {
+                    "id": "usage-videos",
+                    "label": "Tâche réalisée",
+                    "answer": "recommander",
+                    "choices": [
+                      {
+                        "id": "generer",
+                        "label": "Générer du contenu"
+                      },
+                      {
+                        "id": "recommander",
+                        "label": "Recommander du contenu"
+                      },
+                      {
+                        "id": "reconnaitre",
+                        "label": "Reconnaître des éléments"
+                      },
+                      {
+                        "id": "predire",
+                        "label": "Estimer une valeur future"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Le système recommande des vidéos existantes en les sélectionnant ou en les ordonnant. Il ne les fabrique pas."
+              },
+              {
+                "id": "affiche",
+                "title": "Une illustration pour une affiche",
+                "description": "Un générateur produit une nouvelle image à partir de la description d’une fête.",
+                "fields": [
+                  {
+                    "id": "usage-affiche",
+                    "label": "Tâche réalisée",
+                    "answer": "generer",
+                    "choices": [
+                      {
+                        "id": "generer",
+                        "label": "Générer du contenu"
+                      },
+                      {
+                        "id": "recommander",
+                        "label": "Recommander du contenu"
+                      },
+                      {
+                        "id": "reconnaitre",
+                        "label": "Reconnaître des éléments"
+                      },
+                      {
+                        "id": "predire",
+                        "label": "Estimer une valeur future"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Le système génère une image à partir de la consigne. Il produit du contenu plutôt que de choisir une image dans une liste."
+              },
+              {
+                "id": "photos",
+                "title": "Des animaux dans les photos",
+                "description": "Un modèle propose les noms des animaux présents dans des photographies.",
+                "fields": [
+                  {
+                    "id": "usage-photos",
+                    "label": "Tâche réalisée",
+                    "answer": "reconnaitre",
+                    "choices": [
+                      {
+                        "id": "generer",
+                        "label": "Générer du contenu"
+                      },
+                      {
+                        "id": "recommander",
+                        "label": "Recommander du contenu"
+                      },
+                      {
+                        "id": "reconnaitre",
+                        "label": "Reconnaître des éléments"
+                      },
+                      {
+                        "id": "predire",
+                        "label": "Estimer une valeur future"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Le système analyse les photos et propose des catégories. Les noms proposés peuvent ensuite être comparés à ce qui apparaît sur les images."
+              },
+              {
+                "id": "cantine",
+                "title": "Préparer les repas de demain",
+                "description": "Un modèle estime le nombre de repas à prévoir à partir des fréquentations passées.",
+                "fields": [
+                  {
+                    "id": "usage-cantine",
+                    "label": "Tâche réalisée",
+                    "answer": "predire",
+                    "choices": [
+                      {
+                        "id": "generer",
+                        "label": "Générer du contenu"
+                      },
+                      {
+                        "id": "recommander",
+                        "label": "Recommander du contenu"
+                      },
+                      {
+                        "id": "reconnaitre",
+                        "label": "Reconnaître des éléments"
+                      },
+                      {
+                        "id": "predire",
+                        "label": "Estimer une valeur future"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Le système estime une valeur encore inconnue : la fréquentation de demain. Cette estimation pourra être comparée au nombre réel de repas servis."
+              }
+            ]
+          },
+          {
+            "id": "entrees",
+            "label": "Entrée et résultat",
+            "title": "Ce qui entre, ce qui sort",
+            "intro": "L’entrée est l’information reçue. La tâche décrit ce que le système réalise. La sortie est le résultat produit. Complète les trois chaînes.",
+            "groups": [
+              {
+                "id": "audio",
+                "title": "Transcrire une question",
+                "description": "Un service transforme une question prononcée en texte écrit.",
+                "fields": [
+                  {
+                    "id": "audio-input",
+                    "label": "Entrée",
+                    "answer": "audio",
+                    "choices": [
+                      {
+                        "id": "audio",
+                        "label": "Un enregistrement sonore"
+                      },
+                      {
+                        "id": "texte",
+                        "label": "Une consigne écrite"
+                      },
+                      {
+                        "id": "photos",
+                        "label": "Des photographies"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "audio-output",
+                    "label": "Sortie",
+                    "answer": "transcription",
+                    "choices": [
+                      {
+                        "id": "transcription",
+                        "label": "Une transcription écrite"
+                      },
+                      {
+                        "id": "image",
+                        "label": "Une image générée"
+                      },
+                      {
+                        "id": "categories",
+                        "label": "Des catégories proposées pour les photos"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Enregistrement sonore → transcription → texte écrit. La transcription peut être vérifiée en réécoutant l’enregistrement."
+              },
+              {
+                "id": "generation",
+                "title": "Générer une illustration",
+                "description": "Un service produit une illustration à partir d’une description écrite.",
+                "fields": [
+                  {
+                    "id": "generation-input",
+                    "label": "Entrée",
+                    "answer": "texte",
+                    "choices": [
+                      {
+                        "id": "audio",
+                        "label": "Un enregistrement sonore"
+                      },
+                      {
+                        "id": "texte",
+                        "label": "Une consigne écrite"
+                      },
+                      {
+                        "id": "photos",
+                        "label": "Des photographies"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "generation-output",
+                    "label": "Sortie",
+                    "answer": "image",
+                    "choices": [
+                      {
+                        "id": "transcription",
+                        "label": "Une transcription écrite"
+                      },
+                      {
+                        "id": "image",
+                        "label": "Une image générée"
+                      },
+                      {
+                        "id": "categories",
+                        "label": "Des catégories proposées pour les photos"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Consigne écrite → génération → image. Pour examiner le résultat, on compare les détails visibles aux éléments demandés."
+              },
+              {
+                "id": "animaux",
+                "title": "Identifier des animaux",
+                "description": "Un service analyse des photographies et propose le nom des animaux.",
+                "fields": [
+                  {
+                    "id": "animaux-input",
+                    "label": "Entrée",
+                    "answer": "photos",
+                    "choices": [
+                      {
+                        "id": "audio",
+                        "label": "Un enregistrement sonore"
+                      },
+                      {
+                        "id": "texte",
+                        "label": "Une consigne écrite"
+                      },
+                      {
+                        "id": "photos",
+                        "label": "Des photographies"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "animaux-output",
+                    "label": "Sortie",
+                    "answer": "categories",
+                    "choices": [
+                      {
+                        "id": "transcription",
+                        "label": "Une transcription écrite"
+                      },
+                      {
+                        "id": "image",
+                        "label": "Une image générée"
+                      },
+                      {
+                        "id": "categories",
+                        "label": "Des catégories proposées pour les photos"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Photographies → analyse → catégories proposées. Une catégorie reste une proposition à vérifier sur chaque photo."
+              }
+            ]
+          },
+          {
+            "id": "image",
+            "label": "Examiner une image",
+            "title": "Comparer une consigne à son résultat",
+            "intro": "Compare cette image générée pour CodeCraft à la demande résumée ci-dessous. Une image de référence a aussi servi à préciser le style. Pour chaque constat, indique ce que le résultat permet de vérifier.",
+            "image": {
+              "src": "assets/ia/scene-fantastique.webp",
+              "alt": "Deux créatures fantastiques sans cornes ni traits de visage se tiennent sur un terrain turquoise. Celle de gauche est rose orangé, debout sur de grandes pattes ; celle de droite est bleu-vert pâle, à quatre pattes avec une longue queue. Une terrasse basse, quelques rochers lavande et un petit pavillon arrondi composent le décor. Le ciel prune et violet présente de longues traînées peintes et quelques étoiles. Aucun ballon n’est visible.",
+              "caption": "Exemple généré pour cette activité.",
+              "prompt": "Une scène fantastique dans le style d’un jeu PS1, avec deux créatures sans cornes ni traits de visage : l’une rose, debout sur de grandes pattes, l’autre bleu-vert pâle, à quatre pattes avec une longue queue. Un terrain turquoise, une terrasse basse, quelques rochers lavande, un petit pavillon et un grand ciel peint prune et violet aux longues traînées douces. Aucun texte ni interface de jeu."
+            },
+            "groups": [
+              {
+                "id": "joueurs",
+                "title": "Il y a deux personnages.",
+                "description": "",
+                "fields": [
+                  {
+                    "id": "image-joueurs",
+                    "label": "Ton constat",
+                    "answer": "visible",
+                    "choices": [
+                      {
+                        "id": "visible",
+                        "label": "Visible sur l’image"
+                      },
+                      {
+                        "id": "absent",
+                        "label": "Absent de l’image"
+                      },
+                      {
+                        "id": "indeducible",
+                        "label": "Impossible à déduire de l’image"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Les deux personnages sont visibles. Le nombre de personnages demandé peut être contrôlé directement."
+              },
+              {
+                "id": "ballon",
+                "title": "Une des créatures est rose orangé.",
+                "description": "",
+                "fields": [
+                  {
+                    "id": "image-ballon",
+                    "label": "Ton constat",
+                    "answer": "visible",
+                    "choices": [
+                      {
+                        "id": "visible",
+                        "label": "Visible sur l’image"
+                      },
+                      {
+                        "id": "absent",
+                        "label": "Absent de l’image"
+                      },
+                      {
+                        "id": "indeducible",
+                        "label": "Impossible à déduire de l’image"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "La créature à gauche est rose orangé. Sa couleur est observable directement sur l’image."
+              },
+              {
+                "id": "date",
+                "title": "Un ballon est visible.",
+                "description": "",
+                "fields": [
+                  {
+                    "id": "image-date",
+                    "label": "Ton constat",
+                    "answer": "absent",
+                    "choices": [
+                      {
+                        "id": "visible",
+                        "label": "Visible sur l’image"
+                      },
+                      {
+                        "id": "absent",
+                        "label": "Absent de l’image"
+                      },
+                      {
+                        "id": "indeducible",
+                        "label": "Impossible à déduire de l’image"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Aucun ballon n’est visible. La demande ne prévoyait pas cet objet : son absence n’est donc pas un écart à corriger."
+              },
+              {
+                "id": "reel",
+                "title": "Ce décor représente un lieu qui existe réellement.",
+                "description": "",
+                "fields": [
+                  {
+                    "id": "image-reel",
+                    "label": "Ton constat",
+                    "answer": "indeducible",
+                    "choices": [
+                      {
+                        "id": "visible",
+                        "label": "Visible sur l’image"
+                      },
+                      {
+                        "id": "absent",
+                        "label": "Absent de l’image"
+                      },
+                      {
+                        "id": "indeducible",
+                        "label": "Impossible à déduire de l’image"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "L’image seule ne permet pas de savoir si ce lieu existe. Un générateur peut représenter un décor inventé ; il faudrait une source indépendante pour établir l’existence d’un lieu réel."
+              }
+            ]
+          },
+          {
+            "id": "bilan",
+            "label": "Bilan",
+            "title": "Décrire et vérifier un résultat",
+            "intro": "Réponds aux questions et repère un écart dans l’exemple, puis décris un usage avec tes propres mots. Dans le chapitre suivant, tu compareras des instructions écrites par une personne et l’apprentissage à partir d’exemples.",
+            "groups": [
+              {
+                "id": "capacites",
+                "title": "Une application classe des photos. Que peut-on en déduire ?",
+                "description": "",
+                "fields": [
+                  {
+                    "id": "bilan-capacites",
+                    "label": "Choisis une réponse",
+                    "answer": "tache",
+                    "choices": [
+                      {
+                        "id": "tout",
+                        "label": "Elle sait aussi rédiger."
+                      },
+                      {
+                        "id": "tache",
+                        "label": "On connaît cette tâche seulement."
+                      },
+                      {
+                        "id": "exact",
+                        "label": "Elle classe toujours correctement."
+                      }
+                    ],
+                    "control": "radios"
+                  }
+                ],
+                "feedback": "Classer des photos est une tâche précise. Cela ne démontre ni d’autres capacités ni une réussite sur toutes les photos."
+              },
+              {
+                "id": "verifier",
+                "title": "Quel écart faut-il corriger dans ce résultat ?",
+                "description": "Exemple construit pour l’exercice. Demande : « Rédige une invitation à un atelier samedi à 14 h, dans la salle bleue. » Résultat proposé : « Retrouvons-nous dimanche à 14 h dans la salle bleue pour un atelier ! » Compare les deux textes.",
+                "fields": [
+                  {
+                    "id": "bilan-verifier",
+                    "label": "Choisis une réponse",
+                    "answer": "audio",
+                    "choices": [
+                      {
+                        "id": "fluide",
+                        "label": "Aucun : l’invitation est bien rédigée."
+                      },
+                      {
+                        "id": "audio",
+                        "label": "Remplacer dimanche par samedi."
+                      },
+                      {
+                        "id": "long",
+                        "label": "Remplacer la salle bleue par la salle verte."
+                      }
+                    ],
+                    "control": "radios"
+                  }
+                ],
+                "feedback": "La demande indique samedi, mais le résultat annonce dimanche. Il faut corriger le jour. L’heure et la salle sont respectées : on conserve ces informations. Un texte bien rédigé peut contenir un écart à la demande."
+              },
+              {
+                "id": "formuler",
+                "title": "Quelle phrase décrit le mieux ce qu’on observe ?",
+                "description": "",
+                "fields": [
+                  {
+                    "id": "bilan-formuler",
+                    "label": "Choisis une réponse",
+                    "answer": "precis",
+                    "choices": [
+                      {
+                        "id": "sait",
+                        "label": "L’outil sait que mon dessin est un chat."
+                      },
+                      {
+                        "id": "precis",
+                        "label": "L’outil analyse mon dessin et propose la catégorie chat."
+                      },
+                      {
+                        "id": "veut",
+                        "label": "L’outil veut que je dessine un chat."
+                      }
+                    ],
+                    "control": "radios"
+                  }
+                ],
+                "feedback": "La deuxième formulation précise l’entrée et le résultat observable. La catégorie proposée peut ensuite être vérifiée."
+              }
+            ]
+          }
+        ],
+        "freeCheck": {
+          "prompt": "Choisis un usage. Décris son entrée, sa tâche, sa sortie et une façon de vérifier le résultat.",
+          "criteria": [
+            "Nommer l’information reçue.",
+            "Décrire la tâche et le résultat produit.",
+            "Proposer une vérification adaptée à ce résultat."
+          ],
+          "sample": "Un service de transcription reçoit un enregistrement sonore. Il le transforme en texte écrit. Je compare ce texte à l’enregistrement pour repérer les mots mal reconnus."
+        }
+      }
+    },
+    {
+      "id": "sources",
+      "type": "details",
+      "title": "Sources et crédits",
+      "blocks": [
+        {
+          "id": "sources-discovery",
+          "type": "lesson",
+          "title": "Une activité CodeCraft",
+          "paragraphs": [
+            "Progression inspirée des objectifs de la leçon 1 d’Experience AI, développé conjointement par Raspberry Pi Foundation et Google DeepMind, et des pages 2 à 6 du guide d’animation fourni. Les textes, situations, questions et interactions sont rédigés pour CodeCraft.",
+            "L’illustration fantastique a été générée pour cette activité avec ImageGen. La consigne, le résultat conservé et les observations permettent de comparer une demande à une image."
+          ],
+          "externalLink": {
+            "label": "Découvrir Experience AI",
+            "url": "https://experience-ai.org/fr-CA/"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "sources-technical",
+          "title": "Modèles et vérification",
+          "paragraphs": [
+            "Google présente les tâches, les entrées et les sorties des modèles. OpenAI explique pourquoi vérifier une réponse générée, même lorsqu’elle paraît convaincante."
+          ],
+          "externalLink": {
+            "label": "Google : modèles et tâches",
+            "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml"
+          }
+        },
+        {
+          "type": "lesson",
+          "id": "sources-checking",
+          "title": "Vérifier une réponse générée",
+          "paragraphs": [
+            "Comparer le résultat à la demande et vérifier les informations importantes auprès de sources fiables."
+          ],
+          "externalLink": {
+            "label": "OpenAI : fiabilité des réponses",
+            "url": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
+          }
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Décrire la tâche d’un système d’IA dans une situation concrète.",
+    "Identifier son entrée et sa sortie.",
+    "Vérifier un résultat en le comparant à la demande ou à une référence adaptée."
+  ],
+  "teacherGuide": {
+    "objective": "Faire décrire des usages par leur tâche, leur entrée et leur sortie, puis faire vérifier un résultat.",
+    "entryDiagnosis": ["Demander un exemple d’outil et la tâche qu’il réalise."],
+    "preparation": [
+      "Ouvrir le chapitre. L’image est fournie dans le site ; aucun compte externe n’est nécessaire."
+    ],
+    "why": "Ces repères donnent un vocabulaire concret avant de comparer règles et apprentissage.",
+    "discoverySpeech": [
+      "Partir des situations proposées et demander ce qui entre dans le système et ce qui en sort."
+    ],
+    "example": {
+      "target": {
+        "moduleId": "ia-decouvrir",
+        "blockId": "decouverte"
+      },
+      "comments": [
+        "Distinguer la qualité visuelle d’une image du respect de la consigne et de la réalité de la scène."
+      ]
+    },
+    "accompaniedActivity": {
+      "moduleId": "ia-decouvrir",
+      "blockId": "decouverte",
+      "label": "Comparer la consigne et l’image"
+    },
+    "independentActivity": {
+      "moduleId": "ia-decouvrir",
+      "blockId": "decouverte",
+      "label": "Décrire un usage et une vérification"
+    },
+    "questions": [
+      {
+        "question": "Que faut-il corriger dans l’invitation du bilan ?",
+        "answer": "Le jour : samedi était demandé, dimanche est annoncé. L’heure et la salle sont conformes à la demande."
+      },
+      {
+        "question": "L’image permet-elle de savoir si le lieu existe ?",
+        "answer": "Non. Un décor généré peut être inventé. Son existence devrait être vérifiée avec une source indépendante."
+      }
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Confondre une tâche particulière avec une intelligence capable de tout faire.",
+        "helps": ["Faire nommer la tâche précise et la sortie observée."]
+      },
+      {
+        "symptom": "Déduire la justesse d’un résultat de sa présentation convaincante.",
+        "helps": ["Choisir une référence : consigne, enregistrement ou source sur l’événement."]
+      }
+    ],
+    "quickConductor": [
+      "Associer les quatre usages.",
+      "Compléter les chaînes entrée et sortie.",
+      "Examiner l’image et les limites de ce qu’elle démontre.",
+      "Comparer la réponse libre aux critères, puis poursuivre avec Des règles aux données."
+    ],
+    "references": [
+      {
+        "title": "Experience AI",
+        "url": "https://experience-ai.org/fr-CA/"
+      }
+    ]
+  }
+}

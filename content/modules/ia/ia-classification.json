@@ -1,0 +1,481 @@
+{
+  "domainId": "ia",
+  "title": "Classer et vérifier une prédiction",
+  "type": "lesson",
+  "theme": "avances",
+  "objective": "Observe un classificateur, relie ses catégories aux exemples étiquetés et distingue score annoncé et résultats vérifiés.",
+  "skillIds": ["ia.classification", "ia.evaluation"],
+  "prerequisiteSkills": [
+    {
+      "skillId": "ia.apprentissage",
+      "expectation": "Distinguer entraînement et utilisation ; connaître le rôle d’une étiquette."
+    }
+  ],
+  "prerequisitesInContent": true,
+  "blocks": [
+    {
+      "id": "classification",
+      "type": "lesson",
+      "title": "Observe, classe et vérifie",
+      "aiDiscovery": {
+        "storageKey": "codecraft.ai.classification.v1",
+        "label": "Classer et vérifier une prédiction",
+        "steps": [
+          {
+            "id": "essayer",
+            "label": "Essayer",
+            "title": "Du dessin à la catégorie",
+            "intro": "Dans Quick, Draw!, clique sur « C’est parti ! », puis dessine les objets demandés. Une série de six dessins suffit. Observe une proposition du système et, si elle change, le trait que tu venais d’ajouter. Le jeu contribue à une collection publique : dessine seulement l’objet demandé, sans nom ni information personnelle. Tu préfères observer sans dessiner ? Explore quelques dessins dans la galerie, puis utilise aussi l’exemple ci-dessous.",
+            "links": [
+              {
+                "label": "Ouvrir Quick, Draw! en français",
+                "url": "https://quickdraw.withgoogle.com/?locale=fr"
+              },
+              {
+                "label": "Observer les dessins de la galerie",
+                "url": "https://quickdraw.withgoogle.com/data"
+              }
+            ],
+            "groups": [
+              {
+                "id": "dessin-entree",
+                "title": "Ce que reçoit le modèle",
+                "description": "Tu ajoutes des traits au dessin. Quelle information change ?",
+                "fields": [
+                  {
+                    "id": "dessin-entree",
+                    "label": "Ta réponse",
+                    "answer": "traits",
+                    "choices": [
+                      {
+                        "id": "regles",
+                        "label": "Les instructions écrites par ses concepteurs"
+                      },
+                      {
+                        "id": "traits",
+                        "label": "Le dessin fourni en entrée"
+                      },
+                      {
+                        "id": "entrainement",
+                        "label": "Les exemples de son entraînement"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Le dessin change. Le modèle calcule une nouvelle prédiction à partir de cette entrée ; ce changement ne prouve pas un nouvel entraînement pendant la partie."
+              },
+              {
+                "id": "dessin-sortie",
+                "title": "Ce que propose le modèle",
+                "description": "Exemple : après quelques traits, un système propose « vélo », puis « moto ». Quelle est sa sortie ?",
+                "fields": [
+                  {
+                    "id": "dessin-sortie",
+                    "label": "Ta réponse",
+                    "answer": "categorie",
+                    "choices": [
+                      {
+                        "id": "intention",
+                        "label": "La preuve qu’il connaît ton intention"
+                      },
+                      {
+                        "id": "certitude",
+                        "label": "Une reconnaissance toujours correcte"
+                      },
+                      {
+                        "id": "categorie",
+                        "label": "Une catégorie proposée pour le dessin"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "La sortie qui nous intéresse est la catégorie proposée. Elle peut changer avec les traits et être incorrecte. Un échec ne signifie pas que tu dessines mal."
+              }
+            ]
+          },
+          {
+            "id": "exemples",
+            "label": "Les exemples",
+            "title": "Une catégorie, plusieurs façons de dessiner",
+            "intro": "Dans la galerie, clique sur un dessin pour ouvrir sa catégorie. Choisis-en quelques-uns : repère un détail commun et deux façons différentes de représenter le même objet. Les intitulés sont en anglais : bicycle signifie vélo et cup tasse. Une classe est une catégorie possible ; l’étiquette associe cette catégorie à un exemple précis. Pendant un entraînement supervisé, les exemples et leurs étiquettes servent à ajuster le modèle.",
+            "links": [
+              {
+                "label": "Explorer la galerie Google",
+                "url": "https://quickdraw.withgoogle.com/data"
+              }
+            ],
+            "groups": [
+              {
+                "id": "classe-etiquette",
+                "title": "Classe ou étiquette ?",
+                "description": "« Vélo » est une catégorie possible. Ce dessin précis porte l’étiquette « vélo ». Quel rôle joue cette étiquette pendant un entraînement supervisé ?",
+                "fields": [
+                  {
+                    "id": "classe-etiquette",
+                    "label": "Ta réponse",
+                    "answer": "attendue",
+                    "choices": [
+                      {
+                        "id": "attendue",
+                        "label": "Elle fournit la réponse attendue pour cet exemple"
+                      },
+                      {
+                        "id": "garantie",
+                        "label": "Elle garantit que le modèle répondra toujours vélo"
+                      },
+                      {
+                        "id": "forme",
+                        "label": "Elle impose une seule façon de dessiner un vélo"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "L’étiquette indique la réponse associée à cet exemple. Le modèle doit pouvoir proposer une catégorie sur d’autres dessins, sans recevoir leur réponse attendue."
+              },
+              {
+                "id": "exemples-varies",
+                "title": "Préparer des exemples utiles",
+                "description": "Quelle collection aiderait à couvrir plusieurs façons de dessiner une tasse ?",
+                "fields": [
+                  {
+                    "id": "exemples-varies",
+                    "label": "Ta réponse",
+                    "answer": "varies",
+                    "choices": [
+                      {
+                        "id": "copies",
+                        "label": "De nombreuses copies exactement identiques d’un seul dessin"
+                      },
+                      {
+                        "id": "seul",
+                        "label": "Un seul dessin très détaillé"
+                      },
+                      {
+                        "id": "varies",
+                        "label": "Des tasses dessinées sous différents angles et avec différents traits"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Des variations pertinentes aident à couvrir les entrées que le modèle rencontrera. Beaucoup de copies identiques n’apportent pas cette diversité. Cela ne dispense pas de vérifier la qualité des exemples et de leurs étiquettes."
+              },
+              {
+                "id": "galerie-selection",
+                "title": "Ce que montre la galerie",
+                "description": "La documentation Google indique que cette galerie affiche des dessins reconnus par le jeu. Peut-on en déduire son taux de réussite sur tous les dessins ?",
+                "fields": [
+                  {
+                    "id": "galerie-selection",
+                    "label": "Ta réponse",
+                    "answer": "non",
+                    "choices": [
+                      {
+                        "id": "oui",
+                        "label": "Oui, tous les exemples visibles ont été reconnus"
+                      },
+                      {
+                        "id": "non",
+                        "label": "Non, cette sélection ne représente pas tous les essais"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "La galerie aide à observer des variations. Une sélection de dessins reconnus ne permet pas de mesurer la réussite sur tous les dessins soumis au jeu."
+              }
+            ]
+          },
+          {
+            "id": "scores",
+            "label": "Lire un score",
+            "title": "Un score et des résultats à vérifier",
+            "intro": "Exemple construit pour l’exercice : ce classificateur calcule un score pour chacune de ses catégories, vélo, tasse et bateau. Ces scores sont ses estimations pour le dessin reçu. Dans cet exemple, il propose la catégorie au score le plus élevé. Observe le dessin et les scores ci-dessous, puis compare sa proposition à ce que tu vois. Dans le tableau, compare ensuite les réponses proposées aux réponses attendues. Ces chiffres ne proviennent pas de Quick, Draw!.",
+            "image": {
+              "src": "assets/ia/classification-tasse.svg",
+              "alt": "Dessin d’une tasse avec une anse et une soucoupe.",
+              "caption": "Scores de l’exemple : vélo 98 %, tasse 1 %, bateau 1 %. Catégorie proposée : vélo.",
+              "compact": true
+            },
+            "table": {
+              "caption": "Cinq essais construits pour cet exercice",
+              "headings": ["Essai", "Attendu", "Réponse"],
+              "rows": [
+                ["1", "Tasse", "Vélo"],
+                ["2", "Bateau", "Bateau"],
+                ["3", "Vélo", "Vélo"],
+                ["4", "Tasse", "Tasse"],
+                ["5", "Bateau", "Bateau"]
+              ]
+            },
+            "groups": [
+              {
+                "id": "score-erreur",
+                "title": "Un score élevé",
+                "description": "La catégorie proposée correspond-elle au dessin ?",
+                "fields": [
+                  {
+                    "id": "score-erreur",
+                    "label": "Ta réponse",
+                    "answer": "fausse",
+                    "choices": [
+                      {
+                        "id": "vraie",
+                        "label": "Oui, le score de 98 % suffit à confirmer que le dessin représente un vélo"
+                      },
+                      {
+                        "id": "fausse",
+                        "label": "Non, le dessin représente une tasse malgré le score plus élevé pour vélo"
+                      },
+                      {
+                        "id": "taux",
+                        "label": "Le système réussit 98 % de tous ses essais"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Le dessin représente une tasse : la catégorie vélo est incorrecte malgré son score de 98 %. Un score élevé peut donc accompagner une erreur. Ce score concerne cette prédiction ; le taux de réussite se mesure en comparant plusieurs réponses aux réponses attendues."
+              },
+              {
+                "id": "taux-reussite",
+                "title": "Compter les bonnes réponses",
+                "description": "Combien de propositions du tableau correspondent à la référence ?",
+                "fields": [
+                  {
+                    "id": "taux-reussite",
+                    "label": "Ta réponse",
+                    "answer": "quatre",
+                    "choices": [
+                      {
+                        "id": "cinq",
+                        "label": "5 sur 5, soit 100 %"
+                      },
+                      {
+                        "id": "score",
+                        "label": "98 %, comme le score affiché"
+                      },
+                      {
+                        "id": "quatre",
+                        "label": "4 sur 5, soit 80 %"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Quatre propositions sur cinq correspondent à la référence. Ce taux de 80 % décrit ces cinq essais construits, pas toutes les situations futures. Un score individuel et un taux mesuré sur plusieurs essais sont deux informations différentes."
+              }
+            ]
+          },
+          {
+            "id": "tests",
+            "label": "Choisir des tests",
+            "title": "Quels essais permettraient de vérifier le modèle ?",
+            "intro": "Un outil doit classer des dessins en « vélo », « bateau » ou « tasse ». Ses concepteurs ont utilisé des dessins étiquetés pour l’entraîner. Pour le vérifier, ils gardent d’autres exemples à part et comparent les catégories proposées aux réponses attendues. Choisis des essais utiles pour cette tâche.",
+            "groups": [
+              {
+                "id": "test-nouveau",
+                "title": "Essayer une autre représentation",
+                "description": "Quel cas apporte une vérification sur un exemple distinct de ceux utilisés pour entraîner le modèle ?",
+                "fields": [
+                  {
+                    "id": "test-nouveau",
+                    "label": "Ta réponse",
+                    "answer": "nouveau",
+                    "choices": [
+                      {
+                        "id": "nouveau",
+                        "label": "Un vélo dessiné autrement, gardé à part de l’entraînement"
+                      },
+                      {
+                        "id": "copie",
+                        "label": "Le même dessin d’entraînement présenté de nouveau"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Un exemple gardé à part permet de vérifier si le modèle réussit au-delà de ceux qui ont servi à l’ajuster. Un seul succès ne suffit pas à conclure pour toutes les variations."
+              },
+              {
+                "id": "test-inconnu",
+                "title": "Un objet hors des catégories",
+                "description": "On présente un dessin de chaussure. Que faut-il examiner ?",
+                "fields": [
+                  {
+                    "id": "test-inconnu",
+                    "label": "Ta réponse",
+                    "answer": "limite",
+                    "choices": [
+                      {
+                        "id": "nouvelle",
+                        "label": "La nouvelle classe chaussure créée automatiquement"
+                      },
+                      {
+                        "id": "limite",
+                        "label": "La réponse obtenue et la façon dont l’outil traite ce cas non prévu"
+                      },
+                      {
+                        "id": "rejet",
+                        "label": "Le rejet automatique, qui est garanti"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Un modèle limité à ces catégories peut quand même attribuer une catégorie connue à une chaussure. Il faut observer son comportement et prévoir comment traiter ce cas dans l’outil."
+              },
+              {
+                "id": "test-variation",
+                "title": "Examiner une erreur possible",
+                "description": "Une tasse sans anse est classée bateau. Que faire pour comprendre les limites de l’outil ?",
+                "fields": [
+                  {
+                    "id": "test-variation",
+                    "label": "Ta réponse",
+                    "answer": "comparer",
+                    "choices": [
+                      {
+                        "id": "accuser",
+                        "label": "Conclure que tous les dessins de tasse sont impossibles à reconnaître"
+                      },
+                      {
+                        "id": "score",
+                        "label": "Accepter la réponse dès que son score est élevé"
+                      },
+                      {
+                        "id": "comparer",
+                        "label": "Essayer plusieurs nouvelles tasses avec et sans anse, et noter les réponses"
+                      }
+                    ]
+                  }
+                ],
+                "feedback": "Comparer des cas pertinents aide à repérer dans quelles situations les erreurs apparaissent. Cela ne révèle pas à lui seul le calcul interne du modèle."
+              }
+            ]
+          }
+        ],
+        "freeCheck": {
+          "prompt": "Quelle entrée testerais-tu, quelle réponse attendrais-tu, et qu’apprendrais-tu si le modèle se trompait ?",
+          "criteria": [
+            "Nommer une entrée concrète et une réponse attendue.",
+            "Expliquer quelle variation ou difficulté cet essai examine.",
+            "Relier une erreur possible à une vérification supplémentaire."
+          ],
+          "sample": "Je garderais à part plusieurs dessins de tasse sans anse. J’attendrais la catégorie tasse. Si plusieurs deviennent bateau, je comparerais avec des tasses avec anse pour examiner cette difficulté."
+        }
+      }
+    },
+    {
+      "id": "sources",
+      "type": "details",
+      "title": "Sources et crédits",
+      "blocks": [
+        {
+          "id": "source-progression",
+          "type": "lesson",
+          "title": "Une activité CodeCraft",
+          "paragraphs": [
+            "Progression inspirée des objectifs de la leçon Classification d’Experience AI, de Raspberry Pi Foundation et Google DeepMind, et des pages 13 à 18 du guide fourni. Textes, illustration, exemples chiffrés et questions originaux CodeCraft."
+          ],
+          "externalLink": {
+            "label": "Leçon officielle Classification",
+            "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/14"
+          }
+        },
+        {
+          "id": "source-donnees",
+          "type": "lesson",
+          "title": "Dessins et étiquettes",
+          "paragraphs": [
+            "La documentation Google distingue la catégorie demandée au joueur et la reconnaissance par le jeu. La galerie présente une sélection de dessins reconnus."
+          ],
+          "externalLink": {
+            "label": "Documentation Quick, Draw!",
+            "url": "https://github.com/googlecreativelab/quickdraw-dataset"
+          }
+        },
+        {
+          "id": "source-supervise",
+          "type": "lesson",
+          "title": "Entraînement et évaluation",
+          "paragraphs": [
+            "Google définit le rôle des exemples étiquetés et distingue entraînement, évaluation et utilisation."
+          ],
+          "externalLink": {
+            "label": "Google : apprentissage supervisé",
+            "url": "https://developers.google.com/machine-learning/intro-to-ml/supervised"
+          }
+        },
+        {
+          "id": "source-score",
+          "type": "lesson",
+          "title": "Interpréter les scores",
+          "paragraphs": [
+            "Les travaux de Guo et ses collègues montrent que les scores des réseaux peuvent être mal calibrés : un score ne constitue pas automatiquement une probabilité fiable de justesse."
+          ],
+          "externalLink": {
+            "label": "On Calibration of Modern Neural Networks",
+            "url": "https://proceedings.mlr.press/v70/guo17a"
+          }
+        }
+      ]
+    }
+  ],
+  "masteryCriteria": [
+    "Identifier une entrée et la catégorie proposée.",
+    "Relier une étiquette à un exemple et expliquer l’intérêt de variations pertinentes.",
+    "Distinguer score individuel et bonnes réponses mesurées.",
+    "Proposer un essai concret et sa réponse attendue."
+  ],
+  "teacherGuide": {
+    "entryDiagnosis": ["Faire rappeler la différence entre entraînement et utilisation."],
+    "preparation": [
+      "Ouvrir Quick, Draw! en français et la galerie. Proposer la voie observation si le dessin chronométré gêne."
+    ],
+    "why": "Ce chapitre rend concret le classificateur et prépare une future activité d’entraînement.",
+    "discoverySpeech": ["Une série de dessins suffit, puis observer une catégorie proposée."],
+    "example": {
+      "target": {
+        "moduleId": "ia-classification",
+        "blockId": "classification"
+      },
+      "comments": [
+        "Les chiffres sont construits pour discuter des scores ; ils ne mesurent pas Quick, Draw!."
+      ]
+    },
+    "accompaniedActivity": {
+      "moduleId": "ia-classification",
+      "blockId": "classification",
+      "label": "Examiner une catégorie prédite"
+    },
+    "independentActivity": {
+      "moduleId": "ia-classification",
+      "blockId": "classification",
+      "label": "Choisir des essais pertinents"
+    },
+    "questions": [
+      {
+        "question": "Changer de proposition prouve-t-il un entraînement en direct ?",
+        "answer": "Non, l’entrée change et le modèle calcule une autre prédiction."
+      },
+      {
+        "question": "Que mesure le résultat 4 sur 5 ?",
+        "answer": "La proportion de réponses correctes sur ces cinq cas, sans garantie pour toutes les situations."
+      }
+    ],
+    "commonErrors": [
+      {
+        "symptom": "Prendre le score pour un taux de réussite global.",
+        "helps": ["Comparer le score de 98 % et le tableau de cinq résultats."]
+      }
+    ],
+    "quickConductor": [
+      "Observer une série ou la galerie.",
+      "Comparer les exemples et définir classe et étiquette.",
+      "Examiner le score puis compter les réponses correctes.",
+      "Proposer un test avec une référence."
+    ],
+    "references": [
+      {
+        "title": "Experience AI : Classification",
+        "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/14"
+      }
+    ],
+    "objective": "Relier classification, exemples étiquetés et vérification sans confondre score et réussite mesurée."
+  }
+}

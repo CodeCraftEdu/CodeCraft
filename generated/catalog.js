@@ -101,6 +101,15 @@ window.CODECRAFT_DATA = {
         "robotique-debutants"
       ],
       "diagnosticModuleIds": []
+    },
+    "ia": {
+      "title": "Intelligence artificielle",
+      "homeDescription": "Explore des règles, propose des hypothèses et teste ce que les données permettent de prévoir.",
+      "homeTag": "EXPÉRIENCES INTERACTIVES",
+      "pathwayIds": [
+        "ia-experience"
+      ],
+      "diagnosticModuleIds": []
     }
   },
   "skills": {
@@ -337,6 +346,30 @@ window.CODECRAFT_DATA = {
     },
     "minecraft.strategy": {
       "title": "Adapter une stratégie aux repères du terrain"
+    },
+    "ia.instructions": {
+      "title": "Décrire et exécuter des instructions explicites"
+    },
+    "ia.apprentissage": {
+      "title": "Distinguer règles, entraînement et utilisation d’un modèle"
+    },
+    "ia.generalisation": {
+      "title": "Mettre une régularité à l’épreuve avec de nouveaux exemples"
+    },
+    "ia.usages": {
+      "title": "Identifier la tâche d’un système d’IA"
+    },
+    "ia.entrees-sorties": {
+      "title": "Distinguer entrée, tâche et résultat"
+    },
+    "ia.verification": {
+      "title": "Examiner un résultat avec une référence adaptée"
+    },
+    "ia.classification": {
+      "title": "Relier classification, classes et exemples étiquetés"
+    },
+    "ia.evaluation": {
+      "title": "Distinguer score et résultats mesurés pour choisir des tests"
     }
   },
   "modules": {
@@ -37822,6 +37855,2065 @@ window.CODECRAFT_DATA = {
         ]
       }
     },
+    "ia-regles-donnees": {
+      "domainId": "ia",
+      "title": "Des règles aux données",
+      "type": "lesson",
+      "theme": "avances",
+      "objective": "Joue contre des instructions, puis choisis et teste une règle à partir de messages. Compare ces démarches avec l’entraînement d’un modèle.",
+      "skillIds": [
+        "ia.instructions",
+        "ia.apprentissage",
+        "ia.generalisation"
+      ],
+      "prerequisiteSkills": [],
+      "blocks": [
+        {
+          "id": "experience",
+          "type": "lesson",
+          "title": "Observe, propose et teste",
+          "aiExperience": {
+            "rules": [
+              {
+                "id": "first-corner",
+                "text": "Premier X : choisir un coin.",
+                "reason": "Au moment du choix, les coins libres autorisés étaient : {cells}."
+              },
+              {
+                "id": "second-opposite",
+                "text": "Deuxième X : si le coin opposé au premier X ne contient pas O, y placer X.",
+                "reason": "Le coin opposé au premier X était libre : {cells}."
+              },
+              {
+                "id": "second-corner",
+                "text": "Deuxième X : sinon, choisir un coin libre.",
+                "reason": "O occupait le coin opposé. Les autres coins libres autorisés étaient : {cells}."
+              },
+              {
+                "id": "complete-line",
+                "text": "Troisième et quatrième X : d’abord compléter une ligne contenant deux X et une case libre.",
+                "reason": "X pouvait compléter une ligne horizontale, verticale ou diagonale : {cells}."
+              },
+              {
+                "id": "block-line",
+                "text": "Sinon, bloquer une ligne contenant deux O et une case libre.",
+                "reason": "Aucune ligne de X ne pouvait être complétée. O menaçait de gagner ; les cases de blocage autorisées étaient : {cells}."
+              },
+              {
+                "id": "free-corner",
+                "text": "Sinon, choisir un coin libre.",
+                "reason": "Aucune ligne de deux X ni de deux O ne pouvait être complétée. Les coins libres autorisés étaient : {cells}."
+              },
+              {
+                "id": "last-cell",
+                "text": "Cinquième X : occuper la dernière case libre.",
+                "reason": "Il ne restait qu’une case libre : {cells}."
+              }
+            ],
+            "gameQuestions": [
+              {
+                "id": "strategy",
+                "prompt": "Qui a défini la stratégie des X ?",
+                "options": [
+                  {
+                    "id": "designers",
+                    "text": "Les personnes qui ont écrit les instructions.",
+                    "correct": true,
+                    "feedback": "Les concepteurs ont choisi les décisions à appliquer. Le programme exécute cette stratégie."
+                  },
+                  {
+                    "id": "paper",
+                    "text": "La grille, pendant la partie.",
+                    "correct": false,
+                    "feedback": "La grille représente la situation. Les décisions viennent des instructions écrites par les concepteurs."
+                  },
+                  {
+                    "id": "player",
+                    "text": "Les O ont entraîné les X.",
+                    "correct": false,
+                    "feedback": "Les coups des O changent la situation, mais ils ne modifient pas les instructions des X."
+                  }
+                ]
+              },
+              {
+                "id": "fixed",
+                "prompt": "Les instructions des X ont-elles changé pendant la partie ?",
+                "options": [
+                  {
+                    "id": "unchanged",
+                    "text": "Non, la même liste reste en place.",
+                    "correct": true,
+                    "feedback": "La règle choisie dépend du tour et de la grille ; la liste d’instructions reste identique."
+                  },
+                  {
+                    "id": "win",
+                    "text": "Oui, dès que les X se rapprochent d’une victoire.",
+                    "correct": false,
+                    "feedback": "Une occasion de gagner déclenche une instruction déjà écrite. Elle ne crée pas une nouvelle instruction."
+                  }
+                ]
+              },
+              {
+                "id": "replay",
+                "prompt": "Rejouer suffit-il à améliorer ce programme ?",
+                "options": [
+                  {
+                    "id": "no",
+                    "text": "Non, ses instructions resteraient les mêmes.",
+                    "correct": true,
+                    "feedback": "Ici, aucune procédure d’entraînement ne modifie la stratégie à partir des parties. Pour changer ses décisions, il faudrait changer ses instructions."
+                  },
+                  {
+                    "id": "yes",
+                    "text": "Oui, il apprend automatiquement de chaque partie.",
+                    "correct": false,
+                    "feedback": "Répéter une exécution ne constitue pas automatiquement un entraînement. Ce programme ne possède pas de mécanisme qui ajuste ses règles après les parties."
+                  }
+                ]
+              }
+            ],
+            "flow": {
+              "explanation": "Avec des règles explicites, les concepteurs décrivent les décisions. L’apprentissage automatique est une approche de l’IA : un entraînement ajuste un modèle à partir de données. Ici, les exemples sont déjà classés : c’est un apprentissage supervisé. Une étiquette est la catégorie associée à un exemple, comme « joie ». Les paramètres sont des valeurs numériques que l’entraînement ajuste et que le modèle utilise pour calculer ses résultats.",
+              "prompt": "Remets dans l’ordre la préparation et l’utilisation d’un modèle qui classe des messages. Les boutons Monter et Descendre fonctionnent aussi au clavier.",
+              "cards": [
+                {
+                  "id": "data",
+                  "text": "Réunir des messages et leurs étiquettes. Garder une partie des exemples à part pour les tests."
+                },
+                {
+                  "id": "train",
+                  "text": "Entraîner un modèle avec ces exemples pour ajuster ses paramètres."
+                },
+                {
+                  "id": "evaluate",
+                  "text": "Tester le modèle sur d’autres messages étiquetés, gardés à part de l’entraînement, et comparer ses réponses aux étiquettes."
+                },
+                {
+                  "id": "input",
+                  "text": "Fournir un nouveau message au modèle entraîné."
+                },
+                {
+                  "id": "output",
+                  "text": "Lire sa prédiction : ici, la catégorie proposée pour le message. Vérifier ce résultat."
+                }
+              ],
+              "initialOrder": [
+                "input",
+                "data",
+                "output",
+                "train",
+                "evaluate"
+              ],
+              "feedback": "Les exemples d’entraînement servent à ajuster le modèle. On évalue ensuite ses réponses sur des exemples gardés à part pour repérer ses erreurs avant de l’utiliser. Une prédiction est un résultat proposé, pas forcément une prévision du futur. Produire ce résultat ne constitue pas à lui seul un nouvel entraînement."
+            },
+            "categories": [
+              {
+                "id": "joie",
+                "label": "Joie",
+                "emoji": "😃"
+              },
+              {
+                "id": "tristesse",
+                "label": "Tristesse",
+                "emoji": "😢"
+              },
+              {
+                "id": "colere",
+                "label": "Colère",
+                "emoji": "😡"
+              },
+              {
+                "id": "indeterminee",
+                "label": "Indéterminée",
+                "emoji": "?"
+              }
+            ],
+            "corpus": [
+              {
+                "id": "corpus-1",
+                "category": "joie",
+                "text": "Nous avons applaudi quand la fusée en carton a décollé !"
+              },
+              {
+                "id": "corpus-2",
+                "category": "joie",
+                "text": "Nous étions fiers de voir notre robot terminer le parcours."
+              },
+              {
+                "id": "corpus-3",
+                "category": "joie",
+                "text": "Quel sourire en découvrant ma photo sur l’affiche !"
+              },
+              {
+                "id": "corpus-4",
+                "category": "joie",
+                "text": "Cette soirée sous les étoiles était chouette."
+              },
+              {
+                "id": "corpus-5",
+                "category": "joie",
+                "text": "Nous étions ravis du retour des hirondelles au jardin."
+              },
+              {
+                "id": "corpus-6",
+                "category": "tristesse",
+                "text": "Le refuge a fermé et je n’y verrai plus les chèvres."
+              },
+              {
+                "id": "corpus-7",
+                "category": "tristesse",
+                "text": "J’ai perdu mon carnet et je repense à tous mes dessins."
+              },
+              {
+                "id": "corpus-8",
+                "category": "tristesse",
+                "text": "Le banc de ma grand-mère est vide et ça me serre le cœur."
+              },
+              {
+                "id": "corpus-9",
+                "category": "tristesse",
+                "text": "J’ai pleuré en rangeant le panier de mon chien."
+              },
+              {
+                "id": "corpus-10",
+                "category": "tristesse",
+                "text": "Notre répétition a été annulée et la scène va me manquer."
+              },
+              {
+                "id": "corpus-11",
+                "category": "colere",
+                "text": "Ils ont triché au tournoi et refusent de rendre la coupe."
+              },
+              {
+                "id": "corpus-12",
+                "category": "colere",
+                "text": "Ils ont hurlé sur ma sœur pour une erreur minuscule."
+              },
+              {
+                "id": "corpus-13",
+                "category": "colere",
+                "text": "On m’a interdit de présenter mon travail sans me laisser parler."
+              },
+              {
+                "id": "corpus-14",
+                "category": "colere",
+                "text": "Ils ont coupé l’arbre du quartier, ça me met en rage !"
+              },
+              {
+                "id": "corpus-15",
+                "category": "colere",
+                "text": "Le voisin a cassé mon cerf-volant exprès, je suis furieux !"
+              }
+            ],
+            "hypotheses": [
+              {
+                "id": "prefix-et",
+                "label": "Début du message, puis « et »",
+                "description": "Dans cet ordre : commence par « Nous » → joie ; par « Ils » → colère ; sinon contient le mot « et » → tristesse ; sinon → indéterminée.",
+                "policy": "first",
+                "conditions": [
+                  {
+                    "kind": "starts",
+                    "term": "Nous",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "starts",
+                    "term": "Ils",
+                    "category": "colere"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "et",
+                    "category": "tristesse"
+                  }
+                ]
+              },
+              {
+                "id": "prefix",
+                "label": "Seulement « Nous » et « Ils »",
+                "description": "Commence par « Nous » → joie ; par « Ils » → colère ; sinon → indéterminée. Ces débuts apparaissent dans plusieurs exemples, mais ne couvrent pas toute la collection.",
+                "policy": "first",
+                "conditions": [
+                  {
+                    "kind": "starts",
+                    "term": "Nous",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "starts",
+                    "term": "Ils",
+                    "category": "colere"
+                  }
+                ]
+              },
+              {
+                "id": "words",
+                "label": "Des mots repérés dans chaque colonne",
+                "description": "« applaudi », « fiers », « sourire », « chouette », « ravis » → joie. « fermé », « perdu », « vide », « pleuré », « manquer » → tristesse. « triché », « hurlé », « interdit », « rage », « furieux » → colère. Si plusieurs catégories ressortent ou si aucun indice ne correspond, la prédiction est indéterminée.",
+                "policy": "consensus",
+                "conditions": [
+                  {
+                    "kind": "word",
+                    "term": "applaudi",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "fiers",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "sourire",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "chouette",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "ravis",
+                    "category": "joie"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "fermé",
+                    "category": "tristesse"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "perdu",
+                    "category": "tristesse"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "vide",
+                    "category": "tristesse"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "pleuré",
+                    "category": "tristesse"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "manquer",
+                    "category": "tristesse"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "triché",
+                    "category": "colere"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "hurlé",
+                    "category": "colere"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "interdit",
+                    "category": "colere"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "rage",
+                    "category": "colere"
+                  },
+                  {
+                    "kind": "word",
+                    "term": "furieux",
+                    "category": "colere"
+                  }
+                ]
+              }
+            ],
+            "tests": [
+              {
+                "id": "attente",
+                "text": "Nous avons reçu un courrier ce matin.",
+                "interpretation": "Un courrier peut annoncer une bonne ou une mauvaise nouvelle, ou donner une simple information. Sans son contenu, l’émotion reste ambiguë."
+              },
+              {
+                "id": "projet",
+                "text": "Le studio a fermé et le spectacle est annulé.",
+                "interpretation": "L’annulation peut évoquer de la tristesse ou de la colère. Le contexte manque pour trancher entre les deux."
+              },
+              {
+                "id": "peinture",
+                "text": "Ils ont applaudi quand mon court métrage s’est terminé !",
+                "interpretation": "Les applaudissements peuvent susciter de la joie ou de la fierté. Le mot « Ils » ne justifie pas de prédire la colère."
+              },
+              {
+                "id": "billets",
+                "text": "Nous avions préparé une nuit sous les étoiles, mais l’orage nous a fait rentrer.",
+                "interpretation": "La sortie interrompue peut susciter de la déception. Commencer par « Nous » ne garantit pas un message joyeux."
+              }
+            ],
+            "extraExamples": [
+              {
+                "id": "nous",
+                "text": "Des messages commençant par « Nous » qui expriment une déception.",
+                "useful": true,
+                "feedback": "Ils permettent de vérifier si ce début de phrase suffit vraiment à annoncer la joie."
+              },
+              {
+                "id": "ils",
+                "text": "Des messages commençant par « Ils » qui racontent une réussite.",
+                "useful": true,
+                "feedback": "Ils mettent à l’épreuve l’association entre « Ils » et la colère."
+              },
+              {
+                "id": "et",
+                "text": "Des messages avec « et » exprimant différentes émotions.",
+                "useful": true,
+                "feedback": "Ils vérifient si une liaison grammaticale permet réellement de choisir une émotion."
+              },
+              {
+                "id": "copies",
+                "text": "Dix copies du même message joyeux déjà présent.",
+                "useful": false,
+                "feedback": "Ces copies n’apportent pas une situation nouvelle. Des exemples variés seraient plus utiles pour chercher les limites de la règle."
+              }
+            ],
+            "reviewQuestions": [
+              {
+                "id": "explicit",
+                "prompt": "Quelle phrase donne une instruction explicite applicable à une grille ?",
+                "options": [
+                  {
+                    "id": "concrete",
+                    "text": "Si deux O sont alignés avec une case libre, placer X dans cette case.",
+                    "correct": true,
+                    "feedback": "Le test et l’action sont décrits : on peut examiner la grille puis appliquer l’instruction."
+                  },
+                  {
+                    "id": "clever",
+                    "text": "Jouer intelligemment.",
+                    "correct": false,
+                    "feedback": "Cette phrase ne décrit ni les cases à examiner ni la façon de choisir le prochain coup."
+                  }
+                ]
+              },
+              {
+                "id": "training",
+                "prompt": "Que se passe-t-il pendant un entraînement en apprentissage automatique ?",
+                "options": [
+                  {
+                    "id": "adjust",
+                    "text": "Un algorithme ajuste un modèle à partir de données.",
+                    "correct": true,
+                    "feedback": "L’entraînement ajuste le modèle. Ensuite, on peut lui fournir une nouvelle entrée pour obtenir une prédiction."
+                  },
+                  {
+                    "id": "allrules",
+                    "text": "Une personne écrit à la main chaque décision possible.",
+                    "correct": false,
+                    "feedback": "C’est une approche fondée sur des règles explicites. En apprentissage automatique, l’entraînement ajuste le modèle à partir de données."
+                  },
+                  {
+                    "id": "running",
+                    "text": "Le programme est seulement exécuté plusieurs fois.",
+                    "correct": false,
+                    "feedback": "Exécuter un programme ne suffit pas : un entraînement comporte un mécanisme d’ajustement à partir des données."
+                  }
+                ]
+              },
+              {
+                "id": "newcases",
+                "prompt": "Une règle réussit sur plusieurs exemples déjà vus. Que peut-on en conclure ?",
+                "options": [
+                  {
+                    "id": "limited",
+                    "text": "Elle réussit sur ces exemples ; il faut aussi essayer de nouveaux cas.",
+                    "correct": true,
+                    "feedback": "Une régularité peut être propre à une petite collection. Des cas nouveaux et variés permettent de chercher ses limites."
+                  },
+                  {
+                    "id": "always",
+                    "text": "Elle réussira sur tous les prochains messages.",
+                    "correct": false,
+                    "feedback": "Les exemples observés ne couvrent pas forcément les nouvelles situations. Les tests avec « Nous » et « Ils » ont montré cette limite."
+                  }
+                ]
+              }
+            ],
+            "freeCheck": {
+              "prompt": "Explique comment une règle fondée sur quelques messages peut réussir sur les exemples et échouer sur un nouveau message.",
+              "criteria": [
+                "Nommer un indice utilisé par la règle.",
+                "Expliquer qu’une régularité observée ne garantit pas une réussite sur les nouveaux cas.",
+                "Proposer des exemples variés pour mettre cet indice à l’épreuve."
+              ],
+              "sample": "Plusieurs messages de joie commencent par « Nous ». Pourtant, le message sur la nuit sous les étoiles peut exprimer une déception. Je chercherais d’autres messages commençant par « Nous », avec des émotions variées, puis je comparerais leurs étiquettes aux prédictions."
+            },
+            "copy": {
+              "gameIntro": "Tu joues les O ; le programme commence avec les X. Le but est d’aligner trois de ses symboles sur une ligne, une colonne ou une diagonale. Le programme suit les instructions affichées pour son tour. Plusieurs cases peuvent respecter une instruction : chaque prévision valide est acceptée.",
+              "guessInstructions": "Choisis une case pour prévoir le prochain X.",
+              "emojisIntro": "Voici quinze messages auxquels on a attribué une catégorie d’émotion : leur étiquette. Cherche un mot ou une construction qui revient dans chaque catégorie. Ces catégories représentent une interprétation des messages ; elles ne permettent pas de connaître l’émotion réelle de leur auteur.",
+              "hypothesisIntro": "Une hypothèse est une règle possible à mettre à l’épreuve. Choisis-en une à partir des exemples. Elle restera fixe pendant le test. Ici, tu choisis la règle ; dans un apprentissage automatique, un algorithme, c’est-à-dire une suite d’instructions, ajuste le modèle pendant l’entraînement.",
+              "fixedRuleIntro": "Compare ta règle aux exemples de départ, puis teste-la sur quatre autres messages. Compare la catégorie obtenue à une interprétation du message entier. Si tu changes ensuite de règle, tu retrouveras les mêmes messages pour comparer les résultats.",
+              "emojisConclusion": "Tu as choisi puis testé une règle à partir d’exemples. Un indice présent dans quelques messages ne suffit pas à expliquer toute la collection ni à réussir sur d’autres messages. Dans un apprentissage automatique, c’est l’algorithme d’entraînement qui ajuste le modèle à partir des données.",
+              "extraPrompt": "Quels exemples supplémentaires permettraient de mettre ces raccourcis à l’épreuve ? Choisis les propositions utiles, puis vérifie leurs raisons.",
+              "freeIntro": "Compare ta réponse aux critères et à l’exemple. Cette réponse libre sert à expliquer ton raisonnement."
+            }
+          }
+        },
+        {
+          "id": "sources",
+          "type": "details",
+          "title": "Sources et crédits",
+          "blocks": [
+            {
+              "type": "lesson",
+              "title": "Experience AI",
+              "paragraphs": [
+                "La leçon 2 d’Experience AI, conçue par Raspberry Pi Foundation et Google DeepMind, inspire la comparaison entre règles et données. Le morpion reprend le principe de « La feuille de papier intelligente », une activité de Peter McOwan et Paul Curzon, Queen Mary University of London.",
+                "CodeCraft a créé les quinze messages de la collection, les quatre messages d’essai et leurs explications. Le raccourci « Nous », « Ils », puis « et » sert à tester les limites d’une règle grammaticale."
+              ],
+              "externalLink": {
+                "label": "Consulter la leçon officielle",
+                "url": "https://experience-ai.org/fr-CA/units/understanding-ai-11-14/lessons/13"
+              },
+              "id": "sources-1"
+            },
+            {
+              "type": "lesson",
+              "title": "Entraînement et utilisation",
+              "paragraphs": [
+                "Le complément Google for Developers précise le rôle des données et de l’entraînement dans la création d’un modèle."
+              ],
+              "externalLink": {
+                "label": "Qu’est-ce que le machine learning ?",
+                "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml?hl=fr"
+              },
+              "id": "sources-2"
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Décrire une instruction avec un test et une action.",
+        "Distinguer l’entraînement d’un modèle et son utilisation sur une nouvelle entrée.",
+        "Donner un contre-exemple à une règle tirée d’une petite collection."
+      ],
+      "teacherGuide": {
+        "objective": "Comparer exécution de règles et apprentissage automatique ; éprouver une régularité sur de nouveaux messages.",
+        "entryDiagnosis": [
+          "Faire expliquer une instruction simple et le rôle d’une étiquette."
+        ],
+        "preparation": [
+          "Ouvrir le chapitre dans le navigateur utilisé par les élèves. La reprise est locale à ce navigateur.",
+          "Prévoir un exemple de contexte pour discuter l’attente longue sans imposer une émotion."
+        ],
+        "discoverySpeech": [
+          "Commencer directement par le morpion. Faire verbaliser l’instruction appliquée avant de révéler le coup.",
+          "Morpion : repérer la stratégie écrite et distinguer changement de situation et changement d’instructions.",
+          "Étapes : distinguer préparation des données, entraînement, nouvelle entrée et prédiction.",
+          "Émojis : formuler une règle explicite, la conserver pendant le test et distinguer sa sortie d’une interprétation humaine.",
+          "Bilan : expliquer pourquoi une régularité peut échouer sur de nouveaux exemples."
+        ],
+        "questions": [
+          {
+            "question": "Est-ce que les X apprennent pendant cette partie ?",
+            "answer": "Non. La liste des instructions reste identique. La grille change et déclenche une instruction déjà écrite."
+          },
+          {
+            "question": "Est-ce que choisir la règle d’émojis entraîne un modèle logiciel ?",
+            "answer": "Non. L’élève choisit et teste une règle explicite à partir d’exemples. Un véritable entraînement ajuste un modèle par un algorithme."
+          },
+          {
+            "question": "Pourquoi ne pas afficher un pourcentage de réussite sur les quatre messages ?",
+            "answer": "Certaines interprétations sont ambiguës ; aucune étiquette unique de référence n’a été fixée pour chaque cas."
+          },
+          {
+            "question": "Qui a écrit la stratégie ? Les coups précédents modifient-ils les instructions ?",
+            "answer": "Les concepteurs ont écrit la stratégie. Les coups changent la grille, mais les instructions restent identiques."
+          },
+          {
+            "question": "Quelle étape ajuste un véritable modèle ? À quel moment reçoit-il une nouvelle entrée ?",
+            "answer": "L’entraînement ajuste le modèle à partir des données. Le modèle reçoit une nouvelle entrée lors de son utilisation, après cet entraînement."
+          },
+          {
+            "question": "Peut-on attribuer une émotion certaine à « Nous avons reçu un courrier ce matin » ? Quel contexte manque ?",
+            "answer": "Le message reste ambigu. Demander ce que le courrier annonce et à qui il est destiné."
+          },
+          {
+            "question": "Quels exemples pourraient contredire votre règle ?",
+            "answer": "Chercher des messages qui contredisent le raccourci, par exemple une phrase commençant par Nous qui exprime une déception."
+          }
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Confondre règle proposée par l’élève et entraînement logiciel.",
+            "helps": [
+              "Faire nommer qui a choisi la règle.",
+              "Revenir à la carte où l’algorithme ajuste un modèle."
+            ]
+          },
+          {
+            "symptom": "Prendre la catégorie calculée pour une émotion certaine.",
+            "helps": [
+              "Lire l’indice déclencheur puis le message entier.",
+              "Demander quel contexte manque avant de choisir une émotion."
+            ]
+          }
+        ],
+        "references": [
+          {
+            "title": "Experience AI, leçon 2",
+            "url": "https://experience-ai.org/fr-CA/units/understanding-ai-11-14/lessons/13"
+          },
+          {
+            "title": "Licence des fichiers Experience AI fournis",
+            "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+          }
+        ],
+        "example": {
+          "target": {
+            "moduleId": "ia-regles-donnees",
+            "blockId": "experience"
+          },
+          "comments": [
+            "Commencer par une prévision puis repérer l’instruction effectivement exécutée."
+          ]
+        },
+        "accompaniedActivity": {
+          "moduleId": "ia-regles-donnees",
+          "blockId": "experience",
+          "label": "Comparer les prédictions de la règle"
+        },
+        "independentActivity": {
+          "moduleId": "ia-regles-donnees",
+          "blockId": "experience",
+          "label": "Bilan et contre-exemples"
+        },
+        "quickConductor": [
+          "Faire prévoir un coup des X avant de le révéler.",
+          "Faire ordonner données, entraînement, évaluation et utilisation.",
+          "Conserver une hypothèse pendant les quatre messages de test.",
+          "Discuter les cas ambigus puis comparer le bilan aux critères."
+        ]
+      },
+      "prerequisitesInContent": true
+    },
+    "ia-decouvrir": {
+      "domainId": "ia",
+      "title": "Que fait un système d’IA ?",
+      "type": "lesson",
+      "theme": "avances",
+      "objective": "Repère la tâche d’un système d’IA, ce qu’il reçoit et ce qu’il produit, puis examine son résultat.",
+      "skillIds": [
+        "ia.usages",
+        "ia.entrees-sorties",
+        "ia.verification"
+      ],
+      "prerequisiteSkills": [],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {
+          "id": "decouverte",
+          "type": "lesson",
+          "title": "Découvre, décris et vérifie",
+          "aiDiscovery": {
+            "steps": [
+              {
+                "id": "usages",
+                "label": "Les usages",
+                "title": "Quelle tâche réalise le système ?",
+                "intro": "L’intelligence artificielle (IA) est un domaine où l’on conçoit des systèmes capables de réaliser des tâches comme reconnaître des éléments, prévoir un résultat ou générer du contenu. Dans les exemples suivants, un modèle est la partie du système entraînée sur des données pour repérer des régularités utiles à sa tâche. Associe chaque situation à la tâche décrite. Un même outil peut réunir plusieurs fonctions.",
+                "groups": [
+                  {
+                    "id": "videos",
+                    "title": "Une sélection de vidéos",
+                    "description": "Une plateforme utilise un modèle pour ordonner les vidéos proposées selon les contenus déjà consultés.",
+                    "fields": [
+                      {
+                        "id": "usage-videos",
+                        "label": "Tâche réalisée",
+                        "answer": "recommander",
+                        "choices": [
+                          {
+                            "id": "generer",
+                            "label": "Générer du contenu"
+                          },
+                          {
+                            "id": "recommander",
+                            "label": "Recommander du contenu"
+                          },
+                          {
+                            "id": "reconnaitre",
+                            "label": "Reconnaître des éléments"
+                          },
+                          {
+                            "id": "predire",
+                            "label": "Estimer une valeur future"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Le système recommande des vidéos existantes en les sélectionnant ou en les ordonnant. Il ne les fabrique pas."
+                  },
+                  {
+                    "id": "affiche",
+                    "title": "Une illustration pour une affiche",
+                    "description": "Un générateur produit une nouvelle image à partir de la description d’une fête.",
+                    "fields": [
+                      {
+                        "id": "usage-affiche",
+                        "label": "Tâche réalisée",
+                        "answer": "generer",
+                        "choices": [
+                          {
+                            "id": "generer",
+                            "label": "Générer du contenu"
+                          },
+                          {
+                            "id": "recommander",
+                            "label": "Recommander du contenu"
+                          },
+                          {
+                            "id": "reconnaitre",
+                            "label": "Reconnaître des éléments"
+                          },
+                          {
+                            "id": "predire",
+                            "label": "Estimer une valeur future"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Le système génère une image à partir de la consigne. Il produit du contenu plutôt que de choisir une image dans une liste."
+                  },
+                  {
+                    "id": "photos",
+                    "title": "Des animaux dans les photos",
+                    "description": "Un modèle propose les noms des animaux présents dans des photographies.",
+                    "fields": [
+                      {
+                        "id": "usage-photos",
+                        "label": "Tâche réalisée",
+                        "answer": "reconnaitre",
+                        "choices": [
+                          {
+                            "id": "generer",
+                            "label": "Générer du contenu"
+                          },
+                          {
+                            "id": "recommander",
+                            "label": "Recommander du contenu"
+                          },
+                          {
+                            "id": "reconnaitre",
+                            "label": "Reconnaître des éléments"
+                          },
+                          {
+                            "id": "predire",
+                            "label": "Estimer une valeur future"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Le système analyse les photos et propose des catégories. Les noms proposés peuvent ensuite être comparés à ce qui apparaît sur les images."
+                  },
+                  {
+                    "id": "cantine",
+                    "title": "Préparer les repas de demain",
+                    "description": "Un modèle estime le nombre de repas à prévoir à partir des fréquentations passées.",
+                    "fields": [
+                      {
+                        "id": "usage-cantine",
+                        "label": "Tâche réalisée",
+                        "answer": "predire",
+                        "choices": [
+                          {
+                            "id": "generer",
+                            "label": "Générer du contenu"
+                          },
+                          {
+                            "id": "recommander",
+                            "label": "Recommander du contenu"
+                          },
+                          {
+                            "id": "reconnaitre",
+                            "label": "Reconnaître des éléments"
+                          },
+                          {
+                            "id": "predire",
+                            "label": "Estimer une valeur future"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Le système estime une valeur encore inconnue : la fréquentation de demain. Cette estimation pourra être comparée au nombre réel de repas servis."
+                  }
+                ]
+              },
+              {
+                "id": "entrees",
+                "label": "Entrée et résultat",
+                "title": "Ce qui entre, ce qui sort",
+                "intro": "L’entrée est l’information reçue. La tâche décrit ce que le système réalise. La sortie est le résultat produit. Complète les trois chaînes.",
+                "groups": [
+                  {
+                    "id": "audio",
+                    "title": "Transcrire une question",
+                    "description": "Un service transforme une question prononcée en texte écrit.",
+                    "fields": [
+                      {
+                        "id": "audio-input",
+                        "label": "Entrée",
+                        "answer": "audio",
+                        "choices": [
+                          {
+                            "id": "audio",
+                            "label": "Un enregistrement sonore"
+                          },
+                          {
+                            "id": "texte",
+                            "label": "Une consigne écrite"
+                          },
+                          {
+                            "id": "photos",
+                            "label": "Des photographies"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "audio-output",
+                        "label": "Sortie",
+                        "answer": "transcription",
+                        "choices": [
+                          {
+                            "id": "transcription",
+                            "label": "Une transcription écrite"
+                          },
+                          {
+                            "id": "image",
+                            "label": "Une image générée"
+                          },
+                          {
+                            "id": "categories",
+                            "label": "Des catégories proposées pour les photos"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Enregistrement sonore → transcription → texte écrit. La transcription peut être vérifiée en réécoutant l’enregistrement."
+                  },
+                  {
+                    "id": "generation",
+                    "title": "Générer une illustration",
+                    "description": "Un service produit une illustration à partir d’une description écrite.",
+                    "fields": [
+                      {
+                        "id": "generation-input",
+                        "label": "Entrée",
+                        "answer": "texte",
+                        "choices": [
+                          {
+                            "id": "audio",
+                            "label": "Un enregistrement sonore"
+                          },
+                          {
+                            "id": "texte",
+                            "label": "Une consigne écrite"
+                          },
+                          {
+                            "id": "photos",
+                            "label": "Des photographies"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "generation-output",
+                        "label": "Sortie",
+                        "answer": "image",
+                        "choices": [
+                          {
+                            "id": "transcription",
+                            "label": "Une transcription écrite"
+                          },
+                          {
+                            "id": "image",
+                            "label": "Une image générée"
+                          },
+                          {
+                            "id": "categories",
+                            "label": "Des catégories proposées pour les photos"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Consigne écrite → génération → image. Pour examiner le résultat, on compare les détails visibles aux éléments demandés."
+                  },
+                  {
+                    "id": "animaux",
+                    "title": "Identifier des animaux",
+                    "description": "Un service analyse des photographies et propose le nom des animaux.",
+                    "fields": [
+                      {
+                        "id": "animaux-input",
+                        "label": "Entrée",
+                        "answer": "photos",
+                        "choices": [
+                          {
+                            "id": "audio",
+                            "label": "Un enregistrement sonore"
+                          },
+                          {
+                            "id": "texte",
+                            "label": "Une consigne écrite"
+                          },
+                          {
+                            "id": "photos",
+                            "label": "Des photographies"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "animaux-output",
+                        "label": "Sortie",
+                        "answer": "categories",
+                        "choices": [
+                          {
+                            "id": "transcription",
+                            "label": "Une transcription écrite"
+                          },
+                          {
+                            "id": "image",
+                            "label": "Une image générée"
+                          },
+                          {
+                            "id": "categories",
+                            "label": "Des catégories proposées pour les photos"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Photographies → analyse → catégories proposées. Une catégorie reste une proposition à vérifier sur chaque photo."
+                  }
+                ]
+              },
+              {
+                "id": "image",
+                "label": "Examiner une image",
+                "title": "Comparer une consigne à son résultat",
+                "intro": "Compare cette image générée pour CodeCraft à la demande résumée ci-dessous. Une image de référence a aussi servi à préciser le style. Pour chaque constat, indique ce que le résultat permet de vérifier.",
+                "image": {
+                  "src": "assets/ia/scene-fantastique.webp",
+                  "alt": "Deux créatures fantastiques sans cornes ni traits de visage se tiennent sur un terrain turquoise. Celle de gauche est rose orangé, debout sur de grandes pattes ; celle de droite est bleu-vert pâle, à quatre pattes avec une longue queue. Une terrasse basse, quelques rochers lavande et un petit pavillon arrondi composent le décor. Le ciel prune et violet présente de longues traînées peintes et quelques étoiles. Aucun ballon n’est visible.",
+                  "caption": "Exemple généré pour cette activité.",
+                  "prompt": "Une scène fantastique dans le style d’un jeu PS1, avec deux créatures sans cornes ni traits de visage : l’une rose, debout sur de grandes pattes, l’autre bleu-vert pâle, à quatre pattes avec une longue queue. Un terrain turquoise, une terrasse basse, quelques rochers lavande, un petit pavillon et un grand ciel peint prune et violet aux longues traînées douces. Aucun texte ni interface de jeu."
+                },
+                "groups": [
+                  {
+                    "id": "joueurs",
+                    "title": "Il y a deux personnages.",
+                    "description": "",
+                    "fields": [
+                      {
+                        "id": "image-joueurs",
+                        "label": "Ton constat",
+                        "answer": "visible",
+                        "choices": [
+                          {
+                            "id": "visible",
+                            "label": "Visible sur l’image"
+                          },
+                          {
+                            "id": "absent",
+                            "label": "Absent de l’image"
+                          },
+                          {
+                            "id": "indeducible",
+                            "label": "Impossible à déduire de l’image"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Les deux personnages sont visibles. Le nombre de personnages demandé peut être contrôlé directement."
+                  },
+                  {
+                    "id": "ballon",
+                    "title": "Une des créatures est rose orangé.",
+                    "description": "",
+                    "fields": [
+                      {
+                        "id": "image-ballon",
+                        "label": "Ton constat",
+                        "answer": "visible",
+                        "choices": [
+                          {
+                            "id": "visible",
+                            "label": "Visible sur l’image"
+                          },
+                          {
+                            "id": "absent",
+                            "label": "Absent de l’image"
+                          },
+                          {
+                            "id": "indeducible",
+                            "label": "Impossible à déduire de l’image"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "La créature à gauche est rose orangé. Sa couleur est observable directement sur l’image."
+                  },
+                  {
+                    "id": "date",
+                    "title": "Un ballon est visible.",
+                    "description": "",
+                    "fields": [
+                      {
+                        "id": "image-date",
+                        "label": "Ton constat",
+                        "answer": "absent",
+                        "choices": [
+                          {
+                            "id": "visible",
+                            "label": "Visible sur l’image"
+                          },
+                          {
+                            "id": "absent",
+                            "label": "Absent de l’image"
+                          },
+                          {
+                            "id": "indeducible",
+                            "label": "Impossible à déduire de l’image"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Aucun ballon n’est visible. La demande ne prévoyait pas cet objet : son absence n’est donc pas un écart à corriger."
+                  },
+                  {
+                    "id": "reel",
+                    "title": "Ce décor représente un lieu qui existe réellement.",
+                    "description": "",
+                    "fields": [
+                      {
+                        "id": "image-reel",
+                        "label": "Ton constat",
+                        "answer": "indeducible",
+                        "choices": [
+                          {
+                            "id": "visible",
+                            "label": "Visible sur l’image"
+                          },
+                          {
+                            "id": "absent",
+                            "label": "Absent de l’image"
+                          },
+                          {
+                            "id": "indeducible",
+                            "label": "Impossible à déduire de l’image"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "L’image seule ne permet pas de savoir si ce lieu existe. Un générateur peut représenter un décor inventé ; il faudrait une source indépendante pour établir l’existence d’un lieu réel."
+                  }
+                ]
+              },
+              {
+                "id": "bilan",
+                "label": "Bilan",
+                "title": "Décrire et vérifier un résultat",
+                "intro": "Réponds aux questions et repère un écart dans l’exemple, puis décris un usage avec tes propres mots. Dans le chapitre suivant, tu compareras des instructions écrites par une personne et l’apprentissage à partir d’exemples.",
+                "groups": [
+                  {
+                    "id": "capacites",
+                    "title": "Une application classe des photos. Que peut-on en déduire ?",
+                    "description": "",
+                    "fields": [
+                      {
+                        "id": "bilan-capacites",
+                        "label": "Choisis une réponse",
+                        "answer": "tache",
+                        "choices": [
+                          {
+                            "id": "tout",
+                            "label": "Elle sait aussi rédiger."
+                          },
+                          {
+                            "id": "tache",
+                            "label": "On connaît cette tâche seulement."
+                          },
+                          {
+                            "id": "exact",
+                            "label": "Elle classe toujours correctement."
+                          }
+                        ],
+                        "control": "radios"
+                      }
+                    ],
+                    "feedback": "Classer des photos est une tâche précise. Cela ne démontre ni d’autres capacités ni une réussite sur toutes les photos."
+                  },
+                  {
+                    "id": "verifier",
+                    "title": "Quel écart faut-il corriger dans ce résultat ?",
+                    "description": "Exemple construit pour l’exercice. Demande : « Rédige une invitation à un atelier samedi à 14 h, dans la salle bleue. » Résultat proposé : « Retrouvons-nous dimanche à 14 h dans la salle bleue pour un atelier ! » Compare les deux textes.",
+                    "fields": [
+                      {
+                        "id": "bilan-verifier",
+                        "label": "Choisis une réponse",
+                        "answer": "audio",
+                        "choices": [
+                          {
+                            "id": "fluide",
+                            "label": "Aucun : l’invitation est bien rédigée."
+                          },
+                          {
+                            "id": "audio",
+                            "label": "Remplacer dimanche par samedi."
+                          },
+                          {
+                            "id": "long",
+                            "label": "Remplacer la salle bleue par la salle verte."
+                          }
+                        ],
+                        "control": "radios"
+                      }
+                    ],
+                    "feedback": "La demande indique samedi, mais le résultat annonce dimanche. Il faut corriger le jour. L’heure et la salle sont respectées : on conserve ces informations. Un texte bien rédigé peut contenir un écart à la demande."
+                  },
+                  {
+                    "id": "formuler",
+                    "title": "Quelle phrase décrit le mieux ce qu’on observe ?",
+                    "description": "",
+                    "fields": [
+                      {
+                        "id": "bilan-formuler",
+                        "label": "Choisis une réponse",
+                        "answer": "precis",
+                        "choices": [
+                          {
+                            "id": "sait",
+                            "label": "L’outil sait que mon dessin est un chat."
+                          },
+                          {
+                            "id": "precis",
+                            "label": "L’outil analyse mon dessin et propose la catégorie chat."
+                          },
+                          {
+                            "id": "veut",
+                            "label": "L’outil veut que je dessine un chat."
+                          }
+                        ],
+                        "control": "radios"
+                      }
+                    ],
+                    "feedback": "La deuxième formulation précise l’entrée et le résultat observable. La catégorie proposée peut ensuite être vérifiée."
+                  }
+                ]
+              }
+            ],
+            "freeCheck": {
+              "prompt": "Choisis un usage. Décris son entrée, sa tâche, sa sortie et une façon de vérifier le résultat.",
+              "criteria": [
+                "Nommer l’information reçue.",
+                "Décrire la tâche et le résultat produit.",
+                "Proposer une vérification adaptée à ce résultat."
+              ],
+              "sample": "Un service de transcription reçoit un enregistrement sonore. Il le transforme en texte écrit. Je compare ce texte à l’enregistrement pour repérer les mots mal reconnus."
+            }
+          }
+        },
+        {
+          "id": "sources",
+          "type": "details",
+          "title": "Sources et crédits",
+          "blocks": [
+            {
+              "id": "sources-discovery",
+              "type": "lesson",
+              "title": "Une activité CodeCraft",
+              "paragraphs": [
+                "Progression inspirée des objectifs de la leçon 1 d’Experience AI, développé conjointement par Raspberry Pi Foundation et Google DeepMind, et des pages 2 à 6 du guide d’animation fourni. Les textes, situations, questions et interactions sont rédigés pour CodeCraft.",
+                "L’illustration fantastique a été générée pour cette activité avec ImageGen. La consigne, le résultat conservé et les observations permettent de comparer une demande à une image."
+              ],
+              "externalLink": {
+                "label": "Découvrir Experience AI",
+                "url": "https://experience-ai.org/fr-CA/"
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "sources-technical",
+              "title": "Modèles et vérification",
+              "paragraphs": [
+                "Google présente les tâches, les entrées et les sorties des modèles. OpenAI explique pourquoi vérifier une réponse générée, même lorsqu’elle paraît convaincante."
+              ],
+              "externalLink": {
+                "label": "Google : modèles et tâches",
+                "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml"
+              }
+            },
+            {
+              "type": "lesson",
+              "id": "sources-checking",
+              "title": "Vérifier une réponse générée",
+              "paragraphs": [
+                "Comparer le résultat à la demande et vérifier les informations importantes auprès de sources fiables."
+              ],
+              "externalLink": {
+                "label": "OpenAI : fiabilité des réponses",
+                "url": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
+              }
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Décrire la tâche d’un système d’IA dans une situation concrète.",
+        "Identifier son entrée et sa sortie.",
+        "Vérifier un résultat en le comparant à la demande ou à une référence adaptée."
+      ],
+      "teacherGuide": {
+        "objective": "Faire décrire des usages par leur tâche, leur entrée et leur sortie, puis faire vérifier un résultat.",
+        "entryDiagnosis": [
+          "Demander un exemple d’outil et la tâche qu’il réalise."
+        ],
+        "preparation": [
+          "Ouvrir le chapitre. L’image est fournie dans le site ; aucun compte externe n’est nécessaire."
+        ],
+        "why": "Ces repères donnent un vocabulaire concret avant de comparer règles et apprentissage.",
+        "discoverySpeech": [
+          "Partir des situations proposées et demander ce qui entre dans le système et ce qui en sort."
+        ],
+        "example": {
+          "target": {
+            "moduleId": "ia-decouvrir",
+            "blockId": "decouverte"
+          },
+          "comments": [
+            "Distinguer la qualité visuelle d’une image du respect de la consigne et de la réalité de la scène."
+          ]
+        },
+        "accompaniedActivity": {
+          "moduleId": "ia-decouvrir",
+          "blockId": "decouverte",
+          "label": "Comparer la consigne et l’image"
+        },
+        "independentActivity": {
+          "moduleId": "ia-decouvrir",
+          "blockId": "decouverte",
+          "label": "Décrire un usage et une vérification"
+        },
+        "questions": [
+          {
+            "question": "Que faut-il corriger dans l’invitation du bilan ?",
+            "answer": "Le jour : samedi était demandé, dimanche est annoncé. L’heure et la salle sont conformes à la demande."
+          },
+          {
+            "question": "L’image permet-elle de savoir si le lieu existe ?",
+            "answer": "Non. Un décor généré peut être inventé. Son existence devrait être vérifiée avec une source indépendante."
+          }
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Confondre une tâche particulière avec une intelligence capable de tout faire.",
+            "helps": [
+              "Faire nommer la tâche précise et la sortie observée."
+            ]
+          },
+          {
+            "symptom": "Déduire la justesse d’un résultat de sa présentation convaincante.",
+            "helps": [
+              "Choisir une référence : consigne, enregistrement ou source sur l’événement."
+            ]
+          }
+        ],
+        "quickConductor": [
+          "Associer les quatre usages.",
+          "Compléter les chaînes entrée et sortie.",
+          "Examiner l’image et les limites de ce qu’elle démontre.",
+          "Comparer la réponse libre aux critères, puis poursuivre avec Des règles aux données."
+        ],
+        "references": [
+          {
+            "title": "Experience AI",
+            "url": "https://experience-ai.org/fr-CA/"
+          }
+        ]
+      }
+    },
+    "ia-classification": {
+      "domainId": "ia",
+      "title": "Classer et vérifier une prédiction",
+      "type": "lesson",
+      "theme": "avances",
+      "objective": "Observe un classificateur, relie ses catégories aux exemples étiquetés et distingue score annoncé et résultats vérifiés.",
+      "skillIds": [
+        "ia.classification",
+        "ia.evaluation"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "ia.apprentissage",
+          "expectation": "Distinguer entraînement et utilisation ; connaître le rôle d’une étiquette."
+        }
+      ],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {
+          "id": "classification",
+          "type": "lesson",
+          "title": "Observe, classe et vérifie",
+          "aiDiscovery": {
+            "storageKey": "codecraft.ai.classification.v1",
+            "label": "Classer et vérifier une prédiction",
+            "steps": [
+              {
+                "id": "essayer",
+                "label": "Essayer",
+                "title": "Du dessin à la catégorie",
+                "intro": "Dans Quick, Draw!, clique sur « C’est parti ! », puis dessine les objets demandés. Une série de six dessins suffit. Observe une proposition du système et, si elle change, le trait que tu venais d’ajouter. Le jeu contribue à une collection publique : dessine seulement l’objet demandé, sans nom ni information personnelle. Tu préfères observer sans dessiner ? Explore quelques dessins dans la galerie, puis utilise aussi l’exemple ci-dessous.",
+                "links": [
+                  {
+                    "label": "Ouvrir Quick, Draw! en français",
+                    "url": "https://quickdraw.withgoogle.com/?locale=fr"
+                  },
+                  {
+                    "label": "Observer les dessins de la galerie",
+                    "url": "https://quickdraw.withgoogle.com/data"
+                  }
+                ],
+                "groups": [
+                  {
+                    "id": "dessin-entree",
+                    "title": "Ce que reçoit le modèle",
+                    "description": "Tu ajoutes des traits au dessin. Quelle information change ?",
+                    "fields": [
+                      {
+                        "id": "dessin-entree",
+                        "label": "Ta réponse",
+                        "answer": "traits",
+                        "choices": [
+                          {
+                            "id": "regles",
+                            "label": "Les instructions écrites par ses concepteurs"
+                          },
+                          {
+                            "id": "traits",
+                            "label": "Le dessin fourni en entrée"
+                          },
+                          {
+                            "id": "entrainement",
+                            "label": "Les exemples de son entraînement"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Le dessin change. Le modèle calcule une nouvelle prédiction à partir de cette entrée ; ce changement ne prouve pas un nouvel entraînement pendant la partie."
+                  },
+                  {
+                    "id": "dessin-sortie",
+                    "title": "Ce que propose le modèle",
+                    "description": "Exemple : après quelques traits, un système propose « vélo », puis « moto ». Quelle est sa sortie ?",
+                    "fields": [
+                      {
+                        "id": "dessin-sortie",
+                        "label": "Ta réponse",
+                        "answer": "categorie",
+                        "choices": [
+                          {
+                            "id": "intention",
+                            "label": "La preuve qu’il connaît ton intention"
+                          },
+                          {
+                            "id": "certitude",
+                            "label": "Une reconnaissance toujours correcte"
+                          },
+                          {
+                            "id": "categorie",
+                            "label": "Une catégorie proposée pour le dessin"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "La sortie qui nous intéresse est la catégorie proposée. Elle peut changer avec les traits et être incorrecte. Un échec ne signifie pas que tu dessines mal."
+                  }
+                ]
+              },
+              {
+                "id": "exemples",
+                "label": "Les exemples",
+                "title": "Une catégorie, plusieurs façons de dessiner",
+                "intro": "Dans la galerie, clique sur un dessin pour ouvrir sa catégorie. Choisis-en quelques-uns : repère un détail commun et deux façons différentes de représenter le même objet. Les intitulés sont en anglais : bicycle signifie vélo et cup tasse. Une classe est une catégorie possible ; l’étiquette associe cette catégorie à un exemple précis. Pendant un entraînement supervisé, les exemples et leurs étiquettes servent à ajuster le modèle.",
+                "links": [
+                  {
+                    "label": "Explorer la galerie Google",
+                    "url": "https://quickdraw.withgoogle.com/data"
+                  }
+                ],
+                "groups": [
+                  {
+                    "id": "classe-etiquette",
+                    "title": "Classe ou étiquette ?",
+                    "description": "« Vélo » est une catégorie possible. Ce dessin précis porte l’étiquette « vélo ». Quel rôle joue cette étiquette pendant un entraînement supervisé ?",
+                    "fields": [
+                      {
+                        "id": "classe-etiquette",
+                        "label": "Ta réponse",
+                        "answer": "attendue",
+                        "choices": [
+                          {
+                            "id": "attendue",
+                            "label": "Elle fournit la réponse attendue pour cet exemple"
+                          },
+                          {
+                            "id": "garantie",
+                            "label": "Elle garantit que le modèle répondra toujours vélo"
+                          },
+                          {
+                            "id": "forme",
+                            "label": "Elle impose une seule façon de dessiner un vélo"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "L’étiquette indique la réponse associée à cet exemple. Le modèle doit pouvoir proposer une catégorie sur d’autres dessins, sans recevoir leur réponse attendue."
+                  },
+                  {
+                    "id": "exemples-varies",
+                    "title": "Préparer des exemples utiles",
+                    "description": "Quelle collection aiderait à couvrir plusieurs façons de dessiner une tasse ?",
+                    "fields": [
+                      {
+                        "id": "exemples-varies",
+                        "label": "Ta réponse",
+                        "answer": "varies",
+                        "choices": [
+                          {
+                            "id": "copies",
+                            "label": "De nombreuses copies exactement identiques d’un seul dessin"
+                          },
+                          {
+                            "id": "seul",
+                            "label": "Un seul dessin très détaillé"
+                          },
+                          {
+                            "id": "varies",
+                            "label": "Des tasses dessinées sous différents angles et avec différents traits"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Des variations pertinentes aident à couvrir les entrées que le modèle rencontrera. Beaucoup de copies identiques n’apportent pas cette diversité. Cela ne dispense pas de vérifier la qualité des exemples et de leurs étiquettes."
+                  },
+                  {
+                    "id": "galerie-selection",
+                    "title": "Ce que montre la galerie",
+                    "description": "La documentation Google indique que cette galerie affiche des dessins reconnus par le jeu. Peut-on en déduire son taux de réussite sur tous les dessins ?",
+                    "fields": [
+                      {
+                        "id": "galerie-selection",
+                        "label": "Ta réponse",
+                        "answer": "non",
+                        "choices": [
+                          {
+                            "id": "oui",
+                            "label": "Oui, tous les exemples visibles ont été reconnus"
+                          },
+                          {
+                            "id": "non",
+                            "label": "Non, cette sélection ne représente pas tous les essais"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "La galerie aide à observer des variations. Une sélection de dessins reconnus ne permet pas de mesurer la réussite sur tous les dessins soumis au jeu."
+                  }
+                ]
+              },
+              {
+                "id": "scores",
+                "label": "Lire un score",
+                "title": "Un score et des résultats à vérifier",
+                "intro": "Exemple construit pour l’exercice : ce classificateur calcule un score pour chacune de ses catégories, vélo, tasse et bateau. Ces scores sont ses estimations pour le dessin reçu. Dans cet exemple, il propose la catégorie au score le plus élevé. Observe le dessin et les scores ci-dessous, puis compare sa proposition à ce que tu vois. Dans le tableau, compare ensuite les réponses proposées aux réponses attendues. Ces chiffres ne proviennent pas de Quick, Draw!.",
+                "image": {
+                  "src": "assets/ia/classification-tasse.svg",
+                  "alt": "Dessin d’une tasse avec une anse et une soucoupe.",
+                  "caption": "Scores de l’exemple : vélo 98 %, tasse 1 %, bateau 1 %. Catégorie proposée : vélo.",
+                  "compact": true
+                },
+                "table": {
+                  "caption": "Cinq essais construits pour cet exercice",
+                  "headings": [
+                    "Essai",
+                    "Attendu",
+                    "Réponse"
+                  ],
+                  "rows": [
+                    [
+                      "1",
+                      "Tasse",
+                      "Vélo"
+                    ],
+                    [
+                      "2",
+                      "Bateau",
+                      "Bateau"
+                    ],
+                    [
+                      "3",
+                      "Vélo",
+                      "Vélo"
+                    ],
+                    [
+                      "4",
+                      "Tasse",
+                      "Tasse"
+                    ],
+                    [
+                      "5",
+                      "Bateau",
+                      "Bateau"
+                    ]
+                  ]
+                },
+                "groups": [
+                  {
+                    "id": "score-erreur",
+                    "title": "Un score élevé",
+                    "description": "La catégorie proposée correspond-elle au dessin ?",
+                    "fields": [
+                      {
+                        "id": "score-erreur",
+                        "label": "Ta réponse",
+                        "answer": "fausse",
+                        "choices": [
+                          {
+                            "id": "vraie",
+                            "label": "Oui, le score de 98 % suffit à confirmer que le dessin représente un vélo"
+                          },
+                          {
+                            "id": "fausse",
+                            "label": "Non, le dessin représente une tasse malgré le score plus élevé pour vélo"
+                          },
+                          {
+                            "id": "taux",
+                            "label": "Le système réussit 98 % de tous ses essais"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Le dessin représente une tasse : la catégorie vélo est incorrecte malgré son score de 98 %. Un score élevé peut donc accompagner une erreur. Ce score concerne cette prédiction ; le taux de réussite se mesure en comparant plusieurs réponses aux réponses attendues."
+                  },
+                  {
+                    "id": "taux-reussite",
+                    "title": "Compter les bonnes réponses",
+                    "description": "Combien de propositions du tableau correspondent à la référence ?",
+                    "fields": [
+                      {
+                        "id": "taux-reussite",
+                        "label": "Ta réponse",
+                        "answer": "quatre",
+                        "choices": [
+                          {
+                            "id": "cinq",
+                            "label": "5 sur 5, soit 100 %"
+                          },
+                          {
+                            "id": "score",
+                            "label": "98 %, comme le score affiché"
+                          },
+                          {
+                            "id": "quatre",
+                            "label": "4 sur 5, soit 80 %"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Quatre propositions sur cinq correspondent à la référence. Ce taux de 80 % décrit ces cinq essais construits, pas toutes les situations futures. Un score individuel et un taux mesuré sur plusieurs essais sont deux informations différentes."
+                  }
+                ]
+              },
+              {
+                "id": "tests",
+                "label": "Choisir des tests",
+                "title": "Quels essais permettraient de vérifier le modèle ?",
+                "intro": "Un outil doit classer des dessins en « vélo », « bateau » ou « tasse ». Ses concepteurs ont utilisé des dessins étiquetés pour l’entraîner. Pour le vérifier, ils gardent d’autres exemples à part et comparent les catégories proposées aux réponses attendues. Choisis des essais utiles pour cette tâche.",
+                "groups": [
+                  {
+                    "id": "test-nouveau",
+                    "title": "Essayer une autre représentation",
+                    "description": "Quel cas apporte une vérification sur un exemple distinct de ceux utilisés pour entraîner le modèle ?",
+                    "fields": [
+                      {
+                        "id": "test-nouveau",
+                        "label": "Ta réponse",
+                        "answer": "nouveau",
+                        "choices": [
+                          {
+                            "id": "nouveau",
+                            "label": "Un vélo dessiné autrement, gardé à part de l’entraînement"
+                          },
+                          {
+                            "id": "copie",
+                            "label": "Le même dessin d’entraînement présenté de nouveau"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Un exemple gardé à part permet de vérifier si le modèle réussit au-delà de ceux qui ont servi à l’ajuster. Un seul succès ne suffit pas à conclure pour toutes les variations."
+                  },
+                  {
+                    "id": "test-inconnu",
+                    "title": "Un objet hors des catégories",
+                    "description": "On présente un dessin de chaussure. Que faut-il examiner ?",
+                    "fields": [
+                      {
+                        "id": "test-inconnu",
+                        "label": "Ta réponse",
+                        "answer": "limite",
+                        "choices": [
+                          {
+                            "id": "nouvelle",
+                            "label": "La nouvelle classe chaussure créée automatiquement"
+                          },
+                          {
+                            "id": "limite",
+                            "label": "La réponse obtenue et la façon dont l’outil traite ce cas non prévu"
+                          },
+                          {
+                            "id": "rejet",
+                            "label": "Le rejet automatique, qui est garanti"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Un modèle limité à ces catégories peut quand même attribuer une catégorie connue à une chaussure. Il faut observer son comportement et prévoir comment traiter ce cas dans l’outil."
+                  },
+                  {
+                    "id": "test-variation",
+                    "title": "Examiner une erreur possible",
+                    "description": "Une tasse sans anse est classée bateau. Que faire pour comprendre les limites de l’outil ?",
+                    "fields": [
+                      {
+                        "id": "test-variation",
+                        "label": "Ta réponse",
+                        "answer": "comparer",
+                        "choices": [
+                          {
+                            "id": "accuser",
+                            "label": "Conclure que tous les dessins de tasse sont impossibles à reconnaître"
+                          },
+                          {
+                            "id": "score",
+                            "label": "Accepter la réponse dès que son score est élevé"
+                          },
+                          {
+                            "id": "comparer",
+                            "label": "Essayer plusieurs nouvelles tasses avec et sans anse, et noter les réponses"
+                          }
+                        ]
+                      }
+                    ],
+                    "feedback": "Comparer des cas pertinents aide à repérer dans quelles situations les erreurs apparaissent. Cela ne révèle pas à lui seul le calcul interne du modèle."
+                  }
+                ]
+              }
+            ],
+            "freeCheck": {
+              "prompt": "Quelle entrée testerais-tu, quelle réponse attendrais-tu, et qu’apprendrais-tu si le modèle se trompait ?",
+              "criteria": [
+                "Nommer une entrée concrète et une réponse attendue.",
+                "Expliquer quelle variation ou difficulté cet essai examine.",
+                "Relier une erreur possible à une vérification supplémentaire."
+              ],
+              "sample": "Je garderais à part plusieurs dessins de tasse sans anse. J’attendrais la catégorie tasse. Si plusieurs deviennent bateau, je comparerais avec des tasses avec anse pour examiner cette difficulté."
+            }
+          }
+        },
+        {
+          "id": "sources",
+          "type": "details",
+          "title": "Sources et crédits",
+          "blocks": [
+            {
+              "id": "source-progression",
+              "type": "lesson",
+              "title": "Une activité CodeCraft",
+              "paragraphs": [
+                "Progression inspirée des objectifs de la leçon Classification d’Experience AI, de Raspberry Pi Foundation et Google DeepMind, et des pages 13 à 18 du guide fourni. Textes, illustration, exemples chiffrés et questions originaux CodeCraft."
+              ],
+              "externalLink": {
+                "label": "Leçon officielle Classification",
+                "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/14"
+              }
+            },
+            {
+              "id": "source-donnees",
+              "type": "lesson",
+              "title": "Dessins et étiquettes",
+              "paragraphs": [
+                "La documentation Google distingue la catégorie demandée au joueur et la reconnaissance par le jeu. La galerie présente une sélection de dessins reconnus."
+              ],
+              "externalLink": {
+                "label": "Documentation Quick, Draw!",
+                "url": "https://github.com/googlecreativelab/quickdraw-dataset"
+              }
+            },
+            {
+              "id": "source-supervise",
+              "type": "lesson",
+              "title": "Entraînement et évaluation",
+              "paragraphs": [
+                "Google définit le rôle des exemples étiquetés et distingue entraînement, évaluation et utilisation."
+              ],
+              "externalLink": {
+                "label": "Google : apprentissage supervisé",
+                "url": "https://developers.google.com/machine-learning/intro-to-ml/supervised"
+              }
+            },
+            {
+              "id": "source-score",
+              "type": "lesson",
+              "title": "Interpréter les scores",
+              "paragraphs": [
+                "Les travaux de Guo et ses collègues montrent que les scores des réseaux peuvent être mal calibrés : un score ne constitue pas automatiquement une probabilité fiable de justesse."
+              ],
+              "externalLink": {
+                "label": "On Calibration of Modern Neural Networks",
+                "url": "https://proceedings.mlr.press/v70/guo17a"
+              }
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Identifier une entrée et la catégorie proposée.",
+        "Relier une étiquette à un exemple et expliquer l’intérêt de variations pertinentes.",
+        "Distinguer score individuel et bonnes réponses mesurées.",
+        "Proposer un essai concret et sa réponse attendue."
+      ],
+      "teacherGuide": {
+        "entryDiagnosis": [
+          "Faire rappeler la différence entre entraînement et utilisation."
+        ],
+        "preparation": [
+          "Ouvrir Quick, Draw! en français et la galerie. Proposer la voie observation si le dessin chronométré gêne."
+        ],
+        "why": "Ce chapitre rend concret le classificateur et prépare une future activité d’entraînement.",
+        "discoverySpeech": [
+          "Une série de dessins suffit, puis observer une catégorie proposée."
+        ],
+        "example": {
+          "target": {
+            "moduleId": "ia-classification",
+            "blockId": "classification"
+          },
+          "comments": [
+            "Les chiffres sont construits pour discuter des scores ; ils ne mesurent pas Quick, Draw!."
+          ]
+        },
+        "accompaniedActivity": {
+          "moduleId": "ia-classification",
+          "blockId": "classification",
+          "label": "Examiner une catégorie prédite"
+        },
+        "independentActivity": {
+          "moduleId": "ia-classification",
+          "blockId": "classification",
+          "label": "Choisir des essais pertinents"
+        },
+        "questions": [
+          {
+            "question": "Changer de proposition prouve-t-il un entraînement en direct ?",
+            "answer": "Non, l’entrée change et le modèle calcule une autre prédiction."
+          },
+          {
+            "question": "Que mesure le résultat 4 sur 5 ?",
+            "answer": "La proportion de réponses correctes sur ces cinq cas, sans garantie pour toutes les situations."
+          }
+        ],
+        "commonErrors": [
+          {
+            "symptom": "Prendre le score pour un taux de réussite global.",
+            "helps": [
+              "Comparer le score de 98 % et le tableau de cinq résultats."
+            ]
+          }
+        ],
+        "quickConductor": [
+          "Observer une série ou la galerie.",
+          "Comparer les exemples et définir classe et étiquette.",
+          "Examiner le score puis compter les réponses correctes.",
+          "Proposer un test avec une référence."
+        ],
+        "references": [
+          {
+            "title": "Experience AI : Classification",
+            "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/14"
+          }
+        ],
+        "objective": "Relier classification, exemples étiquetés et vérification sans confondre score et réussite mesurée."
+      }
+    },
+    "ia-entrainement": {
+      "domainId": "ia",
+      "title": "Entraîner un modèle et examiner ses erreurs",
+      "type": "lesson",
+      "theme": "avances",
+      "objective": "Entraîne un classificateur, compare deux versions sur les mêmes photos et examine les limites de ses données.",
+      "skillIds": [
+        "ia.apprentissage",
+        "ia.classification",
+        "ia.evaluation",
+        "ia.generalisation"
+      ],
+      "prerequisiteSkills": [
+        {
+          "skillId": "ia.classification",
+          "expectation": "Reconnaître une catégorie et une étiquette."
+        },
+        {
+          "skillId": "ia.evaluation",
+          "expectation": "Distinguer le score d’une prédiction et les réponses correctes sur des essais."
+        }
+      ],
+      "prerequisitesInContent": true,
+      "blocks": [
+        {
+          "id": "entrainement",
+          "type": "lesson",
+          "title": "Prépare, entraîne et compare",
+          "aiTraining": {
+            "basePath": "resources/ia/tasses-cuilleres",
+            "classes": [
+              "Cuillères",
+              "Tasses"
+            ],
+            "steps": [
+              {
+                "label": "Préparer",
+                "title": "Deux catégories, des exemples étiquetés",
+                "paragraphs": [
+                  "Tu vas entraîner un modèle à distinguer des photos de tasses et de cuillères. Dans le chapitre précédent, tu utilisais un classificateur déjà préparé. Ici, tu choisis ses exemples et tu lances son entraînement.",
+                  "Télécharge le kit et extrais l’archive. Il contient quatre dossiers : Départ pour entraîner, Essais pour comparer, Complément pour ajouter des exemples et Nouveaux essais pour la fin. Une photo montre une ou plusieurs cuillères, ou une ou plusieurs tasses. Une tasse peut contenir une boisson et avoir une soucoupe.",
+                  "Sur ordinateur, ouvre Teachable Machine et choisis le français avant de commencer : changer la langue recharge le projet. Utilise un projet Images, modèle d’images standard. Renomme les deux classes « Cuillères » et « Tasses ». Tu peux utiliser les fichiers sans caméra ni compte Drive.",
+                  "Dans chaque classe, clique sur Importer et sélectionne les trois photos du dossier correspondant dans 01-depart. Vérifie leurs étiquettes et observe le recadrage carré des vignettes : une partie des objets allongés peut sortir du cadre.",
+                  "Repère ce qui varie déjà entre ces exemples : les objets, leur orientation et leur fond. Laisse les photos des autres lots dans leurs dossiers pour les étapes suivantes."
+                ],
+                "links": [
+                  {
+                    "label": "Télécharger le kit de 20 photos (3,4 Mo)",
+                    "url": "resources/ia/tasses-cuilleres.zip"
+                  },
+                  {
+                    "label": "Ouvrir le projet Images dans un autre onglet",
+                    "url": "https://teachablemachine.withgoogle.com/train/image"
+                  }
+                ]
+              },
+              {
+                "label": "Entraîner",
+                "title": "Entraîner, puis essayer quatre photos",
+                "paragraphs": [
+                  "Clique sur « Entraîner le modèle » avec les réglages proposés et attends la fin. Ajouter des photos prépare les données ; l’entraînement ajuste des valeurs numériques à partir des exemples et de leurs catégories. Teachable Machine s’appuie sur un modèle déjà entraîné et adapte une partie du système à tes catégories.",
+                  "Dans Aperçu, sélectionne l’entrée par fichier et teste les quatre photos de 02-essais, une par une. Garde ces photos hors des classes d’entraînement. Si un encart masque l’aperçu, ferme-le.",
+                  "Pour chaque fichier, reporte ci-dessous la catégorie dont le score est le plus élevé. Le nom de son dossier indique la catégorie attendue. Les liens du tableau permettent de regarder la photo ; utilise le fichier extrait du kit pour l’importer dans l’aperçu.",
+                  "CodeCraft conserve ton relevé dans ce navigateur ; il ne récupère pas les réponses de Teachable Machine. Un score de 100 % accompagne une prédiction : il ne garantit pas la réussite sur toutes les photos. Observe une erreur éventuelle et les situations encore peu représentées, même si tes quatre essais réussissent."
+                ]
+              },
+              {
+                "label": "Comparer",
+                "title": "Choisir des ajouts et réentraîner",
+                "paragraphs": [
+                  "Regarde les photos de 03-complement. Choisis une ou deux photos par catégorie pour mieux représenter une situation : autre orientation, plusieurs objets, autre type de tasse ou autre décor. Coche les fichiers que tu vas réellement importer et explique ton choix.",
+                  "Si tous tes premiers essais sont corrects, choisis une variation peu représentée dans les photos de départ. Le but est d’examiner un changement, pas d’obtenir obligatoirement une erreur ou un meilleur résultat."
+                ]
+              },
+              {
+                "label": "Bilan",
+                "title": "Ce que ces essais permettent de conclure",
+                "paragraphs": [
+                  "Compare le nombre de réponses correctes avant et après sur les quatre mêmes photos. Il peut augmenter, rester identique ou diminuer. Une photo non renseignée n’est pas comptée comme un échec. Termine les quatre essais de chaque version pour comparer les mêmes cas.",
+                  "Les photos utilisées pour décider des ajouts servent ensuite de comparaison pendant la préparation. Les quatre nouvelles photos apportent une vérification supplémentaire, mais ce petit nombre ne démontre pas une fiabilité générale. Une erreur isolée ne prouve pas que le modèle se base sur le fond.",
+                  "Des exemples pris presque toujours sous le même angle ou dans le même décor couvrent mal d’autres usages. Un tel déséquilibre peut contribuer à des erreurs répétées : c’est un risque de biais dans les données. Plus de photos ou des classes de même taille ne garantissent pas des données représentatives.",
+                  "Avant de fermer Teachable Machine, télécharge le projet en tant que fichier .tm depuis son menu. Pour reprendre, ouvre ce fichier dans l’outil, puis relance l’entraînement : les catégories et photos reviennent, mais le modèle doit être réentraîné. La sauvegarde de tes réponses sur CodeCraft ne conserve pas ce projet externe."
+                ]
+              }
+            ],
+            "comparison": [
+              {
+                "file": "cuillere-04.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères"
+              },
+              {
+                "file": "cuillere-11.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères"
+              },
+              {
+                "file": "tasse-02.jpg",
+                "folder": "tasses",
+                "expected": "Tasses"
+              },
+              {
+                "file": "tasse-15.jpg",
+                "folder": "tasses",
+                "expected": "Tasses"
+              }
+            ],
+            "fresh": [
+              {
+                "file": "cuillere-07.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères"
+              },
+              {
+                "file": "cuillere-12.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères"
+              },
+              {
+                "file": "tasse-11.jpg",
+                "folder": "tasses",
+                "expected": "Tasses"
+              },
+              {
+                "file": "tasse-16.jpg",
+                "folder": "tasses",
+                "expected": "Tasses"
+              }
+            ],
+            "complement": [
+              {
+                "file": "cuillere-05.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères",
+                "description": "plusieurs cuillères côte à côte"
+              },
+              {
+                "file": "cuillere-06.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères",
+                "description": "une cuillère horizontale sur du tissu"
+              },
+              {
+                "file": "cuillere-09.jpg",
+                "folder": "cuilleres",
+                "expected": "Cuillères",
+                "description": "une cuillère décorée, vue de dessus"
+              },
+              {
+                "file": "tasse-06.jpg",
+                "folder": "tasses",
+                "expected": "Tasses",
+                "description": "plusieurs tasses sur un fond gris"
+              },
+              {
+                "file": "tasse-07.jpg",
+                "folder": "tasses",
+                "expected": "Tasses",
+                "description": "une tasse peinte sur fond clair"
+              },
+              {
+                "file": "tasse-14.jpg",
+                "folder": "tasses",
+                "expected": "Tasses",
+                "description": "une tasse haute tenue en main"
+              }
+            ],
+            "reasonPrompt": "Quels fichiers choisis-tu et quelle situation veux-tu mieux représenter ?",
+            "retrain": "Dans Teachable Machine, ajoute les photos cochées à leurs classes, puis relance « Entraîner le modèle ». Reprends les quatre photos de 02-essais dans Aperçu, sans les ajouter aux classes, et renseigne Après. Si le sélecteur de fichier a disparu, resélectionne l’entrée par fichier.",
+            "freshIntro": "Teste maintenant les quatre photos de 04-nouveaux-essais, encore gardées à part, et relève les réponses de la seconde version. Cette vérification porte sur d’autres photos que celles utilisées pour choisir tes ajouts.",
+            "freeCheck": {
+              "prompt": "Décris un essai, les exemples que tu as ajoutés et le résultat après réentraînement. Que peux-tu conclure, et quel autre cas faudrait-il encore tester ?",
+              "criteria": [
+                "Je cite un fichier testé et compare sa catégorie proposée à celle attendue.",
+                "J’explique les photos ajoutées et je distingue ajout de données et nouvel entraînement.",
+                "Je décris le résultat observé, même inchangé, et propose un autre essai sans généraliser à toutes les photos."
+              ],
+              "sample": "Si les quatre essais réussissent avant et après, je peux écrire : « J’ai ajouté une tasse haute pour varier les formes, puis relancé l’entraînement. Les quatre mêmes photos sont toujours bien classées. Cela ne prouve pas une amélioration. Je testerais une autre tasse haute sur un fond différent, sans l’ajouter à l’entraînement. » Adapte cette réponse à tes fichiers et résultats réels."
+            },
+            "beforeReminder": "Avant d’ajouter des photos et de relancer l’entraînement, termine le relevé des quatre essais avec le premier modèle. Le réentraînement remplacera cette version dans Teachable Machine.",
+            "biasCheck": {
+              "prompt": "Imagine maintenant une commande vocale entraînée surtout sur un seul accent. Elle pourrait moins bien fonctionner pour d’autres personnes. Quelles voix faudrait-il inclure dans l’entraînement et réserver pour les essais ? Les choix de collecte peuvent ainsi produire ou renforcer des inégalités entre utilisateurs.",
+              "answer": "Inclure des voix et accents variés correspondant aux personnes qui utiliseront la commande. Réserver pour les essais des enregistrements distincts, notamment d’autres personnes, puis comparer les erreurs selon les groupes. Ajouter beaucoup d’enregistrements d’un seul accent ne suffit pas à représenter les autres. Même avec des données diversifiées, il faut vérifier les résultats."
+            }
+          }
+        },
+        {
+          "id": "sources",
+          "type": "details",
+          "title": "Sources et crédits",
+          "blocks": [
+            {
+              "id": "source-experience",
+              "type": "lesson",
+              "title": "Adaptation CodeCraft",
+              "paragraphs": [
+                "Scénario et kit originaux CodeCraft, en lien avec les objectifs de la leçon 4 Experience AI. L’activité officielle utilise Machine Learning for Kids ; ce chapitre utilise Teachable Machine."
+              ],
+              "externalLink": {
+                "label": "Experience AI : Bias in, bias out",
+                "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/15"
+              }
+            },
+            {
+              "id": "source-outil",
+              "type": "lesson",
+              "title": "Outil et sauvegarde",
+              "paragraphs": [
+                "La FAQ documente les exemples, l’apprentissage par transfert et la sauvegarde. Les commandes de reprise ont été vérifiées dans l’outil."
+              ],
+              "externalLink": {
+                "label": "FAQ Teachable Machine",
+                "url": "https://teachablemachine.withgoogle.com/faq"
+              }
+            },
+            {
+              "id": "source-essais",
+              "type": "lesson",
+              "title": "Séparer les données",
+              "paragraphs": [
+                "Réserver des exemples distincts et distinguer comparaison pendant les ajustements et vérification finale."
+              ],
+              "externalLink": {
+                "label": "Google : diviser les données",
+                "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets"
+              }
+            },
+            {
+              "id": "source-biais",
+              "type": "lesson",
+              "title": "Représentation et biais",
+              "paragraphs": [
+                "Les données peuvent refléter des choix de collecte et des déséquilibres sociaux."
+              ],
+              "externalLink": {
+                "label": "Google : types de biais",
+                "url": "https://developers.google.com/machine-learning/crash-course/fairness/types-of-bias"
+              }
+            },
+            {
+              "id": "credits-photos",
+              "type": "lesson",
+              "title": "Photographies",
+              "paragraphs": [
+                "Les vingt photographies proviennent de Wikimedia Commons. Le fichier CREDITS.txt du kit conserve les auteurs, sources et licences de chaque photo."
+              ]
+            }
+          ]
+        }
+      ],
+      "masteryCriteria": [
+        "Importer des exemples dans les catégories appropriées et lancer un entraînement.",
+        "Tester des photos réservées et relever les réponses réelles.",
+        "Justifier des ajouts, réentraîner et comparer les mêmes cas.",
+        "Expliquer une limite des essais et un risque lié aux données peu représentatives."
+      ]
+    },
     "scratch-recette-marche": {
       "domainId": "jeux-video",
       "title": "Animer la marche de mon personnage",
@@ -38480,6 +40572,18 @@ window.CODECRAFT_DATA = {
             "minecraft-automatisation"
           ]
         }
+      ]
+    },
+    "ia-experience": {
+      "domainId": "ia",
+      "title": "Comprendre l’IA par l’expérience",
+      "theme": "avances",
+      "objective": "Découvre les usages de l’IA, compare règles et apprentissage, puis entraîne un classificateur et examine ses résultats.",
+      "moduleIds": [
+        "ia-decouvrir",
+        "ia-regles-donnees",
+        "ia-classification",
+        "ia-entrainement"
       ]
     },
     "scratch-recettes": {

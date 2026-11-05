@@ -9,6 +9,7 @@ Ces documents guident les modifications et les vérifications. Les règles édit
 - [carte-projet.md](carte-projet.md)
 - [organisation-contenus.md](organisation-contenus.md)
 - [regles-editoriales.md](regles-editoriales.md)
+- [ia-experience.md](ia-experience.md)
 - [minecraft-codeorg.md](minecraft-codeorg.md)
 - [verification-developpement.md](verification-developpement.md)
 - [navigation-parcours.md](navigation-parcours.md)
@@ -24,6 +25,9 @@ Ces documents guident les modifications et les vérifications. Les règles édit
 
 Ces documents distinguent les lots réalisés, les propositions et les recettes restant à confirmer. Leur mention d’un module ne signifie pas nécessairement qu’il est publié.
 
+- [cadrage-ia-classification.md](cadrage-ia-classification.md)
+- [cadrage-ia-entrainement.md](cadrage-ia-entrainement.md)
+- [recette-ia-entrainement.md](recette-ia-entrainement.md)
 - [cadrage-recettes-scratch.md](cadrage-recettes-scratch.md)
 
 - [audit-scratch-minecraft.md](audit-scratch-minecraft.md)
@@ -79,6 +83,7 @@ Les fichiers suivants conservent les décisions, revues et supports de séance. 
 - [revue-minecraft-strategies.md](revue-minecraft-strategies.md)
 - [revue-minecraft-automatisation.md](revue-minecraft-automatisation.md)
 - [revue-transversale-minecraft.md](revue-transversale-minecraft.md)
+- [revue-transversale-ia-chapitres-1-2.md](revue-transversale-ia-chapitres-1-2.md)
 - [revue-roadmap-scratch-avance.md](revue-roadmap-scratch-avance.md)
 - [revue-scratch-mission-segment-1.md](revue-scratch-mission-segment-1.md)
 - [revue-scratch-mission-clones.md](revue-scratch-mission-clones.md)
