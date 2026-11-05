@@ -165,94 +165,94 @@
           {
             "id": "corpus-1",
             "category": "joie",
-            "text": "Nous avons applaudi quand la fusée en carton a décollé !"
+            "text": "Sophie l'embrassa plus de vingt fois, et, la tenant dans ses bras, elle se mit à sauter et à danser."
           },
           {
             "id": "corpus-2",
             "category": "joie",
-            "text": "Nous étions fiers de voir notre robot terminer le parcours."
+            "text": "Sophie ne répondit pas, mais elle sourit d'un air satisfait qui voulait dire qu'elle serait certainement toujours sage."
           },
           {
             "id": "corpus-3",
             "category": "joie",
-            "text": "Quel sourire en découvrant ma photo sur l’affiche !"
+            "text": "Sophie et Paul poussent un cri de joie."
           },
           {
             "id": "corpus-4",
             "category": "joie",
-            "text": "Cette soirée sous les étoiles était chouette."
+            "text": "Que je suis contente!"
           },
           {
             "id": "corpus-5",
             "category": "joie",
-            "text": "Nous étions ravis du retour des hirondelles au jardin."
+            "text": "Beau-Minon était le plus heureux des chats."
           },
           {
             "id": "corpus-6",
             "category": "tristesse",
-            "text": "Le refuge a fermé et je n’y verrai plus les chèvres."
+            "text": "Sophie ne disait rien; elle regardait la poupée et pleurait."
           },
           {
             "id": "corpus-7",
             "category": "tristesse",
-            "text": "J’ai perdu mon carnet et je repense à tous mes dessins."
+            "text": "Sophie ne disait rien; elle restait immobile et rouge, la tête baissée, les yeux pleins de larmes."
           },
           {
             "id": "corpus-8",
             "category": "tristesse",
-            "text": "Le banc de ma grand-mère est vide et ça me serre le cœur."
+            "text": "La bonne, la voyant triste, crut que c'était la mort des pauvres petits poissons qui l'affligeait."
           },
           {
             "id": "corpus-9",
             "category": "tristesse",
-            "text": "J’ai pleuré en rangeant le panier de mon chien."
+            "text": "Sophie n'osait rien dire, mais elle pleura amèrement son pauvre chat, qu'elle aimait malgré ses défauts."
           },
           {
             "id": "corpus-10",
             "category": "tristesse",
-            "text": "Notre répétition a été annulée et la scène va me manquer."
+            "text": "Le jour du départ fut un triste jour."
           },
           {
             "id": "corpus-11",
             "category": "colere",
-            "text": "Ils ont triché au tournoi et refusent de rendre la coupe."
+            "text": "Paul, qui était furieux, les repoussa; Sophie en profita pour se dégager et pour tomber dessus à coups de poing."
           },
           {
             "id": "corpus-12",
             "category": "colere",
-            "text": "Ils ont hurlé sur ma sœur pour une erreur minuscule."
+            "text": "Je ne veux plus jouer avec un méchant garçon comme vous, monsieur."
           },
           {
             "id": "corpus-13",
             "category": "colere",
-            "text": "On m’a interdit de présenter mon travail sans me laisser parler."
+            "text": "Laisse-moi tranquille, méchant, cela ne te regarde pas."
           },
           {
             "id": "corpus-14",
             "category": "colere",
-            "text": "Ils ont coupé l’arbre du quartier, ça me met en rage !"
+            "text": "Méchante Louise, rendez-moi mes fers, dit Élisabeth en colère."
           },
           {
             "id": "corpus-15",
             "category": "colere",
-            "text": "Le voisin a cassé mon cerf-volant exprès, je suis furieux !"
+            "text": "Pas du tout, monsieur, je ne suis furieuse que contre vous, parce que vous me faites toujours gronder."
           }
         ],
         "hypotheses": [
           {
             "id": "prefix-et",
             "label": "Début du message, puis « et »",
-            "description": "Dans cet ordre : commence par « Nous » → joie ; par « Ils » → colère ; sinon contient le mot « et » → tristesse ; sinon → indéterminée.",
+            "description": "Dans cet ordre : commence par « Sophie » → joie ; par « Paul, » → colère ; sinon contient le mot « et » → tristesse ; sinon → indéterminée.",
             "policy": "first",
             "conditions": [
               {
                 "kind": "starts",
-                "term": "Nous",
+                "term": "Sophie",
                 "category": "joie"
               },
               {
                 "kind": "starts",
-                "term": "Ils",
+                "term": "Paul,",
                 "category": "colere"
               },
               {
@@ -264,18 +264,18 @@
           },
           {
             "id": "prefix",
-            "label": "Seulement « Nous » et « Ils »",
-            "description": "Commence par « Nous » → joie ; par « Ils » → colère ; sinon → indéterminée. Ces débuts apparaissent dans plusieurs exemples, mais ne couvrent pas toute la collection.",
+            "label": "Seulement « Sophie » et « Paul, »",
+            "description": "Commence par « Sophie » → joie ; par « Paul, » → colère ; sinon → indéterminée. Ces débuts apparaissent dans plusieurs exemples, mais ne couvrent pas toute la collection.",
             "policy": "first",
             "conditions": [
               {
                 "kind": "starts",
-                "term": "Nous",
+                "term": "Sophie",
                 "category": "joie"
               },
               {
                 "kind": "starts",
-                "term": "Ils",
+                "term": "Paul,",
                 "category": "colere"
               }
             ]
@@ -283,82 +283,72 @@
           {
             "id": "words",
             "label": "Des mots repérés dans chaque colonne",
-            "description": "« applaudi », « fiers », « sourire », « chouette », « ravis » → joie. « fermé », « perdu », « vide », « pleuré », « manquer » → tristesse. « triché », « hurlé », « interdit », « rage », « furieux » → colère. Si plusieurs catégories ressortent ou si aucun indice ne correspond, la prédiction est indéterminée.",
+            "description": "« sauter », « sourit », « joie », « contente », « heureux » → joie ; « pleurait », « larmes », « triste », « pleura » → tristesse ; « furieux », « méchant », « colère », « furieuse » → colère. Plusieurs catégories repérées, ou aucun indice : indéterminée.",
             "policy": "consensus",
             "conditions": [
               {
                 "kind": "word",
-                "term": "applaudi",
+                "term": "sauter",
                 "category": "joie"
               },
               {
                 "kind": "word",
-                "term": "fiers",
+                "term": "sourit",
                 "category": "joie"
               },
               {
                 "kind": "word",
-                "term": "sourire",
+                "term": "joie",
                 "category": "joie"
               },
               {
                 "kind": "word",
-                "term": "chouette",
+                "term": "contente",
                 "category": "joie"
               },
               {
                 "kind": "word",
-                "term": "ravis",
+                "term": "heureux",
                 "category": "joie"
               },
               {
                 "kind": "word",
-                "term": "fermé",
+                "term": "pleurait",
                 "category": "tristesse"
               },
               {
                 "kind": "word",
-                "term": "perdu",
+                "term": "larmes",
                 "category": "tristesse"
               },
               {
                 "kind": "word",
-                "term": "vide",
+                "term": "triste",
                 "category": "tristesse"
               },
               {
                 "kind": "word",
-                "term": "pleuré",
+                "term": "pleura",
                 "category": "tristesse"
-              },
-              {
-                "kind": "word",
-                "term": "manquer",
-                "category": "tristesse"
-              },
-              {
-                "kind": "word",
-                "term": "triché",
-                "category": "colere"
-              },
-              {
-                "kind": "word",
-                "term": "hurlé",
-                "category": "colere"
-              },
-              {
-                "kind": "word",
-                "term": "interdit",
-                "category": "colere"
-              },
-              {
-                "kind": "word",
-                "term": "rage",
-                "category": "colere"
               },
               {
                 "kind": "word",
                 "term": "furieux",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "méchant",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "colère",
+                "category": "colere"
+              },
+              {
+                "kind": "word",
+                "term": "furieuse",
                 "category": "colere"
               }
             ]
@@ -367,37 +357,37 @@
         "tests": [
           {
             "id": "attente",
-            "text": "Nous avons reçu un courrier ce matin.",
-            "interpretation": "Un courrier peut annoncer une bonne ou une mauvaise nouvelle, ou donner une simple information. Sans son contenu, l’émotion reste ambiguë."
+            "text": "Sophie ne répondit rien.",
+            "interpretation": "Le message reste ambigu sans contexte."
           },
           {
             "id": "projet",
-            "text": "Le studio a fermé et le spectacle est annulé.",
-            "interpretation": "L’annulation peut évoquer de la tristesse ou de la colère. Le contexte manque pour trancher entre les deux."
+            "text": "Ils se relevèrent tristement; les petits fermiers s'en allèrent à la ferme; Sophie et Paul retournèrent à la maison.",
+            "interpretation": "Tristesse"
           },
           {
             "id": "peinture",
-            "text": "Ils ont applaudi quand mon court métrage s’est terminé !",
-            "interpretation": "Les applaudissements peuvent susciter de la joie ou de la fierté. Le mot « Ils » ne justifie pas de prédire la colère."
+            "text": "Paul, qui arriva au même instant, demanda à les accompagner, à la grande joie de Sophie.",
+            "interpretation": "Joie"
           },
           {
             "id": "billets",
-            "text": "Nous avions préparé une nuit sous les étoiles, mais l’orage nous a fait rentrer.",
-            "interpretation": "La sortie interrompue peut susciter de la déception. Commencer par « Nous » ne garantit pas un message joyeux."
+            "text": "Sophie pleurait son pauvre poulet, qu'elle regretta bien longtemps.",
+            "interpretation": "Tristesse"
           }
         ],
         "extraExamples": [
           {
             "id": "nous",
-            "text": "Des messages commençant par « Nous » qui expriment une déception.",
+            "text": "Des messages commençant par « Sophie » qui expriment une déception.",
             "useful": true,
             "feedback": "Ils permettent de vérifier si ce début de phrase suffit vraiment à annoncer la joie."
           },
           {
             "id": "ils",
-            "text": "Des messages commençant par « Ils » qui racontent une réussite.",
+            "text": "Des messages commençant par « Paul, » qui racontent une réussite.",
             "useful": true,
-            "feedback": "Ils mettent à l’épreuve l’association entre « Ils » et la colère."
+            "feedback": "Ils mettent à l’épreuve l’association entre « Paul, » et la colère."
           },
           {
             "id": "et",
@@ -469,7 +459,7 @@
                 "id": "always",
                 "text": "Elle réussira sur tous les prochains messages.",
                 "correct": false,
-                "feedback": "Les exemples observés ne couvrent pas forcément les nouvelles situations. Les tests avec « Nous » et « Ils » ont montré cette limite."
+                "feedback": "Les exemples observés ne couvrent pas forcément les nouvelles situations. Les tests avec « Sophie » et « Paul, » ont montré cette limite."
               }
             ]
           }
@@ -481,7 +471,7 @@
             "Expliquer qu’une régularité observée ne garantit pas une réussite sur les nouveaux cas.",
             "Proposer des exemples variés pour mettre cet indice à l’épreuve."
           ],
-          "sample": "Plusieurs messages de joie commencent par « Nous ». Pourtant, le message sur la nuit sous les étoiles peut exprimer une déception. Je chercherais d’autres messages commençant par « Nous », avec des émotions variées, puis je comparerais leurs étiquettes aux prédictions."
+          "sample": "Plusieurs messages de joie commencent par « Sophie », donc je peux proposer cette règle. Mais « Sophie pleurait son pauvre poulet, qu'elle regretta bien longtemps » peut exprimer de la tristesse. Je chercherais d’autres messages commençant par « Sophie », avec des émotions variées, puis je comparerais leurs étiquettes aux prédictions."
         },
         "copy": {
           "gameIntro": "Tu joues les O ; le programme commence avec les X. Le but est d’aligner trois de ses symboles sur une ligne, une colonne ou une diagonale. Le programme suit les instructions affichées pour son tour. Plusieurs cases peuvent respecter une instruction : chaque prévision valide est acceptée.",
@@ -504,8 +494,7 @@
           "type": "lesson",
           "title": "Experience AI",
           "paragraphs": [
-            "La leçon 2 d’Experience AI, conçue par Raspberry Pi Foundation et Google DeepMind, inspire la comparaison entre règles et données. Le morpion reprend le principe de « La feuille de papier intelligente », une activité de Peter McOwan et Paul Curzon, Queen Mary University of London.",
-            "CodeCraft a créé les quinze messages de la collection, les quatre messages d’essai et leurs explications. Le raccourci « Nous », « Ils », puis « et » sert à tester les limites d’une règle grammaticale."
+            "La leçon 2 « Apprentissage automatisé » est développée conjointement par Raspberry Pi Foundation et Google DeepMind. Les règles du morpion suivent la fiche « La feuille de papier intelligente », elle-même adaptée de Peter McOwan et Paul Curzon, Queen Mary University of London."
           ],
           "externalLink": {
             "label": "Consulter la leçon officielle",
@@ -524,6 +513,18 @@
             "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml?hl=fr"
           },
           "id": "sources-2"
+        },
+        {
+          "type": "lesson",
+          "title": "Les malheurs de Sophie",
+          "paragraphs": [
+            "Mme la Comtesse de Ségur (née Rostopchine), 1858. Project Gutenberg, eBook 15058."
+          ],
+          "externalLink": {
+            "label": "Les malheurs de Sophie",
+            "url": "https://www.gutenberg.org/ebooks/15058"
+          },
+          "id": "sources-segur"
         }
       ]
     }
@@ -569,12 +570,12 @@
         "answer": "L’entraînement ajuste le modèle à partir des données. Le modèle reçoit une nouvelle entrée lors de son utilisation, après cet entraînement."
       },
       {
-        "question": "Peut-on attribuer une émotion certaine à « Nous avons reçu un courrier ce matin » ? Quel contexte manque ?",
-        "answer": "Le message reste ambigu. Demander ce que le courrier annonce et à qui il est destiné."
+        "question": "Peut-on attribuer une émotion certaine à « Sophie ne répondit rien » ? Quel contexte manque ?",
+        "answer": "Le message reste ambigu sans contexte."
       },
       {
         "question": "Quels exemples pourraient contredire votre règle ?",
-        "answer": "Chercher des messages qui contredisent le raccourci, par exemple une phrase commençant par Nous qui exprime une déception."
+        "answer": "Chercher des messages qui contredisent le raccourci, par exemple une phrase commençant par Sophie qui exprime une déception."
       }
     ],
     "commonErrors": [

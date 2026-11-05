@@ -1,6 +1,6 @@
 # Comprendre l’IA par l’expérience
 
-Le parcours comprend quatre chapitres. **Que fait un système d’IA ?** ouvre le parcours, suivi de **Des règles aux données**, **Classer et vérifier une prédiction**, puis **Entraîner un modèle et examiner ses erreurs**.
+Quatre chapitres sont intégrés : **Que fait un système d’IA ?**, **Des règles aux données**, **Classer et vérifier une prédiction**, puis **Entraîner un modèle et examiner ses erreurs**.
 
 Entrée locale : `http://localhost:8000/#module/ia-decouvrir?parcours=ia-experience`. Le lien vers `ia-regles-donnees` reste valable et constitue la suite du premier chapitre.
 
@@ -43,12 +43,13 @@ Les quatre mêmes photos comparent les versions ; quatre nouvelles photos sont r
 Sources consultées :
 
 - Experience AI, module 1 leçon 2, fichier enseignant **La feuille de papier intelligente**, plan de leçon et diapositives 23 et 24 fournis par l’utilisateur : <https://experience-ai.org/fr-CA/units/understanding-ai-11-14/lessons/13>.
-- **Comprendre l’IA, Guide d’animation, 3 leçons**, pages 7 à 12, fourni par l’utilisateur. Il inspire la médiation et l’exemple de raccourci « Nous », « Ils », puis « et ». Cet exemple est identifié comme une adaptation pédagogique, pas une solution officielle unique.
+- **Comprendre l’IA, Guide d’animation, 3 leçons**, pages 7 à 12, fourni par l’utilisateur.
+- **Les malheurs de Sophie** (1858), Mme la Comtesse de Ségur (née Rostopchine). Quinze extraits pour la collection et quatre pour les essais. [Project Gutenberg, eBook 15058](https://www.gutenberg.org/ebooks/15058).
 - Google for Developers, **Qu’est-ce que le machine learning ?** : <https://developers.google.com/machine-learning/intro-to-ml/what-is-ml?hl=fr>. Le texte de cette page est sous CC BY 4.0 ; les explications du chapitre sont rédigées pour CodeCraft.
 
 Experience AI est développé conjointement par Raspberry Pi Foundation et Google DeepMind. La fiche de morpion crédite Peter McOwan et Paul Curzon, Queen Mary University of London : <https://teachinglondoncomputing.org/resources/inspiring-unplugged-classroom-activities/the-intelligent-piece-of-paper-activity/>.
 
-Le 5 novembre 2026, CodeCraft a remplacé les messages des supports Experience AI par une collection originale de quinze exemples et quatre essais. Les hypothèses et les retours s’appuient sur cette collection. Les crédits renvoient aux supports d’origine, diffusés sous [licence CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). Les instructions du morpion sont rédigées pour CodeCraft à partir de l’algorithme de jeu cité plus haut.
+Les fichiers Experience AI fournis portent **CC BY-NC-ND 4.0**. [Licence des supports](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 ## Vérifications et limites
 
@@ -78,7 +79,7 @@ Vérifications : formatage, lint, catalogue et 258 tests Node réussis. Les suit
 
 ## Point de reprise IA, changement de chantier le 29 octobre 2026
 
-Le 29 octobre, le travail est passé à Scratch après intégration, revue et correction des quatre chapitres IA. La publication du parcours complet a repris le 5 novembre avec les nouveaux messages du chapitre 2.
+L’utilisateur demande de conserver cet état puis de passer à Scratch. Les quatre chapitres IA sont intégrés localement, relus et corrigés ; le dernier lot applique les trois corrections de la revue du chapitre 4. Les contrôles sont consignés ci-dessus. Aucun commit ou push du lot IA n’a été demandé depuis ces travaux.
 
 À la reprise, formaliser d’abord une roadmap IA globale : les cadrages existants couvrent les quatre chapitres, mais aucune progression détaillée au-delà n’est validée. L’objectif initial de création d’un chatbot reste à relier à ce socle. La suite évoquée (comprendre la génération et vérifier les réponses, formuler et améliorer une demande, puis construire et tester un chatbot spécialisé) est une proposition, pas une roadmap approuvée. Modèle conseillé : Astra High pour ce cadrage avant tout nouveau cours.
 

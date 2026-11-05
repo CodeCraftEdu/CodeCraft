@@ -57,7 +57,7 @@ Il ne faut pas ajouter un constructeur complexe ni remplacer cette activité par
 
 **Emplacement :** chapitre 2, corpus et bouton permettant de choisir une autre règle.
 
-**Constat :** les règles proposées sont volontairement imparfaites, y compris sur la collection initiale. La règle « Nous / Ils / et » laisse certains messages de joie indéterminés. C’est acceptable pour étudier un indice fragile. La fiche doit préciser quels exemples échappent à la règle et signaler que les quatre messages de test sont réutilisés après un changement de règle.
+**Constat :** les règles proposées sont volontairement imparfaites, y compris sur la collection initiale. Par exemple, la règle « Sophie / Paul, / et » ne classe pas « Que je suis contente! ». C’est acceptable pour étudier un indice fragile, mais il faut éviter de laisser penser qu’elle explique déjà toute la collection. Après un changement de règle, les quatre messages de test sont les mêmes, alors que le texte parle toujours de nouveaux messages.
 
 **Correction proposée :** comparer la règle à un exemple initial qu’elle explique et à un autre qu’elle ne classe pas. Lors d’un second essai, annoncer une comparaison sur les mêmes messages. Réserver l’expression « exemples encore inconnus » à de vrais nouveaux cas. Il n’est pas nécessaire de créer une banque aléatoire ou d’enseigner les trois jeux entraînement/validation/test à ce stade.
 
@@ -105,8 +105,6 @@ Les sources techniques servent à établir les distinctions, les ressources péd
 ## Suite recommandée
 
 Corriger les quatre points P2 et les ajustements courts dans un lot ciblé, en gardant les deux chapitres et leurs activités. Préparer ensuite le chapitre 3 autour d’un véritable classificateur : exemples, entraînement, essais distincts et discussion des erreurs. Il n’est pas nécessaire d’ajouter maintenant réseaux de neurones, formules, pourcentages ou nouveau dispositif professeur. L’objectif est de rendre compréhensible ce qui existe déjà.
-
-La revue pédagogique ne modifie pas le statut de prototype local déjà documenté dans `docs/ia-experience.md`.
 
 [G1]: https://developers.google.com/machine-learning/intro-to-ml/what-is-ml
 [G2]: https://developers.google.com/machine-learning/intro-to-ml/supervised

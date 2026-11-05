@@ -152,7 +152,7 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
   assert.equal(await evaluate('document.querySelectorAll(".ai-lab__test").length'), 0);
   assert.equal(
     await evaluate(
-      'document.querySelector(".ai-lab__content").textContent.includes("Nous avons reçu un courrier ce matin.")',
+      'document.querySelector(".ai-lab__content").textContent.includes("Sophie ne répondit rien.")',
     ),
     false,
   );
@@ -174,7 +174,7 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
     ['😃 Joie', '😢 Tristesse', '😡 Colère', '😃 Joie'],
   );
   assert.ok(
-    await evaluate('document.querySelector("[data-test=attente]").textContent.includes("ambiguë")'),
+    await evaluate('document.querySelector("[data-test=attente]").textContent.includes("ambigu")'),
   );
   await call('Page.reload');
   await wait('document.querySelectorAll(".ai-lab__test").length === 4');
@@ -206,7 +206,7 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
       await focus('.ai-sources > summary');
       await key();
       assert.equal(await evaluate('document.querySelector(".ai-sources").open'), true);
-      assert.equal(await evaluate('document.querySelectorAll(".ai-sources a").length'), 2);
+      assert.equal(await evaluate('document.querySelectorAll(".ai-sources a").length'), 3);
       await key();
       assert.equal(await evaluate('document.querySelector(".ai-sources").open'), false);
       await evaluate(
@@ -220,7 +220,7 @@ withBrowser(async ({ navigate, evaluate, wait, call, screenshot }) => {
   await activate('check-training');
   await focus('#ai-free-answer');
   await call('Input.insertText', {
-    text: 'Je chercherais un message commençant par Nous qui exprime une déception.',
+    text: 'Je chercherais un message commençant par Sophie qui exprime une déception.',
   });
   await activate('show-criteria');
   assert.equal(await evaluate('document.querySelectorAll(".ai-lab__criteria li").length'), 3);

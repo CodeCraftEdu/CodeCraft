@@ -113,19 +113,33 @@ test('émojis : prédictions déterministes, priorité, mots entiers et ambiguï
     config.tests.map((row) => predictMessage(row.text, baseline).category),
     ['joie', 'tristesse', 'colere', 'joie'],
   );
-  assert.equal(predictMessage('  nous sommes déçus', baseline).category, 'joie');
-  assert.equal(predictMessage('Les billets sont prêts', baseline).category, 'indeterminee');
-  assert.equal(predictMessage('Ils sont partis et revenus', baseline).category, 'colere');
+  assert.equal(
+    predictMessage('  ' + config.tests[3].text.toLowerCase(), baseline).category,
+    'joie',
+  );
+  assert.equal(predictMessage(config.corpus[4].text, baseline).category, 'indeterminee');
+  assert.equal(predictMessage(config.corpus[10].text, baseline).category, 'colere');
   const words = config.hypotheses.find((rule) => rule.id === 'words');
-  assert.equal(predictMessage('Nous sommes ravis malgré le studio fermé.', words).conflict, true);
   assert.deepEqual(
     config.corpus.map((row) => predictMessage(row.text, words).category),
     config.corpus.map((row) => row.category),
   );
-  assert(config.tests.find((row) => row.id === 'attente').interpretation.includes('ambiguë'));
-  assert(
-    config.tests.find((row) => row.id === 'projet').interpretation.includes('contexte manque'),
+  const mixed = {
+    policy: words.policy,
+    conditions: [
+      { kind: 'word', term: 'enchantés', category: 'joie' },
+      { kind: 'word', term: 'chagrin', category: 'tristesse' },
+    ],
+  };
+  assert.equal(
+    predictMessage(
+      'Sophie et Paul étaient enchantés: leur seul chagrin était de voir pleurer leurs mamans.',
+      mixed,
+    ).conflict,
+    true,
   );
+  assert(config.tests.find((row) => row.id === 'attente').interpretation.includes('ambigu'));
+  assert.equal(config.tests.find((row) => row.id === 'projet').interpretation, 'Tristesse');
   assert(config.extraExamples.find((item) => item.id === 'copies').useful === false);
 });
 
@@ -201,7 +215,7 @@ test('interface : prévision valide, coups interdits, séparation corpus/test et
     dom.navigate('#module/ia-regles-donnees?parcours=ia-experience');
     assert.equal(doc.querySelector('[aria-current=step]').dataset.step, '2');
     assert.equal(doc.querySelectorAll('.ai-lab__test').length, 1);
-    assert(doc.querySelector('.ai-lab__test').textContent.includes('ambiguë'));
+    assert(doc.querySelector('.ai-lab__test').textContent.includes(config.tests[0].interpretation));
     dom.window.localStorage.setItem('another-course', 'keep');
     click('reset-chapter');
     click('cancel-reset');
